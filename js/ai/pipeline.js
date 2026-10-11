@@ -173,6 +173,13 @@
     });
     result.text = res.text;
     result.stats = res.stats;
+    // Yerel model: ne kadarı ekran kartında? (kısmen işlemcideyse yanıtlar çok yavaşlar)
+    if (engine.kind === "local") {
+      try {
+        const m = (await App.ollama.ps()).find((x) => App.ollama.sameModel(x.name, cfg.chatModel));
+        if (m && m.size) result.gpu = { model: m.name, ratio: m.vram / m.size };
+      } catch (e) { /* /api/ps yoksa önemli değil */ }
+    }
     return result;
   }
 

@@ -363,5 +363,11 @@ App.locales.tr = {
   "ais.lanFirewall": "Windows Güvenlik Duvarı izin sorarsa \"Özel ağlar\"ı işaretleyip izin ver. Bilgisayardaki uygulama kapalıyken telefon bağlanamaz.",
   "ais.rebuiltLexical": "Hafıza hazır: {n} kayıt parçası (kelime araması).",
   "set.version": "Sürüm",
-  "ai.err.nokeyBodyPhone": "Ayarlar'dan ücretsiz bir Gemini anahtarı gir ya da (evdeyken) bilgisayardaki Ders Asistanı'na bağlan."
+  "ai.err.nokeyBodyPhone": "Ayarlar'dan ücretsiz bir Gemini anahtarı gir ya da (evdeyken) bilgisayardaki Ders Asistanı'na bağlan.",
+  "ai.gpuPartial": "Model yalnızca %{pct} oranında ekran kartında, kalanı işlemcide çalışıyor; bu yüzden yanıtlar yavaş. Ekran kartında yer açıp modeli yeniden yükle.",
+  "ai.gpuReload": "Modeli yeniden yükle",
+  "ai.gpuReloaded": "Model bellekten boşaltıldı; bir sonraki soruda yeniden yüklenecek.",
+  "ais.uiGpu": "Arayüz için ekran kartını kullan",
+  "ais.uiGpuHint": "Kapalıyken (önerilen) ekran kartının tamamı yapay zekâya kalır; yerel model çok daha hızlı yanıt verir.",
+  "ais.uiGpuRestart": "Değişikliğin geçerli olması için uygulama yeniden başlatılacak."
 };

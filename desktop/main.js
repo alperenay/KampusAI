@@ -29,7 +29,7 @@ if (!app.requestSingleInstanceLock()) { app.quit(); }
 
 /* ---------------- Ayarlar dosyası ---------------- */
 const SETTINGS_FILE = () => path.join(app.getPath("userData"), "desktop-settings.json");
-let settings = { lanEnabled: false, token: "", bounds: null };
+let settings = { lanEnabled: false, token: "", bounds: null, uiGpu: false };
 function loadSettings() {
   try { settings = Object.assign(settings, JSON.parse(fs.readFileSync(SETTINGS_FILE(), "utf8"))); } catch (e) { /* ilk açılış */ }
   if (!settings.token) { settings.token = newToken(); saveSettings(); }
@@ -91,6 +91,19 @@ function stopLan() {
     if (srv.closeAllConnections) srv.closeAllConnections();
   });
 }
+
+/* Ekran kartı: varsayılan olarak arayüz ekran kartını KULLANMAZ. Arayüzün kaplayacağı
+   birkaç yüz MB, 12 GB'lık kartta 14b modelin bir kısmını işlemciye taşıyıp yanıtları
+   ~4 kat yavaşlatıyordu (ölçüm: tarayıcıda 56, uygulamada 12 parça/sn). */
+loadSettings();
+if (!settings.uiGpu) app.disableHardwareAcceleration();
+
+ipcMain.on("gpu:get", (e) => { e.returnValue = !!settings.uiGpu; });
+ipcMain.handle("gpu:set", (e, on) => {
+  settings.uiGpu = !!on; saveSettings();
+  setTimeout(() => { app.relaunch(); app.exit(0); }, 300);     // değişiklik yeniden başlatınca geçerli
+  return settings.uiGpu;
+});
 
 ipcMain.handle("lan:get", () => lanInfo());
 ipcMain.handle("lan:set", async (e, on) => {
@@ -174,7 +187,6 @@ app.on("second-instance", () => {
 app.whenReady().then(async () => {
   app.setAppUserModelId("com.dersasistani.app");
   Menu.setApplicationMenu(null);
-  loadSettings();
 
   protocol.handle("app", async (request) => {
     const url = new URL(request.url);

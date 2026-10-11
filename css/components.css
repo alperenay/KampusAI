@@ -668,3 +668,7 @@ button.block:hover { border-color: color-mix(in srgb, var(--c) 55%, transparent)
 .msg__error-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .ai-notice .btn { margin-left: 6px; vertical-align: middle; height: 28px; }
 .home__models .ico + .ico { margin-left: -2px; }
+.msg__gpu { align-items: center; }
+.msg__gpu .btn { margin-left: 6px; height: 28px; vertical-align: middle; }
+/* Windows uygulaması, ekran kartı yapay zekaya bırakıldığında: daha hafif bulanıklık */
+:root.lite, :root.lite[data-theme] { --glass-blur: blur(12px) saturate(1.1); }

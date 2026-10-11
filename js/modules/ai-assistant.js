@@ -230,6 +230,10 @@
       '<div class="msg__error-actions"><button class="btn btn--sm" type="button" data-act="retry">' + App.icon("refresh") + esc(t("ai.retry")) + "</button>" + extra + "</div></div>";
   }
 
+  /** Uyarı yalnızca en son yanıtta gösterilsin */
+  let latestAiId = null;
+  const lastAssistant = (msg) => (latestAiId === null || latestAiId === msg.id ? msg : null);
+
   function assistantHtml(msg) {
     const parts = [];
     if (msg.transcription || msg.visionLive) {
@@ -246,6 +250,10 @@
     if (msg.error) parts.push(errorHtml(msg.error));
     if (!msg.pending && !msg.error && !msg.interrupted) {
       parts.push(sourcesHtml(msg.sources));
+      if (msg.gpu && msg.gpu.ratio < 0.98 && msg === lastAssistant(msg)) {
+        parts.push('<div class="msg__warn msg__gpu">' + App.icon("search") + "<span>" + esc(t("ai.gpuPartial", { pct: Math.round(msg.gpu.ratio * 100), model: shortModel(msg.gpu.model) })) +
+          ' <button class="btn btn--sm" type="button" data-act="reload-model" data-mid="' + esc(msg.id) + '" data-model="' + esc(msg.gpu.model) + '">' + App.icon("refresh") + esc(t("ai.gpuReload")) + "</button></span></div>");
+      }
       const chain = (msg.models || []).map((m) => '<span class="chip-model" title="' + esc(t("ai.role." + m.role)) + '">' + App.icon(STAGE_ICON[m.role]) + esc(shortModel(m.model)) + "</span>").join("");
       const speed = msg.stats && msg.stats.evalMs ? t("ai.speed", { n: Math.round(msg.stats.evalCount / (msg.stats.evalMs / 1000)) }) : "";
       parts.push('<div class="msg__foot">' + chain +
@@ -266,6 +274,8 @@
   }
 
   function chatHtml(chat) {
+    const ais = chat.messages.filter((m) => m.role === "assistant");
+    latestAiId = ais.length ? ais[ais.length - 1].id : null;
     return (
       '<div class="chat">' +
         '<div class="chat__log" id="chatLog">' + chat.messages.map(messageHtml).join("") + "</div>" +
@@ -351,6 +361,7 @@
     const userMsg = { id: uid("m"), role: "user", text, image: image ? image.dataUrl : null, at: new Date().toISOString() };
     const aiMsg = { id: uid("m"), role: "assistant", text: "", pending: true, stage: image ? "vision" : useData ? "memory" : "answer", models: [], startedAt: Date.now() };
     chat.messages.push(userMsg, aiMsg);
+    latestAiId = aiMsg.id;
     draft = { image: null, text: "" };
     await start(chat, userMsg, aiMsg, history_, image);
   }
@@ -393,6 +404,7 @@
       aiMsg.stats = res.stats;
       aiMsg.models = res.models;
       aiMsg.engine = res.engine;
+      aiMsg.gpu = res.gpu || null;
       if (res.warnings && res.warnings.length) aiMsg.warnings = res.warnings;
       if (status.state !== "ok" || (status.engine && status.engine.id !== res.engine)) refreshStatus();   // durum noktasını güncelle
     } catch (e) {
@@ -426,6 +438,7 @@
     chat.messages.splice(i, 1);
     const aiMsg = { id: uid("m"), role: "assistant", text: "", pending: true, stage: userMsg.image ? "vision" : useData ? "memory" : "answer", models: [], startedAt: Date.now() };
     chat.messages.push(aiMsg);
+    latestAiId = aiMsg.id;
     await start(chat, userMsg, aiMsg, chat.messages.slice(0, userIdx), null);
   }
 
@@ -509,6 +522,11 @@
         try { await navigator.clipboard.writeText(msg.text); App.ui.toast(t("ai.copied")); }
         catch (err) { App.ui.toast(t("ai.copyFailed"), "error"); }
       } else if (a === "retry") retry(c);
+      else if (a === "reload-model") {
+        act.disabled = true;
+        try { await App.ollama.unload(act.dataset.model); App.ui.toast(t("ai.gpuReloaded")); act.closest(".msg__gpu").remove(); if (msg) { msg.gpu = null; saveChat(c); } }
+        catch (err) { App.ui.toast(t("ai.err.offlineTitle"), "error"); act.disabled = false; }
+      }
       else if (a === "zoom" && msg && msg.image) {
         App.ui.modal({ title: t("ai.photo"), body: '<img class="zoom-img" src="' + msg.image + '" alt="">' });
       }

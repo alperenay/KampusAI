@@ -219,8 +219,20 @@
     }
   }
 
+  /** Bellekteki modeller ve ne kadarının ekran kartında olduğu (/api/ps) */
+  async function ps(signal) {
+    const res = await request("/api/ps", undefined, signal);
+    const data = await res.json();
+    return (data.models || []).map((m) => ({ name: m.name || m.model, size: m.size || 0, vram: m.size_vram || 0 }));
+  }
+
+  /** Modeli bellekten boşaltır; bir sonraki soruda yeniden (tamamı ekran kartına) yüklenir */
+  async function unload(model, signal) {
+    await request("/api/generate", { model, keep_alive: 0 }, signal);
+  }
+
   /** Ayarlar değişince otomatik adresi yeniden bul */
   function resetDetection() { autoUrl = null; detecting = null; }
 
-  App.ollama = { DEFAULTS, config, baseUrl, resetDetection, sameModel, isFileOrigin, manualUrl, tags, check, chat, embed, OllamaError };
+  App.ollama = { DEFAULTS, config, baseUrl, resetDetection, sameModel, isFileOrigin, manualUrl, tags, check, chat, embed, ps, unload, OllamaError };
 })();

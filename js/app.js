@@ -127,6 +127,8 @@
 
   /* ---------------- Başlat ---------------- */
   async function start() {
+    // Windows uygulaması ekran kartını yapay zekaya bıraktığında arayüz efektleri hafifletilir
+    if (window.desktopApp && !window.desktopApp.uiGpu) document.documentElement.classList.add("lite");
     App.i18n.apply(document);
     App.hydrateIcons(document);
     App.applyProfile();

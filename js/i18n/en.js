@@ -365,5 +365,11 @@ App.locales.en = {
   "ais.lanFirewall": "If Windows Firewall asks, tick \"Private networks\" and allow. Phones can't connect while the computer app is closed.",
   "ais.rebuiltLexical": "Memory ready: {n} record chunks (keyword search).",
   "set.version": "Version",
-  "ai.err.nokeyBodyPhone": "Enter a free Gemini key in Settings, or (at home) connect to Study Assistant on your computer."
+  "ai.err.nokeyBodyPhone": "Enter a free Gemini key in Settings, or (at home) connect to Study Assistant on your computer.",
+  "ai.gpuPartial": "Only {pct}% of the model is on the graphics card; the rest runs on the CPU, which makes answers slow. Free up GPU memory and reload the model.",
+  "ai.gpuReload": "Reload model",
+  "ai.gpuReloaded": "Model unloaded; it will be reloaded on your next question.",
+  "ais.uiGpu": "Use the graphics card for the interface",
+  "ais.uiGpuHint": "When off (recommended), the whole graphics card is left to the AI, so the local model answers much faster.",
+  "ais.uiGpuRestart": "The app will restart for this change to take effect."
 };

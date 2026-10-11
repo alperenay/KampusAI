@@ -77,6 +77,8 @@
           '<span class="model-field">' + '<input class="input" data-key="' + f.key + '" value="' + esc(v(f.key) || f.def()) + '" spellcheck="false" list="aisModels">' +
           '<span class="model-state" data-state="' + f.key + '"></span></span>')).join("") +
       '<datalist id="aisModels"></datalist>' +
+      (App.platform.desktop && window.desktopApp && window.desktopApp.gpu
+        ? '<label class="check-row"><input type="checkbox" id="uiGpu"' + (window.desktopApp.uiGpu ? " checked" : "") + "> <span>" + esc(t("ais.uiGpu")) + '</span></label><p class="hint">' + esc(t("ais.uiGpuHint")) + "</p>" : "") +
       '<div class="ais-test"><button class="btn btn--sm" type="button" data-test="local">' + App.icon("refresh") + esc(t("ais.test")) + '</button><span class="hint" id="aisResult"></span></div>' +
       '<p class="hint">' + esc(t("ais.privacy")) + "</p>";
 
@@ -274,6 +276,12 @@
         catch (err) { App.ui.toast(String(err && err.message || err), "error"); }
       });
     }
+
+    const gpuBox = $("#uiGpu");
+    if (gpuBox) gpuBox.addEventListener("change", async () => {
+      if (!(await App.ui.confirm(t("ais.uiGpuRestart"), t("ok")))) { gpuBox.checked = !gpuBox.checked; return; }
+      window.desktopApp.gpu.set(gpuBox.checked);
+    });
 
     /* ---- Hafıza ---- */
     $("#aisRebuild").addEventListener("click", async (e) => {
