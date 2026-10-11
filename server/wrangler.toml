@@ -1,0 +1,9 @@
+# Ders Asistanı yapay zeka sunucusu — GitHub Actions tarafından otomatik yayınlanır (.github/workflows/build.yml)
+name = "ders-asistani"
+main = "worker.js"
+compatibility_date = "2025-09-01"
+workers_dev = true
+
+[vars]
+RATE_CHAT = "12"     # IP başına dakikada en fazla sohbet isteği
+RATE_EMBED = "40"    # IP başına dakikada en fazla hafıza (vektör) isteği

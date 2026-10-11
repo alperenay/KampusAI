@@ -26,6 +26,15 @@ function copy(rel) {
 }
 ENTRIES.forEach(copy);
 
+// Ders Asistanı sunucusu (Cloudflare) adresi: varsa uygulama hiçbir ayar yapmadan internetten çalışır
+const serverUrl = (process.env.DA_SERVER_URL || "").trim();
+fs.writeFileSync(path.join(out, "js", "config.js"), "App.config = " + JSON.stringify({ serverUrl }) + ";\n");
+if (serverUrl) console.log("sunucu: " + serverUrl);
+if (appVersion) {
+  // Ayarlar penceresinde görünen sürüm
+  fs.writeFileSync(path.join(out, "js", "version.js"), "App.version = " + JSON.stringify(appVersion) + ";\n");
+}
+
 const hash = crypto.createHash("sha256");
 files.forEach((f) => { hash.update(f); hash.update(fs.readFileSync(path.join(out, f))); });
 const version = (appVersion ? appVersion + "-" : "") + hash.digest("hex").slice(0, 10);
@@ -34,8 +43,4 @@ const precache = ["./"].concat(files.filter((f) => f !== "sw.js"));
 fs.writeFileSync(path.join(out, "precache.json"), JSON.stringify({ version, files: precache }, null, 0));
 const sw = path.join(out, "sw.js");
 fs.writeFileSync(sw, fs.readFileSync(sw, "utf8").replace('const VERSION = "dev";', "const VERSION = " + JSON.stringify(version) + ";"));
-if (appVersion) {
-  // Ayarlar penceresinde görünen sürüm
-  fs.writeFileSync(path.join(out, "js", "version.js"), "App.version = " + JSON.stringify(appVersion) + ";\n");
-}
 console.log("web → " + out + " (" + files.length + " dosya, sürüm " + version + ")");

@@ -5,6 +5,7 @@ Ders programı, konu anlatımı, TYT-AYT deneme takibi ve yapay zeka asistanı.
 
 | Kaynak | Nerede çalışır | Ücret | Fotoğraf |
 |---|---|---|---|
+| **Hazır sunucu** (varsayılan) | Ders Asistanı'nın Cloudflare sunucusu üzerinden Gemini; **hiçbir ayar gerekmez** | Ücretsiz kota, tüm kullanıcılar paylaşır | Tek model hem okur hem çözer |
 | **Yerel (Ollama)** | Bilgisayarındaki modeller; telefon da evdeki Wi-Fi'dan bunları kullanabilir | Ücretsiz, veriler cihazda kalır | qwen2.5vl okur, qwen2.5:14b çözer |
 | **İnternet (Gemini)** | Google'ın sunucuları; her yerde çalışır | Ücretsiz katman (dakikalık/günlük sınırlı) | Tek model hem okur hem çözer |
 | **İnternet (OpenAI-uyumlu)** | OpenRouter, Groq, OpenAI, DeepSeek… | Servise göre | Modele göre |
@@ -25,7 +26,9 @@ Kurulum dosyaları GitHub'daki deponun **Releases** sayfasındadır (her güncel
 
 ## 2. Yapay zekayı bağlamak
 
-### İnternet (Gemini) — her cihazda
+Hazır sunucu kuruluysa (bkz. bölüm 7) uygulama açılır açılmaz yapay zekâ çalışır; aşağıdakiler isteğe bağlıdır.
+
+### Kendi Gemini anahtarınla — her cihazda
 1. [aistudio.google.com/apikey](https://aistudio.google.com/apikey) adresinde Google hesabınla **API anahtarı oluştur**.
 2. Uygulamada **Ayarlar → Yapay zeka ayarları → İnternet** sekmesine anahtarı yapıştır → **Bağlantıyı test et** → **Kaydet**.
 3. Model "Otomatik" kalabilir (en yeni Flash modeli seçilir).
@@ -50,11 +53,11 @@ ollama pull qwen2.5vl:7b
 
 Windows uygulaması Ollama kapalıysa açılışta kendisi başlatmayı dener.
 
-### Telefonda bilgisayardaki modelleri kullanmak
+### Telefonda bilgisayardaki modelleri kullanmak (QR kod)
 1. Bilgisayarda Ders Asistanı uygulamasını aç → **Ayarlar → Yapay zeka ayarları → Telefon bağlantısı** → kutuyu işaretle.
-   Windows Güvenlik Duvarı sorarsa **Özel ağlar**'a izin ver.
-2. Ekranda bir adres (ör. `http://192.168.1.20:8770/ollama`) ve 6 haneli **bağlantı kodu** görünür.
-3. Telefondaki uygulamada **Ayarlar → Yapay zeka ayarları → Yerel (Ollama)** sekmesine adresi ve kodu yaz → **Kaydet**.
+   Windows Güvenlik Duvarı sorarsa **Özel ağlar**'a izin ver. Ekranda bir **QR kod** çıkar.
+2. Telefondaki uygulamada **Ayarlar → Yapay zeka ayarları → Yerel (Ollama) → QR kodla bilgisayara bağlan** → kodu okut. Bu kadar.
+   (İstersen adresi ve 6 haneli kodu elle de yazabilirsin.)
 
 Telefon ve bilgisayar aynı Wi-Fi'da olmalı. Evden çıkınca (otomatik modda) telefon kendiliğinden Gemini'ye geçer.
 iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanamaz; orada internet servisi kullanılır.
@@ -91,10 +94,26 @@ API anahtarları yedeğe girmez; her cihazda ayrıca girilir.
 Klasördeki **`Baslat.bat`** dosyasına çift tıkla; site `http://localhost:8765` adresinde açılır ve Ollama'ya aracılık eder.
 macOS / Linux için `./baslat.sh`.
 
+## 7. Hazır sunucuyu kurmak (bir kez, uygulamayı dağıtan kişi)
+
+Sunucu `server/worker.js` dosyasıdır ve her derlemede GitHub Actions tarafından Cloudflare'e yüklenir.
+Gemini anahtarı yalnızca Cloudflare'de gizli değişken olarak durur; uygulamada ve repoda yoktur.
+
+1. [dash.cloudflare.com](https://dash.cloudflare.com) adresinde ücretsiz hesap aç; **Workers & Pages** sayfasını bir kez aç
+   (ücretsiz `….workers.dev` adresin oluşur). Aynı sayfada sağdaki **Account ID**'yi kopyala.
+2. **My Profile → API Tokens → Create Token → "Edit Cloudflare Workers"** şablonu → **Create Token** → anahtarı kopyala.
+3. GitHub'da repo → **Settings → Secrets and variables → Actions → New repository secret** ile üç değer ekle:
+   `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `GEMINI_API_KEY`.
+4. Yeni bir derleme başlat (Actions → Derle ve yayınla → Run workflow). Sunucu yayınlanır ve adresi uygulamalara kendiliğinden yazılır.
+
+Sunucu yalnızca Flash modellerine izin verir ve IP başına dakikalık istek sınırı uygular (`server/wrangler.toml`).
+Kullanıcı sayısı artıp ücretsiz kota yetmezse Google AI Studio'da faturalandırmayı açmak sınırları yükseltir (ücretli).
+
 ## Teknik not
 
 - Saf HTML, CSS ve JavaScript; uygulama kodu tek: Windows sürümü **Electron** (`desktop/`), Android sürümü **Capacitor** (`mobile/`),
   iPhone sürümü **PWA** (`manifest.webmanifest`, `sw.js`) ile paketlenir. Derleme `.github/workflows/build.yml` ile GitHub'da yapılır.
+- QR eşleştirme `js/modules/pairing.js` (qrcode-generator MIT, jsQR Apache-2.0; `assets/vendor/qr`).
 - Yapay zeka kodu `js/ai/`: `engine.js` motor seçimi, `ollama.js` yerel bağlantı, `cloud.js` Gemini ve OpenAI-uyumlu servisler,
   `vision.js` göz, `rag.js` hafıza (vektör + kelime araması), `pipeline.js` hepsini birleştiren akış.
 - Veriler IndexedDB'de tutulur; vektörler de orada önbelleğe alınır (model başına), yalnızca değişen kayıtlar yeniden hesaplanır.

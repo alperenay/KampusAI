@@ -43,10 +43,16 @@
     }
   };
 
-  const engines = { local, gemini: App.cloud.gemini, openai: App.cloud.openai };
+  const engines = { local, server: App.cloud.server, gemini: App.cloud.gemini, openai: App.cloud.openai };
 
   const mode = () => { const m = App.prefs.get("aiMode", "auto"); return ["auto", "local", "cloud"].includes(m) ? m : "auto"; };
-  const cloud = () => engines[App.prefs.get("aiCloud", "gemini")] || engines.gemini;
+  /** Seçili internet servisi. Seçilmemişse: hazır sunucu varsa o (kullanıcı hiçbir şey girmeden çalışır), yoksa Gemini */
+  const defaultCloud = () => (App.cloud.server.configured() ? "server" : "gemini");
+  const cloud = () => {
+    const id = App.prefs.get("aiCloud", null) || defaultCloud();
+    const e = engines[id];
+    return e && e.kind === "cloud" && (e.configured() || id !== "server") ? e : engines[defaultCloud()];
+  };
 
   /** Bu cihazda yerel modele ulaşmak mümkün mü? (telefonda yalnızca eşleştirme yapıldıysa) */
   function localPossible() {
@@ -131,5 +137,5 @@
     return out;
   }
 
-  App.engine = { engines, local, mode, cloud, resolve, status, canFallback, invalidate, markLocalDown, localPossible, platform, AIError };
+  App.engine = { engines, local, mode, cloud, defaultCloud, resolve, status, canFallback, invalidate, markLocalDown, localPossible, platform, AIError };
 })();

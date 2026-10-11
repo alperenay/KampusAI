@@ -45,7 +45,11 @@
     const preset = v("oaPreset", "openrouter");
 
     const cloudTab =
-      field(esc(t("ais.cloudService")), seg("aiCloud", [["gemini", "Google Gemini"], ["openai", t("ais.openaiCompat")]], v("aiCloud", "gemini"))) +
+      field(esc(t("ais.cloudService")), seg("aiCloud",
+        (App.cloud.server.configured() ? [["server", t("ais.server")]] : []).concat([["gemini", t("ais.ownGemini")], ["openai", t("ais.openaiCompat")]]),
+        v("aiCloud", App.engine.defaultCloud()))) +
+      (App.cloud.server.configured()
+        ? '<div data-panel-cloud="server" class="ais-stack"><p class="hint">' + esc(t("ais.serverHint")) + '</p><p class="hint">' + esc(t("ais.serverPrivacy")) + "</p></div>" : "") +
       '<div data-panel-cloud="gemini" class="ais-stack">' +
         field(esc(t("ais.apiKey")), keyInput("gemKey", v("gemKey"), "AIza…"), esc(t("ais.gemKeyHint")) + " " + link(App.cloud.gemini.keyUrl, t("ais.getKey"))) +
         field(App.icon("sparkle") + esc(t("ais.gemModel")),
@@ -70,6 +74,8 @@
     const localTab =
       '<p class="hint">' + esc(t(phone ? "ais.localIntroPhone" : "ais.intro")) + "</p>" +
       (App.ollama.isFileOrigin() ? '<p class="ai-notice"><b>' + esc(t("ai.err.fileTitle")) + "</b> " + esc(t("ai.err.fileBody")) + "</p>" : "") +
+      (App.pairing.canScan()
+        ? '<button class="btn btn--primary" type="button" id="pairScan">' + App.icon("image") + esc(t("pair.scanBtn")) + '</button><p class="hint">' + esc(t("pair.scanBtnHint")) + "</p>" : "") +
       field(esc(t("ais.url")), input("aisUrl", v("aiUrl"), phone ? "http://192.168.1.20:8765/ollama" : t("ais.urlAuto", { url: App.ollama.config().url }))) +
       field(esc(t("ais.token")), input("aisToken", v("aiToken"), "ABC123"), esc(t("ais.tokenHint"))) +
       LOCAL_FIELDS.map((f) =>
@@ -259,6 +265,7 @@
       if (!info.enabled) return;
       const urls = (info.addresses || []).map((ip) => "http://" + ip + ":" + info.port + "/ollama");
       box.innerHTML =
+        (urls.length ? '<div class="lan-qr"><div class="lan-qr__code" id="lanQr"></div><p class="hint">' + esc(t("pair.qrHint")) + "</p></div>" : "") +
         '<div class="lan-row"><span class="hint">' + esc(t("ais.lanAddress")) + "</span>" +
           (urls.length ? urls.map((u) => '<code class="cmd">' + esc(u) + "</code>").join(" ") : '<span class="hint">' + esc(t("ais.lanNoNet")) + "</span>") + "</div>" +
         '<div class="lan-row"><span class="hint">' + esc(t("ais.token")) + '</span><code class="cmd lan-code">' + esc(info.token) + "</code>" +
@@ -266,6 +273,7 @@
         '<p class="hint">' + esc(t("ais.lanSteps")) + "</p>" +
         (info.error ? '<p class="ai-notice">' + esc(info.error) + "</p>" : "");
       App.hydrateIcons(box);
+      if (urls.length) App.pairing.renderQR($("#lanQr"), App.pairing.payload(info)).catch(() => {});
       const regen = $("#lanRegen");
       if (regen) regen.addEventListener("click", async () => paintLan(await window.desktopApp.lan.regenerate()));
     }
@@ -281,6 +289,15 @@
     if (gpuBox) gpuBox.addEventListener("change", async () => {
       if (!(await App.ui.confirm(t("ais.uiGpuRestart"), t("ok")))) { gpuBox.checked = !gpuBox.checked; return; }
       window.desktopApp.gpu.set(gpuBox.checked);
+    });
+
+    const scanBtn = $("#pairScan");
+    if (scanBtn) scanBtn.addEventListener("click", async () => {
+      if (await App.pairing.scanAndConnect()) {
+        $("#aisUrl").value = App.prefs.get("aiUrl", "") || "";
+        $("#aisToken").value = App.prefs.get("aiToken", "") || "";
+        testLocal();
+      }
     });
 
     /* ---- Hafıza ---- */

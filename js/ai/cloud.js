@@ -1,7 +1,9 @@
 /* =========================================================
    cloud.js — internet üzerinden çalışan yapay zeka servisleri
 
-   1. Google Gemini (önerilen)
+   0. Ders Asistanı sunucusu (varsayılan, ayar gerektirmez): Gemini'nin
+      anahtarı uygulamada değil, Cloudflare'deki sunucuda durur (server/worker.js)
+   1. Google Gemini, kullanıcının kendi anahtarıyla
         • Tek model hem fotoğrafı okur hem soruyu çözer ("doğrudan görsel")
         • Hafıza (RAG) için kendi vektör modeli var: gemini-embedding-001
         • Ücretsiz anahtar: https://aistudio.google.com → "Get API key"
@@ -125,29 +127,43 @@
     return new AIError("http", msg, { status, model });
   }
 
-  const gemini = {
-    id: "gemini",
+  /**
+   * Gemini motoru üretir. İki örneği var:
+   *   gemini : kullanıcının kendi anahtarı (doğrudan Google'a)
+   *   server : Ders Asistanı sunucusu (Cloudflare) — anahtar sunucuda, kullanıcı hiçbir şey girmez
+   * P: ayar öneki ("gem" / "srv")
+   */
+  function makeGemini(o) {
+  const P = o.prefix;
+  return {
+    id: o.id,
     kind: "cloud",
-    name: "Google Gemini",
+    name: o.name,
     keyUrl: "https://aistudio.google.com/apikey",
+    server: !!o.server,
 
-    key: () => str("gemKey"),
-    configured() { return !!this.key(); },
+    base: o.base,
+    key: () => (o.server ? "" : str(P + "Key")),
+    configured() { return o.server ? !!this.base() : !!this.key() && !!this.base(); },
 
     config() {
-      const chosen = str("gemModel");
-      const chatModel = chosen || str("gemAutoModel") || G_FALLBACK;
-      return { chatModel, visionModel: chatModel, embedModel: str("gemEmbed") || G_EMBED, direct: true, auto: !chosen };
+      const chosen = str(P + "Model");
+      const chatModel = chosen || str(P + "AutoModel") || G_FALLBACK;
+      return { chatModel, visionModel: chatModel, embedModel: str(P + "Embed") || G_EMBED, direct: true, auto: !chosen };
     },
 
     headers() {
+      if (o.server) {
+        if (!this.base()) throw new AIError("no-key", "", { provider: o.id });
+        return { "Content-Type": "application/json" };
+      }
       const k = this.key();
-      if (!k) throw new AIError("no-key", "", { provider: "gemini" });
+      if (!k) throw new AIError("no-key", "", { provider: o.id });
       return { "Content-Type": "application/json", "x-goog-api-key": k };
     },
 
     async listModels(signal) {
-      const res = await send(G_BASE + "/models?pageSize=1000", { headers: this.headers(), signal }, null, geminiError);
+      const res = await send(this.base() + "/models?pageSize=1000", { headers: this.headers(), signal }, null, geminiError);
       const data = await res.json();
       return (data.models || []).map((m) => ({
         name: String(m.name || "").replace(/^models\//, ""),
@@ -158,21 +174,21 @@
 
     /** Otomatik model seçimi (gerekirse listeyi alır) */
     async prepare(signal, force) {
-      if (str("gemModel")) return;
-      const at = Number(pref("gemAutoAt", 0));
-      if (!force && str("gemAutoModel") && Date.now() - at < G_AUTO_TTL) return;
+      if (str(P + "Model")) return;
+      const at = Number(pref(P + "AutoAt", 0));
+      if (!force && str(P + "AutoModel") && Date.now() - at < G_AUTO_TTL) return;
       const list = await this.listModels(signal);
       const picked = pickGeminiModel(list.filter((m) => m.methods.includes("generateContent")).map((m) => m.name));
-      if (picked) { App.prefs.set("gemAutoModel", picked); App.prefs.set("gemAutoAt", Date.now()); }
+      if (picked) { App.prefs.set(P + "AutoModel", picked); App.prefs.set(P + "AutoAt", Date.now()); }
     },
 
     async check(signal) {
       const list = await this.listModels(signal);
       const names = list.map((m) => m.name);
       const chatModels = list.filter((m) => m.methods.includes("generateContent") && !NOT_CHAT.test(m.name)).map((m) => m.name);
-      if (!str("gemModel")) {
+      if (!str(P + "Model")) {
         const picked = pickGeminiModel(chatModels);
-        if (picked) { App.prefs.set("gemAutoModel", picked); App.prefs.set("gemAutoAt", Date.now()); }
+        if (picked) { App.prefs.set(P + "AutoModel", picked); App.prefs.set(P + "AutoAt", Date.now()); }
       }
       const cfg = this.config();
       const chat = names.includes(cfg.chatModel);
@@ -201,7 +217,7 @@
       const { system, contents } = this.toContents(messages);
       const body = { contents, generationConfig: { temperature: options && options.temperature != null ? options.temperature : 0.4 } };
       if (system) body.systemInstruction = { parts: [{ text: system }] };
-      const res = await send(G_BASE + "/models/" + encodeURIComponent(model) + ":streamGenerateContent?alt=sse",
+      const res = await send(this.base() + "/models/" + encodeURIComponent(model) + ":streamGenerateContent?alt=sse",
         { method: "POST", headers: this.headers(), body: JSON.stringify(body), signal }, model, geminiError);
 
       const clock = timer();
@@ -238,7 +254,7 @@
             outputDimensionality: G_EMBED_DIM
           }))
         };
-        const res = await send(G_BASE + "/models/" + encodeURIComponent(model) + ":batchEmbedContents",
+        const res = await send(this.base() + "/models/" + encodeURIComponent(model) + ":batchEmbedContents",
           { method: "POST", headers: this.headers(), body: JSON.stringify(body), signal }, model, geminiError);
         const data = await res.json();
         if (!Array.isArray(data.embeddings) || data.embeddings.length !== part.length) throw new AIError("bad-response", "embeddings");
@@ -247,6 +263,12 @@
       return out;
     }
   };
+  }
+
+  const gemini = makeGemini({ id: "gemini", name: "Google Gemini", prefix: "gem", base: () => G_BASE });
+  /* Ders Asistanı sunucusu: adresi derleme sırasında js/config.js dosyasına yazılır */
+  const server = makeGemini({ id: "server", name: "Ders Asistanı sunucusu", prefix: "srv", server: true,
+    base: () => { const u = (App.config && App.config.serverUrl) || ""; return u ? u.replace(/\/+$/, "") + "/v1beta" : ""; } });
 
   /* =========================================================
      OPENAI-UYUMLU
@@ -382,5 +404,5 @@
     }
   };
 
-  App.cloud = { gemini, openai, PRESETS, pickGeminiModel, readSSE };
+  App.cloud = { gemini, server, openai, PRESETS, pickGeminiModel, readSSE };
 })();
