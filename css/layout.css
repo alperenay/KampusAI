@@ -1,0 +1,208 @@
+/* =========================================================
+   layout.css — sol menü, üst çubuk, ana alan yerleşimi
+   ========================================================= */
+.app {
+  display: flex;
+  height: 100vh;
+  height: 100dvh;
+  /* Telefonda çentik / ana ekran çubuğu altına taşmasın (iPhone ana ekran uygulaması, Android) */
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+
+/* ---------------- Sol menü ---------------- */
+.sidebar {
+  width: var(--sidebar-w);
+  flex: none;
+  background: var(--bg-sidebar);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 14px 8px 10px;
+  transition: width .22s var(--ease), transform .22s var(--ease);
+  overflow: hidden;
+  z-index: 30;
+}
+
+.sidebar__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px 0 8px;
+  height: 40px;
+  margin-bottom: 18px;
+}
+
+.brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.brand__mark { width: 24px; height: 24px; flex: none; }
+.brand__mark svg { width: 24px; height: 24px; }
+.brand__name { font-family: var(--font-display); font-size: 19px; font-weight: 500; white-space: nowrap; }
+
+.nav { display: flex; flex-direction: column; gap: 2px; }
+
+.nav__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: var(--radius-pill);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background .15s;
+}
+.nav__item .ico { width: 18px; height: 18px; color: var(--text-2); }
+.nav__item:hover { background: var(--surface-2); }
+.nav__item.is-active { background: var(--surface-2); }
+.nav__item.is-active .ico { color: var(--accent-text); }
+
+.sidebar__scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 18px -8px 0;
+  padding: 0 8px;
+}
+
+.side-section { margin-bottom: 20px; }
+.side-section__title {
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  padding: 0 8px 8px;
+  white-space: nowrap;
+}
+
+.side-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: 32px;
+  padding: 0 8px;
+  border-radius: var(--radius-pill);
+  font-size: 13.5px;
+  color: var(--text);
+  white-space: nowrap;
+}
+.side-link:hover { background: var(--surface-2); }
+.side-link.is-active { background: var(--surface-2); }
+.side-link__text { overflow: hidden; text-overflow: ellipsis; }
+.side-link__meta { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; flex: none; }
+.side-empty { padding: 4px 8px; font-size: 13px; color: var(--faint); }
+
+.sidebar__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 4px 0 6px;
+  border-top: 1px solid transparent;
+}
+.profile { display: flex; align-items: center; gap: 10px; min-width: 0; padding: 6px; border-radius: var(--radius-pill); }
+.profile:hover { background: var(--surface-2); }
+.profile__name { font-size: 14px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-transform: uppercase; }
+.avatar {
+  width: 26px; height: 26px; flex: none;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: linear-gradient(135deg, #e0554a, #b8325f);
+  color: #fff; font-size: 12px; font-weight: 600;
+}
+
+/* Daraltılmış menü (masaüstü) */
+.app.is-collapsed .sidebar { width: var(--sidebar-w-min); }
+.app.is-collapsed .sidebar__label,
+.app.is-collapsed .side-section__title,
+.app.is-collapsed .sidebar__label-block,
+.app.is-collapsed #sideGrades { display: none; }
+.app.is-collapsed .sidebar__head { flex-direction: column; height: auto; gap: 12px; padding: 0; }
+.app.is-collapsed .brand { display: none; }
+.app.is-collapsed .nav__item { justify-content: center; padding: 0; width: 44px; margin: 0 auto; }
+.app.is-collapsed .side-section .nav__item { width: 44px; }
+.app.is-collapsed .sidebar__foot { justify-content: center; padding: 8px 0 0; }
+
+/* ---------------- Ana alan ---------------- */
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: transparent;
+}
+
+/* Ana sayfadaki mavi parıltı */
+.main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 34% 40% at 50% 47%, var(--glow), transparent 72%);
+  opacity: 0;
+  transition: opacity .5s var(--ease);
+}
+.main.is-home::before { opacity: 1; }
+
+.topbar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 64px;
+  flex: none;
+  padding: 0 18px 0 22px;
+}
+.icon-btn.topbar__menu { display: none; }
+.topbar__title { text-shadow: var(--on-bg-shadow); flex: 1; min-width: 0; font-size: 18px; font-family: var(--font-display); color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.topbar__actions { display: flex; align-items: center; gap: 10px; }
+
+.view {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  overflow-y: auto;
+  outline: none;
+}
+
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 8px 32px 64px;
+}
+.page--narrow { max-width: 860px; }
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  background: var(--scrim);
+  z-index: 25;
+}
+
+/* ---------------- Mobil ---------------- */
+@media (max-width: 860px) {
+  .sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    transform: translateX(-100%);
+    box-shadow: var(--shadow);
+    background: var(--bg-drawer);
+  }
+  .app.is-menu-open .sidebar { transform: none; }
+  .icon-btn.sidebar__toggle { display: none; }
+  .app.is-collapsed .sidebar { width: var(--sidebar-w); }
+  .topbar { padding: 0 12px; height: 56px; }
+  .icon-btn.topbar__menu { display: inline-grid; }
+  .page { padding: 4px 16px 48px; }
+  .pill-btn__label { display: none; }
+  .pill-btn { padding: 0 11px; }
+}
+
+@media (max-width: 480px) {
+  .topbar__title { visibility: hidden; }
+  .topbar__actions { gap: 6px; }
+}

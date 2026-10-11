@@ -1,0 +1,15 @@
+{
+  "appId": "com.dersasistani.app",
+  "appName": "Ders Asistanı",
+  "webDir": "www",
+  "backgroundColor": "#121318",
+  "server": {
+    "androidScheme": "https",
+    "cleartext": true
+  },
+  "android": {
+    "allowMixedContent": true,
+    "adjustMarginsForEdgeToEdge": "auto",
+    "webContentsDebuggingEnabled": false
+  }
+}

@@ -1,0 +1,74 @@
+/* =========================================================
+   icons.js — satır içi SVG ikonlar (dış kaynak yok)
+   Kullanım: App.icon("calendar")  veya HTML'de data-icon="calendar"
+   ========================================================= */
+(function () {
+  const P = {
+    panel:    '<rect x="3.5" y="4" width="17" height="16" rx="3"/><path d="M9 4v16"/>',
+    menu:     '<path d="M4 7h16M4 12h16M4 17h16"/>',
+    sparkle:  '<path d="M12 3.5l1.9 4.6 4.6 1.9-4.6 1.9L12 16.5l-1.9-4.6L5.5 10l4.6-1.9z"/><path d="M18.5 15.5l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8z"/>',
+    calendar: '<rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+    book:     '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20v3H6.5"/>',
+    chart:    '<path d="M4 4v16h16"/><path d="M8 15l3.5-4 3 2.5L19 8"/>',
+    plus:     '<path d="M12 5v14M5 12h14"/>',
+    settings: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>',
+    download: '<path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/>',
+    upload:   '<path d="M12 20V9M7 13.5l5-5 5 5M5 4h14"/>',
+    edit:     '<path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="M13.5 6.5l4 4"/>',
+    trash:    '<path d="M4 7h16M10 11v6M14 11v6M6 7l1 12.5A1.5 1.5 0 0 0 8.5 21h7a1.5 1.5 0 0 0 1.5-1.5L18 7M9 7V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V7"/>',
+    close:    '<path d="M6 6l12 12M18 6L6 18"/>',
+    chevron:  '<path d="M9 6l6 6-6 6"/>',
+    chevronL: '<path d="M15 6l-6 6 6 6"/>',
+    chevronD: '<path d="M6 9l6 6 6-6"/>',
+    mic:      '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/>',
+    send:     '<path d="M5 12h13M13 6l6 6-6 6"/>',
+    check:    '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+    circle:   '<circle cx="12" cy="12" r="8"/>',
+    checkCircle: '<circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.2l2.5 2.5 4.6-5"/>',
+    copy:     '<rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6.5A2.5 2.5 0 0 0 13.5 4h-7A2.5 2.5 0 0 0 4 6.5v7A2.5 2.5 0 0 0 6.5 16H8"/>',
+    target:   '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/>',
+    lightbulb:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/>',
+    note:     '<path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h5"/>',
+    list:     '<path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>',
+    layers:   '<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>',
+    arrowUp:  '<path d="M12 19V5M6 11l6-6 6 6"/>',
+    arrowDown:'<path d="M12 5v14M6 13l6 6 6-6"/>',
+    grad:     '<path d="M2.5 9.5L12 5l9.5 4.5L12 14z"/><path d="M6.5 11.5v4.5c0 1.4 2.5 3 5.5 3s5.5-1.6 5.5-3v-4.5M21.5 9.5v5"/>',
+    clock:    '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+    attach:   '<path d="M12 5v14M5 12h14"/>',
+    sun:      '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/>',
+    moon:     '<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>',
+    image:    '<rect x="3.5" y="4.5" width="17" height="15" rx="3"/><circle cx="9" cy="10" r="1.8"/><path d="M20.5 16l-5-5-8.5 8.5"/>',
+    database: '<ellipse cx="12" cy="6" rx="7.5" ry="2.8"/><path d="M4.5 6v6c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8V6M4.5 12v6c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-6"/>',
+    eye:      '<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/>',
+    search:   '<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/>',
+    stop:     '<rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor"/>',
+    refresh:  '<path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3M19.5 4.5v4h-4"/>',
+    chat:     '<path d="M4.5 5.5h15v10h-9l-4.5 4v-4h-1.5z"/>'
+  };
+
+  // Uygulamanın kendi logosu: açık kitap + ışık noktası (gradyan)
+  const LOGO =
+    '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+    '<defs><linearGradient id="lg-logo" x1="0" y1="0" x2="1" y2="1">' +
+    '<stop offset="0" stop-color="#5b8cff"/><stop offset=".55" stop-color="#9b72ff"/><stop offset="1" stop-color="#ff7a9a"/></linearGradient></defs>' +
+    '<path fill="url(#lg-logo)" d="M12 6.2C9.9 4.6 7 4 3.5 4.3c-.5 0-.9.5-.9 1v11.6c0 .6.5 1 1 1 3.1-.2 5.8.4 7.6 1.9.5.4 1.2.4 1.6 0 1.8-1.5 4.5-2.1 7.6-1.9.6 0 1-.4 1-1V5.3c0-.5-.4-1-.9-1C17 4 14.1 4.6 12 6.2zM12 8v9.3" />' +
+    '<path d="M12 7.6v9.6" stroke="#131314" stroke-width="1.3" stroke-linecap="round"/>' +
+    '</svg>';
+
+  App.icon = function (name, cls) {
+    if (name === "logo") return LOGO;
+    const body = P[name];
+    if (!body) return "";
+    return '<svg class="ico' + (cls ? " " + cls : "") + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + body + "</svg>";
+  };
+
+  /** data-icon="x" olan boş öğelere ikonu yerleştirir */
+  App.hydrateIcons = function (root) {
+    (root || document).querySelectorAll("[data-icon]").forEach((el) => {
+      if (el.dataset.iconDone) return;
+      el.insertAdjacentHTML("afterbegin", App.icon(el.dataset.icon));
+      el.dataset.iconDone = "1";
+    });
+  };
+})();

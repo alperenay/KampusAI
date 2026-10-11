@@ -1,0 +1,161 @@
+# Ders Asistanı — her gönderimde (push) üç sürümü derler:
+#   • iPhone / web  → GitHub Pages (https://<kullanıcı>.github.io/<repo>/)
+#   • Android       → DersAsistani-<sürüm>.apk
+#   • Windows       → DersAsistani-Kurulum-<sürüm>.exe
+# APK ve EXE, "Releases" sayfasında yeni bir sürüm olarak yayınlanır.
+name: Derle ve yayınla
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["**.md"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  APP_VERSION: 1.0.${{ github.run_number }}
+
+jobs:
+  web:
+    name: Web / iPhone
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Web dosyalarını hazırla
+        run: |
+          node tools/build-web.mjs dist/web --version "$APP_VERSION"
+          touch dist/web/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/web
+
+  pages:
+    name: GitHub Pages'e yayınla
+    needs: web
+    runs-on: ubuntu-latest
+    # Pages henüz açılmadıysa diğer sürümler yine yayınlansın
+    continue-on-error: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
+
+  android:
+    name: Android (APK)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - name: Web dosyalarını hazırla
+        run: node tools/build-web.mjs mobile/www --version "$APP_VERSION"
+      - name: Capacitor projesini oluştur
+        working-directory: mobile
+        run: |
+          npm install --no-audit --no-fund
+          npx cap add android
+      - name: Uygulama ikonu ve açılış ekranı
+        working-directory: mobile
+        continue-on-error: true
+        run: >
+          npx capacitor-assets generate --android
+          --iconBackgroundColor "#15161b" --iconBackgroundColorDark "#15161b"
+          --splashBackgroundColor "#121318" --splashBackgroundColorDark "#121318"
+      - name: Eşitle
+        working-directory: mobile
+        run: npx cap sync android
+      - name: Sürüm numarası, kamera izni, imza anahtarı
+        working-directory: mobile/android
+        run: |
+          sed -i -E "s/versionCode [0-9]+/versionCode ${{ github.run_number }}/" app/build.gradle
+          sed -i -E "s/versionName \"[^\"]*\"/versionName \"$APP_VERSION\"/" app/build.gradle
+          grep -q "android.permission.CAMERA" app/src/main/AndroidManifest.xml || \
+            sed -i 's#</manifest>#    <uses-permission android:name="android.permission.CAMERA" />\n</manifest>#' app/src/main/AndroidManifest.xml
+          # Her derlemede aynı imza: yeni sürüm eskisinin üzerine kurulur, veriler silinmez
+          mkdir -p ~/.android && cp ../debug.keystore ~/.android/debug.keystore
+          chmod +x gradlew
+          grep -E "versionCode|versionName" app/build.gradle
+      - name: APK derle
+        working-directory: mobile/android
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+      - name: Dosyayı adlandır
+        run: cp mobile/android/app/build/outputs/apk/debug/app-debug.apk "DersAsistani-$APP_VERSION.apk"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android
+          path: DersAsistani-*.apk
+          if-no-files-found: error
+
+  windows:
+    name: Windows (kurulum)
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
+    env:
+      CSC_IDENTITY_AUTO_DISCOVERY: "false"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Web dosyalarını hazırla
+        run: node tools/build-web.mjs desktop/app --version "$APP_VERSION"
+      - name: Kurulum dosyasını derle
+        working-directory: desktop
+        run: |
+          npm version "$APP_VERSION" --no-git-tag-version --allow-same-version
+          npm install --no-audit --no-fund
+          npx electron-builder --win nsis --x64 --publish never
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows
+          path: desktop/dist/*.exe
+          if-no-files-found: error
+
+  release:
+    name: Sürümü yayınla
+    needs: [android, windows]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: out
+          merge-multiple: true
+      - name: Sürüm notu
+        run: |
+          OWNER="${GITHUB_REPOSITORY%%/*}"; REPO="${GITHUB_REPOSITORY##*/}"
+          cat > notes.md <<NOTES
+          ## Ders Asistanı $APP_VERSION
+
+          **Windows:** \`DersAsistani-Kurulum-$APP_VERSION.exe\` dosyasını indirip çalıştır. Windows "bilgisayarınızı korudu" derse **Ek bilgi → Yine de çalıştır**.
+
+          **Android:** \`DersAsistani-$APP_VERSION.apk\` dosyasını telefondan indirip aç. İlk seferde "bilinmeyen kaynaklardan yükleme" izni istenir. Yeni sürüm eskisinin üzerine kurulur, verilerin silinmez.
+
+          **iPhone:** Safari'de https://$OWNER.github.io/$REPO/ adresini aç → Paylaş → **Ana Ekrana Ekle**.
+          NOTES
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.APP_VERSION }}
+          name: Ders Asistanı ${{ env.APP_VERSION }}
+          body_path: notes.md
+          make_latest: true
+          files: out/*

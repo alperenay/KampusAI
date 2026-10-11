@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ders Asistanı</title>
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#121318">
+  <meta name="description" content="Ders programı, konu anlatımı, deneme takibi ve yapay zeka asistanı">
+  <!-- Uygulama olarak kurulum (Android / iPhone ana ekran, masaüstü) -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Ders Asistanı">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <script>
+    /* Kayıtlı temayı sayfa çizilmeden uygula (açılışta yanıp sönmeyi önler) */
+    try {
+      var th = JSON.parse(localStorage.getItem("da:pref:theme"));
+      if (th === "light" || th === "dark") document.documentElement.setAttribute("data-theme", th);
+    } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <div class="app" id="app">
+
+    <!-- ============ SOL MENÜ ============ -->
+    <aside class="sidebar" id="sidebar" data-i18n-aria="nav.mainMenu">
+      <div class="sidebar__head">
+        <a class="brand" href="#/" data-i18n-title="nav.home">
+          <span class="brand__mark" data-icon="logo"></span>
+          <span class="brand__name sidebar__label" data-i18n="appName">Ders Asistanı</span>
+        </a>
+        <button class="icon-btn sidebar__toggle" id="sidebarToggle" type="button" data-i18n-title="nav.collapse" data-icon="panel"></button>
+      </div>
+
+      <nav class="nav" data-i18n-aria="nav.modules">
+        <a class="nav__item" href="#/" data-route="">
+          <span data-icon="sparkle"></span><span class="sidebar__label" data-i18n="nav.newChat">Yeni sohbet</span>
+        </a>
+        <a class="nav__item" href="#/program" data-route="program">
+          <span data-icon="calendar"></span><span class="sidebar__label" data-i18n="nav.schedule">Ders Programı</span>
+        </a>
+        <a class="nav__item" href="#/konular" data-route="konular">
+          <span data-icon="book"></span><span class="sidebar__label" data-i18n="nav.topics">Konu Anlatımı</span>
+        </a>
+        <a class="nav__item" href="#/denemeler" data-route="denemeler">
+          <span data-icon="chart"></span><span class="sidebar__label" data-i18n="nav.exams">Deneme Takibi</span>
+        </a>
+      </nav>
+
+      <div class="sidebar__scroll">
+        <section class="side-section">
+          <h2 class="side-section__title sidebar__label" data-i18n="nav.chats">Sohbetler</h2>
+          <div id="sideChats" class="sidebar__label-block"></div>
+        </section>
+
+        <section class="side-section">
+          <h2 class="side-section__title sidebar__label" data-i18n="nav.grades">Sınıflar</h2>
+          <div id="sideGrades"></div>
+        </section>
+
+        <section class="side-section">
+          <h2 class="side-section__title sidebar__label" data-i18n="nav.recentExams">Son Denemeler</h2>
+          <a class="nav__item" href="#/denemeler/yeni" data-route="denemeler/yeni">
+            <span data-icon="plus"></span><span class="sidebar__label" data-i18n="nav.addExam">Yeni deneme ekle</span>
+          </a>
+          <div id="sideExams" class="sidebar__label-block"></div>
+        </section>
+      </div>
+
+      <div class="sidebar__foot">
+        <button class="profile" id="profileBtn" type="button" data-i18n-title="nav.profile">
+          <span class="avatar" id="avatar">Ö</span>
+          <span class="profile__name sidebar__label" id="profileName"></span>
+        </button>
+        <button class="icon-btn sidebar__label" id="settingsBtn" type="button" data-i18n-title="nav.settings" data-icon="settings"></button>
+      </div>
+    </aside>
+
+    <div class="scrim" id="scrim" hidden></div>
+
+    <!-- ============ ANA ALAN ============ -->
+    <main class="main" id="main">
+      <header class="topbar">
+        <button class="icon-btn topbar__menu" id="menuBtn" type="button" data-i18n-title="nav.openMenu" data-icon="menu"></button>
+        <div class="topbar__title" id="topbarTitle"></div>
+        <div class="topbar__actions">
+          <div class="lang-switch theme-switch" id="themeSwitch" role="radiogroup" data-i18n-aria="theme.choose"></div>
+          <div class="lang-switch" id="langSwitch" role="radiogroup" data-i18n-aria="lang.choose"></div>
+          <button class="pill-btn" id="backupBtn" type="button" data-i18n-title="backup.title">
+            <span data-icon="download"></span><span class="pill-btn__label" data-i18n="backup.button">Yedekle</span>
+          </button>
+          <a class="icon-btn" href="#/" id="newChatBtn" data-i18n-title="nav.newChat" data-icon="edit"></a>
+        </div>
+      </header>
+
+      <div class="view" id="view" tabindex="-1"></div>
+    </main>
+  </div>
+
+  <div id="toastHost" class="toast-host" aria-live="polite"></div>
+
+  <!-- Çekirdek -->
+  <script src="js/core/utils.js"></script>
+  <script src="js/version.js"></script>
+  <script src="js/core/icons.js"></script>
+  <script src="js/core/storage.js"></script>
+  <script src="js/core/theme.js"></script>
+
+  <!-- Diller -->
+  <script src="js/i18n/tr.js"></script>
+  <script src="js/i18n/en.js"></script>
+  <script src="js/core/i18n.js"></script>
+
+  <script src="js/core/ui.js"></script>
+  <script src="js/core/router.js"></script>
+
+  <!-- Matematik gösterimi (KaTeX, yerel kopya — internet gerekmez) -->
+  <script src="assets/vendor/katex/katex.min.js"></script>
+  <script src="js/core/markdown.js"></script>
+
+  <!-- Veriler -->
+  <script src="js/data/exam-config.js"></script>
+  <script src="js/data/default-schedule.js"></script>
+  <!-- Konu anlatımı içerikleri (curriculum-data.js'den önce yüklenmeli) -->
+  <script src="js/data/content/mat-9.js"></script>
+  <script src="js/data/curriculum-data.js"></script>
+
+  <!-- Yapay zeka: bilgisayardaki Ollama + internet servisleri (Gemini, OpenAI-uyumlu) -->
+  <script src="js/ai/ollama.js"></script>
+  <script src="js/ai/cloud.js"></script>
+  <script src="js/ai/engine.js"></script>
+  <script src="js/ai/vision.js"></script>
+  <script src="js/ai/rag.js"></script>
+  <script src="js/ai/pipeline.js"></script>
+
+  <!-- Modüller -->
+  <script src="js/modules/ai-assistant.js"></script>
+  <script src="js/modules/ai-settings.js"></script>
+  <script src="js/modules/schedule.js"></script>
+  <script src="js/modules/curriculum.js"></script>
+  <script src="js/modules/exams.js"></script>
+  <script src="js/modules/settings.js"></script>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

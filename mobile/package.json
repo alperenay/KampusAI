@@ -1,0 +1,19 @@
+{
+  "name": "ders-asistani-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ders Asistanı Android uygulaması (Capacitor)",
+  "scripts": {
+    "web": "node ../tools/build-web.mjs www",
+    "sync": "npm run web && npx cap sync android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.0",
+    "@capacitor/app": "^7.0.0",
+    "@capacitor/core": "^7.4.0"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^7.4.0"
+  }
+}

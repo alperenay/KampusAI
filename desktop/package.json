@@ -1,0 +1,42 @@
+{
+  "name": "ders-asistani",
+  "productName": "Ders Asistani",
+  "version": "1.0.0",
+  "description": "Ders Asistanı: ders programı, konu anlatımı, deneme takibi ve yapay zeka asistanı",
+  "author": "Ders Asistanı",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis --x64 --publish never"
+  },
+  "devDependencies": {
+    "electron": "^38.2.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.dersasistani.app",
+    "productName": "Ders Asistani",
+    "copyright": "Ders Asistanı",
+    "directories": { "output": "dist", "buildResources": "build" },
+    "files": ["main.js", "preload.js", "server.js", "build/icon.png", "app/**/*"],
+    "asar": true,
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "build/icon.png",
+      "executableName": "DersAsistani"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Ders Asistanı",
+      "uninstallDisplayName": "Ders Asistanı",
+      "artifactName": "DersAsistani-Kurulum-${version}.${ext}",
+      "deleteAppDataOnUninstall": false
+    }
+  }
+}

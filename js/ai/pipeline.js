@@ -1,0 +1,180 @@
+/* =========================================================
+   pipeline.js — modellerin birlikte çalıştığı işlem hattı
+
+   Yerel (Ollama):
+     [fotoğraf varsa]  qwen2.5vl:7b  → soruyu/şekli yazıya döker   ("göz")
+     [veri açıksa]     bge-m3        → ilgili kayıtları bulur        ("hafıza")
+                       qwen2.5:14b   → hepsini birleştirip yanıtlar  ("beyin")
+   İnternet (Gemini):
+     [veri açıksa]     gemini-embedding-001 → ilgili kayıtlar
+                       gemini-…-flash       → fotoğrafı görür ve yanıtlar
+   Hangi motorun kullanılacağını engine.js seçer; otomatik modda yerel
+   model yanıt vermezse aynı soru internet servisine gönderilir.
+
+   Arayüz yalnızca App.ai.run(...) çağırır ve olayları dinler:
+     on.stage(name, model)   "vision" | "memory" | "answer"
+     on.visionDelta(text)    fotoğraf okunurken canlı metin
+     on.sources(result)      bulunan kayıtlar
+     on.delta(fullText)      yanıt yazılırken canlı metin
+     on.warning(w)           bir adım atlanırsa (ör. bge-m3 yüklü değil) ya da internete geçilirse
+     on.engine(engine, cfg)  kullanılan motor belli olunca
+   ========================================================= */
+(function () {
+  const HISTORY_TURNS = 8;          // modele gönderilen önceki mesaj sayısı (bağlam taşmasın)
+  const HISTORY_CHARS = 2500;       // önceki tek bir yanıtın en fazla uzunluğu
+
+  function systemPrompt() {
+    const tr = App.i18n.lang === "tr";
+    const now = new Date();
+    const date = now.toLocaleDateString(tr ? "tr-TR" : "en-US", { day: "numeric", month: "long", year: "numeric", weekday: "long" });
+    return (tr ? [
+      "Sen \"Ders Asistanı\"sın: lise öğrencilerine ve YKS'ye (TYT-AYT) hazırlananlara yardım eden sabırlı bir yapay zeka öğretmensin. Bugün: " + date + ".",
+      "Kurallar:",
+      "- Öğrenci hangi dilde yazıyorsa o dilde yanıt ver (varsayılan Türkçe).",
+      "- Soruları adım adım ve anlaşılır çöz; soruda istenen her şeyi eksiksiz yanıtla (ör. kökler isteniyorsa kökleri tek tek bul). Çoktan seçmeli sorularda sonunda doğru şıkkı açıkça yaz.",
+      "- Matematiksel ifadeleri LaTeX ile yaz: satır içinde $...$, ayrı satırda $$...$$.",
+      "- Markdown kullan (kalın, liste, gerektiğinde tablo). Gereksiz uzatma.",
+      "- \"ÖĞRENCİ VERİLERİ\" bölümü verilirse öğrencinin kişisel sorularında (netleri, programı, notları) bu verileri kullan; sayıları aynen aktar, veride olmayan bilgiyi uydurma, yoksa olmadığını söyle.",
+      "- \"FOTOĞRAFTAN OKUNAN\" metin verilirse bu bir görme modelinin okumasıdır; anlamsız ya da eksik görünen yer varsa bunu belirt."
+    ] : [
+      "You are \"Study Assistant\": a patient AI tutor helping high-school students preparing for Turkey's YKS exams (TYT-AYT). Today: " + date + ".",
+      "Rules:",
+      "- Reply in the language the student writes in.",
+      "- Solve questions step by step and clearly; answer everything the question asks (e.g. if it asks for the roots, find each root). For multiple choice, state the correct option at the end.",
+      "- Write math in LaTeX: inline $...$, display $$...$$.",
+      "- Use Markdown (bold, lists, tables when useful). Be concise.",
+      "- If a \"STUDENT DATA\" section is given, use it for personal questions (scores, schedule, notes); quote numbers exactly, never invent data that isn't there, say so if it's missing.",
+      "- If \"READ FROM PHOTO\" text is given, it comes from a vision model; point out anything that looks garbled or incomplete."
+    ]).join("\n");
+  }
+
+  function dataSection(found) {
+    const tr = App.i18n.lang === "tr";
+    const parts = [(tr ? "ÖĞRENCİ VERİLERİ (sitedeki kayıtlardan bulundu):" : "STUDENT DATA (retrieved from the app's records):"),
+      "[" + (tr ? "Genel özet" : "Overview") + "]\n" + found.overview];
+    found.hits.forEach((h, i) => parts.push("[" + (tr ? "Kayıt " : "Record ") + (i + 1) + "]\n" + h.text));
+    return parts.join("\n\n");
+  }
+
+  function photoBlock(transcription, model) {
+    const m = model ? " (" + model + ")" : "";
+    return (App.i18n.lang === "tr" ? "FOTOĞRAFTAN OKUNAN" + m + ":\n" : "READ FROM PHOTO" + m + ":\n") + transcription;
+  }
+
+  const MAX_HISTORY_IMAGES = 2;     // görseli kendisi anlayan modellere önceki fotoğraflardan en fazla bu kadarı gider
+
+  /** Kayıtlı sohbet mesajlarını modele gönderilecek biçime çevirir */
+  function historyMessages(history, direct) {
+    const msgs = [];
+    const recent = history.slice(-HISTORY_TURNS);
+    let imagesLeft = MAX_HISTORY_IMAGES;
+    const withImage = new Set(recent.filter((m) => m.role === "user" && m.image).slice(-MAX_HISTORY_IMAGES).map((m) => m.id));
+    recent.forEach((m) => {
+      if (m.role === "user") {
+        let content = m.text || "";
+        const msg = { role: "user", content };
+        if (m.transcription) msg.content = (content ? content + "\n\n" : "") + photoBlock(m.transcription);
+        else if (m.image && direct && withImage.has(m.id) && imagesLeft-- > 0) msg.images = [String(m.image).split(",")[1]];
+        else if (m.image) msg.content = (content ? content + "\n\n" : "") + (App.i18n.lang === "tr" ? "[Bu mesajda bir soru fotoğrafı vardı.]" : "[This message had a question photo.]");
+        if (msg.content || msg.images) msgs.push(msg);
+      } else if (m.role === "assistant" && m.text && !m.error) {
+        msgs.push({ role: "assistant", content: m.text.length > HISTORY_CHARS ? m.text.slice(0, HISTORY_CHARS) + " …" : m.text });
+      }
+    });
+    return msgs;
+  }
+
+  /**
+   * opts: { text, image, history, useData, signal, on }
+   * Dönen: { text, transcription, sources, models, stats, warnings, engine }
+   */
+  async function run(opts) {
+    const engine = await App.engine.resolve(opts.signal);
+    try {
+      return await runWith(engine, opts);
+    } catch (e) {
+      // Otomatik mod: bilgisayardaki Ollama yanıt vermediyse internete geç
+      const offline = e && (e.code === "offline" || e.code === "token" || e.code === "file-origin");
+      if (offline && !e.partial && App.engine.canFallback(engine) && !(opts.signal && opts.signal.aborted)) {
+        App.engine.markLocalDown();
+        const cloud = App.engine.cloud();
+        if (opts.on && opts.on.warning) opts.on.warning({ code: "fallback", model: cloud.name });
+        const res = await runWith(cloud, opts);
+        res.warnings.unshift({ code: "fallback", model: cloud.name });
+        return res;
+      }
+      throw e;
+    }
+  }
+
+  async function runWith(engine, opts) {
+    const on = opts.on || {};
+    const fire = (name, ...args) => { if (on[name]) on[name](...args); };
+    await engine.prepare(opts.signal);
+    const cfg = engine.config();
+    const result = { text: "", transcription: "", sources: null, models: [], stats: null, warnings: [], engine: engine.id, direct: !!cfg.direct };
+    fire("engine", engine, cfg);
+
+    // 1) Göz: fotoğraftaki soruyu oku (görseli kendisi anlayan modellerde bu adım atlanır)
+    if (opts.image && !cfg.direct) {
+      fire("stage", "vision", cfg.visionModel);
+      result.models.push({ role: "vision", model: cfg.visionModel });
+      result.transcription = await App.vision.read(opts.image, opts.text, opts.signal, (piece, full) => fire("visionDelta", full), engine);
+      fire("transcription", result.transcription);
+    }
+
+    // 2) Hafıza: öğrencinin kayıtlarında ara
+    let found = null;
+    if (opts.useData) {
+      const memModel = cfg.embedModel || "BM25";
+      fire("stage", "memory", memModel);
+      // Kayıt araması yalnızca öğrencinin yazdığıyla yapılır: fotoğraftaki sorunun
+      // rakamları deneme kayıtlarına benzediği için alakasız eşleşmeler doğuruyordu.
+      const query = opts.text || "";
+      try {
+        found = await App.rag.retrieve(query, { engine, signal: opts.signal, onProgress: (i, n) => fire("memoryProgress", i, n) });
+        result.models.push({ role: "memory", model: memModel });
+      } catch (e) {
+        // Bağlantı sorunlarında tüm istek başarısız olsun (otomatik modda internete geçilir)
+        if (e && ["aborted", "offline", "net", "token", "file-origin", "auth", "no-key"].includes(e.code)) throw e;
+        // Vektör modeli çalışmazsa (yüklü değil, kota vb.) kelime aramasına düş; yanıt yine verilir
+        result.warnings.push({ code: e && e.code === "model-missing" ? "memory-missing" : "memory-failed", model: cfg.embedModel, message: e && e.message });
+        fire("warning", result.warnings[result.warnings.length - 1]);
+        try {
+          found = await App.rag.retrieve(query, { lexical: true });
+          result.models.push({ role: "memory", model: "BM25" });
+        } catch (e2) { found = null; }
+      }
+      if (found) {
+        result.sources = { hits: found.hits.map((h) => ({ label: h.label, link: h.link, kind: h.kind, score: h.score })), overview: true, method: found.method };
+        fire("sources", result.sources);
+      }
+    }
+
+    // 3) Beyin: yanıtı yaz
+    if (opts.image && cfg.direct) result.models.push({ role: "vision", model: cfg.chatModel });
+    fire("stage", "answer", cfg.chatModel);
+    result.models.push({ role: "answer", model: cfg.chatModel });
+    let system = systemPrompt();
+    if (found) system += "\n\n" + dataSection(found);
+
+    let userContent = opts.text || (App.i18n.lang === "tr" ? "Fotoğraftaki soruyu çöz." : "Solve the question in the photo.");
+    if (result.transcription) userContent += "\n\n" + photoBlock(result.transcription, cfg.visionModel);
+    const userMsg = { role: "user", content: userContent };
+    if (opts.image && cfg.direct) userMsg.images = [opts.image.base64];
+
+    const messages = [{ role: "system", content: system }].concat(historyMessages(opts.history || [], cfg.direct), [userMsg]);
+    const res = await engine.chat({
+      model: cfg.chatModel,
+      messages,
+      options: { temperature: 0.4, num_ctx: 8192 },
+      signal: opts.signal,
+      onDelta: (piece, full) => { result.text = full; fire("delta", full); }
+    });
+    result.text = res.text;
+    result.stats = res.stats;
+    return result;
+  }
+
+  App.ai = { run, systemPrompt };
+})();
