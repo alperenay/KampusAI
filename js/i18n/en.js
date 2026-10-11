@@ -364,5 +364,6 @@ App.locales.en = {
   "ais.lanSteps": "In the phone app: go to Settings → AI → Local (Ollama), enter this address and code, then tap Save.",
   "ais.lanFirewall": "If Windows Firewall asks, tick \"Private networks\" and allow. Phones can't connect while the computer app is closed.",
   "ais.rebuiltLexical": "Memory ready: {n} record chunks (keyword search).",
-  "set.version": "Version"
+  "set.version": "Version",
+  "ai.err.nokeyBodyPhone": "Enter a free Gemini key in Settings, or (at home) connect to Study Assistant on your computer."
 };

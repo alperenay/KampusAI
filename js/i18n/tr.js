@@ -362,5 +362,6 @@ App.locales.tr = {
   "ais.lanSteps": "Telefondaki uygulamada: Ayarlar → Yapay zeka → Yerel (Ollama) sekmesine bu adresi ve kodu yaz, Kaydet'e bas.",
   "ais.lanFirewall": "Windows Güvenlik Duvarı izin sorarsa \"Özel ağlar\"ı işaretleyip izin ver. Bilgisayardaki uygulama kapalıyken telefon bağlanamaz.",
   "ais.rebuiltLexical": "Hafıza hazır: {n} kayıt parçası (kelime araması).",
-  "set.version": "Sürüm"
+  "set.version": "Sürüm",
+  "ai.err.nokeyBodyPhone": "Ayarlar'dan ücretsiz bir Gemini anahtarı gir ya da (evdeyken) bilgisayardaki Ders Asistanı'na bağlan."
 };

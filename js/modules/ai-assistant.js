@@ -88,7 +88,7 @@
       case "file": return "<b>" + esc(t("ai.err.fileTitle")) + "</b> " + esc(t("ai.err.fileBody"));
       case "offline": return "<b>" + esc(t("ai.err.offlineTitle")) + "</b> " + esc(t(App.platform.native || App.platform.mobile ? "ai.err.offlinePhone" : "ai.err.offlineBody", { url: cfg.url || "" })) + settingsBtn("local");
       case "token": return "<b>" + esc(t("ai.err.tokenTitle")) + "</b> " + esc(t("ai.err.tokenBody")) + settingsBtn("local");
-      case "nokey": return "<b>" + esc(t("ai.st.nokey")) + "</b> " + esc(t("ai.err.nokeyBody")) + settingsBtn("cloud");
+      case "nokey": return "<b>" + esc(t("ai.st.nokey")) + "</b> " + esc(t(App.platform.mobile ? "ai.err.nokeyBodyPhone" : "ai.err.nokeyBody")) + settingsBtn("cloud");
       case "auth": return "<b>" + esc(t("ai.err.authTitle", { name: engineName() })) + "</b> " + esc(t("ai.err.authBody")) + settingsBtn("cloud");
       case "net": return "<b>" + esc(t("ai.err.netTitle")) + "</b> " + esc(t("ai.err.netBody"));
       case "quota": return "<b>" + esc(t("ai.err.quotaTitle", { name: engineName() })) + "</b> " + esc(t("ai.err.quotaBody"));
