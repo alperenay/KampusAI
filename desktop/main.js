@@ -160,6 +160,7 @@ async function smokeTest(outFile) {
       r.lanInfo = await window.desktopApp.lan.get();
       return r;
     })()`));
+    try { fs.writeFileSync(outFile.replace(/\.json$/, ".png"), (await win.webContents.capturePage()).toPNG()); } catch (e) { result.shotError = String(e); }
     result.ok = result.app && result.title && result.desktop && result.idb === "indexeddb" && (result.proxyStatus === 200 || result.proxyStatus === 502);
   } catch (e) { result.error = String(e && e.stack || e); }
   fs.writeFileSync(outFile, JSON.stringify(result, null, 2));

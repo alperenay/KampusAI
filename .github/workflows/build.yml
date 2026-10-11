@@ -129,11 +129,13 @@ jobs:
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           script: bash tools/android-smoke.sh
-      - uses: actions/upload-artifact@v4
+      - name: Test sonuçlarını kaydet
         if: always()
-        with:
-          name: android-test
-          path: shots/
+        working-directory: shots
+        run: |
+          git init -q && git checkout -q -b ci-sonuc-android && git add -A
+          git -c user.name=ci -c user.email=ci@users.noreply.github.com commit -qm "run $GITHUB_RUN_NUMBER" || true
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-sonuc-android
 
   windows:
     name: Windows (kurulum)
@@ -160,9 +162,17 @@ jobs:
         working-directory: desktop
         run: |
           npx --yes @electron/asar list dist/win-unpacked/resources/app.asar | grep -E "^[\\/]app[\\/]index.html$"
-          DA_SMOKE_OUT="$PWD/smoke.json" timeout 120 ./dist/win-unpacked/DersAsistani.exe || true
-          cat smoke.json
-          node -e "process.exit(require('./smoke.json').ok ? 0 : 1)"
+          mkdir -p smoke
+          DA_SMOKE_OUT="$PWD/smoke/windows.json" timeout 120 ./dist/win-unpacked/DersAsistani.exe || true
+          cat smoke/windows.json
+          node -e "process.exit(require('./smoke/windows.json').ok ? 0 : 1)"
+      - name: Test sonuçlarını kaydet
+        if: always()
+        working-directory: desktop/smoke
+        run: |
+          git init -q && git checkout -q -b ci-sonuc-windows && git add -A
+          git -c user.name=ci -c user.email=ci@users.noreply.github.com commit -qm "run $GITHUB_RUN_NUMBER" || true
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-sonuc-windows
       - uses: actions/upload-artifact@v4
         with:
           name: windows
