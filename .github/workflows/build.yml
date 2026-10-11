@@ -104,6 +104,37 @@ jobs:
           path: DersAsistani-*.apk
           if-no-files-found: error
 
+  android-test:
+    name: Android açılış testi
+    needs: android
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: android
+          path: apk
+      - name: KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          mkdir -p shots
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          arch: x86_64
+          target: google_apis
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          script: bash tools/android-smoke.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: android-test
+          path: shots/
+
   windows:
     name: Windows (kurulum)
     runs-on: windows-latest
@@ -125,6 +156,13 @@ jobs:
           npm version "$APP_VERSION" --no-git-tag-version --allow-same-version
           npm install --no-audit --no-fund
           npx electron-builder --win nsis --x64 --publish never
+      - name: Uygulamayı dene (açılış testi)
+        working-directory: desktop
+        run: |
+          npx --yes @electron/asar list dist/win-unpacked/resources/app.asar | grep -E "^[\\/]app[\\/]index.html$"
+          DA_SMOKE_OUT="$PWD/smoke.json" timeout 120 ./dist/win-unpacked/DersAsistani.exe || true
+          cat smoke.json
+          node -e "process.exit(require('./smoke.json').ok ? 0 : 1)"
       - uses: actions/upload-artifact@v4
         with:
           name: windows
@@ -139,6 +177,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           path: out
+          pattern: "{android,windows}"
           merge-multiple: true
       - name: Sürüm notu
         run: |
@@ -158,4 +197,6 @@ jobs:
           name: Ders Asistanı ${{ env.APP_VERSION }}
           body_path: notes.md
           make_latest: true
-          files: out/*
+          files: |
+            out/*.apk
+            out/*.exe

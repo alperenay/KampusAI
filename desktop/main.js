@@ -141,6 +141,31 @@ function createWindow() {
   win.on("closed", () => { win = null; });
 }
 
+/* Derleme sonrası kısa deneme (GitHub Actions): pencere açılır, sayfa yüklenir,
+   uygulama ve Ollama aracısı kontrol edilir, sonuç dosyaya yazılıp çıkılır. */
+async function smokeTest(outFile) {
+  const result = { ok: false };
+  try {
+    const lan = await startLan();
+    result.lan = { enabled: lan.enabled, error: lan.error };
+    await stopLan();
+    createWindow();
+    await new Promise((resolve) => win.webContents.once("did-finish-load", resolve));
+    await new Promise((r) => setTimeout(r, 2500));
+    Object.assign(result, await win.webContents.executeJavaScript(`(async () => {
+      const r = { app: typeof App === "object", version: App.version, title: !!document.querySelector(".home__title"),
+        desktop: !!(window.desktopApp && window.desktopApp.lan), origin: location.origin, katex: !!window.katex,
+        idb: App.db && App.db.engine, local: App.engine && App.engine.localPossible() };
+      try { const x = await fetch("app://local/ollama/api/version"); r.proxyStatus = x.status; r.proxyBody = (await x.text()).slice(0, 80); } catch (e) { r.proxyError = String(e); }
+      r.lanInfo = await window.desktopApp.lan.get();
+      return r;
+    })()`));
+    result.ok = result.app && result.title && result.desktop && result.idb === "indexeddb" && (result.proxyStatus === 200 || result.proxyStatus === 502);
+  } catch (e) { result.error = String(e && e.stack || e); }
+  fs.writeFileSync(outFile, JSON.stringify(result, null, 2));
+  app.exit(result.ok ? 0 : 1);
+}
+
 app.on("second-instance", () => {
   if (win) { if (win.isMinimized()) win.restore(); win.focus(); }
 });
@@ -158,6 +183,8 @@ app.whenReady().then(async () => {
     const r = await serveStatic(WEB_ROOT, url.pathname);
     return new Response(r.body, { status: r.status, headers: r.headers });
   });
+
+  if (process.env.DA_SMOKE_OUT) { smokeTest(process.env.DA_SMOKE_OUT); return; }
 
   ensureOllama();                         // beklemeden: pencere hemen açılsın
   if (settings.lanEnabled) startLan();
