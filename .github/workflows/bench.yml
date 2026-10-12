@@ -1,0 +1,31 @@
+# Elle çalıştırılır: Gemini modellerinin yanıt hızını ölçer (sonuçlar "notice" olarak görünür)
+name: Model hız ölçümü
+on:
+  workflow_dispatch:
+    inputs:
+      models:
+        description: "Virgülle ayrılmış modeller"
+        default: "gemini-3.8-flash,gemini-3.7-flash,gemini-3.6-flash,gemini-3.5-flash,gemini-2.5-flash,gemini-3.5-flash-lite,gemini-3.1-flash-lite"
+      thinking:
+        description: "Düşünme seviyeleri (boşlukla): '' low minimal budget0"
+        default: "default low minimal"
+jobs:
+  bench:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ölç
+        env:
+          URL: https://ders-asistani.alperenayleon-67a.workers.dev
+        run: |
+          for T in ${{ inputs.thinking }}; do
+            TT=$T; [ "$T" = "default" ] && TT=""
+            IFS=',' read -ra MS <<< "${{ inputs.models }}"
+            for M in "${MS[@]}"; do
+              for rep in 1 2; do
+                R=$(curl -sS -m 120 "$URL/bench/$M/$TT")
+                echo "$R"
+                echo "::notice::$(echo "$R" | tr -d '\n' | head -c 300)"
+                sleep 21
+              done
+            done
+          done
