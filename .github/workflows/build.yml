@@ -56,6 +56,16 @@ jobs:
           echo "Sunucu: $URL"
           test -n "$URL"
           for i in 1 2 3 4 5 6; do curl -fsS "$URL/health" && break; sleep 5; done
+          # Gerçek Gemini ile kısa deneme (sohbet + vektör)
+          MODEL=$(curl -fsS "$URL/v1beta/models" | node -e 'let d="";process.stdin.on("data",c=>d+=c).on("end",()=>{const n=JSON.parse(d).models.map(m=>m.name.replace("models/","")).filter(n=>/^gemini-\d+(\.\d+)?-flash$/.test(n));n.sort((a,b)=>parseFloat(b.split("-")[1])-parseFloat(a.split("-")[1]));console.log(n[0]||"")})')
+          echo "Model: $MODEL"
+          ANS=$(curl -sS -X POST "$URL/v1beta/models/$MODEL:streamGenerateContent?alt=sse" -H 'content-type: application/json' \
+            -d '{"contents":[{"role":"user","parts":[{"text":"2+3 kaç eder? Sadece sayıyı yaz."}]}]}' | head -c 1500)
+          echo "$ANS"
+          echo "::notice::Sunucu: $URL · model: $MODEL · yanıt: $(echo "$ANS" | grep -o '"text": *"[^"]*"' | head -3 | tr '\n' ' ')"
+          EMB=$(curl -sS -X POST "$URL/v1beta/models/gemini-embedding-001:batchEmbedContents" -H 'content-type: application/json' \
+            -d '{"requests":[{"model":"models/gemini-embedding-001","content":{"parts":[{"text":"deneme"}]},"outputDimensionality":768}]}' | head -c 200)
+          echo "::notice::Vektör: $(echo "$EMB" | tr -d '\n ' | head -c 80)"
           echo "url=$URL" >> "$GITHUB_OUTPUT"
 
   web:
