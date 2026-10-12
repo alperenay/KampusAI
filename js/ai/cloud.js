@@ -228,23 +228,36 @@
      * Dönen: { text, stats, model }  (model: yanıtı gerçekten veren model)
      */
     async chat(opts) {
+      const auto = !str(P + "Model");
+      const BUSY_MS = 10 * 60 * 1000;                     // yoğun model 10 dk boyunca atlanır
+      const busy = (() => { try { return JSON.parse(App.prefs.get(P + "Busy", "{}") || "{}"); } catch (e) { return {}; } })();
+      const saveBusy = () => App.prefs.set(P + "Busy", JSON.stringify(busy));
+      const isBusy = (n) => busy[n] && busy[n] > Date.now();
+      const ranked = async () => {
+        if (!this._ranked) this._ranked = rankGeminiModels((await this.listModels(opts.signal)).filter((m) => m.methods.includes("generateContent")).map((m) => m.name));
+        return this._ranked;
+      };
       const tried = [];
       let model = opts.model, lastErr = null;
+      // Az önce yoğun olduğu görülen modeli hiç denemeden sıradakine geç (her soruda saniyeler kaybetmemek için)
+      if (auto && isBusy(model)) {
+        try { model = (await ranked()).find((n) => !isBusy(n)) || model; } catch (e) { /* liste yoksa aynı modelle dene */ }
+      }
       for (let attempt = 0; attempt < 3; attempt++) {
         tried.push(model);
         try {
           const res = await this.chatOnce(Object.assign({}, opts, { model }));
           res.model = model;
+          if (busy[model]) { delete busy[model]; saveBusy(); }
           return res;
         } catch (e) {
           lastErr = e;
           const retryable = e && (e.code === "busy" || e.code === "quota") && !e.partial;
-          if (!retryable || str(P + "Model") || (opts.signal && opts.signal.aborted)) throw e;
-          if (!this._ranked) {
-            try { this._ranked = rankGeminiModels((await this.listModels(opts.signal)).filter((m) => m.methods.includes("generateContent")).map((m) => m.name)); }
-            catch (e2) { throw e; }
-          }
-          model = this._ranked.find((n) => !tried.includes(n));
+          if (!retryable || !auto || (opts.signal && opts.signal.aborted)) throw e;
+          busy[model] = Date.now() + BUSY_MS; saveBusy();
+          let list;
+          try { list = await ranked(); } catch (e2) { throw e; }
+          model = list.find((n) => !tried.includes(n) && !isBusy(n)) || list.find((n) => !tried.includes(n));
           if (!model) throw e;
           if (opts.onRetry) opts.onRetry(model, e);
         }

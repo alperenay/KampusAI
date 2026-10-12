@@ -23,6 +23,9 @@
   const LS_PREFIX = "da:";
 
   /* ---------------- Ayarlar (localStorage) ---------------- */
+  /** Yedeğe girmeyen ayarlar: anahtarlar, bağlantı kodu/adresi, otomatik seçilen modeller */
+  const PRIVATE_PREF = /(Key|Token|Busy|AutoModel|AutoAt)$|^aiUrl$/;
+
   App.prefs = {
     get(key, fallback) {
       try {
@@ -156,7 +159,10 @@
 
     /** Yedekleme: tüm veriyi tek JSON nesnesine çevirir */
     async exportAll() {
-      const data = { app: "ders-asistani", schema: DB_VERSION, exportedAt: new Date().toISOString(), prefs: App.prefs.all(), stores: {} };
+      // API anahtarları, bağlantı kodu ve cihaza özel yapay zeka durumları yedeğe girmez
+      const prefs = {};
+      Object.entries(App.prefs.all()).forEach(([k, v]) => { if (!PRIVATE_PREF.test(k)) prefs[k] = v; });
+      const data = { app: "ders-asistani", schema: DB_VERSION, exportedAt: new Date().toISOString(), prefs, stores: {} };
       for (const s of BACKUP_STORES) data.stores[s] = await engine.getAll(s);
       return data;
     },
@@ -170,7 +176,7 @@
         if (rows.length) await engine.putMany(s, rows);
         emit(s);
       }
-      Object.entries(data.prefs || {}).forEach(([k, v]) => App.prefs.set(k, v));
+      Object.entries(data.prefs || {}).forEach(([k, v]) => { if (!PRIVATE_PREF.test(k)) App.prefs.set(k, v); });
     },
 
     async resetAll() {
