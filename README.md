@@ -1,4 +1,4 @@
-# Ders Asistanı
+# KampüsAI
 
 Ders programı, konu anlatımı, TYT-AYT deneme takibi ve yapay zeka asistanı: Windows, Android ve iPhone.
 

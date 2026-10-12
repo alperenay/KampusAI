@@ -680,3 +680,16 @@ button.block:hover { border-color: color-mix(in srgb, var(--c) 55%, transparent)
 .qr-cam { position: relative; width: 100%; aspect-ratio: 1; max-height: 60vh; background: #000; border-radius: 16px; overflow: hidden; }
 .qr-cam video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .qr-cam__frame { position: absolute; inset: 18%; border: 3px solid rgba(255, 255, 255, .85); border-radius: 18px; box-shadow: 0 0 0 999px rgba(0, 0, 0, .35); pointer-events: none; }
+
+/* KampüsAI logosu: tema rengine uyar (maske + currentColor) */
+.logo-mark {
+  display: block; width: 100%; height: 100%;
+  background: currentColor;
+  -webkit-mask: url("../assets/brand/mark.png") center / contain no-repeat;
+  mask: url("../assets/brand/mark.png") center / contain no-repeat;
+}
+.brand__mark { color: var(--text); }
+.msg__avatar { color: var(--text); }
+.msg__avatar .logo-mark { width: 22px; height: 22px; }
+.home__brand { width: 72px; height: 72px; margin: 0 auto 6px; color: var(--text); opacity: .92; }
+@media (max-width: 600px) { .home__brand { width: 56px; height: 56px; } }

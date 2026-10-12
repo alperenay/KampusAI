@@ -1,7 +1,7 @@
-# Ders Asistanı — her gönderimde (push) üç sürümü derler:
+# KampüsAI — her gönderimde (push) üç sürümü derler:
 #   • iPhone / web  → GitHub Pages (https://<kullanıcı>.github.io/<repo>/)
-#   • Android       → DersAsistani-<sürüm>.apk
-#   • Windows       → DersAsistani-Kurulum-<sürüm>.exe
+#   • Android       → KampusAI-<sürüm>.apk
+#   • Windows       → KampusAI-Kurulum-<sürüm>.exe
 # APK ve EXE, "Releases" sayfasında yeni bir sürüm olarak yayınlanır.
 name: Derle ve yayınla
 
@@ -144,11 +144,11 @@ jobs:
         working-directory: mobile/android
         run: ./gradlew assembleDebug --no-daemon --stacktrace
       - name: Dosyayı adlandır
-        run: cp mobile/android/app/build/outputs/apk/debug/app-debug.apk "DersAsistani-$APP_VERSION.apk"
+        run: cp mobile/android/app/build/outputs/apk/debug/app-debug.apk "KampusAI-$APP_VERSION.apk"
       - uses: actions/upload-artifact@v4
         with:
           name: android
-          path: DersAsistani-*.apk
+          path: KampusAI-*.apk
           if-no-files-found: error
 
   android-test:
@@ -213,7 +213,7 @@ jobs:
         run: |
           npx --yes @electron/asar list dist/win-unpacked/resources/app.asar | grep -E "^[\\/]app[\\/]index.html$"
           mkdir -p smoke
-          DA_SMOKE_OUT="$PWD/smoke/windows.json" timeout 120 ./dist/win-unpacked/DersAsistani.exe || true
+          DA_SMOKE_OUT="$PWD/smoke/windows.json" timeout 120 ./dist/win-unpacked/KampusAI.exe || true
           cat smoke/windows.json
           node -e "process.exit(require('./smoke/windows.json').ok ? 0 : 1)"
       - name: Test sonuçlarını kaydet
@@ -243,18 +243,18 @@ jobs:
         run: |
           OWNER="${GITHUB_REPOSITORY%%/*}"; REPO="${GITHUB_REPOSITORY##*/}"
           cat > notes.md <<NOTES
-          ## Ders Asistanı $APP_VERSION
+          ## KampüsAI $APP_VERSION
 
-          **Windows:** \`DersAsistani-Kurulum-$APP_VERSION.exe\` dosyasını indirip çalıştır. Windows "bilgisayarınızı korudu" derse **Ek bilgi → Yine de çalıştır**.
+          **Windows:** \`KampusAI-Kurulum-$APP_VERSION.exe\` dosyasını indirip çalıştır. Windows "bilgisayarınızı korudu" derse **Ek bilgi → Yine de çalıştır**.
 
-          **Android:** \`DersAsistani-$APP_VERSION.apk\` dosyasını telefondan indirip aç. İlk seferde "bilinmeyen kaynaklardan yükleme" izni istenir. Yeni sürüm eskisinin üzerine kurulur, verilerin silinmez.
+          **Android:** \`KampusAI-$APP_VERSION.apk\` dosyasını telefondan indirip aç. İlk seferde "bilinmeyen kaynaklardan yükleme" izni istenir. Yeni sürüm eskisinin üzerine kurulur, verilerin silinmez.
 
           **iPhone:** Safari'de https://$OWNER.github.io/$REPO/ adresini aç → Paylaş → **Ana Ekrana Ekle**.
           NOTES
       - uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ env.APP_VERSION }}
-          name: Ders Asistanı ${{ env.APP_VERSION }}
+          name: KampüsAI ${{ env.APP_VERSION }}
           body_path: notes.md
           make_latest: true
           files: |

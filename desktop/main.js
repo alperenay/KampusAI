@@ -1,5 +1,5 @@
 /* =========================================================
-   main.js — Ders Asistanı Windows uygulaması (Electron)
+   main.js — KampüsAI Windows uygulaması (Electron)
 
    • Uygulama dosyaları app://local/ adresinden sunulur (sabit adres:
      veriler IndexedDB'de kalıcı olarak saklanır).
@@ -24,6 +24,9 @@ protocol.registerSchemesAsPrivileged([{
   scheme: "app",
   privileges: { standard: true, secure: true, supportFetchAPI: true, corsEnabled: true, stream: true, codeCache: true }
 }]);
+
+// Uygulamanın adı değişse de (Ders Asistanı → KampüsAI) veriler aynı klasörde kalsın
+app.setPath("userData", path.join(app.getPath("appData"), "Ders Asistani"));
 
 if (!app.requestSingleInstanceLock()) { app.quit(); }
 
@@ -120,7 +123,7 @@ function createWindow() {
     width: b.width || 1280, height: b.height || 840, x: b.x, y: b.y,
     minWidth: 380, minHeight: 560,
     backgroundColor: "#121318",
-    title: "Ders Asistanı",
+    title: "KampüsAI",
     icon: path.join(__dirname, "build", "icon.png"),
     autoHideMenuBar: true,
     show: false,

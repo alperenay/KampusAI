@@ -2,7 +2,7 @@
   "name": "ders-asistani-mobile",
   "version": "1.0.0",
   "private": true,
-  "description": "Ders Asistanı Android uygulaması (Capacitor)",
+  "description": "KampüsAI Android uygulaması (Capacitor)",
   "scripts": {
     "web": "node ../tools/build-web.mjs www",
     "sync": "npm run web && npx cap sync android"

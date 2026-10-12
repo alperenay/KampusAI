@@ -1,7 +1,7 @@
 /* =========================================================
    cloud.js — internet üzerinden çalışan yapay zeka servisleri
 
-   0. Ders Asistanı sunucusu (varsayılan, ayar gerektirmez): Gemini'nin
+   0. KampüsAI sunucusu (varsayılan, ayar gerektirmez): Gemini'nin
       anahtarı uygulamada değil, Cloudflare'deki sunucuda durur (server/worker.js)
    1. Google Gemini, kullanıcının kendi anahtarıyla
         • Tek model hem fotoğrafı okur hem soruyu çözer ("doğrudan görsel")
@@ -139,7 +139,7 @@
   /**
    * Gemini motoru üretir. İki örneği var:
    *   gemini : kullanıcının kendi anahtarı (doğrudan Google'a)
-   *   server : Ders Asistanı sunucusu (Cloudflare) — anahtar sunucuda, kullanıcı hiçbir şey girmez
+   *   server : KampüsAI sunucusu (Cloudflare) — anahtar sunucuda, kullanıcı hiçbir şey girmez
    * P: ayar öneki ("gem" / "srv")
    */
   function makeGemini(o) {
@@ -318,8 +318,8 @@
   }
 
   const gemini = makeGemini({ id: "gemini", name: "Google Gemini", prefix: "gem", base: () => G_BASE });
-  /* Ders Asistanı sunucusu: adresi derleme sırasında js/config.js dosyasına yazılır */
-  const server = makeGemini({ id: "server", name: "Ders Asistanı sunucusu", prefix: "srv", server: true,
+  /* KampüsAI sunucusu: adresi derleme sırasında js/config.js dosyasına yazılır */
+  const server = makeGemini({ id: "server", name: "KampüsAI sunucusu", prefix: "srv", server: true,
     base: () => { const u = (App.config && App.config.serverUrl) || ""; return u ? u.replace(/\/+$/, "") + "/v1beta" : ""; } });
 
   /* =========================================================
@@ -369,7 +369,7 @@
       const k = this.key();
       if (!k) throw new AIError("no-key", "", { provider: "openai" });
       const h = { "Content-Type": "application/json", "Authorization": "Bearer " + k };
-      if (/openrouter\.ai/.test(this.base())) { h["X-Title"] = "Ders Asistani"; }
+      if (/openrouter\.ai/.test(this.base())) { h["X-Title"] = "KampusAI"; }
       return h;
     },
 

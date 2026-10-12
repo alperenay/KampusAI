@@ -1,9 +1,9 @@
 {
   "name": "ders-asistani",
-  "productName": "Ders Asistani",
+  "productName": "KampusAI",
   "version": "1.0.0",
-  "description": "Ders Asistanı: ders programı, konu anlatımı, deneme takibi ve yapay zeka asistanı",
-  "author": "Ders Asistanı",
+  "description": "KampüsAI: ders programı, konu anlatımı, deneme takibi ve yapay zeka asistanı",
+  "author": "KampüsAI",
   "license": "UNLICENSED",
   "private": true,
   "main": "main.js",
@@ -17,15 +17,15 @@
   },
   "build": {
     "appId": "com.dersasistani.app",
-    "productName": "Ders Asistani",
-    "copyright": "Ders Asistanı",
+    "productName": "KampusAI",
+    "copyright": "KampüsAI",
     "directories": { "output": "dist", "buildResources": "build" },
     "files": ["main.js", "preload.js", "server.js", "build/icon.png", "app/**/*"],
     "asar": true,
     "win": {
       "target": [{ "target": "nsis", "arch": ["x64"] }],
       "icon": "build/icon.png",
-      "executableName": "DersAsistani"
+      "executableName": "KampusAI"
     },
     "nsis": {
       "oneClick": false,
@@ -33,9 +33,9 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "Ders Asistanı",
-      "uninstallDisplayName": "Ders Asistanı",
-      "artifactName": "DersAsistani-Kurulum-${version}.${ext}",
+      "shortcutName": "KampüsAI",
+      "uninstallDisplayName": "KampüsAI",
+      "artifactName": "KampusAI-Kurulum-${version}.${ext}",
       "deleteAppDataOnUninstall": false
     }
   }

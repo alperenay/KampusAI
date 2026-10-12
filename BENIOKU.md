@@ -1,11 +1,11 @@
-# Ders Asistanı — Kurulum ve Kullanım
+# KampüsAI — Kurulum ve Kullanım
 
 Ders programı, konu anlatımı, TYT-AYT deneme takibi ve yapay zeka asistanı.
 **Windows**, **Android** ve **iPhone** için uygulama olarak gelir. Yapay zeka iki kaynaktan çalışır:
 
 | Kaynak | Nerede çalışır | Ücret | Fotoğraf |
 |---|---|---|---|
-| **Hazır sunucu** (varsayılan) | Ders Asistanı'nın Cloudflare sunucusu üzerinden Gemini; **hiçbir ayar gerekmez** | Ücretsiz kota, tüm kullanıcılar paylaşır | Tek model hem okur hem çözer |
+| **Hazır sunucu** (varsayılan) | KampüsAI'ın Cloudflare sunucusu üzerinden Gemini; **hiçbir ayar gerekmez** | Ücretsiz kota, tüm kullanıcılar paylaşır | Tek model hem okur hem çözer |
 | **Yerel (Ollama)** | Bilgisayarındaki modeller; telefon da evdeki Wi-Fi'dan bunları kullanabilir | Ücretsiz, veriler cihazda kalır | qwen2.5vl okur, qwen2.5:14b çözer |
 | **İnternet (Gemini)** | Google'ın sunucuları; her yerde çalışır | Ücretsiz katman (dakikalık/günlük sınırlı) | Tek model hem okur hem çözer |
 | **İnternet (OpenAI-uyumlu)** | OpenRouter, Groq, OpenAI, DeepSeek… | Servise göre | Modele göre |
@@ -17,9 +17,9 @@ Hangisi kullanılırsa kullanılsın asistan denemelerine, programına, notları
 
 Kurulum dosyaları GitHub'daki deponun **Releases** sayfasındadır (her güncellemede otomatik derlenir).
 
-- **Windows:** `DersAsistani-Kurulum-….exe` dosyasını indirip çalıştır.
+- **Windows:** `KampusAI-Kurulum-….exe` dosyasını indirip çalıştır.
   Windows "bilgisayarınızı korudu" derse **Ek bilgi → Yine de çalıştır** (uygulama imzasız olduğu için çıkar).
-- **Android:** `DersAsistani-….apk` dosyasını telefondan indirip aç. İlk seferde "bilinmeyen kaynaklardan yükleme" izni istenir.
+- **Android:** `KampusAI-….apk` dosyasını telefondan indirip aç. İlk seferde "bilinmeyen kaynaklardan yükleme" izni istenir.
   Yeni sürüm eskisinin üzerine kurulur; verilerin silinmez.
 - **iPhone:** Safari'de `https://<kullanıcı-adı>.github.io/ders-asistani/` adresini aç → **Paylaş** → **Ana Ekrana Ekle**.
   İlk açılıştan sonra internet olmadan da açılır (yapay zeka için internet gerekir).
@@ -54,7 +54,7 @@ ollama pull qwen2.5vl:7b
 Windows uygulaması Ollama kapalıysa açılışta kendisi başlatmayı dener.
 
 ### Telefonda bilgisayardaki modelleri kullanmak (QR kod)
-1. Bilgisayarda Ders Asistanı uygulamasını aç → **Ayarlar → Yapay zeka ayarları → Telefon bağlantısı** → kutuyu işaretle.
+1. Bilgisayarda KampüsAI uygulamasını aç → **Ayarlar → Yapay zeka ayarları → Telefon bağlantısı** → kutuyu işaretle.
    Windows Güvenlik Duvarı sorarsa **Özel ağlar**'a izin ver. Ekranda bir **QR kod** çıkar.
 2. Telefondaki uygulamada **Ayarlar → Yapay zeka ayarları → Yerel (Ollama) → QR kodla bilgisayara bağlan** → kodu okut. Bu kadar.
    (İstersen adresi ve 6 haneli kodu elle de yazabilirsin.)
@@ -82,7 +82,7 @@ API anahtarları yedeğe girmez; her cihazda ayrıca girilir.
 |---|---|
 | "Yapay zekâ bağlı değil" | Ayarlar'dan Gemini anahtarı gir ya da bilgisayarda Ollama'yı başlat. |
 | "Ollama'ya ulaşılamadı" | Ollama uygulamasını aç (sistem tepsisinde lama simgesi). |
-| Telefonda "Bilgisayardaki yapay zekâya ulaşılamadı" | Bilgisayar açık mı, Ders Asistanı uygulaması çalışıyor mu, Telefon bağlantısı açık mı, iki cihaz aynı Wi-Fi'da mı? |
+| Telefonda "Bilgisayardaki yapay zekâya ulaşılamadı" | Bilgisayar açık mı, KampüsAI uygulaması çalışıyor mu, Telefon bağlantısı açık mı, iki cihaz aynı Wi-Fi'da mı? |
 | "Bağlantı kodu yanlış" | Bilgisayardaki Telefon bağlantısı sekmesindeki kodu tekrar yaz. |
 | "… anahtarı geçersiz" | Anahtarı aistudio.google.com'dan yeniden kopyala. |
 | "Kullanım sınırına ulaşıldı" | Ücretsiz katman sınırı; biraz bekle ya da Ayarlar'dan başka model seç. |

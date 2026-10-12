@@ -57,7 +57,7 @@
     '</svg>';
 
   App.icon = function (name, cls) {
-    if (name === "logo") return LOGO;
+    if (name === "logo") return '<span class="logo-mark" aria-hidden="true"></span>';     // KampüsAI logosu (assets/brand/mark.png)
     const body = P[name];
     if (!body) return "";
     return '<svg class="ico' + (cls ? " " + cls : "") + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + body + "</svg>";
