@@ -59,10 +59,11 @@ export default {
     const upHeaders = { "content-type": "application/json", "x-goog-api-key": key };
 
     // Hız ölçümü: /bench?m=model1,model2&t=low  (t: düşünme seviyesi; "budget0" = 2.5 için kapalı)
-    if (request.method === "GET" && url.pathname === "/bench") {
+    if (request.method === "GET" && url.pathname.startsWith("/bench")) {
       if (limited(ip, "b", 3)) return gerr(429, "Çok sık", "RESOURCE_EXHAUSTED");
-      const models = (url.searchParams.get("m") || "").split(",").filter((n) => CHAT_MODEL.test(n)).slice(0, 6);
-      const think = url.searchParams.get("t") || "";
+      const seg = url.pathname.split("/").slice(2);          // /bench/<model,model>/<think>
+      const models = (url.searchParams.get("m") || decodeURIComponent(seg[0] || "")).split(",").filter((n) => CHAT_MODEL.test(n)).slice(0, 6);
+      const think = url.searchParams.get("t") || decodeURIComponent(seg[1] || "");
       const prompt = "x^2 - 5x + 6 = 0 denkleminin köklerini adım adım bul ve kökler toplamını yaz.";
       const out = [];
       for (const n of models) {
