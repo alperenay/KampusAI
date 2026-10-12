@@ -5,10 +5,12 @@ on:
     inputs:
       models:
         description: "Virgülle ayrılmış modeller"
-        default: "gemini-3.8-flash,gemini-3.7-flash,gemini-3.6-flash,gemini-3.5-flash,gemini-2.5-flash,gemini-3.5-flash-lite,gemini-3.1-flash-lite"
+        default: "gemini-3.8-flash,gemini-3.6-flash,gemini-3.5-flash,gemini-3.5-flash-lite,gemini-3.1-flash-lite"
       thinking:
         description: "Düşünme seviyeleri (boşlukla): '' low minimal budget0"
         default: "default low minimal"
+permissions:
+  contents: write
 jobs:
   bench:
     runs-on: ubuntu-latest
@@ -17,15 +19,19 @@ jobs:
         env:
           URL: https://ders-asistani.alperenayleon-67a.workers.dev
         run: |
+          mkdir -p out
           for T in ${{ inputs.thinking }}; do
             TT=$T; [ "$T" = "default" ] && TT=""
             IFS=',' read -ra MS <<< "${{ inputs.models }}"
             for M in "${MS[@]}"; do
               for rep in 1 2; do
                 R=$(curl -sS -m 120 "$URL/bench/$M/$TT")
+                echo "$R" | tr -d '\n' >> out/bench.jsonl; echo >> out/bench.jsonl
                 echo "$R"
-                echo "::notice::$(echo "$R" | tr -d '\n' | head -c 300)"
                 sleep 21
               done
             done
           done
+          cd out && git init -q && git checkout -q -b ci-sonuc-bench && git add -A
+          git -c user.name=ci -c user.email=ci@users.noreply.github.com commit -qm "bench $GITHUB_RUN_NUMBER"
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-sonuc-bench
