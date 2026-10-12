@@ -62,7 +62,7 @@ jobs:
           ANS=$(curl -sS -X POST "$URL/v1beta/models/$MODEL:streamGenerateContent?alt=sse" -H 'content-type: application/json' \
             -d '{"contents":[{"role":"user","parts":[{"text":"2+3 kaç eder? Sadece sayıyı yaz."}]}]}' | head -c 1500)
           echo "$ANS"
-          echo "::notice::Sunucu: $URL · model: $MODEL · yanıt: $(echo "$ANS" | grep -o '"text": *"[^"]*"' | head -3 | tr '\n' ' ')"
+          echo "::notice::Sunucu: $URL · model: $MODEL · yanıt: $(echo "$ANS" | tr -d '\r\n' | head -c 900)"
           EMB=$(curl -sS -X POST "$URL/v1beta/models/gemini-embedding-001:batchEmbedContents" -H 'content-type: application/json' \
             -d '{"requests":[{"model":"models/gemini-embedding-001","content":{"parts":[{"text":"deneme"}]},"outputDimensionality":768}]}' | head -c 200)
           echo "::notice::Vektör: $(echo "$EMB" | tr -d '\n ' | head -c 80)"
