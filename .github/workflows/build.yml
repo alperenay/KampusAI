@@ -57,12 +57,13 @@ jobs:
           test -n "$URL"
           for i in 1 2 3 4 5 6; do curl -fsS "$URL/health" && break; sleep 5; done
           # Gerçek Gemini ile kısa deneme (sohbet + vektör)
-          MODEL=$(curl -fsS "$URL/v1beta/models" | node -e 'let d="";process.stdin.on("data",c=>d+=c).on("end",()=>{const n=JSON.parse(d).models.map(m=>m.name.replace("models/","")).filter(n=>/^gemini-\d+(\.\d+)?-flash$/.test(n));n.sort((a,b)=>parseFloat(b.split("-")[1])-parseFloat(a.split("-")[1]));console.log(n[0]||"")})')
-          echo "Model: $MODEL"
-          ANS=$(curl -sS -X POST "$URL/v1beta/models/$MODEL:streamGenerateContent?alt=sse" -H 'content-type: application/json' \
-            -d '{"contents":[{"role":"user","parts":[{"text":"2+3 kaç eder? Sadece sayıyı yaz."}]}]}' | head -c 1500)
-          echo "$ANS"
-          echo "::notice::Sunucu: $URL · model: $MODEL · yanıt: $(echo "$ANS" | tr -d '\r\n' | head -c 900)"
+          MODELS=$(curl -fsS "$URL/v1beta/models" | node -e 'let d="";process.stdin.on("data",c=>d+=c).on("end",()=>{const n=JSON.parse(d).models.map(m=>m.name.replace("models/","")).filter(n=>/-flash/.test(n)&&!/tts|image|live/.test(n));const v=s=>parseFloat((s.match(/gemini-([\d.]+)/)||[0,0])[1]);const t=s=>/lite/.test(s)?2:/preview/.test(s)?1:0;n.sort((a,b)=>t(a)-t(b)||v(b)-v(a));console.log(n.slice(0,4).join(" "))})')
+          for MODEL in $MODELS; do
+            ANS=$(curl -sS -X POST "$URL/v1beta/models/$MODEL:streamGenerateContent?alt=sse" -H 'content-type: application/json' \
+              -d '{"contents":[{"role":"user","parts":[{"text":"2+3 kaç eder? Sadece sayıyı yaz."}]}]}' | head -c 1500)
+            echo "::notice::Sunucu: $URL · model: $MODEL · yanıt: $(echo "$ANS" | tr -d '\r\n' | head -c 600)"
+            echo "$ANS" | grep -q '"text"' && break
+          done
           EMB=$(curl -sS -X POST "$URL/v1beta/models/gemini-embedding-001:batchEmbedContents" -H 'content-type: application/json' \
             -d '{"requests":[{"model":"models/gemini-embedding-001","content":{"parts":[{"text":"deneme"}]},"outputDimensionality":768}]}' | head -c 200)
           echo "::notice::Vektör: $(echo "$EMB" | tr -d '\n ' | head -c 80)"

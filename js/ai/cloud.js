@@ -117,12 +117,21 @@
       byVer(chat) || null;
   }
 
+  /** Yedek sıralaması: kararlı Flash (yeniden eskiye) → önizleme Flash → Flash-Lite */
+  function rankGeminiModels(names) {
+    const ver = (n) => { const m = n.match(/gemini-(\d+(?:\.\d+)?)/); return m ? parseFloat(m[1]) : 0; };
+    const chat = names.filter((n) => /^gemini-/.test(n) && /-flash/.test(n) && !NOT_CHAT.test(n));
+    const tier = (n) => (/lite/.test(n) ? 2 : /preview|exp/.test(n) ? 1 : 0);
+    return chat.sort((a, b) => tier(a) - tier(b) || ver(b) - ver(a));
+  }
+
   function geminiError(status, body, text, model) {
     const err = (body && body.error) || {};
     const msg = err.message || text || ("HTTP " + status);
     const st = err.status || "";
     if (/api key|API_KEY/i.test(msg) || st === "UNAUTHENTICATED" || status === 401 || (status === 403 && st === "PERMISSION_DENIED")) return new AIError("auth", msg, { status });
-    if (status === 429 || st === "RESOURCE_EXHAUSTED") return new AIError("quota", msg, { status });
+    if (status === 429 || st === "RESOURCE_EXHAUSTED") return new AIError("quota", msg, { status, model });
+    if (status === 503 || status === 502 || status === 504 || st === "UNAVAILABLE" || st === "DEADLINE_EXCEEDED") return new AIError("busy", msg, { status, model });
     if (status === 404 || st === "NOT_FOUND") return new AIError("model-missing", msg, { status, model });
     return new AIError("http", msg, { status, model });
   }
@@ -213,7 +222,37 @@
       return { system: system.join("\n\n"), contents };
     },
 
-    async chat({ model, messages, options, signal, onDelta }) {
+    /**
+     * Sohbet. Model o an yoğunsa (503) ya da kotası dolduysa (429) ve model otomatik
+     * seçildiyse, sıradaki Flash modeliyle tekrar dener (en fazla 2 yedek).
+     * Dönen: { text, stats, model }  (model: yanıtı gerçekten veren model)
+     */
+    async chat(opts) {
+      const tried = [];
+      let model = opts.model, lastErr = null;
+      for (let attempt = 0; attempt < 3; attempt++) {
+        tried.push(model);
+        try {
+          const res = await this.chatOnce(Object.assign({}, opts, { model }));
+          res.model = model;
+          return res;
+        } catch (e) {
+          lastErr = e;
+          const retryable = e && (e.code === "busy" || e.code === "quota") && !e.partial;
+          if (!retryable || str(P + "Model") || (opts.signal && opts.signal.aborted)) throw e;
+          if (!this._ranked) {
+            try { this._ranked = rankGeminiModels((await this.listModels(opts.signal)).filter((m) => m.methods.includes("generateContent")).map((m) => m.name)); }
+            catch (e2) { throw e; }
+          }
+          model = this._ranked.find((n) => !tried.includes(n));
+          if (!model) throw e;
+          if (opts.onRetry) opts.onRetry(model, e);
+        }
+      }
+      throw lastErr;
+    },
+
+    async chatOnce({ model, messages, options, signal, onDelta }) {
       const { system, contents } = this.toContents(messages);
       const body = { contents, generationConfig: { temperature: options && options.temperature != null ? options.temperature : 0.4 } };
       if (system) body.systemInstruction = { parts: [{ text: system }] };

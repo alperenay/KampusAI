@@ -386,5 +386,7 @@ App.locales.tr = {
   "pair.unreachable": "Bilgisayara ulaşılamadı. Telefon ve bilgisayar aynı Wi-Fi ağında mı?",
   "pair.connected": "Bilgisayara bağlandı. Evdeyken yapay zekâ bilgisayardaki modellerle çalışacak.",
   "pair.scanBtn": "QR kodla bilgisayara bağlan",
-  "pair.scanBtnHint": "Evdeki Wi-Fi'da bilgisayardaki modelleri kullanmak için. Dışarıdayken uygulama kendiliğinden internete geçer."
+  "pair.scanBtnHint": "Evdeki Wi-Fi'da bilgisayardaki modelleri kullanmak için. Dışarıdayken uygulama kendiliğinden internete geçer.",
+  "ai.err.busyTitle": "{name} şu an çok yoğun.",
+  "ai.err.busyBody": "Google'ın sunucularında geçici yoğunluk var. Birkaç saniye sonra tekrar dene."
 };

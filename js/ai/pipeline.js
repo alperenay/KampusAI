@@ -169,10 +169,15 @@
       messages,
       options: { temperature: 0.4, num_ctx: 8192 },
       signal: opts.signal,
-      onDelta: (piece, full) => { result.text = full; fire("delta", full); }
+      onDelta: (piece, full) => { result.text = full; fire("delta", full); },
+      onRetry: (alt) => { fire("delta", ""); fire("stage", "answer", alt); }
     });
     result.text = res.text;
     result.stats = res.stats;
+    // Yoğunluk nedeniyle başka model yanıtladıysa zincirde onu göster
+    if (res.model && res.model !== cfg.chatModel) {
+      result.models.forEach((m) => { if ((m.role === "answer" || (m.role === "vision" && cfg.direct)) && m.model === cfg.chatModel) m.model = res.model; });
+    }
     // Yerel model: ne kadarı ekran kartında? (kısmen işlemcideyse yanıtlar çok yavaşlar)
     if (engine.kind === "local") {
       try {

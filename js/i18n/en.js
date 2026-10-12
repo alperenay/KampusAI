@@ -388,5 +388,7 @@ App.locales.en = {
   "pair.unreachable": "Couldn't reach the computer. Are the phone and computer on the same Wi-Fi?",
   "pair.connected": "Connected. At home, the AI will use the models on your computer.",
   "pair.scanBtn": "Connect to computer with QR code",
-  "pair.scanBtnHint": "Uses the models on your computer over home Wi-Fi. When you're out, the app switches to the internet automatically."
+  "pair.scanBtnHint": "Uses the models on your computer over home Wi-Fi. When you're out, the app switches to the internet automatically.",
+  "ai.err.busyTitle": "{name} is very busy right now.",
+  "ai.err.busyBody": "Google's servers are temporarily overloaded. Try again in a few seconds."
 };

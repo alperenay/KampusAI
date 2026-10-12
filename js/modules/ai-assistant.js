@@ -216,6 +216,7 @@
       case "no-key": title = t("ai.st.nokey"); body = esc(t("ai.err.nokeyBody")); extra = settingsBtn("cloud"); break;
       case "auth": title = t("ai.err.authTitle", { name }); body = esc(t("ai.err.authBody")); extra = settingsBtn("cloud"); break;
       case "net": title = t("ai.err.netTitle"); body = esc(t("ai.err.netBody")); break;
+      case "busy": title = t("ai.err.busyTitle", { name }); body = esc(t("ai.err.busyBody")); break;
       case "quota": title = t("ai.err.quotaTitle", { name }); body = esc(t("ai.err.quotaBody")) + (err.message ? '<br><small>' + esc(String(err.message).slice(0, 240)) + "</small>" : ""); break;
       case "blocked": title = t("ai.err.blockedTitle"); body = esc(t("ai.err.blockedBody")); break;
       case "model-missing":
@@ -389,7 +390,8 @@
           engine: (engine) => { aiMsg.engine = engine.id; },
           stage: (name, model) => {
             aiMsg.stage = name;
-            if (!aiMsg.models.some((m) => m.role === name)) aiMsg.models.push({ role: name, model });
+            const cur = aiMsg.models.find((m) => m.role === name);
+            if (!cur) aiMsg.models.push({ role: name, model }); else cur.model = model;
             paintLive(); saveChat(chat);
           },
           visionDelta: (full) => { aiMsg.visionLive = full; paintLive(); },
