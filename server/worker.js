@@ -58,6 +58,27 @@ export default {
     const ip = request.headers.get("CF-Connecting-IP") || "?";
     const upHeaders = { "content-type": "application/json", "x-goog-api-key": key };
 
+    // Kısa sağlık denemesi: Flash modellerine sırayla "2+3?" sorar (kurulumu doğrulamak için)
+    if (request.method === "GET" && url.pathname === "/selftest") {
+      if (limited(ip, "c", 4)) return gerr(429, "Çok sık", "RESOURCE_EXHAUSTED");
+      const list = await (await fetch(UPSTREAM + "/models?pageSize=1000", { headers: upHeaders })).json();
+      const ver = (n) => parseFloat((n.match(/gemini-([\d.]+)/) || [0, 0])[1]);
+      const tier = (n) => (/lite/.test(n) ? 2 : /preview/.test(n) ? 1 : 0);
+      const names = (list.models || []).map((m) => m.name.replace("models/", "")).filter((n) => CHAT_MODEL.test(n) && !NOT_CHAT.test(n))
+        .sort((a, b) => tier(a) - tier(b) || ver(b) - ver(a)).slice(0, 4);
+      const out = [];
+      for (const n of names) {
+        const t0 = Date.now();
+        const r = await fetch(UPSTREAM + "/models/" + n + ":generateContent", { method: "POST", headers: upHeaders,
+          body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: "2+3 kaç eder? Sadece sayıyı yaz." }] }] }) });
+        const j = await r.json().catch(() => ({}));
+        const text = ((((j.candidates || [])[0] || {}).content || {}).parts || []).filter((p) => !p.thought).map((p) => p.text).join("");
+        out.push({ model: n, status: r.status, ms: Date.now() - t0, text: text.slice(0, 40), error: j.error && j.error.message });
+        if (r.ok && text) break;
+      }
+      return json(200, { models: names, results: out });
+    }
+
     // Model listesi
     if (request.method === "GET" && url.pathname === "/v1beta/models") {
       const up = await fetch(UPSTREAM + "/models?pageSize=1000", { headers: upHeaders });
