@@ -21,7 +21,9 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  APP_VERSION: 1.0.${{ github.run_number }}
+  # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
+  # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
+  APP_VERSION: 1.1.0
 
 jobs:
   # Yapay zeka sunucusu (Cloudflare Worker). Repo ayarlarında şu gizli değerler varsa yayınlanır:
@@ -61,6 +63,10 @@ jobs:
           EMB=$(curl -sS -X POST "$URL/v1beta/models/gemini-embedding-001:batchEmbedContents" -H 'content-type: application/json' \
             -d '{"requests":[{"model":"models/gemini-embedding-001","content":{"parts":[{"text":"deneme"}]},"outputDimensionality":768}]}' | head -c 200)
           echo "::notice::Vektör: $(echo "$EMB" | tr -d '\n ' | head -c 80)"
+          # Eşitleme odası denemesi (rastgele kod: yaz, sonra başka "cihaz" gibi oku)
+          SC=$(tr -dc 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789' < /dev/urandom | head -c 12)
+          curl -sS -X POST "$URL/sync/$SC" -H 'content-type: application/json' -d '{"cursor":0,"changes":[{"s":"notes","id":"ci","u":1,"d":{"id":"ci","t":"ok"}}]}' > /dev/null
+          echo "::notice::Eşitleme: $(curl -sS -X POST "$URL/sync/$SC" -H 'content-type: application/json' -d '{"cursor":0,"changes":[]}' | head -c 300)"
           echo "url=$URL" >> "$GITHUB_OUTPUT"
 
   web:

@@ -81,13 +81,16 @@
   }
 
   /* ---------------- Kamerayla okuma (telefon) ---------------- */
-  function scan() {
+  /** Kamerayla QR okur. parser: metni çözen fonksiyon (varsayılan: bilgisayar bağlantı kodu) */
+  function scan(parser, texts) {
+    parser = parser || parse;
+    texts = texts || {};
     return new Promise((resolve) => {
       let stream = null, stopped = false, detector = null, timer = null;
       const m = App.ui.modal({
-        title: t("pair.scanTitle"),
+        title: texts.title || t("pair.scanTitle"),
         body:
-          '<p class="hint">' + esc(t("pair.scanHint")) + "</p>" +
+          '<p class="hint">' + esc(texts.hint || t("pair.scanHint")) + "</p>" +
           '<div class="qr-cam"><video playsinline muted autoplay></video><span class="qr-cam__frame"></span></div>' +
           '<p class="hint" id="qrStatus">' + esc(t("pair.starting")) + "</p>",
         onClose: () => finish(null)
@@ -124,7 +127,7 @@
             }
           } catch (e) { /* bir sonraki karede tekrar dene */ }
           if (text) {
-            const data = parse(text);
+            const data = parser(text);
             if (data) { finish(data); m.close(); return; }
             status.textContent = t("pair.notOurs");
           }
@@ -168,6 +171,8 @@
 
   /** Bu cihaz bilgisayara QR ile bağlanabilir mi? (Android uygulaması; iPhone'daki web uygulaması yerel ağa erişemez) */
   const canScan = () => !!(App.platform && App.platform.native && navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+  /** Kamera var mı (eşitleme kodu okutmak için; telefon tarayıcısında da olur) */
+  const hasCamera = () => !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && (App.platform.native || App.platform.mobile) && window.isSecureContext);
 
-  App.pairing = { payload, parse, renderQR, apply, scan, scanAndConnect, canScan, loadScript };
+  App.pairing = { payload, parse, renderQR, apply, scan, scanAndConnect, canScan, hasCamera, loadScript };
 })();

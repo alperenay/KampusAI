@@ -82,10 +82,11 @@
 
   /* ---------------- Parçaları üret ---------------- */
   async function loadData() {
-    const [exams, plan, notes, progress] = await Promise.all([
-      App.db.getAll("exams"), App.db.get("schedules", "user"), App.db.getAll("notes"), App.db.getAll("progress")
+    const [exams, plan, notes, progress, quizzes, mistakes, sessions] = await Promise.all([
+      App.db.getAll("exams"), App.db.get("schedules", "user"), App.db.getAll("notes"), App.db.getAll("progress"),
+      App.db.getAll("quizzes"), App.db.getAll("mistakes"), App.db.getAll("sessions")
     ]);
-    return { exams: App.exams.sortChrono(exams), plan, notes, progress: progress.filter((p) => p.done) };
+    return { exams: App.exams.sortChrono(exams), plan, notes, progress: progress.filter((p) => p.done), quizzes, mistakes, sessions };
   }
 
   function scheduleSource(plan) {
@@ -149,6 +150,25 @@
       "#/konular/" + k,
       "Tamamlanan kazanımlar — " + v.info.grade.id + ". Sınıf " + TR(v.info.subject.name) + ":\n" + v.items.map((x) => "- " + x).join("\n")));
 
+    // Konu sonu testleri (kazanım başına son sonuçlar)
+    const byKey = {};
+    (data.quizzes || []).forEach((q) => { (byKey[q.key] = byKey[q.key] || []).push(q); });
+    Object.entries(byKey).forEach(([key, list]) => {
+      list.sort((a, b) => String(a.date).localeCompare(String(b.date)));
+      const info = outcomeInfo(key);
+      add("quiz:" + key, "quiz", (info ? info.label : key), "#/konular/" + key,
+        "Konu sonu testi sonuçları — " + (info ? info.pathTR : key) + ":\n" +
+        list.slice(-5).map((q) => "- " + dateTR(String(q.date).slice(0, 10)) + ": " + q.correct + "/" + q.total + " doğru, " + q.wrong + " yanlış, " + q.empty + " boş").join("\n"));
+    });
+
+    // Yanlış defteri (son 60 soru)
+    (data.mistakes || []).slice().sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt))).slice(0, 60).forEach((m) => {
+      const opts = m.options && m.options.length ? "\nŞıklar: " + m.options.map((o, i) => "ABCDE"[i] + ") " + o).join(" ") + (m.answer != null ? " · Doğru: " + "ABCDE"[m.answer] : "") : "";
+      add("mistake:" + m.id, "mistake", m.label || "Yanlış defteri", "#/yanlislar/tumu",
+        "Yanlış defterindeki soru (" + (m.label || "") + ")" + (m.mastered ? " [öğrenildi]" : "") + ":\n" + htmlToText(m.q || "").slice(0, 600) + opts +
+        (m.explain ? "\nAçıklama: " + htmlToText(m.explain).slice(0, 500) : ""));
+    });
+
     // Konu anlatımı içerikleri
     C().grades.forEach((g) => g.subjects.forEach((s) => s.units.forEach((u) => u.outcomes.forEach((o) => {
       if (!o.content) return;
@@ -200,6 +220,24 @@
     const weekly = sch.blocks.filter((b) => b.kind !== "mola").reduce((m, b) => m + Math.max(0, mins(b.start, b.end)), 0);
     lines.push(sch.nameTR + " — bugün: " + (todays.length ? todays.map((b) => b.start + "–" + b.end + " " + TR(b.subject) + (TR(b.note) ? " (" + TR(b.note) + ")" : "")).join("; ") : "plan yok") + ".");
     lines.push("Haftalık planlanan çalışma: " + (weekly ? dur(weekly).trim() : "yok") + ".");
+
+    // Hedefler, odak çalışması, yanlış defteri
+    if (App.goals) { const gs = App.goals.summaryTR(); if (gs) lines.push(gs); }
+    const sessions = data.sessions || [];
+    if (sessions.length) {
+      const monday = new Date(); monday.setHours(0, 0, 0, 0); monday.setDate(monday.getDate() - App.utils.weekdayIndex(monday));
+      const week = sessions.filter((s) => Date.parse(s.end || s.start) >= monday.getTime());
+      const wm = week.reduce((a, s) => a + (Number(s.minutes) || 0), 0);
+      const subj = {};
+      week.forEach((s) => { if (s.subject) subj[s.subject] = (subj[s.subject] || 0) + (Number(s.minutes) || 0); });
+      lines.push("Bu hafta odak sayacıyla gerçekten çalışılan süre: " + (wm ? dur(wm).trim() : "yok") +
+        (Object.keys(subj).length ? " (" + Object.entries(subj).map(([k, v]) => k + " " + v + " dk").join(", ") + ")" : "") + ".");
+    }
+    const mis = data.mistakes || [];
+    if (mis.length) {
+      const due = mis.filter((m) => !m.mastered && Date.parse(m.nextAt || 0) <= Date.now()).length;
+      lines.push("Yanlış defterinde " + mis.length + " soru var; bugün tekrar edilecek: " + due + ", öğrenilen: " + mis.filter((m) => m.mastered).length + ".");
+    }
 
     let total = 0;
     C().grades.forEach((g) => g.subjects.forEach((s) => s.units.forEach((u) => { total += u.outcomes.length; })));

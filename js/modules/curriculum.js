@@ -132,6 +132,7 @@
     // İngilizce arayüzde içeriğin İngilizcesi yoksa kullanıcıya belirt
     const missingLang = ct && App.i18n.lang !== "tr" && !App.i18n.has(ct.anlatim);
 
+    const quizCard = ct && App.quiz ? await App.quiz.cardHtml(key, "#/test/" + key) : "";
     const section = (icon, title, inner) =>
       '<section class="card lesson__section"><h2>' + App.icon(icon) + esc(title) + '</h2><div class="lesson__body md">' + inner + "</div></section>";
     const soon = '<p class="placeholder">' + esc(t("cur.contentSoon")) + "</p>";
@@ -159,6 +160,7 @@
                 '<div class="example__a"><b>' + esc(t("cur.solution")) + "</b> " + richInline(o.cozum) + "</div></div>").join(""))
             : ct ? "" : section("target", t("cur.examples"), soon)) +
           section("lightbulb", t("cur.keyFacts"), ct && ct.ozet && ct.ozet.length ? "<ul>" + ct.ozet.map((s) => "<li>" + richInline(s) + "</li>").join("") + "</ul>" : soon) +
+          quizCard +
           section("note", t("cur.myNotes"),
             '<textarea class="textarea" id="myNote" placeholder="' + esc(t("cur.notesPh")) + '">' + esc(note ? note.text : "") + "</textarea>" +
             '<p class="hint" id="noteState" style="margin-top:6px">' + esc(note && note.updatedAt ? t("cur.saved") : t("cur.notesLocal")) + "</p>") +

@@ -142,14 +142,12 @@
    * Akışlı sohbet. onDelta(metinParçası) her yeni parçada çağrılır.
    * Dönen değer: { text, stats }
    */
-  async function chat({ model, messages, options, signal, onDelta }) {
-    const res = await request("/api/chat", {
-      model,
-      messages,
-      stream: true,
-      keep_alive: KEEP_ALIVE,
-      options: options || {}
-    }, signal);
+  async function chat({ model, messages, options, signal, onDelta, json }) {
+    const opts = Object.assign({}, options || {});
+    delete opts.json;
+    const body = { model, messages, stream: true, keep_alive: KEEP_ALIVE, options: opts };
+    if (json || (options && options.json)) body.format = "json";       // yanıtın geçerli JSON olmasını zorla
+    const res = await request("/api/chat", body, signal);
 
     const reader = res.body.getReader();
     const decoder = new TextDecoder();

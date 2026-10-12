@@ -283,6 +283,7 @@
       if (system) body.systemInstruction = { parts: [{ text: system }] };
       // Gemini 3 Flash modelleri varsayılan olarak uzun "düşünür" (ilk kelime 10 sn'yi bulabiliyor):
       // düşünmeyi "low" seviyesine çek. Desteklemeyen model 400 verirse ayarsız tekrar dene.
+      if (options && options.json) body.generationConfig.responseMimeType = "application/json";
       const thinkable = gver(model) >= 3 && /-flash/.test(model) && !/lite/.test(model) && !this._noThinking;
       if (thinkable) body.generationConfig.thinkingConfig = { thinkingLevel: "low" };
       const url = this.base() + "/models/" + encodeURIComponent(model) + ":streamGenerateContent?alt=sse";

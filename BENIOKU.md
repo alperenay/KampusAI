@@ -1,6 +1,7 @@
 # KampüsAI — Kurulum ve Kullanım
 
-Ders programı, konu anlatımı, TYT-AYT deneme takibi ve yapay zeka asistanı.
+Ders programı, konu anlatımı, TYT-AYT deneme takibi, konu sonu testleri, yanlış defteri, odak sayacı,
+YKS geri sayımı ve hedef netler, yapay zekâyla haftalık plan ve yapay zeka asistanı.
 **Windows**, **Android** ve **iPhone** için uygulama olarak gelir. Yapay zeka iki kaynaktan çalışır:
 
 | Kaynak | Nerede çalışır | Ücret | Fotoğraf |
@@ -69,10 +70,33 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
 - **Verilerim (🗄):** açıkken asistan denemelerine, programına ve notlarına bakarak yanıt verir.
   Her yanıtın altında hangi kayıtların kullanıldığı ve hangi modellerin çalıştığı görünür.
 - Sohbetler sol menüde **Sohbetler** altında saklanır; yedek dosyasına da dahildir.
+- Bir yanıtın altındaki 🔖 düğmesi soruyu ve çözümü **Yanlış Defteri**'ne ekler.
+
+## 3a. Çalışma araçları
+
+- **Konu sonu testi:** Konu Anlatımı'nda her kazanımın sayfasında *10 soruluk test başlat* — yapay zekâ o konudan
+  10 soruluk, 5 şıklı bir test hazırlar. Bitirince puan ve çözümler görünür; yanlış ve boş bıraktığın sorular
+  kendiliğinden Yanlış Defteri'ne eklenir.
+- **Yanlış Defteri:** Sorular aralıklı tekrarla geri gelir (1 → 3 → 7 → 16 gün). *Bildim* dedikçe seyrekleşir,
+  4 kez bilince "öğrenildi" olur. *Soru ekle* ile kitaptan fotoğraf çekip kendi sorunu da ekleyebilirsin.
+  Sol menüdeki sayı, bugün tekrar etmen gereken soru sayısıdır.
+- **Odak Sayacı (Pomodoro):** 25 dk odak → 5 dk mola, her 4 turda 15 dk uzun mola (süreler değiştirilebilir).
+  Hangi derse çalıştığını seç; günlük/haftalık süreler ve ders ders dağılım tutulur. Başka sayfaya geçince
+  sayaç üst çubukta görünmeye devam eder.
+- **YKS geri sayımı ve hedef netler:** Ana ekranda YKS'ye kalan gün görünür. Deneme Takibi'nde *Hedefleri düzenle*
+  ile TYT/AYT toplam ya da ders ders hedef net gir; son 3 denemenin ortalamasıyla karşılaştırılır ve haftada kaç net
+  artırman gerektiği hesaplanır. (2027 sınav tarihi ÖSYM açıklayana kadar tahminidir; tarihi buradan değiştirebilirsin.)
+- **Yapay zekâyla haftalık plan:** Ders Programı → Programım → *Yapay zekâyla plan*. Çalışma saatlerini ve
+  odak sınavı seç; denemelerindeki zayıf derslere göre bir hafta hazırlanır, önizleyip *Programıma uygula* dersin.
 
 ## 4. Verileri cihazlar arasında taşımak
 
-Her cihaz kendi verisini saklar. Taşımak için: eski cihazda sağ üstteki **Yedekle** → oluşan dosyayı yeni cihaza gönder →
+**Otomatik eşitleme (önerilen):** Ayarlar → **Cihazlar arası eşitleme** → ilk cihazda *Eşitlemeyi başlat*.
+Çıkan 12 haneli kodu diğer cihazda yazıp **Bağlan**'a bas ya da QR kodunu okut. Bundan sonra denemeler, program, notlar,
+sohbetler, testler, yanlış defteri, odak süreleri ve hedefler cihazlar arasında kendiliğinden eşitlenir.
+Kodu bilen herkes verilere erişebilir; kimseyle paylaşma. API anahtarları eşitlenmez.
+
+**Elle taşıma:** Her cihaz kendi verisini saklar. Taşımak için: eski cihazda sağ üstteki **Yedekle** → oluşan dosyayı yeni cihaza gönder →
 yeni cihazda **Ayarlar → İçe aktar**. (Tarayıcıda `Baslat.bat` ile kullandığın sürümden uygulamaya geçerken de böyle.)
 API anahtarları yedeğe girmez; her cihazda ayrıca girilir.
 

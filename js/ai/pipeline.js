@@ -188,5 +188,49 @@
     return result;
   }
 
-  App.ai = { run, systemPrompt };
+  /* ---------------- Yapılandırılmış üretim (test soruları, haftalık plan) ----------------
+     opts: { system, prompt, temperature, signal, onStage }
+     Dönen: { data (JSON), text, engine, model } */
+  function parseJSON(text) {
+    let s = String(text || "").trim().replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/, "");
+    const a = s.indexOf("{"), b = s.lastIndexOf("}");
+    if (a < 0 || b <= a) throw new Error("json");
+    s = s.slice(a, b + 1);
+    const data = JSON.parse(s);
+    // Modelin JSON'da kaçırmayı unuttuğu LaTeX komutlarını onar: "\frac" → form feed + "rac" gibi
+    const fix = (v) => typeof v === "string"
+      ? v.replace(/\f(?=[a-z])/g, "\\f").replace(/\u0008(?=[a-z])/g, "\\b").replace(/\t(?=[a-z])/g, "\\t").replace(/\r(?=[a-z])/g, "\\r").replace(/\n(?=(eq|abla|ot|u |e |i ))/g, "\\n")
+      : Array.isArray(v) ? v.map(fix) : v && typeof v === "object" ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, fix(x)])) : v;
+    return fix(data);
+  }
+
+  async function generate(opts) {
+    let engine = await App.engine.resolve(opts.signal);
+    const once = async (eng) => {
+      await eng.prepare(opts.signal);
+      const cfg = eng.config();
+      if (opts.onStage) opts.onStage(eng, cfg.chatModel);
+      const res = await eng.chat({
+        model: cfg.chatModel,
+        messages: [{ role: "system", content: opts.system }, { role: "user", content: opts.prompt }],
+        options: { temperature: opts.temperature != null ? opts.temperature : 0.7, num_ctx: 8192, json: true },
+        signal: opts.signal
+      });
+      return { data: parseJSON(res.text), text: res.text, engine: eng.id, model: res.model || cfg.chatModel };
+    };
+    try {
+      return await once(engine);
+    } catch (e) {
+      const offline = e && (e.code === "offline" || e.code === "token" || e.code === "file-origin");
+      if (offline && App.engine.canFallback(engine) && !(opts.signal && opts.signal.aborted)) {
+        App.engine.markLocalDown();
+        return once(App.engine.cloud());
+      }
+      // JSON bozuk geldiyse bir kez daha dene
+      if (e && (e.message === "json" || e instanceof SyntaxError)) return once(engine);
+      throw e;
+    }
+  }
+
+  App.ai = { run, systemPrompt, generate, parseJSON };
 })();

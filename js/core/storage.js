@@ -7,7 +7,16 @@
        progress   : tamamlanan kazanımlar
        notes      : kazanım başına kişisel notlar
        chats      : yapay zeka sohbet geçmişi
-       vectors    : bge-m3 hafıza vektörleri (yedeğe girmez, yeniden üretilebilir)
+       vectors    : hafıza vektörleri (yedeğe girmez, yeniden üretilebilir)
+       mistakes   : yanlış defteri
+       quizzes    : konu sonu test sonuçları
+       sessions   : odak (Pomodoro) oturumları
+       meta       : hedefler, YKS tarihi gibi tekil kayıtlar
+       tomb       : eşitleme için silinen kayıtların izi
+
+   Eşitlenen depolarda her yazma kayda "_u" (son değişiklik, ms) damgası
+   ekler; silmeler "tomb" deposuna yazılır. Eşitleme (sync.js) bunları
+   sunucuya gönderir; en son değişiklik kazanır.
    • Küçük ayarlar         → localStorage (App.prefs)
 
    IndexedDB açılamazsa (bazı tarayıcılar file:// modunda izin
@@ -16,15 +25,19 @@
    ========================================================= */
 (function () {
   const DB_NAME = "ders-asistani";
-  const DB_VERSION = 2;               // şema değişince artırılır (2: chats + vectors)
-  const STORES = ["exams", "schedules", "progress", "notes", "chats", "vectors"];
+  const DB_VERSION = 3;               // şema değişince artırılır (2: chats + vectors, 3: test, yanlış defteri, odak, eşitleme)
+  const STORES = ["exams", "schedules", "progress", "notes", "chats", "vectors", "mistakes", "quizzes", "sessions", "meta", "tomb"];
+  /** Cihazlar arasında eşitlenen depolar */
+  const SYNC_STORES = ["exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "meta"];
   /** Yedek dosyasına giren depolar (vektörler bilgisayarda yeniden hesaplanabildiği için hariç) */
-  const BACKUP_STORES = ["exams", "schedules", "progress", "notes", "chats"];
+  const BACKUP_STORES = ["exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "meta"];
+  const isSync = (store) => SYNC_STORES.indexOf(store) > -1;
+  const TOMB_SEP = "\u0001";
   const LS_PREFIX = "da:";
 
   /* ---------------- Ayarlar (localStorage) ---------------- */
   /** Yedeğe girmeyen ayarlar: anahtarlar, bağlantı kodu/adresi, otomatik seçilen modeller */
-  const PRIVATE_PREF = /(Key|Token|Busy|AutoModel|AutoAt)$|^aiUrl$/;
+  const PRIVATE_PREF = /(Key|Token|Busy|AutoModel|AutoAt|AutoSpeed)$|^aiUrl$|^sync|^focusState$/;
 
   App.prefs = {
     get(key, fallback) {
@@ -127,35 +140,50 @@
     },
     get engine() { return engine ? engine.kind : "none"; },
 
+    STORES, SYNC_STORES,
     getAll: (store) => engine.getAll(store),
     get: (store, id) => engine.get(store, id),
-    async put(store, obj) {
+    /** opts.fromSync: eşitlemeden gelen kayıt (damgası korunur, silme izi bırakılmaz) */
+    async put(store, obj, opts) {
+      if (isSync(store) && !(opts && opts.fromSync)) {
+        obj._u = Date.now();
+        engine.remove("tomb", store + TOMB_SEP + obj.id).catch(() => {});
+      }
       const saved = await engine.put(store, obj);
-      emit(store);
+      emit(store, opts);
       return saved;
     },
-    async remove(store, id) {
+    async remove(store, id, opts) {
       await engine.remove(store, id);
-      emit(store);
+      if (isSync(store) && !(opts && opts.fromSync)) await engine.put("tomb", { id: store + TOMB_SEP + id, store, rid: id, _u: Date.now() });
+      emit(store, opts);
     },
     async clear(store) {
       await engine.clear(store);
       emit(store);
     },
     /** Toplu yazma/silme (tek işlemde; hafıza vektörleri için) */
-    async putMany(store, rows) {
+    async putMany(store, rows, opts) {
       if (!rows.length) return;
+      if (isSync(store) && !(opts && opts.fromSync)) { const now = Date.now(); rows.forEach((r) => { r._u = now; }); }
       await engine.putMany(store, rows);
-      emit(store);
+      emit(store, opts);
     },
-    async removeMany(store, ids) {
+    async removeMany(store, ids, opts) {
       if (!ids.length) return;
       await engine.removeMany(store, ids);
-      emit(store);
+      if (isSync(store) && !(opts && opts.fromSync)) {
+        const now = Date.now();
+        await engine.putMany("tomb", ids.map((id) => ({ id: store + TOMB_SEP + id, store, rid: id, _u: now })));
+      }
+      emit(store, opts);
     },
 
     /** Bir depo değişince haber al: App.db.on("exams", fn) */
-    on(store, fn) { (listeners[store] = listeners[store] || []).push(fn); },
+    on(store, fn) {
+      (listeners[store] = listeners[store] || []).push(fn);
+      return () => { const l = listeners[store] || []; const i = l.indexOf(fn); if (i > -1) l.splice(i, 1); };
+    },
 
     /** Yedekleme: tüm veriyi tek JSON nesnesine çevirir */
     async exportAll() {
@@ -170,9 +198,11 @@
     /** Yedekten geri yükleme (mevcut veriyi değiştirir) */
     async importAll(data) {
       if (!data || data.app !== "ders-asistani" || !data.stores) throw new Error(App.t("set.notBackup"));
+      const now = Date.now();
       for (const s of BACKUP_STORES) {
         await engine.clear(s);
         const rows = (data.stores[s] || []).filter((row) => row && row.id != null);
+        rows.forEach((r) => { r._u = now; });            // geri yüklenen veri diğer cihazlara da gitsin
         if (rows.length) await engine.putMany(s, rows);
         emit(s);
       }
@@ -184,7 +214,8 @@
     }
   };
 
-  function emit(store) {
-    (listeners[store] || []).forEach((fn) => { try { fn(); } catch (e) { console.error(e); } });
+  function emit(store, opts) {
+    (listeners[store] || []).forEach((fn) => { try { fn(opts || {}); } catch (e) { console.error(e); } });
+    (listeners["*"] || []).forEach((fn) => { try { fn(store, opts || {}); } catch (e) { console.error(e); } });
   }
 })();

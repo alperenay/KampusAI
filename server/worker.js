@@ -11,6 +11,7 @@
      POST /v1beta/models/<model>:generateContent
      POST /v1beta/models/<model>:batchEmbedContents    → hafıza vektörleri
      GET  /health                                       → durum
+     POST /sync/<kod>                                   → cihazlar arası eşitleme (SyncRoom)
 
    Kötüye kullanımı sınırlamak için:
      • yalnızca Flash / Flash-Lite ve embedding modelleri (pahalı modeller kapalı)
@@ -22,6 +23,60 @@ const CHAT_MODEL = /^gemini-\d+(\.\d+)?-flash(-lite)?(-preview(-[\w-]+)?)?(-\d{2
 const EMBED_MODEL = /^gemini-embedding-[\w.-]+$/;
 const NOT_CHAT = /(tts|image|live|audio|transcribe|robotics)/;
 const MAX_BODY = 8 * 1024 * 1024;
+
+/* =========================================================
+   Cihazlar arası eşitleme
+   Her eşitleme kodu bir "oda"dır (Durable Object, SQLite). Cihazlar değişen
+   kayıtlarını gönderir, odadaki diğer değişiklikleri alır. Aynı kayıtta en son
+   değişiklik (u = ms zaman damgası) kazanır. Kod 12 karakterlik rastgele
+   dizidir (~60 bit); bilmeyen kimse odaya erişemez.
+   ========================================================= */
+const SYNC_CODE = /^[A-HJ-NP-Z2-9]{12}$/;
+const SYNC_STORES = new Set(["exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "meta"]);
+const SYNC_MAX_BODY = 25 * 1024 * 1024;
+const SYNC_MAX_ROW = 1900 * 1024;       // SQLite satır sınırı ~2 MB
+const SYNC_PAGE = 400;
+
+export class SyncRoom {
+  constructor(state) {
+    this.sql = state.storage.sql;
+    this.sql.exec("CREATE TABLE IF NOT EXISTS recs (s TEXT NOT NULL, id TEXT NOT NULL, u INTEGER NOT NULL, del INTEGER NOT NULL DEFAULT 0, d TEXT, seq INTEGER NOT NULL, PRIMARY KEY (s, id))");
+    this.sql.exec("CREATE INDEX IF NOT EXISTS recs_seq ON recs (seq)");
+    this.sql.exec("CREATE TABLE IF NOT EXISTS meta (k TEXT PRIMARY KEY, v INTEGER)");
+  }
+
+  seq() {
+    const row = this.sql.exec("SELECT v FROM meta WHERE k = 'seq'").toArray()[0];
+    return row ? Number(row.v) : 0;
+  }
+
+  async fetch(request) {
+    let body;
+    try { body = await request.json(); } catch (e) { return json(400, { error: "bad json" }); }
+    const cursor = Math.max(0, Number(body.cursor) || 0);
+    const changes = Array.isArray(body.changes) ? body.changes : [];
+    let seq = this.seq(), applied = 0;
+
+    for (const c of changes) {
+      if (!c || !SYNC_STORES.has(c.s) || typeof c.id !== "string" || c.id.length > 300) continue;
+      const u = Number(c.u) || 0;
+      const del = c.del ? 1 : 0;
+      const d = del ? null : JSON.stringify(c.d == null ? null : c.d);
+      if (d && d.length > SYNC_MAX_ROW) continue;
+      const cur = this.sql.exec("SELECT u FROM recs WHERE s = ? AND id = ?", c.s, c.id).toArray()[0];
+      if (cur && Number(cur.u) >= u) continue;                   // daha yeni (ya da aynı) kayıt zaten var
+      seq++;
+      this.sql.exec("INSERT OR REPLACE INTO recs (s, id, u, del, d, seq) VALUES (?, ?, ?, ?, ?, ?)", c.s, c.id, u, del, d, seq);
+      applied++;
+    }
+    if (applied) this.sql.exec("INSERT OR REPLACE INTO meta (k, v) VALUES ('seq', ?)", seq);
+
+    const rows = this.sql.exec("SELECT s, id, u, del, d, seq FROM recs WHERE seq > ? ORDER BY seq LIMIT ?", cursor, SYNC_PAGE).toArray();
+    const out = rows.map((r) => ({ s: r.s, id: r.id, u: Number(r.u), del: !!r.del, d: r.del ? null : JSON.parse(r.d) }));
+    const last = rows.length ? Number(rows[rows.length - 1].seq) : cursor;
+    return json(200, { cursor: rows.length === SYNC_PAGE ? last : Math.max(last, seq), more: rows.length === SYNC_PAGE, applied, changes: out });
+  }
+}
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
@@ -53,6 +108,21 @@ export default {
     if (url.pathname === "/" || url.pathname === "/health") {
       return json(200, { app: "ders-asistani", ok: !!key });
     }
+    // Eşitleme (Gemini anahtarı gerektirmez)
+    const sm = url.pathname.match(/^\/sync\/([A-Za-z0-9-]+)$/);
+    if (sm) {
+      if (request.method !== "POST") return json(405, { error: "POST" });
+      if (!env.SYNC) return json(503, { error: "sync not configured" });
+      const code = sm[1].replace(/-/g, "").toUpperCase();
+      if (!SYNC_CODE.test(code)) return json(400, { error: "bad code" });
+      const sip = request.headers.get("CF-Connecting-IP") || "?";
+      if (limited(sip, "s", Number(env.RATE_SYNC || 30))) return json(429, { error: "too many requests" });
+      if (Number(request.headers.get("content-length") || 0) > SYNC_MAX_BODY) return json(413, { error: "too large" });
+      const stub = env.SYNC.get(env.SYNC.idFromName(code));
+      const res = await stub.fetch("https://sync/room", { method: "POST", headers: { "content-type": "application/json" }, body: request.body });
+      return new Response(res.body, { status: res.status, headers: { ...CORS, "content-type": "application/json" } });
+    }
+
     if (!key) return gerr(503, "Sunucuda Gemini anahtarı tanımlı değil (GEMINI_API_KEY).");
 
     const ip = request.headers.get("CF-Connecting-IP") || "?";

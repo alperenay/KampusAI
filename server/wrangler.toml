@@ -7,3 +7,13 @@ workers_dev = true
 [vars]
 RATE_CHAT = "12"     # IP başına dakikada en fazla sohbet isteği
 RATE_EMBED = "40"    # IP başına dakikada en fazla hafıza (vektör) isteği
+RATE_SYNC = "30"     # IP başına dakikada en fazla eşitleme isteği
+
+# Cihazlar arası eşitleme: her kod bir Durable Object (SQLite) odası
+[[durable_objects.bindings]]
+name = "SYNC"
+class_name = "SyncRoom"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["SyncRoom"]

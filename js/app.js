@@ -139,17 +139,39 @@
     App.theme.onChange(renderThemeSwitch);
 
     await App.db.init();
+    await App.goals.load().catch(() => {});
+    App.goals.init();
+    App.focus.init();
 
     renderSideGrades();
     await renderSideExams();
     await renderSideChats();
     App.db.on("exams", renderSideExams);
+    // Yanlış defterinde bugün tekrar edilecek soru sayısı
+    const misBadge = async () => {
+      const c = await App.mistakes.counts();
+      const b = document.getElementById("misBadge");
+      if (b) { b.hidden = !c.due; b.textContent = c.due; }
+    };
+    misBadge();
+    App.db.on("mistakes", App.utils.debounce(misBadge, 200));
     App.db.on("chats", App.utils.debounce(renderSideChats, 150));
     window.addEventListener("hashchange", renderSideChats);
     App.i18n.onChange(onLanguageChange);
 
     App.router.register("", (view) => App.modules.assistant.render(view));
     App.router.start();
+
+    // Cihazlar arası eşitleme (kod girilmişse)
+    App.sync.init();
+    App.sync.onChange((st) => {
+      if (st.running || st.error || !st.received) return;
+      st.received = 0;
+      renderSideExams(); renderSideChats();
+      // Başka cihazdan veri geldiyse açık sayfayı tazele (yazı yazılırken ya da yanıt akarken değil)
+      const typing = document.activeElement && /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+      if (!typing && !App.modules.assistant.isBusy() && !document.querySelector(".modal-backdrop")) App.router.refresh();
+    });
 
     // Yapay zekayı arka planda yokla (Ollama açık mı, internet servisi ayarlı mı)
     App.modules.assistant.refreshStatus();

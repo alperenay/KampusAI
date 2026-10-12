@@ -693,3 +693,123 @@ button.block:hover { border-color: color-mix(in srgb, var(--c) 55%, transparent)
 .msg__avatar .logo-mark { width: 22px; height: 22px; }
 .home__brand { width: 72px; height: 72px; margin: 0 auto 6px; color: var(--text); opacity: .92; }
 @media (max-width: 600px) { .home__brand { width: 56px; height: 56px; } }
+
+/* =========================================================
+   1.1: eşitleme, yanlış defteri, konu testi, odak, hedefler, plan
+   ========================================================= */
+.nav__badge { margin-left: auto; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 10px; background: var(--accent); color: #fff; font-size: 11.5px; font-weight: 600; display: inline-grid; place-items: center; }
+.app.is-collapsed .nav__badge { display: none; }
+
+/* Eşitleme */
+.sync-choice { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.sync-choice__card { padding: 16px; display: grid; gap: 10px; align-content: start; }
+.sync-join { display: flex; gap: 8px; }
+.sync-code-input { font-family: var(--mono); letter-spacing: .12em; text-transform: uppercase; min-width: 0; }
+.sync-code { font-size: 17px; justify-self: start; }
+
+/* Seçenekli sorular (test + yanlış defteri) */
+.opts { list-style: none; display: grid; gap: 8px; margin: 12px 0 4px; padding: 0; }
+.opts li { list-style: none; }
+.opt { display: flex; gap: 12px; align-items: flex-start; width: 100%; text-align: left; padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface-2); color: var(--text); font: inherit; line-height: 1.55; transition: border-color .15s, background .15s; }
+button.opt { cursor: pointer; }
+button.opt:hover:not(:disabled) { border-color: var(--border-strong); background: var(--surface-3); }
+.opt__letter { flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 13px; background: var(--surface-3); color: var(--text-2); }
+.opt__text { flex: 1; min-width: 0; padding-top: 1px; }
+.opt__text p { margin: 0; }
+.opt.is-picked { border-color: var(--accent-text); background: var(--accent-soft); }
+.opt.is-picked .opt__letter { background: var(--accent); color: #fff; }
+.opt.is-correct { border-color: color-mix(in srgb, var(--good) 70%, transparent); background: var(--good-soft); }
+.opt.is-correct .opt__letter { background: var(--good); color: #fff; }
+.opt.is-wrong { border-color: color-mix(in srgb, var(--bad) 70%, transparent); background: color-mix(in srgb, var(--bad) 12%, transparent); }
+.opt.is-wrong .opt__letter { background: var(--bad); color: #fff; }
+button.opt:disabled { cursor: default; }
+
+/* Konu testi */
+.quiz-meta { margin: -6px 0 14px; }
+.quiz-q { margin-bottom: 12px; padding: 18px; }
+.quiz-q__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.quiz-q__mark { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; }
+.quiz-q__mark .ico { width: 16px; height: 16px; }
+.quiz-q.is-right .quiz-q__mark { color: var(--good-text); }
+.quiz-q.is-missed .quiz-q__mark { color: var(--bad); }
+.quiz-q__explain { margin-top: 10px; padding: 10px 12px; border-left: 3px solid var(--accent-text); background: var(--surface-2); border-radius: 0 10px 10px 0; font-size: 14.5px; }
+.quiz-q__explain .md p { margin: 4px 0 0; }
+.quiz-finish { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; position: sticky; bottom: 12px; z-index: 2; }
+.quiz-result { padding: 22px; text-align: center; display: grid; gap: 10px; justify-items: center; margin-top: 6px; }
+.quiz-score { display: grid; gap: 4px; justify-items: center; }
+.quiz-score__big { font-family: var(--font-display); font-size: 56px; font-weight: 600; line-height: 1; }
+.quiz-score__big small { font-size: 24px; color: var(--muted); font-weight: 400; }
+.quiz-verdict { font-size: 16px; color: var(--text-2); }
+.quiz-result .hint .ico { width: 15px; height: 15px; vertical-align: -3px; margin-right: 4px; }
+.quiz-loading { padding: 22px; display: grid; gap: 10px; }
+.quiz-card__row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+/* Yanlış defteri */
+.mis-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.mis-bar .tab { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.mis-list { display: grid; gap: 12px; }
+.mis { padding: 16px 18px; }
+.mis__head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; font-size: 13px; }
+.mis__label { font-weight: 600; color: var(--text); flex: 1 1 280px; min-width: 0; }
+.mis__head .icon-btn { margin-left: auto; }
+.mis__next { color: var(--muted); }
+.mis__img { display: block; max-width: 100%; max-height: 340px; border-radius: 12px; margin: 6px 0 10px; border: 1px solid var(--border); background: #fff; }
+.mis__thumb { max-height: 64px; border-radius: 8px; border: 1px solid var(--border); }
+.mis__q { font-size: 15px; }
+.mis__explain { margin-top: 10px; padding: 10px 12px; border-left: 3px solid var(--good); background: var(--surface-2); border-radius: 0 10px 10px 0; }
+.mis__actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+/* Odak sayacı */
+.focus { padding: 22px; display: grid; justify-items: center; gap: 16px; }
+.focus__phases .tab { min-width: 92px; }
+.focus__ring { position: relative; width: min(260px, 72vw); aspect-ratio: 1; }
+.focus__ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.focus__track { fill: none; stroke: var(--surface-3); stroke-width: 12; }
+.focus__bar { fill: none; stroke: var(--accent-text); stroke-width: 12; stroke-linecap: round; transition: stroke-dashoffset .5s linear; }
+.focus__bar.is-break { stroke: var(--good); }
+.focus__time { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+.focus__time span { font-family: var(--font-display); font-size: clamp(44px, 12vw, 60px); font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+.focus__time small { color: var(--muted); font-size: 14px; }
+.focus__subject { width: min(320px, 100%); }
+.focus__controls { display: flex; gap: 10px; align-items: center; }
+.focus__main { min-width: 150px; height: 48px; font-size: 16px; justify-content: center; }
+.focus__cfg { width: 100%; }
+.focus__cfg summary { cursor: pointer; color: var(--muted); font-size: 14px; text-align: center; }
+.focus__cfg .form-row { margin-top: 12px; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+.wk-bars { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; align-items: end; height: 150px; margin-top: 14px; }
+.wk-bar { display: grid; grid-template-rows: auto 1fr auto; height: 100%; align-items: end; justify-items: center; gap: 4px; }
+.wk-bar__fill { width: 70%; max-width: 38px; background: var(--chart-line); border-radius: 6px 6px 2px 2px; min-height: 2px; align-self: end; opacity: .75; }
+.wk-bar__fill.is-today { opacity: 1; box-shadow: 0 0 0 2px var(--today-ring); }
+.wk-bar__val { font-size: 11.5px; color: var(--muted); }
+.wk-bar__day { font-size: 12px; color: var(--text-2); }
+.focus-chip { gap: 6px; font-variant-numeric: tabular-nums; }
+.focus-chip[hidden] { display: none; }
+.focus-chip.is-break { background: var(--good-soft); color: var(--good-text); }
+.focus-chip.is-paused { opacity: .75; }
+@media (max-width: 600px) { .focus-chip span { max-width: 70px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } }
+
+/* Hedefler */
+.yks-count { display: inline-flex; align-items: center; gap: 8px; align-self: center; margin: -8px auto 14px; padding: 6px 14px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--border); color: var(--text-2); font-size: 14px; text-decoration: none; -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); }
+.yks-count .ico { width: 16px; height: 16px; color: var(--accent-text); }
+.yks-count small { color: var(--muted); font-size: 12px; }
+.yks-count:hover { border-color: var(--border-strong); color: var(--text); }
+.goal-card { padding: 18px; margin-bottom: 14px; }
+.goal-card__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.goal-card .card__title .ico { width: 17px; height: 17px; vertical-align: -3px; margin-right: 6px; color: var(--accent-text); }
+.goal-main { display: grid; gap: 8px; }
+.goal-main__nums { font-family: var(--font-display); }
+.goal-main__cur { font-size: 34px; font-weight: 600; }
+.goal-main__sep { font-size: 24px; color: var(--muted); margin: 0 4px; }
+.goal-main__target { font-size: 24px; color: var(--text-2); }
+.goal-track { height: 12px; position: relative; border-radius: 6px; }
+.bar-row__fill.is-done { background: var(--good); }
+.goal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+
+/* Yapay zekayla plan */
+.btn--ai { border-color: color-mix(in srgb, var(--accent-text) 45%, var(--border)); }
+.btn--ai .ico { color: var(--accent-text); }
+.modal--plan { width: min(1100px, 100%); }
+.modal--plan .week { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+.plan-summary { display: flex; gap: 8px; align-items: flex-start; padding: 12px 14px; border-radius: 12px; background: var(--accent-soft); color: var(--text); margin-bottom: 14px; }
+.plan-summary .ico { flex: none; width: 18px; height: 18px; margin-top: 2px; color: var(--accent-text); }
+.mis-bar .tabs { max-width: 100%; overflow-x: auto; scrollbar-width: none; }

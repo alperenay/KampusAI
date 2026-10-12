@@ -59,7 +59,7 @@
       '<a class="btn btn--primary" href="#/denemeler/yeni/' + type.toLowerCase() + '">' + App.icon("plus") + esc(t("ex.addType", { type })) + "</a></div></div>";
 
     if (!list.length) {
-      view.innerHTML = '<div class="page">' + head +
+      view.innerHTML = '<div class="page">' + head + App.goals.cardHtml(type, []) +
         App.ui.empty("chart", t("ex.emptyTitle", { type }), t("ex.emptyText"),
           '<a class="btn btn--primary" href="#/denemeler/yeni/' + type.toLowerCase() + '">' + App.icon("plus") + esc(t("ex.addFirst")) + "</a>") +
         "</div>";
@@ -95,6 +95,7 @@
 
     view.innerHTML =
       '<div class="page">' + head +
+        App.goals.cardHtml(type, computed) +
         '<div class="grid grid--4">' +
           stat(t("ex.count"), list.length, esc(fmtDate(list[0].date, true) + " – " + fmtDate(last.exam.date, true))) +
           stat(t("ex.avg"), fmtNum(avg, 1), esc(t("ex.allOfType", { type }))) +

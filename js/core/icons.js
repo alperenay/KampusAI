@@ -6,6 +6,13 @@
   const P = {
     panel:    '<rect x="3.5" y="4" width="17" height="16" rx="3"/><path d="M9 4v16"/>',
     menu:     '<path d="M4 7h16M4 12h16M4 17h16"/>',
+    timer:    '<circle cx="12" cy="13.5" r="7.5"/><path d="M12 9.5v4l2.5 2M9.5 2.5h5M19 6l1.5-1.5"/>',
+    play:     '<path d="M8 5.5v13l10.5-6.5z"/>',
+    pause:    '<path d="M8.5 5.5v13M15.5 5.5v13"/>',
+    flag:     '<path d="M5.5 21V4M5.5 4.5h11l-2 3.75 2 3.75h-11"/>',
+    bookmark: '<path d="M6.5 3.5h11v17l-5.5-4-5.5 4z"/>',
+    xCircle:  '<circle cx="12" cy="12" r="8.5"/><path d="M9 9l6 6M15 9l-6 6"/>',
+    quiz:     '<rect x="4" y="3.5" width="16" height="17" rx="3"/><path d="M8 8.5h8M8 12h8M8 15.5h5"/>',
     sparkle:  '<path d="M12 3.5l1.9 4.6 4.6 1.9-4.6 1.9L12 16.5l-1.9-4.6L5.5 10l4.6-1.9z"/><path d="M18.5 15.5l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8z"/>',
     calendar: '<rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
     book:     '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20v3H6.5"/>',

@@ -170,6 +170,7 @@
       '<div class="home">' +
         '<div class="home__brand" aria-hidden="true">' + App.icon("logo") + "</div>" +
         '<h1 class="home__title">' + (first ? "<b>" + esc(t("ai.hello", { name: first })) + "</b><br>" : "") + esc(t("ai.headline")) + "</h1>" +
+        (App.goals ? App.goals.countdownHtml() : "") +
         composerHtml(t("ai.placeholder")) +
         '<p class="ai-notice" id="aiNotice" hidden></p>' +
         '<nav class="quick" aria-label="' + esc(t("ai.quick")) + '">' +
@@ -198,7 +199,7 @@
   function sourcesHtml(src) {
     if (!src) return "";
     const items = ['<li>' + App.icon("chart") + "<span>" + esc(t("ai.src.overview")) + "</span></li>"].concat(src.hits.map((h) =>
-      '<li>' + App.icon(h.kind === "exam" ? "chart" : h.kind === "schedule" ? "calendar" : h.kind === "note" ? "note" : h.kind === "lesson" ? "book" : "checkCircle") +
+      '<li>' + App.icon(h.kind === "exam" ? "chart" : h.kind === "schedule" ? "calendar" : h.kind === "note" ? "note" : h.kind === "lesson" ? "book" : h.kind === "quiz" ? "quiz" : h.kind === "mistake" ? "bookmark" : "checkCircle") +
       '<a href="' + esc(h.link) + '">' + esc(h.label) + "</a>" +
       '<span class="src-score" title="' + esc(t("ai.src.score")) + '">' + Math.round(h.score * 100) + "%</span></li>"));
     return '<details class="msg__details"><summary>' + App.icon("search") + esc(t("ai.src.title", { n: src.hits.length + 1 })) + "</summary>" +
@@ -261,6 +262,7 @@
       parts.push('<div class="msg__foot">' + chain +
         (msg.durationMs ? '<span class="msg__meta">' + esc(t("ai.seconds", { n: Math.round(msg.durationMs / 1000) })) + (speed ? " · " + esc(speed) : "") + "</span>" : "") +
         (msg.text ? '<button class="icon-btn icon-btn--sm" type="button" data-act="copy" data-mid="' + esc(msg.id) + '" title="' + esc(t("ai.copy")) + '">' + App.icon("copy") + "</button>" : "") +
+        (msg.text ? '<button class="icon-btn icon-btn--sm" type="button" data-act="to-mistakes" data-mid="' + esc(msg.id) + '" title="' + esc(t("mis.addFromChat")) + '">' + App.icon("bookmark") + "</button>" : "") +
         "</div>");
     }
     return '<div class="msg__avatar">' + App.icon("logo") + '</div><div class="msg__body">' + parts.join("") + "</div>";
@@ -524,6 +526,12 @@
       if (a === "copy" && msg) {
         try { await navigator.clipboard.writeText(msg.text); App.ui.toast(t("ai.copied")); }
         catch (err) { App.ui.toast(t("ai.copyFailed"), "error"); }
+      } else if (a === "to-mistakes" && msg) {
+        const idx = c.messages.indexOf(msg);
+        const u = c.messages.slice(0, idx).reverse().find((m) => m.role === "user");
+        const q = [u && u.text, u && u.transcription].filter(Boolean).join("\n\n");
+        await App.mistakes.add({ source: "chat", label: c.title || t("mis.src.chat"), q, image: (u && u.image) || null, explain: msg.text, nextAt: new Date().toISOString() });
+        App.ui.toast(t("mis.added"));
       } else if (a === "retry") retry(c);
       else if (a === "reload-model") {
         act.disabled = true;
@@ -572,10 +580,24 @@
 
   function render(view) {
     renderHome(view);
+    if (autoSend) {
+      autoSend = false;
+      const form = view.querySelector("#composer");
+      if (form) setTimeout(() => form.requestSubmit(), 60);
+    }
     return cleanup(view);
+  }
+
+  /** Başka sayfadan (ör. yanlış defteri) hazır bir soruyla yeni sohbet başlat */
+  let autoSend = false;
+  function startWith(text, imageDataUrl) {
+    if (live.controller) { App.ui.toast(t("ai.busy")); return; }
+    draft = { text: text || "", image: imageDataUrl ? { dataUrl: imageDataUrl, base64: String(imageDataUrl).split(",")[1], width: 0, height: 0 } : null };
+    autoSend = true;
+    if (location.hash === "#/" || location.hash === "") App.router.refresh(); else App.router.go("");
   }
 
   function reset() { if (!live.controller) draft = { image: null, text: "" }; }
 
-  App.modules.assistant = { render, reset, refreshStatus, status, listChats, deleteChat, onStatus: (fn) => statusListeners.push(fn), isBusy: () => !!live.controller, liveChatId: () => live.chatId };
+  App.modules.assistant = { render, reset, startWith, refreshStatus, status, listChats, deleteChat, onStatus: (fn) => statusListeners.push(fn), isBusy: () => !!live.controller, liveChatId: () => live.chatId };
 })();

@@ -56,7 +56,11 @@
           '<label class="field"><span class="field__label">' + esc(t("set.language")) + '</span><select class="select" id="setLang">' + langOptions + "</select></label>" +
         "</div>" +
         '<label class="field"><span class="field__label">' + esc(t("set.theme")) + '</span><select class="select" id="setTheme">' + themeOptions + "</select></label>" +
-        '<button class="btn" type="button" id="setAi" style="justify-self:start">' + App.icon("sparkle") + esc(t("set.aiSettings")) + "</button>" +
+        '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
+          '<button class="btn" type="button" id="setAi">' + App.icon("sparkle") + esc(t("set.aiSettings")) + "</button>" +
+          (App.sync.available() ? '<button class="btn" type="button" id="setSync">' + App.icon("refresh") + esc(t("sync.title")) +
+            (App.sync.enabled() ? ' <span class="badge badge--good">' + esc(t("sync.on")) + "</span>" : "") + "</button>" : "") +
+        "</div>" +
         '<div class="card" style="padding:16px">' +
           '<div class="card__title">' + esc(t("set.backupTitle")) + "</div>" +
           '<p class="card__sub" style="margin-bottom:12px">' + esc(t("set.backupText")) +
@@ -85,6 +89,8 @@
     });
     m.el.querySelector("#setName").addEventListener("keydown", (e) => { if (e.key === "Enter") m.el.querySelector("#setSave").click(); });
     m.el.querySelector("#setAi").addEventListener("click", () => { m.close(); App.modules.aiSettings.open(); });
+    const syncBtn = m.el.querySelector("#setSync");
+    if (syncBtn) syncBtn.addEventListener("click", () => { m.close(); App.modules.syncUi.open(); });
     m.el.querySelector("#setExport").addEventListener("click", exportBackup);
     m.el.querySelector("#setImport").addEventListener("change", async (e) => {
       const f = e.target.files[0];
@@ -95,6 +101,7 @@
     m.el.querySelector("#setReset").addEventListener("click", async () => {
       m.close();
       if (await App.ui.confirm(t("set.resetConfirm"), t("set.resetOk"), true)) {
+        App.sync.stop();                      // diğer cihazlardaki veriler bu cihaza geri gelmesin
         await App.db.resetAll();
         App.ui.toast(t("set.resetDone"));
         App.router.refresh();
