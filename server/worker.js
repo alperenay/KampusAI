@@ -58,6 +58,38 @@ export default {
     const ip = request.headers.get("CF-Connecting-IP") || "?";
     const upHeaders = { "content-type": "application/json", "x-goog-api-key": key };
 
+    // Hız ölçümü: /bench?m=model1,model2&t=low  (t: düşünme seviyesi; "budget0" = 2.5 için kapalı)
+    if (request.method === "GET" && url.pathname === "/bench") {
+      if (limited(ip, "b", 3)) return gerr(429, "Çok sık", "RESOURCE_EXHAUSTED");
+      const models = (url.searchParams.get("m") || "").split(",").filter((n) => CHAT_MODEL.test(n)).slice(0, 6);
+      const think = url.searchParams.get("t") || "";
+      const prompt = "x^2 - 5x + 6 = 0 denkleminin köklerini adım adım bul ve kökler toplamını yaz.";
+      const out = [];
+      for (const n of models) {
+        const gc = {};
+        if (think === "budget0") gc.thinkingConfig = { thinkingBudget: 0 };
+        else if (think) gc.thinkingConfig = { thinkingLevel: think };
+        const t0 = Date.now(); let first = 0, text = "", status = 0, err = "";
+        try {
+          const r = await fetch(UPSTREAM + "/models/" + n + ":streamGenerateContent?alt=sse", { method: "POST", headers: upHeaders,
+            body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: gc }) });
+          status = r.status;
+          if (!r.ok) err = (await r.text()).slice(0, 160);
+          else {
+            const reader = r.body.getReader(); const dec = new TextDecoder();
+            for (;;) {
+              const { done, value } = await reader.read(); if (done) break;
+              const chunk = dec.decode(value, { stream: true });
+              const m = chunk.match(/"text":\s*"/); if (m && !first) first = Date.now() - t0;
+              text += chunk;
+            }
+          }
+        } catch (e) { err = String(e); }
+        out.push({ model: n, think, status, firstMs: first, totalMs: Date.now() - t0, chars: text.length, err });
+      }
+      return json(200, out);
+    }
+
     // Kısa sağlık denemesi: Flash modellerine sırayla "2+3?" sorar (kurulumu doğrulamak için)
     if (request.method === "GET" && url.pathname === "/selftest") {
       if (limited(ip, "c", 4)) return gerr(429, "Çok sık", "RESOURCE_EXHAUSTED");
