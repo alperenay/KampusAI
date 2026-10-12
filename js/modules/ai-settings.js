@@ -19,7 +19,7 @@
     { key: "aiVisionModel", role: "vision", icon: "eye",     def: () => App.ollama.DEFAULTS.visionModel }
   ];
   /* Formdaki tüm ayar anahtarları (test sırasında geçici uygulanır, iptalde geri alınır) */
-  const KEYS = ["aiMode", "aiCloud", "gemKey", "gemModel", "gemEmbed", "oaPreset", "oaBase", "oaKey", "oaModel", "oaVision", "oaEmbed",
+  const KEYS = ["aiMode", "aiCloud", "srvSpeed", "gemSpeed", "gemKey", "gemModel", "gemEmbed", "oaPreset", "oaBase", "oaKey", "oaModel", "oaVision", "oaEmbed",
     "aiUrl", "aiToken", "aiChatModel", "aiEmbedModel", "aiVisionModel"];
 
   const v = (k, d) => { const x = App.prefs.get(k, null); return x == null ? (d == null ? "" : d) : x; };
@@ -49,9 +49,12 @@
         (App.cloud.server.configured() ? [["server", t("ais.server")]] : []).concat([["gemini", t("ais.ownGemini")], ["openai", t("ais.openaiCompat")]]),
         v("aiCloud", App.engine.defaultCloud()))) +
       (App.cloud.server.configured()
-        ? '<div data-panel-cloud="server" class="ais-stack"><p class="hint">' + esc(t("ais.serverHint")) + '</p><p class="hint">' + esc(t("ais.serverPrivacy")) + "</p></div>" : "") +
+        ? '<div data-panel-cloud="server" class="ais-stack"><p class="hint">' + esc(t("ais.serverHint")) + "</p>" +
+            field(esc(t("ais.speed")), seg("srvSpeed", [["fast", t("ais.speed.fast")], ["smart", t("ais.speed.smart")]], v("srvSpeed", "fast")), esc(t("ais.speedHint"))) +
+            '<p class="hint">' + esc(t("ais.serverPrivacy")) + "</p></div>" : "") +
       '<div data-panel-cloud="gemini" class="ais-stack">' +
         field(esc(t("ais.apiKey")), keyInput("gemKey", v("gemKey"), "AIza…"), esc(t("ais.gemKeyHint")) + " " + link(App.cloud.gemini.keyUrl, t("ais.getKey"))) +
+        field(esc(t("ais.speed")), seg("gemSpeed", [["fast", t("ais.speed.fast")], ["smart", t("ais.speed.smart")]], v("gemSpeed", "fast")), esc(t("ais.speedHint"))) +
         field(App.icon("sparkle") + esc(t("ais.gemModel")),
           '<select class="select" id="gemModel"><option value="">' + esc(t("ais.autoModel", { model: v("gemAutoModel", "") || "…" })) + "</option>" +
           (v("gemModel") ? '<option value="' + esc(v("gemModel")) + '" selected>' + esc(v("gemModel")) + "</option>" : "") + "</select>",
@@ -167,6 +170,8 @@
       const set = (k, val) => App.prefs.set(k, val === "" ? null : val);
       set("aiMode", segVal("aiMode"));
       set("aiCloud", segVal("aiCloud"));
+      if (el.querySelector('[data-seg="srvSpeed"]')) set("srvSpeed", segVal("srvSpeed"));
+      set("gemSpeed", segVal("gemSpeed"));
       set("gemKey", $("#gemKey").value.trim());
       set("gemModel", $("#gemModel").value.trim());
       set("gemEmbed", $("#gemEmbed").value.trim());

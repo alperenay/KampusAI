@@ -390,5 +390,9 @@ App.locales.en = {
   "pair.scanBtn": "Connect to computer with QR code",
   "pair.scanBtnHint": "Uses the models on your computer over home Wi-Fi. When you're out, the app switches to the internet automatically.",
   "ai.err.busyTitle": "{name} is very busy right now.",
-  "ai.err.busyBody": "Google's servers are temporarily overloaded. Try again in a few seconds."
+  "ai.err.busyBody": "Google's servers are temporarily overloaded. Try again in a few seconds.",
+  "ais.speed": "Answer preference",
+  "ais.speed.fast": "Fast (recommended)",
+  "ais.speed.smart": "Stronger",
+  "ais.speedHint": "Fast: Flash-Lite model, answers start in 1-2 seconds and the daily quota is larger. Stronger: Flash model, slightly better on hard questions but answers can take 5-10 seconds to start."
 };

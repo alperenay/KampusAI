@@ -388,5 +388,9 @@ App.locales.tr = {
   "pair.scanBtn": "QR kodla bilgisayara bağlan",
   "pair.scanBtnHint": "Evdeki Wi-Fi'da bilgisayardaki modelleri kullanmak için. Dışarıdayken uygulama kendiliğinden internete geçer.",
   "ai.err.busyTitle": "{name} şu an çok yoğun.",
-  "ai.err.busyBody": "Google'ın sunucularında geçici yoğunluk var. Birkaç saniye sonra tekrar dene."
+  "ai.err.busyBody": "Google'ın sunucularında geçici yoğunluk var. Birkaç saniye sonra tekrar dene.",
+  "ais.speed": "Yanıt tercihi",
+  "ais.speed.fast": "Hızlı (önerilen)",
+  "ais.speed.smart": "Daha güçlü",
+  "ais.speedHint": "Hızlı: Flash-Lite modeli, yanıt 1-2 saniyede başlar ve günlük kotası geniştir. Daha güçlü: Flash modeli, zor sorularda biraz daha iyi ama yanıtın başlaması 5-10 saniye sürebilir."
 };

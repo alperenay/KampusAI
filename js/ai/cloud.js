@@ -105,24 +105,30 @@
   const G_AUTO_TTL = 3 * 24 * 3600 * 1000;     // otomatik seçilen modeli 3 günde bir yeniden belirle
   const NOT_CHAT = /(embedding|tts|live|image|imagen|veo|lyria|audio|transcribe|robotics|translate|aqa|research|antigravity|computer|nano-banana|learnlm)/i;
 
-  /** Listeden en yeni "flash" modelini seç (hızlı ve ücretsiz katmanda) */
-  function pickGeminiModel(names) {
-    const ver = (n) => { const m = n.match(/gemini-(\d+(?:\.\d+)?)/); return m ? parseFloat(m[1]) : 0; };
-    const chat = names.filter((n) => /^gemini-/.test(n) && !NOT_CHAT.test(n));
-    const byVer = (list) => list.sort((a, b) => ver(b) - ver(a))[0];
-    return byVer(chat.filter((n) => /^gemini-\d+(\.\d+)?-flash$/.test(n))) ||
-      byVer(chat.filter((n) => /-flash/.test(n) && !/lite/.test(n) && !/preview|exp/.test(n))) ||
-      byVer(chat.filter((n) => /-flash/.test(n) && !/lite/.test(n))) ||
-      byVer(chat.filter((n) => /-flash/.test(n))) ||
-      byVer(chat) || null;
+  /* Hız ölçümü (Ekim 2026, ücretsiz anahtar, sunucu üzerinden):
+       gemini-3.5-flash-lite  ilk kelime ~0,4 sn, yanıt ~1,7 sn   ← "Hızlı" (varsayılan)
+       gemini-3.6-flash       ilk kelime ~4 sn,   yanıt ~7 sn
+       gemini-3.8-flash       ilk kelime ~9-12 sn (önce uzun süre "düşünüyor")
+     Flash modellerinin ücretsiz günlük kotası da Flash-Lite'a göre çok daha düşük. */
+  const gver = (n) => { const m = n.match(/gemini-(\d+(?:\.\d+)?)/); return m ? parseFloat(m[1]) : 0; };
+
+  /**
+   * Model sıralaması (ilk = otomatik seçilen, sonrakiler yoğunlukta yedek).
+   * speed "fast"  : kararlı Flash-Lite → kararlı Flash → önizlemeler
+   * speed "smart" : kararlı Flash → kararlı Flash-Lite → önizlemeler
+   */
+  function rankGeminiModels(names, speed) {
+    const chat = names.filter((n) => /^gemini-/.test(n) && /-flash/.test(n) && !NOT_CHAT.test(n));
+    const lite = (n) => /lite/.test(n), pre = (n) => /preview|exp/.test(n);
+    const tier = (n) => (pre(n) ? 2 : (speed === "smart" ? !lite(n) : lite(n)) ? 0 : 1);
+    return chat.sort((a, b) => tier(a) - tier(b) || gver(b) - gver(a));
   }
 
-  /** Yedek sıralaması: kararlı Flash (yeniden eskiye) → önizleme Flash → Flash-Lite */
-  function rankGeminiModels(names) {
-    const ver = (n) => { const m = n.match(/gemini-(\d+(?:\.\d+)?)/); return m ? parseFloat(m[1]) : 0; };
-    const chat = names.filter((n) => /^gemini-/.test(n) && /-flash/.test(n) && !NOT_CHAT.test(n));
-    const tier = (n) => (/lite/.test(n) ? 2 : /preview|exp/.test(n) ? 1 : 0);
-    return chat.sort((a, b) => tier(a) - tier(b) || ver(b) - ver(a));
+  function pickGeminiModel(names, speed) {
+    const ranked = rankGeminiModels(names.slice(), speed || "fast");
+    if (ranked.length) return ranked[0];
+    const chat = names.filter((n) => /^gemini-/.test(n) && !NOT_CHAT.test(n)).sort((a, b) => gver(b) - gver(a));
+    return chat[0] || null;
   }
 
   function geminiError(status, body, text, model) {
@@ -181,14 +187,19 @@
       })).filter((m) => m.name);
     },
 
+    /** "fast" (Flash-Lite, varsayılan) ya da "smart" (Flash) */
+    speed: () => (str(P + "Speed") === "smart" ? "smart" : "fast"),
+
     /** Otomatik model seçimi (gerekirse listeyi alır) */
     async prepare(signal, force) {
       if (str(P + "Model")) return;
       const at = Number(pref(P + "AutoAt", 0));
-      if (!force && str(P + "AutoModel") && Date.now() - at < G_AUTO_TTL) return;
+      const sameSpeed = str(P + "AutoSpeed") === this.speed();
+      if (!force && sameSpeed && str(P + "AutoModel") && Date.now() - at < G_AUTO_TTL) return;
       const list = await this.listModels(signal);
-      const picked = pickGeminiModel(list.filter((m) => m.methods.includes("generateContent")).map((m) => m.name));
-      if (picked) { App.prefs.set(P + "AutoModel", picked); App.prefs.set(P + "AutoAt", Date.now()); }
+      const picked = pickGeminiModel(list.filter((m) => m.methods.includes("generateContent")).map((m) => m.name), this.speed());
+      if (picked) { App.prefs.set(P + "AutoModel", picked); App.prefs.set(P + "AutoAt", Date.now()); App.prefs.set(P + "AutoSpeed", this.speed()); }
+      this._ranked = null;
     },
 
     async check(signal) {
@@ -196,8 +207,9 @@
       const names = list.map((m) => m.name);
       const chatModels = list.filter((m) => m.methods.includes("generateContent") && !NOT_CHAT.test(m.name)).map((m) => m.name);
       if (!str(P + "Model")) {
-        const picked = pickGeminiModel(chatModels);
-        if (picked) { App.prefs.set(P + "AutoModel", picked); App.prefs.set(P + "AutoAt", Date.now()); }
+        const picked = pickGeminiModel(chatModels, this.speed());
+        if (picked) { App.prefs.set(P + "AutoModel", picked); App.prefs.set(P + "AutoAt", Date.now()); App.prefs.set(P + "AutoSpeed", this.speed()); }
+        this._ranked = null;
       }
       const cfg = this.config();
       const chat = names.includes(cfg.chatModel);
@@ -234,7 +246,7 @@
       const saveBusy = () => App.prefs.set(P + "Busy", JSON.stringify(busy));
       const isBusy = (n) => busy[n] && busy[n] > Date.now();
       const ranked = async () => {
-        if (!this._ranked) this._ranked = rankGeminiModels((await this.listModels(opts.signal)).filter((m) => m.methods.includes("generateContent")).map((m) => m.name));
+        if (!this._ranked) this._ranked = rankGeminiModels((await this.listModels(opts.signal)).filter((m) => m.methods.includes("generateContent")).map((m) => m.name), this.speed());
         return this._ranked;
       };
       const tried = [];
@@ -252,7 +264,7 @@
           return res;
         } catch (e) {
           lastErr = e;
-          const retryable = e && (e.code === "busy" || e.code === "quota") && !e.partial;
+          const retryable = e && (e.code === "busy" || e.code === "quota" || e.code === "model-missing") && !e.partial;
           if (!retryable || !auto || (opts.signal && opts.signal.aborted)) throw e;
           busy[model] = Date.now() + BUSY_MS; saveBusy();
           let list;
@@ -269,8 +281,20 @@
       const { system, contents } = this.toContents(messages);
       const body = { contents, generationConfig: { temperature: options && options.temperature != null ? options.temperature : 0.4 } };
       if (system) body.systemInstruction = { parts: [{ text: system }] };
-      const res = await send(this.base() + "/models/" + encodeURIComponent(model) + ":streamGenerateContent?alt=sse",
-        { method: "POST", headers: this.headers(), body: JSON.stringify(body), signal }, model, geminiError);
+      // Gemini 3 Flash modelleri varsayılan olarak uzun "düşünür" (ilk kelime 10 sn'yi bulabiliyor):
+      // düşünmeyi "low" seviyesine çek. Desteklemeyen model 400 verirse ayarsız tekrar dene.
+      const thinkable = gver(model) >= 3 && /-flash/.test(model) && !/lite/.test(model) && !this._noThinking;
+      if (thinkable) body.generationConfig.thinkingConfig = { thinkingLevel: "low" };
+      const url = this.base() + "/models/" + encodeURIComponent(model) + ":streamGenerateContent?alt=sse";
+      let res;
+      try {
+        res = await send(url, { method: "POST", headers: this.headers(), body: JSON.stringify(body), signal }, model, geminiError);
+      } catch (e) {
+        if (!thinkable || !e || e.status !== 400 || !/think/i.test(e.message || "")) throw e;
+        this._noThinking = true;
+        delete body.generationConfig.thinkingConfig;
+        res = await send(url, { method: "POST", headers: this.headers(), body: JSON.stringify(body), signal }, model, geminiError);
+      }
 
       const clock = timer();
       let text = "", tokens = 0, blocked = "";
@@ -456,5 +480,5 @@
     }
   };
 
-  App.cloud = { gemini, server, openai, PRESETS, pickGeminiModel, readSSE };
+  App.cloud = { gemini, server, openai, PRESETS, pickGeminiModel, rankGeminiModels, readSSE };
 })();
