@@ -44,7 +44,7 @@
   }
 
   function cardHtml(m, revealed) {
-    const src = { quiz: t("mis.src.quiz"), chat: t("mis.src.chat"), manual: t("mis.src.manual") }[m.source] || "";
+    const src = { quiz: t("mis.src.quiz"), chat: t("mis.src.chat"), manual: t("mis.src.manual"), similar: t("mis.src.similar") }[m.source] || "";
     const next = m.mastered ? t("mis.mastered") : isDue(m) ? t("mis.dueNow") : t("mis.nextAt", { date: App.utils.fmtDate(String(m.nextAt).slice(0, 10)) });
     return '<article class="card mis" data-id="' + esc(m.id) + '">' +
       '<div class="mis__head"><span class="mis__label">' + esc(m.label || "") + "</span>" +
@@ -58,8 +58,10 @@
           (m.explain ? '<div class="mis__explain"><b>' + esc(t("mis.explain")) + '</b><div class="md">' + md(m.explain) + "</div></div>" : "") +
           (m.mastered ? "" : '<div class="mis__actions"><button class="btn btn--sm" type="button" data-mact="again">' + App.icon("xCircle") + esc(t("mis.again")) + "</button>" +
             '<button class="btn btn--sm btn--primary" type="button" data-mact="knew">' + App.icon("checkCircle") + esc(t("mis.knew")) + "</button>" +
-            '<button class="btn btn--sm btn--ghost" type="button" data-mact="ask">' + App.icon("sparkle") + esc(t("mis.ask")) + "</button></div>")
-        : '<div class="mis__actions"><button class="btn btn--sm" type="button" data-mact="reveal">' + App.icon("eye") + esc(t("mis.reveal")) + "</button></div>") +
+            '<button class="btn btn--sm btn--ghost" type="button" data-mact="ask">' + App.icon("sparkle") + esc(t("mis.ask")) + "</button>" +
+            '<button class="btn btn--sm btn--ghost" type="button" data-mact="similar">' + App.icon("layers") + esc(t("sim.button")) + "</button></div>")
+        : '<div class="mis__actions"><button class="btn btn--sm" type="button" data-mact="reveal">' + App.icon("eye") + esc(t("mis.reveal")) + "</button>" +
+            '<button class="btn btn--sm btn--ghost" type="button" data-mact="similar">' + App.icon("layers") + esc(t("sim.button")) + "</button></div>") +
     "</article>";
   }
 
@@ -122,6 +124,10 @@
         await App.db.put("mistakes", m);
         App.ui.toast(t("mis.toastAgain"));
         if (filter === "due") card.remove(); else { card.outerHTML = cardHtml(m, false); App.hydrateIcons(view); }
+        return;
+      }
+      if (a === "similar") {
+        App.similar.open({ q: m.q, options: m.options, answer: m.answer, explain: m.explain, image: m.image, label: m.label, key: m.key });
         return;
       }
       if (a === "ask") {

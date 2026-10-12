@@ -199,7 +199,7 @@
   function sourcesHtml(src) {
     if (!src) return "";
     const items = ['<li>' + App.icon("chart") + "<span>" + esc(t("ai.src.overview")) + "</span></li>"].concat(src.hits.map((h) =>
-      '<li>' + App.icon(h.kind === "exam" ? "chart" : h.kind === "schedule" ? "calendar" : h.kind === "note" ? "note" : h.kind === "lesson" ? "book" : h.kind === "quiz" ? "quiz" : h.kind === "mistake" ? "bookmark" : "checkCircle") +
+      '<li>' + App.icon(h.kind === "exam" ? "chart" : h.kind === "schedule" ? "calendar" : h.kind === "note" ? "note" : h.kind === "lesson" ? "book" : h.kind === "quiz" ? "quiz" : h.kind === "mistake" ? "bookmark" : h.kind === "feynman" ? "mic" : "checkCircle") +
       '<a href="' + esc(h.link) + '">' + esc(h.label) + "</a>" +
       '<span class="src-score" title="' + esc(t("ai.src.score")) + '">' + Math.round(h.score * 100) + "%</span></li>"));
     return '<details class="msg__details"><summary>' + App.icon("search") + esc(t("ai.src.title", { n: src.hits.length + 1 })) + "</summary>" +
@@ -263,6 +263,7 @@
         (msg.durationMs ? '<span class="msg__meta">' + esc(t("ai.seconds", { n: Math.round(msg.durationMs / 1000) })) + (speed ? " · " + esc(speed) : "") + "</span>" : "") +
         (msg.text ? '<button class="icon-btn icon-btn--sm" type="button" data-act="copy" data-mid="' + esc(msg.id) + '" title="' + esc(t("ai.copy")) + '">' + App.icon("copy") + "</button>" : "") +
         (msg.text ? '<button class="icon-btn icon-btn--sm" type="button" data-act="to-mistakes" data-mid="' + esc(msg.id) + '" title="' + esc(t("mis.addFromChat")) + '">' + App.icon("bookmark") + "</button>" : "") +
+        (msg.text ? '<button class="icon-btn icon-btn--sm" type="button" data-act="similar" data-mid="' + esc(msg.id) + '" title="' + esc(t("sim.fromChat")) + '">' + App.icon("layers") + "</button>" : "") +
         "</div>");
     }
     return '<div class="msg__avatar">' + App.icon("logo") + '</div><div class="msg__body">' + parts.join("") + "</div>";
@@ -532,6 +533,12 @@
         const q = [u && u.text, u && u.transcription].filter(Boolean).join("\n\n");
         await App.mistakes.add({ source: "chat", label: c.title || t("mis.src.chat"), q, image: (u && u.image) || null, explain: msg.text, nextAt: new Date().toISOString() });
         App.ui.toast(t("mis.added"));
+      } else if (a === "similar" && msg) {
+        const idx = c.messages.indexOf(msg);
+        const u = c.messages.slice(0, idx).reverse().find((m) => m.role === "user");
+        const q = [u && u.text, u && u.transcription].filter(Boolean).join("\n\n");
+        if (!q && !(u && u.image)) return;
+        App.similar.open({ q, image: (u && u.image) || null, explain: msg.text, label: c.title || "" });
       } else if (a === "retry") retry(c);
       else if (a === "reload-model") {
         act.disabled = true;

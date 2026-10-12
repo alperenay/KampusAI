@@ -206,13 +206,22 @@
 
   async function generate(opts) {
     let engine = await App.engine.resolve(opts.signal);
+    // opts.image: data URL ya da { base64 } — doğrudan görebilen modele verilir, göremeyene önce yazıya dökülür
+    const image = opts.image ? (typeof opts.image === "string" ? { base64: opts.image.split(",")[1] } : opts.image) : null;
     const once = async (eng) => {
       await eng.prepare(opts.signal);
       const cfg = eng.config();
+      const userMsg = { role: "user", content: opts.prompt };
+      if (image && cfg.direct) userMsg.images = [image.base64];
+      else if (image) {
+        if (opts.onStage) opts.onStage(eng, cfg.visionModel, "vision");
+        const tx = await App.vision.read(image, "", opts.signal, null, eng);
+        userMsg.content += "\n\n" + photoBlock(tx, cfg.visionModel);
+      }
       if (opts.onStage) opts.onStage(eng, cfg.chatModel);
       const res = await eng.chat({
         model: cfg.chatModel,
-        messages: [{ role: "system", content: opts.system }, { role: "user", content: opts.prompt }],
+        messages: [{ role: "system", content: opts.system }, userMsg],
         options: { temperature: opts.temperature != null ? opts.temperature : 0.7, num_ctx: 8192, json: true },
         signal: opts.signal
       });

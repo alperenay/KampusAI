@@ -82,11 +82,11 @@
 
   /* ---------------- Parçaları üret ---------------- */
   async function loadData() {
-    const [exams, plan, notes, progress, quizzes, mistakes, sessions] = await Promise.all([
+    const [exams, plan, notes, progress, quizzes, mistakes, sessions, explains] = await Promise.all([
       App.db.getAll("exams"), App.db.get("schedules", "user"), App.db.getAll("notes"), App.db.getAll("progress"),
-      App.db.getAll("quizzes"), App.db.getAll("mistakes"), App.db.getAll("sessions")
+      App.db.getAll("quizzes"), App.db.getAll("mistakes"), App.db.getAll("sessions"), App.db.getAll("explains")
     ]);
-    return { exams: App.exams.sortChrono(exams), plan, notes, progress: progress.filter((p) => p.done), quizzes, mistakes, sessions };
+    return { exams: App.exams.sortChrono(exams), plan, notes, progress: progress.filter((p) => p.done), quizzes, mistakes, sessions, explains };
   }
 
   function scheduleSource(plan) {
@@ -159,6 +159,19 @@
       add("quiz:" + key, "quiz", (info ? info.label : key), "#/konular/" + key,
         "Konu sonu testi sonuçları — " + (info ? info.pathTR : key) + ":\n" +
         list.slice(-5).map((q) => "- " + dateTR(String(q.date).slice(0, 10)) + ": " + q.correct + "/" + q.total + " doğru, " + q.wrong + " yanlış, " + q.empty + " boş").join("\n"));
+    });
+
+    // Feynman ("Bana anlat") değerlendirmeleri (kazanım başına son deneme)
+    const byKeyF = {};
+    (data.explains || []).forEach((x) => { (byKeyF[x.key] = byKeyF[x.key] || []).push(x); });
+    Object.entries(byKeyF).forEach(([key, list]) => {
+      list.sort((a, b) => String(a.date).localeCompare(String(b.date)));
+      const x = list[list.length - 1];
+      const info = outcomeInfo(key);
+      add("feynman:" + key, "feynman", (info ? info.label : key), "#/anlat/" + key,
+        "Feynman (konuyu kendi cümleleriyle anlatma) — " + (info ? info.pathTR : key) + ": " + list.length + " deneme, puanlar " + list.map((y) => y.score).join(" → ") + " / 100." +
+        (x.missing && x.missing.length ? "\nSon anlatımdaki eksikler: " + x.missing.join("; ") : "") +
+        (x.misconceptions && x.misconceptions.length ? "\nKavram yanılgıları: " + x.misconceptions.map((m) => m.claim + (m.fix ? " (doğrusu: " + m.fix + ")" : "")).join("; ") : ""));
     });
 
     // Yanlış defteri (son 60 soru)

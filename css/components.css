@@ -813,3 +813,62 @@ button.opt:disabled { cursor: default; }
 .plan-summary { display: flex; gap: 8px; align-items: flex-start; padding: 12px 14px; border-radius: 12px; background: var(--accent-soft); color: var(--text); margin-bottom: 14px; }
 .plan-summary .ico { flex: none; width: 18px; height: 18px; margin-top: 2px; color: var(--accent-text); }
 .mis-bar .tabs { max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+
+/* ---------- Benzer sorular ---------- */
+.modal--sim { width: min(760px, 100%); }
+.sim > .hint:first-child { margin-bottom: 12px; }
+.sim .quiz-q { background: var(--surface-2); }
+.sim .stage { margin: 8px 0; }
+.sim-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.sim-foot__btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.sim-model { margin-top: 10px; font-size: 12px; }
+.quiz-q__more { margin-top: 10px; }
+
+/* ---------- Feynman ---------- */
+.fey-tips ol { margin: 8px 0 0; padding-left: 20px; color: var(--text-2); display: grid; gap: 4px; font-size: 14px; }
+.fey-tips h2, .fey-history h2 { display: flex; align-items: center; gap: 8px; font-size: 15px; margin: 0; }
+.fey-tips, .fey-write, .fey-result, .fey-history { margin-bottom: 14px; }
+.fey-text { min-height: 220px; font-size: 15px; line-height: 1.6; resize: vertical; }
+.fey-write__bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.fey-write__btns { display: flex; gap: 8px; flex-wrap: wrap; }
+#feyCount { color: var(--faint); }
+#feyCount.is-ok { color: var(--good-text); }
+#feyMic.is-rec { border-color: var(--bad); color: var(--bad); animation: fey-pulse 1.4s ease-in-out infinite; }
+@keyframes fey-pulse { 50% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--bad) 18%, transparent); } }
+.fey-score { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-bottom: 16px; }
+.fey-score__ring { --c: var(--accent); width: 104px; height: 104px; border-radius: 50%; flex: none; display: grid; place-content: center; text-align: center;
+  background: radial-gradient(closest-side, var(--surface-solid) 78%, transparent 79% 100%), conic-gradient(var(--c) calc(var(--p) * 1%), var(--surface-3) 0); }
+.fey-score__ring span { font-size: 30px; font-weight: 700; line-height: 1; color: var(--text); }
+.fey-score__ring small { color: var(--muted); font-size: 12px; }
+.fey--good { --c: var(--good); }
+.fey--mid { --c: var(--warn); }
+.fey--low { --c: var(--bad); }
+.fey-score__text { flex: 1 1 240px; display: grid; gap: 6px; }
+.fey-score__text b { font-size: 16px; }
+.fey-delta { font-size: 13px; color: var(--muted); }
+.fey-delta.is-up { color: var(--good-text); }
+.fey-delta.is-down { color: var(--bad); }
+.fey-bars { margin-bottom: 6px; }
+.fey-block { margin-top: 14px; padding: 12px 14px; border-radius: var(--radius-sm); background: var(--surface-2); border-left: 3px solid var(--border-strong); }
+.fey-block h3 { display: flex; align-items: center; gap: 8px; font-size: 14px; margin: 0 0 6px; }
+.fey-block ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14px; color: var(--text-2); }
+.fey-block--good { border-left-color: var(--good); }
+.fey-block--good h3 { color: var(--good-text); }
+.fey-block--miss { border-left-color: var(--warn); }
+.fey-block--wrong { border-left-color: var(--bad); }
+.fey-block--wrong h3 { color: var(--bad); }
+.fey-block--simple { border-left-color: var(--accent); }
+.fey-block--ask { border-left-color: var(--accent); }
+.fey-claim { display: block; text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--bad) 60%, transparent); color: var(--muted); }
+.fey-fix { display: flex; gap: 6px; align-items: flex-start; color: var(--text); margin-top: 2px; }
+.fey-fix .ico { width: 16px; height: 16px; color: var(--good); flex: none; margin-top: 2px; }
+.fey-history__list { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.fey-chip { display: grid; justify-items: center; padding: 6px 12px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); border-bottom: 3px solid var(--c, var(--accent)); }
+.fey-chip b { font-size: 16px; }
+.fey-chip small { font-size: 11px; color: var(--muted); }
+.fey-tips summary { cursor: pointer; list-style: none; }
+.fey-tips summary::-webkit-details-marker { display: none; }
+.fey-tips summary h2::after { content: "▾"; margin-left: auto; color: var(--muted); font-size: 12px; }
+.fey-tips:not([open]) summary h2::after { content: "▸"; }
+nav.crumbs > a { display: inline-flex; align-items: flex-start; gap: 4px; }
+nav.crumbs > a .ico { flex: none; margin-top: 1px; }

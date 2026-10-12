@@ -25,19 +25,19 @@
    ========================================================= */
 (function () {
   const DB_NAME = "ders-asistani";
-  const DB_VERSION = 3;               // şema değişince artırılır (2: chats + vectors, 3: test, yanlış defteri, odak, eşitleme)
-  const STORES = ["exams", "schedules", "progress", "notes", "chats", "vectors", "mistakes", "quizzes", "sessions", "meta", "tomb"];
+  const DB_VERSION = 4;               // şema değişince artırılır (2: chats + vectors, 3: test, yanlış defteri, odak, eşitleme, 4: Feynman)
+  const STORES = ["exams", "schedules", "progress", "notes", "chats", "vectors", "mistakes", "quizzes", "sessions", "explains", "meta", "tomb"];
   /** Cihazlar arasında eşitlenen depolar */
-  const SYNC_STORES = ["exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "meta"];
+  const SYNC_STORES = ["exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "explains", "meta"];
   /** Yedek dosyasına giren depolar (vektörler bilgisayarda yeniden hesaplanabildiği için hariç) */
-  const BACKUP_STORES = ["exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "meta"];
+  const BACKUP_STORES = ["exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "explains", "meta"];
   const isSync = (store) => SYNC_STORES.indexOf(store) > -1;
   const TOMB_SEP = "\u0001";
   const LS_PREFIX = "da:";
 
   /* ---------------- Ayarlar (localStorage) ---------------- */
   /** Yedeğe girmeyen ayarlar: anahtarlar, bağlantı kodu/adresi, otomatik seçilen modeller */
-  const PRIVATE_PREF = /(Key|Token|Busy|AutoModel|AutoAt|AutoSpeed)$|^aiUrl$|^sync|^focusState$/;
+  const PRIVATE_PREF = /(Key|Token|Busy|AutoModel|AutoAt|AutoSpeed)$|^aiUrl$|^sync|^focusState$|^feyDraft:/;
 
   App.prefs = {
     get(key, fallback) {
@@ -48,6 +48,9 @@
     },
     set(key, value) {
       try { localStorage.setItem(LS_PREFIX + "pref:" + key, JSON.stringify(value)); } catch (e) { /* depolama kapalı */ }
+    },
+    remove(key) {
+      try { localStorage.removeItem(LS_PREFIX + "pref:" + key); } catch (e) { /* depolama kapalı */ }
     },
     all() {
       const out = {};

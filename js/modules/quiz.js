@@ -158,6 +158,12 @@
     progress();
 
     const onClick = async (e) => {
+      const sb = e.target.closest("[data-sim-i]");
+      if (sb) {
+        const q = questions[Number(sb.dataset.simI)];
+        App.similar.open({ q: q.q, options: q.options, answer: q.answer, explain: q.explain, label: outcomeLabel(grade, subject, unit, outcome), key });
+        return;
+      }
       const b = e.target.closest(".opt[data-q]");
       if (b && !finished) {
         const i = Number(b.dataset.q), j = Number(b.dataset.o);
@@ -192,7 +198,10 @@
           else if (j === a) x.classList.add("is-wrong");
         });
         if (q.explain) { const ex = sec.querySelector(".quiz-q__explain"); ex.hidden = false; ex.innerHTML = "<b>" + esc(t("cur.solution")) + '</b><div class="md">' + App.markdown.render(q.explain) + "</div>"; }
-        if (!ok) missed.push({ q, a });
+        if (!ok) {
+          missed.push({ q, a });
+          sec.insertAdjacentHTML("beforeend", '<div class="quiz-q__more"><button class="btn btn--sm btn--ghost" type="button" data-sim-i="' + i + '">' + App.icon("layers") + esc(t("sim.button")) + "</button></div>");
+        }
       });
       App.hydrateIcons(view);
       const finishBar = view.querySelector(".quiz-finish");
@@ -247,5 +256,5 @@
   }
 
   App.router.register("test", render);
-  App.quiz = { cardHtml, normalize, prompts };
+  App.quiz = { cardHtml, normalize, prompts, lessonText, errorText };
 })();

@@ -1,7 +1,7 @@
 # KampüsAI — Kurulum ve Kullanım
 
 Ders programı, konu anlatımı, TYT-AYT deneme takibi, konu sonu testleri, yanlış defteri, odak sayacı,
-YKS geri sayımı ve hedef netler, yapay zekâyla haftalık plan ve yapay zeka asistanı.
+YKS geri sayımı ve hedef netler, yapay zekâyla haftalık plan, benzer soru üretme, Feynman modu ve yapay zeka asistanı.
 **Windows**, **Android** ve **iPhone** için uygulama olarak gelir. Yapay zeka iki kaynaktan çalışır:
 
 | Kaynak | Nerede çalışır | Ücret | Fotoğraf |
@@ -77,6 +77,15 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
 - **Konu sonu testi:** Konu Anlatımı'nda her kazanımın sayfasında *10 soruluk test başlat* — yapay zekâ o konudan
   10 soruluk, 5 şıklı bir test hazırlar. Bitirince puan ve çözümler görünür; yanlış ve boş bıraktığın sorular
   kendiliğinden Yanlış Defteri'ne eklenir.
+- **Benzer soru üretme:** Yanlış Defteri'ndeki her soruda, konu sonu testinde yanlış yaptığın sorularda ve sohbette
+  (yanıtın altındaki katman simgesi) *Benzer soru üret* var. Yapay zekâ aynı yöntemle çözülen ama sayıları ve kalıbı
+  farklı 3 yeni soru yazar; fotoğraflı sorularda fotoğrafı da okur. Şıkka basınca doğru cevap ve çözüm hemen görünür,
+  yanlışların deftere eklenir. *3 yeni soru daha* ile devam edebilirsin.
+- **Bana anlat (Feynman modu):** Her kazanım sayfasında *Anlatmaya başla*. Konuyu hiç bilmeyen birine anlatır gibi
+  kendi cümlelerinle yaz (tarayıcı destekliyorsa *Sesle anlat* ile konuşarak da olur). Yapay zekâ anlatımını doğruluk,
+  kapsam, açıklık ve örnek açısından 100 üzerinden puanlar; doğru anlattıklarını, eksiklerini ve kavram yanılgılarını
+  gösterir, zayıf kısımları sade bir dille yeniden anlatır ve kendine sorman için sorular verir. *Anlatımımı düzelt*
+  ile tekrar denediğinde puanın ne kadar arttığı ve tüm denemelerinin gelişimi görünür.
 - **Yanlış Defteri:** Sorular aralıklı tekrarla geri gelir (1 → 3 → 7 → 16 gün). *Bildim* dedikçe seyrekleşir,
   4 kez bilince "öğrenildi" olur. *Soru ekle* ile kitaptan fotoğraf çekip kendi sorunu da ekleyebilirsin.
   Sol menüdeki sayı, bugün tekrar etmen gereken soru sayısıdır.
@@ -93,7 +102,7 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
 
 **Otomatik eşitleme (önerilen):** Ayarlar → **Cihazlar arası eşitleme** → ilk cihazda *Eşitlemeyi başlat*.
 Çıkan 12 haneli kodu diğer cihazda yazıp **Bağlan**'a bas ya da QR kodunu okut. Bundan sonra denemeler, program, notlar,
-sohbetler, testler, yanlış defteri, odak süreleri ve hedefler cihazlar arasında kendiliğinden eşitlenir.
+sohbetler, testler, yanlış defteri, Feynman denemeleri, odak süreleri ve hedefler cihazlar arasında kendiliğinden eşitlenir.
 Kodu bilen herkes verilere erişebilir; kimseyle paylaşma. API anahtarları eşitlenmez.
 
 **Elle taşıma:** Her cihaz kendi verisini saklar. Taşımak için: eski cihazda sağ üstteki **Yedekle** → oluşan dosyayı yeni cihaza gönder →
