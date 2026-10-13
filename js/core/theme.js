@@ -24,6 +24,8 @@
     // Telefonda durum çubuğu / tarayıcı çubuğu rengi
     const bar = document.querySelector('meta[name="theme-color"]');
     if (bar) bar.setAttribute("content", theme === "light" ? "#a9bfe0" : "#121318");
+    // Android uygulaması: durum/gezinme çubuğu simgeleri temaya uysun
+    try { if (window.KampusNative && window.KampusNative.setLightBars) window.KampusNative.setLightBars(theme === "light"); } catch (e) { /* yok */ }
   }
 
   App.theme = {

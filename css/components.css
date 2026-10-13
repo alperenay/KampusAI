@@ -919,3 +919,7 @@ nav.crumbs > a .ico { flex: none; margin-top: 1px; }
   .tour__body p { font-size: 14px; }
 }
 @media (prefers-reduced-motion: reduce) { .tour__spot { animation: none; transition: none; } .tour__card { transition: none; } }
+
+/* Sistem çubuklarının altına taşmasın (iPhone çentiği, Android kenardan kenara) */
+.modal-backdrop { padding: max(16px, env(safe-area-inset-top, 0px), var(--nt, 0px)) 16px max(16px, env(safe-area-inset-bottom, 0px), var(--nb, 0px)); }
+.toast-host { bottom: calc(24px + max(env(safe-area-inset-bottom, 0px), var(--nb, 0px))); }

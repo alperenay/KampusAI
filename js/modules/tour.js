@@ -232,20 +232,23 @@
     const cw = Math.min(380, vw - 24);
     const ch = card.offsetHeight || 220;
     const gap = 14;
+    // Durum çubuğu / ana ekran çubuğu payı (iPhone çentiği, Android kenardan kenara)
+    const appCs = getComputedStyle(document.getElementById("app") || document.body);
+    const minT = 12 + (parseFloat(appCs.paddingTop) || 0), maxB = vh - 12 - (parseFloat(appCs.paddingBottom) || 0);
     let ct, cl;
     if (vw < 640) {
       // Telefonda kart alt ya da üst kenara yaslanır; vurgunun karşı tarafında durur
       const mid = (top + bottom) / 2;
       cl = 12;
-      ct = mid < vh / 2 ? vh - ch - 12 : 12;
-      if (mid < vh / 2 && bottom + gap > ct) ct = Math.min(vh - ch - 12, bottom + gap);
-      if (mid >= vh / 2 && top - gap < ct + ch) ct = Math.max(12, top - gap - ch);
+      ct = mid < vh / 2 ? maxB - ch : minT;
+      if (mid < vh / 2 && bottom + gap > ct) ct = Math.min(maxB - ch, bottom + gap);
+      if (mid >= vh / 2 && top - gap < ct + ch) ct = Math.max(minT, top - gap - ch);
       card.style.cssText = "top:" + Math.round(ct) + "px;left:" + cl + "px;right:12px;width:auto";
       return;
     }
-    if (bottom + gap + ch <= vh - 12) ct = bottom + gap;
-    else if (top - gap - ch >= 12) ct = top - gap - ch;
-    else ct = Math.max(12, Math.min(vh - ch - 12, (top + bottom) / 2 - ch / 2));
+    if (bottom + gap + ch <= maxB) ct = bottom + gap;
+    else if (top - gap - ch >= minT) ct = top - gap - ch;
+    else ct = Math.max(minT, Math.min(maxB - ch, (top + bottom) / 2 - ch / 2));
     cl = (left + right) / 2 - cw / 2;
     if (ct > top - gap - ch && ct < bottom + gap) {      // yukarı/aşağı sığmadı: yana koy
       cl = right + gap + cw <= vw - 12 ? right + gap : left - gap - cw >= 12 ? left - gap - cw : cl;

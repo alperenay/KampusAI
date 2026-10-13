@@ -9,6 +9,8 @@ set -x
 APP=com.dersasistani.app
 APK=$(ls apk/*.apk | head -1)
 adb install -r "$APK"
+# Emülatörde donanım klavyesi tanımlı: ekran klavyesi yine de açılsın (gerçek telefon gibi)
+adb shell settings put secure show_ime_with_hard_keyboard 1 || true
 adb shell pm grant $APP android.permission.POST_NOTIFICATIONS || true
 adb shell am start -W -n $APP/.MainActivity
 sleep 20
@@ -30,14 +32,16 @@ want = sys.argv[1].lower()
 try: root = ET.parse("shots/ui.xml").getroot()
 except Exception: sys.exit(0)
 best = None
+edit = want == "@edit"
 for n in root.iter("node"):
     hay = " ".join(n.get(k, "") for k in ("text", "content-desc", "hint")).lower()
-    if want in hay:
+    if (edit and n.get("class", "").endswith("EditText")) or (not edit and want in hay):
         m = re.findall(r"\d+", n.get("bounds", ""))
         if len(m) == 4:
             x1, y1, x2, y2 = map(int, m)
             if x2 > x1 and y2 > y1:
                 area = (x2 - x1) * (y2 - y1)
+                if edit: area = -y1             # en alttaki yazı alanı
                 if best is None or area < best[0]: best = (area, (x1 + x2) // 2, (y1 + y2) // 2)
 if best: print(best[1], best[2])
 PY
@@ -58,21 +62,21 @@ shot tur-hosgeldin
 tap_text "Turu başlat" 0.75 0.62; sleep 4; shot tur-asistan
 for i in 1 2 3 4 5 6 7; do tap_text "İleri" 0.85 0.93; sleep 3; done
 shot tur-hatirlatici
-tap_text "Hatırlatıcıları aç"; sleep 4; shot tur-hatirlatici-acik
+tap_text "Hatırlatıcıları aç"; sleep 10; shot tur-hatirlatici-acik
 echo "== bildirimler"; adb shell dumpsys notification --noredact | grep -iE "pkg=$APP|android.title=|android.text=" | head -20
 echo "== alarmlar"; adb shell dumpsys alarm | grep -c "$APP" || true
 tap_text "İleri" 0.85 0.93; sleep 4; shot tur-konular
 tap_text "Turu geç" 0.85 0.06; sleep 4; shot ana-ekran
 
 # Klavye testi: yazı kutusuna dokun, yaz → kutu klavyenin üstünde görünmeli
-tap_text "Asistana sor" 0.5 0.47; sleep 3
+tap_text "@edit" 0.5 0.42; sleep 3
 adb shell input text "Merhaba"; sleep 3; shot klavye-ana
 adb shell dumpsys input_method | grep -E "mInputShown|mIsInputViewShown" | head -3
 adb shell input keyevent 66; sleep 15; shot sohbet-yanit
-tap_text "Bir mesaj yazın" 0.5 0.9; sleep 3
+tap_text "@edit" 0.5 0.86; sleep 3
 adb shell input text "Turev"; sleep 3; shot klavye-sohbet
 adb shell dumpsys input_method | grep -E "mInputShown|mIsInputViewShown" | head -3
-adb shell input keyevent 4; sleep 2
+adb shell input keyevent 4; sleep 2; shot klavye-kapali
 
 adb logcat -d > shots/android-logcat.txt || true
 grep -iE "Capacitor|chromium|Console|AndroidRuntime|LN" shots/android-logcat.txt | tail -80

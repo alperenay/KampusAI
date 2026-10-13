@@ -7,6 +7,9 @@
   height: 100dvh;
   /* Telefonda çentik / ana ekran çubuğu altına taşmasın (iPhone ana ekran uygulaması, Android) */
   padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+  /* Android uygulaması (kenardan kenara): --nt/--nb… MainActivity'den gelir */
+  padding: max(env(safe-area-inset-top, 0px), var(--nt, 0px)) max(env(safe-area-inset-right, 0px), var(--nr, 0px))
+           max(env(safe-area-inset-bottom, 0px), var(--nb, 0px)) max(env(safe-area-inset-left, 0px), var(--nl, 0px));
 }
 
 /* ---------------- Sol menü ---------------- */

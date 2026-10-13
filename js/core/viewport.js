@@ -14,6 +14,16 @@
   const isField = (el) => !!el && (/^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName) || el.isContentEditable);
   let raf = 0, atBottom = true;
 
+  /* Android uygulaması (kenardan kenara): durum/gezinme çubuğu boşlukları MainActivity'den gelir */
+  window.__nativeInsets = function (o) {
+    o = o || {};
+    [["top", "--nt"], ["right", "--nr"], ["bottom", "--nb"], ["left", "--nl"]].forEach(([k, v]) => root.style.setProperty(v, (Number(o[k]) || 0) + "px"));
+    schedule();
+  };
+  if (window.KampusNative && window.KampusNative.insets) {
+    try { window.__nativeInsets(JSON.parse(window.KampusNative.insets())); } catch (e) { /* yok */ }
+  }
+
   function fit() {
     raf = 0;
     if (!vv) return;
@@ -28,7 +38,7 @@
     }
     keepBottom();
   }
-  const schedule = () => { if (!raf) raf = requestAnimationFrame(fit); };
+  function schedule() { if (!raf) raf = requestAnimationFrame(fit); }
 
   /* Sohbetin sonundayken alan küçülürse (klavye açıldı) yine sonda kal */
   function keepBottom() {
