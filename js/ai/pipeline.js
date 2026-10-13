@@ -224,7 +224,13 @@
     const a = s.indexOf("{"), b = s.lastIndexOf("}");
     if (a < 0 || b <= a) throw new Error("json");
     s = s.slice(a, b + 1);
-    const data = JSON.parse(s);
+    let data;
+    try { data = JSON.parse(s); }
+    catch (e) {
+      // Geçersiz kaçışlar (\land, \(, \underline …): tek ters bölüyü çiftle, geçerli kaçışlara dokunma
+      const repaired = s.replace(/\\u(?![0-9a-fA-F]{4})|\\(["\\/bfnrtu])|\\/g, (m, c) => (c ? m : "\\\\" + m.slice(1)));
+      data = JSON.parse(repaired);
+    }
     // Modelin JSON'da kaçırmayı unuttuğu LaTeX komutlarını onar: "\frac" → form feed + "rac" gibi
     const fix = (v) => typeof v === "string"
       ? fixMath(v.replace(/\f(?=[a-z])/g, "\\f").replace(/\u0008(?=[a-z])/g, "\\b").replace(/\t(?=[a-z])/g, "\\t").replace(/\r(?=[a-z])/g, "\\r").replace(/\n(?=(eq|abla|ot|u |e |i ))/g, "\\n"))
