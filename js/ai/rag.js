@@ -250,6 +250,12 @@
     if (mis.length) {
       const due = mis.filter((m) => !m.mastered && Date.parse(m.nextAt || 0) <= Date.now()).length;
       lines.push("Yanlış defterinde " + mis.length + " soru var; bugün tekrar edilecek: " + due + ", öğrenilen: " + mis.filter((m) => m.mastered).length + ".");
+      if (App.mistakes && App.mistakes.errorStats) {
+        const es = App.mistakes.errorStats(mis);
+        const names = { kavram: "kavram yanılgısı", bilgi: "bilgi eksikliği", islem: "işlem hatası", dikkat: "dikkatsizlik", sure: "süre yetmemesi" };
+        if (es.typed) lines.push("Hata türleri (" + es.typed + " soru): " + Object.keys(names).filter((k) => es.counts[k]).sort((a, b) => es.counts[b] - es.counts[a])
+          .map((k) => names[k] + " %" + Math.round(es.counts[k] / es.typed * 100) + (es.bySubject[k][0] ? " (en çok " + es.bySubject[k][0][0] + ")" : "")).join(", ") + ".");
+      }
     }
 
     let total = 0;

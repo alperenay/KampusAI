@@ -42,8 +42,41 @@
   }
 
   function progressText(c) {
-    if (!c.total) return t("cur.awaiting");
+    if (!c.total) return t("cur.aiAvailable");
     return t("cur.progress", { done: c.done, total: c.total });
+  }
+
+  /* ---------------- Yapay zekâyla içerik üretimi ---------------- */
+  const aiNote = (info, text, regenAttr) =>
+    '<div class="ai-note">' + App.icon("sparkle") + "<span>" + esc(text) +
+      (info && info.model ? ' <small>' + esc(info.model) + (info.date ? " · " + esc(App.utils.fmtDate(String(info.date).slice(0, 10))) : "") + "</small>" : "") + "</span>" +
+      '<button class="btn btn--sm btn--ghost" type="button" ' + regenAttr + ">" + App.icon("refresh") + esc(t("cur.aiRegen")) + "</button></div>";
+
+  function genCardHtml(title, hint) {
+    return '<section class="card ai-gen" id="aiGen"><div class="stage"><span class="spinner"></span>' + App.icon("sparkle") +
+      "<span>" + esc(title) + '</span><code id="aiGenModel" hidden></code><span class="stage__time" id="aiGenTime"></span></div>' +
+      '<p class="hint">' + esc(hint) + "</p></section>";
+  }
+
+  /** Üretimi çalıştır; bitince sayfayı yeniden çiz. Kullanıcı sayfadan çıktıysa üretim yine tamamlanır ve kaydedilir. */
+  async function runGeneration(view, job) {
+    const myHash = location.hash;
+    const started = Date.now();
+    const tick = setInterval(() => { const el = view.querySelector("#aiGenTime"); if (el) el.textContent = t("ai.seconds", { n: Math.round((Date.now() - started) / 1000) }); }, 1000);
+    try {
+      await job((eng, model) => { const c = view.querySelector("#aiGenModel"); if (c && model) { c.hidden = false; c.textContent = model; } });
+      clearInterval(tick);
+      if (location.hash === myHash) App.router.refresh();
+    } catch (e) {
+      clearInterval(tick);
+      if (location.hash !== myHash) return;
+      const box = view.querySelector("#aiGen");
+      if (!box) return;
+      box.outerHTML = '<div class="msg__error" id="aiGen"><b>' + esc(t("cur.aiFailed")) + "</b><p>" + esc(App.quiz.errorText(e)) + '</p><div class="msg__error-actions">' +
+        '<button class="btn btn--sm" type="button" id="aiRetry">' + App.icon("refresh") + esc(t("ai.retry")) + "</button></div></div>";
+      App.hydrateIcons(view);
+      view.querySelector("#aiRetry").addEventListener("click", () => App.router.refresh());
+    }
   }
 
   /* ---------------- Sınıflar ---------------- */
@@ -99,12 +132,12 @@
               return '<a class="outcome' + (isDone ? " is-done" : "") + '" href="#/konular/' + [grade.id, subject.id, u.id, k.id].join("/") + '">' +
                 '<span class="outcome__code">' + esc(k.code || "") + "</span>" +
                 '<span class="outcome__title">' + esc(L(k.title)) + "</span>" +
-                (k.content ? "" : '<span class="badge">' + esc(t("cur.soonBadge")) + "</span>") +
+                (k.content ? (k.ai ? '<span class="badge badge--ai" title="' + esc(t("cur.aiMadeShort")) + '">' + App.icon("sparkle") + "</span>" : "") : '<span class="badge">' + esc(t("cur.aiBadge")) + "</span>") +
                 '<span class="outcome__state" title="' + esc(isDone ? t("cur.done") : t("cur.notDone")) + '">' + App.icon(isDone ? "checkCircle" : "circle") + "</span>" +
               "</a>";
             }).join("") + "</div></details>";
         }).join("")
-      : App.ui.empty("layers", t("cur.emptyTitle"), t("cur.emptyText"));
+      : genCardHtml(t("cur.aiSyllabusMaking", { subject: L(subject.name) }), t("cur.aiSyllabusHint"));
 
     view.innerHTML =
       '<div class="page page--narrow">' +
@@ -113,8 +146,20 @@
           '<h1 style="margin-top:6px">' + esc(L(subject.name)) + "</h1>" +
           (c.total ? "<p>" + esc(progressText(c)) + "</p>" : "") +
         "</div></div>" +
+        (subject.ai ? aiNote(subject.ai, t("cur.aiSyllabusNote"), 'id="aiRegenSyl"') : "") +
         body +
       "</div>";
+
+    if (!subject.units.length) {
+      runGeneration(view, (onStage) => App.lessons.generateSyllabus(grade.id, subject.id, { onStage }));
+      return;
+    }
+    const regen = view.querySelector("#aiRegenSyl");
+    if (regen) regen.addEventListener("click", async () => {
+      if (!(await App.ui.confirm(t("cur.aiRegenSylConfirm"), t("cur.aiRegen")))) return;
+      await App.lessons.removeSyllabus(grade.id, subject.id);
+      App.router.refresh();
+    });
   }
 
   /* ---------------- Kazanım sayfası ---------------- */
@@ -133,7 +178,7 @@
     const missingLang = ct && App.i18n.lang !== "tr" && !App.i18n.has(ct.anlatim);
 
     const quizCard = ct && App.quiz ? await App.quiz.cardHtml(key, "#/test/" + key) : "";
-    const feyCard = App.feynman ? await App.feynman.cardHtml(key, "#/anlat/" + key) : "";
+    const feyCard = ct && App.feynman ? await App.feynman.cardHtml(key, "#/anlat/" + key) : "";
     const section = (icon, title, inner) =>
       '<section class="card lesson__section"><h2>' + App.icon(icon) + esc(title) + '</h2><div class="lesson__body md">' + inner + "</div></section>";
     const soon = '<p class="placeholder">' + esc(t("cur.contentSoon")) + "</p>";
@@ -153,14 +198,16 @@
 
         (missingLang ? '<p class="hint" style="margin:-8px 0 14px">' + esc(t("cur.onlyTurkish")) + "</p>" : "") +
 
+        (outcome.ai ? aiNote(outcome.ai, t("cur.aiLessonNote"), 'id="aiRegenLes"') : "") +
         '<div class="lesson">' +
-          section("book", t("cur.lesson"), ct && ct.anlatim ? rich(ct.anlatim) : soon) +
+          (!ct ? genCardHtml(t("cur.aiLessonMaking"), t("cur.aiLessonHint")) :
+          section("book", t("cur.lesson"), ct && ct.anlatim ? rich(ct.anlatim) : soon)) +
           (ct && ct.ornekler && ct.ornekler.length
             ? section("target", t("cur.examples"), ct.ornekler.map((o, i) =>
                 '<div class="example"><div class="example__q"><b>' + esc(t("cur.example", { n: i + 1 })) + "</b> " + richInline(o.soru) + "</div>" +
                 '<div class="example__a"><b>' + esc(t("cur.solution")) + "</b> " + richInline(o.cozum) + "</div></div>").join(""))
-            : ct ? "" : section("target", t("cur.examples"), soon)) +
-          section("lightbulb", t("cur.keyFacts"), ct && ct.ozet && ct.ozet.length ? "<ul>" + ct.ozet.map((s) => "<li>" + richInline(s) + "</li>").join("") + "</ul>" : soon) +
+            : "") +
+          (ct ? section("lightbulb", t("cur.keyFacts"), ct.ozet && ct.ozet.length ? "<ul>" + ct.ozet.map((s) => "<li>" + richInline(s) + "</li>").join("") + "</ul>" : soon) : "") +
           quizCard + feyCard +
           section("note", t("cur.myNotes"),
             '<textarea class="textarea" id="myNote" placeholder="' + esc(t("cur.notesPh")) + '">' + esc(note ? note.text : "") + "</textarea>" +
@@ -172,6 +219,14 @@
           (next ? '<a class="btn" href="' + link(next) + '">' + esc(t("cur.next")) + App.icon("chevron") + "</a>" : "") +
         "</nav>" +
       "</div>";
+
+    if (!ct) runGeneration(view, (onStage) => App.lessons.generateLesson(key, { onStage }));
+    const regenLes = view.querySelector("#aiRegenLes");
+    if (regenLes) regenLes.addEventListener("click", async () => {
+      if (!(await App.ui.confirm(t("cur.aiRegenLesConfirm"), t("cur.aiRegen")))) return;
+      await App.lessons.removeLesson(key);
+      App.router.refresh();
+    });
 
     const btn = view.querySelector("#toggleDone");
     const paint = () => {

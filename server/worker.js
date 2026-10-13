@@ -32,7 +32,7 @@ const MAX_BODY = 8 * 1024 * 1024;
    dizidir (~60 bit); bilmeyen kimse odaya erişemez.
    ========================================================= */
 const SYNC_CODE = /^[A-HJ-NP-Z2-9]{12}$/;
-const SYNC_STORES = new Set(["exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "explains", "meta"]);
+const SYNC_STORES = new Set(["exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "explains", "lessons", "meta"]);
 const SYNC_MAX_BODY = 25 * 1024 * 1024;
 const SYNC_MAX_ROW = 1900 * 1024;       // SQLite satır sınırı ~2 MB
 const SYNC_PAGE = 400;

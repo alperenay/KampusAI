@@ -1,7 +1,7 @@
 # KampüsAI — Kurulum ve Kullanım
 
 Ders programı, konu anlatımı, TYT-AYT deneme takibi, konu sonu testleri, yanlış defteri, odak sayacı,
-YKS geri sayımı ve hedef netler, yapay zekâyla haftalık plan, benzer soru üretme, Feynman modu, ders hatırlatıcıları ve yapay zeka asistanı.
+YKS geri sayımı ve hedef netler, yapay zekâyla haftalık plan, benzer soru üretme, Feynman modu, ders hatırlatıcıları, "Bugün" ekranı, hata türü analizi, Sokratik mod ve yapay zeka asistanı.
 **Windows**, **Android** ve **iPhone** için uygulama olarak gelir. Yapay zeka iki kaynaktan çalışır:
 
 | Kaynak | Nerede çalışır | Ücret | Fotoğraf |
@@ -101,6 +101,20 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
   Programındaki her ders bloğunun saatinde (istersen 5/10/15 dk önce) bildirim gelir; bildirime dokununca Odak Sayacı
   o dersle açılır, Android'de bildirimdeki *Odak sayacını başlat* sayacı hemen başlatır. Android'de uygulama kapalıyken
   de gelir; bilgisayarda ve tarayıcıda uygulama açıkken (küçültülmüş olsa da) gelir. Mola blokları için bildirim gelmez.
+- **Bugün ekranı:** Sol menüde *Bugün*. Şu an hangi dersin olduğu (bitmesine kalan süre, tek dokunuşla odak sayacı),
+  sıradaki ders, günün akışı, tekrar zamanı gelen yanlışlar, odak süresi ve seri, YKS sayacı, bugün bakman önerilen konu
+  (en düşük test sonucun ya da en çok yanlış yaptığın kazanım) ve en sık hata türün tek ekranda.
+- **Yapay zekâyla konu içeriği:** Hazır içeriği olmayan derslerde (9. sınıf matematik ve fizik dışındakiler) ders
+  açılınca konu listesi (üniteler ve kazanımlar), kazanım açılınca konu anlatımı, 3 çözümlü örnek ve hap bilgiler
+  yapay zekâyla hazırlanır. Bir kez hazırlanır, kaydedilir ve diğer cihazlara eşitlenir; konu sonu testi, Feynman modu
+  ve asistan bu içerikleri de kullanır. *Yeniden oluştur* ile tazelenebilir. Yapay zekâ hata yapabilir; önemli
+  bilgileri ders kitabıyla karşılaştır.
+- **Hata türü analizi:** Yanlış Defteri'nin başında. Her yanlışın türü — kavram yanılgısı, bilgi eksikliği, işlem
+  hatası, dikkatsizlik, süre yetmemesi — konu sonu testinden sonra seçtiğin yanlış şıka bakılarak yapay zekâyla
+  belirlenir ya da karttaki *Hata türü?* düğmesinden sen seçersin. Dağılım, ders bazında kırılım ve en sık hatan için
+  öneri gösterilir; asistan da bunu bilerek yanıt verir.
+- **Sokratik mod (öğretmen modu):** Yazı kutusundaki pusula düğmesi. Açıkken asistan cevabı hemen vermez; tek tek
+  ipuçları ve sorularla çözümü senin bulmanı sağlar. Yanıtın altındaki *İpucu ver* / *Çözümü göster* düğmeleriyle ilerlersin.
 - **Tanıtım turu:** Uygulamayı ilk kez açınca 20 adımlık canlı bir tur her özelliği gerçek sayfalar üzerinde gösterir.
   Güncelleme yapan eski kullanıcılara gösterilmez; istenirse Ayarlar → *Tanıtımı yeniden izle*.
 

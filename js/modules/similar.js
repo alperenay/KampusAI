@@ -137,6 +137,7 @@
         if (!ok) {
           await App.mistakes.add({ source: "similar", key: src.key || null, label: src.label || t("mis.src.similar"), q: q.q, options: q.options, answer: q.answer, chosen: j, explain: q.explain });
           App.ui.toast(t("sim.addedToMistakes"));
+          App.mistakes.classifyPending().catch(() => {});
         }
         if (answers.every((a) => a >= 0)) {
           const right = answers.filter((a, k) => a === questions[k].answer).length;

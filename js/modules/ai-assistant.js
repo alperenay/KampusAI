@@ -17,6 +17,7 @@
   let draft = { image: null, text: "" };            // yazılıp henüz gönderilmemiş mesaj
   let mounted = null;                                // { view, chatId } ekranda olan sohbet
   let useData = App.prefs.get("aiUseData", true);
+  let socratic = App.prefs.get("aiSocratic", false);     // Sokratik mod: cevap yerine ipuçlarıyla yönlendir
 
   /* ---------------- Bağlantı durumu ---------------- */
   // state: unknown | ok | partial | missing | offline | file | token | nokey | auth | net | quota | error
@@ -146,6 +147,7 @@
           '<button class="icon-btn icon-btn--sm" type="button" data-act="attach" title="' + esc(t("ai.attach")) + '">' + App.icon("image") + "</button>" +
           '<textarea class="composer__input" id="composerInput" rows="1" placeholder="' + esc(placeholder) + '" aria-label="' + esc(t("ai.inputLabel")) + '">' + esc(draft.text) + "</textarea>" +
           '<button class="icon-btn icon-btn--sm composer__toggle" type="button" data-act="data" aria-pressed="' + useData + '" title="' + esc(useData ? t("ai.dataOn") : t("ai.dataOff")) + '">' + App.icon("database") + "</button>" +
+          '<button class="icon-btn icon-btn--sm composer__toggle composer__soc" type="button" data-act="socratic" aria-pressed="' + socratic + '" title="' + esc(socratic ? t("soc.on") : t("soc.off")) + '">' + App.icon("compass") + "</button>" +
           '<button class="composer__model" type="button" data-act="model" data-ai-pill title="' + esc(statusText()) + '">' +
             '<span class="dot dot--' + dotClass() + '" data-ai-dot></span><span class="composer__model-name" data-ai-model>' + esc(shortModel(curCfg().chatModel)) + "</span>" + App.icon("chevronD") + "</button>" +
           (busyHere
@@ -252,6 +254,11 @@
     }
     if (msg.error) parts.push(errorHtml(msg.error));
     if (!msg.pending && !msg.error && !msg.interrupted) {
+      if (msg.socratic && msg.text && msg.id === latestAiId) {
+        parts.push('<div class="soc-actions">' + App.icon("compass") + '<span class="hint">' + esc(t("soc.label")) + "</span>" +
+          '<button class="btn btn--sm" type="button" data-prompt="' + esc(t("soc.hintMsg")) + '">' + App.icon("lightbulb") + esc(t("soc.hint")) + "</button>" +
+          '<button class="btn btn--sm btn--ghost" type="button" data-prompt="' + esc(t("soc.solveMsg")) + '">' + App.icon("eye") + esc(t("soc.solve")) + "</button></div>");
+      }
       parts.push(sourcesHtml(msg.sources));
       if (msg.gpu && msg.gpu.ratio < 0.98 && msg === lastAssistant(msg)) {
         parts.push('<div class="msg__warn msg__gpu">' + App.icon("search") + "<span>" + esc(t("ai.gpuPartial", { pct: Math.round(msg.gpu.ratio * 100), model: shortModel(msg.gpu.model) })) +
@@ -364,7 +371,7 @@
     }
     const history_ = chat.messages.slice();
     const userMsg = { id: uid("m"), role: "user", text, image: image ? image.dataUrl : null, at: new Date().toISOString() };
-    const aiMsg = { id: uid("m"), role: "assistant", text: "", pending: true, stage: image ? "vision" : useData ? "memory" : "answer", models: [], startedAt: Date.now() };
+    const aiMsg = { id: uid("m"), role: "assistant", text: "", pending: true, stage: image ? "vision" : useData ? "memory" : "answer", models: [], startedAt: Date.now(), socratic };
     chat.messages.push(userMsg, aiMsg);
     latestAiId = aiMsg.id;
     draft = { image: null, text: "" };
@@ -389,6 +396,7 @@
         image: image || (userMsg.image ? { base64: userMsg.image.split(",")[1] } : null),
         history: history_,
         useData,
+        socratic: !!aiMsg.socratic,
         signal: live.controller.signal,
         on: {
           engine: (engine) => { aiMsg.engine = engine.id; },
@@ -442,7 +450,7 @@
     if (userIdx < 0 || chat.messages[userIdx].role !== "user") return;
     const userMsg = chat.messages[userIdx];
     chat.messages.splice(i, 1);
-    const aiMsg = { id: uid("m"), role: "assistant", text: "", pending: true, stage: userMsg.image ? "vision" : useData ? "memory" : "answer", models: [], startedAt: Date.now() };
+    const aiMsg = { id: uid("m"), role: "assistant", text: "", pending: true, stage: userMsg.image ? "vision" : useData ? "memory" : "answer", models: [], startedAt: Date.now(), socratic };
     chat.messages.push(aiMsg);
     latestAiId = aiMsg.id;
     await start(chat, userMsg, aiMsg, chat.messages.slice(0, userIdx), null);
@@ -506,6 +514,11 @@
         act.setAttribute("aria-pressed", useData);
         act.title = useData ? t("ai.dataOn") : t("ai.dataOff");
         App.ui.toast(useData ? t("ai.dataOn") : t("ai.dataOff"));
+      } else if (a === "socratic") {
+        socratic = !socratic;
+        App.prefs.set("aiSocratic", socratic);
+        view.querySelectorAll('[data-act="socratic"]').forEach((b) => { b.setAttribute("aria-pressed", socratic); b.title = socratic ? t("soc.on") : t("soc.off"); });
+        App.ui.toast(socratic ? t("soc.toastOn") : t("soc.toastOff"));
       } else if (a === "model") App.modules.aiSettings.open();
       else if (a === "stop") { if (live.controller) live.controller.abort(); }
     });
@@ -515,7 +528,14 @@
     // Sohbet alanındaki düğmeler (kopyala, yeniden dene, fotoğrafı büyüt)
     view.onclick = async (e) => {
       const prompt = e.target.closest("[data-prompt]");
-      if (prompt) { draft.text = prompt.dataset.prompt; input.value = draft.text; grow(); form.requestSubmit(); return; }
+      if (prompt) {
+        // Yanıt bitince yazı kutusu yeniden çiziliyor: her zaman güncel öğeleri kullan
+        const f = view.querySelector("#composer"), inp = view.querySelector("#composerInput");
+        draft.text = prompt.dataset.prompt;
+        if (inp) { inp.value = draft.text; inp.dispatchEvent(new Event("input")); }
+        if (f) f.requestSubmit();
+        return;
+      }
       const act = e.target.closest("[data-act]");
       if (!act || form.contains(act)) return;           // biçimin kendi düğmeleri yukarıda işleniyor
       const a = act.dataset.act;

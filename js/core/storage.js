@@ -25,12 +25,12 @@
    ========================================================= */
 (function () {
   const DB_NAME = "ders-asistani";
-  const DB_VERSION = 4;               // şema değişince artırılır (2: chats + vectors, 3: test, yanlış defteri, odak, eşitleme, 4: Feynman)
-  const STORES = ["exams", "schedules", "progress", "notes", "chats", "vectors", "mistakes", "quizzes", "sessions", "explains", "meta", "tomb"];
+  const DB_VERSION = 5;               // şema değişince artırılır (2: chats + vectors, 3: test, yanlış defteri, odak, eşitleme, 4: Feynman, 5: yapay zekâ konu içeriği)
+  const STORES = ["exams", "schedules", "progress", "notes", "chats", "vectors", "mistakes", "quizzes", "sessions", "explains", "lessons", "meta", "tomb"];
   /** Cihazlar arasında eşitlenen depolar */
-  const SYNC_STORES = ["exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "explains", "meta"];
+  const SYNC_STORES = ["exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "explains", "lessons", "meta"];
   /** Yedek dosyasına giren depolar (vektörler bilgisayarda yeniden hesaplanabildiği için hariç) */
-  const BACKUP_STORES = ["exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "explains", "meta"];
+  const BACKUP_STORES = ["exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "explains", "lessons", "meta"];
   const isSync = (store) => SYNC_STORES.indexOf(store) > -1;
   const TOMB_SEP = "\u0001";
   const LS_PREFIX = "da:";

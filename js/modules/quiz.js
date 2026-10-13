@@ -215,6 +215,8 @@
       for (const m of missed) {
         await App.mistakes.add({ source: "quiz", key, label, q: m.q.q, options: m.q.options, answer: m.q.answer, chosen: m.a, explain: m.q.explain });
       }
+      // Yanlışların türünü (kavram/işlem/dikkat…) arka planda yapay zekâya sınıflandırt
+      if (missed.some((x) => x.a >= 0)) App.mistakes.classifyPending().catch(() => {});
       const pct = Math.round((correct / questions.length) * 100);
       const res = view.querySelector("#qResult");
       res.innerHTML =

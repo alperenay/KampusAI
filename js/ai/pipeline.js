@@ -48,6 +48,27 @@
     ]).join("\n");
   }
 
+  /** Sokratik mod (öğretmen modu): cevabı vermeden, ipuçları ve sorularla öğrencinin kendisinin bulmasını sağla */
+  function socraticRules() {
+    return App.i18n.lang === "tr" ? [
+      "SOKRATİK MOD AÇIK (öğretmen modu). Bu mod yukarıdaki \"adım adım çöz\" kuralından önce gelir:",
+      "- Sorunun cevabını ya da tam çözümünü hemen VERME. Amacın öğrencinin çözümü kendisinin bulması.",
+      "- İlk yanıtta: soruyu kısaca anlamlandır, öğrencinin nereden başlayabileceğini düşündüren TEK bir yönlendirici soru sor ya da ilk adım için TEK bir küçük ipucu ver.",
+      "- Öğrenci bir adım yazınca: doğruysa kısaca takdir et ve bir sonraki adıma yönelt; yanlışsa hatayı doğrudan söyleme, fark etmesini sağlayacak bir soru sor.",
+      "- Her mesajda yalnızca bir ipucu ya da bir soru; en fazla 4-5 cümle. Gerekirse formülü hatırlat ama yerine koyma.",
+      "- Öğrenci \"ipucu ver\" derse bir sonraki küçük ipucunu ver. \"Çözümü göster\" derse ya da üç ipucuna rağmen ilerleyemiyorsa tam çözümü adım adım ver, doğru şıkkı yaz ve sonunda kendini sınaması için benzer kısa bir soru öner.",
+      "- Öğrencinin kişisel verileriyle ilgili sorular (netlerim, programım) ve sohbet için bu yöntemi kullanma; normal yanıt ver."
+    ].join("\n") : [
+      "SOCRATIC MODE ON (tutor mode). This overrides the \"solve step by step\" rule above:",
+      "- Do NOT give the answer or the full solution right away. The goal is for the student to find it.",
+      "- First reply: briefly frame the problem and ask ONE guiding question or give ONE small hint for the first step.",
+      "- When the student writes a step: if right, praise briefly and point to the next step; if wrong, don't state the error, ask a question that helps them notice it.",
+      "- One hint or one question per message, at most 4-5 sentences. You may recall a formula but don't plug in the numbers.",
+      "- If the student says \"give me a hint\", give the next small hint. If they say \"show the solution\", or are still stuck after three hints, give the full step-by-step solution, state the correct option, and suggest a short similar question to check themselves.",
+      "- Don't use this method for questions about the student's own data (scores, plan) or small talk; answer normally."
+    ].join("\n");
+  }
+
   function dataSection(found) {
     const tr = App.i18n.lang === "tr";
     const parts = [(tr ? "ÖĞRENCİ VERİLERİ (sitedeki kayıtlardan bulundu):" : "STUDENT DATA (retrieved from the app's records):"),
@@ -156,6 +177,7 @@
     fire("stage", "answer", cfg.chatModel);
     result.models.push({ role: "answer", model: cfg.chatModel });
     let system = systemPrompt();
+    if (opts.socratic) system += "\n\n" + socraticRules();
     if (found) system += "\n\n" + dataSection(found);
 
     let userContent = opts.text || (App.i18n.lang === "tr" ? "Fotoğraftaki soruyu çöz." : "Solve the question in the photo.");

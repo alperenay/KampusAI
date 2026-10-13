@@ -139,6 +139,8 @@
     App.theme.onChange(renderThemeSwitch);
 
     await App.db.init();
+    await App.lessons.load().catch(() => {});      // yapay zekâyla hazırlanmış konu listeleri ve anlatımlar
+    App.lessons.init();
     await App.goals.load().catch(() => {});
     App.goals.init();
     App.focus.init();

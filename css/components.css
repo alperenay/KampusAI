@@ -932,3 +932,79 @@ nav.crumbs > a .ico { flex: none; margin-top: 1px; }
   .focus__phases .tab { min-width: 0; flex: 1; padding: 0 6px; white-space: nowrap; font-size: 13px; }
   .focus__main { min-width: 120px; }
 }
+
+/* ---------------- Yapay zekâyla hazırlanan içerik ---------------- */
+.ai-note { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 10px 14px; margin-bottom: 14px; border-radius: 14px; background: var(--accent-soft); color: var(--text-2); font-size: 13.5px; }
+.ai-note > .ico { color: var(--accent-text); flex: none; }
+.ai-note > span { flex: 1; min-width: 200px; }
+.ai-note small { color: var(--muted); margin-left: 4px; }
+.ai-gen .stage { flex-wrap: wrap; }
+.ai-gen .hint { margin-top: 10px; }
+.badge--ai { color: var(--accent-text); padding: 0 6px; }
+.badge--ai .ico { width: 13px; height: 13px; }
+
+/* ---------------- Hata türleri ---------------- */
+.err-chip { display: inline-flex; align-items: center; gap: 5px; height: 26px; padding: 0 10px; border-radius: 999px; font-size: 12.5px; font-weight: 600;
+  color: var(--c, var(--muted)); background: color-mix(in srgb, var(--c, var(--muted)) 16%, transparent); border: 1px solid color-mix(in srgb, var(--c, var(--muted)) 40%, transparent); }
+.err-chip .ico { width: 14px; height: 14px; }
+.err-chip small { font-size: 10px; opacity: .75; font-weight: 700; }
+.err-chip--empty { --c: var(--muted); border-style: dashed; background: transparent; font-weight: 500; }
+.err-chip.is-on { background: var(--c); color: #111; }
+.err-pick { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 10px; }
+.err-pick .hint { margin-right: 4px; }
+.err-reason { display: flex; gap: 6px; align-items: flex-start; margin-top: 8px; border-left: 3px solid var(--c); padding-left: 8px; }
+.err-reason .ico { width: 14px; height: 14px; color: var(--c); flex: none; margin-top: 2px; }
+.err-card { padding: 14px 18px; margin-bottom: 14px; }
+.err-card summary { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; cursor: pointer; list-style: none; }
+.err-card summary::-webkit-details-marker { display: none; }
+.err-card summary h2 { display: flex; align-items: center; gap: 8px; font-size: 16px; }
+.err-bar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; margin: 14px 0 10px; gap: 2px; }
+.err-bar span { background: var(--c); }
+.err-rows { display: grid; gap: 6px; }
+.err-row { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; font-size: 14px; }
+.err-row i { width: 10px; height: 10px; border-radius: 3px; background: var(--c); flex: none; align-self: center; }
+.err-row__n { color: var(--muted); font-variant-numeric: tabular-nums; }
+.err-tip { display: flex; gap: 10px; margin-top: 12px; padding: 10px 12px; border-radius: 12px; background: color-mix(in srgb, var(--c) 12%, transparent); font-size: 14px; line-height: 1.5; }
+.err-tip .ico { color: var(--c); flex: none; margin-top: 2px; }
+.err-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+
+/* ---------------- Sokratik mod ---------------- */
+.composer__soc[aria-pressed="true"] { color: #f2b33d; background: rgba(242, 179, 61, .16); }
+.soc-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 12px; padding: 8px 10px; border-radius: 12px; background: rgba(242, 179, 61, .08); border: 1px dashed rgba(242, 179, 61, .35); }
+.soc-actions > .ico { color: #f2b33d; width: 16px; height: 16px; }
+.soc-actions .hint { margin-right: auto; }
+
+/* ---------------- Bugün ---------------- */
+.tday-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+.tday-main, .tday-side { display: grid; gap: 16px; min-width: 0; }
+.tday-now { padding: 22px; position: relative; overflow: hidden; }
+.tday-now.is-live { border-color: color-mix(in srgb, var(--c) 55%, transparent); }
+.tday-now.is-live::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 5px; background: var(--c); }
+.tday-now__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-text); }
+.tday-now.is-live .tday-now__eyebrow { color: var(--c); }
+.tday-now__title { font-family: var(--font-display); font-size: 28px; line-height: 1.2; margin: 6px 0 4px; }
+.tday-now__left { margin: 8px 0 14px; font-size: 15px; font-weight: 600; color: var(--text-2); }
+.tday-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.tday-card { padding: 16px 18px; }
+.tday-card h3 { display: flex; align-items: center; gap: 8px; font-size: 15px; margin-bottom: 10px; }
+.tday-card h3 .ico { width: 17px; height: 17px; color: var(--accent-text); }
+.tday-flow { display: grid; gap: 6px; list-style: none; padding: 0; margin: 0; }
+.tday-block { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 12px; background: var(--surface-2); border-left: 4px solid var(--c); }
+.tday-block__time { font-variant-numeric: tabular-nums; font-size: 13px; color: var(--muted); min-width: 92px; }
+.tday-block__name { flex: 1; min-width: 0; font-weight: 600; }
+.tday-block__name small { font-weight: 400; color: var(--muted); margin-left: 4px; }
+.tday-block.is-done { opacity: .55; }
+.tday-block.is-done .ico { color: var(--good); width: 16px; height: 16px; }
+.tday-block.is-now { background: color-mix(in srgb, var(--c) 16%, var(--surface-2)); }
+.tday-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.tday-stat { display: grid; gap: 2px; padding: 14px; color: var(--text); text-decoration: none; transition: border-color .15s; }
+.tday-stat:hover { border-color: var(--border-strong); }
+.tday-stat > .ico { width: 18px; height: 18px; color: var(--accent-text); margin-bottom: 4px; }
+.tday-stat__n { font-family: var(--font-display); font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.tday-stat__l { font-size: 12.5px; color: var(--muted); line-height: 1.35; }
+.tday-sug__title { font-weight: 600; font-size: 15.5px; line-height: 1.4; }
+.tday-err { display: block; color: var(--text); text-decoration: none; border-left: 4px solid var(--c); }
+.tday-err h3 .ico { color: var(--c); }
+.tday-err p { font-size: 14px; line-height: 1.5; color: var(--text-2); }
+@media (max-width: 900px) { .tday-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 420px) { .tday-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; } .tday-stat { padding: 10px; } .tday-stat__n { font-size: 19px; } .tday-now__title { font-size: 23px; } }
