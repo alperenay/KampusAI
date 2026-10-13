@@ -228,8 +228,18 @@
     try { data = JSON.parse(s); }
     catch (e) {
       // Geçersiz kaçışlar (\land, \(, \underline …): tek ters bölüyü çiftle, geçerli kaçışlara dokunma
-      const repaired = s.replace(/\\u(?![0-9a-fA-F]{4})|\\(["\\/bfnrtu])|\\/g, (m, c) => (c ? m : "\\\\" + m.slice(1)));
-      data = JSON.parse(repaired);
+      let t = s.replace(/\\u(?![0-9a-fA-F]{4})|\\(["\\/bfnrtu])|\\/g, (m, c) => (c ? m : "\\\\" + m.slice(1)));
+      // Metin içinde kaçırılmamış tırnaklar ("Simya" kelimesi gibi): hatanın hemen önündeki tırnağı kaçır, tekrar dene
+      for (let i = 0; ; i++) {
+        try { data = JSON.parse(t); break; }
+        catch (e2) {
+          const m = /after (property value|array element)[^\d]*(\d+)/.exec(e2.message) || /position (\d+)/.exec(e2.message);
+          const pos = m ? Number(m[m.length - 1]) : -1;
+          const q = pos > 0 ? t.lastIndexOf('"', pos - 1) : -1;
+          if (i >= 40 || q <= 0 || !/after (property value|array element)/.test(e2.message)) throw e2;
+          t = t.slice(0, q) + "\\" + t.slice(q);
+        }
+      }
     }
     // Modelin JSON'da kaçırmayı unuttuğu LaTeX komutlarını onar: "\frac" → form feed + "rac" gibi
     const fix = (v) => typeof v === "string"
