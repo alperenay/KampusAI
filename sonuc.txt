@@ -1,0 +1,272 @@
+9/kimya konu listesi (3895 ms): 5 ünite, 24 kazanım — Kimya Bilimi | Atom ve Periyodik Sistem | Kimyasal Türler Arası Etkileşimler | Maddenin Halleri | Doğa ve Kimya
+
+9/kimya anlatım "Kimyanın simya döneminden bilimsel döneme geçiş sürecini açıklar" (6490 ms): 368 kelime, 3 örnek, 7 hap bilgi, 7 formül, çizilemeyen: 0
+
+---- 9/kimya anlatım ----
+### Kimyanın Simya Döneminden Bilimsel Döneme Geçiş Süreci
+
+Kimya bilimi, bugünkü modern haline gelene kadar uzun ve gizemli bir evrim sürecinden geçmiştir. Bu sürecin ilk basamağı **simya (alşimi)**, sonrasındaki modern dönemi ise **kimya** bilimidir. YKS hazırlık sürecinde bu iki kavram arasındaki temel farkları bilmek ve dönüm noktası olan bilim insanlarını tanımak oldukça önemlidir.
+
+### Simya Nedir?
+Simya, değersiz madenleri altına çevirmek ve bütün hastalıkları iyileştirip ölümsüzlüğü bulmak (ölümsüzlük iksiri - abıhayat) amacıyla yapılan çalışmaların bütünüdür. Simya ile uğraşan kişilere **simyacı (alşimist)** denir.
+
+Simya bir bilim dalı **değildir**. Çünkü;
+* Teorik temellere dayanmaz.
+* Deneme-yanılma yöntemine dayanır, tesadüfi keşifler ağırluktadır.
+* Sistematik bilgi birikimi sağlamaz.
+
+Ancak simya dönemi, modern kimyaya pek çok laboratuvar aracı ve yöntemi kazandırmıştır. Bu dönemde keşfedilen bazı maddeler ve yöntemler şunlardır:
+* **Yöntemler:** Damıtma, süzme, kristallendirme, kavurma, Mayalama, özütleme.
+* **Maddeler:** Mürekkep, cam, barut, seramik, esas, sabun, zaç yağı ($H_2SO_4$), kezzap ($HNO_3$), tuz ruhu ($HCl$).
+
+### Simyadan Kimyaya Geçiş
+Simyanın bilimsel kimyaya dönüşmesinde önemli dönüm noktaları ve bilim insanları vardır:
+
+* **Robert Boyle:** "Kuşkucu Kimyager" adlı eserinde elementi, "kendinden daha basit maddelere ayrılamayan saf madde" olarak tanımlayarak simya anlayışından uzaklaşmada büyük rol oynamıştır. Ayrıca basınç-hacim ilişkisini incelemiştir.
+* **Antoine Lavoisier:** Terazi kullanarak yaptığı deneylerde Kütlenin Korunumu Kanunu'nu bulmuş ve yanma olaylarının oksijen gazıyla gerçekleştiğini kanıtlamıştır. Bu durum kimyanın bilim olmasını hızlandırmıştır.
+
+### Simya ile Kimya Arasındaki Farklar Tablosu
+
+| Özellik | Simya | Kimya |
+| :--- | :--- | :--- |
+| Bilim dalı mı? | Hayır (Uğraştır) | Evet |
+| Dayandığı temeller | Sınama-yanılma, kehanet | Deney, gözlem, teorik temeller |
+| Bilgi birikimi | Sistematik değildir | Sistematik ve birikimlidir |
+
+### Sık Yapılan Hatalar
+* **Hata:** Simyanın tamamen değersiz bir uğraş olduğunu ve kimyaya hiçbir katkı sağlamadığını düşünmek.
+* **Doğru:** Simya bilim olmasa da, günümüz kimyasında kullanılan pek çok teknik (damıtma vb.) ve madde (asitler, tuzlar) simyacılar tarafından keşfedilmiştir.
+* **Hata:** Robert Boyle'un element tanımını günümüzdeki modern tanım ile karıştırmak. Boyle, dönemin imkanlarına göre "parçalanamayan madde" demiştir.
+
+### YKS'de Nasıl Sorulur?
+ÖSYM bu kazanımdan genellikle simya-kimya karşılaştırması, simyacıların keşfettiği maddeler/yöntemler ya da Robert Boyle ve Antoine Lavoisier'in kimyaya katkıları üzerinden soru sorar. "Aşağıdakilerden hangisi simya dönemine aittir?" veya "Hangisi simyayı kimyadan ayıran özelliklerden biridir?" tarzı öncüllü sorular sıkça karşınıza çıkar.
+
+ÖRNEKLER:
+1) Aşağıdakilerden hangisi simya döneminde keşfedilen maddelerden biri **değildir**?
+
+A) Barut
+B) Cam
+C) Plastik
+D) Kezzap
+E) Sabun
+   → Simya döneminde değersiz madenleri altına çevirme, tıp ve boya alanındaki çalışmalar sonucunda barut, cam, kezzap ($HNO_3$), sabun ve mürekkep gibi maddeler keşfedilmiştir. Ancak plastik, petrokimya ürünü olup tamamen modern kimya ve endüstri dönemi ürünüdür.
+
+Doğru Cevap: C
+2) I. Deneme-yanılma yöntemiyle çalışmalar yapılması
+II. Sistematik bilgi birikimi sağlaması
+III. Teorik temellere dayanması
+
+Yukarıdakilerden hangileri simya döneminin özelliklerindendir?
+
+A) Yalnız I
+B) I ve II
+C) Yalnız III
+D) II ve III
+E) I, II ve III
+   → Simya dönemi çalışmalarında kesinlikle sistematik bilgi birikimi ve bilimsel teorik temeller bulunmaz. Simyacılar tamamen deneme-yanılma yoluyla tesadüfi bulgular elde etmişlerdir. Bu nedenle yalnız I numaralı öncül simya dönemine aittir.
+
+Doğru Cevap: A
+3) Kimyanın bilim olmasında:
+
+I. Robert Boyle'un elementi yeniden tanımlaması
+II. Antoine Lavoisier'in Kütlenin Korunumu Kanunu'nu bulması
+III. Simyacıların ölümsüzlük iksiri araması
+
+İşlemlerinden hangileri doğrudan etkili olmuştur?
+
+A) Yalnız I
+B) Yalnız II
+C) I ve II
+D) II ve III
+E) I, II ve III
+   → Robert Boyle'un kuşkucu yaklaşımı ve element tanımı ile Antoine Lavoisier'in teraziyi kullanarak kütlenin korunumunu kanıtlaması kimyanın bilimsel döneme geçişindeki en büyük iki adımdır. Öncül III (ölümsüzlük iksiri) simya dönemine ait mistik bir amaçtır, kimyanın bilimleşmesini sağlamaz.
+
+Doğru Cevap: C
+
+HAP:
+- Simya bir bilim dalı değil, deneme-yanılmaya dayalı bir uğraştır.
+- Simyanın temel amacı değersiz madenleri altına çevirmek ve ölümsüzlük iksirini bulmaktır.
+- Damıtma, süzme, kristallendirme gibi laboratuvar teknikleri simya döneminde keşfedilmiştir.
+- Zaç yağı ($H_2SO_4$), kezzap ($HNO_3$), tuz ruhu ($HCl$) gibi asitler simyacılar tarafından bulunmuştur.
+- Robert Boyle, "Kuşkucu Kimyager" adlı eseriyle elementi tanımlamıştır.
+- Antoine Lavoisier, Kütlenin Korunumu Kanunu'nu bularak kimyanın bilimselleşmesini hızlandırmıştır.
+- Simya teorik temeller içermezken, kimya gözlem, deney ve teorik temellere dayanır.
+
+10/matematik konu listesi (4711 ms): 7 ünite, 33 kazanım — 1. Ünite: Sayma ve Olasılık | 2. Ünite: Fonksiyonlar | 3. Ünite: Polinomlar | 4. Ünite: İkinci Dereceden Denklemler | 5. Ünite: Dörtgenler ve Çokgenler | 6. Ünite: Katı Cisimler | 7. Ünite: Veri, İstatistik ve Grafik Yorumlama
+
+10/matematik anlatım "Olayların gerçekleşme sayısını toplama ve çarpma yoluyla sayar." (4393 ms): 211 kelime, 3 örnek, 6 hap bilgi, 11 formül, çizilemeyen: 0
+
+---- 10/matematik anlatım ----
+### Toplama ve Çarpma Yoluyla Sayma
+
+Sayma ve olasılık ünitesinin temeli, karşılaşılan farklı durumların sayısını doğru bir şekilde hesaplamaya dayanır. YKS'de sıkça karşılaşılan bu temel, iki ana kural üzerine kuruludur: **Toplama Yoluyla Sayma** ve **Çarpma Yoluyla Sayma**.
+
+### Temel Kurallar ve Formüller
+
+*   **Toplama Yoluyla Sayma Kuralı:** Ayrık iki olaydan biri $A$ farklı yolla, diğeri $B$ farklı yolla gerçekleşiyorsa ve bu olaylardan aynı anda yalnızca biri gerçekleşebiliyorsa, bu olaylardan *biri veya diğeri* $A + B$ farklı yolla gerçekleşir. Burada "veya" kelimesi toplama işlemini işaret eder.
+*   **Çarpma Yoluyla Sayma Kuralı:** Bir olay $A$ farklı yolla, bu olayın gerçekleşmesinden sonra ikinci bir olay $B$ farklı yolla gerçekleşebiliyorsa, bu iki olay art arda (birlikte) $A \times B$ farklı yolla gerçekleşir. Burada "ve" kelimesi çarpma işlemini işaret eder.
+
+### Sık Yapılan Hatalar
+
+*   Hangi durumda toplama, hangi durumda çarpma yapılacağının karıştırılması en sık yapılan hatadır. "Veya" bağlacı toplama, "ve" bağlacı ise çarpma gerektirir.
+*   Seçim yapılan durumların birbiriyle bağımlı olup olmadığını kontrol etmemek, eksik veya fazla sonuç bulmaya yol açar.
+
+### YKS'de Bu Konu Nasıl Sorulur?
+
+ÖSYM, bu kazanımı genellikle günlük hayat problemlerine uyarlayarak sorar. Giyim kombinleri, yolculuk güzergahları, şifre oluşturma veya menü seçimleri gibi senaryolar üzerinden öğrencinin mantıksal sıralama yeteneği ölçülür. Genellikle bu konu, ilerleyen konulardaki permütasyon ve kombinasyon sorularının da temelini oluşturur.
+
+ÖRNEKLER:
+1) Bir sınıftaki 12 erkek ve 10 kız öğrenci arasından bir temsilci seçilecektir. Buna göre, bu temsilci kaç farklı şekilde seçilebilir?
+
+A) 2
+B) 10
+C) 12
+D) 22
+E) 120
+   → 1. Adım: Temsilci ya bir erkek ya da bir kız öğrenci olacaktır. Aynı anda hem erkek hem kız seçilemez (ayrık olaylar).
+2. Adım: Erkekler 12 farklı şekilde, kızlar 10 farklı şekilde seçilebilir.
+3. Adım: Toplama kuralı uygulanır: $12 + 10 = 22$ farklı seçim yapılabilir.
+Doğru Cevap: D
+2) A kentinden B kentine 3 farklı yol, B kentinden C kentine 4 farklı yol bulunmaktadır. A kentine gelen bir kişi B kentine uğramak şartıyla C kentine kaç farklı yoldan gidebilir?
+   → 1. Adım: Kişi önce A'dan B'ye gitmelidir, bu 3 farklı yoldan biriyle gerçekleşir.
+2. Adım: Ardından B'den C'ye gitmelidir, bu da 4 farklı yoldan biriyle gerçekleşir.
+3. Adım: Yolculuğun tamamlanması için hem A-B hem de B-C yolları kullanılacağı için çarpma kuralı uygulanır: $3 \times 4 = 12$ farklı yol vardır.
+Doğru Cevap: 12
+3) Farklı 4 matematik ve 3 fizik kitabı bulunan bir raftan, 1 matematik veya 1 fizik kitabı kaç farklı şekilde seçilebilir?
+   → 1. Adım: Seçim "matematik veya fizik" şeklinde istenmiştir, bu durum toplama kuralını gerektirir.
+2. Adım: Matematik kitabı 4 farklı şekilde seçilebilir.
+3. Adım: Fizik kitabı 3 farklı şekilde seçilebilir.
+4. Adım: $4 + 3 = 7$ farklı seçim yapılabilir.
+Doğru Cevap: 7
+
+HAP:
+- Ayrık olaylarda veya bağlacı varsa toplama kuralı ($A + B$) kullanılır.
+- Art arda veya birlikte gerçekleşen durumlarda ve bağlacı varsa çarpma kuralı ($A \times B$) kullanılır.
+- Toplama kuralı için olayların aynı anda gerçekleşemez (ayrık) olması gerekir.
+- Çarpma kuralı ardışık aşamalardan oluşan durumlarda uygulanır.
+- Günlük hayat problemlerinde "seçme" kelimesi genellikle toplamayı, "sıralama ve oluşturma" durumları çarpmayı akla getirmelidir.
+- Problemi çözerken önce adımları belirlemek ve bağlaçlara dikkat etmek hatayı önler.
+
+11/fizik konu listesi (4367 ms): 6 ünite, 32 kazanım — Kuvvet ve Hareket | Enerji ve Hareket | İtki ve Momentum | Tork ve Denge | Basit Makineler | Elektrik ve Manyetizma
+
+11/fizik anlatım "Vektörlerin özelliklerini açıklar ve toplama işlemlerini yapar" (5642 ms): 298 kelime, 3 örnek, 8 hap bilgi, 37 formül, çizilemeyen: 0
+
+---- 11/fizik anlatım ----
+### Vektörler ve Temel Özellikleri
+
+Fizikte büyüklükler skaler ve vektörel olmak üzere ikiye ayrılır. Skaler büyüklükler yalnızca sayı ve birimle ifade edilirken (örneğin kütle, sıcaklık, zaman), vektörel büyüklükler yön, doğrultu, başlangıç noktası ve şiddet (büyüklük) ile ifade edilir (örneğin kuvvet, hız, yer değiştirme).
+
+Bir $\vec{A}$ vektörünün temel özellikleri şunlardır:
+* **Yön ve Doğrultu:** Doğrultu doğrunun üzerindeki çizgisel hattı, yön ise o hattın üzerindeki taraflardan birini belirtir.
+* **Şiddet:** Vektörün büyüklüğüdür ve $|\vec{A}|$ veya $A$ ile gösterilir.
+* **Eşit Vektörler:** Yönleri, doğrultuları ve şiddetleri aynı olan vektörlerdir ($\vec{A} = \vec{B}$).
+* **Zıt Vektörler:** Doğrultuları ve şiddetleri aynı, fakat yönleri zıt olan vektörlerdir ($\vec{A} = -\vec{B}$).
+
+### Vektörlerde Toplama İşlemi
+
+Vektörlerin toplanması, sayıların toplanmasından farklıdır çünkü yön dikkate alınmalıdır. İki temel yöntem kullanılır:
+
+1. **Uç Uca Ekleme Yöntemi:** Birinci vektörün ok ucuna ikinci vektörün başlangıç noktası eklenir. Bileşke vektör (toplam vektör), ilk vektörün başlangıcından son vektörün bitimine çizilen vektördür. Bu yöntem birden fazla vektör için de uygulanabilir.
+
+2. **Paralelkenar Yöntemi:** İki vektör başlangıç noktaları birleştirilecek şekilde yerleştirilir. Bu vektörlerin uçlarından diğerine paralel çizgiler çizilerek bir paralelkenar oluşturulur. Başlangıç noktasından paralelkenarın köşegenine çizilen vektör bileşkeyi verir. İki vektör arasındaki açının $\theta$ olduğu durumda bileşke vektörün büyüklüğü kosinüs teoremi ile hesaplanır:
+
+$$R = \sqrt{A^2 + B^2 + 2AB \cos(\theta)}$$
+
+### Sık Yapılan Hatalar
+* Vektörlerin yönlerini dikkate almadan doğrudan cebirsel olarak toplamak (Örneğin doğuya 4 birim ve batıya 3 birim gittiğinde yer değiştirmenin 7 birim olduğunu sanmak).
+* Açılı sorularda kosinüs teoremini yanlış uygulamak veya $\cos(180^\circ) = -1$ olduğunu unutmak.
+
+### YKS'de Karşınıza Nasıl Çıkar?
+ÖSYM, vektörlerin toplanması ve bileşenlerine ayrılması işlemlerini genellikle Newton'un hareket kanunları, bağıl hareket ve denge ile ilgili soruların temel adımı olarak sorar. Doğrudan vektör tanımı veya uç uca ekleme yöntemiyle bileşke bulma soruları ise genellikle 11. sınıf ilk dönem yazılılarında ve TYT-AYT ortak Fizik sorularında karşımıza çıkar.
+
+ÖRNEKLER:
+1) Aynı düzlemde bulunan büyüklükleri 6 birim ve 8 birim olan iki vektör arasındaki açı $90^\circ$'dir. Bu iki vektörün bileşke vektörünün büyüklüğü kaç birimdir?\nA) 2\nB) 6\nC) 8\nD) 10\nE) 14
+   → Adım 1: Verilen değerleri belirleyelim. $A = 6$, $B = 8$ ve $\theta = 90^\circ$ \nAdım 2: Dik açılı durumlarda özel üçgenlerden veya Pisagor teoreminden faydalanılır.\nAdım 3: $R = \sqrt{A^2 + B^2 + 2AB \cos(90^\circ)}$ formülünde $\cos(90^\circ) = 0$ olduğu için denklem $R = \sqrt{A^2 + B^2}$ halini alır.\nAdım 4: $R = \sqrt{6^2 + 8^2} = \sqrt{36 + 64} = \sqrt{100} = 10$ birim bulunur.\nDoğru Cevap: D) 10
+2) Kuzey yönünde 12 birimlik $\vec{K}$ vektörü ile güney yönünde 5 birimlik $\vec{L}$ vektörünün toplamı olan bileşke vektörün büyüklüğü ve yönü nedir?
+   → Adım 1: Vektörler aynı doğrultuda ancak zıt yönlüdür.\nAdım 2: Kuzey yönünü pozitif (+), güney yönünü negatif (-) kabul edelim.\nAdım 3: $\vec{R} = \vec{K} + \vec{L}$ işleminde değerleri yerine koyalım: $12 + (-5) = 7$ birim.\nAdım 4: Sonuç pozitif çıktığı için yönü büyük olan vektörün yönü olan kuzeydir.\nDoğru Cevap: Kuzey yönünde 7 birim
+3) Büyüklükleri eşit ve 10 birim olan iki vektör arasındaki açı $120^\circ$'dir. Bu vektörlerin bileşke vektörünün büyüklüğü kaç birimdir?\nA) 5\nB) 10\nC) $10\sqrt{2}$\nD) $10\sqrt{3}$\nE) 20
+   → Adım 1: $A = 10$, $B = 10$ ve $\theta = 120^\circ$ olarak verilmiştir.\nAdım 2: Aralarındaki açı $120^\circ$ olan eşit büyüklükteki iki vektörün bileşkesi, vektörlerden birinin büyüklüğüne eşittir.\nAdım 3: Formülle doğrulayalım: $R = \sqrt{10^2 + 10^2 + 2 \cdot 10 \cdot 10 \cdot \cos(120^\circ)}$\nAdım 4: $\cos(120^\circ) = -\frac{1}{2}$ olduğundan, $R = \sqrt{100 + 100 + 200 \cdot (-1/2)} = \sqrt{200 - 100} = \sqrt{100} = 10$ birim bulunur.\nDoğru Cevap: B) 10
+
+HAP:
+- Vektörel büyüklüklerin yönü, doğrultusu, başlangıç noktası ve şiddeti vardır.
+- Skaler büyüklükler sadece sayı ve birimle ifade edilirken vektörler yönlü büyüklüklerdir.
+- İki vektörün eşit olması için hem büyüklükleri hem de yönleri aynı olmalıdır.
+- Uç uca ekleme yönteminde birinci vektörün ucuna ikincinin başlangıcı eklenir, toplam ilk başlangıçtan son uca çizilir.
+- Aralarındaki açı $\theta$ olan iki vektörün bileşkesi kosinüs teoremi ile hesaplanır: $R = \sqrt{A^2 + B^2 + 2AB \cos(\theta)}$.
+- Aralarındaki açı $0^\circ$ ise bileşke maksimumdur ($R = A + B$).
+- Aralarındaki açı $180^\circ$ ise bileşke minimumdur ($R = |A - B|$).
+- Aralarındaki açı $120^\circ$ ve büyüklükleri eşit olan iki vektörün bileşkesi, vektörlerden birinin büyüklüğüne eşittir.
+
+12/edebiyat konu listesi (4897 ms): 8 ünite, 28 kazanım — 1. Ünite: Giriş | 2. Ünite: Hikâye | 3. Ünite: Şiir | 4. Ünite: Türk Dünyası Edebiyatı | 5. Ünite: Tiyatro | 6. Ünite: Roman | 7. Ünite: Deneme | 8. Ünite: Söylev (Nutuk)
+
+12/edebiyat anlatım "Edebiyatın tarih ve din ile ilişkisini açıklar." (6848 ms): 361 kelime, 3 örnek, 6 hap bilgi, 0 formül, çizilemeyen: 0
+
+---- 12/edebiyat anlatım ----
+### Edebiyatın Tarih ve Din ile İlişkisi
+
+Edebiyat, insanı ve toplumları anlatan en köklü sanat dalıdır. Yalnızca hayal gücüne dayanmaz; doğduğu ve geliştiği toplumun tarihsel süreçlerinden ve inanç sistemlerinden de doğrudan beslenir. YKS Türk Dili ve Edebiyatı testlerinde bu ilişki ağını kavramak, metinleri doğru dönemlendirmek ve anlamak için kritik öneme sahiptir.
+
+### 1. Edebiyat ve Tarih İlişkisi
+
+Tarih, geçmişteki olayları yer ve zaman göstererek, sebepleriyle birlikte belgelere dayalı olarak inceler. Edebiyat ise tarihsel olayları estetik bir süzgeçten geçirerek insani bir boyut kazandırır. 
+
+* **Ortak Payda:** Her iki disiplinin de merkezinde "insan" vardır. Tarih nesnel veriler sunarken, edebiyat bu verileri kurgusal bir gerçeklikle zenginleştirir.
+* **Dönemlerin Yansıması:** Edebi eserler yazıldıkları dönemin tarihî atmosferini ayna gibi yansıtır. Örneğin, Millî Edebiyat döneminde yazılan romanlarda Kurtuluş Savaşı'nın izlerini açıkça görürüz.
+* **Tarihî Romanlar:** Kemal Tahir veya Tarık Buğra gibi yazarlar, tarihsel gerçeği sanatla harmanlayarak dönemin ruhunu aktarırlar.
+
+### 2. Edebiyat ve Din İlişkisi
+
+Din, toplumların dünya görüşünü, ahlak anlayışını, yaşam tarzını ve dolayısıyla sanatını derinden etkileyen en önemli unsurlardan biridir. Türk edebiyatının geçirdiği büyük değişimler dinî hayatla doğrudan ilişkilidir.
+
+* **İslamiyet Öncesi Dönem:** Şamanizm, Budizm ve Maniheizm gibi inançlar edebiyatta mitolojik unsurların, doğa sevgisinin ve kopuz eşliğinde söylenen dinî-lirik törenlerin (şuğur, yuğ, sagu) doğmasına yol açmıştır.
+* **İslamiyet Etkisindeki Dönem:** Türklerin İslamiyet'i kabulüyle birlikte edebiyatta Arap ve Fars kültürünün etkisi görülmüştür. Tasavvuf edebiyatı (ilahiler, nefesler) ve divan edebiyatı (gazel, kaside) tamamen dinî ve tasavvufi kavramlar etrafında şekillenmiştir.
+* **Batı Etkisindeki Dönem:** Modernleşme süreciyle birlikte edebiyatta dinî motifler yerini bireysel ve toplumsal değişimlere, laik dünya görüşüne bırakmıştır.
+
+### Sık Yapılan Hatalar
+
+* **Hata:** Edebi metinlerin tamamen tarihten bağımsız, saf hayal ürünü olduğunu düşünmek.
+* **Doğru:** Her edebi eser, yazıldığı dönemin tarihî ve toplumsal koşullarının izlerini taşır.
+* **Hata:** Din ve edebiyat ilişkisini sadece İslamiyet dönemiyle sınırlandırmak.
+* **Doğru:** İslamiyet öncesi dinler de Türk edebiyatının biçimlenmesinde büyük rol oynamıştır.
+
+### YKS'de Bu Konu Nasıl Sorulur?
+
+ÖSYM bu kazancı genellikle iki şekilde sorgular:
+1. Verilen bir metnin hangi tarihî döneme veya dinî anlayışa ait olduğunun sorulması (Örn: İslamiyet etkisindeki ilk ürünlerin İslami unsurlar barındırması).
+2. Tarihî bir olayın edebi metne yansımasının incelenmesi. Soru köklerinde "Bu parça yazıldığı dönemin zihniyetini yansıtmaktadır" veya "Dinî inançların etkisiyle şekillenmiştir" ifadeleri sıkça geçer.
+
+ÖRNEKLER:
+1) Türk edebiyatının geçirdiği dönemler incelendiğinde, din değiştirmenin edebiyatı kökten etkilediği görülür. Örneğin İslamiyet'in kabulüyle birlikte eserlerde Arapça ve Farsçanın etkisi artmış, yeni nazım şekilleri ve temalar edebiyata girmiştir. 
+Bu durum aşağıdakilerden hangisini doğrudan kanıtlar?
+
+A) Edebiyatın tarihten tamamen bağımsız olduğunu
+B) Din ve inanç sistemlerinin edebiyatın içeriğini ve biçimini etkilediğini
+C) Tarihî olayların edebî metinlerde asla yer almadığını
+D) Sadece Batı edebiyatının dinî unsurlar içerdiğini
+E) Edebi türlerin hiç değişmeden günümüze geldiğini
+   → Paragrafta İslamiyet'in kabulüyle birlikte Türk edebiyatının dil, şekil ve tema bakımından değiştiği vurgulanmıştır. Bu durum, dinî inançların edebiyatın hem biçimini (nazım şekilleri) hem de içeriğini (temalar) doğrudan etkilediğini gösterir. Doğru cevap B seçeneğidir.
+2) Aşağıdakilerden hangisi edebiyatın tarih ile ilişkisini en iyi açıklar?
+
+A) Edebi eserler sadece hayal ürünüdür, geçmişin izlerini taşınmaz.
+B) Tarihçiler sadece edebi romanlardan yararlanarak eser yazar.
+C) Edebi eserler, yazıldığı dönemin tarihî ve toplumsal olaylarından bağımsız düşünülemez.
+D) Tarih bilimi, edebi metinlerin dil bilgisi kurallarını inceler.
+E) Edebiyat, tarih biliminin alt dalıdır.
+   → Edebi eserler birer belge olmasa da yazıldıkları dönemin zihniyetini, sosyal olaylarını ve tarihî atmosferini yansıtırlar. Bu nedenle edebiyat ve tarih sıkı sıkıya bağlıdır. Doğru cevap C seçeneğidir.
+3) İslamiyet öncesi Türk edebiyatında törenlerde ölen kişinin arkasından söylenen ağıtlara 'sagu', dinî törenlere ise 'şölen' denirdi. Bu dönemdeki eserlerde doğa, ölüm ve kahramanlık temaları işlenmiştir.
+Bu parçada edebiyatın hangi alanla ilişkisi vurgulanmıştır?
+
+A) Matematik
+B) Din ve Mitoloji
+C) Fizik
+D) Kimya
+E) Ekonomi
+   → Parçada bahsedilen törenler, sagular ve inançlara bağlı temalar o dönemdeki toplumsal hayatın ve dinî/mitolojik inançların edebiyata etkisini göstermektedir. Doğru cevap B seçeneğidir.
+
+HAP:
+- Edebiyat, tarihî ve toplumsal olaylardan bağımsız var olamaz; yazıldığı dönemin aynasıdır.
+- İslamiyet öncesi Türk edebiyatı Şamanizm ve Maniheizm gibi inançların izlerini taşır.
+- İslamiyet'in kabulüyle birlikte Türk edebiyatı dinî ve tasavvufi bir nitelik kazanmıştır.
+- Tarih nesnel belgelerle çalışırken, edebiyat aynı dönemi estetik ve kurgusal bir dille ele alır.
+- Tarihî romanlar, geçmişin ruhunu anlamak için edebiyat ile tarihin ortak çalışma alanıdır.
+- YKS sorularında metinlerin hangi dönemin zihniyetini yansıttığı sıkça sorulur.
