@@ -65,7 +65,13 @@ for (const gs of (subjects.length ? subjects : ["10/kimya"])) {
     const u = subject.units[0], k = u.outcomes[0];
     const f = App.lessons.find(g + "/" + sid + "/" + u.id + "/" + k.id);
     const r2 = await generate(App.lessons.lessonPrompt(f));
-    const les = App.lessons.normalizeLesson(App.ai.parseJSON(r2.text));
+    let les;
+    try { les = App.lessons.normalizeLesson(App.ai.parseJSON(r2.text)); }
+    catch (e) {
+      const pos = Number((String(e.message).match(/position (\d+)/) || [])[1]);
+      out.push("---- " + gs + " HAM ÇIKTI (" + e.message + ") ----\n" + (pos ? "…" + r2.text.slice(Math.max(0, pos - 300), pos) + " ⟦HATA⟧ " + r2.text.slice(pos, pos + 200) + "…\n\n" : "") + r2.text);
+      throw e;
+    }
     const all = App.ai.fixMath([les.anlatim, ...les.ornekler.map((o) => o.soru + " " + o.cozum), ...les.ozet].join("\n"));
     const mc = mathCheck(all);
     note(gs + " anlatım \"" + k.title + "\" (" + r2.ms + " ms): " + les.anlatim.split(/\s+/).length + " kelime, " + les.ornekler.length + " örnek, " + les.ozet.length + " hap bilgi, " + mc.n + " formül, çizilemeyen: " + mc.bad.length + (mc.bad.length ? " (" + mc.bad.slice(0, 3).join("; ") + ")" : ""));
