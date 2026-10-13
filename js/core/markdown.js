@@ -130,6 +130,7 @@
   function render(src) {
     const store = [];
     let s = String(src || "").replace(/\r\n?/g, "\n");
+    if (App.ai && App.ai.fixMath) s = App.ai.fixMath(s);       // bozuk "$$…$|" kapanışlarını onar
     s = protect(s, store);
     s = esc(s);
     // esc() yer tutucu işaretine dokunmaz; ama kaçırılan > işaretleri &gt; olur (alıntılar için)

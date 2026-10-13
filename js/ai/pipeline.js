@@ -213,6 +213,12 @@
   /* ---------------- Yapılandırılmış üretim (test soruları, haftalık plan) ----------------
      opts: { system, prompt, temperature, signal, onStage }
      Dönen: { data (JSON), text, engine, model } */
+  /* Bazı modeller ayrı satırdaki formülün kapanışını bozuk yazıyor ("$$x = 1$|" ya da "$$x = 1$"): onar */
+  function fixMath(s) {
+    return s.replace(/(\$\$[^$\n]+?)\$\|/g, "$1$$$$")
+      .replace(/^(\s*\$\$(?:(?!\$\$)[^\n])*?[^$\n])\$(?=[ \t]*$)/gm, "$1$$$$");
+  }
+
   function parseJSON(text) {
     let s = String(text || "").trim().replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/, "");
     const a = s.indexOf("{"), b = s.lastIndexOf("}");
@@ -221,7 +227,7 @@
     const data = JSON.parse(s);
     // Modelin JSON'da kaçırmayı unuttuğu LaTeX komutlarını onar: "\frac" → form feed + "rac" gibi
     const fix = (v) => typeof v === "string"
-      ? v.replace(/\f(?=[a-z])/g, "\\f").replace(/\u0008(?=[a-z])/g, "\\b").replace(/\t(?=[a-z])/g, "\\t").replace(/\r(?=[a-z])/g, "\\r").replace(/\n(?=(eq|abla|ot|u |e |i ))/g, "\\n")
+      ? fixMath(v.replace(/\f(?=[a-z])/g, "\\f").replace(/\u0008(?=[a-z])/g, "\\b").replace(/\t(?=[a-z])/g, "\\t").replace(/\r(?=[a-z])/g, "\\r").replace(/\n(?=(eq|abla|ot|u |e |i ))/g, "\\n"))
       : Array.isArray(v) ? v.map(fix) : v && typeof v === "object" ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, fix(x)])) : v;
     return fix(data);
   }
@@ -263,5 +269,5 @@
     }
   }
 
-  App.ai = { run, systemPrompt, generate, parseJSON };
+  App.ai = { run, systemPrompt, generate, parseJSON, fixMath };
 })();

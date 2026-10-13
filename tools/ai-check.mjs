@@ -66,7 +66,7 @@ for (const gs of (subjects.length ? subjects : ["10/kimya"])) {
     const f = App.lessons.find(g + "/" + sid + "/" + u.id + "/" + k.id);
     const r2 = await generate(App.lessons.lessonPrompt(f));
     const les = App.lessons.normalizeLesson(App.ai.parseJSON(r2.text));
-    const all = [les.anlatim, ...les.ornekler.map((o) => o.soru + " " + o.cozum), ...les.ozet].join("\n");
+    const all = App.ai.fixMath([les.anlatim, ...les.ornekler.map((o) => o.soru + " " + o.cozum), ...les.ozet].join("\n"));
     const mc = mathCheck(all);
     note(gs + " anlatım \"" + k.title + "\" (" + r2.ms + " ms): " + les.anlatim.split(/\s+/).length + " kelime, " + les.ornekler.length + " örnek, " + les.ozet.length + " hap bilgi, " + mc.n + " formül, çizilemeyen: " + mc.bad.length + (mc.bad.length ? " (" + mc.bad.slice(0, 3).join("; ") + ")" : ""));
     out.push("---- " + gs + " anlatım ----\n" + les.anlatim + "\n\nÖRNEKLER:\n" + les.ornekler.map((o, i) => (i + 1) + ") " + o.soru + "\n   → " + o.cozum).join("\n") + "\n\nHAP:\n- " + les.ozet.join("\n- "));
