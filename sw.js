@@ -57,3 +57,17 @@ self.addEventListener("fetch", (event) => {
     }
   })());
 });
+
+/* Bildirime dokununca (ders hatırlatıcısı vb.) açık pencereyi öne getir; yoksa uygulamayı aç */
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  const data = event.notification.data || {};
+  event.waitUntil((async () => {
+    const list = await self.clients.matchAll({ type: "window", includeUncontrolled: true });
+    for (const c of list) {
+      c.postMessage({ type: "notification", data });
+      if ("focus" in c) return c.focus();
+    }
+    return self.clients.openWindow("./" + (data.kind === "study" ? "#/odak" : ""));
+  })());
+});

@@ -173,6 +173,10 @@
       if (!typing && !App.modules.assistant.isBusy() && !document.querySelector(".modal-backdrop")) App.router.refresh();
     });
 
+    // Ders hatırlatıcıları (Programım'daki bloklar) ve ilk açılış tanıtım turu
+    App.reminders.init();
+    App.tour.maybeStart();
+
     // Yapay zekayı arka planda yokla (Ollama açık mı, internet servisi ayarlı mı)
     App.modules.assistant.refreshStatus();
 

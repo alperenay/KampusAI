@@ -9,7 +9,13 @@
   },
   "android": {
     "allowMixedContent": true,
-    "adjustMarginsForEdgeToEdge": "auto",
+    "adjustMarginsForEdgeToEdge": "disable",
     "webContentsDebuggingEnabled": false
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_kampus",
+      "iconColor": "#5B7CFA"
+    }
   }
 }

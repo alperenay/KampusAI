@@ -101,8 +101,29 @@
     App.router.go("program/benim");
   }
 
+  /** Ders hatırlatıcısı düğmesi (açıkken "Hatırlatıcı açık · 5 dk önce") */
+  function remindBtnHtml() {
+    if (!App.reminders) return "";
+    const c = App.reminders.config();
+    return '<button class="btn' + (c.on ? " btn--on" : "") + '" type="button" id="remindBtn">' + App.icon("bell") +
+      esc(c.on ? (Number(c.lead) ? t("rem.btnOnLead", { n: c.lead }) : t("rem.btnOn")) : t("rem.btnOff")) + "</button>";
+  }
+
+  let remindHooked = false;
+  function hookRemind() {
+    if (remindHooked || !App.reminders) return;
+    remindHooked = true;
+    App.reminders.onChange(() => {
+      const b = document.getElementById("remindBtn");
+      if (!b) return;
+      b.outerHTML = remindBtnHtml();
+      App.hydrateIcons(document.querySelector(".toolbar") || document);
+    });
+  }
+
   /* ---------------- Kendi programım ---------------- */
   async function renderPlanner(view) {
+    hookRemind();
     const plan = await loadPlan();
     const has = plan.blocks.length > 0;
     view.innerHTML =
@@ -114,6 +135,7 @@
             '<button class="btn btn--primary" type="button" data-add="' + weekdayIndex() + '">' + App.icon("plus") + esc(t("sch.addBlock")) + "</button>" +
             '<button class="btn" type="button" id="useDefault">' + App.icon("copy") + esc(t("sch.startFromDefault")) + "</button>" +
             '<button class="btn btn--ai" type="button" id="aiPlan">' + App.icon("sparkle") + esc(t("plan.button")) + "</button>" +
+            remindBtnHtml() +
           "</div>" +
           (has ? '<button class="btn btn--ghost btn--danger" type="button" id="clearPlan">' + App.icon("trash") + esc(t("sch.clear")) + "</button>" : "") +
         "</div>" +
@@ -130,6 +152,7 @@
       else if (edit) openEditor(plan, plan.blocks.find((b) => b.id === edit.dataset.edit));
       else if (e.target.closest("#useDefault")) copyDefault();
       else if (e.target.closest("#aiPlan")) openAiPlan(plan);
+      else if (e.target.closest("#remindBtn")) App.reminders.openSettings();
       else if (e.target.closest("#clearPlan")) {
         if (await App.ui.confirm(t("sch.clearConfirm"), t("sch.clearOk"), true)) {
           plan.blocks = [];

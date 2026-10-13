@@ -1,7 +1,7 @@
 # KampüsAI — Kurulum ve Kullanım
 
 Ders programı, konu anlatımı, TYT-AYT deneme takibi, konu sonu testleri, yanlış defteri, odak sayacı,
-YKS geri sayımı ve hedef netler, yapay zekâyla haftalık plan, benzer soru üretme, Feynman modu ve yapay zeka asistanı.
+YKS geri sayımı ve hedef netler, yapay zekâyla haftalık plan, benzer soru üretme, Feynman modu, ders hatırlatıcıları ve yapay zeka asistanı.
 **Windows**, **Android** ve **iPhone** için uygulama olarak gelir. Yapay zeka iki kaynaktan çalışır:
 
 | Kaynak | Nerede çalışır | Ücret | Fotoğraf |
@@ -97,6 +97,12 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
   artırman gerektiği hesaplanır. (2027 sınav tarihi ÖSYM açıklayana kadar tahminidir; tarihi buradan değiştirebilirsin.)
 - **Yapay zekâyla haftalık plan:** Ders Programı → Programım → *Yapay zekâyla plan*. Çalışma saatlerini ve
   odak sınavı seç; denemelerindeki zayıf derslere göre bir hafta hazırlanır, önizleyip *Programıma uygula* dersin.
+- **Ders hatırlatıcıları:** Ders Programı → Programım → *Hatırlatıcı* (ya da Ayarlar → Ders hatırlatıcıları).
+  Programındaki her ders bloğunun saatinde (istersen 5/10/15 dk önce) bildirim gelir; bildirime dokununca Odak Sayacı
+  o dersle açılır, Android'de bildirimdeki *Odak sayacını başlat* sayacı hemen başlatır. Android'de uygulama kapalıyken
+  de gelir; bilgisayarda ve tarayıcıda uygulama açıkken (küçültülmüş olsa da) gelir. Mola blokları için bildirim gelmez.
+- **Tanıtım turu:** Uygulamayı ilk kez açınca 20 adımlık canlı bir tur her özelliği gerçek sayfalar üzerinde gösterir.
+  Güncelleme yapan eski kullanıcılara gösterilmez; istenirse Ayarlar → *Tanıtımı yeniden izle*.
 
 ## 4. Verileri cihazlar arasında taşımak
 

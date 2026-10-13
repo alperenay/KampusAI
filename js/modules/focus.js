@@ -41,6 +41,15 @@
     st.endsAt = Date.now() + (st.remainingMs || phaseMs(st.phase));
     save(); startTicking(); emit();
     askNotify();
+    nativeAlarm();
+  }
+
+  /* Android uygulamasında süre bitince uygulama arka planda/kapalı olsa da bildirim gelsin */
+  function nativeAlarm() {
+    if (!App.notify || !App.notify.native) return;
+    if (!st.running) { App.notify.cancel(App.notify.FOCUS_ID); return; }
+    const f = st.phase === "focus";
+    App.notify.at(App.notify.FOCUS_ID, st.endsAt, f ? t("focus.doneFocus") : t("focus.doneBreak"), f ? t("focus.doneFocusBody") : t("focus.doneBreakBody"), { kind: "focus", hash: "#/odak", channel: "focus" });
   }
 
   function pause() {
@@ -48,6 +57,7 @@
     st.remainingMs = remaining();
     st.running = false;
     save(); clearInterval(timer); emit();
+    nativeAlarm();
   }
 
   function reset() {
@@ -55,6 +65,7 @@
     st.remainingMs = phaseMs(st.phase);
     st.startedAt = null;
     save(); clearInterval(timer); emit();
+    nativeAlarm();
   }
 
   function setPhase(phase) {
@@ -63,6 +74,7 @@
     st.remainingMs = phaseMs(phase);
     st.startedAt = null;
     save(); clearInterval(timer); emit();
+    nativeAlarm();
   }
 
   function setSubject(s) { st.subject = s; App.prefs.set("focusSubject", s); save(); emit(); }
@@ -110,11 +122,12 @@
     const title = finishedPhase === "focus" ? t("focus.doneFocus") : t("focus.doneBreak");
     const body = finishedPhase === "focus" ? t("focus.doneFocusBody") : t("focus.doneBreakBody");
     App.ui.toast(title);
-    try { if ("Notification" in window && Notification.permission === "granted") new Notification(title, { body, icon: "assets/icons/icon-192.png" }); } catch (e) { /* yok */ }
+    // Android'de bildirim zaten zamanlanmıştı (nativeAlarm); diğerlerinde şimdi göster
+    if (App.notify && !App.notify.native && !document.hasFocus()) App.notify.show(title, body, { kind: "focus", hash: "#/odak", tag: "focus" }).catch(() => {});
   }
 
   function askNotify() {
-    try { if ("Notification" in window && Notification.permission === "default") Notification.requestPermission().catch(() => {}); } catch (e) { /* yok */ }
+    if (App.notify) App.notify.permission(true).catch(() => {});
   }
 
   /* ---------------- İstatistik ---------------- */
@@ -284,5 +297,5 @@
   }
 
   App.router.register("odak", render);
-  App.focus = { init, start, pause, reset, stats, state: () => st, onChange };
+  App.focus = { init, start, pause, reset, stats, setSubject, state: () => st, onChange };
 })();

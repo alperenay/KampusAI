@@ -35,9 +35,18 @@
   const TOMB_SEP = "\u0001";
   const LS_PREFIX = "da:";
 
+  /* İlk açılış mı? Uygulama hiçbir ayar yazmadan önce bakılır: daha önce açılmış her
+     kurulumda en az bir "da:" anahtarı vardır (ör. menü durumu). Tanıtım turu buna bakar. */
+  App.firstRun = (function () {
+    try {
+      for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k && k.indexOf(LS_PREFIX) === 0) return false; }
+      return true;
+    } catch (e) { return false; }
+  })();
+
   /* ---------------- Ayarlar (localStorage) ---------------- */
   /** Yedeğe girmeyen ayarlar: anahtarlar, bağlantı kodu/adresi, otomatik seçilen modeller */
-  const PRIVATE_PREF = /(Key|Token|Busy|AutoModel|AutoAt|AutoSpeed)$|^aiUrl$|^sync|^focusState$|^feyDraft:/;
+  const PRIVATE_PREF = /(Key|Token|Busy|AutoModel|AutoAt|AutoSpeed)$|^aiUrl$|^sync|^focusState$|^feyDraft:|^tourDone$|^remindCount$/;
 
   App.prefs = {
     get(key, fallback) {

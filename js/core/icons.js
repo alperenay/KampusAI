@@ -24,6 +24,8 @@
     edit:     '<path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="M13.5 6.5l4 4"/>',
     trash:    '<path d="M4 7h16M10 11v6M14 11v6M6 7l1 12.5A1.5 1.5 0 0 0 8.5 21h7a1.5 1.5 0 0 0 1.5-1.5L18 7M9 7V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V7"/>',
     close:    '<path d="M6 6l12 12M18 6L6 18"/>',
+    bell:     '<path d="M6 9a6 6 0 1 1 12 0c0 5 2 6.5 2 6.5H4S6 14 6 9"/><path d="M10 19a2 2 0 0 0 4 0"/>',
+    compass:  '<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>',
     chevron:  '<path d="M9 6l6 6-6 6"/>',
     chevronL: '<path d="M15 6l-6 6 6 6"/>',
     chevronD: '<path d="M6 9l6 6 6-6"/>',

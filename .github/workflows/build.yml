@@ -23,7 +23,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.2.0
+  APP_VERSION: 1.3.0
 
 jobs:
   # Yapay zeka sunucusu (Cloudflare Worker). Repo ayarlarında şu gizli değerler varsa yayınlanır:
@@ -142,6 +142,15 @@ jobs:
           sed -i -E "s/versionName \"[^\"]*\"/versionName \"$APP_VERSION\"/" app/build.gradle
           grep -q "android.permission.CAMERA" app/src/main/AndroidManifest.xml || \
             sed -i 's#</manifest>#    <uses-permission android:name="android.permission.CAMERA" />\n</manifest>#' app/src/main/AndroidManifest.xml
+          # Ders hatırlatıcıları saatinde gelsin (tam zamanlı alarm)
+          grep -q "USE_EXACT_ALARM" app/src/main/AndroidManifest.xml || \
+            sed -i 's#</manifest>#    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />\n</manifest>#' app/src/main/AndroidManifest.xml
+          # Klavye açılınca sayfa küçülsün (yazı kutusu klavyenin altında kalmasın)
+          grep -q "windowSoftInputMode" app/src/main/AndroidManifest.xml || \
+            sed -i 's#android:name=".MainActivity"#android:name=".MainActivity" android:windowSoftInputMode="adjustResize"#' app/src/main/AndroidManifest.xml
+          cp ../native/MainActivity.java app/src/main/java/com/dersasistani/app/MainActivity.java
+          mkdir -p app/src/main/res/drawable && cp ../native/res/drawable/*.xml app/src/main/res/drawable/
+          grep -nE "MainActivity|permission" app/src/main/AndroidManifest.xml
           # Her derlemede aynı imza: yeni sürüm eskisinin üzerine kurulur, veriler silinmez
           mkdir -p ~/.android && cp ../debug.keystore ~/.android/debug.keystore
           chmod +x gradlew
@@ -176,7 +185,7 @@ jobs:
           mkdir -p shots
       - uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 34
+          api-level: 35
           arch: x86_64
           target: google_apis
           disable-animations: true

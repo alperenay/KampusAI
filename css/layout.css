@@ -206,3 +206,7 @@
   .topbar__title { visibility: hidden; }
   .topbar__actions { gap: 6px; }
 }
+
+/* Ekran klavyesi açıkken (iPhone vb.): uygulama görünen alana sığar (viewport.js) */
+:root.kb-open .app { height: var(--app-h, 100dvh); padding-bottom: 0; }
+:root.kb-open body { overflow: hidden; }

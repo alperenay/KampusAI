@@ -60,6 +60,9 @@
           '<button class="btn" type="button" id="setAi">' + App.icon("sparkle") + esc(t("set.aiSettings")) + "</button>" +
           (App.sync.available() ? '<button class="btn" type="button" id="setSync">' + App.icon("refresh") + esc(t("sync.title")) +
             (App.sync.enabled() ? ' <span class="badge badge--good">' + esc(t("sync.on")) + "</span>" : "") + "</button>" : "") +
+          '<button class="btn" type="button" id="setRemind">' + App.icon("bell") + esc(t("rem.title")) +
+            (App.reminders.config().on ? ' <span class="badge badge--good">' + esc(t("sync.on")) + "</span>" : "") + "</button>" +
+          '<button class="btn btn--ghost" type="button" id="setTour">' + App.icon("compass") + esc(t("tour.replay")) + "</button>" +
         "</div>" +
         '<div class="card" style="padding:16px">' +
           '<div class="card__title">' + esc(t("set.backupTitle")) + "</div>" +
@@ -91,6 +94,8 @@
     m.el.querySelector("#setAi").addEventListener("click", () => { m.close(); App.modules.aiSettings.open(); });
     const syncBtn = m.el.querySelector("#setSync");
     if (syncBtn) syncBtn.addEventListener("click", () => { m.close(); App.modules.syncUi.open(); });
+    m.el.querySelector("#setRemind").addEventListener("click", () => { m.close(); App.reminders.openSettings(); });
+    m.el.querySelector("#setTour").addEventListener("click", () => { m.close(); App.tour.start(0); });
     m.el.querySelector("#setExport").addEventListener("click", exportBackup);
     m.el.querySelector("#setImport").addEventListener("change", async (e) => {
       const f = e.target.files[0];
