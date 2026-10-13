@@ -1,0 +1,27 @@
+name: Yapay zekâ içerik denemesi
+# Elle çalıştırılır: gerçek sunucu üzerinden konu listesi + konu anlatımı üretip biçimini denetler.
+on:
+  workflow_dispatch:
+    inputs:
+      subjects:
+        description: "Dersler (sınıf/ders, boşlukla)"
+        default: "10/kimya 11/tarih 12/biyoloji"
+permissions:
+  contents: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Üret ve denetle
+        run: node tools/ai-check.mjs "https://ders-asistani.alperenayleon-67a.workers.dev" ${{ github.event.inputs.subjects }}
+      - name: Sonucu kaydet
+        if: always()
+        working-directory: ai-check
+        run: |
+          git init -q && git checkout -q -b ci-sonuc-ai && git add -A
+          git -c user.name=ci -c user.email=ci@users.noreply.github.com commit -qm "ai-check $GITHUB_RUN_NUMBER" || true
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-sonuc-ai

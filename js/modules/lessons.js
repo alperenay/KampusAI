@@ -218,5 +218,5 @@
     }, 150));
   }
 
-  App.lessons = { load, init, generateSyllabus, generateLesson, removeSyllabus, removeLesson, find, normalizeSyllabus, normalizeLesson, busy: (k) => inflight.has(k) };
+  App.lessons = { syllabusPrompt, lessonPrompt, apply, load, init, generateSyllabus, generateLesson, removeSyllabus, removeLesson, find, normalizeSyllabus, normalizeLesson, busy: (k) => inflight.has(k) };
 })();
