@@ -86,6 +86,21 @@
     sc.scrollTo({ top: Math.max(0, want), behavior: "smooth" });
   }
 
+  /** Kaydırma bitene kadar bekle (hedefin konumu ~150 ms değişmeyince; en çok 1,5 sn) */
+  function settle(target) {
+    return new Promise((resolve) => {
+      const start = Date.now();
+      let last = "", since = Date.now();
+      (function poll() {
+        const r = target.getBoundingClientRect();
+        const k = Math.round(r.top) + "," + Math.round(r.left);
+        if (k !== last) { last = k; since = Date.now(); }
+        if (Date.now() - since > 150 || Date.now() - start > 1500) return resolve();
+        requestAnimationFrame(poll);
+      })();
+    });
+  }
+
   function build() {
     el = document.createElement("div");
     el.className = "tour";
@@ -170,7 +185,7 @@
       if (my !== token) return;
       if (target) {
         reveal(target);
-        await new Promise((r) => setTimeout(r, 380));
+        await settle(target);
         if (my !== token) return;
       }
     }
@@ -231,7 +246,7 @@
     // Görünen kısımla sınırla (uzun öğelerde vurgu ekrandan taşmasın)
     const top = Math.max(r.top - pad, 6), left = Math.max(r.left - pad, 6);
     const bottom = Math.min(r.bottom + pad, vh - 6), right = Math.min(r.right + pad, vw - 6);
-    const key = [top, left, bottom, right, vw, vh].map(Math.round).join(",");
+    const key = [top, left, bottom, right, vw, vh, card.offsetHeight].map(Math.round).join(",");
     if (key === lastRect && !force) return;
     lastRect = key;
     el.classList.remove("is-center");

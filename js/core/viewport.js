@@ -17,7 +17,6 @@
   /* Android uygulaması (kenardan kenara): durum/gezinme çubuğu boşlukları MainActivity'den gelir */
   window.__nativeInsets = function (o) {
     o = o || {};
-    console.info("[KampusAI] insets " + JSON.stringify(o));
     [["top", "--nt"], ["right", "--nr"], ["bottom", "--nb"], ["left", "--nl"]].forEach(([k, v]) => root.style.setProperty(v, (Number(o[k]) || 0) + "px"));
     schedule();
   };
