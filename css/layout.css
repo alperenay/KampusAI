@@ -213,3 +213,13 @@
 /* Ekran klavyesi açıkken (iPhone vb.): uygulama görünen alana sığar (viewport.js) */
 :root.kb-open .app { height: var(--app-h, 100dvh); padding-bottom: 0; }
 :root.kb-open body { overflow: hidden; }
+
+/* Çok dar telefonlar (≤ 360 px): üst çubuk sığsın, sayfa yana taşıp küçülmesin */
+@media (max-width: 360px) {
+  .topbar { padding: 0 6px; }
+  .topbar__actions { gap: 3px; }
+  .topbar .lang-switch { padding: 2px; }
+  .topbar .lang-switch button { min-width: 30px; height: 30px; padding: 0 6px; }
+  .topbar .pill-btn { padding: 0 10px; }
+  #newChatBtn { width: 34px; height: 34px; }
+}
