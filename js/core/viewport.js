@@ -17,6 +17,7 @@
   /* Android uygulaması (kenardan kenara): durum/gezinme çubuğu boşlukları MainActivity'den gelir */
   window.__nativeInsets = function (o) {
     o = o || {};
+    console.info("[KampusAI] insets " + JSON.stringify(o));
     [["top", "--nt"], ["right", "--nr"], ["bottom", "--nb"], ["left", "--nl"]].forEach(([k, v]) => root.style.setProperty(v, (Number(o[k]) || 0) + "px"));
     schedule();
   };
@@ -45,6 +46,16 @@
     if (view && atBottom && document.getElementById("chatLog")) view.scrollTop = view.scrollHeight;
   }
   if (view) view.addEventListener("scroll", () => { atBottom = view.scrollHeight - view.scrollTop - view.clientHeight < 80; }, { passive: true });
+
+  /* Uygulama kabuğu ekrana sabittir; sayfanın kendisi (html/body) hiç kaymamalı. Bir öğeyi
+     görünür yapmaya çalışan tarayıcı bazen bütün sayfayı kaydırır (üst çubuk durum çubuğunun
+     altına kayar) — bunu geri al. iPhone'da klavye açıkken kaydırma fit() içinde ele alınır. */
+  window.addEventListener("scroll", () => {
+    if ((window.scrollY || window.scrollX) && !root.classList.contains("kb-open")) {
+      if (window.KampusNative) console.info("[KampusAI] sayfa kayması düzeltildi:", window.scrollX, window.scrollY);
+      window.scrollTo(0, 0);
+    }
+  }, { passive: true });
 
   if (vv) { vv.addEventListener("resize", schedule); vv.addEventListener("scroll", schedule); }
   window.addEventListener("resize", schedule);

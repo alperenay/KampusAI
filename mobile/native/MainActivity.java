@@ -2,6 +2,7 @@ package com.dersasistani.app;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
@@ -58,6 +59,7 @@ public class MainActivity extends BridgeActivity {
             float d = getResources().getDisplayMetrics().density;
             insetsJson = String.format(Locale.US, "{\"top\":%.1f,\"right\":%.1f,\"bottom\":%.1f,\"left\":%.1f,\"keyboard\":%s}",
                 bars.top / d, bars.right / d, keyboard ? 0f : bars.bottom / d, bars.left / d, keyboard ? "true" : "false");
+            Log.d("KampusAI", "insets " + insetsJson);
             webView.evaluateJavascript("window.__nativeInsets&&window.__nativeInsets(" + insetsJson + ")", null);
             return WindowInsetsCompat.CONSUMED;
         });

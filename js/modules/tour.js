@@ -77,6 +77,15 @@
     });
   }
 
+  /** Hedefi kendi kaydırma alanında ortala (sayfanın tamamını kaydırmadan) */
+  function reveal(target) {
+    const sc = target.closest("#view, .modal, .modal__body");
+    if (!sc || sc.scrollHeight <= sc.clientHeight) return;
+    const r = target.getBoundingClientRect(), b = sc.getBoundingClientRect();
+    const want = sc.scrollTop + (r.top - b.top) - Math.max(16, (b.height - r.height) / 2);
+    sc.scrollTo({ top: Math.max(0, want), behavior: "smooth" });
+  }
+
   function build() {
     el = document.createElement("div");
     el.className = "tour";
@@ -160,7 +169,7 @@
       target = await waitFor(s.target, 3500);
       if (my !== token) return;
       if (target) {
-        target.scrollIntoView({ block: "center", inline: "nearest", behavior: "smooth" });
+        reveal(target);
         await new Promise((r) => setTimeout(r, 380));
         if (my !== token) return;
       }
