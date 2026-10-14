@@ -16,7 +16,9 @@
   function renderMath(tex, display) {
     if (window.katex) {
       try {
-        return window.katex.renderToString(tex, { displayMode: display, throwOnError: false, strict: "ignore", output: "html" });
+        // data-tex: formülün kaynağı (sesli okumada formül okunabilir metne çevrilir — a11y.js)
+        return window.katex.renderToString(tex, { displayMode: display, throwOnError: false, strict: "ignore", output: "html" })
+          .replace(/^<span class="/, '<span data-tex="' + esc(tex) + '" class="');
       } catch (e) { /* aşağıdaki yedeğe düş */ }
     }
     return '<code class="math-raw">' + esc(tex) + "</code>";

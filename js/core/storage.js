@@ -25,12 +25,12 @@
    ========================================================= */
 (function () {
   const DB_NAME = "ders-asistani";
-  const DB_VERSION = 5;               // şema değişince artırılır (2: chats + vectors, 3: test, yanlış defteri, odak, eşitleme, 4: Feynman, 5: yapay zekâ konu içeriği)
-  const STORES = ["exams", "schedules", "progress", "notes", "chats", "vectors", "mistakes", "quizzes", "sessions", "explains", "lessons", "meta", "tomb"];
+  const DB_VERSION = 6;               // şema değişince artırılır (2: chats + vectors, 3: test, yanlış defteri, odak, eşitleme, 4: Feynman, 5: yapay zekâ konu içeriği, 6: çözüm kontrolü)
+  const STORES = ["exams", "schedules", "progress", "notes", "chats", "vectors", "mistakes", "quizzes", "sessions", "explains", "lessons", "checks", "meta", "tomb"];
   /** Cihazlar arasında eşitlenen depolar */
-  const SYNC_STORES = ["exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "explains", "lessons", "meta"];
+  const SYNC_STORES = ["exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "explains", "lessons", "checks", "meta"];
   /** Yedek dosyasına giren depolar (vektörler bilgisayarda yeniden hesaplanabildiği için hariç) */
-  const BACKUP_STORES = ["exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "explains", "lessons", "meta"];
+  const BACKUP_STORES = ["exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "explains", "lessons", "checks", "meta"];
   const isSync = (store) => SYNC_STORES.indexOf(store) > -1;
   const TOMB_SEP = "\u0001";
   const LS_PREFIX = "da:";
@@ -46,7 +46,7 @@
 
   /* ---------------- Ayarlar (localStorage) ---------------- */
   /** Yedeğe girmeyen ayarlar: anahtarlar, bağlantı kodu/adresi, otomatik seçilen modeller */
-  const PRIVATE_PREF = /(Key|Token|Busy|AutoModel|AutoAt|AutoSpeed)$|^aiUrl$|^sync|^focusState$|^feyDraft:|^tourDone$|^remindCount$/;
+  const PRIVATE_PREF = /(Key|Token|Busy|AutoModel|AutoAt|AutoSpeed)$|^aiUrl$|^sync|^focusState$|^feyDraft:|^feyVoice:|^tourDone$|^remindCount$/;
 
   App.prefs = {
     get(key, fallback) {

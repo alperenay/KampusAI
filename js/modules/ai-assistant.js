@@ -269,6 +269,7 @@
       parts.push('<div class="msg__foot">' + chain +
         (msg.durationMs ? '<span class="msg__meta">' + esc(t("ai.seconds", { n: Math.round(msg.durationMs / 1000) })) + (speed ? " · " + esc(speed) : "") + "</span>" : "") +
         (msg.text ? '<button class="icon-btn icon-btn--sm" type="button" data-act="copy" data-mid="' + esc(msg.id) + '" title="' + esc(t("ai.copy")) + '">' + App.icon("copy") + "</button>" : "") +
+        (msg.text && App.speech.ttsAvailable() ? '<button class="icon-btn icon-btn--sm" type="button" data-listen aria-pressed="false" title="' + esc(t("a11y.listenTitle")) + '">' + App.icon("volume") + "</button>" : "") +
         (msg.text ? '<button class="icon-btn icon-btn--sm" type="button" data-act="to-mistakes" data-mid="' + esc(msg.id) + '" title="' + esc(t("mis.addFromChat")) + '">' + App.icon("bookmark") + "</button>" : "") +
         (msg.text ? '<button class="icon-btn icon-btn--sm" type="button" data-act="similar" data-mid="' + esc(msg.id) + '" title="' + esc(t("sim.fromChat")) + '">' + App.icon("layers") + "</button>" : "") +
         "</div>");

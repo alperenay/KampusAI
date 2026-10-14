@@ -1,18 +1,32 @@
 package com.dersasistani.app;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.speech.RecognitionListener;
+import android.speech.RecognizerIntent;
+import android.speech.SpeechRecognizer;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 import com.getcapacitor.BridgeActivity;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+import org.json.JSONObject;
 
 /*
  * Ekran yerleşimi ve klavye.
@@ -30,15 +44,39 @@ import java.util.Locale;
  *
  * Daha eski Android sürümlerinde sistem çubukları ayrıdır ve pencere klavyeye göre
  * kendiliğinden küçülür (AndroidManifest: adjustResize).
+ *
+ * Ses (v1.7): Android WebView'de tarayıcının ses tanıma ve sesli okuma arayüzleri yok.
+ *  • Konuşma → yazı (sesli Feynman): telefonun SpeechRecognizer motoru; önce cihazdaki
+ *    dil paketi denenir (internetsiz), olmazsa çevrim içi tanımaya geçilir.
+ *  • Sesli okuma (erişilebilirlik): TextToSpeech.
+ * Olaylar sayfaya window.__nativeSpeech({ kind: "stt"|"tts", type, … }) ile gönderilir (speech.js).
  */
 public class MainActivity extends BridgeActivity {
     private WebView webView;
     private volatile String insetsJson = "{}";
     private static final boolean EDGE = Build.VERSION.SDK_INT >= 35;
 
+    /* Ses */
+    private SpeechRecognizer recognizer;
+    private ActivityResultLauncher<String> micPermission;
+    private String pendingLang = null;
+    private boolean offlineFailed = false;
+    private String lastLang = "tr-TR";
+    private long lastRms = 0;
+    private TextToSpeech tts;
+    private boolean ttsReady = false;
+    private boolean ttsInit = false;
+    private final List<Runnable> ttsQueue = new ArrayList<>();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        micPermission = registerForActivityResult(new ActivityResultContracts.RequestPermission(), granted -> {
+            String lang = pendingLang;
+            pendingLang = null;
+            if (granted && lang != null) startRecognition(lang);
+            else emit(ev("stt", "error", "permission"));
+        });
         if (getBridge() == null) return;
         webView = getBridge().getWebView();
         webView.addJavascriptInterface(new NativeBridge(), "KampusNative");
@@ -66,11 +104,200 @@ public class MainActivity extends BridgeActivity {
         ViewCompat.requestApplyInsets(webView);
     }
 
+    /* ---------------- Ses: olaylar ---------------- */
+    private JSONObject ev(String kind, String type, String code) {
+        JSONObject o = new JSONObject();
+        try {
+            o.put("kind", kind);
+            o.put("type", type);
+            if (code != null) o.put("code", code);
+        } catch (Exception e) { /* yok say */ }
+        return o;
+    }
+
+    private void emit(JSONObject o) {
+        if (webView == null) return;
+        final String js = "window.__nativeSpeech&&window.__nativeSpeech(" + o.toString() + ")";
+        runOnUiThread(() -> webView.evaluateJavascript(js, null));
+    }
+
+    /* ---------------- Konuşma → yazı ---------------- */
+    private final RecognitionListener listener = new RecognitionListener() {
+        @Override public void onReadyForSpeech(Bundle b) { emit(ev("stt", "ready", null)); }
+        @Override public void onBeginningOfSpeech() { }
+        @Override public void onRmsChanged(float v) {
+            long now = System.currentTimeMillis();
+            if (now - lastRms < 90) return;
+            lastRms = now;
+            JSONObject o = ev("stt", "rms", null);
+            try { o.put("v", (double) v); } catch (Exception e) { /* yok say */ }
+            emit(o);
+        }
+        @Override public void onBufferReceived(byte[] b) { }
+        @Override public void onEndOfSpeech() { }
+        @Override public void onError(int code) {
+            String c;
+            switch (code) {
+                case SpeechRecognizer.ERROR_NO_MATCH: c = "no-match"; break;
+                case SpeechRecognizer.ERROR_SPEECH_TIMEOUT: c = "timeout"; break;
+                case SpeechRecognizer.ERROR_RECOGNIZER_BUSY: c = "busy"; break;
+                case SpeechRecognizer.ERROR_CLIENT: c = "client"; break;
+                case SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS: c = "permission"; break;
+                case SpeechRecognizer.ERROR_NETWORK:
+                case SpeechRecognizer.ERROR_NETWORK_TIMEOUT:
+                case SpeechRecognizer.ERROR_SERVER: c = "network"; break;
+                case 12: case 13: c = "lang"; break;   // ERROR_LANGUAGE_NOT_SUPPORTED / ERROR_LANGUAGE_UNAVAILABLE (API 31)
+                default: c = "error";
+            }
+            // Cihazda dil paketi yoksa bir kez çevrim içi tanımayla dene
+            if (("lang".equals(c) || "network".equals(c)) && !offlineFailed) {
+                offlineFailed = true;
+                Log.d("KampusAI", "stt: offline failed (" + code + "), retry online");
+                runOnUiThread(() -> startRecognition(lastLang));
+                return;
+            }
+            emit(ev("stt", "error", c));
+        }
+        @Override public void onResults(Bundle r) {
+            ArrayList<String> list = r.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+            JSONObject o = ev("stt", "final", null);
+            try { o.put("text", list != null && !list.isEmpty() ? list.get(0) : ""); } catch (Exception e) { /* yok say */ }
+            emit(o);
+            emit(ev("stt", "end", null));
+        }
+        @Override public void onPartialResults(Bundle r) {
+            ArrayList<String> list = r.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+            if (list == null || list.isEmpty()) return;
+            JSONObject o = ev("stt", "partial", null);
+            try { o.put("text", list.get(0)); } catch (Exception e) { /* yok say */ }
+            emit(o);
+        }
+        @Override public void onEvent(int type, Bundle b) { }
+    };
+
+    private void startRecognition(String lang) {
+        lastLang = lang;
+        try {
+            if (recognizer == null) {
+                recognizer = SpeechRecognizer.createSpeechRecognizer(this);
+                recognizer.setRecognitionListener(listener);
+            }
+            Intent it = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+            it.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+            it.putExtra(RecognizerIntent.EXTRA_LANGUAGE, lang);
+            it.putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, true);
+            it.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 1);
+            it.putExtra(RecognizerIntent.EXTRA_PREFER_OFFLINE, !offlineFailed);
+            it.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS, 3000L);
+            it.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_POSSIBLY_COMPLETE_SILENCE_LENGTH_MILLIS, 3000L);
+            recognizer.startListening(it);
+        } catch (Exception e) {
+            Log.w("KampusAI", "stt start failed", e);
+            emit(ev("stt", "error", "error"));
+        }
+    }
+
+    /* ---------------- Sesli okuma ---------------- */
+    private final UtteranceProgressListener ttsListener = new UtteranceProgressListener() {
+        @Override public void onStart(String id) { }
+        @Override public void onDone(String id) { emitTts(id, "done", null); }
+        @Override public void onError(String id) { emitTts(id, "error", "tts"); }
+        @Override public void onStop(String id, boolean interrupted) { emitTts(id, "stop", null); }
+    };
+
+    private void emitTts(String id, String type, String code) {
+        JSONObject o = ev("tts", type, code);
+        try { o.put("id", id); } catch (Exception e) { /* yok say */ }
+        emit(o);
+    }
+
+    private void speakNow(String id, String text, String lang, float rate) {
+        if (!ttsReady || tts == null) { emitTts(id, "error", "init"); return; }
+        try {
+            tts.setLanguage(Locale.forLanguageTag(lang));
+            tts.setSpeechRate(rate > 0 ? rate : 1f);
+            int max = TextToSpeech.getMaxSpeechInputLength();
+            String s = text.length() > max ? text.substring(0, max) : text;
+            if (tts.speak(s, TextToSpeech.QUEUE_FLUSH, new Bundle(), id) != TextToSpeech.SUCCESS) emitTts(id, "error", "speak");
+        } catch (Exception e) {
+            emitTts(id, "error", "speak");
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (tts != null) tts.stop();
+    }
+
+    @Override
+    public void onDestroy() {
+        if (recognizer != null) { try { recognizer.destroy(); } catch (Exception e) { /* yok say */ } recognizer = null; }
+        if (tts != null) { try { tts.shutdown(); } catch (Exception e) { /* yok say */ } tts = null; }
+        super.onDestroy();
+    }
+
     /** Sayfadan çağrılır: window.KampusNative */
     public class NativeBridge {
         @JavascriptInterface
         public String insets() {
             return insetsJson;
+        }
+
+        /** Telefonda ses tanıma motoru var mı */
+        @JavascriptInterface
+        public boolean speechAvailable() {
+            return SpeechRecognizer.isRecognitionAvailable(MainActivity.this);
+        }
+
+        /** Dinlemeyi başlat (gerekirse önce mikrofon izni istenir) */
+        @JavascriptInterface
+        public void speechStart(final String lang) {
+            runOnUiThread(() -> {
+                if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+                    pendingLang = lang;
+                    micPermission.launch(Manifest.permission.RECORD_AUDIO);
+                    return;
+                }
+                startRecognition(lang);
+            });
+        }
+
+        @JavascriptInterface
+        public void speechStop() {
+            runOnUiThread(() -> {
+                if (recognizer != null) {
+                    try { recognizer.stopListening(); } catch (Exception e) { /* yok say */ }
+                }
+            });
+        }
+
+        /** Sesli oku: id ile bitince "done" olayı gelir */
+        @JavascriptInterface
+        public void ttsSpeak(final String id, final String text, final String lang, final float rate) {
+            runOnUiThread(() -> {
+                Runnable r = () -> speakNow(id, text, lang, rate);
+                if (ttsReady) { r.run(); return; }
+                ttsQueue.add(r);
+                if (ttsInit) return;
+                ttsInit = true;
+                tts = new TextToSpeech(MainActivity.this, status -> runOnUiThread(() -> {
+                    ttsReady = status == TextToSpeech.SUCCESS;
+                    if (ttsReady) tts.setOnUtteranceProgressListener(ttsListener);
+                    else ttsInit = false;
+                    List<Runnable> q = new ArrayList<>(ttsQueue);
+                    ttsQueue.clear();
+                    for (Runnable x : q) x.run();
+                }));
+            });
+        }
+
+        @JavascriptInterface
+        public void ttsStop() {
+            runOnUiThread(() -> {
+                ttsQueue.clear();
+                if (tts != null) tts.stop();
+            });
         }
 
         /** Açık temada koyu simgeler, koyu temada açık simgeler */

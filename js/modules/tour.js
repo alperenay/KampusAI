@@ -38,18 +38,18 @@
     { id: "socratic", route: "#/", target: '#composer [data-act="socratic"]' },
     { id: "today", route: "#/bugun", target: ".tday-now" },
     { id: "aiPlan", route: "#/program/benim", target: "#aiPlan" },
-    { id: "week", route: "#/program/benim", target: ".week" },
+    { id: "roots", route: "#/kok", target: ".root-how, .root-map" },
     { id: "remind", route: "#/program/benim", target: "#remindBtn", action: "remind" },
     { id: "topics", route: "#/konular", target: ".grid" },
     { id: "lesson", route: () => "#/konular/" + sampleOutcome(), target: ".lesson .lesson__section" },
-    { id: "quiz", route: () => "#/konular/" + sampleOutcome(), target: ".quiz-card:not(.fey-card)" },
+    { id: "quiz", route: () => "#/konular/" + sampleOutcome(), target: ".quiz-card:not(.fey-card):not(.chk-card)" },
     { id: "feynman", route: () => "#/konular/" + sampleOutcome(), target: ".fey-card" },
     { id: "exams", route: "#/denemeler", target: 'a[href^="#/denemeler/yeni"]' },
     { id: "goals", route: "#/denemeler", target: ".goal-card" },
     { id: "mistakes", route: "#/yanlislar", target: ".mis-bar" },
     { id: "focus", route: "#/odak", target: ".focus__ring" },
     { id: "sync", route: "#/", target: "#setSync, #setAi", enter: () => App.modules.settings.open(), leave: closeModals },
-    { id: "chrome", route: "#/", target: ".topbar__actions" },
+    { id: "a11y", route: "#/", target: "#a11yBtn" },
     { id: "done", center: true, route: "#/" }
   ];
 

@@ -119,6 +119,30 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
   öneri gösterilir; asistan da bunu bilerek yanıt verir.
 - **Sokratik mod (öğretmen modu):** Yazı kutusundaki pusula düğmesi. Açıkken asistan cevabı hemen vermez; tek tek
   ipuçları ve sorularla çözümü senin bulmanı sağlar. Yanıtın altındaki *İpucu ver* / *Çözümü göster* düğmeleriyle ilerlersin.
+- **Kök eksik analizi:** Sol menüde *Kök Eksik Analizi*. Zorlandığın bir konunun asıl kaynağını bulur: her kazanımın
+  hangi kazanımlara dayandığı bir ön koşul haritasında tutulur (9. sınıf için elle hazırlandı, dersler arası bağlar dahil —
+  ör. fizikte vektörler → matematikte Pisagor; diğer dersler için harita yapay zekâyla çıkarılıp kaydedilir).
+  Konu sonu testleri, Feynman puanları, çözüm kontrolleri ve açık yanlışlardan her konu için bir hâkimiyet puanı
+  hesaplanır. Zayıf bir konunun ön koşullarında da zayıflık varsa en temeldeki konu "kök eksik" olarak gösterilir;
+  ön koşullar sağlamsa "sorun konunun kendisinde", hiç denenmemişse "önce bunları dene" denir. Konu sayfasında
+  *Ön koşullar* kartı, düşük puanlı test sonucunda kök ipucu var; *Bugün* ekranı da zayıf konunun kökünü önerir.
+- **Çözümümü kontrol et:** Sol menüde ya da konu sayfasında. Kâğıda yaptığın çözümün fotoğrafını yüklersin; yapay
+  zekâ çözümü baştan vermez, adımlarını tek tek kontrol eder: hatanın hangi adımda olduğunu, sonraki adımların bu
+  hatayı taşıdığını, hata türünü (kavram, bilgi, işlem, dikkat, süre) ve cevabı söylemeden bir ipucunu gösterir.
+  Doğru devam ancak *Doğrusunu göster* denince açılır. Sonuç tek dokunuşla hata türüyle yanlış defterine eklenir,
+  konu seçildiyse kök eksik analizine katılır. Bilgisayardaki yerel modelde el yazısı önce görme modeliyle satır
+  satır yazıya dökülür, sonra ana model kontrol eder.
+- **Sesli Feynman:** Feynman sayfasında *Konuşarak* sekmesi. Konuyu yazmak yerine sesli anlatırsın; konuşma yazıya
+  dökülür. Android uygulamasında telefonun ses tanıma motoru kullanılır (Türkçe dil paketi yüklüyse internet
+  gerekmez); Chrome'da tarayıcının ses tanıması; Windows uygulamasında ses kaydedilir ve yapay zekâ (KampüsAI
+  sunucusu ya da Gemini) yazıya çevirir. Değerlendirmede ayrıca konuşma analizi gelir: süre, kelime sayısı,
+  tempo (kelime/dakika) ve dolgu sözcükleri ("ııı", "şey", "yani"…). İlk kullanımda mikrofon izni istenir.
+- **Erişilebilirlik:** Üst çubuktaki insan simgesi (ya da Ayarlar → *Erişilebilirlik*). Yazı boyutu (büyük, çok büyük),
+  disleksi dostu yazı tipi (OpenDyslexic, uygulamanın içinde), geniş satır/harf aralığı, okuma cetveli, yüksek
+  karşıtlık ve hareketleri azaltma. Konu anlatımı, örnekler, hap bilgiler, asistan yanıtları ve Feynman
+  açıklamalarında *Dinle* düğmesi metni paragraf paragraf sesli okur (formüller okunabilir hâle getirilir,
+  okunan paragraf vurgulanır); okuma hızı ayarlanabilir. Ekran okuyucular için simgeli düğmeler etiketlidir,
+  *İçeriğe geç* bağlantısı vardır. Türkçe ses, cihazın dil ve konuşma ayarlarından eklenebilir.
 - **Tanıtım turu:** Uygulamayı ilk kez açınca 20 adımlık canlı bir tur her özelliği gerçek sayfalar üzerinde gösterir.
   Güncelleme yapan eski kullanıcılara gösterilmez; istenirse Ayarlar → *Tanıtımı yeniden izle*.
 

@@ -250,17 +250,22 @@
 
   async function generate(opts) {
     let engine = await App.engine.resolve(opts.signal);
-    // opts.image: data URL ya da { base64 } — doğrudan görebilen modele verilir, göremeyene önce yazıya dökülür
-    const image = opts.image ? (typeof opts.image === "string" ? { base64: opts.image.split(",")[1] } : opts.image) : null;
+    // opts.image / opts.images: data URL ya da { base64 } — doğrudan görebilen modele verilir, göremeyene önce yazıya dökülür
+    // (opts.visionPrompt: yazıya dökme talimatı; ör. el yazısı çözüm için satır satır)
+    const asImg = (x) => (typeof x === "string" ? { base64: x.split(",")[1] } : x);
+    const images = (opts.images || (opts.image ? [opts.image] : [])).filter(Boolean).map(asImg);
     const once = async (eng) => {
       await eng.prepare(opts.signal);
       const cfg = eng.config();
       const userMsg = { role: "user", content: opts.prompt };
-      if (image && cfg.direct) userMsg.images = [image.base64];
-      else if (image) {
+      if (images.length && cfg.direct) userMsg.images = images.map((i) => i.base64);
+      else if (images.length) {
         if (opts.onStage) opts.onStage(eng, cfg.visionModel, "vision");
-        const tx = await App.vision.read(image, "", opts.signal, null, eng);
-        userMsg.content += "\n\n" + photoBlock(tx, cfg.visionModel);
+        for (let i = 0; i < images.length; i++) {
+          const vp = typeof opts.visionPrompt === "function" ? opts.visionPrompt(i) : opts.visionPrompt;
+          const tx = await App.vision.read(images[i], "", opts.signal, null, eng, vp);
+          userMsg.content += "\n\n" + (images.length > 1 ? "[" + (i + 1) + "] " : "") + photoBlock(tx, cfg.visionModel);
+        }
       }
       if (opts.onStage) opts.onStage(eng, cfg.chatModel);
       const res = await eng.chat({
@@ -285,5 +290,34 @@
     }
   }
 
-  App.ai = { run, systemPrompt, generate, parseJSON, fixMath };
+  /* ---------------- Ses kaydını yazıya çevirme (sesli Feynman, Windows uygulaması) ----------------
+     Yalnızca Gemini tabanlı servislerde (KampüsAI sunucusu ya da kendi Gemini anahtarı) çalışır. */
+  function blobToBase64(blob) {
+    return new Promise((resolve, reject) => {
+      const r = new FileReader();
+      r.onload = () => resolve(String(r.result).split(",")[1] || "");
+      r.onerror = () => reject(r.error);
+      r.readAsDataURL(blob);
+    });
+  }
+
+  async function transcribe(blob, o) {
+    o = o || {};
+    const eng = App.engine.cloud();
+    if (!eng || !eng.configured() || typeof eng.toContents !== "function") throw new App.engine.AIError("no-audio");
+    await eng.prepare(o.signal);
+    const tr = (o.lang || App.i18n.lang) === "tr";
+    const prompt = tr
+      ? "Bu ses kaydında bir öğrenci bir ders konusunu sesli anlatıyor. Söylenenleri olduğu gibi Türkçe yazıya dök. Anlamı düzeltme, özetleme, yorum ekleme. \"ııı\", \"eee\", \"şey\" gibi duraksamaları da duyduğun gibi yaz. Matematiksel ifadeleri söylendiği gibi kelimeyle yaz. Yalnızca metni döndür; ses yoksa boş döndür."
+      : "In this recording a student explains a school topic aloud. Transcribe exactly what is said, in English. Do not correct, summarise or comment. Keep fillers like \"um\", \"uh\", \"like\" as heard. Write math as spoken words. Return only the text; return nothing if there is no speech.";
+    const res = await eng.chat({
+      model: eng.config().chatModel,
+      messages: [{ role: "user", content: prompt, audio: [{ mime: blob.type || "audio/webm", data: await blobToBase64(blob) }] }],
+      options: { temperature: 0 },
+      signal: o.signal
+    });
+    return String(res.text || "").replace(/^["«]|["»]$/g, "").trim();
+  }
+
+  App.ai = { run, systemPrompt, generate, parseJSON, fixMath, transcribe };
 })();

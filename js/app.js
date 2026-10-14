@@ -131,6 +131,7 @@
     if (window.desktopApp && !window.desktopApp.uiGpu) document.documentElement.classList.add("lite");
     App.i18n.apply(document);
     App.hydrateIcons(document);
+    App.a11y.init();
     App.applyProfile();
     renderLangSwitch();
     renderThemeSwitch();
@@ -141,6 +142,7 @@
     await App.db.init();
     await App.lessons.load().catch(() => {});      // yapay zekâyla hazırlanmış konu listeleri ve anlatımlar
     App.lessons.init();
+    await App.roots.load().catch(() => {});        // yapay zekâyla çıkarılmış ön koşul haritaları
     await App.goals.load().catch(() => {});
     App.goals.init();
     App.focus.init();

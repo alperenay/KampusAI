@@ -23,7 +23,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.6.0
+  APP_VERSION: 1.7.0
 
 jobs:
   # Yapay zeka sunucusu (Cloudflare Worker). Repo ayarlarında şu gizli değerler varsa yayınlanır:
@@ -145,6 +145,11 @@ jobs:
           # Ders hatırlatıcıları saatinde gelsin (tam zamanlı alarm)
           grep -q "USE_EXACT_ALARM" app/src/main/AndroidManifest.xml || \
             sed -i 's#</manifest>#    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />\n</manifest>#' app/src/main/AndroidManifest.xml
+          # Sesli Feynman (konuşma → yazı) için mikrofon; Android 11+ paket görünürlüğü: ses tanıma ve sesli okuma servisleri
+          grep -q "android.permission.RECORD_AUDIO" app/src/main/AndroidManifest.xml || \
+            sed -i 's#</manifest>#    <uses-permission android:name="android.permission.RECORD_AUDIO" />\n</manifest>#' app/src/main/AndroidManifest.xml
+          grep -q "android.speech.RecognitionService" app/src/main/AndroidManifest.xml || \
+            sed -i 's#</manifest>#    <queries>\n        <intent><action android:name="android.speech.RecognitionService" /></intent>\n        <intent><action android:name="android.intent.action.TTS_SERVICE" /></intent>\n    </queries>\n</manifest>#' app/src/main/AndroidManifest.xml
           # Klavye açılınca sayfa küçülsün (yazı kutusu klavyenin altında kalmasın)
           grep -q "windowSoftInputMode" app/src/main/AndroidManifest.xml || \
             sed -i 's#android:name=".MainActivity"#android:name=".MainActivity" android:windowSoftInputMode="adjustResize"#' app/src/main/AndroidManifest.xml

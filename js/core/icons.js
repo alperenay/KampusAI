@@ -53,6 +53,11 @@
     search:   '<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/>',
     stop:     '<rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor"/>',
     refresh:  '<path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3M19.5 4.5v4h-4"/>',
+    volume:   '<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/>',
+    textSize: '<path d="M3.5 19L8 6l4.5 13M5 15h6"/><path d="M14 19l3.25-8.5L20.5 19M15.2 16h4.1"/>',
+    a11y:     '<circle cx="12" cy="4.8" r="1.8"/><path d="M5 8.5c2.4.7 4.7 1 7 1s4.6-.3 7-1M12 9.5v4.5M12 14l-3 6.5M12 14l3 6.5"/>',
+    roots:    '<circle cx="12" cy="4.5" r="2"/><circle cx="5.5" cy="12" r="2"/><circle cx="18.5" cy="12" r="2"/><circle cx="9" cy="19.5" r="2"/><path d="M10.7 6l-3.8 4.4M13.3 6l3.8 4.4M6.3 13.8l1.9 3.9"/>',
+    scan:     '<path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16"/><path d="M8 12.5l2.5 2.5L16 9.5"/>',
     chat:     '<path d="M4.5 5.5h15v10h-9l-4.5 4v-4h-1.5z"/>'
   };
 

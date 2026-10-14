@@ -225,6 +225,7 @@
         const role = m.role === "assistant" ? "model" : "user";
         const parts = [];
         (m.images || []).forEach((b64) => parts.push({ inlineData: { mimeType: "image/jpeg", data: b64 } }));
+        (m.audio || []).forEach((x) => parts.push({ inlineData: { mimeType: x.mime || "audio/webm", data: x.data } }));
         if (m.content) parts.push({ text: m.content });
         if (!parts.length) return;
         const last = contents[contents.length - 1];

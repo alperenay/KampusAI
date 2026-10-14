@@ -229,6 +229,13 @@
           (missed.length ? '<a class="btn btn--ghost" href="#/yanlislar">' + App.icon("bookmark") + esc(t("mis.title")) + "</a>" : "") + "</div></section>";
       App.hydrateIcons(res);
       res.querySelector("#qAgain").addEventListener("click", () => App.router.refresh());
+      // Düşük puan: zorluğun kökü daha temel bir konuda olabilir (kök eksik analizi)
+      if (pct < 70 && App.roots) App.roots.quizHintHtml(key).then((h) => {
+        if (!h || !res.isConnected) return;
+        const card = res.querySelector(".quiz-result");
+        card.insertAdjacentHTML("beforeend", h);
+        App.hydrateIcons(card);
+      }).catch(() => {});
       res.scrollIntoView({ behavior: "smooth", block: "start" });
       App.ui.toast(t("quiz.saved"));
     }
@@ -239,6 +246,7 @@
   function errorText(e) {
     const code = e && e.code;
     if (code === "no-key") return t("ai.err.nokeyBody");
+    if (code === "no-audio") return t("fey.v.errNoAudio");
     if (code === "quota") return t("ai.err.quotaBody");
     if (code === "busy") return t("ai.err.busyBody");
     if (code === "offline") return t("ai.err.offlineTitle");

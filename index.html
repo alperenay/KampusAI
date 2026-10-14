@@ -20,14 +20,24 @@
     try {
       var th = JSON.parse(localStorage.getItem("da:pref:theme"));
       if (th === "light" || th === "dark") document.documentElement.setAttribute("data-theme", th);
+      /* Erişilebilirlik tercihleri (yazı boyutu, disleksi yazı tipi…) da çizimden önce */
+      var a = function (k) { try { return JSON.parse(localStorage.getItem("da:pref:" + k)); } catch (e) { return null; } };
+      var h = document.documentElement, ts = a("a11yText");
+      if (ts === "lg" || ts === "xl") h.setAttribute("data-a11y-text", ts);
+      if (a("a11yDys")) h.setAttribute("data-a11y-dys", "");
+      if (a("a11ySpacing")) h.setAttribute("data-a11y-spacing", "");
+      if (a("a11yContrast")) h.setAttribute("data-a11y-contrast", "");
+      if (a("a11yMotion")) h.setAttribute("data-a11y-motion", "");
     } catch (e) {}
   </script>
   <link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/v17.css">
 </head>
 <body>
+  <a class="a11y-skip" href="#view" data-i18n="a11y.skip">İçeriğe geç</a>
   <div class="app" id="app">
 
     <!-- ============ SOL MENÜ ============ -->
@@ -58,6 +68,12 @@
         </a>
         <a class="nav__item" href="#/yanlislar" data-route="yanlislar">
           <span data-icon="bookmark"></span><span class="sidebar__label" data-i18n="nav.mistakes">Yanlış Defteri</span><span class="nav__badge" id="misBadge" hidden></span>
+        </a>
+        <a class="nav__item" href="#/kontrol" data-route="kontrol">
+          <span data-icon="scan"></span><span class="sidebar__label" data-i18n="nav.check">Çözümümü Kontrol Et</span>
+        </a>
+        <a class="nav__item" href="#/kok" data-route="kok">
+          <span data-icon="roots"></span><span class="sidebar__label" data-i18n="nav.roots">Kök Eksik Analizi</span>
         </a>
         <a class="nav__item" href="#/odak" data-route="odak">
           <span data-icon="timer"></span><span class="sidebar__label" data-i18n="nav.focus">Odak Sayacı</span>
@@ -101,6 +117,7 @@
         <button class="icon-btn topbar__menu" id="menuBtn" type="button" data-i18n-title="nav.openMenu" data-icon="menu"></button>
         <div class="topbar__title" id="topbarTitle"></div>
         <div class="topbar__actions">
+          <button class="icon-btn a11y-btn" id="a11yBtn" type="button" data-i18n-title="a11y.title" data-i18n-aria="a11y.title" data-icon="a11y"></button>
           <div class="lang-switch theme-switch" id="themeSwitch" role="radiogroup" data-i18n-aria="theme.choose"></div>
           <div class="lang-switch" id="langSwitch" role="radiogroup" data-i18n-aria="lang.choose"></div>
           <button class="pill-btn" id="backupBtn" type="button" data-i18n-title="backup.title">
@@ -136,6 +153,7 @@
   <!-- Matematik gösterimi (KaTeX, yerel kopya — internet gerekmez) -->
   <script src="assets/vendor/katex/katex.min.js"></script>
   <script src="js/core/markdown.js"></script>
+  <script src="js/core/speech.js"></script>
 
   <!-- Veriler -->
   <script src="js/data/exam-config.js"></script>
@@ -151,6 +169,7 @@
   <script src="js/data/content/din-9.js"></script>
   <script src="js/data/content/ing-9.js"></script>
   <script src="js/data/curriculum-data.js"></script>
+  <script src="js/data/prereq-9.js"></script>
 
   <!-- Yapay zeka: bilgisayardaki Ollama + internet servisleri (Gemini, OpenAI-uyumlu) -->
   <script src="js/ai/ollama.js"></script>
@@ -175,6 +194,9 @@
   <script src="js/modules/quiz.js"></script>
   <script src="js/modules/similar.js"></script>
   <script src="js/modules/feynman.js"></script>
+  <script src="js/modules/a11y.js"></script>
+  <script src="js/modules/roots.js"></script>
+  <script src="js/modules/check.js"></script>
   <script src="js/modules/focus.js"></script>
   <script src="js/modules/reminders.js"></script>
   <script src="js/modules/today.js"></script>

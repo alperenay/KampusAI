@@ -175,7 +175,7 @@
   }
 
   function cardHtml(m, revealed) {
-    const src = { quiz: t("mis.src.quiz"), chat: t("mis.src.chat"), manual: t("mis.src.manual"), similar: t("mis.src.similar") }[m.source] || "";
+    const src = { quiz: t("mis.src.quiz"), chat: t("mis.src.chat"), manual: t("mis.src.manual"), similar: t("mis.src.similar"), check: t("mis.src.check") }[m.source] || "";
     const next = m.mastered ? t("mis.mastered") : isDue(m) ? t("mis.dueNow") : t("mis.nextAt", { date: App.utils.fmtDate(String(m.nextAt).slice(0, 10)) });
     return '<article class="card mis" data-id="' + esc(m.id) + '">' +
       '<div class="mis__head"><span class="mis__label">' + esc(m.label || "") + "</span>" +

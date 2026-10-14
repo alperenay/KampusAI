@@ -36,7 +36,15 @@
     const last = {};
     quizzes.forEach((q) => { if (!last[q.key] || String(q.date) > String(last[q.key].date)) last[q.key] = q; });
     const weak = Object.values(last).filter((q) => q.total && q.correct / q.total < 0.7).sort((a, b) => a.correct / a.total - b.correct / b.total)[0];
-    if (weak && App.lessons.find(weak.key)) return { key: weak.key, why: t("today.whyQuiz", { c: weak.correct, total: weak.total }) };
+    if (weak && App.lessons.find(weak.key)) {
+      // Zayıf konunun kökü daha temel bir konudaysa önce onu öner (kök eksik analizi)
+      const root = App.roots ? await App.roots.rootFor(weak.key).catch(() => null) : null;
+      if (root && App.lessons.find(root.key)) {
+        const f = App.lessons.find(weak.key);
+        return { key: root.key, why: t("today.whyRoot", { topic: App.L(f.outcome.title) }) };
+      }
+      return { key: weak.key, why: t("today.whyQuiz", { c: weak.correct, total: weak.total }) };
+    }
     const mis = (await App.db.getAll("mistakes")).filter((m) => !m.mastered && m.key);
     const byKey = {};
     mis.forEach((m) => { byKey[m.key] = (byKey[m.key] || 0) + 1; });

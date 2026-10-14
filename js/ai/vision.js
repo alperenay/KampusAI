@@ -56,12 +56,12 @@
   }
 
   /** Görseli okur; onDelta ile okuma canlı gösterilir. Dönen değer: okunan metin */
-  async function read(image, userText, signal, onDelta, engine) {
+  async function read(image, userText, signal, onDelta, engine, customPrompt) {
     engine = engine || App.engine.local;
     const { visionModel } = engine.config();
     const res = await engine.chat({
       model: visionModel,
-      messages: [{ role: "user", content: prompt(userText), images: [image.base64] }],
+      messages: [{ role: "user", content: customPrompt || prompt(userText), images: [image.base64] }],
       options: { temperature: 0.1, num_ctx: 8192 },
       signal,
       onDelta
