@@ -295,3 +295,7 @@ input.switch:checked::after { transform: translateX(18px); background: #fff; }
 :root[data-a11y-text="xl"] .modal { max-height: calc((100vh - 32px) / 1.3); width: min(520px, calc((100vw - 32px) / 1.3)); }
 :root[data-a11y-text="lg"] .modal--wide { width: min(620px, calc((100vw - 32px) / 1.15)); }
 :root[data-a11y-text="xl"] .modal--wide { width: min(620px, calc((100vw - 32px) / 1.3)); }
+/* Çok dar telefonlar (≤374 px): yedekleme Ayarlar'da da var; üst çubukta yer açılır */
+@media (max-width: 374px) {
+  #backupBtn { display: none; }
+}
