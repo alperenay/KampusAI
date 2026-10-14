@@ -1,0 +1,265 @@
+/* =========================================================
+   11. Sınıf Felsefe — konu anlatım notları
+   Kaynak: kullanıcının verdiği "11. Sınıf Felsefe Konu Anlatım Notları" (6 ünite).
+   Kaynak notlar kısa olduğu için her ünite ders kitabı düzeyinde genişletildi (tablolar, düşünürler, argüman–eleştiri eşleşmeleri, örnek sorular). Düzeltmeler: "İnanıyorum çünkü saçma" sözü Tertullianus'a atfedilen bir ifadedir; Kelsen doğal hukukçu değil hukuki pozitivisttir.
+   Üretici: tools/gen9/ (bu dosyayı elle değil, üreticiden düzenleyin).
+
+   Biçim (curriculum-data.js ile aynı):
+     ünite   { id, name, outcomes: [...] }
+     kazanım { id, code, title, content: { anlatim, ornekler, ozet } }
+   ========================================================= */
+App.data.content = App.data.content || {};
+App.data.content["11/felsefe"] = [
+ {
+  "id": "u1",
+  "name": {
+   "tr": "1. Ünite: Çevre Sorunları ve Felsefe",
+   "en": "Unit 1: Environmental Problems and Philosophy"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "1.1",
+    "title": {
+     "tr": "Çevre ve insan ilişkisi",
+     "en": "The relationship between humans and the environment"
+    },
+    "content": {
+     "anlatim": "# İnsan–Doğa İlişkisinin Tarihsel Değişimi\n\n| Dönem | Doğa anlayışı |\n|---|---|\n| **Antik dönem** | Doğa canlı, düzenli bir bütün (**kosmos**); insan onun **parçası**. Stoacılar: \"Doğaya uygun yaşa.\" |\n| **Orta Çağ** | Doğa Tanrı'nın yarattığı ve insana **emanet** ettiği düzen |\n| **Modern dönem** | **Bacon** (\"Bilgi güçtür\" — doğaya hükmetmek), **Descartes** (insan doğanın \"efendisi ve sahibi\"); doğa **mekanik** ve **kaynak** olarak görülür |\n| **Sanayi Devrimi sonrası** | Kirlilik, iklim değişikliği, biyoçeşitlilik kaybı → çevre **felsefi bir problem** hâline gelir |\n\n# Temel Felsefi Sorular\n\n- İnsan doğanın **sahibi** mi, yoksa **parçası** mı?\n- **Gelecek nesillere** karşı sorumluluğumuz var mıdır? (Hans Jonas: **sorumluluk ilkesi** — \"Eylemlerinin etkileri yeryüzünde gerçek insan yaşamının sürekliliğiyle bağdaşacak şekilde davran.\")\n- Doğanın yalnızca **araçsal değeri** mi (insana faydası) vardır, yoksa **içkin (kendinde) değeri** de var mı?\n\n**Araçsal değer:** Bir şeyin başka bir amaç için değerli olması (orman → kereste).\n**İçkin değer:** Bir şeyin kendisi için değerli olması (ormanın kendisi değerlidir).",
+     "ornekler": [
+      {
+       "soru": "'Yağmur ormanları ilaç hammaddesi olduğu için korunmalıdır' görüşü doğaya hangi değeri yükler?",
+       "cozum": "**Araçsal değer**: orman, insan için sağladığı yarar (ilaç) nedeniyle değerli görülür. İçkin değer savunucusu ise ormanın **yarardan bağımsız** olarak kendi başına değerli olduğunu söyler."
+      }
+     ],
+     "ozet": [
+      "Antik: insan doğanın parçası; modern: doğa kaynak (Bacon, Descartes).",
+      "Araçsal değer vs içkin değer.",
+      "Jonas: gelecek kuşaklara sorumluluk."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "1.2",
+    "title": {
+     "tr": "Çevre etiği yaklaşımları",
+     "en": "Approaches in environmental ethics"
+    },
+    "content": {
+     "anlatim": "# Çevre Etiği\n\nİnsanın doğayla ilişkisinde **doğru ve yanlış** davranışları inceleyen uygulamalı etik alanı.\n\n| Yaklaşım | Ahlaki değerin merkezi | Temsilci | Ana fikir |\n|---|---|---|---|\n| **Antroposentrik (insan merkezli)** | Yalnızca **insan** | Kant (dolaylı ödev), modern geleneğin çoğu | Doğa insan için **araçtır**; korunmalıdır çünkü insanlar ona muhtaçtır |\n| **Patosentrik / hayvan hakları** | **Acı çekebilen** canlılar | Peter Singer, Tom Regan | Acı çekebilen her canlının çıkarı dikkate alınmalı; \"türcülük\" eleştirisi |\n| **Biyosentrik (canlı merkezli)** | **Tüm canlılar** | **Albert Schweitzer** — \"**yaşama saygı**\"; Paul Taylor | Her canlı kendi başına değerlidir |\n| **Ekosentrik (ekosistem merkezli)** | **Ekosistemin bütünü** (canlı + cansız) | **Aldo Leopold** — \"**toprak etiği**\" | \"Bir şey biyotik topluluğun bütünlüğünü, istikrarını ve güzelliğini korumaya yöneliyorsa doğrudur.\" |\n| **Derin ekoloji** | Bütün doğa | **Arne Naess** | İnsan doğayla **özdeşleşmeli**; \"sığ ekoloji\" (yalnızca insan yararı için kirlilikle mücadele) yetersizdir |\n\n# Güncel Tartışmalar\n\n- **Sürdürülebilirlik:** Bugünün ihtiyaçlarını gelecek kuşakların imkânlarını tüketmeden karşılamak (Brundtland Raporu, 1987).\n- **İklim adaleti:** Emisyonların çoğunu gelişmiş ülkeler üretirken etkilerini en çok yoksul ülkelerin yaşaması.\n- **Hayvan hakları**, fabrika çiftçiliği, türlerin korunması.\n- **Kuşaklar arası adalet.**",
+     "ornekler": [
+      {
+       "soru": "Leopold'un toprak etiği ile Schweitzer'in yaşama saygı etiği arasındaki fark nedir?",
+       "cozum": "Schweitzer **tek tek canlıların** değerini öne çıkarır (biyosentrik). Leopold ise **ekosistemin bütünlüğünü** (toprak, su, bitkiler, hayvanlar) ahlaki değerin merkezi yapar (ekosentrik); bireyin değil bütünün iyiliğini gözetir."
+      }
+     ],
+     "ozet": [
+      "Antroposentrik: insan; biyosentrik: tüm canlılar (Schweitzer).",
+      "Ekosentrik: ekosistem (Leopold); derin ekoloji (Naess).",
+      "Güncel: sürdürülebilirlik, iklim adaleti, hayvan hakları."
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "u2",
+  "name": {
+   "tr": "2. Ünite: Teknoloji ve Hayat",
+   "en": "Unit 2: Technology and Life"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "2.1",
+    "title": {
+     "tr": "Teknoloji ve insan hayatı",
+     "en": "Technology and human life"
+    },
+    "content": {
+     "anlatim": "# Teknoloji Nötr müdür?\n\n**Teknoloji:** İnsanın doğayı dönüştürmek ve hayatını kolaylaştırmak için geliştirdiği bilgi, araç ve yöntemler.\n\n| Görüş | İddia |\n|---|---|\n| **Araçsalcı (nötr) görüş** | Teknoloji bir araçtır; iyi ya da kötü olması **kullanana** bağlıdır |\n| **Değer yüklü görüş** | Teknoloji, belirli değerleri ve yaşam biçimlerini **içinde taşır** ve dayatır |\n| **Teknolojik determinizm** | Toplumsal değişimi teknoloji **belirler** |\n| **Sosyal inşacılık** | Teknolojiyi toplumsal tercihler ve ilişkiler biçimlendirir |\n\n**Heidegger:** Modern teknoloji, doğayı ve insanı **\"hazır kaynak/stok\"** olarak gören bir **çerçeveleme (Gestell)** biçimidir. Nehir artık bir manzara değil, hidroelektrik enerji deposudur.\n\n# Etkiler\n\n| Olumlu | Olumsuz |\n|---|---|\n| Yaşam kalitesi, tedavi, uzun ömür | **Yabancılaşma** (Marx, Frankfurt Okulu) |\n| İletişim, bilgiye erişim | **Mahremiyet** kaybı, gözetim |\n| Üretim kolaylığı | İşsizlik, otomasyon |\n| Ulaşım | Çevresel tahribat, bağımlılık |",
+     "ornekler": [
+      {
+       "soru": "Sosyal medya algoritmalarının kullanıcıyı ekranda tutacak şekilde tasarlanması teknolojinin nötr olduğu görüşüne nasıl bir itiraz oluşturur?",
+       "cozum": "Algoritma tasarımcıların **dikkat ve kâr** gibi değerlerini içine yerleştirir; kullanıcının davranışını yönlendirir. Bu, teknolojinin yalnızca kullanıma bağlı nötr bir araç değil, **değer yüklü** olduğunu gösterir."
+      }
+     ],
+     "ozet": [
+      "Teknoloji nötr mü, değer yüklü mü?",
+      "Heidegger: Gestell — doğa hazır kaynak.",
+      "Olumsuz etkiler: yabancılaşma, mahremiyet, işsizlik."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "2.2",
+    "title": {
+     "tr": "Teknolojide ontolojik ve aksiyolojik problemler",
+     "en": "Ontological and axiological problems of technology"
+    },
+    "content": {
+     "anlatim": "# Ontolojik Problemler (varlık ve insan doğası)\n\n- Teknoloji **insanı nasıl dönüştürüyor?** Protezler, implantlar, gen düzenleme insanın sınırlarını değiştiriyor mu?\n- **Yapay zekâ:** Makineler düşünebilir mi? **Turing testi** (davranışsal ölçüt) — **Searle'ün Çin Odası** argümanı (sembolleri işlemek anlamak değildir).\n- **Sanal gerçeklik:** Gerçek ile sanal arasındaki sınır nedir? (Platon'un mağara alegorisiyle karşılaştırılabilir.)\n- **Transhümanizm:** İnsanın **biyolojik sınırlarını** teknolojiyle aşma (yaşlanmayı durdurma, zihinsel güçlendirme) arayışı; **posthümanizm** tartışmaları.\n\n# Aksiyolojik Problemler (değerler)\n\n- Teknoloji **hangi değerleri öne çıkarıyor?** Verimlilik, hız, kontrol ↔ özgürlük, mahremiyet, adalet.\n- **Yapay zekâ etiği:** Önyargılı algoritmalar, sorumluluk (otonom araç kaza yaparsa kim sorumlu?), şeffaflık.\n- **Biyoetik:** Klonlama, tasarım bebekler, organ nakli.\n- **Değer duyarlı tasarım:** Teknolojik ürünlere mahremiyet, erişilebilirlik, adalet gibi değerlerin **baştan** yerleştirilmesi.\n- **Dijital eşitsizlik:** Teknolojiye erişimdeki farklar.",
+     "ornekler": [
+      {
+       "soru": "'Otonom bir araç kaçınılmaz bir kazada yolcuyu mu, yayaları mı korumalı?' sorusu hangi tür felsefi probleme örnektir?",
+       "cozum": "**Aksiyolojik (etik)** bir problemdir; teknolojinin tasarımına hangi **değerlerin** ve önceliklerin yerleştirileceğini sorgular (tramvay problemi benzeri)."
+      }
+     ],
+     "ozet": [
+      "Ontolojik: YZ düşünür mü (Turing, Çin Odası), sanal gerçeklik, transhümanizm.",
+      "Aksiyolojik: verimlilik vs özgürlük-mahremiyet; YZ etiği.",
+      "Değer duyarlı tasarım."
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "u3",
+  "name": {
+   "tr": "3. Ünite: Akıl ve İnanç",
+   "en": "Unit 3: Reason and Faith"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "3.1",
+    "title": {
+     "tr": "Akıl–inanç ilişkisine yönelik görüşler",
+     "en": "Views on the relationship between reason and faith"
+    },
+    "content": {
+     "anlatim": "# Temel Soru\n\nAkıl ve inanç **çelişir mi**, yoksa **birbirini tamamlar mı**?\n\n| Görüş | Düşünür | İddia |\n|---|---|---|\n| **İnanç akıldan üstündür** | **Tertullianus** (kendisine atfedilen: \"İnanıyorum çünkü saçma\") | İnanç aklın ölçütlerine bağlı değildir |\n| **Akıl ve inanç uyumludur** | **Augustinus** (\"Anlamak için inanıyorum\"), **Anselmus**, **Thomas Aquinas** | Akıl inancı destekler; bazı dinî hakikatler akılla kanıtlanabilir, bazıları (teslis vb.) vahiyle bilinir |\n| **İslam felsefesinde uzlaşma** | **Farabi, İbn Sina, İbn Rüşd** (*Faslü'l-Makâl*) | Hakikat hakikate aykırı olamaz; felsefe ve din aynı hakikate farklı yollardan ulaşır |\n| **Aklın sınırları** | **Kant** (\"İnanca yer açmak için bilgiyi sınırlamak zorunda kaldım\"), **Hume** | Tanrı, ruh, özgürlük gibi konular **teorik aklın** sınırları dışındadır |\n| **İman bir sıçramadır** | **Kierkegaard** | İman, aklın ötesinde bir **paradoks** ve kişisel bir **sıçrama**dır |\n| **Fideizm** | Pascal (\"Kalbin aklın bilmediği gerekçeleri vardır\") | İnanç akli kanıta ihtiyaç duymaz |\n| **Rasyonalist / kanıtçı yaklaşım** | Clifford | Yeterli kanıt olmadan inanmak yanlıştır |\n| **Din dilinin analizi** | **Wittgenstein** (dil oyunları) | Dinî ifadeler kendi yaşam biçimi içinde anlam kazanır |\n\n**Pascal'ın Bahsi:** Tanrı'ya inanmanın olası kazancı sonsuz, kaybı sonludur; bu yüzden inanmak akılcı bir tercihtir.",
+     "ornekler": [
+      {
+       "soru": "İbn Rüşd'ün din ile felsefe ilişkisine bakışı nedir?",
+       "cozum": "İbn Rüşd'e göre **hakikat hakikate aykırı olamaz**; felsefe (akıl) ve din (vahiy) aynı hakikati ifade eder. Görünüşteki çelişkiler, dinî metnin **yorumlanmasıyla (tevil)** giderilir."
+      }
+     ],
+     "ozet": [
+      "Tertullianus: inanç akıldan bağımsız; Aquinas: uyum.",
+      "Kant: aklın sınırları; Kierkegaard: iman sıçraması.",
+      "İbn Rüşd: hakikat hakikate aykırı olamaz."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "3.2",
+    "title": {
+     "tr": "Tanrı'nın varlığına ilişkin argümanlar ve eleştirileri",
+     "en": "Arguments for God's existence and criticisms"
+    },
+    "content": {
+     "anlatim": "# Klasik Argümanlar ve Eleştirileri\n\n| Argüman | İçerik | Eleştiri |\n|---|---|---|\n| **Ontolojik** (Anselmus, Descartes) | Tanrı \"kendisinden daha büyüğü düşünülemeyen\" varlıktır; mükemmellik varlığı içerir | **Gaunilo** (mükemmel ada örneği); **Kant**: \"Varlık bir yüklem değildir\" |\n| **Kozmolojik** (Aristoteles, Farabi, İbn Sina, Aquinas) | Her şeyin bir nedeni vardır; sonsuz geriye gidiş olamaz → **ilk neden / zorunlu varlık**. Kelamcıların **hudûs** delili | **Hume**: İlk nedenin Tanrı olduğu nereden bilinir? Evren kendisi zorunlu olamaz mı? |\n| **Teleolojik / tasarım** (Paley — \"saatçi\") | Evrendeki düzen ve amaçlılık akıllı bir tasarımcıyı gerektirir | **Hume**: Analoji zayıftır; **Darwin**: Doğal seçilim düzeni açıklayabilir |\n| **Ahlak** (Kant) | Ahlak yasası, erdem ile mutluluğu birleştirecek Tanrı'yı **koyut** olarak gerektirir | Ahlak Tanrı'dan bağımsız temellendirilebilir mi? |\n| **Dinî tecrübe** | Kişinin yaşadığı manevi deneyim Tanrı'ya işaret eder | Öznel ve doğrulanamaz |\n\n# Diğer Problemler\n\n- **Kötülük problemi:** Her şeye gücü yeten ve iyi bir Tanrı varken neden kötülük var? → **Teodise** cevapları: özgür irade (Augustinus), ruhun olgunlaşması (Hick), \"mümkün dünyaların en iyisi\" (Leibniz).\n- **Vahiy ve akıl:** Vahiy akılla denetlenebilir mi?\n- **İnanç bir bilgi iddiası mı, kişisel bir tutum mu?** Kanıtçılar (bilgi iddiası) ↔ fideistler ve Wittgenstein (yaşam biçimi).",
+     "ornekler": [
+      {
+       "soru": "Kant'ın ontolojik argümana itirazı nedir?",
+       "cozum": "Kant'a göre **varlık bir yüklem (nitelik) değildir**; bir kavrama 'var' demek ona yeni bir özellik eklemez. Bu yüzden bir kavramdan (mükemmel varlık) onun **gerçekte var olduğu** sonucu çıkarılamaz."
+      }
+     ],
+     "ozet": [
+      "Ontolojik (Anselmus) — Kant: varlık yüklem değildir.",
+      "Kozmolojik: ilk neden; teleolojik: tasarım — Hume ve Darwin eleştirisi.",
+      "Kötülük problemi ve teodise."
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "u4",
+  "name": {
+   "tr": "4. Ünite: Edebiyat ve Felsefe",
+   "en": "Unit 4: Literature and Philosophy"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "4.1",
+    "title": {
+     "tr": "Edebiyat ile felsefe arasındaki ilişki",
+     "en": "The relationship between literature and philosophy"
+    },
+    "content": {
+     "anlatim": "# Benzerlik ve Farklılıklar\n\n| Felsefe | Edebiyat |\n|---|---|\n| **Kavram** ve **argüman** temelli | **İmge, anlatı ve duygu** temelli |\n| Genel ve soyut | Somut ve tikel (karakter, olay) |\n| Akla seslenir | Akla ve duyguya birlikte seslenir |\n\n**Ortak alan:** İnsanın varoluşu, özgürlük, ölüm, anlam, ahlak, adalet.\n\n# Edebi Eserlerde Felsefi Problemler\n\n| Eser | Felsefi tema |\n|---|---|\n| **Camus – *Yabancı***, *Sisifos Söyleni* | **Absürt**; anlamsız bir dünyada yaşamak |\n| **Dostoyevski – *Suç ve Ceza*, *Karamazov Kardeşler*** | Özgürlük, sorumluluk, ahlakın kaynağı (\"Tanrı yoksa her şey mubah mı?\") |\n| **Kafka – *Dönüşüm*, *Dava*** | **Yabancılaşma**, bürokrasi, anlamsızlık |\n| **Orwell – *1984*** | İktidar, gözetim, hakikat |\n| **Sartre – *Bulantı*** | Varoluşun olumsallığı |\n| **Mevlânâ – *Mesnevî*, Yunus Emre** | İnsan, aşk, birlik, hakikat arayışı |\n| **Oğuz Atay – *Tutunamayanlar***, **Peyami Safa – *Dokuzuncu Hariciye Koğuşu*** | Birey, yalnızlık, ölüm |\n\n# Edebi Üslupla Yazılmış Felsefe\n\n- **Platon'un diyalogları** (Sokrates'in konuşmaları)\n- **Nietzsche – *Böyle Buyurdu Zerdüşt*** (aforizmalar, şiirsel dil)\n- **Voltaire – *Candide*** (felsefi roman — Leibniz'in iyimserliğinin hicvi)\n- **Farabi, İbn Tufeyl – *Hay bin Yakzan*** (felsefi hikâye)\n\n# Katkılar\n\nEdebiyat felsefi düşünceyi **somutlaştırır**, geniş kitlelere **yayar** ve okurda **empati** ile **eleştirel bilinç** geliştirir; felsefe ise edebiyata **kavramsal derinlik** kazandırır.",
+     "ornekler": [
+      {
+       "soru": "Bir roman felsefi bir problemi felsefi bir makaleden nasıl farklı biçimde ele alır?",
+       "cozum": "Makale problemi **kavramlar ve argümanlarla** genel olarak tartışır. Roman ise problemi **karakterlerin yaşadığı olaylar** üzerinden somutlaştırır, okurun **duygusal olarak** deneyimlemesini sağlar (ör. Raskolnikov'un vicdan azabı)."
+      }
+     ],
+     "ozet": [
+      "Felsefe kavram ve argüman; edebiyat imge ve anlatı.",
+      "Camus absürt; Dostoyevski özgürlük ve sorumluluk; Kafka yabancılaşma.",
+      "Platon diyalogları, Nietzsche, Hay bin Yakzan: edebi felsefe."
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "u5",
+  "name": {
+   "tr": "5. Ünite: Hayatın Anlamı",
+   "en": "Unit 5: The Meaning of Life"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "5.1",
+    "title": {
+     "tr": "Hayatın anlamına ilişkin yaklaşımlar",
+     "en": "Approaches to the meaning of life"
+    },
+    "content": {
+     "anlatim": "# Temel Sorular\n\nHayatın bir anlamı var mıdır? Varsa **keşfedilir mi**, yoksa **yaratılır mı**? Anlam **nesnel** midir, **öznel** mi?\n\n| Yaklaşım | Temsilci | Görüş |\n|---|---|---|\n| **Dinî (teistik) yaklaşım** | Augustinus, Gazali, Mevlânâ | Anlam **Tanrı ile ilişkide**, kulluk ve **ahiret** inancında bulunur; hayat bir imtihandır |\n| **Erdem etiği** | **Aristoteles** | Anlam, aklın erdemle işlendiği **mutluluk (eudaimonia)** yaşamındadır |\n| **Stoacılık** | Epiktetos, Seneca, Marcus Aurelius | **Doğaya ve akla uygun** yaşamak; kontrol edemediğimize değil, edebildiğimize odaklanmak |\n| **Epikürcülük** | Epikuros | Ölçülü haz, acıdan ve korkudan kurtulmuş dinginlik (**ataraksia**); \"Ölüm bizim için hiçtir.\" |\n| **Nihilizm** | **Nietzsche** (\"**Tanrı öldü**\" tespiti), Schopenhauer (karamsarlık) | Hayatın **nesnel bir anlamı yoktur**. Nietzsche nihilizmi aşmak için değerlerin yeniden değerlendirilmesini ve \"**üstinsan**\"ı önerir |\n| **Varoluşçuluk** | **Sartre** | \"Varoluş özden önce gelir\"; anlam önceden verilmemiştir, insan **özgürlüğüyle** kendi anlamını **yaratır** |\n| **Absürdizm** | **Camus** | İnsanın anlam arayışı ile dünyanın sessizliği çatışır (**absürt**). Çözüm intihar ya da \"felsefi intihar\" (umuda kaçış) değil, **başkaldırı**: \"Sisifos'u mutlu düşünmek gerekir.\" |\n| **Logoterapi (anlam terapisi)** | **Viktor Frankl** (*İnsanın Anlam Arayışı*) | İnsan, toplama kampındaki acı içinde bile **anlam bulabilir**; anlam bir iş, bir sevgi ya da acıya karşı alınan tutumda bulunur |",
+     "ornekler": [
+      {
+       "soru": "Sartre ve dinî yaklaşım hayatın anlamının kaynağı konusunda nasıl ayrışır?",
+       "cozum": "Dinî yaklaşımda anlam **Tanrı tarafından verilmiştir** ve insan onu keşfeder. Sartre'a göre ise önceden belirlenmiş bir öz veya anlam yoktur; insan anlamı kendi **özgür seçimleriyle yaratır**."
+      }
+     ],
+     "ozet": [
+      "Dinî: anlam Tanrı ve ahirette; Aristoteles: eudaimonia.",
+      "Nietzsche: Tanrı öldü, nihilizm, üstinsan; Sartre: anlamı yaratırız.",
+      "Camus: absürt ve başkaldırı; Frankl: acıda bile anlam."
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "u6",
+  "name": {
+   "tr": "6. Ünite: Hukuk ve Felsefe",
+   "en": "Unit 6: Law and Philosophy"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "6.1",
+    "title": {
+     "tr": "Hukukun doğası, kaynağı ve ahlakla ilişkisi",
+     "en": "The nature and source of law and its relation to morality"
+    },
+    "content": {
+     "anlatim": "# Hukuk Felsefesi\n\n**Hukuk:** Toplumsal düzeni sağlayan, devlet yaptırımıyla desteklenen normlar sistemi. Hukuk felsefesi hukukun **kaynağını, meşruiyetini, adaletle ilişkisini** ve özgürlükle dengesini sorgular.\n\n**Hukukun gerekliliği:** Hukuk olmadan toplumsal yaşam mümkün müdür? **Hobbes:** Doğa durumunda \"**insan insanın kurdudur**\", herkesin herkese savaşı vardır; hukuk düzeni güvenlik için zorunludur.\n\n# Hukukun Kaynağı\n\n| | **Doğal hukuk** | **Hukuki pozitivizm** |\n|---|---|---|\n| Kaynak | **Akıl, insan doğası** ya da Tanrı; evrensel ve değişmez ilkeler | **Devletin koyduğu** kurallar; yetkili makam ve usul |\n| Temsilciler | Stoacılar, Cicero, **Thomas Aquinas**, **Locke** (doğal haklar: yaşam, özgürlük, mülkiyet), Grotius | **Hans Kelsen** (saf hukuk teorisi), John Austin, H. L. A. Hart |\n| Adaletsiz yasa | \"**Adaletsiz yasa yasa değildir**\" (Augustinus, Aquinas) | Usulüne uygun konmuşsa **geçerli yasadır**; ahlaki değerlendirme ayrı bir konudur |\n\n> **Rousseau:** Yasalar **genel iradenin** ifadesidir; meşruiyet halkın ortak iradesinden gelir.\n> **Radbruch formülü:** Pozitif hukuk esastır; ancak adaletsizlik **katlanılamaz** düzeye ulaşırsa yasa hukuk niteliğini kaybeder.\n\n# Ahlak ve Hukuk\n\n| Ahlak | Hukuk |\n|---|---|\n| İç denetim (**vicdan**) | Dış denetim (**devlet yaptırımı**) |\n| Yaptırımı kınama, pişmanlık | Yaptırımı ceza, tazminat |\n| Yazısız olabilir | Genellikle yazılı |\n\nHer ahlaki kural hukuki değildir (yalan söylememek), her hukuki kural da ahlaki içerik taşımaz (trafikte sağdan gitmek).\n\n# Güncel Tartışmalar\n\n- **İnsan hakları:** Evrensel ve devredilemez haklar (1948 İnsan Hakları Evrensel Beyannamesi).\n- **Hukukun üstünlüğü:** Yöneticilerin de hukuka bağlı olması.\n- **Sivil itaatsizlik:** Adaletsiz bulunan yasaya **açık, şiddetsiz** ve cezayı göze alarak karşı gelmek (**Thoreau, Gandhi, Martin Luther King, Rawls**).\n- Pozitivizmin eleştirisi: Nazi döneminin \"yasal\" uygulamaları sonrası tartışmalar.",
+     "ornekler": [
+      {
+       "soru": "Bir doğal hukukçu ile bir hukuki pozitivist, ayrımcılık içeren ama usulüne uygun çıkarılmış bir yasayı nasıl değerlendirir?",
+       "cozum": "**Doğal hukukçu**: yasa akla ve evrensel adalete aykırı olduğu için **gerçek bir yasa değildir**. **Pozitivist**: yasa yetkili makamca usulüne uygun konduğu için **geçerli hukuktur**; ancak ahlaken eleştirilebilir ve değiştirilmelidir."
+      }
+     ],
+     "ozet": [
+      "Hobbes: hukuk olmadan insan insanın kurdu.",
+      "Doğal hukuk (Aquinas, Locke) vs pozitivizm (Kelsen, Hart).",
+      "Ahlak iç denetim, hukuk dış yaptırım; sivil itaatsizlik."
+     ]
+    }
+   }
+  ]
+ }
+];

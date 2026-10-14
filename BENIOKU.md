@@ -12,7 +12,8 @@ YKS geri sayımı ve hedef netler, yapay zekâyla haftalık plan, benzer soru ü
 | **İnternet (OpenAI-uyumlu)** | OpenRouter, Groq, OpenAI, DeepSeek… | Servise göre | Modele göre |
 
 **Otomatik** modda (varsayılan) bilgisayardaki Ollama hazırsa o, değilse internet servisi kullanılır.
-Hangisi kullanılırsa kullanılsın asistan denemelerine, programına, notlarına ve konu anlatımlarına bakarak yanıt verir.
+Hangisi kullanılırsa kullanılsın asistan denemelerine, programına, notlarına ve üzerinde çalıştığın konuların
+anlatımlarına bakarak yanıt verir (tamamladığın, test çözdüğün, not aldığın ya da Feynman'la anlattığın kazanımlar).
 
 ## 1. Kurulum
 
@@ -104,15 +105,18 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
 - **Bugün ekranı:** Sol menüde *Bugün*. Şu an hangi dersin olduğu (bitmesine kalan süre, tek dokunuşla odak sayacı),
   sıradaki ders, günün akışı, tekrar zamanı gelen yanlışlar, odak süresi ve seri, YKS sayacı, bugün bakman önerilen konu
   (en düşük test sonucun ya da en çok yanlış yaptığın kazanım) ve en sık hata türün tek ekranda.
-- **Hazır 9. sınıf konu anlatımları:** 9. sınıfın dokuz dersinin tamamında (Türk Dili ve Edebiyatı, Matematik, Fizik,
-  Kimya, Biyoloji, Tarih, Coğrafya, Din Kültürü, İngilizce) ünite/tema ve kazanım listesi, konu anlatımı, örnek
-  sorular ve hap bilgiler uygulamanın içinde hazır gelir; yapay zekâ gerekmez, çevrimdışı da açılır. Notları
-  düzenlemek için `tools/gen9/` içindeki üreticileri değiştirip çalıştır (`python3 kim.py` → `js/data/content/kim-9.js`).
-- **Yapay zekâyla konu içeriği:** Hazır içeriği olmayan derslerde (10, 11 ve 12. sınıflar) ders
-  açılınca konu listesi (üniteler ve kazanımlar), kazanım açılınca konu anlatımı, 3 çözümlü örnek ve hap bilgiler
+- **Hazır konu anlatımları (9–12. sınıf):** 9. sınıfın dokuz dersinin tamamında ve 10, 11, 12. sınıfların
+  neredeyse tüm derslerinde (Türk Dili ve Edebiyatı, Matematik, Fizik, Kimya, Biyoloji, Tarih / İnkılap Tarihi,
+  Coğrafya, Felsefe, Din Kültürü, İngilizce) ünite/tema ve kazanım listesi, konu anlatımı, örnek sorular ve hap
+  bilgiler uygulamanın içinde hazır gelir; yapay zekâ gerekmez, çevrimdışı da açılır. Notları düzenlemek için
+  üreticileri değiştirip çalıştır: 9. sınıf `tools/gen9/` (`python3 kim.py` → `js/data/content/kim-9.js`),
+  10–12. sınıf `tools/gen1012/` (`python3 kim11.py` → `js/data/content/kim-11.js`).
+- **Yapay zekâyla konu içeriği:** Hazır içeriği olmayan derslerde (şu an 11. sınıf İngilizce ve 12. sınıf Felsefe)
+  ders açılınca konu listesi (üniteler ve kazanımlar), kazanım açılınca konu anlatımı, 3 çözümlü örnek ve hap bilgiler
   yapay zekâyla hazırlanır. Bir kez hazırlanır, kaydedilir ve diğer cihazlara eşitlenir; konu sonu testi, Feynman modu
   ve asistan bu içerikleri de kullanır. *Yeniden oluştur* ile tazelenebilir. Yapay zekâ hata yapabilir; önemli
-  bilgileri ders kitabıyla karşılaştır.
+  bilgileri ders kitabıyla karşılaştır. Bir ders sonradan hazır notlara geçerse eski yapay zekâ içerikleri ve ön koşul
+  haritası kendiliğinden devre dışı kalır.
 - **Hata türü analizi:** Yanlış Defteri'nin başında. Her yanlışın türü — kavram yanılgısı, bilgi eksikliği, işlem
   hatası, dikkatsizlik, süre yetmemesi — konu sonu testinden sonra seçtiğin yanlış şıka bakılarak yapay zekâyla
   belirlenir ya da karttaki *Hata türü?* düğmesinden sen seçersin. Dağılım, ders bazında kırılım ve en sık hatan için
@@ -121,7 +125,8 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
   ipuçları ve sorularla çözümü senin bulmanı sağlar. Yanıtın altındaki *İpucu ver* / *Çözümü göster* düğmeleriyle ilerlersin.
 - **Kök eksik analizi:** Sol menüde *Kök Eksik Analizi*. Zorlandığın bir konunun asıl kaynağını bulur: her kazanımın
   hangi kazanımlara dayandığı bir ön koşul haritasında tutulur (9. sınıf için elle hazırlandı, dersler arası bağlar dahil —
-  ör. fizikte vektörler → matematikte Pisagor; diğer dersler için harita yapay zekâyla çıkarılıp kaydedilir).
+  ör. fizikte vektörler → matematikte Pisagor; diğer dersler için harita yapay zekâyla çıkarılıp kaydedilir ve
+  dersin kazanım listesi değişirse yeniden çıkarılması istenir).
   Konu sonu testleri, Feynman puanları, çözüm kontrolleri ve açık yanlışlardan her konu için bir hâkimiyet puanı
   hesaplanır. Zayıf bir konunun ön koşullarında da zayıflık varsa en temeldeki konu "kök eksik" olarak gösterilir;
   ön koşullar sağlamsa "sorun konunun kendisinde", hiç denenmemişse "önce bunları dene" denir. Konu sayfasında

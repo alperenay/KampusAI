@@ -25,11 +25,31 @@
 
   /* ---------------- Harita ---------------- */
   let aiMaps = {};           // "10/kimya" → { "u1/k2": ["u1/k1", …] }
+  let aiSigs = {};           // "10/kimya" → haritanın çıkarıldığı kazanım listesinin imzası
   async function load() {
     const rows = (await App.db.getAll("meta")).filter((r) => String(r.id).indexOf(META) === 0);
-    aiMaps = {};
-    rows.forEach((r) => { if (r.map) aiMaps[r.id.slice(META.length)] = r.map; });
+    aiMaps = {}; aiSigs = {};
+    rows.forEach((r) => { if (r.map) { const sk = r.id.slice(META.length); aiMaps[sk] = r.map; aiSigs[sk] = r.sig || null; } });
     return aiMaps;
+  }
+
+  /** Dersin güncel kazanım listesinin kısa imzası (kimlik + başlık). Kazanımlar değişince
+   *  (ör. yapay zekâ müfredatı yerine hazır notlar gelince) eski yapay zekâ haritası geçersiz sayılır. */
+  function sigOf(sk) {
+    const [g, s] = sk.split("/");
+    const subj = C() && C().findSubject(g, s);
+    if (!subj) return "";
+    const str = subj.units.map((u) => u.id + ":" + u.outcomes.map((o) => o.id + "=" + (o.title && (o.title.tr || o.title.en) || "")).join(",")).join("|");
+    let h = 5381;
+    for (let i = 0; i < str.length; i++) h = ((h << 5) + h + str.charCodeAt(i)) | 0;
+    return (h >>> 0).toString(36) + "." + str.length;
+  }
+  /** Yapay zekâ haritası hâlâ geçerli mi? İmzası varsa eşleşmeli; imzasızsa (eski sürüm)
+   *  yalnızca ders hazır notlara geçmemişse kullanılır. */
+  function aiValid(sk) {
+    if (!aiMaps[sk]) return false;
+    if (aiSigs[sk]) return aiSigs[sk] === sigOf(sk);
+    return !((App.data.content || {})[sk]);
   }
 
   const subjKey = (key) => String(key).split("/").slice(0, 2).join("/");
@@ -37,7 +57,7 @@
 
   /** Bir dersin haritası: { tamAnahtar: [tamAnahtar…] }; source: "curated" | "ai" | null */
   function subjectMap(sk) {
-    const raw = (App.data.prereq || {})[sk] || aiMaps[sk];
+    const raw = (App.data.prereq || {})[sk] || (aiValid(sk) ? aiMaps[sk] : null);
     if (!raw) return { map: {}, source: null };
     const map = {};
     Object.entries(raw).forEach(([k, pre]) => { map[full(sk, k)] = (pre || []).map((x) => full(sk, x)).filter((x) => App.lessons.find(x)); });
@@ -350,7 +370,7 @@
     Object.keys(map).forEach((k) => delete map[k]);
     Object.assign(map, clean);
     if (!Object.keys(map).length) throw new Error("json");
-    await App.db.put("meta", { id: META + sk, map, at: new Date().toISOString(), model: res.model });
+    await App.db.put("meta", { id: META + sk, map, sig: sigOf(sk), at: new Date().toISOString(), model: res.model });
     await load();
     return map;
   }

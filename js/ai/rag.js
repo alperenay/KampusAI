@@ -182,10 +182,17 @@
         (m.explain ? "\nAçıklama: " + htmlToText(m.explain).slice(0, 500) : ""));
     });
 
-    // Konu anlatımı içerikleri
+    // Konu anlatımı içerikleri — yalnızca öğrencinin uğraştığı kazanımlar (tamamlanan, test çözülen,
+    // Feynman'la anlatılan, not alınan, yanlışı olan) ve yapay zekâyla hazırlatılanlar. 9–12. sınıfın
+    // tüm hazır notları (~500 kazanım) her öğrenci için gömülürse ortak sunucunun gömme kotası
+    // ilk aramada tükenir ve genel ders metinleri öğrencinin kendi kayıtlarını bağlamdan iter.
+    const engaged = new Set();
+    [data.progress, data.quizzes, data.explains, data.notes].forEach((list) => (list || []).forEach((r) => engaged.add(r.key || r.id)));
+    (data.mistakes || []).forEach((m) => { if (m.key) engaged.add(m.key); });
     C().grades.forEach((g) => g.subjects.forEach((s) => s.units.forEach((u) => u.outcomes.forEach((o) => {
       if (!o.content) return;
       const key = [g.id, s.id, u.id, o.id].join("/");
+      if (!o.ai && !engaged.has(key)) return;
       const info = outcomeInfo(key);
       const ct = o.content;
       const parts = [];

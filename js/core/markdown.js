@@ -47,7 +47,9 @@
   }
 
   function inline(s) {
-    s = s.replace(/\*\*([^*]+?)\*\*/g, "<strong>$1</strong>");
+    // Kalın içinde italik olabilir: **Camus – *Yabancı*** → <strong>Camus – <em>Yabancı</em></strong>
+    s = s.replace(/\*\*((?:[^*]|\*(?![\s*])[^*\n]+?(?<!\s)\*)+?)\*\*/g, (m, inner) =>
+      "<strong>" + inner.replace(/\*(?!\s)([^*\n]+?)(?<!\s)\*/g, "<em>$1</em>") + "</strong>");
     s = s.replace(/__([^_]+?)__/g, "<strong>$1</strong>");
     s = s.replace(/(^|[^*])\*(?!\s)([^*\n]+?)(?<!\s)\*(?!\*)/g, "$1<em>$2</em>");
     s = s.replace(/~~([^~]+?)~~/g, "<del>$1</del>");
