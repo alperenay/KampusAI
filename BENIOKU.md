@@ -104,7 +104,11 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
 - **Bugün ekranı:** Sol menüde *Bugün*. Şu an hangi dersin olduğu (bitmesine kalan süre, tek dokunuşla odak sayacı),
   sıradaki ders, günün akışı, tekrar zamanı gelen yanlışlar, odak süresi ve seri, YKS sayacı, bugün bakman önerilen konu
   (en düşük test sonucun ya da en çok yanlış yaptığın kazanım) ve en sık hata türün tek ekranda.
-- **Yapay zekâyla konu içeriği:** Hazır içeriği olmayan derslerde (9. sınıf matematik ve fizik dışındakiler) ders
+- **Hazır 9. sınıf konu anlatımları:** 9. sınıfın dokuz dersinin tamamında (Türk Dili ve Edebiyatı, Matematik, Fizik,
+  Kimya, Biyoloji, Tarih, Coğrafya, Din Kültürü, İngilizce) ünite/tema ve kazanım listesi, konu anlatımı, örnek
+  sorular ve hap bilgiler uygulamanın içinde hazır gelir; yapay zekâ gerekmez, çevrimdışı da açılır. Notları
+  düzenlemek için `tools/gen9/` içindeki üreticileri değiştirip çalıştır (`python3 kim.py` → `js/data/content/kim-9.js`).
+- **Yapay zekâyla konu içeriği:** Hazır içeriği olmayan derslerde (10, 11 ve 12. sınıflar) ders
   açılınca konu listesi (üniteler ve kazanımlar), kazanım açılınca konu anlatımı, 3 çözümlü örnek ve hap bilgiler
   yapay zekâyla hazırlanır. Bir kez hazırlanır, kaydedilir ve diğer cihazlara eşitlenir; konu sonu testi, Feynman modu
   ve asistan bu içerikleri de kullanır. *Yeniden oluştur* ile tazelenebilir. Yapay zekâ hata yapabilir; önemli

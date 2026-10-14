@@ -347,7 +347,7 @@ code.cmd { font-family: var(--mono); font-size: 12.5px; background: var(--surfac
 .md { overflow-wrap: anywhere; }
 .md > * + * { margin-top: 10px; }
 .md p + p { margin-top: 10px; }
-.md h3, .md h4, .md h5, .md h6 { font-size: 16px; font-weight: 600; margin-top: 16px; color: var(--text); }
+.md h3, .md h4, .md h5, .md h6 { font-size: 16px; font-weight: 600; margin-top: 16px; margin-bottom: 0; color: var(--text); }
 .md h3:first-child, .md h4:first-child { margin-top: 0; }
 .md ul, .md ol { padding-left: 22px; margin: 6px 0; }
 .md li + li { margin-top: 4px; }
@@ -360,6 +360,8 @@ code.cmd { font-family: var(--mono); font-size: 12.5px; background: var(--surfac
 .md hr { border: 0; border-top: 1px solid var(--border); margin: 14px 0; }
 .md-table { overflow-x: auto; }
 .md table { border-collapse: collapse; font-size: 14px; min-width: 50%; }
+.md table { overflow-wrap: normal; }
+.md th, .md td { overflow-wrap: break-word; }
 .md th, .md td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; }
 .md th { background: var(--surface-head); font-weight: 600; }
 .md .katex { font-size: 1.08em; }

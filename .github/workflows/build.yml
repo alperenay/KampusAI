@@ -23,7 +23,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.5.0
+  APP_VERSION: 1.6.0
 
 jobs:
   # Yapay zeka sunucusu (Cloudflare Worker). Repo ayarlarında şu gizli değerler varsa yayınlanır:
