@@ -19,7 +19,7 @@ import shutil
 import sys
 import time
 
-from ortak import CIKTI, KIT, PROFIL, RAPOR, VERI, ayarlar, baslat, jsonl_oku, log, ollama_bosalt
+from ortak import CIKTI, KIT, PROFIL, RAPOR, VERI, ayarlar, baslat, jsonl_oku, log, model_yukle, ollama_bosalt
 
 YEDEGE_GECILDI = 3   # çıkış kodu: model sığmadı, ayarlar küçük modele çevrildi → aynı adımı tekrar çalıştırın
 
@@ -86,8 +86,8 @@ def main():
     yedek_var = a.get("yedek_temel_model") and a["yedek_temel_model"] != a["temel_model"]
     log("Temel model yükleniyor:", a["temel_model"], "(ilk seferde indirilir, birkaç GB)")
     try:
-        model, tokenizer = FastModel.from_pretrained(
-            model_name=a["temel_model"], max_seq_length=max_len, load_in_4bit=True, full_finetuning=False, dtype=None)
+        model, tokenizer = model_yukle(
+            FastModel, model_name=a["temel_model"], max_seq_length=max_len, load_in_4bit=True, full_finetuning=False, dtype=None)
     except Exception as e:
         if bellek_hatasi(e) and yedek_var:
             log("Model ekran kartı belleğine sığmadı:", repr(e)[:200])

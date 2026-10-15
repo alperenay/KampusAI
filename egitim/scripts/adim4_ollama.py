@@ -21,7 +21,7 @@ import urllib.request
 import zipfile
 from pathlib import Path
 
-from ortak import CIKTI, DAGITIM, KIT, OllamaHatasi, ayarlar, baslat, log, model_hazirla, ollama_bosalt, ollama_istek, ollama_sohbet, sistem_istemi
+from ortak import CIKTI, DAGITIM, KIT, OllamaHatasi, ayarlar, baslat, log, model_hazirla, model_yukle, ollama_bosalt, ollama_istek, ollama_sohbet, sistem_istemi
 
 
 def ollama_exe():
@@ -161,7 +161,7 @@ def main():
 
     ollama_bosalt()
     from unsloth import FastModel
-    model, tokenizer = FastModel.from_pretrained(str(lora), max_seq_length=int(a["max_uzunluk"]), load_in_4bit=True)
+    model, tokenizer = model_yukle(FastModel, model_name=str(lora), max_seq_length=int(a["max_uzunluk"]), load_in_4bit=True)
 
     # 1) Birleştir
     birlesik = CIKTI / "birlesik"

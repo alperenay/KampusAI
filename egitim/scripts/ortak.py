@@ -352,13 +352,38 @@ def model_yuklu_mu(ad, adres=None):
 
 
 def ollama_bosalt(adres=None):
-    """Ekran kartını eğitime bırakmak için bellekteki tüm modelleri boşaltır."""
+    """Ekran kartını eğitime bırakmak için bellekteki tüm modelleri boşaltır ve gerçekten boşalmasını bekler."""
     try:
         for m in ollama_istek("/api/ps", adres=adres, zaman_asimi=10).get("models", []):
             ollama_istek("/api/generate", {"model": m.get("name") or m.get("model"), "keep_alive": 0}, adres=adres)
-            log("Ollama belleği boşaltıldı:", m.get("name"))
+            log("Ollama belleği boşaltılıyor:", m.get("name"))
+        for _ in range(30):
+            if not ollama_istek("/api/ps", adres=adres, zaman_asimi=10).get("models"):
+                break
+            time.sleep(1)
+        time.sleep(2)
     except OllamaHatasi:
         pass
+
+
+def model_yukle(FastModel, **kw):
+    """Modeli 4-bit yükler. Ekran kartına tam sığmazsa (Gemma 4'ün büyük gömme tabloları yüzünden olabiliyor)
+    sığmayan katmanları sistem belleğine alarak tekrar dener: eğitim biraz yavaşlar ama çalışır."""
+    import gc
+    import torch
+    bos, toplam = torch.cuda.mem_get_info()
+    log(f"Ekran kartında boş bellek: {bos / 2**30:.1f} / {toplam / 2**30:.1f} GB")
+    try:
+        return FastModel.from_pretrained(**kw)
+    except Exception as e:
+        if not re.search(r"does not fit in GPU memory|offload_layers", str(e)):
+            raise
+        log("Model ekran kartına tam sığmadı; sığmayan katmanlar sistem belleğine alınıyor "
+            "(offload_layers=auto). Eğitim biraz yavaşlar. Ekran kartını kullanan programları "
+            "(oyun, tarayıcı, video) kapatmak hızı artırır.")
+        gc.collect()
+        torch.cuda.empty_cache()
+        return FastModel.from_pretrained(offload_layers="auto", **kw)
 
 
 # ---------------------------------------------------------------- Etiketli çıktı
