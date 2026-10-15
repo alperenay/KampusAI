@@ -14,7 +14,7 @@
   const t = App.t;
 
   const LOCAL_FIELDS = [
-    { key: "aiChatModel",   role: "chat",   icon: "sparkle", def: () => App.ollama.DEFAULTS.chatModel },
+    { key: "aiChatModel",   role: "chat",   icon: "sparkle", def: () => App.ollama.autoChatModel() },
     { key: "aiEmbedModel",  role: "embed",  icon: "search",  def: () => App.ollama.DEFAULTS.embedModel },
     { key: "aiVisionModel", role: "vision", icon: "eye",     def: () => App.ollama.DEFAULTS.visionModel }
   ];
@@ -185,7 +185,9 @@
       set("aiToken", $("#aisToken").value.trim().toUpperCase());
       el.querySelectorAll("[data-key]").forEach((inp) => {
         const f = LOCAL_FIELDS.find((x) => x.key === inp.dataset.key);
-        App.prefs.set(f.key, inp.value.trim() || f.def());
+        const val = inp.value.trim() || f.def();
+        // Ana model otomatik değerde bırakıldıysa kaydetme: kampusai sonradan yüklenirse kendiliğinden kullanılsın
+        App.prefs.set(f.key, f.role === "chat" && App.ollama.sameModel(val, f.def()) ? "" : val);
       });
       App.engine.invalidate();
     }

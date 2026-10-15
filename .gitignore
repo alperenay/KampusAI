@@ -8,3 +8,10 @@ mobile/android/
 .DS_Store
 Thumbs.db
 __pycache__/
+
+# Yapay zeka eğitim kiti (egitim/): büyük ve makineye özel dosyalar
+egitim/.venv/
+egitim/veri/
+egitim/cikti/
+egitim/rapor/gunluk/
+egitim/rapor/cevaplar/

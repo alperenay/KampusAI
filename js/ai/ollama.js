@@ -21,6 +21,10 @@
     embedModel: "bge-m3",
     visionModel: "qwen2.5vl:7b"
   };
+  /* Kendi eğittiğimiz model (egitim/ klasörü → "kampusai"). Bilgisayarda yüklüyse ve kullanıcı
+     Ayarlar'dan başka bir model seçmediyse ana model olarak o kullanılır. */
+  const PREFERRED_CHAT = ["kampusai"];
+  let installedCache = null;             // son /api/tags yanıtı (otomatik model seçimi için)
   const KEEP_ALIVE = "15m";        // modeller bu süre boyunca bellekte kalır (ilk yanıt gecikmesi bir kez yaşanır)
   /* Hafıza modeli (bge-m3) işlemcide çalışır. Ölçüm (12 GB ekran kartı): bge-m3 ile
      qwen2.5:14b aynı anda ekran kartına sığmıyor ve her soruda birbirini bellekten
@@ -70,11 +74,19 @@
 
   async function baseUrl() { return manualUrl() || await detectUrl(); }
 
+  /** Ayarlarda model seçilmemişse: kampusai yüklüyse o, değilse varsayılan */
+  function autoChatModel() {
+    const hit = installedCache && PREFERRED_CHAT.find((p) => installedCache.some((n) => sameModel(n, p)));
+    return hit || DEFAULTS.chatModel;
+  }
+
   function config() {
+    // Eski sürümler ayarları kaydederken varsayılanı da yazıyordu: o değer "seçilmemiş" sayılır
+    const chosen = App.prefs.get("aiChatModel", "");
     return {
       url: manualUrl() || autoUrl || DEFAULTS.url,
       auto: !manualUrl(),
-      chatModel: App.prefs.get("aiChatModel", DEFAULTS.chatModel) || DEFAULTS.chatModel,
+      chatModel: chosen && !sameModel(chosen, DEFAULTS.chatModel) ? chosen : autoChatModel(),
       embedModel: App.prefs.get("aiEmbedModel", DEFAULTS.embedModel) || DEFAULTS.embedModel,
       visionModel: App.prefs.get("aiVisionModel", DEFAULTS.visionModel) || DEFAULTS.visionModel
     };
@@ -122,13 +134,14 @@
   async function tags(signal) {
     const res = await request("/api/tags", undefined, signal);
     const data = await res.json();
-    return (data.models || []).map((m) => m.name || m.model).filter(Boolean);
+    installedCache = (data.models || []).map((m) => m.name || m.model).filter(Boolean);
+    return installedCache;
   }
 
   /** Ayarlardaki üç modelin yüklü olup olmadığını döndürür */
   async function check(signal) {
-    const cfg = config();
     const names = await tags(signal);
+    const cfg = config();               // tags() sonrası: kampusai yüklüyse otomatik seçilsin
     const has = (m) => names.some((n) => sameModel(n, m));
     return {
       installed: names,
@@ -232,5 +245,5 @@
   /** Ayarlar değişince otomatik adresi yeniden bul */
   function resetDetection() { autoUrl = null; detecting = null; }
 
-  App.ollama = { DEFAULTS, config, baseUrl, resetDetection, sameModel, isFileOrigin, manualUrl, tags, check, chat, embed, ps, unload, OllamaError };
+  App.ollama = { DEFAULTS, PREFERRED_CHAT, autoChatModel, config, baseUrl, resetDetection, sameModel, isFileOrigin, manualUrl, tags, check, chat, embed, ps, unload, OllamaError };
 })();
