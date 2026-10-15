@@ -28,10 +28,25 @@ from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from ortak import (BULUT, SAYISAL, SIK_HARFLERI, BulutHatasi, SOKRATIK, URETILEN, VERI, OllamaHatasi, ayarlar, baslat, cevap_harfi,
+                   etiket_deseni, etiketle_bol,
                    etiket, fotograf_blogu, jsonl_ekle, jsonl_oku, jsonl_yaz, log, model_hazirla, ollama_modeller,
                    ollama_sohbet, rastgele_tarih, sistem_istemi, veri_bolumu)
 
 KILIT = threading.Lock()
+# Üretim biçimi değişince eski üretilmiş veri yeniden kullanılmasın diye artırılır
+VERI_SURUMU = "2"
+
+
+def surum_kontrol():
+    isaret = URETILEN / "surum.txt"
+    if URETILEN.exists() and any(URETILEN.glob("*.jsonl")):
+        eski = isaret.read_text(encoding="utf-8").strip() if isaret.exists() else "1"
+        if eski != VERI_SURUMU:
+            yedek = VERI / f"uretilen_eski_v{eski}_{time.strftime('%Y%m%d_%H%M')}"
+            URETILEN.rename(yedek)
+            log(f"Önceki üretim (sürüm {eski}) yeni biçimle uyumsuz; kenara alındı: {yedek.name}")
+    URETILEN.mkdir(parents=True, exist_ok=True)
+    isaret.write_text(VERI_SURUMU, encoding="utf-8")
 
 # ---------------------------------------------------------------- İstemler
 
@@ -246,8 +261,8 @@ def sayilar_veride_mi(yanit, veri):
 
 def ayristir_sorular(metin):
     out = []
-    bloklar = re.split(r"(?=<SORU>)", metin, flags=re.I)
-    for b in bloklar:
+    gorulen = set()
+    for b in etiketle_bol(metin, "SORU"):
         soru = etiket(b, "SORU")
         if not soru:
             continue
@@ -258,12 +273,23 @@ def ayristir_sorular(metin):
             continue
         if len(set(v.strip().lower() for v in siklar.values())) < 5:
             continue  # aynı şıktan iki tane
+        anahtar = re.sub(r"\W+", "", soru.lower())[:200]
+        if anahtar in gorulen:
+            continue  # model aynı soruyu tekrar yazmış
+        gorulen.add(anahtar)
         if cevap_harfi(cozum) not in (None, cevap):
             continue  # çözümün sonundaki cevap etiketle çelişiyor
         if "Doğru cevap" not in cozum:
             cozum = cozum.rstrip() + f"\n\n**Doğru cevap: {cevap}**"
         out.append({"soru": soru, "siklar": siklar, "cevap": cevap, "cozum": cozum})
     return out
+
+
+def ham_kaydet(gid, model, metin, ist, bulunan, istenen):
+    """Ayrıştırılamayan / eksik çıktıyı saklar (sorunun nedenini sonradan görebilmek için)."""
+    with KILIT:
+        jsonl_ekle(URETILEN / "ham.jsonl", {"id": gid, "model": model, "bulunan": bulunan, "istenen": istenen,
+                                            "token": (ist or {}).get("token"), "metin": (metin or "")[:30000]})
 
 
 def gorev_test(a, k, adet, rng):
@@ -279,8 +305,11 @@ def gorev_test(a, k, adet, rng):
         except BulutHatasi as e:
             log(f"  bulut ({k['anahtar']}): {e} → yerel model")
     if not sorular:
-        metin, ist = ollama_sohbet(a["ogretmen_model"], mesajlar, sicaklik=0.8, max_token=900 * adet + 600)
+        metin, ist = ollama_sohbet(a["ogretmen_model"], mesajlar, sicaklik=0.8, max_token=1500 * adet + 1000)
         sorular, uretici = ayristir_sorular(metin), a["ogretmen_model"]
+    if len(sorular) < adet:
+        ham_kaydet("test:" + k["anahtar"], uretici, metin, ist, len(sorular), adet)
+    sorular = sorular[:adet]
     tok = ist["token"]
     # Sayısal derslerde doğrulama "düşünerek" yapılır: daha yavaş ama hesap hatalı soruları çok daha iyi yakalar
     ayar = a.get("dogrulama_dusunme", False)
@@ -297,24 +326,27 @@ def gorev_test(a, k, adet, rng):
 def gorev_kavram(a, k, adet, rng):
     metin, ist = ollama_sohbet(a["ogretmen_model"], [{"role": "system", "content": YAZAR_SISTEM},
                                                      {"role": "user", "content": kavram_istemi(k, adet, rng)}],
-                               sicaklik=0.8, max_token=800 * adet + 400)
+                               sicaklik=0.8, max_token=1300 * adet + 600)
     ciftler = []
-    for b in re.split(r"(?=<OGRENCI_MESAJI>)", metin, flags=re.I):
+    for b in etiketle_bol(metin, "OGRENCI_MESAJI"):
         s, y = etiket(b, "OGRENCI_MESAJI"), etiket(b, "YANIT")
         if s and y and len(y) > 40:
             ciftler.append({"soru": s, "yanit": y})
-    return {"id": "kavram:" + k["anahtar"], "anahtar": k["anahtar"], "ciftler": ciftler, "token": ist["token"]}
+    if len(ciftler) < adet:
+        ham_kaydet("kavram:" + k["anahtar"], a["ogretmen_model"], metin, ist, len(ciftler), adet)
+    return {"id": "kavram:" + k["anahtar"], "anahtar": k["anahtar"], "ciftler": ciftler[:adet], "token": ist["token"]}
 
 
 def gorev_sokratik(a, k, s):
     metin, ist = ollama_sohbet(a["ogretmen_model"], [{"role": "system", "content": YAZAR_SISTEM},
                                                      {"role": "user", "content": sokratik_istemi(k, s)}],
-                               sicaklik=0.7, max_token=2200)
+                               sicaklik=0.7, max_token=3500)
     sira = [(m.group(1).upper(), m.group(2).strip()) for m in
-            re.finditer(r"<(OGRENCI|OGRETMEN)>\s*(.*?)\s*</\1>", metin, flags=re.S | re.I)]
+            re.finditer(r"\**<\s*(" + etiket_deseni("OGRENCI") + "|" + etiket_deseni("OGRETMEN") + r")\s*>\**\s*(.*?)\s*\**<\s*/\s*\1\s*>\**",
+                        metin, flags=re.S | re.I)]
     diyalog = []
     for rol, t in sira:
-        r = "user" if rol == "OGRENCI" else "assistant"
+        r = "user" if re.sub(r"[^A-Z]", "", rol.upper().replace("Ö", "O").replace("Ğ", "G").replace("İ", "I")).startswith("OGRENC") else "assistant"
         if not t:
             continue
         if diyalog and diyalog[-1]["role"] == r:
@@ -343,7 +375,7 @@ def gorev_analiz(a, n):
           "girmesini öner. Somut, uygulanabilir öneriler ver (hangi ders, hangi tür çalışma, haftada kaç saat gibi). "
           "Samimi ve motive edici ol ama abartma. Markdown kullan, kısa tut.)")
     yanit, ist = ollama_sohbet(a["ogretmen_model"], [{"role": "system", "content": sistem + ek},
-                                                     {"role": "user", "content": soru}], sicaklik=0.6, max_token=1200)
+                                                     {"role": "user", "content": soru}], sicaklik=0.6, max_token=2000)
     temiz, sorunlu = sayilar_veride_mi(yanit, veri)
     return {"id": f"analiz:{n}", "tarih": o["bugun"].isoformat(), "sistem": sistem, "soru": soru, "yanit": yanit,
             "gecti": temiz and len(yanit) > 80, "sorunlu_sayi": sorunlu, "token": ist["token"]}
@@ -539,6 +571,7 @@ def main():
         birlestir(a)
         return
 
+    surum_kontrol()
     model = a["ogretmen_model"]
     try:
         model_hazirla(model)

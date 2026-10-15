@@ -114,9 +114,28 @@ call :gerekli || goto bitti
 "%VPY%" scripts\kontrol.py
 goto bitti
 
+REM ------------------------------------------------------------ Ollama hizli ayarlar
+REM setx yalnizca yeni acilan programlara isler; Ollama'yi bu ayarlarla yeniden baslatiriz
+:ollama_hizli
+set OLLAMA_NUM_PARALLEL=4
+set OLLAMA_FLASH_ATTENTION=1
+set OLLAMA_KV_CACHE_TYPE=q8_0
+echo Ollama hizli ayarlarla yeniden baslatiliyor (4 paralel istek)...
+taskkill /im "ollama app.exe" /f >nul 2>&1
+taskkill /im ollama.exe /f >nul 2>&1
+timeout /t 3 /nobreak >nul
+if exist "%LOCALAPPDATA%\Programs\Ollama\ollama app.exe" (
+  start "" "%LOCALAPPDATA%\Programs\Ollama\ollama app.exe"
+) else (
+  start "" /min ollama serve
+)
+timeout /t 10 /nobreak >nul
+exit /b 0
+
 REM ------------------------------------------------------------ Deneme
 :deneme
 call :gerekli || goto bitti
+call :ollama_hizli
 "%VPY%" scripts\kontrol.py || goto hata
 "%VPY%" scripts\adim1_korpus.py || goto hata
 REM Deneme ciktisi silinmez: tam uretim bu 20 kazanimi tekrar uretmeden kaldigi yerden devam eder
@@ -142,6 +161,7 @@ goto bitti
 
 :adim3
 call :gerekli || exit /b 1
+call :ollama_hizli
 "%VPY%" scripts\adim1_korpus.py || exit /b 1
 "%VPY%" scripts\adim2_veri_uret.py || exit /b 1
 exit /b 0

@@ -53,6 +53,9 @@ REM Flash attention + 8-bit KV onbellegi: ayni bellekte daha fazla paralel istek
 setx OLLAMA_FLASH_ATTENTION 1 >nul
 setx OLLAMA_KV_CACHE_TYPE q8_0 >nul
 echo.
+set OLLAMA_NUM_PARALLEL=4
+set OLLAMA_FLASH_ATTENTION=1
+set OLLAMA_KV_CACHE_TYPE=q8_0
 echo Ollama ayarlari yenilensin diye yeniden baslatiliyor...
 taskkill /im "ollama app.exe" /f >nul 2>&1
 taskkill /im ollama.exe /f >nul 2>&1

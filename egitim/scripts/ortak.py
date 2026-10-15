@@ -173,7 +173,10 @@ def ollama_sohbet(model, mesajlar, sicaklik=0.7, dusunme=False, max_token=2048, 
     for i in range(deneme):
         try:
             r = ollama_istek("/api/chat", govde, adres=adres)
-            metin = (r.get("message") or {}).get("content", "") or ""
+            mesaj = r.get("message") or {}
+            metin = mesaj.get("content", "") or ""
+            if not dusunme and (mesaj.get("thinking") or "").strip():
+                _dusunme_uyarisi(model)
             # Bazı sürümler düşünceyi metnin içine yazar: temizle
             metin = re.sub(r"<think>.*?</think>", "", metin, flags=re.S).strip()
             ist = {"token": r.get("eval_count", 0), "sure": (r.get("eval_duration") or 0) / 1e9}
@@ -329,6 +332,15 @@ class _Bulut:
 BULUT = _Bulut()
 
 
+_UYARILAN = set()
+
+
+def _dusunme_uyarisi(model):
+    if model not in _UYARILAN:
+        _UYARILAN.add(model)
+        log(f"UYARI: {model} düşünmeyi kapatmadı; yanıtlar daha yavaş ve token sınırı daha çabuk doluyor.")
+
+
 def ollama_modeller(adres=None):
     r = ollama_istek("/api/tags", adres=adres, zaman_asimi=10)
     return [m.get("name") or m.get("model") for m in r.get("models", [])]
@@ -351,15 +363,38 @@ def ollama_bosalt(adres=None):
 
 # ---------------------------------------------------------------- Etiketli çıktı
 
+_TR_HARF = {"O": "[OÖoö]", "U": "[UÜuü]", "C": "[CÇcç]", "G": "[GĞgğ]", "I": "[IİıiÎî]", "S": "[SŞsş]"}
+
+
+def etiket_deseni(ad):
+    """Etiket adını Türkçe karakterlere toleranslı desene çevirir: model <COZUM> yerine <ÇÖZÜM>,
+    <OGRENCI> yerine <ÖĞRENCİ> yazabiliyor. Etiketin içinde boşluk ve **kalın** işaretine de izin verir."""
+    govde = "".join(_TR_HARF.get(h.upper(), re.escape(h)) if h.isalpha() else re.escape(h) for h in ad)
+    return govde
+
+
+def _ac(ad):
+    return r"\**<\s*" + etiket_deseni(ad) + r"\s*>\**"
+
+
+def _kapa(ad):
+    return r"\**<\s*/\s*" + etiket_deseni(ad) + r"\s*>\**"
+
+
 def etiket(metin, ad):
     """<AD>…</AD> içeriğini döndürür (yoksa None). LaTeX'te JSON kaçış sorunu
     yaşamamak için öğretmen modelden JSON yerine etiketli metin istenir."""
-    m = re.search(r"<" + ad + r">\s*(.*?)\s*</" + ad + r">", metin, flags=re.S | re.I)
+    m = re.search(_ac(ad) + r"\s*(.*?)\s*" + _kapa(ad), metin or "", flags=re.S | re.I)
     return m.group(1).strip() if m else None
 
 
 def etiketler(metin, ad):
-    return [x.strip() for x in re.findall(r"<" + ad + r">\s*(.*?)\s*</" + ad + r">", metin, flags=re.S | re.I)]
+    return [x.strip() for x in re.findall(_ac(ad) + r"\s*(.*?)\s*" + _kapa(ad), metin or "", flags=re.S | re.I)]
+
+
+def etiketle_bol(metin, ad):
+    """Metni her <AD> açılışından önce böler (bir yanıtta birden çok blok varsa)."""
+    return re.split(r"(?=" + _ac(ad) + r")", metin or "", flags=re.I)
 
 
 SIK_HARFLERI = "ABCDE"
