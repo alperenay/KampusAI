@@ -400,8 +400,13 @@ def gorev_test(a, k, adet, rng, bulut_kolu=False):
     dusun = ayar is True or (ayar == "sayisal" and k["ders"] in SAYISAL)
     for s_ in sorular:
         v, ist2 = ollama_sohbet(a["ogretmen_model"], [{"role": "user", "content": dogrulama_istemi(s_)}],
-                                sicaklik=0.0, dusunme=dusun, max_token=6000 if dusun else 1200)
+                                sicaklik=0.0, dusunme=dusun, max_token=6000 if dusun else 2000)
         tok += ist2["token"]
+        if dusun and cevap_harfi(v) is None:
+            # Düşünme bütçesi bitti, cevap yazılamadı: soruyu atmak yerine düşünmeden bir kez daha çöz
+            v, ist2 = ollama_sohbet(a["ogretmen_model"], [{"role": "user", "content": dogrulama_istemi(s_)}],
+                                    sicaklik=0.0, dusunme=False, max_token=2000)
+            tok += ist2["token"]
         s_["dogrulama"] = cevap_harfi(v)
         s_["gecti"] = s_["dogrulama"] == s_["cevap"]
     return {"id": "test:" + k["anahtar"], "anahtar": k["anahtar"], "sorular": sorular,

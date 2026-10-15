@@ -7,7 +7,7 @@
   "ogretmen_model": "qwen3.5:9b",
   "hakem_model": "qwen3.5:9b",
   "paralel_istek": 4,
-  "dogrulama_dusunme": "sayisal",
+  "dogrulama_dusunme": false,
 
   "bulut_ogretmen": {
     "_not": "İsteğe bağlı, ücretsiz: NVIDIA Build (build.nvidia.com, kart istemez, 1000 istek kredisi). Anahtar egitim\\bulut_anahtari.txt dosyasına yazılır (menü 9). Anahtar yoksa ya da kredi biterse her şey bilgisayarda üretilir.",
@@ -21,7 +21,7 @@
     "paralel": 2
   },
 
-  "kazanim_basina_test_sorusu": 4,
+  "kazanim_basina_test_sorusu": 2,
   "kazanim_basina_kavram_sorusu": 3,
   "sokratik_oran": 0.5,
   "deneme_analizi_sayisi": 400,
