@@ -27,7 +27,7 @@ import time
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from ortak import (SAYISAL, SIK_HARFLERI, SOKRATIK, URETILEN, VERI, OllamaHatasi, ayarlar, baslat, cevap_harfi,
+from ortak import (BULUT, SAYISAL, SIK_HARFLERI, BulutHatasi, SOKRATIK, URETILEN, VERI, OllamaHatasi, ayarlar, baslat, cevap_harfi,
                    etiket, fotograf_blogu, jsonl_ekle, jsonl_oku, jsonl_yaz, log, model_hazirla, ollama_modeller,
                    ollama_sohbet, rastgele_tarih, sistem_istemi, veri_bolumu)
 
@@ -268,10 +268,19 @@ def ayristir_sorular(metin):
 
 def gorev_test(a, k, adet, rng):
     harfler = [rng.choice(SIK_HARFLERI) for _ in range(adet)]
-    metin, ist = ollama_sohbet(a["ogretmen_model"], [{"role": "system", "content": YAZAR_SISTEM},
-                                                     {"role": "user", "content": test_istemi(k, adet, harfler)}],
-                               sicaklik=0.8, max_token=900 * adet + 600)
-    sorular = ayristir_sorular(metin)
+    mesajlar = [{"role": "system", "content": YAZAR_SISTEM}, {"role": "user", "content": test_istemi(k, adet, harfler)}]
+    sorular, uretici = [], a["ogretmen_model"]
+    if BULUT.etkin(k["ders"]):
+        # Sayısal dersler: soruları daha güçlü bulut modeli yazar; doğrulamayı yine yereldeki farklı model yapar
+        try:
+            metin, ist = BULUT.sohbet(mesajlar, sicaklik=0.7, max_token=12000)
+            sorular = ayristir_sorular(metin)
+            uretici = BULUT.ayar()[0]["model"]
+        except BulutHatasi as e:
+            log(f"  bulut ({k['anahtar']}): {e} → yerel model")
+    if not sorular:
+        metin, ist = ollama_sohbet(a["ogretmen_model"], mesajlar, sicaklik=0.8, max_token=900 * adet + 600)
+        sorular, uretici = ayristir_sorular(metin), a["ogretmen_model"]
     tok = ist["token"]
     # Sayısal derslerde doğrulama "düşünerek" yapılır: daha yavaş ama hesap hatalı soruları çok daha iyi yakalar
     ayar = a.get("dogrulama_dusunme", False)
@@ -282,7 +291,7 @@ def gorev_test(a, k, adet, rng):
         tok += ist2["token"]
         s["dogrulama"] = cevap_harfi(v)
         s["gecti"] = s["dogrulama"] == s["cevap"]
-    return {"id": "test:" + k["anahtar"], "anahtar": k["anahtar"], "sorular": sorular, "token": tok}
+    return {"id": "test:" + k["anahtar"], "anahtar": k["anahtar"], "sorular": sorular, "uretici": uretici, "token": tok}
 
 
 def gorev_kavram(a, k, adet, rng):
@@ -356,7 +365,7 @@ def ollama_bekle(sure=600):
     return False
 
 
-def calistir(a, gorevler, dosya, etiket_ad, tur=1):
+def calistir(a, gorevler, dosya, etiket_ad, tur=1, paralel=None):
     """gorevler: [(id, fonksiyon)] — biten id'ler atlanır, sonuçlar dosyaya eklenir.
     Hata veren görevler aşamanın sonunda bir kez daha denenir (gece kimse yeniden başlatmayacak)."""
     biten = {r["id"] for r in jsonl_oku(dosya)}
@@ -367,7 +376,7 @@ def calistir(a, gorevler, dosya, etiket_ad, tur=1):
     log(f"{etiket_ad}: {len(kalan)} görev (önceden biten {len(gorevler) - len(kalan)}).")
     bas = time.time()
     tamam = hata = token = 0
-    with ThreadPoolExecutor(max_workers=max(1, int(a["paralel_istek"]))) as havuz:
+    with ThreadPoolExecutor(max_workers=max(1, int(paralel or a["paralel_istek"]))) as havuz:
         isler = {havuz.submit(f): i for i, f in kalan}
         for fut in as_completed(isler):
             gid = isler[fut]
@@ -397,7 +406,7 @@ def calistir(a, gorevler, dosya, etiket_ad, tur=1):
                     f"kalan ~{kalan_sure / 60:.0f} dk")
     if hata and tur == 1:
         log(f"{etiket_ad}: {hata} görev hata verdi, bir kez daha deneniyor.")
-        calistir(a, gorevler, dosya, etiket_ad, tur=2)
+        calistir(a, gorevler, dosya, etiket_ad, tur=2, paralel=paralel)
 
 
 # ---------------------------------------------------------------- Birleştirme
@@ -549,16 +558,33 @@ def main():
                     kaz.append(g.pop(rng0.randrange(len(g))))
     test_kaz = set(json.loads((VERI / "test_kazanimlari.json").read_text(encoding="utf-8")))
     log(f"Öğretmen model: {model} · {len(kaz)} kazanım · paralel {a['paralel_istek']}")
+    if BULUT.etkin():
+        b = BULUT.ayar()[0]
+        log(f"Bulut öğretmen AÇIK: {b['model']} → {', '.join(b.get('dersler') or [])} soruları (dakikada {b.get('dakikada_istek', 5)} istek)")
+    else:
+        log("Bulut öğretmen kapalı (bulut_anahtari.txt yok) — tüm veri bilgisayarda üretilecek.")
 
     nt, nk = a["kazanim_basina_test_sorusu"], a["kazanim_basina_kavram_sorusu"]
-    gorevler = []
+    yerel, bulut = [], []
     for k in kaz:
         adet = nt + (1 if k["anahtar"] in test_kaz else 0)   # test kazanımında bir soru teste ayrılır
-        gorevler.append(("test:" + k["anahtar"], lambda k=k, adet=adet: gorev_test(a, k, adet, random.Random(k["anahtar"]))))
-    calistir(a, gorevler, URETILEN / "test.jsonl", "Test soruları")
-
+        g = ("test:" + k["anahtar"], lambda k=k, adet=adet: gorev_test(a, k, adet, random.Random(k["anahtar"])))
+        (bulut if BULUT.etkin(k["ders"]) else yerel).append(g)
+    kol = None
+    if bulut:
+        # Bulut kolu (dakikada birkaç istek) yerel üretimle aynı anda çalışır; ekran kartı boşta beklemez
+        kol = threading.Thread(target=calistir, args=(a, bulut, URETILEN / "test.jsonl", "Test soruları (bulut)"),
+                               kwargs={"paralel": 2}, daemon=True)
+        kol.start()
+    calistir(a, yerel, URETILEN / "test.jsonl", "Test soruları")
     calistir(a, [("kavram:" + k["anahtar"], lambda k=k: gorev_kavram(a, k, nk, random.Random("k" + k["anahtar"])))
                  for k in kaz], URETILEN / "kavram.jsonl", "Kavram soruları")
+    if kol:
+        kol.join()
+        log(f"Bulut kolu bitti ({BULUT.token:,} token kullanıldı).")
+    # Bulut bir sorun yüzünden yarıda kaldıysa kalan sayısal kazanımları yerel model üretir
+    if bulut:
+        calistir(a, bulut, URETILEN / "test.jsonl", "Test soruları (kalan)")
 
     n_analiz = a["deneme_analizi_sayisi"] if not arg.sinir else max(5, arg.sinir // 2)
     calistir(a, [(f"analiz:{n}", lambda n=n: gorev_analiz(a, n)) for n in range(n_analiz)],

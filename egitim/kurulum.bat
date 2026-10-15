@@ -65,6 +65,10 @@ if exist "%LOCALAPPDATA%\Programs\Ollama\ollama app.exe" (
 timeout /t 8 /nobreak >nul
 
 echo.
+echo ===== Modeller indiriliyor (bir kerelik, ~20 GB) =====
+"%VPY%" scripts\kontrol.py --modelleri-indir
+
+echo.
 echo ===== Kontrol =====
 "%VPY%" scripts\kontrol.py
 if errorlevel 1 (

@@ -13,7 +13,7 @@ echo ============================================================
 echo                KampusAI - Yapay Zeka Egitimi
 echo ============================================================
 echo.
-echo   1) Kurulum            (bir kez, 20-40 dk, internet gerekir)
+echo   1) Kurulum            (bir kez, 30-60 dk, ~25 GB indirir)
 echo   2) Deneme             (20 kazanimla veri + 30 adim egitim, ~30-45 dk)
 echo   3) Veri uret          (tam, ~6-10 saat - kaldigi yerden devam eder)
 echo   4) Egit               (~2-4 saat - kaldigi yerden devam eder)
@@ -21,6 +21,7 @@ echo   5) Ollama'ya yukle    (kampusai modeli olusur)
 echo   6) Test et            (modelleri karsilastir, rapor yazar)
 echo   7) GECE MODU          (3 - 4 - 5 - 6 sirayla, sabaha hazir)
 echo   8) Kontrol            (kurulum saglam mi?)
+echo   9) Bulut anahtari     (istege bagli: Cerebras, sayisal sorulari gpt-oss-120b yazar)
 echo   0) Cikis
 echo.
 set "SEC="
@@ -33,6 +34,7 @@ if "%SEC%"=="5" goto s5
 if "%SEC%"=="6" goto s6
 if "%SEC%"=="7" goto gece
 if "%SEC%"=="8" goto kontrol
+if "%SEC%"=="9" goto anahtar
 if "%SEC%"=="0" exit /b 0
 goto menu
 
@@ -47,6 +49,23 @@ exit /b 0
 REM ------------------------------------------------------------ Kurulum
 :kurulum
 call kurulum.bat
+goto bitti
+
+:anahtar
+echo.
+echo cloud.cerebras.ai adresinde ucretsiz hesap acip "API Keys" bolumunden bir anahtar olusturun.
+echo Anahtari buraya yapistirin (sag tik = yapistir). Bos birakirsaniz bulut kapatilir.
+set "KEY="
+set /p KEY=Anahtar: 
+if "%KEY%"=="" (
+  if exist bulut_anahtari.txt del bulut_anahtari.txt
+  echo Bulut kapatildi; tum veri bilgisayarda uretilecek.
+  goto bitti
+)
+>bulut_anahtari.txt echo %KEY%
+echo Kaydedildi. Kontrol ediliyor...
+call :gerekli || goto bitti
+"%VPY%" scripts\kontrol.py --bulut
 goto bitti
 
 :kontrol

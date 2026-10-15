@@ -86,6 +86,8 @@ def model_hazirla(ad, adres=None):
     import shutil
     import subprocess
     exe = shutil.which("ollama") or str(Path(os.environ.get("LOCALAPPDATA", "")) / "Programs" / "Ollama" / "ollama.exe")
+    if not Path(exe).exists() and not shutil.which(exe):
+        raise SystemExit(f"ollama komutu bulunamadı. Ollama kurulu mu? Elle indirmek için: ollama pull {ad}")
     log(f"'{ad}' indiriliyor (bir kerelik)...")
     if subprocess.run([exe, "pull", ad]).returncode != 0 or not model_yuklu_mu(ad, adres):
         raise SystemExit(f"'{ad}' indirilemedi. Komut satırında deneyin: ollama pull {ad}")
@@ -177,6 +179,106 @@ def ollama_sohbet(model, mesajlar, sicaklik=0.7, dusunme=False, max_token=2048, 
                 continue
             time.sleep(3 * (i + 1))
     raise son_hata
+
+
+# ---------------------------------------------------------------- Bulut öğretmen (isteğe bağlı)
+# OpenAI uyumlu bir servis (varsayılan: Cerebras · gpt-oss-120b). Anahtar egitim\bulut_anahtari.txt
+# dosyasında durur (GitHub'a gitmez). Anahtar yoksa ya da günlük kota dolarsa her şey yerel modelle sürer.
+
+class BulutHatasi(Exception):
+    pass
+
+
+class _Bulut:
+    def __init__(self):
+        import threading
+        self.kilit = threading.Lock()
+        self.son = 0.0
+        self.kapali = None      # kapanma nedeni (kota doldu, anahtar geçersiz…)
+        self.token = 0
+        self.ardisik_hata = 0   # üst üste başarısız görev; 3 olunca bulut kapatılır (gece boşa beklemesin)
+
+    def ayar(self):
+        a = ayarlar().get("bulut_ogretmen") or {}
+        anahtar = os.environ.get("BULUT_ANAHTARI", "").strip()
+        dosya = KIT / "bulut_anahtari.txt"
+        if not anahtar and dosya.exists():
+            anahtar = dosya.read_text(encoding="utf-8", errors="ignore").strip()
+        return a, anahtar
+
+    def etkin(self, ders=None):
+        a, anahtar = self.ayar()
+        if not anahtar or not a.get("model") or self.kapali:
+            return False
+        return ders is None or ders in (a.get("dersler") or [])
+
+    def _sira_bekle(self, dakikada):
+        aralik = 60.0 / max(1, dakikada) + 0.5
+        with self.kilit:
+            bekle = self.son + aralik - time.time()
+            if bekle > 0:
+                time.sleep(bekle)
+            self.son = time.time()
+
+    def sohbet(self, mesajlar, sicaklik=0.7, max_token=4096):
+        try:
+            sonuc = self._sohbet(mesajlar, sicaklik, max_token)
+            self.ardisik_hata = 0
+            return sonuc
+        except BulutHatasi:
+            with self.kilit:
+                self.ardisik_hata += 1
+                if self.ardisik_hata >= 3 and not self.kapali:
+                    self.kapali = "bulut üst üste 3 kez başarısız oldu"
+                    log("Bulut öğretmen kapatıldı:", self.kapali, "→ yerel modelle devam.")
+            raise
+
+    def _sohbet(self, mesajlar, sicaklik, max_token):
+        a, anahtar = self.ayar()
+        govde = {"model": a["model"], "messages": mesajlar, "temperature": sicaklik,
+                 "max_completion_tokens": max_token}
+        if a.get("dusunme"):
+            govde["reasoning_effort"] = a["dusunme"]
+        for deneme in range(4):
+            if self.kapali:
+                raise BulutHatasi(self.kapali)
+            self._sira_bekle(int(a.get("dakikada_istek", 5)))
+            req = urllib.request.Request(a["adres"].rstrip("/") + "/chat/completions", method="POST",
+                                         data=json.dumps(govde).encode("utf-8"),
+                                         headers={"Content-Type": "application/json", "User-Agent": "KampusAI-Egitim/1.0",
+                                                  "Authorization": "Bearer " + anahtar})
+            try:
+                with urllib.request.urlopen(req, timeout=300) as r:
+                    cevap = json.loads(r.read().decode("utf-8"))
+                metin = ((cevap.get("choices") or [{}])[0].get("message") or {}).get("content") or ""
+                self.token += (cevap.get("usage") or {}).get("total_tokens", 0)
+                if not metin.strip():
+                    raise BulutHatasi("boş yanıt")
+                return metin.strip(), {"token": (cevap.get("usage") or {}).get("completion_tokens", 0), "sure": 0}
+            except urllib.error.HTTPError as e:
+                try:
+                    mesaj = e.read().decode("utf-8", errors="ignore")[:300]
+                except Exception:
+                    mesaj = ""
+                if e.code in (401, 403):
+                    self.kapali = f"bulut anahtarı geçersiz ({e.code})"
+                elif e.code == 429 and re.search(r"day|daily|quota|günlük", mesaj, re.I):
+                    self.kapali = "bulutun günlük kotası doldu"
+                elif e.code in (429, 500, 502, 503, 504):
+                    son = f"HTTP {e.code} ({'istek sınırı' if e.code == 429 else 'sunucu hatası'})"
+                    time.sleep(int(e.headers.get("retry-after", "0") or 0) or 20 * (deneme + 1))
+                    continue
+                else:
+                    raise BulutHatasi(f"HTTP {e.code}: {mesaj}")
+                log("Bulut öğretmen kapatıldı:", self.kapali, "→ yerel modelle devam.")
+                raise BulutHatasi(self.kapali)
+            except (urllib.error.URLError, TimeoutError, ConnectionError, json.JSONDecodeError) as e:
+                time.sleep(10 * (deneme + 1))
+                son = e
+        raise BulutHatasi(f"bulut yanıt vermedi: {locals().get('son', '')}")
+
+
+BULUT = _Bulut()
 
 
 def ollama_modeller(adres=None):

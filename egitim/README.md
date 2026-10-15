@@ -16,6 +16,18 @@ Uygulama, `kampusai` bilgisayarda yüklüyse onu otomatik olarak ana model yapar
 | Ollama: 4 paralel istek + flash attention + 8-bit önbellek | Veri üretimi 2–3 kat hızlı |
 | 2 epoch + **en iyi ara kaydı seçme** | Ezberlemeye başlamadan önceki en iyi nokta kullanılır |
 | Göz modeli `qwen3-vl:8b` | Fotoğraftan yazı okumada açık modeller arasında en iyilerden |
+| İsteğe bağlı bulut öğretmen: Cerebras **gpt-oss-120b** | Matematik/fizik/kimya sorularını 120B'lik model yazar, bilgisayardaki farklı model doğrular |
+
+### Bulut öğretmen (isteğe bağlı, ücretsiz)
+
+1. [cloud.cerebras.ai](https://cloud.cerebras.ai) adresinde ücretsiz hesap açın ve "API Keys" bölümünden bir anahtar oluşturun.
+2. Menüden **9) Bulut anahtarı** seçeneğini seçip anahtarı yapıştırın. Anahtar `bulut_anahtari.txt` dosyasında
+   durur ve GitHub'a gönderilmez. Kit anahtarı hemen dener.
+3. Ücretsiz katmanın günlük limiti (yaklaşık 1 milyon token) sayısal soruların çoğuna yeter. Limit dolarsa,
+   anahtar hatalıysa ya da bulut üst üste 3 kez yanıt vermezse kit kendiliğinden bilgisayardaki modele geçer.
+   Gece hiçbir şey durmaz.
+
+Anahtar girmezseniz her şey bilgisayarınızda üretilir.
 
 Tahmini süre: veri üretimi ~6–10 saat, eğitim ~2–4 saat (deneme adımı kesin süreyi söyler).
 
@@ -23,7 +35,9 @@ Tahmini süre: veri üretimi ~6–10 saat, eğitim ~2–4 saat (deneme adımı k
 
 `KampusAI-Egitim.bat` dosyasına çift tıklayın ve sırayla:
 
-1. **Kurulum**: Python 3.12, PyTorch (CUDA 12.8) ve Unsloth kurulur. Bir kerelik, 20–40 dk sürer.
+1. **Kurulum**: Python 3.12, PyTorch (CUDA 12.8), Unsloth ve gereken Ollama modelleri (`qwen3.5:9b`,
+   `gemma4:12b`, `qwen3-vl:8b`, toplam ~20 GB) kurulur. Bir kerelik, internet hızına göre 30–60 dk sürer.
+   (İsteğe bağlı) **9) Bulut anahtarı**: aşağıdaki "Bulut öğretmen" bölümüne bakın.
 2. **Deneme**: 20 kazanımla küçük bir veri ve 30 adımlık eğitim. Kurulumun gerçekten çalıştığını gösterir ve tam
    eğitimin ne kadar süreceğini tahmin eder.
 3. **Gece modu**: veri üretimi → eğitim → Ollama'ya yükleme → test. Yatmadan önce başlatın.
@@ -40,7 +54,7 @@ Gece modundan önce:
 | Adım | Betik | Ne yapar | Çıktı |
 |---|---|---|---|
 | 1 | `adim1_korpus.py` | `js/data/content` notlarını okur, test sorularını ayırır | `veri/korpus.jsonl`, `veri/test_*.jsonl` |
-| 2 | `adim2_veri_uret.py` | Öğretmen modelle (Ollama, `qwen3.5:9b`) soru-çözüm, kavram, öğretmen modu ve deneme analizi örnekleri üretir; her test sorusunu bağımsız ikinci bir çözümle doğrular | `veri/egitim.jsonl`, `veri/istatistik.json` |
+| 2 | `adim2_veri_uret.py` | Öğretmen modelle (Ollama `qwen3.5:9b`; varsa sayısal derslerde bulut `gpt-oss-120b`) soru-çözüm, kavram, öğretmen modu ve deneme analizi örnekleri üretir; her test sorusunu bağımsız ikinci bir çözümle doğrular | `veri/egitim.jsonl`, `veri/istatistik.json` |
 | 3 | `adim3_egit.py` | Gemma 4 12B'yi 4-bit QLoRA ile eğitir, her 100 adımda ara kayıt alır, en iyisini seçer | `cikti/lora/`, `rapor/egitim_gunlugu.json` |
 | 4 | `adim4_ollama.py` | Modeli birleştirir, q4_K_M olarak sıkıştırır, Ollama'ya `kampusai` adıyla yükler | Ollama modeli |
 | 5 | `adim5_test.py` | `kampusai`, eğitilmemiş `gemma4:12b` ve `qwen2.5:14b`'yi eğitimde hiç görülmemiş sorularla karşılaştırır | `rapor/test_raporu.md` |

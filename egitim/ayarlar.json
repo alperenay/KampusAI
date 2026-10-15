@@ -9,6 +9,15 @@
   "paralel_istek": 4,
   "dogrulama_dusunme": "sayisal",
 
+  "bulut_ogretmen": {
+    "_not": "İsteğe bağlı. Anahtar egitim\\bulut_anahtari.txt dosyasına yazılır (menü 9). Anahtar yoksa ya da kota dolarsa her şey bilgisayarda üretilir.",
+    "adres": "https://api.cerebras.ai/v1",
+    "model": "gpt-oss-120b",
+    "dusunme": "low",
+    "dersler": ["matematik", "fizik", "kimya"],
+    "dakikada_istek": 5
+  },
+
   "kazanim_basina_test_sorusu": 4,
   "kazanim_basina_kavram_sorusu": 3,
   "sokratik_oran": 0.5,

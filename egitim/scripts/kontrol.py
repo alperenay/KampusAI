@@ -2,13 +2,15 @@
 
   python kontrol.py              rapor
   python kontrol.py --torch-onar PyTorch ekran kartını görmüyorsa CUDA'lı sürümü yeniden kurar
+  python kontrol.py --modelleri-indir  gereken Ollama modellerini indirir
+  python kontrol.py --bulut      bulut öğretmen anahtarını dener
 """
 import argparse
 import shutil
 import subprocess
 import sys
 
-from ortak import KIT, OllamaHatasi, ayarlar, baslat, log, ollama_modeller
+from ortak import BULUT, KIT, BulutHatasi, OllamaHatasi, ayarlar, baslat, log, model_hazirla, ollama_modeller
 
 TORCH_INDEX = "https://download.pytorch.org/whl/cu128"
 
@@ -21,11 +23,42 @@ def torch_durum():
         return None, False, e
 
 
+def bulut_dene():
+    if not BULUT.etkin():
+        log("Bulut öğretmen kapalı (anahtar yok). Her şey bilgisayarda üretilecek; bu da sorunsuz çalışır.")
+        return True
+    b = BULUT.ayar()[0]
+    try:
+        metin, _ = BULUT.sohbet([{"role": "user", "content": "2+2 kaç eder? Yalnızca sayıyı yaz."}], sicaklik=0, max_token=200)
+        log(f"✓ Bulut öğretmen çalışıyor: {b['model']} ({b['adres']}) → yanıt: {metin[:40]!r}")
+        return True
+    except BulutHatasi as e:
+        log(f"✗ Bulut öğretmen çalışmıyor: {e}. Anahtarı kontrol edin (menü 9); yoksa veri bilgisayarda üretilir.")
+        return False
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--torch-onar", action="store_true")
+    p.add_argument("--modelleri-indir", action="store_true")
+    p.add_argument("--bulut", action="store_true")
     arg = p.parse_args()
     baslat("kontrol")
+
+    if arg.modelleri_indir:
+        a = ayarlar()
+        gerekli = [a["ogretmen_model"], a["hakem_model"], a["temel_ollama_model"], a.get("goz_model")]
+        for m in dict.fromkeys(x for x in gerekli if x):
+            try:
+                model_hazirla(m)
+                log(f"✓ {m}")
+            except (SystemExit, OllamaHatasi, OSError) as e:
+                log(f"✗ {m}: {e}")
+        return
+
+    if arg.bulut:
+        bulut_dene()
+        return
     sorun = 0
     log(f"Python {sys.version.split()[0]}  ({sys.executable})")
 
@@ -66,6 +99,8 @@ def main():
     except OllamaHatasi as e:
         log("✗ Ollama:", e)
         sorun += 1
+
+    bulut_dene()
 
     bos = shutil.disk_usage(KIT).free / 2**30
     if bos < 70:
