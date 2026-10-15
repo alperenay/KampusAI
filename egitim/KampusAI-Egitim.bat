@@ -14,9 +14,9 @@ echo                KampusAI - Yapay Zeka Egitimi
 echo ============================================================
 echo.
 echo   1) Kurulum            (bir kez, 20-40 dk, internet gerekir)
-echo   2) Deneme             (20 kazanimla veri + 30 adim egitim, ~30 dk)
-echo   3) Veri uret          (tam, birkac saat - kaldigi yerden devam eder)
-echo   4) Egit               (1-3 saat - kaldigi yerden devam eder)
+echo   2) Deneme             (20 kazanimla veri + 30 adim egitim, ~30-45 dk)
+echo   3) Veri uret          (tam, ~6-10 saat - kaldigi yerden devam eder)
+echo   4) Egit               (~2-4 saat - kaldigi yerden devam eder)
 echo   5) Ollama'ya yukle    (kampusai modeli olusur)
 echo   6) Test et            (modelleri karsilastir, rapor yazar)
 echo   7) GECE MODU          (3 - 4 - 5 - 6 sirayla, sabaha hazir)
@@ -61,7 +61,7 @@ call :gerekli || goto bitti
 "%VPY%" scripts\adim1_korpus.py || goto hata
 REM Deneme ciktisi silinmez: tam uretim bu 20 kazanimi tekrar uretmeden kaldigi yerden devam eder
 "%VPY%" scripts\adim2_veri_uret.py --sinir 20 || goto hata
-"%VPY%" scripts\adim3_egit.py --deneme || goto hata
+call :egit --deneme || goto hata
 echo.
 echo DENEME BASARILI. Simdi 7) GECE MODU ile tam egitimi baslatabilirsiniz.
 goto bitti
@@ -88,7 +88,20 @@ exit /b 0
 
 :adim4
 call :gerekli || exit /b 1
-"%VPY%" scripts\adim3_egit.py || exit /b 1
+call :egit || exit /b 1
+exit /b 0
+
+REM Egitim: 12B ekran kartina sigmazsa betik ayarlari E4B'ye cevirip 3 koduyla cikar; o zaman tekrar calistirilir
+:egit
+"%VPY%" scripts\adim3_egit.py %*
+if errorlevel 4 exit /b 1
+if errorlevel 3 (
+  echo.
+  echo 12B model ekran kartina sigmadi. Daha kucuk model ^(E4B^) ile tekrar baslatiliyor...
+  "%VPY%" scripts\adim3_egit.py %*
+  exit /b !errorlevel!
+)
+if errorlevel 1 exit /b 1
 exit /b 0
 
 :adim5

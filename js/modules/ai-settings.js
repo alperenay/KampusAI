@@ -16,7 +16,7 @@
   const LOCAL_FIELDS = [
     { key: "aiChatModel",   role: "chat",   icon: "sparkle", def: () => App.ollama.autoChatModel() },
     { key: "aiEmbedModel",  role: "embed",  icon: "search",  def: () => App.ollama.DEFAULTS.embedModel },
-    { key: "aiVisionModel", role: "vision", icon: "eye",     def: () => App.ollama.DEFAULTS.visionModel }
+    { key: "aiVisionModel", role: "vision", icon: "eye",     def: () => App.ollama.autoVisionModel() }
   ];
   /* Formdaki tüm ayar anahtarları (test sırasında geçici uygulanır, iptalde geri alınır) */
   const KEYS = ["aiMode", "aiCloud", "srvSpeed", "gemSpeed", "gemKey", "gemModel", "gemEmbed", "oaPreset", "oaBase", "oaKey", "oaModel", "oaVision", "oaEmbed",
@@ -186,8 +186,9 @@
       el.querySelectorAll("[data-key]").forEach((inp) => {
         const f = LOCAL_FIELDS.find((x) => x.key === inp.dataset.key);
         const val = inp.value.trim() || f.def();
-        // Ana model otomatik değerde bırakıldıysa kaydetme: kampusai sonradan yüklenirse kendiliğinden kullanılsın
-        App.prefs.set(f.key, f.role === "chat" && App.ollama.sameModel(val, f.def()) ? "" : val);
+        // Ana model ve göz modeli otomatik değerde bırakıldıysa kaydetme: kampusai / qwen3-vl sonradan
+        // yüklenirse kendiliğinden kullanılsın
+        App.prefs.set(f.key, f.role !== "embed" && App.ollama.sameModel(val, f.def()) ? "" : val);
       });
       App.engine.invalidate();
     }

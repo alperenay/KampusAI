@@ -1,8 +1,23 @@
 # KampüsAI — kendi yapay zekamızı eğitme kiti
 
-Bu klasör, uygulamadaki konu anlatımlarından eğitim verisi üretir, Google'ın açık modeli **Gemma 4 E4B**'yi bu veriyle
+Bu klasör, uygulamadaki konu anlatımlarından eğitim verisi üretir, Google'ın açık modeli **Gemma 4 12B**'yi bu veriyle
 eğitir (QLoRA ince ayar), sonucu Ollama'ya **`kampusai`** adıyla yükler ve eski modellerle karşılaştırır.
-Uygulama, `kampusai` bilgisayarda yüklüyse onu otomatik olarak ana model yapar.
+12B ekran kartına sığmazsa kit kendiliğinden **Gemma 4 E4B**'ye geçer.
+Uygulama, `kampusai` bilgisayarda yüklüyse onu otomatik olarak ana model yapar. Fotoğraf okuma için de
+`qwen3-vl:8b` yüklüyse onu kullanır.
+
+## Neden bu ayarlar? (RTX 5070 · 12 GB için en güçlü kurulum)
+
+| Karar | Neden |
+|---|---|
+| Gemma 4 **12B** | 12 GB'a sığan en güçlü Gemma; E4B'nin ~3 katı. Sığmazsa otomatik E4B |
+| Kazanım başına 4 test + 3 kavram sorusu, 400 deneme analizi, %50 öğretmen modu | ~5.000–6.000 eğitim örneği |
+| Sayısal derslerde **düşünerek doğrulama** | Matematik/fizik/kimya sorularındaki hesap hatalarını çok daha iyi yakalar |
+| Ollama: 4 paralel istek + flash attention + 8-bit önbellek | Veri üretimi 2–3 kat hızlı |
+| 2 epoch + **en iyi ara kaydı seçme** | Ezberlemeye başlamadan önceki en iyi nokta kullanılır |
+| Göz modeli `qwen3-vl:8b` | Fotoğraftan yazı okumada açık modeller arasında en iyilerden |
+
+Tahmini süre: veri üretimi ~6–10 saat, eğitim ~2–4 saat (deneme adımı kesin süreyi söyler).
 
 ## Hızlı başlangıç (Windows, NVIDIA ekran kartı)
 
@@ -26,9 +41,9 @@ Gece modundan önce:
 |---|---|---|---|
 | 1 | `adim1_korpus.py` | `js/data/content` notlarını okur, test sorularını ayırır | `veri/korpus.jsonl`, `veri/test_*.jsonl` |
 | 2 | `adim2_veri_uret.py` | Öğretmen modelle (Ollama, `qwen3.5:9b`) soru-çözüm, kavram, öğretmen modu ve deneme analizi örnekleri üretir; her test sorusunu bağımsız ikinci bir çözümle doğrular | `veri/egitim.jsonl`, `veri/istatistik.json` |
-| 3 | `adim3_egit.py` | Gemma 4 E4B'yi 4-bit QLoRA ile eğitir, her 50 adımda ara kayıt alır | `cikti/lora/`, `rapor/egitim_gunlugu.json` |
+| 3 | `adim3_egit.py` | Gemma 4 12B'yi 4-bit QLoRA ile eğitir, her 100 adımda ara kayıt alır, en iyisini seçer | `cikti/lora/`, `rapor/egitim_gunlugu.json` |
 | 4 | `adim4_ollama.py` | Modeli birleştirir, q4_K_M olarak sıkıştırır, Ollama'ya `kampusai` adıyla yükler | Ollama modeli |
-| 5 | `adim5_test.py` | `kampusai`, temel `gemma4:e4b` ve `qwen2.5:14b`'yi eğitimde hiç görülmemiş sorularla karşılaştırır | `rapor/test_raporu.md` |
+| 5 | `adim5_test.py` | `kampusai`, eğitilmemiş `gemma4:12b` ve `qwen2.5:14b`'yi eğitimde hiç görülmemiş sorularla karşılaştırır | `rapor/test_raporu.md` |
 
 ## Veri kalitesi önlemleri
 
@@ -48,17 +63,23 @@ Gece modundan önce:
 |---|---|---|
 | `ogretmen_model` | `qwen3.5:9b` | Veriyi üreten model (Apache 2.0 lisanslı; çıktısıyla model eğitmek serbest) |
 | `paralel_istek` | 4 | Ollama'ya aynı anda gönderilen istek. Ekran kartı belleği yetmezse 2 yapın |
-| `kazanim_basina_test_sorusu` | 3 | Kazanım başına üretilen çoktan seçmeli soru |
-| `kazanim_basina_kavram_sorusu` | 2 | Kazanım başına öğrenci sorusu + yanıt |
-| `temel_model` | `unsloth/gemma-4-E4B-it` | Eğitilen model. Telefonlara da sığacak boyutta |
+| `dogrulama_dusunme` | `sayisal` | `sayisal`: yalnızca mat/fizik/kimyada düşünerek doğrula · `true`: hepsinde · `false`: hiçbirinde (en hızlı) |
+| `kazanim_basina_test_sorusu` | 4 | Kazanım başına üretilen çoktan seçmeli soru |
+| `kazanim_basina_kavram_sorusu` | 3 | Kazanım başına öğrenci sorusu + yanıt |
+| `temel_model` | `unsloth/gemma-4-12b-it` | Eğitilen model |
+| `yedek_temel_model` | `unsloth/gemma-4-E4B-it` | 12B sığmazsa kullanılan model (telefonlara da sığar) |
+| `goz_model` | `qwen3-vl:8b` | Ollama'ya yükleme adımında indirilen fotoğraf okuma modeli |
 | `epoch` | 2 | Verinin üzerinden kaç kez geçileceği |
 | `max_uzunluk` | 2048 | Bir örneğin en fazla token sayısı (12 GB ekran kartı için) |
-| `karsilastirilacak_modeller` | kampusai, gemma4:e4b, qwen2.5:14b | Testte karşılaştırılan modeller |
+| `karsilastirilacak_modeller` | kampusai, gemma4:12b, qwen2.5:14b | Testte karşılaştırılan modeller |
 
 ## Sorun giderme
 
 - **"PyTorch ekran kartını görmüyor":** NVIDIA sürücüsünü güncelleyin, sonra menüden Kurulum'u tekrar çalıştırın.
-- **Eğitimde "CUDA out of memory":** `ayarlar.json` → `max_uzunluk` 1536 yapın ve Ollama'yı kapatın.
+- **Eğitimde "CUDA out of memory":** Denemede olursa kit kendiliğinden E4B'ye geçer. Tam eğitimde olursa
+  `ayarlar.json` → `max_uzunluk` 1536 yapın, oyun/tarayıcı gibi programları kapatıp tekrar çalıştırın.
+- **Telefon için ayrıca E4B istiyorsanız:** 12B eğitimi bittikten sonra `temel_model`'i `yedek_temel_model` ile,
+  `ollama_model_adi`'nı `kampusai-mini` ile değiştirip "4) Eğit" ve "5) Yükle"yi çalıştırın (veri yeniden üretilmez).
 - **Veri üretimi çok yavaş:** `paralel_istek` değerini düşürüp yükseltmeyi deneyin. Ollama'nın tamamen
   ekran kartında çalıştığını `ollama ps` ile kontrol edin.
 - **Windows'ta Unsloth kurulamıyor:** WSL (Ubuntu) içinde aynı betikler `python3` ile çalışır.

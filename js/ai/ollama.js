@@ -24,6 +24,8 @@
   /* Kendi eğittiğimiz model (egitim/ klasörü → "kampusai"). Bilgisayarda yüklüyse ve kullanıcı
      Ayarlar'dan başka bir model seçmediyse ana model olarak o kullanılır. */
   const PREFERRED_CHAT = ["kampusai"];
+  /* Fotoğraf okuma ("göz"): yazı okumada daha başarılı olan qwen3-vl yüklüyse o kullanılır */
+  const PREFERRED_VISION = ["qwen3-vl:8b"];
   let installedCache = null;             // son /api/tags yanıtı (otomatik model seçimi için)
   const KEEP_ALIVE = "15m";        // modeller bu süre boyunca bellekte kalır (ilk yanıt gecikmesi bir kez yaşanır)
   /* Hafıza modeli (bge-m3) işlemcide çalışır. Ölçüm (12 GB ekran kartı): bge-m3 ile
@@ -75,20 +77,22 @@
   async function baseUrl() { return manualUrl() || await detectUrl(); }
 
   /** Ayarlarda model seçilmemişse: kampusai yüklüyse o, değilse varsayılan */
-  function autoChatModel() {
-    const hit = installedCache && PREFERRED_CHAT.find((p) => installedCache.some((n) => sameModel(n, p)));
-    return hit || DEFAULTS.chatModel;
+  function preferred(list, fallback) {
+    const hit = installedCache && list.find((p) => installedCache.some((n) => sameModel(n, p)));
+    return hit || fallback;
   }
+  const autoChatModel = () => preferred(PREFERRED_CHAT, DEFAULTS.chatModel);
+  const autoVisionModel = () => preferred(PREFERRED_VISION, DEFAULTS.visionModel);
+  /** Ayarlarda kayıtlı değer; eski sürümlerin kaydettiği varsayılan değer "seçilmemiş" sayılır */
+  const chosenModel = (key, def) => { const v = App.prefs.get(key, ""); return v && !sameModel(v, def) ? v : ""; };
 
   function config() {
-    // Eski sürümler ayarları kaydederken varsayılanı da yazıyordu: o değer "seçilmemiş" sayılır
-    const chosen = App.prefs.get("aiChatModel", "");
     return {
       url: manualUrl() || autoUrl || DEFAULTS.url,
       auto: !manualUrl(),
-      chatModel: chosen && !sameModel(chosen, DEFAULTS.chatModel) ? chosen : autoChatModel(),
+      chatModel: chosenModel("aiChatModel", DEFAULTS.chatModel) || autoChatModel(),
       embedModel: App.prefs.get("aiEmbedModel", DEFAULTS.embedModel) || DEFAULTS.embedModel,
-      visionModel: App.prefs.get("aiVisionModel", DEFAULTS.visionModel) || DEFAULTS.visionModel
+      visionModel: chosenModel("aiVisionModel", DEFAULTS.visionModel) || autoVisionModel()
     };
   }
 
@@ -245,5 +249,5 @@
   /** Ayarlar değişince otomatik adresi yeniden bul */
   function resetDetection() { autoUrl = null; detecting = null; }
 
-  App.ollama = { DEFAULTS, PREFERRED_CHAT, autoChatModel, config, baseUrl, resetDetection, sameModel, isFileOrigin, manualUrl, tags, check, chat, embed, ps, unload, OllamaError };
+  App.ollama = { DEFAULTS, PREFERRED_CHAT, PREFERRED_VISION, autoChatModel, autoVisionModel, config, baseUrl, resetDetection, sameModel, isFileOrigin, manualUrl, tags, check, chat, embed, ps, unload, OllamaError };
 })();

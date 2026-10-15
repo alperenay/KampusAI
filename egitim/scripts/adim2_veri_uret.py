@@ -27,8 +27,8 @@ import time
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from ortak import (SIK_HARFLERI, SOKRATIK, URETILEN, VERI, OllamaHatasi, ayarlar, baslat, cevap_harfi,
-                   etiket, fotograf_blogu, jsonl_ekle, jsonl_oku, jsonl_yaz, log, model_hazirla,
+from ortak import (SAYISAL, SIK_HARFLERI, SOKRATIK, URETILEN, VERI, OllamaHatasi, ayarlar, baslat, cevap_harfi,
+                   etiket, fotograf_blogu, jsonl_ekle, jsonl_oku, jsonl_yaz, log, model_hazirla, ollama_modeller,
                    ollama_sohbet, rastgele_tarih, sistem_istemi, veri_bolumu)
 
 KILIT = threading.Lock()
@@ -273,9 +273,12 @@ def gorev_test(a, k, adet, rng):
                                sicaklik=0.8, max_token=900 * adet + 600)
     sorular = ayristir_sorular(metin)
     tok = ist["token"]
+    # Sayısal derslerde doğrulama "düşünerek" yapılır: daha yavaş ama hesap hatalı soruları çok daha iyi yakalar
+    ayar = a.get("dogrulama_dusunme", False)
+    dusun = ayar is True or (ayar == "sayisal" and k["ders"] in SAYISAL)
     for s in sorular:
         v, ist2 = ollama_sohbet(a["ogretmen_model"], [{"role": "user", "content": dogrulama_istemi(s)}],
-                                sicaklik=0.0, dusunme=a.get("dogrulama_dusunme", False), max_token=1200)
+                                sicaklik=0.0, dusunme=dusun, max_token=6000 if dusun else 1200)
         tok += ist2["token"]
         s["dogrulama"] = cevap_harfi(v)
         s["gecti"] = s["dogrulama"] == s["cevap"]
@@ -339,8 +342,23 @@ def gorev_analiz(a, n):
 
 # ---------------------------------------------------------------- Çalıştırıcı
 
-def calistir(a, gorevler, dosya, etiket_ad):
-    """gorevler: [(id, fonksiyon)] — biten id'ler atlanır, sonuçlar dosyaya eklenir."""
+def ollama_bekle(sure=600):
+    """Ollama yanıt vermiyorsa (yeniden başlıyor, bellek doldu vb.) en fazla 10 dk bekler.
+    Tek bir isteğin kopması tüm gece çalışmasını durdurmasın diye."""
+    bas = time.time()
+    while time.time() - bas < sure:
+        try:
+            ollama_modeller()
+            return True
+        except OllamaHatasi:
+            log("Ollama yanıt vermiyor, bekleniyor...")
+            time.sleep(20)
+    return False
+
+
+def calistir(a, gorevler, dosya, etiket_ad, tur=1):
+    """gorevler: [(id, fonksiyon)] — biten id'ler atlanır, sonuçlar dosyaya eklenir.
+    Hata veren görevler aşamanın sonunda bir kez daha denenir (gece kimse yeniden başlatmayacak)."""
     biten = {r["id"] for r in jsonl_oku(dosya)}
     kalan = [(i, f) for i, f in gorevler if i not in biten]
     if not kalan:
@@ -363,7 +381,7 @@ def calistir(a, gorevler, dosya, etiket_ad):
                 hata += 1
                 with KILIT:
                     jsonl_ekle(URETILEN / "hatalar.jsonl", {"id": gid, "hata": str(e), "zaman": time.time()})
-                if "yüklü değil" in str(e) or "ulaşılamadı" in str(e):
+                if "yüklü değil" in str(e) or ("ulaşılamadı" in str(e) and not ollama_bekle()):
                     log("DURDU:", e)
                     havuz.shutdown(cancel_futures=True)
                     raise SystemExit(1)
@@ -377,12 +395,16 @@ def calistir(a, gorevler, dosya, etiket_ad):
                 kalan_sure = gecen / n * (len(kalan) - n)
                 log(f"  {etiket_ad}: {n}/{len(kalan)}  hata {hata}  ~{token / max(gecen, 1):.0f} token/sn  "
                     f"kalan ~{kalan_sure / 60:.0f} dk")
+    if hata and tur == 1:
+        log(f"{etiket_ad}: {hata} görev hata verdi, bir kez daha deneniyor.")
+        calistir(a, gorevler, dosya, etiket_ad, tur=2)
 
 
 # ---------------------------------------------------------------- Birleştirme
 
 KULLANICI_ONEKLERI = ["", "", "", "Bu soruyu çözer misin?\n\n", "Şu soruyu adım adım çözebilir misin?\n\n",
                       "hocam bunu anlamadım\n\n", "Bu sorunun cevabı ne, nasıl çözülüyor?\n\n"]
+GOZ_MODELLERI = ["qwen3-vl:8b", "qwen3-vl:8b", "qwen2.5vl:7b", "gemma4:e4b"]   # uygulamada "göz" olabilecek modeller
 FOTO_METINLERI = ["", "", "Bu soruyu çöz", "çözer misin", "Bunu nasıl çözerim?", "bu soruyu anlamadım"]
 
 
@@ -435,7 +457,7 @@ def birlestir(a):
         for s in gecen:
             r_ = rng.random()
             if r_ < a["fotograf_bicimi_orani"]:
-                kullanici = (rng.choice(FOTO_METINLERI) or "Fotoğraftaki soruyu çöz.") + "\n\n" + fotograf_blogu(soru_metni(s))
+                kullanici = (rng.choice(FOTO_METINLERI) or "Fotoğraftaki soruyu çöz.") + "\n\n" + fotograf_blogu(soru_metni(s), rng.choice(GOZ_MODELLERI))
                 tur = "test_foto"
             elif r_ < a["fotograf_bicimi_orani"] + a["konu_baglami_orani"] * 0.5:
                 ekle("test_baglam", [{"role": "system", "content": sistem(konu_kaydi(k))},

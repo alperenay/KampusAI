@@ -1,5 +1,5 @@
 {
-  "_aciklama": "KampüsAI eğitim ayarları. Değiştirmeden de çalışır. Her alanın açıklaması README.md'de.",
+  "_aciklama": "KampüsAI eğitim ayarları (RTX 5070 12 GB için en güçlü kurulum). Her alanın açıklaması README.md'de.",
 
   "icerik_klasoru": "../js/data/content",
   "ollama_adres": "http://localhost:11434",
@@ -7,28 +7,32 @@
   "ogretmen_model": "qwen3.5:9b",
   "hakem_model": "qwen3.5:9b",
   "paralel_istek": 4,
+  "dogrulama_dusunme": "sayisal",
 
-  "kazanim_basina_test_sorusu": 3,
-  "kazanim_basina_kavram_sorusu": 2,
-  "sokratik_oran": 0.34,
-  "deneme_analizi_sayisi": 250,
+  "kazanim_basina_test_sorusu": 4,
+  "kazanim_basina_kavram_sorusu": 3,
+  "sokratik_oran": 0.5,
+  "deneme_analizi_sayisi": 400,
   "fotograf_bicimi_orani": 0.2,
   "konu_baglami_orani": 0.25,
   "test_icin_ayrilan_kazanim": 100,
   "insan_test_sorusu": 120,
 
-  "temel_model": "unsloth/gemma-4-E4B-it",
-  "temel_ollama_model": "gemma4:e4b",
+  "temel_model": "unsloth/gemma-4-12b-it",
+  "temel_ollama_model": "gemma4:12b",
+  "yedek_temel_model": "unsloth/gemma-4-E4B-it",
+  "yedek_temel_ollama_model": "gemma4:e4b",
   "max_uzunluk": 2048,
   "lora_r": 16,
   "epoch": 2,
   "ogrenme_hizi": 0.0002,
   "batch": 1,
   "gradyan_biriktirme": 8,
-  "kayit_adimi": 50,
+  "kayit_adimi": 100,
 
   "ollama_model_adi": "kampusai",
   "nicemleme": "q4_K_M",
+  "goz_model": "qwen3-vl:8b",
 
-  "karsilastirilacak_modeller": ["kampusai", "gemma4:e4b", "qwen2.5:14b"]
+  "karsilastirilacak_modeller": ["kampusai", "gemma4:12b", "qwen2.5:14b"]
 }

@@ -83,7 +83,7 @@ def main():
     basarili = False
     birlesik = CIKTI / "birlesik"
     try:
-        log("Model birleştiriliyor (16-bit, birkaç dakika ve ~16 GB disk)...")
+        log("Model birleştiriliyor (16-bit; birkaç dakika, 12B için ~25 GB geçici disk)...")
         model.save_pretrained_merged(str(birlesik), tokenizer, save_method="merged_16bit")
         mf = modelfile_yaz(birlesik, ".", satirlar)
         basarili = calistir([exe, "create", ad, "-q", a["nicemleme"], "-f", str(mf)], cwd=str(birlesik))
@@ -117,6 +117,13 @@ def main():
         log("Yetenekler:", ", ".join(bilgi.get("capabilities", [])) or "bilinmiyor")
     except OllamaHatasi as e:
         log("Deneme sorusu başarısız:", e)
+    goz = a.get("goz_model")
+    if goz:
+        try:
+            model_hazirla(goz)
+            log(f"Fotoğraf okuma (göz) modeli hazır: {goz}. Uygulama yüklü görünce otomatik kullanır.")
+        except SystemExit as e:
+            log("Göz modeli indirilemedi (önemli değil, eski göz modeli kullanılır):", e)
     log("Uygulama 'kampusai' modelini yüklü görünce otomatik kullanır (Ayarlar → Yapay zeka).")
 
 

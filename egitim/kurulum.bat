@@ -47,8 +47,11 @@ echo Unsloth kuruluyor...
 REM Unsloth PyTorch'u ekran kartsiz surumle degistirdiyse onar
 "%VPY%" scripts\kontrol.py --torch-onar
 
-REM ---- 5. Ollama: ayni anda 4 istek (veri uretimini ~2-3 kat hizlandirir)
+REM ---- 5. Ollama hizlandirma: ayni anda 4 istek (veri uretimini ~2-3 kat hizlandirir)
 setx OLLAMA_NUM_PARALLEL 4 >nul
+REM Flash attention + 8-bit KV onbellegi: ayni bellekte daha fazla paralel istek, daha hizli uretim
+setx OLLAMA_FLASH_ATTENTION 1 >nul
+setx OLLAMA_KV_CACHE_TYPE q8_0 >nul
 echo.
 echo Ollama ayarlari yenilensin diye yeniden baslatiliyor...
 taskkill /im "ollama app.exe" /f >nul 2>&1

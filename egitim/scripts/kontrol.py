@@ -68,8 +68,8 @@ def main():
         sorun += 1
 
     bos = shutil.disk_usage(KIT).free / 2**30
-    if bos < 45:
-        log(f"⚠ Diskte {bos:.0f} GB boş alan var; eğitim + birleştirme için ~45 GB önerilir.")
+    if bos < 70:
+        log(f"⚠ Diskte {bos:.0f} GB boş alan var; 12B eğitim + birleştirme için ~70 GB önerilir.")
     else:
         log(f"✓ Disk: {bos:.0f} GB boş")
 
