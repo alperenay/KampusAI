@@ -35,7 +35,7 @@ def bulut_dene():
             log(f"✓ Bulut öğretmen çalışıyor: {BULUT.model_adi()} ({b['adres']}) → yanıt: {metin[:40]!r}")
             return True
         except BulutHatasi as e:
-            if "kaldırılmış" in str(e) and not BULUT.kapali:
+            if ("kaldırılmış" in str(e) or "yavaş" in str(e)) and not BULUT.kapali:
                 continue
             log(f"✗ Bulut öğretmen çalışmıyor: {e}. Anahtarı kontrol edin (menü 9); yoksa veri bilgisayarda üretilir.")
             return False

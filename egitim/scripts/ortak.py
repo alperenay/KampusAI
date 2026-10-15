@@ -293,7 +293,7 @@ class _Bulut:
                                          headers={"Content-Type": "application/json", "User-Agent": "KampusAI-Egitim/1.0",
                                                   "Authorization": "Bearer " + anahtar})
             try:
-                with urllib.request.urlopen(req, timeout=300) as r:
+                with urllib.request.urlopen(req, timeout=int(a.get("zaman_asimi", 150))) as r:
                     cevap = json.loads(r.read().decode("utf-8"))
                 metin = ((cevap.get("choices") or [{}])[0].get("message") or {}).get("content") or ""
                 metin = re.sub(r"<think>.*?</think>", "", metin, flags=re.S)   # düşünme modelleri taslağı içerikte döndürebilir
@@ -333,6 +333,15 @@ class _Bulut:
                 log("Bulut öğretmen kapatıldı:", self.kapali, "→ yerel modelle devam.")
                 raise BulutHatasi(self.kapali)
             except (urllib.error.URLError, TimeoutError, ConnectionError, json.JSONDecodeError) as e:
+                if "timed out" in str(e).lower() and a.get("model", "otomatik") == "otomatik":
+                    # Ücretsiz uç noktalarda bazı modeller kuyrukta çok bekliyor: yavaş modeli bırakıp sıradakini seç
+                    with self.kilit:
+                        if govde["model"] not in self.kaldirilan:
+                            log(f"Bulut modeli çok yavaş ({govde['model']}); sıradaki model denenecek.")
+                        self.kaldirilan.add(govde["model"])
+                        if self.secilen == govde["model"]:
+                            self.secilen = None
+                    raise BulutHatasi(f"model yavaş (zaman aşımı)")
                 time.sleep(10 * (deneme + 1))
                 son = e
         raise BulutHatasi(f"bulut yanıt vermedi: {locals().get('son', '')}")
