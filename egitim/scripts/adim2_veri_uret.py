@@ -34,7 +34,7 @@ from ortak import (BULUT, SAYISAL, SIK_HARFLERI, BulutHatasi, SOKRATIK, URETILEN
 
 KILIT = threading.Lock()
 # Üretim biçimi değişince eski üretilmiş veri yeniden kullanılmasın diye artırılır
-VERI_SURUMU = "2"
+VERI_SURUMU = "3"
 
 
 def surum_kontrol():
@@ -84,6 +84,73 @@ Her soruyu TAM OLARAK şu biçimde yaz (başka hiçbir şey ekleme):
 <E>şık</E>
 <CEVAP>harf</CEVAP>
 <COZUM>adım adım çözüm</COZUM>"""
+
+
+ZORLUKLAR = ["kolay", "orta", "zor", "orta", "zor"]
+
+
+def tek_soru_istemi(k, zorluk, harf, onceki):
+    """Her çağrıda TEK soru: küçük modeller çok soruluk katı biçimde etiketleri karıştırıp
+    çıktının ortasında plan yapmaya başlıyor; tek soru ve düz biçim çok daha güvenilir."""
+    dil = ("Soru ve şıklar İngilizce (YDT tarzı), çözüm açıklaması Türkçe olsun."
+           if k["ders"] == "ingilizce" else "Her şey Türkçe olsun.")
+    farkli = ("\n- Şu sorulardan FARKLI bir konuyu/yönü sorsun:\n" + "\n".join("  • " + o[:160] for o in onceki)) if onceki else ""
+    return f"""{not_metni(k)}
+
+GÖREV: Bu konudan 1 adet özgün, {zorluk} zorlukta, çoktan seçmeli soru yaz.
+- {k['sinif']}. sınıf düzeyinde, YKS'de çıkabilecek tarzda olsun.
+- 5 şık (A–E) ve YALNIZCA BİR doğru cevap olsun. Doğru cevap {harf} şıkkı olsun. Çeldiriciler mantıklı ama kesin yanlış olsun.
+- Yalnızca konu notundaki bilgiyi kullan; nottaki örnek soruları kopyalama.{farkli}
+- Çözümü öğrenciye anlatır gibi adım adım, kısa ve net yaz; matematiksel ifadeleri LaTeX ile ($...$) yaz.
+- {dil}
+
+YALNIZCA aşağıdaki biçimde yaz. Önce/sonra açıklama, plan ya da not EKLEME:
+SORU: <soru kökü>
+A) <şık>
+B) <şık>
+C) <şık>
+D) <şık>
+E) <şık>
+CEVAP: <harf>
+ÇÖZÜM:
+<adım adım çözüm>
+**Doğru cevap: <harf>**"""
+
+
+def ayristir_satir(metin):
+    """Düz biçimi ayrıştırır: SORU: … / A) … E) … / CEVAP: X / ÇÖZÜM: …"""
+    metin = re.sub(r"<think>.*?</think>", "", metin or "", flags=re.S)
+    ms = re.search(r"^\W*SORU\W*[:：]\s*", metin, flags=re.M | re.I)
+    mc = re.search(r"^\W*(?:DO[ĞG]RU\s+)?CEVAP\W*[:：]\W*\(?([A-E])\b", metin, flags=re.M | re.I)
+    mz = re.search(r"^\W*[ÇC][ÖO]Z[ÜU]M\W*[:：]?\s*$|^\W*[ÇC][ÖO]Z[ÜU]M\W*[:：]\s*", metin, flags=re.M | re.I)
+    if not (ms and mc and mz) or not (ms.end() <= mc.start() <= mz.start()):
+        return None
+    govde = metin[ms.end():mc.start()]
+    sik = {m.group(1).upper(): m.group(2).strip() for m in
+           re.finditer(r"^\s*\**\(?([A-E])\s*[\)\.:]\**\s*(.+?)\s*$", govde, flags=re.M)}
+    ilk = re.search(r"^\s*\**\(?A\s*[\)\.:]", govde, flags=re.M)
+    soru = (govde[:ilk.start()] if ilk else "").strip().lstrip("*").strip()
+    cozum = metin[mz.end():].strip().lstrip("*").strip()
+    son = re.search(r"\**\s*Do[ğg]ru cevap\s*[:：]\s*\**\s*\(?[A-E]\)?\s*\**", cozum, flags=re.I)
+    if son:
+        cozum = cozum[:son.end()].strip()   # sonrasındaki gevezeliği at
+    if not soru or len(sik) != 5 or not cozum:
+        return None
+    return {"soru": soru, "siklar": {h: sik[h] for h in SIK_HARFLERI}, "cevap": mc.group(1).upper(), "cozum": cozum}
+
+
+def tek_soru_ayristir(metin):
+    s = ayristir_satir(metin)
+    if s:
+        if len(set(v.strip().lower() for v in s["siklar"].values())) < 5:
+            return None
+        if cevap_harfi(s["cozum"]) not in (None, s["cevap"]):
+            return None
+        if "Doğru cevap" not in s["cozum"]:
+            s["cozum"] = s["cozum"].rstrip() + f"\n\n**Doğru cevap: {s['cevap']}**"
+        return s
+    eski = ayristir_sorular(metin)          # model yine de etiketli yazdıysa
+    return eski[0] if eski else None
 
 
 def dogrulama_istemi(s):
@@ -293,34 +360,46 @@ def ham_kaydet(gid, model, metin, ist, bulunan, istenen):
 
 
 def gorev_test(a, k, adet, rng):
-    harfler = [rng.choice(SIK_HARFLERI) for _ in range(adet)]
-    mesajlar = [{"role": "system", "content": YAZAR_SISTEM}, {"role": "user", "content": test_istemi(k, adet, harfler)}]
-    sorular, uretici = [], a["ogretmen_model"]
-    if BULUT.etkin(k["ders"]):
-        # Soruları daha güçlü bulut modeli yazar; doğrulamayı yine yereldeki farklı model yapar
-        try:
-            metin, ist = BULUT.sohbet(mesajlar, sicaklik=0.7, max_token=12000)
-            sorular = ayristir_sorular(metin)
-            uretici = BULUT.model_adi()
-        except BulutHatasi as e:
-            log(f"  bulut ({k['anahtar']}): {e} → yerel model")
-    if not sorular:
-        metin, ist = ollama_sohbet(a["ogretmen_model"], mesajlar, sicaklik=0.8, max_token=1500 * adet + 1000)
-        sorular, uretici = ayristir_sorular(metin), a["ogretmen_model"]
-    if len(sorular) < adet:
-        ham_kaydet("test:" + k["anahtar"], uretici, metin, ist, len(sorular), adet)
-    sorular = sorular[:adet]
-    tok = ist["token"]
+    sorular, ureticiler, tok = [], set(), 0
+    for i in range(adet):
+        harf = rng.choice(SIK_HARFLERI)
+        mesajlar = [{"role": "system", "content": YAZAR_SISTEM},
+                    {"role": "user", "content": tek_soru_istemi(k, ZORLUKLAR[i % 5], harf, [x["soru"] for x in sorular])}]
+        soru, metin, ist, uretici = None, "", {"token": 0}, a["ogretmen_model"]
+        if BULUT.etkin(k["ders"]):
+            # Soruyu daha güçlü bulut modeli yazar; doğrulamayı yine yereldeki farklı model yapar
+            try:
+                metin, ist = BULUT.sohbet(mesajlar, sicaklik=0.7, max_token=4000)
+                soru, uretici = tek_soru_ayristir(metin), BULUT.model_adi()
+            except BulutHatasi as e:
+                log(f"  bulut ({k['anahtar']}): {e} → yerel model")
+        for deneme in range(2 if not soru else 0):   # biçim tutmazsa bir kez daha dene
+            metin, ist = ollama_sohbet(a["ogretmen_model"], mesajlar, sicaklik=0.7 + 0.1 * deneme, max_token=2500)
+            uretici = a["ogretmen_model"]
+            soru = tek_soru_ayristir(metin)
+            if soru:
+                break
+        tok += ist.get("token", 0)
+        if not soru:
+            ham_kaydet(f"test:{k['anahtar']}#{i}", uretici, metin, ist, 0, 1)
+            continue
+        anahtar = re.sub(r"\W+", "", soru["soru"].lower())[:200]
+        if any(re.sub(r"\W+", "", x["soru"].lower())[:200] == anahtar for x in sorular):
+            continue
+        soru["uretici"] = uretici
+        ureticiler.add(uretici)
+        sorular.append(soru)
     # Sayısal derslerde doğrulama "düşünerek" yapılır: daha yavaş ama hesap hatalı soruları çok daha iyi yakalar
     ayar = a.get("dogrulama_dusunme", False)
     dusun = ayar is True or (ayar == "sayisal" and k["ders"] in SAYISAL)
-    for s in sorular:
-        v, ist2 = ollama_sohbet(a["ogretmen_model"], [{"role": "user", "content": dogrulama_istemi(s)}],
+    for s_ in sorular:
+        v, ist2 = ollama_sohbet(a["ogretmen_model"], [{"role": "user", "content": dogrulama_istemi(s_)}],
                                 sicaklik=0.0, dusunme=dusun, max_token=6000 if dusun else 1200)
         tok += ist2["token"]
-        s["dogrulama"] = cevap_harfi(v)
-        s["gecti"] = s["dogrulama"] == s["cevap"]
-    return {"id": "test:" + k["anahtar"], "anahtar": k["anahtar"], "sorular": sorular, "uretici": uretici, "token": tok}
+        s_["dogrulama"] = cevap_harfi(v)
+        s_["gecti"] = s_["dogrulama"] == s_["cevap"]
+    return {"id": "test:" + k["anahtar"], "anahtar": k["anahtar"], "sorular": sorular,
+            "uretici": ", ".join(sorted(ureticiler)) or a["ogretmen_model"], "token": tok}
 
 
 def gorev_kavram(a, k, adet, rng):

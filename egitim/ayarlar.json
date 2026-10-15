@@ -17,7 +17,7 @@
     "dusunme": "",
     "dersler": ["matematik", "fizik", "kimya", "biyoloji", "edebiyat", "tarih", "inkilap", "cografya", "felsefe", "din", "ingilizce"],
     "dakikada_istek": 30,
-    "paralel": 3
+    "paralel": 2
   },
 
   "kazanim_basina_test_sorusu": 4,

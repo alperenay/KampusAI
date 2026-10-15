@@ -242,6 +242,11 @@ class _Bulut:
                     mevcut = [m.get("id", "") for m in json.loads(r.read().decode("utf-8")).get("data", [])]
             except Exception as e:
                 raise BulutHatasi(f"model listesi alınamadı: {e}")
+            try:
+                RAPOR.mkdir(parents=True, exist_ok=True)
+                (RAPOR / "bulut_modelleri.txt").write_text("\n".join(sorted(mevcut)), encoding="utf-8")
+            except OSError:
+                pass
             for t in tercih:
                 aday = sorted(m for m in mevcut if t in m.lower() and m not in self.kaldirilan
                               and not re.search(r"embed|rerank|guard|reward", m, re.I))
@@ -303,11 +308,15 @@ class _Bulut:
                     mesaj = ""
                 if e.code in (401, 403):
                     self.kapali = f"bulut anahtarı geçersiz ({e.code})"
-                elif e.code in (404, 410) and self.secilen:
-                    # Seçilen model kaldırılmış: bir dahaki istekte listeden yenisi seçilsin
-                    log(f"Bulut modeli artık yok ({self.secilen}); başka model seçilecek.")
-                    self.kaldirilan.add(self.secilen)
-                    self.secilen = None
+                elif e.code in (404, 410) and a.get("model", "otomatik") == "otomatik":
+                    # İstekteki model kaldırılmış: bir dahaki istekte listeden yenisi seçilsin.
+                    # (Aynı anda birden çok istek bu yanıtı alabilir; istekteki modele göre işlenir.)
+                    with self.kilit:
+                        if govde["model"] not in self.kaldirilan:
+                            log(f"Bulut modeli artık yok ({govde['model']}); başka model seçilecek.")
+                        self.kaldirilan.add(govde["model"])
+                        if self.secilen == govde["model"]:
+                            self.secilen = None
                     raise BulutHatasi(f"model kaldırılmış (HTTP {e.code})")
                 elif e.code in (404, 410):
                     self.kapali = f"bulut modeli kullanılamıyor (HTTP {e.code})"
