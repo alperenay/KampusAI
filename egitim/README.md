@@ -28,7 +28,8 @@ Tahmini süre: veri üretimi ~6–10 saat, eğitim ~1–2 saat, paketleme ~1 saa
 
 ## Hızlı başlangıç (Windows, NVIDIA ekran kartı)
 
-`KampusAI-Egitim.bat` dosyasına çift tıklayın ve sırayla:
+`KampusAI-Egitim.bat` menüsünü açın ya da kısayollara doğrudan çift tıklayın (`1-KURULUM.bat`, `2-DENEME.bat`,
+`7-GECE-MODU.bat`, `8-KONTROL.bat`). Sırayla:
 
 1. **Kurulum**: Python 3.12, PyTorch (CUDA 12.8), Unsloth ve gereken Ollama modelleri (`qwen3.5:9b`,
    `gemma4:e4b`, `qwen3-vl:8b`) kurulur. Bir kerelik, internet hızına göre 30–60 dk sürer.

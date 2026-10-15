@@ -7,6 +7,14 @@ set "VPY=%~dp0.venv\Scripts\python.exe"
 set PYTHONUTF8=1
 set PYTHONIOENCODING=utf-8
 
+REM Kisayol dosyalari (1-KURULUM.bat vb.) secimi arguman olarak verir: menu gosterilmez
+set "TEK="
+if not "%~1"=="" (
+  set "SEC=%~1"
+  set "TEK=1"
+  goto secim
+)
+
 :menu
 cls
 echo ============================================================
@@ -27,7 +35,8 @@ echo  11) Yayinla            (testten sonra: modeli herkesin indirebilecegi yere
 echo   0) Cikis
 echo.
 set "SEC="
-set /p SEC=Seciminiz:
+set /p SEC=Seciminiz: 
+:secim
 if "%SEC%"=="1" goto kurulum
 if "%SEC%"=="2" goto deneme
 if "%SEC%"=="3" goto s3
@@ -40,6 +49,7 @@ if "%SEC%"=="9" goto anahtar
 if "%SEC%"=="10" goto pro
 if "%SEC%"=="11" goto yayinla
 if "%SEC%"=="0" exit /b 0
+if defined TEK exit /b 1
 goto menu
 
 :gerekli
@@ -194,4 +204,5 @@ goto bitti
 :bitti
 echo.
 pause
+if defined TEK exit /b 0
 goto menu
