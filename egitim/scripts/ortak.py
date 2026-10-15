@@ -205,6 +205,8 @@ class _Bulut:
         self.kapali = None      # kapanma nedeni (kota doldu, anahtar geçersiz…)
         self.token = 0
         self.ardisik_hata = 0   # üst üste başarısız görev; 3 olunca bulut kapatılır (gece boşa beklemesin)
+        self.secilen = None     # "otomatik" modda servisin o an sunduğu modellerden seçilen
+        self.kaldirilan = set() # çalışırken "artık yok" (404/410) yanıtı veren modeller
 
     def ayar(self):
         a = ayarlar().get("bulut_ogretmen") or {}
@@ -216,9 +218,36 @@ class _Bulut:
 
     def etkin(self, ders=None):
         a, anahtar = self.ayar()
-        if not anahtar or not a.get("model") or self.kapali:
+        if not anahtar or not (a.get("model") or a.get("model_tercihleri")) or self.kapali:
             return False
         return ders is None or ders in (a.get("dersler") or [])
+
+    def model_adi(self):
+        """Ayardaki model "otomatik" ise servisin model listesinden tercih sırasına göre seçer.
+        Servisler modelleri zamanla kaldırıyor (ör. NVIDIA'da gpt-oss-120b); bu yüzden tek isme bağlı kalınmaz."""
+        a, anahtar = self.ayar()
+        if a.get("model") and a["model"] != "otomatik":
+            return a["model"]
+        with self.kilit:
+            if self.secilen:
+                return self.secilen
+            tercih = [t.lower() for t in a.get("model_tercihleri") or []]
+            try:
+                req = urllib.request.Request(a["adres"].rstrip("/") + "/models", headers={
+                    "Authorization": "Bearer " + anahtar, "User-Agent": "KampusAI-Egitim/1.0"})
+                with urllib.request.urlopen(req, timeout=30) as r:
+                    mevcut = [m.get("id", "") for m in json.loads(r.read().decode("utf-8")).get("data", [])]
+            except Exception as e:
+                raise BulutHatasi(f"model listesi alınamadı: {e}")
+            for t in tercih:
+                aday = sorted(m for m in mevcut if t in m.lower() and m not in self.kaldirilan
+                              and not re.search(r"embed|rerank|guard|reward", m, re.I))
+                if aday:
+                    self.secilen = aday[0]
+                    log(f"Bulut modeli seçildi: {self.secilen}")
+                    return self.secilen
+            self.kapali = "serviste uygun model bulunamadı"
+            raise BulutHatasi(self.kapali)
 
     def _sira_bekle(self, dakikada):
         aralik = 60.0 / max(1, dakikada) + 0.5
@@ -243,7 +272,7 @@ class _Bulut:
 
     def _sohbet(self, mesajlar, sicaklik, max_token):
         a, anahtar = self.ayar()
-        govde = {"model": a["model"], "messages": mesajlar, "temperature": sicaklik,
+        govde = {"model": self.model_adi(), "messages": mesajlar, "temperature": sicaklik,
                  "max_tokens": max_token}
         if a.get("dusunme"):
             govde["reasoning_effort"] = a["dusunme"]
@@ -259,6 +288,7 @@ class _Bulut:
                 with urllib.request.urlopen(req, timeout=300) as r:
                     cevap = json.loads(r.read().decode("utf-8"))
                 metin = ((cevap.get("choices") or [{}])[0].get("message") or {}).get("content") or ""
+                metin = re.sub(r"<think>.*?</think>", "", metin, flags=re.S)   # düşünme modelleri taslağı içerikte döndürebilir
                 self.token += (cevap.get("usage") or {}).get("total_tokens", 0)
                 if not metin.strip():
                     raise BulutHatasi("boş yanıt")
@@ -270,6 +300,14 @@ class _Bulut:
                     mesaj = ""
                 if e.code in (401, 403):
                     self.kapali = f"bulut anahtarı geçersiz ({e.code})"
+                elif e.code in (404, 410) and self.secilen:
+                    # Seçilen model kaldırılmış: bir dahaki istekte listeden yenisi seçilsin
+                    log(f"Bulut modeli artık yok ({self.secilen}); başka model seçilecek.")
+                    self.kaldirilan.add(self.secilen)
+                    self.secilen = None
+                    raise BulutHatasi(f"model kaldırılmış (HTTP {e.code})")
+                elif e.code in (404, 410):
+                    self.kapali = f"bulut modeli kullanılamıyor (HTTP {e.code})"
                 elif e.code == 402 or re.search(r"credit|kredi|insufficient", mesaj, re.I):
                     self.kapali = "bulut kredisi bitti"
                 elif e.code == 429 and re.search(r"day|daily|quota|günlük", mesaj, re.I):

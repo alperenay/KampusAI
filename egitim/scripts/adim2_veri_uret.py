@@ -275,7 +275,7 @@ def gorev_test(a, k, adet, rng):
         try:
             metin, ist = BULUT.sohbet(mesajlar, sicaklik=0.7, max_token=12000)
             sorular = ayristir_sorular(metin)
-            uretici = BULUT.ayar()[0]["model"]
+            uretici = BULUT.model_adi()
         except BulutHatasi as e:
             log(f"  bulut ({k['anahtar']}): {e} → yerel model")
     if not sorular:
@@ -560,7 +560,11 @@ def main():
     log(f"Öğretmen model: {model} · {len(kaz)} kazanım · paralel {a['paralel_istek']}")
     if BULUT.etkin():
         b = BULUT.ayar()[0]
-        log(f"Bulut öğretmen AÇIK: {b['model']} → {', '.join(b.get('dersler') or [])} soruları (dakikada {b.get('dakikada_istek', 5)} istek)")
+        try:
+            bm = BULUT.model_adi()
+        except BulutHatasi as e:
+            bm = f"(seçilemedi: {e})"
+        log(f"Bulut öğretmen AÇIK: {bm} → {', '.join(b.get('dersler') or [])} soruları (dakikada {b.get('dakikada_istek', 5)} istek)")
     else:
         log("Bulut öğretmen kapalı (bulut_anahtari.txt yok) — tüm veri bilgisayarda üretilecek.")
 

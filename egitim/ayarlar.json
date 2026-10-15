@@ -12,7 +12,8 @@
   "bulut_ogretmen": {
     "_not": "İsteğe bağlı, ücretsiz: NVIDIA Build (build.nvidia.com, kart istemez, 1000 istek kredisi). Anahtar egitim\\bulut_anahtari.txt dosyasına yazılır (menü 9). Anahtar yoksa ya da kredi biterse her şey bilgisayarda üretilir.",
     "adres": "https://integrate.api.nvidia.com/v1",
-    "model": "openai/gpt-oss-120b",
+    "model": "otomatik",
+    "model_tercihleri": ["qwen3.5-397b", "qwen3.5-122b", "deepseek-v4", "deepseek-v3.2", "kimi-k2.5", "gpt-oss-120b", "nemotron-3-super"],
     "dusunme": "",
     "dersler": ["matematik", "fizik", "kimya", "biyoloji", "edebiyat", "tarih", "inkilap", "cografya", "felsefe", "din", "ingilizce"],
     "dakikada_istek": 30,

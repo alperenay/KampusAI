@@ -28,13 +28,19 @@ def bulut_dene():
         log("Bulut öğretmen kapalı (anahtar yok). Her şey bilgisayarda üretilecek; bu da sorunsuz çalışır.")
         return True
     b = BULUT.ayar()[0]
-    try:
-        metin, _ = BULUT.sohbet([{"role": "user", "content": "2+2 kaç eder? Yalnızca sayıyı yaz."}], sicaklik=0, max_token=200)
-        log(f"✓ Bulut öğretmen çalışıyor: {b['model']} ({b['adres']}) → yanıt: {metin[:40]!r}")
-        return True
-    except BulutHatasi as e:
-        log(f"✗ Bulut öğretmen çalışmıyor: {e}. Anahtarı kontrol edin (menü 9); yoksa veri bilgisayarda üretilir.")
-        return False
+    for deneme in range(4):   # seçilen model kaldırılmışsa listeden sıradakini dener
+        try:
+            metin, _ = BULUT.sohbet([{"role": "user", "content": "2+2 kaç eder? Yalnızca sayıyı yaz."}], sicaklik=0, max_token=2000)
+            BULUT.ardisik_hata = 0
+            log(f"✓ Bulut öğretmen çalışıyor: {BULUT.model_adi()} ({b['adres']}) → yanıt: {metin[:40]!r}")
+            return True
+        except BulutHatasi as e:
+            if "kaldırılmış" in str(e) and not BULUT.kapali:
+                continue
+            log(f"✗ Bulut öğretmen çalışmıyor: {e}. Anahtarı kontrol edin (menü 9); yoksa veri bilgisayarda üretilir.")
+            return False
+    log("✗ Bulut öğretmen: uygun model bulunamadı; veri bilgisayarda üretilecek.")
+    return False
 
 
 def main():
