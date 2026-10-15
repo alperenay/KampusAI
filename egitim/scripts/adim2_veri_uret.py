@@ -33,6 +33,10 @@ from ortak import (BULUT, SAYISAL, SIK_HARFLERI, BulutHatasi, SOKRATIK, URETILEN
                    ollama_sohbet, rastgele_tarih, sistem_istemi, veri_bolumu)
 
 KILIT = threading.Lock()
+
+
+class BulutKolAtla(Exception):
+    """Bulut kapandı: bu görev bulut kolunda değil, tam paralel yerel kolda üretilsin."""
 # Üretim biçimi değişince eski üretilmiş veri yeniden kullanılmasın diye artırılır
 VERI_SURUMU = "3"
 
@@ -359,7 +363,9 @@ def ham_kaydet(gid, model, metin, ist, bulunan, istenen):
                                             "token": (ist or {}).get("token"), "metin": (metin or "")[:30000]})
 
 
-def gorev_test(a, k, adet, rng):
+def gorev_test(a, k, adet, rng, bulut_kolu=False):
+    if bulut_kolu and not BULUT.etkin(k["ders"]):
+        raise BulutKolAtla()
     sorular, ureticiler, tok = [], set(), 0
     for i in range(adet):
         harf = rng.choice(SIK_HARFLERI)
@@ -409,6 +415,10 @@ def gorev_kavram(a, k, adet, rng):
     ciftler = []
     for b in etiketle_bol(metin, "OGRENCI_MESAJI"):
         s, y = etiket(b, "OGRENCI_MESAJI"), etiket(b, "YANIT")
+        if s and not y:   # model kapanışı yanlış yazmış olabilir: </OGRENCI_YANIT>, </YANİT> ya da hiç
+            m = re.search(r"<\s*YAN[Iİı]T\s*>\s*(.*)", b, flags=re.S | re.I)
+            if m:
+                y = re.sub(r"\s*<\s*/[^>]*>\s*$", "", m.group(1)).strip()
         if s and y and len(y) > 40:
             ciftler.append({"soru": s, "yanit": y})
     if len(ciftler) < adet:
@@ -486,7 +496,7 @@ def calistir(a, gorevler, dosya, etiket_ad, tur=1, paralel=None):
         return
     log(f"{etiket_ad}: {len(kalan)} görev (önceden biten {len(gorevler) - len(kalan)}).")
     bas = time.time()
-    tamam = hata = token = 0
+    tamam = hata = token = atlanan = 0
     with ThreadPoolExecutor(max_workers=max(1, int(paralel or a["paralel_istek"]))) as havuz:
         isler = {havuz.submit(f): i for i, f in kalan}
         for fut in as_completed(isler):
@@ -505,6 +515,9 @@ def calistir(a, gorevler, dosya, etiket_ad, tur=1, paralel=None):
                     log("DURDU:", e)
                     havuz.shutdown(cancel_futures=True)
                     raise SystemExit(1)
+            except BulutKolAtla:
+                atlanan += 1
+                continue
             except Exception as e:  # beklenmeyen ayrıştırma hataları tek görevi düşürür
                 hata += 1
                 with KILIT:
@@ -684,8 +697,9 @@ def main():
     yerel, bulut = [], []
     for k in kaz:
         adet = nt + (1 if k["anahtar"] in test_kaz else 0)   # test kazanımında bir soru teste ayrılır
-        g = ("test:" + k["anahtar"], lambda k=k, adet=adet: gorev_test(a, k, adet, random.Random(k["anahtar"])))
-        (bulut if BULUT.etkin(k["ders"]) else yerel).append(g)
+        bulutta = BULUT.etkin(k["ders"])
+        g = ("test:" + k["anahtar"], lambda k=k, adet=adet, b=bulutta: gorev_test(a, k, adet, random.Random(k["anahtar"]), bulut_kolu=b))
+        (bulut if bulutta else yerel).append(g)
     kol = None
     if bulut:
         # Bulut kolu (dakikada birkaç istek) yerel üretimle aynı anda çalışır; ekran kartı boşta beklemez
@@ -700,7 +714,10 @@ def main():
         log(f"Bulut kolu bitti ({BULUT.token:,} token kullanıldı).")
     # Bulut bir sorun yüzünden yarıda kaldıysa kalan sayısal kazanımları yerel model üretir
     if bulut:
-        calistir(a, bulut, URETILEN / "test.jsonl", "Test soruları (kalan)")
+        # Bulut kapandıysa bulut kolunun atladığı görevler burada tam paralel, yerel modelle üretilir
+        kalan = [(i, (lambda k=k, adet=adet: gorev_test(a, k, adet, random.Random(k["anahtar"]))))
+                 for k in kaz for adet in [nt + (1 if k["anahtar"] in test_kaz else 0)] for i in ["test:" + k["anahtar"]]]
+        calistir(a, kalan, URETILEN / "test.jsonl", "Test soruları (kalan, yerel)")
 
     n_analiz = a["deneme_analizi_sayisi"] if not arg.sinir else max(5, arg.sinir // 2)
     calistir(a, [(f"analiz:{n}", lambda n=n: gorev_analiz(a, n)) for n in range(n_analiz)],
