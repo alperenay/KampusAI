@@ -190,7 +190,7 @@ def ollama_sohbet(model, mesajlar, sicaklik=0.7, dusunme=False, max_token=2048, 
 
 
 # ---------------------------------------------------------------- Bulut öğretmen (isteğe bağlı)
-# OpenAI uyumlu bir servis (varsayılan: Cerebras · gpt-oss-120b). Anahtar egitim\bulut_anahtari.txt
+# OpenAI uyumlu bir servis (varsayılan: NVIDIA Build · gpt-oss-120b, ücretsiz). Anahtar egitim\bulut_anahtari.txt
 # dosyasında durur (GitHub'a gitmez). Anahtar yoksa ya da günlük kota dolarsa her şey yerel modelle sürer.
 
 class BulutHatasi(Exception):
@@ -244,7 +244,7 @@ class _Bulut:
     def _sohbet(self, mesajlar, sicaklik, max_token):
         a, anahtar = self.ayar()
         govde = {"model": a["model"], "messages": mesajlar, "temperature": sicaklik,
-                 "max_completion_tokens": max_token}
+                 "max_tokens": max_token}
         if a.get("dusunme"):
             govde["reasoning_effort"] = a["dusunme"]
         for deneme in range(4):
@@ -270,6 +270,8 @@ class _Bulut:
                     mesaj = ""
                 if e.code in (401, 403):
                     self.kapali = f"bulut anahtarı geçersiz ({e.code})"
+                elif e.code == 402 or re.search(r"credit|kredi|insufficient", mesaj, re.I):
+                    self.kapali = "bulut kredisi bitti"
                 elif e.code == 429 and re.search(r"day|daily|quota|günlük", mesaj, re.I):
                     self.kapali = "bulutun günlük kotası doldu"
                 elif e.code in (429, 500, 502, 503, 504):

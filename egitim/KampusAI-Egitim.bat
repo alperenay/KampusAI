@@ -29,7 +29,7 @@ echo   5) Paketle            (Ollama'ya kampusai + herkes icin indirilebilir dos
 echo   6) Test et            (modelleri karsilastir, rapor yazar)
 echo   7) GECE MODU          (3 - 4 - 5 - 6 sirayla, sabaha hazir)
 echo   8) Kontrol            (kurulum saglam mi?)
-echo   9) Bulut anahtari     (istege bagli: Cerebras, sayisal sorulari gpt-oss-120b yazar)
+echo   9) Bulut anahtari     (istege bagli, ucretsiz: NVIDIA, test sorularini gpt-oss-120b yazar)
 echo  10) Pro surum (12B)    (istege bagli: guclu bilgisayarlar icin, veri hazir olmali)
 echo  11) Yayinla            (testten sonra: modeli herkesin indirebilecegi yere yukle)
 echo   0) Cikis
@@ -94,7 +94,7 @@ goto bitti
 
 :anahtar
 echo.
-echo cloud.cerebras.ai adresinde ucretsiz hesap acip "API Keys" bolumunden bir anahtar olusturun.
+echo build.nvidia.com adresinde ucretsiz hesap acin ^(kart istemez^), bir modelin sayfasinda "Get API Key" ile anahtar alin.
 echo Anahtari buraya yapistirin (sag tik = yapistir). Bos birakirsaniz bulut kapatilir.
 set "KEY="
 set /p KEY=Anahtar: 

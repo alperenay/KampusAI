@@ -271,7 +271,7 @@ def gorev_test(a, k, adet, rng):
     mesajlar = [{"role": "system", "content": YAZAR_SISTEM}, {"role": "user", "content": test_istemi(k, adet, harfler)}]
     sorular, uretici = [], a["ogretmen_model"]
     if BULUT.etkin(k["ders"]):
-        # Sayısal dersler: soruları daha güçlü bulut modeli yazar; doğrulamayı yine yereldeki farklı model yapar
+        # Soruları daha güçlü bulut modeli yazar; doğrulamayı yine yereldeki farklı model yapar
         try:
             metin, ist = BULUT.sohbet(mesajlar, sicaklik=0.7, max_token=12000)
             sorular = ayristir_sorular(metin)
@@ -574,7 +574,7 @@ def main():
     if bulut:
         # Bulut kolu (dakikada birkaç istek) yerel üretimle aynı anda çalışır; ekran kartı boşta beklemez
         kol = threading.Thread(target=calistir, args=(a, bulut, URETILEN / "test.jsonl", "Test soruları (bulut)"),
-                               kwargs={"paralel": 2}, daemon=True)
+                               kwargs={"paralel": int(BULUT.ayar()[0].get("paralel", 2))}, daemon=True)
         kol.start()
     calistir(a, yerel, URETILEN / "test.jsonl", "Test soruları")
     calistir(a, [("kavram:" + k["anahtar"], lambda k=k: gorev_kavram(a, k, nk, random.Random("k" + k["anahtar"])))

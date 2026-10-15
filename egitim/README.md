@@ -22,7 +22,7 @@ kartlı bilgisayarlar için; telefonda çalışmaz.
 | Ollama: 4 paralel istek + flash attention + 8-bit önbellek | Veri üretimi 2–3 kat hızlı |
 | 2 epoch + **en iyi ara kaydı seçme** | Ezberlemeye başlamadan önceki en iyi nokta kullanılır |
 | Görsel/ses katmanları eğitilmez | Temel modelin projektörü uyumlu kalır; fotoğraf ve ses yetenekleri korunur |
-| İsteğe bağlı bulut öğretmen: Cerebras **gpt-oss-120b** | Matematik/fizik/kimya sorularını 120B'lik model yazar, bilgisayardaki farklı model doğrular |
+| İsteğe bağlı, ücretsiz bulut öğretmen: NVIDIA Build **gpt-oss-120b** | 11 dersin test sorularını 120B'lik model yazar, bilgisayardaki farklı model doğrular |
 
 Tahmini süre: veri üretimi ~6–10 saat, eğitim ~1–2 saat, paketleme ~1 saat (deneme adımı kesin süreyi söyler).
 
@@ -48,12 +48,13 @@ Gece modundan önce:
 
 ### Bulut öğretmen (isteğe bağlı, ücretsiz)
 
-1. [cloud.cerebras.ai](https://cloud.cerebras.ai) adresinde ücretsiz hesap açın ve "API Keys" bölümünden bir anahtar oluşturun.
+1. [build.nvidia.com](https://build.nvidia.com) adresinde ücretsiz hesap açın (kart istemez). Herhangi bir modelin
+   sayfasında **"Get API Key"** ile anahtar oluşturun (`nvapi-` ile başlar). Hesap 1.000 ücretsiz istek kredisiyle
+   gelir; bu, 536 kazanımın test sorularının hepsine yeter.
 2. Menüden **9) Bulut anahtarı** seçeneğini seçip anahtarı yapıştırın. Anahtar `bulut_anahtari.txt` dosyasında
    durur ve GitHub'a gönderilmez. Kit anahtarı hemen dener.
-3. Ücretsiz katmanın günlük limiti (yaklaşık 1 milyon token) sayısal soruların çoğuna yeter. Limit dolarsa,
-   anahtar hatalıysa ya da bulut üst üste 3 kez yanıt vermezse kit kendiliğinden bilgisayardaki modele geçer.
-   Gece hiçbir şey durmaz.
+3. Kredi biterse, anahtar hatalıysa ya da bulut üst üste 3 kez yanıt vermezse kit kendiliğinden bilgisayardaki
+   modele geçer. Gece hiçbir şey durmaz.
 
 Anahtar girmezseniz her şey bilgisayarınızda üretilir.
 
@@ -62,7 +63,7 @@ Anahtar girmezseniz her şey bilgisayarınızda üretilir.
 | Adım | Betik | Ne yapar | Çıktı |
 |---|---|---|---|
 | 1 | `adim1_korpus.py` | `js/data/content` notlarını okur, test sorularını ayırır | `veri/korpus.jsonl`, `veri/test_*.jsonl` |
-| 2 | `adim2_veri_uret.py` | Öğretmen modelle (Ollama `qwen3.5:9b`; varsa sayısal derslerde bulut `gpt-oss-120b`) soru-çözüm, kavram, öğretmen modu ve deneme analizi örnekleri üretir; her test sorusunu bağımsız ikinci bir çözümle doğrular | `veri/egitim.jsonl`, `veri/istatistik.json` |
+| 2 | `adim2_veri_uret.py` | Öğretmen modelle (Ollama `qwen3.5:9b`; anahtar girildiyse test sorularında bulut `gpt-oss-120b`) soru-çözüm, kavram, öğretmen modu ve deneme analizi örnekleri üretir; her test sorusunu bağımsız ikinci bir çözümle doğrular | `veri/egitim.jsonl`, `veri/istatistik.json` |
 | 3 | `adim3_egit.py` | Gemma 4 E4B'yi 4-bit QLoRA ile eğitir, her 100 adımda ara kayıt alır, en iyisini seçer | `cikti/lora/`, `rapor/egitim_gunlugu.json` |
 | 4 | `adim4_ollama.py` | Modeli birleştirir; Ollama'ya `kampusai` adıyla yükler; llama.cpp ile q4_K_M GGUF + projektör + manifest üretir | Ollama modeli, `dagitim/` |
 | 5 | `adim5_test.py` | `kampusai`, eğitilmemiş `gemma4:e4b` ve `qwen2.5:14b`'yi eğitimde hiç görülmemiş sorularla karşılaştırır | `rapor/test_raporu.md` |

@@ -10,12 +10,13 @@
   "dogrulama_dusunme": "sayisal",
 
   "bulut_ogretmen": {
-    "_not": "İsteğe bağlı. Anahtar egitim\\bulut_anahtari.txt dosyasına yazılır (menü 9). Anahtar yoksa ya da kota dolarsa her şey bilgisayarda üretilir.",
-    "adres": "https://api.cerebras.ai/v1",
-    "model": "gpt-oss-120b",
-    "dusunme": "low",
-    "dersler": ["matematik", "fizik", "kimya"],
-    "dakikada_istek": 5
+    "_not": "İsteğe bağlı, ücretsiz: NVIDIA Build (build.nvidia.com, kart istemez, 1000 istek kredisi). Anahtar egitim\\bulut_anahtari.txt dosyasına yazılır (menü 9). Anahtar yoksa ya da kredi biterse her şey bilgisayarda üretilir.",
+    "adres": "https://integrate.api.nvidia.com/v1",
+    "model": "openai/gpt-oss-120b",
+    "dusunme": "",
+    "dersler": ["matematik", "fizik", "kimya", "biyoloji", "edebiyat", "tarih", "inkilap", "cografya", "felsefe", "din", "ingilizce"],
+    "dakikada_istek": 30,
+    "paralel": 3
   },
 
   "kazanim_basina_test_sorusu": 4,
