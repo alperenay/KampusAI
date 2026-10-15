@@ -14,10 +14,14 @@ from datetime import date, timedelta
 from pathlib import Path
 
 KIT = Path(__file__).resolve().parent.parent
+# Profil: boş = ana model (herkes için, E4B) · "pro" = güçlü bilgisayarlar için 12B (menü 10).
+# Veri ortaktır; eğitim çıktıları ve raporlar profile göre ayrı klasöre yazılır.
+PROFIL = os.environ.get("KAMPUS_PROFIL", "").strip()
 VERI = KIT / "veri"
 URETILEN = VERI / "uretilen"
-CIKTI = KIT / "cikti"
-RAPOR = KIT / "rapor"
+CIKTI = KIT / ("cikti-" + PROFIL if PROFIL else "cikti")
+RAPOR = KIT / ("rapor-" + PROFIL if PROFIL else "rapor")
+DAGITIM = KIT / "dagitim"
 
 # Windows konsolunda Türkçe karakterler bozulmasın
 for _s in (sys.stdout, sys.stderr):
@@ -30,6 +34,10 @@ for _s in (sys.stdout, sys.stderr):
 def ayarlar():
     with open(KIT / "ayarlar.json", encoding="utf-8") as f:
         a = json.load(f)
+    if PROFIL:
+        if PROFIL not in (a.get("profiller") or {}):
+            raise SystemExit(f"ayarlar.json içinde '{PROFIL}' profili yok.")
+        a.update({k: v for k, v in a["profiller"][PROFIL].items() if not k.startswith("_")})
     a["icerik_klasoru"] = str((KIT / a["icerik_klasoru"]).resolve())
     return a
 

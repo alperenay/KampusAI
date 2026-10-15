@@ -1,5 +1,5 @@
 {
-  "_aciklama": "KampüsAI eğitim ayarları (RTX 5070 12 GB için en güçlü kurulum). Her alanın açıklaması README.md'de.",
+  "_aciklama": "KampüsAI eğitim ayarları. Ana model herkes içindir (telefon + bilgisayar, internetsiz). Her alanın açıklaması README.md'de.",
 
   "icerik_klasoru": "../js/data/content",
   "ollama_adres": "http://localhost:11434",
@@ -27,10 +27,10 @@
   "test_icin_ayrilan_kazanim": 100,
   "insan_test_sorusu": 120,
 
-  "temel_model": "unsloth/gemma-4-12b-it",
-  "temel_ollama_model": "gemma4:12b",
-  "yedek_temel_model": "unsloth/gemma-4-E4B-it",
-  "yedek_temel_ollama_model": "gemma4:e4b",
+  "temel_model": "unsloth/gemma-4-E4B-it",
+  "temel_ollama_model": "gemma4:e4b",
+  "mmproj_kaynak": "ggml-org/gemma-4-E4B-it-GGUF",
+  "dagitim_adi": "kampusai-e4b",
   "max_uzunluk": 2048,
   "lora_r": 16,
   "epoch": 2,
@@ -43,5 +43,20 @@
   "nicemleme": "q4_K_M",
   "goz_model": "qwen3-vl:8b",
 
-  "karsilastirilacak_modeller": ["kampusai", "gemma4:12b", "qwen2.5:14b"]
+  "karsilastirilacak_modeller": ["kampusai", "gemma4:e4b", "qwen2.5:14b"],
+
+  "hf_depo": "",
+  "ollama_kullanici": "",
+
+  "profiller": {
+    "pro": {
+      "_not": "İsteğe bağlı: güçlü ekran kartlı bilgisayarlar için daha büyük sürüm (menü 10). Telefonda çalışmaz.",
+      "temel_model": "unsloth/gemma-4-12b-it",
+      "temel_ollama_model": "gemma4:12b",
+      "mmproj_kaynak": "",
+      "dagitim_adi": "kampusai-pro-12b",
+      "ollama_model_adi": "kampusai-pro",
+      "karsilastirilacak_modeller": ["kampusai-pro", "kampusai", "gemma4:12b", "qwen2.5:14b"]
+    }
+  }
 }

@@ -19,7 +19,7 @@ import shutil
 import sys
 import time
 
-from ortak import CIKTI, KIT, RAPOR, VERI, ayarlar, baslat, jsonl_oku, log, ollama_bosalt
+from ortak import CIKTI, KIT, PROFIL, RAPOR, VERI, ayarlar, baslat, jsonl_oku, log, ollama_bosalt
 
 YEDEGE_GECILDI = 3   # çıkış kodu: model sığmadı, ayarlar küçük modele çevrildi → aynı adımı tekrar çalıştırın
 
@@ -204,6 +204,9 @@ def main():
         if arg.deneme and yedek_var:
             yedege_gec(a)
             return YEDEGE_GECILDI
+        if PROFIL == "pro":
+            raise SystemExit("12B (Pro) bu ekran kartına sığmadı. Ana model (E4B) zaten herkes için yeterli; "
+                             "Pro sürüm isteğe bağlıdır.")
         raise SystemExit("Bellek yetmedi. ayarlar.json → max_uzunluk değerini 1536 yapıp tekrar çalıştırın "
                          "(ara kayıtlar korunur). Çalışan diğer programları (oyun, tarayıcı) kapatın.")
     sure = (time.time() - bas) / 60

@@ -16,12 +16,14 @@ echo.
 echo   1) Kurulum            (bir kez, 30-60 dk, ~25 GB indirir)
 echo   2) Deneme             (20 kazanimla veri + 30 adim egitim, ~30-45 dk)
 echo   3) Veri uret          (tam, ~6-10 saat - kaldigi yerden devam eder)
-echo   4) Egit               (~2-4 saat - kaldigi yerden devam eder)
-echo   5) Ollama'ya yukle    (kampusai modeli olusur)
+echo   4) Egit               (~1-2 saat - kaldigi yerden devam eder)
+echo   5) Paketle            (Ollama'ya kampusai + herkes icin indirilebilir dosyalar)
 echo   6) Test et            (modelleri karsilastir, rapor yazar)
 echo   7) GECE MODU          (3 - 4 - 5 - 6 sirayla, sabaha hazir)
 echo   8) Kontrol            (kurulum saglam mi?)
 echo   9) Bulut anahtari     (istege bagli: Cerebras, sayisal sorulari gpt-oss-120b yazar)
+echo  10) Pro surum (12B)    (istege bagli: guclu bilgisayarlar icin, veri hazir olmali)
+echo  11) Yayinla            (testten sonra: modeli herkesin indirebilecegi yere yukle)
 echo   0) Cikis
 echo.
 set "SEC="
@@ -35,6 +37,8 @@ if "%SEC%"=="6" goto s6
 if "%SEC%"=="7" goto gece
 if "%SEC%"=="8" goto kontrol
 if "%SEC%"=="9" goto anahtar
+if "%SEC%"=="10" goto pro
+if "%SEC%"=="11" goto yayinla
 if "%SEC%"=="0" exit /b 0
 goto menu
 
@@ -49,6 +53,33 @@ exit /b 0
 REM ------------------------------------------------------------ Kurulum
 :kurulum
 call kurulum.bat
+goto bitti
+
+:pro
+call :gerekli || goto bitti
+echo.
+echo PRO SURUM: ayni veriyle 12B model egitilir ^(cikti-pro^), Ollama'ya kampusai-pro adiyla yuklenir ve test edilir.
+set "KAMPUS_PROFIL=pro"
+"%VPY%" scripts\adim3_egit.py || goto prohata
+"%VPY%" scripts\adim4_ollama.py || goto prohata
+"%VPY%" scripts\adim5_test.py || goto prohata
+set "KAMPUS_PROFIL="
+echo.
+echo PRO SURUM HAZIR. Sonuclar: rapor-pro\test_raporu.md
+goto bitti
+:prohata
+set "KAMPUS_PROFIL="
+goto hata
+
+:yayinla
+call :gerekli || goto bitti
+echo.
+echo Model herkese acik olarak yayinlanacak ^(Hugging Face, istege bagli ollama.com^).
+echo Once rapor\test_raporu.md dosyasini inceleyin. Devam etmek icin E yazin.
+set "ONAY="
+set /p ONAY=Yayinlansin mi? (E/H): 
+if /i not "%ONAY%"=="E" goto bitti
+"%VPY%" scripts\adim6_yayinla.py || goto hata
 goto bitti
 
 :anahtar
