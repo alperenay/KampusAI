@@ -38,7 +38,24 @@ def sistemi_birlestir(mesajlar):
 
 
 def bellek_hatasi(e):
-    return "out of memory" in str(e).lower() or type(e).__name__ == "OutOfMemoryError"
+    s = str(e).lower()
+    return ("out of memory" in s or "negligible gpu memory" in s or "no or negligible" in s
+            or type(e).__name__ == "OutOfMemoryError")
+
+
+def gpu_kullananlar():
+    """Ekran kartı belleğini kullanan programları günlüğe yazar (bellek yetmezse nedenini görmek için)."""
+    import subprocess
+    try:
+        cikti = subprocess.run(["nvidia-smi", "--query-compute-apps=process_name,used_memory", "--format=csv,noheader"],
+                               capture_output=True, text=True, timeout=20).stdout.strip()
+        ozet = subprocess.run(["nvidia-smi", "--query-gpu=memory.used,memory.total", "--format=csv,noheader"],
+                              capture_output=True, text=True, timeout=20).stdout.strip()
+        log(f"Ekran kartı belleği (kullanılan, toplam): {ozet}")
+        for satir in cikti.splitlines():
+            log("  ekran kartını kullanan:", satir)
+    except Exception as e:  # nvidia-smi yoksa önemli değil
+        log("nvidia-smi çalıştırılamadı:", repr(e)[:120])
 
 
 def yedege_gec(a):
@@ -195,12 +212,29 @@ def main():
     if devam:
         log("Önceki ara kayıt bulundu, kaldığı yerden devam ediliyor:", ara)
     bas = time.time()
+    gpu_kullananlar()
     try:
-        trainer.train(resume_from_checkpoint=True if devam else None)
+        try:
+            trainer.train(resume_from_checkpoint=True if devam else None)
+        except Exception as e:
+            if not bellek_hatasi(e) or arg.deneme:
+                raise
+            # Çoğu zaman başka bir program (Ollama, tarayıcı, oyun) belleği o an kullanıyordur: bir kez daha dene
+            log("Ekran kartı belleği o an yetmedi:", repr(e)[:160])
+            gpu_kullananlar()
+            log("Bellek boşaltılıp 60 sn sonra bir kez daha deneniyor...")
+            import gc
+            gc.collect()
+            torch.cuda.empty_cache()
+            ollama_bosalt()
+            time.sleep(60)
+            devam = ara.exists() and any(ara.glob("checkpoint-*"))
+            trainer.train(resume_from_checkpoint=True if devam else None)
     except Exception as e:
         if not bellek_hatasi(e):
             raise
         log("EKRAN KARTI BELLEĞİ YETMEDİ:", repr(e)[:200])
+        gpu_kullananlar()
         if arg.deneme and yedek_var:
             yedege_gec(a)
             return YEDEGE_GECILDI
