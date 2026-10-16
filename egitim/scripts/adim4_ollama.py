@@ -230,6 +230,8 @@ def main():
     DAGITIM.mkdir(parents=True, exist_ok=True)
     dag_ad = a["dagitim_adi"]
     hedef_model = DAGITIM / f"{dag_ad}-{nicem}.gguf"
+    for eski in DAGITIM.glob(f"{dag_ad}*"):   # önceki sürümün dosyaları (Windows'ta üzerine taşıma hata verir)
+        eski.unlink()
     shutil.move(str(model_gguf), hedef_model)
     hedef_mmproj = None
     if a.get("mmproj_kaynak"):
