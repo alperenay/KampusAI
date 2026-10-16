@@ -63,6 +63,7 @@
       model: visionModel,
       messages: [{ role: "user", content: customPrompt || prompt(userText), images: [image.base64] }],
       options: { temperature: 0.1, num_ctx: 8192 },
+      think: false,             // yazıya dökmek düşünme gerektirmez; açık kalırsa metin boş dönebiliyor
       signal,
       onDelta
     });

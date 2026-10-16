@@ -159,12 +159,23 @@
    * Akışlı sohbet. onDelta(metinParçası) her yeni parçada çağrılır.
    * Dönen değer: { text, stats }
    */
-  async function chat({ model, messages, options, signal, onDelta, json }) {
+  async function chat({ model, messages, options, signal, onDelta, json, think }) {
     const opts = Object.assign({}, options || {});
     delete opts.json;
     const body = { model, messages, stream: true, keep_alive: KEEP_ALIVE, options: opts };
+    /* Düşünen modeller (qwen3-vl, qwen3.5…) düşünce kısmını ayrı alanda yollar; okuma gibi işlerde
+       düşünme kapatılmazsa yanıt boş gelebiliyor ve çok uzun sürüyor */
+    if (think !== undefined) body.think = !!think;
     if (json || (options && options.json)) body.format = "json";       // yanıtın geçerli JSON olmasını zorla
-    const res = await request("/api/chat", body, signal);
+    let res;
+    try {
+      res = await request("/api/chat", body, signal);
+    } catch (e) {
+      // Düşünme ayarını desteklemeyen model ya da eski Ollama: ayarsız tekrar dene
+      if (body.think === undefined || !/think/i.test(String(e && e.message))) throw e;
+      delete body.think;
+      res = await request("/api/chat", body, signal);
+    }
 
     const reader = res.body.getReader();
     const decoder = new TextDecoder();
