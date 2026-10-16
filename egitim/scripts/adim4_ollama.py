@@ -86,8 +86,12 @@ def llamacpp_hazirla():
         surum = json.loads(r.read().decode("utf-8"))
     etiket_ad = surum["tag_name"]
     varliklar = surum.get("assets", [])
-    paket = (next((v for v in varliklar if re.search(r"bin-win-cpu-x64\.zip$", v["name"])), None)
-             or next((v for v in varliklar if re.search(r"win.*x64.*\.zip$", v["name"]) and "cuda" not in v["name"].lower()), None))
+    def uygun(ad, cpu):
+        ad = ad.lower()
+        return (ad.endswith(".zip") and "win" in ad and "x64" in ad and "arm64" not in ad
+                and (("cpu" in ad) if cpu else not any(k in ad for k in ("cuda", "vulkan", "hip", "sycl", "opencl"))))
+    paket = (next((v for v in varliklar if uygun(v["name"], True)), None)
+             or next((v for v in varliklar if uygun(v["name"], False)), None))
     if not paket:
         raise RuntimeError("llama.cpp Windows paketi bulunamadı")
     log(f"llama.cpp {etiket_ad} indiriliyor ({paket['name']})...")
@@ -160,22 +164,45 @@ def main():
     satirlar = sablon_satirlari(temel)
     log(f"Şablon yönergeleri {temel} modelinden alındı ({len(satirlar)} satır).")
 
-    ollama_bosalt()
-    from unsloth import FastModel
-    model, tokenizer = model_yukle(FastModel, model_name=str(lora), max_seq_length=int(a["max_uzunluk"]), load_in_4bit=True)
+    gguf_klasor = CIKTI / "gguf"
+    gguf_klasorleri = [gguf_klasor, CIKTI / "gguf_gguf"]   # Unsloth çıktıyı "<klasör>_gguf" içine yazabiliyor
+
+    def gguf_bul():
+        """Bu eğitimden sonra üretilmiş GGUF varsa (önceki deneme yarıda kaldıysa) onu kullanır."""
+        egitim_zamani = (lora / "adapter_model.safetensors").stat().st_mtime
+        adaylar = [f for k in gguf_klasorleri if k.exists() for f in k.rglob("*.gguf")
+                   if "mmproj" not in f.name.lower() and nicem.lower() in f.name.lower()
+                   and f.stat().st_mtime > egitim_zamani]
+        if not adaylar:
+            return None, None
+        m = max(adaylar, key=lambda f: f.stat().st_size)
+        p = next((f for k in gguf_klasorleri if k.exists() for f in k.rglob("*.gguf") if "mmproj" in f.name.lower()), None)
+        return m, p
+
+    birlesik = CIKTI / "birlesik"
+    model_gguf, mmproj = gguf_bul()
+    birlesti = ollama_tamam = False
+    if model_gguf:
+        log(f"Bu eğitimin GGUF dosyası zaten var, yeniden dönüştürülmeyecek: {model_gguf.name}")
+        model = tokenizer = None
+    else:
+        ollama_bosalt()
+        from unsloth import FastModel
+        model, tokenizer = model_yukle(FastModel, model_name=str(lora), max_seq_length=int(a["max_uzunluk"]), load_in_4bit=True)
 
     # 1) Birleştir
-    birlesik = CIKTI / "birlesik"
-    birlesti = False
     try:
+        if model is None:
+            raise StopIteration
         log("Model birleştiriliyor (16-bit; birkaç dakika ve 15-25 GB geçici disk)...")
         model.save_pretrained_merged(str(birlesik), tokenizer, save_method="merged_16bit")
         birlesti = True
+    except StopIteration:
+        pass
     except Exception as e:
         log("Birleştirme hatası:", repr(e)[:300])
 
     # 2) Bilgisayardaki Ollama için
-    ollama_tamam = False
     if birlesti:
         mf = modelfile_yaz(birlesik, ".", satirlar)
         ollama_tamam = calistir([exe, "create", ad, "-q", nicem, "-f", str(mf)], cwd=str(birlesik))
@@ -183,20 +210,16 @@ def main():
             log("Ollama doğrudan içe aktaramadı; GGUF dosyasından yüklenecek.")
 
     # 3) Herkese dağıtılacak GGUF (telefon ve bilgisayar uygulaması llama.cpp ile çalıştırır)
-    gguf_klasor = CIKTI / "gguf"
-    model_gguf, mmproj = None, None
-    if birlesti:
+    if birlesti and not model_gguf:
         try:
             model_gguf, mmproj = gguf_llamacpp(birlesik, gguf_klasor, nicem)
         except Exception as e:
             log("llama.cpp ile dönüştürme olmadı:", repr(e)[:300], "→ Unsloth ile deneniyor.")
     if not model_gguf:
         model.save_pretrained_gguf(str(gguf_klasor), tokenizer, quantization_method=nicem.lower())
-        dosyalar = sorted([f for f in gguf_klasor.rglob("*.gguf") if "mmproj" not in f.name.lower()], key=lambda f: f.stat().st_size)
-        if not dosyalar:
+        model_gguf, mmproj = gguf_bul()
+        if not model_gguf:
             raise SystemExit("GGUF dosyası üretilemedi. Yukarıdaki hata mesajını Claude'a gönderin.")
-        model_gguf = dosyalar[-1]
-        mmproj = next((f for f in gguf_klasor.rglob("*.gguf") if "mmproj" in f.name.lower()), None)
 
     if not ollama_tamam:
         mf = modelfile_yaz(model_gguf.parent, "./" + model_gguf.name, satirlar)
@@ -234,7 +257,8 @@ def main():
 
     if not arg.ara_dosyalari_tut:
         shutil.rmtree(birlesik, ignore_errors=True)
-        shutil.rmtree(gguf_klasor, ignore_errors=True)
+        for k in gguf_klasorleri:
+            shutil.rmtree(k, ignore_errors=True)
 
     # 5) Deneme
     log(f"'{ad}' Ollama'ya yüklendi. Deneme sorusu soruluyor...")
