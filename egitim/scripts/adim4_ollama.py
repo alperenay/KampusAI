@@ -21,7 +21,7 @@ import urllib.request
 import zipfile
 from pathlib import Path
 
-from ortak import CIKTI, DAGITIM, KIT, OllamaHatasi, ayarlar, baslat, log, model_hazirla, model_yukle, ollama_bosalt, ollama_istek, ollama_sohbet, sistem_istemi
+from ortak import CIKTI, DAGITIM, KIT, OllamaHatasi, ayarlar, baslat, log, model_hazirla, model_yukle, ollama_ac, ollama_bosalt, ollama_istek, ollama_sohbet, sistem_istemi
 
 
 def ollama_exe():
@@ -148,6 +148,7 @@ def main():
     arg = p.parse_args()
     baslat("adim4_ollama")
     a = ayarlar()
+    ollama_ac()
     lora = CIKTI / "lora"
     if not (lora / "adapter_config.json").exists():
         raise SystemExit(f"{lora} yok. Önce adım 3'ü (eğitim) tamamlayın.")

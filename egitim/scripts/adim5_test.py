@@ -21,7 +21,7 @@ import re
 import time
 from collections import defaultdict
 
-from ortak import (DERSLER, RAPOR, VERI, OllamaHatasi, ayarlar, cevap_harfi, etiket, jsonl_ekle, jsonl_oku, log,
+from ortak import (DERSLER, RAPOR, VERI, OllamaHatasi, ayarlar, cevap_harfi, etiket, jsonl_ekle, jsonl_oku, log, ollama_ac,
                    baslat, model_hazirla, model_yuklu_mu, ollama_istek, ollama_sohbet, sistem_istemi)
 
 HAKEM_SISTEM = ("Sen tarafsız bir HAKEM öğretmensin. Bir öğrenci sorusuna verilen yanıtı, öğretmenin referans "
@@ -70,6 +70,7 @@ def main():
     arg = p.parse_args()
     baslat("adim5_test")
     a = ayarlar()
+    ollama_ac()
     modeller = arg.model or a["karsilastirilacak_modeller"]
     mc = jsonl_oku(VERI / "test_uretilen.jsonl")
     acik = jsonl_oku(VERI / "test_insan.jsonl")

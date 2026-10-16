@@ -34,7 +34,7 @@
   "temel_ollama_model": "gemma4:e4b",
   "mmproj_kaynak": "ggml-org/gemma-4-E4B-it-GGUF",
   "dagitim_adi": "kampusai-e4b",
-  "max_uzunluk": 2048,
+  "max_uzunluk": 1536,
   "lora_r": 16,
   "epoch": 2,
   "ogrenme_hizi": 0.0002,

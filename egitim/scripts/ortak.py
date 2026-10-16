@@ -384,6 +384,46 @@ def ollama_bosalt(adres=None):
         pass
 
 
+def ollama_kapat():
+    """Eğitim süresince Ollama'yı tamamen kapatır: boştayken bile çalışan llama-server süreçleri ekran kartında
+    yer tutuyor. Sonraki adımlar (paketleme, test) ollama_ac() ile yeniden başlatır."""
+    if os.name != "nt":
+        return
+    import subprocess
+    for ad in ("ollama app.exe", "ollama.exe", "llama-server.exe"):
+        subprocess.run(["taskkill", "/im", ad, "/f"], capture_output=True)
+    time.sleep(3)
+    log("Ollama eğitim süresince kapatıldı (ekran kartı belleği eğitime kalsın).")
+
+
+def ollama_ac(adres=None):
+    """Ollama çalışmıyorsa başlatır ve hazır olmasını bekler."""
+    try:
+        ollama_istek("/api/tags", adres=adres, zaman_asimi=5)
+        return
+    except OllamaHatasi:
+        pass
+    import shutil
+    import subprocess
+    uygulama = Path(os.environ.get("LOCALAPPDATA", "")) / "Programs" / "Ollama" / "ollama app.exe"
+    log("Ollama başlatılıyor...")
+    if os.name == "nt" and uygulama.exists():
+        subprocess.Popen([str(uygulama)], close_fds=True)
+    else:
+        exe = shutil.which("ollama") or str(uygulama.with_name("ollama.exe"))
+        bayrak = getattr(subprocess, "CREATE_NO_WINDOW", 0) | getattr(subprocess, "DETACHED_PROCESS", 0)
+        subprocess.Popen([exe, "serve"], close_fds=True, creationflags=bayrak if os.name == "nt" else 0)
+    for _ in range(60):
+        time.sleep(2)
+        try:
+            ollama_istek("/api/tags", adres=adres, zaman_asimi=5)
+            log("Ollama hazır.")
+            return
+        except OllamaHatasi:
+            pass
+    raise SystemExit("Ollama başlatılamadı. Ollama uygulamasını elle açıp bu adımı tekrar çalıştırın.")
+
+
 def model_yukle(FastModel, **kw):
     """Modeli 4-bit yükler. Ekran kartına tam sığmazsa (Gemma 4'ün büyük gömme tabloları yüzünden olabiliyor)
     sığmayan katmanları sistem belleğine alarak tekrar dener: eğitim biraz yavaşlar ama çalışır."""

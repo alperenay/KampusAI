@@ -19,7 +19,7 @@ import shutil
 import sys
 import time
 
-from ortak import CIKTI, KIT, PROFIL, RAPOR, VERI, ayarlar, baslat, jsonl_oku, log, model_yukle, ollama_bosalt
+from ortak import CIKTI, KIT, PROFIL, RAPOR, VERI, ayarlar, baslat, jsonl_oku, log, model_yukle, ollama_bosalt, ollama_kapat
 
 YEDEGE_GECILDI = 3   # çıkış kodu: model sığmadı, ayarlar küçük modele çevrildi → aynı adımı tekrar çalıştırın
 
@@ -87,6 +87,8 @@ def main():
         log(f"UYARI: yalnızca {len(satirlar)} örnek var; veri üretimi tamamlanmamış olabilir.")
 
     ollama_bosalt()  # ekran kartındaki Ollama modellerini boşalt
+    if not arg.deneme:
+        ollama_kapat()  # boştaki llama-server süreçleri de ekran kartında yer tutuyor
 
     import torch
     if not torch.cuda.is_available():
@@ -226,7 +228,7 @@ def main():
             import gc
             gc.collect()
             torch.cuda.empty_cache()
-            ollama_bosalt()
+            ollama_kapat()
             time.sleep(60)
             devam = ara.exists() and any(ara.glob("checkpoint-*"))
             trainer.train(resume_from_checkpoint=True if devam else None)
