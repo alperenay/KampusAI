@@ -7,7 +7,7 @@ YKS geri sayımı ve hedef netler, yapay zekâyla haftalık plan, benzer soru ü
 | Kaynak | Nerede çalışır | Ücret | Fotoğraf |
 |---|---|---|---|
 | **Hazır sunucu** (varsayılan) | KampüsAI'ın Cloudflare sunucusu üzerinden Gemini; **hiçbir ayar gerekmez** | Ücretsiz kota, tüm kullanıcılar paylaşır | Tek model hem okur hem çözer |
-| **Yerel (Ollama)** | Bilgisayarındaki modeller; telefon da evdeki Wi-Fi'dan bunları kullanabilir | Ücretsiz, veriler cihazda kalır | qwen2.5vl okur, qwen2.5:14b çözer |
+| **Yerel (Ollama)** | Bilgisayarındaki modeller; telefon da evdeki Wi-Fi'dan bunları kullanabilir | Ücretsiz, veriler cihazda kalır | Gemma 4 hem okur hem çözer |
 | **İnternet (Gemini)** | Google'ın sunucuları; her yerde çalışır | Ücretsiz katman (dakikalık/günlük sınırlı) | Tek model hem okur hem çözer |
 | **İnternet (OpenAI-uyumlu)** | OpenRouter, Groq, OpenAI, DeepSeek… | Servise göre | Modele göre |
 
@@ -42,16 +42,18 @@ Hazır sunucu kuruluysa (bkz. bölüm 7) uygulama açılır açılmaz yapay zek�
 [Ollama](https://ollama.com) kurulu olmalı. Komut istemine (cmd) şunları yaz:
 
 ```
-ollama pull qwen2.5:14b
+ollama pull gemma4:e4b
 ollama pull bge-m3
-ollama pull qwen2.5vl:7b
 ```
 
 | Model | Görevi |
 |---|---|
-| `qwen2.5:14b` | **Beyin**: soruları yanıtlar, konuları açıklar, soruları çözer |
+| `gemma4:e4b` | **Beyin ve göz**: soruları yanıtlar, konuları açıklar, fotoğraftaki soruyu okuyup çözer |
 | `bge-m3` | **Hafıza**: denemelerini, programını, notlarını ve konu anlatımlarını bulup beyne verir |
-| `qwen2.5vl:7b` | **Göz**: fotoğraftaki soruyu okur; çözümü beyin yapar |
+
+Neden Gemma 4? Eğitimde hiç görülmemiş 215 soruluk testte çoktan seçmelide %89,5 doğru, saniyede ~180 token
+(önceki varsayılan qwen2.5:14b: %64, ~31 token/sn). Fotoğrafı da kendisi okuduğu için ayrı bir "göz" modeli
+gerekmez; ekran kartında model değişmediği için fotoğraflı sorular çok daha hızlı yanıtlanır.
 
 Windows uygulaması Ollama kapalıysa açılışta kendisi başlatmayı dener.
 

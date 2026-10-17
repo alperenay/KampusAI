@@ -14,13 +14,16 @@
      POST /sync/<kod>                                   → cihazlar arası eşitleme (SyncRoom)
 
    Kötüye kullanımı sınırlamak için:
-     • yalnızca Flash / Flash-Lite ve embedding modelleri (pahalı modeller kapalı)
+     • yalnızca Flash / Flash-Lite, Gemma 4 ve embedding modelleri (pahalı modeller kapalı)
      • IP başına dakikalık istek sınırı (RATE_CHAT / RATE_EMBED)
      • istek boyutu sınırı (fotoğraflar dahil 8 MB)
    ========================================================= */
 const UPSTREAM = "https://generativelanguage.googleapis.com/v1beta";
 const CHAT_MODEL = /^gemini-\d+(\.\d+)?-flash(-lite)?(-preview(-[\w-]+)?)?(-\d{2}-\d{4})?$/;
 const EMBED_MODEL = /^gemini-embedding-[\w.-]+$/;
+// Gemma 4 (açık model; Google sunucusunda ücretsiz kotası Flash'tan cömert): Flash kotası dolunca yedek
+const GEMMA_MODEL = /^gemma-4-[\w.-]+$/;
+const isChat = (n) => (CHAT_MODEL.test(n) || GEMMA_MODEL.test(n)) && !NOT_CHAT.test(n);
 const NOT_CHAT = /(tts|image|live|audio|transcribe|robotics)/;
 const MAX_BODY = 8 * 1024 * 1024;
 
@@ -156,7 +159,7 @@ export default {
       const data = await up.json();
       const models = (data.models || []).filter((m) => {
         const n = String(m.name || "").replace(/^models\//, "");
-        return (CHAT_MODEL.test(n) && !NOT_CHAT.test(n)) || EMBED_MODEL.test(n);
+        return isChat(n) || EMBED_MODEL.test(n);
       });
       return json(200, { models });
     }
@@ -165,7 +168,7 @@ export default {
     if (request.method !== "POST" || !m) return gerr(404, "Bulunamadı", "NOT_FOUND");
     const [, model, method] = m;
     const embed = method === "batchEmbedContents";
-    if (embed ? !EMBED_MODEL.test(model) : !CHAT_MODEL.test(model) || NOT_CHAT.test(model)) return gerr(403, "Bu model sunucuda kullanılamıyor: " + model, "PERMISSION_DENIED_MODEL");
+    if (embed ? !EMBED_MODEL.test(model) : !isChat(model)) return gerr(403, "Bu model sunucuda kullanılamıyor: " + model, "PERMISSION_DENIED_MODEL");
 
     const len = Number(request.headers.get("content-length") || 0);
     if (len > MAX_BODY) return gerr(413, "İstek çok büyük", "INVALID_ARGUMENT");

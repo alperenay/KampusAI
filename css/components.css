@@ -1010,3 +1010,8 @@ nav.crumbs > a .ico { flex: none; margin-top: 1px; }
 .tday-err p { font-size: 14px; line-height: 1.5; color: var(--text-2); }
 @media (max-width: 900px) { .tday-grid { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 420px) { .tday-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; } .tday-stat { padding: 10px; } .tday-stat__n { font-size: 19px; } .tday-now__title { font-size: 23px; } }
+
+/* Hakkında: gizlilik ve lisans listeleri */
+.about-list { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 8px; font-size: 14px; line-height: 1.5; }
+.about-list a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.about-list .badge { margin-left: 4px; }

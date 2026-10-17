@@ -1,0 +1,66 @@
+{
+  "_aciklama": "KampüsAI eğitim ayarları. Ana model herkes içindir (telefon + bilgisayar, internetsiz). Her alanın açıklaması README.md'de.",
+
+  "icerik_klasoru": "../js/data/content",
+  "ollama_adres": "http://localhost:11434",
+
+  "ogretmen_model": "qwen3.5:9b",
+  "hakem_model": "qwen3.5:9b",
+  "paralel_istek": 4,
+  "dogrulama_dusunme": false,
+
+  "bulut_ogretmen": {
+    "_not": "İsteğe bağlı, ücretsiz: NVIDIA Build (build.nvidia.com, kart istemez, 1000 istek kredisi). Anahtar egitim\\bulut_anahtari.txt dosyasına yazılır (menü 9). Anahtar yoksa ya da kredi biterse her şey bilgisayarda üretilir.",
+    "adres": "https://integrate.api.nvidia.com/v1",
+    "model": "otomatik",
+    "model_tercihleri": ["gemma-4-31b", "glm-5.3-flash", "qwen3.5-397b", "qwen3.5-122b", "kimi-k2", "glm-5.3", "deepseek-v4", "nemotron-3-super", "gpt-oss-120b"],
+    "zaman_asimi": 150,
+    "dusunme": "",
+    "dersler": ["matematik", "fizik", "kimya", "biyoloji", "edebiyat", "tarih", "inkilap", "cografya", "felsefe", "din", "ingilizce"],
+    "dakikada_istek": 30,
+    "paralel": 2
+  },
+
+  "kazanim_basina_test_sorusu": 2,
+  "kazanim_basina_kavram_sorusu": 3,
+  "sokratik_oran": 0.5,
+  "deneme_analizi_sayisi": 400,
+  "fotograf_bicimi_orani": 0.2,
+  "konu_baglami_orani": 0.25,
+  "test_icin_ayrilan_kazanim": 100,
+  "insan_test_sorusu": 120,
+
+  "temel_model": "unsloth/gemma-4-E4B-it",
+  "temel_ollama_model": "gemma4:e4b",
+  "mmproj_kaynak": "ggml-org/gemma-4-E4B-it-GGUF",
+  "dagitim_adi": "kampusai-e4b",
+  "max_uzunluk": 2048,
+  "lora_r": 16,
+  "epoch": 1,
+  "ogrenme_hizi": 0.0001,
+  "batch": 1,
+  "gradyan_biriktirme": 8,
+  "egitim_dosyasi": "egitim_v2.jsonl",
+  "kayit_adimi": 100,
+
+  "ollama_model_adi": "kampusai",
+  "nicemleme": "q4_K_M",
+  "goz_model": "qwen3-vl:8b",
+
+  "karsilastirilacak_modeller": ["kampusai", "gemma4:e4b", "qwen2.5:14b"],
+
+  "hf_depo": "",
+  "ollama_kullanici": "",
+
+  "profiller": {
+    "pro": {
+      "_not": "İsteğe bağlı: güçlü ekran kartlı bilgisayarlar için daha büyük sürüm (menü 10). Telefonda çalışmaz.",
+      "temel_model": "unsloth/gemma-4-12b-it",
+      "temel_ollama_model": "gemma4:12b",
+      "mmproj_kaynak": "",
+      "dagitim_adi": "kampusai-pro-12b",
+      "ollama_model_adi": "kampusai-pro",
+      "karsilastirilacak_modeller": ["kampusai-pro", "kampusai", "gemma4:12b", "qwen2.5:14b"]
+    }
+  }
+}

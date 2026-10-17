@@ -17,10 +17,19 @@
 (function () {
   const DEFAULTS = {
     url: "http://localhost:11434",
-    chatModel: "qwen2.5:14b",
+    chatModel: "gemma4:e4b",
     embedModel: "bge-m3",
-    visionModel: "qwen2.5vl:7b"
+    visionModel: "gemma4:e4b"
   };
+  /* Ölçüm (Ekim 2026, eğitimde görülmemiş 215 soru): gemma4:e4b çoktan seçmeli %89,5, açık uçlu %85,8,
+     ~180 token/sn; qwen2.5:14b %64,2 / %67,1, ~31 token/sn; kendi eğittiğimiz kampusai v2 %88,4 / %76,2.
+     Gemma 4 fotoğrafı kendisi okur: göz de beyin de aynı model olunca ekran kartında model değişmez
+     (fotoğraflı soru ~100 sn → ~18 sn). Ayarlar'da seçim yoksa yüklü olan ilk model kullanılır. */
+  const PREFERRED_CHAT = ["gemma4:e4b", "qwen2.5:14b"];
+  const PREFERRED_VISION = ["gemma4:e4b", "qwen3-vl:8b", "qwen2.5vl:7b"];
+  /* Eski sürümlerin varsayılanları: Ayarlar'da kayıtlıysa "seçilmemiş" sayılır (yeni varsayılana geçilsin) */
+  const OLD_DEFAULTS = { aiChatModel: ["qwen2.5:14b"], aiVisionModel: ["qwen2.5vl:7b"] };
+  let installedCache = null;             // son /api/tags yanıtı (otomatik model seçimi için)
   const KEEP_ALIVE = "15m";        // modeller bu süre boyunca bellekte kalır (ilk yanıt gecikmesi bir kez yaşanır)
   /* Hafıza modeli (bge-m3) işlemcide çalışır. Ölçüm (12 GB ekran kartı): bge-m3 ile
      qwen2.5:14b aynı anda ekran kartına sığmıyor ve her soruda birbirini bellekten
@@ -70,13 +79,26 @@
 
   async function baseUrl() { return manualUrl() || await detectUrl(); }
 
+  /** Ayarlarda model seçilmemişse: listeden yüklü olan ilk model, hiçbiri yoksa varsayılan */
+  function preferred(list, fallback) {
+    const hit = installedCache && list.find((p) => installedCache.some((n) => sameModel(n, p)));
+    return hit || fallback;
+  }
+  const autoChatModel = () => preferred(PREFERRED_CHAT, DEFAULTS.chatModel);
+  const autoVisionModel = () => preferred(PREFERRED_VISION, DEFAULTS.visionModel);
+  /** Ayarlarda kayıtlı değer; eski sürümlerin kaydettiği varsayılan değer "seçilmemiş" sayılır */
+  const chosenModel = (key, def) => {
+    const v = App.prefs.get(key, "");
+    return v && !sameModel(v, def) && !(OLD_DEFAULTS[key] || []).some((o) => sameModel(v, o)) ? v : "";
+  };
+
   function config() {
     return {
       url: manualUrl() || autoUrl || DEFAULTS.url,
       auto: !manualUrl(),
-      chatModel: App.prefs.get("aiChatModel", DEFAULTS.chatModel) || DEFAULTS.chatModel,
+      chatModel: chosenModel("aiChatModel", DEFAULTS.chatModel) || autoChatModel(),
       embedModel: App.prefs.get("aiEmbedModel", DEFAULTS.embedModel) || DEFAULTS.embedModel,
-      visionModel: App.prefs.get("aiVisionModel", DEFAULTS.visionModel) || DEFAULTS.visionModel
+      visionModel: chosenModel("aiVisionModel", DEFAULTS.visionModel) || autoVisionModel()
     };
   }
 
@@ -122,13 +144,14 @@
   async function tags(signal) {
     const res = await request("/api/tags", undefined, signal);
     const data = await res.json();
-    return (data.models || []).map((m) => m.name || m.model).filter(Boolean);
+    installedCache = (data.models || []).map((m) => m.name || m.model).filter(Boolean);
+    return installedCache;
   }
 
   /** Ayarlardaki üç modelin yüklü olup olmadığını döndürür */
   async function check(signal) {
-    const cfg = config();
     const names = await tags(signal);
+    const cfg = config();               // tags() sonrası: kampusai yüklüyse otomatik seçilsin
     const has = (m) => names.some((n) => sameModel(n, m));
     return {
       installed: names,
@@ -142,12 +165,23 @@
    * Akışlı sohbet. onDelta(metinParçası) her yeni parçada çağrılır.
    * Dönen değer: { text, stats }
    */
-  async function chat({ model, messages, options, signal, onDelta, json }) {
+  async function chat({ model, messages, options, signal, onDelta, json, think }) {
     const opts = Object.assign({}, options || {});
     delete opts.json;
     const body = { model, messages, stream: true, keep_alive: KEEP_ALIVE, options: opts };
+    /* Düşünen modeller (qwen3-vl, qwen3.5…) düşünce kısmını ayrı alanda yollar; okuma gibi işlerde
+       düşünme kapatılmazsa yanıt boş gelebiliyor ve çok uzun sürüyor */
+    if (think !== undefined) body.think = !!think;
     if (json || (options && options.json)) body.format = "json";       // yanıtın geçerli JSON olmasını zorla
-    const res = await request("/api/chat", body, signal);
+    let res;
+    try {
+      res = await request("/api/chat", body, signal);
+    } catch (e) {
+      // Düşünme ayarını desteklemeyen model ya da eski Ollama: ayarsız tekrar dene
+      if (body.think === undefined || !/think/i.test(String(e && e.message))) throw e;
+      delete body.think;
+      res = await request("/api/chat", body, signal);
+    }
 
     const reader = res.body.getReader();
     const decoder = new TextDecoder();
@@ -232,5 +266,5 @@
   /** Ayarlar değişince otomatik adresi yeniden bul */
   function resetDetection() { autoUrl = null; detecting = null; }
 
-  App.ollama = { DEFAULTS, config, baseUrl, resetDetection, sameModel, isFileOrigin, manualUrl, tags, check, chat, embed, ps, unload, OllamaError };
+  App.ollama = { DEFAULTS, PREFERRED_CHAT, PREFERRED_VISION, autoChatModel, autoVisionModel, config, baseUrl, resetDetection, sameModel, isFileOrigin, manualUrl, tags, check, chat, embed, ps, unload, OllamaError };
 })();

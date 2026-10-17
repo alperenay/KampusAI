@@ -24,20 +24,118 @@
   platform.mobile = platform.native || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   App.platform = platform;
 
-  /* ---------------- Yerel motor (Ollama) ---------------- */
+  /* ---------------- Cihaza indirilen yapay zeka (Windows ve Android uygulaması) ----------------
+     Ayarlar → "Yapay zekayı bu cihaza indir": Gemma 4 E4B, uygulamanın kendi llama.cpp motorunda
+     çalışır (Ollama gerekmez). Hazır olduğunda "yerel" motor bunu kullanır.
+       Windows : desktop/device.js (+ bge-m3 hafıza modeli), adres app://local/cihaz/…
+       Android : mobile/native/DeviceAi.java, adres http://127.0.0.1:<port> (durumdaki "adresler");
+                 hafıza araması kelime eşleştirmesiyle (telefon belleği sohbet modeline kalsın) */
+  const androidListeners = new Set();
+  window.__nativeAi = (st) => androidListeners.forEach((fn) => { try { fn(st); } catch (e) { /* yok */ } });
+  const N = () => window.KampusNative;
+  const nStatus = () => { try { return N() && N().aiStatus ? JSON.parse(N().aiStatus() || "{}") : { destek: false }; } catch (e) { return { destek: false }; } };
+  const nCall = (m) => { try { if (N() && N()[m]) N()[m](); } catch (e) { /* yok */ } return nStatus(); };
+  const bridge = (window.desktopApp && window.desktopApp.device) || (platform.native && platform.os === "android" ? {
+    phone: true,
+    status: async () => nStatus(),
+    download: async () => nCall("aiDownload"),
+    cancel: async () => nCall("aiCancel"),
+    start: async () => nCall("aiStart"),
+    remove: async () => nCall("aiRemove"),
+    onProgress: (fn) => { androidListeners.add(fn); return () => androidListeners.delete(fn); }
+  } : null);
+  let deviceState = null;
+  const DEV = "app://local/cihaz/";
+  const DEV_MODELS = { chat: "gemma4-e4b (cihaz)", embed: "bge-m3 (cihaz)" };
+  const deviceOn = () => !!(deviceState && deviceState.asama === "hazir");
+  const devBase = (which) => (deviceState && deviceState.adresler ? deviceState.adresler[which] || "" : DEV + which);
+  const devHasEmbed = () => !!devBase("hafiza");
+  const device = {
+    on: deviceOn,
+    state: () => deviceState,
+    bridge,
+    set(st) {
+      if (!st) return;
+      const was = deviceOn();
+      deviceState = st;
+      if (was !== deviceOn()) { localCache = null; document.dispatchEvent(new CustomEvent("ai:device", { detail: st })); }
+    },
+    /** İndirilmiş ama kapalıysa aç ve hazır olmasını bekle (telefonda motor ilk soruda açılır) */
+    async ensure(signal) {
+      if (!bridge || deviceOn() || !deviceState || !deviceState.kurulu || deviceState.destek === false) return deviceOn();
+      if (deviceState.asama !== "hazirlaniyor") device.set(await bridge.start());
+      const until = Date.now() + 240000;
+      while (!deviceOn() && Date.now() < until && !(signal && signal.aborted)) {
+        if (deviceState && deviceState.asama === "hata") break;
+        await new Promise((r) => setTimeout(r, 700));
+        if (bridge.phone) device.set(nStatus());
+      }
+      return deviceOn();
+    }
+  };
+  if (bridge) {
+    bridge.onProgress((st) => device.set(st));
+    const first = () => bridge.status().then((st) => device.set(st)).catch(() => {});
+    first();
+    if (bridge.phone) setTimeout(first, 1500);          // köprü sayfa yüklenirken geç bağlanabilir
+  }
+  // Cihaz motoru OpenAI-uyumlu (llama-server): internet servisinin kodu, yerel adresle
+  const devChat = Object.create(App.cloud.openai, {
+    base: { value: () => devBase("sohbet") + "/v1" },
+    headers: { value: () => ({ "Content-Type": "application/json" }) }
+  });
+  const devEmbed = Object.create(App.cloud.openai, {
+    base: { value: () => devBase("hafiza") + "/v1" },
+    headers: { value: () => ({ "Content-Type": "application/json" }) }
+  });
+  async function devHealth(which, signal) {
+    if (!devBase(which)) return false;
+    try { const r = await fetch(devBase(which) + "/health", { signal }); return r.ok; } catch (e) { return false; }
+  }
+  /** Telefonda indirilmiş motor kapalıysa yerel kullanılabilir say (ilk soruda açılır) */
+  const deviceIdle = () => !!(bridge && deviceState && deviceState.kurulu && deviceState.destek !== false &&
+    (deviceState.asama === "kurulu" || deviceState.asama === "hazirlaniyor"));
+  const deviceUsed = () => deviceOn() || deviceIdle();
+
+  /* ---------------- Yerel motor (Ollama ya da cihaza indirilen) ---------------- */
   const local = {
     id: "local",
     kind: "local",
-    name: "Ollama",
+    get name() { return deviceUsed() ? (bridge && bridge.phone ? "Bu telefon" : "Bu bilgisayar") : "Ollama"; },
+    get device() { return deviceUsed(); },
     configured: () => true,
     config() {
+      if (deviceUsed()) return { chatModel: DEV_MODELS.chat, visionModel: DEV_MODELS.chat, embedModel: devHasEmbed() ? DEV_MODELS.embed : "", direct: true, url: "" };
       const c = App.ollama.config();
-      return { chatModel: c.chatModel, visionModel: c.visionModel, embedModel: c.embedModel, direct: false, url: c.url };
+      // Göz ve beyin aynı modelse (gemma4) fotoğraf doğrudan beyne gider: ayrı okuma adımı yok
+      const direct = App.ollama.sameModel(c.chatModel, c.visionModel);
+      return { chatModel: c.chatModel, visionModel: c.visionModel, embedModel: c.embedModel, direct, url: c.url };
     },
     prepare: async () => {},
-    chat: (o) => App.ollama.chat(o),
-    embed: (model, inputs, signal) => App.ollama.embed(model, inputs, signal),
+    async chat(o) {
+      if (deviceIdle() && !(await device.ensure(o.signal))) {
+        throw new AIError("offline", (deviceState && deviceState.hata) || "cihaz");
+      }
+      return deviceOn() ? devChat.chat(o) : App.ollama.chat(o);
+    },
+    async embed(model, inputs, signal) {
+      if (deviceIdle()) await device.ensure(signal);
+      if (deviceUsed()) {
+        if (!deviceOn()) throw new AIError("offline", "cihaz");
+        return devEmbed.embed(model, inputs, signal);
+      }
+      return App.ollama.embed(model, inputs, signal);
+    },
     async check(signal) {
+      if (deviceIdle()) {                       // indirildi, ilk soruda açılacak
+        return { ok: true, chat: true, vision: true, embed: true, installed: [DEV_MODELS.chat], chatModels: [DEV_MODELS.chat] };
+      }
+      if (deviceOn()) {
+        const [chat, embed] = await Promise.all([devHealth("sohbet", signal), devHasEmbed() ? devHealth("hafiza", signal) : true]);
+        if (!chat) throw new AIError("offline", "cihaz");
+        const names = devHasEmbed() ? [DEV_MODELS.chat, DEV_MODELS.embed] : [DEV_MODELS.chat];
+        return { ok: chat, chat, vision: chat, embed, installed: names, chatModels: [DEV_MODELS.chat] };
+      }
       const r = await App.ollama.check(signal);
       return Object.assign({ ok: r.chat, chatModels: r.installed }, r);
     }
@@ -56,7 +154,7 @@
 
   /** Bu cihazda yerel modele ulaşmak mümkün mü? (telefonda yalnızca eşleştirme yapıldıysa) */
   function localPossible() {
-    if (App.ollama.manualUrl()) return true;
+    if (App.ollama.manualUrl() || deviceUsed()) return true;
     if (platform.desktop || location.protocol === "file:") return true;
     if (platform.native) return false;
     return /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
@@ -74,10 +172,11 @@
   }
 
   async function localReady(signal) {
+    if (deviceIdle()) return true;
     if (localCache && Date.now() - localCache.at < (localCache.chat ? LOCAL_OK_TTL : LOCAL_FAIL_TTL)) return localCache.chat;
     const t = withTimeout(3000, signal);
     let chat = false;
-    try { chat = (await App.ollama.check(t.signal)).chat; } catch (e) { chat = false; }
+    try { chat = deviceOn() ? await devHealth("sohbet", t.signal) : (await App.ollama.check(t.signal)).chat; } catch (e) { chat = false; }
     t.done();
     localCache = { at: Date.now(), chat };
     return chat;
@@ -137,5 +236,5 @@
     return out;
   }
 
-  App.engine = { engines, local, mode, cloud, defaultCloud, resolve, status, canFallback, invalidate, markLocalDown, localPossible, platform, AIError };
+  App.engine = { engines, local, device, mode, cloud, defaultCloud, resolve, status, canFallback, invalidate, markLocalDown, localPossible, platform, AIError };
 })();

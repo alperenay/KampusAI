@@ -1,0 +1,41 @@
+name: Android llama-server denemesi
+on:
+  push:
+    branches: [kampusai-egitim]
+    paths: ["tools/llama-android.sh", "tools/llama-android-test.sh", ".github/workflows/llama-android-check.yml"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Derle
+        run: |
+          sudo apt-get install -y -q ninja-build >/dev/null
+          mkdir -p sonuc
+          ( time bash tools/llama-android.sh "$PWD/llama-android" ) 2>&1 | tail -80 | tee sonuc/derleme.txt
+          ls -la llama-android/*/ >> sonuc/derleme.txt
+      - name: KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Emülatörde çalıştır (x86_64, küçük model)
+        timeout-minutes: 25
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          target: google_apis
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
+          script: bash tools/llama-android-test.sh
+      - name: Sonucu kaydet
+        if: always()
+        run: |
+          cp -r sonuc /tmp/sonuc && cd /tmp/sonuc
+          git init -q && git checkout -q -b ci-sonuc-llama && git add -A
+          git -c user.name=ci -c user.email=ci@users.noreply.github.com commit -qm "llama-android $GITHUB_RUN_NUMBER" || true
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-sonuc-llama

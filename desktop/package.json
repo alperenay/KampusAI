@@ -20,7 +20,7 @@
     "productName": "KampusAI",
     "copyright": "KampüsAI",
     "directories": { "output": "dist", "buildResources": "build" },
-    "files": ["main.js", "preload.js", "server.js", "build/icon.png", "app/**/*"],
+    "files": ["main.js", "preload.js", "server.js", "device.js", "build/icon.png", "app/**/*"],
     "asar": true,
     "win": {
       "target": [{ "target": "nsis", "arch": ["x64"] }],

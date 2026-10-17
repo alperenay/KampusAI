@@ -2,9 +2,10 @@
    pipeline.js — modellerin birlikte çalıştığı işlem hattı
 
    Yerel (Ollama):
-     [fotoğraf varsa]  qwen2.5vl:7b  → soruyu/şekli yazıya döker   ("göz")
+     [fotoğraf varsa]  göz modeli    → soruyu/şekli yazıya döker   ("göz"; gemma4 gibi görseli kendisi
+                                     anlayan modelde bu adım atlanır, fotoğraf doğrudan beyne gider)
      [veri açıksa]     bge-m3        → ilgili kayıtları bulur        ("hafıza")
-                       qwen2.5:14b   → hepsini birleştirip yanıtlar  ("beyin")
+                       gemma4:e4b    → hepsini birleştirip yanıtlar  ("beyin")
    İnternet (Gemini):
      [veri açıksa]     gemini-embedding-001 → ilgili kayıtlar
                        gemini-…-flash       → fotoğrafı görür ve yanıtlar
@@ -201,7 +202,7 @@
       result.models.forEach((m) => { if ((m.role === "answer" || (m.role === "vision" && cfg.direct)) && m.model === cfg.chatModel) m.model = res.model; });
     }
     // Yerel model: ne kadarı ekran kartında? (kısmen işlemcideyse yanıtlar çok yavaşlar)
-    if (engine.kind === "local") {
+    if (engine.kind === "local" && !engine.device) {
       try {
         const m = (await App.ollama.ps()).find((x) => App.ollama.sameModel(x.name, cfg.chatModel));
         if (m && m.size) result.gpu = { model: m.name, ratio: m.vram / m.size };

@@ -12,6 +12,10 @@ adb install -r "$APK"
 # Emülatörde donanım klavyesi tanımlı: ekran klavyesi yine de açılsın (gerçek telefon gibi)
 adb shell settings put secure show_ime_with_hard_keyboard 1 || true
 adb shell pm grant $APP android.permission.POST_NOTIFICATIONS || true
+# Gömülü yapay zeka motoru kurulumda çıkarılmış ve çalışıyor mu?
+APKDIR=$(adb shell pm path $APP | head -1 | sed 's/^package://; s#/base.apk.*##' | tr -d '\r')
+adb shell ls -la "$APKDIR/lib/x86_64/" || true
+adb shell run-as $APP "$APKDIR/lib/x86_64/libllama-server.so" --version || echo "yapay zeka motoru çalışmadı"
 adb shell am start -W -n $APP/.MainActivity
 sleep 20
 
