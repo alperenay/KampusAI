@@ -111,6 +111,7 @@
        gemini-3.8-flash       ilk kelime ~9-12 sn (önce uzun süre "düşünüyor")
      Flash modellerinin ücretsiz günlük kotası da Flash-Lite'a göre çok daha düşük. */
   const gver = (n) => { const m = n.match(/gemini-(\d+(?:\.\d+)?)/); return m ? parseFloat(m[1]) : 0; };
+  const isGemma = (n) => /^gemma-4-/.test(n);
 
   /**
    * Model sıralaması (ilk = otomatik seçilen, sonrakiler yoğunlukta yedek).
@@ -118,10 +119,12 @@
    * speed "smart" : kararlı Flash → kararlı Flash-Lite → önizlemeler
    */
   function rankGeminiModels(names, speed) {
-    const chat = names.filter((n) => /^gemini-/.test(n) && /-flash/.test(n) && !NOT_CHAT.test(n));
+    const chat = names.filter((n) => ((/^gemini-/.test(n) && /-flash/.test(n)) || isGemma(n)) && !NOT_CHAT.test(n));
     const lite = (n) => /lite/.test(n), pre = (n) => /preview|exp/.test(n);
-    const tier = (n) => (pre(n) ? 2 : (speed === "smart" ? !lite(n) : lite(n)) ? 0 : 1);
-    return chat.sort((a, b) => tier(a) - tier(b) || gver(b) - gver(a));
+    // Gemma 4 (açık model): Flash'ların kotası dolunca yedek. Önce hızlı olan 26B (MoE), sonra 31B.
+    const tier = (n) => (isGemma(n) ? 2 : pre(n) ? 3 : (speed === "smart" ? !lite(n) : lite(n)) ? 0 : 1);
+    const gemmaSira = (n) => (/a4b|moe/.test(n) ? 0 : 1);
+    return chat.sort((a, b) => tier(a) - tier(b) || (isGemma(a) && isGemma(b) ? gemmaSira(a) - gemmaSira(b) : gver(b) - gver(a)));
   }
 
   function pickGeminiModel(names, speed) {
@@ -138,6 +141,8 @@
     if (/api key|API_KEY/i.test(msg) || st === "UNAUTHENTICATED" || status === 401 || (status === 403 && st === "PERMISSION_DENIED")) return new AIError("auth", msg, { status });
     if (status === 429 || st === "RESOURCE_EXHAUSTED") return new AIError("quota", msg, { status, model });
     if (status === 503 || status === 502 || status === 504 || st === "UNAVAILABLE" || st === "DEADLINE_EXCEEDED") return new AIError("busy", msg, { status, model });
+    // Gemma bazen geçici "Internal error" (500) veriyor: yoğunluk gibi davran, sıradaki modeli dene
+    if (status === 500 || st === "INTERNAL") return new AIError("busy", msg, { status, model });
     if (status === 404 || st === "NOT_FOUND") return new AIError("model-missing", msg, { status, model });
     return new AIError("http", msg, { status, model });
   }
@@ -237,7 +242,7 @@
 
     /**
      * Sohbet. Model o an yoğunsa (503) ya da kotası dolduysa (429) ve model otomatik
-     * seçildiyse, sıradaki Flash modeliyle tekrar dener (en fazla 2 yedek).
+     * seçildiyse, sıradaki modelle tekrar dener (en fazla 3 yedek: diğer Flash'lar, sonra Gemma 4).
      * Dönen: { text, stats, model }  (model: yanıtı gerçekten veren model)
      */
     async chat(opts) {
@@ -256,7 +261,7 @@
       if (auto && isBusy(model)) {
         try { model = (await ranked()).find((n) => !isBusy(n)) || model; } catch (e) { /* liste yoksa aynı modelle dene */ }
       }
-      for (let attempt = 0; attempt < 3; attempt++) {
+      for (let attempt = 0; attempt < 4; attempt++) {
         tried.push(model);
         try {
           const res = await this.chatOnce(Object.assign({}, opts, { model }));
