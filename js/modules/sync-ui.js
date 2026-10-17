@@ -54,7 +54,8 @@
               '<span class="hint">' + esc(t("sync.otherDevice")) + "</span>" +
             "</div></div>" +
           '<div class="ais-test"><button class="btn btn--sm" type="button" id="syncNow"' + (App.sync.state.running ? " disabled" : "") + ">" + App.icon("refresh") + esc(t("sync.now")) + '</button><span class="hint" id="syncStatus">' + esc(statusText()) + "</span></div>" +
-          '<button class="btn btn--ghost btn--danger btn--sm" type="button" id="syncStop" style="justify-self:start">' + esc(t("sync.stop")) + "</button>";
+          '<button class="btn btn--ghost btn--danger btn--sm" type="button" id="syncStop" style="justify-self:start">' + esc(t("sync.stop")) + "</button>" +
+          '<button class="btn btn--ghost btn--danger btn--sm" type="button" id="syncWipe" style="justify-self:start">' + App.icon("trash") + esc(t("sync.wipe")) + "</button>";
         App.pairing.renderQR(body.querySelector("#syncQr"), QR_PREFIX + c).catch(() => {});
       }
       App.hydrateIcons(body);
@@ -96,6 +97,12 @@
       if (q("#syncStop")) q("#syncStop").addEventListener("click", async () => {
         if (!(await App.ui.confirm(t("sync.stopConfirm"), t("sync.stop")))) return;
         App.sync.stop();
+        paint();
+      });
+      if (q("#syncWipe")) q("#syncWipe").addEventListener("click", async () => {
+        if (!(await App.ui.confirm(t("sync.wipeConfirm"), t("sync.wipe")))) return;
+        try { await App.sync.wipe(); App.ui.toast(t("sync.wiped")); }
+        catch (e) { App.ui.toast(t("sync.error", { msg: e.message || "" }), "error"); }
         paint();
       });
     }

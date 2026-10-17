@@ -66,6 +66,7 @@
 
   /* Son sürümler (yeniden eskiye) */
   const SURUMLER = () => [
+    ["1.14.1", T("Gizlilik ve KVKK bölümü genişletildi; eşitleme verisini sunucudan silme düğmesi.", "Expanded privacy and KVKK section; button to delete sync data from the server.")],
     ["1.14.0", T("Unutma eğrisi (unutulmaya başlayan konular haritada solar, günlük göreve eklenir), zamanlı deneme simülasyonu, haftalık gelişim raporu, öğretmen için anonim sınıf görünümü.", "Forgetting curve, timed exam simulation, weekly report, anonymous class view for teachers.")],
     ["1.13.3", T("İlk sohbette \"Hafıza güncelleniyor\" beklemesi kaldırıldı: hafıza arka planda hazırlanır, cevap hemen başlar.", "No more waiting for memory indexing on the first chat; it is built in the background.")],
     ["1.13.2", T("Kalıcı imza anahtarıyla Android sürümü; sadeleştirilmiş yapay zekâ ayarları (üç seçenek ve durum satırı, ayrıntılar \"Gelişmiş ayarlar\"da).", "Permanently signed Android build; simpler AI settings.")],
@@ -96,7 +97,7 @@
     '<section class="card about-sec" id="' + id + '"><div class="card__title">' + App.icon(icon) + esc(title) + "</div>" + body + "</section>";
 
   function html() {
-    const priv = ["device", "ollama", "cloud", "data"].map((k) =>
+    const priv = ["device", "ollama", "cloud", "server", "data", "sync", "class", "rights", "osym", "ai"].map((k) =>
       "<li><b>" + esc(t("abt.priv." + k + "Title")) + "</b> " + esc(t("abt.priv." + k)) + "</li>").join("");
     const lic = LISANSLAR.map(([ad, ne, lisans, url]) =>
       "<li><b>" + link(url, ad) + "</b> — " + esc(t(ne)) + ' <span class="badge">' + esc(lisans.startsWith("abt.") ? t(lisans) : lisans) + "</span></li>").join("");

@@ -11,7 +11,7 @@
      POST /v1beta/models/<model>:generateContent
      POST /v1beta/models/<model>:batchEmbedContents    → hafıza vektörleri
      GET  /health                                       → durum
-     POST /sync/<kod>                                   → cihazlar arası eşitleme (SyncRoom)
+     POST /sync/<kod>                                   → cihazlar arası eşitleme (SyncRoom); {wipe:true} odadaki her şeyi siler
 
    Kötüye kullanımı sınırlamak ve ortak ücretsiz kotayı korumak için:
      • yalnızca Flash / Flash-Lite, Gemma 4 ve embedding modelleri (pahalı modeller kapalı)
@@ -61,6 +61,11 @@ export class SyncRoom {
   async fetch(request) {
     let body;
     try { body = await request.json(); } catch (e) { return json(400, { error: "bad json" }); }
+    if (body.wipe === true) {                                   // kullanıcı sunucudaki verisini siler (KVKK md. 11)
+      this.sql.exec("DELETE FROM recs");
+      this.sql.exec("DELETE FROM meta");
+      return json(200, { wiped: true });
+    }
     const cursor = Math.max(0, Number(body.cursor) || 0);
     const changes = Array.isArray(body.changes) ? body.changes : [];
     let seq = this.seq(), applied = 0;
