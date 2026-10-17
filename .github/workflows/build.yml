@@ -212,6 +212,7 @@ jobs:
   android-test:
     name: Android açılış testi
     needs: android
+    if: ${{ !cancelled() && needs.android.result == 'success' }}
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:

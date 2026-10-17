@@ -187,7 +187,7 @@ function olustur({ userData, bildir, log }) {
     try {
       const d = Object.fromEntries(DOSYALAR.map((x) => [x.id, yol(x)]));
       if (!sunucular.sohbet) {
-        await sunucuAc("sohbet", ["-m", d.sohbet, "--mmproj", d.goz, "-c", "8192", "-ngl", "99", "--jinja"]);
+        await sunucuAc("sohbet", ["-m", d.sohbet, "--mmproj", d.goz, "-c", "8192", "-np", "1", "-ngl", "99", "--jinja"]);
       }
       if (!sunucular.hafiza) {
         // Hafıza modeli işlemcide: ekran kartı belleği sohbet modeline kalsın

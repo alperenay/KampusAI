@@ -209,7 +209,7 @@ public class DeviceAi {
             int threads = Math.max(2, Math.min(6, Runtime.getRuntime().availableProcessors() - 2));
             List<String> cmd = new ArrayList<>();
             String[] args = { exe().getPath(), "-m", f(0).getPath(), "--mmproj", f(1).getPath(),
-                "--host", "127.0.0.1", "--port", String.valueOf(p), "-c", "4096", "-t", String.valueOf(threads),
+                "--host", "127.0.0.1", "--port", String.valueOf(p), "-c", "4096", "-np", "1", "-t", String.valueOf(threads),
                 "--jinja" };
             for (String a : args) cmd.add(a);
             ProcessBuilder pb = new ProcessBuilder(cmd).directory(dir).redirectErrorStream(true);
