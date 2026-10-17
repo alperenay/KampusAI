@@ -139,5 +139,5 @@
   window.addEventListener("hashchange", () => { if (Date.now() - last > 20000) { last = Date.now(); setTimeout(check, 1500); } });
   setTimeout(check, 4000);
 
-  App.badges = { state, check, cardHtml, BADGES };
+  App.badges = { state, check, cardHtml, BADGES, activeDays: async () => activeDays(await collect()) };
 })();
