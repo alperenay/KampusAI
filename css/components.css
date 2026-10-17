@@ -1186,3 +1186,25 @@ a.about-feat:hover { background: var(--surface-hover); }
 
 .src-quote { font-style: italic; }
 @media (max-width: 640px) { .demo-pill { font-size: 10.5px; padding: 3px 8px; } }
+
+/* ---------- Yapay zekâ ayarları: basit görünüm ---------- */
+.ais-status { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); font-size: 14px; }
+.ais-status #aisStatusText { flex: 1; min-width: 0; }
+.ais-h { font-size: 15px; margin: 6px 0 0; }
+.ais-modes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 640px) { .ais-modes { grid-template-columns: 1fr; } }
+.ais-mode { display: flex; flex-direction: column; gap: 6px; text-align: left; padding: 14px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: transparent; color: var(--text); font: inherit; cursor: pointer; }
+.ais-mode:hover { background: var(--surface-hover); }
+.ais-mode[aria-checked="true"] { border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 0 0 1px var(--accent) inset; }
+.ais-mode__title { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; }
+.ais-mode__title .ico { width: 18px; height: 18px; color: var(--accent-text); }
+.ais-mode__text { font-size: 13px; color: var(--muted); line-height: 1.45; }
+.ais-sub { padding-left: 2px; }
+.ais-privacy { display: flex; gap: 8px; align-items: flex-start; }
+.ais-privacy .ico { flex: none; width: 15px; height: 15px; margin-top: 2px; }
+.ais-adv { border-top: 1px solid var(--border); padding-top: 10px; margin-top: 4px; }
+.ais-adv > summary { cursor: pointer; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-weight: 600; font-size: 14px; list-style: none; }
+.ais-adv > summary::-webkit-details-marker { display: none; }
+.ais-adv > summary .hint { font-weight: 400; }
+.ais-adv[open] > summary { margin-bottom: 12px; }
+.ais-adv > .ais-panel { margin-top: 12px; }

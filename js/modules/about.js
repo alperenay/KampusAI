@@ -64,6 +64,7 @@
 
   /* Son sürümler (yeniden eskiye) */
   const SURUMLER = () => [
+    ["1.13.2", T("Kalıcı imza anahtarıyla Android sürümü; sadeleştirilmiş yapay zekâ ayarları (üç seçenek ve durum satırı, ayrıntılar \"Gelişmiş ayarlar\"da).", "Permanently signed Android build; simpler AI settings.")],
     ["1.13.0", T("Kaynak gösterme ve kontrolü (cevaptaki [K1] etiketleri, \"Notlara dayanıyor\" rozeti); örnek öğrenci verisiyle demo modu.", "Citations and source check ([R1] tags, \"Based on your notes\" badge); demo mode with a sample student.")],
     ["1.12.0", T("12. sınıf İngilizce tema üniteleri; Coğrafya ve Biyoloji genişletmesi (573 kazanım); Hakkında sayfası ve kaynakça.", "Grade 12 English theme units; Geography and Biology extended (573 outcomes); About page and references.")],
     ["1.11.0", T("Öğrenme haritası ve günlük görev, sesli öğretmen, seri ve rozetler.", "Learning map and daily plan, voice teacher, streaks and badges.")],
