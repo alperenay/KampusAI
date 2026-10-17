@@ -294,6 +294,8 @@ App.locales.tr = {
   "abt.priv.cloud": "Soru, fotoğraf ve (Verilerim açıksa) soruyla ilgili kayıtların Google'ın Gemini servisine gönderilir. Ücretsiz katmanda Google bu içerikleri ürünlerini geliştirmek için kullanabilir; kişisel bilgilerini soruya yazma.",
   "abt.priv.dataTitle": "Kayıtların:",
   "abt.priv.data": "Denemelerin, programın ve notların yalnızca bu cihazda saklanır. Eşitlemeyi açarsan seçtiğin hesaba yedeklenir.",
+  "abt.refTitle": "Kaynakça",
+  "abt.refIntro": "Uygulamanın dayandığı müfredat, yöntemler ve bilimsel çalışmalar: konu anlatımları MEB programına, deneme takibi ÖSYM sınav yapısına, yanlış defterinin tekrar aralıkları aralıklı tekrar araştırmalarına, yapay zeka ise aşağıdaki yöntemlere dayanır.",
   "abt.licTitle": "Açık kaynak lisansları",
   "abt.licIntro": "Uygulama aşağıdaki açık kaynak modelleri ve kütüphaneleri kullanır. Lisans metinleri bağlantılardadır.",
   "abt.lic.gemma": "cihazdaki yapay zekâ: soruları ve fotoğrafları çözer",

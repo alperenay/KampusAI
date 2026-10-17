@@ -1013,5 +1013,5 @@ nav.crumbs > a .ico { flex: none; margin-top: 1px; }
 
 /* Hakkında: gizlilik ve lisans listeleri */
 .about-list { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 8px; font-size: 14px; line-height: 1.5; }
-.about-list a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.about-list a { color: inherit; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
 .about-list .badge { margin-left: 4px; }

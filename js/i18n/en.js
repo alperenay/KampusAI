@@ -296,6 +296,8 @@ App.locales.en = {
   "abt.priv.cloud": "Your question, photo and (if My data is on) related records are sent to Google's Gemini service. On the free tier Google may use this content to improve its products; don't put personal information in questions.",
   "abt.priv.dataTitle": "Your records:",
   "abt.priv.data": "Your exams, schedule and notes are stored only on this device. If you turn on sync, they are backed up to the account you choose.",
+  "abt.refTitle": "References",
+  "abt.refIntro": "The curriculum, methods and research the app builds on: lessons follow the MEB curriculum, exam tracking follows the ÖSYM exam structure, the mistake notebook's review intervals follow spaced-repetition research, and the AI uses the methods below.",
   "abt.licTitle": "Open source licenses",
   "abt.licIntro": "The app uses the following open source models and libraries. License texts are at the links.",
   "abt.lic.gemma": "on-device AI: solves questions and photos",
