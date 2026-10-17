@@ -17,15 +17,18 @@
 (function () {
   const DEFAULTS = {
     url: "http://localhost:11434",
-    chatModel: "qwen2.5:14b",
+    chatModel: "gemma4:e4b",
     embedModel: "bge-m3",
-    visionModel: "qwen2.5vl:7b"
+    visionModel: "gemma4:e4b"
   };
-  /* Kendi eğittiğimiz model (egitim/ klasörü → "kampusai"). Bilgisayarda yüklüyse ve kullanıcı
-     Ayarlar'dan başka bir model seçmediyse ana model olarak o kullanılır. */
-  const PREFERRED_CHAT = ["kampusai"];
-  /* Fotoğraf okuma ("göz"): yazı okumada daha başarılı olan qwen3-vl yüklüyse o kullanılır */
-  const PREFERRED_VISION = ["qwen3-vl:8b"];
+  /* Ölçüm (Ekim 2026, eğitimde görülmemiş 215 soru): gemma4:e4b çoktan seçmeli %89,5, açık uçlu %85,8,
+     ~180 token/sn; qwen2.5:14b %64,2 / %67,1, ~31 token/sn; kendi eğittiğimiz kampusai v2 %88,4 / %76,2.
+     Gemma 4 fotoğrafı kendisi okur: göz de beyin de aynı model olunca ekran kartında model değişmez
+     (fotoğraflı soru ~100 sn → ~18 sn). Ayarlar'da seçim yoksa yüklü olan ilk model kullanılır. */
+  const PREFERRED_CHAT = ["gemma4:e4b", "qwen2.5:14b"];
+  const PREFERRED_VISION = ["gemma4:e4b", "qwen3-vl:8b", "qwen2.5vl:7b"];
+  /* Eski sürümlerin varsayılanları: Ayarlar'da kayıtlıysa "seçilmemiş" sayılır (yeni varsayılana geçilsin) */
+  const OLD_DEFAULTS = { aiChatModel: ["qwen2.5:14b"], aiVisionModel: ["qwen2.5vl:7b"] };
   let installedCache = null;             // son /api/tags yanıtı (otomatik model seçimi için)
   const KEEP_ALIVE = "15m";        // modeller bu süre boyunca bellekte kalır (ilk yanıt gecikmesi bir kez yaşanır)
   /* Hafıza modeli (bge-m3) işlemcide çalışır. Ölçüm (12 GB ekran kartı): bge-m3 ile
@@ -76,7 +79,7 @@
 
   async function baseUrl() { return manualUrl() || await detectUrl(); }
 
-  /** Ayarlarda model seçilmemişse: kampusai yüklüyse o, değilse varsayılan */
+  /** Ayarlarda model seçilmemişse: listeden yüklü olan ilk model, hiçbiri yoksa varsayılan */
   function preferred(list, fallback) {
     const hit = installedCache && list.find((p) => installedCache.some((n) => sameModel(n, p)));
     return hit || fallback;
@@ -84,7 +87,10 @@
   const autoChatModel = () => preferred(PREFERRED_CHAT, DEFAULTS.chatModel);
   const autoVisionModel = () => preferred(PREFERRED_VISION, DEFAULTS.visionModel);
   /** Ayarlarda kayıtlı değer; eski sürümlerin kaydettiği varsayılan değer "seçilmemiş" sayılır */
-  const chosenModel = (key, def) => { const v = App.prefs.get(key, ""); return v && !sameModel(v, def) ? v : ""; };
+  const chosenModel = (key, def) => {
+    const v = App.prefs.get(key, "");
+    return v && !sameModel(v, def) && !(OLD_DEFAULTS[key] || []).some((o) => sameModel(v, o)) ? v : "";
+  };
 
   function config() {
     return {

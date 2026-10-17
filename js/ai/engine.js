@@ -32,7 +32,9 @@
     configured: () => true,
     config() {
       const c = App.ollama.config();
-      return { chatModel: c.chatModel, visionModel: c.visionModel, embedModel: c.embedModel, direct: false, url: c.url };
+      // Göz ve beyin aynı modelse (gemma4) fotoğraf doğrudan beyne gider: ayrı okuma adımı yok
+      const direct = App.ollama.sameModel(c.chatModel, c.visionModel);
+      return { chatModel: c.chatModel, visionModel: c.visionModel, embedModel: c.embedModel, direct, url: c.url };
     },
     prepare: async () => {},
     chat: (o) => App.ollama.chat(o),

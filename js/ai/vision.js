@@ -1,9 +1,9 @@
 /* =========================================================
    vision.js — "Göz": fotoğraftaki soruyu okur
 
-   Yerel modda (Ollama) görev paylaşımı: görme modeli (qwen2.5vl)
+   Yerel modda (Ollama), göz ve beyin farklı modellerse görev paylaşımı: görme modeli
    soruyu ÇÖZMEZ; görseldeki metni, seçenekleri ve şekli eksiksiz
-   yazıya döker. Çözümü daha güçlü olan ana model (qwen2.5:14b) yapar.
+   yazıya döker. Çözümü ana model yapar.
    Gemini gibi görseli kendisi anlayan modellerde bu adım atlanır;
    fotoğraf doğrudan ana modele gider (pipeline.js).
    ========================================================= */
