@@ -1,0 +1,59 @@
+== ggml-org/gemma-4-E2B-it-GGUF
+.gitattributes 2479 None
+.src_sha 212 None
+README.md 621 None
+convert.log 650322 None
+gemma-4-E2B-it-BF16.gguf 9311305152 9311305152
+gemma-4-E2B-it-Q4_0.gguf 2841481184 2841481184
+gemma-4-E2B-it-Q8_0.gguf 4967497152 4967497152
+mmproj-gemma-4-E2B-it-BF16.gguf 986833664 986833664
+mmproj-gemma-4-E2B-it-Q8_0.gguf 557368064 557368064
+mtp-gemma-4-E2B-it-BF16.gguf 170194016 170194016
+mtp-gemma-4-E2B-it-Q4_0.gguf 59235872 59235872
+mtp-gemma-4-E2B-it-Q8_0.gguf 97817696 97817696
+license apache-2.0 gated False
+== unsloth/gemma-4-E2B-it-GGUF
+.gitattributes 3891 None
+README.md 28500 None
+config.json 5041 None
+gemma-4-E2B-it-BF16.gguf 9311305568 9311305568
+gemma-4-E2B-it-IQ4_NL.gguf 3041083488 3041083488
+gemma-4-E2B-it-IQ4_XS.gguf 2983944288 2983944288
+gemma-4-E2B-it-Q3_K_M.gguf 2536786016 2536786016
+gemma-4-E2B-it-Q3_K_S.gguf 2445652064 2445652064
+gemma-4-E2B-it-Q4_0.gguf 3041378400 3041378400
+gemma-4-E2B-it-Q4_1.gguf 3154919520 3154919520
+gemma-4-E2B-it-Q4_K_M.gguf 3106738272 3106738272
+gemma-4-E2B-it-Q4_K_S.gguf 3043934304 3043934304
+gemma-4-E2B-it-Q5_K_M.gguf 3356037216 3356037216
+gemma-4-E2B-it-Q5_K_S.gguf 3321151584 3321151584
+gemma-4-E2B-it-Q6_K.gguf 4501721184 4501721184
+gemma-4-E2B-it-Q8_0.gguf 5048352864 5048352864
+gemma-4-E2B-it-UD-IQ2_M.gguf 2290860128 2290860128
+gemma-4-E2B-it-UD-IQ3_XXS.gguf 2372993120 2372993120
+gemma-4-E2B-it-UD-Q2_K_XL.gguf 2403614816 2403614816
+gemma-4-E2B-it-UD-Q3_K_XL.gguf 2923782240 2923782240
+gemma-4-E2B-it-UD-Q4_K_XL.gguf 3184496736 3184496736
+gemma-4-E2B-it-UD-Q5_K_XL.gguf 4294176864 4294176864
+gemma-4-E2B-it-UD-Q6_K_XL.gguf 4710088800 4710088800
+gemma-4-E2B-it-UD-Q8_K_XL.gguf 5282807904 5282807904
+imatrix_unsloth.gguf_file 2818272 2818272
+mmproj-BF16.gguf 986833728 986833728
+mmproj-F16.gguf 985654080 985654080
+mmproj-F32.gguf 1903027008 1903027008
+mtp-gemma-4-E2B-it.gguf 97817664 97817664
+license apache-2.0 gated False
+== ggml-org/gemma-4-E4B-it-GGUF
+.gitattributes 2604 None
+.src_sha 212 None
+README.md 621 None
+convert.log 708072 None
+gemma-4-E4B-it-BF16.gguf 15053097408 15053097408
+gemma-4-E4B-it-Q4_0.gguf 4590807392 4590807392
+gemma-4-E4B-it-Q8_0.gguf 8031242688 8031242688
+mmproj-gemma-4-E4B-it-BF16.gguf 991552256 991552256
+mmproj-gemma-4-E4B-it-Q8_0.gguf 559874816 559874816
+mtp-gemma-4-E4B-it-BF16.gguf 171766880 171766880
+mtp-gemma-4-E4B-it-Q4_0.gguf 59678240 59678240
+mtp-gemma-4-E4B-it-Q8_0.gguf 98653280 98653280
+license apache-2.0 gated False
