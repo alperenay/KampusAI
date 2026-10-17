@@ -168,7 +168,7 @@
         } catch (e2) { found = null; }
       }
       if (found) {
-        result.sources = { hits: found.hits.map((h) => ({ label: h.label, link: h.link, kind: h.kind, score: h.score })), overview: true, method: found.method };
+        result.sources = { hits: found.hits.map((h) => ({ label: h.label, link: h.link, kind: h.kind, score: h.score, snippet: App.cite ? App.cite.snippet(h.text) : "" })), overview: true, method: found.method };
         fire("sources", result.sources);
       }
     }
@@ -180,6 +180,7 @@
     let system = systemPrompt();
     if (opts.socratic) system += "\n\n" + socraticRules();
     if (found) system += "\n\n" + dataSection(found);
+    if (found && found.hits.length && App.cite) system += "\n\n" + App.cite.instruction();
 
     let userContent = opts.text || (App.i18n.lang === "tr" ? "Fotoğraftaki soruyu çöz." : "Solve the question in the photo.");
     if (result.transcription) userContent += "\n\n" + photoBlock(result.transcription, cfg.visionModel);
@@ -203,6 +204,8 @@
     });
     result.text = res.text;
     result.stats = res.stats;
+    // Kaynak kontrolü: etiketler geçerli mi, cevap bulunan kayıtlarla ne kadar örtüşüyor?
+    if (result.sources && App.cite) result.sources.check = App.cite.analyze(result.text, found ? found.hits : []);
     if (calcUsed) result.models.push({ role: "calc", model: App.i18n.lang === "en" ? "Calculator ×" + calcUsed : "Hesap makinesi ×" + calcUsed });
     // Yoğunluk nedeniyle başka model yanıtladıysa zincirde onu göster
     if (res.model && res.model !== cfg.chatModel) {

@@ -25,7 +25,7 @@
 
   function toSpeech(md) {
     const div = document.createElement("div");
-    div.innerHTML = App.markdown.render(md || "");
+    div.innerHTML = App.markdown.render(App.cite ? App.cite.strip(md || "") : (md || ""));
     return App.a11y && App.a11y.speakable ? App.a11y.speakable(div) : div.textContent;
   }
 
@@ -41,7 +41,7 @@
     s.el.querySelector("#vSend").hidden = s.phase !== "listening";
     s.el.querySelector("#vSkip").hidden = s.phase !== "speaking";
     s.el.querySelector("#vHeard").textContent = s.heard || "";
-    s.el.querySelector("#vAnswer").innerHTML = s.answer ? App.markdown.render(s.answer) : "";
+    s.el.querySelector("#vAnswer").innerHTML = s.answer ? App.markdown.render(App.cite ? App.cite.strip(s.answer) : s.answer) : "";
   }
 
   function listen() {
