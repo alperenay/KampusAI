@@ -33,6 +33,7 @@ jobs:
   # Yoksa atlanır; uygulamalar o zaman kullanıcının kendi anahtarıyla çalışır.
   server:
     name: Yapay zeka sunucusu
+    if: ${{ github.ref == 'refs/heads/main' }}   # başka dallarda yalnızca deneme derlemesi: yayın yok
     runs-on: ubuntu-latest
     continue-on-error: true
     outputs:
@@ -94,6 +95,7 @@ jobs:
   pages:
     name: GitHub Pages'e yayınla
     needs: web
+    if: ${{ github.ref == 'refs/heads/main' }}   # başka dallarda yalnızca deneme derlemesi: yayın yok
     runs-on: ubuntu-latest
     # Pages henüz açılmadıysa diğer sürümler yine yayınlansın
     continue-on-error: true
@@ -288,6 +290,7 @@ jobs:
   release:
     name: Sürümü yayınla
     needs: [android, windows]
+    if: ${{ github.ref == 'refs/heads/main' }}   # başka dallarda yalnızca deneme derlemesi: yayın yok
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
