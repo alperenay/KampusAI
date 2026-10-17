@@ -26,3 +26,7 @@ egitim/yayin.json
 egitim/unsloth_compiled_cache/
 egitim/rapor/yks_cevaplar/
 egitim/veri/yks/
+
+# Android yayın imza anahtarı (asla repoya eklenmez; GitHub gizli değerlerinde durur)
+imza-anahtari/
+*.jks
