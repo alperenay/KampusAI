@@ -311,7 +311,9 @@ public class MainActivity extends BridgeActivity {
 
         /* ---- Yapay zekayı bu telefona indir ---- */
         @JavascriptInterface public String aiStatus() { return ai == null ? "{}" : ai.status().toString(); }
-        @JavascriptInterface public void aiDownload() { if (ai != null) ai.download(); }
+        @JavascriptInterface public void aiDownload() { if (ai != null) ai.download(null); }
+        /** "tam" (Gemma 4 E4B) ya da "hafif" (Gemma 4 E2B) */
+        @JavascriptInterface public void aiDownloadVariant(String v) { if (ai != null) ai.download(v); }
         @JavascriptInterface public void aiCancel() { if (ai != null) ai.cancel(); }
         @JavascriptInterface public void aiStart() { if (ai != null) ai.startAsync(); }
         @JavascriptInterface public void aiRemove() { if (ai != null) new Thread(ai::remove, "ai-remove").start(); }
