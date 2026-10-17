@@ -1161,3 +1161,28 @@ a.about-feat:hover { background: var(--surface-hover); }
 .about-feat small { display: block; color: var(--muted); font-size: 12.5px; margin-top: 2px; }
 .about-h { font-size: 14px; margin: 14px 0 0; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
 .about-hero img { background: #F7F5EF; padding: 6px; }
+
+/* ---------- Kaynak gösterme ve kontrolü ---------- */
+.md a.cite { display: inline-grid; place-items: center; min-width: 18px; height: 18px; padding: 0 4px; margin-left: 2px; border-radius: 9px; background: var(--accent-soft); color: var(--accent-text); font-size: 11px; font-weight: 700; line-height: 1; text-decoration: none; vertical-align: super; }
+.md a.cite:hover { background: var(--accent); color: #fff; }
+.src-check { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin: 8px 0 0; padding: 6px 10px; border-radius: var(--radius-sm); font-size: 13px; border: 1px solid var(--border); width: fit-content; max-width: 100%; }
+.src-check .ico { width: 15px; height: 15px; }
+.src-check span, .src-check small { color: var(--muted); }
+.src-check--good { border-color: color-mix(in srgb, var(--good) 55%, transparent); background: var(--good-soft); }
+.src-check--good .ico, .src-check--good b { color: var(--good-text); }
+.src-check--partial { border-color: color-mix(in srgb, var(--accent) 45%, transparent); background: var(--accent-soft); }
+.src-check--partial .ico, .src-check--partial b { color: var(--accent-text); }
+.src-check--low, .src-check--none { border-color: color-mix(in srgb, var(--warn) 55%, transparent); background: color-mix(in srgb, var(--warn) 12%, transparent); }
+.src-check--low .ico, .src-check--none .ico { color: var(--warn); }
+.src-help { margin: 4px 12px 0; }
+.src-list li { align-items: flex-start; }
+.src-list li.is-used .ico { color: var(--good-text); }
+.src-main { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 6px; min-width: 0; flex: 1; }
+.src-tag { font-size: 11px; font-weight: 700; color: var(--accent-text); background: var(--accent-soft); border-radius: 6px; padding: 0 5px; }
+.src-used { font-size: 11px; color: var(--good-text); }
+.src-snip { flex-basis: 100%; color: var(--muted); font-size: 12px; line-height: 1.4; white-space: normal; }
+.demo-pill { white-space: nowrap; border: 1px solid color-mix(in srgb, var(--warn) 70%, transparent); background: color-mix(in srgb, var(--warn) 22%, var(--surface-solid)); color: var(--text); font: inherit; font-size: 12px; font-weight: 700; letter-spacing: .04em; padding: 4px 12px; border-radius: var(--radius-pill); cursor: pointer; }
+@media print { .demo-pill { display: none; } }
+
+.src-quote { font-style: italic; }
+@media (max-width: 640px) { .demo-pill { font-size: 10.5px; padding: 3px 8px; } }

@@ -64,6 +64,7 @@
 
   /* Son sürümler (yeniden eskiye) */
   const SURUMLER = () => [
+    ["1.13.0", T("Kaynak gösterme ve kontrolü (cevaptaki [K1] etiketleri, \"Notlara dayanıyor\" rozeti); örnek öğrenci verisiyle demo modu.", "Citations and source check ([R1] tags, \"Based on your notes\" badge); demo mode with a sample student.")],
     ["1.12.0", T("12. sınıf İngilizce tema üniteleri; Coğrafya ve Biyoloji genişletmesi (573 kazanım); Hakkında sayfası ve kaynakça.", "Grade 12 English theme units; Geography and Biology extended (573 outcomes); About page and references.")],
     ["1.11.0", T("Öğrenme haritası ve günlük görev, sesli öğretmen, seri ve rozetler.", "Learning map and daily plan, voice teacher, streaks and badges.")],
     ["1.10.0", T("Puan ve hedef bölüm, hesap makinesi, sunucu kota koruması, hafif (E2B) model.", "Score & target, calculator, server quota protection, light (E2B) model.")],
@@ -101,7 +102,8 @@
 
     return '<div class="page about-page">' +
       '<div class="page-head"><div><h1>' + esc(t("abt.title")) + "</h1><p>" + esc(t("abt.intro")) + "</p></div>" +
-        '<div class="page-head__actions"><a class="btn" href="#/hakkinda/kaynakca">' + App.icon("book") + esc(t("abt.refTitle")) + "</a></div></div>" +
+        '<div class="page-head__actions"><a class="btn" href="#/hakkinda/kaynakca">' + App.icon("book") + esc(t("abt.refTitle")) + "</a>" +
+        '<button class="btn btn--ghost" type="button" id="abtDemo">' + App.icon("sparkle") + esc(App.prefs.get("demoMode", false) ? T("Demo verisini sil", "Remove demo data") : T("Demo verisi yükle", "Load demo data")) + "</button></div></div>" +
 
       card("abt-proje", "info", T("Proje", "Project"),
         '<div class="about-hero"><img src="assets/brand/logo.png" alt="KampüsAI" width="72" height="72"><div>' +
@@ -122,6 +124,8 @@
           "The downloaded Gemma 4 model works offline; online mode uses Google Gemini. You choose \"Privacy first\" or \"Accuracy first\" on first run and can change it in Settings.")) + "</li>" +
         "<li><b>" + esc(T("Notlardan cevap (RAG):", "Answers from notes (RAG):")) + "</b> " + esc(T("Asistan önce ilgili konu notunu, denemelerini ve yanlışlarını bulur, sonra bunları okuyarak cevap verir; kullandığı notlar cevabın altında görünür.",
           "The assistant first finds the related lesson notes, exams and mistakes, then answers from them; the notes it used are shown under the answer.")) + "</li>" +
+        "<li><b>" + esc(T("Kaynak gösterme:", "Citations:")) + "</b> " + esc(T("Cevapta notlardan gelen her bilginin yanında [K1] gibi bir etiket bulunur; etikete dokununca o konu açılır. Cevabın altındaki rozet, cevabın ne kadarının bulunan notlarla örtüştüğünü gösterir; notlarla az örtüşen cevaplarda \"kontrol et\" uyarısı çıkar.",
+          "Facts taken from the notes carry a tag like [R1] that opens that lesson. A badge under the answer shows how much of it matches the retrieved notes and warns when it barely does.")) + "</li>" +
         "<li><b>" + esc(T("Ölçerek seçtik:", "Chosen by measuring:")) + "</b> " + esc(T("Kendi eğittiğimiz KampüsAI modellerini, eğitimde hiç görmediği 215 soruyla ve gerçek YKS sorularıyla ölçtük; temel Gemma 4 daha iyi sonuç verdiği için uygulamada o kullanılıyor.",
           "We tested our own fine-tuned models on 215 unseen questions and real YKS questions; base Gemma 4 scored better, so the app uses it.")) + "</li>" +
         "</ul>" + '<p class="hint">' + esc(t("abt.ai")) + "</p>") +
@@ -140,6 +144,8 @@
   function render(view, params) {
     view.innerHTML = html();
     App.hydrateIcons(view);
+    const db = view.querySelector("#abtDemo");
+    if (db && App.demo) db.addEventListener("click", () => App.demo.toggle());
     const target = params && params[0] === "kaynakca" ? view.querySelector("#kaynakca") : null;
     if (target) requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
   }

@@ -201,11 +201,30 @@
 
   function sourcesHtml(src) {
     if (!src) return "";
-    const items = ['<li>' + App.icon("chart") + "<span>" + esc(t("ai.src.overview")) + "</span></li>"].concat(src.hits.map((h) =>
-      '<li>' + App.icon(h.kind === "exam" ? "chart" : h.kind === "schedule" ? "calendar" : h.kind === "note" ? "note" : h.kind === "lesson" ? "book" : h.kind === "quiz" ? "quiz" : h.kind === "mistake" ? "bookmark" : h.kind === "feynman" ? "mic" : "checkCircle") +
-      '<a href="' + esc(h.link) + '">' + esc(h.label) + "</a>" +
-      '<span class="src-score" title="' + esc(t("ai.src.score")) + '">' + Math.round(h.score * 100) + "%</span></li>"));
-    return '<details class="msg__details"><summary>' + App.icon("search") + esc(t("ai.src.title", { n: src.hits.length + 1 })) + "</summary>" +
+    const chk = src.check;
+    const kindIcon = (k) => k === "exam" ? "chart" : k === "schedule" ? "calendar" : k === "note" ? "note" : k === "lesson" ? "book" : k === "quiz" ? "quiz" : k === "mistake" ? "bookmark" : k === "feynman" ? "mic" : "checkCircle";
+    const tag = App.i18n.lang === "en" ? "R" : "K";
+    const items = ['<li>' + App.icon("chart") + "<span>" + esc(t("ai.src.overview")) + "</span></li>"].concat(src.hits.map((h, i) => {
+      const used = chk && chk.used && chk.used[i];
+      return '<li class="' + (used ? "is-used" : "") + '">' + App.icon(kindIcon(h.kind)) +
+        '<span class="src-main"><span class="src-tag">' + tag + (i + 1) + "</span>" +
+        '<a href="' + esc(h.link) + '">' + esc(h.label) + "</a>" +
+        (used ? '<span class="src-used">' + esc(App.i18n.lang === "en" ? "used" : "kullanıldı") + "</span>" : "") +
+        ((chk && chk.quotes && chk.quotes[i]) ? '<small class="src-snip src-quote">“' + esc(chk.quotes[i]) + '”</small>' : h.snippet ? '<small class="src-snip">' + esc(h.snippet) + "</small>" : "") + "</span>" +
+        '<span class="src-score" title="' + esc(t("ai.src.score")) + '">' + Math.round(h.score * 100) + "%</span></li>";
+    }));
+    let badge = "";
+    if (chk && App.cite) {
+      const pct = chk.checked ? " · %" + Math.round(chk.ratio * 100) : "";
+      const extra = chk.invalid ? " " + (App.i18n.lang === "en" ? "(" + chk.invalid + " invalid citation removed)" : "(" + chk.invalid + " geçersiz kaynak etiketi temizlendi)") : "";
+      badge = '<p class="src-check src-check--' + chk.status + '" title="' + esc(App.cite.help(chk.status)) + '">' +
+        App.icon(chk.status === "good" ? "checkCircle" : chk.status === "partial" ? "info" : "eye") +
+        "<b>" + esc(App.cite.label(chk.status)) + "</b>" +
+        (chk.cited.length ? "<span>" + esc((App.i18n.lang === "en" ? "cited: " : "kaynak: ") + chk.cited.map((n) => tag + n).join(", ")) + "</span>" : "") +
+        "<span>" + esc(pct) + "</span>" + (extra ? "<small>" + esc(extra) + "</small>" : "") + "</p>";
+    }
+    return badge + '<details class="msg__details"><summary>' + App.icon("search") + esc(t("ai.src.title", { n: src.hits.length + 1 })) + "</summary>" +
+      (chk ? '<p class="hint src-help">' + esc(App.cite.help(chk.status)) + "</p>" : "") +
       '<ul class="src-list">' + items.join("") + "</ul></details>";
   }
 
@@ -252,7 +271,7 @@
         esc(t("ai.readFromPhoto")) + "</summary><div class=\"md\">" + App.markdown.render(msg.transcription || msg.visionLive) + "</div></details>");
     }
     (msg.warnings || []).forEach((w) => parts.push('<p class="msg__warn">' + App.icon(w.code === "fallback" ? "refresh" : "search") + esc(t("ai.warn." + w.code, { model: w.model })) + "</p>"));
-    if (msg.text) parts.push('<div class="md">' + App.markdown.render(msg.text) + "</div>");
+    if (msg.text) parts.push('<div class="md">' + (App.cite ? App.cite.decorate(App.markdown.render(msg.text), msg.sources) : App.markdown.render(msg.text)) + "</div>");
     if (msg.pending) parts.push(stageHtml(msg));
     if (msg.stopped) parts.push('<p class="msg__note">' + esc(t("ai.stopped")) + "</p>");
     if (msg.interrupted && !msg.pending && !msg.error) {
@@ -553,7 +572,7 @@
       if (!c) return;
       const msg = c.messages.find((m) => m.id === act.dataset.mid);
       if (a === "copy" && msg) {
-        try { await navigator.clipboard.writeText(msg.text); App.ui.toast(t("ai.copied")); }
+        try { await navigator.clipboard.writeText(App.cite ? App.cite.strip(msg.text) : msg.text); App.ui.toast(t("ai.copied")); }
         catch (err) { App.ui.toast(t("ai.copyFailed"), "error"); }
       } else if (a === "to-mistakes" && msg) {
         const idx = c.messages.indexOf(msg);

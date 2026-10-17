@@ -135,6 +135,7 @@
   /** Bir öğenin okunacak düz metni (formüller sese çevrilir, tablolar satır satır) */
   function speakable(el) {
     const c = el.cloneNode(true);
+    c.querySelectorAll(".cite").forEach((k) => k.remove());   // kaynak etiketleri okunmaz
     c.querySelectorAll("[data-tex]").forEach((k) => {
       if (!k.isConnected && !c.contains(k)) return;
       k.replaceWith(document.createTextNode(" " + texToSpeech(k.getAttribute("data-tex"), App.i18n.lang) + " "));
