@@ -148,6 +148,7 @@
           '<textarea class="composer__input" id="composerInput" rows="1" placeholder="' + esc(placeholder) + '" aria-label="' + esc(t("ai.inputLabel")) + '">' + esc(draft.text) + "</textarea>" +
           '<button class="icon-btn icon-btn--sm composer__toggle" type="button" data-act="data" aria-pressed="' + useData + '" title="' + esc(useData ? t("ai.dataOn") : t("ai.dataOff")) + '">' + App.icon("database") + "</button>" +
           '<button class="icon-btn icon-btn--sm composer__toggle composer__soc" type="button" data-act="socratic" aria-pressed="' + socratic + '" title="' + esc(socratic ? t("soc.on") : t("soc.off")) + '">' + App.icon("compass") + "</button>" +
+          '<button class="icon-btn icon-btn--sm composer__voice" type="button" data-act="voice" title="' + esc(App.i18n.lang === "en" ? "Voice teacher (talk hands-free)" : "Sesli öğretmen (konuşarak çalış)") + '">' + App.icon("mic") + "</button>" +
           '<button class="composer__model" type="button" data-act="model" data-ai-pill title="' + esc(statusText()) + '">' +
             '<span class="dot dot--' + dotClass() + '" data-ai-dot></span><span class="composer__model-name" data-ai-model>' + esc(shortModel(curCfg().chatModel)) + "</span>" + App.icon("chevronD") + "</button>" +
           (busyHere
@@ -513,6 +514,7 @@
       if (!act) return;
       const a = act.dataset.act;
       if (a === "attach") fileInput.click();
+      else if (a === "voice") { if (App.voice) App.voice.open(); }
       else if (a === "unattach") { draft.image = null; const p = view.querySelector("#imgPreview"); p.hidden = true; p.innerHTML = ""; grow(); }
       else if (a === "data") {
         useData = !useData;

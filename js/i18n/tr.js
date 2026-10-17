@@ -462,6 +462,7 @@ App.locales.tr = {
   "nav.focus": "Odak Sayacı",
   "nav.score": "Puan ve Hedef",
   "nav.calc": "Hesap Makinesi",
+  "nav.map": "Öğrenme Haritası",
   "sync.title": "Cihazlar arası eşitleme",
   "sync.on": "Açık",
   "sync.intro": "Telefonunda, bilgisayarında ve tabletinde aynı denemeleri, programı, notları, sohbetleri, testleri ve yanlış defterini görmek için cihazlarını eşitle.",
