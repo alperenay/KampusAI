@@ -10,11 +10,6 @@ on:
     branches: [main]
     paths-ignore: ["**.md"]
   workflow_dispatch:
-    inputs:
-      test_rotation:
-        description: "Android imza anahtarı döndürmeyi geçici anahtarla dene"
-        type: boolean
-        default: false
 
 permissions:
   contents: write
@@ -206,12 +201,11 @@ jobs:
           rm -f app/src/main/jniLibs/SURUM
           ls -laR app/src/main/jniLibs || echo "yapay zeka motoru yok: telefonda indirme düğmesi 'desteklenmiyor' gösterir"
           ./gradlew assembleRelease --no-daemon --stacktrace
-      # İmza: tools/sign-apk.sh (yayın anahtarı gizli değerlerde ise v3 anahtar döndürme; yoksa eski anahtar)
+      # İmza: tools/sign-apk.sh (kalıcı yayın anahtarı GitHub gizli değerlerinde)
       - name: APK'yı imzala
         env:
           KS_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
           KS_PASS: ${{ secrets.ANDROID_KEYSTORE_PASS }}
-          TEST_ROTATION: ${{ inputs.test_rotation && '1' || '' }}
         run: bash tools/sign-apk.sh mobile/android/app/build/outputs/apk/release/app-release-unsigned.apk "KampusAI-$APP_VERSION.apk"
       - uses: actions/upload-artifact@v4
         with:
@@ -343,7 +337,7 @@ jobs:
           **Windows:** \`KampusAI-Kurulum-$APP_VERSION.exe\` dosyasını indirip çalıştır.
           Uygulama henüz yeni ve kod imzası olmadığı için Windows "**Windows kişisel bilgisayarınızı korudu**" diyebilir: **Ek bilgi → Yine de çalıştır**. Bu bir virüs uyarısı değil, "bu yayımcıyı henüz tanımıyorum" uyarısıdır. Kaynak kodun tamamı bu sayfada açık.
 
-          **Android:** \`KampusAI-$APP_VERSION.apk\` dosyasını telefondan indirip aç. İlk seferde "bilinmeyen kaynaklardan yükleme" izni istenir. Yeni sürüm eskisinin üzerine kurulur, verilerin silinmez.
+          **Android:** \`KampusAI-$APP_VERSION.apk\` dosyasını telefondan indirip aç. İlk seferde "bilinmeyen kaynaklardan yükleme" izni istenir. Bundan sonraki sürümler eskisinin üzerine kurulur, verilerin silinmez. (1.13.0 ve öncesinden geliyorsan bir kereliğine: Ayarlar → **Yedekle**, eski uygulamayı kaldır, yenisini kur, yedeği geri yükle.)
           Google Play Protect "**Uygulama engellendi**" ya da "Güvenli olmayabilir" derse: **Diğer ayrıntılar → Yine de yükle**. Yalnızca "Anladım" düğmesi görünüyorsa: Play Store → sağ üstte profil → **Play Protect** → ⚙ → "Uygulamaları Play Protect ile tara"yı kurulum süresince kapat, kurduktan sonra yeniden aç. Uygulama Google Play dışından dağıtıldığı için bu uyarı çıkar; uygulama yalnızca kamera, mikrofon ve bildirim izni ister.
 
           **İnternet tarayıcısından (kurulumsuz):** https://$OWNER.github.io/$REPO/ — Android'de Chrome menüsünden **Ana ekrana ekle** de kullanılabilir; hiçbir uyarı çıkmaz (cihazdaki yapay zekâ hariç, internet modu çalışır).

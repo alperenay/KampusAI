@@ -9,7 +9,7 @@ set -x
 APP=com.dersasistani.app
 APK=$(ls apk/*.apk | head -1)
 # Güncelleme testi: önce yayındaki son sürümü kur, sonra yenisini üzerine kur
-# (imza anahtarı değişse bile v3 anahtar döndürmeyle güncelleme olmalı, veriler kalmalı)
+# (1.13.0 ve öncesi rastgele anahtarla imzalı olduğu için geçiş sürümünde BAŞARISIZ beklenir; sonrasında başarılı olmalı)
 OLD_URL=$(curl -s "https://api.github.com/repos/${GITHUB_REPOSITORY:-alperenay/ders-asistani}/releases/latest" | grep -o '"browser_download_url": *"[^"]*\.apk"' | head -1 | cut -d'"' -f4)
 if [ -n "$OLD_URL" ] && curl -sL -o old.apk "$OLD_URL" && adb install old.apk; then
   echo "ESKİ SÜRÜM KURULDU: $OLD_URL"

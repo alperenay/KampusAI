@@ -10,7 +10,8 @@ Uygulama Google Play ve Microsoft Store dışından indirildiğinde iki uyarı �
 ## Yapılanlar (kodda)
 
 - **Android sürüm (release) derlemesi:** APK artık hata ayıklanabilir (debuggable) değil. Play Protect bunu riskli sayıyordu.
-- **Kendi imza anahtarımız:** `tools/sign-apk.sh`, GitHub gizli değerlerinde `ANDROID_KEYSTORE_B64` ve `ANDROID_KEYSTORE_PASS` varsa APK'yı `CN=KampusAI` anahtarıyla imzalar. Eski sürümler herkese açık bir hata ayıklama anahtarıyla imzalı olduğu için **APK İmza Şeması v3 anahtar döndürme** kullanılır: telefonda kurulu eski sürümün üzerine kurulur, veriler silinmez (Android 9 ve üstü).
+- **Kendi kalıcı imza anahtarımız:** `tools/sign-apk.sh`, GitHub gizli değerlerinde `ANDROID_KEYSTORE_B64` ve `ANDROID_KEYSTORE_PASS` varsa APK'yı `CN=KampusAI` anahtarıyla imzalar.
+- **Bulunan hata:** 1.13.0 ve öncesindeki her APK, derleme sunucusunda **her seferinde yeniden üretilen rastgele bir hata ayıklama anahtarıyla** imzalanmıştı (1.9.0, 1.11.0, 1.12.1 ve 1.13.0'ın imzaları birbirinden farklı). Bu yüzden yeni sürüm eskisinin üzerine kurulamıyordu ve Google her sürümü "hiç görmediği bir geliştiriciden" sayıyordu. Artık her sürüm aynı anahtarla imzalanacak. Eski bir sürümden geçişte **bir kereliğine**: Ayarlar → Yedekle → eski uygulamayı kaldır → yenisini kur → yedeği geri yükle.
 - **Windows kod imzası (isteğe bağlı):** `WIN_CSC_LINK` (.pfx, base64) ve `WIN_CSC_KEY_PASSWORD` gizli değerleri eklenirse kurulum dosyası otomatik imzalanır.
 - **Microsoft Store paketi (isteğe bağlı):** Repo değişkenlerine (Settings → Secrets and variables → Actions → **Variables**) `MSSTORE_IDENTITY_NAME`, `MSSTORE_PUBLISHER`, `MSSTORE_PUBLISHER_NAME` girilince derleme bir `.appx` paketi de üretir (Actions → derleme → "msstore").
 - **Sürüm notu:** Uyarı çıkarsa ne yapılacağı ve kurulumsuz web sürümü adım adım yazıldı.
