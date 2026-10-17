@@ -465,6 +465,7 @@ App.locales.en = {
   "nav.score": "Score & Target",
   "nav.calc": "Calculator",
   "nav.map": "Learning Map",
+  "nav.about": "About & References",
   "sync.title": "Sync across devices",
   "sync.on": "On",
   "sync.intro": "Sync your devices to see the same exams, schedule, notes, chats, tests and mistake notebook on your phone, computer and tablet.",
