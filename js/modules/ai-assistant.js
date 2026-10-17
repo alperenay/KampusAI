@@ -186,7 +186,7 @@
     );
   }
 
-  const STAGE_ICON = { vision: "eye", memory: "search", answer: "sparkle" };
+  const STAGE_ICON = { vision: "eye", memory: "search", answer: "sparkle", calc: "calc" };
 
   function stageHtml(msg) {
     const secs = Math.max(0, Math.round((Date.now() - (msg.startedAt || Date.now())) / 1000));

@@ -186,11 +186,17 @@
     return chat;
   }
 
+  /** Otomatik modda öncelik: "cihaz" (gizlilik önce, varsayılan) | "internet" (doğruluk önce). İlk açılışta sorulur. */
+  const priority = () => (App.prefs.get("aiOncelik", "cihaz") === "internet" ? "internet" : "cihaz");
+  const online = () => navigator.onLine !== false;
+
   /** Bu soru için kullanılacak motoru seçer */
   async function resolve(signal) {
     const m = mode();
     if (m === "local") return local;
     if (m === "cloud") return cloud();
+    // Doğruluk önce: internet varsa internet servisi (olmazsa aşağıdaki yerel yol)
+    if (priority() === "internet" && online() && cloud().configured()) return cloud();
     if (localPossible()) {
       if (await localReady(signal)) return local;
       if (cloud().configured()) return cloud();
@@ -201,6 +207,22 @@
 
   /** Otomatik modda yerel motor yarıda düşerse internete geçilebilir mi? */
   const canFallback = (engine) => mode() === "auto" && engine.kind === "local" && cloud().configured();
+
+  /**
+   * Otomatik modda bir motor hata verince denenecek diğer motor (yoksa null).
+   *   yerel kapalı/ulaşılamıyor → internet;  internet yok/kota doldu/yoğun → cihazdaki yapay zeka (hazırsa)
+   */
+  async function fallbackFor(engine, err, signal) {
+    if (mode() !== "auto" || !err || err.partial) return null;
+    const code = err.code;
+    if (engine.kind === "local") {
+      return ["offline", "token", "file-origin"].includes(code) && cloud().configured() ? cloud() : null;
+    }
+    if (["net", "quota", "busy", "aborted"].includes(code) && !(signal && signal.aborted) && localPossible()) {
+      return (await localReady(signal)) ? local : null;
+    }
+    return null;
+  }
 
   function invalidate() { localCache = null; App.ollama.resetDetection(); }
   function markLocalDown() { localCache = { at: Date.now(), chat: false }; }
@@ -240,5 +262,5 @@
     return out;
   }
 
-  App.engine = { engines, local, device, mode, cloud, defaultCloud, resolve, status, canFallback, invalidate, markLocalDown, localPossible, platform, AIError };
+  App.engine = { engines, local, device, mode, priority, fallbackFor, cloud, defaultCloud, resolve, status, canFallback, invalidate, markLocalDown, localPossible, platform, AIError };
 })();

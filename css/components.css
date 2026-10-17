@@ -1015,3 +1015,10 @@ nav.crumbs > a .ico { flex: none; margin-top: 1px; }
 .about-list { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 8px; font-size: 14px; line-height: 1.5; }
 .about-list a { color: inherit; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
 .about-list .badge { margin-left: 4px; }
+
+/* İlk açılış: yapay zeka önceliği seçimi */
+.prio-opts { display: grid; gap: 12px; margin: 12px 0; }
+.prio-opt { display: grid; gap: 6px; padding: 16px; text-align: left; cursor: pointer; border: 1px solid var(--border); font: inherit; color: inherit; }
+.prio-opt:hover, .prio-opt:focus-visible { border-color: var(--accent, #5B7CFA); }
+.prio-opt__title { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 16px; }
+.prio-opt__title svg { width: 20px; height: 20px; }

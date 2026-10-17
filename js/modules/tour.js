@@ -316,6 +316,8 @@
     if (location.hash !== "#/") location.hash = "#/";
     else App.router.refresh();
     if (skipped) App.ui.toast(t("tour.skipped"));
+    // Tanıtım bitti: yapay zeka önceliğini sor (Windows/Android, bir kez)
+    setTimeout(() => { if (App.modules.aiSettings) App.modules.aiSettings.askPriority(); }, 900);
   }
 
   /** İlk kurulum mu? Eski kullanıcıları (güncelleme yapanları) işaretleyip atlar */
