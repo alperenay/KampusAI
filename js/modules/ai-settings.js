@@ -12,6 +12,7 @@
 (function () {
   const { esc } = App.utils;
   const t = App.t;
+  const T = (tr, en) => (App.i18n.lang === "en" ? en : tr);
 
   const LOCAL_FIELDS = [
     { key: "aiChatModel",   role: "chat",   icon: "sparkle", def: () => App.ollama.autoChatModel() },
@@ -50,7 +51,6 @@
         v("aiCloud", App.engine.defaultCloud()))) +
       (App.cloud.server.configured()
         ? '<div data-panel-cloud="server" class="ais-stack"><p class="hint">' + esc(t("ais.serverHint")) + "</p>" +
-            field(esc(t("ais.speed")), seg("srvSpeed", [["fast", t("ais.speed.fast")], ["smart", t("ais.speed.smart")]], v("srvSpeed", "fast")), esc(t("ais.speedHint"))) +
             '<p class="hint">' + esc(t("ais.serverPrivacy")) + "</p></div>" : "") +
       '<div data-panel-cloud="gemini" class="ais-stack">' +
         field(esc(t("ais.apiKey")), keyInput("gemKey", v("gemKey"), "AIza…"), esc(t("ais.gemKeyHint")) + " " + link(App.cloud.gemini.keyUrl, t("ais.getKey"))) +
@@ -85,7 +85,7 @@
         '<p class="hint">' + esc(t("dev.resume")) + "</p></div>"
       : "";
 
-    const localTab = devCard +
+    const localTab =
       '<p class="hint">' + esc(t(phone ? "ais.localIntroPhone" : "ais.intro")) + "</p>" +
       (App.ollama.isFileOrigin() ? '<p class="ai-notice"><b>' + esc(t("ai.err.fileTitle")) + "</b> " + esc(t("ai.err.fileBody")) + "</p>" : "") +
       (App.pairing.canScan()
@@ -114,18 +114,47 @@
       '<p class="hint">' + esc(t("ais.memText")) + "</p>" +
       '<div class="ais-test"><button class="btn btn--sm" type="button" id="aisRebuild">' + App.icon("database") + esc(t("ais.rebuild")) + '</button><span class="hint" id="aisMem"></span></div>';
 
-    const tabs = [["cloud", t("ais.tab.cloud")], ["local", t("ais.tab.local")]].concat(desktop ? [["phone", t("ais.tab.phone")]] : [], [["memory", t("ais.tab.memory")]]);
+    /* ---------- Basit görünüm ---------- */
+    const modeCard = (id, icon, title, text) =>
+      '<button type="button" role="radio" class="ais-mode" data-val="' + id + '" aria-checked="' + (v("aiMode", "auto") === id) + '">' +
+      '<span class="ais-mode__title">' + App.icon(icon) + esc(title) + "</span><span class=\"ais-mode__text\">" + esc(text) + "</span></button>";
+    const hasDevice = !!(App.engine.device && App.engine.device.bridge);
+    const simple =
+      '<div class="ais-status" id="aisStatus"><span class="dot" id="aisStatusDot"></span><span id="aisStatusText">' + esc(T("Durum kontrol ediliyor…", "Checking…")) + "</span>" +
+        '<button class="btn btn--sm" type="button" id="aisTry">' + App.icon("refresh") + esc(T("Dene", "Test")) + "</button></div>" +
+      '<h3 class="ais-h">' + esc(T("Yapay zekâ nerede çalışsın?", "Where should the AI run?")) + "</h3>" +
+      '<div class="ais-modes" role="radiogroup" data-seg="aiMode">' +
+        modeCard("auto", "sparkle", T("Otomatik (önerilen)", "Automatic (recommended)"),
+          T("Uygun olanı kendisi seçer. Biri çalışmazsa diğerine geçer.", "Picks what works and switches if one fails.")) +
+        modeCard("cloud", "send", T("İnternet", "Online"),
+          T("Kurulum gerekmez; en doğru ve hızlı cevaplar. İnternet ister, sorular Google'a gider.", "No setup; most accurate and fastest. Needs internet; questions go to Google.")) +
+        modeCard("local", "lock", T("Bu cihaz", "This device"),
+          hasDevice ? T("İnternetsiz ve gizli: sorular cihazdan çıkmaz. Önce aşağıdan yapay zekâyı indir.", "Offline and private. Download the AI below first.")
+            : T("İnternetsiz ve gizli. Bu cihazda bilgisayarına bağlanarak kullanılır (Gelişmiş ayarlar).", "Offline and private, via your computer (Advanced settings).")) +
+      "</div>" +
+      '<div id="aisPrio" class="ais-sub">' + field(esc(T("Otomatikte önce hangisi denensin?", "In automatic mode, try first:")),
+        seg("aiOncelik", [["cihaz", T("Gizlilik: önce bu cihaz", "Privacy: this device first")], ["internet", T("Doğruluk: önce internet", "Accuracy: internet first")]], v("aiOncelik", "cihaz")),
+        '<span class="hint" id="aisPrioHint"></span>') + "</div>" +
+      (App.cloud.server.configured()
+        ? '<div class="ais-sub">' + field(esc(T("İnternette cevap tercihi", "Online answers")),
+            seg("srvSpeed", [["fast", T("Hızlı (önerilen)", "Fast (recommended)")], ["smart", T("Daha güçlü", "Stronger")]], v("srvSpeed", "fast")),
+            esc(T("Hızlı: cevap hemen başlar. Daha güçlü: zor sorularda biraz daha iyi ama başlaması birkaç saniye sürer.", "Fast starts right away. Stronger is a bit better on hard questions but slower to start."))) + "</div>" : "") +
+      devCard +
+      '<p class="hint ais-privacy">' + App.icon("lock") + esc(T("Kayıtların (denemeler, notlar, program) her zaman bu cihazda saklanır. İnternet seçildiğinde yalnızca sorduğun soru ve gerekirse ilgili kayıtlar gönderilir.", "Your records always stay on this device. Online mode only sends your question and related records.")) + "</p>";
+
+    const tabs2 = [["cloud", T("Kendi internet servisim", "My own online service")], ["local", T("Bilgisayarımdaki model (Ollama)", "Model on my computer (Ollama)")]]
+      .concat(desktop ? [["phone", T("Telefon bağlantısı", "Phone link")]] : [], [["memory", T("Hafıza", "Memory")]]);
 
     return (
-      field(esc(t("ais.mode")), seg("aiMode", [["auto", t("ais.mode.auto")], ["local", t("ais.mode.local")], ["cloud", t("ais.mode.cloud")]], v("aiMode", "auto")),
-        '<span id="aisModeHint"></span>') +
-      '<div id="aisPrio">' + field(esc(t("prio.label")), seg("aiOncelik", [["cihaz", t("prio.cihaz")], ["internet", t("prio.internet")]], v("aiOncelik", "cihaz")),
-        '<span class="hint" id="aisPrioHint"></span>') + "</div>" +
-      '<div class="ais-tabs" role="tablist">' + tabs.map(([id, label]) => '<button type="button" role="tab" data-tab="' + id + '">' + esc(label) + "</button>").join("") + "</div>" +
+      simple +
+      '<details class="ais-adv"' + (App.prefs.get("aisAdvOpen", false) ? " open" : "") + '><summary>' + App.icon("settings") +
+        esc(T("Gelişmiş ayarlar", "Advanced settings")) + '<span class="hint">' + esc(T("kendi API anahtarın, model adları, Ollama, telefon bağlantısı", "own API key, model names, Ollama, phone link")) + "</span></summary>" +
+      '<div class="ais-tabs" role="tablist">' + tabs2.map(([id, label]) => '<button type="button" role="tab" data-tab="' + id + '">' + esc(label) + "</button>").join("") + "</div>" +
       '<div class="ais-panel ais-stack" data-panel="cloud">' + cloudTab + "</div>" +
       '<div class="ais-panel ais-stack" data-panel="local">' + localTab + "</div>" +
       (desktop ? '<div class="ais-panel ais-stack" data-panel="phone">' + phoneTab + "</div>" : "") +
-      '<div class="ais-panel ais-stack" data-panel="memory">' + memTab + "</div>"
+      '<div class="ais-panel ais-stack" data-panel="memory">' + memTab + "</div>" +
+      "</details>"
     );
   }
 
@@ -153,8 +182,6 @@
       el.querySelectorAll("[data-panel-cloud]").forEach((p) => { p.hidden = p.dataset.panelCloud !== c; });
     }
     function syncModeHint() {
-      $("#aisModeHint").className = "hint";
-      $("#aisModeHint").textContent = t("ais.modeHint." + segVal("aiMode"));
       $("#aisPrio").hidden = segVal("aiMode") !== "auto";
       $("#aisPrioHint").textContent = t("prio.hint." + (segVal("aiOncelik") || "cihaz"));
     }
@@ -435,17 +462,47 @@
       if (r.name === "") App.router.refresh();
     });
 
+    /* ---- Basit görünüm: durum satırı ---- */
+    const A = App.modules.assistant;
+    function paintStatus() {
+      if (!el.isConnected) return;
+      const st = A.status.state;
+      const ok = st === "ok" || st === "partial";
+      $("#aisStatusDot").className = "dot dot--" + (ok ? "ok" : st === "unknown" ? "unknown" : "offline");
+      const eng = A.status.engine;
+      const where = !eng ? "" : eng.kind === "cloud" ? T("İnternetteki yapay zekâ", "Online AI") : eng.device ? T("Bu cihazdaki yapay zekâ", "AI on this device") : T("Bilgisayardaki model (Ollama)", "Model on the computer (Ollama)");
+      $("#aisStatusText").innerHTML = ok
+        ? "<b>" + esc(T("Çalışıyor", "Working")) + "</b> · " + esc(where)
+        : st === "unknown" ? esc(T("Durum kontrol ediliyor…", "Checking…"))
+        : "<b>" + esc(T("Bağlanamadı", "Not connected")) + "</b> · " + esc(A.statusText ? A.statusText() : "");
+    }
+    $("#aisTry").addEventListener("click", async (e) => {
+      const b = e.currentTarget; b.disabled = true;
+      $("#aisStatusDot").className = "dot dot--unknown";
+      $("#aisStatusText").textContent = T("Deneniyor…", "Testing…");
+      try { await withForm(() => A.refreshStatus()); } catch (err) { /* durum satırında görünür */ }
+      paintStatus(); b.disabled = false;
+    });
+    paintStatus();
+    if (A.status.state === "unknown") A.refreshStatus().then(paintStatus).catch(() => {});
+
+    const adv = el.querySelector(".ais-adv");
+    adv.addEventListener("toggle", () => App.prefs.set("aisAdvOpen", adv.open));
+
     syncCloudPanel();
     syncModeHint();
     syncPreset();
-    // İlk açılan sekme: istenen ya da kullanılan motora göre
+    // Gelişmiş bölümde ilk açılan sekme: istenen ya da kullanılan motora göre
     const status = App.modules.assistant.status;
     const mode = App.engine.mode();
     const firstTab = startTab || (mode === "local" ? "local" : mode === "cloud" ? "cloud"
       : status.engine && status.engine.kind === "cloud" ? "cloud" : App.engine.localPossible() ? "local" : "cloud");
     showTab(firstTab);
-    if (firstTab === "local" && !App.ollama.isFileOrigin()) testLocal();
-    else if (firstTab === "cloud" && App.engine.cloud().configured()) testCloud();
+    if (startTab && startTab !== "device") adv.open = true;
+    if (adv.open) {
+      if (firstTab === "local" && !App.ollama.isFileOrigin()) testLocal();
+      else if (firstTab === "cloud" && App.engine.cloud().configured()) testCloud();
+    }
   }
 
   // Uyarı kutularındaki "Yapay zeka ayarları" düğmeleri

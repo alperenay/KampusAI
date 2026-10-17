@@ -665,5 +665,5 @@
 
   function reset() { if (!live.controller) draft = { image: null, text: "" }; }
 
-  App.modules.assistant = { render, reset, startWith, refreshStatus, status, listChats, deleteChat, onStatus: (fn) => statusListeners.push(fn), isBusy: () => !!live.controller, liveChatId: () => live.chatId };
+  App.modules.assistant = { render, reset, startWith, refreshStatus, status, statusText, listChats, deleteChat, onStatus: (fn) => statusListeners.push(fn), isBusy: () => !!live.controller, liveChatId: () => live.chatId };
 })();
