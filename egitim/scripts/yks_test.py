@@ -30,7 +30,9 @@ SISTEM = ("Sen KampüsAI'sın: Türkiye'de YKS'ye hazırlanan lise öğrencileri
           "**Doğru cevap: X**")
 BOLUM_ADI = {"TÜR": "TYT Türkçe", "SOS": "TYT Sosyal", "TEM": "TYT Temel Matematik", "FEN": "TYT Fen",
              "TDE-SB1": "AYT Edebiyat-Sosyal-1", "SB2": "AYT Sosyal-2", "MAT": "AYT Matematik"}
-VARSAYILAN = [("ollama:gemma4:e4b", None), ("bulut:gemini-otomatik-hizli", 2026), ("bulut:gemma-4-26b-a4b-it", 2026)]
+# Süre için yalnızca en yeni sınav (2026 TYT + AYT, 291 soru); tüm modeller aynı sorularda karşılaştırılır.
+# Diğer yıllar için: python yks_test.py --model ollama:gemma4:e4b --yil 2024
+VARSAYILAN = [("ollama:gemma4:e4b", 2026), ("bulut:gemini-otomatik-hizli", 2026), ("bulut:gemma-4-26b-a4b-it", 2026)]
 
 
 def istek(url, govde, zaman_asimi=300):

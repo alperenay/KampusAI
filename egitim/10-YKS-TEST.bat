@@ -13,7 +13,7 @@ if not exist "%VPY%" (
 echo.
 echo GERCEK YKS TESTI: Masaustundeki YKS klasorundeki OSYM kitapciklarindan sorular ayiklanir,
 echo modellere sorulur ve net hesaplanir. Sonuc: rapor\yks_raporu.md
-echo Gemma 4 E4B tum yillar (~1,5-2 saat), Gemini (internet) yalnizca 2026 (~30 dk).
+echo 2026 TYT + AYT (291 soru): Gemma 4 E4B ~2 saat, ardindan internet modelleri ~30-40 dk.
 echo Pencereyi KAPATMAYIN. Kesilirse tekrar cift tiklayin, kaldigi yerden devam eder.
 echo.
 "%VPY%" -c "import pdfplumber" 2>nul || "%VPY%" -m pip install -q pdfplumber
