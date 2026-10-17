@@ -1141,3 +1141,23 @@ nav.crumbs > a .ico { flex: none; margin-top: 1px; }
 .voice-tip { max-width: 560px; text-align: center; }
 .daily-task__body > b, .daily-task__body > .hint { display: block; }
 .daily-task__body > .hint { margin-top: 2px; }
+
+/* ---------- Hakkında sayfası ---------- */
+.about-page { display: flex; flex-direction: column; gap: 16px; }
+.about-sec { scroll-margin-top: 72px; }
+.about-sec .card__title .ico { margin-right: 6px; }
+.about-hero { display: flex; gap: 18px; align-items: flex-start; }
+.about-hero img { flex: none; border-radius: 16px; }
+.about-hero p { margin: 0 0 10px; line-height: 1.6; }
+@media (max-width: 560px) { .about-hero { flex-direction: column; } }
+.about-meta { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 14px; }
+.about-meta b { display: inline-block; min-width: 110px; color: var(--muted); font-weight: 600; }
+.about-meta a { color: inherit; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+.about-feats { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.about-feat { display: flex; gap: 10px; align-items: flex-start; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); text-decoration: none; }
+a.about-feat:hover { background: var(--surface-hover); }
+.about-feat .ico { flex: none; width: 22px; height: 22px; color: var(--accent-text); }
+.about-feat b { display: block; font-size: 14px; }
+.about-feat small { display: block; color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+.about-h { font-size: 14px; margin: 14px 0 0; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.about-hero img { background: #F7F5EF; padding: 6px; }
