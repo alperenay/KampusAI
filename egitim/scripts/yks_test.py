@@ -10,6 +10,7 @@ Modeller:
 Kullanım:
   python yks_test.py                                  # varsayılan: gemma4:e4b tüm yıllar + bulut modelleri 2026
   python yks_test.py --model ollama:gemma4:e4b --yil 2026
+  python yks_test.py --hesap        # matematik: hesap aracıyla ve araçsız karşılaştırma (rapor/yks_hesap_raporu.md)
 Kesilirse kaldığı yerden devam eder (rapor/yks_cevaplar/). Sonuç: rapor/yks_raporu.md
 """
 import argparse
@@ -22,6 +23,7 @@ import urllib.request
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 
+from hesap import ARAC, hesapla
 from ortak import RAPOR, VERI, ayarlar, baslat, cevap_harfi, jsonl_ekle, jsonl_oku, log, model_hazirla, ollama_ac
 
 SUNUCU = "https://ders-asistani.alperenayleon-67a.workers.dev/v1beta"
@@ -67,16 +69,39 @@ def soru_metni(s):
     return s["metin"]
 
 
-def sor_ollama(model, s, adres):
+HESAP_TALIMAT = (" Bir hesap gerektiğinde (toplama, çarpma, kesir, üs, kök, trigonometri) sonucu kafadan bulma; "
+                 "hesapla aracını çağır ve aracın verdiği sonucu kullan.")
+
+
+def sor_ollama(model, s, adres, arac=False):
     mesaj = {"role": "user", "content": soru_metni(s)}
     if s["gorsel"]:
         mesaj["images"] = [base64.b64encode((VERI / "yks" / s["gorsel"]).read_bytes()).decode()]
     t0 = time.time()
-    r = istek(adres.rstrip("/") + "/api/chat", {"model": model, "stream": False, "keep_alive": "30m",
-                                                "messages": [{"role": "system", "content": SISTEM}, mesaj],
-                                                "options": {"temperature": 0.2, "num_ctx": 12288,
-                                                            "num_predict": OLLAMA_SINIR}})
-    return (r.get("message") or {}).get("content", ""), time.time() - t0, r.get("eval_count", 0)
+    mesajlar = [{"role": "system", "content": SISTEM + (HESAP_TALIMAT if arac else "")}, mesaj]
+    govde = {"model": model, "stream": False, "keep_alive": "30m", "messages": mesajlar,
+             "options": {"temperature": 0.2, "num_ctx": 12288, "num_predict": OLLAMA_SINIR}}
+    if arac:
+        govde["tools"] = [ARAC]
+    tok, cagri = 0, 0
+    for _ in range(12):                                   # en fazla 12 tur araç çağrısı
+        r = istek(adres.rstrip("/") + "/api/chat", govde)
+        tok += r.get("eval_count", 0)
+        m = r.get("message") or {}
+        cagrilar = m.get("tool_calls") or []
+        if not arac or not cagrilar:
+            return m.get("content", ""), time.time() - t0, tok, cagri
+        mesajlar.append({"role": "assistant", "content": m.get("content", ""), "tool_calls": cagrilar})
+        for c in cagrilar:
+            f = c.get("function") or {}
+            argm = f.get("arguments") or {}
+            if isinstance(argm, str):
+                try: argm = json.loads(argm)
+                except ValueError: argm = {"ifade": argm}
+            cagri += 1
+            mesajlar.append({"role": "tool", "tool_name": f.get("name", "hesapla"),
+                             "content": hesapla(argm.get("ifade", "")) if f.get("name") == "hesapla" else "Bilinmeyen araç"})
+    return m.get("content", ""), time.time() - t0, tok, cagri
 
 
 _son_bulut = [0.0]
@@ -140,14 +165,16 @@ def calistir(model_ad, sorular, paralel):
     kalan = [s for s in sorular if s["id"] not in biten]
     log(f"=== {model_ad}: {len(sorular)} soru (önceden {len(sorular) - len(kalan)} yanıt var)")
     a = ayarlar()
-    if tur == "ollama":
+    yerel = tur in ("ollama", "ollama-hesap")
+    if yerel:
         ollama_ac()
         model_hazirla(ad)
 
     def tek(s):
+        cagri = 0
         try:
-            if tur == "ollama":
-                yanit, sure, tok = sor_ollama(ad, s, a["ollama_adres"])
+            if yerel:
+                yanit, sure, tok, cagri = sor_ollama(ad, s, a["ollama_adres"], arac=(tur == "ollama-hesap"))
             else:
                 yanit, sure, tok = sor_bulut(ad, s)
         except Exception as e:
@@ -155,10 +182,10 @@ def calistir(model_ad, sorular, paralel):
             log(f"  {s['id']}: hata {repr(e)[:150]}")
         harf = cevap_harfi(yanit)
         return {"id": s["id"], "harf": harf, "cevap": s["cevap"], "dogru": harf == s["cevap"], "sure": round(sure, 1),
-                "token": tok, "gorsel": bool(s["gorsel"]), "yanit": yanit[-1500:]}
+                "token": tok, "gorsel": bool(s["gorsel"]), "arac": cagri, "yanit": yanit[-1500:]}
 
     bas = time.time()
-    with ThreadPoolExecutor(max_workers=paralel if tur == "ollama" else 1) as havuz:
+    with ThreadPoolExecutor(max_workers=paralel if yerel else 1) as havuz:
         for i, r in enumerate(havuz.map(tek, kalan)):
             jsonl_ekle(dosya, r)
             if (i + 1) % 25 == 0 or i + 1 == len(kalan):
@@ -174,7 +201,7 @@ def ozet(kayitlar):
     return d, y, b, d - y / 4
 
 
-def rapor_yaz(sonuclar, sorular):
+def rapor_yaz(sonuclar, sorular, ad="yks_raporu.md"):
     sid = {s["id"]: s for s in sorular}
     satir = ["# Gerçek YKS sorularıyla model testi", "",
              "Sorular ÖSYM'nin yayımladığı TYT ve AYT kitapçıklarından alındı; eğitimde hiç kullanılmadı. "
@@ -207,8 +234,8 @@ def rapor_yaz(sonuclar, sorular):
         ad_b = BOLUM_ADI.get(bolum, bolum) if not (sinav == "AYT" and bolum == "FEN") else "AYT Fen"
         satir.append(f"| {yil} | {ad_b} | {n} | " + " | ".join(hucre) + " |")
     satir += ["", "Not: ÖSYM soruları telif hakkı altındadır; yalnızca bu testte kullanıldı, eğitime ve uygulamaya girmedi."]
-    (RAPOR / "yks_raporu.md").write_text("\n".join(satir) + "\n", encoding="utf-8")
-    log("Rapor:", RAPOR / "yks_raporu.md")
+    (RAPOR / ad).write_text("\n".join(satir) + "\n", encoding="utf-8")
+    log("Rapor:", RAPOR / ad)
 
 
 def main():
@@ -216,11 +243,25 @@ def main():
     p.add_argument("--model", action="append", help="ollama:<ad> ya da bulut:<ad>")
     p.add_argument("--yil", type=int, action="append")
     p.add_argument("--paralel", type=int, default=2)
+    p.add_argument("--hesap", action="store_true", help="2026 matematik sorularını hesap aracıyla çöz ve araçsız sonuçla karşılaştır")
     arg = p.parse_args()
     baslat("yks_test")
     sorular = jsonl_oku(VERI / "yks" / "sorular.jsonl")
     if not sorular:
         raise SystemExit("veri/yks/sorular.jsonl yok. Önce yks_ayikla.py'yi çalıştırın.")
+    if arg.hesap:
+        mat = [s for s in sorular if s["yil"] == 2026 and s["bolum"] in ("TEM", "MAT")]
+        log(f"Hesap aracı denemesi: {len(mat)} matematik sorusu (2026 TYT Temel Matematik + AYT Matematik)")
+        sonuclar = {}
+        for model_ad in ("ollama:gemma4:e4b", "ollama-hesap:gemma4:e4b"):
+            r = calistir(model_ad, mat, arg.paralel)        # araçsız sonuç önceki testten hazır: yeniden sorulmaz
+            ids = {s["id"] for s in mat}
+            son = {k["id"]: k for k in jsonl_oku(r[1])}
+            sonuclar[r[0]] = [k for i, k in son.items() if i in ids]
+        rapor_yaz(sonuclar, sorular, "yks_hesap_raporu.md")
+        h = sonuclar["ollama-hesap:gemma4:e4b"]
+        log(f"Araç kullanılan soru: {sum(1 for k in h if k.get('arac'))}/{len(h)}, toplam çağrı {sum(k.get('arac', 0) for k in h)}")
+        return
     plan = [(m, None) for m in arg.model] if arg.model else VARSAYILAN
     sonuclar = {}
     for model_ad, yil in plan:
