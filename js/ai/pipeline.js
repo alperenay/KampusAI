@@ -115,14 +115,14 @@
     try {
       return await runWith(engine, opts);
     } catch (e) {
-      // Otomatik mod: bilgisayardaki Ollama yanıt vermediyse internete geç
-      const offline = e && (e.code === "offline" || e.code === "token" || e.code === "file-origin");
-      if (offline && !e.partial && App.engine.canFallback(engine) && !(opts.signal && opts.signal.aborted)) {
-        App.engine.markLocalDown();
-        const cloud = App.engine.cloud();
-        if (opts.on && opts.on.warning) opts.on.warning({ code: "fallback", model: cloud.name });
-        const res = await runWith(cloud, opts);
-        res.warnings.unshift({ code: "fallback", model: cloud.name });
+      // Otomatik mod: seçilen yol yanıt vermediyse diğerine geç (yerel kapalı → internet; internet yok/yoğun → cihaz)
+      if (opts.signal && opts.signal.aborted) throw e;
+      const alt = await App.engine.fallbackFor(engine, e, opts.signal);
+      if (alt) {
+        if (engine.kind === "local") App.engine.markLocalDown();
+        if (opts.on && opts.on.warning) opts.on.warning({ code: "fallback", model: alt.name });
+        const res = await runWith(alt, opts);
+        res.warnings.unshift({ code: "fallback", model: alt.name });
         return res;
       }
       throw e;
@@ -280,10 +280,10 @@
     try {
       return await once(engine);
     } catch (e) {
-      const offline = e && (e.code === "offline" || e.code === "token" || e.code === "file-origin");
-      if (offline && App.engine.canFallback(engine) && !(opts.signal && opts.signal.aborted)) {
-        App.engine.markLocalDown();
-        return once(App.engine.cloud());
+      const alt = !(opts.signal && opts.signal.aborted) ? await App.engine.fallbackFor(engine, e, opts.signal) : null;
+      if (alt) {
+        if (engine.kind === "local") App.engine.markLocalDown();
+        return once(alt);
       }
       // JSON bozuk geldiyse bir kez daha dene
       if (e && (e.message === "json" || e instanceof SyntaxError)) return once(engine);

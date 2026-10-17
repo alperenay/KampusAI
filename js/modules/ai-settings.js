@@ -19,7 +19,7 @@
     { key: "aiVisionModel", role: "vision", icon: "eye",     def: () => App.ollama.autoVisionModel() }
   ];
   /* Formdaki tüm ayar anahtarları (test sırasında geçici uygulanır, iptalde geri alınır) */
-  const KEYS = ["aiMode", "aiCloud", "srvSpeed", "gemSpeed", "gemKey", "gemModel", "gemEmbed", "oaPreset", "oaBase", "oaKey", "oaModel", "oaVision", "oaEmbed",
+  const KEYS = ["aiMode", "aiOncelik", "aiCloud", "srvSpeed", "gemSpeed", "gemKey", "gemModel", "gemEmbed", "oaPreset", "oaBase", "oaKey", "oaModel", "oaVision", "oaEmbed",
     "aiUrl", "aiToken", "aiChatModel", "aiEmbedModel", "aiVisionModel"];
 
   const v = (k, d) => { const x = App.prefs.get(k, null); return x == null ? (d == null ? "" : d) : x; };
@@ -118,6 +118,8 @@
     return (
       field(esc(t("ais.mode")), seg("aiMode", [["auto", t("ais.mode.auto")], ["local", t("ais.mode.local")], ["cloud", t("ais.mode.cloud")]], v("aiMode", "auto")),
         '<span id="aisModeHint"></span>') +
+      '<div id="aisPrio">' + field(esc(t("prio.label")), seg("aiOncelik", [["cihaz", t("prio.cihaz")], ["internet", t("prio.internet")]], v("aiOncelik", "cihaz")),
+        '<span class="hint" id="aisPrioHint"></span>') + "</div>" +
       '<div class="ais-tabs" role="tablist">' + tabs.map(([id, label]) => '<button type="button" role="tab" data-tab="' + id + '">' + esc(label) + "</button>").join("") + "</div>" +
       '<div class="ais-panel ais-stack" data-panel="cloud">' + cloudTab + "</div>" +
       '<div class="ais-panel ais-stack" data-panel="local">' + localTab + "</div>" +
@@ -152,6 +154,8 @@
     function syncModeHint() {
       $("#aisModeHint").className = "hint";
       $("#aisModeHint").textContent = t("ais.modeHint." + segVal("aiMode"));
+      $("#aisPrio").hidden = segVal("aiMode") !== "auto";
+      $("#aisPrioHint").textContent = t("prio.hint." + (segVal("aiOncelik") || "cihaz"));
     }
     function syncPreset() {
       const p = App.cloud.PRESETS[$("#oaPreset").value] || {};
@@ -164,7 +168,7 @@
       if (segBtn) {
         segBtn.parentElement.querySelectorAll("[data-val]").forEach((b) => b.setAttribute("aria-checked", b === segBtn));
         if (segBtn.parentElement.dataset.seg === "aiCloud") syncCloudPanel();
-        if (segBtn.parentElement.dataset.seg === "aiMode") syncModeHint();
+        if (segBtn.parentElement.dataset.seg === "aiMode" || segBtn.parentElement.dataset.seg === "aiOncelik") syncModeHint();
         return;
       }
       const tab = e.target.closest("[data-tab]");
@@ -180,6 +184,8 @@
     function apply() {
       const set = (k, val) => App.prefs.set(k, val === "" ? null : val);
       set("aiMode", segVal("aiMode"));
+      set("aiOncelik", segVal("aiOncelik"));
+      App.prefs.set("aiOncelikSoruldu", true);
       set("aiCloud", segVal("aiCloud"));
       if (el.querySelector('[data-seg="srvSpeed"]')) set("srvSpeed", segVal("srvSpeed"));
       set("gemSpeed", segVal("gemSpeed"));
@@ -446,5 +452,31 @@
     if (b) { e.preventDefault(); open(b.dataset.aiSettings || undefined); }
   });
 
-  App.modules.aiSettings = { open };
+  /* ---- İlk açılış: otomatik modda öncelik sorusu (Windows ve Android; yalnızca bir kez) ---- */
+  function askPriority() {
+    if (App.prefs.get("aiOncelikSoruldu", false)) return;
+    if (!(App.platform.desktop || App.platform.native)) return;
+    if (App.tour && App.tour.isActive && App.tour.isActive()) return;
+    if (document.querySelector(".modal-backdrop")) { setTimeout(askPriority, 4000); return; }
+    const opt = (id, icon) => '<button type="button" class="card prio-opt" data-prio="' + id + '">' +
+      '<span class="prio-opt__title">' + App.icon(icon) + esc(t("prio." + id)) + "</span>" +
+      '<span class="hint">' + esc(t("prio.hint." + id)) + "</span></button>";
+    const m = App.ui.modal({
+      title: t("prio.title"),
+      body: '<p class="hint">' + esc(t("prio.intro")) + '</p><div class="prio-opts">' + opt("cihaz", "lock") + opt("internet", "sparkle") + "</div>" +
+        '<p class="hint">' + esc(t("prio.later")) + "</p>",
+      actions: "",
+      onClose: () => App.prefs.set("aiOncelikSoruldu", true)
+    });
+    m.el.querySelectorAll("[data-prio]").forEach((b) => b.addEventListener("click", () => {
+      App.prefs.set("aiOncelik", b.dataset.prio);
+      App.prefs.set("aiOncelikSoruldu", true);
+      m.close();
+      App.engine.invalidate();
+      App.modules.assistant.refreshStatus();
+      App.ui.toast(t("prio.saved", { name: t("prio." + b.dataset.prio) }));
+    }));
+  }
+
+  App.modules.aiSettings = { open, askPriority };
 })();

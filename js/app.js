@@ -180,6 +180,8 @@
     // Ders hatırlatıcıları (Programım'daki bloklar) ve ilk açılış tanıtım turu
     App.reminders.init();
     App.tour.maybeStart();
+    // Tanıtım gösterilmeyecekse (eski kullanıcı, güncelleme): yapay zeka önceliğini bir kez sor
+    App.tour.shouldShow().then((tour) => { if (!tour) setTimeout(() => App.modules.aiSettings.askPriority(), 1500); }).catch(() => {});
 
     // Yapay zekayı arka planda yokla (Ollama açık mı, internet servisi ayarlı mı)
     App.modules.assistant.refreshStatus();
