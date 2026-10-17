@@ -24,6 +24,7 @@
   const status = { state: "unknown", missing: [], installed: [], engine: null, cfg: null, checking: null };
   const statusListeners = [];
 
+  let warmed = false;
   async function refreshStatus() {
     if (status.checking) return status.checking;
     status.checking = (async () => {
@@ -34,6 +35,12 @@
         Object.assign(status, { state: "error", missing: [], error: e });
       }
       status.checking = null;
+      // İnternet modeli hazırsa hafızayı boşta hazırla: ilk soru beklemesin
+      if (status.state === "ok" && status.engine && status.engine.kind === "cloud" && App.rag.warmup && !warmed) {
+        warmed = true;
+        const eng = status.engine;
+        setTimeout(() => App.rag.warmup(eng), 3000);
+      }
       statusListeners.forEach((fn) => fn(status));
       paintStatus();
       return status;

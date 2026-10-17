@@ -205,6 +205,8 @@
     result.text = res.text;
     result.stats = res.stats;
     // Kaynak kontrolü: etiketler geçerli mi, cevap bulunan kayıtlarla ne kadar örtüşüyor?
+    // Hafıza bu soruda hazır değildi: cevaptan sonra arka planda hazırla (cihazdaki model cevap yazarken yavaşlamasın)
+    if (found && found.indexing && App.rag.warmup) setTimeout(() => App.rag.warmup(engine), 500);
     if (result.sources && App.cite) result.sources.check = App.cite.analyze(result.text, found ? found.hits : []);
     if (calcUsed) result.models.push({ role: "calc", model: App.i18n.lang === "en" ? "Calculator ×" + calcUsed : "Hesap makinesi ×" + calcUsed });
     // Yoğunluk nedeniyle başka model yanıtladıysa zincirde onu göster
