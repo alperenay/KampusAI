@@ -1,0 +1,52 @@
++ curl -sL -o /tmp/kucuk.gguf https://huggingface.co/ggml-org/models/resolve/main/tinyllamas/stories15M-q4_0.gguf
++ ls -la /tmp/kucuk.gguf
+-rw-r--r-- 1 runner runner 19077344 Oct 17 08:55 /tmp/kucuk.gguf
++ adb push llama-android/x86_64/libllama-server.so /data/local/tmp/llama-server
+llama-android/x86_64/libllama-server.so: 1 file pushed, 0 skipped. 80.6 MB/s (12308392 bytes in 0.146s)
++ adb push /tmp/kucuk.gguf /data/local/tmp/kucuk.gguf
+/tmp/kucuk.gguf: 1 file pushed, 0 skipped. 324.1 MB/s (19077344 bytes in 0.056s)
++ adb shell chmod 755 /data/local/tmp/llama-server
++ timeout 30 adb shell /data/local/tmp/llama-server --version
+version: 0.7.0-dev (build 1, commit 1268eda)
+built with Clang 18.0.4 for Android x86_64
++ timeout 20 adb shell 'cd /data/local/tmp && (./llama-server -m kucuk.gguf --host 127.0.0.1 --port 8090 -c 512 > srv.log 2>&1 < /dev/null &) ; sleep 1'
++ adb forward tcp:8090 tcp:8090
+8090
+++ seq 1 60
++ for i in $(seq 1 60)
++ curl -sf http://127.0.0.1:8090/health
+{"status":"ok"}+ break
++ echo
+
++ curl -s -m 120 -H 'Origin: https://localhost' -D - http://127.0.0.1:8090/v1/chat/completions -H 'content-type: application/json' -d '{"messages":[{"role":"user","content":"Once upon a time"}],"max_tokens":30}'
+HTTP/1.1 200 OK
+Server: llama.cpp
+Access-Control-Allow-Origin: https://localhost
+Content-Type: application/json; charset=utf-8
+Content-Length: 693
+Keep-Alive: timeout=5, max=100
+
+{"choices":[{"finish_reason":"length","index":0,"message":{"role":"assistant","content":"Once on the ice-fully ice-creed, Mum was standing nearby.\nMum: \"Oh, I'm so hungry"}}],"created":1792227308,"model":"kucuk.gguf","system_fingerprint":"b1-1268eda","object":"chat.completion","usage":{"completion_tokens":30,"prompt_tokens":32,"total_tokens":62,"prompt_tokens_details":{"cached_tokens":0}},"id":"chatcmpl-pIKCfDLwo6I3dF4FnnHRBRr8JTnahQhK","timings":{"cache_n":0,"prompt_n":32,"prompt_ms":28.844,"prompt_per_token_ms":0.901375,"prompt_per_second":1109.416169740674,"predicted_n":30,"predicted_ms":231.25,"predicted_per_token_ms":7.974137931034483,"predicted_per_second":125.40540540540542}}+ echo
+
++ adb shell tail -20 /data/local/tmp/srv.log
+0.00.006.179 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.006.263 W srv  llama_server: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.015.984 I srv    load_model: loading model 'kucuk.gguf'
+0.00.190.576 W load: empty token at index 30143
+0.00.192.749 W load: bad special token: 'tokenizer.ggml.seperator_token_id' = 4294967295, using default id -1
+0.00.192.822 W load: bad special token: 'tokenizer.ggml.padding_token_id' = 4294967295, using default id -1
+0.00.226.852 W llama_context: n_ctx_seq (512) > n_ctx_train (128) -- possible training context overflow
+0.00.238.287 I cmn          init: llama threadpool init, n_threads = 2
+0.00.712.164 W srv    load_model: the slot context (512) exceeds the training context of the model (128) - capping
+0.00.717.463 I srv    load_model: initializing, n_slots = 4, n_ctx_slot = 128, kv_unified = 'true'
+0.00.724.164 I srv  llama_server: model loaded
+0.00.724.256 I srv  llama_server: listening on http://127.0.0.1:8090
+0.01.063.813 I slot get_availabl: id  0 | task -1 | selected slot by LRU, n_tokens = 0, t_last = -1
+0.01.063.884 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.01.323.996 I slot print_timing: id  0 | task 0 | prompt eval time =      28.84 ms /    32 tokens (    0.90 ms per token,  1109.42 tokens per second)
+0.01.324.088 I slot print_timing: id  0 | task 0 |        eval time =     231.25 ms /    30 tokens (    7.97 ms per token,   125.41 tokens per second)
+0.01.324.098 I slot print_timing: id  0 | task 0 |       total time =     260.09 ms /    62 tokens
+0.01.324.107 I slot print_timing: id  0 | task 0 |    graphs reused =         29
+0.01.324.116 I slot print_timing: id  0 | task 0 |   graph reallocs =          0    /     0        (same size) / (changed size)
+0.01.324.176 I slot      release: id  0 | task 0 | stop processing: n_tokens = 61, truncated = 0
++ true

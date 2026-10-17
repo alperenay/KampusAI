@@ -1,0 +1,91 @@
+[148/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/deepseek4v.cpp.o
+[149/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/dots3note.cpp.o
+[150/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/dotsocr.cpp.o
+[151/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/exaone4_5.cpp.o
+[152/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/gemma4a.cpp.o
+[153/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/mtmd-helper.cpp.o
+[154/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/gemma4v.cpp.o
+[155/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/gemma4ua.cpp.o
+[156/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/gemma4uv.cpp.o
+[157/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/glm4v.cpp.o
+[158/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/granite-speech.cpp.o
+[159/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/granite4-vision.cpp.o
+[160/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/hunyuanvl.cpp.o
+[161/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/internvl.cpp.o
+[162/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/clip.cpp.o
+[163/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/kimivl.cpp.o
+[164/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/kimik25.cpp.o
+[165/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/nemotron-v2-vl.cpp.o
+[166/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/nemotron-omni.cpp.o
+[167/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/muse-glimmer.cpp.o
+[168/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/muse-spark-audio.cpp.o
+[169/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/llama4.cpp.o
+[170/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/llava.cpp.o
+[171/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/minicpmv.cpp.o
+[172/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/paddleocr.cpp.o
+[173/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/pixtral.cpp.o
+[174/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/qwen2vl.cpp.o
+[175/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/minimax-m3.cpp.o
+[176/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/qwen3vl.cpp.o
+[177/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/ling3vl.cpp.o
+[178/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/mimovl.cpp.o
+[179/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/qwen3a.cpp.o
+[180/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/mimo-audio.cpp.o
+[181/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/qwen3tts-spkenc.cpp.o
+[182/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/pockettts-seanet.cpp.o
+[183/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/qwen3tts-gen.cpp.o
+[184/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/pockettts-spkenc.cpp.o
+[185/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/pockettts-gen.cpp.o
+[186/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/step3vl.cpp.o
+[187/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/siglip.cpp.o
+[188/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/whisper-enc.cpp.o
+[189/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/voxtral-rt.cpp.o
+[190/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/deepseekocr.cpp.o
+[191/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/deepseekocr2.cpp.o
+[192/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/mobilenetv5.cpp.o
+[193/216] Linking CXX static library common/libllama-common.a
+[194/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/youtuvl.cpp.o
+[195/216] Building CXX object tools/ui/CMakeFiles/llama-ui.dir/ui.cpp.o
+[196/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/yasa2.cpp.o
+[197/216] Building CXX object tools/mtmd/CMakeFiles/mtmd.dir/models/parakeet.cpp.o
+[198/216] Building CXX object tools/server/CMakeFiles/server-context.dir/server-chat.cpp.o
+[199/216] Building CXX object tools/server/CMakeFiles/server-context.dir/server-queue.cpp.o
+[200/216] Building CXX object tools/server/CMakeFiles/server-context.dir/server-common.cpp.o
+[201/216] Building CXX object tools/server/CMakeFiles/server-context.dir/server-task.cpp.o
+[202/216] Building CXX object tools/server/CMakeFiles/server-context.dir/server-decision.cpp.o
+[203/216] Building CXX object tools/server/CMakeFiles/server-context.dir/server-stream.cpp.o
+[204/216] Building CXX object tools/server/CMakeFiles/server-context.dir/server-mcp.cpp.o
+[205/216] Linking CXX static library tools/mtmd/libmtmd.a
+[206/216] Linking CXX static library tools/ui/libllama-ui.a
+[207/216] Building CXX object tools/server/CMakeFiles/server-context.dir/server-schema.cpp.o
+[208/216] Building CXX object tools/server/CMakeFiles/server-context.dir/server-tools.cpp.o
+[209/216] Building CXX object tools/server/CMakeFiles/server-context.dir/server-context.cpp.o
+[210/216] Linking CXX static library tools/server/libserver-context.a
+[211/216] Building CXX object tools/server/CMakeFiles/llama-server.dir/main.cpp.o
+[212/216] Building CXX object tools/server/CMakeFiles/llama-server-impl.dir/server.cpp.o
+[213/216] Building CXX object tools/server/CMakeFiles/llama-server-impl.dir/server-http.cpp.o
+[214/216] Building CXX object tools/server/CMakeFiles/llama-server-impl.dir/server-models.cpp.o
+[215/216] Linking CXX static library tools/server/libllama-server-impl.a
+[216/216] Linking CXX executable bin/llama-server
+total 12028
+drwxr-xr-x 2 runner runner     4096 Oct 17 08:53 .
+drwxr-xr-x 4 runner runner     4096 Oct 17 08:53 ..
+-rwxr-xr-x 1 runner runner 12308392 Oct 17 08:53 libllama-server.so
+  0x0000000000000001 (NEEDED)       Shared library: [libm.so]
+  0x0000000000000001 (NEEDED)       Shared library: [libdl.so]
+  0x0000000000000001 (NEEDED)       Shared library: [libc.so]
+
+real	8m0.380s
+user	28m33.882s
+sys	1m12.146s
+llama-android/arm64-v8a/:
+total 10656
+drwxr-xr-x 2 runner runner     4096 Oct 17 08:49 .
+drwxr-xr-x 4 runner runner     4096 Oct 17 08:53 ..
+-rwxr-xr-x 1 runner runner 10902784 Oct 17 08:49 libllama-server.so
+
+llama-android/x86_64/:
+total 12028
+drwxr-xr-x 2 runner runner     4096 Oct 17 08:53 .
+drwxr-xr-x 4 runner runner     4096 Oct 17 08:53 ..
+-rwxr-xr-x 1 runner runner 12308392 Oct 17 08:53 libllama-server.so
