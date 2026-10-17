@@ -250,6 +250,7 @@
     if (code === "quota") return t("ai.err.quotaBody");
     if (code === "busy") return t("ai.err.busyBody");
     if (code === "offline") return t("ai.err.offlineTitle");
+    if (code === "device") return t("ai.err.deviceTitle");
     if (code === "net") return t("ai.err.netBody");
     if (e instanceof SyntaxError || (e && e.message === "json")) return t("quiz.badOutput");
     return (e && e.message) || String(e);
