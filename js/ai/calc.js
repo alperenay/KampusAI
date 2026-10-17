@@ -124,7 +124,9 @@
   App.calc = {
     TOOL, call, run, evaluate,
     instruction: () => (App.i18n && App.i18n.lang === "en" ? INSTRUCTION_EN : INSTRUCTION_TR),
-    /** Ayarlar → Yapay zeka → "Matematikte hesap makinesi kullan" (cihazdaki model için) */
-    enabled: () => App.prefs.get("aiHesap", true) !== false
+    /** Ayarlar → Yapay zeka → "Matematikte hesap makinesi kullan" (cihazdaki model için).
+        Varsayılan KAPALI: 2026 YKS'nin 80 matematik sorusunda araçla 43, araçsız 49 doğru çıktı (model aracı
+        yalnızca 16 soruda kullandı). İsteyen açabilir; daha iyi bir model ya da istemle yeniden ölçülebilir. */
+    enabled: () => App.prefs.get("aiHesap", false) === true
   };
 })();

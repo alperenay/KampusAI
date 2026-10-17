@@ -266,7 +266,7 @@ App.locales.en = {
   "ai.role.answer": "Brain: wrote the answer",
   "ai.role.calc": "Calculator: computed the arithmetic exactly",
   "ais.calc": "Use a calculator for math (on-device AI)",
-  "ais.calcHint": "The model hands calculations to the app's calculator instead of doing them in its head; fewer mistakes in long calculations.",
+  "ais.calcHint": "Experimental. The model hands calculations to the app's calculator. Off by default because it didn't improve accuracy in our YKS math test.",
   "ai.src.title": "Records used ({n})",
   "ai.src.overview": "Overview (exams, today's schedule)",
   "ai.src.score": "Similarity to the question",

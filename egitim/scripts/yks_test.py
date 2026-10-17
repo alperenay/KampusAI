@@ -201,7 +201,7 @@ def ozet(kayitlar):
     return d, y, b, d - y / 4
 
 
-def rapor_yaz(sonuclar, sorular, ad="yks_raporu.md"):
+def rapor_yaz(sonuclar, sorular, dosya_adi="yks_raporu.md"):
     sid = {s["id"]: s for s in sorular}
     satir = ["# Gerçek YKS sorularıyla model testi", "",
              "Sorular ÖSYM'nin yayımladığı TYT ve AYT kitapçıklarından alındı; eğitimde hiç kullanılmadı. "
@@ -234,8 +234,8 @@ def rapor_yaz(sonuclar, sorular, ad="yks_raporu.md"):
         ad_b = BOLUM_ADI.get(bolum, bolum) if not (sinav == "AYT" and bolum == "FEN") else "AYT Fen"
         satir.append(f"| {yil} | {ad_b} | {n} | " + " | ".join(hucre) + " |")
     satir += ["", "Not: ÖSYM soruları telif hakkı altındadır; yalnızca bu testte kullanıldı, eğitime ve uygulamaya girmedi."]
-    (RAPOR / ad).write_text("\n".join(satir) + "\n", encoding="utf-8")
-    log("Rapor:", RAPOR / ad)
+    (RAPOR / dosya_adi).write_text("\n".join(satir) + "\n", encoding="utf-8")
+    log("Rapor:", RAPOR / dosya_adi)
 
 
 def main():

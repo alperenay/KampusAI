@@ -264,7 +264,7 @@ App.locales.tr = {
   "ai.role.answer": "Beyin: yanıtı yazdı",
   "ai.role.calc": "Hesap makinesi: işlemleri kesin hesapladı",
   "ais.calc": "Matematikte hesap makinesi kullan (cihazdaki yapay zeka)",
-  "ais.calcHint": "Model işlemleri kafadan yapmak yerine uygulamanın hesap makinesine yaptırır; uzun hesaplarda hatayı azaltır.",
+  "ais.calcHint": "Deneysel. Model işlemleri uygulamanın hesap makinesine yaptırır. YKS matematik testimizde doğruluğu artırmadığı için varsayılan olarak kapalı.",
   "ai.src.title": "Kullanılan kayıtlar ({n})",
   "ai.src.overview": "Genel özet (denemeler, bugünkü program)",
   "ai.src.score": "Soruyla benzerlik",
