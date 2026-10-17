@@ -391,6 +391,33 @@
    * opts: { engine, signal, onProgress, lexical }  (lexical: true → vektör kullanma)
    * Dönen: { overview, hits: [{ label, link, kind, text, score }], embedded, method }
    */
+  /* Hafıza henüz hazır değilken (ilk sohbet, çok sayıda yeni kayıt) cevabı bekletmemek için:
+     eksik vektör sayısı QUICK'ten fazlaysa bu soruda kelime araması (BM25) kullanılır ve hafıza
+     arka planda hazırlanır. Sonraki sorular anlamca arama ile cevaplanır. */
+  const QUICK = BATCH;            // en fazla bir toplu istek beklenir (birkaç saniye)
+
+  async function pending(engine) {
+    const model = embedModelOf(engine);
+    const data = await loadData();
+    const chunks = await buildChunks(data);
+    if (!model) return { model, data, chunks, missing: 0 };
+    const have = new Set((await App.db.getAll("vectors").catch(() => [])).map((r) => r.id));
+    const missing = new Set(chunks.map((c) => model + ":" + hash(c.text)).filter((id) => !have.has(id))).size;
+    return { model, data, chunks, missing };
+  }
+
+  /** Hafızayı arka planda hazırla (cevap beklemez). Aynı model için tek seferde bir iş çalışır. */
+  function warmup(engine) {
+    engine = engine || App.engine.local;
+    if (!embedModelOf(engine)) return Promise.resolve(null);
+    return sync({ engine }).catch(() => null);
+  }
+
+  /**
+   * Soruyla ilgili kayıtları bulur.
+   * opts: { engine, signal, onProgress, lexical }  (lexical: true → vektör kullanma)
+   * Dönen: { overview, hits: [{ label, link, kind, text, score }], embedded, method, indexing? }
+   */
   async function retrieve(query, opts) {
     opts = opts || {};
     if (opts.lexical) {
@@ -399,6 +426,14 @@
       return { overview: overviewText(data), hits: query.trim() ? lexical(query, chunks) : [], embedded: 0, method: "lexical" };
     }
     const engine = opts.engine || App.engine.local;
+    const pre = await pending(engine);
+    const busy = syncing && syncing.model === pre.model;
+    if (pre.model && (pre.missing > QUICK || busy)) {
+      // Cevabı bekletme: bu soruda kelime araması, hafıza arka planda (bulut: hemen; cihaz: cevaptan sonra)
+      if (engine.kind === "cloud" && !busy) warmup(engine);
+      return { overview: overviewText(pre.data), hits: query.trim() ? lexical(query, pre.chunks) : [], embedded: 0, method: "lexical",
+        indexing: { missing: pre.missing, total: pre.chunks.length } };
+    }
     const { chunks, data, embedded, method } = await sync(opts);
     const overview = overviewText(data);
     if (!chunks.length || !query.trim()) return { overview, hits: [], embedded, method };
@@ -416,5 +451,5 @@
     return sync({ onProgress, signal, engine });
   }
 
-  App.rag = { buildChunks, retrieve, sync, rebuild, overviewText, loadData, lexical, tokens };
+  App.rag = { buildChunks, retrieve, sync, rebuild, warmup, pending, overviewText, loadData, lexical, tokens };
 })();
