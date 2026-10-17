@@ -75,7 +75,8 @@
       '<div class="ais-test"><button class="btn btn--sm" type="button" data-test="cloud">' + App.icon("refresh") + esc(t("ais.test")) + '</button><span class="hint" id="aisCloudResult"></span></div>';
 
     const devCard = App.engine.device && App.engine.device.bridge
-      ? '<div class="lan-info dev-card"><b>' + App.icon("download") + esc(t("dev.title")) + '</b><p class="hint">' + esc(t("dev.intro")) + "</p>" +
+      ? '<div class="lan-info dev-card"><b>' + App.icon("download") + esc(t(App.engine.device.bridge.phone ? "dev.titlePhone" : "dev.title")) + "</b>" +
+        '<p class="hint">' + esc(t(App.engine.device.bridge.phone ? "dev.introPhone" : "dev.intro")) + '</p><p class="hint" id="devWarn" hidden></p>' +
         '<span class="hint" id="devState"></span><progress id="devBar" max="1" value="0" hidden></progress>' +
         '<div class="ais-test"><button class="btn btn--primary btn--sm" type="button" id="devGo"></button>' +
         '<button class="btn btn--sm" type="button" id="devCancel" hidden>' + esc(t("dev.cancel")) + "</button>" +
@@ -314,12 +315,18 @@
         if (st.boyut) size = st.boyut;
         const a = st.asama || "yok";
         const ini = a === "iniyor";
-        $("#devState").textContent = t("dev.st." + a, { done: gb(st.indirilen || 0), total: gb(st.toplam || size), file: st.dosya || "", msg: st.hata || "" });
+        const phone = !!dev.phone;
+        const warn = $("#devWarn");
+        const warnText = st.destek === false ? t("dev.unsupported")
+          : phone && st.bellek && st.bellek < 7.4e9 && !st.kurulu ? t("dev.lowRam", { ram: gb(st.bellek) }) : "";
+        warn.hidden = !warnText;
+        warn.textContent = warnText;
+        $("#devState").textContent = t("dev.st." + a + (phone && (a === "kurulu" || a === "hazir") ? "Phone" : ""), { done: gb(st.indirilen || 0), total: gb(st.toplam || size), file: st.dosya || "", msg: st.hata || "" });
         const bar = $("#devBar");
         bar.hidden = !ini;
         if (ini && st.toplam) bar.value = Math.min(1, (st.indirilen || 0) / st.toplam);
         const go = $("#devGo");
-        go.hidden = ini || a === "hazir" || a === "hazirlaniyor";
+        go.hidden = ini || a === "hazir" || a === "hazirlaniyor" || st.destek === false;
         go.textContent = st.kurulu ? t("dev.start") : t("dev.download", { size: gb(size) });
         go.disabled = false;
         $("#devCancel").hidden = !ini;

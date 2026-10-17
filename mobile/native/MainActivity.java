@@ -68,6 +68,9 @@ public class MainActivity extends BridgeActivity {
     private boolean ttsInit = false;
     private final List<Runnable> ttsQueue = new ArrayList<>();
 
+    /* Telefona indirilen yapay zeka (DeviceAi.java) */
+    private DeviceAi ai;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +82,11 @@ public class MainActivity extends BridgeActivity {
         });
         if (getBridge() == null) return;
         webView = getBridge().getWebView();
+        ai = new DeviceAi(this, st -> {
+            if (webView == null) return;
+            final String js = "window.__nativeAi&&window.__nativeAi(" + st.toString() + ")";
+            runOnUiThread(() -> webView.evaluateJavascript(js, null));
+        });
         webView.addJavascriptInterface(new NativeBridge(), "KampusNative");
         if (!EDGE) return;
 
@@ -234,6 +242,7 @@ public class MainActivity extends BridgeActivity {
     public void onDestroy() {
         if (recognizer != null) { try { recognizer.destroy(); } catch (Exception e) { /* yok say */ } recognizer = null; }
         if (tts != null) { try { tts.shutdown(); } catch (Exception e) { /* yok say */ } tts = null; }
+        if (ai != null && isFinishing()) ai.stop();
         super.onDestroy();
     }
 
@@ -299,6 +308,13 @@ public class MainActivity extends BridgeActivity {
                 if (tts != null) tts.stop();
             });
         }
+
+        /* ---- Yapay zekayı bu telefona indir ---- */
+        @JavascriptInterface public String aiStatus() { return ai == null ? "{}" : ai.status().toString(); }
+        @JavascriptInterface public void aiDownload() { if (ai != null) ai.download(); }
+        @JavascriptInterface public void aiCancel() { if (ai != null) ai.cancel(); }
+        @JavascriptInterface public void aiStart() { if (ai != null) ai.startAsync(); }
+        @JavascriptInterface public void aiRemove() { if (ai != null) new Thread(ai::remove, "ai-remove").start(); }
 
         /** Açık temada koyu simgeler, koyu temada açık simgeler */
         @JavascriptInterface

@@ -24,6 +24,8 @@ env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
   APP_VERSION: 1.8.0
+  # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
+  LLAMA_CPP_TAG: b11707
 
 jobs:
   # Yapay zeka sunucusu (Cloudflare Worker). Repo ayarlarında şu gizli değerler varsa yayınlanır:
@@ -102,9 +104,32 @@ jobs:
       - id: deploy
         uses: actions/deploy-pages@v4
 
+  # Telefonda internetsiz yapay zeka için llama-server (arm64 + emülatör için x86_64); sürüm başına bir kez derlenir
+  llama-android:
+    name: Android yapay zeka motoru
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - id: cache
+        uses: actions/cache@v4
+        with:
+          path: llama-android
+          key: llama-android-${{ env.LLAMA_CPP_TAG }}-${{ hashFiles('tools/llama-android.sh') }}
+      - name: Derle
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          sudo apt-get install -y -q ninja-build >/dev/null
+          bash tools/llama-android.sh "$PWD/llama-android" "$LLAMA_CPP_TAG"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: llama-android
+          path: llama-android
+          if-no-files-found: error
+
   android:
     name: Android (APK)
-    needs: server
+    needs: [server, llama-android]
     if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     env:
@@ -153,16 +178,27 @@ jobs:
           # Klavye açılınca sayfa küçülsün (yazı kutusu klavyenin altında kalmasın)
           grep -q "windowSoftInputMode" app/src/main/AndroidManifest.xml || \
             sed -i 's#android:name=".MainActivity"#android:name=".MainActivity" android:windowSoftInputMode="adjustResize"#' app/src/main/AndroidManifest.xml
-          cp ../native/MainActivity.java app/src/main/java/com/dersasistani/app/MainActivity.java
+          cp ../native/MainActivity.java ../native/DeviceAi.java app/src/main/java/com/dersasistani/app/
+          # Yapay zeka motoru kurulumda çalıştırılabilir klasöre çıkarılsın (lib*.so, sıkıştırılmadan)
+          printf '\nandroid { packaging { jniLibs { useLegacyPackaging = true } } }\n' >> app/build.gradle
           mkdir -p app/src/main/res/drawable && cp ../native/res/drawable/*.xml app/src/main/res/drawable/
           grep -nE "MainActivity|permission" app/src/main/AndroidManifest.xml
           # Her derlemede aynı imza: yeni sürüm eskisinin üzerine kurulur, veriler silinmez
           mkdir -p ~/.android && cp ../debug.keystore ~/.android/debug.keystore
           chmod +x gradlew
           grep -E "versionCode|versionName" app/build.gradle
+      - name: Yapay zeka motorunu ekle
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: llama-android
+          path: mobile/android/app/src/main/jniLibs
       - name: APK derle
         working-directory: mobile/android
-        run: ./gradlew assembleDebug --no-daemon --stacktrace
+        run: |
+          rm -f app/src/main/jniLibs/SURUM
+          ls -laR app/src/main/jniLibs || echo "yapay zeka motoru yok: telefonda indirme düğmesi 'desteklenmiyor' gösterir"
+          ./gradlew assembleDebug --no-daemon --stacktrace
       - name: Dosyayı adlandır
         run: cp mobile/android/app/build/outputs/apk/debug/app-debug.apk "KampusAI-$APP_VERSION.apk"
       - uses: actions/upload-artifact@v4
