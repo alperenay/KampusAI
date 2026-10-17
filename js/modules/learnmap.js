@@ -141,7 +141,7 @@
       return '<li class="daily-task' + (tp.done ? " is-done" : "") + '">' +
         '<button type="button" class="daily-check" data-mark="' + esc(tp.key) + '" aria-pressed="' + tp.done + '" title="' + esc(T("Çalıştım", "Done")) + '">' + App.icon(tp.done ? "checkCircle" : "circle") + "</button>" +
         '<div class="daily-task__body"><b>' + esc(L(f.outcome.title)) + "</b>" +
-        '<span class="hint">' + esc(C().gradeName(f.grade) + " · " + L(f.subject.name) + " · " + SN[tp.m.status] + (tp.m.score != null ? " (" + tp.m.score + ")" : "")) + "</span>" +
+        '<span class="hint">' + esc(C().gradeName(f.grade) + " · " + L(f.subject.name) + " · " + SN[tp.m.status] + (tp.m.score != null ? " (" + tp.m.score + ")" : "") + (tp.m.parts && tp.m.parts.fading ? T(" · tekrar zamanı", " · review due") : "")) + "</span>" +
         '<span class="daily-task__acts"><a class="btn btn--sm" href="#/konular/' + esc(tp.key) + '">' + App.icon("book") + esc(T("Özeti oku", "Read")) + "</a>" +
         '<a class="btn btn--sm btn--primary" href="#/test/' + esc(tp.key) + '">' + App.icon("quiz") + esc(T("Konu testi", "Quiz")) + "</a></span></div></li>";
     }).join("");
@@ -180,6 +180,7 @@
       return '<span class="map-bar">' + STATUS.map((s) => (c[s] ? '<i class="st-' + s + '" style="flex:' + c[s] + '"></i>' : "")).join("") + "</span>";
     };
 
+    let fadingN = 0; M.forEach((m) => { if (m.parts && m.parts.fading) fadingN++; });
     const grid = C().grades.map((g) => {
       const s = g.subjects.find((x) => x.id === filter);
       if (!s || !s.units.length) return "";
@@ -187,7 +188,9 @@
         '<div class="map-unit"><span class="map-unit__name">' + esc(L(u.name)) + '</span><div class="map-chips">' + (u.outcomes || []).map((o) => {
           const key = C().key(g.id, s.id, u.id, o.id);
           const m = M.get(key) || { status: "unknown", score: null };
-          return '<a class="map-chip st-' + m.status + '" href="#/konular/' + esc(key) + '" title="' + esc(L(o.title) + " — " + SN[m.status] + (m.score != null ? " (" + m.score + "/100)" : "")) + '">' +
+          const pt = m.parts || {};
+          const fade = pt.fading ? " " + T("— tekrar zamanı: " + pt.days + " gün önce çalışıldı, hatırlama ~%" + pt.retention, "— review due: studied " + pt.days + " days ago, recall ~" + pt.retention + "%") : "";
+          return '<a class="map-chip st-' + m.status + (pt.fading ? " is-fading" : "") + '" href="#/konular/' + esc(key) + '" title="' + esc(L(o.title) + " — " + SN[m.status] + (m.score != null ? " (" + m.score + "/100)" : "") + fade) + '">' +
             esc(o.code || o.id) + "</a>";
         }).join("") + "</div></div>").join("") + "</div>";
     }).join("");
@@ -201,6 +204,8 @@
           '<div id="dailyBox">' + (await dailyCardHtml(false)) + "</div>" +
           '<section class="card map-summary"><div class="card__title">' + App.icon("chart") + esc(T("Genel durum", "Overview")) + "</div>" +
             '<div class="map-legend">' + STATUS.map((s) => '<span class="map-legend__i"><i class="st-' + s + '"></i>' + esc(SN[s]) + " <b>" + counts[s] + "</b> <small>%" + pct(counts[s]) + "</small></span>").join("") + "</div>" +
+            (fadingN ? '<p class="hint map-fade-note"><span class="map-chip is-fading st-mid">↺</span>' + esc(T(fadingN + " konu unutulmaya başladı (soluk görünenler). Unutma eğrisine göre tekrar zamanı geldi; günlük göreve eklenir.",
+              fadingN + " topics are fading (shown faded). Per the forgetting curve they are due for review.")) + "</p>" : "") +
             '<p class="hint">' + esc(sw.type ? T("Öncelikler hedef puan türüne göre (" + sw.type + ") hesaplanıyor.", "Priorities follow your target score type (" + sw.type + ").")
               : T("Puan ve Hedef'te hedef bölüm seçersen öncelikler ona göre ayarlanır.", "Set a target program in Score & Target to tune priorities.")) +
               ' <a href="#/puan">' + esc(T("Puan ve Hedef", "Score & Target")) + "</a></p>" +

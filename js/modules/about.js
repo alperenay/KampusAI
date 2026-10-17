@@ -46,6 +46,8 @@
       ["Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., & Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. Psychological Bulletin, 132(3), 354–380. (Yanlış defterindeki aralıklı tekrar)", "https://doi.org/10.1037/0033-2909.132.3.354"],
       ["Roediger, H. L., & Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. Psychological Science, 17(3), 249–255. (Konu sonu testleri)", "https://doi.org/10.1111/j.1467-9280.2006.01693.x"],
       ["Chi, M. T. H., De Leeuw, N., Chiu, M.-H., & LaVancher, C. (1994). Eliciting self-explanations improves understanding. Cognitive Science, 18(3), 439–477. (Feynman modu)", "https://doi.org/10.1207/s15516709cog1803_3"],
+      ["Ebbinghaus, H. (1885/1913). Memory: A contribution to experimental psychology. Teachers College, Columbia University. (Unutma eğrisi)", "https://psychclassics.yorku.ca/Ebbinghaus/index.htm"],
+      ["Murre, J. M. J., & Dros, J. (2015). Replication and analysis of Ebbinghaus' forgetting curve. PLoS ONE, 10(7), e0120644. (Unutma eğrisi)", "https://doi.org/10.1371/journal.pone.0120644"],
       ["Hamari, J., Koivisto, J., & Sarsa, H. (2014). Does gamification work? A literature review of empirical studies on gamification. HICSS 2014. (Seri ve rozetler)", "https://doi.org/10.1109/HICSS.2014.377"],
       ["Cirillo, F. (2018). The Pomodoro Technique. Currency. (Odak sayacı)", "https://www.pomodorotechnique.com"]
     ]],
@@ -64,6 +66,7 @@
 
   /* Son sürümler (yeniden eskiye) */
   const SURUMLER = () => [
+    ["1.14.0", T("Unutma eğrisi (unutulmaya başlayan konular haritada solar, günlük göreve eklenir), zamanlı deneme simülasyonu, haftalık gelişim raporu, öğretmen için anonim sınıf görünümü.", "Forgetting curve, timed exam simulation, weekly report, anonymous class view for teachers.")],
     ["1.13.3", T("İlk sohbette \"Hafıza güncelleniyor\" beklemesi kaldırıldı: hafıza arka planda hazırlanır, cevap hemen başlar.", "No more waiting for memory indexing on the first chat; it is built in the background.")],
     ["1.13.2", T("Kalıcı imza anahtarıyla Android sürümü; sadeleştirilmiş yapay zekâ ayarları (üç seçenek ve durum satırı, ayrıntılar \"Gelişmiş ayarlar\"da).", "Permanently signed Android build; simpler AI settings.")],
     ["1.13.0", T("Kaynak gösterme ve kontrolü (cevaptaki [K1] etiketleri, \"Notlara dayanıyor\" rozeti); örnek öğrenci verisiyle demo modu.", "Citations and source check ([R1] tags, \"Based on your notes\" badge); demo mode with a sample student.")],
@@ -82,7 +85,10 @@
     ["bookmark", "yanlislar", T("Yanlış defteri", "Mistake notebook"), T("Aralıklı tekrar ve hata analizi", "Spaced review and error analysis")],
     ["mic", "", T("Sesli öğretmen", "Voice teacher"), T("Konuşarak sor, sesli cevap al", "Ask by voice, hear the answer")],
     ["sparkle", "", T("Yapay zekâ asistanı", "AI assistant"), T("Fotoğraftan soru çözer, notlarına bakar", "Solves photos, uses your notes")],
-    ["timer", "odak", T("Odak sayacı", "Focus timer"), T("Pomodoro ve süre istatistiği", "Pomodoro and time stats")]
+    ["timer", "odak", T("Odak sayacı", "Focus timer"), T("Pomodoro ve süre istatistiği", "Pomodoro and time stats")],
+    ["quiz", "simulasyon", T("Deneme simülasyonu", "Exam simulation"), T("Zayıf konulardan süreli mini deneme", "Timed mini exam from weak topics")],
+    ["note", "rapor", T("Haftalık rapor", "Weekly report"), T("Gelişim özeti, yazdır ya da paylaş", "Progress summary to print or share")],
+    ["grad", "sinif", T("Sınıf (öğretmen)", "Class (teacher)"), T("Sınıfın zorlandığı konular, anonim", "Where the class struggles, anonymous")]
   ];
 
   const link = (url, text) => '<a href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(text) + "</a>";

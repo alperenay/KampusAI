@@ -120,6 +120,21 @@
       if (w) score = Math.round(sum / w - Math.min(24, s.mis * 6));
       else if (s.mis) score = Math.max(20, 65 - s.mis * 10);
       if (score != null) score = Math.max(0, Math.min(100, score));
+      // Unutma eğrisi (Ebbinghaus): son çalışmadan bu yana geçen süreyle hatırlama azalır.
+      // Kalıcılık (gün) başarılı her tekrarla ikiye katlanır: 7 → 14 → 28 → 56 → 112 (en çok 120).
+      if (score != null && w) {
+        const dates = [s.quiz[0] && s.quiz[0].date, ...s.fey.map((x) => x.date), ...s.chk.map((c) => c.date)].map((d) => Date.parse(d)).filter((x) => !isNaN(x));
+        const last = dates.length ? Math.max(...dates) : null;
+        if (last) {
+          const reps = s.quiz.filter((q) => q.correct / q.total >= 0.7).length + s.fey.filter((x) => Number(x.score) >= 70).length;
+          const stab = Math.min(120, 7 * Math.pow(2, Math.max(0, reps - 1)));
+          const days = Math.max(0, (Date.now() - last) / 86400000);
+          const R = Math.exp(-days / stab);
+          parts.raw = score; parts.days = Math.round(days); parts.retention = Math.round(R * 100); parts.stability = stab;
+          parts.fading = score >= OK && R < 0.6;                // güçlüydü ama unutulmaya başladı: tekrar zamanı
+          if (score > WEAK) score = Math.round(score - (score - WEAK) * (1 - R) * 0.6);   // güçlü konu orta seviyeye iner; unutma tek başına "zayıf" yapmaz
+        }
+      }
       out.set(k, { score, status: score == null ? (s.done ? "studied" : "unknown") : score < WEAK ? "weak" : score < OK ? "mid" : "strong", parts, done: s.done });
     });
     return out;
