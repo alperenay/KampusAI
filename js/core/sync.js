@@ -150,6 +150,14 @@
     return run();
   }
 
+  /** Sunucudaki eşitleme odasını tamamen sil, sonra bu cihazda eşitlemeyi kapat */
+  async function wipe() {
+    if (!enabled()) return false;
+    await post({ wipe: true });
+    stop();
+    return true;
+  }
+
   function stop() {
     ["syncCode", "syncCursor", "syncSince", "syncAt"].forEach((k) => App.prefs.set(k, null));
     state.last = null; state.error = null;
@@ -177,5 +185,5 @@
     if (enabled()) schedule(800);
   }
 
-  App.sync = { available, enabled, code, pretty, normalize, valid, newCode, start, stop, run, schedule, init, state, onChange: (fn) => listeners.push(fn) };
+  App.sync = { available, enabled, code, pretty, normalize, valid, newCode, start, stop, wipe, run, schedule, init, state, onChange: (fn) => listeners.push(fn) };
 })();
