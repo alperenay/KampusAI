@@ -1,0 +1,107 @@
+{
+ "at": "2026-10-17T07:32:43.166Z",
+ "models": [
+  "gemini-2.5-flash",
+  "gemini-2.5-flash-preview-tts",
+  "gemma-4-26b-a4b-it",
+  "gemma-4-31b-it",
+  "gemini-flash-latest",
+  "gemini-flash-lite-latest",
+  "gemini-2.5-flash-lite",
+  "gemini-2.5-flash-image",
+  "gemini-3-flash-preview",
+  "gemini-3.1-flash-lite-preview",
+  "gemini-3.1-flash-lite",
+  "gemini-3.1-flash-image-preview",
+  "gemini-3.1-flash-image",
+  "gemini-3.1-flash-lite-image",
+  "gemini-3.5-flash",
+  "gemini-3.5-flash-lite",
+  "gemini-omni-flash-preview",
+  "gemini-omni-1.1-flash",
+  "gemini-3.6-flash",
+  "gemini-3.7-flash",
+  "gemini-3.8-flash",
+  "gemini-3.1-flash-tts-preview",
+  "gemini-3.8-flash-tts",
+  "gemini-3.8-flash-lite-tts",
+  "gemini-2.5-flash-native-audio-latest",
+  "gemini-2.5-flash-native-audio-preview-09-2025",
+  "gemini-2.5-flash-native-audio-preview-12-2025",
+  "gemini-3.1-flash-live-preview"
+ ],
+ "tests": [
+  {
+   "model": "gemma-4-26b-a4b-it",
+   "label": "varsayilan",
+   "status": 200,
+   "ms": 5445,
+   "thoughtParts": 10,
+   "text": "2x + 3 = 11\n2x = 8\n**x = 4**",
+   "err": ""
+  },
+  {
+   "model": "gemma-4-26b-a4b-it",
+   "label": "budget0",
+   "status": 400,
+   "ms": 143,
+   "thoughtParts": 0,
+   "text": "",
+   "err": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Thinking budget is not supported for this model.\",\n    \"status\": \"INVALID_ARGUMENT\"\n  }\n}\n"
+  },
+  {
+   "model": "gemma-4-26b-a4b-it",
+   "label": "noThoughts",
+   "status": 200,
+   "ms": 5880,
+   "thoughtParts": 11,
+   "text": "2x = 8 ise **x = 4** olur.",
+   "err": ""
+  },
+  {
+   "model": "gemma-4-26b-a4b-it",
+   "label": "image96",
+   "status": 500,
+   "ms": 5583,
+   "thoughtParts": 0,
+   "text": "",
+   "err": "{\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n"
+  },
+  {
+   "model": "gemma-4-31b-it",
+   "label": "varsayilan",
+   "status": 200,
+   "ms": 26903,
+   "thoughtParts": 11,
+   "text": "2x = 11 - 3\n2x = 8\n**x = 4**",
+   "err": ""
+  },
+  {
+   "model": "gemma-4-31b-it",
+   "label": "budget0",
+   "status": 400,
+   "ms": 138,
+   "thoughtParts": 0,
+   "text": "",
+   "err": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Thinking budget is not supported for this model.\",\n    \"status\": \"INVALID_ARGUMENT\"\n  }\n}\n"
+  },
+  {
+   "model": "gemma-4-31b-it",
+   "label": "noThoughts",
+   "status": 200,
+   "ms": 13967,
+   "thoughtParts": 7,
+   "text": "x = 4",
+   "err": ""
+  },
+  {
+   "model": "gemma-4-31b-it",
+   "label": "image96",
+   "status": 200,
+   "ms": 32922,
+   "thoughtParts": 6,
+   "text": "Kırmızı",
+   "err": ""
+  }
+ ]
+}
