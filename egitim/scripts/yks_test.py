@@ -35,11 +35,30 @@ BOLUM_ADI = {"TÜR": "TYT Türkçe", "SOS": "TYT Sosyal", "TEM": "TYT Temel Mate
 VARSAYILAN = [("ollama:gemma4:e4b", 2026), ("bulut:gemini-otomatik-hizli", 2026), ("bulut:gemma-4-26b-a4b-it", 2026)]
 
 
-def istek(url, govde, zaman_asimi=300):
-    req = urllib.request.Request(url, data=json.dumps(govde).encode("utf-8"), method="POST",
-                                 headers={"Content-Type": "application/json", "X-DA-App": "yks-test"})
-    with urllib.request.urlopen(req, timeout=zaman_asimi) as r:
-        return json.loads(r.read().decode("utf-8"))
+BASLIK = {"Content-Type": "application/json", "X-DA-App": "yks-test", "User-Agent": "KampusAI-YKS-Test/1.0"}
+OLLAMA_SINIR = 8192        # düşünen model uzun matematik çözümlerinde 3000'i aşıyordu (cevap yarım kalıyordu)
+
+
+def istek(url, govde=None, zaman_asimi=300):
+    """POST (govde varsa) ya da GET; ağ/SSL kesintilerinde birkaç kez yeniden dener."""
+    for deneme in range(5):
+        req = urllib.request.Request(url, data=json.dumps(govde).encode("utf-8") if govde is not None else None,
+                                     method="POST" if govde is not None else "GET", headers=BASLIK)
+        try:
+            with urllib.request.urlopen(req, timeout=zaman_asimi) as r:
+                return json.loads(r.read().decode("utf-8"))
+        except urllib.error.HTTPError:
+            raise
+        except (urllib.error.URLError, ConnectionError, TimeoutError) as e:
+            if deneme == 4:
+                raise
+            log(f"  ağ hatası, yeniden deneniyor: {repr(e)[:100]}")
+            time.sleep(10 * (deneme + 1))
+
+
+def tekrar_sorulmali(r):
+    """Hata nedeniyle boş kalan ya da sınıra takılıp yarım kalan cevaplar yeniden sorulur."""
+    return r["harf"] is None and (not r.get("token") or r.get("token", 0) >= 2990)
 
 
 def soru_metni(s):
@@ -55,7 +74,8 @@ def sor_ollama(model, s, adres):
     t0 = time.time()
     r = istek(adres.rstrip("/") + "/api/chat", {"model": model, "stream": False, "keep_alive": "30m",
                                                 "messages": [{"role": "system", "content": SISTEM}, mesaj],
-                                                "options": {"temperature": 0.2, "num_ctx": 8192, "num_predict": 3000}})
+                                                "options": {"temperature": 0.2, "num_ctx": 12288,
+                                                            "num_predict": OLLAMA_SINIR}})
     return (r.get("message") or {}).get("content", ""), time.time() - t0, r.get("eval_count", 0)
 
 
@@ -93,8 +113,7 @@ def sor_bulut(model, s):
 
 def gemini_sec(hiz):
     """Uygulamanın otomatik seçtiği modeli bul (hızlı: Flash-Lite, akıllı: Flash)."""
-    with urllib.request.urlopen(SUNUCU + "/models", timeout=30) as r:
-        adlar = [m["name"].replace("models/", "") for m in json.loads(r.read()).get("models", [])]
+    adlar = [m["name"].replace("models/", "") for m in istek(SUNUCU + "/models", zaman_asimi=30).get("models", [])]
     ver = lambda n: float((re.search(r"gemini-(\d+(?:\.\d+)?)", n) or [0, 0])[1])
     aday = [n for n in adlar if re.match(r"^gemini-[\d.]+-flash", n) and not re.search(r"preview|exp|tts|image|live", n)]
     aday = [n for n in aday if ("lite" in n) == (hiz == "hizli")]
@@ -110,14 +129,14 @@ def calistir(model_ad, sorular, paralel):
             return None
         model_ad = "bulut:" + ad
     if tur == "bulut":
-        with urllib.request.urlopen(SUNUCU + "/models", timeout=30) as r:
-            izinli = {m["name"].replace("models/", "") for m in json.loads(r.read()).get("models", [])}
+        izinli = {m["name"].replace("models/", "") for m in istek(SUNUCU + "/models", zaman_asimi=30).get("models", [])}
         if ad not in izinli:
             log(f"{ad} KampüsAI sunucusunda henüz açık değil (güncelleme yayınlanınca açılır); atlandı.")
             return None
     dosya = RAPOR / "yks_cevaplar" / (re.sub(r"[^\w.-]+", "_", model_ad) + ".jsonl")
     dosya.parent.mkdir(parents=True, exist_ok=True)
-    biten = {r["id"] for r in jsonl_oku(dosya)}
+    son = {r["id"]: r for r in jsonl_oku(dosya)}                 # aynı soru tekrar sorulduysa son cevap geçerli
+    biten = {i for i, r in son.items() if not (tekrar_sorulmali(r) and r.get("token", 0) < OLLAMA_SINIR - 10)}
     kalan = [s for s in sorular if s["id"] not in biten]
     log(f"=== {model_ad}: {len(sorular)} soru (önceden {len(sorular) - len(kalan)} yanıt var)")
     a = ayarlar()
@@ -211,7 +230,8 @@ def main():
         if r:
             ad, dosya = r
             ids = {s["id"] for s in secili}
-            sonuclar[ad] = [k for k in jsonl_oku(dosya) if k["id"] in ids]
+            son = {k["id"]: k for k in jsonl_oku(dosya)}
+            sonuclar[ad] = [k for i, k in son.items() if i in ids]
             rapor_yaz(sonuclar, sorular)
 
 
