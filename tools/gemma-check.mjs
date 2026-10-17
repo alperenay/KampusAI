@@ -30,12 +30,22 @@ const lj = await lr.json();
 out.models = (lj.models || []).map((m) => m.name.replace("models/", "")).filter((n) => /gemma|flash/.test(n));
 const gemmas = out.models.filter((n) => /^gemma-4/.test(n));
 const SYS = "Sen KampüsAI'sın, Türk lise öğrencilerine YKS için yardım eden bir öğretmensin. Kısa ve Türkçe cevap ver.";
-for (const m of gemmas.slice(0, 3)) {
-  await call(m, { contents: [{ role: "user", parts: [{ text: "Merhaba, adın ne? 2x+3=11 ise x kaç?" }] }], systemInstruction: { parts: [{ text: SYS }] } }, "system");
-  await call(m, { contents: [{ role: "user", parts: [{ text: SYS + "\n\nMerhaba, adın ne? 2x+3=11 ise x kaç?" }] }] }, "system-in-user");
-  await call(m, { contents: [{ role: "user", parts: [{ text: 'Sadece JSON: {"x": 2x+3=11 için x}' }] }], generationConfig: { responseMimeType: "application/json" } }, "json");
-  await call(m, { contents: [{ role: "user", parts: [{ inlineData: { mimeType: "image/png", data: RED } }, { text: "Bu görselin rengi ne? Tek kelime." }] }] }, "image");
-  await call(m, { contents: [{ role: "user", parts: [{ text: "Bir paragrafla fotosentezi anlat." }] }], generationConfig: { thinkingConfig: { thinkingLevel: "low" } } }, "thinking-low");
+// 96x96 gri zemin üzerinde yazı benzeri çizgiler olan PNG (Node ile üretilir)
+import zlib from "node:zlib";
+function png(w, h) {
+  const raw = Buffer.alloc((w * 3 + 1) * h);
+  for (let y = 0; y < h; y++) { raw[y * (w * 3 + 1)] = 0; for (let x = 0; x < w; x++) { const o = y * (w * 3 + 1) + 1 + x * 3; const ink = (y % 12 < 3) && x > 8 && x < w - 8; raw[o] = ink ? 20 : 235; raw[o + 1] = ink ? 20 : 60; raw[o + 2] = ink ? 20 : 60; } }
+  const chunk = (type, data) => { const len = Buffer.alloc(4); len.writeUInt32BE(data.length); const td = Buffer.concat([Buffer.from(type), data]); const crc = Buffer.alloc(4); crc.writeUInt32BE(zlib.crc32 ? zlib.crc32(td) >>> 0 : 0); return Buffer.concat([len, td, crc]); };
+  const ihdr = Buffer.alloc(13); ihdr.writeUInt32BE(w, 0); ihdr.writeUInt32BE(h, 4); ihdr[8] = 8; ihdr[9] = 2;
+  return Buffer.concat([Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]), chunk("IHDR", ihdr), chunk("IDAT", zlib.deflateSync(raw)), chunk("IEND", Buffer.alloc(0))]).toString("base64");
+}
+const BIG = png(96, 96);
+const Q = { contents: [{ role: "user", parts: [{ text: "2x+3=11 ise x kaç? Kısa cevap." }] }], systemInstruction: { parts: [{ text: SYS }] } };
+for (const m of gemmas.slice(0, 2)) {
+  await call(m, Q, "varsayilan");
+  await call(m, { ...Q, generationConfig: { thinkingConfig: { thinkingBudget: 0 } } }, "budget0");
+  await call(m, { ...Q, generationConfig: { thinkingConfig: { includeThoughts: false } } }, "noThoughts");
+  await call(m, { contents: [{ role: "user", parts: [{ inlineData: { mimeType: "image/png", data: BIG } }, { text: "Bu görselin zemin rengi ne? Tek kelime." }] }] }, "image96");
 }
 fs.mkdirSync("gemma-check", { recursive: true });
 fs.writeFileSync("gemma-check/sonuc.json", JSON.stringify(out, null, 1));
