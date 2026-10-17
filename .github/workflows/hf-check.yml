@@ -1,0 +1,35 @@
+name: Hugging Face dosya denemesi
+on:
+  push:
+    branches: [kampusai-egitim]
+    paths: [".github/workflows/hf-check.yml"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dosya listeleri
+        run: |
+          mkdir -p sonuc
+          for r in ggml-org/gemma-4-E2B-it-GGUF unsloth/gemma-4-E2B-it-GGUF ggml-org/gemma-4-E4B-it-GGUF; do
+            echo "== $r" >> sonuc/hf.txt
+            curl -s "https://huggingface.co/api/models/$r/tree/main" | python3 -c "import json,sys
+          try:
+            for f in json.load(sys.stdin):
+              if f.get('type')=='file': print(f['path'], f.get('size'), (f.get('lfs') or {}).get('size'))
+          except Exception as e: print('hata', e)" >> sonuc/hf.txt
+            curl -s "https://huggingface.co/api/models/$r" | python3 -c "import json,sys
+          try:
+            d=json.load(sys.stdin); print('license', (d.get('cardData') or {}).get('license'), 'gated', d.get('gated'))
+          except Exception as e: print('hata', e)" >> sonuc/hf.txt
+          done
+          cat sonuc/hf.txt
+      - name: Sonucu kaydet
+        if: always()
+        working-directory: sonuc
+        run: |
+          git init -q && git checkout -q -b ci-sonuc-hf && git add -A
+          git -c user.name=ci -c user.email=ci@users.noreply.github.com commit -qm "hf $GITHUB_RUN_NUMBER" || true
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-sonuc-hf

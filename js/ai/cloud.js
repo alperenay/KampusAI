@@ -175,7 +175,10 @@
     headers() {
       if (o.server) {
         if (!this.base()) throw new AIError("no-key", "", { provider: o.id });
-        return { "Content-Type": "application/json" };
+        // Rastgele cihaz kimliği: sunucu ortak ücretsiz kotayı cihaz başına paylaştırır (kişisel bilgi değil)
+        let id = App.prefs.get("srvCihaz", "");
+        if (!id) { id = Array.from(crypto.getRandomValues(new Uint8Array(9)), (b) => b.toString(36).padStart(2, "0")).join("").slice(0, 16); App.prefs.set("srvCihaz", id); }
+        return { "Content-Type": "application/json", "X-DA-Cihaz": id };
       }
       const k = this.key();
       if (!k) throw new AIError("no-key", "", { provider: o.id });
@@ -265,12 +268,13 @@
         tried.push(model);
         try {
           const res = await this.chatOnce(Object.assign({}, opts, { model }));
-          res.model = model;
+          res.model = res.model || model;
           if (busy[model]) { delete busy[model]; saveBusy(); }
           return res;
         } catch (e) {
           lastErr = e;
-          const retryable = e && (e.code === "busy" || e.code === "quota" || e.code === "model-missing") && !e.partial;
+          // Sunucu kota dolunca yedek modelleri zaten kendisi dener: 429 gelirse tekrar denemek boşa kota yer
+          const retryable = e && (e.code === "busy" || (e.code === "quota" && !o.server) || e.code === "model-missing") && !e.partial;
           if (!retryable || !auto || (opts.signal && opts.signal.aborted)) throw e;
           busy[model] = Date.now() + BUSY_MS; saveBusy();
           let list;
@@ -321,7 +325,8 @@
       }, signal);
       if (!text && blocked) throw new AIError("blocked", blocked, { model });
       if (!text) throw new AIError("bad-response", "empty", { model });
-      return { text, stats: clock.stats(tokens) };
+      // Sunucu kotası dolan modelin yerine başka modelle yanıtlamış olabilir
+      return { text, stats: clock.stats(tokens), model: res.headers.get("X-KampusAI-Model") || model };
     },
 
     async embed(model, inputs, signal, kind) {

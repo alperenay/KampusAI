@@ -8,12 +8,25 @@ workers_dev = true
 RATE_CHAT = "12"     # IP başına dakikada en fazla sohbet isteği
 RATE_EMBED = "40"    # IP başına dakikada en fazla hafıza (vektör) isteği
 RATE_SYNC = "30"     # IP başına dakikada en fazla eşitleme isteği
+GUN_CIHAZ = "150"    # cihaz başına günde en fazla internet sorusu
+GUN_IP = "3000"      # IP başına günde (okul Wi-Fi'ında herkes aynı IP'den gelir)
+DK_CIHAZ = "10"      # cihaz başına dakikada
+DK_IP = "120"        # IP başına dakikada
 
 # Cihazlar arası eşitleme: her kod bir Durable Object (SQLite) odası
 [[durable_objects.bindings]]
 name = "SYNC"
 class_name = "SyncRoom"
 
+# Ortak kota sayacı: tek oda, tüm sunucu örnekleri aynı sayaçları görür
+[[durable_objects.bindings]]
+name = "KOTA"
+class_name = "Kota"
+
 [[migrations]]
 tag = "v1"
 new_sqlite_classes = ["SyncRoom"]
+
+[[migrations]]
+tag = "v2"
+new_sqlite_classes = ["Kota"]

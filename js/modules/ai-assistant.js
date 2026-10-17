@@ -221,7 +221,12 @@
       case "auth": title = t("ai.err.authTitle", { name }); body = esc(t("ai.err.authBody")); extra = settingsBtn("cloud"); break;
       case "net": title = t("ai.err.netTitle"); body = esc(t("ai.err.netBody")); break;
       case "busy": title = t("ai.err.busyTitle", { name }); body = esc(t("ai.err.busyBody")); break;
-      case "quota": title = t("ai.err.quotaTitle", { name }); body = esc(t("ai.err.quotaBody")) + (err.message ? '<br><small>' + esc(String(err.message).slice(0, 240)) + "</small>" : ""); break;
+      case "quota": title = t("ai.err.quotaTitle", { name });
+        // KampüsAI sunucusu kendi açıklamasını (Türkçe, ne yapılacağıyla) gönderir
+        body = engine.id === "server" && err.message ? esc(String(err.message).slice(0, 300))
+          : esc(t("ai.err.quotaBody")) + (err.message ? '<br><small>' + esc(String(err.message).slice(0, 240)) + "</small>" : "");
+        if (engine.id === "server" && App.engine.device && App.engine.device.bridge) extra = settingsBtn("local");
+        break;
       case "blocked": title = t("ai.err.blockedTitle"); body = esc(t("ai.err.blockedBody")); break;
       case "model-missing":
         title = t("ai.err.modelTitle", { model: err.model || "" });
