@@ -8,14 +8,25 @@ exec > >(tee shots/report.txt) 2>&1   # günlük dala da yazılsın (Actions gü
 set -x
 APP=com.dersasistani.app
 APK=$(ls apk/*.apk | head -1)
-adb install -r "$APK"
+# Güncelleme testi: önce yayındaki son sürümü kur, sonra yenisini üzerine kur
+# (1.13.0 ve öncesi rastgele anahtarla imzalı olduğu için geçiş sürümünde BAŞARISIZ beklenir; sonrasında başarılı olmalı)
+OLD_URL=$(curl -s "https://api.github.com/repos/${GITHUB_REPOSITORY:-alperenay/ders-asistani}/releases/latest" | grep -o '"browser_download_url": *"[^"]*\.apk"' | head -1 | cut -d'"' -f4)
+if [ -n "$OLD_URL" ] && curl -sL -o old.apk "$OLD_URL" && adb install old.apk; then
+  echo "ESKİ SÜRÜM KURULDU: $OLD_URL"
+  if adb install -r "$APK"; then echo "GÜNCELLEME: BAŞARILI (eski sürümün üzerine kuruldu)"; else echo "GÜNCELLEME: BAŞARISIZ"; adb uninstall $APP; adb install "$APK"; fi
+else
+  adb install -r "$APK"
+fi
+# İmza bilgisi (anahtar döndürme varsa geçmiş sertifikalar da görünür)
+adb shell dumpsys package $APP | grep -iE "signatures|pastSigningCertificates|signing" | head -10 || true
 # Emülatörde donanım klavyesi tanımlı: ekran klavyesi yine de açılsın (gerçek telefon gibi)
 adb shell settings put secure show_ime_with_hard_keyboard 1 || true
 adb shell pm grant $APP android.permission.POST_NOTIFICATIONS || true
 # Gömülü yapay zeka motoru kurulumda çıkarılmış ve çalışıyor mu?
 APKDIR=$(adb shell pm path $APP | head -1 | sed 's/^package://; s#/base.apk.*##' | tr -d '\r')
 adb shell ls -la "$APKDIR/lib/x86_64/" || true
-adb shell run-as $APP "$APKDIR/lib/x86_64/libllama-server.so" --version || echo "yapay zeka motoru çalışmadı"
+# (sürüm derlemesi "debuggable" olmadığı için run-as ile çalıştırılamaz; motor uygulamanın içinden çalışır)
+adb shell run-as $APP "$APKDIR/lib/x86_64/libllama-server.so" --version || echo "run-as yok (sürüm derlemesi): motor dosyası yukarıda listelendi"
 adb shell am start -W -n $APP/.MainActivity
 sleep 20
 
