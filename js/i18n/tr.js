@@ -460,6 +460,8 @@ App.locales.tr = {
   "ais.speedHint": "Hızlı: Flash-Lite modeli, yanıt 1-2 saniyede başlar ve günlük kotası geniştir. Daha güçlü: Flash modeli, zor sorularda biraz daha iyi ama yanıtın başlaması 5-10 saniye sürebilir.",
   "nav.mistakes": "Yanlış Defteri",
   "nav.focus": "Odak Sayacı",
+  "nav.score": "Puan ve Hedef",
+  "nav.calc": "Hesap Makinesi",
   "sync.title": "Cihazlar arası eşitleme",
   "sync.on": "Açık",
   "sync.intro": "Telefonunda, bilgisayarında ve tabletinde aynı denemeleri, programı, notları, sohbetleri, testleri ve yanlış defterini görmek için cihazlarını eşitle.",

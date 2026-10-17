@@ -462,6 +462,8 @@ App.locales.en = {
   "ais.speedHint": "Fast: Flash-Lite model, answers start in 1-2 seconds and the daily quota is larger. Stronger: Flash model, slightly better on hard questions but answers can take 5-10 seconds to start.",
   "nav.mistakes": "Mistake Notebook",
   "nav.focus": "Focus Timer",
+  "nav.score": "Score & Target",
+  "nav.calc": "Calculator",
   "sync.title": "Sync across devices",
   "sync.on": "On",
   "sync.intro": "Sync your devices to see the same exams, schedule, notes, chats, tests and mistake notebook on your phone, computer and tablet.",

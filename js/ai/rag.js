@@ -243,6 +243,7 @@
 
     // Hedefler, odak çalışması, yanlış defteri
     if (App.goals) { const gs = App.goals.summaryTR(); if (gs) lines.push(gs); }
+    if (App.score) { const ss = App.score.summaryTR(); if (ss) lines.push(ss); }
     const sessions = data.sessions || [];
     if (sessions.length) {
       const monday = new Date(); monday.setHours(0, 0, 0, 0); monday.setDate(monday.getDate() - App.utils.weekdayIndex(monday));

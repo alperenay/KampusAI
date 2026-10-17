@@ -1022,3 +1022,42 @@ nav.crumbs > a .ico { flex: none; margin-top: 1px; }
 .prio-opt:hover, .prio-opt:focus-visible { border-color: var(--accent, #5B7CFA); }
 .prio-opt__title { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 16px; }
 .prio-opt__title svg { width: 20px; height: 20px; }
+
+/* Puan ve Hedef */
+.score-target .form-row { align-items: end; }
+.score-h { font-size: 15px; margin: 16px 0 8px; color: var(--muted, inherit); }
+.score-nets { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px 12px; }
+.score-net { display: grid; gap: 4px; font-size: 14px; }
+.score-net small { color: var(--faint); }
+.score-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 10px 0 14px; }
+.score-tile { display: grid; gap: 2px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface-2); }
+.score-tile.is-target { border-color: var(--accent, #5B7CFA); box-shadow: 0 0 0 1px var(--accent, #5B7CFA) inset; }
+.score-tile__k { font-size: 13px; color: var(--faint); }
+.score-tile__v { font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.score-tile__s { font-size: 12px; color: var(--faint); }
+.score-verdict { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 14px; background: var(--surface-2); }
+.score-verdict svg { width: 22px; height: 22px; flex: none; margin-top: 2px; }
+.score-verdict p { margin: 4px 0 0; }
+.score-verdict.is-ok { border: 1px solid var(--good, #3fb27f); }
+.score-tips { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.score-mix { margin: 0; font-weight: 600; }
+
+/* Hesap makinesi */
+.calc { display: grid; gap: 12px; }
+.calc-display { display: grid; gap: 4px; padding: 12px 14px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border); }
+.calc-expr { width: 100%; border: 0; background: transparent; color: inherit; font: 600 24px/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; outline: none; text-align: right; }
+.calc-result { text-align: right; font-size: 18px; color: var(--faint); font-variant-numeric: tabular-nums; min-height: 1.4em; overflow-wrap: anywhere; }
+.calc-result.is-err, .calc-out .is-err { color: var(--danger, #e5534b); }
+.calc-keys { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.calc-key { min-height: 48px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface-2); color: inherit; font: 600 16px/1 inherit; cursor: pointer; }
+.calc-key:hover { filter: brightness(1.1); }
+.calc-key.is-num { background: var(--surface, transparent); font-size: 18px; }
+.calc-key.is-eq { background: var(--accent, #5B7CFA); color: #fff; border-color: transparent; }
+.calc-key.is-clear { color: var(--danger, #e5534b); }
+.calc-hist { display: grid; gap: 4px; }
+.calc-hist__head { display: flex; justify-content: space-between; align-items: center; }
+.calc-hist__row { display: flex; justify-content: space-between; gap: 12px; padding: 6px 10px; border: 0; border-radius: 10px; background: transparent; color: inherit; font: 14px/1.4 ui-monospace, Menlo, Consolas, monospace; cursor: pointer; text-align: left; }
+.calc-hist__row:hover { background: var(--surface-2); }
+.calc-eq { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 6px 0; font-size: 16px; }
+.calc-in { width: 84px; text-align: center; }
+.calc-out { min-height: 1.5em; font-variant-numeric: tabular-nums; font-weight: 600; }
