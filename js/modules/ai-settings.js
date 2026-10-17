@@ -77,6 +77,7 @@
     const devCard = App.engine.device && App.engine.device.bridge
       ? '<div class="lan-info dev-card"><b>' + App.icon("download") + esc(t(App.engine.device.bridge.phone ? "dev.titlePhone" : "dev.title")) + "</b>" +
         '<p class="hint">' + esc(t(App.engine.device.bridge.phone ? "dev.introPhone" : "dev.intro")) + '</p><p class="hint" id="devWarn" hidden></p>' +
+        (App.engine.device.bridge.phone ? '<div class="lang-switch seg" role="radiogroup" id="devVar" hidden></div><p class="hint" id="devVarHint" hidden></p>' : "") +
         '<span class="hint" id="devState"></span><progress id="devBar" max="1" value="0" hidden></progress>' +
         '<div class="ais-test"><button class="btn btn--primary btn--sm" type="button" id="devGo"></button>' +
         '<button class="btn btn--sm" type="button" id="devCancel" hidden>' + esc(t("dev.cancel")) + "</button>" +
@@ -309,16 +310,19 @@
       const gb = (b) => (b / 1e9).toLocaleString(App.i18n.locale, { maximumFractionDigits: 1 }) + " GB";
       let size = 0;
       let off = null;
+      let chosen = "";
+      let last = null;
       const paint = (st) => {
         if (!el.isConnected) { if (off) off(); return; }
         if (!st) return;
+        last = st;
         if (st.boyut) size = st.boyut;
         const a = st.asama || "yok";
         const ini = a === "iniyor";
         const phone = !!dev.phone;
         const warn = $("#devWarn");
         const warnText = st.destek === false ? t("dev.unsupported")
-          : phone && st.bellek && st.bellek < 7.4e9 && !st.kurulu ? t("dev.lowRam", { ram: gb(st.bellek) }) : "";
+          : phone && st.bellek && st.bellek < 5.5e9 && !st.kurulu ? t("dev.lowRam", { ram: gb(st.bellek) }) : "";
         warn.hidden = !warnText;
         warn.textContent = warnText;
         $("#devState").textContent = t("dev.st." + a + (phone && (a === "kurulu" || a === "hazir") ? "Phone" : ""), { done: gb(st.indirilen || 0), total: gb(st.toplam || size), file: st.dosya || "", msg: st.hata || "" });
@@ -327,17 +331,39 @@
         if (ini && st.toplam) bar.value = Math.min(1, (st.indirilen || 0) / st.toplam);
         const go = $("#devGo");
         go.hidden = ini || a === "hazir" || a === "hazirlaniyor" || st.destek === false;
-        go.textContent = st.kurulu ? t("dev.start") : t("dev.download", { size: gb(size) });
+        // Telefon: hafif (E2B) / tam (E4B) seçimi
+        const vg = $("#devVar");
+        if (vg && st.secenekler) {
+          if (!chosen) chosen = st.secim || st.oneri || "tam";
+          vg.hidden = ini;
+          vg.innerHTML = ["hafif", "tam"].map((v) => '<button type="button" role="radio" data-var="' + v + '" aria-checked="' + (v === chosen) + '">' +
+            esc(t("dev.var." + v, { size: gb(st.secenekler[v].boyut) })) + (v === st.oneri ? " · " + esc(t("dev.suggested")) : "") + "</button>").join("");
+          $("#devVarHint").hidden = ini;
+          $("#devVarHint").textContent = t("dev.varHint." + chosen);
+        }
+        const other = vg && st.secenekler && chosen !== st.secim;
+        if (vg && st.secenekler && st.secenekler[chosen]) size = st.secenekler[chosen].boyut;
+        go.textContent = other && (st.kurulu || a === "hazir") ? t("dev.switch", { size: gb(size) })
+          : st.kurulu ? t("dev.start") : t("dev.download", { size: gb(size) });
+        go.hidden = go.hidden && !other;
         go.disabled = false;
         $("#devCancel").hidden = !ini;
         $("#devDel").hidden = ini || !(st.kurulu || a === "hata");
       };
       off = dev.onProgress(paint);
       dev.status().then(paint).catch(() => {});
+      const vg = $("#devVar");
+      if (vg) vg.addEventListener("click", (e) => {
+        const b = e.target.closest("[data-var]");
+        if (!b) return;
+        chosen = b.dataset.var;
+        if (last) paint(last);
+      });
       $("#devGo").addEventListener("click", async (e) => {
         e.currentTarget.disabled = true;
         const st = await dev.status();
-        paint(await (st.kurulu ? dev.start() : dev.download()));
+        const change = chosen && st.secim && chosen !== st.secim;
+        paint(await (change ? dev.download(chosen) : st.kurulu ? dev.start() : dev.download(chosen || undefined)));
         App.engine.invalidate();
         App.modules.assistant.refreshStatus();
       });
