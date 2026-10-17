@@ -1,0 +1,27 @@
+name: Gemma 4 API denemesi
+on:
+  push:
+    branches: [kampusai-egitim]
+    paths: ["tools/gemma-check.mjs", ".github/workflows/gemma-check.yml"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Dene
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node tools/gemma-check.mjs
+      - name: Sonucu kaydet
+        if: always()
+        working-directory: gemma-check
+        run: |
+          git init -q && git checkout -q -b ci-sonuc-gemma && git add -A
+          git -c user.name=ci -c user.email=ci@users.noreply.github.com commit -qm "gemma-check $GITHUB_RUN_NUMBER" || true
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-sonuc-gemma
