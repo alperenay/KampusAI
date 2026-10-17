@@ -186,17 +186,24 @@
     const userMsg = { role: "user", content: userContent };
     if (opts.image && cfg.direct) userMsg.images = [opts.image.base64];
 
+    // Cihazdaki model (Ollama ya da indirilen): hesapları "hesapla" aracıyla yapsın (calc.js; YKS matematiğinde ölçüldü)
+    const useCalc = engine.kind === "local" && App.calc && App.calc.enabled();
+    if (useCalc) system += "\n\n" + App.calc.instruction();
     const messages = [{ role: "system", content: system }].concat(historyMessages(opts.history || [], cfg.direct), [userMsg]);
+    let calcUsed = 0;
     const res = await engine.chat({
       model: cfg.chatModel,
       messages,
       options: { temperature: 0.4, num_ctx: 8192 },
+      tools: useCalc ? [App.calc.TOOL] : undefined,
+      onTool: useCalc ? (name, args) => { calcUsed++; const out = App.calc.call(name, args); fire("tool", { name, args, out }); return out; } : undefined,
       signal: opts.signal,
       onDelta: (piece, full) => { result.text = full; fire("delta", full); },
       onRetry: (alt) => { fire("delta", ""); fire("stage", "answer", alt); }
     });
     result.text = res.text;
     result.stats = res.stats;
+    if (calcUsed) result.models.push({ role: "calc", model: App.i18n.lang === "en" ? "Calculator ×" + calcUsed : "Hesap makinesi ×" + calcUsed });
     // Yoğunluk nedeniyle başka model yanıtladıysa zincirde onu göster
     if (res.model && res.model !== cfg.chatModel) {
       result.models.forEach((m) => { if ((m.role === "answer" || (m.role === "vision" && cfg.direct)) && m.model === cfg.chatModel) m.model = res.model; });

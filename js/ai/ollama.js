@@ -165,10 +165,43 @@
    * Akışlı sohbet. onDelta(metinParçası) her yeni parçada çağrılır.
    * Dönen değer: { text, stats }
    */
-  async function chat({ model, messages, options, signal, onDelta, json, think }) {
+  /**
+   * tools: [App.calc.TOOL] verilirse model araç çağırabilir; çağrılar onTool(ad, argümanlar) ile çalıştırılıp
+   * sonuç modele geri verilir ve yanıt kaldığı yerden sürer (en fazla 8 tur). Araç desteklemeyen model: araçsız.
+   */
+  async function chat(o) {
+    const { tools, onTool } = o;
+    if (!tools || !tools.length || !onTool) return chatOnce(o);
+    const msgs = o.messages.slice();
+    let full = "", calls = 0, stats = null;
+    for (let round = 0; round < 8; round++) {
+      let r;
+      try {
+        r = await chatOnce(Object.assign({}, o, {
+          messages: msgs,
+          onDelta: (piece) => { full += piece; if (o.onDelta) o.onDelta(piece, full); }
+        }));
+      } catch (e) {
+        if (round === 0 && e && /tool/i.test(String(e.message))) return chatOnce(o);   // model araç desteklemiyor
+        throw e;
+      }
+      stats = r.stats;
+      if (!r.toolCalls || !r.toolCalls.length) return { text: full || r.text, stats, toolCalls: calls };
+      msgs.push({ role: "assistant", content: r.text || "", tool_calls: r.toolCalls });
+      for (const c of r.toolCalls) {
+        const f = c.function || {};
+        calls++;
+        msgs.push({ role: "tool", tool_name: f.name, content: String(await onTool(f.name, f.arguments)) });
+      }
+    }
+    return { text: full, stats, toolCalls: calls };
+  }
+
+  async function chatOnce({ model, messages, options, signal, onDelta, json, think, tools }) {
     const opts = Object.assign({}, options || {});
     delete opts.json;
     const body = { model, messages, stream: true, keep_alive: KEEP_ALIVE, options: opts };
+    if (tools && tools.length) body.tools = tools;
     /* Düşünen modeller (qwen3-vl, qwen3.5…) düşünce kısmını ayrı alanda yollar; okuma gibi işlerde
        düşünme kapatılmazsa yanıt boş gelebiliyor ve çok uzun sürüyor */
     if (think !== undefined) body.think = !!think;
@@ -186,12 +219,14 @@
     const reader = res.body.getReader();
     const decoder = new TextDecoder();
     let buffer = "", text = "", stats = null;
+    const toolCalls = [];
 
     const handleLine = (line) => {
       if (!line.trim()) return;
       let obj;
       try { obj = JSON.parse(line); } catch (e) { return; }
       if (obj.error) throw new OllamaError(/not found|pull/i.test(obj.error) ? "model-missing" : "http", obj.error, { model });
+      if (obj.message && Array.isArray(obj.message.tool_calls)) toolCalls.push(...obj.message.tool_calls);
       const piece = obj.message && obj.message.content;
       if (piece) {
         text += piece;
@@ -224,7 +259,7 @@
       if (e instanceof OllamaError) { e.partial = text; throw e; }
       throw new OllamaError("offline", e && e.message, { partial: text });
     }
-    return { text, stats };
+    return { text, stats, toolCalls };
   }
 
   /** Metinleri vektöre çevirir (bge-m3). Sırayla aynı uzunlukta dizi döner. */

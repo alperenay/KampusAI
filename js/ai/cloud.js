@@ -429,6 +429,8 @@
 
     toMessages(messages) {
       return messages.map((m) => {
+        if (m.role === "tool") return { role: "tool", tool_call_id: m.tool_call_id, content: m.content || "" };
+        if (m.tool_calls) return { role: m.role, content: m.content || "", tool_calls: m.tool_calls };
         if (!m.images || !m.images.length) return { role: m.role, content: m.content || "" };
         const content = [];
         if (m.content) content.push({ type: "text", text: m.content });
@@ -437,13 +439,43 @@
       });
     },
 
-    async chat({ model, messages, options, signal, onDelta }) {
+    /** Araç (tools) verilirse çağrıları onTool ile çalıştırıp yanıtı sürdürür (en fazla 8 tur) */
+    async chat(o) {
+      if (!o.tools || !o.tools.length || !o.onTool) return this.chatOnce(o);
+      const msgs = o.messages.slice();
+      let full = "", calls = 0, last = null;
+      for (let round = 0; round < 8; round++) {
+        let r;
+        try {
+          r = await this.chatOnce(Object.assign({}, o, {
+            messages: msgs,
+            onDelta: (piece) => { full += piece; if (o.onDelta) o.onDelta(piece, full); }
+          }));
+        } catch (e) {
+          if (round === 0 && e && e.code === "http" && /tool/i.test(String(e.message))) return this.chatOnce(o);
+          if (e && e.code === "bad-response" && full) return { text: full, stats: last && last.stats, toolCalls: calls };
+          throw e;
+        }
+        last = r;
+        if (!r.toolCalls || !r.toolCalls.length) return { text: full || r.text, stats: r.stats, toolCalls: calls };
+        msgs.push({ role: "assistant", content: r.text || "", tool_calls: r.toolCalls });
+        for (const c of r.toolCalls) {
+          calls++;
+          msgs.push({ role: "tool", tool_call_id: c.id, content: String(await o.onTool(c.function.name, c.function.arguments)) });
+        }
+      }
+      return { text: full, stats: last && last.stats, toolCalls: calls };
+    },
+
+    async chatOnce({ model, messages, options, signal, onDelta, tools }) {
       const body = {
         model,
         messages: this.toMessages(messages),
         stream: true,
         temperature: options && options.temperature != null ? options.temperature : 0.4
       };
+      if (tools && tools.length) body.tools = tools;
+      const toolCalls = [];
       const res = await send(this.base() + "/chat/completions",
         { method: "POST", headers: this.headers(), body: JSON.stringify(body), signal }, model, openaiError);
 
@@ -454,13 +486,23 @@
         // Akış desteklemeyen servis: tek seferde gelen yanıt
         const data = await res.json();
         if (data.error) throw openaiError(500, data, "", model);
-        text = (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || "";
+        const msg = (data.choices && data.choices[0] && data.choices[0].message) || {};
+        text = msg.content || "";
+        (msg.tool_calls || []).forEach((tc) => toolCalls.push(tc));
         if (onDelta && text) { clock.tick(); onDelta(text, text); }
         tokens = (data.usage && data.usage.completion_tokens) || 0;
       } else {
         await readSSE(res, (obj) => {
           if (obj.error) throw openaiError(500, obj, "", model);
           const ch = obj.choices && obj.choices[0];
+          // Araç çağrıları parça parça gelir: index'e göre birleştir
+          ((ch && ch.delta && ch.delta.tool_calls) || []).forEach((tc) => {
+            const k = tc.index != null ? tc.index : toolCalls.length;
+            const cur = toolCalls[k] || (toolCalls[k] = { id: tc.id || "call_" + k, type: "function", function: { name: "", arguments: "" } });
+            if (tc.id) cur.id = tc.id;
+            if (tc.function && tc.function.name) cur.function.name += tc.function.name;
+            if (tc.function && tc.function.arguments) cur.function.arguments += tc.function.arguments;
+          });
           const piece = ch && ch.delta && typeof ch.delta.content === "string" ? ch.delta.content : "";
           if (piece) {
             clock.tick();
@@ -472,8 +514,8 @@
       }
       // Bazı akıl yürüten modeller düşünceyi <think> içinde yazar: gösterme
       text = text.replace(/^\s*<think>[\s\S]*?<\/think>\s*/i, "");
-      if (!text) throw new AIError("bad-response", "empty", { model });
-      return { text, stats: clock.stats(tokens) };
+      if (!text && !toolCalls.length) throw new AIError("bad-response", "empty", { model });
+      return { text, stats: clock.stats(tokens), toolCalls: toolCalls.filter(Boolean) };
     },
 
     async embed(model, inputs, signal) {

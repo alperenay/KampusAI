@@ -99,6 +99,7 @@
       '<datalist id="aisModels"></datalist>' +
       (App.platform.desktop && window.desktopApp && window.desktopApp.gpu
         ? '<label class="check-row"><input type="checkbox" id="uiGpu"' + (window.desktopApp.uiGpu ? " checked" : "") + "> <span>" + esc(t("ais.uiGpu")) + '</span></label><p class="hint">' + esc(t("ais.uiGpuHint")) + "</p>" : "") +
+      '<label class="check-row"><input type="checkbox" id="aisCalc"' + (App.calc.enabled() ? " checked" : "") + "> <span>" + esc(t("ais.calc")) + '</span></label><p class="hint">' + esc(t("ais.calcHint")) + "</p>" +
       '<div class="ais-test"><button class="btn btn--sm" type="button" data-test="local">' + App.icon("refresh") + esc(t("ais.test")) + '</button><span class="hint" id="aisResult"></span></div>' +
       '<p class="hint">' + esc(t("ais.privacy")) + "</p>";
 
@@ -185,6 +186,7 @@
       const set = (k, val) => App.prefs.set(k, val === "" ? null : val);
       set("aiMode", segVal("aiMode"));
       set("aiOncelik", segVal("aiOncelik"));
+      App.prefs.set("aiHesap", !!$("#aisCalc").checked);
       App.prefs.set("aiOncelikSoruldu", true);
       set("aiCloud", segVal("aiCloud"));
       if (el.querySelector('[data-seg="srvSpeed"]')) set("srvSpeed", segVal("srvSpeed"));
