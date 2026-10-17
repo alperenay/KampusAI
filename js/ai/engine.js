@@ -48,6 +48,8 @@
     onProgress: (fn) => { androidListeners.add(fn); return () => androidListeners.delete(fn); }
   } : null);
   let deviceState = null;
+  let deviceFailAt = 0;                         // motor son kez ne zaman açılamadı (tekrar denemeyi seyreltmek için)
+  const DEVICE_RETRY_MS = 60000;
   const DEV = "app://local/cihaz/";
   const DEV_MODELS = { chat: "gemma4-e4b (cihaz)", embed: "bge-m3 (cihaz)" };
   const deviceOn = () => !!(deviceState && deviceState.asama === "hazir");
@@ -60,21 +62,29 @@
     set(st) {
       if (!st) return;
       const was = deviceOn();
+      if (st.asama === "hata" && !(deviceState && deviceState.asama === "hata")) deviceFailAt = Date.now();
       deviceState = st;
       if (was !== deviceOn()) { localCache = null; document.dispatchEvent(new CustomEvent("ai:device", { detail: st })); }
     },
     /** İndirilmiş ama kapalıysa aç ve hazır olmasını bekle (telefonda motor ilk soruda açılır) */
+    /** Kullanıcı "Tekrar dene"ye bastı: beklemeden yeniden başlatmayı dene */
+    allowRetry() { deviceFailAt = 0; localCache = null; },
     async ensure(signal) {
       if (!bridge || deviceOn() || !deviceState || !deviceState.kurulu || deviceState.destek === false) return deviceOn();
+      if (deviceState.asama === "hata" && Date.now() - deviceFailAt < DEVICE_RETRY_MS) return false;
+      const startedAt = Date.now();
       if (deviceState.asama !== "hazirlaniyor") device.set(await bridge.start());
       const until = Date.now() + 240000;
       while (!deviceOn() && Date.now() < until && !(signal && signal.aborted)) {
-        if (deviceState && deviceState.asama === "hata") break;
+        // Önceki denemeden kalan "hata" durumu yeni başlatmayı hemen bitirmesin: yalnızca bu denemeden sonraki hata sayılır
+        if (deviceState && deviceState.asama === "hata" && deviceFailAt >= startedAt) break;
         await new Promise((r) => setTimeout(r, 700));
         if (bridge.phone) device.set(nStatus());
       }
       return deviceOn();
-    }
+    },
+    /** Motor açılamadıysa nedeni (arayüzde gösterilir) */
+    error: () => (deviceState && deviceState.asama === "hata" ? deviceState.hata || "" : "")
   };
   if (bridge) {
     bridge.onProgress((st) => device.set(st));
@@ -96,9 +106,13 @@
     try { const r = await fetch(devBase(which) + "/health", { signal }); return r.ok; } catch (e) { return false; }
   }
   /** Telefonda indirilmiş motor kapalıysa yerel kullanılabilir say (ilk soruda açılır) */
-  const deviceIdle = () => !!(bridge && deviceState && deviceState.kurulu && deviceState.destek !== false &&
-    (deviceState.asama === "kurulu" || deviceState.asama === "hazirlaniyor"));
-  const deviceUsed = () => deviceOn() || deviceIdle();
+  const deviceInstalled = () => !!(bridge && deviceState && deviceState.kurulu && deviceState.destek !== false);
+  const deviceIdle = () => deviceInstalled() &&
+    (deviceState.asama === "kurulu" || deviceState.asama === "hazirlaniyor" ||
+     (deviceState.asama === "hata" && Date.now() - deviceFailAt >= DEVICE_RETRY_MS));   // bir süre sonra yeniden denenir
+  /** İndirilmiş yapay zeka varsa yerel motor odur; açılamadıysa Ollama'ya (bilgisayara) değil, kendi hatasına düşer */
+  const deviceUsed = () => deviceOn() || deviceInstalled();
+  const deviceError = () => new AIError("device", (deviceState && deviceState.hata) || "");
 
   /* ---------------- Yerel motor (Ollama ya da cihaza indirilen) ---------------- */
   const local = {
@@ -117,15 +131,16 @@
     },
     prepare: async () => {},
     async chat(o) {
-      if (deviceIdle() && !(await device.ensure(o.signal))) {
-        throw new AIError("offline", (deviceState && deviceState.hata) || "cihaz");
+      if (deviceUsed() && !deviceOn() && !(await device.ensure(o.signal))) {
+        if (o.signal && o.signal.aborted) throw new AIError("aborted");
+        throw deviceError();
       }
       return deviceOn() ? devChat.chat(o) : App.ollama.chat(o);
     },
     async embed(model, inputs, signal) {
-      if (deviceIdle()) await device.ensure(signal);
       if (deviceUsed()) {
-        if (!deviceOn()) throw new AIError("offline", "cihaz");
+        if (!deviceOn()) await device.ensure(signal);
+        if (!deviceOn()) throw deviceError();
         return devEmbed.embed(model, inputs, signal);
       }
       return App.ollama.embed(model, inputs, signal);
@@ -134,9 +149,10 @@
       if (deviceIdle()) {                       // indirildi, ilk soruda açılacak
         return { ok: true, chat: true, vision: true, embed: true, installed: [DEV_MODELS.chat], chatModels: [DEV_MODELS.chat] };
       }
+      if (deviceUsed() && !deviceOn()) throw deviceError();
       if (deviceOn()) {
         const [chat, embed] = await Promise.all([devHealth("sohbet", signal), devHasEmbed() ? devHealth("hafiza", signal) : true]);
-        if (!chat) throw new AIError("offline", "cihaz");
+        if (!chat) throw deviceError();
         const names = devHasEmbed() ? [DEV_MODELS.chat, DEV_MODELS.embed] : [DEV_MODELS.chat];
         return { ok: chat, chat, vision: chat, embed, installed: names, chatModels: [DEV_MODELS.chat] };
       }
@@ -177,6 +193,7 @@
 
   async function localReady(signal) {
     if (deviceIdle()) return true;
+    if (deviceUsed() && !deviceOn()) return false;     // indirilmiş motor az önce açılamadı (Ollama'ya bakılmaz)
     if (localCache && Date.now() - localCache.at < (localCache.chat ? LOCAL_OK_TTL : LOCAL_FAIL_TTL)) return localCache.chat;
     const t = withTimeout(3000, signal);
     let chat = false;
@@ -197,6 +214,8 @@
     if (m === "cloud") return cloud();
     // Doğruluk önce: internet varsa internet servisi (olmazsa aşağıdaki yerel yol)
     if (priority() === "internet" && online() && cloud().configured()) return cloud();
+    // İnternet yok ve yapay zeka bu cihaza indirilmiş: tek seçenek o (açılamazsa kendi hatası gösterilir)
+    if (!online() && deviceUsed()) return local;
     if (localPossible()) {
       if (await localReady(signal)) return local;
       if (cloud().configured()) return cloud();
@@ -216,7 +235,7 @@
     if (mode() !== "auto" || !err || err.partial) return null;
     const code = err.code;
     if (engine.kind === "local") {
-      return ["offline", "token", "file-origin"].includes(code) && cloud().configured() ? cloud() : null;
+      return ["offline", "device", "token", "file-origin"].includes(code) && online() && cloud().configured() ? cloud() : null;
     }
     if (["net", "quota", "busy", "aborted"].includes(code) && !(signal && signal.aborted) && localPossible()) {
       return (await localReady(signal)) ? local : null;
@@ -250,7 +269,7 @@
     } catch (e) {
       const code = (e && e.code) || "error";
       out.state = code === "file-origin" ? "file" : code === "aborted" ? (engine.kind === "local" ? "offline" : "net")
-        : ["offline", "token", "auth", "net", "quota", "no-key"].includes(code) ? (code === "no-key" ? "nokey" : code) : "error";
+        : ["offline", "device", "token", "auth", "net", "quota", "no-key"].includes(code) ? (code === "no-key" ? "nokey" : code) : "error";
       out.error = e;
       if (engine.kind === "local") {
         markLocalDown();

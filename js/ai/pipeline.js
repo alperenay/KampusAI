@@ -158,7 +158,7 @@
         result.models.push({ role: "memory", model: memModel });
       } catch (e) {
         // Bağlantı sorunlarında tüm istek başarısız olsun (otomatik modda internete geçilir)
-        if (e && ["aborted", "offline", "net", "token", "file-origin", "auth", "no-key"].includes(e.code)) throw e;
+        if (e && ["aborted", "offline", "device", "net", "token", "file-origin", "auth", "no-key"].includes(e.code)) throw e;
         // Vektör modeli çalışmazsa (yüklü değil, kota vb.) kelime aramasına düş; yanıt yine verilir
         result.warnings.push({ code: e && e.code === "model-missing" ? "memory-missing" : "memory-failed", model: cfg.embedModel, message: e && e.message });
         fire("warning", result.warnings[result.warnings.length - 1]);

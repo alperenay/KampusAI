@@ -53,6 +53,7 @@
       case "partial": return t("ai.st.partial", { models: status.missing.join(", ") });
       case "missing": return t("ai.st.missing", { model: cfg.chatModel });
       case "offline": return t("ai.st.offline", { url: cfg.url || "" });
+      case "device": return t("ai.err.deviceTitle");
       case "file": return t("ai.st.file");
       case "token": return t("ai.err.tokenTitle");
       case "nokey": return t("ai.st.nokey");
@@ -81,6 +82,13 @@
 
   const settingsBtn = (tab) => ' <button class="btn btn--sm" type="button" data-ai-settings="' + (tab || "") + '">' + App.icon("settings") + esc(t("set.aiSettings")) + "</button>";
 
+  /** Cihazdaki yapay zeka açılamadı: gerçek nedeni ve ne yapılacağını göster */
+  function deviceBody(err) {
+    const msg = String((err && err.message) || (App.engine.device && App.engine.device.error()) || "").trim();
+    const mem = /bellek|memory|kapandı|killed|signal/i.test(msg);
+    return esc(t(mem ? "ai.err.deviceMemory" : "ai.err.deviceBody")) + (msg ? "<br><small>" + esc(msg.slice(0, 300)) + "</small>" : "");
+  }
+
   function noticeHtml() {
     const cfg = curCfg();
     const cmd = (m) => '<code class="cmd">ollama pull ' + esc(m) + "</code>";
@@ -88,6 +96,7 @@
     switch (status.state) {
       case "file": return "<b>" + esc(t("ai.err.fileTitle")) + "</b> " + esc(t("ai.err.fileBody"));
       case "offline": return "<b>" + esc(t("ai.err.offlineTitle")) + "</b> " + esc(t(App.platform.native || App.platform.mobile ? "ai.err.offlinePhone" : "ai.err.offlineBody", { url: cfg.url || "" })) + settingsBtn("local");
+      case "device": return "<b>" + esc(t("ai.err.deviceTitle")) + "</b> " + deviceBody(status.error) + settingsBtn("local");
       case "token": return "<b>" + esc(t("ai.err.tokenTitle")) + "</b> " + esc(t("ai.err.tokenBody")) + settingsBtn("local");
       case "nokey": return "<b>" + esc(t("ai.st.nokey")) + "</b> " + esc(t(App.platform.mobile ? "ai.err.nokeyBodyPhone" : "ai.err.nokeyBody")) + settingsBtn("cloud");
       case "auth": return "<b>" + esc(t("ai.err.authTitle", { name: engineName() })) + "</b> " + esc(t("ai.err.authBody")) + settingsBtn("cloud");
@@ -217,6 +226,7 @@
       case "file-origin": title = t("ai.err.fileTitle"); body = esc(t("ai.err.fileBody")); break;
       case "offline": title = t("ai.err.offlineTitle");
         body = esc(t(App.platform.mobile ? "ai.err.offlinePhone" : "ai.err.offlineBody", { url: (engine.config().url) || "" })); extra = settingsBtn("local"); break;
+      case "device": title = t("ai.err.deviceTitle"); body = deviceBody(err); extra = settingsBtn("local"); break;
       case "token": title = t("ai.err.tokenTitle"); body = esc(t("ai.err.tokenBody")); extra = settingsBtn("local"); break;
       case "no-key": title = t("ai.st.nokey"); body = esc(t("ai.err.nokeyBody")); extra = settingsBtn("cloud"); break;
       case "auth": title = t("ai.err.authTitle", { name }); body = esc(t("ai.err.authBody")); extra = settingsBtn("cloud"); break;
@@ -450,6 +460,8 @@
 
   async function retry(chat) {
     if (live.controller) { App.ui.toast(t("ai.busy")); return; }
+    // "Tekrar dene": cihazdaki yapay zeka az önce açılamadıysa beklemeden yeniden başlatılsın
+    if (App.engine.device && App.engine.device.allowRetry) App.engine.device.allowRetry();
     // Son kullanıcı mesajını ve başarısız yanıtı bul
     let i = chat.messages.length - 1;
     while (i >= 0 && chat.messages[i].role !== "assistant") i--;

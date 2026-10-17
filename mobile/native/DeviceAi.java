@@ -265,6 +265,8 @@ public class DeviceAi {
     /* ---------------- Yerel sunucu ---------------- */
     public synchronized void startAsync() {
         if (worker != null || proc != null || !installed()) { emit(true); return; }
+        // Durum hemen "hazırlanıyor" olsun: sayfa önceki denemeden kalan "hata"yı yeni deneme sanmasın
+        if (supported()) { stage = "hazirlaniyor"; error = ""; }
         worker = new Thread(() -> {
             try { start(); } finally { worker = null; }
         }, "ai-start");
