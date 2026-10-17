@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """12. Sınıf İngilizce notları (dil bilgisi + beceri stratejileri) → js/data/content/ing-12.js"""
 from _c import O, U, write
+from ing12_tema import TEMALAR
 
 units = [
-U("u1", "Unit 1: Tenses Review", "Unit 1: Tenses Review", [
+U("u1", "Dil Bilgisi Tekrarı 1: Tenses Review", "Grammar Review 1: Tenses Review", [
 O("k1", "G1.1", "Present ve past zamanlar (tüm görünümler)", "Present and past tenses (all aspects)", r"""
 # Present Tenses
 | Tense | Form | Use | Example |
@@ -44,7 +45,7 @@ O("k2", "G1.2", "Future forms", "Future forms", r"""
   [("Complete: \"By the end of June, we ___ (finish) all the units.\"", "**will have finished** — completed before a future time (Future Perfect).")],
   ["will: prediction, decision, promise.", "going to: plan, evidence-based prediction.", "Future Perfect: will have + V3 (by…)."]),
 ]),
-U("u2", "Unit 2: Modals", "Unit 2: Modals", [
+U("u2", "Dil Bilgisi Tekrarı 2: Modals", "Grammar Review 2: Modals", [
 O("k1", "G2.1", "Modals and semi-modals: obligation, ability, possibility, advice, deduction", "Modals and semi-modals", r"""
 # Functions of Modals
 | Function | Present / future | Past |
@@ -69,7 +70,7 @@ O("k1", "G2.1", "Modals and semi-modals: obligation, ability, possibility, advic
    ("What's the difference? \"You didn't need to buy bread.\" vs \"You needn't have bought bread.\"", "**didn't need to**: it wasn't necessary (we don't know if you bought it). **needn't have bought**: you **did buy** it, but it was unnecessary.")],
   ["must/can't for present deduction; must have/can't have for past.", "should have + V3 = criticism of the past.", "needn't have + V3 = did something unnecessary."]),
 ]),
-U("u3", "Unit 3: Conditionals and Wishes", "Unit 3: Conditionals and Wishes", [
+U("u3", "Dil Bilgisi Tekrarı 3: Conditionals and Wishes", "Grammar Review 3: Conditionals and Wishes", [
 O("k1", "G3.1", "Zero, first, second, third and mixed conditionals; wish / if only", "Conditionals; wish clauses", r"""
 # Conditionals
 | Type | If-clause | Main clause | Use | Example |
@@ -97,7 +98,7 @@ O("k1", "G3.1", "Zero, first, second, third and mixed conditionals; wish / if on
    ("Express regret: \"I didn't save any money last year.\"", "I **wish I had saved** some money last year.")],
   ["0: facts; 1: real future; 2: unreal present; 3: unreal past.", "Mixed: past condition → present result.", "wish + past (present), + past perfect (past), + would (annoyance)."]),
 ]),
-U("u4", "Unit 4: Relative Clauses, Passive and Causative", "Unit 4: Relative Clauses, Passive and Causative", [
+U("u4", "Dil Bilgisi Tekrarı 4: Relative Clauses, Passive and Causative", "Grammar Review 4: Relative Clauses, Passive and Causative", [
 O("k1", "G4.1", "Defining and non-defining relative clauses", "Defining and non-defining relative clauses", r"""
 # Relative Pronouns
 | Pronoun | For | Example |
@@ -153,7 +154,7 @@ O("k2", "G4.2", "Passive voice (all tenses) and causatives", "Passive voice and 
    ("Causative: \"A technician repaired my laptop.\" (I…)", "I **had/got my laptop repaired** (by a technician).")],
   ["Passive: be + V3 in every tense.", "It is said that… / He is believed to…", "Causative: have/get something done; make/let + V1."]),
 ]),
-U("u5", "Unit 5: Reported Speech, Gerunds & Infinitives, Inversion", "Unit 5: Reported Speech, Gerunds & Infinitives, Inversion", [
+U("u5", "Dil Bilgisi Tekrarı 5: Reported Speech, Gerunds & Infinitives, Inversion", "Grammar Review 5: Reported Speech, Gerunds & Infinitives, Inversion", [
 O("k1", "G5.1", "Reported speech: statements, questions, commands", "Reported speech", r"""
 # Tense Backshift (when the reporting verb is past)
 | Direct | Reported |
@@ -220,7 +221,7 @@ After negative/limiting adverbials, use **question word order**:
    ("Rewrite with inversion: \"I had never heard such a strange story.\"", "**Never had I heard** such a strange story.")],
   ["Gerund after prepositions and enjoy/avoid/mind…", "Infinitive for purpose and after want/decide/hope…", "remember/stop/try change meaning; inversion after negative adverbs."]),
 ]),
-U("u6", "Unit 6: Skills Strategies", "Unit 6: Skills Strategies", [
+U("u6", "Dil Bilgisi Tekrarı 6: Skills Strategies", "Grammar Review 6: Skills Strategies", [
 O("k1", "S6.1", "Reading, listening, writing and speaking strategies", "Reading, listening, writing and speaking strategies", r"""
 # Reading
 | Strategy | How |
@@ -262,6 +263,10 @@ O("k1", "S6.1", "Reading, listening, writing and speaking strategies", "Reading,
 ]),
 ]
 
-write("ing-12.js", "12/ingilizce", "12. Sınıf İngilizce — dil bilgisi ve beceri notları",
-      "kullanıcının verdiği \"İngilizce 12 Detaylı Konu Anlatım Notları\" (dil bilgisi odakları ve beceri stratejileri).",
-      units, "Kaynak notlar tema içeriklerini değil, 12. sınıf dil bilgisi başlıklarını ve beceri stratejilerini listelediği için içerik bu başlıklara göre düzenlendi; her konu tablolar, örnek cümleler ve alıştırmalarla genişletildi. Ders kitabının tema adları kaynakta bulunmadığından kullanılmadı.")
+
+# MEB tema üniteleri (Theme 1–9) önce, dil bilgisi tekrar üniteleri sonra.
+units = TEMALAR + units
+
+write("ing-12.js", "12/ingilizce", "12. Sınıf İngilizce — tema üniteleri, dil bilgisi ve beceri notları",
+      "kullanıcının verdiği \"İngilizce 12 Detaylı Konu Anlatım Notları\" (dil bilgisi, beceriler) ve ek not paketi (Theme 1, 2, 4, 5, 6, 7, 8, 9 kazanımları, dil bilgisi özetleri, kelime çalışmaları).",
+      units, "Tema üniteleri (t1–t9) ek not paketindeki kazanım kodları, işlevler ve kelimelere göre yazıldı; Theme 3 (Human Rights) ve Theme 10 (Manners) için not verilmediğinden eklenmedi. Dil bilgisi tekrar üniteleri (u1–u6) ilk notlardan gelir; kimlikleri öğrenci verisini korumak için değiştirilmedi.")

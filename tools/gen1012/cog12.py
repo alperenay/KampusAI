@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """12. Sınıf Coğrafya notları (genişletilmiş) → js/data/content/cog-12.js"""
 from _c import O, U, write
+from cog12_ek import EK
 
 units = [
 U("u1", "1. Ünite: Doğal Sistemler — Ekstrem Doğa Olayları", "Unit 1: Natural Systems — Extreme Natural Events", [
@@ -231,6 +232,11 @@ O("k2", "4.2", "Ortak doğal ve kültürel mirasın korunması; STK'lar ve birey
 ]),
 ]
 
+
+# Ek not paketi: ilgili ünitelerin sonuna yeni kazanımlar (mevcut kimlikler değişmez).
+for _u in units:
+    _u["outcomes"] += EK.get(_u["id"], [])
+
 write("cog-12.js", "12/cografya", "12. Sınıf Coğrafya — detaylı konu anlatım notları",
-      "kullanıcının verdiği \"Coğrafya 12 Detaylı Konu Anlatım Notları\" (4 ünite).",
-      units, "Kaynak notlar yalnızca kazanım başlıklarını ve kısa özetleri içerdiği için her ünite ders kitabı düzeyinde genişletildi (afet yönetimi döngüsü, kalkınma projeleri tablosu, gelişmişlik göstergeleri, çevre anlaşmaları kronolojisi, örnek sorular). İstatistikler yaklaşık verilmiştir.")
+      "kullanıcının verdiği \"Coğrafya 12 Detaylı Konu Anlatım Notları\" (4 ünite) ve ek not paketindeki \"12. Sınıf Coğrafya Konu Özetleri – Tüm Üniteler\" (ekstrem değerler, iklim değişikliği, coğrafi bölgeler, ulaşım, ticaret, turizm, kalkınma projeleri, nüfus politikaları, ilk kültür merkezleri, ülke örnekleri, örgütler, teknoloji–çevre, sınırlı kaynaklar).",
+      units, "Kaynak notlar yalnızca kazanım başlıklarını ve kısa özetleri içerdiği için her ünite ders kitabı düzeyinde genişletildi (afet yönetimi döngüsü, kalkınma projeleri tablosu, gelişmişlik göstergeleri, çevre anlaşmaları kronolojisi, örnek sorular). İstatistikler yaklaşık verilmiştir. Ek paketteki eski veriler (2000 sayımı, 2006–2007) güncel ve kalıcı bilgilerle değiştirildi; ek kazanımlar cog12_ek.py dosyasındadır.")
