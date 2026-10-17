@@ -65,6 +65,7 @@
           '<button class="btn" type="button" id="setA11y">' + App.icon("a11y") + esc(t("a11y.title")) +
             (App.a11y.isActive() ? ' <span class="badge badge--good">' + esc(t("sync.on")) + "</span>" : "") + "</button>" +
           '<button class="btn btn--ghost" type="button" id="setTour">' + App.icon("compass") + esc(t("tour.replay")) + "</button>" +
+          '<button class="btn btn--ghost" type="button" id="setAbout">' + App.icon("info") + esc(t("abt.title")) + "</button>" +
         "</div>" +
         '<div class="card" style="padding:16px">' +
           '<div class="card__title">' + esc(t("set.backupTitle")) + "</div>" +
@@ -99,6 +100,7 @@
     m.el.querySelector("#setRemind").addEventListener("click", () => { m.close(); App.reminders.openSettings(); });
     m.el.querySelector("#setTour").addEventListener("click", () => { m.close(); App.tour.start(0); });
     m.el.querySelector("#setA11y").addEventListener("click", () => { m.close(); App.a11y.open(); });
+    m.el.querySelector("#setAbout").addEventListener("click", () => { m.close(); App.modules.about.open(); });
     m.el.querySelector("#setExport").addEventListener("click", exportBackup);
     m.el.querySelector("#setImport").addEventListener("change", async (e) => {
       const f = e.target.files[0];
