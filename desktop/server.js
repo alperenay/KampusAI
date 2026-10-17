@@ -44,8 +44,8 @@ async function serveStatic(root, pathname) {
 /* ---------------- 2) Uygulama içinden Ollama'ya aracı (fetch API) ----------------
    Yanıt akış hâlinde iletilir; uygulama isteği iptal ederse (Durdur) Ollama'ya giden
    istek de kesilir, model boşuna yazmaya devam etmez. */
-async function proxyOllama(request, subPath) {
-  const target = OLLAMA + subPath;
+async function proxyOllama(request, subPath, base) {
+  const target = (base || OLLAMA) + subPath;
   const ctrl = new AbortController();
   const init = { method: request.method, headers: {}, signal: ctrl.signal };
   const ct = request.headers.get("content-type");

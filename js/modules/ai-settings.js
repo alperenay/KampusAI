@@ -2,7 +2,7 @@
    ai-settings.js — Yapay zeka ayarları penceresi
 
    Bölümler:
-     Çalışma şekli : Otomatik / Yerel (Ollama) / İnternet
+     Çalışma şekli : Otomatik / Bu cihaz (indirilen yapay zeka ya da Ollama) / İnternet
      İnternet      : Gemini (anahtar, model) ya da OpenAI-uyumlu servis
      Yerel         : Ollama adresi, telefon bağlantı kodu, üç model
      Telefon       : (yalnızca Windows uygulamasında) telefonların bu
@@ -74,7 +74,16 @@
       '<datalist id="aisCloudModels"></datalist>' +
       '<div class="ais-test"><button class="btn btn--sm" type="button" data-test="cloud">' + App.icon("refresh") + esc(t("ais.test")) + '</button><span class="hint" id="aisCloudResult"></span></div>';
 
-    const localTab =
+    const devCard = App.engine.device && App.engine.device.bridge
+      ? '<div class="lan-info dev-card"><b>' + App.icon("download") + esc(t("dev.title")) + '</b><p class="hint">' + esc(t("dev.intro")) + "</p>" +
+        '<span class="hint" id="devState"></span><progress id="devBar" max="1" value="0" hidden></progress>' +
+        '<div class="ais-test"><button class="btn btn--primary btn--sm" type="button" id="devGo"></button>' +
+        '<button class="btn btn--sm" type="button" id="devCancel" hidden>' + esc(t("dev.cancel")) + "</button>" +
+        '<button class="btn btn--ghost btn--sm" type="button" id="devDel" hidden>' + esc(t("dev.remove")) + "</button></div>" +
+        '<p class="hint">' + esc(t("dev.resume")) + "</p></div>"
+      : "";
+
+    const localTab = devCard +
       '<p class="hint">' + esc(t(phone ? "ais.localIntroPhone" : "ais.intro")) + "</p>" +
       (App.ollama.isFileOrigin() ? '<p class="ai-notice"><b>' + esc(t("ai.err.fileTitle")) + "</b> " + esc(t("ai.err.fileBody")) + "</p>" : "") +
       (App.pairing.canScan()
@@ -290,6 +299,48 @@
       $("#lanOn").addEventListener("change", async (e) => {
         try { paintLan(await window.desktopApp.lan.set(e.target.checked)); }
         catch (err) { App.ui.toast(String(err && err.message || err), "error"); }
+      });
+    }
+
+    /* ---- Yapay zekayı bu bilgisayara indir ---- */
+    const dev = App.engine.device && App.engine.device.bridge;
+    if (dev && $("#devGo")) {
+      const gb = (b) => (b / 1e9).toLocaleString(App.i18n.locale, { maximumFractionDigits: 1 }) + " GB";
+      let size = 0;
+      let off = null;
+      const paint = (st) => {
+        if (!el.isConnected) { if (off) off(); return; }
+        if (!st) return;
+        if (st.boyut) size = st.boyut;
+        const a = st.asama || "yok";
+        const ini = a === "iniyor";
+        $("#devState").textContent = t("dev.st." + a, { done: gb(st.indirilen || 0), total: gb(st.toplam || size), file: st.dosya || "", msg: st.hata || "" });
+        const bar = $("#devBar");
+        bar.hidden = !ini;
+        if (ini && st.toplam) bar.value = Math.min(1, (st.indirilen || 0) / st.toplam);
+        const go = $("#devGo");
+        go.hidden = ini || a === "hazir" || a === "hazirlaniyor";
+        go.textContent = st.kurulu ? t("dev.start") : t("dev.download", { size: gb(size) });
+        go.disabled = false;
+        $("#devCancel").hidden = !ini;
+        $("#devDel").hidden = ini || !(st.kurulu || a === "hata");
+      };
+      off = dev.onProgress(paint);
+      dev.status().then(paint).catch(() => {});
+      $("#devGo").addEventListener("click", async (e) => {
+        e.currentTarget.disabled = true;
+        const st = await dev.status();
+        paint(await (st.kurulu ? dev.start() : dev.download()));
+        App.engine.invalidate();
+        App.modules.assistant.refreshStatus();
+      });
+      $("#devCancel").addEventListener("click", async () => paint(await dev.cancel()));
+      $("#devDel").addEventListener("click", async () => {
+        if (!(await App.ui.confirm(t("dev.removeConfirm", { size: gb(size) }), t("dev.remove")))) return;
+        await dev.remove();
+        paint(await dev.status());
+        App.engine.invalidate();
+        App.modules.assistant.refreshStatus();
       });
     }
 

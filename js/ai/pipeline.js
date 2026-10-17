@@ -202,7 +202,7 @@
       result.models.forEach((m) => { if ((m.role === "answer" || (m.role === "vision" && cfg.direct)) && m.model === cfg.chatModel) m.model = res.model; });
     }
     // Yerel model: ne kadarı ekran kartında? (kısmen işlemcideyse yanıtlar çok yavaşlar)
-    if (engine.kind === "local") {
+    if (engine.kind === "local" && !engine.device) {
       try {
         const m = (await App.ollama.ps()).find((x) => App.ollama.sameModel(x.name, cfg.chatModel));
         if (m && m.size) result.gpu = { model: m.name, ratio: m.vram / m.size };

@@ -15,6 +15,7 @@ const path = require("path");
 const fs = require("fs");
 const { spawn } = require("child_process");
 const { serveStatic, proxyOllama, createLanServer, lanAddresses, newToken, OLLAMA } = require("./server");
+const cihazAi = require("./device");
 
 const WEB_ROOT = path.join(__dirname, "app");
 const LAN_PORT = 8770;
@@ -115,6 +116,23 @@ ipcMain.handle("lan:set", async (e, on) => {
 });
 ipcMain.handle("lan:regenerate", () => { settings.token = newToken(); saveSettings(); return lanInfo(); });
 
+/* ---------------- Cihaza indirilen yapay zeka (Ollama'sız) ---------------- */
+let cihaz = null;
+function cihazKur() {
+  cihaz = cihazAi.olustur({
+    userData: app.getPath("userData"),
+    bildir: (d) => { if (win && !win.isDestroyed()) win.webContents.send("cihaz:ilerleme", d); },
+    log: (...a) => console.log("[cihaz]", ...a)
+  });
+  if (cihaz.bilgi().kurulu) cihaz.baslat();           // önceden indirildiyse arka planda aç
+}
+ipcMain.handle("cihaz:bilgi", () => cihaz.bilgi());
+ipcMain.handle("cihaz:indir", () => cihaz.indir());
+ipcMain.handle("cihaz:vazgec", () => { cihaz.vazgec(); return cihaz.bilgi(); });
+ipcMain.handle("cihaz:baslat", () => cihaz.baslat());
+ipcMain.handle("cihaz:sil", () => cihaz.sil());
+app.on("will-quit", () => { if (cihaz) cihaz.durdur(); });
+
 /* ---------------- Pencere ---------------- */
 let win = null;
 function createWindow() {
@@ -196,12 +214,19 @@ app.whenReady().then(async () => {
     if (url.pathname === "/ollama" || url.pathname.startsWith("/ollama/")) {
       return proxyOllama(request, url.pathname.slice("/ollama".length) + url.search);
     }
+    const c = url.pathname.match(/^\/cihaz\/(sohbet|hafiza)(\/.*)?$/);
+    if (c) {
+      const hedef = cihaz && cihaz.adres(c[1]);
+      if (!hedef) return new Response(JSON.stringify({ error: "cihaz yapay zekası hazır değil" }), { status: 503, headers: { "content-type": "application/json" } });
+      return proxyOllama(request, (c[2] || "/") + url.search, hedef);
+    }
     const r = await serveStatic(WEB_ROOT, url.pathname);
     return new Response(r.body, { status: r.status, headers: r.headers });
   });
 
   if (process.env.DA_SMOKE_OUT) { smokeTest(process.env.DA_SMOKE_OUT); return; }
 
+  cihazKur();
   ensureOllama();                         // beklemeden: pencere hemen açılsın
   if (settings.lanEnabled) startLan();
   createWindow();

@@ -24,22 +24,65 @@
   platform.mobile = platform.native || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   App.platform = platform;
 
-  /* ---------------- Yerel motor (Ollama) ---------------- */
+  /* ---------------- Cihaza indirilen yapay zeka (Windows uygulaması) ----------------
+     Ayarlar → "Yapay zekayı bu bilgisayara indir": Gemma 4 E4B + bge-m3, uygulamanın kendi
+     llama.cpp motorunda çalışır (Ollama gerekmez). Hazır olduğunda "yerel" motor bunu kullanır. */
+  const bridge = window.desktopApp && window.desktopApp.device;
+  let deviceState = null;
+  const DEV = "app://local/cihaz/";
+  const DEV_MODELS = { chat: "gemma4-e4b (cihaz)", embed: "bge-m3 (cihaz)" };
+  const deviceOn = () => !!(deviceState && deviceState.asama === "hazir");
+  const device = {
+    on: deviceOn,
+    state: () => deviceState,
+    bridge,
+    set(st) {
+      const was = deviceOn();
+      deviceState = st;
+      if (was !== deviceOn()) { localCache = null; document.dispatchEvent(new CustomEvent("ai:device", { detail: st })); }
+    }
+  };
+  if (bridge) {
+    bridge.onProgress((st) => device.set(st));
+    bridge.status().then((st) => device.set(st)).catch(() => {});
+  }
+  // Cihaz motoru OpenAI-uyumlu (llama-server): internet servisinin kodu, yerel adresle
+  const devChat = Object.create(App.cloud.openai, {
+    base: { value: () => DEV + "sohbet/v1" },
+    headers: { value: () => ({ "Content-Type": "application/json" }) }
+  });
+  const devEmbed = Object.create(App.cloud.openai, {
+    base: { value: () => DEV + "hafiza/v1" },
+    headers: { value: () => ({ "Content-Type": "application/json" }) }
+  });
+  async function devHealth(which, signal) {
+    try { const r = await fetch(DEV + which + "/health", { signal }); return r.ok; } catch (e) { return false; }
+  }
+
+  /* ---------------- Yerel motor (Ollama ya da cihaza indirilen) ---------------- */
   const local = {
     id: "local",
     kind: "local",
-    name: "Ollama",
+    get name() { return deviceOn() ? "Bu bilgisayar" : "Ollama"; },
+    get device() { return deviceOn(); },
     configured: () => true,
     config() {
+      if (deviceOn()) return { chatModel: DEV_MODELS.chat, visionModel: DEV_MODELS.chat, embedModel: DEV_MODELS.embed, direct: true, url: "" };
       const c = App.ollama.config();
       // Göz ve beyin aynı modelse (gemma4) fotoğraf doğrudan beyne gider: ayrı okuma adımı yok
       const direct = App.ollama.sameModel(c.chatModel, c.visionModel);
       return { chatModel: c.chatModel, visionModel: c.visionModel, embedModel: c.embedModel, direct, url: c.url };
     },
     prepare: async () => {},
-    chat: (o) => App.ollama.chat(o),
-    embed: (model, inputs, signal) => App.ollama.embed(model, inputs, signal),
+    chat: (o) => (deviceOn() ? devChat.chat(o) : App.ollama.chat(o)),
+    embed: (model, inputs, signal) => (deviceOn() ? devEmbed.embed(model, inputs, signal) : App.ollama.embed(model, inputs, signal)),
     async check(signal) {
+      if (deviceOn()) {
+        const [chat, embed] = await Promise.all([devHealth("sohbet", signal), devHealth("hafiza", signal)]);
+        if (!chat) throw new AIError("offline", "cihaz");
+        const names = [DEV_MODELS.chat, DEV_MODELS.embed];
+        return { ok: chat, chat, vision: chat, embed, installed: names, chatModels: [DEV_MODELS.chat] };
+      }
       const r = await App.ollama.check(signal);
       return Object.assign({ ok: r.chat, chatModels: r.installed }, r);
     }
@@ -79,7 +122,7 @@
     if (localCache && Date.now() - localCache.at < (localCache.chat ? LOCAL_OK_TTL : LOCAL_FAIL_TTL)) return localCache.chat;
     const t = withTimeout(3000, signal);
     let chat = false;
-    try { chat = (await App.ollama.check(t.signal)).chat; } catch (e) { chat = false; }
+    try { chat = deviceOn() ? await devHealth("sohbet", t.signal) : (await App.ollama.check(t.signal)).chat; } catch (e) { chat = false; }
     t.done();
     localCache = { at: Date.now(), chat };
     return chat;
@@ -139,5 +182,5 @@
     return out;
   }
 
-  App.engine = { engines, local, mode, cloud, defaultCloud, resolve, status, canFallback, invalidate, markLocalDown, localPossible, platform, AIError };
+  App.engine = { engines, local, device, mode, cloud, defaultCloud, resolve, status, canFallback, invalidate, markLocalDown, localPossible, platform, AIError };
 })();
