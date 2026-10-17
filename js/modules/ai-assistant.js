@@ -354,6 +354,7 @@
   }
 
   async function renderChat(view, chatId) {
+    if (!chatId) { App.router.go(""); return; }                 // #/sohbet (kimliksiz) → ana ekran
     const chat = live.chatId === chatId && live.chat ? live.chat : await App.db.get("chats", chatId);
     if (!chat) { App.ui.toast(t("ai.chatNotFound"), "error"); App.router.go(""); return; }
     mounted = { view, chatId };
