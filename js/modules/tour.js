@@ -40,7 +40,7 @@
     { id: "aiPlan", route: "#/program/benim", target: "#aiPlan" },
     { id: "roots", route: "#/kok", target: ".root-how, .root-map" },
     { id: "remind", route: "#/program/benim", target: "#remindBtn", action: "remind" },
-    { id: "topics", route: "#/konular", target: ".grid" },
+    { id: "topics", route: "#/konular", target: ".subj-grid" },
     { id: "lesson", route: () => "#/konular/" + sampleOutcome(), target: ".lesson .lesson__section" },
     { id: "quiz", route: () => "#/konular/" + sampleOutcome(), target: ".quiz-card:not(.fey-card):not(.chk-card)" },
     { id: "feynman", route: () => "#/konular/" + sampleOutcome(), target: ".fey-card" },

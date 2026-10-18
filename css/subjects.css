@@ -1,0 +1,144 @@
+/* =========================================================
+   subjects.css — ders renkleri ve konu sayfalarının düzeni
+   Her ders bir renk (--subj) taşır: koyu temada açık ton,
+   aydınlık temada okunur koyu ton. Sınıf: .subj-<ders>
+   ========================================================= */
+.subj-edebiyat  { --subj: #ff8f85; }
+.subj-matematik { --subj: #82a8ff; }
+.subj-fizik     { --subj: #4fd0e0; }
+.subj-kimya     { --subj: #4fd79e; }
+.subj-biyoloji  { --subj: #a8d95e; }
+.subj-tarih     { --subj: #e8a95c; }
+.subj-inkilap   { --subj: #ff7f5c; }
+.subj-cografya  { --subj: #dcc062; }
+.subj-felsefe   { --subj: #c493ff; }
+.subj-din       { --subj: #a3acf0; }
+.subj-ingilizce { --subj: #f794bc; }
+:root[data-theme="light"] .subj-edebiyat  { --subj: #c0392f; }
+:root[data-theme="light"] .subj-matematik { --subj: #2d5bd2; }
+:root[data-theme="light"] .subj-fizik     { --subj: #08808f; }
+:root[data-theme="light"] .subj-kimya     { --subj: #0f7d51; }
+:root[data-theme="light"] .subj-biyoloji  { --subj: #4a7d0f; }
+:root[data-theme="light"] .subj-tarih     { --subj: #9a5a12; }
+:root[data-theme="light"] .subj-inkilap   { --subj: #b33a1a; }
+:root[data-theme="light"] .subj-cografya  { --subj: #7f6508; }
+:root[data-theme="light"] .subj-felsefe   { --subj: #7337c9; }
+:root[data-theme="light"] .subj-din       { --subj: #3e4aa8; }
+:root[data-theme="light"] .subj-ingilizce { --subj: #b02a63; }
+
+/* Ders simgesi kutusu */
+.subj-ico {
+  display: inline-grid; place-items: center; flex: none;
+  width: 40px; height: 40px; border-radius: 12px;
+  background: color-mix(in srgb, var(--subj) 17%, transparent);
+  color: var(--subj);
+}
+.subj-ico .ico { width: 22px; height: 22px; }
+.subj-ico--lg { width: 56px; height: 56px; border-radius: 16px; }
+.subj-ico--lg .ico { width: 30px; height: 30px; }
+.subj-ico--sm { width: 26px; height: 26px; border-radius: 8px; }
+.subj-ico--sm .ico { width: 16px; height: 16px; }
+.subj-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--subj); flex: none; }
+.progress--subj > i { background: var(--subj); }
+
+/* ---------------- Konular: sınıf seçici + dersler ---------------- */
+.grade-tabs { display: inline-flex; gap: 4px; padding: 4px; margin-bottom: 18px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--border); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); }
+.grade-tabs a { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 16px; border-radius: var(--radius-pill); font-size: 14px; font-weight: 500; color: var(--text-2); white-space: nowrap; }
+.grade-tabs a:hover { color: var(--text); }
+.grade-tabs a[aria-current="page"] { background: var(--surface-3); color: var(--text); }
+.grade-tabs small { font-size: 11.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.subj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+.subj-tile {
+  position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 14px; align-items: center;
+  padding: 16px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface);
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
+  transition: border-color .15s, background .15s;
+}
+.subj-tile::before { content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 3px; border-radius: 0 3px 3px 0; background: var(--subj); }
+.subj-tile:hover { border-color: color-mix(in srgb, var(--subj) 45%, var(--border)); background: var(--surface-hover); }
+.subj-tile .subj-ico { grid-row: span 2; }
+.subj-tile__name { font-size: 15.5px; font-weight: 600; color: var(--text); line-height: 1.25; }
+.subj-tile__meta { font-size: 12.5px; color: var(--muted); }
+.subj-tile__bar { grid-column: 1 / -1; display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+.subj-tile__bar .progress { flex: 1; height: 5px; }
+.subj-tile__bar span { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.subj-tile__next { grid-column: 1 / -1; font-size: 12.5px; color: var(--text-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.subj-tile__next b { color: var(--subj); font-weight: 600; }
+
+/* ---------------- Ders sayfası ---------------- */
+.subj-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+.subj-head h1 { margin: 2px 0 0; }
+.subj-head__main { flex: 1; min-width: 0; }
+.subj-head__prog { display: flex; align-items: center; gap: 10px; margin-top: 8px; font-size: 13px; color: var(--muted); }
+.subj-head__prog .progress { width: 160px; max-width: 40vw; height: 6px; }
+.subj-continue {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 16px; padding: 14px 16px;
+  border-radius: var(--radius); border: 1px solid color-mix(in srgb, var(--subj) 40%, var(--border));
+  background: color-mix(in srgb, var(--subj) 9%, var(--surface));
+}
+.subj-continue:hover { background: color-mix(in srgb, var(--subj) 14%, var(--surface)); }
+.subj-continue > .ico { width: 22px; height: 22px; color: var(--subj); flex: none; }
+.subj-continue__text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.subj-continue__text small { font-size: 12px; color: var(--muted); }
+.subj-continue__text b { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.subj-continue__go { flex: none; color: var(--subj); }
+
+.subj-page .unit > summary { gap: 12px; }
+.unit__count { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.unit__count .progress { width: 64px; height: 4px; }
+.subj-page .outcome.is-done .outcome__state { color: var(--subj); }
+.m-tag { flex: none; font-size: 11.5px; font-weight: 600; padding: 2px 8px; border-radius: var(--radius-pill); }
+.m-tag--weak { color: var(--bad); background: color-mix(in srgb, var(--bad) 15%, transparent); }
+.m-tag--mid { color: var(--warn); background: color-mix(in srgb, var(--warn) 15%, transparent); }
+.m-tag--strong { color: var(--good-text); background: var(--good-soft); }
+:root[data-theme="light"] .m-tag--mid { color: #8a5a00; }
+@media (max-width: 600px) {
+  .subj-head { gap: 12px; }
+  .subj-head .subj-ico--lg { width: 46px; height: 46px; }
+  .outcome__code { display: none; }
+  .m-tag { font-size: 11px; padding: 1px 6px; }
+}
+
+/* ---------------- Konu (kazanım) sayfası ---------------- */
+.subj-page .lesson__section h2 .ico { color: var(--subj); }
+.subj-page .crumbs a:first-of-type { }
+.lesson-chip { display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 13px; color: var(--text-2); }
+.lesson-chip b { color: var(--subj); font-weight: 600; }
+
+/* Bu sayfada: telefonda yatay, geniş ekranda sağda yapışkan */
+.toc { display: flex; gap: 6px; margin: 0 -16px 14px; padding: 2px 16px; overflow-x: auto; scrollbar-width: none; }
+.toc::-webkit-scrollbar { display: none; }
+.toc a { flex: none; display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: var(--radius-pill); border: 1px solid var(--border); background: var(--chip-bg); font-size: 13px; color: var(--text-2); white-space: nowrap; }
+.toc a.is-on { border-color: color-mix(in srgb, var(--subj, var(--accent)) 60%, transparent); color: var(--text); background: color-mix(in srgb, var(--subj, var(--accent)) 14%, var(--surface)); }
+.lesson-aside { display: none; }
+
+@media (min-width: 1240px) {
+  .page.lesson-page { max-width: 1180px; display: grid; grid-template-columns: minmax(0, 1fr) 250px; column-gap: 32px; }
+  .lesson-page > .lesson-main { min-width: 0; }
+  .lesson-page .toc--inline { display: none; }
+  .lesson-aside { display: flex; flex-direction: column; gap: 14px; position: sticky; top: 8px; align-self: start; max-height: calc(100vh - 96px); overflow-y: auto; padding-top: 40px; }
+  .lesson-aside__pos { font-size: 12.5px; color: var(--muted); display: flex; flex-direction: column; gap: 6px; }
+  .lesson-aside__pos .progress { height: 4px; }
+  .lesson-aside .toc { flex-direction: column; margin: 0; padding: 0; gap: 2px; overflow: visible; border-left: 2px solid var(--border); }
+  .lesson-aside .toc a { height: auto; min-height: 30px; padding: 5px 12px; margin-left: -2px; border: 0; border-left: 2px solid transparent; border-radius: 0; background: none; white-space: normal; line-height: 1.3; }
+  .lesson-aside .toc a:hover { color: var(--text); }
+  .lesson-aside .toc a.is-on { border-left-color: var(--subj, var(--accent)); background: none; color: var(--text); font-weight: 500; }
+  .lesson-aside__acts { display: flex; flex-direction: column; gap: 6px; }
+  .lesson-aside__acts .btn { justify-content: flex-start; }
+  .lesson-aside__nav { display: flex; gap: 6px; }
+  .lesson-aside__nav .btn { flex: 1; justify-content: center; padding: 0 8px; }
+}
+
+/* Bugün ve harita görevlerinde ders rengi */
+.daily-task[class*="subj-"] { box-shadow: inset 3px 0 0 var(--subj); }
+
+@media (max-width: 600px) {
+  .grade-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; }
+  .grade-tabs a { justify-content: center; padding: 0 4px; font-size: 13.5px; }
+  .grade-tabs small { display: none; }
+  .subj-head__prog { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .subj-head__prog .progress { width: 100%; max-width: none; }
+  .unit__count .progress { display: none; }
+  .subj-tile { padding: 14px; }
+}

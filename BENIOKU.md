@@ -78,6 +78,16 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
   Düğmeler ekranın altında: **Bitir** (sohbeti kaydedip kapatır), ortada duruma göre **Gönder / Sustur / Vazgeç / Devam et**
   ve **Duraklat** (mikrofonu kapatır). Küreye dokunmak ortadaki düğmeyle aynı işi yapar; telefonun geri tuşu da kapatır.
 
+### Konu Anlatımı
+
+- Her dersin kendi rengi ve simgesi var (menüde, Bugün görevlerinde ve konu sayfalarında).
+- Konu Anlatımı tek sayfa: üstte sınıf sekmeleri (son seçtiğin sınıf hatırlanır), altta dersler. Her ders kutusunda
+  ilerleme ve **sıradaki kazanım** görünür.
+- Ders sayfasında **Kaldığın yerden devam et** düğmesi ve her konunun yanında *Zayıf / Orta / Güçlü* etiketi
+  (test, Feynman, kart ve çözüm kontrolü sonuçlarından). Ders bitince en zayıf konuyu tekrar etmeyi önerir.
+- Konu sayfasında **Bu sayfada** şeridi: anlatım, örnekler, hap bilgi, deney, kartlar, test… bölümlerine tek
+  dokunuşla atlar. Geniş ekranda bu liste sağda sabit durur; yanında test/anlat/kart kısayolları ve önceki/sonraki konu.
+
 ### Menü ve arama
 
 - Sol menü üç gruba ayrılır: **Çalış** (konular, kartlar, yanlışlar, deneyler, çözüm kontrolü, program),

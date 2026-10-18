@@ -30,17 +30,17 @@
 (function () {
   // Ders kimlikleri, görünen adları ve kart renkleri
   const SUBJECTS = {
-    edebiyat:  { name: { tr: "Türk Dili ve Edebiyatı", en: "Turkish Language and Literature" }, color: "#ff8a80" },
-    matematik: { name: { tr: "Matematik", en: "Mathematics" }, color: "#7aa2ff" },
-    fizik:     { name: { tr: "Fizik", en: "Physics" }, color: "#5bc0de" },
-    kimya:     { name: { tr: "Kimya", en: "Chemistry" }, color: "#5bc0a8" },
-    biyoloji:  { name: { tr: "Biyoloji", en: "Biology" }, color: "#8fd16a" },
-    tarih:     { name: { tr: "Tarih", en: "History" }, color: "#e0a458" },
-    inkilap:   { name: { tr: "T.C. İnkılap Tarihi ve Atatürkçülük", en: "History of the Turkish Revolution and Kemalism" }, color: "#e0a458" },
-    cografya:  { name: { tr: "Coğrafya", en: "Geography" }, color: "#d4b45a" },
-    felsefe:   { name: { tr: "Felsefe", en: "Philosophy" }, color: "#c08cff" },
-    din:       { name: { tr: "Din Kültürü ve Ahlak Bilgisi", en: "Religious Culture and Ethics" }, color: "#9fa8da" },
-    ingilizce: { name: { tr: "İngilizce", en: "English" }, color: "#f48fb1" }
+    edebiyat:  { name: { tr: "Türk Dili ve Edebiyatı", en: "Turkish Language and Literature" }, color: "#ff8a80", icon: "sLit" },
+    matematik: { name: { tr: "Matematik", en: "Mathematics" }, color: "#7aa2ff", icon: "sMath" },
+    fizik:     { name: { tr: "Fizik", en: "Physics" }, color: "#5bc0de", icon: "sPhys" },
+    kimya:     { name: { tr: "Kimya", en: "Chemistry" }, color: "#5bc0a8", icon: "sChem" },
+    biyoloji:  { name: { tr: "Biyoloji", en: "Biology" }, color: "#8fd16a", icon: "sBio" },
+    tarih:     { name: { tr: "Tarih", en: "History" }, color: "#e0a458", icon: "sHist" },
+    inkilap:   { name: { tr: "T.C. İnkılap Tarihi ve Atatürkçülük", en: "History of the Turkish Revolution and Kemalism" }, color: "#e0a458", icon: "flag" },
+    cografya:  { name: { tr: "Coğrafya", en: "Geography" }, color: "#d4b45a", icon: "sGeo" },
+    felsefe:   { name: { tr: "Felsefe", en: "Philosophy" }, color: "#c08cff", icon: "sPhil" },
+    din:       { name: { tr: "Din Kültürü ve Ahlak Bilgisi", en: "Religious Culture and Ethics" }, color: "#9fa8da", icon: "sRel" },
+    ingilizce: { name: { tr: "İngilizce", en: "English" }, color: "#f48fb1", icon: "sLang" }
   };
 
   // Her sınıfta hangi dersler var
@@ -67,6 +67,7 @@
       id: sid,
       name: SUBJECTS[sid].name,
       color: SUBJECTS[sid].color,
+      icon: SUBJECTS[sid].icon || "book",
       units: (CONTENT[g] && CONTENT[g][sid]) || []
     }))
   }));
