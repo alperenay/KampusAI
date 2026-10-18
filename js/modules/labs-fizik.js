@@ -161,7 +161,7 @@
     ],
     animated: true, ratio: 0.62,
     tasks: () => [T("Kaynama süresi erime süresinden kaç kat uzun? Nedenini gizli ısılarla açıkla.", "How much longer is boiling than melting?"), T("Kütleyi iki katına çıkar: grafik nasıl değişir?", "Double the mass: how does the graph change?")],
-    draw(ctx, W, H, p, t, c) {
+    draw(ctx, W, H, p, t, c, st3) {
       const S = SDATA[p.sub], Ti = S.tm - 20, Tf = S.tb + 20, m = p.m;
       const seg = [ ["s", m * S.cs * (S.tm - Ti)], ["f", m * S.Lf], ["l", m * S.cl * (S.tb - S.tm)], ["v", m * S.Lv], ["g", m * S.cg * (Tf - S.tb)] ];
       const Qtot = seg.reduce((a, b) => a + b[1], 0), tTot = Qtot / p.P;
@@ -181,7 +181,9 @@
       plot(ctx, { ...F, x1: Math.max(tt / 60, 1e-6) }, (x) => tempAt(x * 60 * p.P), c.bad, 2.6);
       dot(ctx, F.X(tt / 60), F.Y(T0), 5, c.bad);
       let acc = 0, phase = "";
-      for (const [k, dq] of seg) { if (q <= acc + dq + 1e-9) { phase = k; break; } acc += dq; }
+      let pf = 0;
+      for (const [k, dq] of seg) { if (q <= acc + dq + 1e-9) { phase = k; pf = dq ? (q - acc) / dq : 1; break; } acc += dq; }
+      if (st3) { st3.T0 = T0; st3.phase = phase || "g"; st3.pf = pf; st3.Ti = Ti; st3.Tf = Tf; }
       const PH = { s: T("katı ısınıyor", "solid warming"), f: T("eriyor (sıcaklık sabit)", "melting"), l: T("sıvı ısınıyor", "liquid warming"), v: T("kaynıyor (sıcaklık sabit)", "boiling"), g: T("gaz ısınıyor", "gas warming") };
       label(ctx, T("erime", "melt"), F.X(seg[0][1] / p.P / 60) + 4, F.Y(S.tm) - 9, c.muted, "left", 10);
       label(ctx, T("kaynama", "boil"), F.X((seg[0][1] + seg[1][1] + seg[2][1]) / p.P / 60) + 4, F.Y(S.tb) - 9, c.muted, "left", 10);

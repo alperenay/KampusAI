@@ -662,4 +662,290 @@
           "1 mol e⁻ = 96 485 C. Deposited moles = charge / (n·F).") };
     }
   }, ["12/kimya/u1/k3"]);
+
+  /* =========================================================
+     3B sahneler (App.lab3d) — hesaplar yukarıdaki 2B deneylerle ortak
+     ========================================================= */
+  if (App.lab3d) (function () {
+    const D3 = App.lab3d.def;
+    const f2 = (x, d) => Number(x).toFixed(d == null ? 2 : d).replace(".", App.i18n.lang === "en" ? "." : ",");
+    /** Cam beher + sıvı: set(seviye 0–1, renk) */
+    function beaker(S, x, z, r, h, parent) {
+      const T3 = S.THREE, g = S.group(parent);
+      const gl = S.mesh(new T3.CylinderGeometry(r, r * 0.96, h, 40, 1, true), S.glass(), g); gl.position.y = h / 2; gl.castShadow = false;
+      const bottom = S.mesh(new T3.CircleGeometry(r * 0.96, 40), S.glass(), g); bottom.rotation.x = -Math.PI / 2; bottom.position.y = 0.01;
+      const lq = S.mesh(new T3.CylinderGeometry(r * 0.93, r * 0.9, 1, 40), new T3.MeshStandardMaterial({ color: 0x5b8cff, transparent: true, opacity: 0.6, roughness: 0.08, depthWrite: false }), g); lq.castShadow = false;
+      g.position.set(x, 0, z);
+      g.set = (lv, col, op) => { const hh = Math.max(0.02, h * 0.95 * Math.min(1, lv)); lq.scale.set(1, hh, 1); lq.position.y = hh / 2 + 0.02; if (col) lq.material.color.set(col); if (op != null) lq.material.opacity = op; lq.visible = lv > 0.005; return g; };
+      g.lq = lq; g.h = h; g.r = r; return g;
+    }
+
+    D3("elektron", {
+      view: { r: 11, th: 0.5, ph: 1.05, target: [0, 3, 0] },
+      build(S) { const o = S.o; o.nuc = S.sphere(0.45, S.cols.bad); o.nuc.position.y = 3; o.sym = S.label("", "#fff", 0.6); o.e = []; o.cfg = S.label("", null, 0.45); S.hideFloor(); },
+      update(S, p, t) {
+        const o = S.o, T3 = S.THREE, el = App.data.elements.byZ(p.z), nE = Math.max(0, p.z - p.q);
+        let cf; if (p.q > 0) { cf = config(p.z, p.z); let rm = p.q; const ord = cf.slice().sort((a, b) => b.n - a.n || b.l - a.l); for (const sh of ord) { const k = Math.min(sh.e, rm); sh.e -= k; rm -= k; if (!rm) break; } } else cf = config(nE, p.z);
+        const shells = [0, 0, 0, 0]; cf.forEach((sh) => { shells[sh.n - 1] += sh.e; });
+        S.keyed("shells", shells.join(), (g) => {
+          o.e = [];
+          shells.forEach((n, i) => { if (!n) return; const R = 1.2 + i * 0.9, sg = new T3.Group(); sg.position.y = 3; sg.rotation.x = 0.35 * (i % 2 ? 1 : -1); sg.rotation.z = 0.25 * i; g.add(sg);
+            const ring = new T3.Mesh(new T3.TorusGeometry(R, 0.015, 6, 96), new T3.MeshBasicMaterial({ color: 0x777777, transparent: true, opacity: 0.6 })); ring.rotation.x = Math.PI / 2; sg.add(ring);
+            for (let k = 0; k < n; k++) o.e.push({ m: S.sphere(0.11, S.cols.accent, sg, 10), R, i, k, n }); });
+        });
+        o.e.forEach((q) => { const a = (2 * Math.PI * q.k) / q.n + t * 0.6 / (q.i + 1); q.m.position.set(q.R * Math.cos(a), 0, q.R * Math.sin(a)); });
+        o.sym.set(el.sym + (p.q ? (p.q > 0 ? "+" + p.q : String(p.q)) : "")); o.sym.position.set(0, 3, 0.6);
+        o.cfg.set(cf.filter((x) => x.e > 0).map((x) => x.n + "spdf"[x.l] + x.e).join(" ")); o.cfg.position.set(0, 7.2, 0);
+      }
+    });
+
+    D3("periyodik", {
+      view: { r: 23, th: 0.2, ph: 0.95, target: [0, 1.5, 0] },
+      build(S) { const o = S.o, T3 = S.THREE, list = App.data.elements.list;
+        o.cols = list.map((e) => { const m = S.box(0.8, 1, 0.8, App.data.elements.CAT[e.cat].color); m.position.set((e.group - 9.5) * 0.95, 0.5, (e.period - 2.5) * 0.95); return m; });
+        o.labs = list.map((e) => { const l = S.label(e.sym, null, 0.32); return l; }); o.sel = S.label("", null, 0.6); void T3; },
+      update(S, p) {
+        const o = S.o, list = App.data.elements.list, max = { r: 220, ie: 2500, en: 4.2 }[p.prop];
+        list.forEach((e, i) => { const v = e[p.prop], h = v == null ? 0.05 : Math.max(0.05, (v / max) * 5); o.cols[i].scale.set(1, h, 1); o.cols[i].position.y = h / 2; o.cols[i].material.emissive && o.cols[i].material.emissive.set(e.z === p.z ? 0x553300 : 0x000000);
+          o.labs[i].position.set(o.cols[i].position.x, h + 0.3, o.cols[i].position.z); });
+        const e = App.data.elements.byZ(p.z), v = e[p.prop]; o.sel.set(e.sym + ": " + (v == null ? "—" : v)); o.sel.position.set(o.cols[p.z - 1].position.x, o.cols[p.z - 1].scale.y + 1.1, o.cols[p.z - 1].position.z);
+      }
+    });
+
+    D3("bag", {
+      view: { r: 10, th: 0.4, ph: 1.15, target: [0, 2.2, 0] },
+      build(S) { const o = S.o, T3 = S.THREE; o.a = S.sphere(1, "#ccc", null, 40); o.b = S.sphere(1, "#ccc", null, 40); o.la = S.label("", "#111", 0.6); o.lb = S.label("", "#111", 0.6); o.qa = S.label("", S.cols.warn, 0.55); o.qb = S.label("", S.cols.warn, 0.55);
+        o.cloud = S.mesh(new T3.SphereGeometry(1, 32, 24), new T3.MeshStandardMaterial({ color: 0x5b8cff, transparent: true, opacity: 0.35, depthWrite: false })); o.cloud.castShadow = false;
+        o.sea = Array.from({ length: 50 }, () => S.sphere(0.07, S.cols.accent, null, 8)); o.lat = []; },
+      update(S, p, t) {
+        const o = S.o, A = App.data.elements.bySym(p.a), B = App.data.elements.bySym(p.b), dEN = Math.abs((A.en || 0) - (B.en || 0));
+        let type; if (isMetal(A) && isMetal(B)) type = "metal"; else if (A === B || dEN < 0.4) type = "apolar"; else if (dEN < 1.7) type = "polar"; else type = "iyon";
+        const more = (A.en || 0) >= (B.en || 0) ? A : B, ra = 0.55 + A.r / 260, rb = 0.55 + B.r / 260, metal = type === "metal";
+        o.a.visible = o.b.visible = o.la.visible = o.lb.visible = !metal; o.cloud.visible = type === "polar" || type === "apolar";
+        S.keyed("lattice", metal ? p.a + p.b : "none", (g) => { o.lat = []; if (!metal) return; for (let i = 0; i < 27; i++) { const x = (i % 3) - 1, y = Math.floor(i / 3) % 3, z = Math.floor(i / 9) - 1; const e = (x + y + z) % 2 ? B : A; const m = S.sphere(0.42, App.data.elements.CAT[e.cat].color, g, 20); m.position.set(x * 1.3, 0.9 + y * 1.3, z * 1.3); } });
+        o.sea.forEach((m, i) => { m.visible = metal; if (metal) m.position.set(Math.sin(t * 1.3 + i) * 1.8, 2.2 + Math.sin(t * 0.9 + i * 2.1) * 1.6, Math.cos(t * 1.1 + i * 1.7) * 1.8); });
+        if (metal) { o.qa.visible = o.qb.visible = false; return; }
+        const ion = type === "iyon", sa = ion ? (A === more ? 1.2 : 0.75) : 1, sb = ion ? (B === more ? 1.2 : 0.75) : 1, d = ion ? ra * sa + rb * sb + 0.5 : (ra + rb) * 0.75;
+        o.a.scale.setScalar(ra * sa); o.b.scale.setScalar(rb * sb); o.a.position.set(-d / 2, 2.2, 0); o.b.position.set(d / 2, 2.2, 0);
+        o.a.material.color.set(App.data.elements.CAT[A.cat].color); o.b.material.color.set(App.data.elements.CAT[B.cat].color);
+        o.la.set(A.sym); o.la.position.set(-d / 2, 2.2, ra * sa + 0.1); o.lb.set(B.sym); o.lb.position.set(d / 2, 2.2, rb * sb + 0.1);
+        const shift = type === "polar" ? Math.min(1, dEN / 1.7) * 0.6 * (more === B ? 1 : -1) : 0; o.cloud.scale.set(d * 0.55 + 0.4, 0.7, 0.7); o.cloud.position.set(shift * d * 0.4, 2.2, 0);
+        const qa = A === more ? (ion ? "−" : "δ−") : ion ? "+" : "δ+", qb = B === more ? (ion ? "−" : "δ−") : ion ? "+" : "δ+";
+        o.qa.visible = o.qb.visible = type !== "apolar"; o.qa.set(qa); o.qa.position.set(-d / 2, 2.2 + ra * sa + 0.5, 0); o.qb.set(qb); o.qb.position.set(d / 2, 2.2 + rb * sb + 0.5, 0);
+      }
+    });
+
+    D3("vsepr", {
+      view: { r: 8, th: 0.6, ph: 1.15, target: [0, 2.5, 0] },
+      build(S) { S.o.c = S.sphere(0.45, S.cols.violet, null, 32); S.o.c.position.y = 2.5; S.o.cl = S.label("", "#fff", 0.5); S.hideFloor(); },
+      update(S, p, t) {
+        const o = S.o, T3 = S.THREE, sh = SHAPES().find((x) => x[0] === p.m) || SHAPES()[3], nb = sh[2], nl = sh[3], tot = nb + nl, dirs = GEOM[tot], lone = new Set((LONE_IDX[tot] || []).slice(0, nl));
+        const g = S.keyed("mol", p.m, (gg) => { dirs.forEach((d, i) => { const v = new T3.Vector3(...d).normalize();
+          if (lone.has(i)) { const lp = S.mesh(new T3.SphereGeometry(0.42, 20, 16), new T3.MeshStandardMaterial({ color: 0x5b8cff, transparent: true, opacity: 0.35, depthWrite: false }), gg); lp.scale.set(0.8, 0.8, 1.5); lp.position.copy(v.clone().multiplyScalar(0.95)); lp.quaternion.setFromUnitVectors(new T3.Vector3(0, 0, 1), v); }
+          else { const b = S.cyl(0.08, 0.08, 1.6, "#cfd3da", gg); b.position.copy(v.clone().multiplyScalar(0.8)); b.quaternion.setFromUnitVectors(new T3.Vector3(0, 1, 0), v); const a = S.sphere(0.32, S.cols.good, gg, 24); a.position.copy(v.clone().multiplyScalar(1.7)); } }); });
+        g.position.y = 2.5; if (p.rot) { g.rotation.y = t * 0.6; g.rotation.x = 0.3; } o.cl.set(sh[8]); o.cl.position.set(0, 2.5, 0);
+      }
+    });
+
+    D3("stokiyometri", {
+      view: { r: 13, th: 0.2, ph: 1.1, target: [0, 2, 0] },
+      build(S) { const o = S.o; o.l1 = S.label(App.labs.util.T("Önce", "Before"), null, 0.55); o.l1.position.set(-3.5, 4.8, 0); o.l2 = S.label(App.labs.util.T("Sonra", "After"), null, 0.55); o.l2.position.set(3.5, 4.8, 0); o.div = S.box(0.05, 4.5, 4, "#888"); o.div.position.set(0, 2.25, 0); },
+      update(S, p) {
+        const R = RX().find((x) => x.id === p.rx) || RX()[0], [A, B] = R.r, xi = Math.min(p.a / A[1], p.b / B[1]) * (p.y / 100);
+        const cA = { H: "#f2f2f2", O: "#ff5a4f", N: "#5b8cff", C: "#55585e", Cl: "#5fe08a" };
+        const put = (g, x0, items) => { let k = 0; items.forEach(([nm, n, atoms]) => { for (let i = 0; i < Math.round(n); i++) { const col = k % 4, row = Math.floor(k / 4), cx = x0 + (col - 1.5) * 1.5, cy = 0.5 + (row % 3) * 1.4, cz = -1 + Math.floor(row / 3) * 1.6; atoms.forEach(([e, dx, dy]) => { const m = S.sphere(e === "H" ? 0.22 : 0.32, cA[e] || "#ccc", g, 16); m.position.set(cx + dx * 0.35, cy + dy * 0.35 + 0.2, cz); }); k++; } }); };
+        S.keyed("mols", [p.rx, p.a, p.b, p.y].join(), (g) => { put(g, -3.5, [[A[0], p.a, A[2]], [B[0], p.b, B[2]]]); put(g, 3.5, R.pr.map(([nm, co, at]) => [nm, co * xi, at]).concat([[A[0], p.a - A[1] * xi, A[2]], [B[0], p.b - B[1] * xi, B[2]]])); });
+      }
+    });
+
+    D3("gaz", {
+      view: { r: 10, th: 0.5, ph: 1.15, target: [0, 2, 0] },
+      build(S) { const o = S.o, T3 = S.THREE; o.box = S.mesh(new T3.BoxGeometry(1, 4, 3), S.glass(0xcfe6ff, 0.15)); o.box.castShadow = false; o.piston = S.box(0.25, 4, 3, "#8a8f99"); o.rod = S.cyl(0.1, 0.1, 3, "#666"); o.rod.rotation.z = Math.PI / 2;
+        o.inst = null; o.n = 0; o.gauge = S.label("", null, 0.6); },
+      update(S, p, t, s) {
+        const o = S.o, T3 = S.THREE, pts = s.pts || [], N = pts.length, w = 1 + 6 * (p.V / 40);
+        o.box.scale.set(w, 1, 1); o.box.position.set(-3.5 + w / 2, 2, 0); o.piston.position.set(-3.5 + w + 0.12, 2, 0); o.rod.position.set(-3.5 + w + 1.6, 2, 0);
+        if (o.n !== N) { if (o.inst) { S.root.remove(o.inst); o.inst.geometry.dispose(); } o.inst = new T3.InstancedMesh(new T3.SphereGeometry(0.09, 10, 8), new T3.MeshStandardMaterial({ color: 0xffffff }), Math.max(1, N)); S.root.add(o.inst); o.n = N; }
+        const m = new T3.Matrix4(), heat = Math.min(1, p.T / 800), col = new T3.Color().setRGB((90 + 165 * heat) / 255, (150 - 60 * heat) / 255, (255 - 180 * heat) / 255);
+        pts.forEach((q, i) => { if (q.z == null) { q.z = Math.random(); q.vz = Math.random() * 2 - 1; } q.z += q.vz * Math.sqrt(p.T / 300) * 0.006 * 1.5; if (q.z < 0) { q.z = -q.z; q.vz *= -1; } if (q.z > 1) { q.z = 2 - q.z; q.vz *= -1; }
+          m.setPosition(-3.5 + 0.1 + q.x * (w - 0.2), 0.1 + (1 - q.y) * 3.8, -1.4 + q.z * 2.8); o.inst.setMatrixAt(i, m); });
+        o.inst.instanceMatrix.needsUpdate = true; o.inst.material.color.copy(col);
+        o.gauge.set("P = " + f2(p.n * 0.0821 * p.T / p.V) + " atm"); o.gauge.position.set(0, 4.8, 0);
+        void t;
+      }
+    });
+
+    D3("graham", {
+      view: { r: 13, th: 0.35, ph: 1.2, target: [0, 1.5, 0] },
+      build(S) { const o = S.o, T3 = S.THREE; o.tube = S.mesh(new T3.CylinderGeometry(0.6, 0.6, 12, 32, 1, true), S.glass()); o.tube.rotation.z = Math.PI / 2; o.tube.position.y = 1.5; o.tube.castShadow = false;
+        o.g1 = S.mesh(new T3.CylinderGeometry(0.55, 0.55, 1, 32), new T3.MeshStandardMaterial({ color: 0x5b8cff, transparent: true, opacity: 0.45, depthWrite: false })); o.g1.rotation.z = Math.PI / 2;
+        o.g2 = S.mesh(new T3.CylinderGeometry(0.55, 0.55, 1, 32), new T3.MeshStandardMaterial({ color: 0x5bbf74, transparent: true, opacity: 0.45, depthWrite: false })); o.g2.rotation.z = Math.PI / 2;
+        o.ring = S.mesh(new T3.TorusGeometry(0.6, 0.12, 12, 40), "#ffffff"); o.ring.rotation.y = Math.PI / 2; o.c1 = S.sphere(0.5, "#eee"); o.c1.position.set(-6.3, 1.5, 0); o.c2 = S.sphere(0.5, "#eee"); o.c2.position.set(6.3, 1.5, 0); o.lab = S.label("", null, 0.5); },
+      update(S, p, t) {
+        const o = S.o, r1 = 1 / Math.sqrt(p.m1), r2 = 1 / Math.sqrt(p.m2), k = Math.min(1, t / 6), L = 12, f1 = k * (r1 / (r1 + r2)) * L, f2_ = k * (r2 / (r1 + r2)) * L;
+        o.g1.scale.set(1, Math.max(0.01, f1), 1); o.g1.position.set(-6 + f1 / 2, 1.5, 0); o.g2.scale.set(1, Math.max(0.01, f2_), 1); o.g2.position.set(6 - f2_ / 2, 1.5, 0);
+        o.ring.visible = k >= 1; o.ring.position.set(-6 + L * r1 / (r1 + r2), 1.5, 0);
+        o.lab.set(f2(p.L * r1 / (r1 + r2), 1) + " cm"); o.lab.visible = k >= 1; o.lab.position.set(-6 + L * r1 / (r1 + r2), 2.8, 0);
+      }
+    });
+
+    D3("cozunurluk", {
+      view: { r: 8, th: 0.45, ph: 1.15, target: [0, 1.6, 0] },
+      build(S) { const o = S.o; o.b = beaker(S, 0, 0, 1.5, 3.4); o.solid = S.mesh(new S.THREE.CylinderGeometry(1.35, 1.38, 1, 40), "#f2f2f2"); o.cr = Array.from({ length: 40 }, () => { const m = S.box(0.12, 0.12, 0.12, "#ffffff"); m.rotation.set(Math.random() * 3, Math.random() * 3, 0); return m; }); o.lab = S.label("", null, 0.5); },
+      update(S, p) {
+        const o = S.o, Sv = solAt(p.s, p.T), solid = Math.max(0, p.m - Sv), dis = Math.min(p.m, Sv);
+        o.b.set(0.75, new S.THREE.Color(0x5b8cff).lerp(new S.THREE.Color(0xffffff), 0.3 - Math.min(0.3, dis / 800)), 0.35 + Math.min(0.35, dis / 400));
+        const hh = Math.min(1.2, solid * 0.008); o.solid.visible = solid > 0.5; o.solid.scale.set(1, Math.max(0.01, hh), 1); o.solid.position.y = hh / 2 + 0.02;
+        o.cr.forEach((m, i) => { m.visible = solid > 0.5 && i < solid / 4; m.position.set(Math.cos(i * 2.4) * (0.2 + (i % 5) * 0.22), hh + 0.06, Math.sin(i * 2.4) * (0.2 + (i % 5) * 0.22)); });
+        o.lab.set(f2(Sv, 1) + " g / 100 g · " + (solid > 0.5 ? App.labs.util.T("dipte " + f2(solid, 0) + " g", f2(solid, 0) + " g undissolved") : App.labs.util.T("hepsi çözündü", "all dissolved"))); o.lab.position.set(0, 4.1, 0);
+      }
+    });
+
+    D3("derisim", {
+      view: { r: 10, th: 0.3, ph: 1.15, target: [0, 1.5, 0] },
+      build(S) { const o = S.o; o.b1 = beaker(S, -2.2, 0, 1.3, 3); o.b2 = beaker(S, 2.2, 0, 1.3, 3); o.ar = S.arrow("#ffffff", 0.06); o.ar.set([-0.6, 1.6, 0], [0.6, 1.6, 0]); o.l1 = S.label("", null, 0.5); o.l2 = S.label("", null, 0.5); },
+      update(S, p) {
+        const o = S.o, n = p.m / p.M, M1 = n / (p.V / 1000), V2 = p.V + p.w, M2 = n / (V2 / 1000);
+        o.b1.set(p.V / 2000, 0x5b8cff, Math.min(0.9, 0.12 + M1 * 0.35)); o.b2.set(V2 / 2000, 0x5b8cff, Math.min(0.9, 0.12 + M2 * 0.35));
+        o.l1.set(f2(M1, 3) + " M"); o.l1.position.set(-2.2, 3.6, 0); o.l2.set(f2(M2, 3) + " M"); o.l2.position.set(2.2, 3.6, 0);
+      }
+    });
+
+    D3("koligatif", {
+      view: { r: 10, th: 0.3, ph: 1.15, target: [0, 1.8, 0] },
+      build(S) { const o = S.o, T3 = S.THREE; o.b1 = beaker(S, -2.4, 0, 1.2, 2.6); o.b2 = beaker(S, 2.4, 0, 1.2, 2.6); o.b1.set(0.7, 0x5b8cff, 0.5); o.b2.set(0.7, 0xbfe6ff, 0.75);
+        o.burner = S.cyl(0.6, 0.8, 0.4, "#333"); o.burner.position.set(-2.4, -0.2, 0); o.b1.position.y = 0.2;
+        o.ice = Array.from({ length: 5 }, (_, i) => { const m = S.box(0.4, 0.4, 0.4, new T3.MeshStandardMaterial({ color: 0xe6f6ff, transparent: true, opacity: 0.85 })); m.position.set(2.4 + Math.cos(i) * 0.5, 1.6, Math.sin(i) * 0.5); return m; });
+        o.bub = Array.from({ length: 18 }, () => ({ m: S.sphere(0.06, "#ffffff", null, 8), y: Math.random() }));
+        o.t1 = S.label("", null, 0.5); o.t2 = S.label("", null, 0.5); },
+      update(S, p) {
+        const o = S.o, dTb = 0.52 * p.m * p.i, dTf = 1.86 * p.m * p.i;
+        o.bub.forEach((b) => { b.y += 0.02; if (b.y > 1) b.y = 0; b.m.position.set(-2.4 + (Math.random() - 0.5) * 1.6, 0.25 + b.y * 1.7, (Math.random() - 0.5) * 1.6); });
+        o.t1.set(App.labs.util.T("kaynar: ", "boils: ") + f2(100 + dTb) + " °C"); o.t1.position.set(-2.4, 3.6, 0); o.t2.set(App.labs.util.T("donar: ", "freezes: ") + f2(-dTf) + " °C"); o.t2.position.set(2.4, 3.6, 0);
+      }
+    });
+
+    D3("entalpi", {
+      view: { r: 13, th: 0.6, ph: 0.95, target: [0, 1.5, 0] },
+      build(S) { const o = S.o; o.ball = S.sphere(0.3, S.cols.accent); o.surf = null; o.lab = S.label("", null, 0.5); },
+      update(S, p, t) {
+        const o = S.o, T3 = S.THREE, Ea = Math.max(p.Ea, p.dH + 10), Ec = p.cat ? Math.max(p.dH + 5, Ea * 0.55) : null, k = 1 / 60;
+        const path = (peak) => { const base = (u) => p.dH * (3 * u * u - 2 * u * u * u), bump = (u) => Math.sin(Math.PI * u) ** 2; let lo = 0, hi = 2000; const mx = (A) => { let m = -1e9; for (let i = 0; i <= 100; i++) { const u = i / 100; m = Math.max(m, base(u) + A * bump(u)); } return m; };
+          for (let i = 0; i < 40; i++) { const A = (lo + hi) / 2; if (mx(A) > peak) hi = A; else lo = A; } return (u) => base(u) + lo * bump(u); };
+        const P = path(Ea), PC = Ec != null ? path(Ec) : null, off = Math.max(0, -Math.min(0, p.dH)) * k + 0.3;
+        S.keyed("land", [p.dH, p.Ea, p.cat].join(), (g) => {
+          const geo = new T3.PlaneGeometry(12, 6, 120, 30); geo.rotateX(-Math.PI / 2); const pos = geo.attributes.position;
+          for (let i = 0; i < pos.count; i++) { const x = pos.getX(i), z = pos.getZ(i), u = Math.max(0, Math.min(1, (x + 6) / 12 * 1.25 - 0.125)); const along = z > 0 && PC ? PC : P; const yv = along(u) * k + off; pos.setY(i, yv * (1 - Math.min(1, Math.abs(z) / 3) * 0) ); }
+          geo.computeVertexNormals();
+          S.mesh(geo, new T3.MeshStandardMaterial({ color: 0x8b6fd6, roughness: 0.6, side: T3.DoubleSide, flatShading: false }), g);
+        });
+        const u = (Math.sin(t * 0.8) * 0.5 + 0.5), x = -6 + (u + 0.125) / 1.25 * 12; o.ball.position.set(x, P(u) * k + off + 0.3, -1.5);
+        o.lab.set("Ea = " + f2(Ea, 0) + " kJ · ΔH = " + f2(p.dH, 0) + " kJ" + (Ec != null ? " · " + App.labs.util.T("katalizörlü Ea = ", "catalysed Ea = ") + f2(Ec, 0) : "")); o.lab.position.set(0, Math.max(Ea, 0) * k + off + 1.2, 0);
+      }
+    });
+
+    D3("tepkimehizi", {
+      view: { r: 9, th: 0.5, ph: 1.15, target: [0, 2, 0] },
+      build(S) { const o = S.o; o.box = S.mesh(new S.THREE.BoxGeometry(6, 4, 4), S.glass(0xcfe6ff, 0.12)); o.box.position.y = 2; o.box.castShadow = false; o.p = Array.from({ length: 40 }, (_, i) => ({ m: S.sphere(0.16, i % 2 ? S.cols.accent : S.cols.good, null, 14), z: Math.random(), vz: Math.random() * 2 - 1 }));
+        o.fl = Array.from({ length: 6 }, () => ({ m: S.mesh(new S.THREE.SphereGeometry(0.4, 16, 12), new S.THREE.MeshBasicMaterial({ color: 0xffc94a, transparent: true, opacity: 0 })), life: 0 })); o.lab = S.label("", null, 0.5); },
+      update(S, p, t, s) {
+        const o = S.o, n = Math.round(10 + p.c * 15), sp = Math.sqrt(p.T / 300) * 0.004;
+        o.p.forEach((q, i) => { const src = (s.pts || [])[i]; q.m.visible = i < n && !!src; if (!src) return; q.z += q.vz * sp * 1.5; if (q.z < 0 || q.z > 1) { q.vz *= -1; q.z = Math.max(0, Math.min(1, q.z)); } q.m.position.set(-2.8 + src.x * 5.6, 0.2 + src.y * 3.6, -1.8 + q.z * 3.6); });
+        const flashes = (s.flash || []);
+        o.fl.forEach((f, i) => { const fz = flashes[i]; f.m.material.opacity = fz ? 1 - fz.t : 0; if (fz) { f.m.scale.setScalar(0.4 + fz.t * 1.5); if (fz.t < 0.05 || !f.m.userData.set) { f.m.position.set((Math.random() - 0.5) * 5, 0.5 + Math.random() * 3, (Math.random() - 0.5) * 3); f.m.userData.set = true; } } else f.m.userData.set = false; });
+        o.lab.set(App.labs.util.T("parlama = etkin çarpışma", "flash = effective collision")); o.lab.position.set(0, 4.6, 0);
+        void t;
+      }
+    });
+
+    D3("denge", {
+      view: { r: 9, th: 0.4, ph: 1.15, target: [0, 2, 0] },
+      build(S) { const o = S.o, T3 = S.THREE; o.flask = S.mesh(new T3.SphereGeometry(1.6, 40, 30), S.glass(0xdfe8f5, 0.18)); o.flask.position.y = 1.7; o.flask.castShadow = false; o.neck = S.mesh(new T3.CylinderGeometry(0.35, 0.35, 1.4, 24, 1, true), S.glass()); o.neck.position.y = 3.7;
+        o.gas = S.mesh(new T3.SphereGeometry(1.52, 40, 30), new T3.MeshStandardMaterial({ color: 0x96461a, transparent: true, opacity: 0, depthWrite: false })); o.gas.position.y = 1.7; o.gas.castShadow = false;
+        o.mol = Array.from({ length: 30 }, (_, i) => ({ g: S.group(), a: Math.random() * 7, b: Math.random() * 3, r: Math.random() * 1.2 })); o.mol.forEach((q) => { const a = S.sphere(0.1, "#5b8cff", q.g, 10); a.position.x = -0.1; const b = S.sphere(0.1, "#ff5a4f", q.g, 10); b.position.x = 0.1; });
+        o.lab = S.label("", null, 0.5); },
+      update(S, p, t, s) {
+        const o = S.o, a = s.a || 0, b = s.b || 0, tot = a * 2 + b || 1;
+        o.gas.material.opacity = Math.min(0.85, b * 12);
+        o.mol.forEach((q, i) => { const isNO2 = i / o.mol.length < b / tot; q.g.children[1].material.color.set(isNO2 ? "#c0672a" : "#5b8cff"); q.g.position.set(Math.cos(q.a + t * 0.5) * q.r, 1.7 + Math.sin(q.b + t * 0.7) * q.r * 0.8, Math.sin(q.a + t * 0.5) * q.r); q.g.rotation.y = t + i; });
+        o.lab.set("[NO₂] " + f2(b, 3) + " · [N₂O₄] " + f2(a, 3) + " M"); o.lab.position.set(0, 4.9, 0);
+      }
+    });
+
+    D3("ph", {
+      view: { r: 11, th: 0.15, ph: 1.15, target: [0, 1.4, 0] },
+      build(S) { const o = S.o; o.rack = S.box(9, 0.3, 1.4, "#6b5440"); o.rack.position.y = 0.15; o.tubes = [-3.3, -1.1, 1.1, 3.3].map((x) => { const b = beaker(S, x, 0, 0.45, 2.6); b.position.y = 0.3; return b; }); o.n = [0, 1, 2, 3].map(() => S.label("", null, 0.32)); o.lab = S.label("", null, 0.6);
+        o.scale = []; for (let i = 0; i <= 14; i++) { const m = S.box(0.55, 0.12, 0.5, new S.THREE.Color().setHSL((i / 14) * 280 / 360, 0.75, 0.5)); m.position.set(-3.85 + i * 0.55, 0.06, 1.6); o.scale.push(m); } o.mark = S.mesh(new S.THREE.ConeGeometry(0.2, 0.4, 16), "#ffffff"); o.mark.rotation.x = Math.PI; },
+      update(S, p) {
+        const o = S.o, C0 = Math.pow(10, p.lc), sub = SUBS().find((x) => x[0] === p.s) || SUBS()[0], k = sub[2];
+        const pH = solvePH({ ca: k.acid ? C0 : 0, Ka: k.acid || 1, cb: k.base ? C0 : 0, Kb: k.base || 1, cs: k.sb ? C0 : 0 });
+        IND(pH).forEach(([nm, col], i) => { const c = String(col).startsWith("rgba(255,255,255") ? "#eef2f7" : col; o.tubes[i].set(0.7, c, 0.75); o.n[i].set(nm); o.n[i].position.set(-3.3 + i * 2.2, 3.2, 0); });
+        o.mark.position.set(-3.85 + Math.max(0, Math.min(14, pH)) * 0.55, 0.5, 1.6);
+        o.lab.set("pH = " + f2(pH)); o.lab.position.set(0, 4, 0);
+      }
+    });
+
+    D3("titrasyon", {
+      view: { r: 10, th: 0.35, ph: 1.15, target: [0, 3, 0] },
+      build(S) { const o = S.o, T3 = S.THREE; o.stand = S.cyl(0.07, 0.07, 7, "#888"); o.stand.position.set(-1.5, 3.5, 0); o.base = S.box(2.5, 0.2, 1.6, "#555"); o.base.position.set(-0.8, 0.1, 0);
+        o.bur = S.mesh(new T3.CylinderGeometry(0.22, 0.22, 4, 24, 1, true), S.glass()); o.bur.position.set(0, 5, 0); o.bliq = S.cyl(0.19, 0.19, 1, "#d8e6ff"); o.tip = S.mesh(new T3.ConeGeometry(0.22, 0.6, 16), S.glass()); o.tip.rotation.x = Math.PI; o.tip.position.set(0, 2.7, 0);
+        const sh = []; sh.push(new T3.Vector2(0.01, 0)); sh.push(new T3.Vector2(1.2, 0)); sh.push(new T3.Vector2(1.25, 0.1)); sh.push(new T3.Vector2(0.4, 1.4)); sh.push(new T3.Vector2(0.3, 2)); sh.push(new T3.Vector2(0.3, 2.3));
+        o.flask = S.mesh(new T3.LatheGeometry(sh, 40), S.glass()); o.flask.position.y = 0.2; o.flask.castShadow = false;
+        const sh2 = [new T3.Vector2(0.01, 0), new T3.Vector2(1.15, 0), new T3.Vector2(1.18, 0.08), new T3.Vector2(0.85, 0.55), new T3.Vector2(0.01, 0.55)];
+        o.fliq = S.mesh(new T3.LatheGeometry(sh2, 40), new T3.MeshStandardMaterial({ color: 0xffffff, transparent: true, opacity: 0.75, side: T3.DoubleSide })); o.fliq.position.y = 0.22;
+        o.drop = S.sphere(0.06, "#d8e6ff"); o.lab = S.label("", null, 0.55); },
+      update(S, p, t) {
+        const o = S.o, Ka = p.acid === "HCl" ? 1e8 : 1.8e-5, Vt = (25 + p.V) / 1000, pH = solvePH({ ca: 0.1 * 25 / 1000 / Vt, Ka, cs: 0.1 * p.V / 1000 / Vt });
+        const col = p.ind === "fen" ? (pH > 8.2 ? "#e055b8" : "#f4f6fa") : p.ind === "mo" ? (pH < 3.1 ? "#e0453a" : pH > 4.4 ? "#f2c23d" : "#f08a2f") : (pH < 6 ? "#f2d23d" : pH > 7.6 ? "#3a63e0" : "#5cb85c");
+        o.fliq.material.color.set(col); o.fliq.material.opacity = col === "#f4f6fa" ? 0.3 : 0.8; const left = 1 - p.V / 50; o.bliq.scale.set(1, Math.max(0.01, 3.8 * left), 1); o.bliq.position.set(0, 3.1 + 3.8 * left / 2, 0);
+        o.drop.position.set(0, 2.3 - ((t * 1.5) % 1) * 1.5, 0); o.drop.visible = p.V < 50;
+        o.lab.set("pH = " + f2(pH) + " · " + f2(p.V, 1) + " mL"); o.lab.position.set(1.8, 3, 0);
+      }
+    });
+
+    D3("ksp", {
+      view: { r: 7, th: 0.45, ph: 1.15, target: [0, 1.4, 0] },
+      build(S) { const o = S.o; o.b = beaker(S, 0, 0, 1.3, 3); o.b.set(0.75, 0xdfefff, 0.45); o.p = Array.from({ length: 60 }, () => S.box(0.09, 0.09, 0.09, "#ffffff")); o.ions = Array.from({ length: 40 }, (_, i) => S.sphere(0.06, i % 2 ? S.cols.accent : S.cols.good, null, 8)); o.lab = S.label("", null, 0.5); },
+      update(S, p, t) {
+        const o = S.o, [, nm, K, n] = KSP().find((x) => x[0] === p.s) || KSP()[0], cc = Math.pow(10, p.lc);
+        const sOf = (x) => { let lo = 0, hi = 1; for (let i = 0; i < 200; i++) { const m = (lo + hi) / 2; const v = n === 1 ? m * (m + x) : m * Math.pow(2 * m + x, 2); if (v > K) hi = m; else lo = m; } return lo; };
+        const s0 = sOf(0), s1 = sOf(cc), frac = s1 / s0;
+        o.ions.forEach((m, i) => { m.visible = i < 6 + 34 * frac; m.position.set(Math.cos(i * 2.1 + t * 0.3) * (0.2 + (i % 6) * 0.17), 0.4 + ((i * 0.37 + t * 0.1) % 1) * 1.7, Math.sin(i * 2.1 + t * 0.3) * (0.2 + (i % 6) * 0.17)); });
+        o.p.forEach((m, i) => { m.position.set(Math.cos(i * 2.4) * (0.1 + (i % 9) * 0.12), 0.07 + Math.floor(i / 20) * 0.08, Math.sin(i * 2.4) * (0.1 + (i % 9) * 0.12)); });
+        o.lab.set(nm + " · s = " + s1.toExponential(1).replace(".", ",") + " M"); o.lab.position.set(0, 3.6, 0);
+      }
+    });
+
+    D3("pil", {
+      view: { r: 12, th: 0.35, ph: 1.12, target: [0, 2, 0] },
+      build(S) { const o = S.o, T3 = S.THREE; o.b1 = beaker(S, -2.6, 0, 1.4, 3); o.b2 = beaker(S, 2.6, 0, 1.4, 3); o.b1.set(0.7, 0xbfe0ff, 0.45); o.b2.set(0.7, 0x5b8cff, 0.55);
+        o.e1 = S.box(0.3, 3, 1, "#aab"); o.e2 = S.box(0.3, 3, 1, "#c97a42"); o.bridge = S.tube([[-2.2, 1.3, 0], [-2.2, 3.4, 0], [2.2, 3.4, 0], [2.2, 1.3, 0]], 0.18, "#eeeeee");
+        o.wire = S.tube([[-2.6, 3.5, 0], [-2.6, 5.2, 0], [2.6, 5.2, 0], [2.6, 3.5, 0]], 0.04, "#c97a42"); o.vm = S.box(1.3, 0.8, 0.3, "#222"); o.vm.position.set(0, 5.2, 0); o.vl = S.label("", "#7dff8a", 0.45);
+        o.el = Array.from({ length: 8 }, () => S.sphere(0.08, S.cols.warn, null, 8)); o.l1 = S.label("", null, 0.4); o.l2 = S.label("", null, 0.4); },
+      update(S, p, t) {
+        const o = S.o, A = POT().find((x) => x[0] === p.a), B = POT().find((x) => x[0] === p.b), an = A[1] <= B[1] ? A : B, ca = an === A ? B : A, E0 = ca[1] - an[1];
+        const mc = { Mg: "#d9dce1", Al: "#c9ccd2", Zn: "#9aa3ad", Fe: "#6f747c", Pb: "#5c6168", Cu: "#c97a42", Ag: "#e8e8ec" };
+        const k = E0 > 0 ? Math.min(1, (t % 40) / 40) : 0;
+        o.e1.material.color.set(mc[an[0]]); o.e2.material.color.set(mc[ca[0]]); o.e1.material.metalness = o.e2.material.metalness = 0.6;
+        o.e1.scale.set(1 - 0.5 * k, 1, 1); o.e1.position.set(-2.6, 2, 0); o.e2.scale.set(1 + 0.6 * k, 1, 1); o.e2.position.set(2.6, 2, 0);
+        o.vl.set(f2(E0) + " V"); o.vl.position.set(0, 5.2, 0.3);
+        o.l1.set(an[0] + " · " + App.labs.util.T("anot", "anode")); o.l1.position.set(-2.6, 4.2, 1); o.l2.set(ca[0] + " · " + App.labs.util.T("katot", "cathode")); o.l2.position.set(2.6, 4.2, 1);
+        const path = [[-2.6, 3.5], [-2.6, 5.2], [2.6, 5.2], [2.6, 3.5]], L = [1.7, 5.2, 1.7], tot = 8.6;
+        o.el.forEach((m, i) => { m.visible = E0 > 0; let d = ((i / 8) * tot + t * 1.2) % tot, seg = 0; while (seg < 2 && d > L[seg]) { d -= L[seg]; seg++; } const a = path[seg], b = path[seg + 1], u = d / L[seg]; m.position.set(a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u, 0.1); });
+      }
+    });
+
+    D3("elektroliz", {
+      view: { r: 9, th: 0.35, ph: 1.12, target: [0, 1.8, 0] },
+      build(S) { const o = S.o; o.b = beaker(S, 0, 0, 2.2, 3); o.b.set(0.75, 0x5b8cff, 0.5); o.cat = S.box(0.4, 2.8, 1.2, "#777"); o.an = S.box(0.4, 2.8, 1.2, "#555"); o.cat.position.set(-1, 2.2, 0); o.an.position.set(1, 2.2, 0);
+        o.coat = S.box(0.5, 1.8, 1.3, "#c97a42"); o.bat = S.box(1.4, 0.7, 0.7, "#d9a521"); o.bat.position.set(0, 5, 0); o.wire = S.tube([[-1, 3.6, 0], [-1, 5, 0], [-0.7, 5, 0]], 0.04, "#c97a42"); o.wire2 = S.tube([[1, 3.6, 0], [1, 5, 0], [0.7, 5, 0]], 0.04, "#c97a42");
+        o.ions = Array.from({ length: 20 }, () => S.sphere(0.07, S.cols.accent, null, 8)); o.lab = S.label("", null, 0.5); },
+      update(S, p, t) {
+        const o = S.o, D = { Cu: [63.5, 2, "#c97a42"], Ag: [108, 1, "#e6e6ea"], Al: [27, 3, "#c9ccd2"], Ni: [58.7, 2, "#a7abb2"] }[p.ion], m = p.I * p.t * 60 / 96485 / D[1] * D[0];
+        const th = Math.min(0.6, m * 0.04); o.coat.material.color.set(D[2]); o.coat.material.metalness = 0.7; o.coat.scale.set(1 + th * 3, 1, 1); o.coat.position.set(-1, 1.5, 0);
+        o.ions.forEach((q, i) => { const u = ((i / 20) + t * 0.15 * Math.min(3, p.I / 3)) % 1; q.position.set(0.8 - u * 1.6, 0.5 + (i % 5) * 0.35, (i % 3 - 1) * 0.5); });
+        o.lab.set(f2(m, 3) + " g"); o.lab.position.set(-1, 3.9, 0.8);
+      }
+    });
+  })();
 })();
