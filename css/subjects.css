@@ -142,3 +142,64 @@
   .unit__count .progress { display: none; }
   .subj-tile { padding: 14px; }
 }
+
+/* ---------------- Deney Laboratuvarı: kütüphane ---------------- */
+.lab-filters { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+.lab-search { display: flex; align-items: center; gap: 10px; max-width: 520px; height: 42px; padding: 0 14px; border-radius: var(--radius-pill); border: 1px solid var(--border); background: var(--surface); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); }
+.lab-search .ico { width: 18px; height: 18px; color: var(--muted); }
+.lab-search input { flex: 1; min-width: 0; border: 0; background: none; color: var(--text); font: inherit; font-size: 14.5px; outline: none; }
+.lab-lib .lab-chips { margin: 0; }
+.lab-lib .lab-chips .chip small { font-size: 11.5px; color: var(--muted); }
+.lab-lib .lab-chips .chip .ico { width: 15px; height: 15px; color: var(--subj, currentColor); }
+.lab-subj { display: flex; align-items: center; gap: 10px; margin: 26px 0 4px; font-size: 20px; }
+.lab-subj:first-child { margin-top: 4px; }
+.lab-group { margin-top: 14px; }
+.lab-group__title { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; font-size: 13.5px; font-weight: 600; color: var(--muted); }
+.lab-group__title .ico { width: 16px; height: 16px; }
+.lab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.lab-tile { position: relative; display: flex; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); transition: border-color .15s, background .15s; }
+.lab-tile:hover { border-color: color-mix(in srgb, var(--subj) 45%, var(--border)); background: var(--surface-hover); }
+.lab-tile__link { flex: 1; min-width: 0; display: flex; gap: 12px; padding: 14px 44px 14px 14px; color: inherit; text-decoration: none; }
+.lab-tile__body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.lab-tile__title { font-size: 14.5px; font-weight: 600; color: var(--text); line-height: 1.3; }
+.lab-tile__desc { font-size: 12.5px; color: var(--muted); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.lab-tile__tags { display: flex; gap: 4px; margin-top: 2px; }
+.lab-tile__tags span { font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: var(--radius-pill); color: var(--subj); background: color-mix(in srgb, var(--subj) 14%, transparent); }
+.lab-fav { position: absolute; top: 8px; right: 8px; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; color: var(--faint); background: none; border: 0; cursor: pointer; }
+.lab-fav .ico { width: 17px; height: 17px; }
+.lab-fav:hover { color: var(--text); background: var(--surface-2); }
+.lab-fav.is-on { color: var(--warn); }
+.lab-fav.is-on .ico { fill: currentColor; }
+
+/* ---------------- Deney Laboratuvarı: tek deney ---------------- */
+.lab-head { display: flex; align-items: center; gap: 16px; margin: 6px 0 14px; }
+.lab-head__main { flex: 1; min-width: 0; }
+.lab-head h1 { margin: 0; font-size: 24px; line-height: 1.25; }
+.lab-head p { margin: 4px 0 0; color: var(--text-2); font-size: 14px; }
+.lab-head .lab-fav { position: static; width: 40px; height: 40px; }
+.lab-main { padding: 14px; }
+.lab-main .lab { margin-top: 0; }
+.lab-below { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-top: 12px; }
+.lab-tasks ol { margin: 8px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.lab-tasks .check-row { align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.45; }
+.lab-tasks .check-row input { margin-top: 3px; accent-color: var(--subj, var(--accent)); }
+.lab-tasks input:checked + span { color: var(--muted); text-decoration: line-through; }
+.lab-links ul { margin: 8px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.lab-links a { display: flex; flex-direction: column; gap: 1px; padding: 7px 8px; border-radius: var(--radius-sm); font-size: 13.5px; color: var(--text); }
+.lab-links a b { font-size: 11.5px; font-weight: 600; color: var(--subj, var(--muted)); }
+.lab-links a:hover { background: var(--surface-2); }
+.lab-pn { display: flex; justify-content: space-between; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+.lab-pn .btn { max-width: 48%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lab-ctl--check { font-size: 13.5px; }
+.lab-ctl .select { width: 100%; }
+@media (max-width: 600px) {
+  .lab-head { gap: 12px; }
+  .lab-head h1 { font-size: 20px; }
+  .lab-head .subj-ico--lg { width: 44px; height: 44px; }
+  .lab-main { padding: 10px; }
+  .lab-lib .lab-chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 0 16px; }
+  .lab-lib .lab-chips::-webkit-scrollbar { display: none; }
+  .lab-lib .lab-chips .chip { flex: none; }
+}
+.lab-lib .lab-chips .chip { font-family: var(--font); font-size: 13px; height: 34px; }
+.lab-tile__unit { font-size: 11.5px; color: var(--subj); font-weight: 600; }

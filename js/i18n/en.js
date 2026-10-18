@@ -503,6 +503,7 @@ App.locales.en = {
   "ais.speed.smart": "Stronger",
   "ais.speedHint": "Fast: Flash-Lite model, answers start in 1-2 seconds and the daily quota is larger. Stronger: Flash model, slightly better on hard questions but answers can take 5-10 seconds to start.",
   "nav.mistakes": "Mistake Notebook",
+  "nav.games": "Games",
   "nav.group.study": "Study",
   "nav.group.track": "Progress",
   "nav.group.tools": "Tools",

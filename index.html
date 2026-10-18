@@ -38,6 +38,7 @@
   <link rel="stylesheet" href="css/v116.css">
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/subjects.css">
+  <link rel="stylesheet" href="css/games.css">
 </head>
 <body>
   <a class="a11y-skip" href="#view" data-i18n="a11y.skip">İçeriğe geç</a>
@@ -62,6 +63,9 @@
           </a>
           <a class="nav__item" href="#/bugun" data-route="bugun">
             <span data-icon="sun"></span><span class="sidebar__label" data-i18n="nav.today">Bugün</span>
+          </a>
+          <a class="nav__item" href="#/oyunlar" data-route="oyunlar">
+            <span data-icon="game"></span><span class="sidebar__label" data-i18n="nav.games">Oyunlar</span>
           </a>
           <div class="nav-group" data-group="study">
             <button class="nav-group__head" type="button" aria-expanded="true" aria-controls="ng-study"><span class="sidebar__label" data-i18n="nav.group.study">Çalış</span><span data-icon="chevronD"></span></button>
@@ -262,6 +266,8 @@
   <script src="js/data/content/din-12.js"></script>
   <script src="js/data/content/ing-12.js"></script>
   <script src="js/data/curriculum-data.js"></script>
+  <script src="js/data/elements.js"></script>
+  <script src="js/data/game-data.js"></script>
   <script src="js/data/prereq-9.js"></script>
 
   <!-- Yapay zeka: bilgisayardaki Ollama + internet servisleri (Gemini, OpenAI-uyumlu) -->
@@ -299,6 +305,11 @@
   <script src="js/modules/quiz.js"></script>
   <script src="js/modules/cards.js"></script>
   <script src="js/modules/labs.js"></script>
+  <script src="js/modules/labs-fizik.js"></script>
+  <script src="js/modules/labs-kimya.js"></script>
+  <script src="js/modules/labs-biyoloji.js"></script>
+  <script src="js/modules/games.js"></script>
+  <script src="js/modules/games-2.js"></script>
   <script src="js/modules/similar.js"></script>
   <script src="js/modules/feynman.js"></script>
   <script src="js/modules/a11y.js"></script>
