@@ -1,0 +1,62 @@
+/* zaman.css — Tarih Zaman Çizelgesi */
+.zc-top { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.zc-search { flex: 1 1 260px; max-width: 420px; }
+.zc-types, .zc-eras { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.zc-type { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: var(--radius-pill); border: 1px solid var(--border); background: var(--surface); color: var(--muted); font: inherit; font-size: 12.5px; cursor: pointer; }
+.zc-type i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); opacity: .35; }
+.zc-type.is-on { color: var(--text); border-color: color-mix(in srgb, var(--c) 60%, transparent); }
+.zc-type.is-on i { opacity: 1; }
+.zc-era { height: 28px; padding: 0 10px; border-radius: 8px; border: 0; background: color-mix(in srgb, var(--c) 18%, transparent); color: var(--text); font: inherit; font-size: 12px; cursor: pointer; border-left: 3px solid var(--c); }
+.zc-era:hover { background: color-mix(in srgb, var(--c) 30%, transparent); }
+.zc-zoom { display: flex; align-items: center; gap: 6px; margin: 4px 0 6px; }
+.zc-zoom .icon-btn { width: 32px; height: 32px; border: 1px solid var(--border); background: var(--surface-solid); }
+.zc-scroll { overflow-x: auto; overflow-y: hidden; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); cursor: grab; scrollbar-width: thin; }
+.zc-scroll:active { cursor: grabbing; }
+.zc-track { position: relative; }
+.zc-axis { position: absolute; left: 0; right: 0; height: 2px; background: var(--border-strong); }
+.zc-tick { position: absolute; transform: translateX(-50%); font-size: 11px; color: var(--muted); white-space: nowrap; }
+.zc-tick::before { content: ""; position: absolute; left: 50%; top: -8px; width: 1px; height: 6px; background: var(--border-strong); }
+.zc-stem { position: absolute; width: 1px; background: color-mix(in srgb, var(--c) 55%, transparent); }
+.zc-ev { position: absolute; display: flex; align-items: center; gap: 5px; height: 24px; min-height: 0; box-sizing: border-box; line-height: 1; padding: 0 8px 0 4px; border-radius: 12px; border: 1px solid color-mix(in srgb, var(--c) 45%, transparent); background: var(--surface-solid); color: var(--text); font: inherit; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
+.zc-ev i { flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+.zc-ev b { font-weight: 700; font-variant-numeric: tabular-nums; color: var(--text-2); }
+.zc-ev:hover, .zc-ev:focus-visible { z-index: 2; max-width: none !important; border-color: var(--c); box-shadow: var(--shadow-soft); }
+.zc-ev.is-sel { z-index: 3; max-width: none !important; background: color-mix(in srgb, var(--c) 22%, var(--surface-solid)); border-color: var(--c); }
+.zc-band { position: absolute; height: 22px; border-radius: 6px; border: 0; background: color-mix(in srgb, var(--c) 28%, transparent); border-left: 3px solid var(--c); color: var(--text); font: inherit; font-size: 11.5px; text-align: left; padding: 0 8px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; cursor: pointer; }
+.zc-band span { position: sticky; left: 8px; }
+.zc-cardwrap { margin-top: 12px; }
+.zc-card { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; align-items: start; }
+.zc-card h2 { margin: 6px 0 6px; font-size: 1.2rem; }
+.zc-card p { margin: 0 0 10px; color: var(--text-2); line-height: 1.6; }
+.zc-card__meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.zc-year { font-size: 1.05rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.zc-tag { display: inline-flex; align-items: center; height: 22px; padding: 0 9px; border-radius: var(--radius-pill); background: color-mix(in srgb, var(--c) 20%, transparent); color: var(--text); font-size: 11.5px; font-weight: 600; }
+.zc-card__act { display: flex; flex-wrap: wrap; gap: 6px; }
+.zc-map { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+.zc-mapsvg { display: block; width: 100%; height: auto; }
+.zc-mapsvg .mp-p:hover { fill: var(--mp-land); }
+.zc-pin { fill: #e0457b; stroke: #fff; stroke-width: calc(1.2px / var(--z)); }
+.zc-pin2 { fill: none; stroke: #e0457b; stroke-width: calc(1.5px / var(--z)); opacity: .6; }
+.zc-lh { font-size: .95rem; margin: 18px 0 8px; padding-left: 10px; border-left: 4px solid var(--c); }
+.zc-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.zc-li { width: 100%; display: flex; gap: 12px; align-items: flex-start; padding: 10px 12px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface); color: var(--text); font: inherit; text-align: left; cursor: pointer; border-left: 4px solid var(--c); }
+.zc-li:hover, .zc-li.is-sel { border-color: var(--c); background: color-mix(in srgb, var(--c) 10%, var(--surface)); }
+.zc-li__y { flex: none; width: 74px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.zc-li__t { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.zc-li__t small { color: var(--text-2); font-size: .84rem; line-height: 1.45; }
+.zc-quiz { max-width: 720px; }
+.zc-quiz__head { display: flex; justify-content: space-between; color: var(--muted); font-size: .85rem; }
+.zc-quiz h2 { font-size: 1.15rem; margin: 6px 0 12px; }
+.zc-quiz__opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.zc-opt { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; min-height: 84px; padding: 14px; border-radius: var(--radius-lg); border: 1px solid var(--border-strong); background: var(--surface-solid); color: var(--text); font: inherit; text-align: left; cursor: pointer; }
+.zc-opt:hover:not(:disabled) { border-color: var(--accent); }
+.zc-opt.is-right { border-color: var(--good); background: color-mix(in srgb, var(--good) 14%, var(--surface-solid)); }
+.zc-opt.is-wrong { border-color: var(--bad); background: color-mix(in srgb, var(--bad) 10%, var(--surface-solid)); }
+.zc-opt__y { font-weight: 800; font-size: 1.1rem; }
+.zc-src { margin-top: 14px; }
+@media (max-width: 900px) {
+  .zc-card { grid-template-columns: 1fr; }
+  .zc-quiz__opts { grid-template-columns: 1fr; }
+  .zc-eras { flex-wrap: nowrap; overflow-x: auto; margin: 0 -16px 8px; padding: 0 16px; scrollbar-width: none; }
+  .zc-era { flex: none; }
+}

@@ -601,5 +601,5 @@
   }
 
   App.router.register("atlas", render);
-  App.harita = { items, ptr, pworld, LAYERS };
+  App.harita = { items, ptr, pworld, LAYERS, loadData };
 })();

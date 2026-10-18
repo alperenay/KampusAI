@@ -149,6 +149,17 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
   ve denizler, akarsu ve göller, dağlar ve çöller, boğaz ve kanallar. **İller:** her ilin kartında plaka, bölge, 2024
   nüfusu ve Türkiye'deki sırası, yüzölçümü, nüfus yoğunluğu, il merkezi, kıyıları, iklimi, ürün ve madenleri, öne
   çıkanlar ve komşu iller vardır; komşu ile dokununca harita o ile geçer.
+- **Tercih Robotu:** Menü › Takip › Tercih Robotu. Deneme netlerinin ortalamasından (ve diploma notundan) tahmini
+  TYT, SAY, EA ve SÖZ puanın ile 2025 yerleştirme sonuçlarına göre sıralama karşılığın hesaplanır. *Bana uygun*
+  sekmesi bu sıralamayla yerleşebileceğin programları *Güvenli*, *Uygun* ve *Hayal* olarak ayırır; şehir, devlet/vakıf
+  ve bölüm adına göre süzülür. *Tüm bölümler* sekmesinde 21 binden fazla lisans ve ön lisans programının 2025 taban
+  puanı, başarı sırası, kontenjanı, 2024'e göre değişimi ve yaklaşık net karşılığı aranır. *Tercih listem* en çok 24
+  program alır; sıralanır, kopyalanır. Deneme yoksa puanı elle girebilirsin. Veriler YÖK Atlas/ÖSYM 2025 sonuçlarıdır
+  (derleme: cngil/turkiye-university-programs, CC BY 4.0); tahminler yaklaşıktır, kesin karar için ÖSYM kılavuzunu
+  ve YÖK Atlas'ı kontrol et.
+- **Tarih Zaman Çizelgesi:** Menü › Pratik. İlk Çağ'dan günümüze 160 olay; yatay kaydırılır, +/− ile yakınlaşır,
+  dönem bantlarına dokununca o döneme gider. Olay türüne göre süzme, arama ve *Liste* görünümü vardır. Olaya dokununca
+  kartında tarih, dönem, açıklama, konum haritası ve *Asistana sor* düğmesi çıkar. *Hangisi önce?* 10 soruluk sınavdır.
 - **Tüm araçlar ve sabitleme:** Menünün üstündeki *Tüm araçlar* sayfasında bütün özellikler kısa açıklamalarıyla
   gruplu durur; arama kutusuna yazınca süzülür, Enter ilk sonucu açar. Bir aracın yıldızına basınca menünün üstündeki
   *Sabitlenenler* grubuna ve asistan açılışına kısayol olarak eklenir. Son kullandığın araçlar da burada listelenir.
