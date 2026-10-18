@@ -73,7 +73,8 @@
     ctx.stroke(); ctx.restore();
   }
   const dot = (ctx, x, y, r, color) => { ctx.fillStyle = color; ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill(); };
-  const row = (k, v) => "<div><span>" + esc(k) + "</span><b>" + v + "</b></div>";
+  /** Okuma satırı: başlık (başında renk anahtarı olabilir) ve değer */
+  const row = (k, v) => { const m = /^(<i class="lab-key" style="--k:[^"<>]*"><\/i>)([\s\S]*)$/.exec(k); return "<div><span>" + (m ? m[1] + esc(m[2]) : esc(k)) + "</span><b>" + v + "</b></div>"; };
 
   /* ---------------- Deneyler ---------------- */
   const LABS = {
@@ -553,7 +554,17 @@
           '<label class="check-row"><input type="checkbox" data-tan' + (st.tan ? " checked" : "") + "> " + esc(T("Teğet ve türevi göster", "Show tangent and derivative")) + "</label>" +
           (st.tan ? slider("x0", T("Teğet noktası x₀", "Tangent point x₀"), -8, 8, 0.1, st.x0, "") : "");
         st.q = p;
-      } else ctrls.innerHTML = params.map((q) => slider(q.id, q.label, q.min, q.max, q.step, p[q.id] != null ? p[q.id] : q.value, q.unit, q.hint)).join("");
+      } else ctrls.innerHTML = params.map((q) => {
+        const v = p[q.id] != null ? p[q.id] : q.value;
+        if (q.type === "select") {
+          p[q.id] = v;
+          return '<label class="lab-ctl"><span class="lab-ctl__top"><span>' + esc(q.label) + '</span></span><select class="select" data-ps="' + q.id + '">' +
+            q.options.map(([ov, ol]) => '<option value="' + esc(ov) + '"' + (String(ov) === String(v) ? " selected" : "") + ">" + esc(ol) + "</option>").join("") + "</select>" +
+            (q.hint ? '<span class="hint">' + esc(q.hint) + "</span>" : "") + "</label>";
+        }
+        if (q.type === "toggle") { p[q.id] = !!v; return '<label class="check-row lab-ctl--check"><input type="checkbox" data-pt="' + q.id + '"' + (v ? " checked" : "") + "> " + esc(q.label) + "</label>"; }
+        return slider(q.id, q.label, q.min, q.max, q.step, v, q.unit, q.hint);
+      }).join("");
       App.hydrateIcons(host);
     }
     buildCtrls();
@@ -562,11 +573,17 @@
       const v = Number(r.value); p[r.dataset.p] = v;
       if (r.dataset.p === "x0") st.x0 = v;
       host.querySelector('[data-out="' + r.dataset.p + '"]').textContent = fmt(v, 2) + (r.dataset.unit ? (r.dataset.unit === "°" ? "" : " ") + r.dataset.unit : "");
-      if (lab.init) st.s = lab.init(p);
+      changed();
+    });
+    function changed() {
+      if (lab.init && !lab.keep) { const pl = st.s.playing; st.s = lab.init(p); st.s.playing = pl; }
+      if (lab.adapt) lab.adapt(st.s, p);
       if (!lab.loop && lab.animated) st.t = 0;                  // atış vb.: değişince baştan
       draw();
-    });
+    }
     ctrls.addEventListener("change", (e) => {
+      if (e.target.matches("[data-ps]")) { const raw = e.target.value; p[e.target.dataset.ps] = raw !== "" && !isNaN(raw) ? Number(raw) : raw; changed(); }
+      if (e.target.matches("[data-pt]")) { p[e.target.dataset.pt] = e.target.checked; changed(); }
       if (e.target.matches("[data-fam]")) { st.fam = e.target.value; buildCtrls(); draw(); }
       if (e.target.matches("[data-tan]")) { st.tan = e.target.checked; buildCtrls(); draw(); }
     });
@@ -618,38 +635,49 @@
   }
 
   /* ---------------- Konu sayfalarıyla bağlantı ---------------- */
-  const LINKS = {
-    "10/fizik/u1/k1": [["ivmeli", { preset: { a: 0, v: 5 } }]],
-    "10/fizik/u1/k4": [["ivmeli"]],
-    "11/fizik/u1/k1": [["atis", { preset: { a: 90, v: 20 } }], ["ivmeli", { preset: { v: 20, a: -5 } }]],
-    "11/fizik/u1/k2": [["atis"]],
-    "10/fizik/u4/k1": [["sarkac"]],
-    "12/fizik/u2/k1": [["yay"], ["sarkac"]],
-    "10/fizik/u4/k2": [["dalga"]], "10/fizik/u4/k3": [["dalga"]], "10/fizik/u4/k4": [["dalga"]],
-    "11/fizik/u4/k1": [["dalga"], ["girisim"]],
-    "12/fizik/u3/k1": [["girisim"]],
-    "11/fizik/u4/k2": [["mercek"]],
-    "9/matematik/t2/k2": [["fonksiyon", { fam: "donusum", base: "|x|" }]],
-    "10/matematik/t1/k1": [["cember"]],
-    "10/matematik/t4/k1": [["fonksiyon", { fam: "parabol" }]],
-    "10/matematik/t4/k2": [["fonksiyon", { fam: "donusum", base: "√x" }]],
-    "11/matematik/u1/k1": [["fonksiyon", { fam: "dogrusal" }]],
-    "11/matematik/u1/k2": [["fonksiyon", { fam: "rasyonel" }]],
-    "11/matematik/u5/k1": [["fonksiyon", { fam: "parabol" }]],
-    "12/matematik/u1/k1": [["fonksiyon", { fam: "ustel" }]],
-    "12/matematik/u1/k2": [["fonksiyon", { fam: "log" }]],
-    "12/matematik/u3/k1": [["cember"]], "12/matematik/u3/k2": [["cember"]],
-    "12/matematik/u4/k1": [["fonksiyon", { fam: "donusum", base: "x²" }]],
-    "12/matematik/u5/k2": [["fonksiyon", { fam: "parabol", tan: true }]],
-    "12/matematik/u5/k3": [["fonksiyon", { fam: "parabol", tan: true }]]
-  };
+  const LINKS = {};
+  /** Bir kazanıma deney bağla: link("10/fizik/u4/k1", "sarkac", { preset }) */
+  function link(key, id, o) { (LINKS[key] = LINKS[key] || []).push([id, o || {}]); }
+  [
+    ["10/fizik/u1/k1", "ivmeli", { preset: { a: 0, v: 5 } }], ["10/fizik/u1/k4", "ivmeli"], ["10/fizik/u1/k3", "ivmeli"],
+    ["11/fizik/u1/k1", "atis", { preset: { a: 90, v: 20 } }], ["11/fizik/u1/k1", "ivmeli", { preset: { v: 20, a: -5 } }], ["11/fizik/u1/k2", "atis"],
+    ["10/fizik/u4/k1", "sarkac"], ["12/fizik/u2/k1", "yay"], ["12/fizik/u2/k1", "sarkac"],
+    ["10/fizik/u4/k2", "dalga"], ["10/fizik/u4/k3", "dalga"], ["10/fizik/u4/k4", "dalga"],
+    ["11/fizik/u4/k1", "dalga"], ["11/fizik/u4/k1", "girisim"], ["12/fizik/u3/k1", "girisim"], ["11/fizik/u4/k2", "mercek"],
+    ["9/matematik/t2/k2", "fonksiyon", { fam: "donusum", base: "|x|" }], ["10/matematik/t1/k1", "cember"],
+    ["10/matematik/t4/k1", "fonksiyon", { fam: "parabol" }], ["10/matematik/t4/k2", "fonksiyon", { fam: "donusum", base: "√x" }],
+    ["11/matematik/u1/k1", "fonksiyon", { fam: "dogrusal" }], ["11/matematik/u1/k2", "fonksiyon", { fam: "rasyonel" }],
+    ["11/matematik/u5/k1", "fonksiyon", { fam: "parabol" }], ["12/matematik/u1/k1", "fonksiyon", { fam: "ustel" }],
+    ["12/matematik/u1/k2", "fonksiyon", { fam: "log" }], ["12/matematik/u3/k1", "cember"], ["12/matematik/u3/k2", "cember"],
+    ["12/matematik/u4/k1", "fonksiyon", { fam: "donusum", base: "x²" }], ["12/matematik/u5/k2", "fonksiyon", { fam: "parabol", tan: true }],
+    ["12/matematik/u5/k3", "fonksiyon", { fam: "parabol", tan: true }]
+  ].forEach(([k, id, o]) => link(k, id, o));
+  const SUBJ = { atis: "fizik", ivmeli: "fizik", sarkac: "fizik", yay: "fizik", dalga: "fizik", girisim: "fizik", mercek: "fizik", fonksiyon: "matematik", cember: "matematik" };
+  Object.keys(SUBJ).forEach((k) => { LABS[k].subject = SUBJ[k]; });
+
+  /** Yeni deney ekle (labs-fizik.js, labs-kimya.js, labs-biyoloji.js): add("gaz", def, [kazanım anahtarları]) */
+  function add(id, def, keys) {
+    LABS[id] = def;
+    (keys || []).forEach((k) => (Array.isArray(k) ? link(k[0], id, k[1]) : link(k, id)));
+  }
+
+  /** Deneyin bağlı olduğu kazanımlar: [{ key, grade, unit, f }] (müfredat sırasıyla) */
+  function keysOf(id) {
+    return Object.keys(LINKS).filter((k) => LINKS[k].some(([x]) => x === id)).map((k) => ({ key: k, f: App.lessons.find(k) })).filter((x) => x.f)
+      .sort((a, b) => Number(a.f.grade.id) - Number(b.f.grade.id) || a.key.localeCompare(b.key, "en", { numeric: true }));
+  }
+  function meta(id) {
+    const ks = keysOf(id), lab = LABS[id];
+    return { id, lab, keys: ks, subject: lab.subject || (ks[0] ? ks[0].f.subject.id : "fizik"), grades: Array.from(new Set(ks.map((x) => x.f.grade.id))) };
+  }
 
   /** Konu sayfasına eklenecek bölüm (yoksa boş) */
   function sectionHtml(key) {
     const list = LINKS[key];
     if (!list) return "";
-    return list.map(([id, o], i) => '<section class="card lesson__section lab-card"><h2>' + App.icon("sparkle") + esc(T("Etkileşimli deney: ", "Interactive lab: ") + LABS[id].title()) + "</h2>" +
-      '<p class="hint">' + esc(LABS[id].desc()) + '</p><div data-lab-mount="' + i + '"></div></section>').join("");
+    return list.map(([id], i) => '<section class="card lesson__section lab-card"><h2>' + App.icon("sparkle") + esc(T("Etkileşimli deney: ", "Interactive lab: ") + LABS[id].title()) + "</h2>" +
+      '<p class="hint">' + esc(LABS[id].desc()) + ' <a href="#/lab/' + id + '">' + esc(T("Laboratuvarda aç", "Open in lab")) + "</a></p>" +
+      '<div data-lab-mount="' + i + '"></div></section>').join("");
   }
   function mountIn(view, key) {
     const list = LINKS[key];
@@ -657,23 +685,129 @@
     list.forEach(([id, o], i) => { const el = view.querySelector('[data-lab-mount="' + i + '"]'); if (el) mount(el, id, o || {}); });
   }
 
-  /* ---------------- Laboratuvar sayfası ---------------- */
-  const ORDER = ["atis", "ivmeli", "sarkac", "yay", "dalga", "girisim", "mercek", "fonksiyon", "cember"];
-  function render(view, prm) {
-    const id = LABS[prm[0]] ? prm[0] : null;
+  /* ---------------- Laboratuvar: kütüphane ---------------- */
+  const SUBJECTS = ["fizik", "kimya", "biyoloji", "matematik"];
+  const subjName = (sid) => { const g = App.data.curriculum.grades.find((x) => x.subjects.some((s) => s.id === sid)); const s = g && g.subjects.find((x) => x.id === sid); return s ? App.L(s.name) : sid; };
+  const subjIcon = (sid) => { const g = App.data.curriculum.grades.find((x) => x.subjects.some((s) => s.id === sid)); const s = g && g.subjects.find((x) => x.id === sid); return (s && s.icon) || "lightbulb"; };
+  const favs = () => new Set(App.prefs.get("labFavs", []));
+  const recent = () => App.prefs.get("labRecent", []);
+
+  function cardHtml(m, F) {
+    const isFav = F.has(m.id);
+    return '<div class="lab-tile subj-' + m.subject + '"><a class="lab-tile__link" href="#/lab/' + m.id + '">' +
+      '<span class="subj-ico">' + App.icon(m.lab.icon || subjIcon(m.subject)) + "</span>" +
+      '<span class="lab-tile__body">' + (m.unitTxt ? '<span class="lab-tile__unit">' + esc(m.unitTxt) + "</span>" : "") + '<span class="lab-tile__title">' + esc(m.lab.title()) + "</span>" +
+      '<span class="lab-tile__desc">' + esc(m.lab.desc()) + "</span>" +
+      '<span class="lab-tile__tags">' + m.grades.map((g) => "<span>" + esc(App.data.curriculum.gradeName(g)) + "</span>").join("") + "</span></span></a>" +
+      '<button class="lab-fav' + (isFav ? " is-on" : "") + '" type="button" data-fav="' + m.id + '" aria-pressed="' + isFav + '" title="' + esc(T("Favorilere ekle", "Add to favourites")) + '" aria-label="' + esc(T("Favori", "Favourite")) + '">' + App.icon("bookmark") + "</button></div>";
+  }
+
+  function renderLibrary(view) {
     App.setTitle(T("Deney Laboratuvarı", "Lab"));
-    view.innerHTML = '<div class="page lab-page">' +
+    const st = Object.assign({ subj: "all", grade: "all", q: "", fav: false }, App.prefs.get("labFilter", {}));
+    const all = Object.keys(LABS).map(meta);
+    view.innerHTML = '<div class="page lab-lib">' +
       '<div class="page-head"><div><h1>' + esc(T("Deney Laboratuvarı", "Interactive Lab")) + "</h1><p>" +
-        esc(T("Fizik ve matematiği kaydırıcılarla dene: değeri değiştir, sonucu anında gör. İlgili konu sayfalarında da bulunur.", "Try physics and math with sliders: change a value, see the result instantly.")) + "</p></div></div>" +
-      '<nav class="lab-tabs" aria-label="' + esc(T("Deneyler", "Labs")) + '">' + ORDER.map((k) => '<a class="chip' + (k === (id || "atis") ? " is-on" : "") + '" href="#/lab/' + k + '">' + App.icon(LABS[k].icon) + esc(LABS[k].title()) + "</a>").join("") + "</nav>" +
-      '<section class="card"><div class="card__title">' + App.icon(LABS[id || "atis"].icon) + esc(LABS[id || "atis"].title()) + '</div><p class="hint">' + esc(LABS[id || "atis"].desc()) + '</p><div id="labHost"></div></section>' +
-      '<p class="hint">' + esc(T("Hangi konularda: ", "Linked topics: ")) + Object.entries(LINKS).filter(([, l]) => l.some(([x]) => x === (id || "atis"))).map(([k]) => {
-        const f = App.lessons.find(k); return f ? '<a href="#/konular/' + esc(k) + '">' + esc(App.data.curriculum.gradeName(f.grade) + " " + App.L(f.subject.name) + " · " + App.L(f.outcome.title)) + "</a>" : "";
-      }).filter(Boolean).join(" · ") + "</p></div>";
+        esc(T(all.length + " etkileşimli deney: değeri değiştir, sonucu anında gör. Dersine ve sınıfına göre süz; her deney ilgili konu sayfasında da var.",
+          all.length + " interactive labs. Filter by subject and grade; each lab also appears on its lesson pages.")) + "</p></div></div>" +
+      '<div class="lab-filters">' +
+        '<label class="lab-search">' + App.icon("search") + '<input type="search" id="labQ" placeholder="' + esc(T("Deney ara: sarkaç, pH, enzim…", "Search labs: pendulum, pH, enzyme…")) + '" value="' + esc(st.q) + '"></label>' +
+        '<div class="lab-chips" role="group" aria-label="' + esc(T("Ders", "Subject")) + '">' + ["all"].concat(SUBJECTS).map((sid) =>
+          '<button type="button" class="chip' + (sid !== "all" ? " subj-" + sid : "") + (st.subj === sid ? " is-on" : "") + '" data-f-subj="' + sid + '">' + (sid === "all" ? esc(T("Tümü", "All")) : App.icon(subjIcon(sid)) + esc(subjName(sid))) +
+          ' <small>' + (sid === "all" ? all.length : all.filter((m) => m.subject === sid).length) + "</small></button>").join("") + "</div>" +
+        '<div class="lab-chips" role="group" aria-label="' + esc(T("Sınıf", "Grade")) + '">' + ["all", "9", "10", "11", "12"].map((g) =>
+          '<button type="button" class="chip' + (st.grade === g ? " is-on" : "") + '" data-f-grade="' + g + '">' + esc(g === "all" ? T("Her sınıf", "All grades") : App.data.curriculum.gradeName(g)) + "</button>").join("") +
+          '<button type="button" class="chip' + (st.fav ? " is-on" : "") + '" data-f-fav>' + App.icon("bookmark") + esc(T("Favoriler", "Favourites")) + "</button></div>" +
+      "</div>" +
+      '<div id="labList"></div></div>';
     App.hydrateIcons(view);
-    mount(view.querySelector("#labHost"), id || "atis", {});
+    const listEl = view.querySelector("#labList");
+    function paint() {
+      App.prefs.set("labFilter", st);
+      view.querySelectorAll("[data-f-subj]").forEach((b) => b.classList.toggle("is-on", b.dataset.fSubj === st.subj));
+      view.querySelectorAll("[data-f-grade]").forEach((b) => b.classList.toggle("is-on", b.dataset.fGrade === st.grade));
+      view.querySelector("[data-f-fav]").classList.toggle("is-on", st.fav);
+      const F = favs(), q = App.nav ? App.nav.norm(st.q) : st.q.toLowerCase();
+      let list = all.filter((m) => (st.subj === "all" || m.subject === st.subj) && (st.grade === "all" || m.grades.includes(st.grade)) && (!st.fav || F.has(m.id)));
+      if (q) list = list.filter((m) => { const n = App.nav ? App.nav.norm(m.lab.title() + " " + m.lab.desc() + " " + (m.lab.tags || "") + " " + m.keys.map((k) => App.L(k.f.outcome.title)).join(" ")) : ""; return q.split(" ").every((w) => n.includes(w)); });
+      // Gruplama: ders ve sınıf seçiliyse ünitelere, değilse ders → sınıf
+      const byUnit = st.grade !== "all" && st.subj !== "all";
+      const groups = new Map();
+      list.forEach((m) => {
+        const k = (st.grade === "all" ? m.keys[0] : m.keys.find((x) => x.f.grade.id === st.grade)) || null;
+        m.unitTxt = k ? App.L(k.f.unit.name) : "";
+        const gk = m.subject + "|" + (k ? k.f.grade.id + (byUnit ? "|" + k.f.unit.id : "") : "z");
+        if (!groups.has(gk)) groups.set(gk, { subject: m.subject, title: k ? App.data.curriculum.gradeName(k.f.grade) + (byUnit ? " · " + App.L(k.f.unit.name) : "") : T("Diğer", "Other"),
+          order: k ? Number(k.f.grade.id) * 100 + (byUnit ? parseInt(String(k.f.unit.id).replace(/\D/g, "") || 0, 10) : 0) : 9999, items: [] });
+        groups.get(gk).items.push(m);
+      });
+      const G = Array.from(groups.values()).sort((a, b) => SUBJECTS.indexOf(a.subject) - SUBJECTS.indexOf(b.subject) || a.order - b.order);
+      let html = "", lastSubj = null;
+      const rec = st.subj === "all" && st.grade === "all" && !st.q && !st.fav ? recent().filter((id) => LABS[id]).slice(0, 4) : [];
+      if (rec.length) html += '<section class="lab-group"><h2 class="lab-group__title">' + App.icon("clock") + esc(T("Son açtıkların", "Recently opened")) + '</h2><div class="lab-grid">' + rec.map((id) => cardHtml(meta(id), F)).join("") + "</div></section>";
+      G.forEach((g) => {
+        if (g.subject !== lastSubj && st.subj === "all") { html += '<h2 class="lab-subj subj-' + g.subject + '"><span class="subj-ico subj-ico--sm">' + App.icon(subjIcon(g.subject)) + "</span>" + esc(subjName(g.subject)) + "</h2>"; lastSubj = g.subject; }
+        html += '<section class="lab-group"><h3 class="lab-group__title">' + esc(g.title) + '</h3><div class="lab-grid">' + g.items.map((m) => cardHtml(m, F)).join("") + "</div></section>";
+      });
+      listEl.innerHTML = html || App.ui.empty("search", T("Deney bulunamadı", "No labs found"), T("Süzgeçleri değiştir ya da başka bir kelime dene.", "Change the filters or try another word."), "");
+      App.hydrateIcons(listEl);
+    }
+    view.addEventListener("click", (e) => {
+      const s1 = e.target.closest("[data-f-subj]"); if (s1) { st.subj = s1.dataset.fSubj; paint(); return; }
+      const g1 = e.target.closest("[data-f-grade]"); if (g1) { st.grade = g1.dataset.fGrade; paint(); return; }
+      if (e.target.closest("[data-f-fav]")) { st.fav = !st.fav; paint(); return; }
+      const fv = e.target.closest("[data-fav]"); if (fv) { toggleFav(fv.dataset.fav); paint(); }
+    });
+    view.querySelector("#labQ").addEventListener("input", App.utils.debounce((e) => { st.q = e.target.value; paint(); }, 120));
+    paint();
+  }
+  function toggleFav(id) {
+    const F = favs(); if (F.has(id)) F.delete(id); else F.add(id);
+    App.prefs.set("labFavs", Array.from(F));
+    return F.has(id);
+  }
+
+  /* ---------------- Laboratuvar: tek deney ---------------- */
+  function renderLab(view, id) {
+    const m = meta(id), lab = m.lab;
+    App.setTitle(lab.title());
+    App.prefs.set("labRecent", [id].concat(recent().filter((x) => x !== id)).slice(0, 8));
+    const same = Object.keys(LABS).map(meta).filter((x) => x.subject === m.subject)
+      .sort((a, b) => ((a.keys[0] && Number(a.keys[0].f.grade.id)) || 99) - ((b.keys[0] && Number(b.keys[0].f.grade.id)) || 99));
+    const i = same.findIndex((x) => x.id === id), prev = same[i - 1], next = same[i + 1];
+    const tasks = lab.tasks ? lab.tasks() : [];
+    const doneT = new Set((App.prefs.get("labTasks", {})[id]) || []);
+    const isFav = favs().has(id);
+    view.innerHTML = '<div class="page lab-page subj-' + m.subject + '">' +
+      '<nav class="crumbs"><a href="#/lab">' + esc(T("Deney Laboratuvarı", "Lab")) + '</a><span aria-hidden="true">›</span><span>' + esc(subjName(m.subject)) + "</span></nav>" +
+      '<div class="lab-head"><span class="subj-ico subj-ico--lg">' + App.icon(lab.icon || subjIcon(m.subject)) + '</span><div class="lab-head__main"><h1>' + esc(lab.title()) + "</h1><p>" + esc(lab.desc()) + "</p></div>" +
+        '<button class="icon-btn lab-fav' + (isFav ? " is-on" : "") + '" type="button" id="labFav" aria-pressed="' + isFav + '" title="' + esc(T("Favorilere ekle", "Add to favourites")) + '">' + App.icon("bookmark") + "</button></div>" +
+      '<section class="card lab-main"><div id="labHost"></div></section>' +
+      '<div class="lab-below">' +
+        (tasks.length ? '<section class="card lab-tasks"><div class="card__title">' + App.icon("target") + esc(T("Dene bakalım", "Try this")) + '</div><ol>' + tasks.map((tx, j) =>
+          '<li><label class="check-row"><input type="checkbox" data-task="' + j + '"' + (doneT.has(j) ? " checked" : "") + "> <span>" + esc(tx) + "</span></label></li>").join("") + "</ol></section>" : "") +
+        (m.keys.length ? '<section class="card lab-links"><div class="card__title">' + App.icon("book") + esc(T("İlgili konular", "Related lessons")) + '</div><ul>' + m.keys.map((k) =>
+          '<li><a href="#/konular/' + esc(k.key) + '"><b>' + esc(App.data.curriculum.gradeName(k.f.grade) + " · " + App.L(k.f.subject.name)) + "</b>" + esc(App.L(k.f.outcome.title)) + "</a></li>").join("") + "</ul></section>" : "") +
+      "</div>" +
+      '<nav class="lab-pn">' + (prev ? '<a class="btn" href="#/lab/' + prev.id + '">' + App.icon("chevronL") + esc(prev.lab.title()) + "</a>" : "<span></span>") +
+        (next ? '<a class="btn" href="#/lab/' + next.id + '">' + esc(next.lab.title()) + App.icon("chevron") + "</a>" : "") + "</nav>" +
+      "</div>";
+    App.hydrateIcons(view);
+    mount(view.querySelector("#labHost"), id, {});
+    view.querySelector("#labFav").addEventListener("click", (e) => { const on = toggleFav(id); e.currentTarget.classList.toggle("is-on", on); e.currentTarget.setAttribute("aria-pressed", String(on)); App.ui.toast(on ? T("Favorilere eklendi.", "Added to favourites.") : T("Favorilerden çıkarıldı.", "Removed from favourites.")); });
+    view.querySelectorAll("[data-task]").forEach((cb) => cb.addEventListener("change", () => {
+      const all = App.prefs.get("labTasks", {}); const set = new Set(all[id] || []);
+      if (cb.checked) set.add(Number(cb.dataset.task)); else set.delete(Number(cb.dataset.task));
+      all[id] = Array.from(set); App.prefs.set("labTasks", all);
+    }));
+  }
+
+  function render(view, prm) {
+    if (prm[0] && LABS[prm[0]]) return renderLab(view, prm[0]);
+    return renderLibrary(view);
   }
 
   App.router.register("lab", render);
-  App.labs = { LABS, LINKS, mount, sectionHtml, mountIn };
+  App.labs = { LABS, LINKS, mount, sectionHtml, mountIn, add, link, meta,
+    util: { T, fmt, DEG, colors, arrow, label, frame, axes, plot, dot, row, niceStep, hexRgb, esc } };
 })();
