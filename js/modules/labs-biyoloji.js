@@ -494,4 +494,229 @@
           "Light, heat and wind raise transpiration; humidity lowers it; drought closes stomata.") };
     }
   }, ["12/biyoloji/u3/k2", "12/biyoloji/u3/k1"]);
+
+  /* =========================================================
+     3B sahneler (App.lab3d)
+     ========================================================= */
+  if (App.lab3d) (function () {
+    const D3 = App.lab3d.def;
+    const f1 = (x, d) => Number(x).toFixed(d == null ? 1 : d).replace(".", App.i18n.lang === "en" ? "." : ",");
+    function tube3(S, x, z, r, h, parent) {
+      const T3 = S.THREE, g = S.group(parent);
+      const pts = [new T3.Vector2(0.01, 0)]; for (let i = 0; i <= 10; i++) { const a = (i / 10) * Math.PI / 2; pts.push(new T3.Vector2(Math.sin(a) * r, r - Math.cos(a) * r)); } pts.push(new T3.Vector2(r, h));
+      const gl = S.mesh(new T3.LatheGeometry(pts, 32), S.glass(), g); gl.castShadow = false;
+      const lq = S.mesh(new T3.LatheGeometry(pts.slice(0, -1).concat([new T3.Vector2(r * 0.95, 1)]).map((v) => new T3.Vector2(v.x * 0.94, v.y)), 32), new T3.MeshStandardMaterial({ color: 0x5b8cff, transparent: true, opacity: 0.75, side: T3.DoubleSide }), g); lq.castShadow = false;
+      g.position.set(x, 0, z); g.lq = lq;
+      g.set = (lv, col) => { lq.scale.set(1, Math.max(0.05, h * lv), 1); if (col) lq.material.color.set(col); return g; };
+      return g;
+    }
+    const chart3 = (S, name, key, curves, xr, yr, band) => { const W = 12, H = 6, X = (x) => -W / 2 + ((x - xr[0]) / (xr[1] - xr[0])) * W, Y = (y) => 0.3 + ((y - yr[0]) / (yr[1] - yr[0])) * H; S.keyed(name, key, (g) => {
+      const back = S.box(W + 0.6, H + 0.6, 0.15, S.cols.light ? "#f4f6fa" : "#1d2026", g); back.position.set(0, 0.3 + H / 2, -0.6);
+      if (band) { const b = S.mesh(new S.THREE.BoxGeometry(W, Y(band[1]) - Y(band[0]), 1.2), new S.THREE.MeshStandardMaterial({ color: 0x5bb974, transparent: true, opacity: 0.18, depthWrite: false }), g); b.position.set(0, (Y(band[0]) + Y(band[1])) / 2, 0); b.castShadow = false; }
+      curves.forEach(([fn, col, z, r]) => { let seg = []; const flush = () => { if (seg.length > 3) S.tube(seg, r || 0.08, col, g); seg = []; }; for (let i = 0; i <= 160; i++) { const x = xr[0] + ((xr[1] - xr[0]) * i) / 160, y = fn(x); if (!isFinite(y)) { flush(); continue; } seg.push([X(x), Y(Math.max(yr[0], Math.min(yr[1], y))), z || 0]); } flush(); });
+    }); return { X, Y }; };
+
+    D3("enzim", {
+      view: { r: 10, th: 0.4, ph: 1.15, target: [0, 2.3, 0] },
+      build(S) { const o = S.o; o.t = tube3(S, 0, 0, 0.6, 4); o.t.set(0.55, 0x9fc6ff); o.b = Array.from({ length: 40 }, () => ({ m: S.sphere(0.06 + Math.random() * 0.06, "#ffffff", null, 8), y: Math.random(), a: Math.random() * 7, r: Math.random() * 0.45 }));
+        o.foam = S.cyl(0.55, 0.55, 1, "#ffffff"); o.th = S.cyl(0.05, 0.05, 4, "#ddd"); o.th.position.set(1.4, 2, 0); o.thl = S.cyl(0.035, 0.035, 1, "#e0453a"); o.lab = S.label("", null, 0.5); },
+      update(S, p) {
+        const o = S.o, z = ENZ().find((x) => x[0] === p.e) || ENZ()[3], a = actT(p.T, z[2]) * actP(p.pH, z[3]), top = 4 * 0.55;
+        o.b.forEach((q) => { q.y += 0.01 + a * 0.03; if (q.y > 1) q.y = 0; q.m.visible = a > 0.05 && q.r < 0.45; q.m.position.set(Math.cos(q.a) * q.r, 0.2 + q.y * top, Math.sin(q.a) * q.r); });
+        const fh = Math.max(0.01, a * 1.2); o.foam.visible = a > 0.15; o.foam.scale.set(1, fh, 1); o.foam.position.y = top + fh / 2;
+        const k = p.T / 90; o.thl.scale.set(1, Math.max(0.05, 3.6 * k), 1); o.thl.position.set(1.4, 0.2 + 1.8 * k, 0);
+        o.lab.set(App.labs.util.T("aktivite %", "activity ") + f1(a * 100, 0)); o.lab.position.set(0, 4.8, 0);
+      }
+    });
+
+    D3("ayirac", {
+      view: { r: 8, th: 0.25, ph: 1.15, target: [0, 2, 0] },
+      build(S) { const o = S.o; o.rack = S.box(4.5, 0.3, 1.4, "#6b5440"); o.rack.position.y = 0.6; o.t1 = tube3(S, -1.2, 0, 0.45, 3.2); o.t2 = tube3(S, 1.2, 0, 0.45, 3.2); o.layer = S.cyl(0.42, 0.42, 0.25, "#e04a3a"); o.l1 = S.label("", null, 0.38); o.l2 = S.label("", null, 0.38); o.res = S.label("", null, 0.55); },
+      update(S, p, t) {
+        const o = S.o, Sm = SAMPLES().find((x) => x[0] === p.s), R = REAG().find((x) => x[0] === p.r), pos = !!Sm[2][p.r], k = Math.min(1, t / 2.5);
+        const c = new S.THREE.Color(R[2]).lerp(new S.THREE.Color(pos ? R[3] : R[2]), k);
+        o.t1.set(0.5, R[2]); o.t2.set(0.6, p.r === "sud" ? "#f2e6c9" : c); o.layer.visible = p.r === "sud" && pos; o.layer.position.set(1.2, 0.95 * 3.2 * 0.6 + 0.1, 0); o.layer.material.opacity = k;
+        o.l1.set(App.labs.util.T("ayıraç", "reagent")); o.l1.position.set(-1.2, 3.8, 0); o.l2.set(Sm[1]); o.l2.position.set(1.2, 3.8, 0);
+        o.res.set(pos ? App.labs.util.T("olumlu (+)", "positive (+)") : App.labs.util.T("olumsuz (−)", "negative (−)")); o.res.position.set(0, 4.6, 0);
+      }
+    });
+
+    D3("osmoz", {
+      view: { r: 9, th: 0.4, ph: 1.1, target: [0, 2, 0] },
+      build(S) { const o = S.o, T3 = S.THREE; o.dish = S.cyl(4, 4, 0.3, "#9aa3ad"); o.dish.position.y = 0.15; o.water = S.mesh(new T3.CylinderGeometry(3.85, 3.85, 1.2, 48), new T3.MeshStandardMaterial({ color: 0x5b8cff, transparent: true, opacity: 0.25, depthWrite: false })); o.water.position.y = 0.9; o.water.castShadow = false;
+        o.rbc = S.mesh(new T3.SphereGeometry(1, 40, 30), "#d9534f"); o.wall = S.mesh(new T3.BoxGeometry(3, 2.4, 2.4), new T3.MeshStandardMaterial({ color: 0x7fc76a, transparent: true, opacity: 0.25, depthWrite: false }));
+        o.mem = S.mesh(new T3.BoxGeometry(2.8, 2.2, 2.2), new T3.MeshStandardMaterial({ color: 0x7fc76a, transparent: true, opacity: 0.45 })); o.vac = S.mesh(new T3.SphereGeometry(0.8, 24, 16), new T3.MeshStandardMaterial({ color: 0x4a8bd8, transparent: true, opacity: 0.6 }));
+        o.ar = Array.from({ length: 8 }, () => S.arrow(S.cols.accent, 0.05)); o.lab = S.label("", null, 0.5); },
+      update(S, p, t, s) {
+        const o = S.o, k = s.k || 1, animal = p.cell === "hayvan", burst = animal && k > 1.38;
+        o.rbc.visible = animal && !burst; o.wall.visible = o.mem.visible = o.vac.visible = !animal;
+        o.water.material.opacity = 0.12 + Math.min(0.6, p.c / 3 * 0.5);
+        if (animal) { const sc = 1.3 * k; o.rbc.scale.set(sc, sc * (k > 1.05 ? 0.8 : 0.4), sc); o.rbc.position.set(0, 1.5, 0); o.rbc.rotation.x = 0.4; }
+        else { const kk = Math.min(1, k); o.wall.position.set(0, 1.6, 0); o.mem.scale.setScalar(kk); o.mem.position.set(0, 1.6, 0); o.vac.scale.setScalar(Math.max(0.3, kk)); o.vac.position.set(0, 1.6, 0); }
+        const dir = p.c < 0.85 ? 1 : p.c > 0.95 ? -1 : 0;
+        o.ar.forEach((a, i) => { a.visible = !!dir; const ang = (i / 8) * 2 * Math.PI, r1 = 3, r2 = 2; const A = [Math.cos(ang) * (dir > 0 ? r1 : r2), 1.6, Math.sin(ang) * (dir > 0 ? r1 : r2)], B = [Math.cos(ang) * (dir > 0 ? r2 : r1), 1.6, Math.sin(ang) * (dir > 0 ? r2 : r1)]; a.set(A, B); });
+        o.lab.set(burst ? App.labs.util.T("hemoliz", "haemolysis") : dir > 0 ? App.labs.util.T("su giriyor", "water in") : dir < 0 ? App.labs.util.T("su çıkıyor", "water out") : App.labs.util.T("izotonik", "isotonic")); o.lab.position.set(0, 3.8, 0);
+      }
+    });
+
+    D3("fotosentez", {
+      view: { r: 10, th: 0.5, ph: 1.15, target: [0, 2, 0] },
+      build(S) { const o = S.o, T3 = S.THREE; o.tank = S.mesh(new T3.BoxGeometry(4, 4, 2.6), S.glass()); o.tank.position.y = 2; o.tank.castShadow = false;
+        o.water = S.mesh(new T3.BoxGeometry(3.9, 3.5, 2.5), new T3.MeshStandardMaterial({ color: 0x5b8cff, transparent: true, opacity: 0.2, depthWrite: false })); o.water.position.y = 1.75; o.water.castShadow = false;
+        const stem = S.tube([[0, 0.1, 0], [-0.2, 1.2, 0.1], [0.1, 2.4, -0.1], [0, 3.2, 0]], 0.05, "#3f8f3a"); void stem;
+        for (let i = 0; i < 26; i++) { const y = 0.3 + i * 0.11, l = S.mesh(new T3.SphereGeometry(0.22, 12, 8), "#5fbf55"); l.scale.set(1, 0.15, 0.4); l.position.set(Math.sin(y * 3) * 0.1 + (i % 2 ? 0.2 : -0.2), y, 0); l.rotation.z = i % 2 ? -0.5 : 0.5; l.rotation.y = i; }
+        o.lamp = S.group(); const sh = S.mesh(new T3.ConeGeometry(0.8, 0.9, 24, 1, true), new T3.MeshStandardMaterial({ color: 0x444444, side: T3.DoubleSide }), o.lamp); sh.rotation.z = Math.PI / 2;
+        o.bulb = S.mesh(new T3.SphereGeometry(0.35, 16, 12), new T3.MeshBasicMaterial({ color: 0xffffff }), o.lamp); o.bulb.position.x = 0.2; o.pl = new T3.SpotLight(0xffffff, 2, 12, 0.6, 0.5); o.pl.position.set(0, 0, 0); o.pl.target.position.set(4, -1, 0); o.lamp.add(o.pl); o.lamp.add(o.pl.target);
+        o.b = Array.from({ length: 30 }, () => ({ m: S.sphere(0.07, "#ffffff", null, 8), y: -1 })); o.lab = S.label("", null, 0.5); },
+      update(S, p) {
+        const o = S.o, R = phRate(p.I, p.C, p.T, p.col), lc = { 1: 0xfff6c8, 0.95: 0xff5a4a, 0.9: 0x5a8cff, 0.25: 0x5adf6a }[p.col] || 0xffffff;
+        o.lamp.position.set(-4.5, 3, 0); o.bulb.material.color.set(lc); o.pl.color.set(lc); o.pl.intensity = p.I / 30;
+        o.b.forEach((q) => { if (q.y < 0 && Math.random() < R.r / 1500) q.y = 3.2; if (q.y >= 0) { q.y += 0.025; if (q.y > 3.5) q.y = -1; } q.m.visible = q.y >= 0; q.m.position.set(0.05 + Math.sin(q.y * 5) * 0.05, q.y, 0); });
+        o.lab.set(App.labs.util.T("hız ", "rate ") + f1(R.r, 0)); o.lab.position.set(0, 4.6, 0);
+      }
+    });
+
+    D3("solunum", {
+      view: { r: 8, th: 0.4, ph: 1.15, target: [0, 2.2, 0] },
+      build(S) { const o = S.o, T3 = S.THREE; o.flask = S.mesh(new T3.SphereGeometry(1.4, 32, 24), S.glass()); o.flask.position.y = 1.4; o.flask.castShadow = false; o.neck = S.mesh(new T3.CylinderGeometry(0.3, 0.3, 1, 20, 1, true), S.glass()); o.neck.position.y = 3.1;
+        o.liq = S.mesh(new T3.SphereGeometry(1.32, 32, 24, 0, Math.PI * 2, Math.PI * 0.45, Math.PI * 0.55), new T3.MeshStandardMaterial({ color: 0xe8d39b, transparent: true, opacity: 0.8, side: T3.DoubleSide })); o.liq.position.y = 1.4;
+        o.bal = S.mesh(new T3.SphereGeometry(1, 32, 24), new T3.MeshStandardMaterial({ color: 0xe0453a, roughness: 0.35 })); o.lab = S.label("", null, 0.5); },
+      update(S, p, t) {
+        const o = S.o, ft = p.T <= 35 ? Math.exp(0.08 * (p.T - 35)) : Math.exp(-Math.pow((p.T - 35) / 7, 2)), used = (p.g / 180) * (1 - Math.exp(-0.25 * t * ft));
+        const co2 = p.o2 ? used * 6 : p.org === "maya" ? used * 2 : 0, r = 0.2 + Math.min(1, co2 / 0.5) * 0.9;
+        o.bal.scale.set(r * 0.85, r, r * 0.85); o.bal.position.y = 3.6 + r * 0.9; o.liq.material.color.set(p.org === "maya" ? 0xe8d39b : 0xd98c8c);
+        o.lab.set((p.o2 ? 38 : 2) + " ATP / " + App.labs.util.T("glikoz", "glucose")); o.lab.position.set(2.2, 3, 0);
+      }
+    });
+
+    D3("populasyon", {
+      view: { r: 14, th: 0.5, ph: 0.95, target: [0, 0.5, 0] },
+      build(S) { const o = S.o, T3 = S.THREE; o.field = S.cyl(7, 7, 0.1, "#5f9f4f"); o.field.position.y = 0.05;
+        o.rab = new T3.InstancedMesh(new T3.SphereGeometry(0.12, 8, 6), new T3.MeshStandardMaterial({ color: 0xf2f2f2 }), 300); o.fox = new T3.InstancedMesh(new T3.ConeGeometry(0.15, 0.4, 8), new T3.MeshStandardMaterial({ color: 0xe8935a }), 120); o.rab.castShadow = o.fox.castShadow = true; S.root.add(o.rab); S.root.add(o.fox);
+        o.seed = Array.from({ length: 300 }, (_, i) => [Math.sqrt((i * 0.618) % 1) * 6.6, i * 2.399]); o.lab = S.label("", null, 0.55); },
+      update(S, p, t) {
+        const o = S.o, T3 = S.THREE, Tm = 40, tt = Math.min(Tm, t * Tm / 8), dt = 0.02; let N = p.N0, P = p.N0 * 0.2;
+        for (let s = 0; s < tt; s += dt) { if (p.mod === "j") N += p.r * N * dt; else if (p.mod === "s") N += p.r * N * (1 - N / p.K) * dt; else { const dN = p.r * N - 0.004 * N * P, dP = 0.001 * N * P - 0.24 * P; N = Math.max(0, N + dN * dt); P = Math.max(0, P + dP * dt); } }
+        const scale = p.mod === "av" ? 1 : Math.max(1, p.K / 300), nR = Math.min(300, Math.round(N / scale)), nF = p.mod === "av" ? Math.min(120, Math.round(P)) : 0, m = new T3.Matrix4();
+        o.rab.count = nR; for (let i = 0; i < nR; i++) { const [r, a] = o.seed[i]; m.setPosition(r * Math.cos(a), 0.22 + Math.abs(Math.sin(t * 6 + i)) * 0.1, r * Math.sin(a)); o.rab.setMatrixAt(i, m); } o.rab.instanceMatrix.needsUpdate = true;
+        o.fox.count = nF; for (let i = 0; i < nF; i++) { const [r, a] = o.seed[(i * 7 + 3) % 300]; m.setPosition(r * Math.cos(a + 0.5), 0.3, r * Math.sin(a + 0.5)); o.fox.setMatrixAt(i, m); } o.fox.instanceMatrix.needsUpdate = true;
+        o.lab.set((p.mod === "av" ? App.labs.util.T("tavşan ", "prey ") + f1(N, 0) + " · " + App.labs.util.T("tilki ", "predator ") + f1(P, 0) : "N = " + f1(N, 0)) + (scale > 1 ? " (1 = " + f1(scale, 0) + ")" : "")); o.lab.position.set(0, 2.2, 0);
+      }
+    });
+
+    D3("piramit", {
+      view: { r: 14, th: 0.6, ph: 1.05, target: [0, 2.5, 0] },
+      build(S) { S.o.steps = []; S.o.l = []; },
+      update(S, p) {
+        const o = S.o, cols = ["#5fbf55", "#a7d05a", "#e8c25a", "#e8935a", "#d9534f"], NM = App.labs.util.T("üretici|1. tüketici|2. tüketici|3. tüketici|4. tüketici", "producer|primary|secondary|tertiary|quaternary").split("|");
+        S.keyed("pyr", [p.E, p.eff, p.n, p.ddt].join(), (g) => { let y = 0; for (let i = 0; i < p.n; i++) { const e = p.E * Math.pow(p.eff / 100, i), w = Math.max(0.6, 7 * Math.log10(e + 1) / Math.log10(p.E + 1)); const b = S.box(w, 1, w, cols[i], g); b.position.y = y + 0.5;
+          const l = S.label(NM[i] + " · " + f1(e, e < 10 ? 2 : 0) + " kJ" + (p.ddt ? " · DDT " + f1(0.04 * Math.pow(10, i), i < 2 ? 2 : 0) + " ppm" : ""), null, 0.42, g); l.position.set(0, y + 0.5, w / 2 + 0.6); y += 1.05; } });
+      }
+    });
+
+    D3("sinir", {
+      view: { r: 12, th: 0.3, ph: 1.15, target: [0, 1.8, 0] },
+      build(S) { const o = S.o, T3 = S.THREE; o.soma = S.sphere(1, "#c9a0dc", null, 32); o.soma.position.set(-6, 1.8, 0); o.axon = S.cyl(0.25, 0.25, 11, "#c9a0dc"); o.axon.rotation.z = Math.PI / 2; o.axon.position.set(0, 1.8, 0);
+        o.my = []; for (let x = -4.8; x < 5; x += 1.2) { const m = S.cyl(0.45, 0.45, 0.95, "#f2ead6"); m.rotation.z = Math.PI / 2; m.position.set(x + 0.5, 1.8, 0); o.my.push(m); }
+        o.pulse = S.mesh(new T3.TorusGeometry(0.5, 0.12, 12, 32), new T3.MeshStandardMaterial({ color: 0xffc94a, emissive: 0xffa500, emissiveIntensity: 1.5 })); o.pulse.rotation.y = Math.PI / 2; o.lab = S.label("", null, 0.5); },
+      update(S, p, t) {
+        const o = S.o, per = 3, tt = t % per, fire = -70 + p.s >= -55; o.my.forEach((m) => { m.visible = !!p.my; });
+        o.pulse.visible = fire && tt > 0.3; if (o.pulse.visible) { const sp = p.my ? 1.6 : 0.35; let x = -5.2 + (tt - 0.3) * sp * 10.4; if (p.my) x = -5.2 + Math.floor((x + 5.2) / 1.2) * 1.2 + 0.05; o.pulse.visible = x < 5.4; o.pulse.position.set(x, 1.8, 0); }
+        o.soma.material.emissive.set(tt > 0.25 && tt < 0.45 ? 0x553366 : 0x000000);
+        o.lab.set(fire ? App.labs.util.T("impuls: ya hep ya hiç", "impulse: all-or-none") : App.labs.util.T("eşik altı (−55 mV'a ulaşmadı)", "sub-threshold")); o.lab.position.set(0, 3.4, 0);
+      }
+    });
+
+    D3("goz", {
+      view: { r: 9, th: 0.5, ph: 1.15, target: [0, 2, 0] },
+      build(S) { const o = S.o, T3 = S.THREE; S.hideFloor(); o.eye = S.mesh(new T3.SphereGeometry(1.8, 48, 32), new T3.MeshStandardMaterial({ color: 0xf6f2ee, transparent: true, opacity: 0.25, depthWrite: false, side: T3.DoubleSide })); o.eye.position.set(1.5, 2, 0);
+        o.ret = S.mesh(new T3.SphereGeometry(1.76, 48, 32, Math.PI * 0.65, Math.PI * 0.7, Math.PI * 0.2, Math.PI * 0.6), new T3.MeshStandardMaterial({ color: 0xd9534f, side: T3.DoubleSide })); o.ret.position.set(1.5, 2, 0);
+        o.lens = S.mesh(new T3.SphereGeometry(0.55, 32, 24), new T3.MeshStandardMaterial({ color: 0x9fd0ff, transparent: true, opacity: 0.6 })); o.lens.position.set(0.1, 2, 0);
+        o.iris = S.mesh(new T3.RingGeometry(0.35, 0.8, 32), new T3.MeshStandardMaterial({ color: 0x6b4a2b, side: T3.DoubleSide })); o.iris.rotation.y = Math.PI / 2; o.iris.position.set(-0.05, 2, 0);
+        o.gl = S.mesh(new T3.SphereGeometry(0.7, 24, 16), new T3.MeshStandardMaterial({ color: 0xbfe6ff, transparent: true, opacity: 0.45 })); o.gl.position.set(-1.6, 2, 0);
+        o.rays = [0, 1, 2].map(() => S.line(0xf2b33d, 6)); o.lab = S.label("", null, 0.45); },
+      update(S, p) {
+        const o = S.o, di0 = 0.017, Pn = 1 / di0, off = { n: 0, m: 1, h: -3 }[p.e], Pmin = Pn + off, Pmax = Pn + off + 4, corr = p.g ? (p.e === "m" ? -1 : p.e === "h" ? 3 : 0) : 0;
+        const Preq = 1 / p.d + 1 / di0 - corr, Peye = Math.max(Pmin, Math.min(Pmax, Preq)), di = 1 / (Peye + corr - 1 / p.d);
+        o.lens.scale.set(0.35 + (Peye - Pmin) / 4 * 0.35, 1, 1); o.gl.visible = !!(p.g && corr); o.gl.scale.set(corr < 0 ? 0.15 : 0.3, 1, 1);
+        const lx = 0.1, ret = 3.25, fxp = lx + (di / di0) * (ret - lx);
+        [-0.5, 0, 0.5].forEach((h0, i) => { const P = [[-4, 2 + h0 * (p.d > 3 ? 1 : 0.4), 0], [lx, 2 + h0, 0]]; const tx = Math.min(4.5, fxp); P.push([tx, 2 + h0 * (1 - (tx - lx) / Math.max(0.01, fxp - lx)), 0]); if (fxp < ret) P.push([ret, 2 - h0 * ((ret - fxp) / (fxp - lx)), 0]); o.rays[i].setPoints(P); });
+        const err = di - di0; o.lab.set(Math.abs(err) < 0.0003 ? App.labs.util.T("net: görüntü retinada", "sharp") : err < 0 ? App.labs.util.T("görüntü retinanın önünde", "focus in front") : App.labs.util.T("görüntü retinanın arkasında", "focus behind")); o.lab.position.set(1, 4.3, 0);
+      }
+    });
+
+    D3("kansekeri", {
+      view: { r: 15, th: 0.35, ph: 1.2, target: [0, 3.3, 0] },
+      build(S) { S.o.lab = S.label("", null, 0.5); },
+      update(S, p) {
+        const sim = () => { let G = 90, I = 8; const out = []; const dt = 0.02, sens = p.dm === "t2" ? 0.3 : 1; for (let h = 0; h <= 8; h += dt) { const abs = h > 1 ? p.meal * 1.1 * Math.exp(-(h - 1) * 1.6) * (h - 1) * 2.6 : 0; const sec = p.dm === "t1" ? 0.5 : Math.max(0, G - 85) * 0.35 + 3; I += (sec - I * 0.9) * dt * 3; const up = 0.012 * I * sens * (G - 70) * 0.25, ex = p.ex && h > 1.3 && h < 2.3 ? 18 : 0, gl = G < 80 ? (80 - G) * 0.8 : 0; G += (abs - up - ex - (G - 90) * 0.05 + gl) * dt; G = Math.max(40, G); out.push([h, G, I]); } return out; };
+        const A = sim(), at = (k) => (x) => { const i = Math.min(A.length - 1, Math.round(x / 0.02)); return A[i][k]; };
+        chart3(S, "c", [p.meal, p.ex, p.dm].join(), [[at(1), "#e0453a", 0.2, 0.1], [(x) => 40 + at(2)(x) * 3, "#5b8cff", -0.2, 0.07]], [0, 8], [40, 320], [70, 140]);
+        S.o.lab.set(App.labs.util.T("kırmızı: kan şekeri · mavi: insülin", "red: glucose · blue: insulin")); S.o.lab.position.set(0, 7.1, 0);
+      }
+    });
+
+    D3("bagisiklik", {
+      view: { r: 15, th: 0.35, ph: 1.2, target: [0, 3.3, 0] },
+      build(S) { S.o.lab = S.label("", null, 0.5); },
+      update(S, p) {
+        const prim = (x, s) => (x < s + 5 ? 0 : 10 * Math.exp(-Math.pow((x - s - 14) / 6, 2)) + (x > s + 14 ? 2 * Math.exp(-(x - s - 14) / 60) : 0));
+        const sec = (x, s) => (x < s + 2 ? 0 : 100 * Math.exp(-Math.pow((x - s - 8) / 5, 2)) + (x > s + 8 ? 20 * Math.exp(-(x - s - 8) / 90) : 0));
+        const mem = p.k === "asi" || p.k === "hast", f = (x) => { let v = 0; if (mem) v += prim(x, 0); if (p.k === "serum") v += 60 * Math.exp(-x / 8); v += mem ? sec(x, p.d) : prim(x, p.d); return v; };
+        const c = chart3(S, "c", [p.k, p.d].join(), [[f, "#5b8cff", 0, 0.1], [() => 30, "#f2b33d", 0.3, 0.03]], [0, 160], [0, 130]);
+        S.keyed("ab", [p.k, p.d].join(), (g) => { [[0, p.k !== "yok"], [p.d, true]].forEach(([d, on]) => { if (!on) return; const m = S.mesh(new S.THREE.ConeGeometry(0.25, 0.6, 12), "#e0453a", g); m.rotation.x = Math.PI; m.position.set(c.X(d), c.Y(125), 0.3); }); });
+        S.o.lab.set(App.labs.util.T("antikor düzeyi · sarı: koruyucu düzey", "antibody level · yellow: protective")); S.o.lab.position.set(0, 7.1, 0);
+      }
+    });
+
+    D3("tropizma", {
+      view: { r: 9, th: 0.4, ph: 1.15, target: [0, 2.2, 0] },
+      build(S) { const o = S.o, T3 = S.THREE; o.pot = S.cyl(0.9, 0.7, 1, "#a0522d"); o.pot.position.y = 0.5; o.soil = S.cyl(0.85, 0.85, 0.1, "#4a3020"); o.soil.position.y = 1;
+        o.lamp = S.mesh(new T3.SphereGeometry(0.35, 16, 12), new T3.MeshBasicMaterial({ color: 0xfff1a0 })); o.pl = new T3.PointLight(0xfff1a0, 1.4, 12); S.root.add(o.pl); o.aux = Array.from({ length: 16 }, () => S.sphere(0.05, S.cols.warn, null, 6)); o.cap = S.mesh(new T3.ConeGeometry(0.16, 0.4, 12), "#222"); o.lab = S.label("", null, 0.45); },
+      update(S, p, t) {
+        const o = S.o, dir = { sol: -1, ust: 0, sag: 1 }[p.l], respond = p.tr === "yok" || p.tr === "taban", grows = p.tr !== "kes", k = Math.min(1, t / 5), bend = respond ? dir * 0.9 * k : 0, len = grows ? 2.2 + 0.8 * k : 2;
+        const P = []; for (let i = 0; i <= 20; i++) { const u = i / 20, a = bend * u * u; P.push([Math.sin(a) * len * u * 0.9, 1 + Math.cos(a) * len * u, 0]); }
+        S.keyed("stem", [Math.round(bend * 40), Math.round(len * 20), p.tr].join(), (g) => { S.tube(P, 0.12, "#7fc76a", g); if (p.tr === "taban") S.tube(P.slice(0, 9), 0.16, "#333", g); });
+        const tip = P[20]; o.cap.visible = p.tr === "kapak"; o.cap.position.set(tip[0], tip[1] + 0.1, 0);
+        const lp = dir ? [dir * 3.5, 3.5, 0] : [0, 5.5, 0]; o.lamp.position.set(...lp); o.pl.position.set(...lp);
+        o.aux.forEach((a, i) => { a.visible = grows; const q = P[2 + Math.floor(i / 2) * 2] || P[18], side = respond && dir ? -dir : (i % 2 ? 1 : -1); a.position.set(q[0] + side * 0.1, q[1], (i % 2 ? 0.05 : -0.05)); });
+        o.lab.set(!grows ? App.labs.util.T("büyüme yok", "no growth") : respond && dir ? App.labs.util.T("ışığa doğru bükülüyor", "bends to light") : App.labs.util.T("düz büyüyor", "straight")); o.lab.position.set(0, 4.8, 0);
+      }
+    });
+
+    D3("dna", {
+      view: { r: 12, th: 0.5, ph: 1.2, target: [0, 2.5, 0] },
+      build(S) { S.o.lab = S.label("", null, 0.5); S.hideFloor(); },
+      update(S, p, t) {
+        const orig = String(p.g); let seq = orig; const i0 = p.pos - 1;
+        if (p.mt === "deg") seq = orig.slice(0, i0) + p.b + orig.slice(i0 + 1); if (p.mt === "ekle") seq = orig.slice(0, i0) + p.b + orig.slice(i0); if (p.mt === "sil") seq = orig.slice(0, i0) + orig.slice(i0 + 1);
+        const COL = { A: "#5fbf55", T: "#e0563f", G: "#e8c25a", C: "#5b8cff" }, comp = { A: "T", T: "A", G: "C", C: "G" };
+        const g = S.keyed("helix", [seq, p.mt, p.pos].join(), (gg) => {
+          const n = seq.length, rise = 0.42, R = 1.1, L1 = [], L2 = [];
+          for (let k = 0; k < n; k++) { const a = k * 0.6, y = k * rise - (n * rise) / 2, p1 = [R * Math.cos(a), y, R * Math.sin(a)], p2 = [R * Math.cos(a + Math.PI * 0.8), y, R * Math.sin(a + Math.PI * 0.8)]; L1.push(p1); L2.push(p2);
+            const mid = [(p1[0] + p2[0]) / 2, y, (p1[2] + p2[2]) / 2], mark = p.mt !== "yok" && k === i0;
+            const b1 = S.mesh(new S.THREE.CylinderGeometry(0.09, 0.09, 1, 10), COL[seq[k]], gg), b2 = S.mesh(new S.THREE.CylinderGeometry(0.09, 0.09, 1, 10), COL[comp[seq[k]]], gg);
+            [[b1, p1], [b2, p2]].forEach(([b, q]) => { const v = new S.THREE.Vector3(mid[0] - q[0], 0, mid[2] - q[2]); const l = v.length(); b.scale.set(1, l, 1); b.position.set((q[0] + mid[0]) / 2, y, (q[2] + mid[2]) / 2); b.quaternion.setFromUnitVectors(new S.THREE.Vector3(0, 1, 0), v.normalize()); });
+            if (mark) { const r = S.mesh(new S.THREE.TorusGeometry(R + 0.2, 0.05, 8, 40), new S.THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xffffff, emissiveIntensity: 0.6 }), gg); r.rotation.x = Math.PI / 2; r.position.y = y; } }
+          S.tube(L1, 0.1, "#cfd3da", gg); S.tube(L2, 0.1, "#9aa3ad", gg);
+        });
+        g.position.y = 2.5; g.rotation.y = t * 0.4;
+        S.o.lab.set(p.mt === "yok" ? App.labs.util.T("normal gen", "normal gene") : { deg: App.labs.util.T("nokta mutasyonu", "substitution"), ekle: App.labs.util.T("ekleme → çerçeve kayması", "insertion → frameshift"), sil: App.labs.util.T("silme → çerçeve kayması", "deletion → frameshift") }[p.mt]);
+        S.o.lab.position.set(0, 2.5 + seq.length * 0.21 + 0.8, 0);
+      }
+    });
+
+    D3("terleme", {
+      view: { r: 8, th: 0.6, ph: 1.25, target: [0, 1.8, 0] },
+      build(S) { const o = S.o, T3 = S.THREE; o.leaf = S.mesh(new T3.SphereGeometry(2.6, 40, 20), "#5fbf55"); o.leaf.scale.set(1, 0.06, 0.55); o.leaf.position.y = 2.6;
+        o.st = Array.from({ length: 6 }, (_, i) => { const a = S.mesh(new T3.SphereGeometry(0.16, 12, 8), "#3f8f3a"), b = S.mesh(new T3.SphereGeometry(0.16, 12, 8), "#3f8f3a"); a.scale.set(1, 0.4, 0.5); b.scale.set(1, 0.4, 0.5); return { a, b, x: -1.6 + (i % 3) * 1.6, z: i < 3 ? -0.45 : 0.45 }; });
+        o.v = Array.from({ length: 60 }, () => ({ m: S.sphere(0.05, "#9fd0ff", null, 6), on: false, x: 0, y: 0, z: 0 })); o.lab = S.label("", null, 0.5); },
+      update(S, p) {
+        const o = S.o, open = Math.min(1, p.I / 60) * (p.dry ? 0.15 : 1), vpd = Math.max(0, 1 - p.h / 100) * Math.exp(0.06 * (p.T - 25)), rate = 100 * open * vpd * (1 + 0.15 * p.w) / 1.6;
+        o.st.forEach((q) => { const gap = 0.05 + open * 0.2; q.a.position.set(q.x - gap / 2 - 0.12, 2.48, q.z); q.b.position.set(q.x + gap / 2 + 0.12, 2.48, q.z); });
+        o.v.forEach((q) => { if (!q.on && Math.random() < rate / 900) { const s = o.st[Math.floor(Math.random() * 6)]; q.on = true; q.x = s.x; q.y = 2.4; q.z = s.z; } if (q.on) { q.y -= 0.02; q.x += p.w * 0.01; if (q.y < 0.3) q.on = false; } q.m.visible = q.on; q.m.position.set(q.x, q.y, q.z); });
+        o.lab.set(App.labs.util.T("terleme ", "transpiration ") + f1(rate, 0)); o.lab.position.set(0, 3.8, 0);
+      }
+    });
+  })();
 })();

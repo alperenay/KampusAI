@@ -528,9 +528,12 @@
       params.forEach((p) => { if (opts.preset && opts.preset[p.id] != null) p.value = opts.preset[p.id]; });
     }
     const p = {};
+    const can3d = !!(App.lab3d && App.lab3d.has(id) && App.lab3d.supported());
+    let mode = can3d ? App.lab3d.mode() : "2d", S3 = null, s3busy = false;
     host.classList.add("lab");
     host.innerHTML =
-      '<div class="lab__stage"><canvas class="lab__cv" role="img" aria-label="' + esc(lab.title()) + '"></canvas>' +
+      '<div class="lab__stage">' + (can3d ? '<div class="lab__mode" role="radiogroup" aria-label="' + esc(T("Görünüm", "View")) + '"><button type="button" role="radio" data-mode="2d">2B</button><button type="button" role="radio" data-mode="3d">3B</button></div>' : "") +
+        '<canvas class="lab__cv" role="img" aria-label="' + esc(lab.title()) + '"></canvas>' +
         (lab.animated && !lab.custom ? '<div class="lab__play"><button class="btn btn--sm btn--primary" type="button" data-lab="play"></button>' +
           '<button class="btn btn--sm btn--ghost" type="button" data-lab="reset">' + App.icon("refresh") + esc(T("Baştan", "Reset")) + "</button></div>" : "") +
       "</div>" +
@@ -613,7 +616,22 @@
       read.innerHTML = out.html;
       if (note.textContent !== (out.note || "")) note.textContent = out.note || "";
       if (out.done && st.playing) { st.playing = false; st.done = true; paintPlay(); } else if (!out.done) st.done = false;
+      if (mode === "3d" && S3) S3.frame(p, st.t, lab.custom ? st : st.s);
     }
+    /* 2B / 3B seçimi (öğrencinin tercihi hatırlanır) */
+    const modeBox = host.querySelector(".lab__mode");
+    function paintMode() { if (!modeBox) return; modeBox.querySelectorAll("[data-mode]").forEach((b) => b.setAttribute("aria-checked", String(b.dataset.mode === mode))); host.classList.toggle("is-3d", mode === "3d"); }
+    async function setMode(m, remember) {
+      mode = m; if (remember) App.lab3d.setMode(m); paintMode();
+      if (m === "3d" && !S3 && !s3busy) {
+        s3busy = true; host.classList.add("is-loading3d");
+        try { await App.lab3d.load(); if (host.isConnected && mode === "3d") { S3 = App.lab3d.mount(host.querySelector(".lab__stage"), id, lab.ratio); host.querySelector(".lab__stage").insertBefore(S3.el, cv); } }
+        catch (e) { mode = "2d"; paintMode(); App.ui.toast(T("3B görünüm açılamadı; 2B gösteriliyor.", "3D view unavailable; showing 2D.")); }
+        s3busy = false; host.classList.remove("is-loading3d");
+      }
+      draw();
+    }
+    if (modeBox) modeBox.addEventListener("click", (e) => { const b = e.target.closest("[data-mode]"); if (b && b.dataset.mode !== mode) setMode(b.dataset.mode, true); });
     function loop() {
       cancelAnimationFrame(st.raf);
       if (!st.playing || !st.vis) return;
@@ -629,8 +647,9 @@
     ro.observe(cv.parentElement);
     const io = "IntersectionObserver" in window ? new IntersectionObserver((en) => { st.vis = en[0].isIntersecting; st.last = null; loop(); }) : null;
     if (io) io.observe(host);
-    function destroy() { cancelAnimationFrame(st.raf); ro.disconnect(); if (io) io.disconnect(); }
+    function destroy() { cancelAnimationFrame(st.raf); ro.disconnect(); if (io) io.disconnect(); if (S3) { S3.dispose(); S3 = null; } }
     size(); draw(); loop();
+    paintMode(); if (mode === "3d") setMode("3d", false);
     return { destroy };
   }
 
@@ -719,8 +738,15 @@
           '<button type="button" class="chip' + (st.grade === g ? " is-on" : "") + '" data-f-grade="' + g + '">' + esc(g === "all" ? T("Her sınıf", "All grades") : App.data.curriculum.gradeName(g)) + "</button>").join("") +
           '<button type="button" class="chip' + (st.fav ? " is-on" : "") + '" data-f-fav>' + App.icon("bookmark") + esc(T("Favoriler", "Favourites")) + "</button></div>" +
       "</div>" +
-      '<div id="labList"></div></div>';
+      '<div id="labList"></div>' +
+      (App.lab3d && App.lab3d.supported() ? '<section class="card lab-view-set"><div class="card__title">' + App.icon("eye") + esc(T("Görünüm", "View")) + "</div>" +
+        '<div class="lab-view-set__row"><label class="field"><span class="field__label">' + esc(T("Deneyler şöyle açılsın", "Open labs in")) + '</span><select class="select" id="labDefMode"><option value="2d"' + (App.lab3d.mode() === "2d" ? " selected" : "") + ">" + esc(T("2B (çizim ve grafik)", "2D (drawing and graphs)")) + '</option><option value="3d"' + (App.lab3d.mode() === "3d" ? " selected" : "") + ">" + esc(T("3B (gerçekçi sahne)", "3D (realistic scene)")) + "</option></select></label>" +
+        '<label class="field"><span class="field__label">' + esc(T("3B kalitesi", "3D quality")) + '</span><select class="select" id="lab3dQ">' + [["auto", T("Otomatik", "Automatic")], ["high", T("Yüksek (gölge, yumuşak kenar)", "High (shadows, antialias)")], ["low", T("Düşük (pil dostu)", "Low (battery friendly)")]].map(([k, v]) => '<option value="' + k + '"' + (App.prefs.get("lab3dQuality", "auto") === k ? " selected" : "") + ">" + esc(v) + "</option>").join("") + "</select></label></div>" +
+        '<p class="hint">' + esc(T("Her deneyin sağ üstündeki 2B / 3B düğmesiyle de istediğin an geçebilirsin. 3B'de sürükleyerek döndür, iki parmakla yakınlaştır.", "You can also switch with the 2D / 3D button on each lab. In 3D drag to rotate and pinch to zoom.")) + "</p></section>" : "") +
+      "</div>";
     App.hydrateIcons(view);
+    const dm = view.querySelector("#labDefMode"); if (dm) dm.addEventListener("change", () => { App.lab3d.setMode(dm.value); App.ui.toast(T("Kaydedildi.", "Saved.")); });
+    const dq = view.querySelector("#lab3dQ"); if (dq) dq.addEventListener("change", () => { App.prefs.set("lab3dQuality", dq.value); App.ui.toast(T("Kaydedildi.", "Saved.")); });
     const listEl = view.querySelector("#labList");
     function paint() {
       App.prefs.set("labFilter", st);
@@ -808,6 +834,8 @@
   }
 
   App.router.register("lab", render);
-  App.labs = { LABS, LINKS, mount, sectionHtml, mountIn, add, link, meta,
+  /** Fonksiyon deneyinin o anki fonksiyonu (3B görünüm kullanır) */
+  function funcOf(st) { const fam = LABS.fonksiyon.families()[st.fam]; return fam ? (x) => fam.f(x, st.q || {}, st.base) : () => NaN; }
+  App.labs = { LABS, LINKS, mount, sectionHtml, mountIn, add, link, meta, funcOf, BASE,
     util: { T, fmt, DEG, colors, arrow, label, frame, axes, plot, dot, row, niceStep, hexRgb, esc } };
 })();

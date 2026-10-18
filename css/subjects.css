@@ -203,3 +203,21 @@
 }
 .lab-lib .lab-chips .chip { font-family: var(--font); font-size: 13px; height: 34px; }
 .lab-tile__unit { font-size: 11.5px; color: var(--subj); font-weight: 600; }
+
+/* ---------------- Deney: 2B / 3B ---------------- */
+.lab__stage { position: relative; }
+.lab__mode { position: absolute; top: 8px; right: 8px; z-index: 3; display: inline-flex; padding: 3px; gap: 2px; border-radius: var(--radius-pill); background: color-mix(in srgb, var(--surface-solid) 88%, transparent); border: 1px solid var(--border-strong); box-shadow: var(--shadow-soft); }
+.lab__mode button { height: 30px; min-width: 40px; padding: 0 10px; border-radius: var(--radius-pill); border: 0; background: none; color: var(--muted); font: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer; }
+.lab__mode button[aria-checked="true"] { background: var(--accent); color: #fff; }
+.lab.is-3d .lab__cv { display: none; }
+.lab__3d { position: relative; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border); }
+.lab.is-3d.is-loading3d .lab__stage::after, .lab:not(.is-3d) .lab__3d { display: none; }
+.lab__3d canvas { display: block; width: 100% !important; touch-action: none; cursor: grab; }
+.lab__3d canvas:active { cursor: grabbing; }
+.lab__3dhint { position: absolute; left: 10px; bottom: 8px; padding: 4px 10px; border-radius: var(--radius-pill); background: rgba(0, 0, 0, .45); color: #fff; font-size: 11.5px; pointer-events: none; transition: opacity .4s; }
+.lab__3dhint.is-gone { opacity: 0; }
+.lab.is-loading3d .lab__stage { min-height: 220px; }
+.lab.is-loading3d .lab__stage::before { content: "3B yükleniyor…"; position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); font-size: 13px; }
+.lab-view-set { margin-top: 22px; }
+.lab-view-set__row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 8px 0; }
+@media (max-width: 600px) { .lab-view-set__row { grid-template-columns: 1fr; } }
