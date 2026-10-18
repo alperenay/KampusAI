@@ -86,22 +86,28 @@
     cvs.addEventListener("pointermove", (e) => {
       if (!pts.has(e.pointerId)) return;
       const prev = pts.get(e.pointerId); pts.set(e.pointerId, [e.clientX, e.clientY]);
+      if (AR.on && AR.gyro) {                         // AR: yön telefondan gelir; tek parmak sahneyi döndürür, iki parmak büyütür
+        if (pts.size === 1) root.rotation.y += (e.clientX - prev[0]) * 0.01;
+        else if (pts.size === 2) { const [a, b] = Array.from(pts.values()), d = Math.hypot(a[0] - b[0], a[1] - b[1]); if (pinch0) { const k = Math.max(0.15, Math.min(4, root.scale.x * d / pinch0)); root.scale.setScalar(k); } pinch0 = d; }
+        render(); return;
+      }
       if (pts.size === 1) { cam.th -= (e.clientX - prev[0]) * 0.008; cam.ph = Math.max(0.15, Math.min(1.52, cam.ph - (e.clientY - prev[1]) * 0.006)); }
       else if (pts.size === 2) { const [a, b] = Array.from(pts.values()), d = Math.hypot(a[0] - b[0], a[1] - b[1]); if (pinch0) cam.r = Math.max(2, Math.min(80, cam.r * pinch0 / d)); pinch0 = d; }
       place(); render();
     });
     const up = (e) => { pts.delete(e.pointerId); pinch0 = 0; };
     cvs.addEventListener("pointerup", up); cvs.addEventListener("pointercancel", up);
-    cvs.addEventListener("wheel", (e) => { e.preventDefault(); cam.r = Math.max(2, Math.min(80, cam.r * (1 + Math.sign(e.deltaY) * 0.1))); place(); render(); }, { passive: false });
+    cvs.addEventListener("wheel", (e) => { e.preventDefault(); if (AR.on && AR.gyro) { root.scale.setScalar(Math.max(0.15, Math.min(4, root.scale.x * (1 - Math.sign(e.deltaY) * 0.1)))); render(); return; } cam.r = Math.max(2, Math.min(80, cam.r * (1 + Math.sign(e.deltaY) * 0.1))); place(); render(); }, { passive: false });
 
     /* ---- Boyut ---- */
     let W = 0, H = 0;
     function size() {
-      const w = Math.max(240, Math.round(host.clientWidth)), h = Math.round(Math.min(w * (ratio || 0.62), window.innerHeight * 0.62));
+      const w = AR.on ? window.innerWidth : Math.max(240, Math.round(host.clientWidth)), h = AR.on ? window.innerHeight : Math.round(Math.min(w * (ratio || 0.62), window.innerHeight * 0.62));
       if (w === W && h === H) return;
       W = w; H = h; renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); render();
     }
     const ro = new ResizeObserver(size); ro.observe(host);
+    const AR = { on: false };
 
     let raf = 0;
     function render() { if (!W) return; cancelAnimationFrame(raf); raf = requestAnimationFrame(() => renderer.render(scene, camera)); }
@@ -162,16 +168,111 @@
     };
     function clear(obj) { obj.traverse((o) => { if (o.geometry) o.geometry.dispose(); if (o.material) { (Array.isArray(o.material) ? o.material : [o.material]).forEach((m) => { if (m.map) m.map.dispose(); m.dispose(); }); } }); }
 
+    /* =========================================================
+       AR (artırılmış gerçeklik) — v1.24
+       Arka kameranın görüntüsü sahnenin arka planı olur; telefonun jiroskopu
+       kamerayı döndürür, böylece deney masanın üstünde duruyormuş gibi görünür
+       (3 serbestlik derecesi). Jiroskop yoksa (bilgisayar) görüntü yine
+       arkada durur, sahne fareyle döndürülür. Uygulama içinde (Android WebView,
+       Windows) ve tarayıcıda çalışır; WebXR gerektirmez.
+       ========================================================= */
+    const saved = {};
+    const zee = new THREE.Vector3(0, 0, 1), qX = new THREE.Quaternion(-Math.sqrt(0.5), 0, 0, Math.sqrt(0.5));
+    const qTmp = new THREE.Quaternion(), qDev = new THREE.Quaternion(), eul = new THREE.Euler();
+    function devQuat(ev) {
+      const R = Math.PI / 180, orient = ((screen.orientation && screen.orientation.angle) || window.orientation || 0) * R;
+      eul.set((ev.beta || 0) * R, (ev.alpha || 0) * R, -(ev.gamma || 0) * R, "YXZ");
+      qDev.setFromEuler(eul); qDev.multiply(qX); qDev.multiply(qTmp.setFromAxisAngle(zee, -orient));
+      return qDev;
+    }
+    function onOrient(ev) {
+      if (!AR.on || ev.alpha == null || ev.beta == null) return;
+      AR.gyro = true;
+      const q = devQuat(ev);
+      if (!AR.q0) { AR.q0 = q.clone().invert(); AR.base = camera.quaternion.clone(); el.classList.add("is-gyro"); }
+      camera.quaternion.copy(AR.base).multiply(qTmp.copy(AR.q0).multiply(q));
+    }
+    function fitVideo() {
+      const v = AR.video, tex = AR.tex; if (!v || !tex || !v.videoWidth || !W) return;
+      const va = v.videoWidth / v.videoHeight, ca = W / H;
+      if (va > ca) { tex.repeat.set(ca / va, 1); tex.offset.set((1 - ca / va) / 2, 0); } else { tex.repeat.set(1, va / ca); tex.offset.set(0, (1 - va / ca) / 2); }
+    }
+    function arLoop() { if (!AR.on) return; fitVideo(); renderer.render(scene, camera); AR.raf = requestAnimationFrame(arLoop); }
+    const arT = (tr, en) => (App.i18n.lang === "en" ? en : tr);
+    async function arStart(o) {
+      if (AR.on) return true;
+      o = o || {};
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) throw Object.assign(new Error(arT("Bu cihazda kamera kullanılamıyor.", "Camera is not available on this device.")), { code: "no-camera" });
+      // iPhone: hareket sensörü izni dokunuşla istenmeli
+      try { if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === "function") await DeviceOrientationEvent.requestPermission(); } catch (e) { /* izin yoksa jiroskopsuz devam */ }
+      let stream;
+      try { stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: "environment" }, width: { ideal: 1280 }, height: { ideal: 720 } }, audio: false }); }
+      catch (e) { throw Object.assign(new Error(e && e.name === "NotAllowedError" ? arT("Kamera izni verilmedi. Ayarlardan KampüsAI'ye kamera izni verip tekrar dene.", "Camera permission was denied.") : arT("Kamera açılamadı.", "Could not open the camera.")), { code: "no-camera" }); }
+      const video = document.createElement("video");
+      video.setAttribute("playsinline", ""); video.muted = true; video.srcObject = stream;
+      try { await video.play(); } catch (e) { /* bazı tarayıcılar kendisi oynatır */ }
+      Object.assign(AR, { on: true, stream, video, gyro: false, q0: null, base: null });
+      AR.tex = new THREE.VideoTexture(video); AR.tex.encoding = THREE.sRGBEncoding;
+      Object.assign(saved, { bg: scene.background, fog: scene.fog, floor: floor.visible, grid: grid.visible, rs: root.scale.x, rr: root.rotation.y, cam: { r: cam.r, th: cam.th, ph: cam.ph, t: cam.t.clone() }, parent: el.parentNode, next: el.nextSibling });
+      scene.background = AR.tex; scene.fog = null; floor.visible = false; grid.visible = false;
+      root.scale.setScalar(0.6);
+      // tam ekran katman
+      el.classList.add("is-ar"); document.body.appendChild(el); document.documentElement.classList.add("ar-open");
+      const ui = document.createElement("div"); ui.className = "lab-ar";
+      ui.innerHTML = '<div class="lab-ar__top"><span class="lab-ar__badge">AR</span><span class="lab-ar__hint">' + (window.matchMedia && matchMedia("(pointer: coarse)").matches ? arT("Telefonu yavaşça çevir · iki parmakla büyüt · tek parmakla döndür", "Move your phone slowly · pinch to scale · drag to rotate") : arT("Fareyle sürükleyerek döndür · tekerlekle büyüt · Esc ile çık", "Drag to rotate · scroll to scale · Esc to exit")) + '</span><button type="button" class="lab-ar__btn" data-ar="exit" aria-label="' + arT("AR'dan çık", "Exit AR") + '">✕</button></div>' +
+        '<div class="lab-ar__bot">' + (o.side ? '<button type="button" class="lab-ar__btn lab-ar__wide" data-ar="ctl">' + arT("Ayarlar", "Controls") + "</button>" : "") +
+        (o.play ? '<button type="button" class="lab-ar__btn lab-ar__wide" data-ar="play">' + arT("Oynat / durdur", "Play / pause") + "</button>" : "") +
+        '<button type="button" class="lab-ar__btn lab-ar__wide" data-ar="center">' + arT("Ortala", "Recenter") + '</button></div><div class="lab-ar__sheet" hidden></div>';
+      el.appendChild(ui); AR.ui = ui; AR.side = o.side || null; AR.sideHome = o.side ? { parent: o.side.parentNode, next: o.side.nextSibling } : null;
+      ui.addEventListener("click", (e) => {
+        const b = e.target.closest("[data-ar]"); if (!b) return;
+        const k = b.dataset.ar;
+        if (k === "exit") arStop();
+        else if (k === "play" && o.play) { const pb = o.play.querySelector('[data-lab="play"]'); if (pb) pb.click(); }
+        else if (k === "center") { AR.q0 = null; root.rotation.y = 0; root.scale.setScalar(0.6); if (!AR.gyro) { reset(); } }
+        else if (k === "ctl" && AR.side) { const sh = ui.querySelector(".lab-ar__sheet"); if (sh.hidden) { sh.appendChild(AR.side); sh.hidden = false; } else { sh.hidden = true; } }
+      });
+      AR.key = (e) => { if (e.key === "Escape") arStop(); };
+      document.addEventListener("keydown", AR.key);
+      AR.nav = () => arStop();                        // başka sayfaya geçilirse kamera kapansın
+      window.addEventListener("hashchange", AR.nav);
+      window.addEventListener("deviceorientation", onOrient);
+      AR.resize = () => { W = 0; size(); };
+      window.addEventListener("resize", AR.resize);
+      W = 0; size(); cancelAnimationFrame(raf); arLoop();
+      return true;
+    }
+    function arStop() {
+      if (!AR.on) return;
+      AR.on = false; cancelAnimationFrame(AR.raf);
+      window.removeEventListener("deviceorientation", onOrient); window.removeEventListener("resize", AR.resize); document.removeEventListener("keydown", AR.key); window.removeEventListener("hashchange", AR.nav);
+      try { AR.stream.getTracks().forEach((t) => t.stop()); } catch (e) { /* yok */ }
+      if (AR.tex) AR.tex.dispose();
+      if (AR.side && AR.sideHome && AR.sideHome.parent) AR.sideHome.parent.insertBefore(AR.side, AR.sideHome.next && AR.sideHome.next.parentNode === AR.sideHome.parent ? AR.sideHome.next : null);
+      if (AR.ui) AR.ui.remove();
+      scene.background = saved.bg; scene.fog = saved.fog; floor.visible = saved.floor; grid.visible = saved.grid;
+      root.scale.setScalar(saved.rs); root.rotation.y = saved.rr;
+      cam.r = saved.cam.r; cam.th = saved.cam.th; cam.ph = saved.cam.ph; cam.t.copy(saved.cam.t); place();
+      el.classList.remove("is-ar", "is-gyro"); document.documentElement.classList.remove("ar-open");
+      if (saved.parent && saved.parent.isConnected) saved.parent.insertBefore(el, saved.next && saved.next.parentNode === saved.parent ? saved.next : saved.parent.firstChild); else el.remove();
+      Object.assign(AR, { stream: null, video: null, tex: null, ui: null, side: null, gyro: false, q0: null });
+      W = 0; size(); render();
+      if (AR.onStop) AR.onStop();
+    }
+
     place();
     try { D.build(S); } catch (e) { console.error("[3B] kurulum", id, e); }
     size();
     return {
       el,
-      frame(p, t, s) { try { D.update(S, p, t, s || {}); } catch (e) { console.error("[3B] güncelleme", id, e); } render(); },
-      dispose() { cancelAnimationFrame(raf); ro.disconnect(); clear(scene); renderer.dispose(); try { renderer.forceContextLoss(); } catch (e) { /* yok */ } el.remove(); },
-      resize: size
+      frame(p, t, s) { try { D.update(S, p, t, s || {}); } catch (e) { console.error("[3B] güncelleme", id, e); } if (!AR.on) render(); },
+      dispose() { arStop(); cancelAnimationFrame(raf); ro.disconnect(); clear(scene); renderer.dispose(); try { renderer.forceContextLoss(); } catch (e) { /* yok */ } el.remove(); },
+      resize: size,
+      arStart, arStop, arOn: () => AR.on, onArStop: (fn) => { AR.onStop = fn; }
     };
   }
 
-  App.lab3d = { def, has, load, mount, supported, mode, setMode, quality, DEFS };
+  /** AR düğmesi gösterilsin mi: kamera arayüzü var ve güvenli bağlam (https, uygulama, localhost) */
+  const arSupported = () => !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) && (window.isSecureContext !== false);
+  App.lab3d = { def, has, load, mount, supported, mode, setMode, quality, arSupported, DEFS };
 })();

@@ -43,6 +43,7 @@
   <link rel="stylesheet" href="css/harita.css">
   <link rel="stylesheet" href="css/tercih.css">
   <link rel="stylesheet" href="css/zaman.css">
+  <link rel="stylesheet" href="css/v124.css">
 </head>
 <body>
   <a class="a11y-skip" href="#view" data-i18n="a11y.skip">İçeriğe geç</a>
@@ -90,6 +91,9 @@
           <a class="nav__item" href="#/kontrol" data-route="kontrol">
             <span data-icon="scan"></span><span class="sidebar__label" data-i18n="nav.check">Çözümümü Kontrol Et</span>
           </a>
+          <a class="nav__item" href="#/video" data-route="video">
+            <span data-icon="play"></span><span class="sidebar__label" data-i18n="nav.video">Videodan Çalış</span>
+          </a>
           <a class="nav__item" href="#/program" data-route="program">
             <span data-icon="calendar"></span><span class="sidebar__label" data-i18n="nav.schedule">Ders Programı</span>
           </a>
@@ -98,6 +102,9 @@
           <div class="nav-group" data-group="practice">
             <button class="nav-group__head" type="button" aria-expanded="true" aria-controls="ng-practice"><span class="sidebar__label" data-i18n="nav.group.practice">Pratik</span><span data-icon="chevronD"></span></button>
             <div class="nav-group__body" id="ng-practice">
+          <a class="nav__item" href="#/yolculuk" data-route="yolculuk">
+            <span data-icon="star"></span><span class="sidebar__label" data-i18n="nav.journey">YKS Yolculuğu</span>
+          </a>
           <a class="nav__item" href="#/paragraf" data-route="paragraf">
             <span data-icon="timer"></span><span class="sidebar__label" data-i18n="nav.para">Paragraf Antrenmanı</span>
           </a>
@@ -135,6 +142,9 @@
           </a>
           <a class="nav__item" href="#/tercih" data-route="tercih">
             <span data-icon="grad"></span><span class="sidebar__label" data-i18n="nav.tercih">Tercih Robotu</span>
+          </a>
+          <a class="nav__item" href="#/kariyer" data-route="kariyer">
+            <span data-icon="compass"></span><span class="sidebar__label" data-i18n="nav.career">Kariyer Keşfi</span>
           </a>
           <a class="nav__item" href="#/rapor" data-route="rapor">
             <span data-icon="note"></span><span class="sidebar__label" data-i18n="nav.report">Haftalık Rapor</span>
@@ -360,6 +370,10 @@
   <script src="js/modules/tercih.js"></script>
   <script src="js/data/tarih-olaylar.js"></script>
   <script src="js/modules/zaman.js"></script>
+  <script src="js/modules/video.js"></script>
+  <script src="js/data/kariyer.js"></script>
+  <script src="js/modules/kariyer.js"></script>
+  <script src="js/modules/yolculuk.js"></script>
   <script src="js/modules/hub.js"></script>
   <script src="js/modules/nav.js"></script>
 

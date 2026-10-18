@@ -326,5 +326,5 @@
   }
 
   App.router.register("tercih", render);
-  App.tercih = { loadData, rankFor, netsFor, chance, rows };
+  App.tercih = { loadData, rankFor, netsFor, chance, rows, myState, estimates, CH, TYPES, UT };
 })();

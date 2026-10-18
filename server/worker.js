@@ -186,7 +186,7 @@ function yedekler(model, gorselli) {
 /** Gemma 4 API'de düşünme ayarını desteklemiyor (400): yedeğe geçerken çıkar */
 function gemmaIcin(body) {
   const b = JSON.parse(JSON.stringify(body));
-  if (b.generationConfig) delete b.generationConfig.thinkingConfig;
+  if (b.generationConfig) { delete b.generationConfig.thinkingConfig; delete b.generationConfig.mediaResolution; }
   return b;
 }
 
@@ -313,9 +313,11 @@ export default {
     }
     let body;
     try { body = await request.json(); } catch (e) { return gerr(400, "Geçersiz istek", "INVALID_ARGUMENT"); }
-    const gorselli = JSON.stringify(body.contents || []).includes('"inlineData"');
+    const govdeMetni = JSON.stringify(body.contents || []);
+    const gorselli = govdeMetni.includes('"inlineData"') || govdeMetni.includes('"fileData"');
     const dolu = new Set((izin && izin.dolu) || []);
-    const sira = yedekler(model, gorselli);
+    // Bağlantılı video (fileData) yalnızca Gemini'de çalışır: Gemma yedeklerine düşme
+    const sira = yedekler(model, gorselli).filter((n) => !(govdeMetni.includes('"fileData"') && GEMMA_MODEL.test(n)));
     const adaylar = sira.filter((n) => !dolu.has(n));
     let son = null;
     for (let i = 0; i < adaylar.length; i++) {
