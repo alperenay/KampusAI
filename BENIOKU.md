@@ -145,6 +145,14 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
   ülkeler, kıtalar, boğaz ve kanallar. *Keşfet*te bir yere dokununca bilgisi çıkar; *Haritada bul* ("Gediz nerede?")
   ve *Adını seç* (işaretli yer için 4 şık) 10 soruluk sınavlardır, rekorlar saklanır. Sürükleyerek kaydır, tekerlek /
   iki parmak / +− ile yakınlaştır. Sınırlar Natural Earth'ten; dağ, ova ve bazı akarsular yaklaşık konumlardır.
+  **Dünya:** ülkeler (dokununca başkent, kıta, bölge, nüfus, kara komşuları ve kısa not), başkentler, kıtalar, okyanus
+  ve denizler, akarsu ve göller, dağlar ve çöller, boğaz ve kanallar. **İller:** her ilin kartında plaka, bölge, 2024
+  nüfusu ve Türkiye'deki sırası, yüzölçümü, nüfus yoğunluğu, il merkezi, kıyıları, iklimi, ürün ve madenleri, öne
+  çıkanlar ve komşu iller vardır; komşu ile dokununca harita o ile geçer.
+- **Tüm araçlar ve sabitleme:** Menünün üstündeki *Tüm araçlar* sayfasında bütün özellikler kısa açıklamalarıyla
+  gruplu durur; arama kutusuna yazınca süzülür, Enter ilk sonucu açar. Bir aracın yıldızına basınca menünün üstündeki
+  *Sabitlenenler* grubuna ve asistan açılışına kısayol olarak eklenir. Son kullandığın araçlar da burada listelenir.
+  Menü artık Sabitlenenler · Çalış · Pratik (Paragraf, Harita, Deney, Oyunlar) · Takip · Araçlar gruplarından oluşur.
 - **Deneme sonucunu fotoğraftan doldur:** Yeni deneme formundaki *Fotoğraftan doldur* kartından sonuç belgesinin
   (karne) fotoğrafını çek ya da en çok 4 fotoğraf seç (optik form + cevap anahtarı da olur). Yapay zekâ ders ders
   doğru/yanlışları ve varsa konu konu yanlışları doldurur; yeşil çerçeveli kutuları kontrol edip kaydet. Konu

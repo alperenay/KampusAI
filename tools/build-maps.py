@@ -96,6 +96,22 @@ def build_tr():
         d, c = geom_path(f["geometry"], ptr, 0.55)
         prov.append({"n": code, "name": ILLER[code - 1], "ne": p["name"], "d": d, "c": [round(c[0], 1), round(c[1], 1)]})
     prov.sort(key=lambda x: x["n"])
+    # Komşu iller: ortak sınır noktası (yuvarlanmış koordinat) paylaşanlar
+    grid = {}
+    for f in adm["features"]:
+        p = f["properties"]
+        if p.get("adm0_a3") != "TUR": continue
+        code = int(p["iso_3166_2"].split("-")[1])
+        for poly in polys(f["geometry"]):
+            for lon, lat in poly[0]:
+                grid.setdefault((round(lon, 3), round(lat, 3)), set()).add(code)
+    nbr = {}
+    for k, v in grid.items():
+        for a in v:
+            for b in v:
+                if a != b: nbr.setdefault(a, {}).setdefault(b, 0); nbr[a][b] += 1
+    for pr in prov:
+        pr["nb"] = sorted(b for b, c in nbr.get(pr["n"], {}).items() if c >= 2)
     assert len(prov) == 81 and [p["n"] for p in prov] == list(range(1, 82)), "il sayısı"
 
     # Komşu ülkeler (arka plan)
@@ -153,19 +169,144 @@ def pee(lon, lat):
     return (x * WS + 2.7066 * WS, (1.3173 - y) * WS)
 
 CONT = {"Africa": "Afrika", "Asia": "Asya", "Europe": "Avrupa", "North America": "Kuzey Amerika", "South America": "Güney Amerika", "Oceania": "Okyanusya"}
+SUB = {"Australia and New Zealand": "Avustralya ve Yeni Zelanda", "Caribbean": "Karayipler", "Central America": "Orta Amerika", "Central Asia": "Orta Asya",
+       "Eastern Africa": "Doğu Afrika", "Eastern Asia": "Doğu Asya", "Eastern Europe": "Doğu Avrupa", "Melanesia": "Melanezya", "Micronesia": "Mikronezya",
+       "Middle Africa": "Orta Afrika", "Northern Africa": "Kuzey Afrika", "Northern America": "Kuzey Amerika", "Northern Europe": "Kuzey Avrupa",
+       "Polynesia": "Polinezya", "South America": "Güney Amerika", "South-Eastern Asia": "Güneydoğu Asya", "Southern Africa": "Güney Afrika",
+       "Southern Asia": "Güney Asya", "Southern Europe": "Güney Avrupa", "Western Africa": "Batı Afrika", "Western Asia": "Batı Asya", "Western Europe": "Batı Avrupa"}
+RIV = {"Nil": ["Nile", "Albert Nile", "Victoria Nile", "Bahr el Jebel", "El Bahr el Abyad", "Rosetta Branch", "Damietta Branch", "Kagera"],
+       "Mavi Nil": ["El Bahr el Azraq", "Abay"],
+       "Amazon": ["Amazonas", "Ucayali"], "Yangtze (Çang Ciang)": ["Yangtze", "Chang Jiang", "Jinsha", "Tongtian", "Tuotuo"],
+       "Sarı Irmak (Huang He)": ["Huang"], "Mississippi–Missouri": ["Mississippi", "Missouri"], "Tuna": ["Danube", "Donau", "Borcea", "Bratul Chillia", "Bratul Sfintu Gheorghe", "Bratul Sulina"],
+       "Volga": ["Volga"], "Kongo": ["Congo", "Lualaba"], "Nijer": ["Niger"], "Ganj": ["Ganges"], "Brahmaputra": ["Brahmaputra", "Yarlung", "Dihang"], "İndus": ["Indus"],
+       "Mekong": ["Mekong", "Lancang"], "Ob–İrtiş": ["Ob", "Ertis", "Ertix", "Irtysh"], "Yenisey": ["Yenisey", "Angara", "Selenge (Selenga)", "Ideriyn", "Verkhniy Yenisey", "Malyy Yenisey"],
+       "Lena": ["Lena", "Bykovskaya Protoka", "Olenekskaya Protoka"], "Amur": ["Amur", "Heilong Jiang", "Argun’"], "Ren": ["Rhine", "Rhein", "Rhin", "Nederrijn", "Lek", "Waal"],
+       "Zambezi": ["Zambezi"], "Orinoko": ["Orinoco"], "Parana": ["Paraná"], "Murray–Darling": ["Murray", "Darling", "Barwon"], "St. Lawrence": ["St. Lawrence"],
+       "Mackenzie": ["Mackenzie", "Slave", "Peace"], "Yukon": ["Yukon"], "Dinyeper": ["Dnipro", "Dnepre"], "Ural": ["Ural"], "Sen": ["Seine"], "Oder": ["Oder"],
+       "Fırat": ["Euphrates", "Firat", "Al Furat", "Shatt al Arab"], "Dicle": ["Tigris", "Dicle"], "İravadi": ["Ayeyarwady", "Irrawaddy Delta"], "Columbia": ["Columbia"],
+       "Rio Grande": ["Rio Grande"], "Orange": ["Orange"], "Senegal": ["Sénégal"], "Kolima": ["Kolyma"], "Peçora": ["Pechora"]}
+
+SKIPP = {"Talos Dome", "CENTRAL LOWLAND", "Central lowland", "KIYI OVASI", "Kıyı ovası", "Kiyi ovasi", "Punjab Bölgesi", "Amerikan Yaylası", "Betpak-Dala", "CHAÎNE ANNAMITIQUE", "Chaîne annamitique", "Siwalik Tepeleri", "İber Yarımadası", "Caatinga", "Kıyı Dağları"}
+RENP = {"Rocky Dağları": "Kayalık Dağlar", "Büyük Suayırıcı sıra dağları": "Büyük Suayırımı Dağları", "Indo-Gangetic Ovası": "Hindistan–Ganj Ovası", "Sahra": "Sahra Çölü",
+        "Kazak bozkırı": "Kazak Bozkırı", "Batı platosu": "Batı Avustralya Platosu", "Büyük artezyen havzası": "Büyük Artezyen Havzası", "Mançurya ovası": "Mançurya Ovası",
+        "Turan ovası": "Turan Ovası", "Karadeniz-Hazar stepleri": "Karadeniz–Hazar Bozkırları", "Moğol platosu": "Moğol Platosu", "Deccan yaylası": "Dekken Platosu"}
+CAPX = {"CYN": "Lefkoşa", "SDS": "Cuba", "GRL": "Nuuk", "PSX": "Ramallah", "HKG": "Hong Kong", "FLK": "Stanley", "FRO": "Tórshavn", "PRI": "San Juan", "NCL": "Numea", "PYF": "Papeete"}
 
 def build_world():
-    cn = load("ne_110m_admin_0_countries.geojson")
+    cn = load("ne_50m_admin_0_countries.geojson")
+    caps = {}
+    for f in load("ne_50m_populated_places.geojson")["features"]:
+        p = f["properties"]
+        cl = p.get("FEATURECLA", "")
+        if not cl.startswith("Admin-0 capital"): continue
+        a3 = p["ADM0_A3"]
+        if a3 in caps and caps[a3]["alt"] is False: continue
+        x, y = pee(p["LONGITUDE"], p["LATITUDE"])
+        caps[a3] = {"name": p.get("NAME_TR") or p["NAME"], "c": [round(x, 1), round(y, 1)], "alt": cl.endswith("alt")}
+    # komşular (ortak sınır noktası)
+    grid = {}
+    for f in cn["features"]:
+        a3 = f["properties"]["ADM0_A3"]
+        for poly in polys(f["geometry"]):
+            for lon, lat in poly[0]:
+                grid.setdefault((round(lon * 20), round(lat * 20)), set()).add(a3)
+    nbr = {}
+    for v in grid.values():
+        for a in v:
+            for b in v:
+                if a != b: nbr.setdefault(a, {}).setdefault(b, 0); nbr[a][b] += 1
     out = []
     for f in cn["features"]:
         p = f["properties"]
         if p["CONTINENT"] in ("Antarctica", "Seven seas (open ocean)"): continue
-        d, c = geom_path(f["geometry"], pee, 0.35, minarea=0.4)
+        d, c = geom_path(f["geometry"], pee, 0.22, minarea=0.05)
         if not d: continue
-        out.append({"id": p["ADM0_A3"], "name": p.get("NAME_TR") or p["NAME"], "en": p["NAME"], "cont": CONT.get(p["CONTINENT"], p["CONTINENT"]),
-                    "cap": None, "c": [round(c[0], 1), round(c[1], 1)], "d": d})
+        a3 = p["ADM0_A3"]
+        cap = caps.get(a3)
+        out.append({"id": a3, "name": p.get("NAME_TR") or p["NAME"], "en": p["NAME"], "cont": CONT.get(p["CONTINENT"], p["CONTINENT"]),
+                    "sub": SUB.get(p["SUBREGION"], ""), "pop": p.get("POP_EST"), "popY": p.get("POP_YEAR"),
+                    "cap": cap["name"] if cap else CAPX.get(a3), "capC": cap["c"] if cap else None,
+                    "nb": sorted(b for b, k in nbr.get(a3, {}).items() if k >= 2),
+                    "c": [round(c[0], 1), round(c[1], 1)], "d": d})
     out.sort(key=lambda x: x["name"])
-    return {"w": round(2 * 2.7066 * WS), "h": round(2 * 1.3173 * WS * 0.86), "proj": "equalEarth", "scale": WS, "countries": out}
+    ids = {c["id"] for c in out}
+    for c in out: c["nb"] = [b for b in c["nb"] if b in ids]
+
+    rev = {e: k for k, v in RIV.items() for e in v}
+    rv = {}
+    for f in load("ne_50m_rivers_lake_centerlines.geojson")["features"]:
+        nm = rev.get(f["properties"].get("name"))
+        if not nm or not f["geometry"]: continue
+        for ln in lines(f["geometry"]):
+            s2 = ring_path(ln, pee, 0.3, closed=False, minlen=2)
+            if s2: rv.setdefault(nm, []).append(s2)
+    rivers = [{"name": k, "d": "".join(v)} for k, v in rv.items()]
+
+    LK = {"Lake Baikal": "Baykal Gölü", "Lake Victoria": "Victoria Gölü", "Lake Tanganyika": "Tanganika Gölü", "Lake Malawi": "Malavi Gölü",
+          "Lake Superior": "Superior Gölü", "Lake Michigan": "Michigan Gölü", "Lake Huron": "Huron Gölü", "Lake Erie": "Erie Gölü", "Lake Ontario": "Ontario Gölü",
+          "Lago Titicaca": "Titikaka Gölü", "Lake Chad": "Çad Gölü", "Lake Ladoga": "Ladoga Gölü", "Lake Onega": "Onega Gölü", "Lake Balkhash": "Balkaş Gölü",
+          "Great Bear Lake": "Büyük Ayı Gölü", "Great Slave Lake": "Büyük Esir Gölü", "Lake Winnipeg": "Winnipeg Gölü", "Great Salt Lake": "Büyük Tuz Gölü",
+          "Issyk-Kul": "Issık Göl", "Lake Van": "Van Gölü", "Lake Tuz": "Tuz Gölü", "Lake Urmia": "Urmiye Gölü", "Lake Sevan": "Sevan Gölü",
+          "Lake Geneva": "Cenevre Gölü", "Lake Constance": "Konstanz Gölü", "Lake Balaton": "Balaton Gölü", "Lake Turkana": "Turkana Gölü", "Lake Tana": "Tana Gölü",
+          "Lake Volta": "Volta Gölü", "Lake Kariba": "Kariba Gölü", "Lago de Nicaragua": "Nikaragua Gölü", "Vänern": "Vänern Gölü", "Dead Sea": "Lut Gölü (Ölü Deniz)",
+          "Sea of Galilee": "Taberiye Gölü", "Lake Poyang": "Poyang Gölü", "Aral Sea": "Aral Gölü", "North Aral Sea": "Aral Gölü", "South Aral Sea": "Aral Gölü",
+          "Lake Kivu": "Kivu Gölü", "Lake Albert": "Albert Gölü", "Lake Nasser": "Nasır Gölü", "Lake Eyre": "Eyre Gölü"}
+    lakes = []
+    for f in load("ne_50m_lakes.geojson")["features"]:
+        p = f["properties"]
+        en = p.get("name") or ""
+        nm = LK.get(en)
+        if not nm and en.startswith("Lake ") and LK.get(en): nm = LK[en]
+        if not nm: continue
+        d, c = geom_path(f["geometry"], pee, 0.25)
+        if not d: continue
+        lakes.append({"name": nm, "en": en, "d": d, "c": [round(c[0], 1), round(c[1], 1)]})
+
+    seas = []
+    for f in load("ne_110m_geography_marine_polys.geojson")["features"]:
+        p = f["properties"]
+        nm = p.get("name_tr") or p.get("name")
+        if not nm: continue
+        d, c = geom_path(f["geometry"], pee, 0.4)
+        if not d: continue
+        seas.append({"name": nm, "en": p.get("name"), "cls": p.get("featurecla"), "d": d, "c": [round(c[0], 1), round(c[1], 1)]})
+
+    phys = []
+    for f in load("ne_50m_geography_regions_polys.geojson")["features"]:
+        p = f["properties"]
+        cl = p.get("FEATURECLA") or p.get("featurecla")
+        rk = p.get("SCALERANK") or p.get("scalerank") or 9
+        if cl not in ("Range/mtn", "Desert", "Plateau", "Plain", "Basin") or rk > 2: continue
+        nm = p.get("NAME_TR") or p.get("NAME")
+        if not nm or "Antarkt" in nm or "Transantarkt" in nm: continue
+        if nm in SKIPP or nm.startswith("Caat"): continue
+        if polys(f["geometry"]) and polys(f["geometry"])[0][0][0][1] < -58: continue
+        if nm.isupper(): nm = nm[:1] + nm[1:].replace("I", "ı").replace("İ", "i").lower()
+        nm = RENP.get(nm, nm)
+        d, c = geom_path(f["geometry"], pee, 0.4)
+        if not d: continue
+        phys.append({"name": nm, "cls": cl, "d": d, "c": [round(c[0], 1), round(c[1], 1)]})
+    peaks = []
+    for f in load("ne_50m_geography_regions_elevation_points.geojson")["features"]:
+        p = f["properties"]
+        nm = p.get("name_tr") or p.get("name")
+        el = p.get("elevation")
+        if not nm or el is None or el < 3000 and el > -100: continue
+        lon, lat = f["geometry"]["coordinates"]
+        if lat < -60: continue
+        x, y = pee(lon, lat)
+        peaks.append({"name": nm, "el": el, "c": [round(x, 1), round(y, 1)]})
+    peaks.sort(key=lambda x: -x["el"])
+    falls = []
+    WANT = {"Niagara Falls", "Salto Angel", "Iguazu Falls", "Victoria Falls", "Cape of Good Hope", "Cabo de Hornos", "Cape Agulhas", "Nunap Isua", "Cape York"}
+    for f in load("ne_50m_geography_regions_points.geojson")["features"]:
+        p = f["properties"]
+        if p.get("name") not in WANT: continue
+        lon, lat = f["geometry"]["coordinates"]
+        x, y = pee(lon, lat)
+        falls.append({"name": p.get("name_tr") or p["name"], "cls": p.get("featurecla"), "c": [round(x, 1), round(y, 1)]})
+    return {"w": round(2 * 2.7066 * WS), "h": round(2 * 1.3173 * WS * 0.86), "proj": "equalEarth", "scale": WS, "countries": out,
+            "rivers": rivers, "lakes": lakes, "seas": seas, "phys": phys, "peaks": peaks[:40], "points": falls}
 
 if __name__ == "__main__":
     tr = build_tr()
@@ -175,4 +316,4 @@ if __name__ == "__main__":
         fh.write(hdr + "(function(){App.data=App.data||{};App.data.mapTR=" + json.dumps(tr, ensure_ascii=False, separators=(",", ":")) + ";})();\n")
     with open(os.path.join(OUT, "harita-dunya.js"), "w", encoding="utf-8") as fh:
         fh.write(hdr + "(function(){App.data=App.data||{};App.data.mapWorld=" + json.dumps(w, ensure_ascii=False, separators=(",", ":")) + ";})();\n")
-    print("tr", len(tr["prov"]), "il,", len(tr["nb"]), "komşu,", len(tr["rivers"]), "akarsu,", len(tr["lakes"]), "göl;", "dünya", len(w["countries"]), "ülke")
+    print("tr", len(tr["prov"]), "il,", len(tr["nb"]), "komşu,", len(tr["rivers"]), "akarsu,", len(tr["lakes"]), "göl;", "dünya", len(w["countries"]), "ülke", len(w["rivers"]), "akarsu", len(w["lakes"]), "göl", len(w["seas"]), "deniz", len(w["phys"]), "fiziki", len(w["peaks"]), "zirve", len(w["points"]), "nokta")

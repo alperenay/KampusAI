@@ -1,0 +1,138 @@
+/* =========================================================
+   hub.js — "Tüm araçlar" sayfası, sabitlenenler ve son kullanılanlar (v1.22)   (#/araclar)
+
+   • Bütün özellikler tek sayfada, kısa açıklamalarıyla ve gruplu; üstte arama
+     kutusu (yazdıkça süzer, Enter ilk sonucu açar).
+   • Her aracın yıldızı ile sabitleme: sabitlenenler sol menünün üstünde
+     "Sabitlenenler" grubunda ve asistan açılışında kısayol olarak görünür.
+   • Son kullanılan araçlar otomatik tutulur (tercih "recentTools").
+   ========================================================= */
+(function () {
+  const { esc } = App.utils;
+  const T = (tr, en) => (App.i18n.lang === "en" ? en : tr);
+  const MAX_PINS = 8, MAX_RECENT = 6;
+
+  /* [rota, simge, ad (i18n anahtarı ya da [tr,en]), açıklama [tr,en], grup, arama kelimeleri] */
+  const TOOLS = [
+    ["bugun", "sun", "nav.today", ["Bugünkü program, görevler ve öneriler", "Today's plan, tasks and suggestions"], "start", "gün plan görev"],
+    ["", "sparkle", "nav.newChat", ["Yapay zekâ asistanına soru sor, fotoğraftan çöz", "Ask the AI assistant, solve from a photo"], "start", "asistan sohbet soru yapay zeka"],
+    ["konular", "book", "nav.topics", ["9–12. sınıf konu anlatımları ve testler", "Grade 9–12 lessons and quizzes"], "study", "ders konu anlatım müfredat"],
+    ["kartlar", "layers", "nav.cards", ["Kutu sistemiyle hap bilgi tekrarı", "Spaced-repetition flashcards"], "study", "kart flashcard tekrar"],
+    ["yanlislar", "bookmark", "nav.mistakes", ["Yanlışların aralıklı tekrarla geri gelir", "Your mistakes come back for review"], "study", "yanlış hata tekrar"],
+    ["kontrol", "scan", "nav.check", ["Çözümünün fotoğrafını çek ya da ekrana yaz; adım adım kontrol", "Photo or handwrite your solution for a step check"], "study", "çözüm kontrol el yazısı"],
+    ["program", "calendar", "nav.schedule", ["Haftalık ders programı ve hatırlatıcılar", "Weekly study plan and reminders"], "study", "program takvim hatırlatma"],
+    ["paragraf", "timer", "nav.para", ["Okuma hızı ve soru başına süre (TYT Türkçe)", "Reading speed and time per question"], "practice", "paragraf okuma hız türkçe"],
+    ["atlas", "globe", "nav.geomap", ["Türkiye ve dünya haritası; keşfet ve sına", "Turkey and world map; explore and quiz"], "practice", "harita coğrafya il ülke başkent"],
+    ["lab", "lightbulb", "nav.lab", ["67 fizik, kimya, biyoloji deneyi; 2B ya da 3B", "67 science labs in 2D or 3D"], "practice", "deney fizik kimya biyoloji simülasyon 3b"],
+    ["oyunlar", "game", "nav.games", ["Derslere göre kısa oyunlar", "Short subject games"], "practice", "oyun eğlence"],
+    ["denemeler", "chart", "nav.exams", ["TYT–AYT netleri; sonuç belgesini fotoğraftan oku", "TYT–AYT scores; read result sheets from a photo"], "track", "deneme net tyt ayt"],
+    ["simulasyon", "quiz", "nav.sim", ["Zayıf konulardan süreli mini deneme", "Timed mini exam from weak topics"], "track", "simülasyon deneme sınav"],
+    ["harita", "map", "nav.map", ["Kazanımların durumu ve günlük görev", "Mastery of every outcome"], "track", "öğrenme haritası kazanım"],
+    ["kok", "roots", "nav.roots", ["Zorlandığın konunun temeldeki eksiği", "Find the root gap behind a weak topic"], "track", "kök eksik analiz"],
+    ["puan", "target", "nav.score", ["Tahmini puan ve bölüm hedefi", "Estimated score and target"], "track", "puan hedef sıralama bölüm"],
+    ["rapor", "note", "nav.report", ["Haftalık gelişim özeti", "Weekly progress summary"], "track", "rapor haftalık"],
+    ["odak", "timer", "nav.focus", ["Pomodoro sayacı ve çalışma süresi", "Pomodoro timer and study time"], "tools", "odak pomodoro sayaç"],
+    ["hesap", "calc", "nav.calc", ["Bilimsel hesap makinesi", "Scientific calculator"], "tools", "hesap makinesi"],
+    ["sinif", "grad", "nav.class", ["Öğretmen için anonim sınıf özeti", "Anonymous class overview for teachers"], "tools", "sınıf öğretmen"],
+    ["hakkinda", "info", "nav.about", ["Proje, gizlilik, kaynakça ve lisanslar", "Project, privacy, references, licences"], "tools", "hakkında kaynakça lisans"]
+  ];
+  const GROUPS = { start: ["Başla", "Start"], study: ["Çalış", "Study"], practice: ["Pratik", "Practice"], track: ["Takip", "Track"], tools: ["Araçlar", "Tools"] };
+  const title = (x) => (Array.isArray(x[2]) ? T(x[2][0], x[2][1]) : App.t(x[2]));
+  const desc = (x) => T(x[3][0], x[3][1]);
+  const byRoute = (r) => TOOLS.find((x) => x[0] === r);
+  const norm = (s) => (App.nav && App.nav.norm ? App.nav.norm(s) : String(s).toLowerCase());
+
+  const pins = () => (App.prefs.get("pinnedTools", []) || []).filter((r) => byRoute(r));
+  const recents = () => (App.prefs.get("recentTools", []) || []).filter((r) => byRoute(r));
+  function togglePin(r) {
+    let p = pins();
+    if (p.indexOf(r) >= 0) p = p.filter((x) => x !== r);
+    else { p.push(r); if (p.length > MAX_PINS) p = p.slice(-MAX_PINS); }
+    App.prefs.set("pinnedTools", p);
+    paintSidebar();
+    return p.indexOf(r) >= 0;
+  }
+
+  /* ---------------- Sol menüdeki "Sabitlenenler" ---------------- */
+  function paintSidebar() {
+    const box = document.getElementById("navPins"), body = document.getElementById("ng-pins");
+    if (!box || !body) return;
+    const p = pins();
+    box.hidden = !p.length;
+    body.innerHTML = p.map((r) => { const x = byRoute(r); return '<a class="nav__item" href="#/' + x[0] + '" data-route="' + x[0] + '"><span data-icon="' + x[1] + '"></span><span class="sidebar__label">' + esc(title(x)) + "</span></a>"; }).join("");
+    App.hydrateIcons(body);
+    body.querySelectorAll(".nav__item").forEach((a) => { a.title = a.textContent.trim(); });
+    if (App.router.syncNav) App.router.syncNav();
+  }
+
+  /** Asistan açılışı için kısayol şeridi (sabitlenenler, yoksa son kullanılanlar) */
+  function homeStripHtml() {
+    const list = pins().length ? pins() : recents().filter((r) => r !== "" && r !== "bugun").slice(0, 4);
+    if (!list.length) return "";
+    return '<nav class="home-pins" aria-label="' + esc(pins().length ? T("Sabitlenenler", "Pinned") : T("Son kullanılanlar", "Recent")) + '">' +
+      list.map((r) => { const x = byRoute(r); return '<a href="#/' + x[0] + '">' + App.icon(x[1]) + "<span>" + esc(title(x)) + "</span></a>"; }).join("") +
+      '<a href="#/araclar" class="home-pins__all">' + App.icon("widget") + "<span>" + esc(T("Tümü", "All")) + "</span></a></nav>";
+  }
+
+  /* ---------------- Son kullanılanlar ---------------- */
+  window.addEventListener("da:route", (e) => {
+    const r = e.detail && e.detail.name;
+    if (r == null || r === "araclar" || !byRoute(r) || r === "") return;
+    const list = [r].concat(recents().filter((x) => x !== r)).slice(0, MAX_RECENT);
+    App.prefs.set("recentTools", list);
+  });
+
+  /* ---------------- Sayfa ---------------- */
+  function tile(x, pinned) {
+    return '<div class="hub-tile" data-r="' + esc(x[0]) + '" data-q="' + esc(norm(title(x) + " " + desc(x) + " " + x[5])) + '">' +
+      '<a class="hub-tile__link" href="#/' + x[0] + '"><span class="hub-tile__ico">' + App.icon(x[1]) + '</span><span class="hub-tile__txt"><b>' + esc(title(x)) + "</b><small>" + esc(desc(x)) + "</small></span></a>" +
+      '<button type="button" class="hub-pin' + (pinned ? " is-on" : "") + '" data-pin="' + esc(x[0]) + '" aria-pressed="' + pinned + '" aria-label="' + esc((pinned ? T("Sabitlemeyi kaldır: ", "Unpin: ") : T("Sabitle: ", "Pin: ")) + title(x)) + '">' + App.icon("star") + "</button></div>";
+  }
+  function render(view) {
+    App.setTitle(T("Tüm araçlar", "All tools"));
+    const p = pins(), rc = recents();
+    view.innerHTML = '<div class="page hub">' +
+      '<div class="page-head"><div><h1>' + esc(T("Tüm araçlar", "All tools")) + "</h1><p>" +
+        esc(T("Aradığını yaz ya da gruptan seç. Yıldızla sabitlediklerin menünün üstünde ve asistan açılışında görünür.", "Search or pick from a group. Starred tools appear at the top of the menu and on the home screen.")) + "</p></div></div>" +
+      '<div class="hub-search"><span aria-hidden="true">' + App.icon("search") + '</span><input type="search" id="hubQ" autocomplete="off" placeholder="' + esc(T("Araç ara: harita, deney, paragraf…", "Search: map, lab, reading…")) + '" aria-label="' + esc(T("Araç ara", "Search tools")) + '" aria-describedby="hubCount"><span class="hint" id="hubCount" aria-live="polite"></span></div>' +
+      (rc.length ? '<section class="hub-sec" data-sec="recent"><h2>' + esc(T("Son kullanılanlar", "Recently used")) + '</h2><div class="hub-recent">' +
+        rc.map((r) => { const x = byRoute(r); return '<a href="#/' + x[0] + '">' + App.icon(x[1]) + "<span>" + esc(title(x)) + "</span></a>"; }).join("") + "</div></section>" : "") +
+      Object.keys(GROUPS).map((g) => '<section class="hub-sec" data-sec="' + g + '"><h2>' + esc(T(GROUPS[g][0], GROUPS[g][1])) + '</h2><div class="hub-grid">' +
+        TOOLS.filter((x) => x[4] === g).map((x) => tile(x, p.indexOf(x[0]) >= 0)).join("") + "</div></section>").join("") +
+      '<p class="hub-none" id="hubNone" hidden>' + esc(T("Eşleşen araç yok. Ctrl+K ile konu ve sohbetlerde de arayabilirsin.", "No matching tool. Use Ctrl+K to search lessons and chats too.")) + "</p>" +
+      '<section class="card hub-tips"><h2>' + App.icon("info") + esc(T("Kısayollar ve erişilebilirlik", "Shortcuts & accessibility")) + "</h2><ul>" +
+        "<li><kbd>Ctrl</kbd> + <kbd>K</kbd> " + esc(T("ya da", "or")) + " <kbd>/</kbd> — " + esc(T("her şeyi ara (konular, sayfalar, sohbetler)", "search everything")) + "</li>" +
+        "<li><kbd>Tab</kbd> — " + esc(T("sayfadaki öğeler arasında gezin; ilk Tab \"İçeriğe geç\" bağlantısını gösterir", "move between items; the first Tab shows \"Skip to content\"")) + "</li>" +
+        "<li>" + esc(T("Üst çubuktaki erişilebilirlik düğmesinden yazı boyutu, yüksek karşıtlık, disleksi yazı tipi ve sesli okuma ayarlanır.", "The accessibility button in the top bar sets text size, high contrast, dyslexia font and read-aloud.")) + "</li>" +
+      "</ul></section>" +
+      "</div>";
+    App.hydrateIcons(view);
+    const q = view.querySelector("#hubQ"), count = view.querySelector("#hubCount");
+    const filter = () => {
+      const v = norm(q.value), words = v.split(" ").filter(Boolean);
+      let n = 0;
+      view.querySelectorAll(".hub-tile").forEach((tEl) => { const ok = !words.length || words.every((w) => tEl.dataset.q.indexOf(w) >= 0); tEl.hidden = !ok; if (ok) n++; });
+      view.querySelectorAll(".hub-sec").forEach((sec) => { sec.hidden = sec.dataset.sec === "recent" ? !!words.length : !sec.querySelector(".hub-tile:not([hidden])"); });
+      view.querySelector("#hubNone").hidden = n > 0;
+      count.textContent = words.length ? T(n + " araç", n + " tools") : "";
+    };
+    q.addEventListener("input", filter);
+    q.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") { const f = view.querySelector(".hub-tile:not([hidden]) .hub-tile__link"); if (f) { e.preventDefault(); location.hash = f.getAttribute("href"); } }
+      else if (e.key === "Escape") { q.value = ""; filter(); }
+    });
+    view.querySelectorAll("[data-pin]").forEach((b) => b.addEventListener("click", () => {
+      const r = b.dataset.pin, on = togglePin(r), x = byRoute(r);
+      b.classList.toggle("is-on", on); b.setAttribute("aria-pressed", on);
+      b.setAttribute("aria-label", (on ? T("Sabitlemeyi kaldır: ", "Unpin: ") : T("Sabitle: ", "Pin: ")) + title(x));
+      App.ui.toast(on ? T(title(x) + " menüye sabitlendi", title(x) + " pinned") : T("Sabitleme kaldırıldı", "Unpinned"));
+    }));
+    if (window.matchMedia && window.matchMedia("(min-width: 900px)").matches) q.focus();
+  }
+
+  App.router.register("araclar", render);
+  App.hub = { TOOLS, pins, recents, togglePin, paintSidebar, homeStripHtml };
+  // Menü hazır olunca sabitlenenleri çiz; dil değişince yeniden
+  setTimeout(paintSidebar, 0);
+  if (App.i18n && App.i18n.onChange) App.i18n.onChange(paintSidebar);
+})();
