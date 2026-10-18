@@ -221,6 +221,14 @@
           (prev ? '<a class="btn" href="' + link(prev) + '">' + App.icon("chevronL") + esc(t("cur.prev")) + "</a>" : "<span></span>") +
           (next ? '<a class="btn" href="' + link(next) + '">' + esc(t("cur.next")) + App.icon("chevron") + "</a>" : "") +
         "</nav>" +
+        // Telefonda alt çubuk: önceki/sonraki, test, anlat ve "tamamlandı" başparmağın altında
+        (ct ? '<nav class="lesson-dock" aria-label="' + esc(t("cur.dock")) + '">' +
+          (prev ? '<a class="lesson-dock__btn" href="' + link(prev) + '">' + App.icon("chevronL") + "<span>" + esc(t("cur.dockPrev")) + "</span></a>" : '<span class="lesson-dock__btn is-off" aria-hidden="true"></span>') +
+          '<a class="lesson-dock__btn" href="#/test/' + key + '">' + App.icon("quiz") + "<span>" + esc(t("cur.dockQuiz")) + "</span></a>" +
+          '<a class="lesson-dock__btn" href="#/anlat/' + key + '">' + App.icon("mic") + "<span>" + esc(t("cur.dockExplain")) + "</span></a>" +
+          '<button class="lesson-dock__btn" type="button" id="dockDone"></button>' +
+          (next ? '<a class="lesson-dock__btn" href="' + link(next) + '">' + App.icon("chevron") + "<span>" + esc(t("cur.dockNext")) + "</span></a>" : '<span class="lesson-dock__btn is-off" aria-hidden="true"></span>') +
+        "</nav>" : "") +
       "</div>";
 
     if (!ct) runGeneration(view, (onStage) => App.lessons.generateLesson(key, { onStage }));
@@ -236,7 +244,15 @@
       btn.innerHTML = App.icon(isDone ? "checkCircle" : "check") + esc(isDone ? t("cur.done") : t("cur.markDone"));
       btn.classList.toggle("btn--primary", !isDone);
       btn.classList.toggle("badge--good", isDone);
+      const dd = view.querySelector("#dockDone");
+      if (dd) {
+        dd.innerHTML = App.icon(isDone ? "checkCircle" : "check") + "<span>" + esc(isDone ? t("cur.dockDone") : t("cur.dockMark")) + "</span>";
+        dd.classList.toggle("is-on", isDone);
+        dd.setAttribute("aria-pressed", String(isDone));
+      }
     };
+    const dockDone = view.querySelector("#dockDone");
+    if (dockDone) dockDone.addEventListener("click", () => btn.click());
     paint();
     btn.addEventListener("click", async () => {
       isDone = !isDone;

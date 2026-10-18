@@ -81,6 +81,7 @@
   function bindChrome() {
     $("#sidebarToggle").addEventListener("click", () => setCollapsed(!app.classList.contains("is-collapsed")));
     $("#menuBtn").addEventListener("click", () => setMenuOpen(true));
+    $("#tabMore").addEventListener("click", () => setMenuOpen(!app.classList.contains("is-menu-open")));
     $("#scrim").addEventListener("click", () => setMenuOpen(false));
     window.addEventListener("resize", App.utils.debounce(() => {
       setCollapsed(App.prefs.get("sidebarCollapsed", false));

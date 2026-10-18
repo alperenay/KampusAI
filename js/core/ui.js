@@ -33,9 +33,25 @@
     backdrop.addEventListener("mousedown", (e) => { if (e.target === backdrop) close(); });
     backdrop.querySelectorAll("[data-close]").forEach((b) => b.addEventListener("click", close));
 
-    const api = { el: backdrop.querySelector(".modal"), close };
+    // Telefonda alttan açılan sayfa: başlıktan aşağı çekince kapanır
+    const sheet = backdrop.querySelector(".modal"), head = backdrop.querySelector(".modal__head");
+    let y0 = null, dy = 0;
+    head.addEventListener("touchstart", (e) => { if (window.innerWidth > 600 || e.target.closest("button")) return; y0 = e.touches[0].clientY; dy = 0; sheet.classList.add("is-dragging"); }, { passive: true });
+    head.addEventListener("touchmove", (e) => { if (y0 == null) return; dy = Math.max(0, e.touches[0].clientY - y0); sheet.style.transform = "translateY(" + dy + "px)"; }, { passive: true });
+    const endDrag = () => {
+      if (y0 == null) return;
+      y0 = null; sheet.classList.remove("is-dragging");
+      if (dy > 90) { close(); return; }
+      sheet.style.transition = "transform .18s"; sheet.style.transform = "";
+      setTimeout(() => { sheet.style.transition = ""; }, 200);
+    };
+    head.addEventListener("touchend", endDrag); head.addEventListener("touchcancel", endDrag);
+
+    const api = { el: sheet, close };
     if (opts.onMount) opts.onMount(api);
-    const first = backdrop.querySelector("input, select, textarea, button.btn--primary");
+    // Dokunmatik ekranda yazı kutusuna otomatik odaklanma klavyeyi açıp pencerenin yarısını kapatır
+    const coarse = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+    const first = coarse ? null : backdrop.querySelector("input, select, textarea, button.btn--primary");
     if (first) setTimeout(() => first.focus(), 30);
     return api;
   }

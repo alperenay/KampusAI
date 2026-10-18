@@ -48,7 +48,9 @@
       if (route === "") active = r.name === "";
       else if (route.indexOf("/") > -1) active = r.path === route;          // tam eşleşme (ör. denemeler/yeni)
       else active = r.name === route && !(r.name === "denemeler" && r.params[0] === "yeni");
+      if (!active && a.dataset.routeAlso) active = a.dataset.routeAlso.split(",").includes(r.name);
       a.classList.toggle("is-active", active);
+      if (a.classList.contains("tabbar__item")) { if (active) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); }
     });
     document.querySelectorAll("[data-path]").forEach((a) => {
       a.classList.toggle("is-active", r.path === a.dataset.path || r.path.indexOf(a.dataset.path + "/") === 0);

@@ -74,6 +74,14 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
   Her yanıtın altında hangi kayıtların kullanıldığı ve hangi modellerin çalıştığı görünür.
 - Sohbetler sol menüde **Sohbetler** altında saklanır; yedek dosyasına da dahildir.
 - Bir yanıtın altındaki 🔖 düğmesi soruyu ve çözümü **Yanlış Defteri**'ne ekler.
+- **Sesli öğretmen:** Yazı kutusundaki 🎙 düğmesi. Konuşursun, asistan sesli cevap verir, sonra yeniden dinler.
+  Düğmeler ekranın altında: **Bitir** (sohbeti kaydedip kapatır), ortada duruma göre **Gönder / Sustur / Vazgeç / Devam et**
+  ve **Duraklat** (mikrofonu kapatır). Küreye dokunmak ortadaki düğmeyle aynı işi yapar; telefonun geri tuşu da kapatır.
+
+### Telefonda kullanım
+- Altta **Asistan, Bugün, Konular, Denemeler** sekmeleri ve tüm bölümler için **Menü** var; klavye açılınca sekmeler gizlenir.
+- Pencereler (ayarlar, onaylar) alttan açılır; **Kaydet / Vazgeç** gibi düğmeler en altta durur, başlığı aşağı çekince kapanır.
+- Konu sayfasında altta **Önceki · Test · Anlat · Tamamla · Sonraki** kısayolları; deneme simülasyonunda önceki/sonraki hep altta.
 
 ## 3a. Çalışma araçları
 
