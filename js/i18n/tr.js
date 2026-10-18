@@ -486,6 +486,8 @@ App.locales.tr = {
   "ais.speed.smart": "Daha güçlü",
   "ais.speedHint": "Hızlı: Flash-Lite modeli, yanıt 1-2 saniyede başlar ve günlük kotası geniştir. Daha güçlü: Flash modeli, zor sorularda biraz daha iyi ama yanıtın başlaması 5-10 saniye sürebilir.",
   "nav.mistakes": "Yanlış Defteri",
+  "nav.cards": "Hap Kartları",
+  "nav.lab": "Deney Laboratuvarı",
   "nav.focus": "Odak Sayacı",
   "nav.score": "Puan ve Hedef",
   "nav.calc": "Hesap Makinesi",

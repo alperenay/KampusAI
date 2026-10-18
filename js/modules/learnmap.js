@@ -114,13 +114,20 @@
       m: M.get(tp.key) || { score: null, status: "unknown" }
     }));
     const review = { due: mc.due, done: mc.due === 0 };
-    const doneCount = topics.filter((x) => x.done).length + (review.done ? 1 : 0);
-    const total = topics.length + 1;
+    // Hap bilgi kartları: deste boş değilse günlük göreve eklenir
+    let cards = null;
+    if (App.cards) {
+      await App.cards.autoAdd().catch(() => 0);
+      const cs = await App.cards.stats().catch(() => null);
+      if (cs && cs.total) cards = { todo: cs.todo, due: cs.due, done: cs.todo === 0 };
+    }
+    const doneCount = topics.filter((x) => x.done).length + (review.done ? 1 : 0) + (cards && cards.done ? 1 : 0);
+    const total = topics.length + 1 + (cards ? 1 : 0);
     if (doneCount === total && !plan.completed) {
       plan.completed = true;
       await App.db.put("meta", plan);
     }
-    return { plan, topics, review, doneCount, total, completed: !!plan.completed };
+    return { plan, topics, review, cards, doneCount, total, completed: !!plan.completed };
   }
 
   async function markTopic(key, on) {
@@ -148,12 +155,15 @@
     const rev = '<li class="daily-task' + (d.review.done ? " is-done" : "") + '"><span class="daily-check">' + App.icon(d.review.done ? "checkCircle" : "circle") + "</span>" +
       '<div class="daily-task__body"><b>' + esc(d.review.done ? T("Bugün tekrar edilecek yanlış kalmadı", "No mistakes due today") : T(d.review.due + " yanlışın tekrar zamanı geldi", d.review.due + " mistakes are due")) + "</b>" +
       (d.review.done ? "" : '<span class="daily-task__acts"><a class="btn btn--sm" href="#/yanlislar">' + App.icon("bookmark") + esc(T("Tekrar et", "Review")) + "</a></span>") + "</div></li>";
+    const crd = !d.cards ? "" : '<li class="daily-task' + (d.cards.done ? " is-done" : "") + '"><span class="daily-check">' + App.icon(d.cards.done ? "checkCircle" : "circle") + "</span>" +
+      '<div class="daily-task__body"><b>' + esc(d.cards.done ? T("Bugünkü kart tekrarı tamam", "Today's flashcards done") : T(d.cards.todo + " hap kartı seni bekliyor", d.cards.todo + " flashcards waiting")) + "</b>" +
+      (d.cards.done ? "" : '<span class="daily-task__acts"><a class="btn btn--sm" href="#/kartlar/calis">' + App.icon("layers") + esc(T("Kartları çalış", "Study cards")) + "</a></span>") + "</div></li>";
     return '<section class="card daily' + (compact ? " daily--compact" : "") + '">' +
       '<div class="daily__head"><div class="card__title">' + App.icon("target") + esc(T("Bugünün 20 dakikası", "Today's 20 minutes")) + "</div>" +
       '<span class="badge' + (d.completed ? " badge--good" : "") + '">' + d.doneCount + "/" + d.total + "</span></div>" +
       '<p class="hint">' + esc(d.completed ? T("Bugünün görevleri tamam, harika! Yarın yeni konular gelecek.", "All done for today, great! New topics tomorrow.")
         : T("Hedefine en çok puan getirecek konular ve tekrar zamanı gelen yanlışların.", "The topics that add the most to your target, plus mistakes due for review.")) + "</p>" +
-      '<ol class="daily-list">' + rows + rev + "</ol></section>";
+      '<ol class="daily-list">' + rows + rev + crd + "</ol></section>";
   }
 
   /* ---------------- Harita sayfası ---------------- */

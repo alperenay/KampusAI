@@ -80,7 +80,10 @@
   async function mastery() {
     const [quizzes, explains, mistakes, checks, progress] = await Promise.all(["quizzes", "explains", "mistakes", "checks", "progress"].map((s) => App.db.getAll(s).catch(() => [])));
     const by = {};
-    const slot = (k) => (by[k] = by[k] || { quiz: [], fey: [], chk: [], mis: 0, done: false, lastQuiz: "" });
+    const slot = (k) => (by[k] = by[k] || { quiz: [], fey: [], chk: [], mis: 0, done: false, lastQuiz: "", card: null });
+    // Hap bilgi kartları: konunun kart sonuçları da hâkimiyete ve unutma eğrisine katılır
+    const cardMap = App.cards ? await App.cards.byKey().catch(() => new Map()) : new Map();
+    cardMap.forEach((c, k) => { if (c.n) slot(k).card = c; });
     quizzes.forEach((q) => { if (q.key && q.total) { slot(q.key).quiz.push(q); } });
     explains.forEach((x) => { if (x.key) slot(x.key).fey.push(x); });
     checks.forEach((c) => { if (c.key && c.verdict) slot(c.key).chk.push(c); });
@@ -115,6 +118,7 @@
         parts.chkN = recent.length;
         sum += parts.chk * 1.5; w += 1.5;
       }
+      if (s.card) { parts.card = s.card.pct; parts.cardN = s.card.n; sum += s.card.pct * 1; w += 1; }
       parts.mis = s.mis;
       let score = null;
       if (w) score = Math.round(sum / w - Math.min(24, s.mis * 6));
@@ -123,10 +127,10 @@
       // Unutma eğrisi (Ebbinghaus): son çalışmadan bu yana geçen süreyle hatırlama azalır.
       // Kalıcılık (gün) başarılı her tekrarla ikiye katlanır: 7 → 14 → 28 → 56 → 112 (en çok 120).
       if (score != null && w) {
-        const dates = [s.quiz[0] && s.quiz[0].date, ...s.fey.map((x) => x.date), ...s.chk.map((c) => c.date)].map((d) => Date.parse(d)).filter((x) => !isNaN(x));
+        const dates = [s.quiz[0] && s.quiz[0].date, ...s.fey.map((x) => x.date), ...s.chk.map((c) => c.date), s.card && s.card.last].map((d) => Date.parse(d)).filter((x) => !isNaN(x));
         const last = dates.length ? Math.max(...dates) : null;
         if (last) {
-          const reps = s.quiz.filter((q) => q.correct / q.total >= 0.7).length + s.fey.filter((x) => Number(x.score) >= 70).length;
+          const reps = s.quiz.filter((q) => q.correct / q.total >= 0.7).length + s.fey.filter((x) => Number(x.score) >= 70).length + (s.card ? Math.min(3, s.card.goodReps) : 0);
           const stab = Math.min(120, 7 * Math.pow(2, Math.max(0, reps - 1)));
           const days = Math.max(0, (Date.now() - last) / 86400000);
           const R = Math.exp(-days / stab);

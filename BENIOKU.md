@@ -97,6 +97,15 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
   kapsam, açıklık ve örnek açısından 100 üzerinden puanlar; doğru anlattıklarını, eksiklerini ve kavram yanılgılarını
   gösterir, zayıf kısımları sade bir dille yeniden anlatır ve kendine sorman için sorular verir. *Anlatımımı düzelt*
   ile tekrar denediğinde puanın ne kadar arttığı ve tüm denemelerinin gelişimi görünür.
+- **Hap Kartları:** Konu anlatımlarındaki hap bilgiler ve çözümlü örnekler kendiliğinden çalışma kartına dönüşür
+  (internet ve yapay zekâ gerekmez). Hap bilgide kalın yazılan kısım, formül ya da cümlenin sonu gizlenir; hatırla,
+  kartı çevir, *Bilmedim / Zor / Bildim* de. Kartlar unutmaya başlamadan hemen önce geri gelir
+  (1 → 3 → 7 → 16 → 35 → 75 → 150 gün). Tamamladığın ve testini çözdüğün konular desteye kendiliğinden eklenir,
+  konu sayfasından elle de eklenebilir. Telefonda çevirdikten sonra sola kaydır = Bilmedim, sağa = Bildim.
+  Kart sonuçları Kök Eksik Analizi'ne ve Bugün planına katılır.
+- **Deney Laboratuvarı:** Kaydırıcılarla oynanan fizik ve matematik deneyleri: eğik atış, ivmeli hareket grafikleri,
+  sarkaç, yay–kütle, dalga, iki kaynaklı girişim, mercek ışın çizimi, fonksiyon grafikleri (teğet ve türev ile) ve
+  birim çember. İlgili konu sayfalarında (ör. 11. sınıf atışlar, 10. sınıf parabol) kendiliğinden görünür.
 - **Yanlış Defteri:** Sorular aralıklı tekrarla geri gelir (1 → 3 → 7 → 16 gün). *Bildim* dedikçe seyrekleşir,
   4 kez bilince "öğrenildi" olur. *Soru ekle* ile kitaptan fotoğraf çekip kendi sorunu da ekleyebilirsin.
   Sol menüdeki sayı, bugün tekrar etmen gereken soru sayısıdır.

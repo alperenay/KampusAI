@@ -160,6 +160,14 @@
     };
     misBadge();
     App.db.on("mistakes", App.utils.debounce(misBadge, 200));
+    const cardsBadge = async () => {
+      if (!App.cards) return;
+      const c = await App.cards.stats().catch(() => null);
+      const b = document.getElementById("cardsBadge");
+      if (b && c) { b.hidden = !c.due; b.textContent = c.due; }
+    };
+    cardsBadge();
+    App.db.on("cards", App.utils.debounce(cardsBadge, 200));
     App.db.on("chats", App.utils.debounce(renderSideChats, 150));
     window.addEventListener("hashchange", renderSideChats);
     App.i18n.onChange(onLanguageChange);

@@ -66,6 +66,7 @@
 
   /* Son sürümler (yeniden eskiye) */
   const SURUMLER = () => [
+    ["1.16.0", T("Hap Kartları: konu anlatımlarındaki hap bilgiler ve örnekler aralıklı tekrarla sorulan kartlara dönüşür, sonuçlar unutma eğrisine ve Bugün planına katılır. Deney Laboratuvarı: atış, sarkaç, yay, dalga, girişim, mercek, fonksiyon grafikleri ve birim çember için kaydırıcılı deneyler; ilgili konu sayfalarında da var.", "Flashcards from lesson key facts with spaced repetition; interactive lab with sliders for projectiles, pendulum, spring, waves, interference, lenses, function graphs and the unit circle.")],
     ["1.15.0", T("Telefonda tek elle kullanım: alt sekme çubuğu (Asistan, Bugün, Konular, Denemeler, Menü); Sesli öğretmende Bitir, Gönder/Sustur ve Duraklat düğmeleri alta taşındı, geri tuşu kapatır; pencereler alttan açılır ve aşağı çekince kapanır; konu sayfasında alt kısayol çubuğu; deneme simülasyonunda önceki/sonraki hep altta; bildirimler üstte.", "One-handed phone use: bottom tab bar, voice teacher controls at the bottom, bottom-sheet dialogs, lesson shortcut bar, sticky exam navigation.")],
     ["1.14.1", T("Gizlilik ve KVKK bölümü genişletildi; eşitleme verisini sunucudan silme düğmesi.", "Expanded privacy and KVKK section; button to delete sync data from the server.")],
     ["1.14.0", T("Unutma eğrisi (unutulmaya başlayan konular haritada solar, günlük göreve eklenir), zamanlı deneme simülasyonu, haftalık gelişim raporu, öğretmen için anonim sınıf görünümü.", "Forgetting curve, timed exam simulation, weekly report, anonymous class view for teachers.")],

@@ -1,0 +1,130 @@
+/* =========================================================
+   v116.css — sürüm 1.16: hap bilgi kartları ve deney laboratuvarı
+   ========================================================= */
+
+/* ---------------- Ortak ---------------- */
+.badge--due { background: color-mix(in srgb, var(--warn) 18%, transparent); color: var(--warn); }
+
+/* ---------------- Konu sayfasındaki kart kutusu ---------------- */
+.cards-card { margin-bottom: 16px; }
+.cards-card__head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.cards-card__head h2 { display: flex; align-items: center; gap: 8px; font-size: 17px; margin: 0; }
+.cards-card__head h2 .ico { width: 19px; height: 19px; color: var(--accent-text); }
+.cards-card .hint { margin: 8px 0 12px; }
+.cards-card__acts { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* ---------------- Kartlar ana sayfası ---------------- */
+.cards-hero { display: flex; flex-direction: column; gap: 16px; margin-bottom: 16px; }
+.cards-hero__nums { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.cards-hero__nums > div { display: flex; flex-direction: column; gap: 2px; padding: 12px; border-radius: var(--radius-sm); background: var(--surface-2); }
+.cards-hero__nums b { font-size: 24px; font-weight: 700; line-height: 1.1; }
+.cards-hero__nums span { font-size: 12.5px; color: var(--muted); }
+.cards-start { align-self: flex-start; height: 46px; padding: 0 22px; font-size: 15px; }
+.cards-decks { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; }
+.cards-decks li { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 0; border-top: 1px solid var(--border); }
+.cards-decks li:first-child { border-top: 0; }
+.cards-decks li > div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+@media (max-width: 600px) {
+  .cards-hero__nums { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cards-start { align-self: stretch; justify-content: center; }
+}
+
+/* ---------------- Çalışma oturumu ---------------- */
+.cards-study { display: flex; flex-direction: column; gap: 14px; min-height: calc(100% - 8px); }
+.cards-top { display: flex; align-items: center; gap: 12px; }
+.cards-progress { flex: 1; height: 8px; border-radius: 99px; background: var(--surface-2); overflow: hidden; }
+.cards-progress span { display: block; height: 100%; background: var(--accent); border-radius: inherit; transition: width .25s ease; }
+.cards-count { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.flashcard {
+  display: flex; flex-direction: column; gap: 14px; width: 100%; min-height: 300px; padding: 22px 20px;
+  border: 1px solid var(--border-strong); border-radius: var(--radius-lg); background: var(--surface); color: var(--text);
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
+  font: inherit; text-align: left; cursor: pointer; box-shadow: var(--shadow-soft);
+  transition: transform .18s ease, border-color .18s ease; -webkit-tap-highlight-color: transparent; touch-action: pan-y;
+}
+.flashcard:hover { border-color: color-mix(in srgb, var(--accent) 50%, var(--border-strong)); }
+.flashcard__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
+.flashcard__q { font-size: 18px; line-height: 1.55; }
+.flashcard__a { padding-top: 14px; border-top: 1px dashed var(--border-strong); font-size: 16.5px; line-height: 1.55; animation: fc-in .22s ease; }
+.flashcard__q p, .flashcard__a p { margin: 0 0 .5em; }
+.flashcard__q > :last-child, .flashcard__a > :last-child { margin-bottom: 0; }
+.flashcard__tap { margin-top: auto; font-size: 13px; color: var(--muted); text-align: center; }
+.flashcard.is-flipped { cursor: default; }
+@keyframes fc-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+.cloze { display: inline-block; min-width: 70px; padding: 0 10px; border-bottom: 2px solid var(--accent); color: var(--accent-text); text-align: center; font-weight: 700; }
+mark.cloze-ans { padding: 1px 4px; border-radius: 5px; background: color-mix(in srgb, var(--good) 22%, transparent); color: inherit; }
+
+.cards-dock { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.cards-show { grid-column: 1 / -1; height: 52px; justify-content: center; font-size: 15.5px; }
+.cards-grade {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 58px;
+  border: 1px solid var(--border-strong); border-radius: var(--radius); background: var(--surface-solid); color: var(--text);
+  font: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.cards-grade b { font-size: 15px; }
+.cards-grade small { font-size: 11.5px; color: var(--muted); }
+.cards-grade--0 b { color: var(--bad); }
+.cards-grade--1 b { color: var(--warn); }
+.cards-grade--2 b { color: var(--good); }
+.cards-grade:hover, .cards-grade:active { background: var(--surface-2); }
+.cards-keys { text-align: center; }
+@media (pointer: coarse) { .cards-keys { display: none; } }
+@media (max-width: 860px) {
+  /* Başparmak bölgesi: düğmeler hep altta */
+  .cards-study { padding-bottom: 0; }
+  .cards-dock { position: sticky; bottom: 8px; z-index: 4; margin-top: auto; padding: 6px; border-radius: 18px; background: var(--surface-solid); border: 1px solid var(--border-strong); box-shadow: var(--shadow); }
+  .flashcard { min-height: 46vh; }
+}
+
+.cards-done { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 32px 20px; text-align: center; }
+.cards-done > .ico { width: 44px; height: 44px; color: var(--good); }
+.cards-done h2 { margin: 4px 0 0; }
+.cards-done .cards-card__acts { justify-content: center; margin-top: 8px; }
+
+/* ---------------- Deney laboratuvarı ---------------- */
+.lab { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 16px; align-items: start; margin-top: 10px; }
+.lab__stage { position: relative; min-width: 0; }
+.lab__cv { display: block; width: 100%; border-radius: var(--radius-sm); background: color-mix(in srgb, var(--surface-solid) 70%, transparent); border: 1px solid var(--border); touch-action: pan-y; }
+.lab__play { display: flex; gap: 8px; margin-top: 8px; }
+.lab__side { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.lab__ctrls { display: flex; flex-direction: column; gap: 12px; }
+.lab-ctl { display: flex; flex-direction: column; gap: 4px; }
+.lab-ctl__top { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; color: var(--text-2); }
+.lab-ctl output { font-family: var(--mono); font-size: 12.5px; color: var(--accent-text); white-space: nowrap; }
+.lab-ctl input[type="range"] { width: 100%; height: 28px; accent-color: var(--accent); cursor: pointer; }
+.lab-ctl .hint { font-size: 11.5px; }
+.lab__read { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+.lab__read > div { display: flex; justify-content: space-between; gap: 10px; padding: 6px 10px; font-size: 12.5px; border-top: 1px solid var(--border); }
+.lab__read > div:first-child { border-top: 0; }
+.lab__read span { color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.lab__read b { font-family: var(--mono); font-weight: 600; text-align: right; }
+.lab-key { display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: var(--k); }
+.lab__note { line-height: 1.5; }
+.lab__note:empty { display: none; }
+
+.lab-tabs, .lab-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.lab-chips { margin: 0; }
+.lab-tabs .chip, .lab-chips .chip {
+  display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 12px; border-radius: var(--radius-pill);
+  border: 1px solid var(--border-strong); background: var(--surface); color: var(--text-2); font: inherit; font-size: 13px; text-decoration: none; cursor: pointer; white-space: nowrap;
+}
+.lab-chips .chip { height: 30px; font-family: var(--mono); font-size: 12px; }
+.lab-tabs .chip .ico { width: 15px; height: 15px; }
+.lab-tabs .chip.is-on, .lab-chips .chip.is-on { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 60%, transparent); color: var(--accent-text); }
+.lab-card h2 .ico { color: var(--accent-text); }
+
+@media (max-width: 860px) {
+  .lab { grid-template-columns: minmax(0, 1fr); }
+  /* Telefonda deney sekmeleri yana kayar, sayfa genişlemez */
+  .lab-tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-left: -4px; margin-right: -4px; padding: 0 4px; }
+  .lab-tabs::-webkit-scrollbar { display: none; }
+  .lab__ctrls { gap: 6px; }
+  .lab-ctl input[type="range"] { height: 34px; }
+}
+
+/* Başlıktaki simge yazıyla aynı satırda */
+.lab-page .card > .card__title, .cards-home .card > .card__title { display: flex; align-items: center; gap: 8px; }
+.lab-page .card__title > .ico, .cards-home .card__title > .ico { width: 18px; height: 18px; color: var(--accent-text); flex: none; }
+.lab-card h2 { display: flex; align-items: center; gap: 8px; }
