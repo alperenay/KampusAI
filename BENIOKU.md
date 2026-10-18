@@ -160,10 +160,32 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
 - **Tarih Zaman Çizelgesi:** Menü › Pratik. İlk Çağ'dan günümüze 160 olay; yatay kaydırılır, +/− ile yakınlaşır,
   dönem bantlarına dokununca o döneme gider. Olay türüne göre süzme, arama ve *Liste* görünümü vardır. Olaya dokununca
   kartında tarih, dönem, açıklama, konum haritası ve *Asistana sor* düğmesi çıkar. *Hangisi önce?* 10 soruluk sınavdır.
+- **Videodan Çalış:** Menü › Çalış › Videodan Çalış. Herkese açık bir YouTube ders videosunun bağlantısını yapıştır;
+  internet yapay zekâsı (KampüsAI sunucusu ya da kendi Gemini anahtarın) videoyu izler ve 6–10 maddelik özet, dakika
+  dakika bölümler (dokununca video YouTube'da o andan açılır), kavram kartları ve açıklamalı çoktan seçmeli test
+  hazırlar; videoda geçen konular müfredattaki konu sayfalarına bağlanır. Yerel modelde ya da video açılmazsa
+  *Transkript ya da not* sekmesine YouTube transkriptini veya ders notunu yapıştırabilirsin. Hazırlananlar *Kitaplığım*da
+  saklanır ve internetsiz açılır. Uzun videolarda hazırlık 1–2 dakika sürebilir.
+- **Deneylerde AR:** 3B görünümü olan her deneyde *2B · 3B · AR* düğmeleri vardır. *AR*'a basınca arka kamera açılır ve
+  deney kameranın görüntüsünde masanın üstündeymiş gibi görünür; telefonu yavaşça çevirerek etrafında dolaşırsın, iki
+  parmakla büyütür, tek parmakla döndürürsün. *Ayarlar* düğmesi deneyin kaydırıcılarını AR içinde açar; *Ortala* sahneyi
+  önüne getirir; ✕, geri tuşu ya da Esc ile çıkılır. Kamera izni istenir; görüntü cihazdan çıkmaz, kaydedilmez.
+  Bilgisayarda web kamerası arka plan olur, sahne fareyle döndürülür.
+- **Kariyer Keşfi:** Menü › Takip › Kariyer Keşfi. 48 maddelik ilgi envanteri (Holland'ın RIASEC modeli: Uygulamacı,
+  Araştırmacı, Sanatçı, Sosyal, Girişimci, Düzenli) yaklaşık 5 dakikada çözülür; 1/2/3 tuşlarıyla da cevaplanır. Sonuçta
+  üç harfli ilgi kodun, altıgen profilin ve sana en uygun meslekler çıkar. *Meslekler* sekmesinde 52 meslek kartı
+  (ne yapar, bir günü, önemli beceriler, puan türü) aranır ve süzülür; her meslekte 2025'te o mesleğe götüren
+  programlar ve sıralamana göre *Güvenli / Uygun / Hayal* durumu görünür, *Tercih Robotu'nda tümünü gör* ile oraya
+  geçilir. Envanter yönlendirme amaçlıdır; karar için rehber öğretmenle de konuş.
+- **YKS Yolculuğu:** Menü › Pratik › YKS Yolculuğu. Müfredat bir macera haritasıdır: her ders bir diyar, her kazanım bir
+  durak (güçlü ★, çalışıldı ✓, zayıf !), her ünitenin sonunda bir canavar (dokununca o ünitenin konu testi açılır),
+  büyük canavar ise deneme. XP yalnızca gerçek çalışmadan gelir (konu tamamlama, test, Feynman, kart tekrarı, odak
+  dakikası, deneme, video, paragraf sorusu); XP ile seviye atlanır. Her gün üç görev (bir test, 15 kart, 25 dakika
+  odak) ek XP verir. Karaktere dokununca simgesi değişir.
 - **Tüm araçlar ve sabitleme:** Menünün üstündeki *Tüm araçlar* sayfasında bütün özellikler kısa açıklamalarıyla
   gruplu durur; arama kutusuna yazınca süzülür, Enter ilk sonucu açar. Bir aracın yıldızına basınca menünün üstündeki
   *Sabitlenenler* grubuna ve asistan açılışına kısayol olarak eklenir. Son kullandığın araçlar da burada listelenir.
-  Menü artık Sabitlenenler · Çalış · Pratik (Paragraf, Harita, Deney, Oyunlar) · Takip · Araçlar gruplarından oluşur.
+  Menü artık Sabitlenenler · Çalış · Pratik (Yolculuk, Paragraf, Harita, Deney, Oyunlar) · Takip · Araçlar gruplarından oluşur.
 - **Deneme sonucunu fotoğraftan doldur:** Yeni deneme formundaki *Fotoğraftan doldur* kartından sonuç belgesinin
   (karne) fotoğrafını çek ya da en çok 4 fotoğraf seç (optik form + cevap anahtarı da olur). Yapay zekâ ders ders
   doğru/yanlışları ve varsa konu konu yanlışları doldurur; yeşil çerçeveli kutuları kontrol edip kaydet. Konu

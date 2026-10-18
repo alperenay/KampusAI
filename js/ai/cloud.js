@@ -234,6 +234,8 @@
         const parts = [];
         (m.images || []).forEach((b64) => parts.push({ inlineData: { mimeType: "image/jpeg", data: b64 } }));
         (m.audio || []).forEach((x) => parts.push({ inlineData: { mimeType: x.mime || "audio/webm", data: x.data } }));
+        // Bağlantıyla dosya (ör. herkese açık YouTube videosu): Gemini kendisi açar
+        (m.files || []).forEach((f) => parts.push({ fileData: f.mime ? { fileUri: f.uri, mimeType: f.mime } : { fileUri: f.uri } }));
         if (m.content) parts.push({ text: m.content });
         if (!parts.length) return;
         const last = contents[contents.length - 1];
@@ -294,6 +296,8 @@
       // Gemini 3 Flash modelleri varsayılan olarak uzun "düşünür" (ilk kelime 10 sn'yi bulabiliyor):
       // düşünmeyi "low" seviyesine çek. Desteklemeyen model 400 verirse ayarsız tekrar dene.
       if (options && options.json) body.generationConfig.responseMimeType = "application/json";
+      // Video için düşük çözünürlük: saniye başına çok daha az jeton (uzun ders videoları sığsın)
+      if (options && options.mediaResolution && !this._noMediaRes) body.generationConfig.mediaResolution = options.mediaResolution;
       const thinkable = gver(model) >= 3 && /-flash/.test(model) && !/lite/.test(model) && !this._noThinking;
       if (thinkable) body.generationConfig.thinkingConfig = { thinkingLevel: "low" };
       const url = this.base() + "/models/" + encodeURIComponent(model) + ":streamGenerateContent?alt=sse";
@@ -301,9 +305,11 @@
       try {
         res = await send(url, { method: "POST", headers: this.headers(), body: JSON.stringify(body), signal }, model, geminiError);
       } catch (e) {
-        if (!thinkable || !e || e.status !== 400 || !/think/i.test(e.message || "")) throw e;
-        this._noThinking = true;
-        delete body.generationConfig.thinkingConfig;
+        const thinkErr = thinkable && e && e.status === 400 && /think/i.test(e.message || "");
+        const mediaErr = body.generationConfig.mediaResolution && e && e.status === 400 && /media_?resolution/i.test(e.message || "");
+        if (!thinkErr && !mediaErr) throw e;
+        if (thinkErr) { this._noThinking = true; delete body.generationConfig.thinkingConfig; }
+        if (mediaErr) { this._noMediaRes = true; delete body.generationConfig.mediaResolution; }
         res = await send(url, { method: "POST", headers: this.headers(), body: JSON.stringify(body), signal }, model, geminiError);
       }
 

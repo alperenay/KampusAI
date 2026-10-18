@@ -532,7 +532,7 @@
     let mode = can3d ? App.lab3d.mode() : "2d", S3 = null, s3busy = false;
     host.classList.add("lab");
     host.innerHTML =
-      '<div class="lab__stage">' + (can3d ? '<div class="lab__mode" role="radiogroup" aria-label="' + esc(T("Görünüm", "View")) + '"><button type="button" role="radio" data-mode="2d">2B</button><button type="button" role="radio" data-mode="3d">3B</button></div>' : "") +
+      '<div class="lab__stage">' + (can3d ? '<div class="lab__mode" role="radiogroup" aria-label="' + esc(T("Görünüm", "View")) + '"><button type="button" role="radio" data-mode="2d">2B</button><button type="button" role="radio" data-mode="3d">3B</button>' + (App.lab3d.arSupported() ? '<button type="button" class="lab__ar" data-ar-start title="' + esc(T("Artırılmış gerçeklik: deneyi kameranın görüntüsünde masanın üstünde gör", "Augmented reality: see the lab on your desk through the camera")) + '">AR</button>' : "") + "</div>" : "") +
         '<canvas class="lab__cv" role="img" aria-label="' + esc(lab.title()) + '"></canvas>' +
         (lab.animated && !lab.custom ? '<div class="lab__play"><button class="btn btn--sm btn--primary" type="button" data-lab="play"></button>' +
           '<button class="btn btn--sm btn--ghost" type="button" data-lab="reset">' + App.icon("refresh") + esc(T("Baştan", "Reset")) + "</button></div>" : "") +
@@ -575,7 +575,7 @@
       const r = e.target.closest("[data-p]"); if (!r) return;
       const v = Number(r.value); p[r.dataset.p] = v;
       if (r.dataset.p === "x0") st.x0 = v;
-      host.querySelector('[data-out="' + r.dataset.p + '"]').textContent = fmt(v, 2) + (r.dataset.unit ? (r.dataset.unit === "°" ? "" : " ") + r.dataset.unit : "");
+      ctrls.querySelector('[data-out="' + r.dataset.p + '"]').textContent = fmt(v, 2) + (r.dataset.unit ? (r.dataset.unit === "°" ? "" : " ") + r.dataset.unit : "");
       changed();
     });
     function changed() {
@@ -631,7 +631,17 @@
       }
       draw();
     }
-    if (modeBox) modeBox.addEventListener("click", (e) => { const b = e.target.closest("[data-mode]"); if (b && b.dataset.mode !== mode) setMode(b.dataset.mode, true); });
+    if (modeBox) modeBox.addEventListener("click", async (e) => {
+      if (e.target.closest("[data-ar-start]")) {
+        // AR: önce 3B'ye geç, sonra kamerayı aç
+        if (mode !== "3d") await setMode("3d", false);
+        if (!S3) return;
+        try { await S3.arStart({ side: host.querySelector(".lab__side"), play: host.querySelector(".lab__play") }); draw(); }
+        catch (err) { App.ui.toast((err && err.message) || T("AR açılamadı.", "Could not start AR."), "error"); }
+        return;
+      }
+      const b = e.target.closest("[data-mode]"); if (b && b.dataset.mode !== mode) setMode(b.dataset.mode, true);
+    });
     function loop() {
       cancelAnimationFrame(st.raf);
       if (!st.playing || !st.vis) return;
