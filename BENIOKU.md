@@ -123,9 +123,18 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
   (1 → 3 → 7 → 16 → 35 → 75 → 150 gün). Tamamladığın ve testini çözdüğün konular desteye kendiliğinden eklenir,
   konu sayfasından elle de eklenebilir. Telefonda çevirdikten sonra sola kaydır = Bilmedim, sağa = Bildim.
   Kart sonuçları Kök Eksik Analizi'ne ve Bugün planına katılır.
-- **Deney Laboratuvarı:** Kaydırıcılarla oynanan fizik ve matematik deneyleri: eğik atış, ivmeli hareket grafikleri,
-  sarkaç, yay–kütle, dalga, iki kaynaklı girişim, mercek ışın çizimi, fonksiyon grafikleri (teğet ve türev ile) ve
-  birim çember. İlgili konu sayfalarında (ör. 11. sınıf atışlar, 10. sınıf parabol) kendiliğinden görünür.
+- **Deney Laboratuvarı:** 67 etkileşimli deney (menü › Deney Laboratuvarı). Fizik: vektörler, sıvı basıncı, kaldırma
+  kuvveti, Bernoulli, ısınma eğrisi, ısıl denge, ısı iletimi, bağıl hareket, enerji korunumu, elektrik devreleri,
+  rezonans, kırılma, eğik düzlem, limit hız, çembersel hareket, çarpışma, elektrik alanı, indüksiyon, aynalar, Doppler,
+  fotoelektrik, hidrojen spektrumu, yuvarlanma, Kepler, radyoaktivite, görelilik… Kimya: elektron dizilimi, periyodik
+  özellikler, bağ türü, VSEPR, mol ve sınırlayıcı bileşen, gaz yasaları, difüzyon, çözünürlük, derişim, koligatif
+  özellikler, enerji diyagramı, tepkime hızı, kimyasal denge, pH, titrasyon, Ksp, pil, elektroliz. Biyoloji: enzimler,
+  besin ayıraçları, osmoz, fotosentez, solunum ve fermantasyon, popülasyon, enerji piramidi, sinir impulsu, göz kusurları,
+  kan şekeri, bağışıklık, tropizma, DNA ve mutasyonlar, terleme. Derse, sınıfa ve üniteye göre süzülür, aranır;
+  favorilere eklenir. Her deneyde "Dene bakalım" görevleri ve ilgili konular var; deneyler konu sayfalarında da görünür.
+- **Oyunlar:** Menüdeki Oyunlar sekmesinde derslere göre sınıflanmış dokuz kısa oyun: Doğru mu Yanlış mı? Fırtınası ve
+  Kavram Eşleştirme (bütün derslerin hap bilgilerinden üretilir), 60 Saniye İşlem, Grafik Tahmini, Hedef Atış,
+  Denklem Denkleştirme, Periyodik Tablo Yapbozu, Tarih Şeridi ve Kelime Kaydırma (YDT). Rekorlar cihazda saklanır.
 - **Yanlış Defteri:** Sorular aralıklı tekrarla geri gelir (1 → 3 → 7 → 16 gün). *Bildim* dedikçe seyrekleşir,
   4 kez bilince "öğrenildi" olur. *Soru ekle* ile kitaptan fotoğraf çekip kendi sorunu da ekleyebilirsin.
   Sol menüdeki sayı, bugün tekrar etmen gereken soru sayısıdır.

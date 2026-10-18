@@ -5,7 +5,9 @@
 (function () {
   const P = {
     // Ders simgeleri
-    sMath:    '<path d="M17.5 5h-11l6 7-6 7h11"/>',
+    game:     '<path d="M7.5 7h9a5 5 0 0 1 4.9 6l-.6 3.1a2.6 2.6 0 0 1-4.5 1.2L14.5 15.5h-5l-1.8 1.8a2.6 2.6 0 0 1-4.5-1.2L2.6 13A5 5 0 0 1 7.5 7z"/><path d="M8 10v3M6.5 11.5h3M15.5 11h.01M17.5 12.5h.01"/>',
+    star:     '<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8-4.3-4.1 5.9-.9z"/>',
+        sMath:    '<path d="M17.5 5h-11l6 7-6 7h11"/>',
     sPhys:    '<circle cx="12" cy="12" r="1.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(120 12 12)"/>',
     sChem:    '<path d="M9.5 3.5h5M10.5 3.5v6.2L5 19.2A1.5 1.5 0 0 0 6.3 21.5h11.4a1.5 1.5 0 0 0 1.3-2.3l-5.5-9.5V3.5"/><path d="M7.4 15.5h9.2"/>',
     sBio:     '<path d="M5 19.5c0-8.5 5.5-14.5 15-15.5-.8 10-6.8 15.5-15 15.5z"/><path d="M5 19.5l8.5-8.5"/>',
