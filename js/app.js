@@ -189,6 +189,7 @@
 
     // Ders hatırlatıcıları (Programım'daki bloklar) ve ilk açılış tanıtım turu
     App.reminders.init();
+    if (App.smartNotify) App.smartNotify.init();
     App.tour.maybeStart();
     // Tanıtım gösterilmeyecekse (eski kullanıcı, güncelleme): yapay zeka önceliğini bir kez sor
     App.tour.shouldShow().then((tour) => { if (!tour) setTimeout(() => App.modules.aiSettings.askPriority(), 1500); }).catch(() => {});

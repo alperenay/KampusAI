@@ -23,7 +23,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.20.0
+  APP_VERSION: 1.21.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -180,11 +180,17 @@ jobs:
           # Klavye açılınca sayfa küçülsün (yazı kutusu klavyenin altında kalmasın)
           grep -q "windowSoftInputMode" app/src/main/AndroidManifest.xml || \
             sed -i 's#android:name=".MainActivity"#android:name=".MainActivity" android:windowSoftInputMode="adjustResize"#' app/src/main/AndroidManifest.xml
-          cp ../native/MainActivity.java ../native/DeviceAi.java app/src/main/java/com/dersasistani/app/
+          cp ../native/MainActivity.java ../native/DeviceAi.java ../native/KampusWidget.java app/src/main/java/com/dersasistani/app/
+          # Ana ekran widget'ı (v1.21): düzen, sağlayıcı bilgisi ve alıcı kaydı
+          mkdir -p app/src/main/res/layout app/src/main/res/xml
+          cp ../native/res/layout/*.xml app/src/main/res/layout/
+          cp ../native/res/xml/*.xml app/src/main/res/xml/
+          grep -q "KampusWidget" app/src/main/AndroidManifest.xml || \
+            sed -i 's#</application>#    <receiver android:name=".KampusWidget" android:exported="false">\n            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>\n            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_kampus_info" />\n        </receiver>\n    </application>#' app/src/main/AndroidManifest.xml
           # Yapay zeka motoru kurulumda çalıştırılabilir klasöre çıkarılsın (lib*.so, sıkıştırılmadan)
           printf '\nandroid { packaging { jniLibs { useLegacyPackaging = true } } }\n' >> app/build.gradle
           mkdir -p app/src/main/res/drawable && cp ../native/res/drawable/*.xml app/src/main/res/drawable/
-          grep -nE "MainActivity|permission" app/src/main/AndroidManifest.xml
+          grep -nE "MainActivity|permission|KampusWidget|appwidget" app/src/main/AndroidManifest.xml
           # Sürüm derlemesinde lint uyarıları derlemeyi durdurmasın
           printf '\nandroid { lint { checkReleaseBuilds = false; abortOnError = false } }\n' >> app/build.gradle
           chmod +x gradlew

@@ -15,6 +15,7 @@
   const CFG = App.data.exams;
   const t = App.t, tn = App.tn, L = App.L;
 
+  const T = (tr, en) => (App.i18n.lang === "en" ? en : tr);
   const subjName = (s) => L(s.name);
   const subjShort = (s) => L(s.short || s.name);
 
@@ -120,6 +121,7 @@
           }).join("") + "</div>" +
         "</div>" +
 
+        topicCardHtml(list) +
         '<h2 class="section-title">' + esc(t("ex.allTitle", { type })) + "</h2>" +
         tableHtml(computed.slice().reverse(), subjects) +
       "</div>";
@@ -158,6 +160,22 @@
     };
     view.addEventListener("click", onClick);
     return () => { ro.disconnect(); view.removeEventListener("click", onClick); };
+  }
+
+  /** Denemelerden gelen konu yanlışları (fotoğraftan okunan sonuç belgeleri) */
+  function topicCardHtml(list) {
+    const agg = {};
+    list.forEach((e) => (e.topics || []).forEach((x) => {
+      const k = x.subject + "|" + x.topic;
+      const a = agg[k] || (agg[k] = { subject: x.subject, topic: x.topic, key: x.key, wrong: 0, blank: 0, n: 0 });
+      a.wrong += x.wrong || 0; a.blank += x.blank || 0; a.n++;
+    }));
+    const rows = Object.values(agg).sort((a, b) => b.wrong + b.blank * 0.5 - (a.wrong + a.blank * 0.5)).slice(0, 12);
+    if (!rows.length) return "";
+    return '<div class="card ex-topics" style="margin-top:14px"><div class="card__title">' + esc(T("En çok yanlış yapılan konular", "Topics with most mistakes")) + '</div><div class="card__sub" style="margin-bottom:10px">' +
+      esc(T("Fotoğraftan okunan deneme sonuçlarındaki konu analizinden.", "From topic analysis in photo-imported results.")) + "</div><ol>" +
+      rows.map((r) => "<li>" + (r.key ? '<a href="#/konular/' + esc(r.key) + '">' + esc(r.topic) + "</a>" : esc(r.topic)) + ' <span class="hint">' + esc(subjLabel(r.subject)) + "</span> <b>" + r.wrong + T(" yanlış", " wrong") + "</b>" + (r.blank ? ' <span class="hint">· ' + r.blank + T(" boş", " blank") + "</span>" : "") +
+        (r.n > 1 ? ' <span class="hint">· ' + r.n + T(" denemede", " exams") + "</span>" : "") + "</li>").join("") + "</ol></div>";
   }
 
   function bindTypeTabs(view) {
@@ -256,6 +274,61 @@
   /* =========================================================
      DENEME FORMU
      ========================================================= */
+  /* ---------- Fotoğraftan okunan sonucu doğrula ---------- */
+  const ALIAS = { "türkçe": "turkce", "turkce": "turkce", "sosyal": "sosyal", "matematik": "matematik", "temel matematik": "matematik", "fen": "fen", "fizik": "fizik", "kimya": "kimya", "biyoloji": "biyoloji",
+    "edebiyat": "edebiyat", "tarih-1": "tarih1", "tarih1": "tarih1", "tarih-2": "tarih2", "tarih2": "tarih2", "coğrafya-1": "cografya1", "cografya1": "cografya1", "coğrafya-2": "cografya2", "cografya2": "cografya2", "felsefe": "felsefe", "din": "din" };
+  function normalizeImport(d, curType) {
+    if (!d || typeof d !== "object") return null;
+    let type = String(d.type || "").toUpperCase();
+    if (!CFG.types[type]) type = curType;
+    const subjects = {};
+    const src = d.subjects || {};
+    const entries = Array.isArray(src) ? src.map((x) => [x.id || x.subject || x.name, x]) : Object.entries(src);
+    entries.forEach(([k, v]) => {
+      const id = ALIAS[String(k || "").toLowerCase().trim()] || String(k || "").toLowerCase();
+      const s = CFG.types[type].subjects.find((x) => x.id === id);
+      if (!s || !v) return;
+      let dd = v.d != null ? Math.round(+v.d) : null, yy = v.y != null ? Math.round(+v.y) : null;
+      if (!(dd >= 0)) dd = null; if (!(yy >= 0)) yy = null;
+      if (dd == null && yy == null) return;
+      dd = Math.min(s.questions, dd || 0); yy = Math.min(s.questions - dd, yy || 0);
+      subjects[s.id] = { d: dd, y: yy };
+    });
+    if (!Object.keys(subjects).length) return null;
+    const topics = (Array.isArray(d.topics) ? d.topics : []).map((x) => ({
+      subject: ALIAS[String(x.subject || "").toLowerCase().trim()] || String(x.subject || ""),
+      topic: String(x.topic || "").trim().slice(0, 80),
+      wrong: Math.max(0, Math.round(+x.wrong || 0)), blank: Math.max(0, Math.round(+x.blank || 0))
+    })).filter((x) => x.topic && (x.wrong || x.blank)).slice(0, 60);
+    topics.forEach((x) => { x.key = matchTopic(x.topic); });
+    const date = /^\d{4}-\d{2}-\d{2}$/.test(String(d.date || "")) ? d.date : null;
+    return { type, subjects, topics, name: String(d.name || "").trim().slice(0, 60), date, confidence: String(d.confidence || "").toLowerCase().replace("ü", "u").replace("ş", "s"), notes: String(d.notes || "").slice(0, 300) };
+  }
+  /** Konu adını müfredattaki kazanıma eşle (kelime örtüşmesi) */
+  let topicIndex = null;
+  function matchTopic(name) {
+    const norm = (x) => (App.nav && App.nav.norm ? App.nav.norm(x) : String(x).toLowerCase());
+    if (!topicIndex) {
+      topicIndex = [];
+      const C = App.data.curriculum;
+      C.grades.forEach((g) => g.subjects.forEach((s) => s.units.forEach((u) => u.outcomes.forEach((o) => {
+        if (!o.content) return;
+        topicIndex.push({ key: C.key(g.id, s.id, u.id, o.id), w: norm(L(o.title) + " " + L(u.name || "")).split(/\s+/).filter((x) => x.length > 2) });
+      }))));
+    }
+    const q = norm(name).split(/\s+/).filter((x) => x.length > 2);
+    if (!q.length) return null;
+    let best = null, bs = 0;
+    topicIndex.forEach((it) => {
+      const hit = q.filter((w) => it.w.some((x) => x === w || (w.length > 4 && x.startsWith(w.slice(0, 5))))).length / q.length;
+      if (hit > bs) { bs = hit; best = it.key; }
+    });
+    return bs >= 0.6 ? best : null;
+  }
+  const subjLabel = (id) => { for (const ty in CFG.types) { const s = CFG.types[ty].subjects.find((x) => x.id === id); if (s) return subjName(s); } return id; };
+  App.exams.normalizeImport = normalizeImport;
+  App.exams.matchTopic = matchTopic;
+
   async function renderForm(view, existing, presetType) {
     const isEdit = !!existing;
     let type = existing ? existing.type : (presetType || App.prefs.get("examType", "TYT"));
@@ -297,6 +370,7 @@
                 '<button class="tab' + (ty === type ? " is-active" : "") + '" type="button" data-ftype="' + ty + '" title="' + esc(L(CFG.types[ty].long)) + '">' + ty + "</button>").join("") + "</div>") +
           "</div>" +
 
+          importCardHtml() +
           '<form id="examForm" novalidate>' +
             '<div class="card" style="margin-bottom:14px"><div class="form-row">' +
               '<label class="field"><span class="field__label">' + esc(t("ex.name")) + '</span><input class="input" name="name" maxlength="60" placeholder="' + esc(defaultName) + '" value="' + esc(existing ? existing.name : "") + '"></label>' +
@@ -327,9 +401,118 @@
         App.prefs.set("examType", type);
         draw();
       }));
+      bindImport();
       recalc();
+      if (imported) fillImported();
       const first = form.querySelector('input[name^="d_"]');
-      if (first && !isEdit) first.focus();
+      if (first && !isEdit && !imported) first.focus();
+    }
+
+    /* ---------- Fotoğraftan doldur (v1.21) ---------- */
+    let imported = null;          // { type, name, date, subjects, topics, notes, confidence, model }
+    let topics = (existing && existing.topics) || null;
+    function importCardHtml() {
+      return '<div class="card ex-imp" id="exImp"><div class="ex-imp__head">' + App.icon("camera") + '<div><b>' + esc(T("Fotoğraftan doldur", "Fill from a photo")) + "</b><p>" +
+        esc(T("Deneme sonuç belgesinin (karne) ya da optik formun fotoğrafını çek; netler ve varsa konu konu yanlışların otomatik doldurulur. Optik form için cevap anahtarının fotoğrafını da ekle. Kaydetmeden önce değerleri kontrol et.",
+          "Snap your mock exam result sheet or answer sheet; scores and topic-level mistakes are filled in automatically. Add the answer key for an answer sheet. Check the values before saving.")) + "</p></div></div>" +
+        '<div class="ex-imp__btns"><label class="btn btn--primary btn--sm">' + App.icon("camera") + esc(T("Fotoğraf çek", "Take photo")) + '<input type="file" accept="image/*" capture="environment" id="exImpCam" hidden></label>' +
+        '<label class="btn btn--sm">' + App.icon("image") + esc(T("Dosyadan seç (en çok 4)", "Choose files (up to 4)")) + '<input type="file" accept="image/*" multiple id="exImpFile" hidden></label></div>' +
+        '<div class="ex-imp__thumbs" id="exImpThumbs"></div><div id="exImpOut"></div></div>';
+    }
+    let shots = [], impCtrl = null;
+    function bindImport() {
+      const add = async (files) => {
+        for (const f of Array.from(files || []).slice(0, 4 - shots.length)) {
+          try { shots.push(await App.vision.prepare(f)); } catch (e) { App.ui.toast(t("chk.badImage"), "error"); }
+        }
+        paintThumbs();
+        if (shots.length) runImport();
+      };
+      view.querySelector("#exImpCam").addEventListener("change", (e) => add(e.target.files));
+      view.querySelector("#exImpFile").addEventListener("change", (e) => add(e.target.files));
+      paintThumbs();
+      if (imported) paintResult();
+    }
+    function paintThumbs() {
+      const h = view.querySelector("#exImpThumbs"); if (!h) return;
+      h.innerHTML = shots.map((x, i) => '<span class="ex-imp__th"><img src="' + x.dataUrl + '" alt=""><button type="button" class="icon-btn" data-rm="' + i + '" aria-label="' + esc(t("delete")) + '">' + App.icon("close") + "</button></span>").join("") +
+        (shots.length ? '<button type="button" class="btn btn--sm btn--ghost" id="exImpRun">' + App.icon("refresh") + esc(T("Yeniden oku", "Read again")) + "</button>" : "");
+      App.hydrateIcons(h);
+      h.querySelectorAll("[data-rm]").forEach((b) => b.addEventListener("click", () => { shots.splice(+b.dataset.rm, 1); paintThumbs(); }));
+      const r = h.querySelector("#exImpRun"); if (r) r.addEventListener("click", runImport);
+    }
+    function importPrompt() {
+      const desc = Object.keys(CFG.types).map((ty) => ty + ": " + CFG.types[ty].subjects.map((s) => s.id + " (" + L(s.name) + ", " + s.questions + " soru)").join(", ")).join("\n");
+      return {
+        system: "Sen Türkiye'deki YKS deneme sınavlarının sonuç belgelerini ve optik formlarını okuyan dikkatli bir asistansın. Uydurma; okuyamadığın değeri null bırak. Yalnızca geçerli JSON döndür.",
+        prompt: "Görsel(ler) bir deneme sınavı sonuç belgesi (karne), optik form ve/veya cevap anahtarı olabilir.\n" +
+          "Sınav türleri ve ders kimlikleri:\n" + desc + "\n\n" +
+          "Kurallar:\n- Sonuç belgesindeki her dersin DOĞRU ve YANLIŞ sayısını oku (boş = soru − doğru − yanlış). Net sütununu kullanma.\n" +
+          "- Belgede TYT Sosyal alt testleri (tarih, coğrafya, felsefe, din) ayrı yazıyorsa toplayıp 'sosyal'a yaz; TYT Fen alt testleri (fizik, kimya, biyoloji) ayrıysa toplayıp 'fen'e yaz.\n" +
+          "- Optik form ve cevap anahtarı birlikte verildiyse her dersin cevaplarını anahtarla karşılaştırıp doğru/yanlış say; boş bırakılanlar boştur.\n" +
+          "- Konu analizi tablosu varsa her konudaki yanlış ve boş sayısını 'topics' listesine yaz (sadece yanlış ya da boş olan konular).\n" +
+          "- Sınav adı ve tarihi görünüyorsa yaz; tarih YYYY-AA-GG biçiminde.\n\n" +
+          'Biçim: {"type":"TYT","name":"","date":null,"subjects":{"turkce":{"d":0,"y":0}},"topics":[{"subject":"matematik","topic":"Türev","wrong":2,"blank":1}],"confidence":"yuksek|orta|dusuk","notes":"okunamayan ya da emin olunmayan kısımlar"}'
+      };
+    }
+    function visionPromptImp() {
+      return T("Bu görsel bir deneme sınavı sonuç belgesi, optik form ya da cevap anahtarı. Görevin YORUMLAMAK DEĞİL, aynen yazıya dökmek. Sınav adı ve tarihini yaz. Ders tablosundaki her satırı (ders, soru sayısı, doğru, yanlış, boş, net) sırayla yaz. Konu analizi tablosu varsa her satırı (ders, konu, soru, doğru, yanlış, boş) yaz. Optik formsa her dersin işaretli cevaplarını numarasıyla yaz (1-A, 2-boş …). Cevap anahtarıysa numara-cevap çiftlerini yaz. Okuyamadığın yere [okunamadı] yaz.",
+        "This image is a mock exam result sheet, answer sheet or answer key. Do NOT interpret it, transcribe it. Write the exam name and date. Write every row of the subject table (subject, questions, correct, wrong, blank, net). If there is a topic analysis table, write every row. If it is an answer sheet, write the marked answers per subject with numbers (1-A, 2-blank …). If it is an answer key, write number-answer pairs. Write [unreadable] where you cannot read.");
+    }
+    async function runImport() {
+      if (!shots.length) return;
+      if (impCtrl) impCtrl.abort();
+      const my = impCtrl = new AbortController();
+      const out = view.querySelector("#exImpOut");
+      const started = Date.now();
+      const stage = (m, vis) => { if (!out.isConnected) return; out.innerHTML = '<div class="stage"><span class="spinner"></span>' + App.icon(vis ? "eye" : "scan") + "<span>" + esc(vis ? T("Fotoğraf okunuyor…", "Reading the photo…") : T("Netler çıkarılıyor…", "Extracting scores…")) + "</span>" + (m ? "<code>" + esc(m) + "</code>" : "") + '<span class="stage__time" id="exImpT"></span></div>'; App.hydrateIcons(out); };
+      stage("");
+      const tick = setInterval(() => { const e = view.querySelector("#exImpT"); if (!e) return clearInterval(tick); e.textContent = t("ai.seconds", { n: Math.round((Date.now() - started) / 1000) }); }, 1000);
+      try {
+        const pr = importPrompt();
+        const res = await App.ai.generate(Object.assign({}, pr, { images: shots, visionPrompt: visionPromptImp, temperature: 0.1, signal: my.signal, onStage: (eng, m, kind) => stage(m, kind === "vision") }));
+        clearInterval(tick);
+        if (my !== impCtrl || !out.isConnected) return;
+        const r = normalizeImport(res.data, type);
+        if (!r) throw new Error(T("Fotoğrafta ders sonuçları bulunamadı. Daha net ve düz bir fotoğraf dene.", "No subject results found in the photo. Try a clearer, straighter photo."));
+        r.model = res.model;
+        imported = r;
+        topics = r.topics.length ? r.topics : topics;
+        if (!isEdit && r.type !== type) { type = r.type; App.prefs.set("examType", type); draw(); return; }
+        fillImported();
+        paintResult();
+      } catch (e) {
+        clearInterval(tick);
+        if (my !== impCtrl || !out.isConnected || (e && e.name === "AbortError")) return;
+        out.innerHTML = '<div class="msg__error"><b>' + esc(T("Okunamadı", "Could not read")) + "</b><p>" + esc(App.quiz && App.quiz.errorText ? App.quiz.errorText(e) : String(e && e.message || e)) + "</p></div>";
+      }
+    }
+    function fillImported() {
+      const r = imported, form = view.querySelector("#examForm");
+      if (!r || !form) return;
+      CFG.types[type].subjects.forEach((s) => {
+        const x = r.subjects[s.id]; if (!x) return;
+        const dIn = form.querySelector('input[name="d_' + s.id + '"]'), yIn = form.querySelector('input[name="y_' + s.id + '"]');
+        if (dIn && x.d != null) dIn.value = x.d;
+        if (yIn && x.y != null) yIn.value = x.y;
+        [dIn, yIn].forEach((i) => i && i.classList.add("is-imported"));
+      });
+      if (r.name && !form.name.value) form.name.value = r.name;
+      if (r.date && !isEdit) form.date.value = r.date;
+      recalc();
+    }
+    function paintResult() {
+      const r = imported, out = view.querySelector("#exImpOut");
+      if (!r || !out) return;
+      const n = Object.keys(r.subjects).length;
+      const conf = { yuksek: T("yüksek", "high"), orta: T("orta", "medium"), dusuk: T("düşük", "low") }[r.confidence] || "";
+      out.innerHTML = '<div class="ex-imp__ok">' + App.icon("checkCircle") + "<span>" + esc(T(n + " dersin sonucu dolduruldu", "Filled " + n + " subjects")) + (conf ? " · " + esc(T("güven: ", "confidence: ") + conf) : "") + "</span></div>" +
+        (r.notes ? '<p class="hint">' + esc(r.notes) + "</p>" : "") +
+        (r.topics.length ? '<div class="ex-imp__topics"><b>' + esc(T("Konu konu yanlış ve boşlar", "Mistakes by topic")) + "</b><ul>" + r.topics.slice(0, 30).map((x) =>
+          "<li>" + (x.key ? '<a href="#/konular/' + esc(x.key) + '">' + esc(x.topic) + "</a>" : esc(x.topic)) + ' <span class="hint">' + esc(subjLabel(x.subject)) + "</span> <b>" + x.wrong + T(" Y", " W") + "</b>" + (x.blank ? " · " + x.blank + T(" B", " B") : "") + "</li>").join("") +
+          '</ul><p class="hint">' + esc(T("Konu yanlışları denemeyle birlikte kaydedilir; Deneme Takibi'nde ve önerilerde kullanılır.", "Topic mistakes are saved with the exam and used in tracking and suggestions.")) + "</p></div>" : "") +
+        '<p class="hint">' + esc(T("Yeşil çerçeveli kutular fotoğraftan dolduruldu; yanlış okunan varsa düzeltip kaydet.", "Green-outlined boxes were filled from the photo; fix anything misread, then save.")) + "</p>";
+      App.hydrateIcons(out);
     }
 
     function readRows() {
@@ -387,6 +570,8 @@
         name: form.name.value.trim() || defaultName,
         date,
         results,
+        topics: topics && topics.length ? topics : undefined,
+        source: imported ? "photo" : (existing && existing.source) || undefined,
         createdAt: existing ? existing.createdAt : now,
         updatedAt: now
       };

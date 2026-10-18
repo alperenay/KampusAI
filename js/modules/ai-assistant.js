@@ -190,6 +190,7 @@
         '<div class="home__brand" aria-hidden="true">' + App.icon("logo") + "</div>" +
         '<h1 class="home__title">' + (first ? "<b>" + esc(t("ai.hello", { name: first })) + "</b><br>" : "") + esc(t("ai.headline")) + "</h1>" +
         (App.goals ? App.goals.countdownHtml() : "") +
+        (App.motivation ? '<p class="home-note">' + App.icon("quote") + "<span>" + esc(App.motivation.today().text) + "</span></p>" : "") +
         composerHtml(t("ai.placeholder")) +
         '<p class="ai-notice" id="aiNotice" hidden></p>' +
         '<nav class="quick" aria-label="' + esc(t("ai.quick")) + '">' +
