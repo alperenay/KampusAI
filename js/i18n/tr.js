@@ -348,6 +348,7 @@ App.locales.tr = {
   "abt.lic.katex": "matematik formülleri",
   "abt.lic.qr": "QR kod üretimi",
   "abt.lic.three": "3B deney sahneleri",
+  "abt.lic.pico": "Hologramda yüz bulma",
   "abt.lic.tercih": "Tercih Robotu taban puan ve sıralama verisi",
   "abt.lic.ne": "Etkileşimli Harita sınır, akarsu ve göl verileri",
   "abt.lic.pd": "Kamu malı",
