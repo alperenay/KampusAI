@@ -132,6 +132,14 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
   besin ayıraçları, osmoz, fotosentez, solunum ve fermantasyon, popülasyon, enerji piramidi, sinir impulsu, göz kusurları,
   kan şekeri, bağışıklık, tropizma, DNA ve mutasyonlar, terleme. Derse, sınıfa ve üniteye göre süzülür, aranır;
   favorilere eklenir. Her deneyde "Dene bakalım" görevleri ve ilgili konular var; deneyler konu sayfalarında da görünür.
+  **2B / 3B:** Her deney hem 2B hem 3B açılabilir; deneyin sağ üstündeki 2B/3B düğmesiyle geçiş yapılır. 3B sahnede
+  sürükleyerek döndür, tekerlek ya da iki parmakla yakınlaştır, çift dokunuşla görünümü sıfırla. Varsayılan görünüm ve
+  3B kalitesi Deney Laboratuvarı sayfasındaki "Görünüm" kartından seçilir; zayıf cihazlar 2B ile başlar.
+- **Paragraf Antrenmanı (TYT Türkçe):** *Okuma hızı testi*nde paragrafı okuyup "Bitirdim"e basarsın; metin gizlenir,
+  anlama sorusu gelir ve kelime/dakika hızın kaydedilir. *Süreli antrenman*da 5, 10 ya da 20 soruluk setlerde her soru
+  için süren tutulur; hedef süre (varsayılan 60 sn) aşılınca sayaç kırmızıya döner. Özet sayfasında hız eğilimi, soru
+  başına ortalama süre, soru türüne göre (ana düşünce, çıkarım, boşluk, akışı bozan cümle…) doğruluk ve öneriler var;
+  zayıf olduğun türden 5 soruluk set açabilirsin. Hazır paragraflar bitince yapay zekâ yeni set yazabilir.
 - **Oyunlar:** Menüdeki Oyunlar sekmesinde derslere göre sınıflanmış dokuz kısa oyun: Doğru mu Yanlış mı? Fırtınası ve
   Kavram Eşleştirme (bütün derslerin hap bilgilerinden üretilir), 60 Saniye İşlem, Grafik Tahmini, Hedef Atış,
   Denklem Denkleştirme, Periyodik Tablo Yapbozu, Tarih Şeridi ve Kelime Kaydırma (YDT). Rekorlar cihazda saklanır.

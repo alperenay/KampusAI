@@ -18,6 +18,7 @@
     ["Google Gemini API", "abt.lic.gemini", "abt.lic.terms", "https://ai.google.dev/gemini-api/terms"],
     ["KaTeX", "abt.lic.katex", "MIT", "https://katex.org"],
     ["qrcode-generator", "abt.lic.qr", "MIT", "https://github.com/kazuhikoarase/qrcode-generator"],
+    ["three.js (r149)", "abt.lic.three", "MIT", "https://github.com/mrdoob/three.js"],
     ["jsQR", "abt.lic.jsqr", "Apache 2.0", "https://github.com/cozmo/jsQR"],
     ["OpenDyslexic", "abt.lic.font", "SIL OFL 1.1", "https://opendyslexic.org"],
     ["Electron", "abt.lic.electron", "MIT", "https://www.electronjs.org"],
@@ -42,6 +43,16 @@
       ["5977 sayılı Biyogüvenlik Kanunu. (2010). Resmî Gazete, 27533.", "https://www.mevzuat.gov.tr"],
       ["UNESCO Dünya Mirası Merkezi. Türkiye'deki Dünya Mirası alanları.", "https://whc.unesco.org/en/statesparties/tr"]
     ]],
+    [T("Deney Laboratuvarı ve oyunlarda kullanılan veriler", "Data used in the lab and games"), [
+      ["Tiesinga, E., Mohr, P. J., Newell, D. B., & Taylor, B. N. (2021). CODATA recommended values of the fundamental physical constants: 2018. Reviews of Modern Physics, 93(2), 025010. (g, h, c, e, k gibi sabitler)", "https://physics.nist.gov/cuu/Constants/"],
+      ["Kramida, A., Ralchenko, Yu., Reader, J., & NIST ASD Team. NIST Atomic Spectra Database (iyonlaşma enerjileri, hidrojen spektrumu).", "https://physics.nist.gov/asd"],
+      ["Cordero, B. vd. (2008). Covalent radii revisited. Dalton Transactions, (21), 2832–2838. (Periyodik özellikler deneyi ve Periyodik Tablo oyunu)", "https://doi.org/10.1039/B801115J"],
+      ["Pauling, L. (1960). The nature of the chemical bond (3. bs.). Cornell University Press. (Elektronegatiflik değerleri)", ""],
+      ["Rumble, J. R. (Ed.). CRC Handbook of Chemistry and Physics. CRC Press. (Çözünürlük eğrileri, Ksp, standart elektrot potansiyelleri, öz ısılar)", "https://hbcp.chemnetbase.com"],
+      ["IUPAC. (2021). Standard atomic weights of the elements. Commission on Isotopic Abundances and Atomic Weights.", "https://iupac.qmul.ac.uk/AtWt/"],
+      ["Campbell, N. A., Urry, L. A. vd. (2020). Biology (12. bs.). Pearson. (Enzim, fotosentez, osmoz, kalıtım deneylerinin modelleri)", ""],
+      ["Deneylerdeki modeller öğretim amaçlı sadeleştirilmiştir (ör. hava direnci, sürtünme ve ısı kaybı isteğe bağlı ya da ihmal edilmiştir); değerler ölçüm değil, ders kitabı düzeyinde yaklaşık değerlerdir.", ""]
+    ]],
     [T("Öğrenme yöntemleri", "Learning methods"), [
       ["Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., & Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. Psychological Bulletin, 132(3), 354–380. (Yanlış defterindeki aralıklı tekrar)", "https://doi.org/10.1037/0033-2909.132.3.354"],
       ["Roediger, H. L., & Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. Psychological Science, 17(3), 249–255. (Konu sonu testleri)", "https://doi.org/10.1111/j.1467-9280.2006.01693.x"],
@@ -49,7 +60,11 @@
       ["Ebbinghaus, H. (1885/1913). Memory: A contribution to experimental psychology. Teachers College, Columbia University. (Unutma eğrisi)", "https://psychclassics.yorku.ca/Ebbinghaus/index.htm"],
       ["Murre, J. M. J., & Dros, J. (2015). Replication and analysis of Ebbinghaus' forgetting curve. PLoS ONE, 10(7), e0120644. (Unutma eğrisi)", "https://doi.org/10.1371/journal.pone.0120644"],
       ["Hamari, J., Koivisto, J., & Sarsa, H. (2014). Does gamification work? A literature review of empirical studies on gamification. HICSS 2014. (Seri ve rozetler)", "https://doi.org/10.1109/HICSS.2014.377"],
-      ["Cirillo, F. (2018). The Pomodoro Technique. Currency. (Odak sayacı)", "https://www.pomodorotechnique.com"]
+      ["Cirillo, F. (2018). The Pomodoro Technique. Currency. (Odak sayacı)", "https://www.pomodorotechnique.com"],
+      ["Leitner, S. (1972). So lernt man lernen. Herder. (Hap Kartlarındaki kutu sistemi)", ""],
+      ["Brysbaert, M. (2019). How many words do we read per minute? A review and meta-analysis of reading rate. Journal of Memory and Language, 109, 104047. (Paragraf Antrenmanı: okuma hızı ölçütleri)", "https://doi.org/10.1016/j.jml.2019.104047"],
+      ["Rayner, K., Schotter, E. R., Masson, M. E. J., Potter, M. C., & Treiman, R. (2016). So much to read, so little time: How do we read, and can speed reading help? Psychological Science in the Public Interest, 17(1), 4–34. (Hız–anlama dengesi, geri dönüşler)", "https://doi.org/10.1177/1529100615623267"],
+      ["Mayer, R. E. (2009). Multimedia learning (2. bs.). Cambridge University Press. (Deneylerde 2B/3B görselleştirme)", ""]
     ]],
     [T("Yapay zekâ", "Artificial intelligence"), [
       ["Google DeepMind. (2026). Gemma 4 model ailesi ve model kartı.", "https://ai.google.dev/gemma"],
@@ -66,6 +81,7 @@
 
   /* Son sürümler (yeniden eskiye) */
   const SURUMLER = () => [
+    ["1.20.0", T("Deneylere 3B görünüm: 67 deneyin hepsi 3B sahnede açılabiliyor (döndür, yakınlaştır, çift dokunuşla sıfırla); 2B görünüm de duruyor, her deneyde 2B/3B düğmesiyle seçim öğrencide; varsayılan görünüm ve 3B kalitesi Deney Laboratuvarı'ndan ayarlanır (zayıf cihazlarda 2B ile başlar). Yeni Paragraf Antrenmanı (TYT Türkçe): okuma hızı testi (kelime/dakika ve anlama), soru başına süre tutan süreli setler, soru türlerine göre doğruluk ve süre, öneriler, yapay zekâyla yeni paragraf seti. Kaynakça ve lisanslar güncellendi.", "3D view for all 67 labs (rotate, zoom, double-tap reset) with 2D kept and a 2D/3D switch in each lab; default view and 3D quality in Lab settings. New Paragraph Training for TYT Turkish: reading speed test (wpm and comprehension), timed sets with time per question, stats by question type, tips and AI-generated sets. References and licences updated.")],
     ["1.19.0", T("Deney Laboratuvarı 67 deneye çıktı: 9–12. sınıf fizik, kimya ve biyoloji (sıvı basıncı, kaldırma kuvveti, devreler, çarpışma, fotoelektrik, gaz yasaları, pH ve titrasyon, kimyasal denge, piller, enzimler, osmoz, fotosentez, DNA ve mutasyonlar…); derse, sınıfa ve üniteye göre sınıflandırma, arama, favoriler, her deneyde görevler. Yeni Oyunlar sekmesi: Doğru mu Yanlış mı, Kavram Eşleştirme, 60 Saniye İşlem, Grafik Tahmini, Hedef Atış, Denklem Denkleştirme, Periyodik Tablo, Tarih Şeridi, Kelime Kaydırma.", "Lab grows to 67 experiments across physics, chemistry and biology with filters, search, favourites and tasks. New Games tab with nine subject games.")],
     ["1.18.0", T("Ders renkleri ve simgeleri; Konu Anlatımı tek sayfada (sınıf sekmeleri + dersler, sıradaki kazanım); ders sayfasında \"Kaldığın yerden devam et\" ve konuların Zayıf/Orta/Güçlü etiketleri; konu sayfasında \"Bu sayfada\" şeridi, geniş ekranda sağda yapışkan içindekiler ve kısayollar.", "Subject colours and icons; one-page topic browser with grade tabs and next outcome; continue button and mastery tags on subject pages; on-page contents and sticky side panel on lesson pages.")],
     ["1.17.0", T("Daha düzenli menü ve üst çubuk: menü Çalış, Takip ve Araçlar gruplarına ayrıldı (açılıp kapanır, kapalı grupta bekleyen iş noktayla görünür); tema, dil ve yedek tek bir panelde; Ctrl+K ya da \"/\" ile her şeyi arama (konular, sayfalar, eylemler, sohbetler); telefonda üst çubuk artık taşmıyor, sayfa adı görünüyor; asistan açılışında Bugün özeti.", "Tidier menu and top bar: grouped menu, one panel for theme/language/backup, Ctrl+K search for everything, no top bar overflow on phones, Today summary on the assistant home.")],
@@ -94,6 +110,10 @@
     ["timer", "odak", T("Odak sayacı", "Focus timer"), T("Pomodoro ve süre istatistiği", "Pomodoro and time stats")],
     ["quiz", "simulasyon", T("Deneme simülasyonu", "Exam simulation"), T("Zayıf konulardan süreli mini deneme", "Timed mini exam from weak topics")],
     ["note", "rapor", T("Haftalık rapor", "Weekly report"), T("Gelişim özeti, yazdır ya da paylaş", "Progress summary to print or share")],
+    ["lightbulb", "lab", T("Deney laboratuvarı", "Interactive lab"), T("67 fizik, kimya, biyoloji deneyi; 2B ya da 3B", "67 physics, chemistry, biology labs; 2D or 3D")],
+    ["timer", "paragraf", T("Paragraf antrenmanı", "Paragraph training"), T("Okuma hızı ve soru başına süre takibi", "Reading speed and time per question")],
+    ["game", "oyunlar", T("Oyunlar", "Games"), T("Derslere göre 9 kısa oyun", "Nine short subject games")],
+    ["layers", "kartlar", T("Hap kartları", "Flashcards"), T("Kutu sistemiyle tekrar", "Spaced review with boxes")],
     ["grad", "sinif", T("Sınıf (öğretmen)", "Class (teacher)"), T("Sınıfın zorlandığı konular, anonim", "Where the class struggles, anonymous")]
   ];
 
