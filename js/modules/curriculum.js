@@ -79,59 +79,73 @@
     }
   }
 
-  /* ---------------- Sınıflar ---------------- */
-  async function renderGrades(view) {
+  /* ---------------- Ortak: ders kimliği ---------------- */
+  const subjIco = (s, size) => '<span class="subj-ico' + (size ? " subj-ico--" + size : "") + '">' + App.icon(s.icon || "book") + "</span>";
+  /** Dersin sıradaki (tamamlanmamış, içeriği olan) kazanımı */
+  function nextOf(grade, subject, done) {
+    const list = outcomesOf(subject);
+    const x = list.find((y) => !done[C.key(grade.id, subject.id, y.unit.id, y.outcome.id)]);
+    return x ? { unit: x.unit, outcome: x.outcome, href: "#/konular/" + [grade.id, subject.id, x.unit.id, x.outcome.id].join("/"), first: x === list[0] } : null;
+  }
+  const masteryMap = () => (App.roots ? App.roots.mastery().catch(() => new Map()) : Promise.resolve(new Map()));
+  const mTag = (m) => (m && ["weak", "mid", "strong"].includes(m.status) ? '<span class="m-tag m-tag--' + m.status + '">' + esc(t("cur.m." + m.status)) + "</span>" : "");
+
+  /* ---------------- Sınıflar ve dersler (tek sayfa) ---------------- */
+  async function renderGrades(view, grade) {
     const done = await progressMap();
+    if (!grade) grade = C.findGrade(App.prefs.get("curGrade", "")) || C.grades[0];
+    App.prefs.set("curGrade", grade.id);
+    const pct = (g) => {
+      let total = 0, comp = 0;
+      g.subjects.forEach((s) => { const c = countSubject(g, s, done); total += c.total; comp += c.done; });
+      return total ? Math.round((comp / total) * 100) : 0;
+    };
     view.innerHTML =
       '<div class="page">' +
         '<div class="page-head"><div><h1>' + esc(t("cur.title")) + "</h1><p>" + esc(t("cur.intro")) + "</p></div></div>" +
-        '<div class="grid grid--4">' + C.grades.map((g) => {
-          let total = 0, comp = 0;
-          g.subjects.forEach((s) => { const c = countSubject(g, s, done); total += c.total; comp += c.done; });
-          return '<a class="tile-link" href="#/konular/' + g.id + '">' +
-            '<span class="tile-link__icon">' + App.icon("grad") + "</span>" +
-            '<span><span class="tile-link__title">' + esc(C.gradeName(g)) + '</span><br><span class="card__sub">' + esc(tn("cur.subjectCount", g.subjects.length)) + "</span></span>" +
-            '<span class="tile-link__meta">' + esc(progressText({ total, done: comp })) + "</span>" +
-            (total ? '<div class="progress"><i style="width:' + Math.round((comp / total) * 100) + '%"></i></div>' : "") +
-          "</a>";
-        }).join("") + "</div>" +
-      "</div>";
-  }
-
-  /* ---------------- Dersler ---------------- */
-  async function renderSubjects(view, grade) {
-    const done = await progressMap();
-    view.innerHTML =
-      '<div class="page">' +
-        '<div class="page-head"><div>' + crumbs([{ text: t("cur.title"), href: "#/konular" }, { text: C.gradeName(grade) }]) +
-        '<h1 style="margin-top:6px">' + esc(C.gradeName(grade)) + "</h1></div></div>" +
-        '<div class="grid grid--3">' + grade.subjects.map((s) => {
+        '<nav class="grade-tabs" aria-label="' + esc(t("cur.gradePick")) + '">' + C.grades.map((g) =>
+          '<a href="#/konular/' + g.id + '"' + (g.id === grade.id ? ' aria-current="page"' : "") + ">" + esc(C.gradeName(g)) + (pct(g) ? "<small>%" + pct(g) + "</small>" : "") + "</a>").join("") + "</nav>" +
+        '<div class="subj-grid">' + grade.subjects.map((s) => {
           const c = countSubject(grade, s, done);
-          return '<a class="tile-link" href="#/konular/' + grade.id + "/" + s.id + '" style="--chip-bg:' + s.color + "22;--chip-fg:" + s.color + '">' +
-            '<span class="tile-link__icon">' + App.icon("book") + "</span>" +
-            '<span class="tile-link__title">' + esc(L(s.name)) + "</span>" +
-            '<span class="tile-link__meta">' + (s.units.length ? esc(tn("cur.unitCount", s.units.length)) + " · " : "") + esc(progressText(c)) + "</span>" +
-            (c.total ? '<div class="progress"><i style="width:' + Math.round((c.done / c.total) * 100) + '%"></i></div>' : "") +
+          const nx = c.total ? nextOf(grade, s, done) : null;
+          return '<a class="subj-tile subj-' + s.id + '" href="#/konular/' + grade.id + "/" + s.id + '">' + subjIco(s) +
+            '<span class="subj-tile__name">' + esc(L(s.name)) + "</span>" +
+            '<span class="subj-tile__meta">' + esc(s.units.length ? tn("cur.unitCount", s.units.length) + " · " + t("cur.outcomeCount", { n: c.total }) : t("cur.aiAvailable")) + "</span>" +
+            (c.total ? '<span class="subj-tile__bar"><span class="progress progress--subj"><i style="width:' + Math.round((c.done / c.total) * 100) + '%"></i></span><span>' + c.done + "/" + c.total + "</span></span>" : "") +
+            (nx ? '<span class="subj-tile__next"><b>' + esc(t("cur.upNext")) + ":</b> " + esc(L(nx.outcome.title)) + "</span>" : "") +
           "</a>";
         }).join("") + "</div>" +
       "</div>";
   }
+  const renderSubjects = (view, grade) => renderGrades(view, grade);
 
   /* ---------------- Üniteler ---------------- */
   async function renderUnits(view, grade, subject) {
-    const done = await progressMap();
+    App.prefs.set("curGrade", grade.id);
+    const [done, M] = await Promise.all([progressMap(), masteryMap()]);
     const c = countSubject(grade, subject, done);
+    const nx = c.total ? nextOf(grade, subject, done) : null;
+    // Hepsi bittiyse en zayıf konuyu öner
+    let weakest = null;
+    if (c.total && !nx) outcomesOf(subject).forEach((x) => {
+      const k = C.key(grade.id, subject.id, x.unit.id, x.outcome.id), m = M.get(k);
+      if (m && m.score != null && (!weakest || m.score < weakest.score)) weakest = { score: m.score, outcome: x.outcome, href: "#/konular/" + k };
+    });
+    const openUnit = nx ? nx.unit.id : (subject.units[0] || {}).id;
     const body = subject.units.length
-      ? subject.units.map((u, i) => {
+      ? subject.units.map((u) => {
           const doneCount = u.outcomes.filter((k) => done[C.key(grade.id, subject.id, u.id, k.id)]).length;
-          return '<details class="unit"' + (i === 0 ? " open" : "") + ">" +
+          const n = u.outcomes.length;
+          return '<details class="unit"' + (u.id === openUnit ? " open" : "") + ">" +
             '<summary><span class="unit__chev">' + App.icon("chevron") + '</span><span class="unit__name">' + esc(L(u.name)) + "</span>" +
-            '<span class="badge' + (doneCount === u.outcomes.length && u.outcomes.length ? " badge--good" : "") + '">' + doneCount + " / " + u.outcomes.length + "</span></summary>" +
+            '<span class="unit__count"><span class="progress progress--subj" aria-hidden="true"><i style="width:' + (n ? Math.round((doneCount / n) * 100) : 0) + '%"></i></span>' + doneCount + " / " + n + "</span></summary>" +
             '<div class="outcomes">' + u.outcomes.map((k) => {
-              const isDone = !!done[C.key(grade.id, subject.id, u.id, k.id)];
+              const key = C.key(grade.id, subject.id, u.id, k.id);
+              const isDone = !!done[key];
               return '<a class="outcome' + (isDone ? " is-done" : "") + '" href="#/konular/' + [grade.id, subject.id, u.id, k.id].join("/") + '">' +
                 '<span class="outcome__code">' + esc(k.code || "") + "</span>" +
                 '<span class="outcome__title">' + esc(L(k.title)) + "</span>" +
+                mTag(M.get(key)) +
                 (k.content ? (k.ai ? '<span class="badge badge--ai" title="' + esc(t("cur.aiMadeShort")) + '">' + App.icon("sparkle") + "</span>" : "") : '<span class="badge">' + esc(t("cur.aiBadge")) + "</span>") +
                 '<span class="outcome__state" title="' + esc(isDone ? t("cur.done") : t("cur.notDone")) + '">' + App.icon(isDone ? "checkCircle" : "circle") + "</span>" +
               "</a>";
@@ -139,15 +153,19 @@
         }).join("")
       : genCardHtml(t("cur.aiSyllabusMaking", { subject: L(subject.name) }), t("cur.aiSyllabusHint"));
 
+    const cont = nx
+      ? '<a class="subj-continue" href="' + nx.href + '">' + App.icon("play") + '<span class="subj-continue__text"><small>' + esc(nx.first ? t("cur.startHere") : t("cur.continue")) + "</small><b>" + esc(L(nx.outcome.title)) + "</b></span>" + '<span class="subj-continue__go">' + App.icon("chevron") + "</span></a>"
+      : weakest ? '<a class="subj-continue" href="' + weakest.href + '">' + App.icon("refresh") + '<span class="subj-continue__text"><small>' + esc(t("cur.allDone") + " · " + t("cur.reviewWeak")) + "</small><b>" + esc(L(weakest.outcome.title)) + "</b></span>" + '<span class="subj-continue__go">' + App.icon("chevron") + "</span></a>" : "";
+
     view.innerHTML =
-      '<div class="page page--narrow">' +
-        '<div class="page-head"><div>' +
-          crumbs([{ text: t("cur.title"), href: "#/konular" }, { text: C.gradeName(grade), href: "#/konular/" + grade.id }, { text: L(subject.name) }]) +
-          '<h1 style="margin-top:6px">' + esc(L(subject.name)) + "</h1>" +
-          (c.total ? "<p>" + esc(progressText(c)) + "</p>" : "") +
+      '<div class="page page--narrow subj-page subj-' + subject.id + '">' +
+        crumbs([{ text: t("cur.title"), href: "#/konular" }, { text: C.gradeName(grade), href: "#/konular/" + grade.id }, { text: L(subject.name) }]) +
+        '<div class="subj-head">' + subjIco(subject, "lg") + '<div class="subj-head__main">' +
+          "<h1>" + esc(L(subject.name)) + "</h1>" +
+          (c.total ? '<div class="subj-head__prog"><span class="progress progress--subj"><i style="width:' + Math.round((c.done / c.total) * 100) + '%"></i></span>' + esc(progressText(c)) + "</div>" : "") +
         "</div></div>" +
         (subject.ai ? aiNote(subject.ai, t("cur.aiSyllabusNote"), 'id="aiRegenSyl"') : "") +
-        body +
+        cont + body +
       "</div>";
 
     if (!subject.units.length) {
@@ -160,6 +178,51 @@
       await App.lessons.removeSyllabus(grade.id, subject.id);
       App.router.refresh();
     });
+  }
+
+  /* ---------------- "Bu sayfada" içindekiler ---------------- */
+  function buildToc(view) {
+    const secs = Array.from(view.querySelectorAll(".lesson > section"));
+    if (secs.length < 3) { view.querySelectorAll("[data-toc]").forEach((n) => n.remove()); return; }
+    const items = secs.map((sec, i) => {
+      sec.id = sec.id || "sec-" + i;
+      let label = "";
+      if (sec.classList.contains("lab-card")) label = t("cur.sec.lab");
+      else if (sec.classList.contains("cards-card")) label = t("cur.sec.cards");
+      else { const h = sec.querySelector("h2, .card__title, h3"); if (h) { const c = h.cloneNode(true); c.querySelectorAll("button, .badge").forEach((b) => b.remove()); label = c.textContent.trim(); } }
+      if (sec.querySelector("#myNote")) label = t("cur.sec.notes");
+      return label ? { id: sec.id, label: label.length > 34 ? label.slice(0, 32) + "…" : label } : null;
+    }).filter(Boolean);
+    view.querySelectorAll("[data-toc]").forEach((nav) => {
+      nav.innerHTML = items.map((x) => '<a href="#/' + esc(location.hash.replace(/^#\/?/, "")) + '" data-sec="' + x.id + '">' + esc(x.label) + "</a>").join("");
+      nav.addEventListener("click", (e) => {
+        const a = e.target.closest("[data-sec]"); if (!a) return;
+        e.preventDefault();
+        const el = document.getElementById(a.dataset.sec);
+        if (el) el.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+      });
+    });
+    // Görünen bölümü işaretle: ekranın üst üçte birini geçen son bölüm (en alta inilince sonuncusu)
+    const root = document.getElementById("view");
+    let last = null, raf = 0;
+    const spy = () => {
+      raf = 0;
+      if (!view.contains(secs[0])) { root.removeEventListener("scroll", onScroll); return; }
+      const line = window.innerHeight * 0.32;
+      let cur = secs[0];
+      secs.forEach((sec) => { if (sec.getBoundingClientRect().top <= line) cur = sec; });
+      if (root.scrollTop + root.clientHeight >= root.scrollHeight - 4) cur = secs[secs.length - 1];
+      if (cur === last) return;
+      last = cur;
+      view.querySelectorAll("[data-toc] a").forEach((a) => {
+        const on = a.dataset.sec === cur.id;
+        a.classList.toggle("is-on", on);
+        if (on && a.closest(".toc--inline") && a.offsetParent) { const n = a.parentElement; n.scrollTo({ left: a.offsetLeft - n.clientWidth / 2 + a.offsetWidth / 2 }); }
+      });
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(spy); };
+    root.addEventListener("scroll", onScroll, { passive: true });
+    spy();
   }
 
   /* ---------------- Kazanım sayfası ---------------- */
@@ -188,8 +251,9 @@
       '<section class="card lesson__section"' + (listen ? " data-read-scope" : "") + "><h2>" + App.icon(icon) + esc(title) + (listen && App.a11y ? App.a11y.listenBtnHtml() : "") + '</h2><div class="lesson__body md">' + inner + "</div></section>";
     const soon = '<p class="placeholder">' + esc(t("cur.contentSoon")) + "</p>";
 
+    const pos = idx + 1, total = flat.length;
     view.innerHTML =
-      '<div class="page page--narrow">' +
+      '<div class="page page--narrow lesson-page subj-' + subject.id + '"><div class="lesson-main">' +
         '<div class="page-head"><div>' +
           crumbs([
             { text: C.gradeName(grade), href: "#/konular/" + grade.id },
@@ -201,6 +265,7 @@
         "</div>" +
         '<div class="page-head__actions"><button class="btn' + (isDone ? "" : " btn--primary") + '" type="button" id="toggleDone"></button></div></div>' +
 
+        '<nav class="toc toc--inline" data-toc aria-label="' + esc(t("cur.onPage")) + '"></nav>' +
         (missingLang ? '<p class="hint" style="margin:-8px 0 14px">' + esc(t("cur.onlyTurkish")) + "</p>" : "") +
 
         (outcome.ai ? aiNote(outcome.ai, t("cur.aiLessonNote"), 'id="aiRegenLes"') : "") +
@@ -231,7 +296,19 @@
           '<button class="lesson-dock__btn" type="button" id="dockDone"></button>' +
           (next ? '<a class="lesson-dock__btn" href="' + link(next) + '">' + App.icon("chevron") + "<span>" + esc(t("cur.dockNext")) + "</span></a>" : '<span class="lesson-dock__btn is-off" aria-hidden="true"></span>') +
         "</nav>" : "") +
+      "</div>" +
+      // Geniş ekranda sağ sütun: konum, bu sayfada, kısayollar
+      '<aside class="lesson-aside" aria-label="' + esc(t("cur.onPage")) + '">' +
+        '<div class="lesson-aside__pos"><span>' + subjIco(subject, "sm") + " " + esc(t("cur.pos", { i: pos, n: total })) + '</span><span class="progress progress--subj"><i style="width:' + Math.round((pos / total) * 100) + '%"></i></span></div>' +
+        '<nav class="toc" data-toc></nav>' +
+        (ct ? '<div class="lesson-aside__acts"><a class="btn btn--sm" href="#/test/' + key + '">' + App.icon("quiz") + esc(t("cur.dockQuiz")) + "</a>" +
+          '<a class="btn btn--sm" href="#/anlat/' + key + '">' + App.icon("mic") + esc(t("cur.dockExplain")) + "</a>" +
+          (App.cards && App.cards.buildFor(key).length ? '<a class="btn btn--sm" href="#/kartlar/konu/' + key + '">' + App.icon("layers") + esc(t("cur.sec.cards")) + "</a>" : "") + "</div>" : "") +
+        '<div class="lesson-aside__nav">' + (prev ? '<a class="btn btn--sm" href="' + link(prev) + '" title="' + esc(L(prev.outcome.title)) + '">' + App.icon("chevronL") + esc(t("cur.dockPrev")) + "</a>" : "") +
+          (next ? '<a class="btn btn--sm" href="' + link(next) + '" title="' + esc(L(next.outcome.title)) + '">' + esc(t("cur.dockNext")) + App.icon("chevron") + "</a>" : "") + "</div>" +
+      "</aside>" +
       "</div>";
+    buildToc(view);
 
     if (!ct) runGeneration(view, (onStage) => App.lessons.generateLesson(key, { onStage }));
     const regenLes = view.querySelector("#aiRegenLes");

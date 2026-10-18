@@ -145,7 +145,7 @@
     const rows = d.topics.map((tp) => {
       const f = App.lessons.find(tp.key);
       if (!f) return "";
-      return '<li class="daily-task' + (tp.done ? " is-done" : "") + '">' +
+      return '<li class="daily-task subj-' + esc(f.subject.id) + (tp.done ? " is-done" : "") + '">' +
         '<button type="button" class="daily-check" data-mark="' + esc(tp.key) + '" aria-pressed="' + tp.done + '" title="' + esc(T("Çalıştım", "Done")) + '">' + App.icon(tp.done ? "checkCircle" : "circle") + "</button>" +
         '<div class="daily-task__body"><b>' + esc(L(f.outcome.title)) + "</b>" +
         '<span class="hint">' + esc(C().gradeName(f.grade) + " · " + L(f.subject.name) + " · " + SN[tp.m.status] + (tp.m.score != null ? " (" + tp.m.score + ")" : "") + (tp.m.parts && tp.m.parts.fading ? T(" · tekrar zamanı", " · review due") : "")) + "</span>" +
