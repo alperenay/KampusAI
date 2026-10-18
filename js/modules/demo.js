@@ -223,7 +223,7 @@
     el = document.createElement("button");
     el.id = "demoPill"; el.type = "button"; el.className = "demo-pill";
     el.title = T("Örnek öğrenci verisi gösteriliyor. Silmek için tıkla.", "Showing sample student data. Click to remove.");
-    el.textContent = T("DEMO · örnek öğrenci", "DEMO · sample student");
+    el.innerHTML = "DEMO<span class=\"demo-pill__more\"> · " + T("örnek öğrenci", "sample student") + "</span>";
     el.addEventListener("click", () => toggle());
     const bar = document.querySelector(".topbar__actions");
     if (bar) bar.insertBefore(el, bar.firstChild); else document.body.appendChild(el);

@@ -1,0 +1,147 @@
+/* =========================================================
+   nav.css — gruplu menü, sade üst çubuk, hızlı ayarlar,
+   arama paleti (Ctrl+K), asistan açılışındaki "Bugün" şeridi
+   ========================================================= */
+
+/* ---------------- Sol menü ---------------- */
+.sidebar__head { margin-bottom: 10px; }
+.sidebar__scroll { margin-top: 0; padding-bottom: 8px; }
+.sidebar__scroll > .nav { margin-bottom: 14px; }
+
+.nav-group { display: flex; flex-direction: column; gap: 2px; margin-top: 10px; }
+.nav-group__head, .side-section__toggle {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  width: 100%; height: 28px; padding: 0 10px 0 12px; border-radius: var(--radius-sm);
+  font: inherit; font-size: 12.5px; font-weight: 600; color: var(--muted); text-align: left; cursor: pointer;
+}
+.nav-group__head:hover, .side-section__toggle:hover { color: var(--text); background: var(--surface-2); }
+.nav-group__head .ico, .side-section__toggle .ico { width: 15px; height: 15px; transition: transform .18s var(--ease); }
+.nav-group.is-closed .nav-group__head .ico, .side-section.is-closed .side-section__toggle .ico { transform: rotate(-90deg); }
+.nav-group__body { display: flex; flex-direction: column; gap: 2px; }
+.nav-group.is-closed .nav-group__body { display: none; }
+/* Kapalı grupta bekleyen rozet: başlıkta nokta */
+.nav-group.is-closed:has(.nav__badge:not([hidden])) .nav-group__head > span:first-child::after {
+  content: ""; display: inline-block; width: 7px; height: 7px; margin-left: 7px; border-radius: 50%; background: var(--accent); vertical-align: 1px;
+}
+
+.side-section__title { padding: 0 0 4px; }
+.side-section__toggle { padding-left: 8px; }
+.side-section.is-closed > :not(.side-section__title) { display: none; }
+.side-section { margin-bottom: 10px; }
+
+/* Daraltılmış menü (masaüstü simge şeridi): başlıklar gizli, tüm simgeler görünür */
+.app.is-collapsed .nav-group__head { display: none; }
+.app.is-collapsed .nav-group.is-closed .nav-group__body { display: flex; }
+.app.is-collapsed .nav-group { margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border); }
+.app.is-collapsed .sidebar__scroll { overflow-x: hidden; }
+
+/* ---------------- Üst çubuk ---------------- */
+.topbar__actions { gap: 6px; }
+.search-trigger {
+  display: inline-flex; align-items: center; gap: 10px;
+  width: clamp(220px, 26vw, 340px); height: 38px; padding: 0 8px 0 14px; margin-right: 6px;
+  border: 1px solid var(--border); border-radius: var(--radius-pill);
+  background: var(--chip-bg); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
+  color: var(--muted); font: inherit; font-size: 13.5px; cursor: pointer; text-align: left;
+  transition: border-color .15s, color .15s;
+}
+.search-trigger:hover { border-color: var(--border-strong); color: var(--text-2); }
+.search-trigger .ico { width: 17px; height: 17px; flex: none; }
+.search-trigger__text { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.search-trigger__kbd { flex: none; padding: 2px 7px; border-radius: 6px; border: 1px solid var(--border-strong); font: 600 11px var(--font); color: var(--muted); }
+@media (pointer: coarse) { .search-trigger__kbd { display: none; } }
+
+/* Hızlı ayarlar paneli */
+.qs { position: relative; }
+.qs__panel {
+  position: absolute; top: calc(100% + 8px); right: 0; z-index: 40; width: 290px;
+  display: flex; flex-direction: column; gap: 4px; padding: 10px;
+  border: 1px solid var(--border-strong); border-radius: var(--radius);
+  background: var(--surface-solid); box-shadow: var(--shadow);
+  animation: qs-in .14s var(--ease);
+}
+.qs__panel[hidden] { display: none; }
+@keyframes qs-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+.qs__row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 4px 4px 4px 8px; font-size: 13.5px; color: var(--text-2); }
+.qs__row .lang-switch { -webkit-backdrop-filter: none; backdrop-filter: none; }
+.qs__item {
+  display: flex; align-items: center; gap: 12px; width: 100%; min-height: 44px; padding: 6px 8px;
+  border-radius: var(--radius-sm); font: inherit; font-size: 14px; color: var(--text); text-align: left; cursor: pointer;
+}
+.qs__item:hover { background: var(--surface-2); }
+.qs__item .ico { width: 18px; height: 18px; color: var(--accent-text); flex: none; }
+.qs__text { display: flex; flex-direction: column; min-width: 0; }
+.qs__text small { font-size: 12px; color: var(--muted); }
+.qs__item + .qs__item { border-top: 1px solid var(--border); border-radius: 0 0 var(--radius-sm) var(--radius-sm); }
+#backupBtn { margin-top: 4px; border-top: 1px solid var(--border); border-radius: 0; }
+
+/* Demo etiketi: telefonda kısa */
+@media (max-width: 640px) { .demo-pill__more { display: none; } }
+
+/* Telefon: menü · başlık · ara · erişilebilirlik · görünüm */
+@media (max-width: 860px) {
+  .search-trigger { width: 40px; height: 40px; padding: 0; margin: 0; justify-content: center; border-color: transparent; background: none; -webkit-backdrop-filter: none; backdrop-filter: none; color: var(--text-2); }
+  .search-trigger .ico { width: 20px; height: 20px; }
+  .search-trigger__text, .search-trigger__kbd { display: none; }
+  #newChatBtn { display: none; }
+  .topbar__actions { gap: 2px; }
+  .qs__panel { position: fixed; top: calc(56px + max(env(safe-area-inset-top, 0px), var(--nt, 0px))); right: 8px; width: min(320px, calc(100vw - 16px)); }
+}
+@media (max-width: 480px) {
+  .topbar__title { visibility: visible; font-size: 17px; }
+}
+
+/* ---------------- Arama paleti ---------------- */
+.palette-backdrop {
+  position: fixed; inset: 0; z-index: 60; display: flex; justify-content: center; align-items: flex-start;
+  padding: 12vh 16px 16px; background: var(--scrim);
+}
+.palette {
+  display: flex; flex-direction: column; width: min(640px, 100%); max-height: min(560px, 76vh);
+  border: 1px solid var(--border-strong); border-radius: var(--radius); background: var(--surface-solid); box-shadow: var(--shadow); overflow: hidden;
+}
+.palette-backdrop.is-open .palette { animation: qs-in .14s var(--ease); }
+.palette__bar { display: flex; align-items: center; gap: 10px; padding: 0 8px 0 16px; border-bottom: 1px solid var(--border); }
+.palette__bar > .ico { width: 19px; height: 19px; color: var(--muted); flex: none; }
+.palette__input { flex: 1; min-width: 0; height: 54px; border: 0; background: none; color: var(--text); font: inherit; font-size: 16.5px; outline: none; }
+.palette__input::-webkit-search-cancel-button { display: none; }
+.palette__list { flex: 1; overflow-y: auto; padding: 6px; overscroll-behavior: contain; }
+.palette__group { padding: 10px 10px 4px; font-size: 12px; font-weight: 600; color: var(--muted); }
+.palette__item { display: flex; align-items: center; gap: 12px; min-height: 42px; padding: 6px 10px; border-radius: var(--radius-sm); cursor: pointer; }
+.palette__item .ico { width: 18px; height: 18px; color: var(--muted); flex: none; }
+.palette__item[aria-selected="true"] { background: var(--accent-soft); }
+.palette__item[aria-selected="true"] .ico { color: var(--accent-text); }
+.palette__text { display: flex; flex-direction: column; min-width: 0; }
+.palette__title { font-size: 14.5px; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.palette__sub { font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.palette__item--ask .ico { color: var(--accent-text); }
+.palette__empty { padding: 14px 12px 4px; font-size: 13.5px; color: var(--muted); }
+.palette__hint { padding: 8px 14px; border-top: 1px solid var(--border); font-size: 12px; color: var(--faint); }
+@media (pointer: coarse) { .palette__hint { display: none; } }
+@media (max-width: 600px) {
+  /* Telefonda tam ekran, arama kutusu üstte */
+  .palette-backdrop { padding: 0; }
+  .palette { width: 100%; max-height: none; height: 100%; border: 0; border-radius: 0;
+    padding-top: max(env(safe-area-inset-top, 0px), var(--nt, 0px)); padding-bottom: max(env(safe-area-inset-bottom, 0px), var(--nb, 0px)); }
+  .palette__item { min-height: 50px; }
+}
+
+/* ---------------- Asistan açılışı: Bugün şeridi ---------------- */
+.home__today { width: min(720px, 100%); display: flex; justify-content: center; margin-top: 16px; }
+.home__today:empty { display: none; }
+.home-today {
+  display: flex; align-items: center; gap: 10px; max-width: 100%; min-width: 0;
+  padding: 9px 12px 9px 14px; border-radius: var(--radius-pill); border: 1px solid var(--border);
+  background: var(--chip-bg); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
+  color: var(--text-2); font-size: 13.5px; text-decoration: none; white-space: nowrap;
+}
+.home-today:hover { border-color: var(--border-strong); color: var(--text); }
+.home-today > .ico { width: 17px; height: 17px; flex: none; color: var(--accent-text); }
+.home-today > .ico:last-child { color: var(--muted); width: 15px; height: 15px; }
+.home-today b { color: var(--text); font-weight: 600; flex: none; }
+.home-today__info { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.home-today__bar { flex: none; width: 64px; height: 5px; border-radius: 9px; background: var(--surface-3); overflow: hidden; }
+.home-today__bar i { display: block; height: 100%; background: var(--good); border-radius: inherit; }
+@media (max-width: 600px) { .home-today__bar { display: none; } }
+
+@media print { .search-trigger, .qs { display: none !important; } }

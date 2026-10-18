@@ -78,6 +78,16 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
   Düğmeler ekranın altında: **Bitir** (sohbeti kaydedip kapatır), ortada duruma göre **Gönder / Sustur / Vazgeç / Devam et**
   ve **Duraklat** (mikrofonu kapatır). Küreye dokunmak ortadaki düğmeyle aynı işi yapar; telefonun geri tuşu da kapatır.
 
+### Menü ve arama
+
+- Sol menü üç gruba ayrılır: **Çalış** (konular, kartlar, yanlışlar, deneyler, çözüm kontrolü, program),
+  **Takip** (denemeler, simülasyon, harita, kök analiz, puan, rapor) ve **Araçlar**. Grup başlığına tıklayınca
+  açılır/kapanır; kapalı bir grupta bekleyen iş (ör. tekrar zamanı gelen yanlışlar) başlıkta nokta olarak görünür.
+- **Arama:** üst çubuktaki arama kutusu ya da **Ctrl+K** (Mac'te ⌘K) veya **/** tuşu. Konu adları, sayfalar,
+  sohbetler ve eylemler ("tema değiştir", "deneme ekle", "yedek al") aranır; Türkçe karakter yazmak gerekmez
+  (*sarkac* → *sarkaç*). Sonuç yoksa soruyu tek tuşla asistana sorarsın.
+- Tema, dil ve yedek alma üst çubuktaki ay/güneş düğmesinin altında toplanır.
+
 ### Telefonda kullanım
 - Altta **Asistan, Bugün, Konular, Denemeler** sekmeleri ve tüm bölümler için **Menü** var; klavye açılınca sekmeler gizlenir.
 - Pencereler (ayarlar, onaylar) alttan açılır; **Kaydet / Vazgeç** gibi düğmeler en altta durur, başlığı aşağı çekince kapanır.

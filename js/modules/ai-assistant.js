@@ -198,6 +198,7 @@
           '<button type="button" data-act="attach">' + App.icon("image") + esc(t("ai.quickPhoto")) + "</button>" +
           '<a href="#/konular">' + App.icon("book") + esc(t("ai.quickTopics")) + "</a>" +
         "</nav>" +
+        '<div class="home__today" data-home-today></div>' +
         '<p class="home__models" data-ai-models>' + modelsLine() + "</p>" +
       "</div>"
     );
@@ -348,6 +349,7 @@
     document.getElementById("main").classList.add("is-home");
     view.innerHTML = heroHtml();
     App.hydrateIcons(view);
+    if (App.nav) App.nav.fillToday(view);
     bind(view, null);
     paintStatus();
     if (status.state !== "ok" && status.state !== "partial") refreshStatus();
