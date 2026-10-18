@@ -140,6 +140,25 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
   için süren tutulur; hedef süre (varsayılan 60 sn) aşılınca sayaç kırmızıya döner. Özet sayfasında hız eğilimi, soru
   başına ortalama süre, soru türüne göre (ana düşünce, çıkarım, boşluk, akışı bozan cümle…) doğruluk ve öneriler var;
   zayıf olduğun türden 5 soruluk set açabilirsin. Hazır paragraflar bitince yapay zekâ yeni set yazabilir.
+- **Etkileşimli Harita (Coğrafya):** Menü › Etkileşimli Harita. Türkiye katmanları: iller (plaka), coğrafi bölgeler,
+  iklim, akarsular, göller (oluşum türüyle), dağlar–ovalar–platolar, tarım ürünleri ve madenler; dünya katmanları:
+  ülkeler, kıtalar, boğaz ve kanallar. *Keşfet*te bir yere dokununca bilgisi çıkar; *Haritada bul* ("Gediz nerede?")
+  ve *Adını seç* (işaretli yer için 4 şık) 10 soruluk sınavlardır, rekorlar saklanır. Sürükleyerek kaydır, tekerlek /
+  iki parmak / +− ile yakınlaştır. Sınırlar Natural Earth'ten; dağ, ova ve bazı akarsular yaklaşık konumlardır.
+- **Deneme sonucunu fotoğraftan doldur:** Yeni deneme formundaki *Fotoğraftan doldur* kartından sonuç belgesinin
+  (karne) fotoğrafını çek ya da en çok 4 fotoğraf seç (optik form + cevap anahtarı da olur). Yapay zekâ ders ders
+  doğru/yanlışları ve varsa konu konu yanlışları doldurur; yeşil çerçeveli kutuları kontrol edip kaydet. Konu
+  yanlışları Deneme Takibi'nde "En çok yanlış yapılan konular" kartında görünür ve Bugün önerilerine katılır.
+- **Ekrana yaz:** Çözümümü Kontrol Et'te *Ekrana yaz* düğmesi tam ekran bir yazı tahtası açar (kalem basıncı,
+  silgi, 3 renk, geri al/yinele, kareli/çizgili kâğıt, alan uzatma). Kalemle yazarken parmakla kaydırılır.
+  *Bunu kullan* deyince yazılan kısım kırpılıp adım adım kontrol edilir.
+- **Günün notu:** Asistan açılışında ve Bugün sayfasında her gün değişen kısa bir motivasyon notu.
+- **Akıllı bildirimler ve widget:** Ayarlar › Hatırlatıcılar ve bildirimler › *Akıllı bildirimler*: seçtiğin saatte
+  tekrar zamanı gelen yanlış ve kart sayısı, 21:00'de seri koruma (o gün çalışmadıysan), sınava 100/50/30/7… gün
+  kala geri sayım ve istersen her sabah günün notu. Android'de uygulama kapalıyken de gelir; bilgisayarda uygulama
+  açıkken gösterilir. Android'de aynı pencereden *Ana ekrana ekle* ile widget eklenir (ya da ana ekranda boş yere
+  basılı tut › Widget'lar › KampüsAI): YKS'ye kalan gün, bugünün görevleri, tekrar sayıları ve günün notu görünür;
+  dokununca Bugün sayfası açılır.
 - **Oyunlar:** Menüdeki Oyunlar sekmesinde derslere göre sınıflanmış dokuz kısa oyun: Doğru mu Yanlış mı? Fırtınası ve
   Kavram Eşleştirme (bütün derslerin hap bilgilerinden üretilir), 60 Saniye İşlem, Grafik Tahmini, Hedef Atış,
   Denklem Denkleştirme, Periyodik Tablo Yapbozu, Tarih Şeridi ve Kelime Kaydırma (YDT). Rekorlar cihazda saklanır.

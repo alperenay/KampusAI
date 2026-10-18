@@ -96,3 +96,53 @@ a.para-mode:hover { border-color: var(--border-strong); background: var(--surfac
   .para-result { flex-direction: column; }
 }
 .para-mode .para-mode__btns { gap: 6px; }
+
+/* Deneme: fotoğraftan doldur (v1.21) */
+.ex-imp { margin-bottom: 14px; }
+.ex-imp__head { display: flex; gap: 12px; align-items: flex-start; }
+.ex-imp__head > .ico { width: 22px; height: 22px; color: var(--accent-text); flex: none; margin-top: 2px; }
+.ex-imp__head p { margin: 4px 0 0; font-size: .88rem; color: var(--text-2); }
+.ex-imp__btns { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 0 34px; }
+.ex-imp__btns label { cursor: pointer; }
+.ex-imp__thumbs { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 10px 0 0 34px; }
+.ex-imp__thumbs:empty { display: none; }
+.ex-imp__th { position: relative; width: 64px; height: 64px; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border); }
+.ex-imp__th img { width: 100%; height: 100%; object-fit: cover; }
+.ex-imp__th .icon-btn { position: absolute; top: 2px; right: 2px; width: 22px; height: 22px; background: rgba(0,0,0,.55); color: #fff; }
+.ex-imp__th .icon-btn .ico { width: 13px; height: 13px; }
+#exImpOut { margin: 10px 0 0 34px; }
+#exImpOut:empty { display: none; }
+.ex-imp__ok { display: flex; align-items: center; gap: 8px; color: var(--good); font-weight: 600; }
+.ex-imp__ok .ico { width: 18px; height: 18px; }
+.ex-imp__topics ul, .ex-topics ol { margin: 6px 0; padding-left: 20px; display: grid; gap: 4px; font-size: .9rem; }
+.input.is-imported { border-color: var(--good); box-shadow: 0 0 0 2px color-mix(in srgb, var(--good) 22%, transparent); }
+@media (max-width: 600px) { .ex-imp__btns, .ex-imp__thumbs, #exImpOut { margin-left: 0; } }
+
+/* Çizim tahtası (v1.21) */
+html.dp-open, html.dp-open body { overflow: hidden; }
+.dp { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; background: var(--bg, #121318); padding: var(--nt, 0) var(--nr, 0) var(--nb, 0) var(--nl, 0); }
+.dp__bar { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-bottom: 1px solid var(--border); background: var(--surface-solid); flex-wrap: wrap; }
+.dp__title { font-size: .95rem; margin-right: auto; white-space: nowrap; }
+.dp__tools { display: flex; align-items: center; gap: 2px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; order: 3; width: 100%; }
+.dp__tools::-webkit-scrollbar { display: none; }
+.dp__tools > * { flex: none; }
+@media (min-width: 900px) { .dp__tools { order: 0; width: auto; } .dp__title { margin-right: 8px; } .dp__bar > .btn { margin-left: auto; } }
+.dp__t { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 10px; border: 1px solid transparent; background: none; color: var(--text-2); cursor: pointer; font: inherit; font-weight: 700; }
+.dp__t .ico { width: 19px; height: 19px; }
+.dp__t:hover { background: var(--surface-2); color: var(--text); }
+.dp__t.is-on { background: var(--accent-soft); color: var(--accent-text); border-color: color-mix(in srgb, var(--accent) 50%, transparent); }
+.dp__t:disabled { opacity: .35; cursor: default; }
+.dp__hand { font-size: 17px; filter: grayscale(.3); }
+.dp__sep { width: 1px; height: 24px; background: var(--border); margin: 0 4px; }
+.dp__c { width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--surface-solid); background: var(--c); box-shadow: 0 0 0 1px var(--border-strong); cursor: pointer; margin: 0 2px; }
+.dp__c.is-on { box-shadow: 0 0 0 2px var(--accent); }
+.dp__w i { display: block; width: 18px; height: 3px; border-radius: 3px; background: currentColor; }
+.dp__w.is-thick i { height: 6px; }
+.dp__scroll { flex: 1; overflow: auto; padding: 12px; display: flex; flex-direction: column; align-items: center; gap: 10px; -webkit-overflow-scrolling: touch; }
+.dp__paper { position: relative; flex: none; background-color: #fdfdfb; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,.25); }
+.dp__paper.is-grid { background-image: linear-gradient(#e4e8ef 1px, transparent 1px), linear-gradient(90deg, #e4e8ef 1px, transparent 1px); background-size: 24px 24px; }
+.dp__paper.is-lined { background-image: linear-gradient(transparent 31px, #d6dfee 32px); background-size: 100% 32px; }
+.dp__cv { display: block; touch-action: none; cursor: crosshair; }
+.dp__cv.is-hand { cursor: grab; }
+.dp__more { flex: none; }
+.dp__hint { margin: 0; padding: 6px 12px 10px; font-size: .8rem; color: var(--muted); text-align: center; }

@@ -259,10 +259,13 @@
         '<label class="field"><span class="field__label">' + esc(t("rem.lead")) + '</span><select class="select" id="remLead">' +
           LEADS.map((n) => '<option value="' + n + '"' + (n === Number(c.lead) ? " selected" : "") + ">" + esc(n ? t("rem.leadN", { n }) : t("rem.leadNow")) + "</option>").join("") + "</select></label>" +
         '<p class="hint" id="remStatus"></p>' +
-        '<p class="hint">' + esc(platformNote()) + "</p>",
+        '<p class="hint">' + esc(platformNote()) + "</p>" +
+        (App.smartNotify ? App.smartNotify.settingsHtml() : ""),
       actions: '<button class="btn btn--ghost" type="button" id="remTest">' + App.icon("bell") + esc(t("rem.test")) + '</button><button class="btn btn--primary" type="button" data-close>' + esc(t("close")) + "</button>"
     });
     const el = m.el;
+    App.hydrateIcons(el);
+    if (App.smartNotify) App.smartNotify.bindSettings(el);
     const status = el.querySelector("#remStatus");
     const paint = async () => {
       const p = await permission(false);

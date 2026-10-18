@@ -213,6 +213,7 @@
             '<div class="chk-drop__btns">' +
               '<label class="btn btn--primary">' + App.icon("image") + esc(t("chk.takePhoto")) + '<input type="file" accept="image/*" capture="environment" id="chkCam" hidden></label>' +
               '<label class="btn">' + App.icon("upload") + esc(t("chk.pickPhoto")) + '<input type="file" accept="image/*" id="chkFile" hidden></label>' +
+              (App.drawpad ? '<button class="btn" type="button" id="chkDraw">' + App.icon("pen") + esc(App.i18n.lang === "en" ? "Write on screen" : "Ekrana yaz") + "</button>" : "") +
             "</div></div>" +
           '<details class="chk-more"' + (key ? " open" : "") + "><summary>" + App.icon("plus") + esc(t("chk.more")) + "</summary>" +
             '<div class="form-row">' +
@@ -255,6 +256,11 @@
     }
     view.querySelector("#chkCam").addEventListener("change", (e) => pick(e.target.files[0]));
     view.querySelector("#chkFile").addEventListener("change", (e) => pick(e.target.files[0]));
+    const drawBtn = view.querySelector("#chkDraw");
+    if (drawBtn) drawBtn.addEventListener("click", async () => {
+      const f = await App.drawpad.open({ title: App.i18n.lang === "en" ? "Write your solution" : "Çözümünü yaz", doneText: App.i18n.lang === "en" ? "Use this" : "Bunu kullan" });
+      if (f && view.isConnected) { await pick(f); const g = view.querySelector("#chkGo"); if (g && !g.disabled) g.focus(); }
+    });
     view.querySelector("#chkQImg").addEventListener("change", (e) => pick(e.target.files[0], "q"));
     // Sürükle-bırak ve yapıştırma (bilgisayarda)
     const drop = view.querySelector("#chkDrop");

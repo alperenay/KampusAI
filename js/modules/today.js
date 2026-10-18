@@ -45,6 +45,12 @@
       }
       return { key: weak.key, why: t("today.whyQuiz", { c: weak.correct, total: weak.total }) };
     }
+    // Fotoğraftan okunan son denemelerdeki konu yanlışları (v1.21)
+    const exs = (await App.db.getAll("exams")).filter((e) => e.topics && e.topics.length).sort((a, b) => String(b.date).localeCompare(String(a.date))).slice(0, 3);
+    const done0 = new Set((await App.db.getAll("progress")).filter((p) => p.done && p.date && Date.now() - new Date(p.date).getTime() < 7 * 864e5).map((p) => p.id));
+    const exTop = [].concat(...exs.map((e) => e.topics.map((x) => Object.assign({ exam: e.name }, x)))).filter((x) => x.key && App.lessons.find(x.key) && !done0.has(x.key))
+      .sort((a, b) => b.wrong - a.wrong)[0];
+    if (exTop && exTop.wrong >= 2) return { key: exTop.key, why: App.i18n.lang === "en" ? exTop.wrong + " mistakes on this topic in " + exTop.exam : exTop.exam + " denemesinde bu konudan " + exTop.wrong + " yanlış" };
     const mis = (await App.db.getAll("mistakes")).filter((m) => !m.mastered && m.key);
     const byKey = {};
     mis.forEach((m) => { byKey[m.key] = (byKey[m.key] || 0) + 1; });
@@ -135,7 +141,8 @@
 
     view.innerHTML =
       '<div class="page today">' +
-        '<div class="page-head"><div><h1>' + esc(greeting() + (name ? ", " + name : "")) + "</h1><p>" + esc(dateText) + "</p></div>" +
+        '<div class="page-head"><div><h1>' + esc(greeting() + (name ? ", " + name : "")) + "</h1><p>" + esc(dateText) + "</p>" +
+          (App.motivation ? '<p class="home-note home-note--left">' + App.icon("quote") + "<span>" + esc(App.motivation.today().text) + "</span></p>" : "") + "</div>" +
           '<div class="page-head__actions"><button class="btn btn--ai" type="button" id="todayAsk">' + App.icon("sparkle") + esc(t("today.ask")) + "</button></div></div>" +
         '<div class="tday-grid">' +
           '<div class="tday-main">' + nowCard + '<div id="tdayDaily"></div>' + flow + "</div>" +

@@ -1,6 +1,8 @@
 package com.dersasistani.app;
 
 import android.Manifest;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -71,9 +73,19 @@ public class MainActivity extends BridgeActivity {
     /* Telefona indirilen yapay zeka (DeviceAi.java) */
     private DeviceAi ai;
 
+    /* Widget'a ya da bildirime dokununca açılacak sayfa (ör. "bugun") */
+    private volatile String pendingRoute = null;
+
+    private static String routeOf(Intent it) {
+        if (it == null) return null;
+        String r = it.getStringExtra("kampus_route");
+        return r != null && r.matches("[a-z0-9/-]{1,40}") ? r : null;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        pendingRoute = routeOf(getIntent());
         micPermission = registerForActivityResult(new ActivityResultContracts.RequestPermission(), granted -> {
             String lang = pendingLang;
             pendingLang = null;
@@ -233,6 +245,15 @@ public class MainActivity extends BridgeActivity {
     }
 
     @Override
+    public void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        final String r = routeOf(intent);
+        if (r == null) return;
+        if (webView == null) { pendingRoute = r; return; }
+        runOnUiThread(() -> webView.evaluateJavascript("window.__nativeRoute&&window.__nativeRoute('" + r + "')", null));
+    }
+
+    @Override
     public void onPause() {
         super.onPause();
         if (tts != null) tts.stop();
@@ -317,6 +338,41 @@ public class MainActivity extends BridgeActivity {
         @JavascriptInterface public void aiCancel() { if (ai != null) ai.cancel(); }
         @JavascriptInterface public void aiStart() { if (ai != null) ai.startAsync(); }
         @JavascriptInterface public void aiRemove() { if (ai != null) new Thread(ai::remove, "ai-remove").start(); }
+
+        /* ---- Ana ekran widget'ı (KampusWidget.java) ---- */
+        @JavascriptInterface
+        public void widgetUpdate(String json) {
+            if (json == null || json.length() > 20000) return;
+            getSharedPreferences(KampusWidget.PREFS, MODE_PRIVATE).edit().putString("data", json).apply();
+            try { KampusWidget.updateAll(MainActivity.this); } catch (Exception e) { Log.w("KampusAI", "widget", e); }
+        }
+
+        /** Ana ekranda kaç widget var */
+        @JavascriptInterface
+        public int widgetCount() {
+            try {
+                return AppWidgetManager.getInstance(MainActivity.this).getAppWidgetIds(new ComponentName(MainActivity.this, KampusWidget.class)).length;
+            } catch (Exception e) { return 0; }
+        }
+
+        /** "Ana ekrana ekle" (Android 8+ destekleyen başlatıcılarda sistem penceresi açılır) */
+        @JavascriptInterface
+        public boolean widgetPin() {
+            if (Build.VERSION.SDK_INT < 26) return false;
+            try {
+                AppWidgetManager m = getSystemService(AppWidgetManager.class);
+                if (m == null || !m.isRequestPinAppWidgetSupported()) return false;
+                return m.requestPinAppWidget(new ComponentName(MainActivity.this, KampusWidget.class), null, null);
+            } catch (Exception e) { return false; }
+        }
+
+        /** Uygulama widget'tan açıldıysa gidilecek sayfa (bir kez) */
+        @JavascriptInterface
+        public String takeRoute() {
+            String r = pendingRoute;
+            pendingRoute = null;
+            return r == null ? "" : r;
+        }
 
         /** Açık temada koyu simgeler, koyu temada açık simgeler */
         @JavascriptInterface
