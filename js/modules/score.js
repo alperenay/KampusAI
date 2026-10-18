@@ -125,7 +125,8 @@
       '<div class="page page--narrow">' +
         '<div class="page-head"><div><h1>' + esc(T("Puan ve Hedef", "Score & Target")) + "</h1><p>" +
           esc(T("Deneme netlerinden tahmini YKS puanını hesaplar, hedef bölümünün taban puanıyla karşılaştırır ve hangi derste kaç net artırman gerektiğini söyler.",
-                "Estimates your YKS score from your practice exam nets, compares it with your target program's base score and tells you how many more nets you need in which subject.")) + "</p></div></div>" +
+                "Estimates your YKS score from your practice exam nets, compares it with your target program's base score and tells you how many more nets you need in which subject.")) + "</p></div>" +
+          '<div class="page-head__actions"><a class="btn" href="#/tercih">' + App.icon("grad") + esc(T("Tercih Robotu", "Programme Finder")) + "</a></div></div>" +
 
         '<section class="card score-target">' +
           '<div class="card__title">' + App.icon("target") + esc(T("Hedef bölüm", "Target program")) + "</div>" +
