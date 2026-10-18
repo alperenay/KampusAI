@@ -171,6 +171,13 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
   parmakla büyütür, tek parmakla döndürürsün. *Ayarlar* düğmesi deneyin kaydırıcılarını AR içinde açar; *Ortala* sahneyi
   önüne getirir; ✕, geri tuşu ya da Esc ile çıkılır. Kamera izni istenir; görüntü cihazdan çıkmaz, kaydedilmez.
   Bilgisayarda web kamerası arka plan olur, sahne fareyle döndürülür.
+- **Deneylerde Hologram:** *Holo* düğmesi ek gözlük ya da düzenek gerektirmeyen bir ekran hologramı açar. Ön kamera
+  yüzünü izler; başını yavaşça sağa sola, yukarı aşağı oynattıkça görüntü senin bakış açına göre yeniden çizilir ve
+  deney ekranın içindeki derin, ızgaralı bir kutuda duruyormuş gibi görünür (tek gözünü kapatınca etki artar). Yeşil
+  nokta yüzünün bulunduğunu gösterir. Yüz bulma cihazda yapılır (pico.js), internet gerekmez, görüntü kaydedilmez ve
+  cihazdan çıkmaz. Kamera yoksa ya da izin verilmezse telefonda eğme, bilgisayarda fare kullanılır; *Kaynak* düğmesiyle
+  elle de değiştirilir. *Renk* holografik camgöbeği görünüm ile gerçek renkler arasında geçiş yapar; *Ortala* bakış
+  noktasını şimdiki baş konumuna sıfırlar. Etki tek izleyiciye göredir; yanındakiler ve ekran kaydı düz görür.
 - **Kariyer Keşfi:** Menü › Takip › Kariyer Keşfi. 48 maddelik ilgi envanteri (Holland'ın RIASEC modeli: Uygulamacı,
   Araştırmacı, Sanatçı, Sosyal, Girişimci, Düzenli) yaklaşık 5 dakikada çözülür; 1/2/3 tuşlarıyla da cevaplanır. Sonuçta
   üç harfli ilgi kodun, altıgen profilin ve sana en uygun meslekler çıkar. *Meslekler* sekmesinde 52 meslek kartı

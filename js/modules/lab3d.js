@@ -86,7 +86,7 @@
     cvs.addEventListener("pointermove", (e) => {
       if (!pts.has(e.pointerId)) return;
       const prev = pts.get(e.pointerId); pts.set(e.pointerId, [e.clientX, e.clientY]);
-      if (AR.on && AR.gyro) {                         // AR: yön telefondan gelir; tek parmak sahneyi döndürür, iki parmak büyütür
+      if ((AR.on && AR.gyro) || HO.on) {              // AR / hologram: kamera sabit; tek parmak sahneyi döndürür, iki parmak büyütür
         if (pts.size === 1) root.rotation.y += (e.clientX - prev[0]) * 0.01;
         else if (pts.size === 2) { const [a, b] = Array.from(pts.values()), d = Math.hypot(a[0] - b[0], a[1] - b[1]); if (pinch0) { const k = Math.max(0.15, Math.min(4, root.scale.x * d / pinch0)); root.scale.setScalar(k); } pinch0 = d; }
         render(); return;
@@ -97,20 +97,21 @@
     });
     const up = (e) => { pts.delete(e.pointerId); pinch0 = 0; };
     cvs.addEventListener("pointerup", up); cvs.addEventListener("pointercancel", up);
-    cvs.addEventListener("wheel", (e) => { e.preventDefault(); if (AR.on && AR.gyro) { root.scale.setScalar(Math.max(0.15, Math.min(4, root.scale.x * (1 - Math.sign(e.deltaY) * 0.1)))); render(); return; } cam.r = Math.max(2, Math.min(80, cam.r * (1 + Math.sign(e.deltaY) * 0.1))); place(); render(); }, { passive: false });
+    cvs.addEventListener("wheel", (e) => { e.preventDefault(); if ((AR.on && AR.gyro) || HO.on) { root.scale.setScalar(Math.max(0.15, Math.min(4, root.scale.x * (1 - Math.sign(e.deltaY) * 0.1)))); render(); return; } cam.r = Math.max(2, Math.min(80, cam.r * (1 + Math.sign(e.deltaY) * 0.1))); place(); render(); }, { passive: false });
 
     /* ---- Boyut ---- */
     let W = 0, H = 0;
     function size() {
-      const w = AR.on ? window.innerWidth : Math.max(240, Math.round(host.clientWidth)), h = AR.on ? window.innerHeight : Math.round(Math.min(w * (ratio || 0.62), window.innerHeight * 0.62));
+      const full = AR.on || HO.on;
+      const w = full ? window.innerWidth : Math.max(240, Math.round(host.clientWidth)), h = full ? window.innerHeight : Math.round(Math.min(w * (ratio || 0.62), window.innerHeight * 0.62));
       if (w === W && h === H) return;
       W = w; H = h; renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); render();
     }
     const ro = new ResizeObserver(size); ro.observe(host);
-    const AR = { on: false };
+    const AR = { on: false }, HO = { on: false };
 
     let raf = 0;
-    function render() { if (!W) return; cancelAnimationFrame(raf); raf = requestAnimationFrame(() => renderer.render(scene, camera)); }
+    function render() { if (!W || HO.on) return; cancelAnimationFrame(raf); raf = requestAnimationFrame(() => renderer.render(scene, camera)); }
 
     /* ---- Yardımcılar ---- */
     const M = (color, o) => new THREE.MeshStandardMaterial(Object.assign({ color, roughness: 0.55, metalness: 0.05 }, o || {}));
@@ -201,6 +202,7 @@
     const arT = (tr, en) => (App.i18n.lang === "en" ? en : tr);
     async function arStart(o) {
       if (AR.on) return true;
+      if (HO.on) holoStop();
       o = o || {};
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) throw Object.assign(new Error(arT("Bu cihazda kamera kullanılamıyor.", "Camera is not available on this device.")), { code: "no-camera" });
       // iPhone: hareket sensörü izni dokunuşla istenmeli
@@ -260,15 +262,265 @@
       if (AR.onStop) AR.onStop();
     }
 
+    /* =========================================================
+       Hologram (v1.25) — ek donanım gerektirmeyen "ekran hologramı"
+       Ekran bir pencere gibi davranır: izleyicinin göz konumuna göre eksen dışı
+       (off-axis) perspektif kurulur, deney ekranın arkasındaki derin bir kutuda
+       ya da önünde duruyormuş gibi görünür. Göz konumu üç kaynaktan gelir:
+         • face : ön kamera + pico.js yüz bulucu (cihazda, internetsiz; görüntü saklanmaz)
+         • tilt : jiroskop (telefonu eğmek)
+         • mouse: fare (bilgisayar)
+       Görünüm: siyah zemin, camgöbeği kenar parıltısı (fresnel), tarama çizgileri.
+       ========================================================= */
+    const CYAN = new THREE.Color(0x35e0ff), WHITE = new THREE.Color(0xffffff);
+    const HV = "varying vec3 vN; varying vec3 vV;\n#include <common>\nvoid main() {\n#include <beginnormal_vertex>\n#include <defaultnormal_vertex>\n#include <begin_vertex>\n#include <project_vertex>\nvN = normalize(transformedNormal); vV = normalize(-mvPosition.xyz);\n}";
+    const HF = "uniform vec3 uColor; uniform float uOpacity; uniform float uTime; varying vec3 vN; varying vec3 vV;\nvoid main() {\nvec3 n = normalize(vN); if (!gl_FrontFacing) n = -n;\nfloat rim = 1.0 - abs(dot(n, normalize(vV)));\nfloat scan = 0.82 + 0.18 * sin(gl_FragCoord.y * 1.4 - uTime * 6.0);\nfloat a = (0.16 + 0.84 * pow(rim, 1.7)) * uOpacity * scan;\ngl_FragColor = vec4(uColor * (0.55 + 1.1 * rim), a);\n}";
+    const holoMats = new Map();
+    function holoMatFor(m) {
+      let h = holoMats.get(m);
+      if (!h) {
+        if (m.isLineBasicMaterial || m.isLineDashedMaterial) h = new THREE.LineBasicMaterial({ transparent: true, blending: THREE.AdditiveBlending, depthWrite: false });
+        else if (m.isMeshBasicMaterial || m.isMeshStandardMaterial || m.isMeshLambertMaterial || m.isMeshPhongMaterial || m.isMeshPhysicalMaterial || m.isMeshNormalMaterial)
+          h = new THREE.ShaderMaterial({ uniforms: { uColor: { value: new THREE.Color() }, uOpacity: { value: 1 }, uTime: { value: 0 } }, vertexShader: HV, fragmentShader: HF, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide });
+        else h = null;
+        holoMats.set(m, h);
+      }
+      if (h) {
+        const col = h.isShaderMaterial ? h.uniforms.uColor.value : h.color;
+        if (m.color) col.copy(m.color); else col.copy(WHITE);
+        if (m.emissive && m.emissiveIntensity && (m.emissive.r + m.emissive.g + m.emissive.b) > 0.3) col.lerp(m.emissive, 0.5);
+        col.lerp(CYAN, 0.4).multiplyScalar(1.15);
+        const op = (m.transparent ? (m.opacity == null ? 1 : m.opacity) : 1);
+        if (h.isShaderMaterial) { h.uniforms.uOpacity.value = Math.max(0.12, op); h.uniforms.uTime.value = performance.now() / 1000; }
+        else h.opacity = Math.max(0.25, op) * 0.9;
+        h.visible = m.visible;
+      }
+      return h;
+    }
+    const swapped = [];
+    function holoSwap() {
+      root.traverse((o) => {
+        if (!(o.isMesh || o.isLine) || o.isSprite) return;
+        const orig = o.material;
+        const holo = Array.isArray(orig) ? orig.map((m) => holoMatFor(m) || m) : holoMatFor(orig);
+        if (!holo) return;
+        swapped.push(o, orig); o.material = holo;
+      });
+    }
+    function holoUnswap() { for (let i = swapped.length - 2; i >= 0; i -= 2) swapped[i].material = swapped[i + 1]; swapped.length = 0; }
+
+    // Ekran çerçevesinin arkasında derinlik veren tel kutu
+    let roomGeo = null, room = null;
+    const RN = 6;                                    // her duvardaki boyuna çizgi sayısı
+    function buildRoom() {
+      const segs = (RN * 4 + 4 * (RN + 1)) * 2;      // boyuna çizgiler + derinlik halkaları
+      roomGeo = new THREE.BufferGeometry(); roomGeo.setAttribute("position", new THREE.BufferAttribute(new Float32Array(segs * 3 * 2), 3));
+      room = new THREE.LineSegments(roomGeo, new THREE.LineBasicMaterial({ color: 0x35e0ff, transparent: true, opacity: 0.28, blending: THREE.AdditiveBlending, depthWrite: false }));
+      room.frustumCulled = false; room.renderOrder = -1; scene.add(room);
+    }
+    function sizeRoom(hw, hh, depth) {
+      const a = roomGeo.attributes.position.array; let i = 0;
+      const P = (x, y, z) => { a[i++] = x; a[i++] = y; a[i++] = z; };
+      const edge = (k, n) => { const t = -1 + (2 * k) / n; return t; };
+      // boyuna çizgiler (ön çerçeveden arka duvara)
+      for (let k = 0; k < RN; k++) { const t = edge(k, RN);
+        P(t * hw, -hh, 0); P(t * hw, -hh, -depth); P(t * hw, hh, 0); P(t * hw, hh, -depth);
+        P(-hw, t * hh, 0); P(-hw, t * hh, -depth); P(hw, t * hh, 0); P(hw, t * hh, -depth); }
+      // derinlik halkaları
+      for (let k = 0; k <= RN; k++) { const z = -depth * Math.pow(k / RN, 1.15);
+        P(-hw, -hh, z); P(hw, -hh, z); P(hw, -hh, z); P(hw, hh, z); P(hw, hh, z); P(-hw, hh, z); P(-hw, hh, z); P(-hw, -hh, z); }
+      while (i < a.length) a[i++] = 0;
+      roomGeo.attributes.position.needsUpdate = true;
+    }
+
+    const eyeT = [0, 0, 1];                           // hedef göz konumu: x, y (ekranın yarı yüksekliği cinsinden), z (uzaklık oranı)
+    const qB = new THREE.Quaternion(), vF = new THREE.Vector3(), vR = new THREE.Vector3(), vU = new THREE.Vector3();
+    function holoView() {
+      // temel yörünge kamerası → ekran düzlemi hedefte, kamera uzaklığı = cam.r
+      place(); qB.copy(camera.quaternion);
+      vR.set(1, 0, 0).applyQuaternion(qB); vU.set(0, 1, 0).applyQuaternion(qB); vF.set(0, 0, -1).applyQuaternion(qB);
+      const D = cam.r, hh = D * Math.tan((camera.fov * Math.PI) / 360), hw = hh * (W / H || 1);
+      const e = HO.eye;
+      for (let k = 0; k < 3; k++) e[k] += (eyeT[k] - e[k]) * (HO.src === "face" ? 0.35 : 0.2);
+      const x = e[0] * hh, y = e[1] * hh, z = D * e[2], n = camera.near, f = camera.far;
+      camera.position.copy(cam.t).addScaledVector(vR, x).addScaledVector(vU, y).addScaledVector(vF, -z);
+      camera.quaternion.copy(qB); camera.updateMatrixWorld();
+      camera.projectionMatrix.makePerspective((-hw - x) * n / z, (hw - x) * n / z, (hh - y) * n / z, (-hh - y) * n / z, n, f);
+      camera.projectionMatrixInverse.copy(camera.projectionMatrix).invert();
+      if (HO.roomKey !== hw.toFixed(3) + hh.toFixed(3)) { HO.roomKey = hw.toFixed(3) + hh.toFixed(3); sizeRoom(hw, hh, D * 0.85); }
+      room.position.copy(cam.t); room.quaternion.copy(qB);
+    }
+    function holoLoop() {
+      if (!HO.on) return;
+      if (HO.src === "face") faceStep();
+      holoView();
+      if (HO.look === "holo") holoSwap();
+      try { renderer.render(scene, camera); } finally { holoUnswap(); }
+      HO.raf = requestAnimationFrame(holoLoop);
+    }
+
+    /* ---- Göz kaynakları ---- */
+    let picoP = null;
+    function loadPico() {
+      if (window.pico && window.PICO_FACEFINDER && window.__picoCls) return Promise.resolve(window.__picoCls);
+      if (!picoP) picoP = new Promise((res, rej) => {
+        const add = (src) => new Promise((ok, no) => { const sc = document.createElement("script"); sc.src = src; sc.async = true; sc.onload = ok; sc.onerror = () => no(new Error(src)); document.head.appendChild(sc); });
+        Promise.all([window.pico ? null : add("assets/vendor/pico/pico.js"), window.PICO_FACEFINDER ? null : add("assets/vendor/pico/facefinder.js")]).then(() => {
+          const bin = atob(window.PICO_FACEFINDER), bytes = new Int8Array(bin.length);
+          for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i) << 24 >> 24;
+          window.__picoCls = window.pico.unpack_cascade(bytes); res(window.__picoCls);
+        }).catch((e) => { picoP = null; rej(e); });
+      });
+      return picoP;
+    }
+    async function faceOn() {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) throw new Error("no-camera");
+      const [cls, stream] = await Promise.all([loadPico(), navigator.mediaDevices.getUserMedia({ video: { facingMode: "user", width: { ideal: 640 }, height: { ideal: 480 } }, audio: false })]);
+      if (!HO.on) { stream.getTracks().forEach((t) => t.stop()); return; }
+      const video = document.createElement("video"); video.setAttribute("playsinline", ""); video.muted = true; video.srcObject = stream;
+      try { await video.play(); } catch (e) { /* kendisi oynatır */ }
+      const cv = document.createElement("canvas"), cx = cv.getContext("2d", { willReadFrequently: true });
+      HO.face = { stream, video, cv, cx, cls, mem: window.pico.instantiate_detection_memory(4), last: 0, seen: 0, base: null, cal: [], gray: null, n: 0 };
+    }
+    function faceOff() { const F = HO.face; if (!F) return; try { F.stream.getTracks().forEach((t) => t.stop()); } catch (e) { /* yok */ } HO.face = null; }
+    function faceStep() {
+      const F = HO.face; if (!F) return;
+      const v = F.video; if (!v.videoWidth || v.readyState < 2) return;
+      if (++F.n % 2) return;                          // her iki karede bir ara (telefonda akıcı kalsın)
+      const w = 192, h = Math.round((w * v.videoHeight) / v.videoWidth);
+      if (F.cv.width !== w || F.cv.height !== h) { F.cv.width = w; F.cv.height = h; F.gray = new Uint8Array(w * h); }
+      F.cx.drawImage(v, 0, 0, w, h);
+      const px = F.cx.getImageData(0, 0, w, h).data, g = F.gray;
+      for (let i = 0, j = 0; j < g.length; i += 4, j++) g[j] = (2 * px[i] + 7 * px[i + 1] + px[i + 2]) / 10;
+      let dets = window.pico.run_cascade({ pixels: g, nrows: h, ncols: w, ldim: w }, F.cls, { shiftfactor: 0.1, minsize: Math.round(w * 0.14), maxsize: w, scalefactor: 1.1 });
+      dets = window.pico.cluster_detections(F.mem(dets), 0.2);
+      let best = null; for (const d of dets) if (d[3] > 30 && (!best || d[2] > best[2])) best = d;
+      const now = performance.now();
+      if (!best) { if (now - F.last > 1500) { eyeT[0] *= 0.94; eyeT[1] *= 0.94; eyeT[2] += (1 - eyeT[2]) * 0.06; holoBadge(false); } return; }
+      F.last = now; holoBadge(true);
+      const fx = best[1] / w, fy = best[0] / h, fs = best[2] / w;
+      if (!F.base) { F.cal.push([fx, fy, fs]); if (F.cal.length < 6) return; const m = (k) => F.cal.reduce((a, c) => a + c[k], 0) / F.cal.length; F.base = [m(0), m(1), m(2)]; F.cal = []; }
+      // ön kamera görüntüsü aynalı değil: kişi sağa gidince yüz görüntüde sola kayar
+      eyeT[0] = clampN(-(fx - F.base[0]) * 5.2 * (W > H ? 1.4 : 1), 2.6);
+      eyeT[1] = clampN(-(fy - F.base[1]) * 4.2, 2.2);
+      eyeT[2] = Math.max(0.6, Math.min(1.8, F.base[2] / fs));
+    }
+    const clampN = (v, m) => Math.max(-m, Math.min(m, v));
+    function onHoloOrient(ev) {
+      if (!HO.on || HO.src !== "tilt" || ev.beta == null || ev.gamma == null) return;
+      const ang = ((screen.orientation && screen.orientation.angle) || window.orientation || 0) % 360;
+      let gx = ev.gamma, by = ev.beta;
+      if (ang === 90 || ang === -270) { gx = -ev.beta; by = ev.gamma; } else if (ang === 270 || ang === -90) { gx = ev.beta; by = -ev.gamma; } else if (ang === 180) { gx = -ev.gamma; by = -ev.beta; }
+      if (!HO.tilt0) HO.tilt0 = [gx, by];
+      HO.tiltSeen = true;
+      const t = Math.tan((camera.fov * Math.PI) / 360), R = Math.PI / 180;
+      eyeT[0] = clampN(-Math.tan(clampN(gx - HO.tilt0[0], 50) * R) / t * 0.9, 2.2);
+      eyeT[1] = clampN(Math.tan(clampN(by - HO.tilt0[1], 50) * R) / t * 0.9, 2.2);
+      eyeT[2] = 1;
+    }
+    function onHoloMouse(e) {
+      if (!HO.on || HO.src !== "mouse" || e.pointerType === "touch" || pts.size) return;
+      const a = W / H || 1;
+      eyeT[0] = clampN(((e.clientX / window.innerWidth) - 0.5) * 2 * a * 1.1, 2.4);
+      eyeT[1] = clampN(-((e.clientY / window.innerHeight) - 0.5) * 2 * 1.1, 2.2);
+      eyeT[2] = 1;
+    }
+    const coarse = () => !!(window.matchMedia && matchMedia("(pointer: coarse)").matches);
+    function holoHint() {
+      const h = HO.ui && HO.ui.querySelector(".lab-ar__hint"); if (!h) return;
+      h.textContent = HO.src === "face" ? arT("Başını yavaşça sağa sola, yukarı aşağı oynat: deney ekranın içinde derinlikte durur. Tek gözünü kapatınca etki artar.", "Move your head slowly: the lab sits deep inside the screen. Closing one eye makes it stronger.")
+        : HO.src === "tilt" ? arT("Telefonu yavaşça eğ: perspektif kayar, deney ekranın içinde durur.", "Tilt your phone slowly: the perspective shifts.")
+        : arT("Fareyi ekranda gezdir: perspektif kayar. Sürükle: döndür · tekerlek: büyüt · Esc: çık", "Move the mouse: the perspective shifts. Drag to rotate · scroll to scale · Esc to exit");
+      const lk = HO.ui.querySelector('[data-holo="look"]'); if (lk) lk.textContent = HO.look === "real" ? arT("Renk: gerçek", "Colour: real") : arT("Renk: holo", "Colour: holo");
+      const s = HO.ui.querySelector('[data-holo="src"]');
+      if (s) s.textContent = HO.src === "face" ? arT("Kaynak: yüz", "Source: face") : HO.src === "tilt" ? arT("Kaynak: eğme", "Source: tilt") : arT("Kaynak: fare", "Source: mouse");
+    }
+    function holoBadge(on) { if (!HO.ui) return; HO.ui.classList.toggle("is-lock", !!on); }
+    async function setSource(src) {
+      if (src !== "face") faceOff();
+      HO.src = src; HO.tilt0 = null; eyeT[0] = 0; eyeT[1] = 0; eyeT[2] = 1; holoBadge(false);
+      if (src === "face") {
+        try { await faceOn(); }
+        catch (e) {
+          if (!HO.on) return;
+          HO.src = coarse() ? "tilt" : "mouse";
+          App.ui.toast(e && e.name === "NotAllowedError" ? arT("Kamera izni verilmedi; hologram " + (HO.src === "tilt" ? "eğme" : "fare") + " ile çalışıyor.", "No camera permission; using " + HO.src + ".") : arT("Ön kamera açılamadı; hologram " + (HO.src === "tilt" ? "eğme" : "fare") + " ile çalışıyor.", "Front camera unavailable; using " + HO.src + "."));
+        }
+      }
+      holoHint();
+    }
+
+    async function holoStart(o) {
+      if (HO.on) return true;
+      if (AR.on) arStop();
+      o = o || {};
+      try { if (coarse() && window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === "function") await DeviceOrientationEvent.requestPermission(); } catch (e) { /* izinsiz devam */ }
+      if (!room) buildRoom();
+      Object.assign(HO, { on: true, eye: [0, 0, 1], src: null, look: o.look || App.prefs.get("holoLook", "holo"), roomKey: "" });
+      Object.assign(saved, { bg: scene.background, fog: scene.fog, floor: floor.visible, grid: grid.visible, rs: root.scale.x, rr: root.rotation.y, cam: { r: cam.r, th: cam.th, ph: cam.ph, t: cam.t.clone() }, parent: el.parentNode, next: el.nextSibling });
+      scene.background = new THREE.Color(0x000000); scene.fog = null; floor.visible = false; grid.visible = false; room.visible = true;
+      cam.ph = Math.max(cam.ph, 1.3);                 // pencereden bakar gibi: daha yatay bakış
+      const fitR = () => saved.cam.r * Math.max(1, Math.min(2.2, 0.8 / ((window.innerWidth / window.innerHeight) || 1)));   // dik telefonda deney sığsın
+      cam.r = fitR(); HO.fitR = fitR;
+      el.classList.add("is-ar", "is-holo"); document.body.appendChild(el); document.documentElement.classList.add("ar-open");
+      const ui = document.createElement("div"); ui.className = "lab-ar lab-holo";
+      ui.innerHTML = '<div class="lab-holo__fx" aria-hidden="true"></div><div class="lab-ar__top"><span class="lab-ar__badge lab-holo__badge">HOLO<i></i></span><span class="lab-ar__hint" aria-live="polite"></span><button type="button" class="lab-ar__btn" data-ar="exit" aria-label="' + arT("Hologramdan çık", "Exit hologram") + '">✕</button></div>' +
+        '<div class="lab-ar__bot">' + (o.side ? '<button type="button" class="lab-ar__btn lab-ar__wide" data-ar="ctl">' + arT("Ayarlar", "Controls") + "</button>" : "") +
+        (o.play ? '<button type="button" class="lab-ar__btn lab-ar__wide" data-ar="play">' + arT("Oynat / durdur", "Play / pause") + "</button>" : "") +
+        '<button type="button" class="lab-ar__btn lab-ar__wide" data-ar="center">' + arT("Ortala", "Recenter") + "</button>" +
+        '<button type="button" class="lab-ar__btn lab-ar__wide" data-holo="src"></button>' +
+        '<button type="button" class="lab-ar__btn lab-ar__wide" data-holo="look">' + arT("Renk", "Colour") + '</button></div><div class="lab-ar__sheet" hidden></div>';
+      el.appendChild(ui); HO.ui = ui; HO.side = o.side || null; HO.sideHome = o.side ? { parent: o.side.parentNode, next: o.side.nextSibling } : null;
+      ui.addEventListener("click", (e) => {
+        const b = e.target.closest("[data-ar],[data-holo]"); if (!b) return;
+        const k = b.dataset.ar || b.dataset.holo;
+        if (k === "exit") holoStop();
+        else if (k === "play" && o.play) { const pb = o.play.querySelector('[data-lab="play"]'); if (pb) pb.click(); }
+        else if (k === "center") { root.rotation.y = saved.rr; root.scale.setScalar(saved.rs); cam.r = HO.fitR(); cam.th = saved.cam.th; cam.ph = Math.max(saved.cam.ph, 1.3); cam.t.copy(saved.cam.t); HO.tilt0 = null; if (HO.face) { HO.face.base = null; HO.face.cal = []; } }
+        else if (k === "ctl" && HO.side) { const sh = ui.querySelector(".lab-ar__sheet"); if (sh.hidden) { sh.appendChild(HO.side); sh.hidden = false; } else sh.hidden = true; }
+        else if (k === "src") { const list = ["face"].concat(coarse() ? ["tilt"] : ["mouse"]); setSource(list[(list.indexOf(HO.src) + 1) % list.length]); }
+        else if (k === "look") { HO.look = HO.look === "holo" ? "real" : "holo"; App.prefs.set("holoLook", HO.look); el.classList.toggle("is-real", HO.look === "real"); holoHint(); }
+      });
+      el.classList.toggle("is-real", HO.look === "real");
+      HO.key = (e) => { if (e.key === "Escape") holoStop(); };
+      document.addEventListener("keydown", HO.key);
+      HO.nav = () => holoStop();
+      window.addEventListener("hashchange", HO.nav);
+      window.addEventListener("deviceorientation", onHoloOrient);
+      window.addEventListener("pointermove", onHoloMouse);
+      HO.resize = () => { W = 0; size(); };
+      window.addEventListener("resize", HO.resize);
+      W = 0; size(); cancelAnimationFrame(raf); holoLoop();
+      await setSource(o.src || "face");
+      return true;
+    }
+    function holoStop() {
+      if (!HO.on) return;
+      HO.on = false; cancelAnimationFrame(HO.raf); faceOff();
+      window.removeEventListener("deviceorientation", onHoloOrient); window.removeEventListener("pointermove", onHoloMouse); window.removeEventListener("resize", HO.resize); document.removeEventListener("keydown", HO.key); window.removeEventListener("hashchange", HO.nav);
+      if (HO.side && HO.sideHome && HO.sideHome.parent) HO.sideHome.parent.insertBefore(HO.side, HO.sideHome.next && HO.sideHome.next.parentNode === HO.sideHome.parent ? HO.sideHome.next : null);
+      if (HO.ui) HO.ui.remove();
+      if (room) room.visible = false;
+      scene.background = saved.bg; scene.fog = saved.fog; floor.visible = saved.floor; grid.visible = saved.grid;
+      root.scale.setScalar(saved.rs); root.rotation.y = saved.rr;
+      cam.r = saved.cam.r; cam.th = saved.cam.th; cam.ph = saved.cam.ph; cam.t.copy(saved.cam.t); place();
+      el.classList.remove("is-ar", "is-holo", "is-real", "is-gyro"); document.documentElement.classList.remove("ar-open");
+      if (saved.parent && saved.parent.isConnected) saved.parent.insertBefore(el, saved.next && saved.next.parentNode === saved.parent ? saved.next : saved.parent.firstChild); else el.remove();
+      Object.assign(HO, { ui: null, side: null, src: null });
+      W = 0; size(); camera.updateProjectionMatrix(); render();
+      if (HO.onStop) HO.onStop();
+    }
+
     place();
     try { D.build(S); } catch (e) { console.error("[3B] kurulum", id, e); }
     size();
     return {
       el,
-      frame(p, t, s) { try { D.update(S, p, t, s || {}); } catch (e) { console.error("[3B] güncelleme", id, e); } if (!AR.on) render(); },
-      dispose() { arStop(); cancelAnimationFrame(raf); ro.disconnect(); clear(scene); renderer.dispose(); try { renderer.forceContextLoss(); } catch (e) { /* yok */ } el.remove(); },
+      frame(p, t, s) { try { D.update(S, p, t, s || {}); } catch (e) { console.error("[3B] güncelleme", id, e); } if (!AR.on && !HO.on) render(); },
+      dispose() { arStop(); holoStop(); holoMats.forEach((m) => { if (m) m.dispose(); }); holoMats.clear(); cancelAnimationFrame(raf); ro.disconnect(); clear(scene); renderer.dispose(); try { renderer.forceContextLoss(); } catch (e) { /* yok */ } el.remove(); },
       resize: size,
-      arStart, arStop, arOn: () => AR.on, onArStop: (fn) => { AR.onStop = fn; }
+      arStart, arStop, arOn: () => AR.on, onArStop: (fn) => { AR.onStop = fn; },
+      holoStart, holoStop, holoOn: () => HO.on, holoState: () => ({ on: HO.on, src: HO.src, face: !!HO.face, eye: HO.eye ? HO.eye.slice() : null, look: HO.look })
     };
   }
 

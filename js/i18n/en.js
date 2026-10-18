@@ -350,6 +350,7 @@ App.locales.en = {
   "abt.lic.katex": "math formulas",
   "abt.lic.qr": "QR code generation",
   "abt.lic.three": "3D lab scenes",
+  "abt.lic.pico": "Face finding for the hologram",
   "abt.lic.tercih": "cut-off scores and ranks for the Programme Finder",
   "abt.lic.ne": "map borders, rivers and lakes",
   "abt.lic.pd": "Public domain",

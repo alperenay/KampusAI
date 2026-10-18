@@ -64,20 +64,23 @@ a.vd-topic { color: var(--accent-text); background: var(--accent-soft); }
 @media (max-width: 640px) { .vd-head { flex-direction: column; } .vd-cover { width: 100%; } .vd-thumb { width: 88px; height: 50px; } }
 
 /* ---------------- AR ---------------- */
-.lab__mode .lab__ar { color: var(--accent-text); border-left: 1px solid var(--border) !important; border-radius: 0 var(--radius-pill) var(--radius-pill) 0; }
+.lab__mode .lab__ar { color: var(--accent-text); }
+.lab__mode [data-mode="3d"] + .lab__ar { border-left: 1px solid var(--border) !important; }
+.lab__mode .lab__holo { color: #1fb6d6; }
+:root[data-theme="dark"] .lab__mode .lab__holo, :root:not([data-theme="light"]) .lab__mode .lab__holo { color: #5fe6ff; }
 html.ar-open, html.ar-open body { overflow: hidden; }
 .lab__3d.is-ar { position: fixed; inset: 0; z-index: 2000; width: 100vw; height: 100vh; height: 100dvh; background: #000; margin: 0; border-radius: 0; }
 .lab__3d.is-ar canvas { width: 100% !important; height: 100% !important; touch-action: none; }
 .lab__3d.is-ar .lab__3dhint { display: none; }
 .lab-ar { position: absolute; inset: 0; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: calc(var(--nt, 0px) + 10px) 10px calc(var(--nb, 0px) + 12px); }
-.lab-ar__top, .lab-ar__bot { display: flex; gap: 8px; align-items: center; pointer-events: auto; }
+.lab-ar__top, .lab-ar__bot { position: relative; z-index: 2; display: flex; gap: 8px; align-items: center; pointer-events: auto; }
 .lab-ar__bot { justify-content: center; flex-wrap: wrap; }
 .lab-ar__badge { flex: none; padding: 4px 10px; border-radius: 8px; background: #e0457b; color: #fff; font-weight: 800; font-size: 13px; letter-spacing: .06em; }
 .lab-ar__hint { flex: 1; min-width: 0; padding: 6px 10px; border-radius: 10px; background: rgba(0, 0, 0, .5); color: #fff; font-size: 12.5px; line-height: 1.35; }
 .lab__3d.is-gyro .lab-ar__hint { opacity: .75; }
 .lab-ar__btn { flex: none; min-width: 44px; height: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid rgba(255, 255, 255, .35); background: rgba(0, 0, 0, .55); color: #fff; font: 600 14px var(--font, system-ui); cursor: pointer; backdrop-filter: blur(6px); }
 .lab-ar__btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-.lab-ar__sheet { position: absolute; left: 0; right: 0; bottom: 0; max-height: 52vh; overflow: auto; pointer-events: auto; padding: 14px 14px calc(var(--nb, 0px) + 74px); border-radius: 18px 18px 0 0; background: color-mix(in srgb, var(--surface-solid) 94%, transparent); color: var(--text); }
+.lab-ar__sheet { z-index: 1; position: absolute; left: 0; right: 0; bottom: 0; max-height: 52vh; overflow: auto; pointer-events: auto; padding: 14px 14px calc(var(--nb, 0px) + 74px); border-radius: 18px 18px 0 0; background: color-mix(in srgb, var(--surface-solid) 94%, transparent); color: var(--text); }
 .lab-ar__sheet .lab__side { width: auto; }
 
 /* ---------------- Kariyer Keşfi ---------------- */
@@ -218,3 +221,20 @@ html.ar-open, html.ar-open body { overflow: hidden; }
 @keyframes ylPulse { 50% { stroke-opacity: .35; } }
 @media (prefers-reduced-motion: reduce) { .yl-node.is-next circle { animation: none; } .kr-bar i { transition: none; } }
 @media (max-width: 640px) { .yl-how li { grid-template-columns: 1fr auto; } .yl-how li .hint { grid-column: 1 / -1; } }
+
+/* ---------------- Hologram (1.25) ---------------- */
+.lab__3d.is-holo { background: #000; }
+.lab-holo__fx { position: absolute; inset: 0; pointer-events: none;
+  background:
+    repeating-linear-gradient(to bottom, rgba(53, 224, 255, 0) 0 2px, rgba(53, 224, 255, .055) 2px 3px),
+    radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 55%, rgba(0, 10, 20, .55) 100%);
+  animation: holoFlick 4s steps(1) infinite; }
+.lab__3d.is-real .lab-holo__fx { background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,.45) 100%); animation: none; }
+@keyframes holoFlick { 0%, 100% { opacity: 1; } 47% { opacity: .82; } 48% { opacity: 1; } 81% { opacity: .9; } 82% { opacity: 1; } }
+.lab-holo .lab-ar__badge { display: inline-flex; align-items: center; gap: 6px; background: #0a6f86; color: #dffaff; box-shadow: 0 0 14px rgba(53, 224, 255, .55); }
+.lab-holo__badge i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, .35); }
+.lab-holo.is-lock .lab-holo__badge i { background: #4dff9a; box-shadow: 0 0 8px #4dff9a; }
+.lab-holo .lab-ar__btn { border-color: rgba(53, 224, 255, .45); background: rgba(0, 20, 28, .62); }
+.lab-holo .lab-ar__hint { background: rgba(0, 20, 28, .62); color: #dffaff; }
+@media (prefers-reduced-motion: reduce) { .lab-holo__fx { animation: none; } }
+@media (max-width: 420px) { .lab-ar__bot { gap: 6px; } .lab-ar__wide { padding: 0 11px; font-size: 13px; } }
