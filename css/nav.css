@@ -158,3 +158,43 @@
 .sn-set .hint { margin: 0; }
 .sn-sub { display: grid; gap: 8px; padding-left: 4px; }
 .sn-widget { margin-top: 8px; padding-top: 12px; border-top: 1px dashed var(--border); display: grid; gap: 8px; justify-items: start; }
+
+/* Tüm araçlar sayfası ve kısayollar (v1.22) */
+.hub-search { position: relative; display: flex; align-items: center; gap: 10px; margin: 4px 0 18px; }
+.hub-search > span:first-child { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); display: flex; }
+.hub-search > span:first-child .ico { width: 18px; height: 18px; }
+.hub-search input { flex: 1; height: 48px; padding: 0 14px 0 42px; border-radius: var(--radius-lg); border: 1px solid var(--border-strong); background: var(--surface-solid); color: var(--text); font: inherit; font-size: 1rem; }
+.hub-search input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent); }
+.hub-search .hint { position: absolute; right: 14px; }
+.hub-sec { margin-bottom: 20px; }
+.hub-sec h2 { font-size: .82rem; font-weight: 600; letter-spacing: .04em; color: var(--muted); margin: 0 0 8px; text-transform: uppercase; }
+.hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.hub-tile { position: relative; display: flex; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); transition: border-color .15s, background .15s; }
+.hub-tile:hover, .hub-tile:focus-within { border-color: var(--border-strong); background: var(--surface-hover); }
+.hub-tile__link { flex: 1; display: flex; gap: 12px; align-items: flex-start; padding: 14px 44px 14px 14px; min-height: 64px; color: inherit; text-decoration: none; border-radius: inherit; }
+.hub-tile__ico { flex: none; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-text); }
+.hub-tile__ico .ico { width: 19px; height: 19px; }
+.hub-tile__txt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.hub-tile__txt b { font-weight: 600; font-size: .95rem; }
+.hub-tile__txt small { color: var(--text-2); font-size: .82rem; line-height: 1.4; }
+.hub-pin { position: absolute; top: 8px; right: 8px; width: 34px; height: 34px; border-radius: 50%; border: 0; background: none; color: var(--faint, var(--muted)); cursor: pointer; display: grid; place-items: center; }
+.hub-pin .ico { width: 17px; height: 17px; }
+.hub-pin:hover { color: var(--warn); background: var(--surface-2); }
+.hub-pin.is-on { color: var(--warn); }
+.hub-pin.is-on .ico path { fill: currentColor; }
+.hub-recent, .home-pins { display: flex; flex-wrap: wrap; gap: 8px; }
+.hub-recent a, .home-pins a { display: inline-flex; align-items: center; gap: 7px; height: 38px; padding: 0 14px; border-radius: var(--radius-pill); border: 1px solid var(--border); background: var(--surface); color: var(--text-2); text-decoration: none; font-size: .88rem; }
+.hub-recent a:hover, .home-pins a:hover { border-color: var(--border-strong); color: var(--text); }
+.hub-recent .ico, .home-pins .ico { width: 16px; height: 16px; color: var(--accent-text); }
+.home-pins { justify-content: center; width: min(720px, 100%); margin: 12px auto 0; }
+.home-pins__all { border-style: dashed !important; }
+.hub-none { color: var(--muted); }
+.hub-tips h2 { display: flex; align-items: center; gap: 8px; font-size: 1rem; margin: 0 0 8px; }
+.hub-tips h2 .ico { width: 18px; height: 18px; color: var(--accent-text); }
+.hub-tips ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--text-2); font-size: .9rem; }
+kbd { display: inline-block; min-width: 22px; padding: 1px 6px; border-radius: 6px; border: 1px solid var(--border-strong); border-bottom-width: 2px; background: var(--surface-2); font: 600 .78rem var(--mono, monospace); text-align: center; color: var(--text); }
+.nav-pins .nav__item .ico { color: var(--warn); }
+/* Erişilebilirlik: dokunma hedefleri ve etkin sayfa */
+@media (max-width: 900px) { .nav__item { min-height: 44px; } .nav-group__head { min-height: 40px; } }
+.nav__item[aria-current="page"] { font-weight: 600; }
+@media (prefers-reduced-motion: reduce) { .hub-tile, .home-pins a { transition: none; } }

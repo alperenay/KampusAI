@@ -199,6 +199,7 @@
           '<button type="button" data-act="attach">' + App.icon("image") + esc(t("ai.quickPhoto")) + "</button>" +
           '<a href="#/konular">' + App.icon("book") + esc(t("ai.quickTopics")) + "</a>" +
         "</nav>" +
+        (App.hub ? App.hub.homeStripHtml() : "") +
         '<div class="home__today" data-home-today></div>' +
         '<p class="home__models" data-ai-models>' + modelsLine() + "</p>" +
       "</div>"

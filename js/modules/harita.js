@@ -55,7 +55,11 @@
     ],
     dunya: [
       { id: "ulkeler", label: () => T("Ülkeler", "Countries"), icon: "globe" },
+      { id: "baskent", label: () => T("Başkentler", "Capitals"), icon: "flag" },
       { id: "kitalar", label: () => T("Kıtalar", "Continents"), icon: "map" },
+      { id: "denizler", label: () => T("Okyanus ve denizler", "Oceans & seas"), icon: "circle" },
+      { id: "wakarsu", label: () => T("Akarsu ve göller", "Rivers & lakes"), icon: "chart" },
+      { id: "fiziki", label: () => T("Dağlar ve çöller", "Mountains & deserts"), icon: "flag" },
       { id: "bogaz", label: () => T("Boğaz ve kanallar", "Straits & canals"), icon: "compass" }
     ]
   };
@@ -152,12 +156,16 @@
   function buildWorld(svg, layer) {
     const d = W();
     el("rect", { x: -400, y: -300, width: d.w + 800, height: d.h + 600, class: "mp-sea" }, svg);
+    const gs = el("g", { class: "mp-seas" + (layer === "denizler" ? " is-on" : "") }, svg);
+    (d.seas || []).forEach((w) => el("path", { d: w.d, "data-k": layer === "denizler" ? "w:" + w.name : null, class: "mp-seapoly" }, gs));
     const gp = el("g", { class: "mp-prov" }, svg);
     d.countries.forEach((c) => {
-      const a = el("path", { d: c.d, "data-k": layer === "kitalar" ? "k:" + c.cont : "c:" + c.id, class: "mp-p" + (layer === "kitalar" ? " is-fill" : ""), "data-c": c.id }, gp);
+      const a = el("path", { d: c.d, "data-k": layer === "kitalar" ? "k:" + c.cont : layer === "ulkeler" ? "c:" + c.id : null, class: "mp-p" + (layer === "kitalar" ? " is-fill" : ""), "data-c": c.id }, gp);
       if (layer === "kitalar") a.style.setProperty("--f", CONT_COL[c.cont] || "#888");
       if (c.id === "TUR") a.classList.add("is-home");
     });
+    const gl = el("g", { class: "mp-lake" }, svg);
+    (d.lakes || []).forEach((l) => el("path", { d: l.d, "data-k": layer === "wakarsu" ? "lk:" + l.name : null }, gl));
     const ov = el("g", { class: "mp-ov" }, svg);
     const lab = el("g", { class: "mp-lab" }, svg);
     if (layer === "kitalar") {
@@ -168,7 +176,38 @@
         el("text", { x: cx, y: cy, class: "mp-reg-l" }, lab).textContent = k;
       });
     } else if (layer === "ulkeler") {
-      d.countries.forEach((c) => { const t = el("text", { x: c.c[0], y: c.c[1], class: "mp-pn mp-pn--w", "data-len": c.d.length }, lab); t.textContent = c.name; });
+      d.countries.forEach((c) => {
+        if (c.capC) el("circle", { cx: c.capC[0], cy: c.capC[1], r: 1.6, class: "mp-cap" }, ov);
+        const t = el("text", { x: c.c[0], y: c.c[1], class: "mp-pn mp-pn--w" + (c.d.length > 6000 ? " is-big" : "") }, lab); t.textContent = c.name;
+      });
+    } else if (layer === "baskent") {
+      d.countries.forEach((c) => {
+        if (!c.capC) return;
+        el("circle", { cx: c.capC[0], cy: c.capC[1], r: 2.6, class: "mp-mk mp-mk--cap", "data-k": "b:" + c.id }, ov);
+        el("text", { x: c.capC[0] + 4, y: c.capC[1] - 3, class: "mp-pn mp-pn--s" }, lab).textContent = c.cap;
+      });
+    } else if (layer === "denizler") {
+      const seen = {};
+      (d.seas || []).forEach((w) => {
+        if (seen[w.name] || w.cls !== "ocean" && w.d.length < 1500) return; seen[w.name] = 1;
+        el("text", { x: w.c[0], y: w.c[1], class: w.cls === "ocean" ? "mp-sea-l mp-sea-l--o" : "mp-sea-l" }, lab).textContent = w.name;
+      });
+    } else if (layer === "wakarsu") {
+      (d.rivers || []).forEach((r) => {
+        el("path", { d: r.d, class: "mp-river" }, ov);
+        el("path", { d: r.d, class: "mp-hit", "data-k": "wr:" + r.name }, ov);
+      });
+    } else if (layer === "fiziki") {
+      const gph = el("g", { class: "mp-phys" }, ov);
+      (d.phys || []).forEach((f) => {
+        el("path", { d: f.d, class: "mp-phys-" + (f.cls === "Desert" ? "desert" : f.cls === "Range/mtn" ? "range" : "plain"), "data-k": "f:" + f.name }, gph);
+        el("text", { x: f.c[0], y: f.c[1], class: "mp-pn mp-pn--s mp-pn--c" }, lab).textContent = f.name;
+      });
+      (d.peaks || []).forEach((k) => {
+        const q = k.c, s2 = 4.5;
+        el("path", { d: "M" + q[0] + " " + (q[1] - s2) + "L" + (q[0] + s2) + " " + (q[1] + s2 * 0.7) + "L" + (q[0] - s2) + " " + (q[1] + s2 * 0.7) + "Z", class: "mp-mk mp-mk--mt" + (k.el < 0 ? " is-low" : ""), "data-k": "pk:" + k.name }, ov);
+      });
+      (d.points || []).forEach((k) => el("circle", { cx: k.c[0], cy: k.c[1], r: 2.8, class: "mp-mk mp-mk--" + (k.cls === "waterfall" ? "fall" : "cape"), "data-k": "pt:" + k.name }, ov));
     } else if (layer === "bogaz") {
       I().STRAITS.forEach((s) => {
         const q = pworld(s[1], s[2]);
@@ -179,12 +218,62 @@
     return { w: d.w, h: d.h };
   }
 
+  /* ---------------- Bilgi kartları ---------------- */
+  const nf = (n) => Number(n).toLocaleString(App.i18n.lang === "en" ? "en-US" : "tr-TR");
+  const SEA = { K: () => T("Karadeniz", "Black Sea"), M: () => T("Marmara Denizi", "Sea of Marmara"), E: () => T("Ege Denizi", "Aegean Sea"), A: () => T("Akdeniz", "Mediterranean") };
+  let ranks = null;
+  function rankOf(n, idx) {
+    const D = App.data.iller || {};
+    if (!ranks) {
+      ranks = [{}, {}];
+      [0, 1].forEach((j) => Object.keys(D).map(Number).sort((a, b) => D[b][j] - D[a][j]).forEach((k, i) => { ranks[j][k] = i + 1; }));
+    }
+    return ranks[idx][n];
+  }
+  const row = (k, v) => v ? "<div><dt>" + esc(k) + "</dt><dd>" + v + "</dd></div>" : "";
+  const chips = (list) => '<div class="mp-chipsx">' + list.map(([k, n]) => '<button type="button" class="mp-goto" data-goto="' + esc(k) + '">' + esc(n) + "</button>").join("") + "</div>";
+  function provHtml(p) {
+    const info = I(), D = (App.data.iller || {})[p.n] || [];
+    const rec = (App.data.illerRekor || {})[p.n];
+    const pop = D[0], area = D[1];
+    const coast = (D[3] || "").split(/,\s*/).filter(Boolean).map((c) => SEA[c] ? SEA[c]() : c).join(", ");
+    const crops = info.CROPS.filter((x) => x[2].indexOf(p.n) >= 0).map((x) => x[0]), mines = info.MINES.filter((x) => x[2].indexOf(p.n) >= 0).map((x) => x[0]);
+    return (rec ? '<span class="mp-badge">' + App.icon("star") + esc(rec) + "</span>" : "") +
+      '<dl class="mp-dl">' +
+      row(T("Plaka", "Plate"), plate(p.n)) +
+      row(T("Bölge", "Region"), esc(info.REG[regionOf(p.n)].name)) +
+      (D[2] && D[2] !== p.name ? row(T("İl merkezi", "Capital city"), esc(D[2])) : "") +
+      (pop ? row(T("Nüfus (2024)", "Population (2024)"), nf(pop) + ' <small>' + esc(T(rankOf(p.n, 0) + ". sırada", "#" + rankOf(p.n, 0))) + "</small>") : "") +
+      (area ? row(T("Yüzölçümü", "Area"), nf(area) + " km² <small>" + esc(T(rankOf(p.n, 1) + ". sırada", "#" + rankOf(p.n, 1))) + "</small>") : "") +
+      (pop && area ? row(T("Yoğunluk", "Density"), nf(Math.round(pop / area)) + T(" kişi/km²", " per km²")) : "") +
+      row(T("Kıyısı", "Coast"), coast ? esc(coast) : esc(T("Denize kıyısı yok", "Landlocked"))) +
+      row(T("İklim", "Climate"), esc(info.CLIM[climOf(p.n)].name)) +
+      (crops.length ? row(T("Tarım", "Crops"), esc(crops.join(", "))) : "") +
+      (mines.length ? row(T("Maden / enerji", "Mining / energy"), esc(mines.join(", "))) : "") +
+      "</dl>" +
+      (D[4] ? '<p class="mp-note">' + esc(D[4]) + "</p>" : "") +
+      (p.nb && p.nb.length ? '<p class="mp-info__k">' + esc(T("Komşu iller", "Neighbouring provinces")) + " (" + p.nb.length + ")</p>" + chips(p.nb.map((x) => ["p" + x, provName(x)])) : "");
+  }
+  function countryHtml(c) {
+    const byId = {}; W().countries.forEach((x) => { byId[x.id] = x; });
+    const note = (App.data.ulkeNot || {})[c.id];
+    const popTxt = c.pop ? (c.pop >= 1e6 ? (App.i18n.lang === "en" ? (c.pop / 1e6).toFixed(1) + " million" : (c.pop / 1e6).toLocaleString("tr-TR", { maximumFractionDigits: 1 }) + " milyon") : nf(c.pop)) + (c.popY ? " <small>(" + c.popY + ")</small>" : "") : "";
+    return '<dl class="mp-dl">' +
+      row(T("Başkent", "Capital"), c.cap ? esc(c.cap) : "") +
+      row(T("Kıta", "Continent"), esc(c.cont)) +
+      row(T("Bölge", "Region"), esc(c.sub || "")) +
+      row(T("Nüfus", "Population"), popTxt) + "</dl>" +
+      (note ? '<p class="mp-note">' + esc(note) + "</p>" : "") +
+      (c.nb && c.nb.length ? '<p class="mp-info__k">' + esc(T("Kara komşuları", "Land neighbours")) + " (" + c.nb.length + ")</p>" + chips(c.nb.filter((x) => byId[x]).map((x) => ["c:" + x, byId[x].name]))
+        : '<p class="hint">' + esc(T("Kara sınırı komşusu yok.", "No land neighbours.")) + "</p>");
+  }
+
   /* ---------------- Öğeler (keşif bilgisi + sınav havuzu) ---------------- */
   function items(map, layer, st) {
     const info = I();
     if (map === "tr") {
       if (layer === "iller") return TR().prov.map((p) => ({ k: "p" + p.n, name: p.name, sub: plate(p.n) + " · " + info.REG[regionOf(p.n)].name + T(" Bölgesi", " Region"),
-        info: info.CLIM[climOf(p.n)].name + "." + extraOf(p.n) }));
+        info: info.CLIM[climOf(p.n)].name + "." + extraOf(p.n), html: () => provHtml(p) }));
       if (layer === "bolgeler") return Object.keys(info.REG).map((k) => ({ k: "reg:" + k, name: info.REG[k].name + T(" Bölgesi", " Region"), sub: info.REG[k].il.length + T(" il", " provinces"), info: info.REG_INFO[k], match: (x) => /^p\d+$/.test(x) && regionOf(+x.slice(1)) === k }));
       if (layer === "iklim") return Object.keys(info.CLIM).map((k) => ({ k: "cl:" + k, name: info.CLIM[k].name, sub: T("İl düzeyinde sadeleştirilmiştir", "Simplified by province"), info: info.CLIM[k].info, match: (x) => /^p\d+$/.test(x) && climOf(+x.slice(1)) === k }));
       if (layer === "akarsu") return TR().rivers.map((r) => r.name).concat(info.RIVERS_X.map((r) => r.name)).filter((v, i, a) => a.indexOf(v) === i)
@@ -198,7 +287,18 @@
         return list.map((c, i) => ({ k: "x:" + i, name: c[0], sub: c[2].map(provName).join(", "), info: c[3], match: (x) => /^p\d+$/.test(x) && c[2].indexOf(+x.slice(1)) >= 0, idx: i }));
       }
     } else {
-      if (layer === "ulkeler") return W().countries.map((c) => ({ k: "c:" + c.id, name: c.name, sub: c.cont, info: "", size: c.d.length }));
+      const N = App.data;
+      if (layer === "ulkeler") return W().countries.map((c) => ({ k: "c:" + c.id, name: c.name, sub: c.cont + (c.sub ? " · " + c.sub : ""), info: "", size: c.d.length, html: () => countryHtml(c) }));
+      if (layer === "baskent") return W().countries.filter((c) => c.capC && c.cap).map((c) => ({ k: "b:" + c.id, name: c.cap, sub: T("Başkenti olduğu ülke: ", "Capital of ") + c.name, info: (N.ulkeNot || {})[c.id] || "", size: c.d.length }));
+      if (layer === "denizler") return (W().seas || []).map((w) => w.name).filter((v, i, a) => a.indexOf(v) === i).map((n) => {
+        const w = W().seas.find((x) => x.name === n);
+        return { k: "w:" + n, name: n, sub: w.cls === "ocean" ? T("Okyanus", "Ocean") : /körfez/i.test(n) ? T("Körfez", "Gulf / bay") : T("Deniz", "Sea"), info: (N.denizNot || {})[n] || "" };
+      });
+      if (layer === "wakarsu") return (W().rivers || []).map((r) => ({ k: "wr:" + r.name, name: r.name, sub: T("Akarsu", "River"), info: (N.akarsuNot || {})[r.name] || "" }))
+        .concat((W().lakes || []).map((l) => l.name).filter((v, i, a) => a.indexOf(v) === i).map((n) => ({ k: "lk:" + n, name: n, sub: T("Göl", "Lake"), info: (N.golNot || {})[n] || "" })));
+      if (layer === "fiziki") return (W().phys || []).map((f) => ({ k: "f:" + f.name, name: f.name, sub: { Desert: T("Çöl", "Desert"), "Range/mtn": T("Sıradağ", "Mountain range"), Plateau: T("Plato", "Plateau"), Plain: T("Ova / bozkır", "Plain"), Basin: T("Havza", "Basin") }[f.cls] || "", info: "" }))
+        .concat((W().peaks || []).map((k) => ({ k: "pk:" + k.name, name: k.name, sub: nf(k.el) + " m", info: k.el < 0 ? T("Deniz seviyesinin altındaki çukur alan.", "Depression below sea level.") : "" })))
+        .concat((W().points || []).map((k) => ({ k: "pt:" + k.name, name: k.name, sub: k.cls === "waterfall" ? T("Şelale", "Waterfall") : T("Burun", "Cape"), info: "" })));
       if (layer === "kitalar") return Object.keys(CONT_COL).map((k) => ({ k: "k:" + k, name: k, sub: W().countries.filter((c) => c.cont === k).length + T(" ülke (haritada)", " countries (on map)"), info: "" }));
       if (layer === "bogaz") return info.STRAITS.map((s) => ({ k: "s:" + s[0], name: s[0], sub: T("Boğaz / kanal", "Strait / canal"), info: s[3] }));
     }
@@ -210,7 +310,28 @@
   }
 
   /* ---------------- Sayfa ---------------- */
+  /* ---------------- Veriyi yalnızca harita açılınca yükle ---------------- */
+  const SRC = ["js/data/harita-tr.js", "js/data/harita-dunya.js", "js/data/iller.js", "js/data/ulkeler.js"];
+  let loading = null;
+  const ready = () => !!(App.data.mapTR && App.data.mapWorld && App.data.iller && App.data.ulkeNot);
+  function loadData() {
+    if (ready()) return Promise.resolve();
+    if (loading) return loading;
+    loading = SRC.reduce((pr, src) => pr.then(() => new Promise((res, rej) => {
+      const s = document.createElement("script"); s.src = src; s.onload = res; s.onerror = () => rej(new Error(src)); document.head.appendChild(s);
+    })), Promise.resolve()).catch((e) => { loading = null; throw e; });
+    return loading;
+  }
   function render(view, params) {
+    if (!ready()) {
+      App.setTitle(T("Etkileşimli Harita", "Interactive Map"));
+      view.innerHTML = '<div class="page mp-page"><div class="card quiz-loading"><div class="stage"><span class="spinner"></span>' + App.icon("globe") + "<span>" + esc(T("Harita yükleniyor…", "Loading map…")) + "</span></div></div></div>";
+      App.hydrateIcons(view);
+      const h = location.hash;
+      loadData().then(() => { if (location.hash === h) render(view, params); })
+        .catch(() => { if (location.hash === h) view.innerHTML = App.ui.empty("globe", T("Harita verisi yüklenemedi", "Could not load map data"), T("Sayfayı yenileyip tekrar dene.", "Reload and try again.")); });
+      return;
+    }
     const map = params[0] === "dunya" ? "dunya" : "tr";
     const layers = LAYERS[map];
     const layer = layers.some((l) => l.id === params[1]) ? params[1] : layers[0].id;
@@ -350,7 +471,22 @@
     }
     const cssq = (s) => String(s).replace(/["\\]/g, "\\$&");
     function showInfo(it) {
-      infoBox.innerHTML = "<h3>" + esc(it.name) + '</h3><p class="mp-info__sub">' + esc(it.sub || "") + "</p>" + (it.info ? "<p>" + esc(it.info) + "</p>" : "");
+      const body = it.html && (st.mode === "explore" || (st.quiz && st.quiz.lock)) ? it.html() : (it.info ? "<p>" + esc(it.info) + "</p>" : "");
+      infoBox.innerHTML = "<h3>" + esc(it.name) + '</h3><p class="mp-info__sub">' + esc(it.sub || "") + "</p>" + body;
+      App.hydrateIcons(infoBox);
+      infoBox.querySelectorAll("[data-goto]").forEach((b) => b.addEventListener("click", () => {
+        if (st.mode !== "explore") return;
+        const k = b.dataset.goto, x = findItem(k);
+        if (!x) return;
+        select(k); showInfo(x); focusKey(k);
+      }));
+    }
+    /** Seçilen öğe görünür alanda değilse haritayı ona kaydır */
+    function focusKey(k) {
+      const e = svg.querySelector('[data-k="' + cssq(k) + '"]'); if (!e || !e.getBBox) return;
+      const b = e.getBBox(), v = st.vb, cx = b.x + b.width / 2, cy = b.y + b.height / 2;
+      if (cx > v.x && cx < v.x + v.w && cy > v.y && cy < v.y + v.h) return;
+      st.vb = { x: cx - v.w / 2, y: cy - v.h / 2, w: v.w, h: v.h }; clampVB(); applyVB();
     }
     function idleInfo() {
       infoBox.innerHTML = "<h3>" + esc(ldef.label()) + '</h3><p class="hint">' + esc(st.mode === "explore"
@@ -361,7 +497,7 @@
     /* --- Sınav --- */
     function quizPool() {
       let pool = list.slice();
-      if (map === "dunya" && layer === "ulkeler" && st.mode === "find") pool = pool.filter((x) => x.size > 900);   // çok küçük ülkeler dokunması zor
+      if (map === "dunya" && (layer === "ulkeler" || layer === "baskent")) pool = pool.filter((x) => x.size > (st.mode === "find" ? 1400 : 900));   // çok küçük ülkeler dokunması zor
       return pool;
     }
     function startQuiz(mode) {
@@ -458,6 +594,8 @@
     else if (layer === "kitalar") rows = Object.entries(CONT_COL).map(([k, c]) => [c, k]);
     else if (layer === "daglar") rows = [["mt", T("Kıvrım / kırık dağ", "Fold / fault-block mountain")], ["volc", T("Volkanik dağ", "Volcano")], ["plain", T("Ova / plato", "Plain / plateau")], ["range", T("Sıradağ", "Range")]];
     else if (layer === "goller") rows = [["lake", T("Göl (dokun: oluşum türü)", "Lake (tap: origin)")]];
+    else if (layer === "fiziki") rows = [["range", T("Sıradağ", "Mountain range")], ["desert", T("Çöl", "Desert")], ["plain", T("Ova, plato, havza", "Plain, plateau, basin")], ["mt", T("Zirve", "Peak")], ["fall", T("Şelale / burun", "Waterfall / cape")]];
+    else if (layer === "baskent") rows = [["cap", T("Başkent (dokun)", "Capital (tap)")]];
     if (!rows.length) return "";
     return '<div class="card mp-legend">' + rows.map(([c, n]) => '<div class="mp-legend__r">' + (c[0] === "#" ? '<i class="mp-sw" style="background:' + c + '"></i>' : '<i class="mp-sw mp-sw--' + c + '"></i>') + esc(n) + "</div>").join("") + "</div>";
   }

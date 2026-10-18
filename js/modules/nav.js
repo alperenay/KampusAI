@@ -2,7 +2,7 @@
    nav.js — menü grupları, hızlı ayarlar, arama (Ctrl+K) ve
    asistan açılışındaki "Bugün" şeridi
 
-   • Sol menü üç gruba ayrılır (Çalış · Takip · Araçlar); gruplar açılıp
+   • Sol menü gruplara ayrılır (Sabitlenenler · Çalış · Pratik · Takip · Araçlar); gruplar açılıp
      kapanır, açık olduğu sayfanın grubu her zaman açılır. Kapalı grupta
      bekleyen bir rozet varsa başlığında nokta görünür.
    • Üst çubuk sadeleşti: tema, dil, yedek ve ayarlar tek bir açılır panelde.
@@ -17,7 +17,7 @@
   const isMobile = () => window.matchMedia("(max-width: 860px)").matches;
 
   /* ---------------- Menü grupları ---------------- */
-  const DEFAULT_OPEN = { study: true, track: true, tools: false, chats: true, grades: false, recentExams: false };
+  const DEFAULT_OPEN = { pins: true, study: true, practice: true, track: true, tools: false, chats: true, grades: false, recentExams: false };
   const openState = () => Object.assign({}, DEFAULT_OPEN, App.prefs.get("navOpen", {}));
 
   function setGroup(el, open, save) {
@@ -82,7 +82,7 @@
   const norm = (s) => String(s || "").toLocaleLowerCase("tr").replace(/[ıİ]/g, "i").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\s+/g, " ").trim();
 
   function pages() {
-    return Array.from(document.querySelectorAll("#sidebar .nav__item")).map((a) => {
+    return Array.from(document.querySelectorAll("#sidebar .nav__item")).filter((a) => !a.closest("#navPins")).map((a) => {
       const lab = a.querySelector(".sidebar__label"), ic = a.querySelector("[data-icon]");
       const grp = a.closest(".nav-group");
       return { kind: "page", title: lab ? lab.textContent.trim() : "", sub: grp ? grp.querySelector(".nav-group__head .sidebar__label").textContent : "", icon: ic ? ic.dataset.icon : "chevron", href: a.getAttribute("href") };

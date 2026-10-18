@@ -66,9 +66,13 @@
           <a class="nav__item" href="#/bugun" data-route="bugun">
             <span data-icon="sun"></span><span class="sidebar__label" data-i18n="nav.today">Bugün</span>
           </a>
-          <a class="nav__item" href="#/oyunlar" data-route="oyunlar">
-            <span data-icon="game"></span><span class="sidebar__label" data-i18n="nav.games">Oyunlar</span>
+          <a class="nav__item" href="#/araclar" data-route="araclar">
+            <span data-icon="widget"></span><span class="sidebar__label" data-i18n="nav.hub">Tüm araçlar</span>
           </a>
+          <div class="nav-group nav-pins" data-group="pins" id="navPins" hidden>
+            <button class="nav-group__head" type="button" aria-expanded="true" aria-controls="ng-pins"><span class="sidebar__label" data-i18n="nav.group.pins">Sabitlenenler</span><span data-icon="chevronD"></span></button>
+            <div class="nav-group__body" id="ng-pins"></div>
+          </div>
           <div class="nav-group" data-group="study">
             <button class="nav-group__head" type="button" aria-expanded="true" aria-controls="ng-study"><span class="sidebar__label" data-i18n="nav.group.study">Çalış</span><span data-icon="chevronD"></span></button>
             <div class="nav-group__body" id="ng-study">
@@ -81,6 +85,17 @@
           <a class="nav__item" href="#/yanlislar" data-route="yanlislar">
             <span data-icon="bookmark"></span><span class="sidebar__label" data-i18n="nav.mistakes">Yanlış Defteri</span><span class="nav__badge" id="misBadge" hidden></span>
           </a>
+          <a class="nav__item" href="#/kontrol" data-route="kontrol">
+            <span data-icon="scan"></span><span class="sidebar__label" data-i18n="nav.check">Çözümümü Kontrol Et</span>
+          </a>
+          <a class="nav__item" href="#/program" data-route="program">
+            <span data-icon="calendar"></span><span class="sidebar__label" data-i18n="nav.schedule">Ders Programı</span>
+          </a>
+            </div>
+          </div>
+          <div class="nav-group" data-group="practice">
+            <button class="nav-group__head" type="button" aria-expanded="true" aria-controls="ng-practice"><span class="sidebar__label" data-i18n="nav.group.practice">Pratik</span><span data-icon="chevronD"></span></button>
+            <div class="nav-group__body" id="ng-practice">
           <a class="nav__item" href="#/paragraf" data-route="paragraf">
             <span data-icon="timer"></span><span class="sidebar__label" data-i18n="nav.para">Paragraf Antrenmanı</span>
           </a>
@@ -90,11 +105,8 @@
           <a class="nav__item" href="#/lab" data-route="lab">
             <span data-icon="lightbulb"></span><span class="sidebar__label" data-i18n="nav.lab">Deney Laboratuvarı</span>
           </a>
-          <a class="nav__item" href="#/kontrol" data-route="kontrol">
-            <span data-icon="scan"></span><span class="sidebar__label" data-i18n="nav.check">Çözümümü Kontrol Et</span>
-          </a>
-          <a class="nav__item" href="#/program" data-route="program">
-            <span data-icon="calendar"></span><span class="sidebar__label" data-i18n="nav.schedule">Ders Programı</span>
+          <a class="nav__item" href="#/oyunlar" data-route="oyunlar">
+            <span data-icon="game"></span><span class="sidebar__label" data-i18n="nav.games">Oyunlar</span>
           </a>
             </div>
           </div>
@@ -321,8 +333,6 @@
   <script src="js/modules/labs3d-fizik.js"></script>
   <script src="js/data/motivasyon.js"></script>
   <script src="js/data/paragraflar.js"></script>
-  <script src="js/data/harita-tr.js"></script>
-  <script src="js/data/harita-dunya.js"></script>
   <script src="js/data/harita-bilgi.js"></script>
   <script src="js/modules/harita.js"></script>
   <script src="js/modules/paragraf.js"></script>
@@ -339,6 +349,7 @@
   <script src="js/modules/widget.js"></script>
   <script src="js/modules/today.js"></script>
   <script src="js/modules/tour.js"></script>
+  <script src="js/modules/hub.js"></script>
   <script src="js/modules/nav.js"></script>
 
   <script src="js/core/viewport.js"></script>

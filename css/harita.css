@@ -121,3 +121,40 @@
 .mp-svg.is-quiz .mp-p.is-fill { fill: var(--mp-land); }
 .mp-svg.is-quiz .mp-p.is-fill:hover { fill: color-mix(in srgb, var(--accent) 22%, var(--mp-land)); }
 .mp-svg.is-quiz .mp-dot { display: none; }
+
+/* v1.22: ayrıntılı dünya ve il kartları */
+.mp-seapoly { fill: transparent; stroke: none; }
+.mp-seas.is-on .mp-seapoly { fill: color-mix(in srgb, var(--mp-river) 10%, var(--mp-sea)); stroke: color-mix(in srgb, var(--mp-river) 35%, transparent); stroke-width: calc(.5px / var(--z)); cursor: pointer; }
+.mp-seas.is-on .mp-seapoly:hover { fill: color-mix(in srgb, var(--mp-river) 26%, var(--mp-sea)); }
+.mp-cap { fill: var(--mp-text); opacity: 0; pointer-events: none; transform-box: fill-box; transform-origin: center; transform: scale(calc(1 / var(--z) * 1.6)); }
+.mp-svg.is-z2 .mp-cap { opacity: .75; }
+.mp-mk--cap { fill: #e0457b; }
+.mp-mk--fall { fill: #3b8fd1; }
+.mp-mk--cape { fill: #e67e22; }
+.mp-mk--mt.is-low { fill: #6d8f3a; transform: scale(calc(1 / var(--z) * 1.6)) rotate(180deg); }
+.mp-phys path { stroke-width: calc(.6px / var(--z)); cursor: pointer; }
+.mp-phys-range { fill: rgba(138, 111, 77, .45); stroke: rgba(138, 111, 77, .8); }
+.mp-phys-desert { fill: rgba(230, 180, 80, .45); stroke: rgba(200, 150, 50, .8); }
+.mp-phys-plain { fill: rgba(120, 180, 90, .35); stroke: rgba(90, 150, 60, .7); }
+.mp-phys path:hover { fill-opacity: .8; }
+.mp-lab .mp-pn--c { text-anchor: middle; }
+.mp-svg.is-z2 .mp-lab .mp-pn--w.is-big { display: inline !important; }
+.mp-lab .mp-sea-l--o { font-size: calc(16px / var(--z)); letter-spacing: .14em; }
+.mp-sw--desert { background: rgba(230, 180, 80, .8); }
+.mp-sw--cap { background: #e0457b; border-radius: 50%; }
+.mp-sw--fall { background: #3b8fd1; border-radius: 50%; }
+
+.mp-dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 4px 0 10px; font-size: .88rem; }
+.mp-dl > div { display: contents; }
+.mp-dl dt { color: var(--muted); }
+.mp-dl dd { margin: 0; color: var(--text); font-variant-numeric: tabular-nums; }
+.mp-dl small { color: var(--muted); }
+.mp-note { font-size: .9rem; line-height: 1.55; color: var(--text-2); margin: 0 0 8px; }
+.mp-info__k { margin: 8px 0 4px !important; font-size: .78rem !important; font-weight: 600; color: var(--muted) !important; text-transform: none; }
+.mp-chipsx { display: flex; flex-wrap: wrap; gap: 5px; }
+.mp-goto { height: 28px; padding: 0 10px; border-radius: var(--radius-pill); border: 1px solid var(--border); background: var(--surface-2); color: var(--text-2); font: inherit; font-size: 12.5px; cursor: pointer; }
+.mp-goto:hover, .mp-goto:focus-visible { border-color: var(--accent); color: var(--accent-text); }
+.mp-badge { display: inline-flex; align-items: center; gap: 4px; margin: 0 0 6px; padding: 2px 9px; border-radius: var(--radius-pill); background: color-mix(in srgb, var(--warn) 18%, transparent); color: var(--warn); font-size: .78rem; font-weight: 600; }
+.mp-badge .ico { width: 12px; height: 12px; }
+.mp-info { max-height: none; }
+@media (min-width: 901px) { .mp-side { position: sticky; top: 76px; } .mp-info { max-height: calc(100vh - 120px); overflow: auto; } }

@@ -37,6 +37,7 @@
       view.innerHTML = '<div class="page">' + App.ui.empty("close", App.t("errorTitle"), String(e && e.message || e)) + "</div>";
     }
     App.hydrateIcons(view);
+    try { window.dispatchEvent(new CustomEvent("da:route", { detail: r })); } catch (e) { /* eski tarayıcı */ }
     document.getElementById("app").classList.remove("is-menu-open");
     document.getElementById("scrim").hidden = true;
   }
@@ -50,7 +51,7 @@
       else active = r.name === route && !(r.name === "denemeler" && r.params[0] === "yeni");
       if (!active && a.dataset.routeAlso) active = a.dataset.routeAlso.split(",").includes(r.name);
       a.classList.toggle("is-active", active);
-      if (a.classList.contains("tabbar__item")) { if (active) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); }
+      if (active) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     });
     document.querySelectorAll("[data-path]").forEach((a) => {
       a.classList.toggle("is-active", r.path === a.dataset.path || r.path.indexOf(a.dataset.path + "/") === 0);
