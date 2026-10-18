@@ -181,6 +181,8 @@
     const feyCard = ct && App.feynman ? await App.feynman.cardHtml(key, "#/anlat/" + key) : "";
     const chkCard = ct && App.check ? await App.check.cardHtml(key) : "";
     const rootCard = App.roots ? await App.roots.cardHtml(key).catch(() => "") : "";
+    const cardsCard = ct && App.cards ? await App.cards.cardHtml(key).catch(() => "") : "";
+    const labCards = App.labs ? App.labs.sectionHtml(key) : "";
     // Okunabilir bölümlerde "Dinle" düğmesi (erişilebilirlik: sesli okuma)
     const section = (icon, title, inner, listen) =>
       '<section class="card lesson__section"' + (listen ? " data-read-scope" : "") + "><h2>" + App.icon(icon) + esc(title) + (listen && App.a11y ? App.a11y.listenBtnHtml() : "") + '</h2><div class="lesson__body md">' + inner + "</div></section>";
@@ -211,7 +213,7 @@
                 '<div class="example__a"><b>' + esc(t("cur.solution")) + "</b> " + richInline(o.cozum) + "</div></div>").join(""), true)
             : "") +
           (ct ? section("lightbulb", t("cur.keyFacts"), ct.ozet && ct.ozet.length ? "<ul>" + ct.ozet.map((s) => "<li>" + richInline(s) + "</li>").join("") + "</ul>" : soon, !!(ct.ozet && ct.ozet.length)) : "") +
-          rootCard + quizCard + feyCard + chkCard +
+          labCards + rootCard + cardsCard + quizCard + feyCard + chkCard +
           section("note", t("cur.myNotes"),
             '<textarea class="textarea" id="myNote" placeholder="' + esc(t("cur.notesPh")) + '">' + esc(note ? note.text : "") + "</textarea>" +
             '<p class="hint" id="noteState" style="margin-top:6px">' + esc(note && note.updatedAt ? t("cur.saved") : t("cur.notesLocal")) + "</p>") +
@@ -238,6 +240,9 @@
       await App.lessons.removeLesson(key);
       App.router.refresh();
     });
+
+    if (App.cards) App.cards.bindCard(view);
+    if (App.labs) App.labs.mountIn(view, key);
 
     const btn = view.querySelector("#toggleDone");
     const paint = () => {
