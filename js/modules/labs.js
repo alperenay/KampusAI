@@ -623,6 +623,7 @@
     function paintMode() { if (!modeBox) return; modeBox.querySelectorAll("[data-mode]").forEach((b) => b.setAttribute("aria-checked", String(b.dataset.mode === mode))); host.classList.toggle("is-3d", mode === "3d"); }
     async function setMode(m, remember) {
       mode = m; if (remember) App.lab3d.setMode(m); paintMode();
+      if (m === "2d" && S3 && S3.handOn && S3.handOn()) S3.handStop();      // 2B'de el kontrolü (ve kamera) kapanır
       if (m === "3d" && !S3 && !s3busy) {
         s3busy = true; host.classList.add("is-loading3d");
         try { await App.lab3d.load(); if (host.isConnected && mode === "3d") { S3 = App.lab3d.mount(host.querySelector(".lab__stage"), id, lab.ratio); host.querySelector(".lab__stage").insertBefore(S3.el, cv); if (S3.bindLab) S3.bindLab({ ctrls, play: host.querySelector(".lab__play") }); } }

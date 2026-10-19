@@ -553,6 +553,7 @@ App.locales.tr = {
   "act.a11y": "Erişilebilirlik ayarları",
   "nav.cards": "Hap Kartları",
   "nav.lab": "Deney Laboratuvarı",
+  "nav.models": "3B Modeller",
   "nav.para": "Paragraf Antrenmanı",
   "nav.geomap": "Etkileşimli Harita",
   "nav.focus": "Odak Sayacı",
