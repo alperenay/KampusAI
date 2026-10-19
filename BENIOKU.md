@@ -195,6 +195,13 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
   el kontrolünde başparmakla işaret parmağını birleştirip (çimdik) tut, taşı, parmaklarını açıp bırak. Her atom değerliği
   kadar bağ yapar (H ve halojenler 1, O 2, N ve B 3, C 4); kurala uymayan bağda nedeni yazılır. Molekül tamamlanınca VSEPR'e
   göre gerçek şekline oturur: bağ açısı, ortaklanmamış elektron çiftleri (mor loblar), çift/üçlü bağlar ve polarlık görünür.
+- **3B Dünya Küresi:** Menü › Pratik › 3B Dünya Küresi. Küreyi sürükleyerek çevir, iki parmakla ya da tekerlekle
+  yakınlaştır. Katman çiplerinden ülkeler, başkentler, enlem-boylam ağı, iklim kuşakları, saat dilimleri, levha sınırları
+  (yaklaşan kırmızı, uzaklaşan yeşil, yanal sarı), büyük depremler, volkanlar ve tarih olayları açılır. *Gündüz-gece*
+  katmanında tarih ve saat kaydırıcısı güneşin gerçek konumunu hesaplar; mevsim düğmeleri ekinoks ve gündönümüne gider.
+  Bir ülkeye dokununca adı, başkenti, nüfusu, iklim kuşağı, saat dilimi ve oradaki güneş saati yazılır; arama kutusuyla
+  bir ülkeye gidilir. Tarih katmanında yıl kaydırıcısı o yıla yakın olayları gösterir. Veri: Natural Earth (kamu malı),
+  PB2002 levha sınırları (Bird, 2003; ODC-BY 1.0). Tamamı cihazda çalışır, internet gerekmez.
 - **El kontrolü (yenilendi):** Kameraya elini gösterdiğinde ekranda bir el imleci çıkar. *Açık el* döndürür, *iki el*
   büyütür (modellerde parçalarına ayırır), *çimdik* seçili ayarı değiştirir, *işaret parmağıyla* bir düğmenin üstünde 1 saniye
   beklersen ona basar (yeşil halka dolar), *yumruğu* 0,7 saniye tutarsan deney oynar ya da durur. Paneldeki ayar çiplerine

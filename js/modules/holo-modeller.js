@@ -447,12 +447,13 @@
     const tt = norm(App.L(f.outcome.title)) + " " + norm(App.L(f.unit.name));
     const ms = MODELS.filter((md) => (!md.subject || f.subject.id === md.subject) && md.keys.some((k) => tt.indexOf(norm(k)) >= 0));
     if (f.subject.id === "kimya" && /bağ|molekül|vsepr|lewis|kovalent|polar/.test(tt)) ms.push({ id: "molekul", icon: "🧪", name: ["Elle molekül kurma", "Build molecules by hand"] });
+    if (f.subject.id === "cografya" && /dünya'nın|şekli|hareket|koordinat|paralel|meridyen|saat|iklim|levha|deprem|volkan|mevsim|iç yapı|kıta|okyanus/.test(tt)) ms.push({ id: "kure", href: "#/kure", icon: "🌐", name: ["3B Dünya Küresi", "3D Globe"] });
     return ms;
   }
   function cardHtml(key) {
     const ms = modelsForTopic(key); if (!ms.length) return "";
     return '<section class="card hm-topic"><div class="card__title">🔮 ' + esc(T("3B model · hologram", "3D model · hologram")) + '</div><div class="hm-topic__list">' +
-      ms.map((m) => '<a class="hm-chip" href="#/modeller/' + m.id + '"><span>' + m.icon + "</span>" + esc(L2(m.name)) + "</a>").join("") + "</div></section>";
+      ms.map((m) => '<a class="hm-chip" href="' + (m.href || "#/modeller/" + m.id) + '"><span>' + m.icon + "</span>" + esc(L2(m.name)) + "</a>").join("") + "</div></section>";
   }
 
   let RUN = null;

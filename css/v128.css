@@ -1,0 +1,13 @@
+/* v128.css — 3B Dünya Küresi */
+.kr3-layers { display: flex; flex-wrap: wrap; gap: 6px; }
+.kr3-chip { display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); font-size: 13px; cursor: pointer; }
+.kr3-chip:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-text); }
+.kr3-chip input { margin: 0; }
+.kr3-sun, .kr3-year { display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; border-radius: var(--radius); background: var(--surface-2); }
+.kr3-sun[hidden], .kr3-year[hidden] { display: none; }
+.kr3-days { display: flex; flex-wrap: wrap; gap: 4px; }
+.kr3-sun .hint { margin: 0; font-size: .84rem; line-height: 1.45; }
+.kr3-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: .8rem; color: var(--text-2); }
+.kr3-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.kr3-legend i { width: 14px; height: 4px; border-radius: 2px; display: inline-block; }
+.kr3 .hm-stage { background: radial-gradient(ellipse at center, #0b1a2c 0%, #05080f 75%); }
