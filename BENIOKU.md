@@ -185,6 +185,21 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
   Köşedeki küçük önizleme elinin nasıl görüldüğünü gösterir. Hologramla birlikte de çalışır (aynı kamerayı kullanır).
   El bulma cihazda yapılır (Handtrack.js); görüntü kaydedilmez, cihazdan çıkmaz. Hızlı bir el modeli hızlı telefon ister;
   eski telefonlarda tepki gecikebilir.
+- **3B Modeller:** Menü › Pratik › 3B Modeller. Hayvan ve bitki hücresi, insan kalbi, DNA çift sarmal, atom orbitalleri,
+  güneş sistemi, NaCl kristali, elmas ve grafit, Yer'in iç yapısı ve nöron. Sürükleyerek döndür, *Parçalarına ayır*
+  kaydırıcısıyla aç (DNA'da iki zincir fermuar gibi ayrılır), bir parçaya ya da listedeki adına dokununca adı ve görevi
+  çıkar, diğerleri soluklaşır. *✦ Hologram* modeli ekranın derinliğinde gösterir; *✋ El* ile iki elini açıp kapatarak
+  modeli parçalarına ayırırsın. Konu sayfalarında ilgili modelin kartı görünür.
+- **Elle molekül kurma:** 3B Modeller › Elle molekül kurma. Hedef molekülü seç (H₂, HCl, O₂, N₂, H₂O, CO₂, BF₃, NH₃,
+  CH₄, CCl₄); merkez atom ortada, diğerleri çevrededir. Bir atomu fareyle ya da parmakla sürükleyip diğerinin yanına bırak;
+  el kontrolünde başparmakla işaret parmağını birleştirip (çimdik) tut, taşı, parmaklarını açıp bırak. Her atom değerliği
+  kadar bağ yapar (H ve halojenler 1, O 2, N ve B 3, C 4); kurala uymayan bağda nedeni yazılır. Molekül tamamlanınca VSEPR'e
+  göre gerçek şekline oturur: bağ açısı, ortaklanmamış elektron çiftleri (mor loblar), çift/üçlü bağlar ve polarlık görünür.
+- **El kontrolü (yenilendi):** Kameraya elini gösterdiğinde ekranda bir el imleci çıkar. *Açık el* döndürür, *iki el*
+  büyütür (modellerde parçalarına ayırır), *çimdik* seçili ayarı değiştirir, *işaret parmağıyla* bir düğmenin üstünde 1 saniye
+  beklersen ona basar (yeşil halka dolar), *yumruğu* 0,7 saniye tutarsan deney oynar ya da durur. Paneldeki ayar çiplerine
+  dokunarak ya da işaret ederek hangi ayarı değiştireceğini seçersin; panel *–* ile küçülür. Takip, titremeyi alan bir
+  süzgeçle yumuşatılır. 2B görünüme geçince kamera kapanır.
 - **Konuşan hologram öğretmen:** Sesli öğretmenin üstündeki *✦ Hologram* düğmesi, ekranın derinliğinde duran 3B bir
   öğretmen açar. Başını oynatınca (ön kamera) ya da telefonu eğince perspektif değişir. Öğretmen konuşurken ağzı sese göre
   oynar, başı sana döner; dinlerken halesi sesinle parlar, düşünürken etrafında parçacıklar döner. Cevaptaki formüller ve

@@ -81,7 +81,15 @@
     const reset = () => { cam.r = v0.r; cam.th = v0.th; cam.ph = v0.ph; cam.t.set(...v0.target); place(); render(); };
     const pts = new Map(); let pinch0 = 0, lastTap = 0;
     const cvs = renderer.domElement;
-    cvs.addEventListener("pointerdown", (e) => { cvs.setPointerCapture(e.pointerId); pts.set(e.pointerId, [e.clientX, e.clientY]); if (pts.size === 2) { const [a, b] = Array.from(pts.values()); pinch0 = Math.hypot(a[0] - b[0], a[1] - b[1]); }
+    // Sahne kendi dokunuşlarını isteyebilir (ör. molekül kurmada atom sürükleme): D.pointer(S, tür, nx, ny, e) → true ise yörünge dönmez
+    const own = new Set();
+    const npos = (e) => { const r = cvs.getBoundingClientRect(); return [(e.clientX - r.left) / (r.width || 1), (e.clientY - r.top) / (r.height || 1)]; };
+    const ptrHook = (type, e) => { if (!D.pointer) return false; const [nx, ny] = npos(e); try { return D.pointer(S, type, nx, ny, e) === true; } catch (err) { console.error("[3B] dokunma", id, err); return false; } };
+    cvs.addEventListener("pointerdown", (e) => { if (!pts.size && ptrHook("down", e)) { own.add(e.pointerId); cvs.setPointerCapture(e.pointerId); render(); return; } }, true);
+    cvs.addEventListener("pointermove", (e) => { if (own.has(e.pointerId)) { ptrHook("move", e); render(); e.stopImmediatePropagation(); } else if (!pts.size && D.pointer && e.pointerType === "mouse") ptrHook("hover", e); }, true);
+    const ownUp = (e) => { if (own.has(e.pointerId)) { own.delete(e.pointerId); ptrHook("up", e); render(); e.stopImmediatePropagation(); } };
+    cvs.addEventListener("pointerup", ownUp, true); cvs.addEventListener("pointercancel", ownUp, true);
+    cvs.addEventListener("pointerdown", (e) => { if (own.has(e.pointerId)) return; cvs.setPointerCapture(e.pointerId); pts.set(e.pointerId, [e.clientX, e.clientY]); if (pts.size === 2) { const [a, b] = Array.from(pts.values()); pinch0 = Math.hypot(a[0] - b[0], a[1] - b[1]); }
       const now = performance.now(); if (now - lastTap < 300 && pts.size === 1) reset(); lastTap = now; hint.classList.add("is-gone"); });
     cvs.addEventListener("pointermove", (e) => {
       if (!pts.has(e.pointerId)) return;
@@ -111,13 +119,22 @@
     const AR = { on: false }, HO = { on: false };
 
     let raf = 0;
-    function render() { if (!W || HO.on) return; cancelAnimationFrame(raf); raf = requestAnimationFrame(() => renderer.render(scene, camera)); }
+    function render() { if (!W || HO.on || AR.on) return; cancelAnimationFrame(raf); raf = requestAnimationFrame(() => renderer.render(scene, camera)); }
 
     /* ---- Yardımcılar ---- */
     const M = (color, o) => new THREE.MeshStandardMaterial(Object.assign({ color, roughness: 0.55, metalness: 0.05 }, o || {}));
     const mesh = (geo, mat, parent) => { const m = new THREE.Mesh(geo, mat && mat.isMaterial ? mat : M(mat)); m.castShadow = true; m.receiveShadow = true; (parent || root).add(m); return m; };
     const S = {
-      THREE, scene, root, camera, renderer, cols, el, o: {}, q,
+      THREE, scene, root, camera, renderer, cols, el, o: {}, q, cam,
+      /** Ekran konumundan (0..1) ışın: nesne seçmek ya da düzlemde nokta bulmak için */
+      ray(nx, ny) { const rc = new THREE.Raycaster(); rc.setFromCamera(new THREE.Vector2(nx * 2 - 1, -(ny * 2 - 1)), camera); return rc; },
+      /** Kameraya bakan, hedef noktadan geçen düzlemde ekran konumuna denk gelen dünya noktası */
+      planePoint(nx, ny, through) {
+        const rc = S.ray(nx, ny), n = new THREE.Vector3(); camera.getWorldDirection(n);
+        const pl = new THREE.Plane().setFromNormalAndCoplanarPoint(n, through || cam.t), out = new THREE.Vector3();
+        return rc.ray.intersectPlane(pl, out) ? out : null;
+      },
+      redraw: () => render(),
       M, mesh,
       glass: (color, op) => new THREE.MeshStandardMaterial({ color: color || 0xcfe6ff, transparent: true, opacity: op == null ? 0.22 : op, roughness: 0.05, metalness: 0.1, depthWrite: false, side: THREE.DoubleSide }),
       box: (w, h, d, c, parent) => mesh(new THREE.BoxGeometry(w, h, d), c, parent),
@@ -156,7 +173,9 @@
         const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false }));
         sp.renderOrder = 10; (parent || root).add(sp);
         let cur = null;
-        sp.set = (t, col) => { t = String(t); if (t === cur && !col) return sp; cur = t; const fs = 48; cx.font = "600 " + fs + "px system-ui, sans-serif"; const w = Math.ceil(cx.measureText(t).width) + 24; cv.width = w; cv.height = fs + 20;
+        sp.set = (t, col) => { t = String(t); if (t === cur && !col) return sp; cur = t; const fs = 48; cx.font = "600 " + fs + "px system-ui, sans-serif"; const w = Math.ceil(cx.measureText(t).width) + 24;
+          // WebGL2'de doku boyutu ilk yüklemede sabitlenir: boyut değişince eski doku bırakılır, yenisi ayrılır (yoksa eski yazı kalır)
+          if (cv.width !== w || cv.height !== fs + 20) { cv.width = w; cv.height = fs + 20; tex.dispose(); } else cx.clearRect(0, 0, w, fs + 20);
           cx.font = "600 " + fs + "px system-ui, sans-serif"; cx.textBaseline = "middle"; cx.fillStyle = cols.light ? "rgba(255,255,255,.75)" : "rgba(10,10,14,.55)"; cx.beginPath(); cx.roundRect ? cx.roundRect(0, 0, w, fs + 20, 14) : cx.rect(0, 0, w, fs + 20); cx.fill();
           cx.fillStyle = col || color || (cols.light ? "#111" : "#fff"); cx.fillText(t, 12, (fs + 20) / 2 + 2); tex.needsUpdate = true; const k = (size || 0.5) / (fs + 20); sp.scale.set(w * k, (fs + 20) * k, 1); return sp; };
         sp.set(text); return sp;
@@ -543,20 +562,24 @@
     }
 
     /* =========================================================
-       El ile kontrol (v1.26) — ön kamera + cihaz içi el bulucu (handtrack.js, TensorFlow.js)
+       El ile kontrol (v1.26, v1.27'de yenilendi) — ön kamera + cihaz içi el bulucu
+       (handtrack.js, TensorFlow.js). Görüntü cihazdan çıkmaz, kaydedilmez.
          • açık el sağa-sola / yukarı-aşağı → sahneyi döndür
-         • iki el açıp kapatma → büyüt / küçült
-         • çimdik (başparmak + işaret) yukarı-aşağı → seçili ayarı (ör. açı, kütle) değiştir
-         • işaret parmağı (bekle) → sıradaki ayar
-         • yumruk (bekle) → oynat / durdur
-       Görüntü cihazdan çıkmaz, kaydedilmez. Model yalnızca ilk açılışta yüklenir (~4 MB).
+         • iki el açıp kapatma → büyüt / küçült (model kütüphanesinde: parçalarına ayır)
+         • çimdik (başparmak + işaret) yukarı-aşağı → seçili ayarı değiştir
+         • işaret parmağı → ekranda imleç; bir düğmenin üstünde 1 sn bekleyince ona basar
+         • yumruk (0,7 sn) → oynat / durdur
+       Konum "1€ süzgeci" (Casiez vd. 2012) ile yumuşatılır: yavaş harekette titreme
+       kalkar, hızlı harekette gecikme olmaz. Ekranda el imleci ve basılı tutma halkası
+       ne olacağını önceden gösterir. Sahneler (ör. molekül kurma) kanca ile kendi
+       jestlerini tanımlayabilir: S.hand.hook(fn).
        ========================================================= */
-    const HA = { on: false, lab: null, sel: 0, g: "none", vw: 640, vh: 480 };
+    const HA = { on: false, lab: null, sel: 0, g: "none", vw: 640, vh: 480, hook: null, lastSeen: 0 };
     let htP = null;
     function loadHand() {
       if (window.__htModel) return Promise.resolve(window.__htModel);
       if (!htP) htP = new Promise((res, rej) => {
-        const go = () => window.handTrack.load({ basePath: "assets/vendor/handtrack/", modelType: "ssd320fpnlite", modelSize: "small", flipHorizontal: true, maxNumBoxes: 4, iouThreshold: 0.3, scoreThreshold: 0.5 })
+        const go = () => window.handTrack.load({ basePath: "assets/vendor/handtrack/", modelType: "ssd320fpnlite", modelSize: "small", flipHorizontal: true, imageScaleFactor: 0.7, maxNumBoxes: 4, iouThreshold: 0.3, scoreThreshold: 0.5 })
           .then((m) => { window.__htModel = m; res(m); }).catch((e) => { htP = null; rej(e); });
         if (window.handTrack) return go();
         const sc = document.createElement("script"); sc.src = "assets/vendor/handtrack/handtrack.min.js"; sc.async = true;
@@ -566,74 +589,146 @@
       });
       return htP;
     }
+    /** 1€ süzgeci: titremeyi alır, hızlı harekette gecikmez */
+    function oneEuro(minCut, beta) {
+      let xp = null, dxp = 0, tp = 0;
+      const a = (cut, dt) => { const r = 2 * Math.PI * cut * dt; return r / (r + 1); };
+      return { reset() { xp = null; }, f(x, t) {
+        if (xp == null) { xp = x; tp = t; dxp = 0; return x; }
+        const dt = Math.max(1e-3, (t - tp) / 1000); tp = t;
+        const dx = (x - xp) / dt; dxp = dxp + a(1, dt) * (dx - dxp);
+        xp = xp + a(minCut + beta * Math.abs(dxp), dt) * (x - xp); return xp;
+      } };
+    }
+    const FX = oneEuro(1.4, 0.4), FY = oneEuro(1.4, 0.4);
+
     const handBtn = document.createElement("button");
     handBtn.type = "button"; handBtn.className = "lab__handbtn"; handBtn.setAttribute("aria-pressed", "false");
-    handBtn.title = arT("El ile kontrol: kameraya elini göster, havada döndür, çimdikle ayarı değiştir", "Hand control: show your hand to the camera");
+    handBtn.title = arT("El ile kontrol: kameraya elini göster; açık elle döndür, çimdikle ayarı değiştir, işaret parmağıyla düğmelere bas", "Hand control: show your hand to the camera");
     handBtn.innerHTML = '<span aria-hidden="true">✋</span><b>' + arT("El", "Hand") + "</b>";
     handBtn.hidden = !(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
     el.appendChild(handBtn);
     handBtn.addEventListener("click", (e) => { e.stopPropagation(); if (HA.on) handStop(); else handStart().catch((err) => App.ui.toast((err && err.message) || arT("El kontrolü açılamadı.", "Could not start hand control."), "error")); });
 
-    const GL = { open: ["Açık el: döndür", "Open hand: rotate"], closed: ["Yumruk: oynat/durdur", "Fist: play/pause"], pinch: ["Çimdik: ayarı değiştir", "Pinch: change value"], pinchtip: ["Çimdik: ayarı değiştir", "Pinch: change value"],
-      point: ["İşaret: sıradaki ayar", "Point: next control"], tip: ["İşaret: sıradaki ayar", "Point: next control"], two: ["İki el: büyüt/küçült", "Two hands: zoom"], none: ["Elini kameraya göster", "Show your hand"] };
-    function sliders() { const c = HA.lab && HA.lab.ctrls; return c && c.isConnected !== false ? Array.from(c.querySelectorAll('input[type="range"]')) : []; }
-    function sliderInfo(inp) {
-      if (!inp) return "";
-      const box = inp.closest(".lab-ctl"), lab = box && box.querySelector(".lab-ctl__top span"), out = box && box.querySelector("output");
-      return (lab ? lab.textContent : "") + (out ? ": " + out.textContent : "");
+    const GL = { open: ["✋", "Açık el: döndür", "Open hand: rotate"], closed: ["✊", "Yumruk: oynat / durdur", "Fist: play / pause"], pinch: ["🤏", "Çimdik: ayarı değiştir", "Pinch: change value"],
+      point: ["👆", "İşaret: düğmenin üstünde bekle", "Point: hover a button"], two: ["🙌", "İki el: büyüt / küçült", "Two hands: zoom"], none: ["", "Elini kameraya göster", "Show your hand"] };
+    const sliders = () => { const c = HA.lab && HA.lab.ctrls; return c && c.isConnected !== false ? Array.from(c.querySelectorAll('input[type="range"]')) : []; };
+    function sliderParts(inp) {
+      const box = inp && inp.closest(".lab-ctl"), lab = box && box.querySelector(".lab-ctl__top span"), out = box && box.querySelector("output");
+      return { name: lab ? lab.textContent : "", val: out ? out.textContent : inp ? inp.value : "" };
     }
     function setSlider(inp, v) {
       const mn = Number(inp.min || 0), mx = Number(inp.max || 100), st = Number(inp.step) || 0;
       v = Math.max(mn, Math.min(mx, v)); if (st) v = mn + Math.round((v - mn) / st) * st;
+      v = Math.round(v * 1e6) / 1e6;
       if (String(v) === inp.value) return;
       inp.value = String(v); inp.dispatchEvent(new Event("input", { bubbles: true })); inp.dispatchEvent(new Event("change", { bubbles: true }));
     }
+    /* ---- Ekran: üst bilgi (önizleme + ayar çipleri) ve el imleci ---- */
+    function buildHud() {
+      const hud = document.createElement("div"); hud.className = "lab-hand";
+      hud.innerHTML = '<div class="lab-hand__cam"><canvas width="160" height="120" aria-hidden="true"></canvas><span class="lab-hand__fps" aria-hidden="true"></span></div>' +
+        '<div class="lab-hand__info"><b class="lab-hand__g" aria-live="polite">' + arT("El modeli yükleniyor…", "Loading hand model…") + '</b><div class="lab-hand__chips" role="group" aria-label="' + arT("Ayar seç", "Pick a control") + '"></div>' +
+        '<small class="lab-hand__tip">' + arT("✋ döndür · 🤏 ayar · 👆 düğmeye bas · ✊ oynat · 🙌 büyüt", "✋ rotate · 🤏 value · 👆 press · ✊ play · 🙌 zoom") + "</small></div>" +
+        '<button type="button" class="lab-hand__min" aria-label="' + arT("Küçült", "Minimise") + '">–</button>';
+      hud.querySelector(".lab-hand__min").addEventListener("click", (e) => { e.stopPropagation(); hud.classList.toggle("is-min"); });
+      hud.querySelector(".lab-hand__chips").addEventListener("click", (e) => { const b = e.target.closest("[data-sel]"); if (!b) return; e.stopPropagation(); HA.sel = +b.dataset.sel; HA.chipKey = ""; handHud(); });
+      const cur = document.createElement("div"); cur.className = "lab-cursor"; cur.hidden = true;
+      cur.innerHTML = '<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" class="lab-cursor__bg"/><circle cx="24" cy="24" r="20" class="lab-cursor__ring" pathLength="100"/></svg><span></span>';
+      el.appendChild(hud); el.appendChild(cur); HA.hud = hud; HA.cur = cur;
+    }
     function handHud() {
       const H2 = HA.hud; if (!H2) return;
-      const g = GL[HA.g] || GL.none, inp = sliders()[HA.sel];
-      H2.querySelector(".lab-hand__g").textContent = arT(g[0], g[1]);
-      H2.querySelector(".lab-hand__p").textContent = inp ? "◆ " + sliderInfo(inp) : "";
-      H2.classList.toggle("is-seen", HA.g !== "none");
+      const g = GL[HA.g] || GL.none, list = sliders();
+      if (HA.sel >= list.length) HA.sel = 0;
+      const none = HA.g === "none", long = none && performance.now() - HA.lastSeen > 2500;
+      H2.querySelector(".lab-hand__g").textContent = HA.model ? (long ? arT("Elini kameraya göster: 40–60 cm uzakta, avucun kameraya dönük", "Show your palm to the camera, 40–60 cm away") : (g[0] ? g[0] + " " : "") + arT(g[1], g[2])) : arT("El modeli yükleniyor…", "Loading hand model…");
+      H2.classList.toggle("is-seen", !none);
+      const key = list.map((x, i) => i + (i === HA.sel ? "*" : "") + sliderParts(x).val).join("|");
+      if (key !== HA.chipKey) {
+        HA.chipKey = key;
+        H2.querySelector(".lab-hand__chips").innerHTML = list.map((inp, i) => { const sp = sliderParts(inp); return '<button type="button" class="lab-hand__chip' + (i === HA.sel ? " is-on" : "") + '" data-sel="' + i + '" aria-pressed="' + (i === HA.sel) + '">' + App.utils.esc(sp.name) + " <b>" + App.utils.esc(sp.val) + "</b></button>"; }).join("");
+      }
     }
+    /** El konumunu (0..1, ayna) ekrandaki imlece çevirir; kenarlara uzanmak gerekmesin diye orta %70'lik alan tüm ekrana yayılır */
+    function cursorAt(x, y) {
+      const r = el.getBoundingClientRect(), m = 0.15;
+      const nx = Math.max(0, Math.min(1, (x - m) / (1 - 2 * m))), ny = Math.max(0, Math.min(1, (y - m) / (1 - 2 * m)));
+      return { nx, ny, cx: r.left + nx * r.width, cy: r.top + ny * r.height, w: r.width, h: r.height };
+    }
+    function paintCursor(g, pos, prog) {
+      const c = HA.cur; if (!c) return;
+      if (!pos || g === "none") { c.hidden = true; return; }
+      c.hidden = false; c.dataset.g = g;
+      c.style.transform = "translate(" + Math.round(pos.nx * pos.w - 24) + "px," + Math.round(pos.ny * pos.h - 24) + "px)";
+      c.querySelector("span").textContent = (GL[g] || GL.none)[0];
+      c.querySelector(".lab-cursor__ring").style.strokeDashoffset = String(100 - Math.round(Math.max(0, Math.min(1, prog || 0)) * 100));
+    }
+    const CLICKABLE = "button:not([disabled]), a[href], [data-ar], [data-holo], input[type=checkbox], select, summary";
+    function dwell(pos, now) {
+      // imlecin altındaki düğme (imleç ve 3B tuval dışındakiler)
+      let t = null;
+      try { c0(); t = document.elementFromPoint(pos.cx, pos.cy); } finally { c1(); }
+      t = t && t.closest ? t.closest(CLICKABLE) : null;
+      if (t && (t === handBtn || t.closest(".lab-cursor"))) t = null;
+      document.querySelectorAll(".is-dwell").forEach((x) => { if (x !== t) x.classList.remove("is-dwell"); });
+      if (!t) { HA.dw = null; return 0; }
+      t.classList.add("is-dwell");
+      if (!HA.dw || HA.dw.t !== t) HA.dw = { t, at: now };
+      const p = (now - HA.dw.at) / 1000;
+      if (p >= 1 && now - (HA.dwFired || 0) > 900) { HA.dwFired = now; HA.dw = null; t.classList.remove("is-dwell"); t.click(); if (navigator.vibrate) try { navigator.vibrate(15); } catch (e) { /* yok */ } return 1; }
+      return Math.min(1, p);
+    }
+    const c0 = () => { if (HA.cur) HA.cur.style.pointerEvents = "none"; }, c1 = () => {};
     /** Bir karedeki el kutularını jestlere çevirir (testlerde doğrudan da çağrılır) */
     function handFeed(preds, now) {
       now = now || performance.now();
-      const hands = (preds || []).filter((p) => p && p.label !== "face" && p.bbox && p.score >= 0.5).sort((a, b) => b.score - a.score).slice(0, 2);
-      const vw = HA.vw || 1, vh = HA.vh || 1;
-      const ctr = (p) => [(p.bbox[0] + p.bbox[2] / 2) / vw, (p.bbox[1] + p.bbox[3] / 2) / vh];
-      let g = "none";
-      if (hands.length === 2) {
-        g = "two";
-        const a = ctr(hands[0]), b = ctr(hands[1]), d = Math.hypot(a[0] - b[0], a[1] - b[1]);
-        if (HA.g !== "two" || !HA.d0) { HA.d0 = d; HA.s0 = root.scale.x; }
-        else root.scale.setScalar(Math.max(0.3, Math.min(3, HA.s0 * (d / HA.d0))));
-      } else if (hands.length === 1) {
-        const p = hands[0], c = ctr(p); g = p.label === "pinchtip" ? "pinch" : p.label === "tip" ? "point" : p.label;
-        if (g !== HA.g) { HA.c0 = c; HA.since = now; HA.sm = c.slice(); const inp = sliders()[HA.sel]; HA.v0 = inp ? Number(inp.value) : 0; }
-        HA.sm = [HA.sm[0] + (c[0] - HA.sm[0]) * 0.5, HA.sm[1] + (c[1] - HA.sm[1]) * 0.5];
-        if (g === "open") {
-          const dx = HA.sm[0] - (HA.last ? HA.last[0] : HA.sm[0]), dy = HA.sm[1] - (HA.last ? HA.last[1] : HA.sm[1]);
-          if (g === HA.g) { root.rotation.y += dx * 4.2; cam.ph = Math.max(0.3, Math.min(1.5, cam.ph - dy * 1.6)); if (!AR.on && !HO.on) place(); }
+      const vw = HA.vw || 640, vh = HA.vh || 480;
+      const raw = (preds || []).filter((p) => p && p.label !== "face" && p.bbox && p.score >= 0.5).sort((a, b) => b.score - a.score).slice(0, 2);
+      const lab = (p) => p.label === "pinchtip" ? "pinch" : p.label === "tip" ? "point" : p.label;
+      // işaret parmağında imleç kutunun üst ortası (parmak ucu), diğerlerinde avuç ortası
+      const hands = raw.map((p) => { const l = lab(p); return { label: l, x: (p.bbox[0] + p.bbox[2] / 2) / vw, y: (p.bbox[1] + (l === "point" ? p.bbox[3] * 0.18 : p.bbox[3] / 2)) / vh, w: p.bbox[2] / vw, h: p.bbox[3] / vh, score: p.score }; });
+      let g = hands.length === 2 ? "two" : hands.length ? hands[0].label : "none";
+      if (!["open", "closed", "pinch", "point", "two", "none"].includes(g)) g = "open";
+      if (g !== "none") HA.lastSeen = now;
+      const changed = g !== HA.g;
+      if (changed) { HA.since = now; FX.reset(); FY.reset(); HA.last = null; HA.d0 = 0; const inp = sliders()[HA.sel]; HA.v0 = inp ? Number(inp.value) : 0; HA.y0 = null; }
+      let sx = null, sy = null, pos = null, prog = 0;
+      if (hands.length) {
+        const h0 = hands[0];
+        sx = FX.f(h0.x, now); sy = FY.f(h0.y, now); pos = cursorAt(sx, sy);
+      }
+      const ev = { g, hands, x: sx, y: sy, cursor: pos, now, changed, since: HA.since, S };
+      const own = HA.hook ? HA.hook(ev) === true : false;
+      if (!own) {
+        if (g === "two") {
+          const a = hands[0], b = hands[1], d = Math.hypot(a.x - b.x, a.y - b.y);
+          if (!HA.d0) { HA.d0 = d; HA.s0 = root.scale.x; } else root.scale.setScalar(Math.max(0.3, Math.min(3, HA.s0 * (d / HA.d0))));
+          pos = cursorAt((a.x + b.x) / 2, (a.y + b.y) / 2);
+        } else if (g === "open") {
+          if (HA.last) { const dx = sx - HA.last[0], dy = sy - HA.last[1]; if (Math.abs(dx) > 0.002) root.rotation.y += dx * 4.5; if (Math.abs(dy) > 0.002) { cam.ph = Math.max(0.3, Math.min(1.5, cam.ph - dy * 1.8)); if (!AR.on && !HO.on) place(); } }
+          HA.last = [sx, sy];
         } else if (g === "pinch") {
           const inp = sliders()[HA.sel];
-          if (inp && g === HA.g) { const mn = Number(inp.min || 0), mx = Number(inp.max || 100); setSlider(inp, HA.v0 + (HA.c0[1] - HA.sm[1]) * (mx - mn) * 1.8); }
+          if (inp) { if (HA.y0 == null) { HA.y0 = sy; HA.v0 = Number(inp.value); } const mn = Number(inp.min || 0), mx = Number(inp.max || 100); setSlider(inp, HA.v0 + (HA.y0 - sy) * (mx - mn) * 1.6); }
         } else if (g === "closed") {
-          if (g === HA.g && now - HA.since > 600 && now - (HA.firedC || 0) > 1500) { HA.firedC = now; const pb = HA.lab && HA.lab.play && HA.lab.play.querySelector('[data-lab="play"]'); if (pb) pb.click(); }
-        } else if (g === "point") {
-          if (g === HA.g && now - HA.since > 700 && now - (HA.firedP || 0) > 1200) { HA.firedP = now; const n = sliders().length; if (n) HA.sel = (HA.sel + 1) % n; }
+          prog = (now - HA.since) / 700;
+          if (prog >= 1 && now - (HA.firedC || 0) > 1500) { HA.firedC = now; const pb = HA.lab && HA.lab.play && HA.lab.play.querySelector('[data-lab="play"]'); if (pb) pb.click(); if (navigator.vibrate) try { navigator.vibrate(20); } catch (e) { /* yok */ } }
+          if (now - (HA.firedC || 0) < 600) prog = 1;
+        } else if (g === "point" && pos) {
+          prog = dwell(pos, now);
         }
-        HA.last = HA.sm.slice();
       }
-      if (g !== "two") HA.d0 = 0;
-      if (g === "none") HA.last = null;
+      if (g !== "point") { HA.dw = null; document.querySelectorAll(".is-dwell").forEach((x) => x.classList.remove("is-dwell")); }
       HA.g = g; HA.n = (HA.n || 0) + 1;
+      paintCursor(g, pos, prog);
       handHud();
       if (!AR.on && !HO.on) render();
       return g;
     }
     async function handLoop() {
       if (!HA.on) return;
-      const v = HA.cam && HA.cam.video;
+      const v = HA.cam && HA.cam.video, t0 = performance.now();
       if (v && v.videoWidth && v.readyState >= 2 && !HA.busy) {
         HA.busy = true;
         try {
@@ -642,27 +737,29 @@
           const preds = await HA.model.detect(v);
           if (!HA.on) return;
           HA.preds = preds; handFeed(preds); drawPreview(preds);
+          const dt = performance.now() - t0; HA.fps = HA.fps ? HA.fps * 0.8 + (1000 / Math.max(16, dt)) * 0.2 : 1000 / Math.max(16, dt);
         } catch (e) { /* tek kare kaçabilir */ }
         HA.busy = false;
       }
-      HA.t = setTimeout(handLoop, 70);
+      HA.t = setTimeout(handLoop, Math.max(0, 45 - (performance.now() - t0)));     // en çok ~22 kare/sn
     }
     function drawPreview(preds) {
-      const c = HA.hud && HA.hud.querySelector("canvas"), v = HA.cam && HA.cam.video; if (!c || !v) return;
-      const x = c.getContext("2d"); c.width = 128; c.height = Math.round(128 * (v.videoHeight / v.videoWidth)) || 96;
-      x.save(); x.translate(c.width, 0); x.scale(-1, 1); x.drawImage(v, 0, 0, c.width, c.height); x.restore();     // ayna görüntü: elini nasıl görüyorsan öyle
-      const k = c.width / (HA.vw || 1);
-      (preds || []).forEach((p) => { if (p.label === "face") return; x.strokeStyle = p.label === "closed" ? "#ff6b6b" : p.label.indexOf("pinch") === 0 ? "#ffc14d" : "#35e0ff"; x.lineWidth = 2; x.strokeRect(p.bbox[0] * k, p.bbox[1] * k, p.bbox[2] * k, p.bbox[3] * k); });
+      const c = HA.hud && HA.hud.querySelector("canvas"), v = HA.cam && HA.cam.video; if (!c || !v || HA.hud.classList.contains("is-min")) return;
+      const x = c.getContext("2d"); const W2 = 160, H2 = Math.round(160 * (v.videoHeight / v.videoWidth)) || 120;
+      if (c.width !== W2 || c.height !== H2) { c.width = W2; c.height = H2; }
+      x.save(); x.translate(W2, 0); x.scale(-1, 1); x.drawImage(v, 0, 0, W2, H2); x.restore();     // ayna görüntü: elini nasıl görüyorsan öyle
+      // kullanılan alan (orta %70) ve el kutuları
+      x.strokeStyle = "rgba(255,255,255,.35)"; x.setLineDash([4, 4]); x.strokeRect(W2 * 0.15, H2 * 0.15, W2 * 0.7, H2 * 0.7); x.setLineDash([]);
+      const k = W2 / (HA.vw || 1);
+      (preds || []).forEach((p) => { if (p.label === "face") return; x.strokeStyle = p.label === "closed" ? "#ff6b6b" : p.label.indexOf("pinch") === 0 ? "#ffc14d" : p.label === "point" || p.label === "tip" ? "#b48cff" : "#35e0ff"; x.lineWidth = 2.5; x.strokeRect(p.bbox[0] * k, p.bbox[1] * k, p.bbox[2] * k, p.bbox[3] * k); });
+      const f = HA.hud.querySelector(".lab-hand__fps"); if (f && HA.fps) f.textContent = Math.round(HA.fps) + " fps";
     }
     async function handStart() {
       if (HA.on) return true;
       if (AR.on) arStop();                            // AR arka kamerayı kullanır; ikisi aynı anda açılamaz
-      HA.on = true; HA.sel = 0; HA.g = "none"; HA.n = 0;
+      Object.assign(HA, { on: true, sel: 0, g: "none", n: 0, model: null, chipKey: "", lastSeen: performance.now() });
       handBtn.classList.add("is-on", "is-loading"); handBtn.setAttribute("aria-pressed", "true");
-      const hud = document.createElement("div"); hud.className = "lab-hand"; hud.setAttribute("aria-live", "polite");
-      hud.innerHTML = '<canvas width="128" height="96" aria-hidden="true"></canvas><div><b class="lab-hand__g">' + arT("El modeli yükleniyor…", "Loading hand model…") + '</b><span class="lab-hand__p"></span><small>' +
-        arT("Açık el: döndür · Çimdik: ayar · İşaret: sıradaki ayar · Yumruk: oynat · İki el: büyüt", "Open: rotate · Pinch: value · Point: next · Fist: play · Two hands: zoom") + "</small></div>";
-      el.appendChild(hud); HA.hud = hud;
+      buildHud(); handHud();
       try {
         const model = await loadHand();
         if (!HA.on) return false;
@@ -682,22 +779,26 @@
       const had = !!HA.cam;
       HA.on = false; clearTimeout(HA.t); HA.busy = false;
       if (HA.hud) HA.hud.remove(); HA.hud = null;
+      if (HA.cur) HA.cur.remove(); HA.cur = null;
+      document.querySelectorAll(".is-dwell").forEach((x) => x.classList.remove("is-dwell"));
       if (had && noRelease !== true) camRelease();
       HA.cam = null; HA.g = "none";
+      if (HA.hook) try { HA.hook({ g: "none", hands: [], stop: true, now: performance.now(), S }); } catch (e) { /* yok */ }
       handBtn.classList.remove("is-on", "is-loading"); handBtn.setAttribute("aria-pressed", "false");
     }
+    S.hand = { hook(fn) { HA.hook = fn || null; }, start: () => handStart(), stop: () => handStop(), on: () => HA.on };
 
     place();
     try { D.build(S); } catch (e) { console.error("[3B] kurulum", id, e); }
     size();
     return {
-      el,
+      el, _S: S,
       frame(p, t, s) { try { D.update(S, p, t, s || {}); } catch (e) { console.error("[3B] güncelleme", id, e); } if (!AR.on && !HO.on) render(); },
       dispose() { arStop(); holoStop(); handStop(); holoMats.forEach((m) => { if (m) m.dispose(); }); holoMats.clear(); cancelAnimationFrame(raf); ro.disconnect(); clear(scene); renderer.dispose(); try { renderer.forceContextLoss(); } catch (e) { /* yok */ } el.remove(); },
       resize: size,
       arStart, arStop, arOn: () => AR.on, onArStop: (fn) => { AR.onStop = fn; },
       bindLab(o) { HA.lab = o || null; },
-      handStart, handStop, handOn: () => HA.on, handState: () => ({ on: HA.on, g: HA.g, n: HA.n || 0, sel: HA.sel, rotY: root.rotation.y, scale: root.scale.x, cam: !!HA.cam }), _handFeed: handFeed, _handVideo: () => HA.cam && HA.cam.video,
+      handStart, handStop, handOn: () => HA.on, handState: () => ({ on: HA.on, g: HA.g, n: HA.n || 0, sel: HA.sel, rotY: root.rotation.y, scale: root.scale.x, cam: !!HA.cam, dwell: !!HA.dw, cursor: !!(HA.cur && !HA.cur.hidden) }), _handFeed: handFeed, _handVideo: () => HA.cam && HA.cam.video,
       holoStart, holoStop, holoOn: () => HO.on, holoState: () => ({ on: HO.on, src: HO.src, face: !!HO.face, eye: HO.eye ? HO.eye.slice() : null, look: HO.look })
     };
   }

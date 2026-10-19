@@ -555,6 +555,7 @@ App.locales.en = {
   "act.a11y": "Accessibility settings",
   "nav.cards": "Flashcards",
   "nav.lab": "Interactive Lab",
+  "nav.models": "3D Models",
   "nav.para": "Paragraph Training",
   "nav.geomap": "Interactive Map",
   "nav.focus": "Focus Timer",
