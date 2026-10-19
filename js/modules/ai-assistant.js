@@ -651,6 +651,7 @@
 
   /* ---------------- Rotalar ---------------- */
   App.router.register("sohbet", async (view, params) => {
+    if (!params || !params[0]) { App.router.go(""); return; }   // kimliksiz #/sohbet → asistan ana ekranı
     await renderChat(view, params[0]);
     return cleanup(view);
   });
