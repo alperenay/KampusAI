@@ -178,6 +178,24 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
   cihazdan çıkmaz. Kamera yoksa ya da izin verilmezse telefonda eğme, bilgisayarda fare kullanılır; *Kaynak* düğmesiyle
   elle de değiştirilir. *Renk* holografik camgöbeği görünüm ile gerçek renkler arasında geçiş yapar; *Ortala* bakış
   noktasını şimdiki baş konumuna sıfırlar. Etki tek izleyiciye göredir; yanındakiler ve ekran kaydı düz görür.
+- **Deneylerde El ile kontrol:** 3B görünümün sol üstündeki *✋ El* düğmesi ön kamerayı açar (ilk açılışta ~4 MB'lık el
+  modeli yüklenir). Açık elini sağa sola, yukarı aşağı oynatınca sahne döner; iki elini açıp kapatınca büyür ya da küçülür;
+  başparmakla işaret parmağını birleştirip (çimdik) elini yukarı aşağı oynatınca seçili ayar (ör. ip uzunluğu, açı,
+  kütle) değişir; işaret parmağını bir an tutunca sıradaki ayara geçilir; yumruğu bir an tutunca deney oynar ya da durur.
+  Köşedeki küçük önizleme elinin nasıl görüldüğünü gösterir. Hologramla birlikte de çalışır (aynı kamerayı kullanır).
+  El bulma cihazda yapılır (Handtrack.js); görüntü kaydedilmez, cihazdan çıkmaz. Hızlı bir el modeli hızlı telefon ister;
+  eski telefonlarda tepki gecikebilir.
+- **Konuşan hologram öğretmen:** Sesli öğretmenin üstündeki *✦ Hologram* düğmesi, ekranın derinliğinde duran 3B bir
+  öğretmen açar. Başını oynatınca (ön kamera) ya da telefonu eğince perspektif değişir. Öğretmen konuşurken ağzı sese göre
+  oynar, başı sana döner; dinlerken halesi sesinle parlar, düşünürken etrafında parçacıklar döner. Cevaptaki formüller ve
+  kalın yazılı kavramlar holografik panoda görünür; konu bir deneyle eşleşirse *Deneyi hologramda aç* düğmesi çıkar (sohbet
+  kaydedilir, deney doğrudan hologramda açılır). Seçim hatırlanır.
+- **Konu Podcast'i:** Menü › Çalış › Konu Podcast'i ya da her konu sayfasındaki *🎧 Podcast* düğmesi. 573 konunun hepsi,
+  Deniz (soru soran öğrenci) ile Arda'nın (anlatan öğretmen) iki sesli sohbetine dönüşür: konu anlatımının başlıkları,
+  tanımları, tabloları, örnek soruları ve hap bilgileri kullanılır; internet gerekmez. Arada dinleyene soru sorulur:
+  düşünme süresinden sonra (ya da *Sorularda beni bekle* açıksa *Cevabı duy*'a dokununca) çözüm anlatılır. Hız ayarı,
+  önceki/sonraki replik, metinde takip (repliğe dokununca oradan devam), kaldığın yerden devam ve bitince sıradaki konu
+  vardır. *Yapay zekâyla daha doğal yap* aynı konudan daha akıcı bir sohbet yazdırır ve saklar. Dinlerken ekran açık kalır.
 - **Kariyer Keşfi:** Menü › Takip › Kariyer Keşfi. 48 maddelik ilgi envanteri (Holland'ın RIASEC modeli: Uygulamacı,
   Araştırmacı, Sanatçı, Sosyal, Girişimci, Düzenli) yaklaşık 5 dakikada çözülür; 1/2/3 tuşlarıyla da cevaplanır. Sonuçta
   üç harfli ilgi kodun, altıgen profilin ve sana en uygun meslekler çıkar. *Meslekler* sekmesinde 52 meslek kartı

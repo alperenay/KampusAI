@@ -102,7 +102,7 @@
     /* ---- Boyut ---- */
     let W = 0, H = 0;
     function size() {
-      const full = AR.on || HO.on;
+      const full = AR.on || (HO.on && !HO.inline);
       const w = full ? window.innerWidth : Math.max(240, Math.round(host.clientWidth)), h = full ? window.innerHeight : Math.round(Math.min(w * (ratio || 0.62), window.innerHeight * 0.62));
       if (w === W && h === H) return;
       W = w; H = h; renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); render();
@@ -203,6 +203,7 @@
     async function arStart(o) {
       if (AR.on) return true;
       if (HO.on) holoStop();
+      if (HA.on) handStop();
       o = o || {};
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) throw Object.assign(new Error(arT("Bu cihazda kamera kullanılamıyor.", "Camera is not available on this device.")), { code: "no-camera" });
       // iPhone: hareket sensörü izni dokunuşla istenmeli
@@ -373,19 +374,33 @@
       });
       return picoP;
     }
-    async function faceOn() {
-      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) throw new Error("no-camera");
-      const [cls, stream] = await Promise.all([loadPico(), navigator.mediaDevices.getUserMedia({ video: { facingMode: "user", width: { ideal: 640 }, height: { ideal: 480 } }, audio: false })]);
-      if (!HO.on) { stream.getTracks().forEach((t) => t.stop()); return; }
-      const video = document.createElement("video"); video.setAttribute("playsinline", ""); video.muted = true; video.srcObject = stream;
-      try { await video.play(); } catch (e) { /* kendisi oynatır */ }
-      const cv = document.createElement("canvas"), cx = cv.getContext("2d", { willReadFrequently: true });
-      HO.face = { stream, video, cv, cx, cls, mem: window.pico.instantiate_detection_memory(4), last: 0, seen: 0, base: null, cal: [], gray: null, n: 0 };
+    /* Ön kamera hologram (yüz) ve el kontrolü arasında paylaşılır: telefonlar aynı kamerayı iki kez açamaz */
+    const FC = { n: 0, p: null, stream: null, video: null };
+    function camAcquire() {
+      FC.n++;
+      if (FC.p) return FC.p;
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) { FC.n--; return Promise.reject(new Error("no-camera")); }
+      FC.p = navigator.mediaDevices.getUserMedia({ video: { facingMode: "user", width: { ideal: 640 }, height: { ideal: 480 } }, audio: false }).then(async (stream) => {
+        const video = document.createElement("video"); video.setAttribute("playsinline", ""); video.muted = true; video.srcObject = stream;
+        try { await video.play(); } catch (e) { /* kendisi oynatır */ }
+        FC.stream = stream; FC.video = video;
+        if (FC.n <= 0) { camStopAll(); throw new Error("released"); }
+        return FC;
+      }).catch((e) => { FC.p = null; FC.n = Math.max(0, FC.n - 1); throw e; });
+      return FC.p;
     }
-    function faceOff() { const F = HO.face; if (!F) return; try { F.stream.getTracks().forEach((t) => t.stop()); } catch (e) { /* yok */ } HO.face = null; }
+    function camStopAll() { try { if (FC.stream) FC.stream.getTracks().forEach((t) => t.stop()); } catch (e) { /* yok */ } FC.stream = null; FC.video = null; FC.p = null; FC.n = 0; }
+    function camRelease() { if (FC.n <= 0) return; FC.n--; if (FC.n === 0 && FC.stream) camStopAll(); }
+    async function faceOn() {
+      const [cls, cam0] = await Promise.all([loadPico(), camAcquire()]);
+      if (!HO.on) { camRelease(); return; }
+      const cv = document.createElement("canvas"), cx = cv.getContext("2d", { willReadFrequently: true });
+      HO.face = { video: cam0.video, cv, cx, cls, mem: window.pico.instantiate_detection_memory(4), last: 0, seen: 0, base: null, cal: [], gray: null, n: 0 };
+    }
+    function faceOff() { if (!HO.face) return; HO.face = null; camRelease(); }
     function faceStep() {
       const F = HO.face; if (!F) return;
-      const v = F.video; if (!v.videoWidth || v.readyState < 2) return;
+      const v = F.video; if (!v || !v.videoWidth || v.readyState < 2) return;
       if (++F.n % 2) return;                          // her iki karede bir ara (telefonda akıcı kalsın)
       const w = 192, h = Math.round((w * v.videoHeight) / v.videoWidth);
       if (F.cv.width !== w || F.cv.height !== h) { F.cv.width = w; F.cv.height = h; F.gray = new Uint8Array(w * h); }
@@ -456,12 +471,22 @@
       o = o || {};
       try { if (coarse() && window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === "function") await DeviceOrientationEvent.requestPermission(); } catch (e) { /* izinsiz devam */ }
       if (!room) buildRoom();
-      Object.assign(HO, { on: true, eye: [0, 0, 1], src: null, look: o.look || App.prefs.get("holoLook", "holo"), roomKey: "" });
+      Object.assign(HO, { on: true, inline: !!o.inline, eye: [0, 0, 1], src: null, look: o.look || App.prefs.get("holoLook", "holo"), roomKey: "" });
       Object.assign(saved, { bg: scene.background, fog: scene.fog, floor: floor.visible, grid: grid.visible, rs: root.scale.x, rr: root.rotation.y, cam: { r: cam.r, th: cam.th, ph: cam.ph, t: cam.t.clone() }, parent: el.parentNode, next: el.nextSibling });
       scene.background = new THREE.Color(0x000000); scene.fog = null; floor.visible = false; grid.visible = false; room.visible = true;
       cam.ph = Math.max(cam.ph, 1.3);                 // pencereden bakar gibi: daha yatay bakış
       const fitR = () => saved.cam.r * Math.max(1, Math.min(2.2, 0.8 / ((window.innerWidth / window.innerHeight) || 1)));   // dik telefonda deney sığsın
-      cam.r = fitR(); HO.fitR = fitR;
+      cam.r = o.inline ? saved.cam.r : fitR(); HO.fitR = o.inline ? () => saved.cam.r : fitR;
+      if (o.inline) {
+        // gömülü hologram (ör. sesli öğretmen): yerinde kalır, kendi düğme katmanı yoktur
+        el.classList.add("is-holo", "is-inline"); el.classList.toggle("is-real", HO.look === "real");
+        HO.ui = null; HO.side = null;
+        window.addEventListener("deviceorientation", onHoloOrient); window.addEventListener("pointermove", onHoloMouse);
+        HO.key = null; HO.nav = null; HO.resize = () => { W = 0; size(); }; window.addEventListener("resize", HO.resize);
+        W = 0; size(); cancelAnimationFrame(raf); holoLoop();
+        await setSource(o.src || "face");
+        return true;
+      }
       el.classList.add("is-ar", "is-holo"); document.body.appendChild(el); document.documentElement.classList.add("ar-open");
       const ui = document.createElement("div"); ui.className = "lab-ar lab-holo";
       ui.innerHTML = '<div class="lab-holo__fx" aria-hidden="true"></div><div class="lab-ar__top"><span class="lab-ar__badge lab-holo__badge">HOLO<i></i></span><span class="lab-ar__hint" aria-live="polite"></span><button type="button" class="lab-ar__btn" data-ar="exit" aria-label="' + arT("Hologramdan çık", "Exit hologram") + '">✕</button></div>' +
@@ -497,18 +522,169 @@
     function holoStop() {
       if (!HO.on) return;
       HO.on = false; cancelAnimationFrame(HO.raf); faceOff();
-      window.removeEventListener("deviceorientation", onHoloOrient); window.removeEventListener("pointermove", onHoloMouse); window.removeEventListener("resize", HO.resize); document.removeEventListener("keydown", HO.key); window.removeEventListener("hashchange", HO.nav);
+      window.removeEventListener("deviceorientation", onHoloOrient); window.removeEventListener("pointermove", onHoloMouse); window.removeEventListener("resize", HO.resize);
+      if (HO.key) document.removeEventListener("keydown", HO.key);
+      if (HO.nav) window.removeEventListener("hashchange", HO.nav);
       if (HO.side && HO.sideHome && HO.sideHome.parent) HO.sideHome.parent.insertBefore(HO.side, HO.sideHome.next && HO.sideHome.next.parentNode === HO.sideHome.parent ? HO.sideHome.next : null);
       if (HO.ui) HO.ui.remove();
       if (room) room.visible = false;
       scene.background = saved.bg; scene.fog = saved.fog; floor.visible = saved.floor; grid.visible = saved.grid;
       root.scale.setScalar(saved.rs); root.rotation.y = saved.rr;
       cam.r = saved.cam.r; cam.th = saved.cam.th; cam.ph = saved.cam.ph; cam.t.copy(saved.cam.t); place();
-      el.classList.remove("is-ar", "is-holo", "is-real", "is-gyro"); document.documentElement.classList.remove("ar-open");
-      if (saved.parent && saved.parent.isConnected) saved.parent.insertBefore(el, saved.next && saved.next.parentNode === saved.parent ? saved.next : saved.parent.firstChild); else el.remove();
-      Object.assign(HO, { ui: null, side: null, src: null });
+      const wasInline = HO.inline;
+      el.classList.remove("is-ar", "is-holo", "is-real", "is-gyro", "is-inline");
+      if (!wasInline) {
+        document.documentElement.classList.remove("ar-open");
+        if (saved.parent && saved.parent.isConnected) saved.parent.insertBefore(el, saved.next && saved.next.parentNode === saved.parent ? saved.next : saved.parent.firstChild); else el.remove();
+      }
+      Object.assign(HO, { ui: null, side: null, src: null, inline: false });
       W = 0; size(); camera.updateProjectionMatrix(); render();
       if (HO.onStop) HO.onStop();
+    }
+
+    /* =========================================================
+       El ile kontrol (v1.26) — ön kamera + cihaz içi el bulucu (handtrack.js, TensorFlow.js)
+         • açık el sağa-sola / yukarı-aşağı → sahneyi döndür
+         • iki el açıp kapatma → büyüt / küçült
+         • çimdik (başparmak + işaret) yukarı-aşağı → seçili ayarı (ör. açı, kütle) değiştir
+         • işaret parmağı (bekle) → sıradaki ayar
+         • yumruk (bekle) → oynat / durdur
+       Görüntü cihazdan çıkmaz, kaydedilmez. Model yalnızca ilk açılışta yüklenir (~4 MB).
+       ========================================================= */
+    const HA = { on: false, lab: null, sel: 0, g: "none", vw: 640, vh: 480 };
+    let htP = null;
+    function loadHand() {
+      if (window.__htModel) return Promise.resolve(window.__htModel);
+      if (!htP) htP = new Promise((res, rej) => {
+        const go = () => window.handTrack.load({ basePath: "assets/vendor/handtrack/", modelType: "ssd320fpnlite", modelSize: "small", flipHorizontal: true, maxNumBoxes: 4, iouThreshold: 0.3, scoreThreshold: 0.5 })
+          .then((m) => { window.__htModel = m; res(m); }).catch((e) => { htP = null; rej(e); });
+        if (window.handTrack) return go();
+        const sc = document.createElement("script"); sc.src = "assets/vendor/handtrack/handtrack.min.js"; sc.async = true;
+        sc.onload = () => (window.handTrack ? go() : (htP = null, rej(new Error("handTrack yok"))));
+        sc.onerror = () => { htP = null; rej(new Error("El modeli yüklenemedi")); };
+        document.head.appendChild(sc);
+      });
+      return htP;
+    }
+    const handBtn = document.createElement("button");
+    handBtn.type = "button"; handBtn.className = "lab__handbtn"; handBtn.setAttribute("aria-pressed", "false");
+    handBtn.title = arT("El ile kontrol: kameraya elini göster, havada döndür, çimdikle ayarı değiştir", "Hand control: show your hand to the camera");
+    handBtn.innerHTML = '<span aria-hidden="true">✋</span><b>' + arT("El", "Hand") + "</b>";
+    handBtn.hidden = !(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+    el.appendChild(handBtn);
+    handBtn.addEventListener("click", (e) => { e.stopPropagation(); if (HA.on) handStop(); else handStart().catch((err) => App.ui.toast((err && err.message) || arT("El kontrolü açılamadı.", "Could not start hand control."), "error")); });
+
+    const GL = { open: ["Açık el: döndür", "Open hand: rotate"], closed: ["Yumruk: oynat/durdur", "Fist: play/pause"], pinch: ["Çimdik: ayarı değiştir", "Pinch: change value"], pinchtip: ["Çimdik: ayarı değiştir", "Pinch: change value"],
+      point: ["İşaret: sıradaki ayar", "Point: next control"], tip: ["İşaret: sıradaki ayar", "Point: next control"], two: ["İki el: büyüt/küçült", "Two hands: zoom"], none: ["Elini kameraya göster", "Show your hand"] };
+    function sliders() { const c = HA.lab && HA.lab.ctrls; return c && c.isConnected !== false ? Array.from(c.querySelectorAll('input[type="range"]')) : []; }
+    function sliderInfo(inp) {
+      if (!inp) return "";
+      const box = inp.closest(".lab-ctl"), lab = box && box.querySelector(".lab-ctl__top span"), out = box && box.querySelector("output");
+      return (lab ? lab.textContent : "") + (out ? ": " + out.textContent : "");
+    }
+    function setSlider(inp, v) {
+      const mn = Number(inp.min || 0), mx = Number(inp.max || 100), st = Number(inp.step) || 0;
+      v = Math.max(mn, Math.min(mx, v)); if (st) v = mn + Math.round((v - mn) / st) * st;
+      if (String(v) === inp.value) return;
+      inp.value = String(v); inp.dispatchEvent(new Event("input", { bubbles: true })); inp.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+    function handHud() {
+      const H2 = HA.hud; if (!H2) return;
+      const g = GL[HA.g] || GL.none, inp = sliders()[HA.sel];
+      H2.querySelector(".lab-hand__g").textContent = arT(g[0], g[1]);
+      H2.querySelector(".lab-hand__p").textContent = inp ? "◆ " + sliderInfo(inp) : "";
+      H2.classList.toggle("is-seen", HA.g !== "none");
+    }
+    /** Bir karedeki el kutularını jestlere çevirir (testlerde doğrudan da çağrılır) */
+    function handFeed(preds, now) {
+      now = now || performance.now();
+      const hands = (preds || []).filter((p) => p && p.label !== "face" && p.bbox && p.score >= 0.5).sort((a, b) => b.score - a.score).slice(0, 2);
+      const vw = HA.vw || 1, vh = HA.vh || 1;
+      const ctr = (p) => [(p.bbox[0] + p.bbox[2] / 2) / vw, (p.bbox[1] + p.bbox[3] / 2) / vh];
+      let g = "none";
+      if (hands.length === 2) {
+        g = "two";
+        const a = ctr(hands[0]), b = ctr(hands[1]), d = Math.hypot(a[0] - b[0], a[1] - b[1]);
+        if (HA.g !== "two" || !HA.d0) { HA.d0 = d; HA.s0 = root.scale.x; }
+        else root.scale.setScalar(Math.max(0.3, Math.min(3, HA.s0 * (d / HA.d0))));
+      } else if (hands.length === 1) {
+        const p = hands[0], c = ctr(p); g = p.label === "pinchtip" ? "pinch" : p.label === "tip" ? "point" : p.label;
+        if (g !== HA.g) { HA.c0 = c; HA.since = now; HA.sm = c.slice(); const inp = sliders()[HA.sel]; HA.v0 = inp ? Number(inp.value) : 0; }
+        HA.sm = [HA.sm[0] + (c[0] - HA.sm[0]) * 0.5, HA.sm[1] + (c[1] - HA.sm[1]) * 0.5];
+        if (g === "open") {
+          const dx = HA.sm[0] - (HA.last ? HA.last[0] : HA.sm[0]), dy = HA.sm[1] - (HA.last ? HA.last[1] : HA.sm[1]);
+          if (g === HA.g) { root.rotation.y += dx * 4.2; cam.ph = Math.max(0.3, Math.min(1.5, cam.ph - dy * 1.6)); if (!AR.on && !HO.on) place(); }
+        } else if (g === "pinch") {
+          const inp = sliders()[HA.sel];
+          if (inp && g === HA.g) { const mn = Number(inp.min || 0), mx = Number(inp.max || 100); setSlider(inp, HA.v0 + (HA.c0[1] - HA.sm[1]) * (mx - mn) * 1.8); }
+        } else if (g === "closed") {
+          if (g === HA.g && now - HA.since > 600 && now - (HA.firedC || 0) > 1500) { HA.firedC = now; const pb = HA.lab && HA.lab.play && HA.lab.play.querySelector('[data-lab="play"]'); if (pb) pb.click(); }
+        } else if (g === "point") {
+          if (g === HA.g && now - HA.since > 700 && now - (HA.firedP || 0) > 1200) { HA.firedP = now; const n = sliders().length; if (n) HA.sel = (HA.sel + 1) % n; }
+        }
+        HA.last = HA.sm.slice();
+      }
+      if (g !== "two") HA.d0 = 0;
+      if (g === "none") HA.last = null;
+      HA.g = g; HA.n = (HA.n || 0) + 1;
+      handHud();
+      if (!AR.on && !HO.on) render();
+      return g;
+    }
+    async function handLoop() {
+      if (!HA.on) return;
+      const v = HA.cam && HA.cam.video;
+      if (v && v.videoWidth && v.readyState >= 2 && !HA.busy) {
+        HA.busy = true;
+        try {
+          HA.vw = v.videoWidth; HA.vh = v.videoHeight;
+          if (v.width !== HA.vw || v.height !== HA.vh) { v.width = HA.vw; v.height = HA.vh; }   // handtrack boyutu öğeden okur
+          const preds = await HA.model.detect(v);
+          if (!HA.on) return;
+          HA.preds = preds; handFeed(preds); drawPreview(preds);
+        } catch (e) { /* tek kare kaçabilir */ }
+        HA.busy = false;
+      }
+      HA.t = setTimeout(handLoop, 70);
+    }
+    function drawPreview(preds) {
+      const c = HA.hud && HA.hud.querySelector("canvas"), v = HA.cam && HA.cam.video; if (!c || !v) return;
+      const x = c.getContext("2d"); c.width = 128; c.height = Math.round(128 * (v.videoHeight / v.videoWidth)) || 96;
+      x.save(); x.translate(c.width, 0); x.scale(-1, 1); x.drawImage(v, 0, 0, c.width, c.height); x.restore();     // ayna görüntü: elini nasıl görüyorsan öyle
+      const k = c.width / (HA.vw || 1);
+      (preds || []).forEach((p) => { if (p.label === "face") return; x.strokeStyle = p.label === "closed" ? "#ff6b6b" : p.label.indexOf("pinch") === 0 ? "#ffc14d" : "#35e0ff"; x.lineWidth = 2; x.strokeRect(p.bbox[0] * k, p.bbox[1] * k, p.bbox[2] * k, p.bbox[3] * k); });
+    }
+    async function handStart() {
+      if (HA.on) return true;
+      if (AR.on) arStop();                            // AR arka kamerayı kullanır; ikisi aynı anda açılamaz
+      HA.on = true; HA.sel = 0; HA.g = "none"; HA.n = 0;
+      handBtn.classList.add("is-on", "is-loading"); handBtn.setAttribute("aria-pressed", "true");
+      const hud = document.createElement("div"); hud.className = "lab-hand"; hud.setAttribute("aria-live", "polite");
+      hud.innerHTML = '<canvas width="128" height="96" aria-hidden="true"></canvas><div><b class="lab-hand__g">' + arT("El modeli yükleniyor…", "Loading hand model…") + '</b><span class="lab-hand__p"></span><small>' +
+        arT("Açık el: döndür · Çimdik: ayar · İşaret: sıradaki ayar · Yumruk: oynat · İki el: büyüt", "Open: rotate · Pinch: value · Point: next · Fist: play · Two hands: zoom") + "</small></div>";
+      el.appendChild(hud); HA.hud = hud;
+      try {
+        const model = await loadHand();
+        if (!HA.on) return false;
+        const c = await camAcquire();
+        if (!HA.on) { camRelease(); return false; }
+        HA.model = model; HA.cam = c;
+      } catch (e) {
+        const wasOn = HA.on; handStop();
+        if (!wasOn) return false;
+        throw new Error(e && e.name === "NotAllowedError" ? arT("Kamera izni verilmedi.", "Camera permission denied.") : (e && e.message === "no-camera") ? arT("Bu cihazda kamera yok.", "No camera on this device.") : arT("El kontrolü açılamadı.", "Could not start hand control."));
+      }
+      handBtn.classList.remove("is-loading"); handHud(); handLoop();
+      return true;
+    }
+    function handStop(noRelease) {
+      if (!HA.on && !HA.hud) return;
+      const had = !!HA.cam;
+      HA.on = false; clearTimeout(HA.t); HA.busy = false;
+      if (HA.hud) HA.hud.remove(); HA.hud = null;
+      if (had && noRelease !== true) camRelease();
+      HA.cam = null; HA.g = "none";
+      handBtn.classList.remove("is-on", "is-loading"); handBtn.setAttribute("aria-pressed", "false");
     }
 
     place();
@@ -517,9 +693,11 @@
     return {
       el,
       frame(p, t, s) { try { D.update(S, p, t, s || {}); } catch (e) { console.error("[3B] güncelleme", id, e); } if (!AR.on && !HO.on) render(); },
-      dispose() { arStop(); holoStop(); holoMats.forEach((m) => { if (m) m.dispose(); }); holoMats.clear(); cancelAnimationFrame(raf); ro.disconnect(); clear(scene); renderer.dispose(); try { renderer.forceContextLoss(); } catch (e) { /* yok */ } el.remove(); },
+      dispose() { arStop(); holoStop(); handStop(); holoMats.forEach((m) => { if (m) m.dispose(); }); holoMats.clear(); cancelAnimationFrame(raf); ro.disconnect(); clear(scene); renderer.dispose(); try { renderer.forceContextLoss(); } catch (e) { /* yok */ } el.remove(); },
       resize: size,
       arStart, arStop, arOn: () => AR.on, onArStop: (fn) => { AR.onStop = fn; },
+      bindLab(o) { HA.lab = o || null; },
+      handStart, handStop, handOn: () => HA.on, handState: () => ({ on: HA.on, g: HA.g, n: HA.n || 0, sel: HA.sel, rotY: root.rotation.y, scale: root.scale.x, cam: !!HA.cam }), _handFeed: handFeed, _handVideo: () => HA.cam && HA.cam.video,
       holoStart, holoStop, holoOn: () => HO.on, holoState: () => ({ on: HO.on, src: HO.src, face: !!HO.face, eye: HO.eye ? HO.eye.slice() : null, look: HO.look })
     };
   }

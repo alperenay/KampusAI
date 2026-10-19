@@ -219,7 +219,13 @@ public class MainActivity extends BridgeActivity {
 
     /* ---------------- Sesli okuma ---------------- */
     private final UtteranceProgressListener ttsListener = new UtteranceProgressListener() {
-        @Override public void onStart(String id) { }
+        @Override public void onStart(String id) { emitTts(id, "start", null); }
+        /** Konuşulan sözcüğün başlangıcı (Android 8+): hologram öğretmenin ağzı ve podcast metni için */
+        @Override public void onRangeStart(String id, int start, int end, int frame) {
+            JSONObject o = ev("tts", "word", null);
+            try { o.put("id", id); o.put("start", start); } catch (Exception e) { /* yok say */ }
+            emit(o);
+        }
         @Override public void onDone(String id) { emitTts(id, "done", null); }
         @Override public void onError(String id) { emitTts(id, "error", "tts"); }
         @Override public void onStop(String id, boolean interrupted) { emitTts(id, "stop", null); }
@@ -231,11 +237,12 @@ public class MainActivity extends BridgeActivity {
         emit(o);
     }
 
-    private void speakNow(String id, String text, String lang, float rate) {
+    private void speakNow(String id, String text, String lang, float rate, float pitch) {
         if (!ttsReady || tts == null) { emitTts(id, "error", "init"); return; }
         try {
             tts.setLanguage(Locale.forLanguageTag(lang));
             tts.setSpeechRate(rate > 0 ? rate : 1f);
+            tts.setPitch(pitch > 0 ? pitch : 1f);
             int max = TextToSpeech.getMaxSpeechInputLength();
             String s = text.length() > max ? text.substring(0, max) : text;
             if (tts.speak(s, TextToSpeech.QUEUE_FLUSH, new Bundle(), id) != TextToSpeech.SUCCESS) emitTts(id, "error", "speak");
@@ -305,8 +312,14 @@ public class MainActivity extends BridgeActivity {
         /** Sesli oku: id ile bitince "done" olayı gelir */
         @JavascriptInterface
         public void ttsSpeak(final String id, final String text, final String lang, final float rate) {
+            ttsSpeak2(id, text, lang, rate, 1f);
+        }
+
+        /** Sesli oku, ses tonuyla (podcast'te iki farklı konuşmacı) */
+        @JavascriptInterface
+        public void ttsSpeak2(final String id, final String text, final String lang, final float rate, final float pitch) {
             runOnUiThread(() -> {
-                Runnable r = () -> speakNow(id, text, lang, rate);
+                Runnable r = () -> speakNow(id, text, lang, rate, pitch);
                 if (ttsReady) { r.run(); return; }
                 ttsQueue.add(r);
                 if (ttsInit) return;

@@ -625,7 +625,7 @@
       mode = m; if (remember) App.lab3d.setMode(m); paintMode();
       if (m === "3d" && !S3 && !s3busy) {
         s3busy = true; host.classList.add("is-loading3d");
-        try { await App.lab3d.load(); if (host.isConnected && mode === "3d") { S3 = App.lab3d.mount(host.querySelector(".lab__stage"), id, lab.ratio); host.querySelector(".lab__stage").insertBefore(S3.el, cv); } }
+        try { await App.lab3d.load(); if (host.isConnected && mode === "3d") { S3 = App.lab3d.mount(host.querySelector(".lab__stage"), id, lab.ratio); host.querySelector(".lab__stage").insertBefore(S3.el, cv); if (S3.bindLab) S3.bindLab({ ctrls, play: host.querySelector(".lab__play") }); } }
         catch (e) { mode = "2d"; paintMode(); App.ui.toast(T("3B görünüm açılamadı; 2B gösteriliyor.", "3D view unavailable; showing 2D.")); }
         s3busy = false; host.classList.remove("is-loading3d");
       }
@@ -847,7 +847,12 @@
   }
 
   function render(view, prm) {
-    if (prm[0] && LABS[prm[0]]) return renderLab(view, prm[0]);
+    if (prm[0] && LABS[prm[0]]) {
+      renderLab(view, prm[0]);
+      // #/lab/<id>/holo: deney doğrudan hologramda açılır (ör. hologram öğretmenden)
+      if (prm[1] === "holo") { let n = 0; const t = setInterval(() => { const b = view.querySelector("#labHost [data-holo-start]"); if (b || ++n > 30) { clearInterval(t); if (b && location.hash.indexOf("#/lab/" + prm[0]) === 0) b.click(); } }, 100); }
+      return;
+    }
     return renderLibrary(view);
   }
 

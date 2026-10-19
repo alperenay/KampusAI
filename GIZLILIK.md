@@ -20,7 +20,8 @@ KampüsAI, lise öğrencileri için ücretsiz ve açık kaynaklı bir YKS çalı
 | İnternet modu | Soru, fotoğraf; "Verilerim" açıksa soruyla ilgili kayıtlar | KampüsAI sunucusu (Cloudflare) üzerinden Google Gemini | KampüsAI sunucusu içeriği kaydetmez. Google'ın ücretsiz katman koşulları geçerlidir |
 | Kota sayacı (internet modu) | Rastgele cihaz numarası, IP adresi | KampüsAI sunucusu | Yalnızca soru sayısı; her gün silinir |
 | Cihazlar arası eşitleme (isteğe bağlı) | Eşitlenen kayıtlar | KampüsAI sunucusu, 12 karakterlik rastgele koda bağlı | Kullanıcı silene kadar. HTTPS ile aktarılır |
-| Deneylerde AR ve Hologram (kamera) | Hiçbir şey: görüntü yalnızca ekranda arka plan ya da cihazda yüz konumu bulmak için kullanılır | — | Hayır; görüntü kaydedilmez, çıkınca kamera kapanır |
+| Deneylerde AR, Hologram ve El ile kontrol (kamera) | Hiçbir şey: görüntü yalnızca ekranda arka plan ya da cihazda yüz ve el konumunu bulmak için kullanılır | — | Hayır; görüntü kaydedilmez, çıkınca kamera kapanır |
+| Konu Podcast'i, Hologram öğretmen | Hiçbir şey (sesli okuma cihazda); yalnızca "Yapay zekâyla daha doğal yap" seçilirse konu metni ve sesli öğretmende soru, seçili yapay zekâya gider | Seçili yapay zekâ | Podcast metni yalnızca cihazda saklanır |
 | Videodan Çalış (YouTube bağlantısı) | Video bağlantısı ve istem | KampüsAI sunucusu üzerinden Google Gemini (ya da kendi Gemini anahtarın) | Hazırlanan özet yalnızca cihazda saklanır |
 | Öğretmene gönderilen özet | Zayıf/unutulan konu kodları, ders bazında sayılar, isteğe bağlı takma ad | QR veya kodla doğrudan öğretmenin cihazına | Yalnızca öğretmenin cihazında |
 

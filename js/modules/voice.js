@@ -49,6 +49,7 @@
     }[s.phase] || "";
     st.textContent = label;
     orb.className = "voice-orb is-" + s.phase;
+    if (s.holo) s.holo.phase = s.phase;
     const m = MAIN[s.phase] || MAIN.idle;
     const main = s.el.querySelector("#vMain");
     if (main.dataset.phase !== s.phase) {
@@ -105,7 +106,7 @@
       lang: App.i18n.lang,
       onPartial: (p) => { if (!s) return; s.heard = (finalText ? finalText + " " : "") + p; paint(); clearTimeout(timer); timer = setTimeout(finish, SILENCE_MS + 800); },
       onFinal: (piece, full) => { if (!s) return; finalText = full; s.heard = full; paint(); clearTimeout(timer); timer = setTimeout(finish, SILENCE_MS); },
-      onLevel: (v) => { if (s) s.el.querySelector(".voice-orb").style.setProperty("--lvl", String(v)); },
+      onLevel: (v) => { if (s) { s.el.querySelector(".voice-orb").style.setProperty("--lvl", String(v)); if (s.holo) s.holo.mic = Number(v) || 0; } },
       onError: (code) => {
         if (!s) return;
         s.phase = "error"; paint();
@@ -130,6 +131,7 @@
       });
       if (!s || s.closed || s.phase !== "thinking") return;
       s.answer = res.text;
+      paintPano(text, res.text);
       s.messages.push(userMsg, { id: uid("m"), role: "assistant", text: res.text, models: res.models, engine: res.engine, at: new Date().toISOString() });
       speak(res.text);
     } catch (e) {
@@ -146,6 +148,7 @@
     App.speech.say(toSpeech(md), {
       lang: App.i18n.lang,
       rate: Number(App.prefs.get("ttsRate", 1)) || 1,
+      onWord: () => { if (s && s.holo) s.holo.wordAt = performance.now(); },
       onEnd: () => { if (s && !s.closed && s.phase === "speaking") listen(); },
       onError: () => { if (s && !s.closed && s.phase === "speaking") listen(); }
     });
@@ -163,6 +166,8 @@
     try { if (cur.controller) cur.controller.abort(); } catch (e) { /* yok */ }
     try { if (cur.rec) cur.rec.stop(); } catch (e) { /* yok */ }
     App.speech.stopSaying();
+    if (cur.holo) { App.holoTeacher.detach(cur.holo); cur.holo = null; }
+    cur.holoWant = false;
     cur.el.remove();
     document.removeEventListener("keydown", cur.onKey, true);
     if (cur.messages.length) {
@@ -189,9 +194,10 @@
     el.setAttribute("aria-label", T("Sesli öğretmen", "Voice teacher"));
     el.innerHTML =
       '<div class="voice-top"><span class="voice-title">' + App.icon("mic") + esc(T("Sesli öğretmen", "Voice teacher")) + "</span>" +
-        '<button class="icon-btn" type="button" id="vClose" title="' + esc(T("Bitir", "Finish")) + '" aria-label="' + esc(T("Bitir", "Finish")) + '">' + App.icon("close") + "</button></div>" +
+        '<span class="voice-top__r">' + (App.holoTeacher && App.holoTeacher.supported() ? '<button class="voice-holobtn" type="button" id="vHoloBtn" aria-pressed="false" title="' + esc(T("Hologram öğretmen: ekranın içinde konuşan 3B öğretmen", "Hologram teacher: a talking 3D teacher inside the screen")) + '">✦ ' + esc(T("Hologram", "Hologram")) + "</button>" : "") +
+        '<button class="icon-btn" type="button" id="vClose" title="' + esc(T("Bitir", "Finish")) + '" aria-label="' + esc(T("Bitir", "Finish")) + '">' + App.icon("close") + "</button></span></div>" +
       '<div class="voice-body">' +
-        '<div class="voice-center"><button class="voice-orb is-idle" type="button" id="vOrb"><span></span></button>' +
+        '<div class="voice-center"><div class="voice-holo" id="vHolo" hidden></div><div class="vh-pano" id="vPano" hidden></div><button class="voice-orb is-idle" type="button" id="vOrb"><span></span></button>' +
           '<p class="voice-state" id="vState" aria-live="polite"></p><p class="voice-heard" id="vHeard"></p></div>' +
         '<div class="voice-answer md" id="vAnswer" aria-live="polite"></div>' +
         '<p class="hint voice-tip">' + esc(T("Sorunu söyle, kısa bir sessizlikten sonra kendiliğinden gönderilir. Cevaplar sesli okunur, sonra yeniden seni dinlerim. Küreye dokunmak ortadaki düğmeyle aynı işi yapar.",
@@ -212,6 +218,17 @@
     el.querySelector("#vMain").addEventListener("click", mainAction);
     el.querySelector("#vOrb").addEventListener("click", mainAction);
     el.querySelector("#vPause").addEventListener("click", pause);
+    const hb = el.querySelector("#vHoloBtn");
+    if (hb) {
+      hb.addEventListener("click", () => setHolo(!s.holoWant));
+      el.querySelector("#vHolo").addEventListener("click", (e) => { if (!e.target.closest("a,button")) mainAction(); });
+      el.querySelector("#vPano").addEventListener("click", async (e) => {
+        const a2 = e.target.closest("a[data-lab]"); if (!a2) return;
+        e.preventDefault(); const href = a2.getAttribute("href");
+        await close(); location.hash = href;               // sohbet kaydedilir, deney hologramda açılır
+      });
+      if (App.prefs.get("voiceHolo", false)) setHolo(true);
+    }
     // Android geri tuşu / tarayıcı geri: sohbeti kaydedip kapat (sayfadan çıkmaz)
     history.pushState({ voice: true }, "");
     s.onPop = () => { if (s) close(true); };
@@ -219,5 +236,35 @@
     listen();
   }
 
-  App.voice = { open, close, isOpen: () => !!s };
+  /* ---- Hologram öğretmen ---- */
+  async function setHolo(on) {
+    if (!s) return;
+    const cur = s;
+    cur.holoWant = !!on; App.prefs.set("voiceHolo", !!on);
+    const btn = cur.el.querySelector("#vHoloBtn"), host = cur.el.querySelector("#vHolo"), pano = cur.el.querySelector("#vPano");
+    if (btn) { btn.setAttribute("aria-pressed", String(!!on)); btn.classList.toggle("is-on", !!on); }
+    cur.el.classList.toggle("is-holo", !!on);
+    host.hidden = !on;
+    if (!on) { pano.hidden = true; if (cur.holo) { App.holoTeacher.detach(cur.holo); cur.holo = null; } host.innerHTML = ""; return; }
+    if (cur.holo || cur.holoBusy) return;
+    cur.holoBusy = true;
+    try {
+      const st = await App.holoTeacher.attach(host);
+      if (!st) return;
+      if (s !== cur || !cur.holoWant) { App.holoTeacher.detach(st); return; }
+      cur.holo = st; st.phase = cur.phase;
+      if (cur.answer && cur.phase !== "thinking") paintPano(cur.heard, cur.answer);
+    } catch (e) {
+      App.ui.toast(T("Hologram öğretmen açılamadı; normal görünüm kullanılıyor.", "Could not start the hologram teacher."), "error");
+      if (s === cur) { cur.holoWant = false; cur.el.classList.remove("is-holo"); host.hidden = true; if (btn) { btn.classList.remove("is-on"); btn.setAttribute("aria-pressed", "false"); } }
+    } finally { cur.holoBusy = false; }
+  }
+  function paintPano(q, a) {
+    if (!s || !s.holoWant) return;
+    const pano = s.el.querySelector("#vPano");
+    const h = App.holoTeacher.panoHtml(q || "", a || "");
+    pano.innerHTML = h; pano.hidden = !h;
+  }
+
+  App.voice = { open, close, isOpen: () => !!s, setHolo, _state: () => s && { phase: s.phase, holo: !!s.holo, want: !!s.holoWant } };
 })();
