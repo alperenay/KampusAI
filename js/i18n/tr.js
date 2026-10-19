@@ -554,6 +554,7 @@ App.locales.tr = {
   "nav.cards": "Hap Kartları",
   "nav.lab": "Deney Laboratuvarı",
   "nav.models": "3B Modeller",
+  "nav.globe": "3B Dünya Küresi",
   "nav.para": "Paragraf Antrenmanı",
   "nav.geomap": "Etkileşimli Harita",
   "nav.focus": "Odak Sayacı",

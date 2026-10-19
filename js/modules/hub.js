@@ -28,6 +28,7 @@
     ["atlas", "globe", "nav.geomap", ["Türkiye ve dünya haritası; keşfet ve sına", "Turkey and world map; explore and quiz"], "practice", "harita coğrafya il ülke başkent"],
     ["zaman", "clock", "nav.timeline", ["İlk Çağ'dan günümüze olaylar; konum, önem ve sınav", "Events from antiquity to today with map and quiz"], "practice", "tarih zaman çizelgesi olay savaş antlaşma inkılap"],
     ["lab", "lightbulb", "nav.lab", ["67 fizik, kimya, biyoloji deneyi; 2B, 3B, AR, hologram, el ile", "67 science labs: 2D, 3D, AR, hologram, hand control"], "practice", "deney fizik kimya biyoloji simülasyon 3b hologram el"],
+    ["kure", "globe", "nav.globe", ["Elle çevrilen küre: ülkeler, levhalar, depremler, iklim kuşakları, saat dilimleri, gündüz–gece", "Globe: countries, plates, quakes, climate belts, time zones, day–night"], "practice", "küre dünya 3b levha deprem volkan saat dilimi iklim kuşağı ekvator dönence güneş mevsim"],
     ["modeller", "cube", "nav.models", ["Hücre, kalp, DNA, atom, güneş sistemi; elle molekül kurma", "Cell, heart, DNA, atoms, solar system; build molecules by hand"], "practice", "3b model hologram hücre kalp dna atom orbital molekül vsepr güneş sistemi"],
     ["oyunlar", "game", "nav.games", ["Derslere göre kısa oyunlar", "Short subject games"], "practice", "oyun eğlence"],
     ["denemeler", "chart", "nav.exams", ["TYT–AYT netleri; sonuç belgesini fotoğraftan oku", "TYT–AYT scores; read result sheets from a photo"], "track", "deneme net tyt ayt"],

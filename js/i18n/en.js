@@ -556,6 +556,7 @@ App.locales.en = {
   "nav.cards": "Flashcards",
   "nav.lab": "Interactive Lab",
   "nav.models": "3D Models",
+  "nav.globe": "3D Globe",
   "nav.para": "Paragraph Training",
   "nav.geomap": "Interactive Map",
   "nav.focus": "Focus Timer",
