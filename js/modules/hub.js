@@ -17,6 +17,7 @@
     ["bugun", "sun", "nav.today", ["Bugünkü program, görevler ve öneriler", "Today's plan, tasks and suggestions"], "start", "gün plan görev"],
     ["", "sparkle", "nav.newChat", ["Yapay zekâ asistanına soru sor, fotoğraftan çöz", "Ask the AI assistant, solve from a photo"], "start", "asistan sohbet soru yapay zeka"],
     ["konular", "book", "nav.topics", ["9–12. sınıf konu anlatımları ve testler", "Grade 9–12 lessons and quizzes"], "study", "ders konu anlatım müfredat"],
+    ["yazili", "pen", "nav.written", ["Maarif Modeli açık uçlu yazılılar: cevap anahtarı ve puanlama ölçütü", "Open-ended written exams with answer keys and rubrics"], "study", "yazılı sınav açık uçlu maarif dönem ortak sınav cevap anahtarı"],
     ["kartlar", "layers", "nav.cards", ["Kutu sistemiyle hap bilgi tekrarı", "Spaced-repetition flashcards"], "study", "kart flashcard tekrar"],
     ["yanlislar", "bookmark", "nav.mistakes", ["Yanlışların aralıklı tekrarla geri gelir", "Your mistakes come back for review"], "study", "yanlış hata tekrar"],
     ["video", "play", "nav.video", ["YouTube ders videosundan özet, bölümler, kartlar ve test", "Summary, chapters, cards and a quiz from a lesson video"], "study", "video youtube özet transkript ders izle"],
@@ -75,8 +76,10 @@
 
   /** Asistan açılışı için kısayol şeridi (sabitlenenler, yoksa son kullanılanlar) */
   function homeStripHtml() {
-    const list = pins().length ? pins() : recents().filter((r) => r !== "" && r !== "bugun").slice(0, 4);
-    if (!list.length) return "";
+    // Sabitlenenler, yoksa son kullanılanlar; ikisi de yoksa temel kısayollar (sade açılış)
+    let list = pins().length ? pins() : recents().filter((r) => r !== "" && r !== "bugun").slice(0, 4);
+    if (!list.length) list = ["konular", "yazili", "lab", "kure"];
+    list = list.filter((r) => byRoute(r)).slice(0, 5);
     return '<nav class="home-pins" aria-label="' + esc(pins().length ? T("Sabitlenenler", "Pinned") : T("Son kullanılanlar", "Recent")) + '">' +
       list.map((r) => { const x = byRoute(r); return '<a href="#/' + x[0] + '">' + App.icon(x[1]) + "<span>" + esc(title(x)) + "</span></a>"; }).join("") +
       '<a href="#/araclar" class="home-pins__all">' + App.icon("widget") + "<span>" + esc(T("Tümü", "All")) + "</span></a></nav>";

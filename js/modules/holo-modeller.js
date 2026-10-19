@@ -135,7 +135,8 @@
       update(S, p, t) {
         const o = S.o; p = p || {};
         const ex = Math.max(0, Math.min(1, Number(p.ex) || 0));
-        if (p.spin !== false) o.holder.rotation.y += 0.004;
+        const dtm = Math.max(0, Math.min(0.1, (t || 0) - (o.lastT == null ? (t || 0) : o.lastT))); o.lastT = t || 0;   // kare hızından bağımsız
+        if (p.spin !== false) o.holder.rotation.y += 0.24 * dtm;
         if (md.anim) md.anim(S, t, ex);
         Object.keys(o.parts).forEach((pid) => o.parts[pid].forEach((g) => {
           const b = g.userData.base; g.position.set(b.x + g.userData.dir.x * g.userData.dist * ex, b.y + g.userData.dir.y * g.userData.dist * ex, b.z + g.userData.dir.z * g.userData.dist * ex);
@@ -305,8 +306,9 @@
     update(S, p, t) {
       const o = S.o;
       if (p && p.target && p.target !== o.tid) setTarget(S, p.target);
-      if (o.done && o.snap < 1) { o.snap = Math.min(1, o.snap + 0.04); o.atoms.forEach((a) => { if (a.goal) { if (o.snap >= 1) a.m.position.copy(a.goal); else a.m.position.lerp(a.goal, 0.18); } }); }
-      if (o.done) o.g.rotation.y += 0.005;
+      const dtm = Math.max(0, Math.min(0.1, (t || 0) - (o.lastT == null ? (t || 0) : o.lastT))); o.lastT = t || 0;
+      if (o.done && o.snap < 1) { o.snap = Math.min(1, o.snap + 2.4 * Math.max(dtm, 1 / 60)); const k = 1 - Math.pow(0.82, Math.max(1, dtm * 60)); o.atoms.forEach((a) => { if (a.goal) { if (o.snap >= 1) a.m.position.copy(a.goal); else a.m.position.lerp(a.goal, k); } }); }
+      if (o.done) o.g.rotation.y += 0.3 * dtm;
       o.atoms.forEach((a) => { if (a.lb) a.lb.position.copy(a.m.position).add(new S.THREE.Vector3(0, EL[a.e][2] + 0.25, 0)); if (a.ring) { a.ring.visible = a === o.grab || a === o.hover; a.ring.position.copy(a.m.position); a.ring.lookAt(S.camera.position); } });
       drawBonds(S);
     },

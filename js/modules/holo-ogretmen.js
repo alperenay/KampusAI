@@ -98,7 +98,7 @@
     const md = App.cite ? App.cite.strip(answer || "") : (answer || "");
     const formulas = (md.match(/\$\$[\s\S]+?\$\$|\$[^$\n]{2,80}\$/g) || []).slice(0, 3);
     const terms = Array.from(new Set((md.match(/\*\*([^*]{2,40})\*\*/g) || []).map((x) => x.replace(/\*\*/g, "").trim()))).slice(0, 5);
-    const first = md.replace(/\$[^$]*\$/g, "…").replace(/[#*_>`-]/g, "").split(/(?<=[.!?])\s+/)[0] || "";
+    const first = md.replace(/\$[^$]*\$/g, "…").replace(/[#*_>`-]/g, "").replace(/([.!?])\s+/g, "$1\u0001").split("\u0001")[0] || "";
     const lab = matchLab(question + " " + md);
     let h = "";
     if (formulas.length) h += '<div class="vh-pano__f">' + formulas.map((f) => '<div class="md">' + App.markdown.render(f.indexOf("$$") === 0 ? f : "$$" + f.slice(1, -1) + "$$") + "</div>").join("") + "</div>";

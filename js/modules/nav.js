@@ -53,6 +53,28 @@
       if (isMobile()) { const app = $("#app"); if (app.classList.contains("is-menu-open")) { app.classList.remove("is-menu-open"); $("#scrim").hidden = true; } }
     });
     syncGroups();
+    bindMore();
+  }
+
+  /* ---------------- Sade menü (v1.29): her grupta az kullanılan sayfalar "Daha fazla" altında ---------------- */
+  function bindMore() {
+    const st = App.prefs.get("navMore", {}) || {};
+    document.querySelectorAll(".nav-group").forEach((g) => {
+      const body = g.querySelector(".nav-group__body"), extra = body ? body.querySelectorAll(".nav__item[data-more]") : [];
+      if (!extra.length || body.querySelector(".nav__more")) return;
+      const key = g.dataset.group, btn = document.createElement("button");
+      btn.type = "button"; btn.className = "nav__item nav__more";
+      const paint = () => {
+        const open = g.classList.contains("is-more");
+        btn.innerHTML = App.icon(open ? "arrowUp" : "plus") + '<span class="sidebar__label">' + esc(open ? t("nav.less") : t("nav.more", { n: extra.length })) + "</span>";
+        btn.setAttribute("aria-expanded", String(open));
+      };
+      btn.addEventListener("click", () => { g.classList.toggle("is-more"); const s2 = App.prefs.get("navMore", {}) || {}; s2[key] = g.classList.contains("is-more"); App.prefs.set("navMore", s2); paint(); });
+      body.appendChild(btn);
+      if (st[key]) g.classList.add("is-more");
+      paint();
+      if (App.i18n && App.i18n.onChange) App.i18n.onChange(paint);
+    });
   }
 
   /* ---------------- Hızlı ayarlar paneli ---------------- */

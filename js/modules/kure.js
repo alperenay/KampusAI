@@ -84,6 +84,11 @@
       x.fillStyle = "#fff"; x.font = "600 22px system-ui, sans-serif"; x.textAlign = "center"; for (let k = -12; k <= 12; k++) { const lo = k * 15; x.fillText((k >= 0 ? "+" : "") + k, px(lo), py(70)); x.fillText((k >= 0 ? "+" : "") + k, px(lo), py(-62)); } }
     if (L.levha) {
       G.pb.forEach(([c, , flat]) => { x.strokeStyle = PBT[c][1]; x.lineWidth = 3; x.beginPath(); for (let i = 0; i < flat.length; i += 2) { const lo = flat[i], la = flat[i + 1]; if (i === 0 || Math.abs(lo - flat[i - 2]) > 180) x.moveTo(px(lo), py(la)); else x.lineTo(px(lo), py(la)); } x.stroke(); });
+      // levha adları dokunun içine yazılır (ayrı etiket nesnesi yok → daha az çizim çağrısı, arka yüzde görünmez)
+      x.save(); x.font = "700 26px system-ui, sans-serif"; x.textAlign = "center"; x.textBaseline = "middle"; x.lineJoin = "round";
+      G.plates.forEach(([lo, la, n]) => { const sx = 1 / Math.max(0.35, Math.cos((la * Math.PI) / 180)); x.save(); x.translate(px(lo), py(la)); x.scale(sx, 1);
+        x.lineWidth = 6; x.strokeStyle = "rgba(10,20,40,.75)"; x.strokeText(n, 0, 0); x.fillStyle = "#ffffff"; x.fillText(n, 0, 0); x.restore(); });
+      x.restore();
     }
   }
 
@@ -96,9 +101,12 @@
       o.cv = document.createElement("canvas"); o.cv.width = 2048; o.cv.height = 1024;
       o.tex = new THREE.CanvasTexture(o.cv); o.tex.encoding = THREE.sRGBEncoding; o.tex.anisotropy = 4;
       o.mat = new THREE.MeshStandardMaterial({ map: o.tex, roughness: 0.95, metalness: 0 });
-      o.ball = new THREE.Mesh(new THREE.SphereGeometry(R, 96, 64), o.mat); o.globe.add(o.ball);
+      const seg = S.mobile ? [72, 48] : [96, 64];
+      o.geoHi = new THREE.SphereGeometry(R, seg[0], seg[1]); o.geoLo = new THREE.SphereGeometry(R, 40, 28);
+      o.ball = new THREE.Mesh(o.geoHi, o.mat); o.globe.add(o.ball);
+      o.ball.userData.keep = [o.geoLo];
       // atmosfer halesi
-      o.atmo = new THREE.Mesh(new THREE.SphereGeometry(R * 1.035, 64, 48), new THREE.MeshBasicMaterial({ color: 0x6fb7ff, transparent: true, opacity: 0.12, side: THREE.BackSide, depthWrite: false })); o.globe.add(o.atmo);
+      o.atmo = new THREE.Mesh(new THREE.SphereGeometry(R * 1.035, 48, 32), new THREE.MeshBasicMaterial({ color: 0x6fb7ff, transparent: true, opacity: 0.12, side: THREE.BackSide, depthWrite: false })); o.globe.add(o.atmo);
       // eksen
       const ax = S.cyl(0.015, 0.015, R * 2.5, 0xcfd6e0, o.globe, 8); ax.castShadow = false;
       o.marks = S.group(o.globe); o.key = "";
@@ -107,24 +115,24 @@
       o.lights = S.scene.children.filter((c) => c.isLight && c !== o.sun);
       o.hl = null;
     },
-    update(S, p) {
+    update(S, p, t) {
       const o = S.o, THREE = S.THREE; p = p || {};
       const L = p.L || {};
       if (!App.data.globe) return;
       const key = JSON.stringify(L);
       if (key !== o.key) { o.key = key; drawTexture(o.cv, L); o.tex.needsUpdate = true; buildMarks(S, L, p); o.yKey = null; }
       if (L.tarih && p.year !== o.yKey) { o.yKey = p.year; buildEvents(S, p.year); }
-      if (p.spin && !p.drag) o.globe.rotation.y += 0.0025;
+      const dtk = Math.max(0, Math.min(0.1, (t || 0) - (o.lastT == null ? (t || 0) : o.lastT))); o.lastT = t || 0;   // kare hızından bağımsız dönme
+      if (p.spin && !p.drag) o.globe.rotation.y += 0.15 * dtk;
       if (p.focus) {
         // noktanın yerel açısı α; y ekseninde θ kadar döndürünce açısı α+θ olur → kameranın açısına (th) getir
         const f = p.focus, v = vec(THREE, f.lon, f.lat, 1), a = Math.atan2(v.x, v.z);
-        let d = (S.cam.th - a) - o.globe.rotation.y; d = Math.atan2(Math.sin(d), Math.cos(d)); o.globe.rotation.y += d * 0.12;
-        const ph = Math.max(0.35, Math.min(2.8, Math.PI / 2 - (f.lat * Math.PI) / 180)); S.cam.ph += (ph - S.cam.ph) * 0.12;
+        let d = (S.cam.th - a) - o.globe.rotation.y; d = Math.atan2(Math.sin(d), Math.cos(d)); const kf = 1 - Math.pow(0.88, Math.max(1, dtk * 60)); o.globe.rotation.y += d * kf;
+        const ph = Math.max(0.35, Math.min(2.8, Math.PI / 2 - (f.lat * Math.PI) / 180)); S.cam.ph += (ph - S.cam.ph) * kf;
         if (Math.abs(d) < 0.002 && Math.abs(ph - S.cam.ph) < 0.002) p.focus = null;
       }
-      // arka yüzdeki etiketler görünmesin (etiketler derinlik testi yapmaz)
-      const cd = S.camera.position.clone().normalize(), wp = new THREE.Vector3();
-      o.marks.children.forEach((m) => { if (m.isSprite) { m.getWorldPosition(wp); m.visible = wp.normalize().dot(cd) > 0.15; } });
+      // Ayrıntı düzeyi (LOD): uzaktan bakarken daha az üçgenli küre
+      const far = S.cam.r > 8.5; if (o.lodFar !== far) { o.lodFar = far; o.ball.geometry = far ? o.geoLo : o.geoHi; }
       // Güneş: alt-güneş noktası (dik ışın) → yönlü ışık
       if (L.gunes) {
         const doy = p.doy || 172, hr = p.hour == null ? 12 : p.hour;
@@ -139,36 +147,60 @@
         o.lights.forEach((l) => { if (l.userData.i0 != null) l.intensity = l.userData.i0; });
       }
       // seçili işaret nabzı
-      if (o.hl) { const k = 1 + 0.3 * Math.sin(performance.now() / 180); o.hl.scale.setScalar(k); }
+      if (o.hl) { const a = performance.now() - (o.hlT || 0), k = a < 2400 ? 1 + 0.3 * Math.sin(a / 180) : 1; o.hl.scale.setScalar(k); }
     },
     pointer(S, type, nx, ny) {
       if (type !== "down") return false;
       const o = S.o, rc = S.ray(nx, ny);
-      const mk = rc.intersectObjects(o.marks.children, true).find((h) => h.object.userData.info);
-      if (mk) { o.pick = { kind: "mark", info: mk.object.userData.info }; return false; }
+      const mk = rc.intersectObjects(o.marks.children, true).find((h) => { const u = h.object.userData; return u.info || (u.infos && h.instanceId != null && u.infos[h.instanceId]); });
+      if (mk) { const u = mk.object.userData; o.pick = { kind: "mark", info: u.info || u.infos[mk.instanceId] }; return false; }
       const hit = rc.intersectObject(o.ball, false)[0];
       o.pick = hit && hit.uv ? { kind: "geo", lon: lonOfU(hit.uv.x), lat: latOfV(hit.uv.y) } : null;
       return false;
     }
   });
 
-  function clearMarks(o, tag) { o.marks.children.slice().forEach((m) => { if (!tag || m.userData.tag === tag) { o.marks.remove(m); if (m.geometry) m.geometry.dispose(); } }); }
+  /* İşaretler: aynı türden işaretler tek bir örneklenmiş (instanced) nesnede → her tür tek çizim çağrısı.
+     Seçim: ışın, örnek numarasını (instanceId) verir; bilgiler userData.infos dizisindedir. */
+  function disposeObj(m) { if (m.geometry) m.geometry.dispose(); if (m.material) (Array.isArray(m.material) ? m.material : [m.material]).forEach((x) => x.dispose()); }
+  function clearMarks(o, tag) { o.marks.children.slice().forEach((m) => { if (!tag || m.userData.tag === tag) { o.marks.remove(m); disposeObj(m); } }); }
   function dot(S, lon, lat, col, size, info, tag, h) {
     const m = new S.THREE.Mesh(new S.THREE.SphereGeometry(size || 0.035, 10, 8), new S.THREE.MeshBasicMaterial({ color: col }));
-    m.position.copy(vec(S.THREE, lon, lat, R * (1 + (h || 0.006)))); m.userData = { info, tag }; S.o.marks.add(m); return m;
+    m.position.copy(vec(S.THREE, lon, lat, R * (1 + (h || 0.006)))); m.userData = { info, tag, count: 1 }; S.o.marks.add(m); return m;
+  }
+  /** items: [{ lon, lat, size, color?, info, h? }] → tek InstancedMesh */
+  function instanced(S, items, geo, mat, tag, orient) {
+    const THREE = S.THREE; if (!items.length) { geo.dispose(); mat.dispose(); return null; }
+    const im = new THREE.InstancedMesh(geo, mat, items.length), M4 = new THREE.Matrix4(), Q = new THREE.Quaternion(), SC = new THREE.Vector3(), UP = new THREE.Vector3(0, 1, 0), C = new THREE.Color();
+    items.forEach((it, i) => {
+      const pos = vec(THREE, it.lon, it.lat, R * (1 + (it.h || 0.006)));
+      if (orient) Q.setFromUnitVectors(UP, pos.clone().normalize()); else Q.identity();
+      SC.setScalar(it.size || 1); M4.compose(pos, Q, SC); im.setMatrixAt(i, M4);
+      if (it.color != null) im.setColorAt(i, C.set(it.color));
+    });
+    im.instanceMatrix.needsUpdate = true; if (im.instanceColor) im.instanceColor.needsUpdate = true;
+    im.computeBoundingSphere && im.computeBoundingSphere();
+    im.userData = { tag, infos: items.map((it) => it.info), count: items.length };
+    S.o.marks.add(im); return im;
   }
   function buildMarks(S, L) {
-    const o = S.o, G = App.data.globe; clearMarks(o);
-    if (L.baskent) G.caps.forEach(([lo, la, n, id]) => { const c = G.countries.find((x) => x.id === id); dot(S, lo, la, 0xffffff, 0.022, { t: n, s: T("Başkent", "Capital") + (c ? " · " + c.n : ""), lon: lo, lat: la }, "cap"); });
-    if (L.deprem) QUAKES.forEach(([lo, la, y, mw, n]) => { const m = dot(S, lo, la, 0xff4d4d, 0.02 + (mw - 6.5) * 0.025, { t: n + " depremi", s: y + " · Mw " + String(mw).replace(".", ","), lon: lo, lat: la, q: true }, "eq", 0.01); m.material.transparent = true; m.material.opacity = 0.85; });
-    if (L.volkan) VOLC.forEach(([lo, la, n, st]) => { const m = new S.THREE.Mesh(new S.THREE.ConeGeometry(0.045, 0.11, 10), new S.THREE.MeshBasicMaterial({ color: st === "etkin" ? 0xff8c1a : 0xb08060 })); const pos = vec(S.THREE, lo, la, R * 1.02); m.position.copy(pos); m.quaternion.setFromUnitVectors(new S.THREE.Vector3(0, 1, 0), pos.clone().normalize()); m.userData = { info: { t: n, s: T("Volkan · ", "Volcano · ") + st, lon: lo, lat: la }, tag: "vol" }; o.marks.add(m); });
-    if (L.levha) G.plates.forEach(([lo, la, n]) => { const lb = S.label(n, "#ffffff", 0.16, o.marks); lb.position.copy(vec(S.THREE, lo, la, R * 1.06)); lb.userData = { tag: "pl" }; });
+    const o = S.o, G = App.data.globe, THREE = S.THREE; clearMarks(o); o.hl = null;
+    const ball = (seg) => new THREE.SphereGeometry(1, seg || 10, Math.round((seg || 10) * 0.8));
+    if (L.baskent) instanced(S, G.caps.map(([lo, la, n, id]) => { const c = G.countries.find((x) => x.id === id); return { lon: lo, lat: la, size: 0.022, info: { t: n, s: T("Başkent", "Capital") + (c ? " · " + c.n : ""), lon: lo, lat: la } }; }),
+      ball(8), new THREE.MeshBasicMaterial({ color: 0xffffff }), "cap");
+    if (L.deprem) instanced(S, QUAKES.map(([lo, la, y, mw, n]) => ({ lon: lo, lat: la, h: 0.01, size: 0.02 + (mw - 6.5) * 0.025, info: { t: n + " depremi", s: y + " · Mw " + String(mw).replace(".", ","), lon: lo, lat: la, q: true } })),
+      ball(12), new THREE.MeshBasicMaterial({ color: 0xff4d4d, transparent: true, opacity: 0.85 }), "eq");
+    if (L.volkan) instanced(S, VOLC.map(([lo, la, n, st]) => ({ lon: lo, lat: la, h: 0.02, size: 1, color: st === "etkin" ? 0xff8c1a : 0xb08060, info: { t: n, s: T("Volkan · ", "Volcano · ") + st, lon: lo, lat: la } })),
+      new THREE.ConeGeometry(0.045, 0.11, 10), new THREE.MeshBasicMaterial({ color: 0xffffff }), "vol", true);
+    o.plateN = L.levha ? G.plates.length : 0;
   }
   function buildEvents(S, year) {
     const o = S.o; clearMarks(o, "ev");
     const ev = App.data.tarihOlay || [];
+    const items = [];
     ev.forEach((e) => { const yy = e[0], loc = e[5]; if (!loc || Math.abs(yy - year) > 60) return;
-      const m = dot(S, loc[0], loc[1], 0xb48cff, 0.03 + (60 - Math.abs(yy - year)) / 60 * 0.03, { t: e[1], s: (yy < 0 ? "MÖ " + (-yy) : yy) + " · " + (e[4] || ""), lon: loc[0], lat: loc[1] }, "ev", 0.012); m.userData.tag = "ev"; });
+      items.push({ lon: loc[0], lat: loc[1], h: 0.012, size: 0.03 + (60 - Math.abs(yy - year)) / 60 * 0.03, info: { t: e[1], s: (yy < 0 ? "MÖ " + (-yy) : yy) + " · " + (e[4] || ""), lon: loc[0], lat: loc[1] } }); });
+    instanced(S, items, new S.THREE.SphereGeometry(1, 10, 8), new S.THREE.MeshBasicMaterial({ color: 0xb48cff }), "ev");
   }
 
   /* ---------- veri yükleme ---------- */
@@ -222,7 +254,16 @@
     host.innerHTML = "";
     const S3 = App.lab3d.mount(host, "kure", 0.78), S = S3._S;
     const st = RUN = { S3, on: true, raf: 0 };
-    st.loop = () => { if (!st.on) return; S3.frame(P, performance.now() / 1000); paintSun(); st.raf = requestAnimationFrame(st.loop); };
+    // Yalnızca bir şey değiştiğinde çizilir (dönme, odaklanma, katman/tarih/saat değişimi, sürükleme, seçim nabzı);
+    // küre dururken ekran kartı boşta kalır.
+    st.loop = () => {
+      if (!st.on) return;
+      const now = performance.now();
+      const k = JSON.stringify(P.L) + "|" + P.year + "|" + P.doy + "|" + P.hour;
+      const active = (P.spin && !P.drag) || P.focus || (S.o.hl && now - (S.o.hlT || 0) < 2600) || S3.holoOn() || (S3.handOn && S3.handOn());
+      if (active || st.dirty || k !== st.k) { st.k = k; st.dirty = false; S3.frame(P, now / 1000); }
+      paintSun(); st.raf = requestAnimationFrame(st.loop);
+    };
     st.onRoute = () => { if (RUN === st && !document.contains(S3.el)) stop(); };
     window.addEventListener("da:route", st.onRoute);
     $("#kList").innerHTML = App.data.globe.countries.map((c) => '<option value="' + esc(c.n) + '">').join("");
@@ -250,14 +291,16 @@
       const zone = Math.abs(lat) <= TILT ? T("sıcak kuşak", "torrid zone") : Math.abs(lat) < 90 - TILT ? T("ılıman kuşak", "temperate zone") : T("soğuk kuşak", "frigid zone");
       info((c ? "<b>" + esc(c.n) + "</b>" + (c.cap ? "<p>" + esc(T("Başkent: ", "Capital: ") + c.cap) + "</p>" : "") + "<p>" + esc(T("Nüfus: ", "Population: ") + fmtN(c.pop) + (c.cont ? " · " + c.cont : "")) + "</p>" : "<b>" + esc(T("Okyanus / deniz", "Ocean / sea")) + "</b>") +
         '<p class="hint">' + esc(pos) + "</p><p>" + esc(T("Matematik iklim kuşağı: ", "Belt: ") + zone + " · " + T("teorik saat dilimi: UTC", "theoretical zone: UTC") + (tz >= 0 ? "+" : "") + tz + " · " + T("yerel güneş saati ", "solar time ") + solar) + "</p>");
-      S.o.hl && S.o.marks.remove(S.o.hl);
-      S.o.hl = dot(S, lon, lat, 0x4dff9a, 0.04, null, "hl", 0.012);
+      if (S.o.hl) { S.o.marks.remove(S.o.hl); disposeObj(S.o.hl); }
+      S.o.hl = dot(S, lon, lat, 0x4dff9a, 0.04, null, "hl", 0.012); S.o.hlT = performance.now(); st.dirty = true;
     };
     // dokunuş → seçim (sürüklemeden ayırt et)
     let down = null;
     S3.el.addEventListener("pointerdown", (e) => { down = [e.clientX, e.clientY, performance.now()]; P.drag = true; });
+    S3.el.addEventListener("pointermove", () => { if (P.drag) st.dirty = true; });
+    S3.el.addEventListener("wheel", () => { st.dirty = true; }, { passive: true });
     S3.el.addEventListener("pointerup", (e) => {
-      P.drag = false;
+      P.drag = false; st.dirty = true;
       if (!down || performance.now() - down[2] > 400 || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 8 || e.target !== S.renderer.domElement) return;
       const pk = S.o.pick; if (!pk) return;
       if (pk.kind === "mark") { const i = pk.info; info("<b>" + esc(i.t) + "</b><p>" + esc(i.s) + '</p><p class="hint">' + esc(deg(i.lat, "K", "G") + " · " + deg(i.lon, "D", "B")) + "</p>"); }

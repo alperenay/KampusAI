@@ -1,0 +1,125 @@
+/* =========================================================
+   v129.css — Yazılı Sınavlar (Maarif Modeli) ve 1.29 düzenlemeleri
+   ========================================================= */
+
+/* ---------- Yazılı Sınavlar ---------- */
+.yz-seg { display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 3px; margin: 2px 0 16px; border-radius: var(--radius-pill); background: var(--surface-2); border: 1px solid var(--border); }
+.yz-seg button { height: 34px; padding: 0 16px; border-radius: var(--radius-pill); color: var(--text-2); font-size: 14px; font-weight: 550; }
+.yz-seg button[aria-checked="true"] { background: var(--surface-solid); color: var(--text); box-shadow: var(--shadow-soft); }
+.yz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.yz-subj { display: flex; align-items: center; gap: 12px; padding: 14px 16px; color: inherit; text-decoration: none; transition: transform .15s var(--ease), border-color .15s; }
+.yz-subj:hover { border-color: var(--border-strong); transform: translateY(-1px); }
+.yz-subj__ico { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: var(--accent-soft); color: var(--accent-text); flex: none; }
+.yz-subj__t { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.yz-subj__t b { font-weight: 600; }
+.yz-subj__t small { color: var(--muted); font-size: 13px; }
+.yz-go { color: var(--faint); }
+.yz-score { flex: none; min-width: 40px; height: 28px; padding: 0 9px; display: inline-grid; place-items: center; border-radius: var(--radius-pill); background: var(--good-soft); color: var(--good-text); font-weight: 700; font-size: 14px; }
+.yz-about { margin-top: 18px; padding: 12px 16px; }
+.yz-about summary { display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 600; list-style: none; }
+.yz-about summary::-webkit-details-marker { display: none; }
+.yz-about .md { margin-top: 10px; }
+.yz-exams { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; margin-bottom: 18px; }
+.yz-exam { display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; }
+.yz-exam__head { display: flex; align-items: center; gap: 8px; }
+.yz-exam__head b { flex: 1; font-weight: 600; }
+.yz-badge { flex: none; padding: 2px 9px; border-radius: var(--radius-pill); background: var(--accent-soft); color: var(--accent-text); font-size: 12px; font-weight: 650; }
+.yz-exam__units { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
+.yz .chip { display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: var(--radius-pill); background: var(--surface-2); color: var(--text-2); font-size: 12.5px; }
+.yz .chip--soft { background: var(--accent-soft); color: var(--accent-text); }
+.yz-exam__acts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+.yz-gen { padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.yz-gen__units { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 4px 12px; }
+.yz-gen .btn { align-self: flex-start; }
+
+.yz-paper { max-width: 860px; }
+.yz-paper__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin: 6px 0 14px; }
+.yz-paper__head h1 { font-size: 1.5rem; }
+.yz-paper__acts { display: flex; align-items: center; gap: 8px; flex: none; }
+.yz-timer { font: 700 15px var(--mono); padding: 5px 10px; border-radius: var(--radius-pill); background: var(--surface-2); }
+.yz-timer.is-late { color: var(--bad); }
+.yz-tip { padding: 10px 14px; margin-bottom: 10px; font-size: 14px; color: var(--text-2); }
+.yz-q { padding: 14px 16px; margin-bottom: 12px; }
+.yz-q__head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 8px; }
+.yz-q__n { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; font-size: 14px; flex: none; }
+.yz-q__p { margin-left: auto; font-weight: 650; color: var(--text-2); font-size: 13.5px; }
+.yz-q__body { line-height: 1.6; }
+.yz-q__body table { margin: 8px 0; }
+.yz-ans { display: block; margin-top: 10px; }
+.yz-ans textarea { width: 100%; min-height: 96px; resize: vertical; line-height: 1.5; }
+.yz-key { margin-top: 12px; padding: 12px 14px; border-radius: var(--radius-sm); border: 1px solid color-mix(in srgb, var(--good) 40%, transparent); background: var(--good-soft); }
+.yz-key__t { display: flex; align-items: center; gap: 6px; font-weight: 650; font-size: 13.5px; margin-bottom: 6px; color: var(--good-text); }
+.yz-key__t .ico { width: 16px; height: 16px; }
+.yz-rub { margin-top: 10px; }
+.yz-rub .yz-key__t { color: var(--text-2); }
+.yz-rub__row { display: flex; align-items: flex-start; gap: 10px; padding: 6px 8px; border-radius: 8px; font-size: 14px; }
+label.yz-rub__row { cursor: pointer; }
+label.yz-rub__row:hover { background: var(--surface-2); }
+.yz-rub__row input { margin-top: 3px; flex: none; }
+.yz-rub__row b { min-width: 26px; text-align: right; flex: none; }
+.yz-aifb { display: flex; gap: 8px; align-items: flex-start; margin-top: 8px; font-size: 14px; color: var(--text-2); }
+.yz-aifb .ico { width: 16px; height: 16px; flex: none; margin-top: 2px; color: var(--accent-text); }
+.yz-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 6px 0 24px; }
+.yz-foot--sticky { position: sticky; bottom: 8px; z-index: 5; padding: 10px 14px; border-radius: var(--radius); background: var(--surface-solid); border: 1px solid var(--border-strong); box-shadow: var(--shadow); }
+.yz-foot--sticky b { font-size: 1.15rem; margin-right: auto; }
+@media (max-width: 640px) {
+  .yz-paper__head { flex-direction: column; }
+  .yz-exams { grid-template-columns: 1fr; }
+  .yz-seg { display: flex; }
+  .yz-seg button { flex: 1; padding: 0 8px; }
+}
+@media print {
+  .yz-paper { max-width: none; }
+  .yz-q { break-inside: avoid; border: 1px solid #bbb !important; }
+  .yz-ans textarea { border: 1px solid #999 !important; min-height: 140px; background: #fff !important; }
+  .yz-key { background: #f3f8f3 !important; border-color: #9c9 !important; }
+  .yz-key__t, .yz-q__p, .yz-rub .yz-key__t { color: #000 !important; }
+  .yz-q__n { background: #000 !important; }
+}
+
+/* =========================================================
+   1.29 — Sade arayüz ve performans
+   ========================================================= */
+/* Menü: az kullanılan sayfalar "Daha fazla" altında; açık olan sayfa her zaman görünür */
+.nav-group:not(.is-more) .nav__item[data-more]:not(.is-active):not([aria-current="page"]) { display: none; }
+.nav__more { width: 100%; color: var(--muted); font-size: 13px; background: none; border: 0; text-align: left; cursor: pointer; }
+.nav__more .ico { width: 15px; height: 15px; color: var(--faint); }
+.nav__more:hover { color: var(--text); }
+.app.is-collapsed .nav__more { display: none; }
+/* Menü başlıkları daha sakin, aralar daha düzenli */
+.nav-group__head { font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); }
+.nav__item { min-height: 36px; }
+
+/* Tipografi hiyerarşisi: sayfa başlığı, alt başlık ve bölüm başlığı */
+.page-head { margin: 8px 0 20px; }
+.page-head h1 { font-size: clamp(22px, 2.2vw + 10px, 28px); font-weight: 600; letter-spacing: -.015em; }
+.page-head p { max-width: 68ch; line-height: 1.5; font-size: 15px; }
+.section-title { font-size: 15px; font-weight: 600; letter-spacing: .01em; margin: 26px 0 12px; }
+.hint { line-height: 1.5; }
+
+/* Kartlar: daha az kenar gürültüsü, tutarlı köşe ve boşluk */
+.card { border-color: color-mix(in srgb, var(--border) 85%, transparent); }
+.btn { transition: background .15s, border-color .15s, color .15s; }
+
+/* Açılış ekranı: tek satır hızlı eylem + tek satır kısayol */
+.home .quick { gap: 8px; }
+.home-pins { justify-content: center; }
+
+/* Cam bulanıklığı: masaüstünde daha hafif; telefonda ve tabletlerde kapalı (kaydırma ve 3B sahneler akıcı olsun).
+   Bulanıklık kalkınca okunurluk düşmesin diye yüzeyler biraz daha opak. */
+:root[data-theme], :root { --glass-blur: blur(14px) saturate(1.05); }
+@media (max-width: 860px), (pointer: coarse) {
+  :root[data-theme], :root { --glass-blur: none; }
+  :root:not([data-theme="light"]) { --surface: rgba(30, 30, 33, .9); --surface-2: rgba(54, 55, 59, .9); --chip-bg: rgba(30, 30, 33, .86); --bg-sidebar: rgba(18, 18, 20, .97); --surface-head: rgba(22, 22, 24, .94); }
+  :root[data-theme="light"] { --surface: rgba(255, 255, 255, .92); --surface-2: rgba(228, 235, 249, .94); --chip-bg: rgba(255, 255, 255, .88); --bg-sidebar: rgba(248, 250, 255, .97); }
+}
+:root.lite, :root.lite[data-theme] { --glass-blur: none; }
+@media (prefers-reduced-transparency: reduce) { :root[data-theme], :root { --glass-blur: none; } }
+
+/* Dokunmatik: dokunma hedefleri en az 40px, çift dokunuşta yakınlaştırma gecikmesi yok */
+@media (pointer: coarse) {
+  .btn, .nav__item, .tabbar__item, .chip, .kr3-chip, .hm-part { touch-action: manipulation; }
+  .btn--sm { min-height: 38px; }
+}
+/* Ekran dışındaki uzun listeler çizilmesin (tarayıcı destekliyorsa) */
+.pod-unit, .yz-exam, .tc-row, .kr-job, .outcome { content-visibility: auto; contain-intrinsic-size: auto 72px; }
