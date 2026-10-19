@@ -1,0 +1,91 @@
+exec(open("hdr.py").read())
+SHOT = os.path.join(SP, "v29"); os.makedirs(SHOT, exist_ok=True)
+try:
+  with sync_playwright() as p:
+    b = p.chromium.launch()
+    for mobile, w, h in ((True, 390, 844), (False, 1366, 860)):
+      tag = "phone" if mobile else "pc"
+      ctx, pg = newctx(b, mobile, w, h)
+      check(tag+": tercih verisi başta yüklenmiyor", pg.evaluate("() => !App.data.tercih"))
+      # --- Tercih: deneme yokken
+      go(pg, "#/tercih", 3500)
+      check(tag+": veri yüklendi", pg.evaluate("() => !!App.data.tercih && App.data.tercih.R.length > 20000"))
+      check(tag+": deneme yokken yönlendirme", pg.locator("#tcBody .empty, #tcBody [class*=empty]").count() >= 1 or "puanın" in pg.locator("#tcBody").inner_text())
+      # gerçek veri doğrulama
+      chk = pg.evaluate("""() => { const r = App.tercih.rows(); const f = (u, n) => r.filter(x => x.uni.indexOf(u) >= 0 && x.name.indexOf(n) === 0 && x.t === 1)[0];
+        const a = f('Boğaziçi', 'Bilgisayar Mühendisliği'), b = f('Orta Doğu', 'Bilgisayar Mühendisliği'); return [a && [a.score, a.rank, a.city], b && [b.score, b.rank, b.city]]; }""")
+      print("örnek", chk)
+      check(tag+": örnek programlar makul", chk[0] and 480 < chk[0][0] < 560 and chk[0][1] < 5000 and chk[0][2] == "İstanbul", chk)
+      mono = pg.evaluate("() => Object.values(App.data.tercih.K).every(k => k.every((p, i) => !i || (p[0] <= k[i-1][0] && p[1] >= k[i-1][1])))")
+      check(tag+": puan→sıra eğrisi tekdüze", mono)
+      r1 = pg.evaluate("() => [App.tercih.rankFor(1, 500).rank, App.tercih.rankFor(1, 400).rank, App.tercih.rankFor(1, 300).rank]")
+      check(tag+": SAY sıralaması puanla artar", r1[0] < r1[1] < r1[2], r1)
+      print("SAY 500/400/300 →", r1)
+      # elle puan
+      pg.click(".tc-set summary"); pg.wait_for_timeout(200)
+      pg.fill('[data-man="1"]', "430"); pg.locator('[data-man="1"]').dispatch_event("change"); pg.wait_for_timeout(2000)
+      pg.click('[data-type="1"]'); pg.wait_for_timeout(1200)
+      txt = pg.locator(".tc-type.is-on").inner_text()
+      check(tag+": elle SAY 430 → sıralama", "430" in txt and "sıra" in txt, txt)
+      n = pg.evaluate("() => App.tercih._last.filtered().length")
+      check(tag+": uygun programlar listelendi", n > 100 and pg.locator(".tc-row").count() > 10, n)
+      bands = pg.evaluate("() => { const L = App.tercih._last; const c = {}; L.filtered().forEach(x => c[x.ch] = (c[x.ch]||0)+1); return c; }")
+      check(tag+": güvenli/uygun/hayal grupları", all(k in bands for k in ("safe", "fit", "reach")), bands)
+      pg.screenshot(path=os.path.join(SHOT, "fit-"+tag+".png"), full_page=False)
+      # şehir süzgeci
+      pg.select_option("#tcCity", "Ankara"); pg.wait_for_timeout(500)
+      cities = pg.evaluate("() => Array.from(new Set(App.tercih._last.filtered().map(x => x.city)))")
+      check(tag+": şehir süzgeci", cities == ["Ankara"], cities[:3])
+      pg.select_option("#tcCity", ""); pg.wait_for_timeout(300)
+      pg.fill("#tcQ", "tıp"); pg.wait_for_timeout(600)
+      # listeye ekle
+      pg.locator(".tc-add").first.click(); pg.wait_for_timeout(300)
+      check(tag+": listeye eklendi", pg.locator(".tc-add.is-on").count() >= 1)
+      # tüm bölümler
+      go(pg, "#/tercih/tum", 1500)
+      pg.fill("#tcQ", "hukuk"); pg.wait_for_timeout(600)
+      n2 = pg.evaluate("() => App.tercih._last.filtered().length")
+      check(tag+": tüm bölümlerde hukuk araması", n2 > 50, n2)
+      check(tag+": net karşılığı gösteriliyor", "net" in pg.locator(".tc-row").first.inner_text())
+      pg.screenshot(path=os.path.join(SHOT, "all-"+tag+".png"), full_page=False)
+      go(pg, "#/tercih/liste", 1500)
+      check(tag+": tercih listem", pg.locator(".tc-mylist .tc-row").count() == 1)
+      pg.screenshot(path=os.path.join(SHOT, "list-"+tag+".png"), full_page=False)
+      # demo denemelerle
+      pg.evaluate("() => App.demo.load()"); pg.wait_for_timeout(1500)
+      pg.evaluate("async () => { await App.db.put('meta', { id: 'tercihPrefs', obp: 85, prevPlaced: false, last: 3, manual: {} }); }")
+      go(pg, "#/tercih", 2000)
+      est = pg.evaluate("() => { const E = App.tercih._last.E.est; return [0,1,2,3].map(t => [E[t].score && Math.round(E[t].score), E[t].rank]); }")
+      print("demo tahmin", est)
+      check(tag+": denemelerden tahmin", est[0][0] and est[0][1], est)
+      sw = pg.evaluate("() => document.documentElement.scrollWidth <= window.innerWidth + 1")
+      check(tag+": tercihte taşma yok", sw)
+      # --- Zaman çizelgesi
+      if mobile:
+        pg.click("#tabMore"); pg.wait_for_timeout(300)
+        pg.evaluate("(h) => { const a = document.querySelector('a.nav__item[href=\"' + h + '\"]'); if (a && !a.offsetParent) { const b = a.closest('.nav-group').querySelector('.nav__more'); b && b.click(); } }", "#/zaman"); pg.wait_for_timeout(200)
+        check("menüde Tarih Zaman Çizelgesi", pg.locator('a.nav__item[href="#/zaman"]').is_visible())
+        pg.click('a.nav__item[href="#/zaman"]'); pg.wait_for_timeout(1200)
+      else:
+        go(pg, "#/zaman", 1200)
+      check(tag+": çizelge olayları", pg.locator(".zc-ev").count() > 100)
+      check(tag+": açılışta kart", "Samsun" in pg.locator("#tlCard").inner_text())
+      pg.wait_for_timeout(1500)
+      check(tag+": konum haritası", pg.locator("#tlMap svg").count() == 1)
+      pg.screenshot(path=os.path.join(SHOT, "line-"+tag+".png"), full_page=True)
+      pg.locator('.zc-type[data-ty="d"]').click(); pg.wait_for_timeout(300)
+      check(tag+": tür süzgeci", pg.evaluate("() => App.zaman._last.visible().every(e => e.ty !== 'd')"))
+      pg.fill("#tlQ", "lozan"); pg.wait_for_timeout(700)
+      check(tag+": arama ve seçim", "Lozan" in pg.locator("#tlCard h2").inner_text())
+      go(pg, "#/zaman/liste", 900)
+      check(tag+": liste görünümü", pg.locator(".zc-li").count() > 100 and pg.locator(".zc-lh").count() >= 9)
+      go(pg, "#/zaman/sinav", 900)
+      for i in range(10):
+        pg.locator(".zc-opt").first.click(); pg.wait_for_timeout(2600)
+      check(tag+": sınav bitti", "/ 10" in pg.locator(".zc-quiz h2").inner_text())
+      ctx.close()
+    b.close()
+finally:
+    for pr in procs: pr.terminate()
+print("errors:", errs[:5])
+print("%d/%d" % (sum(res), len(res)))
