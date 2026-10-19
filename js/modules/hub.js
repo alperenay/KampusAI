@@ -20,6 +20,7 @@
     ["kartlar", "layers", "nav.cards", ["Kutu sistemiyle hap bilgi tekrarı", "Spaced-repetition flashcards"], "study", "kart flashcard tekrar"],
     ["yanlislar", "bookmark", "nav.mistakes", ["Yanlışların aralıklı tekrarla geri gelir", "Your mistakes come back for review"], "study", "yanlış hata tekrar"],
     ["video", "play", "nav.video", ["YouTube ders videosundan özet, bölümler, kartlar ve test", "Summary, chapters, cards and a quiz from a lesson video"], "study", "video youtube özet transkript ders izle"],
+    ["podcast", "volume", "nav.podcast", ["Her konu iki sesli sohbet podcast'i; arada sorular", "Every topic as a two-voice podcast with quiz breaks"], "study", "podcast dinle sesli sohbet kulaklık konu"],
     ["kontrol", "scan", "nav.check", ["Çözümünün fotoğrafını çek ya da ekrana yaz; adım adım kontrol", "Photo or handwrite your solution for a step check"], "study", "çözüm kontrol el yazısı"],
     ["program", "calendar", "nav.schedule", ["Haftalık ders programı ve hatırlatıcılar", "Weekly study plan and reminders"], "study", "program takvim hatırlatma"],
     ["yolculuk", "star", "nav.journey", ["Müfredat bir macera haritası: XP, seviye, canavarlar, günlük görevler", "The curriculum as an adventure: XP, levels, bosses, quests"], "practice", "yolculuk oyun xp seviye görev macera"],

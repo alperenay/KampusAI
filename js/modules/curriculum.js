@@ -15,6 +15,7 @@
   const richInline = (v) => rich(v).replace(/^<p>([\s\S]*)<\/p>$/, "$1");
   const C = App.data.curriculum;
   const t = App.t, tn = App.tn, L = App.L;
+  const T2 = (tr, en) => (App.i18n.lang === "en" ? en : tr);
 
   async function progressMap() {
     const rows = await App.db.getAll("progress");
@@ -263,7 +264,7 @@
           '<h1 style="margin-top:8px;font-size:24px;line-height:1.3">' + esc(L(outcome.title)) + "</h1>" +
           (outcome.code ? '<p style="font-family:var(--mono);font-size:13px">' + esc(outcome.code) + "</p>" : "") +
         "</div>" +
-        '<div class="page-head__actions"><button class="btn' + (isDone ? "" : " btn--primary") + '" type="button" id="toggleDone"></button></div></div>' +
+        '<div class="page-head__actions">' + (ct && ct.anlatim && App.podcast ? '<a class="btn" href="#/podcast/' + key + '" title="' + esc(T2("Bu konuyu iki sesli sohbet olarak dinle", "Listen to this topic as a two-voice chat")) + '">🎧 ' + esc(T2("Podcast", "Podcast")) + "</a>" : "") + '<button class="btn' + (isDone ? "" : " btn--primary") + '" type="button" id="toggleDone"></button></div></div>' +
 
         '<nav class="toc toc--inline" data-toc aria-label="' + esc(t("cur.onPage")) + '"></nav>' +
         (missingLang ? '<p class="hint" style="margin:-8px 0 14px">' + esc(t("cur.onlyTurkish")) + "</p>" : "") +
@@ -303,7 +304,8 @@
         '<nav class="toc" data-toc></nav>' +
         (ct ? '<div class="lesson-aside__acts"><a class="btn btn--sm" href="#/test/' + key + '">' + App.icon("quiz") + esc(t("cur.dockQuiz")) + "</a>" +
           '<a class="btn btn--sm" href="#/anlat/' + key + '">' + App.icon("mic") + esc(t("cur.dockExplain")) + "</a>" +
-          (App.cards && App.cards.buildFor(key).length ? '<a class="btn btn--sm" href="#/kartlar/konu/' + key + '">' + App.icon("layers") + esc(t("cur.sec.cards")) + "</a>" : "") + "</div>" : "") +
+          (App.cards && App.cards.buildFor(key).length ? '<a class="btn btn--sm" href="#/kartlar/konu/' + key + '">' + App.icon("layers") + esc(t("cur.sec.cards")) + "</a>" : "") +
+          (ct.anlatim && App.podcast ? '<a class="btn btn--sm" href="#/podcast/' + key + '">🎧 ' + esc(T2("Podcast", "Podcast")) + "</a>" : "") + "</div>" : "") +
         '<div class="lesson-aside__nav">' + (prev ? '<a class="btn btn--sm" href="' + link(prev) + '" title="' + esc(L(prev.outcome.title)) + '">' + App.icon("chevronL") + esc(t("cur.dockPrev")) + "</a>" : "") +
           (next ? '<a class="btn btn--sm" href="' + link(next) + '" title="' + esc(L(next.outcome.title)) + '">' + esc(t("cur.dockNext")) + App.icon("chevron") + "</a>" : "") + "</div>" +
       "</aside>" +

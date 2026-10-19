@@ -33,6 +33,8 @@
     if (ev.kind === "tts") {
       const w = ttsWait[ev.id];
       if (!w) return;
+      if (ev.type === "word") { if (w.onWord) w.onWord(Number(ev.start) || 0); return; }
+      if (ev.type === "start") { if (w.onStart) w.onStart(); return; }
       if (ev.type === "done" || ev.type === "error" || ev.type === "stop") {
         delete ttsWait[ev.id];
         if (ev.type === "error" && w.onError) w.onError(ev.code || "tts");
@@ -219,11 +221,22 @@
     return "speechSynthesis" in window && typeof SpeechSynthesisUtterance !== "undefined";
   }
 
-  function pickVoice(tag) {
+  function pickVoice(tag, nth) {
     const voices = (window.speechSynthesis && speechSynthesis.getVoices()) || [];
     const base = tag.slice(0, 2);
+    if (nth) {                                       // ikinci konuşmacı için (podcast) varsa farklı bir ses
+      const all = voices.filter((v) => (v.lang || "").replace("_", "-").slice(0, 2) === base);
+      const good = all.filter((v) => /natural|online|neural/i.test(v.name)).concat(all.filter((v) => !/natural|online|neural/i.test(v.name)));
+      if (good.length > 1) return good[nth % good.length];
+    }
     return voices.find((v) => v.lang === tag && /natural|online|neural/i.test(v.name)) ||
       voices.find((v) => v.lang === tag) || voices.find((v) => (v.lang || "").slice(0, 2) === base) || null;
+  }
+  /** Bu dilde kaç farklı ses var (web); yerel uygulamada bilinmez → 1 */
+  function voiceCount(lang) {
+    if (nativeHas("ttsSpeak") || !("speechSynthesis" in window)) return 1;
+    const base = langTag(lang).slice(0, 2);
+    return speechSynthesis.getVoices().filter((v) => (v.lang || "").replace("_", "-").slice(0, 2) === base).length;
   }
 
   /** Bu dilde ses var mı? (yerel uygulamada motor karar verir; bilinmiyorsa true) */
@@ -244,16 +257,19 @@
     const rate = Number(o.rate) || 1;
     const id = "u" + (++seq);
     current = id;
+    const pitch = Number(o.pitch) || 1;
     if (nativeHas("ttsSpeak")) {
-      ttsWait[id] = { onEnd: o.onEnd, onError: o.onError };
-      try { N().ttsSpeak(id, text, tag, rate); } catch (e) { delete ttsWait[id]; if (o.onError) o.onError("tts"); }
+      ttsWait[id] = { onEnd: o.onEnd, onError: o.onError, onWord: o.onWord, onStart: o.onStart };
+      try { if (nativeHas("ttsSpeak2")) N().ttsSpeak2(id, text, tag, rate, pitch); else N().ttsSpeak(id, text, tag, rate); } catch (e) { delete ttsWait[id]; if (o.onError) o.onError("tts"); }
       return id;
     }
     if (!ttsAvailable()) { if (o.onError) setTimeout(() => o.onError("unsupported")); return id; }
     const u = new SpeechSynthesisUtterance(text);
-    u.lang = tag; u.rate = rate;
-    const v = pickVoice(tag);
+    u.lang = tag; u.rate = rate; u.pitch = Math.max(0.1, Math.min(2, pitch));
+    const v = pickVoice(tag, o.voice || 0);
     if (v) u.voice = v;
+    if (o.onWord) u.onboundary = (e) => { if (current === id && (!e.name || e.name === "word")) o.onWord(e.charIndex || 0); };
+    if (o.onStart) u.onstart = () => o.onStart();
     u.onend = () => { if (current === id) current = null; if (o.onEnd) o.onEnd("done"); };
     u.onerror = (e) => { if (current === id) current = null; if (e.error === "interrupted" || e.error === "canceled") { if (o.onEnd) o.onEnd("stop"); } else if (o.onError) o.onError(e.error || "tts"); };
     speechSynthesis.speak(u);
@@ -270,5 +286,5 @@
   // Ses listesi bazı tarayıcılarda geç yüklenir
   if ("speechSynthesis" in window) { try { speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged = () => {}; } catch (e) { /* yok say */ } }
 
-  App.speech = { sttMode, listen, say, stopSaying, ttsAvailable, hasVoice, canTranscribe };
+  App.speech = { sttMode, listen, say, stopSaying, ttsAvailable, hasVoice, canTranscribe, voiceCount, speaking: () => !!current };
 })();

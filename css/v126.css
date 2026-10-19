@@ -1,0 +1,98 @@
+/* v126.css — El ile kontrol · Hologram öğretmen · Konu Podcast'i */
+
+/* ---------------- El ile kontrol ---------------- */
+.lab__handbtn { position: absolute; left: 8px; top: 8px; z-index: 4; display: inline-flex; align-items: center; gap: 5px; height: 34px; padding: 0 11px; border-radius: var(--radius-pill);
+  border: 1px solid var(--border-strong); background: color-mix(in srgb, var(--surface-solid) 88%, transparent); color: var(--text); font: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer; box-shadow: var(--shadow-soft); }
+.lab__handbtn span { font-size: 15px; line-height: 1; }
+.lab__handbtn.is-on { background: #0a6f86; border-color: #35e0ff; color: #fff; box-shadow: 0 0 14px rgba(53, 224, 255, .5); }
+.lab__handbtn.is-loading b::after { content: "…"; }
+.lab__3d.is-ar .lab__handbtn { top: auto; bottom: calc(var(--nb, 0px) + 78px); left: 10px; z-index: 6; }
+.lab__3d.is-inline .lab__handbtn { display: none; }
+.lab-hand { position: absolute; left: 8px; bottom: 8px; z-index: 5; display: flex; gap: 8px; align-items: flex-end; max-width: calc(100% - 16px); pointer-events: none; }
+.lab__3d .lab-hand canvas { width: 112px !important; height: auto !important; display: block; position: static; border-radius: 10px; border: 2px solid rgba(53, 224, 255, .5); background: #000; flex: none; }
+.lab-hand > div { flex: 0 1 220px; display: flex; flex-direction: column; gap: 2px; padding: 6px 9px; border-radius: 10px; background: rgba(0, 16, 24, .72); color: #e6fbff; font-size: 12px; line-height: 1.35; min-width: 0; }
+.lab-hand__g { font-size: 13px; }
+.lab-hand.is-seen .lab-hand__g { color: #5fe6ff; }
+.lab-hand__p { color: #ffd88a; font-weight: 600; }
+.lab-hand small { opacity: .75; font-size: 11px; }
+.lab__3d.is-ar .lab-hand { bottom: calc(var(--nb, 0px) + 124px); left: 10px; }
+@media (max-width: 520px) { .lab-hand small { display: none; } .lab__3d .lab-hand canvas { width: 84px !important; } }
+
+/* ---------------- Hologram öğretmen ---------------- */
+.voice-top__r { display: inline-flex; align-items: center; gap: 6px; }
+.voice-holobtn { height: 34px; padding: 0 12px; border-radius: var(--radius-pill); border: 1px solid var(--border-strong); background: var(--surface-2); color: var(--text); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
+.voice-holobtn.is-on { background: #0a6f86; border-color: #35e0ff; color: #fff; box-shadow: 0 0 14px rgba(53, 224, 255, .45); }
+.voice-holo { position: relative; width: 100%; max-width: 560px; flex: none; border-radius: 18px; overflow: hidden; background: #000; cursor: pointer; box-shadow: 0 0 0 1px rgba(53, 224, 255, .35), 0 0 30px rgba(53, 224, 255, .18); }
+.voice-holo .lab__3d { margin: 0; border-radius: 0; }
+.voice-holo .lab__3dhint { display: none; }
+.voice-holo::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(to bottom, rgba(53, 224, 255, 0) 0 2px, rgba(53, 224, 255, .05) 2px 3px), radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0, 10, 20, .55) 100%); }
+.voice-overlay.is-holo .voice-orb { display: none; }
+.voice-overlay.is-holo .voice-center { margin-top: 0; padding-top: 4px; width: 100%; max-width: 560px; }
+.vh-pano { width: 100%; max-width: 560px; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px; padding: 10px 12px; border-radius: 14px; text-align: left;
+  border: 1px solid rgba(53, 224, 255, .45); background: linear-gradient(180deg, rgba(4, 40, 52, .92), rgba(2, 20, 28, .92)); color: #e6fbff; box-shadow: 0 0 18px rgba(53, 224, 255, .2); animation: vhIn .35s ease-out; }
+.vh-pano .katex { color: #bff3ff; }
+.vh-pano__f .md p { margin: 0; }
+.vh-pano__f .katex-display { margin: 4px 0; }
+.vh-pano__t { display: flex; flex-wrap: wrap; gap: 6px; }
+.vh-pano__t span { padding: 3px 10px; border-radius: var(--radius-pill); background: rgba(53, 224, 255, .14); border: 1px solid rgba(53, 224, 255, .35); font-size: 13px; }
+.vh-pano__s { margin: 0; font-size: 14px; }
+.vh-pano__lab { align-self: flex-start; padding: 6px 12px; border-radius: 10px; background: #0a6f86; color: #fff; font-weight: 600; font-size: 13.5px; text-decoration: none; }
+@keyframes vhIn { from { opacity: 0; transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) { .vh-pano { animation: none; } }
+
+/* ---------------- Konu Podcast'i ---------------- */
+.pod-cont { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; color: inherit; text-decoration: none; }
+.pod-cont:hover { background: var(--surface-hover); }
+.pod-cont__ico { font-size: 26px; }
+.pod-cont > span:nth-child(2) { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.pod-cont small { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pod-cont > .ico { width: 16px; height: 16px; color: var(--muted); }
+.pod-unit { margin-bottom: 8px; }
+.pod-unit .section-title { font-size: .9rem; color: var(--muted); }
+.pod-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.pod-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface); color: inherit; text-decoration: none; }
+.pod-item:hover { border-color: var(--border-strong); background: var(--surface-hover); }
+.pod-item__play { flex: none; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-text); font-size: 12px; }
+.pod-item__t { flex: 1; min-width: 0; font-size: .93rem; line-height: 1.4; }
+.pod-done { color: var(--good); font-weight: 600; white-space: nowrap; }
+.pod-half { color: var(--warn); font-weight: 600; white-space: nowrap; }
+
+.pod-hero { display: flex; flex-direction: column; gap: 14px; }
+.pod-cast { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; }
+.pod-mid { text-align: center; min-width: 0; }
+.pod-mid h1 { font-size: 1.2rem; line-height: 1.35; margin: 4px 0; }
+.pod-subj { font-size: .8rem; font-weight: 600; color: var(--accent-text); }
+.pod-sp { display: flex; flex-direction: column; align-items: center; gap: 2px; width: 74px; }
+.pod-sp small { color: var(--muted); font-size: .72rem; }
+.pod-av { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; font-size: 22px; font-weight: 800; color: #fff; transition: box-shadow .2s, transform .2s; }
+.pod-sp--a .pod-av { background: linear-gradient(135deg, #f08a5d, #e0457b); }
+.pod-sp--b .pod-av { background: linear-gradient(135deg, #4f7cf0, #2bb3a3); }
+.pod-sp.is-talk .pod-av { transform: scale(1.08); box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 25%, transparent); animation: podTalk .9s ease-in-out infinite; }
+@keyframes podTalk { 50% { box-shadow: 0 0 0 10px color-mix(in srgb, var(--accent) 12%, transparent); } }
+.pod-bar { height: 6px; border-radius: 6px; background: var(--surface-2); overflow: hidden; }
+.pod-bar i { display: block; height: 100%; width: 0; background: var(--accent); border-radius: inherit; transition: width .3s; }
+.pod-ctl { display: flex; justify-content: center; align-items: center; gap: 18px; }
+.pod-ctl .icon-btn { font-size: 18px; }
+.pod-play { width: 68px; height: 68px; border-radius: 50%; border: 0; background: var(--accent); color: #fff; font-size: 26px; cursor: pointer; box-shadow: 0 8px 22px var(--accent-soft); }
+.pod-play.is-on { background: var(--good); }
+.pod-opts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; font-size: .88rem; }
+.pod-opts label { display: inline-flex; align-items: center; gap: 6px; }
+.pod-opts .select { height: 32px; padding: 0 8px; width: auto; }
+.pod-quiz { padding: 12px 14px; border-radius: var(--radius); border: 1px solid color-mix(in srgb, var(--warn) 55%, var(--border)); background: color-mix(in srgb, var(--warn) 10%, var(--surface)); text-align: center; }
+.pod-quiz p { margin: 4px 0 8px; }
+.pod-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.pod-tr h2 { display: flex; align-items: center; gap: 8px; font-size: 1rem; margin: 0 0 8px; }
+.pod-tr h2 .ico { width: 18px; height: 18px; color: var(--accent-text); }
+.pod-lines { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.pod-ln { display: grid; grid-template-columns: 52px 1fr; gap: 8px; padding: 7px 9px; border-radius: 10px; cursor: pointer; scroll-margin: 90px; }
+.pod-ln:hover { background: var(--surface-hover); }
+.pod-ln > b { font-size: .8rem; padding-top: 2px; }
+.pod-ln--a > b { color: #e0457b; }
+.pod-ln--b > b { color: #2b9fd6; }
+.pod-ln .md p { margin: 0; }
+.pod-ln .md { font-size: .93rem; line-height: 1.55; min-width: 0; overflow-wrap: anywhere; }
+.pod-ln--quiz { background: color-mix(in srgb, var(--warn) 9%, transparent); }
+.pod-ln--answer { background: color-mix(in srgb, var(--good) 8%, transparent); }
+.pod-ln.is-cur { background: var(--accent-soft); box-shadow: inset 3px 0 0 var(--accent); }
+@media (max-width: 520px) { .pod-sp { width: 56px; } .pod-av { width: 46px; height: 46px; font-size: 18px; } .pod-mid h1 { font-size: 1.02rem; } .pod-ln { grid-template-columns: 1fr; gap: 2px; } }
+@media (prefers-reduced-motion: reduce) { .pod-sp.is-talk .pod-av { animation: none; } .pod-bar i { transition: none; } }
