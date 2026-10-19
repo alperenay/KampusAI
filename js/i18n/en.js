@@ -354,6 +354,7 @@ App.locales.en = {
   "abt.lic.handtrack": "Hand detection for labs",
   "abt.lic.tfjs": "Running the hand model on device",
   "abt.lic.tercih": "cut-off scores and ranks for the Programme Finder",
+  "abt.lic.pb": "Plate boundaries on the 3D globe",
   "abt.lic.ne": "map borders, rivers and lakes",
   "abt.lic.pd": "Public domain",
   "abt.lic.jsqr": "QR code scanning",

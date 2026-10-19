@@ -352,6 +352,7 @@ App.locales.tr = {
   "abt.lic.handtrack": "Deneylerde el bulma",
   "abt.lic.tfjs": "El modelini cihazda çalıştırma",
   "abt.lic.tercih": "Tercih Robotu taban puan ve sıralama verisi",
+  "abt.lic.pb": "3B Dünya Küresi levha sınırları",
   "abt.lic.ne": "Etkileşimli Harita sınır, akarsu ve göl verileri",
   "abt.lic.pd": "Kamu malı",
   "abt.lic.jsqr": "QR kod okuma",
