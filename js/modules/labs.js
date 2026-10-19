@@ -603,8 +603,9 @@
     function size() {
       const w = Math.max(240, Math.round(cv.parentElement.clientWidth));
       const h = Math.round(Math.min(w * (lab.ratio || 0.6), window.innerHeight * 0.62));
-      const dpr = Math.min(2, window.devicePixelRatio || 1);
-      cv.width = w * dpr; cv.height = h * dpr; cv.style.height = h + "px";
+      // 3B görünümde 2B tuval gizlidir: hesap için çizilir ama 1×1 piksele (neredeyse bedava)
+      const dpr = mode === "3d" && S3 ? 1 / Math.max(w, h) : Math.min(2, window.devicePixelRatio || 1);
+      cv.width = Math.max(1, Math.round(w * dpr)); cv.height = Math.max(1, Math.round(h * dpr)); cv.style.height = h + "px";
       cv.getContext("2d").setTransform(dpr, 0, 0, dpr, 0, 0);
       st.W = w; st.H = h;
     }
@@ -613,20 +614,22 @@
       const ctx = cv.getContext("2d"), c = colors();
       ctx.clearRect(0, 0, st.W, st.H);
       const out = lab.custom ? drawFunc(ctx, st.W, st.H, st, c) : lab.draw(ctx, st.W, st.H, p, st.t, c, st.s);
-      read.innerHTML = out.html;
+      // ölçüm tablosu: yalnızca değiştiyse ve oynarken saniyede en çok ~12 kez yazılır (her karede DOM yazmak takılmaya yol açıyordu)
+      const nowR = performance.now();
+      if (out.html !== st.lastHtml && (!st.playing || out.done || nowR - (st.readAt || 0) > 80)) { read.innerHTML = out.html; st.lastHtml = out.html; st.readAt = nowR; }
       if (note.textContent !== (out.note || "")) note.textContent = out.note || "";
       if (out.done && st.playing) { st.playing = false; st.done = true; paintPlay(); } else if (!out.done) st.done = false;
       if (mode === "3d" && S3) S3.frame(p, st.t, lab.custom ? st : st.s);
     }
     /* 2B / 3B seçimi (öğrencinin tercihi hatırlanır) */
     const modeBox = host.querySelector(".lab__mode");
-    function paintMode() { if (!modeBox) return; modeBox.querySelectorAll("[data-mode]").forEach((b) => b.setAttribute("aria-checked", String(b.dataset.mode === mode))); host.classList.toggle("is-3d", mode === "3d"); }
+    function paintMode() { if (st.W) size(); if (!modeBox) return; modeBox.querySelectorAll("[data-mode]").forEach((b) => b.setAttribute("aria-checked", String(b.dataset.mode === mode))); host.classList.toggle("is-3d", mode === "3d"); }
     async function setMode(m, remember) {
       mode = m; if (remember) App.lab3d.setMode(m); paintMode();
       if (m === "2d" && S3 && S3.handOn && S3.handOn()) S3.handStop();      // 2B'de el kontrolü (ve kamera) kapanır
       if (m === "3d" && !S3 && !s3busy) {
         s3busy = true; host.classList.add("is-loading3d");
-        try { await App.lab3d.load(); if (host.isConnected && mode === "3d") { S3 = App.lab3d.mount(host.querySelector(".lab__stage"), id, lab.ratio); host.querySelector(".lab__stage").insertBefore(S3.el, cv); if (S3.bindLab) S3.bindLab({ ctrls, play: host.querySelector(".lab__play") }); } }
+        try { await App.lab3d.load(); if (host.isConnected && mode === "3d") { S3 = App.lab3d.mount(host.querySelector(".lab__stage"), id, lab.ratio); host.querySelector(".lab__stage").insertBefore(S3.el, cv); if (S3.bindLab) S3.bindLab({ ctrls, play: host.querySelector(".lab__play") }); size(); } }
         catch (e) { mode = "2d"; paintMode(); App.ui.toast(T("3B görünüm açılamadı; 2B gösteriliyor.", "3D view unavailable; showing 2D.")); }
         s3busy = false; host.classList.remove("is-loading3d");
       }
@@ -664,7 +667,7 @@
     }
     const ro = new ResizeObserver(() => { size(); draw(); });
     ro.observe(cv.parentElement);
-    const io = "IntersectionObserver" in window ? new IntersectionObserver((en) => { st.vis = en[0].isIntersecting; st.last = null; loop(); }) : null;
+    const io = "IntersectionObserver" in window ? new IntersectionObserver((en) => { st.vis = en[en.length - 1].isIntersecting; st.last = null; loop(); }) : null;
     if (io) io.observe(host);
     function destroy() { cancelAnimationFrame(st.raf); ro.disconnect(); if (io) io.disconnect(); if (S3) { S3.dispose(); S3 = null; } }
     size(); draw(); loop();

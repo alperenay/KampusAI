@@ -105,6 +105,16 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
 
 ## 3a. Çalışma araçları
 
+- **Yazılı Sınavlar (Maarif Modeli):** Menü › Çalış › Yazılı Sınavlar. Sınıfını (9–12) seç, dersine gir. Her derste
+  1. ve 2. dönem için birer **açık uçlu** yazılı var (toplam 56 yazılı, 392 soru; Matematik, Fizik, Kimya, Biyoloji,
+  Türk Dili ve Edebiyatı, Tarih — 12. sınıfta İnkılap Tarihi — ve Coğrafya). Sorular Türkiye Yüzyılı Maarif Modeli'nin
+  ortak yazılı biçimindedir: 7 soru, bağlam temelli, toplam 100 puan. *Sınava başla* ile süre işler; cevabını kutulara
+  yaz (ya da kâğıtta çöz). *Sınavı bitir* deyince her sorunun **beklenen cevabı** ve **puanlama ölçütü** (tam / kısmi /
+  sıfır) açılır; ölçüte göre kendi puanını işaretle ve kaydet. İstersen *Yapay zekâ puanlasın*: cevapların ölçüte göre
+  puanlanır, her soruya kısa geri bildirim yazılır (işaretleri değiştirebilirsin). *Cevap anahtarı* ve *Yazdır / PDF*
+  öğretmenler için de kullanılabilir. *Yapay zekâyla yeni yazılı hazırla* seçtiğin temalardan aynı biçimde yeni bir
+  sınav üretir. Konu Anlatımı'nda her dersin sayfasında yazılılara kısayol vardır. 12. sınıf 2026–2027'de hâlâ 2018
+  programıyla okutulduğu için onun soruları o programın ünitelerine göredir.
 - **Konu sonu testi:** Konu Anlatımı'nda her kazanımın sayfasında *10 soruluk test başlat* — yapay zekâ o konudan
   10 soruluk, 5 şıklı bir test hazırlar. Bitirince puan ve çözümler görünür; yanlış ve boş bıraktığın sorular
   kendiliğinden Yanlış Defteri'ne eklenir.
@@ -337,6 +347,9 @@ API anahtarları yedeğe girmez; her cihazda ayrıca girilir.
 | "Kullanım sınırına ulaşıldı" | Ücretsiz katman sınırı; biraz bekle ya da Ayarlar'dan başka model seç. |
 | "… modeli yüklü değil" | Belirtilen `ollama pull …` komutunu çalıştır. |
 | İlk yerel yanıt çok geç geliyor | Model ilk kullanımda belleğe yükleniyor; sonraki yanıtlar hızlıdır. |
+| 3B deneyler, küre ya da modeller takılıyor (Windows) | Ayarlar › Yapay zekâ › "Arayüz için ekran kartını kullan" açık olmalı (1.29'dan beri varsayılan). Kapalıyken sahneler işlemcide çizilir. |
+| 3B sahne bulanık görünüyor | Cihaz yavaşsa uygulama akıcılık için çözünürlüğü kendiliğinden düşürür. Deney Laboratuvarı › Görünüm › 3B kalitesi "Yüksek" seçilebilir. |
+| Menüde bir sayfa yok | Az kullanılan sayfalar her grubun altındaki **Daha fazla** düğmesinde; tümü *Tüm araçlar*'da ve aramada (Ctrl+K). |
 
 ## 6. Tarayıcıda kullanmak (uygulamasız)
 

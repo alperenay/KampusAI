@@ -47,6 +47,7 @@
   <link rel="stylesheet" href="css/v126.css">
   <link rel="stylesheet" href="css/v127.css">
   <link rel="stylesheet" href="css/v128.css">
+  <link rel="stylesheet" href="css/v129.css">
 </head>
 <body>
   <a class="a11y-skip" href="#view" data-i18n="a11y.skip">İçeriğe geç</a>
@@ -85,22 +86,25 @@
           <a class="nav__item" href="#/konular" data-route="konular">
             <span data-icon="book"></span><span class="sidebar__label" data-i18n="nav.topics">Konu Anlatımı</span>
           </a>
+          <a class="nav__item" href="#/yazili" data-route="yazili">
+            <span data-icon="pen"></span><span class="sidebar__label" data-i18n="nav.written">Yazılı Sınavlar</span>
+          </a>
           <a class="nav__item" href="#/kartlar" data-route="kartlar">
             <span data-icon="layers"></span><span class="sidebar__label" data-i18n="nav.cards">Hap Kartları</span><span class="nav__badge" id="cardsBadge" hidden></span>
           </a>
           <a class="nav__item" href="#/yanlislar" data-route="yanlislar">
             <span data-icon="bookmark"></span><span class="sidebar__label" data-i18n="nav.mistakes">Yanlış Defteri</span><span class="nav__badge" id="misBadge" hidden></span>
           </a>
-          <a class="nav__item" href="#/kontrol" data-route="kontrol">
+          <a class="nav__item" href="#/kontrol" data-route="kontrol" data-more>
             <span data-icon="scan"></span><span class="sidebar__label" data-i18n="nav.check">Çözümümü Kontrol Et</span>
           </a>
-          <a class="nav__item" href="#/video" data-route="video">
+          <a class="nav__item" href="#/video" data-route="video" data-more>
             <span data-icon="play"></span><span class="sidebar__label" data-i18n="nav.video">Videodan Çalış</span>
           </a>
           <a class="nav__item" href="#/podcast" data-route="podcast">
             <span data-icon="volume"></span><span class="sidebar__label" data-i18n="nav.podcast">Konu Podcast'i</span>
           </a>
-          <a class="nav__item" href="#/program" data-route="program">
+          <a class="nav__item" href="#/program" data-route="program" data-more>
             <span data-icon="calendar"></span><span class="sidebar__label" data-i18n="nav.schedule">Ders Programı</span>
           </a>
             </div>
@@ -108,28 +112,28 @@
           <div class="nav-group" data-group="practice">
             <button class="nav-group__head" type="button" aria-expanded="true" aria-controls="ng-practice"><span class="sidebar__label" data-i18n="nav.group.practice">Pratik</span><span data-icon="chevronD"></span></button>
             <div class="nav-group__body" id="ng-practice">
-          <a class="nav__item" href="#/yolculuk" data-route="yolculuk">
-            <span data-icon="star"></span><span class="sidebar__label" data-i18n="nav.journey">YKS Yolculuğu</span>
-          </a>
-          <a class="nav__item" href="#/paragraf" data-route="paragraf">
-            <span data-icon="timer"></span><span class="sidebar__label" data-i18n="nav.para">Paragraf Antrenmanı</span>
-          </a>
-          <a class="nav__item" href="#/zaman" data-route="zaman">
-            <span data-icon="clock"></span><span class="sidebar__label" data-i18n="nav.timeline">Tarih Zaman Çizelgesi</span>
-          </a>
-          <a class="nav__item" href="#/atlas" data-route="atlas">
-            <span data-icon="globe"></span><span class="sidebar__label" data-i18n="nav.geomap">Etkileşimli Harita</span>
-          </a>
-          <a class="nav__item" href="#/kure" data-route="kure">
-            <span data-icon="globe"></span><span class="sidebar__label" data-i18n="nav.globe">3B Dünya Küresi</span>
-          </a>
           <a class="nav__item" href="#/lab" data-route="lab">
             <span data-icon="lightbulb"></span><span class="sidebar__label" data-i18n="nav.lab">Deney Laboratuvarı</span>
           </a>
           <a class="nav__item" href="#/modeller" data-route="modeller">
             <span data-icon="cube"></span><span class="sidebar__label" data-i18n="nav.models">3B Modeller</span>
           </a>
-          <a class="nav__item" href="#/oyunlar" data-route="oyunlar">
+          <a class="nav__item" href="#/kure" data-route="kure">
+            <span data-icon="globe"></span><span class="sidebar__label" data-i18n="nav.globe">3B Dünya Küresi</span>
+          </a>
+          <a class="nav__item" href="#/atlas" data-route="atlas">
+            <span data-icon="globe"></span><span class="sidebar__label" data-i18n="nav.geomap">Etkileşimli Harita</span>
+          </a>
+          <a class="nav__item" href="#/yolculuk" data-route="yolculuk">
+            <span data-icon="star"></span><span class="sidebar__label" data-i18n="nav.journey">YKS Yolculuğu</span>
+          </a>
+          <a class="nav__item" href="#/zaman" data-route="zaman" data-more>
+            <span data-icon="clock"></span><span class="sidebar__label" data-i18n="nav.timeline">Tarih Zaman Çizelgesi</span>
+          </a>
+          <a class="nav__item" href="#/paragraf" data-route="paragraf" data-more>
+            <span data-icon="timer"></span><span class="sidebar__label" data-i18n="nav.para">Paragraf Antrenmanı</span>
+          </a>
+          <a class="nav__item" href="#/oyunlar" data-route="oyunlar" data-more>
             <span data-icon="game"></span><span class="sidebar__label" data-i18n="nav.games">Oyunlar</span>
           </a>
             </div>
@@ -140,13 +144,13 @@
           <a class="nav__item" href="#/denemeler" data-route="denemeler">
             <span data-icon="chart"></span><span class="sidebar__label" data-i18n="nav.exams">Deneme Takibi</span>
           </a>
-          <a class="nav__item" href="#/simulasyon" data-route="simulasyon">
+          <a class="nav__item" href="#/simulasyon" data-route="simulasyon" data-more>
             <span data-icon="quiz"></span><span class="sidebar__label" data-i18n="nav.sim">Deneme Simülasyonu</span>
           </a>
-          <a class="nav__item" href="#/harita" data-route="harita">
+          <a class="nav__item" href="#/harita" data-route="harita" data-more>
             <span data-icon="map"></span><span class="sidebar__label" data-i18n="nav.map">Öğrenme Haritası</span>
           </a>
-          <a class="nav__item" href="#/kok" data-route="kok">
+          <a class="nav__item" href="#/kok" data-route="kok" data-more>
             <span data-icon="roots"></span><span class="sidebar__label" data-i18n="nav.roots">Kök Eksik Analizi</span>
           </a>
           <a class="nav__item" href="#/puan" data-route="puan">
@@ -158,7 +162,7 @@
           <a class="nav__item" href="#/kariyer" data-route="kariyer">
             <span data-icon="compass"></span><span class="sidebar__label" data-i18n="nav.career">Kariyer Keşfi</span>
           </a>
-          <a class="nav__item" href="#/rapor" data-route="rapor">
+          <a class="nav__item" href="#/rapor" data-route="rapor" data-more>
             <span data-icon="note"></span><span class="sidebar__label" data-i18n="nav.report">Haftalık Rapor</span>
           </a>
             </div>
@@ -364,6 +368,7 @@
   <script src="js/modules/holo-ogretmen.js"></script>
   <script src="js/modules/holo-modeller.js"></script>
   <script src="js/modules/kure.js"></script>
+  <script src="js/modules/yazili.js"></script>
   <script src="js/data/motivasyon.js"></script>
   <script src="js/data/paragraflar.js"></script>
   <script src="js/data/harita-bilgi.js"></script>

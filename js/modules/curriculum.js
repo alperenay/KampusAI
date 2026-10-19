@@ -166,7 +166,10 @@
           (c.total ? '<div class="subj-head__prog"><span class="progress progress--subj"><i style="width:' + Math.round((c.done / c.total) * 100) + '%"></i></span>' + esc(progressText(c)) + "</div>" : "") +
         "</div></div>" +
         (subject.ai ? aiNote(subject.ai, t("cur.aiSyllabusNote"), 'id="aiRegenSyl"') : "") +
-        cont + body +
+        cont +
+        (App.yazili && ["matematik", "fizik", "kimya", "biyoloji", "edebiyat", "tarih", "cografya", "inkilap"].indexOf(subject.id) >= 0
+          ? '<a class="subj-continue subj-written" href="#/yazili/' + grade.id + "/" + subject.id + '">' + App.icon("pen") + '<span class="subj-continue__text"><small>' + esc(App.i18n.lang === "en" ? "Maarif Model · open-ended" : "Maarif Modeli · açık uçlu") + "</small><b>" + esc(App.i18n.lang === "en" ? "Written exams with answer key" : "Yazılı sınavlar ve cevap anahtarı") + '</b></span><span class="subj-continue__go">' + App.icon("chevron") + "</span></a>" : "") +
+        body +
       "</div>";
 
     if (!subject.units.length) {

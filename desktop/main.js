@@ -33,10 +33,13 @@ if (!app.requestSingleInstanceLock()) { app.quit(); }
 
 /* ---------------- Ayarlar dosyası ---------------- */
 const SETTINGS_FILE = () => path.join(app.getPath("userData"), "desktop-settings.json");
-let settings = { lanEnabled: false, token: "", bounds: null, uiGpu: false };
+let settings = { lanEnabled: false, token: "", bounds: null, uiGpu: true };
 function loadSettings() {
   try { settings = Object.assign(settings, JSON.parse(fs.readFileSync(SETTINGS_FILE(), "utf8"))); } catch (e) { /* ilk açılış */ }
   if (!settings.token) { settings.token = newToken(); saveSettings(); }
+  // v1.29: arayüz ekran kartını varsayılan olarak kullanır (3B deneyler, küre ve modeller ekran kartı olmadan çok yavaştı).
+  // Eski sürümden gelen "kapalı" varsayılanı bir kez açılır; kullanıcı Ayarlar'dan yeniden kapatabilir.
+  if ((settings.gpuV || 1) < 2) { settings.uiGpu = true; settings.gpuV = 2; saveSettings(); }
 }
 function saveSettings() {
   try { fs.mkdirSync(path.dirname(SETTINGS_FILE()), { recursive: true }); fs.writeFileSync(SETTINGS_FILE(), JSON.stringify(settings, null, 2)); } catch (e) { /* yazılamadı */ }
@@ -96,11 +99,17 @@ function stopLan() {
   });
 }
 
-/* Ekran kartı: varsayılan olarak arayüz ekran kartını KULLANMAZ. Arayüzün kaplayacağı
-   birkaç yüz MB, 12 GB'lık kartta 14b modelin bir kısmını işlemciye taşıyıp yanıtları
-   ~4 kat yavaşlatıyordu (ölçüm: tarayıcıda 56, uygulamada 12 parça/sn). */
+/* Ekran kartı: v1.29'dan beri arayüz ekran kartını KULLANIR (varsayılan). Kapalıyken bütün çizim
+   işlemcide yapılır; 3B deneyler, küre ve modeller takılıyordu. Büyük bir yerel model ekran kartı
+   belleğini dolduruyorsa Ayarlar › "Arayüz için ekran kartını kullan" kapatılabilir (o zaman 3B
+   sahneler düşük kalitede açılır). */
 loadSettings();
 if (!settings.uiGpu) app.disableHardwareAcceleration();
+else {
+  app.commandLine.appendSwitch("ignore-gpu-blocklist");        // okul bilgisayarlarındaki eski sürücülerde de WebGL ekran kartında çalışsın
+  app.commandLine.appendSwitch("enable-gpu-rasterization");
+  app.commandLine.appendSwitch("enable-zero-copy");
+}
 
 ipcMain.on("gpu:get", (e) => { e.returnValue = !!settings.uiGpu; });
 ipcMain.handle("gpu:set", (e, on) => {

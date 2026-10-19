@@ -36,7 +36,7 @@
   }
   function sentences(text) {
     return String(text || "").replace(MARK, " ").replace(/\$\$[\s\S]*?\$\$/g, " ")
-      .split(/(?<=[.!?])\s+|\n+/).map((s) => s.trim()).filter(Boolean);
+      .replace(/([.!?])\s+/g, "$1\u0001").replace(/\n+/g, "\u0001").split("\u0001").map((s) => s.trim()).filter(Boolean);
   }
 
   /** text: modelin cevabı; hits: [{ text, label, link }] (text = kaydın içeriği) */

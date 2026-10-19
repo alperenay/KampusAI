@@ -29,7 +29,8 @@
     try { const c = document.createElement("canvas"); okGL = !!(window.WebGLRenderingContext && (c.getContext("webgl2") || c.getContext("webgl"))); } catch (e) { okGL = false; }
     return okGL;
   }
-  const lowEnd = () => (navigator.hardwareConcurrency || 4) <= 2 || document.documentElement.classList.contains("lite");
+  const isMobile = () => (window.matchMedia && window.matchMedia("(pointer: coarse)").matches) || /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || "");
+  const lowEnd = () => (navigator.hardwareConcurrency || 4) <= 2 || (navigator.deviceMemory && navigator.deviceMemory <= 2) || document.documentElement.classList.contains("nogpu");
   function quality() { const q = App.prefs.get("lab3dQuality", "auto"); return q === "auto" ? (lowEnd() ? "low" : "high") : q; }
   function mode() { const m = App.prefs.get("labMode", null); return m === "2d" || m === "3d" ? m : supported() && !lowEnd() ? "3d" : "2d"; }
   function setMode(m) { App.prefs.set("labMode", m); }
@@ -49,9 +50,17 @@
     if (THREE.ColorManagement) THREE.ColorManagement.legacyMode = false;     // renkler sRGB olarak yorumlansın (soluk görünmesin)
     const el = document.createElement("div"); el.className = "lab__3d";
     host.appendChild(el);
-    const renderer = new THREE.WebGLRenderer({ antialias: q === "high", alpha: false, powerPreference: q === "high" ? "high-performance" : "low-power" });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, q === "high" ? 2 : 1));
-    renderer.shadowMap.enabled = q === "high"; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    /* Performans (v1.29): cihaz sınıfına göre çözünürlük tavanı, yüksek yoğunluklu ekranda
+       kenar yumuşatma yerine piksel yoğunluğu, gölge yalnızca bilgisayarda; kare süresi uzarsa
+       çözünürlük kendiliğinden düşer, rahatlayınca geri çıkar (dinamik çözünürlük). */
+    const mobile = isMobile(), dpr = window.devicePixelRatio || 1;
+    const PR_MAX = q === "high" ? Math.min(dpr, mobile ? 1.5 : 1.75) : Math.min(dpr, 1);
+    const PR_MIN = Math.min(PR_MAX, mobile ? 0.7 : 0.75);
+    const useAA = q === "high" && dpr < 1.5 && !mobile, useShadow = q === "high" && !mobile;
+    let pr = PR_MAX;
+    const renderer = new THREE.WebGLRenderer({ antialias: useAA, alpha: false, stencil: false, powerPreference: mobile || q !== "high" ? "default" : "high-performance" });
+    renderer.setPixelRatio(pr);
+    renderer.shadowMap.enabled = useShadow; renderer.shadowMap.type = THREE.PCFShadowMap;
     renderer.outputEncoding = THREE.sRGBEncoding;
     el.appendChild(renderer.domElement);
     const hint = document.createElement("div"); hint.className = "lab__3dhint"; const touch = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
@@ -64,7 +73,7 @@
     scene.fog = new THREE.Fog(cols.bg, 40, 120);
     const camera = new THREE.PerspectiveCamera(42, 1, 0.05, 400);
     const hemi = new THREE.HemisphereLight(0xffffff, cols.light ? 0x8a94a8 : 0x30323a, cols.light ? 0.85 : 0.75); scene.add(hemi);
-    const sun = new THREE.DirectionalLight(0xffffff, cols.light ? 0.75 : 0.9); sun.position.set(8, 14, 10); sun.castShadow = q === "high";
+    const sun = new THREE.DirectionalLight(0xffffff, cols.light ? 0.75 : 0.9); sun.position.set(8, 14, 10); sun.castShadow = useShadow;
     sun.shadow.mapSize.set(1024, 1024); Object.assign(sun.shadow.camera, { left: -16, right: 16, top: 16, bottom: -16, near: 1, far: 60 }); sun.shadow.bias = -0.0006;
     scene.add(sun);
     const root = new THREE.Group(); scene.add(root);
@@ -119,13 +128,34 @@
     const AR = { on: false }, HO = { on: false };
 
     let raf = 0;
-    function render() { if (!W || HO.on || AR.on) return; cancelAnimationFrame(raf); raf = requestAnimationFrame(() => renderer.render(scene, camera)); }
+    /* Görünürlük: sahne ekranda değilse (sayfa kaydırıldı, sekme arkada) çizim yapılmaz */
+    let vis = true;
+    const io = "IntersectionObserver" in window ? new IntersectionObserver((en) => { vis = en[en.length - 1].isIntersecting; if (vis) render(); }) : null;
+    if (io) io.observe(el);
+    /* Dinamik çözünürlük: art arda çizimlerde ortalama kare süresine bakar */
+    const GV = { last: 0, n: 0, sum: 0, good: 0 };
+    function draw() {
+      const now = performance.now(), dt = GV.last ? now - GV.last : 0; GV.last = now;
+      if (dt > 0 && dt < 150) {
+        GV.sum += dt; GV.n++;
+        if (GV.n >= 24) {
+          const avg = GV.sum / GV.n; GV.sum = 0; GV.n = 0;
+          if (avg > 27 && pr > PR_MIN) { pr = Math.max(PR_MIN, pr * 0.8); renderer.setPixelRatio(pr); GV.good = 0; }
+          else if (avg < 19 && pr < PR_MAX) { if (++GV.good >= 5) { GV.good = 0; pr = Math.min(PR_MAX, pr * 1.12); renderer.setPixelRatio(pr); } }
+          else GV.good = 0;
+        }
+      }
+      renderer.render(scene, camera);
+    }
+    // Tam ekran bir katman (ör. sesli öğretmen) sahnenin üstünü kapattıysa arkadaki sahne çizilmez
+    const covered = () => { const ov = document.querySelector(".voice-overlay"); return !!(ov && !ov.contains(el)); };
+    function render() { if (!W || HO.on || AR.on || !vis || covered()) return; cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); }
 
     /* ---- Yardımcılar ---- */
     const M = (color, o) => new THREE.MeshStandardMaterial(Object.assign({ color, roughness: 0.55, metalness: 0.05 }, o || {}));
-    const mesh = (geo, mat, parent) => { const m = new THREE.Mesh(geo, mat && mat.isMaterial ? mat : M(mat)); m.castShadow = true; m.receiveShadow = true; (parent || root).add(m); return m; };
+    const mesh = (geo, mat, parent) => { const m = new THREE.Mesh(geo, mat && mat.isMaterial ? mat : M(mat)); m.castShadow = useShadow; m.receiveShadow = useShadow; (parent || root).add(m); return m; };
     const S = {
-      THREE, scene, root, camera, renderer, cols, el, o: {}, q, cam,
+      THREE, scene, root, camera, renderer, cols, el, o: {}, q, cam, mobile, visible: () => vis || HO.on || AR.on,
       /** Ekran konumundan (0..1) ışın: nesne seçmek ya da düzlemde nokta bulmak için */
       ray(nx, ny) { const rc = new THREE.Raycaster(); rc.setFromCamera(new THREE.Vector2(nx * 2 - 1, -(ny * 2 - 1)), camera); return rc; },
       /** Kameraya bakan, hedef noktadan geçen düzlemde ekran konumuna denk gelen dünya noktası */
@@ -186,7 +216,7 @@
       hideFloor() { floor.visible = false; grid.visible = false; },
       render
     };
-    function clear(obj) { obj.traverse((o) => { if (o.geometry) o.geometry.dispose(); if (o.material) { (Array.isArray(o.material) ? o.material : [o.material]).forEach((m) => { if (m.map) m.map.dispose(); m.dispose(); }); } }); }
+    function clear(obj) { obj.traverse((o) => { if (o.geometry) o.geometry.dispose(); if (o.userData && o.userData.keep) o.userData.keep.forEach((x) => x && x.dispose && x.dispose()); if (o.material) { (Array.isArray(o.material) ? o.material : [o.material]).forEach((m) => { if (m.map) m.map.dispose(); m.dispose(); }); } }); }
 
     /* =========================================================
        AR (artırılmış gerçeklik) — v1.24
@@ -217,7 +247,7 @@
       const va = v.videoWidth / v.videoHeight, ca = W / H;
       if (va > ca) { tex.repeat.set(ca / va, 1); tex.offset.set((1 - ca / va) / 2, 0); } else { tex.repeat.set(1, va / ca); tex.offset.set(0, (1 - va / ca) / 2); }
     }
-    function arLoop() { if (!AR.on) return; fitVideo(); renderer.render(scene, camera); AR.raf = requestAnimationFrame(arLoop); }
+    function arLoop() { if (!AR.on) return; fitVideo(); draw(); AR.raf = requestAnimationFrame(arLoop); }
     const arT = (tr, en) => (App.i18n.lang === "en" ? en : tr);
     async function arStart(o) {
       if (AR.on) return true;
@@ -375,7 +405,7 @@
       if (HO.src === "face") faceStep();
       holoView();
       if (HO.look === "holo") holoSwap();
-      try { renderer.render(scene, camera); } finally { holoUnswap(); }
+      try { draw(); } finally { holoUnswap(); }
       HO.raf = requestAnimationFrame(holoLoop);
     }
 
@@ -793,8 +823,9 @@
     size();
     return {
       el, _S: S,
-      frame(p, t, s) { try { D.update(S, p, t, s || {}); } catch (e) { console.error("[3B] güncelleme", id, e); } if (!AR.on && !HO.on) render(); },
-      dispose() { arStop(); holoStop(); handStop(); holoMats.forEach((m) => { if (m) m.dispose(); }); holoMats.clear(); cancelAnimationFrame(raf); ro.disconnect(); clear(scene); renderer.dispose(); try { renderer.forceContextLoss(); } catch (e) { /* yok */ } el.remove(); },
+      frame(p, t, s) { if ((!vis || covered()) && !AR.on && !HO.on) return; try { D.update(S, p, t, s || {}); } catch (e) { console.error("[3B] güncelleme", id, e); } if (!AR.on && !HO.on && W) { cancelAnimationFrame(raf); draw(); } },
+      visible: () => vis || AR.on || HO.on, perf: () => ({ pr, max: PR_MAX, min: PR_MIN, aa: useAA, shadow: useShadow, mobile }),
+      dispose() { arStop(); holoStop(); handStop(); holoMats.forEach((m) => { if (m) m.dispose(); }); holoMats.clear(); cancelAnimationFrame(raf); ro.disconnect(); if (io) io.disconnect(); clear(scene); renderer.dispose(); try { renderer.forceContextLoss(); } catch (e) { /* yok */ } el.remove(); },
       resize: size,
       arStart, arStop, arOn: () => AR.on, onArStop: (fn) => { AR.onStop = fn; },
       bindLab(o) { HA.lab = o || null; },

@@ -38,7 +38,7 @@
     src = src.replace(/\\\[([\s\S]+?)\\\]/g, (m, tex) => keepD(renderMath(tex.trim(), true)));
     // Satır içi matematik
     src = src.replace(/\\\(([\s\S]+?)\\\)/g, (m, tex) => keep(renderMath(tex.trim(), false)));
-    src = src.replace(/(^|[^\\$\w])\$(?!\s)([^$\n]+?)(?<!\s)\$(?![\w$])/g, (m, pre, tex) => pre + keep(renderMath(tex, false)));
+    src = src.replace(/(^|[^\\$\w])\$(?!\s)([^$\n]*?[^\s$])\$(?![\w$])/g, (m, pre, tex) => pre + keep(renderMath(tex, false)));
     return src;
   }
 
@@ -46,12 +46,13 @@
     return html.replace(new RegExp("[" + MARK + DMARK + "](\\d+)[" + MARK + DMARK + "]", "g"), (m, i) => store[Number(i)]);
   }
 
+  // Not: iOS 16.3 ve öncesi geriye bakan düzenli ifadeleri ((?<!…)) desteklemez; o yüzden kullanılmaz.
   function inline(s) {
     // Kalın içinde italik olabilir: **Camus – *Yabancı*** → <strong>Camus – <em>Yabancı</em></strong>
-    s = s.replace(/\*\*((?:[^*]|\*(?![\s*])[^*\n]+?(?<!\s)\*)+?)\*\*/g, (m, inner) =>
-      "<strong>" + inner.replace(/\*(?!\s)([^*\n]+?)(?<!\s)\*/g, "<em>$1</em>") + "</strong>");
+    s = s.replace(/\*\*((?:[^*]|\*(?![\s*])[^*\n]*?[^\s*\n]\*)+?)\*\*/g, (m, inner) =>
+      "<strong>" + inner.replace(/\*(?!\s)([^*\n]*?[^\s*\n])\*/g, "<em>$1</em>") + "</strong>");
     s = s.replace(/__([^_]+?)__/g, "<strong>$1</strong>");
-    s = s.replace(/(^|[^*])\*(?!\s)([^*\n]+?)(?<!\s)\*(?!\*)/g, "$1<em>$2</em>");
+    s = s.replace(/(^|[^*])\*(?!\s)([^*\n]*?[^\s*\n])\*(?!\*)/g, "$1<em>$2</em>");
     s = s.replace(/~~([^~]+?)~~/g, "<del>$1</del>");
     s = s.replace(/\[([^\]]+)\]\(((?:https?:\/\/|#\/)[^\s)]+)\)/g, (m, text, href) =>
       '<a href="' + href + '"' + (href[0] === "#" ? "" : ' target="_blank" rel="noopener noreferrer"') + ">" + text + "</a>");
