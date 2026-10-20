@@ -243,6 +243,7 @@ def main():
     p.add_argument("--model", action="append", help="ollama:<ad> ya da bulut:<ad>")
     p.add_argument("--yil", type=int, action="append")
     p.add_argument("--paralel", type=int, default=2)
+    p.add_argument("--rapor", default="yks_raporu.md", help="rapor dosyasının adı (rapor/ altında)")
     p.add_argument("--hesap", action="store_true", help="2026 matematik sorularını hesap aracıyla çöz ve araçsız sonuçla karşılaştır")
     arg = p.parse_args()
     baslat("yks_test")
@@ -273,7 +274,7 @@ def main():
             ids = {s["id"] for s in secili}
             son = {k["id"]: k for k in jsonl_oku(dosya)}
             sonuclar[ad] = [k for i, k in son.items() if i in ids]
-            rapor_yaz(sonuclar, sorular)
+            rapor_yaz(sonuclar, sorular, arg.rapor)
 
 
 if __name__ == "__main__":
