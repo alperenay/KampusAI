@@ -123,3 +123,10 @@ label.yz-rub__row:hover { background: var(--surface-2); }
 }
 /* Ekran dışındaki uzun listeler çizilmesin (tarayıcı destekliyorsa) */
 .pod-unit, .yz-exam, .tc-row, .kr-job, .outcome { content-visibility: auto; contain-intrinsic-size: auto 72px; }
+
+/* 3B küre: dönmeyi durdur / başlat düğmesi */
+.kr3-spinbtn { position: absolute; right: 8px; top: 8px; z-index: 4; display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 12px; border-radius: var(--radius-pill);
+  border: 1px solid var(--border-strong); background: color-mix(in srgb, var(--surface-solid) 88%, transparent); color: var(--text); font: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer; box-shadow: var(--shadow-soft); touch-action: manipulation; }
+.kr3-spinbtn .ico { width: 15px; height: 15px; }
+.kr3-spinbtn:hover { border-color: var(--accent); }
+.kr3-spinbtn.is-off { background: var(--accent); border-color: var(--accent); color: #fff; }

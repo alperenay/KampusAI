@@ -206,7 +206,7 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
   kadar bağ yapar (H ve halojenler 1, O 2, N ve B 3, C 4); kurala uymayan bağda nedeni yazılır. Molekül tamamlanınca VSEPR'e
   göre gerçek şekline oturur: bağ açısı, ortaklanmamış elektron çiftleri (mor loblar), çift/üçlü bağlar ve polarlık görünür.
 - **3B Dünya Küresi:** Menü › Pratik › 3B Dünya Küresi. Küreyi sürükleyerek çevir, iki parmakla ya da tekerlekle
-  yakınlaştır. Katman çiplerinden ülkeler, başkentler, enlem-boylam ağı, iklim kuşakları, saat dilimleri, levha sınırları
+  yakınlaştır; sağ üstteki **Durdur / Döndür** düğmesi kendi kendine dönmeyi durdurur. Katman çiplerinden ülkeler, başkentler, enlem-boylam ağı, iklim kuşakları, saat dilimleri, levha sınırları
   (yaklaşan kırmızı, uzaklaşan yeşil, yanal sarı), büyük depremler, volkanlar ve tarih olayları açılır. *Gündüz-gece*
   katmanında tarih ve saat kaydırıcısı güneşin gerçek konumunu hesaplar; mevsim düğmeleri ekinoks ve gündönümüne gider.
   Bir ülkeye dokununca adı, başkenti, nüfusu, iklim kuşağı, saat dilimi ve oradaki güneş saati yazılır; arama kutusuyla

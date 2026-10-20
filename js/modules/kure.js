@@ -231,7 +231,7 @@
     stop();
     App.setTitle(T("3B Dünya Küresi", "3D Globe"));
     const Lp = Object.assign({}, Object.fromEntries(LAYERS.map((l) => [l[0], l[2]])), App.prefs.get("kureL", {}) || {});
-    const P = { L: Lp, year: 1453, doy: 172, hour: 12, spin: true };
+    const P = { L: Lp, year: 1453, doy: 172, hour: 12, spin: App.prefs.get("kureSpin", true) !== false };
     view.innerHTML = '<div class="page hm kr3"><div class="hm-head"><div><h1>' + esc(T("3B Dünya Küresi", "3D Globe")) + '</h1><p class="hint">' + esc(T("Döndür, katman aç, bir yere dokun. Hologramda ya da elinle de çevirebilirsin.", "Rotate, toggle layers, tap a place. Works as a hologram and with hand control.")) + '</p></div>' +
         '<div class="hm-head__acts"><button type="button" class="btn btn--sm hm-holo" id="kHolo">✦ ' + esc(T("Hologram", "Hologram")) + "</button></div></div>" +
       '<div class="hm-layout"><div class="hm-stage" id="kStage"><div class="hm-loading">' + esc(T("Küre yükleniyor…", "Loading globe…")) + "</div></div>" +
@@ -242,7 +242,7 @@
           '<label class="hm-ex"><span>' + esc(T("Tarih: ", "Date: ")) + '<b id="kDoyL"></b></span><input type="range" min="1" max="365" value="172" id="kDoy"></label>' +
           '<label class="hm-ex"><span>' + esc(T("Saat (UTC): ", "Hour (UTC): ")) + '<b id="kHrL"></b></span><input type="range" min="0" max="23.75" step="0.25" value="12" id="kHr"></label><p class="hint" id="kSunInfo"></p></div>' +
         '<div class="kr3-year" id="kYear"' + (Lp.tarih ? "" : " hidden") + '><label class="hm-ex"><span>' + esc(T("Yıl: ", "Year: ")) + '<b id="kYL"></b> <small class="hint">± 60</small></span><input type="range" min="-3000" max="2025" value="1453" id="kY"></label></div>' +
-        '<label class="check-row"><input type="checkbox" id="kSpin" checked> ' + esc(T("Kendi kendine dönsün", "Auto-rotate")) + "</label>" +
+        '<label class="check-row"><input type="checkbox" id="kSpin"' + (P.spin ? " checked" : "") + '> ' + esc(T("Kendi kendine dönsün", "Auto-rotate")) + "</label>" +
         '<div class="hm-info" id="kInfo" aria-live="polite"><p class="hint">' + esc(T("Küreye ya da bir işarete dokun.", "Tap the globe or a marker.")) + "</p></div>" +
         '<div class="kr3-legend" id="kLeg"></div>' +
       "</aside></div></div>";
@@ -253,6 +253,20 @@
     const host = $("#kStage"); if (!host || !host.isConnected) return;
     host.innerHTML = "";
     const S3 = App.lab3d.mount(host, "kure", 0.78), S = S3._S;
+    // Dönmeyi durdur / başlat düğmesi (sahnenin sağ üstünde; yan paneldeki onay kutusuyla eşli)
+    const spinBtn = document.createElement("button");
+    spinBtn.type = "button"; spinBtn.className = "kr3-spinbtn"; spinBtn.id = "kSpinBtn";
+    host.appendChild(spinBtn);
+    const setSpin = (on, save) => {
+      P.spin = !!on; $("#kSpin").checked = P.spin;
+      const lab = P.spin ? T("Dönmeyi durdur", "Stop rotation") : T("Döndür", "Rotate");
+      spinBtn.innerHTML = App.icon(P.spin ? "pause" : "play") + "<span>" + esc(P.spin ? T("Durdur", "Stop") : T("Döndür", "Rotate")) + "</span>";
+      spinBtn.title = lab; spinBtn.setAttribute("aria-label", lab); spinBtn.setAttribute("aria-pressed", String(!P.spin));
+      spinBtn.classList.toggle("is-off", !P.spin);
+      if (save) App.prefs.set("kureSpin", P.spin);
+    };
+    spinBtn.addEventListener("click", () => { P.focus = null; setSpin(!P.spin, true); });
+    setSpin(P.spin);
     const st = RUN = { S3, on: true, raf: 0 };
     // Yalnızca bir şey değiştiğinde çizilir (dönme, odaklanma, katman/tarih/saat değişimi, sürükleme, seçim nabzı);
     // küre dururken ekran kartı boşta kalır.
@@ -315,14 +329,14 @@
     $("#kHr").addEventListener("input", (e) => { P.hour = +e.target.value; });
     const yl = () => { $("#kYL").textContent = P.year < 0 ? "MÖ " + (-P.year) : String(P.year); };
     $("#kY").addEventListener("input", (e) => { P.year = +e.target.value; yl(); }); yl();
-    $("#kSpin").addEventListener("change", (e) => { P.spin = e.target.checked; });
+    $("#kSpin").addEventListener("change", (e) => setSpin(e.target.checked, true));
     $("#kQ").addEventListener("change", (e) => {
       const q = String(e.target.value || "").toLocaleLowerCase("tr").trim(); if (!q) return;
       const c = App.data.globe.countries.find((x) => x.n.toLocaleLowerCase("tr") === q) || App.data.globe.countries.find((x) => x.n.toLocaleLowerCase("tr").indexOf(q) === 0 || (x.en || "").toLowerCase().indexOf(q) === 0);
       if (!c) { info('<p class="hint">' + esc(T("Ülke bulunamadı.", "Country not found.")) + "</p>"); return; }
       // ülkenin ortası: en büyük halkanın köşe ortalaması
       const rg = c.r.slice().sort((a, b) => b.length - a.length)[0]; const lon = rg.reduce((s, p) => s + p[0], 0) / rg.length, lat = rg.reduce((s, p) => s + p[1], 0) / rg.length;
-      P.spin = false; $("#kSpin").checked = false; P.focus = { lon, lat }; showGeo(lon, lat);
+      setSpin(false); P.focus = { lon, lat }; showGeo(lon, lat);
       if (window.innerWidth < 860) { const r = S3.el.getBoundingClientRect(); if (r.top < 0 || r.bottom > window.innerHeight) S3.el.scrollIntoView({ block: "center", behavior: "smooth" }); }   // telefonda küre görünür olsun
     });
     $("#kHolo").addEventListener("click", () => S3.holoStart({ side: $("#kSide"), look: "real" }).catch(() => {}));
