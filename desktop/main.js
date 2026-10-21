@@ -201,6 +201,9 @@ async function smokeTest(outFile) {
     const lan = await startLan();
     result.lan = { enabled: lan.enabled, error: lan.error };
     await stopLan();
+    cihazKur();
+    const c = cihaz.bilgi();
+    result.cihaz = { secim: c.secim, oneri: c.oneri, bellek: c.bellek, gomuluMotor: c.gomuluMotor };
     createWindow();
     await new Promise((resolve) => win.webContents.once("did-finish-load", resolve));
     await new Promise((r) => setTimeout(r, 2500));
@@ -213,7 +216,8 @@ async function smokeTest(outFile) {
       return r;
     })()`));
     try { fs.writeFileSync(outFile.replace(/\.json$/, ".png"), (await win.webContents.capturePage()).toPNG()); } catch (e) { result.shotError = String(e); }
-    result.ok = result.app && result.title && result.desktop && result.idb === "indexeddb" && (result.proxyStatus === 200 || result.proxyStatus === 502);
+    result.ok = result.app && result.title && result.desktop && result.idb === "indexeddb" && (result.proxyStatus === 200 || result.proxyStatus === 502)
+      && (process.platform !== "linux" || result.cihaz.gomuluMotor === true);
   } catch (e) { result.error = String(e && e.stack || e); }
   fs.writeFileSync(outFile, JSON.stringify(result, null, 2));
   app.exit(result.ok ? 0 : 1);
