@@ -44,6 +44,21 @@
     return Object.assign({}, c, { light, bg: light ? "#e8eef8" : "#16171b", floor: light ? "#d6deea" : "#22242a", gridA: light ? "#b9c4d6" : "#34373f", gridB: light ? "#cbd4e2" : "#2a2d33" });
   }
 
+  /* Tam ekran (AR/hologram) yardımcıları (v1.32 düzeltmesi): aynı anda iki 3B görünüm olabilir (konu sayfasındaki
+     deney + 3B model). Birinden çıkınca diğeri hâlâ tam ekransa sayfa kaydırması kilitli kalmalı; çıkışta eski
+     yerine konamayan görünüm de sayfanın tepesinde sahipsiz bir şerit olarak kalmamalı (hata bildirimi: DNA modeli
+     pencerenin üstünde kaldı). */
+  function arOpenSync() { document.documentElement.classList.toggle("ar-open", !!document.querySelector("body > .lab__3d.is-ar")); }
+  function restoreOrRemove(el, saved) {
+    if (saved.parent && saved.parent.isConnected && saved.parent !== document.body) saved.parent.insertBefore(el, saved.next && saved.next.parentNode === saved.parent ? saved.next : saved.parent.firstChild);
+    else el.remove();
+  }
+  // Sayfa değişince sahipsiz kalmış tam ekran 3B görünümleri kapat (başlatanın kendi çıkışı çalışmadıysa bile)
+  window.addEventListener("hashchange", () => setTimeout(() => {
+    document.querySelectorAll("body > .lab__3d").forEach((x) => { try { if (x.__stop3d) x.__stop3d(); } catch (e) { /* yok */ } if (x.parentNode === document.body) x.remove(); });
+    arOpenSync();
+  }, 0));
+
   /* ---------------- Sahne ---------------- */
   function mount(host, id, ratio) {
     const THREE = window.THREE, D = DEFS[id], q = quality();
@@ -265,7 +280,7 @@
       try { await video.play(); } catch (e) { /* bazı tarayıcılar kendisi oynatır */ }
       Object.assign(AR, { on: true, stream, video, gyro: false, q0: null, base: null });
       AR.tex = new THREE.VideoTexture(video); AR.tex.encoding = THREE.sRGBEncoding;
-      Object.assign(saved, { bg: scene.background, fog: scene.fog, floor: floor.visible, grid: grid.visible, rs: root.scale.x, rr: root.rotation.y, cam: { r: cam.r, th: cam.th, ph: cam.ph, t: cam.t.clone() }, parent: el.parentNode, next: el.nextSibling });
+      Object.assign(saved, { bg: scene.background, fog: scene.fog, floor: floor.visible, grid: grid.visible, rs: root.scale.x, rr: root.rotation.y, cam: { r: cam.r, th: cam.th, ph: cam.ph, t: cam.t.clone() }, parent: el.parentNode === document.body ? saved.parent : el.parentNode, next: el.parentNode === document.body ? saved.next : el.nextSibling });
       scene.background = AR.tex; scene.fog = null; floor.visible = false; grid.visible = false;
       root.scale.setScalar(0.6);
       // tam ekran katman
@@ -305,8 +320,8 @@
       scene.background = saved.bg; scene.fog = saved.fog; floor.visible = saved.floor; grid.visible = saved.grid;
       root.scale.setScalar(saved.rs); root.rotation.y = saved.rr;
       cam.r = saved.cam.r; cam.th = saved.cam.th; cam.ph = saved.cam.ph; cam.t.copy(saved.cam.t); place();
-      el.classList.remove("is-ar", "is-gyro"); document.documentElement.classList.remove("ar-open");
-      if (saved.parent && saved.parent.isConnected) saved.parent.insertBefore(el, saved.next && saved.next.parentNode === saved.parent ? saved.next : saved.parent.firstChild); else el.remove();
+      el.classList.remove("is-ar", "is-gyro");
+      restoreOrRemove(el, saved); arOpenSync();
       Object.assign(AR, { stream: null, video: null, tex: null, ui: null, side: null, gyro: false, q0: null });
       W = 0; size(); render();
       if (AR.onStop) AR.onStop();
@@ -521,7 +536,7 @@
       try { if (coarse() && window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === "function") await DeviceOrientationEvent.requestPermission(); } catch (e) { /* izinsiz devam */ }
       if (!room) buildRoom();
       Object.assign(HO, { on: true, inline: !!o.inline, eye: [0, 0, 1], src: null, look: o.look || App.prefs.get("holoLook", "holo"), roomKey: "" });
-      Object.assign(saved, { bg: scene.background, fog: scene.fog, floor: floor.visible, grid: grid.visible, rs: root.scale.x, rr: root.rotation.y, cam: { r: cam.r, th: cam.th, ph: cam.ph, t: cam.t.clone() }, parent: el.parentNode, next: el.nextSibling });
+      Object.assign(saved, { bg: scene.background, fog: scene.fog, floor: floor.visible, grid: grid.visible, rs: root.scale.x, rr: root.rotation.y, cam: { r: cam.r, th: cam.th, ph: cam.ph, t: cam.t.clone() }, parent: el.parentNode === document.body ? saved.parent : el.parentNode, next: el.parentNode === document.body ? saved.next : el.nextSibling });
       scene.background = new THREE.Color(0x000000); scene.fog = null; floor.visible = false; grid.visible = false; room.visible = true;
       cam.ph = Math.max(cam.ph, 1.3);                 // pencereden bakar gibi: daha yatay bakış
       const fitR = () => saved.cam.r * Math.max(1, Math.min(2.2, 0.8 / ((window.innerWidth / window.innerHeight) || 1)));   // dik telefonda deney sığsın
@@ -582,10 +597,7 @@
       cam.r = saved.cam.r; cam.th = saved.cam.th; cam.ph = saved.cam.ph; cam.t.copy(saved.cam.t); place();
       const wasInline = HO.inline;
       el.classList.remove("is-ar", "is-holo", "is-real", "is-gyro", "is-inline");
-      if (!wasInline) {
-        document.documentElement.classList.remove("ar-open");
-        if (saved.parent && saved.parent.isConnected) saved.parent.insertBefore(el, saved.next && saved.next.parentNode === saved.parent ? saved.next : saved.parent.firstChild); else el.remove();
-      }
+      if (!wasInline) { restoreOrRemove(el, saved); arOpenSync(); }
       Object.assign(HO, { ui: null, side: null, src: null, inline: false });
       W = 0; size(); camera.updateProjectionMatrix(); render();
       if (HO.onStop) HO.onStop();
@@ -821,6 +833,7 @@
     place();
     try { D.build(S); } catch (e) { console.error("[3B] kurulum", id, e); }
     size();
+    el.__stop3d = () => { arStop(); holoStop(); };
     return {
       el, _S: S,
       frame(p, t, s) { if ((!vis || covered()) && !AR.on && !HO.on) return; try { D.update(S, p, t, s || {}); } catch (e) { console.error("[3B] güncelleme", id, e); } if (!AR.on && !HO.on && W) { cancelAnimationFrame(raf); draw(); } },
