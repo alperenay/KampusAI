@@ -7,11 +7,18 @@
      • İki küçük yerel sunucu başlatılır (yalnızca 127.0.0.1): sohbet ve hafıza vektörleri
      • Sayfa bunlara app://local/cihaz/sohbet/* ve app://local/cihaz/hafiza/* üzerinden ulaşır
 
-   Dosyalar: %APPDATA%\Ders Asistani\yapay-zeka\   (silinince her şey geri alınır)
+   İki model seçeneği (bellek miktarına göre önerilir, kullanıcı değiştirebilir):
+     tam   : Gemma 4 E4B — 12 GB ve üstü bellek, daha doğru
+     hafif : Gemma 4 E2B — 8 GB bellekli okul bilgisayarı / akıllı tahta (Pardus ETAP), ~2 kat hızlı
+   Linux (Pardus): llama-server kurulum paketinin içinde gelir (resources/llama, Debian 12'de derlenir:
+   tools/llama-linux.sh); Windows'ta GitHub'daki resmi sürümden bir kez indirilir.
+
+   Dosyalar: %APPDATA%\Ders Asistani\yapay-zeka\  ·  Linux: ~/.config/Ders Asistani/yapay-zeka/
    İndirme kesilirse kaldığı yerden devam eder (.part dosyaları).
    ========================================================= */
 "use strict";
 const path = require("path");
+const os = require("os");
 const fs = require("fs");
 const net = require("net");
 const { spawn, execFile } = require("child_process");
@@ -20,24 +27,42 @@ const { pipeline } = require("stream/promises");
 
 const HF = "https://huggingface.co";
 /* Lisanslar: Gemma 4 Apache 2.0, bge-m3 MIT, llama.cpp MIT */
-const DOSYALAR = [
-  { id: "sohbet", ad: "gemma-4-E4B-it-Q4_0.gguf", url: HF + "/ggml-org/gemma-4-E4B-it-GGUF/resolve/main/gemma-4-E4B-it-Q4_0.gguf", boyut: 4590807392 },
-  { id: "goz", ad: "mmproj-gemma-4-E4B-it-Q8_0.gguf", url: HF + "/ggml-org/gemma-4-E4B-it-GGUF/resolve/main/mmproj-gemma-4-E4B-it-Q8_0.gguf", boyut: 559874816 },
-  { id: "hafiza", ad: "bge-m3-Q8_0.gguf", url: HF + "/gpustack/bge-m3-GGUF/resolve/main/bge-m3-Q8_0.gguf", boyut: 0 }
-];
-const MODEL_ADI = { sohbet: "gemma4-e4b (cihaz)", hafiza: "bge-m3 (cihaz)" };
+const gg = (depo, ad) => HF + "/ggml-org/" + depo + "/resolve/main/" + ad;
+const HAFIZA = { id: "hafiza", ad: "bge-m3-Q8_0.gguf", url: HF + "/gpustack/bge-m3-GGUF/resolve/main/bge-m3-Q8_0.gguf", boyut: 0 };
+const VARYANT = {
+  tam: { ad: "Gemma 4 E4B", model: "gemma4-e4b (cihaz)", dosyalar: [
+    { id: "sohbet", ad: "gemma-4-E4B-it-Q4_0.gguf", url: gg("gemma-4-E4B-it-GGUF", "gemma-4-E4B-it-Q4_0.gguf"), boyut: 4590807392 },
+    { id: "goz", ad: "mmproj-gemma-4-E4B-it-Q8_0.gguf", url: gg("gemma-4-E4B-it-GGUF", "mmproj-gemma-4-E4B-it-Q8_0.gguf"), boyut: 559874816 },
+    HAFIZA] },
+  hafif: { ad: "Gemma 4 E2B", model: "gemma4-e2b (cihaz)", dosyalar: [
+    { id: "sohbet", ad: "gemma-4-E2B-it-Q4_0.gguf", url: gg("gemma-4-E2B-it-GGUF", "gemma-4-E2B-it-Q4_0.gguf"), boyut: 2841481184 },
+    { id: "goz", ad: "mmproj-gemma-4-E2B-it-Q8_0.gguf", url: gg("gemma-4-E2B-it-GGUF", "mmproj-gemma-4-E2B-it-Q8_0.gguf"), boyut: 557368064 },
+    HAFIZA] }
+};
+const DOSYALAR = VARYANT.tam.dosyalar;            // geriye uyumluluk
+const HAFIF_SINIR = 11.5e9;                       // bundan az bellekli bilgisayara hafif önerilir (8 GB okul bilgisayarları)
+const boyutu = (v) => VARYANT[v].dosyalar.reduce((t, d) => t + (d.boyut || 650e6), 0) + 60e6;
 
 function olustur({ userData, bildir, log }) {
   const kok = path.join(userData, "yapay-zeka");
   const modeller = path.join(kok, "modeller");
   const motor = path.join(kok, "llama");
+  // Linux paketinde motor uygulamanın içinde gelir (indirme yok, Pardus'un glibc sürümüyle uyumlu)
+  const gomulu = process.resourcesPath ? path.join(process.resourcesPath, "llama") : "";
+  const secimDosyasi = path.join(kok, "secim.txt");
+  const oneri = () => (os.totalmem() < HAFIF_SINIR ? "hafif" : "tam");
+  let secim = (() => { try { const v = fs.readFileSync(secimDosyasi, "utf8").trim(); if (VARYANT[v]) return v; } catch (e) { /* yok */ }
+    // Eski sürümden E4B indirilmişse onu koru
+    return fs.existsSync(path.join(modeller, VARYANT.tam.dosyalar[0].ad)) ? "tam" : oneri(); })();
+  const dosyalar = () => VARYANT[secim].dosyalar;
   let durum = { asama: "yok", indirilen: 0, toplam: 0, dosya: "", hata: "", calisiyor: false };
   let iptal = null;
   const sunucular = {};       // { sohbet: {proc, port}, hafiza: {...} }
 
-  const yay = (ek) => { durum = Object.assign({}, durum, ek); bildir(Object.assign({}, durum, { kurulu: kurulu() })); };
+  const yay = (ek) => { durum = Object.assign({}, durum, ek); bildir(bilgi()); };
   const yol = (d) => path.join(modeller, d.ad);
-  const sunucuExe = () => bul(motor, (f) => /^llama-server(\.exe)?$/i.test(path.basename(f)));
+  const exeTest = (f) => /^llama-server(\.exe)?$/i.test(path.basename(f));
+  const sunucuExe = () => (gomulu && bul(gomulu, exeTest)) || bul(motor, exeTest);
 
   function bul(dir, test) {
     if (!fs.existsSync(dir)) return null;
@@ -50,7 +75,7 @@ function olustur({ userData, bildir, log }) {
   }
 
   function kurulu() {
-    return DOSYALAR.every((d) => fs.existsSync(yol(d))) && !!sunucuExe();
+    return dosyalar().every((d) => fs.existsSync(yol(d))) && !!sunucuExe();
   }
 
   /* ---------- İndirme (kaldığı yerden devam) ---------- */
@@ -75,6 +100,7 @@ function olustur({ userData, bildir, log }) {
 
   /** llama.cpp'nin Windows sürümü: Vulkan (NVIDIA/AMD/Intel ekran kartı), yoksa yalnız işlemci */
   async function motorAdresi(sinyal) {
+    if (process.platform !== "win32") throw new Error("Yapay zeka motoru bu kurulumda yok. KampüsAI'ı .deb paketinden yeniden kurun.");
     const r = await fetch("https://api.github.com/repos/ggml-org/llama.cpp/releases?per_page=8",
       { headers: { "User-Agent": "KampusAI", Accept: "application/vnd.github+json" }, signal: sinyal });
     if (!r.ok) throw new Error("llama.cpp sürüm listesi alınamadı (" + r.status + ")");
@@ -106,12 +132,19 @@ function olustur({ userData, bildir, log }) {
     });
   }
 
-  async function indir() {
+  async function indir(v) {
     if (durum.asama === "iniyor") return durum;
+    const onceki = secim;
+    if (v && VARYANT[v] && v !== secim) {            // model değişimi: önce eskisini kapat
+      durdur();
+      secim = v;
+      fs.mkdirSync(kok, { recursive: true });
+      fs.writeFileSync(secimDosyasi, v);
+    }
     iptal = new AbortController();
     fs.mkdirSync(modeller, { recursive: true });
     try {
-      const isler = DOSYALAR.filter((d) => !fs.existsSync(yol(d)));
+      const isler = dosyalar().filter((d) => !fs.existsSync(yol(d)));
       const motorVar = !!sunucuExe();
       const m = motorVar ? null : await motorAdresi(iptal.signal);
       const toplam = isler.reduce((t, d) => t + (d.boyut || 650e6), 0) + (m ? m.boyut : 0);
@@ -130,6 +163,11 @@ function olustur({ userData, bildir, log }) {
         await indirDosya(d.url, yol(d), d.boyut, (n) => yay({ indirilen: biten + n }), iptal.signal);
         biten += fs.statSync(yol(d)).size;
       }
+      // Diğer seçeneğin dosyalarını sil (disk yeri)
+      if (onceki !== secim) {
+        const gerekli = new Set(dosyalar().map((d) => d.ad));
+        VARYANT[onceki].dosyalar.forEach((d) => { if (!gerekli.has(d.ad)) fs.rmSync(yol(d), { force: true }); });
+      }
       yay({ asama: "hazirlaniyor", indirilen: toplam });
       await baslat();
       return durum;
@@ -138,7 +176,7 @@ function olustur({ userData, bildir, log }) {
       let msg = String(e && e.message || e);
       if (/terminated|ECONNRESET|ETIMEDOUT|ENOTFOUND|EAI_AGAIN|fetch failed|socket/i.test(msg)) {
         msg = "İnternet bağlantısı kesildi. Tekrar \"İndir\"e basın; kaldığı yerden devam eder.";
-      } else if (/ENOSPC/i.test(msg)) msg = "Diskte yeterli yer yok (yaklaşık 6 GB gerekir).";
+      } else if (/ENOSPC/i.test(msg)) msg = "Diskte yeterli yer yok (yaklaşık " + Math.ceil(boyutu(secim) / 1e9) + " GB gerekir).";
       yay({ asama: iptalEdildi ? "yok" : "hata", hata: iptalEdildi ? "" : msg });
       return durum;
     } finally { iptal = null; }
@@ -164,8 +202,14 @@ function olustur({ userData, bildir, log }) {
   async function sunucuAc(id, args) {
     const port = await bosPort();
     const exe = sunucuExe();
+    const env = Object.assign({}, process.env);
+    if (process.platform === "linux") {
+      // Paylaşılan kütüphaneler (libggml*, libllama) motorla aynı klasörde
+      env.LD_LIBRARY_PATH = path.dirname(exe) + (env.LD_LIBRARY_PATH ? ":" + env.LD_LIBRARY_PATH : "");
+      try { fs.accessSync(exe, fs.constants.X_OK); } catch (e) { try { fs.chmodSync(exe, 0o755); } catch (e2) { /* salt okunur */ } }
+    }
     const proc = spawn(exe, args.concat(["--host", "127.0.0.1", "--port", String(port)]),
-      { cwd: path.dirname(exe), windowsHide: true, stdio: ["ignore", "ignore", "pipe"] });
+      { cwd: path.dirname(exe), windowsHide: true, stdio: ["ignore", "ignore", "pipe"], env });
     let son = "";
     proc.stderr.on("data", (c) => { son = (son + c.toString()).slice(-2000); });
     proc.on("exit", (code) => {
@@ -185,9 +229,11 @@ function olustur({ userData, bildir, log }) {
     if (sunucular.sohbet && sunucular.hafiza) return durum;
     yay({ asama: "hazirlaniyor", hata: "" });
     try {
-      const d = Object.fromEntries(DOSYALAR.map((x) => [x.id, yol(x)]));
+      const d = Object.fromEntries(dosyalar().map((x) => [x.id, yol(x)]));
+      // Düşük bellekli bilgisayarda (okul bilgisayarı, akıllı tahta) daha küçük bağlam
+      const baglam = os.totalmem() < 9e9 ? "4096" : "8192";
       if (!sunucular.sohbet) {
-        await sunucuAc("sohbet", ["-m", d.sohbet, "--mmproj", d.goz, "-c", "8192", "-np", "1", "-ngl", "99", "--jinja"]);
+        await sunucuAc("sohbet", ["-m", d.sohbet, "--mmproj", d.goz, "-c", baglam, "-np", "1", "-ngl", "99", "--jinja"]);
       }
       if (!sunucular.hafiza) {
         // Hafıza modeli işlemcide: ekran kartı belleği sohbet modeline kalsın
@@ -212,13 +258,19 @@ function olustur({ userData, bildir, log }) {
     vazgec();
     durdur();
     fs.rmSync(kok, { recursive: true, force: true });
+    secim = oneri();
     yay({ asama: "yok", calisiyor: false, indirilen: 0, toplam: 0, hata: "" });
     return durum;
   }
 
   function bilgi() {
-    const boyut = DOSYALAR.reduce((t, d) => t + (d.boyut || 650e6), 0) + 60e6;
-    return Object.assign({}, durum, { kurulu: kurulu(), boyut, modeller: MODEL_ADI, klasor: kok });
+    let bosAlan = 0;
+    try { const st = fs.statfsSync(fs.existsSync(kok) ? kok : path.dirname(kok)); bosAlan = st.bavail * st.bsize; } catch (e) { /* eski Node */ }
+    return Object.assign({}, durum, {
+      kurulu: kurulu(), boyut: boyutu(secim), modeller: { sohbet: VARYANT[secim].model, hafiza: "bge-m3 (cihaz)" }, klasor: kok,
+      bellek: os.totalmem(), secim, oneri: oneri(), bosAlan, gomuluMotor: !!(gomulu && bul(gomulu, exeTest)),
+      secenekler: { tam: { ad: VARYANT.tam.ad, boyut: boyutu("tam") }, hafif: { ad: VARYANT.hafif.ad, boyut: boyutu("hafif") } }
+    });
   }
 
   /** app://local/cihaz/<sohbet|hafiza>/... → yerel sunucu adresi */
@@ -228,4 +280,4 @@ function olustur({ userData, bildir, log }) {
   return { indir, vazgec, baslat, durdur, sil, bilgi, adres };
 }
 
-module.exports = { olustur, DOSYALAR };
+module.exports = { olustur, DOSYALAR, VARYANT };
