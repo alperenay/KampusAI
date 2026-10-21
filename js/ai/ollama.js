@@ -25,8 +25,9 @@
      ~180 token/sn; qwen2.5:14b %64,2 / %67,1, ~31 token/sn; kendi eğittiğimiz kampusai v2 %88,4 / %76,2.
      Gemma 4 fotoğrafı kendisi okur: göz de beyin de aynı model olunca ekran kartında model değişmez
      (fotoğraflı soru ~100 sn → ~18 sn). Ayarlar'da seçim yoksa yüklü olan ilk model kullanılır. */
-  const PREFERRED_CHAT = ["gemma4:e4b", "qwen2.5:14b"];
-  const PREFERRED_VISION = ["gemma4:e4b", "qwen3-vl:8b", "qwen2.5vl:7b"];
+  /* gemma4:12b ("güçlü"): kullanıcı ayrıca yüklediyse onu tercih et (daha doğru, daha yavaş; 8 GB+ ekran kartı) */
+  const PREFERRED_CHAT = ["gemma4:12b", "gemma4:e4b", "qwen2.5:14b"];
+  const PREFERRED_VISION = ["gemma4:12b", "gemma4:e4b", "qwen3-vl:8b", "qwen2.5vl:7b"];
   /* Eski sürümlerin varsayılanları: Ayarlar'da kayıtlıysa "seçilmemiş" sayılır (yeni varsayılana geçilsin) */
   const OLD_DEFAULTS = { aiChatModel: ["qwen2.5:14b"], aiVisionModel: ["qwen2.5vl:7b"] };
   let installedCache = null;             // son /api/tags yanıtı (otomatik model seçimi için)
