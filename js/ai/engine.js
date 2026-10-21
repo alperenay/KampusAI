@@ -38,7 +38,7 @@
   const bridge = (window.desktopApp && window.desktopApp.device) || (platform.native && platform.os === "android" ? {
     phone: true,
     status: async () => nStatus(),
-    download: async (v) => {                     // v: "tam" (E4B) | "hafif" (E2B)
+    download: async (v) => {                     // v: "tam" (E4B) | "hafif" (E2B); Windows'ta "tam" | "guclu" (12B)
       try { if (v && N() && N().aiDownloadVariant) N().aiDownloadVariant(v); else if (N() && N().aiDownload) N().aiDownload(); } catch (e) { /* yok */ }
       return nStatus();
     },
@@ -122,7 +122,8 @@
     get device() { return deviceUsed(); },
     configured: () => true,
     config() {
-      const devChatName = deviceState && deviceState.secim === "hafif" ? "gemma4-e2b (cihaz)" : DEV_MODELS.chat;
+      const devChatName = deviceState && deviceState.secim === "hafif" ? "gemma4-e2b (cihaz)"
+        : deviceState && deviceState.secim === "guclu" ? "gemma4-12b (cihaz)" : DEV_MODELS.chat;
       if (deviceUsed()) return { chatModel: devChatName, visionModel: devChatName, embedModel: devHasEmbed() ? DEV_MODELS.embed : "", direct: true, url: "" };
       const c = App.ollama.config();
       // Göz ve beyin aynı modelse (gemma4) fotoğraf doğrudan beyne gider: ayrı okuma adımı yok

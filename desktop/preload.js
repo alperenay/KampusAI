@@ -14,7 +14,7 @@ contextBridge.exposeInMainWorld("desktopApp", {
   /* Yapay zekayı bu bilgisayara indir (Gemma 4 E4B ya da hafif E2B + bge-m3, Ollama gerekmez) */
   device: {
     status: () => ipcRenderer.invoke("cihaz:bilgi"),
-    download: (v) => ipcRenderer.invoke("cihaz:indir", v === "tam" || v === "hafif" ? v : undefined),
+    download: (v) => ipcRenderer.invoke("cihaz:indir", v === "tam" || v === "hafif" || v === "guclu" ? v : undefined),
     cancel: () => ipcRenderer.invoke("cihaz:vazgec"),
     start: () => ipcRenderer.invoke("cihaz:baslat"),
     remove: () => ipcRenderer.invoke("cihaz:sil"),

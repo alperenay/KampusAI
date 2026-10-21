@@ -10,6 +10,7 @@
    İki model seçeneği (bellek miktarına göre önerilir, kullanıcı değiştirebilir):
      tam   : Gemma 4 E4B — 12 GB ve üstü bellek, daha doğru
      hafif : Gemma 4 E2B — 8 GB bellekli okul bilgisayarı / akıllı tahta (Pardus ETAP), ~2 kat hızlı
+     guclu : Gemma 4 12B — 8 GB+ ekran kartı ya da 16 GB+ bellek; zor sorularda daha doğru (önerilmez, kullanıcı seçer)
    Linux (Pardus): llama-server kurulum paketinin içinde gelir (resources/llama, Debian 12'de derlenir:
    tools/llama-linux.sh); Windows'ta GitHub'daki resmi sürümden bir kez indirilir.
 
@@ -37,6 +38,10 @@ const VARYANT = {
   hafif: { ad: "Gemma 4 E2B", model: "gemma4-e2b (cihaz)", dosyalar: [
     { id: "sohbet", ad: "gemma-4-E2B-it-Q4_0.gguf", url: gg("gemma-4-E2B-it-GGUF", "gemma-4-E2B-it-Q4_0.gguf"), boyut: 2841481184 },
     { id: "goz", ad: "mmproj-gemma-4-E2B-it-Q8_0.gguf", url: gg("gemma-4-E2B-it-GGUF", "mmproj-gemma-4-E2B-it-Q8_0.gguf"), boyut: 557368064 },
+    HAFIZA] },
+  guclu: { ad: "Gemma 4 12B", model: "gemma4-12b (cihaz)", dosyalar: [
+    { id: "sohbet", ad: "gemma-4-12B-it-Q4_0.gguf", url: gg("gemma-4-12B-it-GGUF", "gemma-4-12B-it-Q4_0.gguf"), boyut: 7219673216 },
+    { id: "goz", ad: "mmproj-gemma-4-12B-it-Q8_0.gguf", url: gg("gemma-4-12B-it-GGUF", "mmproj-gemma-4-12B-it-Q8_0.gguf"), boyut: 158987616 },
     HAFIZA] }
 };
 const DOSYALAR = VARYANT.tam.dosyalar;            // geriye uyumluluk
@@ -269,7 +274,7 @@ function olustur({ userData, bildir, log }) {
     return Object.assign({}, durum, {
       kurulu: kurulu(), boyut: boyutu(secim), modeller: { sohbet: VARYANT[secim].model, hafiza: "bge-m3 (cihaz)" }, klasor: kok,
       bellek: os.totalmem(), secim, oneri: oneri(), bosAlan, gomuluMotor: !!(gomulu && bul(gomulu, exeTest)),
-      secenekler: { tam: { ad: VARYANT.tam.ad, boyut: boyutu("tam") }, hafif: { ad: VARYANT.hafif.ad, boyut: boyutu("hafif") } }
+      secenekler: Object.fromEntries(Object.keys(VARYANT).map((k) => [k, { ad: VARYANT[k].ad, boyut: boyutu(k) }]))
     });
   }
 

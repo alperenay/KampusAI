@@ -100,6 +100,7 @@
       (App.platform.desktop && window.desktopApp && window.desktopApp.gpu
         ? '<label class="check-row"><input type="checkbox" id="uiGpu"' + (window.desktopApp.uiGpu ? " checked" : "") + "> <span>" + esc(t("ais.uiGpu")) + '</span></label><p class="hint">' + esc(t("ais.uiGpuHint")) + "</p>" : "") +
       '<label class="check-row"><input type="checkbox" id="aisCalc"' + (App.calc.enabled() ? " checked" : "") + "> <span>" + esc(t("ais.calc")) + '</span></label><p class="hint">' + esc(t("ais.calcHint")) + "</p>" +
+      '<label class="check-row"><input type="checkbox" id="aisWeb"' + (App.prefs.get("aiWeb", true) !== false ? " checked" : "") + "> <span>" + esc(t("ais.web")) + '</span></label><p class="hint">' + esc(t("ais.webHint")) + "</p>" +
       '<div class="ais-test"><button class="btn btn--sm" type="button" data-test="local">' + App.icon("refresh") + esc(t("ais.test")) + '</button><span class="hint" id="aisResult"></span></div>' +
       '<p class="hint">' + esc(t("ais.privacy")) + "</p>";
 
@@ -214,6 +215,7 @@
       set("aiMode", segVal("aiMode"));
       set("aiOncelik", segVal("aiOncelik"));
       App.prefs.set("aiHesap", !!$("#aisCalc").checked);
+      App.prefs.set("aiWeb", !!$("#aisWeb").checked);
       App.prefs.set("aiOncelikSoruldu", true);
       set("aiCloud", segVal("aiCloud"));
       if (el.querySelector('[data-seg="srvSpeed"]')) set("srvSpeed", segVal("srvSpeed"));
@@ -371,7 +373,7 @@
         if (vg && st.secenekler) {
           if (!chosen) chosen = st.secim || st.oneri || "tam";
           vg.hidden = ini;
-          vg.innerHTML = ["hafif", "tam"].map((v) => '<button type="button" role="radio" data-var="' + v + '" aria-checked="' + (v === chosen) + '">' +
+          vg.innerHTML = ["hafif", "tam", "guclu"].filter((v) => st.secenekler[v]).map((v) => '<button type="button" role="radio" data-var="' + v + '" aria-checked="' + (v === chosen) + '">' +
             esc(t("dev.var." + v, { size: gb(st.secenekler[v].boyut) })) + (v === st.oneri ? " · " + esc(t("dev.suggested")) : "") + "</button>").join("");
           $("#devVarHint").hidden = ini;
           $("#devVarHint").textContent = t("dev.varHint." + chosen + (phone ? "" : "Pc"));
