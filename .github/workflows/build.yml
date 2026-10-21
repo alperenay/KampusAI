@@ -406,17 +406,23 @@ jobs:
           M=/opt/KampusAI/resources/llama
           LD_LIBRARY_PATH=$M $M/llama-server --version 2>&1 | tee motor.txt
       - name: Uygulamayı aç (açılış testi)
+        shell: bash
         run: |
           mkdir -p smoke
-          DA_SMOKE_OUT="$PWD/smoke/linux.json" timeout 120 xvfb-run -a /opt/KampusAI/kampusai --no-sandbox || true
-          cat smoke/linux.json
+          DA_SMOKE_OUT="$PWD/smoke/linux.json" timeout 120 xvfb-run -a -s "-screen 0 1280x900x24" /opt/KampusAI/kampusai --no-sandbox > smoke/calisma.log 2>&1 || echo "cikis kodu $?" >> smoke/calisma.log
           cp motor.txt smoke/ 2>/dev/null || true
+          ozet() { echo "::warning title=$1::$(head -c 3500 "$2" 2>/dev/null | sed ':a;N;$!ba;s/%/%25/g;s/\r//g;s/\n/%0A/g')"; }
+          ozet "linux.json" smoke/linux.json
+          ozet "motor" smoke/motor.txt
+          tail -40 smoke/calisma.log > smoke/son.log; ozet "calisma.log" smoke/son.log
           test "$(sed -n 's/.*"ok": *\(true\|false\).*/\1/p' smoke/linux.json | head -1)" = true
       - name: Test sonuçlarını kaydet
         if: always()
-        working-directory: smoke
+        shell: bash
         run: |
+          mkdir -p smoke && cd smoke
           git config --global --add safe.directory "$PWD"
+          git config --global init.defaultBranch main
           git init -q && git checkout -q -b ci-sonuc-linux && git add -A
           git -c user.name=ci -c user.email=ci@users.noreply.github.com commit -qm "run $GITHUB_RUN_NUMBER" || true
           git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-sonuc-linux
