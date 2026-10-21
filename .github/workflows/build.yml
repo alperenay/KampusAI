@@ -387,6 +387,7 @@ jobs:
   linux-test:
     name: Pardus kurulum testi
     needs: linux
+    if: ${{ !cancelled() && needs.linux.result == 'success' }}
     runs-on: ubuntu-latest
     container: debian:12
     steps:
