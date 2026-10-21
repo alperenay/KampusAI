@@ -404,7 +404,7 @@ jobs:
       - name: Yapay zeka motoru çalışıyor mu
         run: |
           M=/opt/KampusAI/resources/llama
-          LD_LIBRARY_PATH=$M $M/llama-server --version 2>&1 | tee motor.txt
+          LD_LIBRARY_PATH=$M $M/llama-server --version > motor.txt 2>&1; KOD=$?; cat motor.txt; exit $KOD
       - name: Uygulamayı aç (açılış testi)
         shell: bash
         run: |
