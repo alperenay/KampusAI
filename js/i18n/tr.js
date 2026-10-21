@@ -147,6 +147,7 @@ App.locales.tr = {
   "cur.onlyTurkish": "Bu içeriğin İngilizcesi henüz eklenmedi; Türkçesi gösteriliyor.",
   "cur.lesson": "Konu Anlatımı",
   "cur.examples": "Örnek Sorular",
+  "cur.visual": "Görsel Anlatım",
   "cur.example": "Örnek {n}.",
   "cur.solution": "Çözüm:",
   "cur.keyFacts": "Hap Bilgi",

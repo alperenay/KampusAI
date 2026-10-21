@@ -1,0 +1,156 @@
+/* =========================================================
+   v131.css — 1.31: konu anlatımı okunabilirliği + görsel anlatım
+   • Ders metni: daha büyük yazı, okunur satır uzunluğu, belirgin başlık hiyerarşisi,
+     taranabilir anahtar kavramlar, ferah madde aralıkları
+   • Görsel Anlatım bölümü (gorsel.js): diyagram, zaman çizelgesi, kavram haritası
+   • Düğme kontrastı ve dokunma hedefleri
+   Yalnızca mevcut değişkenler kullanılır (açık/koyu tema ve ders rengi --subj otomatik uyar).
+   ========================================================= */
+
+/* ---------------- Sayfa başlığı ---------------- */
+.lesson-page .page-head h1 { font-size: clamp(22px, 1.2vw + 16px, 30px) !important; letter-spacing: -.01em; text-wrap: balance; }
+
+/* ---------------- Bölüm kartları ---------------- */
+.lesson { gap: 20px; }
+.lesson__section { padding: 20px 22px; }
+.lesson__section h2 {
+  font-size: 17px; font-weight: 650; margin-bottom: 16px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+@media (max-width: 640px) {
+  .lesson__section { padding: 16px; }
+  .lesson { gap: 16px; }
+}
+
+/* ---------------- Ders metni (okunabilirlik) ---------------- */
+.lesson__body.md {
+  font-size: 16.5px; line-height: 1.78; color: var(--text-2);
+}
+@media (max-width: 640px) { .lesson__body.md { font-size: 16px; line-height: 1.72; } }
+/* Uzun satırlar gözü yorar: paragraf ve maddelerde ~72 karakter */
+.lesson__body.md p, .lesson__body.md li, .lesson__body.md blockquote { max-width: 72ch; }
+.lesson__body.md > * + * { margin-top: 12px; }
+
+/* Başlık hiyerarşisi: metnin ilk başlığı konu başlığıdır (sol ders rengi çizgi); sonraki # ve ## başlıklar
+   bölüm başlığıdır (üst ayırıcı çizgi); ### alt bölümdür (ders renginde). Markdown: # → h3, ## → h4, ### → h5 */
+.lesson__body.md h3, .lesson__body.md h4 {
+  font-size: 1.1em; font-weight: 680; color: var(--text); line-height: 1.4;
+  margin: 28px 0 10px; padding-top: 16px; border-top: 1px solid var(--border);
+}
+.lesson__body.md > h3:first-child {
+  font-size: 1.25em; font-weight: 700; line-height: 1.35;
+  margin: 2px 0 14px; padding: 0 0 0 12px; border-top: 0; border-left: 4px solid var(--subj, var(--accent));
+}
+.lesson__body.md > h4:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.lesson__body.md h5, .lesson__body.md h6 {
+  font-size: 1em; font-weight: 650; color: var(--subj, var(--accent-text)); margin: 20px 0 6px;
+}
+
+/* Maddeler: ferah aralık, ders renginde madde işareti */
+.lesson__body.md ul, .lesson__body.md ol { padding-left: 24px; margin: 10px 0; }
+.lesson__body.md li + li { margin-top: 8px; }
+.lesson__body.md li::marker { color: var(--subj, var(--accent-text)); }
+
+/* Anahtar kavramlar: hafif fosforlu kalem — göz gezdirirken yakalanır, kavram haritasıyla eşleşir */
+.lesson__body.md strong {
+  color: var(--text); font-weight: 680;
+  background: linear-gradient(transparent 64%, color-mix(in srgb, var(--subj, var(--accent)) 24%, transparent) 0);
+  border-radius: 2px; padding: 0 1px;
+}
+.lesson__body.md strong.gv-flash { animation: gv-flash 1.8s var(--ease); }
+@keyframes gv-flash {
+  0%, 35% { background: color-mix(in srgb, var(--subj, var(--accent)) 55%, transparent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--subj, var(--accent)) 30%, transparent); }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+/* Tablolar: zebra satırlar, rahat hücreler, telefonda yatay kaydırma */
+.lesson__body .md-table { margin: 14px 0; border: 1px solid var(--border); border-radius: 12px; }
+.lesson__body.md table { width: 100%; font-size: 15px; line-height: 1.55; }
+.lesson__body.md th, .lesson__body.md td { padding: 9px 12px; border-width: 0 0 1px 0; vertical-align: top; }
+.lesson__body.md tr:last-child td { border-bottom: 0; }
+.lesson__body.md tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--surface-2) 45%, transparent); }
+.lesson__body.md th { color: var(--text); }
+
+/* Örnek sorular: kart içinde ayrık bloklar, çözüm net ayrılır */
+.example {
+  border-left: 4px solid var(--subj, var(--accent)); border-radius: 0 12px 12px 0;
+  background: color-mix(in srgb, var(--surface-2) 40%, transparent); padding: 12px 16px;
+}
+.example + .example { margin-top: 14px; }
+.example__a { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--border-strong); color: var(--text-2); }
+.example__q, .example__a { font-size: 15.5px; }
+
+/* Hap bilgi: onay işaretli, taranabilir liste */
+.lesson__body > ul.facts { list-style: none; padding-left: 0; }
+.lesson__body > ul.facts > li { position: relative; padding-left: 30px; }
+.lesson__body > ul.facts > li::before {
+  content: "✓"; position: absolute; left: 0; top: .1em; width: 20px; height: 20px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 12px; font-weight: 700; color: #fff; background: var(--subj, var(--accent));
+}
+
+/* ---------------- Düğmeler: kontrast ve dokunma hedefi ---------------- */
+.btn { border-color: var(--border-strong); }
+.btn:active:not(:disabled) { transform: translateY(1px); }
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+@media (pointer: coarse) { .btn { min-height: 44px; } .btn--sm { min-height: 38px; } }
+
+/* "Bu sayfada" bağlantıları: daha geniş tıklama alanı */
+.toc a { padding-block: 6px; }
+
+/* =========================================================
+   GÖRSEL ANLATIM (gorsel.js)
+   ========================================================= */
+.gv-grid { display: grid; gap: 18px; }
+.gv-fig {
+  margin: 0; padding: 16px; border: 1px solid var(--border); border-radius: var(--radius);
+  background: color-mix(in srgb, var(--surface-2) 35%, transparent);
+}
+.gv-fig figcaption { margin-top: 12px; font-size: 15px; line-height: 1.6; color: var(--text-2); max-width: 72ch; }
+.gv-fig figcaption b { color: var(--text); }
+.gv-tip {
+  margin-top: 10px; padding: 10px 12px; border-radius: 10px; font-size: 14.5px; line-height: 1.55;
+  background: var(--accent-soft); color: var(--text); max-width: 72ch;
+}
+@media (max-width: 640px) { .gv-fig { padding: 12px; } }
+
+/* SVG: kartı doldurur ama masaüstünde aşırı büyümez */
+.gv-svg { display: block; width: 100%; max-width: 560px; height: auto; margin: 0 auto; overflow: visible; font-family: var(--font); font-size: 12.5px; }
+.gv-fig--harita .gv-svg { max-width: 600px; }
+.gv-svg text { dominant-baseline: auto; }
+.gv-t { fill: var(--text); }
+.gv-m { fill: var(--muted); font-size: 11.5px; }
+.gv-s { fill: var(--subj, var(--accent-text)); font-weight: 650; }
+.gv-a { fill: var(--warn); font-weight: 650; }
+.gv-b { fill: var(--text); font-weight: 700; }
+/* Ders renginin üstündeki yazı: koyu temada ders rengi açık tondadır → koyu yazı; açık temada tersi */
+.gv-on { fill: #111214; font-weight: 700; }
+:root[data-theme="light"] .gv-on { fill: #fff; }
+
+.gv-box  { fill: var(--surface-2); stroke: var(--border-strong); stroke-width: 1.2; }
+.gv-box2 { fill: color-mix(in srgb, var(--surface-3) 80%, transparent); stroke: var(--border-strong); stroke-width: 1.2; }
+.gv-subj { fill: color-mix(in srgb, var(--subj, var(--accent)) 20%, transparent); stroke: var(--subj, var(--accent)); stroke-width: 1.4; }
+.gv-acc  { fill: var(--subj, var(--accent)); stroke: none; }
+.gv-ring { fill: none; stroke: var(--border-strong); stroke-width: 1.3; }
+.gv-dot  { fill: var(--subj, var(--accent)); }
+.gv-l  { stroke: var(--muted); stroke-width: 1.4; fill: none; }
+.gv-l2 { stroke: var(--subj, var(--accent)); stroke-width: 2.4; fill: none; stroke-linecap: round; }
+.gv-l3 { stroke: var(--warn); stroke-width: 2.4; fill: none; stroke-linecap: round; }
+.gv-l4 { stroke: var(--faint); stroke-width: 1.3; stroke-dasharray: 5 5; fill: none; }
+.gv-ph { fill: hsl(calc(var(--h) * 1deg) 70% 55%); }
+
+/* Kavram haritası düğümleri: dokunulabilir */
+.gv-node { cursor: pointer; outline: none; }
+/* düğüm kutuları opak: merkezden gelen kesik çizgi kutunun içinden görünmesin */
+.gv-node rect { fill: color-mix(in srgb, var(--subj, var(--accent)) 18%, var(--surface-solid)); transition: fill .15s, stroke-width .15s; }
+.gv-node:hover rect, .gv-node:focus-visible rect { fill: color-mix(in srgb, var(--subj, var(--accent)) 34%, var(--surface-solid)); stroke-width: 2.6; }
+
+/* Zaman çizelgesi (CSS — her ekran genişliğinde akar) */
+.gv-tl { list-style: none; margin: 4px 0 0; padding: 0 0 0 18px; position: relative; }
+.gv-tl::before { content: ""; position: absolute; left: 5px; top: 6px; bottom: 6px; width: 2px; background: color-mix(in srgb, var(--subj, var(--accent)) 50%, transparent); border-radius: 2px; }
+.gv-tl li { position: relative; display: grid; grid-template-columns: 58px 1fr; gap: 10px; align-items: baseline; padding: 7px 0; }
+.gv-tl li::before { content: ""; position: absolute; left: -18px; top: 13px; width: 12px; height: 12px; border-radius: 50%; background: var(--subj, var(--accent)); box-shadow: 0 0 0 3px var(--surface); }
+.gv-tl__y { font-weight: 700; color: var(--subj, var(--accent-text)); font-variant-numeric: tabular-nums; font-size: 15px; }
+.gv-tl__t { color: var(--text-2); font-size: 15px; line-height: 1.5; }
+
+@media (prefers-reduced-motion: reduce) { .lesson__body.md strong.gv-flash { animation: none; outline: 2px solid var(--subj, var(--accent)); } }
+@media print { .gv-node { cursor: default; } .gv-fig { break-inside: avoid; } }

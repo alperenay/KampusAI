@@ -149,6 +149,7 @@ App.locales.en = {
   "cur.onlyTurkish": "The English version of this content hasn't been added yet, so the Turkish version is shown.",
   "cur.lesson": "Lesson",
   "cur.examples": "Worked Examples",
+  "cur.visual": "Visual Summary",
   "cur.example": "Example {n}.",
   "cur.solution": "Solution:",
   "cur.keyFacts": "Key Facts",
