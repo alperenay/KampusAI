@@ -77,7 +77,7 @@
     const devCard = App.engine.device && App.engine.device.bridge
       ? '<div class="lan-info dev-card"><b>' + App.icon("download") + esc(t(App.engine.device.bridge.phone ? "dev.titlePhone" : "dev.title")) + "</b>" +
         '<p class="hint">' + esc(t(App.engine.device.bridge.phone ? "dev.introPhone" : "dev.intro")) + '</p><p class="hint" id="devWarn" hidden></p>' +
-        (App.engine.device.bridge.phone ? '<div class="lang-switch seg" role="radiogroup" id="devVar" hidden></div><p class="hint" id="devVarHint" hidden></p>' : "") +
+        '<div class="lang-switch seg" role="radiogroup" id="devVar" hidden></div><p class="hint" id="devVarHint" hidden></p>' +
         '<span class="hint" id="devState"></span><progress id="devBar" max="1" value="0" hidden></progress>' +
         '<div class="ais-test"><button class="btn btn--primary btn--sm" type="button" id="devGo"></button>' +
         '<button class="btn btn--sm" type="button" id="devCancel" hidden>' + esc(t("dev.cancel")) + "</button>" +
@@ -107,7 +107,7 @@
       '<p class="hint">' + esc(t("ais.lanIntro")) + "</p>" +
       '<label class="check-row"><input type="checkbox" id="lanOn"> <span>' + esc(t("ais.lanToggle")) + "</span></label>" +
       '<div id="lanInfo" class="lan-info" hidden></div>' +
-      '<p class="hint">' + esc(t("ais.lanFirewall")) + "</p>"
+      '<p class="hint">' + esc(t(window.desktopApp && window.desktopApp.platform === "linux" ? "ais.lanFirewallLinux" : "ais.lanFirewall")) + "</p>"
       : "";
 
     const memTab =
@@ -374,7 +374,7 @@
           vg.innerHTML = ["hafif", "tam"].map((v) => '<button type="button" role="radio" data-var="' + v + '" aria-checked="' + (v === chosen) + '">' +
             esc(t("dev.var." + v, { size: gb(st.secenekler[v].boyut) })) + (v === st.oneri ? " · " + esc(t("dev.suggested")) : "") + "</button>").join("");
           $("#devVarHint").hidden = ini;
-          $("#devVarHint").textContent = t("dev.varHint." + chosen);
+          $("#devVarHint").textContent = t("dev.varHint." + chosen + (phone ? "" : "Pc"));
         }
         const other = vg && st.secenekler && chosen !== st.secim;
         if (vg && st.secenekler && st.secenekler[chosen]) size = st.secenekler[chosen].boyut;

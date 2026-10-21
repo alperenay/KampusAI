@@ -66,6 +66,7 @@
 
   /* Son sürümler (yeniden eskiye) */
   const SURUMLER = () => [
+    ["1.15.0", T("Pardus/Linux sürümü (.deb ve AppImage): internetsiz yapay zekâ motoru paketin içinde; 8 GB bellekli okul bilgisayarları ve akıllı tahtalar için hafif model seçeneği; ETAP akıllı tahtada büyük arayüz ve Ctrl +/− yakınlaştırma.", "Pardus/Linux release (.deb and AppImage): offline AI engine bundled; light model option for 8 GB school computers and smart boards; larger UI on ETAP smart boards and Ctrl +/− zoom.")],
     ["1.14.1", T("Gizlilik ve KVKK bölümü genişletildi; eşitleme verisini sunucudan silme düğmesi.", "Expanded privacy and KVKK section; button to delete sync data from the server.")],
     ["1.14.0", T("Unutma eğrisi (unutulmaya başlayan konular haritada solar, günlük göreve eklenir), zamanlı deneme simülasyonu, haftalık gelişim raporu, öğretmen için anonim sınıf görünümü.", "Forgetting curve, timed exam simulation, weekly report, anonymous class view for teachers.")],
     ["1.13.3", T("İlk sohbette \"Hafıza güncelleniyor\" beklemesi kaldırıldı: hafıza arka planda hazırlanır, cevap hemen başlar.", "No more waiting for memory indexing on the first chat; it is built in the background.")],
@@ -120,7 +121,7 @@
           "KampüsAI is a free, open-source YKS study app built by high-school students as a TÜBİTAK project. Its goal is to give every student an AI teacher that knows the curriculum, knows the student and can work offline.")) + "</p>" +
         '<ul class="about-meta">' +
           "<li><b>" + esc(t("set.version")) + "</b> " + esc(App.version || "dev") + "</li>" +
-          "<li><b>" + esc(T("Platformlar", "Platforms")) + "</b> Windows · Android · iPhone · " + esc(T("web", "web")) + "</li>" +
+          "<li><b>" + esc(T("Platformlar", "Platforms")) + "</b> Windows · Pardus/Linux · Android · iPhone · " + esc(T("web", "web")) + "</li>" +
           "<li><b>" + esc(T("Kaynak kod", "Source code")) + "</b> " + link("https://github.com/alperenay/ders-asistani", "github.com/alperenay/ders-asistani") + "</li>" +
           "<li><b>" + esc(T("Geri bildirim", "Feedback")) + "</b> " + link("https://github.com/alperenay/ders-asistani/issues", T("GitHub üzerinden bildir", "Report on GitHub")) + "</li>" +
         "</ul></div></div>") +
