@@ -2,7 +2,8 @@
 #   • iPhone / web  → GitHub Pages (https://<kullanıcı>.github.io/<repo>/)
 #   • Android       → KampusAI-<sürüm>.apk
 #   • Windows       → KampusAI-Kurulum-<sürüm>.exe
-# APK ve EXE, "Releases" sayfasında yeni bir sürüm olarak yayınlanır.
+#   • Pardus/Linux  → KampusAI-<sürüm>-pardus-amd64.deb + KampusAI-<sürüm>-x86_64.AppImage
+# APK, EXE, DEB ve AppImage "Releases" sayfasında yeni bir sürüm olarak yayınlanır.
 name: Derle ve yayınla
 
 on:
@@ -23,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.29.1
+  APP_VERSION: 1.30.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -323,16 +324,125 @@ jobs:
           path: desktop/dist/*.appx
           if-no-files-found: ignore
 
+  # Pardus / Linux masaüstü için llama-server: Debian 12'de derlenir (Pardus 23 = Debian 12, Pardus 25 = Debian 13)
+  llama-linux:
+    name: Linux yapay zeka motoru
+    runs-on: ubuntu-latest
+    container: debian:12
+    continue-on-error: true
+    steps:
+      - name: Araçlar
+        run: |
+          apt-get update -q
+          apt-get install -y -q --no-install-recommends build-essential cmake ninja-build git ca-certificates libvulkan-dev glslc binutils >/dev/null
+      - uses: actions/checkout@v4
+      - id: cache
+        uses: actions/cache@v4
+        with:
+          path: llama-linux
+          key: llama-linux-${{ env.LLAMA_CPP_TAG }}-${{ hashFiles('tools/llama-linux.sh') }}
+      - name: Derle
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: bash tools/llama-linux.sh "$PWD/llama-linux" "$LLAMA_CPP_TAG"
+      - name: Paketle (çalıştırma izinleri korunsun)
+        run: tar -czf llama-linux.tgz llama-linux
+      - uses: actions/upload-artifact@v4
+        with:
+          name: llama-linux
+          path: llama-linux.tgz
+          if-no-files-found: error
+
+  linux:
+    name: Pardus / Linux (deb + AppImage)
+    needs: [server, llama-linux]
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    env:
+      DA_SERVER_URL: ${{ needs.server.outputs.url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: llama-linux
+      - name: Yapay zeka motorunu yerleştir
+        run: |
+          if [ -f llama-linux.tgz ]; then tar -xzf llama-linux.tgz; else mkdir -p llama-linux; echo "UYARI: motor derlenemedi, paket motorsuz"; fi
+          ls -la llama-linux
+      - name: Web dosyalarını hazırla
+        run: node tools/build-web.mjs desktop/app --version "$APP_VERSION"
+      - name: Paketleri derle
+        working-directory: desktop
+        run: |
+          npm version "$APP_VERSION" --no-git-tag-version --allow-same-version
+          npm install --no-audit --no-fund
+          npx electron-builder --linux deb AppImage --x64 --publish never
+          ls -la dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux
+          path: |
+            desktop/dist/*.deb
+            desktop/dist/*.AppImage
+          if-no-files-found: error
+
+  # Pardus'un temeli Debian 12'de: paketi apt ile kur, uygulamayı ekransız (Xvfb) aç, motoru çalıştır
+  linux-test:
+    name: Pardus kurulum testi
+    needs: linux
+    if: ${{ !cancelled() && needs.linux.result == 'success' }}
+    runs-on: ubuntu-latest
+    container: debian:12
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: linux
+      - name: Kur
+        run: |
+          apt-get update -q
+          apt-get install -y -q ./KampusAI-*-pardus-amd64.deb xvfb xauth git ca-certificates >/dev/null
+          dpkg -s kampusai | grep -E "^(Package|Version|Depends|Recommends):"
+          ls -la /opt/KampusAI/resources/llama || true
+          grep -E "^(Name|Categories|Exec)=" /usr/share/applications/kampusai.desktop
+      - name: Yapay zeka motoru çalışıyor mu
+        run: |
+          M=/opt/KampusAI/resources/llama
+          LD_LIBRARY_PATH=$M $M/llama-server --version > motor.txt 2>&1; KOD=$?; cat motor.txt; exit $KOD
+      - name: Uygulamayı aç (açılış testi)
+        shell: bash
+        run: |
+          mkdir -p smoke
+          DA_SMOKE_OUT="$PWD/smoke/linux.json" timeout 120 xvfb-run -a -s "-screen 0 1280x900x24" /opt/KampusAI/kampusai --no-sandbox > smoke/calisma.log 2>&1 || echo "cikis kodu $?" >> smoke/calisma.log
+          cp motor.txt smoke/ 2>/dev/null || true
+          ozet() { echo "::warning title=$1::$(head -c 3500 "$2" 2>/dev/null | sed ':a;N;$!ba;s/%/%25/g;s/\r//g;s/\n/%0A/g')"; }
+          ozet "linux.json" smoke/linux.json
+          ozet "motor" smoke/motor.txt
+          tail -40 smoke/calisma.log > smoke/son.log; ozet "calisma.log" smoke/son.log
+          test "$(sed -n 's/.*"ok": *\(true\|false\).*/\1/p' smoke/linux.json | head -1)" = true
+      - name: Test sonuçlarını kaydet
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p smoke && cd smoke
+          git config --global --add safe.directory "$PWD"
+          git config --global init.defaultBranch main
+          git init -q && git checkout -q -b ci-sonuc-linux && git add -A
+          git -c user.name=ci -c user.email=ci@users.noreply.github.com commit -qm "run $GITHUB_RUN_NUMBER" || true
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-sonuc-linux
+
   release:
     name: Sürümü yayınla
-    needs: [android, windows]
-    if: ${{ github.ref == 'refs/heads/main' }}   # başka dallarda yalnızca deneme derlemesi: yayın yok
+    needs: [android, windows, linux]
+    if: ${{ github.ref == 'refs/heads/main' && !cancelled() && needs.android.result == 'success' && needs.windows.result == 'success' }}   # başka dallarda yalnızca deneme derlemesi: yayın yok
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
         with:
           path: out
-          pattern: "{android,windows}"
+          pattern: "{android,windows,linux}"
           merge-multiple: true
       - name: Sürüm notu
         run: |
@@ -342,6 +452,8 @@ jobs:
 
           **Windows:** \`KampusAI-Kurulum-$APP_VERSION.exe\` dosyasını indirip çalıştır.
           Uygulama henüz yeni ve kod imzası olmadığı için Windows "**Windows kişisel bilgisayarınızı korudu**" diyebilir: **Ek bilgi → Yine de çalıştır**. Bu bir virüs uyarısı değil, "bu yayımcıyı henüz tanımıyorum" uyarısıdır. Kaynak kodun tamamı bu sayfada açık.
+
+          **Pardus / Linux:** \`KampusAI-$APP_VERSION-pardus-amd64.deb\` dosyasını indirip çift tıkla (Pardus Paket Kurucu açılır) ya da uçbirimde: \`sudo apt install ./KampusAI-$APP_VERSION-pardus-amd64.deb\`. Uygulama menüde **Eğitim** altında "KampüsAI" olarak görünür. İnternetsiz yapay zekâ motoru paketin içinde gelir; 8 GB bellekli okul bilgisayarı ve akıllı tahtalar (ETAP) için "Hafif" model önerilir. Kurulum yapmadan denemek için: \`KampusAI-$APP_VERSION-x86_64.AppImage\` → sağ tık → Özellikler → "Çalıştırılabilir", sonra çift tık.
 
           **Android:** \`KampusAI-$APP_VERSION.apk\` dosyasını telefondan indirip aç. İlk seferde "bilinmeyen kaynaklardan yükleme" izni istenir. Bundan sonraki sürümler eskisinin üzerine kurulur, verilerin silinmez. (1.13.0 ve öncesinden geliyorsan bir kereliğine: Ayarlar → **Yedekle**, eski uygulamayı kaldır, yenisini kur, yedeği geri yükle.)
           Google Play Protect "**Uygulama engellendi**" ya da "Güvenli olmayabilir" derse: **Diğer ayrıntılar → Yine de yükle**. Yalnızca "Anladım" düğmesi görünüyorsa: Play Store → sağ üstte profil → **Play Protect** → ⚙ → "Uygulamaları Play Protect ile tara"yı kurulum süresince kapat, kurduktan sonra yeniden aç. Uygulama Google Play dışından dağıtıldığı için bu uyarı çıkar; uygulama yalnızca kamera, mikrofon ve bildirim izni ister.
@@ -359,3 +471,5 @@ jobs:
           files: |
             out/*.apk
             out/*.exe
+            out/*.deb
+            out/*.AppImage

@@ -30,3 +30,7 @@ egitim/veri/yks/
 # Android yayın imza anahtarı (asla repoya eklenmez; GitHub gizli değerlerinde durur)
 imza-anahtari/
 *.jks
+
+# Linux (Pardus) yapay zeka motoru: CI derler (tools/llama-linux.sh)
+llama-linux/
+llama-linux.tgz

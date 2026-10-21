@@ -1,5 +1,5 @@
 /* =========================================================
-   main.js — KampüsAI Windows uygulaması (Electron)
+   main.js — KampüsAI masaüstü uygulaması (Electron): Windows ve Linux (Pardus)
 
    • Uygulama dosyaları app://local/ adresinden sunulur (sabit adres:
      veriler IndexedDB'de kalıcı olarak saklanır).
@@ -33,7 +33,7 @@ if (!app.requestSingleInstanceLock()) { app.quit(); }
 
 /* ---------------- Ayarlar dosyası ---------------- */
 const SETTINGS_FILE = () => path.join(app.getPath("userData"), "desktop-settings.json");
-let settings = { lanEnabled: false, token: "", bounds: null, uiGpu: true };
+let settings = { lanEnabled: false, token: "", bounds: null, uiGpu: true, zoom: 0 };
 function loadSettings() {
   try { settings = Object.assign(settings, JSON.parse(fs.readFileSync(SETTINGS_FILE(), "utf8"))); } catch (e) { /* ilk açılış */ }
   if (!settings.token) { settings.token = newToken(); saveSettings(); }
@@ -111,6 +111,15 @@ else {
   app.commandLine.appendSwitch("enable-zero-copy");
 }
 
+/* Pardus / Linux: dokunmatik ekran (ETAP akıllı tahta) ve büyük ekranda varsayılan yakınlaştırma */
+const ETAP = process.platform === "linux" && (() => {
+  try { return /etap/i.test(["/etc/os-release", "/etc/lsb-release", "/etc/pardus/pardus-release"].map((f) => { try { return fs.readFileSync(f, "utf8"); } catch (e) { return ""; } }).join("\n")); }
+  catch (e) { return false; }
+})();
+if (process.platform === "linux") app.commandLine.appendSwitch("touch-events", "enabled");
+const ZOOM_MIN = 0.6, ZOOM_MAX = 2;
+const varsayilanZoom = () => settings.zoom || (ETAP ? 1.25 : 1);
+
 ipcMain.on("gpu:get", (e) => { e.returnValue = !!settings.uiGpu; });
 ipcMain.handle("gpu:set", (e, on) => {
   settings.uiGpu = !!on; saveSettings();
@@ -136,7 +145,7 @@ function cihazKur() {
   if (cihaz.bilgi().kurulu) cihaz.baslat();           // önceden indirildiyse arka planda aç
 }
 ipcMain.handle("cihaz:bilgi", () => cihaz.bilgi());
-ipcMain.handle("cihaz:indir", () => cihaz.indir());
+ipcMain.handle("cihaz:indir", (e, v) => cihaz.indir(v));
 ipcMain.handle("cihaz:vazgec", () => { cihaz.vazgec(); return cihaz.bilgi(); });
 ipcMain.handle("cihaz:baslat", () => cihaz.baslat());
 ipcMain.handle("cihaz:sil", () => cihaz.sil());
@@ -158,6 +167,7 @@ function createWindow() {
   });
   if (b.maximized) win.maximize();
   win.once("ready-to-show", () => win.show());
+  win.webContents.on("did-finish-load", () => { if (win && !win.isDestroyed()) win.webContents.setZoomFactor(varsayilanZoom()); });
   win.loadURL(ORIGIN + "/index.html");
 
   // Dış bağlantılar varsayılan tarayıcıda açılır
@@ -173,6 +183,14 @@ function createWindow() {
     if (input.type !== "keyDown") return;
     if (input.key === "F5" || (input.control && input.key.toLowerCase() === "r")) { win.webContents.reload(); e.preventDefault(); }
     if (input.control && input.shift && input.key.toLowerCase() === "i") { win.webContents.toggleDevTools(); e.preventDefault(); }
+    // Ctrl + / Ctrl - / Ctrl 0: yakınlaştırma (akıllı tahta ve büyük ekranlar için; kalıcı)
+    if (input.control && ["+", "=", "-", "0"].includes(input.key)) {   // Türkçe Q klavyede "+" Shift ile
+      const z = win.webContents.getZoomFactor();
+      const yeni = input.key === "0" ? (ETAP ? 1.25 : 1) : Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, Math.round((z + (input.key === "-" ? -0.1 : 0.1)) * 10) / 10));
+      win.webContents.setZoomFactor(yeni);
+      settings.zoom = yeni; saveSettings();
+      e.preventDefault();
+    }
   });
 
   const remember = () => {
@@ -192,6 +210,9 @@ async function smokeTest(outFile) {
     const lan = await startLan();
     result.lan = { enabled: lan.enabled, error: lan.error };
     await stopLan();
+    cihazKur();
+    const c = cihaz.bilgi();
+    result.cihaz = { secim: c.secim, oneri: c.oneri, bellek: c.bellek, gomuluMotor: c.gomuluMotor };
     createWindow();
     await new Promise((resolve) => win.webContents.once("did-finish-load", resolve));
     await new Promise((r) => setTimeout(r, 2500));
@@ -204,7 +225,8 @@ async function smokeTest(outFile) {
       return r;
     })()`));
     try { fs.writeFileSync(outFile.replace(/\.json$/, ".png"), (await win.webContents.capturePage()).toPNG()); } catch (e) { result.shotError = String(e); }
-    result.ok = result.app && result.title && result.desktop && result.idb === "indexeddb" && (result.proxyStatus === 200 || result.proxyStatus === 502);
+    result.ok = result.app && result.title && result.desktop && result.idb === "indexeddb" && (result.proxyStatus === 200 || result.proxyStatus === 502)
+      && (process.platform !== "linux" || result.cihaz.gomuluMotor === true);
   } catch (e) { result.error = String(e && e.stack || e); }
   fs.writeFileSync(outFile, JSON.stringify(result, null, 2));
   app.exit(result.ok ? 0 : 1);

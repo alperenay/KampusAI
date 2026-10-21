@@ -11,10 +11,10 @@ contextBridge.exposeInMainWorld("desktopApp", {
     set: (on) => ipcRenderer.invoke("lan:set", !!on),
     regenerate: () => ipcRenderer.invoke("lan:regenerate")
   },
-  /* Yapay zekayı bu bilgisayara indir (Gemma 4 E4B + bge-m3, Ollama gerekmez) */
+  /* Yapay zekayı bu bilgisayara indir (Gemma 4 E4B ya da hafif E2B + bge-m3, Ollama gerekmez) */
   device: {
     status: () => ipcRenderer.invoke("cihaz:bilgi"),
-    download: () => ipcRenderer.invoke("cihaz:indir"),
+    download: (v) => ipcRenderer.invoke("cihaz:indir", v === "tam" || v === "hafif" ? v : undefined),
     cancel: () => ipcRenderer.invoke("cihaz:vazgec"),
     start: () => ipcRenderer.invoke("cihaz:baslat"),
     remove: () => ipcRenderer.invoke("cihaz:sil"),

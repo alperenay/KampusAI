@@ -15,6 +15,7 @@ Kullanım
   python adim5_test.py --model kampusai --model qwen3.5:9b
 """
 import argparse
+from pathlib import Path
 import hashlib
 import json
 import re
@@ -67,6 +68,9 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--hizli", action="store_true")
     p.add_argument("--model", action="append")
+    p.add_argument("--hakem", help="açık uçlu cevapları puanlayan model (adaylardan biri olmamalı)")
+    p.add_argument("--rapor", default="test_raporu.md", help="rapor dosyasının adı (rapor/ altında)")
+    p.add_argument("--indir", action="store_true", help="yüklü olmayan modelleri Ollama'dan indir")
     arg = p.parse_args()
     baslat("adim5_test")
     a = ayarlar()
@@ -78,7 +82,10 @@ def main():
         raise SystemExit("Test seti yok. Önce adım 1 ve 2'yi çalıştırın.")
     if arg.hizli:
         mc, acik = mc[::max(1, len(mc) // 30)][:30], acik[::max(1, len(acik) // 30)][:30]  # dersler dengeli kalsın
-    hakem = a["hakem_model"]
+    hakem = arg.hakem or a["hakem_model"]
+    if arg.indir:
+        for m in modeller:
+            model_hazirla(m)
     if acik:
         model_hazirla(hakem)
     if a["temel_ollama_model"] in modeller:
@@ -124,7 +131,9 @@ def main():
         for model, s in sonuc.items():
             degisti = False
             for tid, r in s["kayit"].items():
-                if not tid.startswith("acik:") or "puan" in r or tid not in soru_ref:
+                if not tid.startswith("acik:") or tid not in soru_ref:
+                    continue
+                if "puan" in r and r.get("hakem", a["hakem_model"]) == hakem:   # aynı hakemle zaten puanlandı
                     continue
                 t = soru_ref[tid]
                 k, _ = ollama_sohbet(hakem, [{"role": "system", "content": HAKEM_SISTEM},
@@ -133,6 +142,7 @@ def main():
                 karar = (etiket(k, "KARAR") or "").upper()
                 r["karar"] = karar
                 r["puan"] = 1.0 if "DOGRU" in karar else 0.5 if "KISMEN" in karar else 0.0
+                r["hakem"] = hakem
                 degisti = True
             if degisti:  # puanlarla birlikte yeniden yaz
                 s["dosya"].unlink(missing_ok=True)
@@ -162,7 +172,7 @@ def main():
             "soru_sayisi": [len(m), len(o)],
         }
     RAPOR.mkdir(parents=True, exist_ok=True)
-    (RAPOR / "sonuclar.json").write_text(json.dumps(ozet, ensure_ascii=False, indent=1), encoding="utf-8")
+    (RAPOR / (Path(arg.rapor).stem + "_sonuclar.json" if arg.rapor != "test_raporu.md" else "sonuclar.json")).write_text(json.dumps(ozet, ensure_ascii=False, indent=1), encoding="utf-8")
 
     sat = ["# KampüsAI model karşılaştırması", "",
            f"Sorular eğitimde hiç kullanılmadı. Çoktan seçmeli: {len(mc)} soru (şık doğruluğu). "
@@ -178,7 +188,7 @@ def main():
         sat.append(f"| {d} | " + " | ".join(str(z["dersler"].get(d, "–")) for z in ozet.values()) + " |")
     sat += ["", "Not: Hakem model, değerlendirilen modellerden biriyle aynı aileden olabilir; küçük farkları "
                 "kesin sonuç olarak yorumlamayın. Çoktan seçmeli sonuçlar hakemden bağımsızdır."]
-    (RAPOR / "test_raporu.md").write_text("\n".join(sat) + "\n", encoding="utf-8")
+    (RAPOR / arg.rapor).write_text("\n".join(sat) + "\n", encoding="utf-8")
     print("\n".join(sat))
 
 
