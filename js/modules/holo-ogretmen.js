@@ -109,7 +109,7 @@
   }
 
   /* ---------------- Sahne yöneticisi (voice.js kullanır) ---------------- */
-  async function attach(host) {
+  async function attach(host, opts) {
     await App.lab3d.load();
     if (!host.isConnected) return null;
     const S3 = App.lab3d.mount(host, "ogretmen", window.innerHeight < 760 ? 0.62 : 0.75);
@@ -129,7 +129,7 @@
     };
     st.loop();
     App.holoTeacher._last = st;
-    try { await S3.holoStart({ inline: true, src: "face" }); } catch (e) { /* hologramsız da 3B görünür */ }
+    try { await S3.holoStart({ inline: true, src: (opts && opts.src) || "face" }); } catch (e) { /* hologramsız da 3B görünür */ }
     return st;
   }
   function detach(st) { if (!st) return; st.on = false; cancelAnimationFrame(st.raf); try { st.S3.dispose(); } catch (e) { /* yok */ } }

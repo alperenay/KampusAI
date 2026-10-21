@@ -249,7 +249,9 @@
     const chkCard = ct && App.check ? await App.check.cardHtml(key) : "";
     const rootCard = App.roots ? await App.roots.cardHtml(key).catch(() => "") : "";
     const cardsCard = ct && App.cards ? await App.cards.cardHtml(key).catch(() => "") : "";
-    const labCards = (App.labs ? App.labs.sectionHtml(key) : "") + (App.modeller ? App.modeller.cardHtml(key) : "");
+    const fmCard = App.formuller ? await App.formuller.cardHtml(key).catch(() => "") : "";
+    const ksCard = subject.id === "ingilizce" && App.konusma ? App.konusma.cardHtml(unit) : "";
+    const labCards = ksCard + fmCard + (App.labs ? App.labs.sectionHtml(key) : "") + (App.modeller ? App.modeller.cardHtml(key) : "");
     // Okunabilir bölümlerde "Dinle" düğmesi (erişilebilirlik: sesli okuma)
     const section = (icon, title, inner, listen) =>
       '<section class="card lesson__section"' + (listen ? " data-read-scope" : "") + "><h2>" + App.icon(icon) + esc(title) + (listen && App.a11y ? App.a11y.listenBtnHtml() : "") + '</h2><div class="lesson__body md">' + inner + "</div></section>";
