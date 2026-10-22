@@ -573,6 +573,7 @@ App.locales.en = {
   "nav.lab": "Interactive Lab",
   "nav.models": "3D Models",
   "nav.formulas": "Formula Book",
+  "nav.voiceTeacher": "Hologram Teacher",
   "nav.speaking": "English Speaking",
   "nav.written": "Written Exams",
   "nav.more": "More ({n})",

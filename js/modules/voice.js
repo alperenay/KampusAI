@@ -267,4 +267,11 @@
   }
 
   App.voice = { open, close, isOpen: () => !!s, setHolo, _state: () => s && { phase: s.phase, holo: !!s.holo, want: !!s.holoWant } };
+
+  /* #/sesli — "Tüm araçlar"dan doğrudan sesli (hologram) öğretmen: asistan sayfasına geçip öğretmeni açar */
+  App.router.register("sesli", () => {
+    if (App.holoTeacher && App.holoTeacher.supported()) App.prefs.set("voiceHolo", true);
+    location.replace("#/");
+    setTimeout(() => { if (!s) open(); }, 350);
+  });
 })();

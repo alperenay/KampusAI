@@ -571,6 +571,7 @@ App.locales.tr = {
   "nav.lab": "Deney Laboratuvarı",
   "nav.models": "3B Modeller",
   "nav.formulas": "Formül Defteri",
+  "nav.voiceTeacher": "Hologram Öğretmen",
   "nav.speaking": "İngilizce Konuşma",
   "nav.written": "Yazılı Sınavlar",
   "nav.more": "Daha fazla ({n})",

@@ -16,6 +16,7 @@
   const TOOLS = [
     ["bugun", "sun", "nav.today", ["Bugünkü program, görevler ve öneriler", "Today's plan, tasks and suggestions"], "start", "gün plan görev"],
     ["", "sparkle", "nav.newChat", ["Yapay zekâ asistanına soru sor, fotoğraftan çöz", "Ask the AI assistant, solve from a photo"], "start", "asistan sohbet soru yapay zeka"],
+    ["sesli", "mic", "nav.voiceTeacher", ["Konuşarak sor, sesli cevap al; hologram öğretmen ekranda anlatır", "Ask by voice and hear the answer; the hologram teacher explains on screen"], "start", "sesli öğretmen hologram konuş ses mikrofon voice"],
     ["konular", "book", "nav.topics", ["9–12. sınıf konu anlatımları ve testler", "Grade 9–12 lessons and quizzes"], "study", "ders konu anlatım müfredat"],
     ["formuller", "sMath", "nav.formulas", ["Matematik, fizik ve kimya formülleri: ne zaman kullanılır, hızlı tekrar", "Maths, physics and chemistry formulas with quick review"], "study", "formül formul defteri matematik fizik kimya türev integral ivme mol"],
     ["yazili", "pen", "nav.written", ["Maarif Modeli açık uçlu yazılılar: cevap anahtarı ve puanlama ölçütü", "Open-ended written exams with answer keys and rubrics"], "study", "yazılı sınav açık uçlu maarif dönem ortak sınav cevap anahtarı"],

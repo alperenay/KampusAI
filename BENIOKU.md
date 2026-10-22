@@ -105,6 +105,19 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
 
 ## 3a. Çalışma araçları
 
+- **Hologram Öğretmen (sesli öğretmen):** Tüm araçlar › *Hologram Öğretmen* ya da asistanda yazı kutusunun yanındaki
+  mikrofon. Konuşarak sorarsın, öğretmen sesli anlatır; sağ üstteki *✦ Hologram* ile ekranın içinde konuşan 3B öğretmen
+  açılır (yüz takibi için ön kamera ister; izin vermezsen eğme ya da fareyle çalışır).
+- **Canlı AR Çözüm (1.33):** Menü › Çalış › Daha fazla › Canlı AR Çözüm (ya da Tüm araçlar). Kamerayı kâğıttaki soruya tut; soru net ve
+  sabit olunca kendiliğinden çekilir (ya da deklanşöre bas). Yapay zekâ çözer, adımlar kâğıdın üstünde sorunun altına
+  yerleşir; telefon oynasa da yazı kâğıtta kalır. Karanlıkta fener, bulanıkta uyarı çıkar. Yalnızca soru bölgesi
+  yapay zekâya gider.
+- **Çevrendeki Fiziği Bul (1.33):** Günlük hayattan bir sahnenin (salıncak, kaydırak, basket atışı, çaydanlık…)
+  fotoğrafını çek ya da örnek sahne seç. Yapay zekâ ölçüleri tahmin eder (bildiğin ölçüyü yazabilirsin), müfredata uygun
+  bir soru ve çözüm üretir; aynı değerlerle ilgili deney açılır, kaydırıcılarla değiştirilebilir.
+- **Konuşan Kavramlar (1.33):** Kavramın kendisiyle konuş: mitokondri, Mars, DNA, atom… Kavram birinci ağızdan
+  anlatır, hologramda ya da telefonu piramide koyarak görünür; mikrofonla soru sorulabilir. Kendi Gemini anahtarın
+  varsa *Doğal ses* seçilebilir.
 - **İngilizce Konuşma Pratiği (1.32):** Menü › Çalış › İngilizce Konuşma. *Sohbet* ya da *Telaffuz* modunu ve seviyeni
   (A2 · B1 · B2) seç, bir konuya gir (tanışma, okul, boş zaman, kafede sipariş, seyahat, çevre, teknoloji, kariyer,
   sağlık, kutlamalar, serbest sohbet). Hologram öğretmen İngilizce soru sorar; mikrofona dokunup cevap ver, bitirince
