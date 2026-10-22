@@ -82,6 +82,10 @@ html.ar-open, html.ar-open body { overflow: hidden; }
 .lab-ar__btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 .lab-ar__sheet { z-index: 1; position: absolute; left: 0; right: 0; bottom: 0; max-height: 52vh; overflow: auto; pointer-events: auto; padding: 14px 14px calc(var(--nb, 0px) + 74px); border-radius: 18px 18px 0 0; background: color-mix(in srgb, var(--surface-solid) 94%, transparent); color: var(--text); }
 .lab-ar__sheet .lab__side { width: auto; }
+/* v1.33: kâğıda sabitlendi */
+.lab__3d.is-lock .lab-ar__badge { background: #12935f; }
+.lab-ar__btn[data-ar="paper"][aria-pressed="true"], .lab-ar__btn[data-ar="torch"][aria-pressed="true"] { border-color: #3ddc97; box-shadow: inset 0 0 0 1px #3ddc97; }
+.lab-ar__btn[data-ar="paper"][aria-pressed="false"] { opacity: .75; }
 
 /* ---------------- Kariyer Keşfi ---------------- */
 .kr-tabs { margin-bottom: 14px; }

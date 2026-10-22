@@ -278,12 +278,14 @@
         '<div class="lesson">' +
           (!ct ? genCardHtml(t("cur.aiLessonMaking"), t("cur.aiLessonHint")) :
           section("book", t("cur.lesson"), ct && ct.anlatim ? rich(ct.anlatim) : soon, !!(ct && ct.anlatim))) +
+          // Görsel anlatım: konuya özel diyagram, zaman çizelgesi ve kavram haritası (gorsel.js)
+          (ct && App.gorsel ? ((g) => g ? '<section class="card lesson__section gv-section"><h2>' + App.icon("image") + esc(t("cur.visual")) + '</h2><div class="gv-grid">' + g + "</div></section>" : "")(App.gorsel.htmlFor(outcome, subject.id)) : "") +
           (ct && ct.ornekler && ct.ornekler.length
             ? section("target", t("cur.examples"), ct.ornekler.map((o, i) =>
                 '<div class="example"><div class="example__q"><b>' + esc(t("cur.example", { n: i + 1 })) + "</b> " + richInline(o.soru) + "</div>" +
                 '<div class="example__a"><b>' + esc(t("cur.solution")) + "</b> " + richInline(o.cozum) + "</div></div>").join(""), true)
             : "") +
-          (ct ? section("lightbulb", t("cur.keyFacts"), ct.ozet && ct.ozet.length ? "<ul>" + ct.ozet.map((s) => "<li>" + richInline(s) + "</li>").join("") + "</ul>" : soon, !!(ct.ozet && ct.ozet.length)) : "") +
+          (ct ? section("lightbulb", t("cur.keyFacts"), ct.ozet && ct.ozet.length ? '<ul class="facts">' + ct.ozet.map((s) => "<li>" + richInline(s) + "</li>").join("") + "</ul>" : soon, !!(ct.ozet && ct.ozet.length)) : "") +
           labCards + rootCard + cardsCard + quizCard + feyCard + chkCard +
           section("note", t("cur.myNotes"),
             '<textarea class="textarea" id="myNote" placeholder="' + esc(t("cur.notesPh")) + '">' + esc(note ? note.text : "") + "</textarea>" +
@@ -327,6 +329,7 @@
 
     if (App.cards) App.cards.bindCard(view);
     if (App.labs) App.labs.mountIn(view, key);
+    if (App.gorsel) App.gorsel.bind(view);
 
     const btn = view.querySelector("#toggleDone");
     const paint = () => {
