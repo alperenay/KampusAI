@@ -91,6 +91,8 @@ jobs:
         run: node tools/cevre-check.mjs
       - name: Konuşan Kavramlar sınaması
         run: node tools/kavram-check.mjs
+      - name: Kazanım içeriği denetimi (alanlar, kimlikler, KaTeX)
+        run: node tools/content-check.mjs
       - name: Web dosyalarını hazırla
         run: |
           node tools/build-web.mjs dist/web --version "$APP_VERSION"

@@ -18,7 +18,7 @@
     display: grid; place-items: center;
     width: 54px; height: 54px; margin-top: -20px;
     border-radius: 18px; background: var(--fab-grad); color: #fff;
-    box-shadow: var(--fab-shadow), 0 0 0 4px var(--bg);
+    box-shadow: var(--fab-shadow), 0 0 0 4px var(--bg-drawer);
     transition: transform .15s var(--ease);
   }
   .tabbar__fab-btn .ico { width: 26px; height: 26px; color: #fff; }
@@ -48,7 +48,7 @@
 
 /* ---------- Dokunmatik ekranlarda dokunma hedefleri (WCAG 2.5.8: en az 24 px) ---------- */
 @media (pointer: coarse), (max-width: 860px) {
-  .crumbs a { display: inline-flex; align-items: center; min-height: 28px; }
+  .crumbs > * { display: inline-flex; align-items: center; min-height: 28px; }
   .md a.cite { min-width: 24px; height: 24px; border-radius: 12px; font-size: 12px; }
   input[type="checkbox"], input[type="radio"] { width: 20px; height: 20px; }
   .para-type__go { display: inline-flex; align-items: center; min-height: 32px; padding: 0 8px; }
