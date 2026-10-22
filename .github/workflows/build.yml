@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.34.0
+  APP_VERSION: 1.34.1
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -93,6 +93,8 @@ jobs:
         run: node tools/kavram-check.mjs
       - name: Kazanım içeriği denetimi (alanlar, kimlikler, KaTeX)
         run: node tools/content-check.mjs
+      - name: Eski cihaz uyumu (iOS 16.3 düzenli ifade sözdizimi)
+        run: node tools/compat-check.mjs
       - name: Web dosyalarını hazırla
         run: |
           node tools/build-web.mjs dist/web --version "$APP_VERSION"

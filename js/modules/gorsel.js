@@ -423,7 +423,7 @@
         const yil = +m[1];
         if (seen.has(yil) || /^\|/.test(line)) continue;
         // yılın geçtiği cümleden kısa bir etiket
-        const cumle = clean.split(/(?<=[.;])\s+/).find((c) => c.includes(m[1])) || clean;
+        const cumle = clean.replace(/([.;])\s+/g, "$1\u0000").split("\u0000").find((c) => c.includes(m[1])) || clean;
         // Aynı cümlede birden çok yıl varsa ("Sırplar (1804) ve Rumlar (1821)") yılın geçtiği parçayı al
         // yılı Türkçe ekiyle birlikte at ("1187'de", "1925'ten"), boş kalan noktalamayı topla
         const temiz = (x) => x.replace(/\(?\b(1[0-9]{3}|20[0-2][0-9])(?:['’][a-zçğıöşüâîû]+)?\)?[–-]?/gi, "")
