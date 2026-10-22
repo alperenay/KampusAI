@@ -26,6 +26,8 @@
   .tabbar__fab:active .tabbar__fab-btn { transform: scale(.94); }
   .tabbar__fab:focus-visible { outline: none; }
   .tabbar__fab:focus-visible .tabbar__fab-btn { outline: 2px solid var(--accent-text); outline-offset: 3px; }
+  /* Yükselen asistan düğmesi altta yapışkan çubuklara binmesin */
+  .lesson-dock, .sim-nav { bottom: 26px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

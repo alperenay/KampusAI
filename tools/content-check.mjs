@@ -33,6 +33,7 @@ for (const [key, units] of Object.entries(ctx.App.data.content)) {
       for (const t of texts) {
         if (typeof t !== "string") { bad(k, "metin değil"); continue; }
         if (/[\t\b\f\v\r]/.test(t)) bad(k, "kontrol karakteri: " + JSON.stringify(t.match(/.{0,20}[\t\b\f\v\r].{0,10}/)[0]));
+        if (t.includes(String.fromCharCode(92) + '"')) bad(k, "metinde ters bölü + tırnak");
         const html = render(t);
         const m = html.match(/katex-error[^>]*title="([^"]*)"/);
         if (m) bad(k, "KaTeX: " + m[1].slice(0, 120));
