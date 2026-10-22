@@ -77,7 +77,7 @@ def main():
     ollama_ac()
     modeller = arg.model or a["karsilastirilacak_modeller"]
     mc = jsonl_oku(VERI / "test_uretilen.jsonl")
-    acik = jsonl_oku(VERI / "test_insan.jsonl")
+    acik = jsonl_oku(VERI / "test_insan.jsonl") + jsonl_oku(VERI / "test_geri_bildirim.jsonl")  # uygulamadan gelen hata bildirimleri (geri_bildirim.py)
     if not mc and not acik:
         raise SystemExit("Test seti yok. Önce adım 1 ve 2'yi çalıştırın.")
     if arg.hizli:

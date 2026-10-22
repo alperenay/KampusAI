@@ -22,7 +22,10 @@
     App.hydrateIcons(backdrop);
 
     const prevFocus = document.activeElement;
+    let closed = false;
     function close() {
+      if (closed) return;
+      closed = true;
       document.removeEventListener("keydown", onKey);
       backdrop.remove();
       if (prevFocus && prevFocus.focus) prevFocus.focus();
@@ -32,6 +35,8 @@
     document.addEventListener("keydown", onKey);
     backdrop.addEventListener("mousedown", (e) => { if (e.target === backdrop) close(); });
     backdrop.querySelectorAll("[data-close]").forEach((b) => b.addEventListener("click", close));
+    // pencere içindeki uygulama bağlantısına (#/…) basınca pencere kapanır, sayfa arkada açık kalmaz
+    backdrop.addEventListener("click", (e) => { const a = e.target.closest('a[href^="#/"]'); if (a && !a.hasAttribute("data-keep") && !e.defaultPrevented) close(); });
 
     // Telefonda alttan açılan sayfa: başlıktan aşağı çekince kapanır
     const sheet = backdrop.querySelector(".modal"), head = backdrop.querySelector(".modal__head");

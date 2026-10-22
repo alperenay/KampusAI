@@ -1,7 +1,7 @@
 # KampüsAI — Kurulum ve Kullanım
 
 Ders programı, konu anlatımı, TYT-AYT deneme takibi, konu sonu testleri, yanlış defteri, odak sayacı,
-YKS geri sayımı ve hedef netler, yapay zekâyla haftalık plan, benzer soru üretme, Feynman modu, ders hatırlatıcıları, "Bugün" ekranı, hata türü analizi, Sokratik mod ve yapay zeka asistanı.
+YKS geri sayımı ve hedef netler, yapay zekâyla haftalık plan, benzer soru üretme, Feynman modu, ders hatırlatıcıları, "Bugün" ekranı, hata türü analizi, Sokratik mod, İngilizce konuşma pratiği, formül defteri ve yapay zeka asistanı.
 **Windows**, **Android** ve **iPhone** için uygulama olarak gelir. Yapay zeka iki kaynaktan çalışır:
 
 | Kaynak | Nerede çalışır | Ücret | Fotoğraf |
@@ -105,6 +105,26 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
 
 ## 3a. Çalışma araçları
 
+- **İngilizce Konuşma Pratiği (1.32):** Menü › Çalış › İngilizce Konuşma. *Sohbet* ya da *Telaffuz* modunu ve seviyeni
+  (A2 · B1 · B2) seç, bir konuya gir (tanışma, okul, boş zaman, kafede sipariş, seyahat, çevre, teknoloji, kariyer,
+  sağlık, kutlamalar, serbest sohbet). Hologram öğretmen İngilizce soru sorar; mikrofona dokunup cevap ver, bitirince
+  tekrar dokun (sessiz kalınca kendisi de durur). Her cevabın altında **Doğrusu** (değişen sözcükler vurgulu), hatanın
+  Türkçe açıklaması, **telaffuz** edilecek sözcükler (dokununca okunur) ve 0–100 puan çıkar; *Bu cümleyi söyleyerek çalış*
+  düzeltilmiş cümleyi sana tekrarlatır ve **Benim cümlelerim** listesine ekler. *Telaffuz* modunda öğretmen bir cümle
+  okur, sen tekrarlarsın; doğru, yakın ve kaçan sözcükler renklenir, Türkçe konuşanların zorlandığı seslere (th, w, -ed,
+  sessiz harfler…) göre ipucu verilir. 🐢 *Yavaş* öğretmeni yavaşlatır, **TR** Türkçe çeviriyi gösterir, *Ne diyebilirim?*
+  örnek cevap önerir. Yapay zekâ bağlı değilken düzeltmeler cihazdaki kurallarla yapılır; ses tanıma olmayan cihazda
+  cevap yazılabilir. Android'de internetsiz çalışması için telefonun İngilizce ses tanıma paketi indirilmiş olmalı.
+- **Formül Defteri (1.32):** Menü › Çalış › Formül Defteri. Matematik, Fizik ve Kimya'da 162 formül; derse, sınıfa ve
+  üniteye göre gruplu. Her kartta formül, **ne zaman kullanılır** notu, değişkenler ve *Konu anlatımı* bağlantısı var.
+  Arama (ivme, mol, türev…), yıldızlama ve *Yalnızca yıldızlılar*; *Hızlı tekrar* 20 rastgele formülü önce adıyla sorar,
+  "Hatırlamadım" dediklerin yıldızlanır. *Yazdır* sınav öncesi kâğıt özet çıkarır. Konu anlatımı sayfalarında da
+  "Bu konunun formülleri" kartı görünür.
+- **Yapay zekâ cevaplarına geri bildirim (1.32):** Asistanın her cevabının altında 👍 / 👎 vardır; 👎 hata türünü ve
+  istersen doğrusunu sorar. Konu sonu testlerinde *Bitir*den sonra her sorunun altında *Soru hatalı* düğmesi çıkar.
+  Kayıtlar yalnızca cihazda tutulur; Ayarlar › Yapay zeka › *Geri bildirimlerim* sayfasında görülür, silinir ve
+  *Dışa aktar (JSONL)* ile dosyaya yazılır. Bu dosya `egitim/veri/geri_bildirim/` klasörüne konup
+  `python scripts/geri_bildirim.py` çalıştırılınca, hatalı bulunan sorular bir sonraki model testine (adim5) eklenir.
 - **Yazılı Sınavlar (Maarif Modeli):** Menü › Çalış › Yazılı Sınavlar. Sınıfını (9–12) seç, dersine gir. Her derste
   1. ve 2. dönem için birer **açık uçlu** yazılı var (toplam 56 yazılı, 392 soru; Matematik, Fizik, Kimya, Biyoloji,
   Türk Dili ve Edebiyatı, Tarih — 12. sınıfta İnkılap Tarihi — ve Coğrafya). Sorular Türkiye Yüzyılı Maarif Modeli'nin

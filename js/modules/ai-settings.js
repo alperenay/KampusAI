@@ -141,6 +141,7 @@
             seg("srvSpeed", [["fast", T("Hızlı (önerilen)", "Fast (recommended)")], ["smart", T("Daha güçlü", "Stronger")]], v("srvSpeed", "fast")),
             esc(T("Hızlı: cevap hemen başlar. Daha güçlü: zor sorularda biraz daha iyi ama başlaması birkaç saniye sürer.", "Fast starts right away. Stronger is a bit better on hard questions but slower to start."))) + "</div>" : "") +
       devCard +
+      '<a class="subj-continue ais-fb-link" href="#/geribildirim" data-close>' + App.icon("thumbUp") + '<span class="subj-continue__text"><small>' + esc(T("Cevaplara verdiğin 👍 / 👎 ve hata bildirimleri", "Your ratings and error reports")) + "</small><b>" + esc(T("Yapay zekâ geri bildirimlerim", "My AI feedback")) + '</b></span><span class="subj-continue__go">' + App.icon("chevron") + "</span></a>" +
       '<p class="hint ais-privacy">' + App.icon("lock") + esc(T("Kayıtların (denemeler, notlar, program) her zaman bu cihazda saklanır. İnternet seçildiğinde yalnızca sorduğun soru ve gerekirse ilgili kayıtlar gönderilir.", "Your records always stay on this device. Online mode only sends your question and related records.")) + "</p>";
 
     const tabs2 = [["cloud", T("Kendi internet servisim", "My own online service")], ["local", T("Bilgisayarımdaki model (Ollama)", "Model on my computer (Ollama)")]]
