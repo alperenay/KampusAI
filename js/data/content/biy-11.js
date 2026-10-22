@@ -177,6 +177,32 @@ App.data.content["11/biyoloji"] = [
       "Otonom: sempatik vs parasempatik; refleks yayı."
      ]
     }
+   },
+   {
+    "id": "k4",
+    "code": "1.7",
+    "title": {
+     "tr": "Endokrin sistem ve hormonlar",
+     "en": "The endocrine system and hormones"
+    },
+    "content": {
+     "anlatim": "# Endokrin Sistemin Özellikleri\n\n- Hormonlar **kanalsız (iç salgı) bezlerden** doğrudan **kana** salgılanır, hedef hücrelerdeki **reseptörlere** bağlanır.\n- Sinir sistemine göre **yavaş** ama **uzun süreli** etki eder.\n- Salgı genellikle **negatif geri bildirimle** düzenlenir.\n- **Hipotalamus** sinir ve endokrin sistemi bağlar; **hipofizi** yönetir.\n\n# Başlıca Bezler ve Hormonlar\n\n| Bez | Hormon | Görev |\n|---|---|---|\n| **Hipofiz (ön)** | Büyüme hormonu (GH), TSH, ACTH, FSH, LH, prolaktin | Büyüme; diğer bezleri uyarma; süt üretimi |\n| **Hipofiz (arka)** | ADH, oksitosin (hipotalamusta üretilir) | Su geri emilimi; doğumda kasılma, süt salınımı |\n| **Tiroit** | Tiroksin ($T_3$, $T_4$), kalsitonin | Metabolizma hızı; kandaki $Ca^{2+}$'u düşürme |\n| **Paratiroit** | Parathormon | Kandaki $Ca^{2+}$'u artırma |\n| **Böbrek üstü (kabuk)** | Kortizol, aldosteron | Stres, kan şekeri; $Na^+$ geri emilimi |\n| **Böbrek üstü (öz)** | Adrenalin, noradrenalin | \"Savaş ya da kaç\" tepkisi |\n| **Pankreas (Langerhans)** | İnsülin (β), glukagon (α) | Kan şekerini düşürme / yükseltme |\n| **Epifiz** | Melatonin | Biyolojik saat, uyku |\n| **Eşey bezleri** | Testosteron, östrojen, progesteron | Eşeysel özellikler, üreme döngüsü |\n\n# Hormon Bozuklukları\n\n- **Diyabet (şeker hastalığı):** İnsülin eksikliği (Tip 1) ya da hücrelerin insüline duyarsızlığı (Tip 2).\n- **Guatr:** İyot eksikliğinde tiroit bezinin büyümesi.\n- **Devlik / cücelik:** Büyüme çağında GH fazlalığı / eksikliği.",
+     "ornekler": [
+      {
+       "soru": "Yemekten sonra kan şekeri yükselen sağlıklı bir bireyde hangi hormon salgılanır ve ne yapar?",
+       "cozum": "Pankreasın β hücrelerinden **insülin** salgılanır; glikozun hücrelere alınmasını ve karaciğer–kasta **glikojen** olarak depolanmasını sağlar → kan şekeri düşer (negatif geri bildirim)."
+      },
+      {
+       "soru": "Kandaki kalsiyum düzeyini birbirine zıt yönde etkileyen iki hormon hangileridir?",
+       "cozum": "**Kalsitonin** (tiroit) kalsiyumu kemiklere bağlayarak düşürür; **parathormon** (paratiroit) kemikten serbest bırakarak yükseltir."
+      }
+     ],
+     "ozet": [
+      "Hormonlar kanalsız bezlerden kana salgılanır; yavaş, uzun süreli etki.",
+      "İnsülin kan şekerini düşürür, glukagon yükseltir.",
+      "Kalsitonin ↔ parathormon; ADH su geri emilimi."
+     ]
+    }
    }
   ]
  },
@@ -307,6 +333,119 @@ App.data.content["11/biyoloji"] = [
       "Starling: kan basıncı vs ozmotik basınç.",
       "Solunum CO₂ ile pH'yı düzenler.",
       "Nefron: süzülme, geri emilim, salgılama; ADH ve aldosteron."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "2.7",
+    "title": {
+     "tr": "Kalp, kan damarları ve kan grupları",
+     "en": "The heart, blood vessels and blood groups"
+    },
+    "content": {
+     "anlatim": "# Kalbin Yapısı\n\n- **4 odacık:** 2 kulakçık (atriyum) + 2 karıncık (ventrikül). Sağ taraf **kirli (oksijence fakir)**, sol taraf **temiz** kan taşır.\n- **Kapakçıklar** kanın geri dönmesini önler: triküspit (sağ), biküspit/mitral (sol), yarım ay kapakçıkları (atardamar çıkışlarında).\n- Kalp kası **istemsiz** ve **çizgilidir**; uyarı **sinoatriyal (SA) düğümde** kendiliğinden doğar (**otomatizm**) → AV düğüm → His demeti → Purkinje lifleri.\n- En kalın duvar: **sol karıncık** (tüm vücuda kan pompalar).\n\n# Dolaşım Yolları\n\n| Dolaşım | Yol |\n|---|---|\n| **Küçük (akciğer)** | Sağ karıncık → akciğer atardamarı → akciğer → akciğer toplardamarı → sol kulakçık |\n| **Büyük (sistemik)** | Sol karıncık → aort → doku → üst/alt ana toplardamar → sağ kulakçık |\n\n# Damarlar\n\n| Damar | Duvar | Özellik |\n|---|---|---|\n| **Atardamar** | Kalın, esnek | Kanı kalpten götürür; nabız, yüksek basınç |\n| **Kılcal damar** | Tek katlı epitel | Madde alışverişi; en yavaş akış |\n| **Toplardamar** | İnce, kapakçıklı | Kanı kalbe getirir; düşük basınç |\n\n# Kan Grupları (ABO ve Rh)\n\n| Kan grubu | Alyuvardaki antijen | Plazmadaki antikor |\n|---|---|---|\n| A | A | anti-B |\n| B | B | anti-A |\n| AB | A ve B | yok (**genel alıcı**) |\n| 0 | yok (**genel verici**) | anti-A, anti-B |\n- **Rh uyuşmazlığı:** Rh⁻ anne, Rh⁺ bebek (ikinci gebelikte risk) → doğumdan sonra anneye anti-Rh serumu.",
+     "ornekler": [
+      {
+       "soru": "Akciğer atardamarında hangi kan taşınır?",
+       "cozum": "**Kirli (oksijence fakir) kan** — atardamar kanı kalpten **götürdüğü** için böyle adlandırılır; içeriğiyle ilgili değildir."
+      },
+      {
+       "soru": "0 Rh⁻ kan grubuna sahip biri hangi gruplardan kan alabilir?",
+       "cozum": "Yalnızca **0 Rh⁻** kan alabilir; plazmasında anti-A ve anti-B bulunur, Rh antijenine karşı da duyarlıdır."
+      }
+     ],
+     "ozet": [
+      "Kalp: 4 odacık; sağ kirli, sol temiz kan; SA düğüm uyarı üretir.",
+      "Atardamar kalpten götürür, toplardamar getirir.",
+      "AB genel alıcı, 0 genel verici (ABO)."
+     ]
+    }
+   },
+   {
+    "id": "k4",
+    "code": "2.8",
+    "title": {
+     "tr": "Solunum sistemi ve gazların taşınması",
+     "en": "The respiratory system and gas transport"
+    },
+    "content": {
+     "anlatim": "# Solunum Yolları\n\nBurun → yutak → gırtlak → soluk borusu (trakea) → bronş → bronşçuk → **alveol**.\n- Soluk borusu **C şeklindeki kıkırdak halkalarla** açık tutulur; **silli epitel ve mukus** tozu tutar.\n- **Alveol:** tek katlı yassı epitel, etrafı kılcallarla sarılı → gaz değişiminin yeri; yüzey alanı ~**70 m²**.\n\n# Soluk Alıp Verme Mekaniği\n\n| | Soluk alma (inspirasyon) | Soluk verme (ekspirasyon) |\n|---|---|---|\n| Diyafram | **Kasılır, düzleşir** | Gevşer, kubbeleşir |\n| Kaburgalar arası kaslar | Kasılır, göğüs kafesi genişler | Gevşer |\n| Göğüs boşluğu hacmi | Artar → basınç **düşer** | Azalır → basınç **artar** |\n| Enerji | Aktif | Normalde pasif |\n\n# Gazların Taşınması\n\n- **Oksijen:** %97–98'i alyuvarlarda **hemoglobine** bağlı (oksihemoglobin), %2–3'ü plazmada çözünmüş.\n- **Karbon dioksit:** ~%70 **bikarbonat** ($HCO_3^-$) olarak plazmada (karbonik anhidraz enzimi), ~%23 hemoglobine bağlı, ~%7 çözünmüş.\n- Gaz değişimi **difüzyonla**, kısmi basınç farkına göre olur.\n- **Karbon monoksit (CO)** hemoglobine oksijenden ~200 kat sıkı bağlanır → zehirlenme.\n\n# Solunumun Kontrolü\n\n**Omurilik soğanı** (ve pons) kandaki **$CO_2$ ve $H^+$** artışını algılayıp solunum hızını artırır. Solunumun asıl uyaranı $O_2$ azalması değil, **$CO_2$ artışıdır**.",
+     "ornekler": [
+      {
+       "soru": "Soluk alma sırasında diyafram ve göğüs boşluğundaki basınç nasıl değişir?",
+       "cozum": "Diyafram **kasılıp düzleşir**, göğüs hacmi artar, akciğer içi basınç atmosfer basıncının **altına düşer** → hava içeri girer."
+      },
+      {
+       "soru": "Egzersizde solunum hızının artmasını sağlayan temel uyaran nedir?",
+       "cozum": "Kasların artan solunumuyla kanda **$CO_2$ ve $H^+$ derişiminin artması**; omurilik soğanı bunu algılayıp solunumu hızlandırır."
+      }
+     ],
+     "ozet": [
+      "Gaz değişimi alveolde difüzyonla.",
+      "$O_2$ çoğunlukla hemoglobinle, $CO_2$ çoğunlukla bikarbonat olarak taşınır.",
+      "Solunumun ana uyaranı $CO_2$ artışı (omurilik soğanı)."
+     ]
+    }
+   },
+   {
+    "id": "k5",
+    "code": "2.9",
+    "title": {
+     "tr": "Boşaltım sistemi: nefron ve idrar oluşumu",
+     "en": "The excretory system: the nephron and urine formation"
+    },
+    "content": {
+     "anlatim": "# Böbreğin Yapısı\n\n**Kabuk (korteks)**, **öz (medulla)** ve **havuzcuk**. Fonksiyonel birimi **nefron** (her böbrekte ~1 milyon).\n**Nefron:** Bowman kapsülü + glomerulus (kılcal yumağı) → proksimal tüp → **Henle kulpu** → distal tüp → toplama kanalı.\n\n# İdrar Oluşumu (3 aşama)\n\n| Aşama | Yer | Olay |\n|---|---|---|\n| **1. Süzülme (filtrasyon)** | Glomerulus → Bowman kapsülü | Kan basıncıyla su, glikoz, aminoasit, tuzlar, üre süzülür. **Kan hücreleri ve büyük proteinler süzülmez.** |\n| **2. Geri emilim** | Proksimal tüp (en çok), Henle, distal tüp | Glikoz ve aminoasitlerin **tamamı** (aktif), suyun ~%99'u, tuzlar geri alınır |\n| **3. Salgılama (sekresyon)** | Distal tüp | $H^+$, $K^+$, ilaçlar, toksinler kandan tübüle aktarılır |\n\n# Hormonal Kontrol\n\n- **ADH** (hipofiz arka lob): Toplama kanalından **su geri emilimini artırır** → idrar yoğunlaşır. Su az içilince salgı artar.\n- **Aldosteron** (böbrek üstü kabuk): $Na^+$ geri emilimini artırır, $K^+$ salgılanmasını artırır.\n\n# Böbreğin Homeostazideki Rolleri\n\nSu–tuz dengesi, **kan pH'ı** ($H^+$ salgılama, $HCO_3^-$ geri emilimi), azotlu atıkların (üre, ürik asit, kreatinin) atılması, **kan basıncı** (renin) ve alyuvar üretimi (eritropoietin).\n\n# Bozukluklar\n\nBöbrek taşı, böbrek yetmezliği (**diyaliz**, nakil), şeker hastalığında idrarda glikoz (geri emilim kapasitesi aşılır).",
+     "ornekler": [
+      {
+       "soru": "Sağlıklı bir insanın idrarında glikoz bulunmamasının nedeni nedir?",
+       "cozum": "Glikoz glomerulusta süzülür ama **proksimal tüpte tamamı aktif taşımayla geri emilir**. Diyabette kan şekeri bu kapasiteyi aştığı için idrarda glikoz görülür."
+      },
+      {
+       "soru": "Çok terleyen birinde ADH salgısı ve idrar miktarı nasıl değişir?",
+       "cozum": "Vücut su kaybettiği için **ADH salgısı artar**, toplama kanallarından daha çok su geri emilir → idrar **azalır ve yoğunlaşır**."
+      }
+     ],
+     "ozet": [
+      "Nefron: süzülme → geri emilim → salgılama.",
+      "Glikoz ve aminoasitlerin tamamı geri emilir.",
+      "ADH su, aldosteron Na⁺ geri emilimini artırır."
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "u5",
+  "name": {
+   "tr": "3. Tema: Üreme Sistemi ve Embriyonik Gelişim",
+   "en": "Theme 3: Reproductive System and Embryonic Development"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "3.1",
+    "title": {
+     "tr": "İnsanda üreme sistemi, menstrual döngü ve embriyonik gelişim",
+     "en": "Human reproductive system, menstrual cycle and embryonic development"
+    },
+    "content": {
+     "anlatim": "# Üreme Sistemleri\n\n| Erkek | Dişi |\n|---|---|\n| **Testis:** sperm (seminifer tüpçükler) ve testosteron (Leydig hücreleri) | **Ovaryum:** yumurta ve östrojen–progesteron |\n| Epididimis (spermlerin olgunlaşması), sperm kanalı, yardımcı bezler (semen) | **Fallop tüpü:** döllenmenin olduğu yer · **Uterus:** embriyonun geliştiği yer |\n| Sperm üretimi ergenlikten itibaren **sürekli** | Oogenez doğumdan önce başlar, ergenlikte **döngüsel** devam eder |\n\n# Menstrual Döngü (~28 gün)\n\n| Evre | Olaylar | Hormonlar |\n|---|---|---|\n| **Folikül evresi** (1–13. gün) | Folikül olgunlaşır, endometrium kalınlaşmaya başlar | **FSH** ↑, **östrojen** ↑ |\n| **Ovulasyon** (~14. gün) | Folikül çatlar, yumurta serbest kalır | **LH** ani yükselir |\n| **Korpus luteum evresi** (15–28. gün) | Sarı cisim progesteron salgılar, endometrium bakımı | **Progesteron** ↑ |\n| **Menstruasyon** | Döllenme olmazsa korpus luteum körelir, endometrium dökülür | Progesteron ↓ |\n\n# Döllenme ve Gelişim\n\n- **Döllenme:** Fallop tüpünde ($2n = 46$ kromozomlu zigot).\n- **Bölünme (segmentasyon)** → morula → **blastula (blastosist)** → uterusa **tutunma (implantasyon)**, ~7. gün.\n- **Gastrula:** Üç germ tabakası:\n  - **Ektoderm:** deri, sinir sistemi, duyu organları\n  - **Mezoderm:** kas, iskelet, dolaşım, boşaltım, üreme\n  - **Endoderm:** sindirim ve solunum kanalı epiteli, karaciğer, pankreas\n- **Plasenta:** Anne ile embriyo arasında madde alışverişi; **kanlar karışmaz**. hCG hormonu (gebelik testi) salgılanır.\n- **Embriyo** (ilk 8 hafta, organlar oluşur) → **fetüs** (büyüme, olgunlaşma).",
+     "ornekler": [
+      {
+       "soru": "Ovulasyonu tetikleyen hormon ve gebelik testinde aranan hormon hangileridir?",
+       "cozum": "Ovulasyonu **LH**'nin ani yükselişi tetikler. Gebelik testinde plasentadan salgılanan **hCG** aranır."
+      },
+      {
+       "soru": "Sinir sistemi ve kalp kası sırasıyla hangi germ tabakasından gelişir?",
+       "cozum": "Sinir sistemi **ektoderm**, kalp kası **mezoderm** kökenlidir."
+      }
+     ],
+     "ozet": [
+      "Döllenme Fallop tüpünde, gelişim uterusta.",
+      "FSH folikül, LH ovulasyon, progesteron endometrium bakımı.",
+      "Ektoderm sinir–deri, mezoderm kas–iskelet–dolaşım, endoderm sindirim–solunum epiteli."
      ]
     }
    }

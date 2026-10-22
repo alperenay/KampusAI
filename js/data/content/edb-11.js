@@ -236,6 +236,32 @@ App.data.content["11/edebiyat"] = [
       "Diyalog dönüştürmede bağlam korunur, hedef türün kurallarına uyulur."
      ]
     }
+   },
+   {
+    "id": "k4",
+    "code": "3.4",
+    "title": {
+     "tr": "Tanzimat dönemi Türk edebiyatı (1860–1896)",
+     "en": "Turkish literature of the Tanzimat period (1860–1896)"
+    },
+    "content": {
+     "anlatim": "# Dönemin Özellikleri\n\n- Başlangıç: **Tercüman-ı Ahvâl** gazetesi (**1860**, Şinasi – Agâh Efendi). Batı etkisinde **ilk** edebî dönem.\n- Edebiyat **halkı eğitmek** için bir araçtır (**sanat toplum içindir** — I. kuşak).\n- Batı'dan alınan türler: **roman, hikâye, tiyatro, makale, eleştiri, gazete**.\n- Dil sadeleşmesi savunulur ama uygulamada tam başarılamaz.\n\n# İki Kuşak\n\n| | I. Kuşak (toplum için sanat) | II. Kuşak (sanat için sanat) |\n|---|---|---|\n| Temsilciler | **Şinasi, Namık Kemal, Ziya Paşa, Ahmet Mithat** | **Recaizade Mahmut Ekrem, Abdülhak Hâmit Tarhan, Sami Paşazade Sezai** |\n| Konular | Vatan, hürriyet, adalet, eşitlik | Aşk, ölüm, doğa, karamsarlık |\n| Dil | Görece sade | Ağırlaşır |\n\n# İlkler\n\n| Eser | Yazar | İlk |\n|---|---|---|\n| **Şair Evlenmesi** (1860) | Şinasi | İlk yerli tiyatro |\n| **Tercüme-i Manzume** | Şinasi | İlk şiir çevirisi |\n| **Telemak** çevirisi | Yusuf Kâmil Paşa | İlk roman çevirisi |\n| **Letâif-i Rivâyât** | Ahmet Mithat | İlk hikâye denemeleri |\n| **Taaşşuk-ı Talat ve Fitnat** | Şemsettin Sami | İlk yerli roman |\n| **İntibah** | Namık Kemal | İlk edebî roman |\n| **Araba Sevdası** | Recaizade M. Ekrem | İlk realist roman |\n| **Sergüzeşt** | Sami Paşazade Sezai | Esaret konulu romantik roman |\n| **Vatan yahut Silistre** | Namık Kemal | Sahnelenen ünlü vatan oyunu |",
+     "ornekler": [
+      {
+       "soru": "Tanzimat I. kuşak sanatçılarının edebiyatı bir araç olarak görmelerinin nedeni nedir?",
+       "cozum": "Halkı **bilgilendirmek ve eğitmek**, Batı'dan gelen **hürriyet, vatan, eşitlik** düşüncelerini yaymak istemeleri (**toplum için sanat** anlayışı)."
+      },
+      {
+       "soru": "Araba Sevdası'nın Türk edebiyatındaki önemi nedir?",
+       "cozum": "**Recaizade Mahmut Ekrem**'in bu romanı Batılılaşmayı yanlış anlayan züppe tipini (Bihruz Bey) işleyen **ilk realist roman** kabul edilir."
+      }
+     ],
+     "ozet": [
+      "Başlangıç: Tercüman-ı Ahvâl (1860).",
+      "I. kuşak toplum için sanat (Namık Kemal); II. kuşak sanat için sanat (R. M. Ekrem).",
+      "İntibah ilk edebî roman, Araba Sevdası ilk realist roman."
+     ]
+    }
    }
   ]
  },
@@ -309,6 +335,32 @@ App.data.content["11/edebiyat"] = [
       "Belgesel: gerçeği belgeleyen görsel-işitsel tür.",
       "Afiş: slogan, renk, tipografi, görsel, düzen.",
       "Öğretici vs kurmaca; sözlü vs yazılı gelenek."
+     ]
+    }
+   },
+   {
+    "id": "k4",
+    "code": "4.4",
+    "title": {
+     "tr": "Servet-i Fünûn ve Fecr-i Âtî edebiyatı",
+     "en": "Servet-i Fünûn and Fecr-i Âtî literature"
+    },
+    "content": {
+     "anlatim": "# Servet-i Fünûn (Edebiyat-ı Cedîde, 1896–1901)\n\n- **Recaizade Mahmut Ekrem**'in yönetiminde **Servet-i Fünûn** dergisi çevresinde toplandılar; 1901'de dergi kapatılınca dağıldılar.\n- **Sanat için sanat**; **bireysel** konular (aşk, hayal kırıklığı, kaçış, karamsarlık). **II. Abdülhamit baskısı** nedeniyle siyasete girilmez; **\"Hayal–hakikat çatışması\"** ve **\"kaçış\" (firar)** temaları.\n- Dil **ağır**: Arapça–Farsça kelimeler, tamlamalar. **Aruz** ölçüsü, **serbest müstezat**, **sone** ve **terzarima** gibi Batı nazım şekilleri.\n- Şiirde **parnasizm** ve **sembolizm**; düzyazıda **realizm–natüralizm**. **Anlam bir beyitte tamamlanmaz** (bütün güzelliği).\n\n| Sanatçı | Tür | Önemli eserler |\n|---|---|---|\n| **Tevfik Fikret** | Şiir | Rübab-ı Şikeste, Haluk'un Defteri, **Sis**, Tarih-i Kadîm |\n| **Cenap Şahabettin** | Şiir | Tâmât; **sembolist**; \"Elhân-ı Şitâ\" |\n| **Halit Ziya Uşaklıgil** | Roman | **Mai ve Siyah**, **Aşk-ı Memnu** (Batılı teknikte ilk başarılı romanlar) |\n| **Mehmet Rauf** | Roman | **Eylül** (ilk psikolojik roman) |\n| **Hüseyin Cahit Yalçın** | Hikâye, roman | Hayat-ı Muhayyel |\n\n# Fecr-i Âtî (1909–1912)\n\n- \"Geleceğin şafağı\"; **Ahmet Haşim**, **Emin Bülend**, **Refik Halit**. Beyannamesi: \"**Sanat şahsî ve muhteremdir.**\"\n- Servet-i Fünûn'un devamı niteliğinde; kısa ömürlü olur.\n- **Ahmet Haşim** (sembolist): *Göl Saatleri*, *Piyâle*; \"O Belde\", \"Merdiven\". Şiirde **müzikalite** ve **telkin**.",
+     "ornekler": [
+      {
+       "soru": "Servet-i Fünûn sanatçılarının toplumsal konulardan uzak durmasının temel nedeni nedir?",
+       "cozum": "**II. Abdülhamit dönemi sansür ve baskısı**; sanatçılar bireysel konulara yönelmiş, hayal–hakikat çatışması ve **kaçış** temasını işlemiştir."
+      },
+      {
+       "soru": "“Sanat şahsî ve muhteremdir” sözü hangi topluluğun ilkesidir ve topluluğun en önemli şairi kimdir?",
+       "cozum": "**Fecr-i Âtî** topluluğunun; en önemli şairi sembolist **Ahmet Haşim**'dir."
+      }
+     ],
+     "ozet": [
+      "Servet-i Fünûn: sanat için sanat, ağır dil, sone–terzarima, karamsarlık.",
+      "Halit Ziya: Mai ve Siyah, Aşk-ı Memnu; Mehmet Rauf: Eylül.",
+      "Fecr-i Âtî: 'Sanat şahsî ve muhteremdir' — Ahmet Haşim."
      ]
     }
    }

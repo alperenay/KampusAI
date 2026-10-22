@@ -277,7 +277,8 @@
           lastErr = e;
           // Sunucu kota dolunca yedek modelleri zaten kendisi dener: 429 gelirse tekrar denemek boşa kota yer
           const retryable = e && (e.code === "busy" || (e.code === "quota" && !o.server) || e.code === "model-missing") && !e.partial;
-          if (!retryable || !auto || (opts.signal && opts.signal.aborted)) throw e;
+          // Elle seçilmiş model Google'da artık yoksa (eski sürümden kalan ad) otomatik sıradaki modele geç
+          if (!retryable || (!auto && e.code !== "model-missing") || (opts.signal && opts.signal.aborted)) throw e;
           busy[model] = Date.now() + BUSY_MS; saveBusy();
           let list;
           try { list = await ranked(); } catch (e2) { throw e; }

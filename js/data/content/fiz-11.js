@@ -164,6 +164,32 @@ App.data.content["11/fizik"] = [
       "Merkezcil kuvveti gerilme, sürtünme ya da çekim sağlar."
      ]
     }
+   },
+   {
+    "id": "k7",
+    "code": "1.7",
+    "title": {
+     "tr": "Tork, denge ve kütle merkezi",
+     "en": "Torque, equilibrium and centre of mass"
+    },
+    "content": {
+     "anlatim": "# Tork (Kuvvet Momenti)\n\nKuvvetin bir cismi **döndürme etkisidir**:\n$$\\tau = F \\cdot d \\cdot \\sin\\theta \\quad (\\text{N·m})$$\n$d$: dönme noktasına uzaklık (**kuvvet kolu**), $\\theta$: kuvvet ile kol arasındaki açı.\n- Kuvvetin doğrultusu dönme noktasından geçerse tork **sıfırdır**.\n- Saat yönünün tersi genelde **pozitif** alınır.\n\n# Denge Şartları\n\nBir cismin **tam dengede** (ötelenmiyor ve dönmüyor) olması için:\n1. $\\sum \\vec F = 0$ (öteleme dengesi)\n2. $\\sum \\tau = 0$ (dönme dengesi) — **herhangi bir noktaya** göre.\n\n**Kaldıraç prensibi:** $F_1 \\cdot d_1 = F_2 \\cdot d_2$ (tahterevalli, makas, el arabası, cımbız).\n\n# Kütle Merkezi ve Ağırlık Merkezi\n\n- Düzgün ve türdeş cisimlerde **geometrik merkezdedir**.\n- Noktasal kütleler için:\n$$x_{km} = \\frac{m_1x_1 + m_2x_2 + \\dots}{m_1 + m_2 + \\dots}$$\n- Ağırlık merkezi **destek alanının dışına** çıkarsa cisim devrilir.\n\n# Denge Türleri\n\n| Tür | Davranış | Örnek |\n|---|---|---|\n| **Kararlı** | Bırakınca eski konumuna döner | Kâse dibindeki bilye |\n| **Kararsız** | Uzaklaşır | Tepe üstündeki bilye |\n| **Nötr** | Yeni konumda kalır | Düz zemindeki bilye |",
+     "ornekler": [
+      {
+       "soru": "$4$ m uzunluğundaki türdeş tahterevallinin ortasından desteklendiği düşünülürse, $30$ kg'lık çocuk destekten $1{,}2$ m uzakta oturuyor. $40$ kg'lık çocuk dengede kalmak için destekten kaç m uzağa oturmalıdır?",
+       "cozum": "$30\\cdot1{,}2 = 40\\cdot d \\Rightarrow d = 0{,}9$ m (karşı tarafta)."
+      },
+      {
+       "soru": "$x = 0$'da $2$ kg, $x = 6$ m'de $4$ kg noktasal kütleler var. Kütle merkezinin konumu nedir?",
+       "cozum": "$x_{km} = \\frac{2\\cdot0 + 4\\cdot6}{6} = 4$ m."
+      }
+     ],
+     "ozet": [
+      "$\\tau = F\\cdot d\\cdot\\sin\\theta$.",
+      "Denge: $\\sum F = 0$ ve $\\sum\\tau = 0$.",
+      "Ağırlık merkezi destek alanı dışına çıkarsa devrilme."
+     ]
+    }
    }
   ]
  },
@@ -215,6 +241,32 @@ App.data.content["11/fizik"] = [
       "$p=mv$; itme $F\\Delta t=\\Delta p$.",
       "Dış kuvvet yoksa momentum korunur.",
       "Esnek çarpışmada kinetik enerji de korunur."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "2.3",
+    "title": {
+     "tr": "Çarpışmalar ve patlamalar",
+     "en": "Collisions and explosions"
+    },
+    "content": {
+     "anlatim": "# Momentumun Korunumu\n\nDış kuvvet yoksa sistemin toplam momentumu korunur:\n$$m_1\\vec v_1 + m_2\\vec v_2 = m_1\\vec v_1\\,' + m_2\\vec v_2\\,'$$\n\n# Çarpışma Türleri\n\n| Tür | Momentum | Kinetik enerji | Örnek |\n|---|---|---|---|\n| **Esnek** | Korunur | **Korunur** | Bilardo topları, gaz molekülleri |\n| **Esnek olmayan** | Korunur | Kısmen ısı/ses/şekil değiştirmeye dönüşür | Araba kazaları |\n| **Tamamen esnek olmayan** | Korunur | En çok kayıp; cisimler **yapışıp birlikte** hareket eder | Kurşunun bloğa saplanması |\n\n**Yapışık çarpışma:** $m_1v_1 + m_2v_2 = (m_1 + m_2)v_{ortak}$\n\n**Özel durum:** Eşit kütleli iki cisim **merkezî esnek** çarpışırsa **hızlarını değiş tokuş eder**.\n\n# Patlamalar\n\nBaşlangıçta duran sistem: $0 = m_1v_1 + m_2v_2$ → parçalar **zıt yönlerde**, kütleleriyle **ters orantılı** hızlarla hareket eder.\n- Tüfeğin **geri tepmesi**, roket itmesi, buz pateninde itişen iki kişi.\n\n# İki Boyutta Çarpışma\n\nMomentum $x$ ve $y$ bileşenlerinde **ayrı ayrı** korunur (vektörel toplama).",
+     "ornekler": [
+      {
+       "soru": "$2$ kg'lık ve $6$ m/s hızla giden araba, duran $4$ kg'lık arabaya çarpıp yapışıyor. Ortak hız ve kinetik enerji kaybı nedir?",
+       "cozum": "$2\\cdot6 = 6\\cdot v \\Rightarrow v = 2$ m/s. $E_{ilk} = \\frac12\\cdot2\\cdot36 = 36$ J, $E_{son} = \\frac12\\cdot6\\cdot4 = 12$ J → kayıp **24 J**."
+      },
+      {
+       "soru": "Duran $4$ kg'lık tüfekten $0{,}02$ kg'lık mermi $400$ m/s ile çıkıyor. Tüfeğin geri tepme hızı nedir?",
+       "cozum": "$0 = 0{,}02\\cdot400 + 4\\cdot v \\Rightarrow v = -2$ m/s (merminin tersi yönde 2 m/s)."
+      }
+     ],
+     "ozet": [
+      "Tüm çarpışmalarda momentum korunur; kinetik enerji yalnızca esneklerde.",
+      "Yapışık çarpışmada en büyük enerji kaybı.",
+      "Patlamada parçaların momentumları eşit büyüklükte, zıt yönde."
      ]
     }
    }
@@ -290,6 +342,32 @@ App.data.content["11/fizik"] = [
       "Sağ el kuralı; düz telde ve selenoidde alan.",
       "$F=qvB$, $F=BIL$: motor ilkesi.",
       "Faraday $\\varepsilon=-N\\Delta\\Phi/\\Delta t$, Lenz; jeneratör ve transformatör."
+     ]
+    }
+   },
+   {
+    "id": "k4",
+    "code": "3.4",
+    "title": {
+     "tr": "Alternatif akım, transformatörler ve elektrik enerjisinin iletimi",
+     "en": "Alternating current, transformers and power transmission"
+    },
+    "content": {
+     "anlatim": "# Alternatif Akım (AC)\n\nYönü ve büyüklüğü **periyodik** değişen akım; jeneratörde manyetik alanda dönen bobinde **indüksiyonla** üretilir.\n$$\\varepsilon = \\varepsilon_{maks}\\sin(\\omega t), \\qquad \\omega = 2\\pi f$$\n- Türkiye şebekesi: **220–230 V**, **50 Hz**.\n- **Etkin (efektif) değer:** $V_{etkin} = \\dfrac{V_{maks}}{\\sqrt2}$, $I_{etkin} = \\dfrac{I_{maks}}{\\sqrt2}$ (prizdeki 220 V etkin değerdir; tepe değer ≈ 311 V).\n\n# Transformatör\n\nOrtak demir çekirdeğe sarılı iki bobin; **yalnızca AC ile çalışır** (değişen manyetik akı gerekir).\n$$\\frac{V_s}{V_p} = \\frac{N_s}{N_p} = \\frac{I_p}{I_s}$$\n- $N_s > N_p$: **yükseltici**, $N_s < N_p$: **alçaltıcı**.\n- İdeal transformatörde güç korunur: $V_pI_p = V_sI_s$.\n- Verim: $\\eta = \\dfrac{P_{çıkış}}{P_{giriş}}\\times100$; kayıplar **ısı (Joule)**, **girdap (Foucault) akımları** (çekirdek ince levhalardan yapılarak azaltılır).\n\n# Uzak Mesafeye İletim\n\nHattaki ısı kaybı $P_{kayıp} = I^2R$. Aynı gücü taşırken **gerilim yükseltilip akım düşürülür** → kayıp azalır. Santralden çıkışta yükseltici (154–380 kV), şehre girişte alçaltıcı trafolar kullanılır.",
+     "ornekler": [
+      {
+       "soru": "Primer sarımı $400$, sekonder sarımı $20$ olan ideal transformatörün primerine $220$ V uygulanıyor. Sekonder gerilim ve primer akımı $0{,}5$ A ise sekonder akımı nedir?",
+       "cozum": "$V_s = 220\\cdot\\frac{20}{400} = 11$ V (alçaltıcı). $I_s = I_p\\cdot\\frac{N_p}{N_s} = 0{,}5\\cdot20 = 10$ A."
+      },
+      {
+       "soru": "Elektrik iletim hatlarında neden çok yüksek gerilim kullanılır?",
+       "cozum": "Aynı güç $P = VI$ için gerilim artınca **akım azalır**; hattaki ısı kaybı $I^2R$ akımın karesiyle orantılı olduğundan kayıp büyük ölçüde düşer."
+      }
+     ],
+     "ozet": [
+      "$V_{etkin} = V_{maks}/\\sqrt2$; şebeke 50 Hz.",
+      "$V_s/V_p = N_s/N_p = I_p/I_s$.",
+      "Transformatör yalnızca AC ile çalışır; iletimde yüksek gerilim kaybı azaltır."
      ]
     }
    }

@@ -91,6 +91,32 @@ App.data.content["12/inkilap"] = [
       "Kadın hakları 1930–1934; ekonomi: İzmir İktisat Kongresi, Aşar'ın kaldırılması."
      ]
     }
+   },
+   {
+    "id": "k2",
+    "code": "2.2",
+    "title": {
+     "tr": "Atatürk dönemi ekonomisi: İzmir İktisat Kongresi'nden devletçiliğe",
+     "en": "The economy in Atatürk's era: from the İzmir Economic Congress to statism"
+    },
+    "content": {
+     "anlatim": "# Devralınan Ekonomi\n\nSavaşlarla yıkılmış tarım, sermaye ve yetişmiş insan eksikliği; **kapitülasyonların** yarattığı bağımlılık (Lozan'da kaldırıldı); **Osmanlı borçları** (Lozan'da paylaştırıldı, Türkiye'nin payı 1954'te ödenip bitti).\n\n# İzmir İktisat Kongresi (17 Şubat – 4 Mart 1923)\n\n- Çiftçi, tüccar, sanayici ve işçi temsilcileri katıldı; **Misak-ı İktisadi** (ekonomik and) kabul edildi.\n- İlkeler: **yerli malı** kullanımı, **millî sanayinin** kurulması, yabancı sermayeye **millî çıkarlar gözetilerek** izin, tekelciliğe karşı çıkma.\n- Siyasi bağımsızlığın **ekonomik bağımsızlıkla** tamamlanması fikri.\n\n# Liberal Dönem (1923–1929)\n\n- **Türkiye İş Bankası** (1924), **Sanayi ve Maadin Bankası** (1925), **Teşvik-i Sanayi Kanunu** (1927).\n- **Aşar vergisinin kaldırılması** (1925): Köylü üzerindeki ağır yük kalktı.\n- **Kabotaj Kanunu** (1 Temmuz 1926): Türk karasularında taşımacılık hakkı **Türk gemilerine** verildi (Denizcilik ve Kabotaj Bayramı).\n\n# Devletçilik Dönemi (1930–1939)\n\n**1929 Dünya Ekonomik Bunalımı** ve özel sermayenin yetersizliği nedeniyle devlet ekonomiye **doğrudan** girdi.\n- **Merkez Bankası** (1930), **Sümerbank** ve **Etibank** (1933, 1935).\n- **I. Beş Yıllık Sanayi Planı** (1934): Kayseri ve Nazilli bez fabrikaları, Paşabahçe şişe, Karabük demir–çelik (1939'da temeli).\n- Demiryolu yapımı ve yabancı şirketlerin elindeki demiryollarının **millîleştirilmesi** (\"Demir ağlarla ördük anayurdu\").",
+     "ornekler": [
+      {
+       "soru": "Kabotaj Kanunu'nun ekonomik ve siyasi önemi nedir?",
+       "cozum": "Lozan'da kaldırılan kapitülasyonların bir kalıntısı olan yabancı gemilerin Türk limanları arasında taşımacılık hakkı sona erdi; **ekonomik bağımsızlık** pekişti ve Türk denizciliği gelişti."
+      },
+      {
+       "soru": "Türkiye'nin 1930'larda devletçilik politikasına geçmesinin iki temel nedeni nedir?",
+       "cozum": "**1929 Dünya Ekonomik Bunalımı** ve **özel sektörün sermaye ve tecrübe yetersizliği** nedeniyle beklenen sanayileşmenin gerçekleşmemesi."
+      }
+     ],
+     "ozet": [
+      "İzmir İktisat Kongresi (1923): Misak-ı İktisadi, yerli malı, millî sanayi.",
+      "Aşar kaldırıldı (1925); Kabotaj Kanunu (1926).",
+      "1929 bunalımı → devletçilik; Sümerbank, Etibank, I. Beş Yıllık Plan (1934)."
+     ]
+    }
    }
   ]
  },
@@ -122,6 +148,32 @@ App.data.content["12/inkilap"] = [
       "Balkan Antantı 1934, Sadabat 1937, Montrö 1936, Hatay 1939."
      ]
     }
+   },
+   {
+    "id": "k2",
+    "code": "3.2",
+    "title": {
+     "tr": "Montrö, Balkan Antantı, Sadabat Paktı ve Hatay'ın anavatana katılması",
+     "en": "Montreux, the Balkan Pact, the Saadabad Pact and Hatay joining the homeland"
+    },
+    "content": {
+     "anlatim": "# Dönemin Ortamı\n\n1930'larda **İtalya** (Akdeniz'de yayılmacılık) ve **Almanya**'nın saldırgan politikaları; Türkiye **güvenlik ve bölgesel işbirliği** arar. Türkiye **Milletler Cemiyeti**'ne **1932**'de katıldı.\n\n# Balkan Antantı (9 Şubat 1934)\n\n**Türkiye, Yunanistan, Romanya, Yugoslavya** → Balkan sınırlarının korunması, İtalya'ya karşı ortak güvenlik. (Bulgaristan ve Arnavutluk katılmadı.)\n\n# Montrö Boğazlar Sözleşmesi (20 Temmuz 1936)\n\n- Lozan'da Boğazlar **uluslararası komisyona** bırakılmış, kıyılar silahsızlandırılmıştı.\n- Montrö ile **komisyon kaldırıldı**, Boğazların yönetimi ve güvenliği **Türkiye'ye** geçti; kıyılar **silahlandırılabildi**.\n- Barışta ticaret gemileri serbest; savaş gemilerine **tonaj ve süre sınırlaması**; Türkiye savaşta ya da savaş tehdidinde Boğazları **istediği gibi** kapatabilir.\n- **Lozan'ın eksik kalan maddelerinden biri barışçı yolla** düzeltildi.\n\n# Sadabat Paktı (8 Temmuz 1937)\n\n**Türkiye, İran, Irak, Afganistan** → doğu sınırlarının güvenliği, saldırmazlık, iç işlerine karışmama.\n\n# Hatay Meselesi\n\n- 1921 **Ankara Antlaşması** ile Fransa'ya bırakılan İskenderun Sancağı'na özel yönetim tanınmıştı.\n- Fransa'nın Suriye'den çekilme kararı (1936) → Atatürk meseleyi **Milletler Cemiyeti**'ne taşıdı.\n- **1937:** Hatay iç işlerinde bağımsız, dış işlerinde Suriye'ye bağlı → **1938 Hatay Devleti** (cumhurbaşkanı Tayfur Sökmen) → **29 Haziran 1939** Hatay Meclisi kararıyla **Türkiye'ye katıldı**.\n- Misak-ı Millî sınırları içinde olup Atatürk döneminde başlayan son mesele; Atatürk'ün vefatından sonra tamamlandı.",
+     "ornekler": [
+      {
+       "soru": "Montrö Boğazlar Sözleşmesi'nin Lozan Antlaşması'ndaki hangi düzenlemeyi değiştirdiğini açıklayınız.",
+       "cozum": "Lozan'da Boğazlar **uluslararası bir komisyona** bırakılmış ve kıyılar **silahsızlandırılmıştı**. Montrö ile komisyon kaldırıldı, Boğazlar üzerinde **tam Türk egemenliği** sağlandı ve kıyılar silahlandırılabildi."
+      },
+      {
+       "soru": "Balkan Antantı ve Sadabat Paktı'nın ortak amacı nedir?",
+       "cozum": "Türkiye'nin **batı (Balkan)** ve **doğu** sınırlarını güvence altına almak; bölgesel barış ve işbirliğiyle **saldırgan devletlere** karşı güvenlik sağlamak."
+      }
+     ],
+     "ozet": [
+      "Türkiye 1932'de Milletler Cemiyeti'ne katıldı.",
+      "Balkan Antantı 1934, Montrö 1936, Sadabat 1937.",
+      "Hatay: 1938 Hatay Devleti, 29 Haziran 1939 anavatana katılım."
+     ]
+    }
    }
   ]
  },
@@ -151,6 +203,32 @@ App.data.content["12/inkilap"] = [
       "Türkiye: aktif tarafsızlık ve denge politikası.",
       "Etkiler: Millî Korunma Kanunu, karne, Varlık Vergisi.",
       "Çok partili hayat: DP 1946; 1950'de iktidar değişimi."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "4.2",
+    "title": {
+     "tr": "Demokrat Parti dönemi (1950–1960)",
+     "en": "The Democrat Party era (1950–1960)"
+    },
+    "content": {
+     "anlatim": "# Çok Partili Hayata Geçiş\n\n- **1945:** Nuri Demirağ'ın **Millî Kalkınma Partisi** (ilk başarılı muhalefet partisi denemesi).\n- **7 Ocak 1946:** **Demokrat Parti** (Celal Bayar, Adnan Menderes, Fuat Köprülü, Refik Koraltan — **Dörtlü Takrir**).\n- **1946 seçimleri:** **açık oy – gizli tasnif** → CHP kazandı.\n- **1950 seçimleri:** **gizli oy – açık tasnif** ile yapıldı; **14 Mayıs 1950**'de DP iktidara geldi; Celal Bayar cumhurbaşkanı, Adnan Menderes başbakan oldu.\n\n# İç Politika\n\n- **Ezanın yeniden Arapça okunmasına** izin (1950).\n- Tarımda **makineleşme** (Marshall yardımlarıyla traktör), karayolu yapımı, köyden kente **göç** ve **gecekondulaşma**.\n- 1954'ten sonra enflasyon, dış borç, döviz sıkıntısı; muhalefete yönelik kısıtlamalar (**Tahkikat Komisyonu**, basına baskı) gerginliği artırdı.\n- **27 Mayıs 1960 askerî darbesi:** DP iktidarı devrildi; **Yassıada** yargılamaları sonunda Menderes, Zorlu ve Polatkan idam edildi.\n\n# Dış Politika\n\n- **Kore Savaşı'na asker gönderilmesi** (1950) → **NATO üyeliği** (18 Şubat **1952**).\n- **Balkan Paktı** (1953–54: Türkiye, Yunanistan, Yugoslavya), **Bağdat Paktı** (1955; Irak çekilince **CENTO**).\n- Batı bloğuyla yakın ilişki; ABD ile ikili anlaşmalar.",
+     "ornekler": [
+      {
+       "soru": "1946 ve 1950 seçimlerinin yapılış biçimi arasındaki fark nedir?",
+       "cozum": "1946: **açık oy, gizli tasnif** (oylar açık verilip gizli sayıldı) — demokratik bulunmadı. 1950: **gizli oy, açık tasnif** → daha adil seçim; DP iktidara geldi."
+      },
+      {
+       "soru": "Türkiye'nin NATO'ya girişini kolaylaştıran gelişme nedir?",
+       "cozum": "**Kore Savaşı**'na (1950) BM kuvvetleri içinde asker göndermesi; Türkiye **1952**'de NATO üyesi oldu."
+      }
+     ],
+     "ozet": [
+      "DP 1946'da kuruldu; 14 Mayıs 1950'de iktidar.",
+      "Kore Savaşı → NATO (1952); Bağdat Paktı (1955).",
+      "27 Mayıs 1960 darbesi; Yassıada yargılamaları."
      ]
     }
    }
@@ -206,6 +284,32 @@ App.data.content["12/inkilap"] = [
       "AB yolu: Ankara Antlaşması 1963, Gümrük Birliği 1996, adaylık 1999."
      ]
     }
+   },
+   {
+    "id": "k3",
+    "code": "5.3",
+    "title": {
+     "tr": "1960–1980 askerî müdahaleleri ve anayasalar",
+     "en": "Military interventions and constitutions of 1960–1980"
+    },
+    "content": {
+     "anlatim": "# 1961 Anayasası\n\n27 Mayıs sonrası **Kurucu Meclis** hazırladı; **halkoylamasıyla** kabul edilen **ilk** anayasa.\n- **İki meclisli** yapı: Millet Meclisi + **Cumhuriyet Senatosu**.\n- **Anayasa Mahkemesi** kuruldu; **Millî Güvenlik Kurulu** (MGK) anayasaya girdi.\n- Geniş **temel hak ve özgürlükler** (sendika, grev, toplu sözleşme), üniversite ve TRT'ye **özerklik**.\n- **Devlet Planlama Teşkilatı** (1960) → **Beş Yıllık Kalkınma Planları** (1963'ten itibaren).\n\n# 12 Mart 1971 Muhtırası\n\nSiyasi istikrarsızlık, öğrenci olayları ve şiddet ortamında Genelkurmay'ın **muhtıra** vermesiyle **Demirel hükûmeti çekildi**; \"partiler üstü\" hükûmetler kuruldu, anayasada özgürlükleri kısıtlayan değişiklikler yapıldı.\n\n# 12 Eylül 1980 Askerî Darbesi\n\n1970'lerde **sağ–sol çatışmaları**, ekonomik kriz (karaborsa, kuyruklar), **cumhurbaşkanı seçilememesi** (1980'de aylarca) → Kenan Evren başkanlığında **Millî Güvenlik Konseyi** yönetime el koydu; partiler kapatıldı.\n\n# 1982 Anayasası\n\n- **7 Kasım 1982** halkoylamasıyla kabul edildi (hâlen yürürlükte, birçok kez değiştirildi).\n- **Tek meclisli** yapı; **güçlendirilmiş cumhurbaşkanı**, Yükseköğretim Kurulu (**YÖK**), Devlet Güvenlik Mahkemeleri.\n- **1983 seçimleri** → **Turgut Özal** (ANAP) hükûmeti; **24 Ocak 1980 kararları** ile başlayan serbest piyasa ekonomisine geçiş hızlandı.",
+     "ornekler": [
+      {
+       "soru": "1961 Anayasası'nı daha önceki anayasalardan ayıran iki özellik nedir?",
+       "cozum": "**Halkoylamasıyla kabul edilen ilk anayasa**dır; **Anayasa Mahkemesi** ve **Cumhuriyet Senatosu** (iki meclisli yapı) gibi kurumlar getirmiş, temel hak ve özgürlükleri genişletmiştir."
+      },
+      {
+       "soru": "24 Ocak 1980 kararlarının amacı nedir?",
+       "cozum": "İthal ikamesine dayalı korumacı ekonomiden **dışa açık, serbest piyasa ekonomisine** geçiş; ihracatı teşvik, kur ayarlaması, fiyat serbestisi."
+      }
+     ],
+     "ozet": [
+      "1961 Anayasası: halkoylaması, Anayasa Mahkemesi, iki meclis.",
+      "12 Mart 1971 muhtırası; 12 Eylül 1980 darbesi.",
+      "1982 Anayasası: tek meclis, YÖK; Özal ve serbest piyasa."
+     ]
+    }
    }
   ]
  },
@@ -235,6 +339,32 @@ App.data.content["12/inkilap"] = [
       "Küreselleşme: fırsatlar ve riskler (kriz, salgın, iklim).",
       "Bölgesel gelişmeler: Balkanlar, Kafkasya, Orta Doğu, Rusya–Ukrayna.",
       "Türkiye: BM, NATO, TDT, G20; AB adaylığı; Atatürk ilkelerinin güncelliği."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "6.2",
+    "title": {
+     "tr": "Türkiye'nin güncel dış politika meseleleri: Ege, Kıbrıs, Kafkasya ve Orta Doğu",
+     "en": "Current foreign policy issues of Türkiye: Aegean, Cyprus, Caucasus and Middle East"
+    },
+    "content": {
+     "anlatim": "# Ege Sorunları (Yunanistan ile)\n\n- **Karasuları:** Türkiye 6 mil uygular; Yunanistan'ın 12 mile çıkarma girişimini Türkiye **savaş sebebi (casus belli)** sayar (TBMM, 1995).\n- **Kıta sahanlığı**, **hava sahası** (10 mil iddiası), **adaların silahlandırılması** (Lozan ve Paris antlaşmalarına aykırı), **egemenliği belirsiz ada ve kayalıklar** (Kardak krizi, 1996).\n\n# Kıbrıs Meselesi\n\n- 1960 **Kıbrıs Cumhuriyeti** (Türkiye, Yunanistan, İngiltere garantör) → 1963 **Kanlı Noel** saldırıları.\n- **1974:** Yunan cuntası destekli darbe (Enosis girişimi) üzerine Türkiye garantörlük hakkıyla **Kıbrıs Barış Harekâtı** düzenledi.\n- **1983:** **Kuzey Kıbrıs Türk Cumhuriyeti (KKTC)**; Rauf Denktaş. **2004 Annan Planı**: Türkler \"evet\", Rumlar \"hayır\" dedi; Rum kesimi AB'ye üye oldu.\n- Doğu Akdeniz'de **enerji kaynakları ve deniz yetki alanları** tartışması.\n\n# Kafkasya ve Türk Dünyası\n\n- SSCB'nin dağılmasıyla (1991) bağımsızlığını kazanan Türk cumhuriyetlerini **ilk tanıyan** Türkiye oldu; **TİKA** (1992), **Türk Devletleri Teşkilatı** (2021).\n- **Karabağ:** Ermenistan işgali (1990'lar) → **2020'de Azerbaycan** topraklarının büyük bölümünü geri aldı.\n- Bakü–Tiflis–Ceyhan petrol boru hattı (2006), TANAP.\n\n# Orta Doğu\n\nKörfez Savaşı (1991), Irak'ın işgali (2003), **Suriye iç savaşı** (2011 sonrası) ve **göç** meselesi; terörle mücadele.",
+     "ornekler": [
+      {
+       "soru": "Türkiye 1974'te Kıbrıs'a hangi hukuki dayanakla müdahale etmiştir?",
+       "cozum": "**1960 Garanti Antlaşması**'ndan doğan **garantörlük hakkı**; Yunanistan destekli darbe adayı Yunanistan'a bağlama (Enosis) amacı taşıyordu."
+      },
+      {
+       "soru": "Türkiye'nin Ege'de karasularının 12 mile çıkarılmasına karşı çıkmasının nedeni nedir?",
+       "cozum": "Ege'nin yarı kapalı bir deniz olması ve çok sayıda Yunan adası nedeniyle 12 mil uygulaması Türkiye'nin **açık denize çıkışını** ve uluslararası sularını büyük ölçüde engeller; TBMM bunu **savaş sebebi** saymıştır."
+      }
+     ],
+     "ozet": [
+      "Ege: karasuları, kıta sahanlığı, hava sahası, adaların silahlandırılması.",
+      "Kıbrıs: 1974 Barış Harekâtı, 1983 KKTC, 2004 Annan Planı.",
+      "Türk cumhuriyetlerini ilk tanıyan Türkiye; Karabağ 2020."
      ]
     }
    }

@@ -123,8 +123,9 @@
     const inDeck = new Set(have.map((r) => r.key));
     const removed = new Set(App.prefs.get("cardsRemoved", []));
     const keys = new Set();
-    prog.forEach((p) => { if (p.done) keys.add(p.id); });
-    quizzes.forEach((q) => { if (q.key) keys.add(q.key); });
+    // Demo öğrencinin kayıtlarından kart üretilmez: demo silinince öğrencinin destesinde kalıyordu
+    prog.forEach((p) => { if (p.done && !p.demo) keys.add(p.id); });
+    quizzes.forEach((q) => { if (q.key && !q.demo) keys.add(q.key); });
     let n = 0;
     for (const k of keys) if (!inDeck.has(k) && !removed.has(k) && App.lessons.find(k)) n += await addKey(k);
     return n;

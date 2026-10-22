@@ -316,6 +316,10 @@ Belirli **kritik sıcaklığın** altında **direnci sıfır** olan maddeler; ma
 ]),
 ]
 
+
+from _ek134 import uygula  # noqa: E402
+uygula(units, "fiz12_ek134")
+
 write("fiz-12.js", "12/fizik", "12. Sınıf Fizik — detaylı konu anlatım notları",
       "kullanıcının verdiği \"Fizik 12 Detaylı Konu Anlatım Notları\" (6 ünite).",
       units, "Kaynak notlar formül listesi düzeyinde olduğu için her ünite ders kitabı düzeyinde genişletildi (eylemsizlik momenti tablosu, uydu hareketi, BHH enerji ve konum tablosu, Young deneyi, radyoaktivite ve görelilik formülleri, çözümlü örnekler).")

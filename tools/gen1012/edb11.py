@@ -334,6 +334,10 @@ Gerçek olay, kişi ya da olguyu **belgeleyen**, bilgi vermeyi ve farkındalık 
 ]),
 ]
 
+
+from _ek134 import uygula  # noqa: E402
+uygula(units, "edb11_ek134")
+
 write("edb-11.js", "11/edebiyat", "11. Sınıf Türk Dili ve Edebiyatı — detaylı konu anlatım notları",
       "kullanıcının verdiği \"Türk Dili ve Edebiyatı 11. Sınıf Detaylı Konu Anlatım Notları\" (4 tema).",
       units, "Kazanım kodları kaynaktaki bölüm numaralarıdır; yakın bölümler birleştirildi. Edebî mektup örneği Cahit Sıtkı Tarancı'nın Ziya'ya Mektuplar'ı ile değiştirildi; DLT'deki söz \"kitapta hadis olarak aktarılan\" biçiminde verildi. Âkif'in biyografisi, ilk tezkireler, lebdeğmez ve Huzur'un bölüm yapısı eklendi.")

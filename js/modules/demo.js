@@ -8,6 +8,8 @@
      • yanlış defteri (hata türleriyle, bir kısmı tekrar zamanı gelmiş, bir kısmı öğrenilmiş)
      • 10 günlük odak oturumu (seri + rozetler), Feynman anlatımları, "çalıştım" işaretleri
      • hedef bölüm (Puan ve Hedef) ve kaynak gösterilmiş örnek bir asistan sohbeti
+     • (1.34) hap kartı tekrarları, "Çözümümü Kontrol Et" geçmişi, yapay zekâ cevap geri bildirimleri,
+       bir "Videodan Çalış" kaydı; 11. sınıf İngilizce ve 12. sınıf Mantık kazanımlarında testler
    Bütün kayıtların kimliği "demo_" ile başlar ya da demo: true taşır; "Demo verisini sil"
    yalnızca bunları siler, öğrencinin kendi verisine dokunmaz.
    Kısayol: #/demo adresi veriyi yükleyip Bugün ekranını açar (QR ile jüriye gösterim).
@@ -15,7 +17,7 @@
 (function () {
   const T = (tr, en) => (App.i18n.lang === "en" ? en : tr);
   const P = "demo_";
-  const STORES = ["schedules", "exams", "quizzes", "mistakes", "sessions", "explains", "progress", "chats", "meta"];
+  const STORES = ["schedules", "exams", "quizzes", "mistakes", "sessions", "explains", "progress", "chats", "meta", "cards", "checks"];
   const DAY = 86400000;
 
   let seed = 7;
@@ -50,7 +52,7 @@
 
   /* ---------- Konu testleri, yanlışlar, işaretler ---------- */
   // Derse göre başarı eğilimi: öğrencinin "hikâyesi" (fizik zayıf, biyoloji güçlü …)
-  const LEVEL = { matematik: 0.72, fizik: 0.42, kimya: 0.58, biyoloji: 0.84, edebiyat: 0.62, tarih: 0.5, cografya: 0.66 };
+  const LEVEL = { matematik: 0.72, fizik: 0.42, kimya: 0.58, biyoloji: 0.84, edebiyat: 0.62, tarih: 0.5, cografya: 0.66, ingilizce: 0.78, felsefe: 0.6 };
   const ERRS = ["kavram", "bilgi", "islem", "dikkat", "sure"];
 
   function studyData() {
@@ -163,6 +165,83 @@
       ] };
   }
 
+  /* ---------- 1.34: hap kartları, çözüm kontrolü, geri bildirim, video ---------- */
+  /** Testi çözülmüş birkaç kazanımın kartları: bir kısmı öğrenilmiş, bir kısmı bugün tekrar zamanı gelmiş */
+  function cardRows(quizzes) {
+    if (!App.cards || !App.cards.buildFor) return [];
+    const out = [];
+    quizzes.slice(0, 8).forEach((q, i) => {
+      App.cards.buildFor(q.key).slice(0, 5).forEach((c, j) => {
+        const learned = (i + j) % 3 !== 0, reps = learned ? 3 + ((i + j) % 3) : 1;
+        out.push({ id: c.id, key: q.key, h: c.h, box: learned ? 3 + (j % 2) : 1, reps, lapses: learned ? 0 : 1,
+          due: learned ? new Date(Date.now() + (2 + j) * DAY).toISOString() : iso(0, 7), last: iso(1 + (j % 4)), lastOk: learned,
+          firstAt: iso(12 + i), added: iso(14 + i), demo: true });
+      });
+    });
+    return out;
+  }
+
+  /** Elle yazılmış çözüm görüntüsü (SVG): fotoğraf yerine geçer */
+  const solutionImg = (lines) => "data:image/svg+xml;charset=utf-8," + encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="560" height="' + (60 + lines.length * 46) + '"><rect width="100%" height="100%" fill="#fbfaf4"/>' +
+    lines.map((l, i) => '<line x1="20" x2="540" y1="' + (58 + i * 46) + '" y2="' + (58 + i * 46) + '" stroke="#c9d6ea"/>' +
+      '<text x="30" y="' + (50 + i * 46) + '" font-family="Segoe Print, Comic Sans MS, cursive" font-size="24" fill="' + (l.bad ? "#b3261e" : "#1b2a55") + '">' +
+      l.t.replace(/&/g, "&amp;").replace(/</g, "&lt;") + "</text>").join("") + "</svg>");
+
+  function checks() {
+    const lbl = (k) => { const f = App.lessons.find(k); return f ? App.data.curriculum.gradeName(f.grade) + " · " + App.L(f.subject.name) + " · " + App.L(f.outcome.title) : ""; };
+    return [
+      { id: P + "chk1", date: iso(2, 21), key: "11/fizik/u1/k1", label: lbl("11/fizik/u1/k1"), model: "demo", verdict: "wrong", qImage: null, given: "",
+        qText: T("40 m yükseklikten serbest bırakılan cisim yere kaç saniyede düşer? (g = 10 m/s²)", "How long does an object dropped from 40 m take to fall? (g = 10 m/s²)"),
+        image: solutionImg([{ t: "h = ½ g t²" }, { t: "40 = ½ · 10 · t²" }, { t: "40 = 10 t²   →  t² = 4", bad: true }, { t: "t = 2 s" }]),
+        result: { readable: true, firstWrong: 3, finalOk: false, errType: "islem", errWhy: T("½ · 10 = 5 olmalıydı; 10 ile çarpılmış.", "½ · 10 should be 5."),
+          hint: T("Sabitleri sadeleştirirken ½ çarpanını unutma.", "Don't drop the ½ factor."), fix: T("40 = 5 t² → t² = 8 → t = 2√2 ≈ 2,83 s", "40 = 5t² → t = 2√2 s"),
+          answer: "t = 2√2 ≈ 2,83 s", question: "", steps: [
+            { text: "h = ½ g t²", status: "ok", note: "" }, { text: "40 = ½ · 10 · t²", status: "ok", note: "" },
+            { text: "40 = 10 t² → t² = 4", status: "wrong", note: "½ · 10 = 5" }, { text: "t = 2 s", status: "ok", note: T("önceki hatadan geliyor", "follows the earlier slip") }] }, demo: true },
+      { id: P + "chk2", date: iso(5, 20), key: "10/matematik/t4/k3", label: lbl("10/matematik/t4/k3"), model: "demo", verdict: "correct", qImage: null, given: "",
+        qText: T("x² − 5x + 6 = 0 denkleminin köklerini bulunuz.", "Solve x² − 5x + 6 = 0."),
+        image: solutionImg([{ t: "x² − 5x + 6 = 0" }, { t: "(x − 2)(x − 3) = 0" }, { t: "x = 2  veya  x = 3" }]),
+        result: { readable: true, firstWrong: null, finalOk: true, errType: null, errWhy: "", hint: "", fix: "", answer: "x = 2, x = 3", question: "", steps: [
+          { text: "x² − 5x + 6 = 0", status: "ok", note: "" }, { text: "(x − 2)(x − 3) = 0", status: "ok", note: T("çarpanlara ayırma doğru", "correct factoring") },
+          { text: "x = 2 veya x = 3", status: "ok", note: "" }] }, demo: true }
+    ];
+  }
+
+  function feedbacks(chat) {
+    const at = (d) => iso(d, 21);
+    const out = [];
+    if (chat) out.push({ id: "ai-fb:chat:" + chat.id + ":" + P + "m2", ref: "chat:" + chat.id + ":" + P + "m2", kind: "ai-fb", source: "chat", rating: "up", at: at(1), app: App.version || "",
+      q: chat.messages[0].text, a: chat.messages[1].text.slice(0, 600), model: "gemma4:e4b", demo: true });
+    out.push({ id: "ai-fb:quiz:" + P + "q1", ref: "quiz:" + P + "q1", kind: "ai-fb", source: "quiz", rating: "wrong", at: at(6), app: App.version || "", key: "11/fizik/u2/k1",
+      label: T("11. Sınıf · Fizik · İş, enerji, güç ve enerjinin korunumu", "Grade 11 · Physics · Work, energy, power"), model: "demo", reason: "cevap",
+      q: T("Sürtünmesiz eğik düzlemden kayan cismin mekanik enerjisi için hangisi doğrudur?", "Which is true for the mechanical energy of a block sliding down a frictionless incline?"),
+      options: [T("Artar", "Increases"), T("Azalır", "Decreases"), T("Korunur", "Is conserved"), T("Önce artar sonra azalır", "Rises then falls")], answer: 1, chosen: 2,
+      fix: T("Doğru cevap C: sürtünme yoksa mekanik enerji korunur.", "Correct answer is C: energy is conserved without friction."), demo: true });
+    out.push({ id: "ai-fb:chat:" + P + "old", ref: "chat:" + P + "old", kind: "ai-fb", source: "chat", rating: "down", at: at(9), app: App.version || "", reason: "bilgi",
+      q: T("Osmanlı'da ilk matbaayı kim kurdu?", "Who set up the first Ottoman printing press?"), a: T("İlk matbaa 1727'de Mimar Sinan tarafından kuruldu.", "Mimar Sinan in 1727."),
+      fix: T("İbrahim Müteferrika ve Said Mehmed Efendi, 1727.", "İbrahim Müteferrika and Said Mehmed Efendi, 1727."), model: "demo", demo: true });
+    return out;
+  }
+
+  function video() {
+    const at = iso(3, 19);
+    return { id: "video:" + P + "newton", kind: "video", vid: null, source: "text", model: "demo", createdAt: at, best: null, demo: true,
+      title: T("Newton'un hareket yasaları — ders notu", "Newton's laws of motion — lesson notes"), subject: "fizik",
+      summary: [T("Eylemsizlik: net kuvvet sıfırsa cisim hareket durumunu korur.", "Inertia: zero net force keeps the state of motion."),
+        T("Temel yasa: F_net = m · a; ivme net kuvvetle aynı yönlüdür.", "Fundamental law: F_net = m · a."),
+        T("Etki–tepki: kuvvetler eşit büyüklükte, zıt yönlü ve farklı cisimlere etki eder.", "Action–reaction forces are equal, opposite and act on different bodies."),
+        T("Ağırlık G = m · g; kütle değişmez, ağırlık bulunulan yere göre değişir.", "Weight G = m · g; mass does not change, weight does."),
+        T("Sürtünme kuvveti harekete zıt yönlüdür; f = k · N.", "Friction opposes motion; f = μN.")],
+      chapters: [], topics: [{ name: T("Newton'ın hareket yasaları", "Newton's laws of motion"), key: "11/fizik/u1/k3" }],
+      cards: [{ q: T("Eylemsizlik nedir?", "What is inertia?"), a: T("Cismin hareket durumunu koruma eğilimi.", "An object's tendency to keep its state of motion.") },
+        { q: "F = m · a", a: T("Net kuvvet = kütle × ivme", "Net force = mass × acceleration") },
+        { q: T("Etki–tepki kuvvetleri birbirini neden dengelemez?", "Why don't action–reaction forces cancel?"), a: T("Farklı cisimlere etki ederler.", "They act on different bodies.") }],
+      quiz: [{ q: T("2 kg'lık cisme 10 N net kuvvet etki ediyor. İvme kaç m/s²'dir?", "A 10 N net force acts on 2 kg. What is the acceleration in m/s²?"), o: ["2", "5", "10", "20"], a: 1, why: "a = F/m = 10/2 = 5 m/s²" },
+        { q: T("Duran otobüs aniden kalkınca yolcular geriye doğru savrulur. Bu hangi yasayla açıklanır?", "Passengers lurch back when a bus starts. Which law explains it?"),
+          o: [T("Eylemsizlik", "Inertia"), T("Temel yasa", "Fundamental law"), T("Etki–tepki", "Action–reaction"), T("Kütle çekimi", "Gravitation")], a: 0, why: T("Yolcular durgun kalma eğilimindedir.", "Passengers tend to stay at rest.") }] };
+  }
+
   /* ---------- Yükle / sil ---------- */
   async function isLoaded() {
     try { return !!(await App.db.get("exams", P + "tyt0")); } catch (e) { return false; }
@@ -174,6 +253,9 @@
     const batches = { exams: exams(), quizzes: sd.quizzes, mistakes: sd.mistakes, progress: sd.progress, sessions: sessions(), explains: explains(), meta: metas() };
     const chat = sampleChat();
     if (chat) batches.chats = [chat];
+    batches.cards = cardRows(sd.quizzes);
+    batches.checks = checks();
+    batches.meta.push(...feedbacks(chat), video());
     const own = await App.db.get("schedules", "user").catch(() => null);
     if (!own || !(own.blocks || []).length || own.demo) batches.schedules = [schedule()];
     // Hedef bölüm: öğrencinin kendi hedefi varsa ona dokunma
@@ -209,6 +291,7 @@
 
   // #/demo: yükle ve Bugün ekranına geç (jüri için QR kısayolu)
   App.router.register("demo", async (view) => {
+    if (App.prefs.get("tourDone", null) == null || App.prefs.get("tourDone", null) === false) App.prefs.set("tourDone", "demo");
     view.innerHTML = '<div class="page"><p class="hint">' + T("Demo verisi hazırlanıyor…", "Preparing demo data…") + "</p></div>";
     if (!(await isLoaded())) await load();
     App.router.go("bugun");

@@ -82,6 +82,32 @@ App.data.content["12/din"] = [
       "Fâtır 28: Allah'tan hakkıyla ancak âlimler korkar."
      ]
     }
+   },
+   {
+    "id": "k4",
+    "code": "1.4",
+    "title": {
+     "tr": "İslam düşüncesinde akıl ve vahiy ilişkisi",
+     "en": "Reason and revelation in Islamic thought"
+    },
+    "content": {
+     "anlatim": "# Akıl ve Vahiy\n\n- **Akıl:** İnsanı doğruyu yanlıştan ayırmaya yönelten yetenek; dinî sorumluluğun (**teklif**) şartı. Aklı olmayan dinen sorumlu tutulmaz.\n- **Vahiy:** Allah'ın peygamberlerine bildirdiği ilahî mesaj.\n- Kur'an pek çok ayette insanları **düşünmeye, akletmeye, ibret almaya** çağırır: *\"Akıl etmez misiniz?\"*, *\"Düşünmez misiniz?\"*\n\n# İslam Düşünce Ekollerinin Yaklaşımı\n\n| Ekol | Akıl–vahiy ilişkisine bakış |\n|---|---|\n| **Mu'tezile** | Akla geniş yer verir; iyi ve kötü **akılla bilinebilir** |\n| **Mâtürîdîlik** | Akıl, iyi ve kötünün bir kısmını bilebilir; vahiy aklı **tamamlar** — Ebû Mansûr el-Mâtürîdî |\n| **Eş'arîlik** | İyi ve kötüyü belirleyen **vahiydir**; akıl vahyi anlamada araçtır — Ebü'l-Hasen el-Eş'arî |\n| **İslam filozofları** | Akıl ile vahiy **çelişmez**; ikisi de aynı hakikate götürür — Fârâbî, İbn Sînâ, **İbn Rüşd** (*Faslu'l-Makâl*) |\n\n# Temel Sonuç\n\nİslam düşüncesinde akıl ve vahiy **birbirine rakip değil**, birbirini **destekleyen** iki bilgi kaynağıdır. Vahiy aklın tek başına ulaşamayacağı konularda (ahiret, ibadetlerin şekli) yol gösterir; akıl vahyi **anlamanın ve yorumlamanın** aracıdır. **Gazzâlî** de aklı önemsemiş ancak aklın sınırlarına dikkat çekmiştir.",
+     "ornekler": [
+      {
+       "soru": "Mâtürîdîlik ile Eş'arîlik, iyi ve kötünün bilinmesi konusunda nasıl ayrılır?",
+       "cozum": "**Mâtürîdîlik**'e göre akıl iyi ve kötünün bir kısmını vahiy gelmeden de bilebilir; **Eş'arîlik**'e göre ise iyi ve kötüyü belirleyen vahiydir, akıl bunu tek başına belirleyemez."
+      },
+      {
+       "soru": "İbn Rüşd'ün akıl ve din ilişkisine bakışı nedir?",
+       "cozum": "Akıl ile din (vahiy) **aynı hakikati** dile getirir, birbiriyle **çelişmez**; çelişki görünürse dinî metin akla uygun biçimde **yorumlanmalıdır** (*Faslu'l-Makâl*)."
+      }
+     ],
+     "ozet": [
+      "Akıl dinî sorumluluğun şartıdır.",
+      "Mâtürîdîlik akla Eş'arîlikten daha geniş yer verir.",
+      "İslam düşüncesinde akıl ve vahiy birbirini destekler (İbn Rüşd)."
+     ]
+    }
    }
   ]
  },
@@ -261,6 +287,32 @@ App.data.content["12/din"] = [
       "Tedavi olmak teşvik edilir; koruyucu hekimlik ve temizlik.",
       "Organ bağışı şartlı caiz; ötenazi ve (zaruret dışında) kürtaj caiz değil.",
       "En'âm 151–152: tevhit, anne-baba, can, iffet, yetim, ölçü, adalet, söz."
+     ]
+    }
+   },
+   {
+    "id": "k4",
+    "code": "4.4",
+    "title": {
+     "tr": "Çevre, teknoloji ve sosyal medya ile ilgili dinî ve ahlaki meseleler",
+     "en": "Religious and ethical issues concerning environment, technology and social media"
+    },
+    "content": {
+     "anlatim": "# Çevre\n\n- İnsan yeryüzünde **halife (emanetçi)**dir; doğa Allah'ın insana **emanetidir**.\n- **İsrafın yasaklanması:** *\"Yiyiniz, içiniz fakat israf etmeyiniz.\"* (A'râf, 31) — su, gıda ve enerji tasarrufu.\n- Hz. Peygamber: *\"Kıyamet koparken elinizde bir fidan varsa onu dikin.\"* — ağaç dikmek **sadaka-i cariyedir**.\n- Hayvanlara eziyetin yasak oluşu; **kuş evleri** ve vakıf geleneği.\n\n# Teknoloji ve Bilim\n\n- Bilim ve teknoloji **insanlığın yararına** kullanıldığında övülür; zarar vermek amacıyla kullanımı yasaktır (**\"Zarar vermek de zarara zararla karşılık vermek de yoktur\"** — hadis).\n- **Organ bağışı, tüp bebek (eşler arasında), aşı** gibi konularda Diyanet İşleri Başkanlığı Din İşleri Yüksek Kurulu görüşlerine başvurulur: hayat kurtarmak ve sağlığı korumak İslam'ın temel amaçlarındandır (**canın korunması**).\n\n# Sosyal Medya Ahlakı\n\n| İlke | Dayanak |\n|---|---|\n| Doğrulamadan paylaşmamak | *\"Size bir haber getirdiğinde onun doğruluğunu araştırın.\"* (Hucurât, 6) |\n| **Gıybet, iftira, alay** etmemek | Hucurât, 11–12 |\n| **Mahremiyete** saygı, başkasının fotoğrafını izinsiz paylaşmamak | Tecessüsün (gizli şeyleri araştırmanın) yasaklanması |\n| Zamanı verimli kullanmak, **bağımlılıktan** sakınmak | Zaman bir nimettir |\n| **Siber zorbalık**tan uzak durmak | Dil ve elden zarar vermeme (hadis) |",
+     "ornekler": [
+      {
+       "soru": "Sosyal medyada doğruluğu bilinmeyen bir haberi paylaşmak İslam ahlakı açısından neden sorunludur?",
+       "cozum": "Hucurât Suresi 6. ayet, gelen haberin **doğruluğunun araştırılmasını** emreder; doğrulanmamış haber yalan, iftira ve toplumsal zarara yol açabilir."
+      },
+      {
+       "soru": "İslam'ın çevreye bakışını “emanet” kavramıyla açıklayınız.",
+       "cozum": "Doğa insanın **mülkü değil**, Allah'ın insana **emanetidir**; insan onu korumakla, israf etmemekle ve gelecek nesillere bozmadan aktarmakla sorumludur."
+      }
+     ],
+     "ozet": [
+      "İnsan yeryüzünde emanetçidir; israf yasaktır.",
+      "Teknoloji insanlığın yararına kullanılmalı; can ve sağlığın korunması temel amaçtır.",
+      "Sosyal medyada doğrulama, gıybet ve mahremiyet ilkeleri (Hucurât 6, 11–12)."
      ]
     }
    }

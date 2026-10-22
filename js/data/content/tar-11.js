@@ -130,6 +130,32 @@ App.data.content["11/tarih"] = [
       "Sonuç: işçi sınıfı, kentleşme, sosyalizm, sömürgecilik."
      ]
     }
+   },
+   {
+    "id": "k6",
+    "code": "1.5",
+    "title": {
+     "tr": "Aydınlanma Çağı ve Amerikan Bağımsızlık Savaşı",
+     "en": "The Age of Enlightenment and the American War of Independence"
+    },
+    "content": {
+     "anlatim": "# Aydınlanma (XVIII. yüzyıl)\n\nAklı, bilimi ve bireyi merkeze alan; **gelenek, mutlak monarşi ve kilise otoritesini** sorgulayan düşünce hareketi.\n| Düşünür | Görüş / eser |\n|---|---|\n| **John Locke** | Doğal haklar: **yaşam, özgürlük, mülkiyet**; yönetim halkın rızasına dayanır |\n| **Montesquieu** | **Kanunların Ruhu** — **güçler ayrılığı** (yasama, yürütme, yargı) |\n| **Rousseau** | **Toplum Sözleşmesi** — egemenlik halkındır (**millî egemenlik**) |\n| **Voltaire** | Din ve düşünce özgürlüğü, hoşgörü |\n| **Diderot – d'Alembert** | **Ansiklopedi** — bilginin halka yayılması |\n\n**Etkileri:** Anayasal düzen, insan hakları, laiklik ve demokrasi düşüncesi; Amerikan ve **Fransız İhtilalleri**'ne zemin hazırladı. Bazı hükümdarlar \"**aydın despotlar**\" olarak reform yaptı (II. Frederick, II. Katerina).\n\n# Amerikan Bağımsızlık Savaşı (1775–1783)\n\n- **Nedenler:** İngiltere'nin kolonilere ağır vergiler koyması (**Damga Vergisi**, çay vergisi) → \"**Temsilsiz vergi olmaz**\" ilkesi; **Boston Çay Partisi** (1773).\n- **4 Temmuz 1776: Bağımsızlık Bildirgesi** (Thomas Jefferson) — \"Tüm insanlar eşit yaratılmıştır\"; yaşam, özgürlük ve mutluluk arama hakkı.\n- Fransa'nın desteğiyle kazanıldı; **1783 Paris Antlaşması** ile İngiltere bağımsızlığı tanıdı.\n- **1787 ABD Anayasası:** İlk **yazılı** anayasalardan; **federal** yapı, **güçler ayrılığı**, cumhuriyet. İlk başkan **George Washington**.\n\n**Önemi:** Aydınlanma fikirlerinin **ilk kez bir devlet düzenine** dönüşmesi; sömürgelere bağımsızlık örneği oldu.",
+     "ornekler": [
+      {
+       "soru": "Montesquieu'nun güçler ayrılığı ilkesi ABD Anayasası'na nasıl yansımıştır?",
+       "cozum": "Yasama (**Kongre**), yürütme (**Başkan**) ve yargı (**Yüksek Mahkeme**) birbirinden ayrılmış ve birbirini **denetleyecek** biçimde düzenlenmiştir (denge–denetim sistemi)."
+      },
+      {
+       "soru": "“Temsilsiz vergi olmaz” sloganı hangi olayın nedenini açıklar?",
+       "cozum": "**Amerikan Bağımsızlık Savaşı**'nın: İngiliz Parlamentosu'nda temsil edilmeyen koloniler, onların koyduğu vergileri meşru saymadı."
+      }
+     ],
+     "ozet": [
+      "Aydınlanma: Locke doğal haklar, Montesquieu güçler ayrılığı, Rousseau halk egemenliği.",
+      "4 Temmuz 1776 Bağımsızlık Bildirgesi; 1783 Paris Antlaşması.",
+      "1787 ABD Anayasası: yazılı, federal, güçler ayrılığı."
+     ]
+    }
    }
   ]
  },
@@ -348,6 +374,32 @@ App.data.content["11/tarih"] = [
       "Pax Ottomana, istimâlet, millet sistemi.",
       "Kanuni'nin kanunları; vakıf medeniyeti.",
       "Mehter–alla turca, Turquerie, Piri Reis haritası, kahve kültürü."
+     ]
+    }
+   },
+   {
+    "id": "k5",
+    "code": "3.4",
+    "title": {
+     "tr": "I. Dünya Savaşı'nın sonu: Wilson İlkeleri, Paris Barış Konferansı ve antlaşmalar",
+     "en": "End of World War I: Wilson's Points, the Paris Peace Conference and treaties"
+    },
+    "content": {
+     "anlatim": "# Wilson İlkeleri (Ocak 1918)\n\nABD Başkanı **Woodrow Wilson**'ın 14 maddelik barış önerisi. Önemli maddeler:\n- **Gizli antlaşmalar yapılmaması**, denizlerin serbestliği, silahsızlanma.\n- **Milletlerin kendi geleceklerini belirleme (self-determinasyon) hakkı.**\n- **12. madde:** Osmanlı'nın **Türk bölgelerine** egemenlik hakkı; diğer milletlere özerklik; **Boğazların** tüm devletlere açık olması.\n- Uluslararası barışı koruyacak bir örgüt → **Milletler Cemiyeti** (1920).\n\nOsmanlı Devleti, **Mondros Ateşkesi**'ni (30 Ekim 1918) bu ilkelere güvenerek imzaladı; ancak ilkeler İtilaf Devletleri'nce uygulanmadı.\n\n# Paris Barış Konferansı (1919)\n\nGalip devletler (İngiltere, Fransa, ABD, İtalya) yenilenlerle yapılacak antlaşmaları belirledi; **İzmir'in Yunanlara işgali** burada kararlaştırıldı; Osmanlı topraklarında **manda (yönetim) sistemi** benimsendi.\n\n# Antlaşmalar\n\n| Antlaşma | Devlet | Önemli hükümler |\n|---|---|---|\n| **Versay** (1919) | Almanya | Ağır savaş tazminatı, ordunun sınırlandırılması, sömürgelerini kaybetti → **II. Dünya Savaşı'na zemin** |\n| **Saint-Germain** (1919) | Avusturya | Avusturya–Macaristan dağıldı |\n| **Nöyyi** (1919) | Bulgaristan | Ege'ye çıkışını kaybetti |\n| **Trianon** (1920) | Macaristan | Topraklarının büyük kısmını kaybetti |\n| **Sevr** (10 Ağustos 1920) | Osmanlı | Ölü doğmuş antlaşma; **TBMM tanımadı**, hiçbir zaman uygulanmadı |\n\n# Sonuçlar\n\nDört imparatorluk yıkıldı (Osmanlı, Avusturya–Macaristan, Rus, Alman); yeni ulus devletler kuruldu; ABD ve SSCB'nin yükselişi başladı.",
+     "ornekler": [
+      {
+       "soru": "Osmanlı Devleti Mondros Ateşkesi'ni imzalarken Wilson İlkelerinin hangi maddesine güvenmişti?",
+       "cozum": "**12. maddeye**: Türklerin çoğunlukta olduğu bölgelerde Türk egemenliğinin tanınması."
+      },
+      {
+       "soru": "Versay Antlaşması'nın II. Dünya Savaşı'na zemin hazırlamasının nedeni nedir?",
+       "cozum": "Almanya'ya **ağır tazminat**, toprak kaybı ve askerî kısıtlamalar getiren **ağır ve cezalandırıcı** şartlar, Alman toplumunda öfke ve intikam duygusu doğurmuş; Hitler'in yükselişine zemin hazırlamıştır."
+      }
+     ],
+     "ozet": [
+      "Wilson İlkeleri: self-determinasyon, 12. madde Türk bölgeleri.",
+      "Paris Barış Konferansı: manda sistemi, İzmir'in Yunanlara verilmesi.",
+      "Versay–Almanya, Sevr–Osmanlı (uygulanmadı)."
      ]
     }
    }

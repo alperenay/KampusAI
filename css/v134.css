@@ -1,0 +1,59 @@
+/* =========================================================
+   v134.css — telefon alt çubuğu (1.34.0)
+   Sekmeler: Bugün · Konular · [Asistan] · Gelişim · Araçlar.
+   Ortadaki asistan düğmesi çubuktan yükselen degrade bir kare.
+   Arayüzün geri kalanı değişmez.
+   ========================================================= */
+:root {
+  --fab-grad:   linear-gradient(135deg, #4f74ff, #8a63ff);
+  --fab-shadow: 0 8px 22px rgba(79, 116, 255, .42);
+}
+:root[data-theme="light"] { --fab-shadow: 0 8px 20px rgba(53, 87, 224, .35); }
+
+@media (max-width: 860px) {
+  .tabbar { height: 64px; overflow: visible; }
+  .tabbar__item { font-size: 11.5px; }
+  .tabbar__fab { justify-content: flex-start; }
+  .tabbar__fab-btn {
+    display: grid; place-items: center;
+    width: 54px; height: 54px; margin-top: -20px;
+    border-radius: 18px; background: var(--fab-grad); color: #fff;
+    box-shadow: var(--fab-shadow), 0 0 0 4px var(--bg-drawer);
+    transition: transform .15s var(--ease);
+  }
+  .tabbar__fab-btn .ico { width: 26px; height: 26px; color: #fff; }
+  .tabbar__item.tabbar__fab.is-active .ico { transform: none; }
+  .tabbar__fab:active .tabbar__fab-btn { transform: scale(.94); }
+  .tabbar__fab:focus-visible { outline: none; }
+  .tabbar__fab:focus-visible .tabbar__fab-btn { outline: 2px solid var(--accent-text); outline-offset: 3px; }
+  /* Yükselen asistan düğmesi altta yapışkan çubuklara binmesin */
+  .lesson-dock, .sim-nav { bottom: 26px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tabbar__fab-btn { transition: none; }
+}
+
+/* ---------- Yapay zekâ ayarları: telefonda taşma düzeltmesi ----------
+   .modal__body bir grid; çocukları min-width:auto aldığından "Gelişmiş ayarlar" açılınca
+   sekme satırı ("Bilgisayarımdaki model (Ollama)" vb.) ve uzun model adları sütunu ekrandan
+   geniş itiyordu: içerik sola kayıyor, sağı kesiliyordu. Sütun daralabilir, sekmeler kayar. */
+.modal__body { grid-template-columns: minmax(0, 1fr); }
+.modal__body > *, .ais-adv, .ais-panel, .ais-stack, .field, .ais-sub, .lan-info { min-width: 0; }
+.ais-adv .ais-tabs { max-width: 100%; }
+.modal .select, .modal .input, .modal .key-field, .modal .model-field { max-width: 100%; min-width: 0; }
+.modal .seg { max-width: 100%; flex-wrap: wrap; }
+.modal .seg button { white-space: normal; }
+.modal .hint, .modal .field__label { overflow-wrap: anywhere; }
+
+/* ---------- Dokunmatik ekranlarda dokunma hedefleri (WCAG 2.5.8: en az 24 px) ---------- */
+@media (pointer: coarse), (max-width: 860px) {
+  .crumbs > * { display: inline-flex; align-items: center; min-height: 28px; }
+  .md a.cite { min-width: 24px; height: 24px; border-radius: 12px; font-size: 12px; }
+  input[type="checkbox"], input[type="radio"] { width: 20px; height: 20px; }
+  .para-type__go { display: inline-flex; align-items: center; min-height: 32px; padding: 0 8px; }
+  .lab-ctl input[type="range"] { min-height: 28px; }
+}
+@media (pointer: coarse), (max-width: 860px) {
+  .fm-link, .hint > a[href^="#/"] { display: inline-flex; align-items: center; min-height: 28px; }
+}

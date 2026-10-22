@@ -245,7 +245,6 @@
   .tabbar__item.is-active { color: var(--accent); font-weight: 600; }
   .tabbar__item.is-active .ico { transform: translateY(-1px); }
   .tabbar__item:active .ico { transform: scale(.9); }
-  .app.is-menu-open #tabMore { color: var(--accent); }
   /* Telefonda bildirimler üstte: alttaki düğmelerin (sekme, kısayol, pencere düğmeleri) üstüne binmesin */
   .toast-host { bottom: auto !important; top: calc(62px + max(env(safe-area-inset-top, 0px), var(--nt, 0px))); flex-direction: column-reverse; }
   .page { padding-bottom: 24px; }

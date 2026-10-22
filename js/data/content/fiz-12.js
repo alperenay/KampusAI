@@ -90,6 +90,32 @@ App.data.content["12/fizik"] = [
       "Kepler: elips, eşit alan, $T^2/a^3$ sabit."
      ]
     }
+   },
+   {
+    "id": "k4",
+    "code": "1.4",
+    "title": {
+     "tr": "Kütle çekim potansiyel enerjisi, kaçış hızı ve uydular",
+     "en": "Gravitational potential energy, escape velocity and satellites"
+    },
+    "content": {
+     "anlatim": "# Kütle Çekim Kuvveti ve Alanı\n\n$$F = G\\frac{m_1m_2}{r^2}, \\qquad g = G\\frac{M}{r^2}, \\qquad G = 6{,}67\\times10^{-11}\\ \\text{N·m}^2/\\text{kg}^2$$\nYerden yükseldikçe ($r = R + h$) çekim ivmesi azalır.\n\n# Kütle Çekim Potansiyel Enerjisi\n\nSonsuzdaki potansiyel enerji **sıfır** kabul edilir:\n$$E_p = -G\\frac{Mm}{r}$$\n- Negatif işaret, cismin **bağlı** olduğunu gösterir. $mgh$ ifadesi yalnızca yeryüzüne yakın yüksekliklerde geçerlidir.\n\n# Uydu Hareketi\n\nÇekim kuvveti merkezcil kuvveti sağlar:\n$$\\frac{GMm}{r^2} = \\frac{mv^2}{r} \\Rightarrow v_{yörünge} = \\sqrt{\\frac{GM}{r}}$$\n- Periyot: $T = 2\\pi\\sqrt{\\dfrac{r^3}{GM}}$ (Kepler'in 3. yasası: $T^2 \\propto r^3$)\n- Yörünge **büyüdükçe** hız **azalır**, periyot **artar**; uydunun kütlesinden **bağımsızdır**.\n- Toplam enerji: $E = -\\dfrac{GMm}{2r}$\n- **Yer eşzamanlı (geostatik) uydu:** $T = 24$ saat, ekvator düzleminde ~$36\\,000$ km yükseklik (Türksat).\n\n# Kaçış Hızı\n\nCismin gezegenin çekiminden kurtulması için gereken en küçük hız:\n$$v_{kaçış} = \\sqrt{\\frac{2GM}{R}} = \\sqrt2\\,v_{yörünge(yüzey)}$$\nDünya için ≈ **11,2 km/s**.",
+     "ornekler": [
+      {
+       "soru": "Bir uydunun yörünge yarıçapı 4 katına çıkarılırsa hızı ve periyodu nasıl değişir?",
+       "cozum": "$v \\propto \\frac{1}{\\sqrt r}$ → hız **yarıya** iner. $T \\propto r^{3/2}$ → periyot $4^{3/2} = 8$ **katına** çıkar."
+      },
+      {
+       "soru": "Kütlesi Dünya'nın 2 katı, yarıçapı Dünya'nınkiyle aynı olan gezegende kaçış hızı Dünya'nın kaç katıdır?",
+       "cozum": "$v \\propto \\sqrt{M/R}$ → $\\sqrt2$ katı (≈ 15,8 km/s)."
+      }
+     ],
+     "ozet": [
+      "$E_p = -GMm/r$ (sonsuzda sıfır).",
+      "$v_{yörünge} = \\sqrt{GM/r}$; $T^2 \\propto r^3$.",
+      "$v_{kaçış} = \\sqrt{2GM/R}$ ≈ 11,2 km/s (Dünya)."
+     ]
+    }
    }
   ]
  },
@@ -123,6 +149,32 @@ App.data.content["12/fizik"] = [
       "BHH: $F=-kx$, $a=-\\omega^2x$.",
       "Dengede hız max ivme 0; uçlarda hız 0 ivme max.",
       "Yay $T=2\\pi\\sqrt{m/k}$; sarkaç $T=2\\pi\\sqrt{L/g}$."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "2.2",
+    "title": {
+     "tr": "Basit harmonik harekette enerji ve grafikler",
+     "en": "Energy and graphs in simple harmonic motion"
+    },
+    "content": {
+     "anlatim": "# Konum, Hız ve İvme\n\nGenlik $A$, açısal frekans $\\omega = \\dfrac{2\\pi}{T}$:\n$$x = A\\cos(\\omega t), \\quad v = -A\\omega\\sin(\\omega t), \\quad a = -\\omega^2 x$$\n| Konum | Hız | İvme / geri çağırıcı kuvvet |\n|---|---|---|\n| **Denge noktası** ($x = 0$) | **En büyük**: $v_{maks} = A\\omega$ | **Sıfır** |\n| **Uç noktalar** ($x = \\pm A$) | **Sıfır** | **En büyük**: $a_{maks} = A\\omega^2$ |\n\n- İvme her zaman **denge noktasına** yöneliktir ve **uzanımla orantılıdır**.\n\n# Enerji\n\nSürtünmesiz ortamda toplam mekanik enerji **sabittir**:\n$$E = \\frac12 kA^2 = \\frac12 kx^2 + \\frac12 mv^2$$\n- Denge noktasında enerjinin tamamı **kinetik**, uçlarda tamamı **potansiyeldir**.\n- $x = \\dfrac{A}{\\sqrt2}$ konumunda kinetik ve potansiyel enerji **eşittir**.\n\n# Periyotlar (hatırlatma)\n\n- Yay–kütle: $T = 2\\pi\\sqrt{\\dfrac mk}$ (genlikten ve $g$'den bağımsız)\n- Basit sarkaç: $T = 2\\pi\\sqrt{\\dfrac Lg}$ (kütleden ve küçük genlikte genlikten bağımsız)\n\n# Sönümlü Hareket ve Rezonans\n\nSürtünmeyle genlik azalır (**sönüm**). Dış kuvvetin frekansı sistemin **doğal frekansına** eşit olunca genlik büyür → **rezonans** (salıncak itme, köprü titreşimleri, mikrodalga fırın).",
+     "ornekler": [
+      {
+       "soru": "Yay sabiti $200$ N/m olan yaya bağlı cisim $0{,}1$ m genlikle titreşiyor. Toplam enerji ve $x = 0{,}05$ m'deki kinetik enerji nedir?",
+       "cozum": "$E = \\frac12\\cdot200\\cdot0{,}01 = 1$ J. $E_p = \\frac12\\cdot200\\cdot0{,}0025 = 0{,}25$ J → $E_k = 0{,}75$ J."
+      },
+      {
+       "soru": "Bir basit sarkacın boyu 4 katına çıkarılırsa periyodu nasıl değişir?",
+       "cozum": "$T \\propto \\sqrt L$ → periyot **2 katına** çıkar."
+      }
+     ],
+     "ozet": [
+      "Dengede hız maksimum, ivme sıfır; uçlarda tersi.",
+      "$E = \\frac12 kA^2$ sabit.",
+      "Dış frekans = doğal frekans → rezonans."
      ]
     }
    }
@@ -176,6 +228,32 @@ App.data.content["12/fizik"] = [
       "Doppler: yaklaşınca frekans artar (maviye kayma).",
       "EM dalgalar enine, boşlukta $c=3\\times10^8$ m/s.",
       "Spektrum: radyo → mikrodalga → IR → görünür → UV → X → gama."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "3.3",
+    "title": {
+     "tr": "Tek yarıkta kırınım, ince zarlarda girişim ve polarizasyon",
+     "en": "Single-slit diffraction, thin-film interference and polarisation"
+    },
+    "content": {
+     "anlatim": "# Tek Yarıkta Kırınım\n\nGenişliği $a$ olan yarıktan geçen ışık perdede **geniş merkezî aydınlık saçak** ve iki yanında daha dar saçaklar oluşturur.\n- **Karanlık saçaklar:** $a\\sin\\theta = n\\lambda$ ($n = 1, 2, \\dots$)\n- Merkezî aydınlığın genişliği, yan saçakların **2 katıdır**.\n- Yarık **daraldıkça** ya da dalga boyu **büyüdükçe** kırınım **artar** (saçaklar genişler).\n- Young deneyinden farkı: Young'da tüm aydınlık saçaklar **eşit genişlikte**, tek yarıkta merkez **geniştir**.\n\n# İnce Zarlarda Girişim\n\nSabun köpüğü, su üstündeki yağ tabakası, gözlük camlarındaki yansıtmasız kaplama: Zarın **üst ve alt yüzeylerinden** yansıyan ışınlar girişim yapar.\n- Zar kalınlığı değiştikçe farklı dalga boylarında güçlendirme olur → **renkli şeritler**.\n- **Yansıtmasız kaplama:** kalınlık $\\dfrac{\\lambda}{4n}$ seçilerek yansıyan ışınlar birbirini söndürür.\n\n# Polarizasyon\n\nElektromanyetik dalgalar **enine** olduğu için polarize edilebilir (ses dalgaları boyuna olduğundan **polarize edilemez**).\n- Polarizör, ışığın titreşimlerini **tek düzleme** indirger.\n- **Malus yasası:** $I = I_0\\cos^2\\theta$\n- Uygulamalar: polarize güneş gözlükleri (yansıma parlamasını keser), LCD ekranlar, 3B sinema gözlükleri.",
+     "ornekler": [
+      {
+       "soru": "Tek yarıkta kırınım deneyinde yarık genişliği yarıya indirilirse merkezî aydınlık saçağın genişliği nasıl değişir?",
+       "cozum": "$\\sin\\theta \\approx \\frac{\\lambda}{a}$; $a$ yarıya inince açı ve dolayısıyla merkezî saçak genişliği **2 katına** çıkar."
+      },
+      {
+       "soru": "Polarize ışık, polarizasyon düzlemiyle $60^\\circ$ açı yapan polarizörden geçiyor. Geçen ışık şiddeti başlangıcın kaçta kaçıdır?",
+       "cozum": "$I = I_0\\cos^2 60^\\circ = I_0\\cdot\\frac14$ → **1/4**."
+      }
+     ],
+     "ozet": [
+      "Tek yarık karanlık saçak: $a\\sin\\theta = n\\lambda$; merkez saçak 2 kat geniş.",
+      "İnce zar girişimi sabun köpüğündeki renkleri açıklar.",
+      "Yalnızca enine dalgalar polarize olur; $I = I_0\\cos^2\\theta$."
      ]
     }
    }
@@ -233,6 +311,32 @@ App.data.content["12/fizik"] = [
       "α: A−4, Z−2; β⁻: Z+1; γ: değişim yok.",
       "$N=N_0(1/2)^{t/T}$; C-14 ile yaş tayini.",
       "Fisyon bölünme (santral), füzyon birleşme (Güneş); süre-mesafe-zırh."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "4.3",
+    "title": {
+     "tr": "Kütle–enerji eşdeğerliği ve çekirdek bağlanma enerjisi",
+     "en": "Mass–energy equivalence and nuclear binding energy"
+    },
+    "content": {
+     "anlatim": "# Kütle–Enerji Eşdeğerliği\n\nEinstein: kütle ve enerji birbirine dönüşebilir:\n$$E = mc^2, \\qquad c = 3\\times10^8 \\text{ m/s}$$\n- $1$ u (atomik kütle birimi) $\\approx 931{,}5$ MeV enerjiye karşılık gelir.\n\n# Kütle Eksikliği ve Bağlanma Enerjisi\n\nÇekirdeğin kütlesi, onu oluşturan **serbest proton ve nötronların** kütleleri toplamından **küçüktür**:\n$$\\Delta m = [Z\\,m_p + (A - Z)\\,m_n] - m_{çekirdek}$$\n$$E_{bağlanma} = \\Delta m\\cdot c^2$$\n- Bu enerji, çekirdeği **parçalamak için verilmesi gereken** enerjidir.\n- **Nükleon başına bağlanma enerjisi** $\\dfrac{E_b}{A}$ ne kadar büyükse çekirdek o kadar **kararlıdır**.\n\n# Bağlanma Enerjisi Eğrisi\n\n- En kararlı çekirdek **demir-56** civarı (~8,8 MeV/nükleon).\n- **Ağır çekirdekler** (uranyum) bölündüğünde (**fisyon**) ve **hafif çekirdekler** (hidrojen izotopları) birleştiğinde (**füzyon**) ürünlerin nükleon başına bağlanma enerjisi **artar** → aradaki fark **enerji** olarak açığa çıkar.\n- Güneş füzyonla, nükleer santraller fisyonla enerji üretir.\n\n# Nükleer Kuvvet\n\nProtonların elektriksel itmesini yenen **güçlü çekirdek kuvveti**; çok kısa menzilli (~$10^{-15}$ m), yükten bağımsızdır.",
+     "ornekler": [
+      {
+       "soru": "Bir tepkimede $0{,}002$ u kütle enerjiye dönüşüyor. Açığa çıkan enerji kaç MeV'dir?",
+       "cozum": "$E = 0{,}002\\cdot931{,}5 \\approx 1{,}86$ MeV."
+      },
+      {
+       "soru": "Neden hem çok ağır çekirdeklerin bölünmesi hem de hafif çekirdeklerin birleşmesi enerji açığa çıkarır?",
+       "cozum": "Her iki süreçte de ürün çekirdekler, eğrinin tepesine (demir civarı) **daha yakındır**; nükleon başına bağlanma enerjisi artar, kütle eksikliği farkı enerji olarak salınır."
+      }
+     ],
+     "ozet": [
+      "$E = mc^2$; 1 u ≈ 931,5 MeV.",
+      "Bağlanma enerjisi = kütle eksikliği × c².",
+      "Fe-56 en kararlı; fisyon ve füzyon enerjiyi bu eğriden alır."
      ]
     }
    }

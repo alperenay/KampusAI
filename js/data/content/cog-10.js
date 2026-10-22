@@ -307,6 +307,58 @@ App.data.content["10/cografya"] = [
       "Fonksiyonlar zamanla değişebilir."
      ]
     }
+   },
+   {
+    "id": "k3",
+    "code": "4.3",
+    "title": {
+     "tr": "Nüfusun dağılışı, nüfus piramitleri ve Türkiye'nin nüfus özellikleri",
+     "en": "Population distribution, population pyramids and Türkiye's population"
+    },
+    "content": {
+     "anlatim": "# Nüfusun Dağılışını Etkileyen Faktörler\n\n| Doğal | Beşerî |\n|---|---|\n| İklim (ılıman bölgeler kalabalık), yer şekilleri (ovalar), su kaynakları, toprak verimliliği | Sanayi, ticaret, ulaşım, tarih, turizm, siyasi kararlar |\nDünyanın en kalabalık bölgeleri: **Güney ve Doğu Asya**, **Batı Avrupa**, **ABD'nin kuzeydoğusu**. En seyrek: kutuplar, çöller, yüksek dağlar, Amazon ve Kongo ormanları.\n\n# Nüfus Yoğunlukları\n\n- **Aritmetik yoğunluk** $= \\dfrac{\\text{nüfus}}{\\text{toplam alan}}$\n- **Fizyolojik yoğunluk** $= \\dfrac{\\text{nüfus}}{\\text{tarım alanı}}$ (tarım alanı azsa çok yüksek: Mısır)\n- **Tarımsal yoğunluk** $= \\dfrac{\\text{tarımla uğraşan nüfus}}{\\text{tarım alanı}}$\n\n# Nüfus Piramitleri\n\n| Piramit | Görünüm | Ülke tipi |\n|---|---|---|\n| **Genişleyen (geniş tabanlı)** | Taban geniş, tepe dar | Doğum oranı yüksek, ortalama ömür kısa (Nijer) |\n| **Durağan** | Kenarlar dik, düzgün | Doğum ve ölüm oranları dengeli |\n| **Daralan (tabanı dar)** | Taban dar, orta ve üst geniş | Gelişmiş, yaşlanan nüfus (Japonya, Almanya) |\n\n# Türkiye'nin Nüfusu\n\n- **İlk nüfus sayımı 1927** (13,6 milyon); 2007'den beri **adrese dayalı** kayıt sistemi. Nüfus 85 milyonu aştı.\n- Nüfus artış hızı **azalmaktadır**; toplam doğurganlık hızı yenilenme düzeyinin (2,1) **altına** düştü → nüfus **yaşlanıyor**.\n- En kalabalık iller: İstanbul, Ankara, İzmir; en yoğun kıyı ve sanayi bölgeleri (Marmara); en seyrek: Doğu Anadolu'nun yüksek kesimleri, Tuz Gölü çevresi, Menteşe yöresi.",
+     "ornekler": [
+      {
+       "soru": "Bir ülkenin nüfus piramidinin tabanı daralıp orta kısmı genişliyorsa bu ülke hakkında ne söylenebilir?",
+       "cozum": "**Doğum oranı azalmış**, nüfus **yaşlanmaya** başlamıştır; ileride çalışan nüfus azalabilir, emeklilik ve sağlık giderleri artabilir."
+      },
+      {
+       "soru": "Mısır'ın aritmetik yoğunluğu orta düzeyde iken fizyolojik yoğunluğunun çok yüksek olmasının nedeni nedir?",
+       "cozum": "Ülkenin büyük kısmı **çöldür**; tarım alanı yalnızca **Nil vadisi ve deltası** ile sınırlıdır, bu küçük alana çok fazla nüfus düşer."
+      }
+     ],
+     "ozet": [
+      "Aritmetik yoğunluk nüfus/alan; fizyolojik nüfus/tarım alanı.",
+      "Geniş tabanlı piramit genç nüfus; dar tabanlı yaşlanan nüfus.",
+      "Türkiye: ilk sayım 1927; doğurganlık 2,1'in altında, nüfus yaşlanıyor."
+     ]
+    }
+   },
+   {
+    "id": "k4",
+    "code": "4.4",
+    "title": {
+     "tr": "Göç: nedenleri, türleri ve sonuçları",
+     "en": "Migration: causes, types and consequences"
+    },
+    "content": {
+     "anlatim": "# Göçün Nedenleri (itici ve çekici faktörler)\n\n| İtici (çıkılan yer) | Çekici (gidilen yer) |\n|---|---|\n| İşsizlik, yoksulluk, toprağın miras yoluyla bölünmesi, makineleşme | İş imkânı, yüksek ücret |\n| Eğitim ve sağlık hizmetlerinin yetersizliği | Eğitim, sağlık, kültürel imkânlar |\n| Savaş, terör, siyasi baskı | Güvenlik, özgürlük |\n| Doğal afetler, kuraklık, iklim değişikliği | Elverişli iklim, turizm |\n\n# Göç Türleri\n\n- **İç göç:** Ülke içinde (köyden kente — Türkiye'de 1950 sonrası hızlandı), **mevsimlik göç** (fındık, pamuk hasadı; turizm).\n- **Dış göç:** Ülkeler arası. Türkiye'den **Almanya'ya işçi göçü** (1961 anlaşması), **beyin göçü** (nitelikli insan gücü).\n- **Zorunlu göç:** Savaş, mübadele (**1923 Türk–Yunan nüfus mübadelesi**), afet. **Mülteci** ve **sığınmacı** kavramları.\n- **Gönüllü göç:** Ekonomik ve kişisel tercihlerle.\n\n# Sonuçları\n\n| Göç veren yer | Göç alan yer |\n|---|---|\n| Nüfus azalır ve **yaşlanır**, tarımsal üretim düşebilir, boşalan köyler | **Gecekondulaşma**, altyapı ve konut sorunu, trafik, işsizlik, çevre kirliliği |\n| Gönderilen dövizle ekonomik katkı | Kültürel çeşitlilik, iş gücü artışı |\n\n# Türkiye ve Göç\n\nTürkiye hem **göç veren**, hem **göç alan** (Suriye iç savaşı sonrası dünyada en çok mülteci barındıran ülkelerden), hem de **transit** (Avrupa'ya geçiş) ülkesidir.",
+     "ornekler": [
+      {
+       "soru": "Doğu Karadeniz'de dağınık yerleşme ve tarım alanlarının küçüklüğü göçü nasıl etkiler?",
+       "cozum": "Miras yoluyla bölünen **küçük tarım arazileri** aileyi geçindiremez; bu durum **itici** bir faktördür ve büyük şehirlere ve mevsimlik işlere göçü artırır."
+      },
+      {
+       "soru": "Hızlı göç alan büyük şehirlerde ortaya çıkan iki sorunu yazınız.",
+       "cozum": "**Gecekondulaşma ve çarpık kentleşme**; altyapı (su, kanalizasyon, ulaşım) **yetersizliği**, işsizlik ve trafik sorunu."
+      }
+     ],
+     "ozet": [
+      "Göç itici (işsizlik, savaş) ve çekici (iş, eğitim) faktörlerle olur.",
+      "İç göç, dış göç, mevsimlik göç, beyin göçü, zorunlu göç (mübadele).",
+      "Göç alan yerde gecekondu ve altyapı sorunu; göç veren yerde yaşlanma."
+     ]
+    }
    }
   ]
  },
@@ -411,6 +463,32 @@ App.data.content["10/cografya"] = [
       "Dirençli şehir: sağlamlık, uyum, yedeklilik, kapsayıcılık.",
       "Risk azaltma: erken uyarı, zemin etüdü, kentsel dönüşüm.",
       "Eşya sabitleme yapısal olmayan önlemdir."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "6.2",
+    "title": {
+     "tr": "Afet türleri: deprem, sel, heyelan, çığ ve erozyon",
+     "en": "Types of disasters: earthquake, flood, landslide, avalanche and erosion"
+    },
+    "content": {
+     "anlatim": "# Afet ve Tehlike\n\n**Tehlike** doğal olayın kendisidir (deprem); **afet**, bu olayın can ve mal kaybına yol açarak toplumun normal hayatını durdurmasıdır. Afetin etkisi **hazırlıkla** azaltılabilir.\n\n# Başlıca Afetler ve Türkiye'de Görüldüğü Yerler\n\n| Afet | Neden | Türkiye'de yaygın olduğu yer | Önlem |\n|---|---|---|---|\n| **Deprem** | Fay hatlarında enerji boşalması (tektonik) | **Kuzey Anadolu, Doğu Anadolu ve Batı Anadolu fay hatları** | Depreme dayanıklı yapı, zemin etüdü, deprem çantası, tatbikat |\n| **Sel / taşkın** | Şiddetli yağış, kar erimesi, dere yatağına yapılaşma | **Karadeniz**, Akdeniz ve Ege kıyıları | Dere yataklarına yapı yapmamak, ağaçlandırma, bent |\n| **Heyelan** | Eğimli arazi + kil + aşırı yağış, yol yarmaları | **Doğu Karadeniz** (en fazla) | Yamaç teraslama, drenaj, bitki örtüsü |\n| **Çığ** | Eğimli yamaçta kalın kar örtüsü | **Doğu Anadolu**, Doğu Karadeniz dağları | Çığ bariyerleri, ağaçlandırma |\n| **Erozyon** | Bitki örtüsünün tahribi, yanlış tarım, eğim | **İç Anadolu, Güneydoğu** (kurak alanlar) | Ağaçlandırma, teraslama, nadas yerine münavebe |\n| **Orman yangını** | Kuraklık, sıcak, insan kaynaklı | **Akdeniz ve Ege** kıyıları | Yangın şeritleri, erken uyarı |\n| **Kuraklık** | Yağış azlığı, iklim değişikliği | İç Anadolu, Güneydoğu | Su tasarrufu, damla sulama |\n\n# Kurumlar ve Bilinç\n\n**AFAD** (Afet ve Acil Durum Yönetimi Başkanlığı), **DASK** (zorunlu deprem sigortası), **112 Acil Çağrı**. \"Çök–kapan–tutun\" hareketi; aile afet planı ve toplanma alanları.",
+     "ornekler": [
+      {
+       "soru": "Doğu Karadeniz'de heyelanın sık görülmesinin iki nedeni nedir?",
+       "cozum": "**Eğimin fazla olması** ve **yıl boyu bol yağış**; ayrıca killi zemin ve yamaçlarda yapılan yol–bina yapılaşması."
+      },
+      {
+       "soru": "Tehlike ile afet arasındaki fark nedir? Bir örnekle açıklayınız.",
+       "cozum": "Issız bir bölgede olan deprem bir **tehlikedir**; aynı deprem yerleşim yerinde can ve mal kaybına yol açarsa **afete** dönüşür. Hazırlık ve dayanıklı yapılar afet riskini azaltır."
+      }
+     ],
+     "ozet": [
+      "Tehlike doğal olay; afet toplumu etkileyen kayıplı olay.",
+      "Heyelan Doğu Karadeniz, erozyon İç Anadolu, çığ Doğu Anadolu, yangın Akdeniz–Ege.",
+      "AFAD, DASK; çök–kapan–tutun."
      ]
     }
    }

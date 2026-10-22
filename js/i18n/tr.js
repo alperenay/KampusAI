@@ -54,6 +54,8 @@ App.locales.tr = {
   "nav.tab.topics": "Konular",
   "nav.tab.exams": "Denemeler",
   "nav.tab.more": "Menü",
+  "nav.tab.progress": "Gelişim",
+  "nav.tab.tools": "Araçlar",
   "nav.openMenu": "Menüyü aç",
   "backup.button": "Yedekle",
   "backup.title": "Tüm verileri dosyaya yedekle",

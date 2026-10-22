@@ -38,6 +38,32 @@ App.data.content["12/edebiyat"] = [
       "Sözlükler: DLT, Kâmûs-ı Türkî, Tarama, Derleme, Türkçe Sözlük."
      ]
     }
+   },
+   {
+    "id": "k2",
+    "code": "1.2",
+    "title": {
+     "tr": "Anlatım biçimleri ve düşünceyi geliştirme yolları",
+     "en": "Modes of expression and ways of developing ideas"
+    },
+    "content": {
+     "anlatim": "# Anlatım Biçimleri\n\n| Biçim | Amaç | İpucu |\n|---|---|---|\n| **Öyküleme (anlatma)** | Olayı zaman içinde aktarmak | Eylem, kişi, zaman, mekân; hareket var |\n| **Betimleme (tasvir)** | Görüntüyü sözle çizmek | Sıfatlar, duyular; durağan |\n| **Açıklama** | Bilgi vermek, öğretmek | Nesnel, öğretici dil |\n| **Tartışma** | Görüşü savunup karşıtını çürütmek | \"Kimilerine göre… oysa…\", karşı görüş |\n\n# Düşünceyi Geliştirme Yolları\n\n| Yol | Tanım | Örnek ipucu |\n|---|---|---|\n| **Tanımlama** | \"Nedir?\" sorusunun cevabı | \"… -dır.\" \"… denir.\" |\n| **Örneklendirme** | Somut örnek verme | \"örneğin, mesela\" |\n| **Karşılaştırma** | Benzerlik/farklılık ortaya koyma | \"… göre daha, oysa\" |\n| **Tanık gösterme** | Ünlü birinin sözüne başvurma | \"Yunus Emre'nin dediği gibi…\" |\n| **Sayısal verilerden yararlanma** | İstatistik, rakam | \"%40'ı …\" |\n| **Benzetme** | Soyutu somutla anlatma | \"… gibi\" |\n\n# Paragraf Soruları İçin\n\n- **Ana düşünce** genellikle giriş ya da sonuç cümlesindedir.\n- Bir paragrafta birden fazla anlatım biçimi ve düşünce geliştirme yolu bulunabilir; soru **baskın** olanı sorar.",
+     "ornekler": [
+      {
+       "soru": "“Kitap okuyan gençlerin oranı 2010'da %25 iken bugün %38'e yükselmiştir.” cümlesinde hangi düşünceyi geliştirme yolu kullanılmıştır?",
+       "cozum": "**Sayısal verilerden yararlanma** (ayrıca iki dönemi karşılaştırdığı için **karşılaştırma** da vardır; baskın olan sayısal veridir)."
+      },
+      {
+       "soru": "Yaşlı adamın kırış kırış ellerini, nasırlı parmaklarını anlatan bir paragrafın anlatım biçimi nedir?",
+       "cozum": "**Betimleme** — görüntü sözcüklerle çiziliyor, olay ilerlemiyor."
+      }
+     ],
+     "ozet": [
+      "Öyküleme olay, betimleme görüntü, açıklama bilgi, tartışma savunma.",
+      "Tanık gösterme: ünlü kişinin sözü.",
+      "Paragrafta baskın yolu bul."
+     ]
+    }
    }
   ]
  },
@@ -67,6 +93,32 @@ App.data.content["12/edebiyat"] = [
       "Olay (Maupassant) vs durum (Çehov) tarzı.",
       "1960 sonrası: birey, yabancılaşma, modernist ve postmodern teknikler.",
       "Küçürek hikâye: çok kısa, imalı, açık uçlu."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "2.2",
+    "title": {
+     "tr": "Cumhuriyet dönemi hikâyesinde iki çizgi: Sait Faik ve Sabahattin Ali",
+     "en": "Two lines in Republican-era short stories: Sait Faik and Sabahattin Ali"
+    },
+    "content": {
+     "anlatim": "# Klasik (Olay) Hikâye — Maupassant Tarzı\n\n**Serim–düğüm–çözüm** planı; olay ön planda; merak unsuru; sonuç genelde bellidir.\n- **Ömer Seyfettin** (Millî Edebiyat): *Kaşağı, Forsa, Pembe İncili Kaftan, Diyet*\n- **Refik Halit Karay:** *Memleket Hikâyeleri* (Anadolu'yu konu alan ilk hikâyelerden)\n- **Sabahattin Ali** (toplumcu gerçekçi): *Değirmen, Kağnı, Ses, Yeni Dünya* — köylünün ezilmişliği, adaletsizlik. Romanları: *Kuyucaklı Yusuf, İçimizdeki Şeytan, Kürk Mantolu Madonna*.\n\n# Durum (Kesit) Hikâyesi — Çehov Tarzı\n\nBelirgin bir olay örgüsü yoktur; **hayattan bir kesit**, atmosfer ve **insan** öne çıkar; sonuç okura bırakılır.\n- **Memduh Şevket Esendal:** Türk edebiyatında durum hikâyesinin öncüsü — *Otlakçı, Hikâyeler*\n- **Sait Faik Abasıyanık:** İstanbul, Burgazada, balıkçılar, kimsesizler; **insan sevgisi**, şiirsel dil. *Semaver, Sarnıç, Lüzumsuz Adam, Alemdağ'da Var Bir Yılan, Mahalle Kahvesi*.\n\n| | Sait Faik | Sabahattin Ali |\n|---|---|---|\n| Teknik | Durum (Çehov) | Olay (Maupassant) |\n| Mekân | İstanbul, adalar, deniz | Anadolu kasabası ve köyü |\n| Bakış | Bireysel, lirik insan sevgisi | Toplumsal eleştiri, gerçekçilik |",
+     "ornekler": [
+      {
+       "soru": "Sait Faik'in hikâyelerinin “durum hikâyesi” sayılmasının nedeni nedir?",
+       "cozum": "Belirgin bir **serim–düğüm–çözüm** yoktur; sıradan insanların hayatından bir **kesit**, bir atmosfer ve duygu verilir, son okura bırakılır."
+      },
+      {
+       "soru": "Kürk Mantolu Madonna ve Kuyucaklı Yusuf hangi yazarındır?",
+       "cozum": "**Sabahattin Ali**'nin."
+      }
+     ],
+     "ozet": [
+      "Olay hikâyesi Maupassant (Ömer Seyfettin, Sabahattin Ali).",
+      "Durum hikâyesi Çehov (Memduh Şevket Esendal, Sait Faik).",
+      "Sait Faik: Semaver, Lüzumsuz Adam; Sabahattin Ali: Değirmen, Kağnı."
      ]
     }
    }
@@ -153,6 +205,58 @@ App.data.content["12/edebiyat"] = [
       "1980 sonrası: postmodernizm (Orhan Pamuk); Aytmatov, Dostoyevski, Márquez."
      ]
     }
+   },
+   {
+    "id": "k2",
+    "code": "4.2",
+    "title": {
+     "tr": "Toplumcu gerçekçi roman ve köy romanı",
+     "en": "Socialist-realist novel and the village novel"
+    },
+    "content": {
+     "anlatim": "# Toplumcu Gerçekçilik\n\nEdebiyatı **toplumsal değişimin aracı** sayar; sınıf çatışması, sömürü, emekçilerin sorunları işlenir.\n- **Sadri Ertem** (*Çıkrıklar Durunca*), **Sabahattin Ali**, **Orhan Kemal** (*Bereketli Topraklar Üzerinde, Murtaza, Cemile*), **Kemal Tahir** (*Devlet Ana, Esir Şehrin İnsanları*).\n\n# Köy Romanı (1950 sonrası)\n\n**Köy Enstitüleri**'nden yetişen yazarlar köyü **içeriden** anlatır: ağa–köylü çatışması, toprak sorunu, yoksulluk, eğitimsizlik.\n| Yazar | Eserler |\n|---|---|\n| **Mahmut Makal** | *Bizim Köy* (1950) — köy edebiyatını başlatan gözlemler |\n| **Fakir Baykurt** | *Yılanların Öcü, Tırpan* |\n| **Talip Apaydın** | *Sarı Traktör* |\n| **Yaşar Kemal** | *İnce Memed* (Çukurova, eşkıya, destansı anlatım), *Ağrıdağı Efsanesi* |\n| **Kemal Tahir** | *Göl İnsanları* (köy hikâyeleri) |\n\n**Not:** Köyü ilk ele alan romanlar daha önce yazılmıştır: Nabizade Nâzım — *Karabibik* (ilk köy romanı, 1890); Reşat Nuri — *Yeşil Gece*; Yakup Kadri — *Yaban* (köye **dışarıdan** bakış).\n\n# Ortak Özellikler\n\nSade, yöresel kelimeler içeren dil; **gerçekçi** gözlem; tipler (ağa, imam, muhtar, öğretmen); toplumsal mesaj.",
+     "ornekler": [
+      {
+       "soru": "Yakup Kadri'nin Yaban'ı ile Mahmut Makal'ın Bizim Köy'ü köye bakış açısı bakımından nasıl ayrılır?",
+       "cozum": "*Yaban*'da köy, oraya sonradan gelen bir aydının (Ahmet Celal) **dışarıdan** gözüyle anlatılır; *Bizim Köy*'de ise köy, köyde yetişip öğretmenlik yapan yazar tarafından **içeriden** gözlemlenir."
+      },
+      {
+       "soru": "İnce Memed'in konusu ve mekânı nedir?",
+       "cozum": "**Çukurova** ve Toros dağlarında, ağaların zulmüne başkaldırıp **eşkıya** olan Memed'in destansı hikâyesi (Yaşar Kemal)."
+      }
+     ],
+     "ozet": [
+      "Toplumcu gerçekçilik: sınıf çatışması, Orhan Kemal, Kemal Tahir.",
+      "Köy romanı: Köy Enstitüleri kuşağı (Makal, Baykurt, Apaydın).",
+      "Karabibik ilk köy romanı; Yaban dışarıdan bakış."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "4.3",
+    "title": {
+     "tr": "Modernist ve postmodernist Türk romanı",
+     "en": "Modernist and postmodernist Turkish novel"
+    },
+    "content": {
+     "anlatim": "# Modernist Roman\n\nBireyin **iç dünyası**, yabancılaşma, bunalım; **geleneksel olay örgüsü kırılır**.\n**Teknikler:** **bilinç akışı**, **iç monolog**, geriye dönüş, zaman kırılmaları, çoklu bakış açısı.\n| Yazar | Eserler |\n|---|---|\n| **Oğuz Atay** | **Tutunamayanlar** (1972), *Tehlikeli Oyunlar*; ironi, parodi |\n| **Yusuf Atılgan** | **Anayurt Oteli**, *Aylak Adam* — yalnızlık, yabancılaşma |\n| **Ferit Edgü** | *O / Hakkâri'de Bir Mevsim* |\n| **Bilge Karasu** | *Gece* |\n| **Leyla Erbil** | *Tuhaf Bir Kadın* |\n| **Tanpınar** (öncü) | *Huzur*, *Saatleri Ayarlama Enstitüsü* — zaman, medeniyet değişimi |\n\n# Postmodernist Roman (1980 sonrası)\n\n**Üstkurmaca** (romanın kendi yazılışını konu etmesi), **metinlerarasılık**, tarih ve kurgunun iç içeliği, **çoğulculuk**, ironi, yazar–okur oyunu.\n- **Orhan Pamuk:** *Beyaz Kale, Kara Kitap, Benim Adım Kırmızı, Kar, Masumiyet Müzesi* — **2006 Nobel Edebiyat Ödülü**.\n- **İhsan Oktay Anar:** *Puslu Kıtalar Atlası, Efrâsiyâb'ın Hikâyeleri*\n- **Latife Tekin:** *Sevgili Arsız Ölüm* (büyülü gerçekçilik)\n- **Nazlı Eray**, **Hasan Ali Toptaş** (*Gölgesizler*)\n\n| | Modernizm | Postmodernizm |\n|---|---|---|\n| Odak | Bireyin bilinci | Metnin kendisi, kurgu |\n| Gerçeklik | Öznel | Çoğul, belirsiz |",
+     "ornekler": [
+      {
+       "soru": "Tutunamayanlar ve Anayurt Oteli hangi roman anlayışının örnekleridir; ortak teknikleri nedir?",
+       "cozum": "**Modernist** romanın; **bilinç akışı, iç monolog** ve zaman kırılmalarıyla bireyin yalnızlığını ve yabancılaşmasını işlerler."
+      },
+      {
+       "soru": "Bir romanda yazarın, okura romanı nasıl yazdığını anlattığı bölümler varsa hangi teknik kullanılmıştır?",
+       "cozum": "**Üstkurmaca** — postmodernist romanın temel tekniklerinden biridir."
+      }
+     ],
+     "ozet": [
+      "Modernist roman: bilinç akışı, iç monolog (Oğuz Atay, Yusuf Atılgan).",
+      "Postmodernist roman: üstkurmaca, metinlerarasılık (Orhan Pamuk, İ. O. Anar).",
+      "Orhan Pamuk 2006 Nobel."
+     ]
+    }
    }
   ]
  },
@@ -213,6 +317,32 @@ App.data.content["12/edebiyat"] = [
       "Deneme: öznel, samimi, kanıtlama zorunluluğu yok.",
       "Montaigne kurucu; Bacon.",
       "Türk edebiyatı: Nurullah Ataç, Tanpınar (Beş Şehir), Cemil Meriç, Sabahattin Eyüboğlu."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "6.2",
+    "title": {
+     "tr": "Öğretici metin türleri: makale, fıkra, söyleşi, eleştiri, gezi, anı",
+     "en": "Expository text types: article, column, interview, criticism, travel writing, memoir"
+    },
+    "content": {
+     "anlatim": "# Türlerin Karşılaştırması\n\n| Tür | Özellik | Üslup | Türk edebiyatında örnek |\n|---|---|---|---|\n| **Makale** | Bir düşünceyi **kanıtlarla** savunur | Ciddi, nesnel, bilimsel | İlk makale: **Şinasi**, *Tercüman-ı Ahvâl Mukaddimesi* |\n| **Deneme** | Kişisel görüş, **kanıtlama kaygısı yok** | Samimi, öznel | Nurullah Ataç, Suut Kemal Yetkin |\n| **Fıkra (köşe yazısı)** | Güncel konuda kısa yorum | Akıcı, esprili | Ahmet Rasim, Falih Rıfkı Atay |\n| **Söyleşi (sohbet)** | Konuşur gibi, okurla diyalog | Samimi, sorulu | Ahmet Rasim, Şevket Rado |\n| **Eleştiri** | Eser hakkında değerlendirme | Nesnel ya da öznel | Namık Kemal (*Tahrib-i Harabat*), Nurullah Ataç |\n| **Röportaj** | Gözlem + görüşme ile yerinde inceleme | Canlı | Yaşar Kemal (*Bu Diyar Baştan Başa*) |\n| **Mülakat** | Soru–cevap ile bir kişinin görüşleri | Belgesel | — |\n| **Gezi yazısı** | Gezip görülen yerler | Betimleyici | Evliya Çelebi (*Seyahatname*), Ahmet Hamdi Tanpınar (*Beş Şehir*) |\n| **Anı (hatıra)** | Yazarın kendi yaşadıkları, geçmiş | Öznel | Halit Ziya (*Kırk Yıl*) |\n| **Günlük** | Günü gününe, tarihli kayıt | İçten | Nurullah Ataç, Salah Birsel |\n| **Biyografi / otobiyografi** | Başkasının / kendi hayatı | Belgesel | Tezkireler; Mehmet Âkif biyografisi |\n\n# Sık Karıştırılanlar\n\n- **Makale** kanıtlar, **deneme** kanıtlamaz.\n- **Anı** geçmişte yaşananlar (tarih verilmeyebilir); **günlük** tarih atılarak, o gün yazılır.\n- **Söyleşi**de sohbet havası, **mülakat**ta soru–cevap vardır.",
+     "ornekler": [
+      {
+       "soru": "Bir yazar “Bence mutluluk küçük şeylerde saklıdır” düşüncesini kanıt aramadan, samimi bir dille işliyorsa bu metin hangi türdedir?",
+       "cozum": "**Deneme** — kişisel görüş, kanıtlama zorunluluğu yok, samimi üslup."
+      },
+      {
+       "soru": "Beş Şehir hangi türdedir ve kime aittir?",
+       "cozum": "Ahmet Hamdi **Tanpınar**'ın **gezi yazısı** (deneme özellikleri de taşır) türündeki eseridir: Ankara, Erzurum, Konya, Bursa, İstanbul."
+      }
+     ],
+     "ozet": [
+      "Makale kanıtlar; deneme kanıtlama kaygısı taşımaz.",
+      "Anı geçmişte yaşanan; günlük tarihli, o gün yazılır.",
+      "Gezi: Seyahatname, Beş Şehir; röportaj: yerinde gözlem."
      ]
     }
    }

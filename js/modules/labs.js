@@ -543,7 +543,7 @@
     function slider(pid, labTxt, min, max, step, value, unit, hint) {
       p[pid] = value;
       return '<label class="lab-ctl"><span class="lab-ctl__top"><span>' + esc(labTxt) + '</span><output data-out="' + pid + '">' + fmt(value, 2) + (unit ? (unit === "°" ? "" : " ") + esc(unit) : "") + "</output></span>" +
-        '<input type="range" min="' + min + '" max="' + max + '" step="' + step + '" value="' + value + '" data-p="' + pid + '" data-unit="' + esc(unit || "") + '">' +
+        '<input type="range" min="' + min + '" max="' + max + '" step="' + step + '" value="' + value + '" data-p="' + pid + '" data-unit="' + esc(unit || "") + '" aria-label="' + esc(labTxt + (unit ? " (" + unit + ")" : "")) + '">' +
         (hint ? '<span class="hint">' + esc(hint) + "</span>" : "") + "</label>";
     }
     function buildCtrls() {

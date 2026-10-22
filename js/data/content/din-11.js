@@ -214,6 +214,32 @@ App.data.content["11/din"] = [
       "Rum 9: ahlaksız güç yıkılır; tarihten ders."
      ]
     }
+   },
+   {
+    "id": "k3",
+    "code": "3.3",
+    "title": {
+     "tr": "İslam medeniyetinde şehir, vakıf ve sanat",
+     "en": "City, waqf and art in Islamic civilisation"
+    },
+    "content": {
+     "anlatim": "# İslam Şehrinin Yapısı\n\nMerkezde **cami**, çevresinde **çarşı (bedesten, han)**, **medrese**, **hamam**, **imaret** ve mahalleler. Şehirler bilim ve ticaretin merkezi oldu: **Bağdat, Kurtuba, Kahire, Semerkant, Buhara, Isfahan, İstanbul**.\n\n# Vakıf Sistemi\n\n**Vakıf:** Bir malın gelirinin, sahibinin isteğiyle **kalıcı olarak** hayır hizmetine ayrılması. **Vakfiye**, vakfın şartlarını belirleyen belgedir.\n| Hizmet alanı | Örnek |\n|---|---|\n| Eğitim | Medreseler, kütüphaneler, sıbyan mektepleri |\n| Sağlık | **Darüşşifa**lar (Edirne II. Bayezid Darüşşifası — müzikle tedavi) |\n| Sosyal yardım | İmaretler (aşevleri), **sadaka taşları**, kervansaraylar |\n| Çevre ve hayvanlar | Göçmen kuşlar için vakıflar, **kuş evleri**, su kuyuları, çeşmeler |\n\nVakıflar devlet yükünü hafifletmiş, **toplumsal dayanışmayı** kurumsallaştırmıştır. Bugün **Vakıflar Genel Müdürlüğü** tarihî vakıf eserlerini korur.\n\n# Sanat\n\n- **Mimari:** Kubbe, minare, avlu; **Mimar Sinan** — Şehzade (çıraklık), **Süleymaniye** (kalfalık), **Selimiye** (ustalık).\n- **Hat (güzel yazı):** Kur'an'a saygıdan doğdu; **Şeyh Hamdullah**, **Hâfız Osman**.\n- **Tezhip, minyatür, ebru, çini** (İznik), **musiki** (tekke ve saray müziği).\n- İslam sanatında **soyut ve geometrik** motifler (arabesk, rumi), **sonsuzluk** fikrini yansıtır.",
+     "ornekler": [
+      {
+       "soru": "Osmanlı'da göçmen kuşlara bakan vakıfların bulunması vakıf anlayışı hakkında ne gösterir?",
+       "cozum": "Vakıf hizmetlerinin yalnızca insanlarla sınırlı kalmayıp **tüm canlıları ve çevreyi** kapsadığını; merhametin dinî ve toplumsal bir değer olarak kurumsallaştığını gösterir."
+      },
+      {
+       "soru": "Mimar Sinan'ın “ustalık eserim” dediği yapı hangisidir ve nerededir?",
+       "cozum": "**Selimiye Camii**, **Edirne**."
+      }
+     ],
+     "ozet": [
+      "Vakıf: malın gelirinin kalıcı olarak hayra ayrılması; vakfiye şartları belirler.",
+      "Darüşşifa, imaret, sadaka taşı, kuş evleri.",
+      "Sinan: Şehzade çıraklık, Süleymaniye kalfalık, Selimiye ustalık."
+     ]
+    }
    }
   ]
  },
@@ -340,6 +366,32 @@ App.data.content["11/din"] = [
       "Kitab-ı Mukaddes: Ahd-i Atik + Ahd-i Cedid (4 İncil…).",
       "Teslis, enkarnasyon, kefaret; vaftiz ve evharistiya.",
       "Katolik (Papa), Ortodoks (1054), Protestan (Luther)."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "5.3",
+    "title": {
+     "tr": "Yahudilik ve Hristiyanlıkta ibadet, kutsal günler ve İslam ile karşılaştırma",
+     "en": "Worship and holy days in Judaism and Christianity, compared with Islam"
+    },
+    "content": {
+     "anlatim": "# Yahudilik\n\n| Konu | Açıklama |\n|---|---|\n| Kutsal metin | **Tanah** (Tevrat, Neviim, Ketuvim) ve **Talmud** |\n| İbadet yeri | **Sinagog** (havra) |\n| Kutsal gün | **Şabat** (cuma gün batımından cumartesi gün batımına; çalışmak yasak) |\n| Bayramlar | **Pesah** (Hamursuz — Mısır'dan çıkış), **Yom Kippur** (Kefaret günü, oruç), **Roş Haşana** (Yılbaşı), **Hanuka** |\n| Diğer | **Koşer** (dinen uygun yiyecek), sünnet (**brit mila**), bar/bat mitzva (dinî ergenlik) |\n\n# Hristiyanlık\n\n| Konu | Açıklama |\n|---|---|\n| Kutsal metin | **Kitab-ı Mukaddes**: Eski Ahit + **Yeni Ahit** (4 İncil: Matta, Markos, Luka, Yuhanna) |\n| İnanç | **Teslis** (Baba–Oğul–Kutsal Ruh), **ilk günah**, Hz. İsa'nın kurtarıcılığı |\n| İbadet yeri | Kilise |\n| Kutsal gün | **Pazar** |\n| Sakramentler | **Vaftiz**, **Evharistiya (komünyon/Aşai Rabbani)**, evlilik vb. |\n| Bayramlar | **Noel** (doğum), **Paskalya** (diriliş inancı) |\n| Mezhepler | **Katoliklik** (Papa), **Ortodoksluk** (patrikler), **Protestanlık** (Luther, 1517) |\n\n# İslam ile Karşılaştırma\n\n- Üç din de **Hz. İbrahim**'e bağlanır (**İbrahimî dinler**) ve tek Tanrı inancını esas alır.\n- İslam'da Hz. İsa **peygamberdir**; teslis ve ilk günah kabul edilmez, **her insan kendi yaptığından sorumludur**.\n- İslam'da haftalık topluca ibadet **cuma namazı**dır; dinlenme günü gibi bir yasak öngörülmez.",
+     "ornekler": [
+      {
+       "soru": "Yahudilikte Şabat günü hangi zaman dilimidir ve ne yasaktır?",
+       "cozum": "**Cuma gün batımından cumartesi gün batımına** kadar sürer; bu sürede **çalışmak** ve iş sayılan pek çok eylem yasaktır."
+      },
+      {
+       "soru": "Hristiyanlıktaki “ilk günah” inancı ile İslam'ın bu konudaki yaklaşımını karşılaştırınız.",
+       "cozum": "Hristiyanlığa göre Âdem'in günahı tüm insanlığa geçmiş, kurtuluş Hz. İsa ile mümkündür. İslam'da günah **kişiseldir**, kimse başkasının günahını yüklenmez; Hz. Âdem tövbe etmiş ve **affedilmiştir**."
+      }
+     ],
+     "ozet": [
+      "Yahudilik: Tanah–Talmud, sinagog, Şabat, Pesah, Yom Kippur.",
+      "Hristiyanlık: Yeni Ahit, teslis, kilise, pazar, Noel–Paskalya; Katolik–Ortodoks–Protestan.",
+      "İslam'da günah kişiseldir; Hz. İsa peygamberdir."
      ]
     }
    }

@@ -104,6 +104,32 @@ App.data.content["11/kimya"] = [
       "$v=k[A]^m[B]^n$; yavaş basamak hızı belirler."
      ]
     }
+   },
+   {
+    "id": "k5",
+    "code": "1.1.5",
+    "title": {
+     "tr": "Kalorimetre ve tepkime ısısının ölçülmesi",
+     "en": "Calorimetry and measuring heat of reaction"
+    },
+    "content": {
+     "anlatim": "# Isı ve Sıcaklık\n\n- **Isı (q):** Sıcaklık farkından dolayı aktarılan enerji (J, kJ, cal). **Sıcaklık:** taneciklerin ortalama kinetik enerjisinin ölçüsü.\n$$q = m \\cdot c \\cdot \\Delta T$$\n$m$: kütle (g), $c$: öz ısı (J/g·°C), $\\Delta T$: sıcaklık değişimi. Suyun öz ısısı $c = 4{,}18$ J/g·°C ($\\approx 1$ cal/g·°C).\n- **Isı sığası:** $C = m\\cdot c$ (maddenin sıcaklığını 1 °C artırmak için gereken ısı).\n\n# Kalorimetre\n\n| Tür | Özellik | Ölçülen |\n|---|---|---|\n| **Kahve fincanı (sabit basınç)** | Basit, yalıtımlı kap | Çözünme, nötrleşme ısısı → $\\Delta H$ |\n| **Bomba kalorimetresi (sabit hacim)** | Çelik kap, oksijenli ortamda yakma | Yanma ısısı, besinlerin enerji değeri |\n\n**İlke:** Tepkimede açığa çıkan ısı = suyun (ve kalorimetrenin) aldığı ısı:\n$$q_{tepkime} = -(q_{su} + q_{kalorimetre})$$\n- Su ısınıyorsa tepkime **ekzotermiktir** ($\\Delta H < 0$); soğuyorsa **endotermiktir**.\n- Molar entalpi: $\\Delta H = \\dfrac{q_{tepkime}}{n}$ (kJ/mol)\n\n# Günlük Hayattan\n\nBesin etiketlerindeki **kcal** değerleri bomba kalorimetresiyle ölçülür. Kendiliğinden ısınan çorba kutuları ve buz torbaları çözünme ısısına dayanır.",
+     "ornekler": [
+      {
+       "soru": "Kahve fincanı kalorimetresinde $0{,}05$ mol NaOH çözündüğünde $100$ g suyun sıcaklığı $5$ °C artıyor. Molar çözünme entalpisi kaç kJ/mol'dür? ($c = 4{,}2$ J/g·°C)",
+       "cozum": "$q_{su} = 100\\cdot4{,}2\\cdot5 = 2100$ J $= 2{,}1$ kJ. Tepkime ısı verdi: $\\Delta H = -\\frac{2{,}1}{0{,}05} = -42$ kJ/mol (ekzotermik)."
+      },
+      {
+       "soru": "Bir maddenin çözünmesi sırasında suyun sıcaklığı düşüyorsa olay nasıl sınıflandırılır?",
+       "cozum": "Su ısı **kaybetmiş**, çözünme olayı ısıyı **almıştır** → **endotermik** ($\\Delta H > 0$); örneğin $NH_4NO_3$ ile yapılan soğuk kompresler."
+      }
+     ],
+     "ozet": [
+      "$q = mc\\Delta T$.",
+      "Kahve fincanı: sabit basınç (ΔH); bomba: sabit hacim (yanma ısısı).",
+      "Su ısınıyorsa tepkime ekzotermik."
+     ]
+    }
    }
   ]
  },
@@ -274,6 +300,93 @@ App.data.content["11/kimya"] = [
       "Mikroplastik < 5 mm; nanoplastik < 1 μm.",
       "Birincil (mikroboncuk) ve ikincil (parçalanma) kaynaklar.",
       "Besin zincirinde biyobirikim; çözüm: azalt, geri dönüştür, biyobozunur."
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "u4",
+  "name": {
+   "tr": "4. Ünite: Gazlar ve Sıvı Çözeltiler (AYT)",
+   "en": "Unit 4: Gases and Liquid Solutions"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "4.1",
+    "title": {
+     "tr": "Gaz yasaları ve ideal gaz denklemi",
+     "en": "Gas laws and the ideal gas equation"
+    },
+    "content": {
+     "anlatim": "# Gazları Tanımlayan Değişkenler\n\nBasınç $P$ (atm, mmHg; $1$ atm $= 760$ mmHg), hacim $V$ (L), sıcaklık $T$ (**Kelvin**: $T = t + 273$), mol sayısı $n$.\n\n# Gaz Yasaları\n\n| Yasa | Sabit | İlişki | Grafik |\n|---|---|---|---|\n| **Boyle** | $n, T$ | $P_1V_1 = P_2V_2$ (ters orantı) | $P$–$V$ hiperbol |\n| **Charles** | $n, P$ | $\\dfrac{V_1}{T_1} = \\dfrac{V_2}{T_2}$ | $V$–$T$ doğru |\n| **Gay-Lussac** | $n, V$ | $\\dfrac{P_1}{T_1} = \\dfrac{P_2}{T_2}$ | $P$–$T$ doğru |\n| **Avogadro** | $P, T$ | $\\dfrac{V_1}{n_1} = \\dfrac{V_2}{n_2}$ | — |\n\n**Birleşik gaz yasası:** $\\dfrac{P_1V_1}{n_1T_1} = \\dfrac{P_2V_2}{n_2T_2}$\n\n# İdeal Gaz Denklemi\n\n$$PV = nRT, \\qquad R = 0{,}082\\ \\frac{\\text{L·atm}}{\\text{mol·K}} = \\frac{22{,}4}{273}$$\n- **Normal koşullar (NK):** $0$ °C, $1$ atm → 1 mol gaz **22,4 L**.\n- **Oda koşulları:** $25$ °C, $1$ atm → 1 mol gaz $\\approx$ **24,5 L**.\n- **Yoğunluk:** $d = \\dfrac{P\\cdot M_A}{R\\cdot T}$ ($M_A$: mol kütlesi)",
+     "ornekler": [
+      {
+       "soru": "$27$ °C'de $4$ L hacim kaplayan gaz, sabit basınçta $127$ °C'ye ısıtılıyor. Yeni hacmi kaç L olur?",
+       "cozum": "Kelvine çevir: $300$ K → $400$ K. $\\frac{4}{300} = \\frac{V_2}{400} \\Rightarrow V_2 = \\frac{16}{3} \\approx 5{,}33$ L."
+      },
+      {
+       "soru": "NK'da $11{,}2$ L hacim kaplayan $CH_4$ gazı kaç gramdır? ($CH_4 = 16$ g/mol)",
+       "cozum": "$n = \\frac{11{,}2}{22{,}4} = 0{,}5$ mol; kütle $= 0{,}5\\cdot16 = 8$ g."
+      }
+     ],
+     "ozet": [
+      "Gaz problemlerinde sıcaklık daima Kelvin.",
+      "$PV = nRT$; $R = 0{,}082$ L·atm/mol·K.",
+      "NK'da 1 mol gaz 22,4 L."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "4.2",
+    "title": {
+     "tr": "Kinetik teori, gaz karışımları ve gerçek gazlar",
+     "en": "Kinetic theory, gas mixtures and real gases"
+    },
+    "content": {
+     "anlatim": "# Kinetik Molekül Teorisi (ideal gaz varsayımları)\n\n1. Gaz tanecikleri sürekli, gelişigüzel ve doğrusal hareket eder.\n2. Taneciklerin **öz hacmi** kabın hacmine göre ihmal edilir.\n3. Tanecikler arasında **çekim–itme yoktur**.\n4. Çarpışmalar **esnektir**.\n5. Ortalama kinetik enerji **yalnızca mutlak sıcaklığa** bağlıdır: $E_k \\propto T$\n\n# Difüzyon ve Graham Yasası\n\nAynı sıcaklıkta hafif gazlar daha hızlıdır:\n$$\\frac{v_1}{v_2} = \\sqrt{\\frac{M_2}{M_1}}$$\nÖrnek: $H_2$ ($M = 2$), $O_2$'den ($M = 32$) $\\sqrt{16} = 4$ kat hızlı yayılır.\n\n# Gaz Karışımları — Dalton Kısmi Basınçlar Yasası\n\n$$P_{toplam} = P_A + P_B + \\dots, \\qquad P_A = X_A \\cdot P_{toplam}, \\quad X_A = \\frac{n_A}{n_{toplam}}$$\n- **Su üstünde toplanan gaz:** $P_{gaz} = P_{atm} - P_{su\\ buharı}$\n\n# Gerçek Gazlar\n\nGazlar **yüksek basınç** ve **düşük sıcaklıkta** idealden sapar (tanecik hacmi ve çekim kuvvetleri önem kazanır).\n- İdeale en yakın: **düşük basınç, yüksek sıcaklık**, küçük ve apolar tanecikler (He, $H_2$).\n- **Kritik sıcaklık:** Bu sıcaklığın üstünde gaz, basınç ne olursa olsun sıvılaştırılamaz. Kritik sıcaklığın altındaki gaza **buhar** denir.\n- **Joule–Thomson olayı:** Sıkıştırılmış gaz genleşirken soğur (buzdolabı, klima).",
+     "ornekler": [
+      {
+       "soru": "Bir kapta $0{,}2$ mol $N_2$ ve $0{,}3$ mol $O_2$ var; toplam basınç $2$ atm. $O_2$'nin kısmi basıncı kaçtır?",
+       "cozum": "$X_{O_2} = \\frac{0{,}3}{0{,}5} = 0{,}6$; $P_{O_2} = 0{,}6\\cdot2 = 1{,}2$ atm."
+      },
+      {
+       "soru": "Aynı koşullarda $He$ (4 g/mol) ve $CH_4$ (16 g/mol) gazlarının yayılma hızları oranı $v_{He}/v_{CH_4}$ nedir?",
+       "cozum": "$\\sqrt{16/4} = 2$ → helyum 2 kat hızlıdır."
+      }
+     ],
+     "ozet": [
+      "Ortalama kinetik enerji yalnızca T'ye bağlı.",
+      "Graham: $v_1/v_2 = \\sqrt{M_2/M_1}$.",
+      "Gerçek gaz yüksek basınç–düşük sıcaklıkta idealden sapar."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "4.3",
+    "title": {
+     "tr": "Çözelti derişimleri ve koligatif özellikler",
+     "en": "Solution concentrations and colligative properties"
+    },
+    "content": {
+     "anlatim": "# Derişim Birimleri\n\n| Birim | Formül |\n|---|---|\n| **Kütlece yüzde** | $\\dfrac{m_{çözünen}}{m_{çözelti}}\\times100$ |\n| **Molarite (M)** | $\\dfrac{n_{çözünen}}{V_{çözelti}\\,(\\text{L})}$ |\n| **Molalite (m)** | $\\dfrac{n_{çözünen}}{m_{çözücü}\\,(\\text{kg})}$ |\n| **Mol kesri** | $X_A = \\dfrac{n_A}{n_{toplam}}$ |\n| **ppm** | $\\dfrac{m_{çözünen}}{m_{çözelti}}\\times10^6$ (çok seyreltik çözeltiler) |\n\n**Seyreltme/karıştırma:** $M_1V_1 = M_2V_2$ · $M_{son} = \\dfrac{M_1V_1 + M_2V_2}{V_1 + V_2}$\n\n# Koligatif Özellikler\n\nÇözünen **taneciklerin türüne değil sayısına** bağlı özellikler:\n- **Buhar basıncı düşmesi** (Raoult: $P = X_{çözücü}\\cdot P^\\circ$)\n- **Kaynama noktası yükselmesi:** $\\Delta T_k = K_k \\cdot m \\cdot i$\n- **Donma noktası alçalması:** $\\Delta T_d = K_d \\cdot m \\cdot i$\n- **Ozmotik basınç**\n\n$i$: **tanecik sayısı** (van't Hoff faktörü) — şeker $i = 1$, $NaCl$ $i = 2$, $CaCl_2$ $i = 3$.\n\n**Uygulamalar:** Kışın yollara tuz serpme, antifriz, deniz suyunun daha geç donması, tuzlu suda makarnanın daha yüksek sıcaklıkta kaynaması.",
+     "ornekler": [
+      {
+       "soru": "$0{,}2$ mol $NaOH$ ile $500$ mL çözelti hazırlanıyor. Molarite kaçtır?",
+       "cozum": "$M = \\frac{0{,}2}{0{,}5} = 0{,}4$ M."
+      },
+      {
+       "soru": "Eşit molalitedeki şeker, $NaCl$ ve $CaCl_2$ çözeltilerinin donma noktalarını sıralayınız.",
+       "cozum": "Tanecik sayıları $1 < 2 < 3$; donma noktası alçalması en çok $CaCl_2$'de: **şeker > NaCl > CaCl₂** (en düşük donma noktası CaCl₂)."
+      }
+     ],
+     "ozet": [
+      "Molarite mol/L çözelti; molalite mol/kg çözücü.",
+      "Koligatif özellik tanecik sayısına bağlıdır.",
+      "$\\Delta T = K\\cdot m\\cdot i$; NaCl için $i = 2$."
      ]
     }
    }

@@ -218,7 +218,7 @@
           '<div class="page-head__actions"><button class="btn btn--primary" type="button" id="misAdd">' + App.icon("plus") + esc(t("mis.add")) + "</button></div></div>" +
         '<div class="mis-bar"><div class="tabs" role="tablist">' +
           tab("due", "", t("mis.tab.due"), c.due) + tab("all", "/tumu", t("mis.tab.all"), c.total) + tab("mastered", "/ogrenilen", t("mis.tab.mastered"), c.mastered) + "</div>" +
-          (subjects.length > 1 ? '<select class="select" id="misSubj" style="width:auto;min-width:180px"><option value="">' + esc(t("mis.allSubjects")) + "</option>" +
+          (subjects.length > 1 ? '<select class="select" id="misSubj" style="width:auto;min-width:180px" aria-label="' + esc(t("mis.allSubjects")) + '"><option value="">' + esc(t("mis.allSubjects")) + "</option>" +
             subjects.map((s) => '<option value="' + esc(s) + '"' + (s === subj ? " selected" : "") + ">" + esc(s) + "</option>").join("") + "</select>" : "") +
         "</div>" +
         analysisHtml(all) +
