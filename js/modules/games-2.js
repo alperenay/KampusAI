@@ -29,8 +29,8 @@
         const Lv = LEVELS[li], g = 9.8; let tries = 0, anim = 0;
         area.innerHTML = '<div class="hd"><div class="dy__hud"><span>' + esc(T("Bölüm", "Level")) + " " + (li + 1) + '</span><span id="hdInfo">' + (Lv.wind ? esc(T("Rüzgâr ", "Wind ")) + (Lv.wind > 0 ? "→ " : "← ") + Math.abs(Lv.wind) + " m/s²" : "") + '</span><span>' + esc(T("Deneme", "Tries")) + ' <b id="hdT">0</b></span></div>' +
           '<canvas class="gr__cv hd__cv"></canvas>' +
-          '<div class="hd__ctl"><label class="lab-ctl"><span class="lab-ctl__top"><span>' + esc(T("Açı", "Angle")) + '</span><output id="oA">45°</output></span><input type="range" id="hA" min="5" max="85" value="45"></label>' +
-          '<label class="lab-ctl"><span class="lab-ctl__top"><span>' + esc(T("Hız", "Speed")) + '</span><output id="oV">15 m/s</output></span><input type="range" id="hV" min="5" max="40" step="0.5" value="15"></label></div>' +
+          '<div class="hd__ctl"><label class="lab-ctl"><span class="lab-ctl__top"><span>' + esc(T("Açı", "Angle")) + '</span><output id="oA">45°</output></span><input type="range" id="hA" min="5" max="85" value="45" aria-label="' + esc(T("Açı", "Angle")) + '"></label>' +
+          '<label class="lab-ctl"><span class="lab-ctl__top"><span>' + esc(T("Hız", "Speed")) + '</span><output id="oV">15 m/s</output></span><input type="range" id="hV" min="5" max="40" step="0.5" value="15" aria-label="' + esc(T("Hız", "Speed")) + '"></label></div>' +
           '<div class="game-dock"><button class="btn" type="button" id="hdBack">' + App.icon("chevronL") + esc(T("Bölümler", "Levels")) + '</button><button class="btn btn--primary" type="button" id="hdGo">' + App.icon("target") + esc(T("Fırlat", "Launch")) + "</button></div>" +
           '<p class="hint" id="hdHint"></p></div>';
         App.hydrateIcons(area);

@@ -45,3 +45,15 @@
 .modal .seg { max-width: 100%; flex-wrap: wrap; }
 .modal .seg button { white-space: normal; }
 .modal .hint, .modal .field__label { overflow-wrap: anywhere; }
+
+/* ---------- Dokunmatik ekranlarda dokunma hedefleri (WCAG 2.5.8: en az 24 px) ---------- */
+@media (pointer: coarse), (max-width: 860px) {
+  .crumbs a { display: inline-flex; align-items: center; min-height: 28px; }
+  .md a.cite { min-width: 24px; height: 24px; border-radius: 12px; font-size: 12px; }
+  input[type="checkbox"], input[type="radio"] { width: 20px; height: 20px; }
+  .para-type__go { display: inline-flex; align-items: center; min-height: 32px; padding: 0 8px; }
+  .lab-ctl input[type="range"] { min-height: 28px; }
+}
+@media (pointer: coarse), (max-width: 860px) {
+  .fm-link, .hint > a[href^="#/"] { display: inline-flex; align-items: center; min-height: 28px; }
+}

@@ -140,7 +140,7 @@
     view.innerHTML = '<div class="page kv-page"><div class="page-head"><div><h1>' + esc(T("Konuşan Kavramlar", "Talking Concepts")) + "</h1><p>" +
       esc(T("Kavramın kendisiyle konuş: mitokondri, Mars, DNA, foton … Kendini birinci ağızdan anlatır, sesli konuşur, hologram olarak karşında durur.", "Talk to the concept itself: it explains itself in the first person, speaks aloud and stands in front of you as a hologram.")) + "</p></div></div>" +
       '<section class="card kv-pick"><div class="kv-grid">' + C.map((c) => '<button type="button" class="kv-c" data-k="' + c.id + '" style="--kc:#' + c.renk.toString(16).padStart(6, "0") + '"><b>' + esc(T(c.ad[0], c.ad[1])) + "</b><small>" + esc(T(SUBJ[c.ders][0], SUBJ[c.ders][1]) + " · " + c.sinif + T(". sınıf", "th")) + "</small></button>").join("") + "</div>" +
-        '<form class="kv-own"><input class="input" id="kvOwn" maxlength="40" placeholder="' + esc(T("Başka bir kavram yaz: kara delik, enzim, Osmanlı Devleti …", "Type another concept: black hole, enzyme …")) + '"><button class="btn" type="submit">' + esc(T("Konuş", "Talk")) + "</button></form>" +
+        '<form class="kv-own"><input class="input" id="kvOwn" maxlength="40" aria-label="' + esc(T("Konuşturulacak kavram", "Concept to talk to")) + '" placeholder="' + esc(T("Başka bir kavram yaz: kara delik, enzim, Osmanlı Devleti …", "Type another concept: black hole, enzyme …")) + '"><button class="btn" type="submit">' + esc(T("Konuş", "Talk")) + "</button></form>" +
         '<button type="button" class="btn btn--ghost btn--sm kv-change" hidden>' + esc(T("Başka kavram seç", "Pick another concept")) + "</button></section>" +
       '<div id="kvRoom"></div></div>';
     const room = view.querySelector("#kvRoom");
