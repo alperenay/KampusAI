@@ -1,0 +1,33 @@
+/* =========================================================
+   v134.css — telefon alt çubuğu (1.34.0)
+   Sekmeler: Bugün · Konular · [Asistan] · Gelişim · Araçlar.
+   Ortadaki asistan düğmesi çubuktan yükselen degrade bir kare.
+   Arayüzün geri kalanı değişmez.
+   ========================================================= */
+:root {
+  --fab-grad:   linear-gradient(135deg, #4f74ff, #8a63ff);
+  --fab-shadow: 0 8px 22px rgba(79, 116, 255, .42);
+}
+:root[data-theme="light"] { --fab-shadow: 0 8px 20px rgba(53, 87, 224, .35); }
+
+@media (max-width: 860px) {
+  .tabbar { height: 64px; overflow: visible; }
+  .tabbar__item { font-size: 11.5px; }
+  .tabbar__fab { justify-content: flex-start; }
+  .tabbar__fab-btn {
+    display: grid; place-items: center;
+    width: 54px; height: 54px; margin-top: -20px;
+    border-radius: 18px; background: var(--fab-grad); color: #fff;
+    box-shadow: var(--fab-shadow), 0 0 0 4px var(--bg);
+    transition: transform .15s var(--ease);
+  }
+  .tabbar__fab-btn .ico { width: 26px; height: 26px; color: #fff; }
+  .tabbar__item.tabbar__fab.is-active .ico { transform: none; }
+  .tabbar__fab:active .tabbar__fab-btn { transform: scale(.94); }
+  .tabbar__fab:focus-visible { outline: none; }
+  .tabbar__fab:focus-visible .tabbar__fab-btn { outline: 2px solid var(--accent-text); outline-offset: 3px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tabbar__fab-btn { transition: none; }
+}

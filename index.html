@@ -51,6 +51,7 @@
   <link rel="stylesheet" href="css/v131.css">
   <link rel="stylesheet" href="css/v132.css">
   <link rel="stylesheet" href="css/v133.css">
+  <link rel="stylesheet" href="css/v134.css">
 </head>
 <body>
   <a class="a11y-skip" href="#view" data-i18n="a11y.skip">İçeriğe geç</a>
@@ -263,11 +264,11 @@
 
       <!-- Telefonda alt sekme çubuğu: en sık kullanılan bölümler başparmağın altında -->
       <nav class="tabbar" id="tabbar" data-i18n-aria="nav.tabbar">
-        <a class="tabbar__item" href="#/" data-route="" data-route-also="sohbet"><span data-icon="sparkle"></span><span data-i18n="nav.tab.assistant">Asistan</span></a>
         <a class="tabbar__item" href="#/bugun" data-route="bugun"><span data-icon="sun"></span><span data-i18n="nav.today">Bugün</span></a>
-        <a class="tabbar__item" href="#/konular" data-route="konular"><span data-icon="book"></span><span data-i18n="nav.tab.topics">Konular</span></a>
-        <a class="tabbar__item" href="#/denemeler" data-route="denemeler"><span data-icon="chart"></span><span data-i18n="nav.tab.exams">Denemeler</span></a>
-        <button class="tabbar__item" type="button" id="tabMore"><span data-icon="menu"></span><span data-i18n="nav.tab.more">Menü</span></button>
+        <a class="tabbar__item" href="#/konular" data-route="konular" data-route-also="yazili,formuller,kartlar,yanlislar,podcast"><span data-icon="book"></span><span data-i18n="nav.tab.topics">Konular</span></a>
+        <a class="tabbar__item tabbar__fab" href="#/" data-route="" data-route-also="sohbet" data-i18n-aria="nav.tab.assistant" aria-label="Asistan"><span class="tabbar__fab-btn" data-icon="sparkle"></span></a>
+        <a class="tabbar__item" href="#/denemeler" data-route="denemeler" data-route-also="rapor,harita,puan,kok,simulasyon,tercih,yolculuk"><span data-icon="chart"></span><span data-i18n="nav.tab.progress">Gelişim</span></a>
+        <a class="tabbar__item" href="#/araclar" data-route="araclar"><span data-icon="widget"></span><span data-i18n="nav.tab.tools">Araçlar</span></a>
       </nav>
     </main>
   </div>

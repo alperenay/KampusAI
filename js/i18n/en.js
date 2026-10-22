@@ -54,6 +54,8 @@ App.locales.en = {
   "nav.tab.topics": "Lessons",
   "nav.tab.exams": "Exams",
   "nav.tab.more": "Menu",
+  "nav.tab.progress": "Progress",
+  "nav.tab.tools": "Tools",
   "nav.openMenu": "Open menu",
   "backup.button": "Back up",
   "backup.title": "Back up all data to a file",
