@@ -178,13 +178,13 @@
   ];
 
   const OZELLIKLER = () => [
-    ["book", "konular", T("Konu anlatımları", "Lessons"), T("9–12. sınıf, 11 ders, 573 kazanım; internetsiz", "Grades 9–12, 11 subjects, 573 outcomes; offline")],
+    ["book", "konular", T("Konu anlatımları", "Lessons"), T("9–12. sınıf, 11 ders, 668 kazanım; internetsiz", "Grades 9–12, 11 subjects, 668 outcomes; offline")],
     ["map", "harita", T("Öğrenme haritası", "Learning map"), T("Kazanımların renkli durumu ve günlük görev", "Mastery of every outcome and a daily plan")],
     ["chart", "denemeler", T("Deneme takibi", "Exam tracking"), T("TYT–AYT netleri; sonuç belgesini fotoğraftan oku", "TYT–AYT nets; read result sheets from a photo")],
     ["target", "puan", T("Puan ve hedef", "Score & target"), T("Tahmini puan ve bölüm önerileri", "Estimated score and suggestions")],
     ["bookmark", "yanlislar", T("Yanlış defteri", "Mistake notebook"), T("Aralıklı tekrar ve hata analizi", "Spaced review and error analysis")],
     ["mic", "", T("Sesli öğretmen", "Voice teacher"), T("Konuşarak sor, sesli cevap al; istersen hologram öğretmenle", "Ask by voice, hear the answer; optional hologram teacher")],
-    ["volume", "podcast", T("Konu podcast'i", "Topic podcast"), T("573 konu iki sesli sohbet; arada sorular", "573 topics as two-voice chats with quizzes")],
+    ["volume", "podcast", T("Konu podcast'i", "Topic podcast"), T("668 konu iki sesli sohbet; arada sorular", "668 topics as two-voice chats with quizzes")],
     ["sparkle", "", T("Yapay zekâ asistanı", "AI assistant"), T("Fotoğraftan soru çözer, notlarına bakar", "Solves photos, uses your notes")],
     ["timer", "odak", T("Odak sayacı", "Focus timer"), T("Pomodoro ve süre istatistiği", "Pomodoro and time stats")],
     ["quiz", "simulasyon", T("Deneme simülasyonu", "Exam simulation"), T("Zayıf konulardan süreli mini deneme", "Timed mini exam from weak topics")],
