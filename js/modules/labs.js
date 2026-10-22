@@ -83,7 +83,7 @@
       title: () => T("Eğik ve yatay atış", "Projectile motion"), icon: "target",
       desc: () => T("Fırlatma hızını, açıyı, yüksekliği ve yer çekimini değiştir; yörüngeyi, hız bileşenlerini ve menzili izle.", "Change speed, angle, height and gravity; watch the path, velocity components and range."),
       params: () => [
-        { id: "v", label: T("Hız v₀", "Speed v₀"), min: 1, max: 40, step: 1, value: 20, unit: "m/s" },
+        { id: "v", label: T("Hız v₀", "Speed v₀"), min: 0, max: 40, step: 1, value: 20, unit: "m/s" },   // 0: serbest düşme (Çevrendeki Fizik)
         { id: "a", label: T("Açı θ", "Angle θ"), min: 0, max: 90, step: 1, value: 45, unit: "°" },
         { id: "h", label: T("Yükseklik", "Height"), min: 0, max: 60, step: 1, value: 0, unit: "m" },
         { id: "g", label: T("Yer çekimi g", "Gravity g"), min: 1.6, max: 25, step: 0.1, value: 9.8, unit: "m/s²", hint: T("Ay 1,6 · Dünya 9,8 · Jüpiter 24,8", "Moon 1.6 · Earth 9.8 · Jupiter 24.8") }
