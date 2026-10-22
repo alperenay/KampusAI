@@ -33,3 +33,15 @@
 @media (prefers-reduced-motion: reduce) {
   .tabbar__fab-btn { transition: none; }
 }
+
+/* ---------- Yapay zekâ ayarları: telefonda taşma düzeltmesi ----------
+   .modal__body bir grid; çocukları min-width:auto aldığından "Gelişmiş ayarlar" açılınca
+   sekme satırı ("Bilgisayarımdaki model (Ollama)" vb.) ve uzun model adları sütunu ekrandan
+   geniş itiyordu: içerik sola kayıyor, sağı kesiliyordu. Sütun daralabilir, sekmeler kayar. */
+.modal__body { grid-template-columns: minmax(0, 1fr); }
+.modal__body > *, .ais-adv, .ais-panel, .ais-stack, .field, .ais-sub, .lan-info { min-width: 0; }
+.ais-adv .ais-tabs { max-width: 100%; }
+.modal .select, .modal .input, .modal .key-field, .modal .model-field { max-width: 100%; min-width: 0; }
+.modal .seg { max-width: 100%; flex-wrap: wrap; }
+.modal .seg button { white-space: normal; }
+.modal .hint, .modal .field__label { overflow-wrap: anywhere; }

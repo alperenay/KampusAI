@@ -278,14 +278,20 @@
           const res = await engine.check();
           return { res, cfg: engine.config(), engine };
         });
+        let gone = "";
         if (which === "gemini") {
           const sel = $("#gemModel"), cur = sel.value;
-          sel.innerHTML = '<option value="">' + esc(t("ais.autoModel", { model: r.cfg.chatModel })) + "</option>" +
+          // Eski sürümde seçilmiş model artık listede yoksa otomatiğe dön (kaydedince düzelir)
+          if (cur && !r.res.chatModels.includes(cur)) gone = cur;
+          sel.innerHTML = '<option value="">' + esc(t("ais.autoModel", { model: r.res.chatModels.includes(r.cfg.chatModel) ? r.cfg.chatModel : (r.res.chatModels[0] || r.cfg.chatModel) })) + "</option>" +
             r.res.chatModels.map((n) => '<option value="' + esc(n) + '"' + (n === cur ? " selected" : "") + ">" + esc(n) + "</option>").join("");
+          if (gone) sel.value = "";
         } else {
           $("#aisCloudModels").innerHTML = r.res.installed.slice(0, 500).map((n) => '<option value="' + esc(n) + '">').join("");
         }
-        out.textContent = r.res.chat
+        out.textContent = gone
+          ? T("Seçili model (" + gone + ") artık sunulmuyor; otomatik seçime alındı. Kaydet'e bas.", "The selected model (" + gone + ") is no longer offered; switched to automatic. Press Save.")
+          : r.res.chat
           ? t("ais.cloudOk", { name: r.engine.name, model: r.cfg.chatModel }) + (r.cfg.embedModel && !r.res.embed ? " " + t("ais.embedMissing", { model: r.cfg.embedModel }) : "")
           : (r.cfg.chatModel ? t("ai.err.cloudModelTitle", { model: r.cfg.chatModel }) : t("ais.pickModel"));
       } catch (e) {
