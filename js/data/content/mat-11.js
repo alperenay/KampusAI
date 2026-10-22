@@ -94,6 +94,32 @@ App.data.content["11/matematik"] = [
       "Negatifle çarpınca eşitsizlik yön değiştirir."
      ]
     }
+   },
+   {
+    "id": "k4",
+    "code": "1.4",
+    "title": {
+     "tr": "Doğrunun analitik incelemesi",
+     "en": "Analytic study of the line"
+    },
+    "content": {
+     "anlatim": "# Eğim ve Doğru Denklemi\n\n- İki nokta arası eğim: $m = \\dfrac{y_2 - y_1}{x_2 - x_1}$ · Eğim açısı $\\alpha$ ise $m = \\tan\\alpha$.\n- **Eğimi m, $(x_1, y_1)$'den geçen doğru:** $y - y_1 = m(x - x_1)$\n- **Genel denklem:** $ax + by + c = 0$ → eğim $m = -\\dfrac{a}{b}$\n- **Eksenleri kestiği noktalar** $(p, 0)$ ve $(0, q)$ ise: $\\dfrac{x}{p} + \\dfrac{y}{q} = 1$\n\n# İki Doğrunun Durumu\n\n| Durum | Koşul |\n|---|---|\n| **Paralel** | Eğimler eşit: $m_1 = m_2$ |\n| **Dik** | $m_1 \\cdot m_2 = -1$ |\n| **Çakışık** | Denklemler orantılı: $\\dfrac{a_1}{a_2} = \\dfrac{b_1}{b_2} = \\dfrac{c_1}{c_2}$ |\n| **Kesişen** | $m_1 \\neq m_2$ (ortak çözüm kesişim noktasıdır) |\n\n# Uzaklıklar\n\n- İki nokta arası: $|AB| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$\n- Orta nokta: $\\left(\\dfrac{x_1 + x_2}{2}, \\dfrac{y_1 + y_2}{2}\\right)$\n- **Noktanın doğruya uzaklığı:** $d = \\dfrac{|ax_0 + by_0 + c|}{\\sqrt{a^2 + b^2}}$\n- Paralel iki doğru arası: $d = \\dfrac{|c_1 - c_2|}{\\sqrt{a^2 + b^2}}$",
+     "ornekler": [
+      {
+       "soru": "$A(1, 2)$ noktasından geçen ve $2x - y + 5 = 0$ doğrusuna dik olan doğrunun denklemini bulunuz.",
+       "cozum": "Verilen doğrunun eğimi $2$; dik doğrunun eğimi $-\\frac12$. $y - 2 = -\\frac12(x - 1) \\Rightarrow x + 2y - 5 = 0$."
+      },
+      {
+       "soru": "$(3, 4)$ noktasının $3x + 4y - 5 = 0$ doğrusuna uzaklığı kaçtır?",
+       "cozum": "$d = \\frac{|9 + 16 - 5|}{\\sqrt{9 + 16}} = \\frac{20}{5} = 4$."
+      }
+     ],
+     "ozet": [
+      "Eğim $m = \\Delta y/\\Delta x = \\tan\\alpha$.",
+      "Paralel: $m_1 = m_2$; dik: $m_1m_2 = -1$.",
+      "Nokta–doğru uzaklığı $|ax_0+by_0+c|/\\sqrt{a^2+b^2}$."
+     ]
+    }
    }
   ]
  },
@@ -127,6 +153,32 @@ App.data.content["11/matematik"] = [
       "Dörtgende iç açılar toplamı $360°$.",
       "Paralelkenarda köşegenler ortalar; dikdörtgende eşit; eşkenar dörtgende dik.",
       "Alanlar: yamuk $\\frac{a+c}2h$, eşkenar dörtgen $\\frac{ef}2$."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "2.2",
+    "title": {
+     "tr": "Çokgenler: açılar, köşegenler ve alanlar",
+     "en": "Polygons: angles, diagonals and areas"
+    },
+    "content": {
+     "anlatim": "# Çokgenlerde Açılar ($n$ kenarlı dışbükey çokgen)\n\n- **İç açılar toplamı:** $(n - 2)\\cdot180^\\circ$\n- **Dış açılar toplamı:** her zaman $360^\\circ$\n- **Düzgün çokgende** bir iç açı: $\\dfrac{(n-2)\\cdot180^\\circ}{n}$, bir dış açı: $\\dfrac{360^\\circ}{n}$\n- **Köşegen sayısı:** $\\dfrac{n(n-3)}{2}$; bir köşeden çizilen köşegen sayısı $n - 3$\n\n| Çokgen | $n$ | İç açılar toplamı | Düzgünse bir iç açı |\n|---|---|---|---|\n| Üçgen | 3 | $180^\\circ$ | $60^\\circ$ |\n| Dörtgen | 4 | $360^\\circ$ | $90^\\circ$ |\n| Beşgen | 5 | $540^\\circ$ | $108^\\circ$ |\n| Altıgen | 6 | $720^\\circ$ | $120^\\circ$ |\n| Sekizgen | 8 | $1080^\\circ$ | $135^\\circ$ |\n\n# Alanlar\n\n- **Düzgün altıgen** (kenar $a$): 6 eşkenar üçgen → $A = 6\\cdot\\dfrac{a^2\\sqrt3}{4} = \\dfrac{3a^2\\sqrt3}{2}$\n- **Yamuk:** $A = \\dfrac{(a + c)\\cdot h}{2}$ · **Paralelkenar:** $A = a\\cdot h$\n- **Eşkenar dörtgen / deltoid:** $A = \\dfrac{e \\cdot f}{2}$ (köşegenler dik)\n- Herhangi bir dörtgen (köşegenler $e, f$, aradaki açı $\\theta$): $A = \\dfrac{e f \\sin\\theta}{2}$",
+     "ornekler": [
+      {
+       "soru": "Bir iç açısı $140^\\circ$ olan düzgün çokgen kaç kenarlıdır?",
+       "cozum": "Bir dış açı $180^\\circ - 140^\\circ = 40^\\circ$; $n = 360/40 = 9$ kenar."
+      },
+      {
+       "soru": "Kenarı $4$ cm olan düzgün altıgenin alanı kaç cm²'dir?",
+       "cozum": "$A = \\frac{3\\cdot16\\sqrt3}{2} = 24\\sqrt3$ cm²."
+      }
+     ],
+     "ozet": [
+      "İç açılar toplamı $(n-2)180^\\circ$; dış açılar toplamı $360^\\circ$.",
+      "Köşegen sayısı $n(n-3)/2$.",
+      "Düzgün altıgen = 6 eşkenar üçgen."
      ]
     }
    }
@@ -180,6 +232,32 @@ App.data.content["11/matematik"] = [
       "Benzerlik: AA, KAK, KKK.",
       "Alan oranı $k^2$.",
       "Thales: paralel doğru kenarları orantılı böler."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "3.3",
+    "title": {
+     "tr": "Üçgende açıortay, kenarortay ve alan oranları",
+     "en": "Angle bisectors, medians and area ratios in a triangle"
+    },
+    "content": {
+     "anlatim": "# Açıortay Teoremi\n\n$A$ açısının iç açıortayı $[BC]$'yi $D$'de kesiyorsa:\n$$\\frac{|BD|}{|DC|} = \\frac{|AB|}{|AC|}$$\n- İç açıortaylar **iç teğet çemberin merkezinde** kesişir (kenarlara eşit uzaklık).\n\n# Kenarortay\n\n- Kenarortaylar **ağırlık merkezinde (G)** kesişir; $G$ her kenarortayı köşeden itibaren **2 : 1** oranında böler.\n- **Kenarortay uzunluğu:** $V_a^2 = \\dfrac{2(b^2 + c^2) - a^2}{4}$\n- Dik üçgende **hipotenüse ait kenarortay** hipotenüsün yarısıdır.\n- Üç kenarortay üçgeni **alanları eşit 6** üçgene böler.\n\n# Alan Oranları\n\n- **Yükseklikleri ortak** üçgenlerin alanları **tabanlarıyla** orantılıdır.\n- Kenarortay üçgeni **iki eşit alanlı** üçgene böler.\n- **Benzer** üçgenlerde benzerlik oranı $k$ ise alanlar oranı $k^2$'dir.\n- **Sinüslü alan:** $A = \\dfrac12\\, b\\, c \\sin A$",
+     "ornekler": [
+      {
+       "soru": "$ABC$ üçgeninde $|AB| = 6$, $|AC| = 9$, $|BC| = 10$. $A$'nın açıortayı $[BC]$'yi $D$'de kesiyor. $|BD|$ kaçtır?",
+       "cozum": "$\\frac{|BD|}{|DC|} = \\frac{6}{9} = \\frac23$; $|BD| = 10\\cdot\\frac25 = 4$."
+      },
+      {
+       "soru": "Alanı $60$ cm² olan üçgende ağırlık merkezi $G$'dir. $GBC$ üçgeninin alanı nedir?",
+       "cozum": "Kenarortaylar üçgeni 6 eşit parçaya böler; $GBC$ bunlardan **2** tanesidir: $60\\cdot\\frac{2}{6} = 20$ cm²."
+      }
+     ],
+     "ozet": [
+      "Açıortay karşı kenarı komşu kenarlar oranında böler.",
+      "Ağırlık merkezi kenarortayı 2:1 böler; 6 eşit alan.",
+      "Benzerlik oranı $k$ → alan oranı $k^2$."
      ]
     }
    }
@@ -243,6 +321,58 @@ App.data.content["11/matematik"] = [
       "Ortalama, medyan, mod; standart sapma yayılımı ölçer."
      ]
     }
+   },
+   {
+    "id": "k3",
+    "code": "4.3",
+    "title": {
+     "tr": "Koşullu olasılık ve bağımsız olaylar",
+     "en": "Conditional probability and independent events"
+    },
+    "content": {
+     "anlatim": "# Koşullu Olasılık\n\n$B$ olayının gerçekleştiği bilindiğinde $A$'nın olasılığı:\n$$P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)}, \\quad P(B) > 0$$\n**Çarpma kuralı:** $P(A \\cap B) = P(B)\\cdot P(A \\mid B)$\n\n# Bağımsız Olaylar\n\n$A$'nın gerçekleşmesi $B$'yi etkilemiyorsa:\n$$P(A \\cap B) = P(A)\\cdot P(B) \\quad\\Leftrightarrow\\quad P(A \\mid B) = P(A)$$\n- İadeli çekiliş, zar ve para atışları **bağımsızdır**.\n- İadesiz çekilişte olaylar **bağımlıdır**.\n- **Ayrık** olaylar ($A \\cap B = \\emptyset$) olasılıkları pozitifse bağımsız **olamaz**.\n\n# İki Yönlü Tablo\n\n| | Gözlüklü | Gözlüksüz | Toplam |\n|---|---|---|---|\n| Kız | 6 | 14 | 20 |\n| Erkek | 4 | 16 | 20 |\n| Toplam | 10 | 30 | 40 |\n\n$P(\\text{Gözlüklü} \\mid \\text{Kız}) = \\dfrac{6}{20} = 0{,}3$ — koşul, örnek uzayı **satır/sütuna daraltır**.\n\n# Tümleyen\n\n$P(A') = 1 - P(A)$ · \"En az bir\" sorularında tümleyen kullanılır: $P(\\text{en az bir}) = 1 - P(\\text{hiç})$.",
+     "ornekler": [
+      {
+       "soru": "Bir torbada $4$ kırmızı, $6$ mavi top var. **İadesiz** iki top çekiliyor. İkisinin de kırmızı olma olasılığı nedir?",
+       "cozum": "$\\frac{4}{10}\\cdot\\frac{3}{9} = \\frac{12}{90} = \\frac{2}{15}$."
+      },
+      {
+       "soru": "Bir zar 3 kez atılıyor. En az bir kez 6 gelme olasılığı nedir?",
+       "cozum": "$1 - \\left(\\frac56\\right)^3 = 1 - \\frac{125}{216} = \\frac{91}{216}$."
+      }
+     ],
+     "ozet": [
+      "$P(A\\mid B) = P(A\\cap B)/P(B)$.",
+      "Bağımsız: $P(A\\cap B) = P(A)P(B)$.",
+      "En az bir: $1 - P(\\text{hiç})$."
+     ]
+    }
+   },
+   {
+    "id": "k4",
+    "code": "4.4",
+    "title": {
+     "tr": "Binom açılımı ve Pascal üçgeni",
+     "en": "Binomial expansion and Pascal's triangle"
+    },
+    "content": {
+     "anlatim": "# Binom Açılımı\n\n$$(a + b)^n = \\sum_{r=0}^{n} \\binom{n}{r} a^{n-r} b^{r}$$\n- Açılımda **$n + 1$ terim** vardır.\n- Her terimde üsler toplamı $n$'dir.\n- **Genel terim** (baştan $r+1$'inci): $T_{r+1} = \\dbinom{n}{r} a^{n-r} b^{r}$\n- **Katsayılar toplamı:** değişkenlere $1$ yazılır → $(1+1)^n = 2^n$\n- **Sabit terim:** değişkenin üssünü sıfır yapan terim.\n\n# Pascal Üçgeni\n\n| $n$ | Katsayılar |\n|---|---|\n| 0 | 1 |\n| 1 | 1 1 |\n| 2 | 1 2 1 |\n| 3 | 1 3 3 1 |\n| 4 | 1 4 6 4 1 |\n| 5 | 1 5 10 10 5 1 |\nHer sayı üstündeki iki sayının toplamıdır: $\\dbinom{n}{r} = \\dbinom{n-1}{r-1} + \\dbinom{n-1}{r}$\n\n# Sık Kullanılanlar\n\n- $(a + b)^2 = a^2 + 2ab + b^2$ · $(a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3$\n- $\\dbinom{n}{r} = \\dbinom{n}{n-r}$",
+     "ornekler": [
+      {
+       "soru": "$(2x - 1)^5$ açılımında $x^3$'lü terimin katsayısı kaçtır?",
+       "cozum": "$T = \\binom{5}{r}(2x)^{5-r}(-1)^r$; $5 - r = 3 \\Rightarrow r = 2$: $\\binom52\\cdot2^3\\cdot(-1)^2 = 10\\cdot8 = 80$."
+      },
+      {
+       "soru": "$\\left(x^2 + \\dfrac{1}{x}\\right)^6$ açılımında sabit terim kaçtır?",
+       "cozum": "$T = \\binom6r x^{2(6-r)}x^{-r} = \\binom6r x^{12-3r}$; $12 - 3r = 0 \\Rightarrow r = 4$: $\\binom64 = 15$."
+      }
+     ],
+     "ozet": [
+      "$(a+b)^n$ açılımında $n+1$ terim.",
+      "Genel terim $\\binom nr a^{n-r}b^r$.",
+      "Katsayılar toplamı: değişkenlere 1 yaz."
+     ]
+    }
    }
   ]
  },
@@ -276,6 +406,84 @@ App.data.content["11/matematik"] = [
       "Fonksiyon: her elemanın tek görüntüsü; düşey doğru testi.",
       "Parabol: $a>0$ yukarı, tepe $r=-b/2a$.",
       "$\\Delta=b^2-4ac$ kök sayısını belirler."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "5.2",
+    "title": {
+     "tr": "Polinomlar: işlemler ve bölme",
+     "en": "Polynomials: operations and division"
+    },
+    "content": {
+     "anlatim": "# Tanım\n\n$P(x) = a_nx^n + a_{n-1}x^{n-1} + \\dots + a_1x + a_0$ — üsler **doğal sayı**, katsayılar gerçek sayıdır.\n- **Derece:** en büyük üs ($a_n \\neq 0$) · **Baş katsayı:** $a_n$ · **Sabit terim:** $a_0 = P(0)$\n- **Katsayılar toplamı:** $P(1)$\n- $\\sqrt x$, $\\dfrac1x$, $2^x$ içeren ifadeler polinom **değildir**.\n\n# İşlemler\n\n- Toplama/çıkarma: **benzer terimler** birleştirilir.\n- Çarpma: $\\text{der}(P\\cdot Q) = \\text{der}P + \\text{der}Q$\n- $\\text{der}(P(x)^k) = k\\cdot\\text{der}P$, $\\ \\text{der}(P(Q(x))) = \\text{der}P \\cdot \\text{der}Q$\n\n# Bölme ve Kalan Teoremi\n\n$$P(x) = B(x)\\cdot Q(x) + K(x), \\quad \\text{der}K < \\text{der}B$$\n- **Kalan teoremi:** $P(x)$'in $(x - a)$ ile bölümünden kalan $P(a)$'dır.\n- $(ax + b)$ ile bölümünden kalan $P\\!\\left(-\\dfrac ba\\right)$.\n- **Çarpan teoremi:** $P(a) = 0 \\iff (x - a)$, $P(x)$'in çarpanıdır.\n- **Horner (sentetik bölme)** ile hızlı bölme yapılır.",
+     "ornekler": [
+      {
+       "soru": "$P(x) = x^3 - 2x^2 + kx + 4$ polinomu $(x - 2)$ ile tam bölünüyorsa $k$ kaçtır?",
+       "cozum": "$P(2) = 8 - 8 + 2k + 4 = 0 \\Rightarrow k = -2$."
+      },
+      {
+       "soru": "$P(x+1) = x^2 + 3x + 5$ ise $P(x)$'in katsayılar toplamı kaçtır?",
+       "cozum": "Katsayılar toplamı $P(1)$; $x + 1 = 1 \\Rightarrow x = 0$: $P(1) = 5$."
+      }
+     ],
+     "ozet": [
+      "Kalan teoremi: $(x-a)$'ya bölümden kalan $P(a)$.",
+      "$P(1)$ katsayılar toplamı, $P(0)$ sabit terim.",
+      "Çarpımda dereceler toplanır."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "5.3",
+    "title": {
+     "tr": "Fonksiyon grafiklerinde dönüşümler",
+     "en": "Transformations of function graphs"
+    },
+    "content": {
+     "anlatim": "# Öteleme\n\n| İfade | Grafikteki değişim |\n|---|---|\n| $y = f(x) + k$ | $k$ birim **yukarı** ($k < 0$ ise aşağı) |\n| $y = f(x - h)$ | $h$ birim **sağa** ($h < 0$ ise sola) |\n| $y = f(x + h)$ | $h$ birim **sola** |\n\n> Parantez içindeki değişim **ters yönde** çalışır: $f(x - 3)$ sağa öteler.\n\n# Yansıma\n\n- $y = -f(x)$: **x eksenine** göre yansıma.\n- $y = f(-x)$: **y eksenine** göre yansıma.\n- $y = -f(-x)$: **orijine** göre yansıma.\n\n# Ölçekleme (Germe–Sıkıştırma)\n\n- $y = a\\cdot f(x)$, $a > 1$: düşey **germe**; $0 < a < 1$: düşey **sıkıştırma**.\n- $y = f(bx)$, $b > 1$: yatay **sıkıştırma** (grafik $\\frac1b$ katına daralır).\n\n# Örnek\n\n$y = x^2$ parabolünden $y = (x - 2)^2 + 3$: **2 birim sağa, 3 birim yukarı**; tepe noktası $(2, 3)$.\n\n# Mutlak Değer\n\n$y = |f(x)|$: grafiğin **x ekseninin altında kalan kısmı yukarı** yansıtılır.",
+     "ornekler": [
+      {
+       "soru": "$f(x) = x^2$ grafiği 3 birim sola ve 4 birim aşağı ötelenirse yeni fonksiyon nedir?",
+       "cozum": "$g(x) = (x + 3)^2 - 4$; tepe noktası $(-3, -4)$."
+      },
+      {
+       "soru": "$y = f(x)$ grafiği $(2, 5)$ noktasından geçiyorsa $y = -f(x - 1)$ grafiği hangi noktadan geçer?",
+       "cozum": "Önce 1 birim sağa: $(3, 5)$; sonra x eksenine göre yansıma: $(3, -5)$."
+      }
+     ],
+     "ozet": [
+      "$f(x) + k$ düşey, $f(x - h)$ yatay öteleme (sağa).",
+      "$-f(x)$ x eksenine, $f(-x)$ y eksenine göre yansıma.",
+      "$|f(x)|$: negatif kısım yukarı katlanır."
+     ]
+    }
+   },
+   {
+    "id": "k4",
+    "code": "5.4",
+    "title": {
+     "tr": "İkinci dereceden eşitsizlikler ve parabol–doğru ilişkisi",
+     "en": "Quadratic inequalities and parabola–line relations"
+    },
+    "content": {
+     "anlatim": "# İşaret Tablosu\n\n$f(x) = ax^2 + bx + c$'nin kökleri $x_1 < x_2$ ise:\n- Köklerin **dışında** $a$ ile **aynı** işaret, **arasında** **ters** işaret.\n\n| $x$ | $-\\infty$ … $x_1$ | $x_1$ … $x_2$ | $x_2$ … $+\\infty$ |\n|---|---|---|---|\n| $a > 0$ | $+$ | $-$ | $+$ |\n\n- $\\Delta < 0$ ise $f(x)$ her yerde $a$'nın işaretindedir: $x^2 + x + 1 > 0$ **her $x$ için** doğrudur.\n- **Her $x$ için $ax^2 + bx + c > 0$** olması: $a > 0$ ve $\\Delta < 0$.\n\n# Parabol ile Doğrunun Durumu\n\n$y = ax^2 + bx + c$ ve $y = mx + n$ eşitlenir → $ax^2 + (b - m)x + (c - n) = 0$\n| $\\Delta$ | Durum |\n|---|---|\n| $> 0$ | İki noktada **keser** |\n| $= 0$ | **Teğet** (bir ortak nokta) |\n| $< 0$ | **Kesişmez** |\n\n# Eşitsizlik Sistemleri\n\nHer eşitsizlik ayrı çözülür, çözüm kümelerinin **kesişimi** alınır. Rasyonel eşitsizliklerde paydanın kökleri **çözüme dahil edilmez**.",
+     "ornekler": [
+      {
+       "soru": "$x^2 - x - 6 \\le 0$ eşitsizliğinin çözüm kümesini bulunuz.",
+       "cozum": "Kökler $-2$ ve $3$; $a > 0$ olduğundan kökler arası negatif: $[-2, 3]$."
+      },
+      {
+       "soru": "$y = x^2 + 4$ parabolü ile $y = mx$ doğrusu teğet ise $m$ nedir?",
+       "cozum": "$x^2 - mx + 4 = 0$, $\\Delta = m^2 - 16 = 0 \\Rightarrow m = \\pm4$."
+      }
+     ],
+     "ozet": [
+      "Kökler arası a'nın tersi, dışı a ile aynı işaret.",
+      "Her x için pozitif: $a > 0$, $\\Delta < 0$.",
+      "Parabol–doğru: $\\Delta$ ile kesme/teğet/ayrık."
      ]
     }
    }

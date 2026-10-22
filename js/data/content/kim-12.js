@@ -82,6 +82,32 @@ App.data.content["12/kimya"] = [
       "Korozyon elektrokimyasal; galvanizleme ve kurban anot."
      ]
     }
+   },
+   {
+    "id": "k4",
+    "code": "1.4",
+    "title": {
+     "tr": "Derişim pilleri, Nernst denklemi ve pilin potansiyeline etki eden faktörler",
+     "en": "Concentration cells, the Nernst equation and factors affecting cell potential"
+    },
+    "content": {
+     "anlatim": "# Standart Pil Potansiyeli\n\n$$E^\\circ_{pil} = E^\\circ_{indirgenme(katot)} - E^\\circ_{indirgenme(anot)}$$\n$E^\\circ_{pil} > 0$ ise pil **kendiliğinden** çalışır.\n\n# Nernst Denklemi (25 °C)\n\n$$E_{pil} = E^\\circ_{pil} - \\frac{0{,}059}{n}\\log Q$$\n$n$: aktarılan elektron sayısı, $Q$: tepkime oranı ([ürün]/[girdi], katı ve sıvılar yazılmaz).\n- **Ürün derişimi artarsa** ($Q$ büyür) potansiyel **azalır**.\n- **Girdi (katottaki iyon) derişimi artarsa** potansiyel **artar**.\n- Pil çalıştıkça $Q$ artar, $E$ azalır; **dengede $E = 0$** (pil biter).\n- Elektrot **yüzey alanı ve kütlesi** potansiyeli **değiştirmez** (yalnız akım süresini/miktarını etkiler).\n\n# Derişim Pili\n\nAynı metal, **farklı derişimde** iyon çözeltileri: $E^\\circ = 0$\n$$E = \\frac{0{,}059}{n}\\log\\frac{[\\text{derişik}]}{[\\text{seyreltik}]}$$\n- **Derişik** çözeltideki elektrot **katot** (iyon indirgenir, derişim azalır).\n- **Seyreltik** çözeltideki elektrot **anot** (metal yükseltgenir, derişim artar).\n- Derişimler eşitlenince pil durur.",
+     "ornekler": [
+      {
+       "soru": "$Cu\\,|\\,Cu^{2+}(0{,}01\\,M)\\,||\\,Cu^{2+}(1\\,M)\\,|\\,Cu$ derişim pilinin potansiyeli kaç V'tur?",
+       "cozum": "$E = \\frac{0{,}059}{2}\\log\\frac{1}{0{,}01} = 0{,}0295\\cdot2 = 0{,}059$ V."
+      },
+      {
+       "soru": "$Zn + Cu^{2+} \\to Zn^{2+} + Cu$ pilinde $Zn^{2+}$ derişimi artırılırsa potansiyel nasıl değişir?",
+       "cozum": "$Zn^{2+}$ **üründür**; derişimi artınca $Q$ artar, $E_{pil}$ **azalır**."
+      }
+     ],
+     "ozet": [
+      "$E = E^\\circ - \\frac{0{,}059}{n}\\log Q$.",
+      "Ürün derişimi artınca potansiyel azalır; dengede E = 0.",
+      "Derişim pilinde derişik taraf katottur."
+     ]
+    }
    }
   ]
  },
@@ -111,6 +137,32 @@ App.data.content["12/kimya"] = [
       "Wöhler üre sentezi; karbon 4 bağ ve katenasyon.",
       "sp³ 109,5°, sp² 120°, sp 180°.",
       "VSEPR: NH₃ üçgen piramit, H₂O kırık doğru."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "2.2",
+    "title": {
+     "tr": "Organik bileşiklerde izomeri",
+     "en": "Isomerism in organic compounds"
+    },
+    "content": {
+     "anlatim": "# İzomer Nedir?\n\n**Kapalı formülü aynı**, **yapısı (ya da uzaydaki düzeni) farklı** bileşiklerdir; fiziksel/kimyasal özellikleri farklıdır.\n\n# Yapı (Konstitüsyon) İzomerliği\n\n| Tür | Örnek ($C_4H_{10}$, $C_2H_6O$ …) |\n|---|---|\n| **Zincir izomerliği** | Bütan – 2-metilpropan (izobütan) |\n| **Konum izomerliği** | 1-propanol – 2-propanol; 1-büten – 2-büten |\n| **Fonksiyonel grup izomerliği** | Etanol ($CH_3CH_2OH$) – dimetil eter ($CH_3OCH_3$) · aldehit – keton · karboksilik asit – ester |\n\n- **Dallanma arttıkça** kaynama noktası **düşer** (temas yüzeyi azalır): n-pentan > izopentan > neopentan.\n\n# Stereoizomerlik (uzay izomerliği)\n\n- **Geometrik (cis–trans):** $C=C$ çift bağının **her iki karbonunda farklı** gruplar bulunmalı.\n  - **cis:** aynı gruplar aynı tarafta (genelde polar, kaynama noktası yüksek)\n  - **trans:** karşı taraflarda (simetrik, erime noktası yüksek)\n  - Örnek: cis- ve trans-2-büten. 1-büten geometrik izomer **göstermez**.\n- **Optik izomerlik:** Dört farklı grup taşıyan **kiral karbon**; ayna görüntüsü üst üste çakışmayan iki form (**enantiyomer**). Polarize ışığı zıt yönlerde çevirir. Örnek: laktik asit, aminoasitler (alanin).",
+     "ornekler": [
+      {
+       "soru": "$C_3H_8O$ formülüne sahip kaç alkol ve kaç eter yazılabilir?",
+       "cozum": "Alkoller: 1-propanol, 2-propanol (**2**). Eter: etil metil eter $CH_3OCH_2CH_3$ (**1**). Toplam 3 yapı izomeri."
+      },
+      {
+       "soru": "$CH_3-CH=CH-CH_3$ ve $CH_2=CH-CH_2-CH_3$ bileşiklerinden hangisi cis–trans izomerliği gösterir?",
+       "cozum": "**2-büten** ($CH_3CH=CHCH_3$): çift bağın her iki karbonunda farklı gruplar (H ve $CH_3$) var. 1-bütende bir karbonda iki H vardır, göstermez."
+      }
+     ],
+     "ozet": [
+      "İzomer: aynı kapalı formül, farklı yapı.",
+      "Yapı izomerliği: zincir, konum, fonksiyonel grup.",
+      "Cis–trans için çift bağın iki karbonunda farklı gruplar; kiral karbon optik izomerlik."
      ]
     }
    }
@@ -164,6 +216,84 @@ App.data.content["12/kimya"] = [
       "Ekler: -ol alkol, -al aldehit, -on keton, -oik asit, -oat ester.",
       "Birincil alkol → aldehit → asit; ikincil → keton.",
       "Esterleşme: asit + alkol → ester + su; sabunlaşma."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "3.3",
+    "title": {
+     "tr": "Aromatik bileşikler: benzen ve türevleri",
+     "en": "Aromatic compounds: benzene and its derivatives"
+    },
+    "content": {
+     "anlatim": "# Benzenin Yapısı\n\n- Formülü $C_6H_6$; altı karbonlu **düzlemsel halka**.\n- Tüm C atomları $sp^2$ hibritleşmiştir; bağ açıları $120^\\circ$.\n- **Rezonans (delokalize π elektronları):** Tüm C–C bağ uzunlukları **eşittir** (tekli ile çiftli arası). Kekulé yapıları arasında hızlı geçiş değil, **tek bir ortalama yapı** vardır.\n- Bu kararlılık yüzünden benzen **katılma** değil **yer değiştirme (sübstitüsyon)** tepkimesi verir.\n\n# Önemli Türevler\n\n| Bileşik | Formül/grup | Kullanım |\n|---|---|---|\n| **Toluen** | $C_6H_5CH_3$ | Çözücü, TNT hammaddesi |\n| **Fenol** | $C_6H_5OH$ | Zayıf asit, dezenfektan, reçine |\n| **Anilin** | $C_6H_5NH_2$ | Boya sanayisi |\n| **Benzoik asit** | $C_6H_5COOH$ | Gıda koruyucu (E210) |\n| **Naftalin** | İki kaynaşmış halka | Güve kovucu |\n\n# Disübstitüe Benzenlerde Konum\n\n- **orto (o-):** 1,2 · **meta (m-):** 1,3 · **para (p-):** 1,4\n- Örnek: p-diklorobenzen, o-ksilen.\n\n# Tepkimeler\n\nHalojenleme ($FeBr_3$ katalizör), nitrolama ($HNO_3/H_2SO_4$), alkilleme (Friedel–Crafts). Ürünlerde aromatik halka **korunur**.",
+     "ornekler": [
+      {
+       "soru": "Benzenin $C=C$ çift bağı içermesine rağmen bromlu suyu renksizleştirmemesinin nedeni nedir?",
+       "cozum": "π elektronları halka üzerinde **delokalizedir** (rezonans); bu kararlılık katılma tepkimesini engeller. Benzen ancak **katalizörlü yer değiştirme** tepkimesi verir."
+      },
+      {
+       "soru": "Bir benzen halkasında iki $Cl$ atomu 1. ve 4. karbonlarda ise bileşiğin adı nedir?",
+       "cozum": "1,4-diklorobenzen = **p-diklorobenzen** (para konumu)."
+      }
+     ],
+     "ozet": [
+      "Benzen: $sp^2$, düzlemsel, rezonans; bağ uzunlukları eşit.",
+      "Benzen katılma değil yer değiştirme tepkimesi verir.",
+      "orto 1,2 · meta 1,3 · para 1,4."
+     ]
+    }
+   },
+   {
+    "id": "k4",
+    "code": "3.4",
+    "title": {
+     "tr": "Organik tepkime türleri",
+     "en": "Types of organic reactions"
+    },
+    "content": {
+     "anlatim": "# Tepkime Türleri\n\n| Tür | Açıklama | Örnek |\n|---|---|---|\n| **Yanma** | $O_2$ ile tam yanma → $CO_2 + H_2O$ | $CH_4 + 2O_2 \\to CO_2 + 2H_2O$ |\n| **Katılma (adisyon)** | Çift/üçlü bağa atom eklenir | $CH_2{=}CH_2 + H_2 \\to CH_3CH_3$ |\n| **Yer değiştirme (sübstitüsyon)** | Bir atom/grup başka biriyle değişir | $CH_4 + Cl_2 \\xrightarrow{\\text{ışık}} CH_3Cl + HCl$ |\n| **Ayrılma (eliminasyon)** | Küçük molekül ayrılır, çift bağ oluşur | $CH_3CH_2OH \\xrightarrow{H_2SO_4,\\ 170\\,^\\circ C} CH_2{=}CH_2 + H_2O$ |\n| **Yükseltgenme** | Alkol → aldehit/keton → asit | $CH_3CH_2OH \\to CH_3CHO \\to CH_3COOH$ |\n| **Kondenzasyon (esterleşme)** | Asit + alkol → ester + su | $CH_3COOH + C_2H_5OH \\rightleftharpoons CH_3COOC_2H_5 + H_2O$ |\n| **Polimerleşme** | Monomerlerden polimer | n $CH_2{=}CH_2 \\to (-CH_2CH_2-)_n$ |\n\n# Alkollerin Yükseltgenmesi\n\n- **Primer** alkol → aldehit → karboksilik asit\n- **Sekonder** alkol → **keton**\n- **Tersiyer** alkol → **yükseltgenmez**\n\n# Markovnikov Kuralı\n\nSimetrik olmayan alkene $HX$ katılırken **H**, zaten **daha çok H taşıyan** karbona bağlanır: $CH_3CH{=}CH_2 + HBr \\to CH_3CHBrCH_3$ (2-bromopropan).",
+     "ornekler": [
+      {
+       "soru": "2-propanol yükseltgenince hangi bileşik oluşur?",
+       "cozum": "2-propanol **sekonder** alkoldür → **propanon (aseton)**, $CH_3COCH_3$ (keton)."
+      },
+      {
+       "soru": "Propene ($CH_3CH{=}CH_2$) $HCl$ katılmasının ana ürünü nedir?",
+       "cozum": "Markovnikov kuralı: H uçtaki $CH_2$'ye, Cl ortadaki karbona → **2-kloropropan**."
+      }
+     ],
+     "ozet": [
+      "Doymamış bileşikler katılma, doymuşlar yer değiştirme verir.",
+      "Primer alkol → aldehit → asit; sekonder → keton; tersiyer yükseltgenmez.",
+      "Markovnikov: H, H'si çok olan karbona."
+     ]
+    }
+   },
+   {
+    "id": "k5",
+    "code": "3.5",
+    "title": {
+     "tr": "Polimerler ve hayatımızdaki organik maddeler",
+     "en": "Polymers and organic substances in daily life"
+    },
+    "content": {
+     "anlatim": "# Polimer Türleri\n\n| Tür | Oluşum | Örnekler |\n|---|---|---|\n| **Katılma polimerleri** | Çift bağlı monomerler art arda bağlanır; yan ürün yok | **Polietilen (PE)** — poşet, **PVC** — boru, **polistiren (PS)** — köpük, **teflon (PTFE)** — tava kaplaması, **polipropilen (PP)** |\n| **Kondenzasyon polimerleri** | İki fonksiyonel gruplu monomerler; **su gibi küçük molekül ayrılır** | **Naylon** (poliamit), **PET** (polyester — pet şişe), **bakalit**, proteinler, nişasta |\n\n# Doğal Polimerler\n\n- **Nişasta, selüloz, glikojen:** glikoz monomeri (karbonhidrat)\n- **Proteinler:** aminoasitler arasında **peptit bağı** (kondenzasyon)\n- **DNA/RNA:** nükleotitler\n- **Doğal kauçuk:** izopren monomeri\n\n# Plastiklerin Geri Dönüşümü\n\nGeri dönüşüm kodları: **1 PET, 2 HDPE, 3 PVC, 4 LDPE, 5 PP, 6 PS, 7 diğer**.\n- **Termoplastik:** Isıtılınca yumuşar, yeniden şekillenir (PE, PET) → geri dönüştürülebilir.\n- **Termoset:** Bir kez sertleşir, ısıyla şekil almaz (bakalit).\n\n# Sabun ve Deterjan\n\n**Sabun:** Yağ asidi + NaOH/KOH (**sabunlaşma**). Molekülün **hidrofobik** uzun karbon zinciri yağı, **hidrofilik** $-COO^-Na^+$ ucu suyu tutar → **misel** oluşur. Sert suda $Ca^{2+}/Mg^{2+}$ ile çökelek yapar; deterjanlar bu sorunu azaltır.",
+     "ornekler": [
+      {
+       "soru": "PET şişeler ve naylon hangi polimerleşme türüyle elde edilir? Neden?",
+       "cozum": "**Kondenzasyon** — monomerlerin fonksiyonel grupları (asit–alkol, asit–amin) birleşirken **su** açığa çıkar."
+      },
+      {
+       "soru": "Sabun molekülünün yağı temizleyebilmesini yapısıyla açıklayınız.",
+       "cozum": "Uzun **apolar (hidrofobik)** kuyruk yağa, **iyonik (hidrofilik)** baş suya yönelir; yağ damlacığı misel içine hapsedilip suyla uzaklaştırılır."
+      }
+     ],
+     "ozet": [
+      "Katılma polimeri: PE, PVC, PS, teflon; yan ürün yok.",
+      "Kondenzasyon polimeri: naylon, PET, proteinler; su ayrılır.",
+      "Sabun: hidrofobik kuyruk + hidrofilik baş → misel."
      ]
     }
    }
