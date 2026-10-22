@@ -100,7 +100,7 @@ Oluşumuna göre:
 - **Rejim:** Akımın yıl içindeki değişimi. **Düzenli** (Amazon, Kongo — yıl boyu yağış) / **düzensiz** (Ganj — muson; Türkiye akarsuları).
 - **Havza:** Akarsuyun suyunu topladığı alan. **Açık havza** denize ulaşır, **kapalı havza** ulaşmaz (Konya, Van, Tuz Gölü havzaları).
 """,
-  [("Tatlı su toplam suyun %2,5'i ise, göl ve akarsulardaki su toplam suyun yaklaşık yüzde kaçıdır?", "Yüzey suları tatlı suyun %1,2'sidir: $0{,}025 \times 0{,}012 = 0{,}0003$ → toplam suyun yaklaşık **%0,03**'ü. Kullanılabilir yüzey suyu çok kısıtlıdır."),
+  [("Tatlı su toplam suyun %2,5'i ise, göl ve akarsulardaki su toplam suyun yaklaşık yüzde kaçıdır?", r"Yüzey suları tatlı suyun %1,2'sidir: $0{,}025 \times 0{,}012 = 0{,}0003$ → toplam suyun yaklaşık **%0,03**'ü. Kullanılabilir yüzey suyu çok kısıtlıdır."),
    ("Van Gölü neden sodalıdır?", "Van Gölü **gideğensiz (kapalı havza)** bir göldür; suyunu sadece buharlaşmayla kaybeder. Volkanik araziden gelen çözünmüş maddeler birikir, su **sodalı** olur.")],
   ["Tatlı su %2,5; çoğu buzul ve yer altında.", "Gideğenli göl tatlı, gideğensiz tuzlu/sodalı.", "Debi m³/sn; rejim düzenli-düzensiz; açık-kapalı havza."]),
 O("k2", "3.2", "Sınıraşan sular, buzullar, sulak alanlar ve yer altı suları", "Transboundary waters, glaciers, wetlands and groundwater", r"""

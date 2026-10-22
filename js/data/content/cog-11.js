@@ -99,7 +99,7 @@ App.data.content["11/cografya"] = [
      "ornekler": [
       {
        "soru": "Tatlı su toplam suyun %2,5'i ise, göl ve akarsulardaki su toplam suyun yaklaşık yüzde kaçıdır?",
-       "cozum": "Yüzey suları tatlı suyun %1,2'sidir: $0{,}025 \times 0{,}012 = 0{,}0003$ → toplam suyun yaklaşık **%0,03**'ü. Kullanılabilir yüzey suyu çok kısıtlıdır."
+       "cozum": "Yüzey suları tatlı suyun %1,2'sidir: $0{,}025 \\times 0{,}012 = 0{,}0003$ → toplam suyun yaklaşık **%0,03**'ü. Kullanılabilir yüzey suyu çok kısıtlıdır."
       },
       {
        "soru": "Van Gölü neden sodalıdır?",

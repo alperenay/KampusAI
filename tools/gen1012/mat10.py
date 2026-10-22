@@ -278,6 +278,10 @@ O("k2", "4.2", "Karekök ve rasyonel referans fonksiyonlar", "Square-root and re
 ]),
 ]
 
+
+from _ek134 import uygula  # noqa: E402
+uygula(units, "mat10_ek134")
+
 write("mat-10.js", "10/matematik", "10. Sınıf Matematik — konu anlatım notları",
       "kullanıcının verdiği \"10. Sınıf Matematik Ders Kitabı – Ayrıntılı Konu Anlatım Notları\" (4 tema).",
       units, "Kaynak not kısa olduğu için anlatımlar ders kitabı kapsamında genişletildi; örnek sorular eklendi.")
