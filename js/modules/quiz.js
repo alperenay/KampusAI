@@ -164,6 +164,12 @@
         App.similar.open({ q: q.q, options: q.options, answer: q.answer, explain: q.explain, label: outcomeLabel(grade, subject, unit, outcome), key });
         return;
       }
+      const fq = e.target.closest("[data-fb-q]");
+      if (fq && App.feedback) {
+        const i = Number(fq.dataset.fbQ);
+        App.feedback.onQuestion(fq, questions[i], { key, label: outcomeLabel(grade, subject, unit, outcome), model, chosen: answers[i] });
+        return;
+      }
       const b = e.target.closest(".opt[data-q]");
       if (b && !finished) {
         const i = Number(b.dataset.q), j = Number(b.dataset.o);
@@ -198,10 +204,9 @@
           else if (j === a) x.classList.add("is-wrong");
         });
         if (q.explain) { const ex = sec.querySelector(".quiz-q__explain"); ex.hidden = false; ex.innerHTML = "<b>" + esc(t("cur.solution")) + '</b><div class="md">' + App.markdown.render(q.explain) + "</div>"; }
-        if (!ok) {
-          missed.push({ q, a });
-          sec.insertAdjacentHTML("beforeend", '<div class="quiz-q__more"><button class="btn btn--sm btn--ghost" type="button" data-sim-i="' + i + '">' + App.icon("layers") + esc(t("sim.button")) + "</button></div>");
-        }
+        if (!ok) missed.push({ q, a });
+        sec.insertAdjacentHTML("beforeend", '<div class="quiz-q__more">' + (!ok ? '<button class="btn btn--sm btn--ghost" type="button" data-sim-i="' + i + '">' + App.icon("layers") + esc(t("sim.button")) + "</button>" : "") +
+          (App.feedback ? App.feedback.questionButtonHtml(i) : "") + "</div>");
       });
       App.hydrateIcons(view);
       const finishBar = view.querySelector(".quiz-finish");

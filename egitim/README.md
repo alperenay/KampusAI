@@ -68,6 +68,7 @@ Anahtar girmezseniz her şey bilgisayarınızda üretilir.
 | 4 | `adim4_ollama.py` | Modeli birleştirir; Ollama'ya `kampusai` adıyla yükler; llama.cpp ile q4_K_M GGUF + projektör + manifest üretir | Ollama modeli, `dagitim/` |
 | 5 | `adim5_test.py` | `kampusai`, eğitilmemiş `gemma4:e4b` ve `qwen2.5:14b`'yi eğitimde hiç görülmemiş sorularla karşılaştırır | `rapor/test_raporu.md` |
 | 6 | `adim6_yayinla.py` | (Elle) `dagitim/`'i Hugging Face'e, isteğe bağlı ollama.com'a yükler | Herkese açık indirme adresleri |
+| + | `geri_bildirim.py` | Uygulamadan dışa aktarılan 👍/👎 ve "Soru hatalı" kayıtlarını (`veri/geri_bildirim/*.jsonl`) okur; doğrusu yazılmış hataları adım 5'in açık uçlu testine, 👍 alan cevapları aday ince ayar verisine çevirir | `veri/test_geri_bildirim.jsonl`, `veri/iyi_ornekler.jsonl`, `rapor/geri_bildirim_ozeti.md` |
 
 ## Veri kalitesi önlemleri
 

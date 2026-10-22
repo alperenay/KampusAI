@@ -316,6 +316,7 @@
         (msg.text && App.speech.ttsAvailable() ? '<button class="icon-btn icon-btn--sm" type="button" data-listen aria-pressed="false" title="' + esc(t("a11y.listenTitle")) + '">' + App.icon("volume") + "</button>" : "") +
         (msg.text ? '<button class="icon-btn icon-btn--sm" type="button" data-act="to-mistakes" data-mid="' + esc(msg.id) + '" title="' + esc(t("mis.addFromChat")) + '">' + App.icon("bookmark") + "</button>" : "") +
         (msg.text ? '<button class="icon-btn icon-btn--sm" type="button" data-act="similar" data-mid="' + esc(msg.id) + '" title="' + esc(t("sim.fromChat")) + '">' + App.icon("layers") + "</button>" : "") +
+        (msg.text && App.feedback ? App.feedback.chatButtonsHtml(msg) : "") +
         "</div>");
     }
     return '<div class="msg__avatar">' + App.icon("logo") + '</div><div class="msg__body">' + parts.join("") + "</div>";
@@ -608,6 +609,12 @@
         const q = [u && u.text, u && u.transcription].filter(Boolean).join("\n\n");
         if (!q && !(u && u.image)) return;
         App.similar.open({ q, image: (u && u.image) || null, explain: msg.text, label: c.title || "" });
+      } else if ((a === "fb-up" || a === "fb-down") && msg && App.feedback) {
+        if (await App.feedback.onChat(a, c, msg)) {
+          await saveChat(c);
+          const box = act.closest(".fb-btns");
+          if (box) { box.outerHTML = App.feedback.chatButtonsHtml(msg); }
+        }
       } else if (a === "retry") retry(c);
       else if (a === "reload-model") {
         act.disabled = true;
