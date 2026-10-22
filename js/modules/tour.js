@@ -323,7 +323,7 @@
   /** İlk kurulum mu? Eski kullanıcıları (güncelleme yapanları) işaretleyip atlar */
   async function shouldShow() {
     const done = App.prefs.get("tourDone", null);
-    if (done === true || done === "existing") return false;
+    if (done === true || done === "existing" || done === "demo") return false;
     if (done === false) return true;                       // tur yarıda kaldı (uygulama kapandı): kaldığı yerden
     if (!App.firstRun) { App.prefs.set("tourDone", "existing"); return false; }
     for (const s of DATA_STORES) {
@@ -334,7 +334,8 @@
 
   async function maybeStart() {
     if (!(await shouldShow())) return;
-    setTimeout(() => start(App.prefs.get("tourStep", 0)), 500);
+    // #/demo kısayoluyla açıldıysa (sunum/jüri) tur kendiliğinden başlamaz; Ayarlar'dan açılabilir
+    setTimeout(() => { if (App.prefs.get("tourDone", null) === "demo") return; start(App.prefs.get("tourStep", 0)); }, 500);
   }
 
   App.tour = { start, finish, maybeStart, shouldShow, steps: STEPS, isActive: () => active, current: () => idx };
