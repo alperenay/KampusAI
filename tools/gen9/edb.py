@@ -540,6 +540,9 @@ O("k5", "4.5",
    "Her metinde açık ve örtük iletileri ayırt etmeyi unutma."]),
 ]))
 
+from _ek135 import uygula135  # noqa: E402
+uygula135(units, "edb")
+
 write("edb-9.js", "9/edebiyat", "9. Sınıf Türk Dili ve Edebiyatı — konu anlatım ve kazanım rehberi",
       "kullanıcının verdiği \"9. Sınıf Türk Dili ve Edebiyatı Kapsamlı Konu Anlatım ve Kazanım Analiz Rehberi\" (4 tema).",
       units, "Kazanım kodları tema.sıra biçimindedir. Örnek soruların bir kısmı ve bazı karşılaştırma tabloları kazanımı uygulamak için eklendi.")

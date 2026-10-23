@@ -437,6 +437,9 @@ Biyoçeşitlilik üç düzeyde incelenir: **genetik çeşitlilik, tür çeşitli
    "Türkiye **üç bitki coğrafyasının** kesişiminde; veri tabanı: **Nuh'un Gemisi**."]),
 ]))
 
+from _ek135 import uygula135  # noqa: E402
+uygula135(units, "biy")
+
 write("biy-9.js", "9/biyoloji", "9. Sınıf Biyoloji — kazanım odaklı konu anlatım notları",
       "kullanıcının verdiği \"9. Sınıf Biyoloji Kazanım Odaklı Eksiksiz Konu Anlatım Notları\" (2 tema).",
       units, "Kazanım kodları kaynaktaki bölüm numaralarıdır. Kaynaktaki küçük yazım hataları düzeltildi; örnek soruların bir kısmı eklendi.")

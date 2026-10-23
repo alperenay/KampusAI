@@ -510,6 +510,9 @@ Hz. Peygamber'in **ev halkı ve soyu** (Ehl-i beyt) kültürümüzde derin bir s
    "Ehl-i beyt: Hz. Peygamber'in ev halkı ve soyu."]),
 ]))
 
+from _ek135 import uygula135  # noqa: E402
+uygula135(units, "din")
+
 write("din-9.js", "9/din", "9. Sınıf Din Kültürü ve Ahlak Bilgisi — kazanım konu anlatım notları",
       "kullanıcının verdiği \"9. Sınıf Din Kültürü ve Ahlak Bilgisi Ders Kitabı Ayrıntılı Kazanım Konu Anlatım Notları\" (5 ünite).",
       units, "Kazanım kodları kaynaktaki bölüm numaralarıdır. Kaynaktaki yazım hataları düzeltildi; bazı tablolar ve örnek sorular eklendi.")

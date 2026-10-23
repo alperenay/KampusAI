@@ -509,6 +509,9 @@ O("k3", "3.3",
    "Çözüm: kontrollü üretim, kullanım ve **bertaraf**."]),
 ]))
 
+from _ek135 import uygula135  # noqa: E402
+uygula135(units, "kim")
+
 write("kim-9.js", "9/kimya", "9. Sınıf Kimya — detaylı konu anlatım notları",
       "kullanıcının verdiği \"9. Sınıf Kimya Detaylı Konu Anlatım Notları\" (Türkiye Yüzyılı Maarif Modeli, 3 tema).",
       units, "Kazanım kodları kaynaktaki KİM.9.x.x kodlarıdır. Örnek soruların bir kısmı kaynaktan, diğerleri kazanımı uygulamak için eklendi.")

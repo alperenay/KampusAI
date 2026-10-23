@@ -672,6 +672,9 @@ O("k2", "R.2",
    "Her temada: grammar + vocabulary + pronunciation + 4 beceri + E-Portfolio."]),
 ]))
 
+from _ek135 import uygula135  # noqa: E402
+uygula135(units, "ing")
+
 write("ing-9.js", "9/ingilizce", "9. Sınıf İngilizce (WAYMARK Year 9 / B1.1) — konu anlatım notları",
       "kullanıcının verdiği \"WAYMARK Year 9/B1.1 Detaylı Konu Anlatım Notları\" (8 tema + genel tekrar).",
       units, "Her tema iki kazanıma ayrıldı: dilbilgisi ve fonksiyonlar / kelime, telaffuz, sosyal dil ve beceriler. Alıştırma soruları eklendi.")
