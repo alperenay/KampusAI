@@ -92,7 +92,16 @@ App.data.content["9/matematik"] = [
     },
     "content": {
      "anlatim": "# Temel Sayı Kümeleri\n\n- $\\mathbb{N} = \\{1, 2, 3, \\ldots\\}$ (Doğal sayılar – bazı kaynaklarda 0 dahil)\n- $\\mathbb{Z} = \\{\\ldots, -2, -1, 0, 1, 2, \\ldots\\}$ (Tam sayılar)\n- $\\mathbb{Q} = \\left\\{\\dfrac{p}{q} \\;\\middle|\\; p \\in \\mathbb{Z},\\ q \\in \\mathbb{Z},\\ q \\neq 0\\right\\}$ (Rasyonel sayılar)\n- $\\mathbb{Q}' = \\mathbb{R} \\setminus \\mathbb{Q}$ (İrrasyonel sayılar: $\\sqrt{2}$, $\\pi$, $e$, …)\n- $\\mathbb{R} = \\mathbb{Q} \\cup \\mathbb{Q}'$ (Gerçek sayılar)\n\n# İlişkiler\n\n$$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}$$\n\n$$\\mathbb{Q} \\cap \\mathbb{Q}' = \\emptyset \\quad \\text{ve} \\quad \\mathbb{Q} \\cup \\mathbb{Q}' = \\mathbb{R}$$\n\n# Kapalılık Özellikleri\n\n- $\\mathbb{N}$ toplama ve çarpmaya göre kapalıdır, çıkarma ve bölmeye göre değildir.\n- $\\mathbb{Z}$ toplama, çıkarma ve çarpmaya göre kapalıdır, bölmeye göre değildir.\n- $\\mathbb{Q}$ dört işleme göre (bölmede sıfır hariç) kapalıdır.\n- $\\mathbb{R}$ dört işleme göre (bölmede sıfır hariç) kapalıdır.\n\n# Mutlak Değer\n\n$$|a| = \\begin{cases} a, & a \\geq 0 \\\\ -a, & a < 0 \\end{cases}$$\n\n**Özellikler:** $|a| \\geq 0$, $\\;|a| = |-a|$, $\\;|a \\cdot b| = |a| \\cdot |b|$, $\\;\\left|\\dfrac{a}{b}\\right| = \\dfrac{|a|}{|b|}$",
-     "ornekler": [],
+     "ornekler": [
+      {
+       "soru": "$\\sqrt{9}$, $\\sqrt{7}$, $-\\tfrac{3}{4}$, $0{,}\\overline{3}$, $\\pi$, $-5$ sayılarını en dar sayı kümesine yerleştiriniz.",
+       "cozum": "$\\sqrt{9} = 3 \\in \\mathbb{N}$; $-5 \\in \\mathbb{Z}$; $-\\tfrac34$ ve $0{,}\\overline{3} = \\tfrac13 \\in \\mathbb{Q}$ (devirli ondalık sayılar rasyoneldir); $\\sqrt{7}$ ve $\\pi$ **irrasyoneldir** ($\\mathbb{Q}'$)."
+      },
+      {
+       "soru": "“İki irrasyonel sayının toplamı her zaman irrasyoneldir.” önermesi doğru mudur? Örnekle gösteriniz.",
+       "cozum": "**Yanlıştır.** $\\sqrt2$ ve $-\\sqrt2$ irrasyoneldir ama toplamları $0$ rasyoneldir. Yani irrasyonel sayılar kümesi toplamaya göre **kapalı değildir**; tek bir karşı örnek önermeyi çürütmeye yeter."
+      }
+     ],
      "ozet": [
       "$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}$",
       "$\\mathbb{Q} \\cap \\mathbb{Q}' = \\emptyset$, $\\;\\mathbb{Q} \\cup \\mathbb{Q}' = \\mathbb{R}$",
@@ -110,7 +119,16 @@ App.data.content["9/matematik"] = [
     },
     "content": {
      "anlatim": "# Temel Özdeşlikler\n\n$$(a + b)^2 = a^2 + 2ab + b^2$$\n\n$$(a - b)^2 = a^2 - 2ab + b^2$$\n\n$$a^2 - b^2 = (a - b)(a + b) \\quad \\text{(İki kare farkı)}$$\n\n$$(a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$$\n\n$$(a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3$$\n\n$$a^3 - b^3 = (a - b)(a^2 + ab + b^2)$$\n\n$$a^3 + b^3 = (a + b)(a^2 - ab + b^2)$$\n\n# İşlem Özellikleri (Cebirsel İfade)\n\n- **Değişme (komütatif):** $a + b = b + a$, $\\;a \\cdot b = b \\cdot a$\n- **Birleşme (asosiyatif):** $(a + b) + c = a + (b + c)$\n- **Dağılma (distribütif):** $a \\cdot (b + c) = a \\cdot b + a \\cdot c$\n- **Birim eleman:** $a + 0 = a$, $\\;a \\cdot 1 = a$\n- **Ters eleman:** $a + (-a) = 0$, $\\;a \\cdot \\dfrac{1}{a} = 1 \\quad (a \\neq 0)$\n\n# Önerme ve Mantık Bağlaçları (Bu temada giriş)\n\n- $\\land$ (ve), $\\lor$ (veya), $\\neg$ (değil), $\\Rightarrow$ (ise), $\\Leftrightarrow$ (ancak ve ancak)\n- $\\forall$ (her), $\\exists$ (bazı / vardır)",
-     "ornekler": [],
+     "ornekler": [
+      {
+       "soru": "$101^2 - 99^2$ işleminin sonucunu özdeşlik kullanarak bulunuz.",
+       "cozum": "İki kare farkı: $a^2 - b^2 = (a - b)(a + b) = (101 - 99)(101 + 99) = 2 \\cdot 200 = 400$."
+      },
+      {
+       "soru": "$x + y = 7$ ve $xy = 10$ ise $x^2 + y^2$ kaçtır?",
+       "cozum": "$(x + y)^2 = x^2 + 2xy + y^2 \\Rightarrow 49 = x^2 + y^2 + 20 \\Rightarrow x^2 + y^2 = 29$."
+      }
+     ],
      "ozet": [
       "$(a \\pm b)^2 = a^2 \\pm 2ab + b^2$",
       "$a^2 - b^2 = (a - b)(a + b)$",
@@ -141,6 +159,10 @@ App.data.content["9/matematik"] = [
       {
        "soru": "$f(x) = 2x - 4$ fonksiyonunun eğimini, $y$-kesişimini, kökünü ve işaretini inceleyiniz.",
        "cozum": "Eğim $= 2$ (artan), $y$-kesişimi $= -4$, kök: $2x - 4 = 0 \\Rightarrow x = 2$. İşaret: $x > 2$ için pozitif, $x < 2$ için negatif."
+      },
+      {
+       "soru": "$f(x) = x$ referans fonksiyonundan $g(x) = -2(x - 1) + 3$ fonksiyonu nasıl elde edilir? $g$ artan mıdır?",
+       "cozum": "$f$ önce **1 birim sağa** ötelenir ($x - 1$), sonra **2 katı dikey genişletilip $x$ eksenine göre yansıtılır** ($-2$), en son **3 birim yukarı** ötelenir. $g(x) = -2x + 5$; eğim $-2 < 0$ olduğu için **azalandır**."
       }
      ],
      "ozet": [
@@ -158,7 +180,7 @@ App.data.content["9/matematik"] = [
      "en": "Using analogical reasoning based on linear functions to study the qualitative properties of absolute value functions"
     },
     "content": {
-     "anlatim": "# Temel Mutlak Değer Fonksiyonu\n\n$$n(x) = |x| = \\begin{cases} x, & x \\geq 0 \\\\ -x, & x < 0 \\end{cases}$$\n\nGrafiği **V** şeklindedir. Tepe noktası $(0, 0)$'dır. Azalan ($x < 0$) ve artan ($x > 0$) parçalardan oluşur.\n\n# Genel Biçim\n\n$$m(x) = \\pm |ax \\pm b| \\pm c \\quad (a \\neq 0)$$\n\n# Nitel Özellikler\n\n- **Tepe (köşe) noktası:** $|ax + b| = 0 \\Rightarrow x = -\\dfrac{b}{a}$ noktasında\n- Minimum veya maksimum değeri $c$'ye göre belirlenir.\n- Parçalı doğrusal fonksiyondur (iki doğrusal parçadan oluşur).\n- $|ax + b|$ her zaman $\\geq 0$'dır.",
+     "anlatim": "# Temel Mutlak Değer Fonksiyonu\n\n$$n(x) = |x| = \\begin{cases} x, & x \\geq 0 \\\\ -x, & x < 0 \\end{cases}$$\n\nGrafiği **V** şeklindedir. Tepe noktası $(0, 0)$'dır. Azalan ($x < 0$) ve artan ($x > 0$) parçalardan oluşur.\n\n# Genel Biçim\n\n$$m(x) = \\pm |ax \\pm b| \\pm c \\quad (a \\neq 0)$$\n\n# Nitel Özellikler\n\n- **Tepe (köşe) noktası:** $|ax + b| = 0 \\Rightarrow x = -\\dfrac{b}{a}$ noktasında\n- Minimum veya maksimum değeri $c$'ye göre belirlenir.\n- Parçalı doğrusal fonksiyondur (iki doğrusal parçadan oluşur).\n- $|ax + b|$ her zaman $\\geq 0$'dır.\n\n# Mutlak Değer Fonksiyonunun Grafiğini Çizme\n\n1. **Tepe noktasını** bul: $ax + b = 0 \\Rightarrow x = -\\dfrac{b}{a}$, $y = c$.\n2. Tepenin **sağında ve solunda** birer nokta seç, değerlerini hesapla.\n3. Noktaları iki ışınla birleştir; ışınların eğimleri $a$ ve $-a$'dır.\n\n| $f(x) = \\lvert x - 1 \\rvert - 2$ | $x = -1$ | $x = 0$ | $x = 1$ | $x = 2$ | $x = 3$ |\n|---|---|---|---|---|---|\n| $f(x)$ | $0$ | $-1$ | $-2$ (tepe) | $-1$ | $0$ |\n\n- Grafik $x$ eksenini $f(x) = 0$ olan noktalarda keser: $|x - 1| = 2 \\Rightarrow x = -1$ veya $x = 3$.\n- $|x|$ grafiği **$y$ eksenine göre simetriktir**; $|x - r|$ grafiği $x = r$ doğrusuna göre simetriktir.",
      "ornekler": [
       {
        "soru": "$f(x) = |x - 3| + 2$ fonksiyonunun tepe noktasını ve en küçük değerini bulunuz.",
@@ -185,7 +207,16 @@ App.data.content["9/matematik"] = [
     },
     "content": {
      "anlatim": "# Doğrusal Denklem\n\n$$ax + b = 0 \\;\\Rightarrow\\; x = -\\frac{b}{a}$$\n\n$$ax + b = cx + d \\;\\Rightarrow\\; (a - c)x = d - b \\;\\Rightarrow\\; x = \\frac{d - b}{a - c}$$\n\n# Doğrusal Eşitsizlik\n\n$ax + b > 0$ (veya $<$, $\\geq$, $\\leq$)\n\nÇözüm kümesi bir aralıktır. **Eşitsizlik yönü, her iki taraf negatif sayı ile çarpıldığında değişir.**\n\n# Mutlak Değerli Denklem / Eşitsizlik\n\n$$|ax + b| = c \\;(c \\geq 0) \\;\\Rightarrow\\; ax + b = c \\;\\text{ veya }\\; ax + b = -c$$\n\n$$|ax + b| < c \\;\\Rightarrow\\; -c < ax + b < c$$\n\n$$|ax + b| > c \\;\\Rightarrow\\; ax + b < -c \\;\\text{ veya }\\; ax + b > c$$\n\n# Problem Çözme Stratejisi\n\n1. Problemi matematiksel dile çevir (fonksiyon veya denklem/eşitsizlik kur).\n2. Bilinmeyenleri ve verilenleri belirle.\n3. Denklemi/eşitsizliği çöz.\n4. Çözümü problem bağlamında yorumla (birim, anlamlılık vb.).",
-     "ornekler": [],
+     "ornekler": [
+      {
+       "soru": "Bir taksi açılışta 40 TL, her km için 25 TL alıyor. 340 TL ödeyen bir yolcu kaç km yol gitmiştir? Bütçesi en fazla 290 TL olan biri en fazla kaç km gidebilir?",
+       "cozum": "Ücret $f(x) = 25x + 40$. $25x + 40 = 340 \\Rightarrow x = 12$ km. $25x + 40 \\le 290 \\Rightarrow 25x \\le 250 \\Rightarrow x \\le 10$ km."
+      },
+      {
+       "soru": "$|2x - 3| \\le 5$ eşitsizliğinin çözüm kümesini bulunuz.",
+       "cozum": "$-5 \\le 2x - 3 \\le 5 \\Rightarrow -2 \\le 2x \\le 8 \\Rightarrow -1 \\le x \\le 4$. Çözüm kümesi $[-1, 4]$."
+      }
+     ],
      "ozet": [
       "$ax + b = 0 \\Rightarrow x = -\\dfrac{b}{a}$",
       "Negatif sayıyla çarpınca/bölünce eşitsizlik yön değiştirir.",
@@ -212,7 +243,16 @@ App.data.content["9/matematik"] = [
     },
     "content": {
      "anlatim": "# Temel Kavramlar\n\n- **İç açılar:** Üçgenin kenarları arasında kalan açılar. Toplamları $180^\\circ$'dir.\n- **Dış açı:** Bir kenarın uzantısı ile komşu kenar arasındaki açı. Dış açı = komşu olmayan iki iç açının toplamı.\n- **Kenar:** İki köşeyi birleştiren doğru parçası. $|AB|$, $|BC|$, $|CA|$ ile gösterilir.\n\n# Açı Özellikleri\n\n1. Üçgenin iç açıları toplamı $180^\\circ$'dir: $m(\\widehat{A}) + m(\\widehat{B}) + m(\\widehat{C}) = 180^\\circ$\n2. Bir dış açı, kendisine komşu olmayan iki iç açının toplamına eşittir.\n3. Üçgenin bir dış açısı, komşu iç açısından büyüktür.\n\n# Kenar-Açı İlişkileri\n\n- Bir üçgende büyük kenarın karşısındaki açı büyüktür (ve tersi).\n- Eşit kenarların karşısındaki açılar eşittir (ikizkenar üçgen).\n- Eşkenar üçgende tüm açılar $60^\\circ$'dir.\n\n# Üçgen Eşitsizliği\n\nHerhangi bir üçgende iki kenarın toplamı üçüncü kenardan büyüktür:\n\n$$|AB| + |BC| > |AC|, \\quad |AB| + |AC| > |BC|, \\quad |BC| + |AC| > |AB|$$\n\nAyrıca:\n\n$$\\big||AB| - |BC|\\big| < |AC|$$\n\n# Özel Üçgenler\n\n- **İkizkenar:** İki kenar eşit → taban açıları eşit\n- **Eşkenar:** Üç kenar eşit → üç açı $60^\\circ$\n- **Dik üçgen:** Bir açı $90^\\circ$ → Pisagor bağıntısı geçerli\n\n# İspat Örneği (İç Açılar Toplamı)\n\nBir köşeden karşı kenara paralel çizilerek veya dış açı kullanılarak ispatlanabilir. Paralel doğrular arasında kalan iç ters açılar eşitliğinden yararlanılır.",
-     "ornekler": [],
+     "ornekler": [
+      {
+       "soru": "Bir üçgenin iki kenarı 5 cm ve 9 cm'dir. Üçüncü kenar tam sayı olduğuna göre kaç farklı değer alabilir?",
+       "cozum": "$9 - 5 < c < 9 + 5 \\Rightarrow 4 < c < 14$. Tam sayı değerler $5, 6, \\ldots, 13$ → **9 farklı** değer."
+      },
+      {
+       "soru": "Bir üçgende $m(\\widehat{A}) = 50^\\circ$, $m(\\widehat{B}) = 70^\\circ$'dir. $C$ köşesindeki dış açıyı ve en uzun kenarı bulunuz.",
+       "cozum": "$m(\\widehat{C}) = 180 - 50 - 70 = 60^\\circ$. $C$'deki dış açı $= 50 + 70 = 120^\\circ$. En büyük açı $70^\\circ$ ($\\widehat{B}$) olduğundan en uzun kenar **$B$'nin karşısındaki $[AC]$**'dir."
+      }
+     ],
      "ozet": [
       "İç açılar toplamı $180^\\circ$; dış açı = komşu olmayan iki iç açının toplamı",
       "Büyük kenarın karşısında büyük açı bulunur.",
@@ -238,7 +278,16 @@ App.data.content["9/matematik"] = [
     },
     "content": {
      "anlatim": "# 1. Yansıma Dönüşümü (Simetri)\n\nBir doğruya (yansıma doğrusu) göre simetri. Nokta ile görüntüsü, yansıma doğrusuna eşit uzaklıktadır ve birleştiren doğru parçası doğruya diktir.\n\n**Korunan özellikler:** Kenar uzunlukları, açı ölçüleri, alan, çevre, noktalar arası uzaklık. Şekil ile görüntüsü eştir ($\\cong$).\n\n# 2. Öteleme Dönüşümü\n\nŞekil, belirli bir doğrultuda ve uzaklıkta kaydırılır. Her nokta aynı vektör kadar yer değiştirir.\n\n**Korunan özellikler:** Tüm uzunluklar, açılar, alan, yön (oryantasyon). Şekil ile görüntüsü eştir.\n\n# 3. Dönme Dönüşümü\n\nŞekil, bir merkez nokta etrafında belirli bir açı kadar döndürülür. Her noktanın merkeze uzaklığı korunur.\n\n**Korunan özellikler:** Uzunluklar, açılar, alan. Yön korunabilir veya değişebilir. Şekil ile görüntüsü eştir.\n\n> **Önemli:** Yansıma, öteleme ve dönme uzaklık koruyan (izometri) dönüşümlerdir. Eş şekiller üretirler.",
-     "ornekler": [],
+     "ornekler": [
+      {
+       "soru": "$A(2, 3)$ noktasının $x$ eksenine göre yansıması, $(4, -1)$ vektörü kadar ötelenmesi ve orijin etrafında $90^\\circ$ (saat yönünün tersine) döndürülmesiyle elde edilen noktaları bulunuz.",
+       "cozum": "$x$ eksenine göre yansıma: $(2, -3)$. Öteleme: $(2 + 4,\\ 3 - 1) = (6, 2)$. Orijin etrafında $90^\\circ$ dönme $(x, y) \\to (-y, x)$: $(-3, 2)$."
+      },
+      {
+       "soru": "Bir üçgen önce bir doğruya göre yansıtılıp sonra ötelenirse elde edilen üçgen ilk üçgene eş midir? Neden?",
+       "cozum": "**Evet.** Yansıma ve öteleme uzunlukları ve açıları koruyan (izometri) dönüşümlerdir; art arda uygulanmaları da izometridir. Görüntü üçgen ilk üçgene **eştir**."
+      }
+     ],
      "ozet": [
       "Yansıma, öteleme ve dönme **izometridir**: uzunluk, açı ve alan korunur; görüntü şekle eştir.",
       "Yansımada nokta ile görüntüsünü birleştiren doğru parçası yansıma doğrusuna diktir ve doğru onu ortalar.",
@@ -248,14 +297,23 @@ App.data.content["9/matematik"] = [
    },
    {
     "id": "k2",
-    "code": "",
+    "code": "MAT.9.4.2",
     "title": {
      "tr": "İki üçgenin eş veya benzer olması için gerekli asgari koşullarla ilgili çıkarım yapabilme",
      "en": "Making inferences about the minimum conditions for two triangles to be congruent or similar"
     },
     "content": {
      "anlatim": "# Eşlik ($\\cong$)\n\nİki üçgenin karşılıklı kenarları ve açıları eşitse eştir.\n\n**Eşlik koşulları (yeterli):**\n\n- **KAK (Kenar-Açı-Kenar):** İki kenar ve aralarındaki açı eşit\n- **AKA (Açı-Kenar-Açı):** İki açı ve aralarındaki kenar eşit\n- **KKK (Kenar-Kenar-Kenar):** Üç kenar eşit\n- **KKA (Kenar-Kenar-Açı):** İki kenar ve büyük kenara karşı açı eşit (dikkatli kullanılmalı)\n\n# Benzerlik ($\\sim$)\n\nİki üçgenin karşılıklı açıları eşit ve kenarları orantılıysa benzerdir.\n\n**Benzerlik koşulları:**\n\n- **AA (Açı-Açı):** İki açı eşit → üçüncü de eşit → benzer\n- **KAK (Kenar-Açı-Kenar orantılı):** İki kenar orantılı ve aradaki açı eşit\n- **KKK (Kenar orantılı):** Üç kenar orantılı\n\n# Benzerlik Oranı\n\n$k$ = karşılıklı kenarların oranı.\n\n$$\\text{Çevre oranı} = k, \\qquad \\text{Alan oranı} = k^2$$",
-     "ornekler": [],
+     "ornekler": [
+      {
+       "soru": "$ABC$ ve $DEF$ üçgenlerinde $|AB| = |DE|$, $|AC| = |DF|$ ve $m(\\widehat{A}) = m(\\widehat{D})$'dir. Üçgenler eş midir?",
+       "cozum": "**Evet, KAK** eşlik koşuluna göre: iki kenar ve **bu kenarların arasındaki** açı eşittir. Bu yüzden $|BC| = |EF|$ ve diğer açılar da eşittir."
+      },
+      {
+       "soru": "Kenarları 4, 6, 8 cm olan üçgen ile kenarları 6, 9, 12 cm olan üçgen benzer midir? Alanlar oranı kaçtır?",
+       "cozum": "$\\dfrac{4}{6} = \\dfrac{6}{9} = \\dfrac{8}{12} = \\dfrac23$ → **KKK benzerliği**, $k = \\dfrac23$. Alanlar oranı $k^2 = \\dfrac49$."
+      }
+     ],
      "ozet": [
       "Eşlik: KAK, AKA, KKK (KKA dikkatli kullanılır).",
       "Benzerlik: AA, KAK (orantılı), KKK (orantılı).",
@@ -265,35 +323,49 @@ App.data.content["9/matematik"] = [
    },
    {
     "id": "k3",
-    "code": "",
+    "code": "MAT.9.4.3",
     "title": {
      "tr": "Bir üçgenden hareketle ona benzer üçgenler oluşturma ile ilgili yansıtma yapabilme",
      "en": "Reflecting on constructing triangles similar to a given triangle"
     },
     "content": {
-     "anlatim": "Bir üçgene benzer yeni üçgenler oluşturmak için kenarları **aynı oranda** büyüterek/küçülterek veya **açıları koruyarak** çizim yapılabilir. Bunun için homoteti (benzerlik dönüşümü) kullanılır.",
+     "anlatim": "Bir üçgene benzer yeni üçgenler oluşturmak için kenarları **aynı oranda** büyüterek/küçülterek veya **açıları koruyarak** çizim yapılabilir. Bunun için homoteti (benzerlik dönüşümü) kullanılır.\n\n# Benzer Üçgen Oluşturma Yolları\n\n1. **Paralel çizme:** Üçgenin bir kenarına paralel bir doğru çizilir; kesilen küçük üçgen büyük üçgene **benzerdir** (açılar yöndeş açılar olarak eşit kalır).\n2. **Homoteti (merkezli büyütme):** Bir $O$ noktası seçilir; her köşe $O$'dan geçen ışın üzerinde $|OA'| = k \\cdot |OA|$ olacak biçimde taşınır. $k > 1$ büyütme, $0 < k < 1$ küçültme yapar.\n3. **Kare kâğıt ve ölçek:** Harita, maket ve mimari çizimler benzerliğe dayanır (1 : 100 ölçekli çizimde her uzunluk 100 kat küçüktür).\n\n> **Yansıtma:** Benzerlikte **şekil** (açılar) korunur, **büyüklük** değişir; eşlikte ikisi de korunur. Eşlik, $k = 1$ olan özel bir benzerliktir.",
      "ornekler": [
       {
        "soru": "Bir üçgenin kenarları 2 katına çıkarılarak yeni bir üçgen çiziliyor. Benzerlik oranı ve alan nasıl değişir?",
        "cozum": "Benzer ve daha büyük bir üçgen elde edilir. Benzerlik oranı $k = 2$ olduğundan alan $k^2 = 4$ katına çıkar."
+      },
+      {
+       "soru": "Kenarları 3, 4, 5 cm olan bir üçgene benzer, çevresi 36 cm olan üçgenin kenarlarını bulunuz.",
+       "cozum": "İlk üçgenin çevresi 12 cm; $k = \\dfrac{36}{12} = 3$. Kenarlar $9$, $12$, $15$ cm."
       }
      ],
      "ozet": [
       "Kenarlar aynı oranda büyütülür/küçültülürse veya açılar korunursa benzer üçgen elde edilir.",
-      "Kenarlar $k$ katına çıkarsa alan $k^2$ katına çıkar."
+      "Kenarlar $k$ katına çıkarsa alan $k^2$ katına çıkar.",
+      "Homoteti: merkezden geçen ışınlarda $k$ katı büyütme/küçültme; eşlik $k = 1$ olan benzerliktir."
      ]
     }
    },
    {
     "id": "k4",
-    "code": "",
+    "code": "MAT.9.4.4",
     "title": {
      "tr": "Tales, Öklid ve Pisagor teoremlerini ispatlayabilme",
      "en": "Proving the Thales, Euclid and Pythagorean theorems"
     },
     "content": {
      "anlatim": "# Tales Teoremi\n\nBir üçgenin iki kenarını kesen ve üçüncü kenara paralel olan doğru, diğer iki kenarı orantılı böler:\n\n$$\\frac{|AD|}{|DB|} = \\frac{|AE|}{|EC|} \\qquad (BC \\parallel DE \\text{ ise})$$\n\n*Genelleme:* Paralel doğrular, kesenler üzerinde orantılı parçalar oluşturur.\n\n# Öklid Teoremi (Dik Üçgende)\n\nDik üçgende dik kenarların karesi, hipotenüse ait izdüşüm ile hipotenüsün çarpımına eşittir:\n\n$$a^2 = p \\cdot c, \\qquad b^2 = q \\cdot c \\qquad (c \\text{ hipotenüs; } p \\text{ ve } q \\text{ izdüşümler})$$\n\nAyrıca hipotenüse ait yükseklik için:\n\n$$h^2 = p \\cdot q$$\n\n# Pisagor Teoremi\n\nDik üçgende dik kenarların kareleri toplamı hipotenüsün karesine eşittir:\n\n$$a^2 + b^2 = c^2$$\n\n*İspat:* Öklid teoreminden veya benzer üçgenlerden elde edilebilir.",
-     "ornekler": [],
+     "ornekler": [
+      {
+       "soru": "$ABC$ üçgeninde $DE \\parallel BC$, $|AD| = 4$, $|DB| = 6$, $|AE| = 6$ ise $|EC|$ kaçtır?",
+       "cozum": "Tales: $\\dfrac{|AD|}{|DB|} = \\dfrac{|AE|}{|EC|} \\Rightarrow \\dfrac46 = \\dfrac{6}{|EC|} \\Rightarrow |EC| = 9$."
+      },
+      {
+       "soru": "Dik üçgende hipotenüse ait yükseklik, hipotenüsü 4 cm ve 9 cm'lik parçalara ayırıyor. Yüksekliği ve dik kenarları bulunuz.",
+       "cozum": "Öklid: $h^2 = p \\cdot q = 4 \\cdot 9 = 36 \\Rightarrow h = 6$. Hipotenüs $c = 13$: $a^2 = 4 \\cdot 13 = 52 \\Rightarrow a = 2\\sqrt{13}$; $b^2 = 9 \\cdot 13 = 117 \\Rightarrow b = 3\\sqrt{13}$. Kontrol (Pisagor): $52 + 117 = 169 = 13^2$ ✓."
+      }
+     ],
      "ozet": [
       "Tales: $BC \\parallel DE \\Rightarrow \\dfrac{|AD|}{|DB|} = \\dfrac{|AE|}{|EC|}$",
       "Öklid: $a^2 = p \\cdot c$, $\\;b^2 = q \\cdot c$, $\\;h^2 = p \\cdot q$",
@@ -303,17 +375,27 @@ App.data.content["9/matematik"] = [
    },
    {
     "id": "k5",
-    "code": "",
+    "code": "MAT.9.4.5",
     "title": {
      "tr": "Eşlik ve benzerlikle ilgili çıkarım ve teoremleri içeren problemleri çözebilme",
      "en": "Solving problems involving inferences and theorems on congruence and similarity"
     },
     "content": {
-     "anlatim": "# Problem Çözme Adımları\n\n1. Şekli incele, bilinen açı ve kenarları işaretle.\n2. Eşlik veya benzerlik koşulunu belirle (AA, KAK, KKK vb.).\n3. Orantı yaz veya eş kenar/açıları eşitle.\n4. Tales, Öklid veya Pisagor'u uygula.\n5. Sonucu kontrol et.",
-     "ornekler": [],
+     "anlatim": "# Problem Çözme Adımları\n\n1. Şekli incele, bilinen açı ve kenarları işaretle.\n2. Eşlik veya benzerlik koşulunu belirle (AA, KAK, KKK vb.).\n3. Orantı yaz veya eş kenar/açıları eşitle.\n4. Tales, Öklid veya Pisagor'u uygula.\n5. Sonucu kontrol et.\n\n# Sık Karşılaşılan Problem Türleri\n\n| Durum | Kullanılacak araç |\n|---|---|\n| Üçgende kenara paralel doğru | **Tales**: $\\dfrac{AD}{AB} = \\dfrac{AE}{AC} = \\dfrac{DE}{BC}$ |\n| Dik üçgende hipotenüse yükseklik | **Öklid**: $h^2 = p \\cdot q$, $a^2 = p \\cdot c$ |\n| Dik üçgende bilinmeyen kenar | **Pisagor**: $a^2 + b^2 = c^2$ |\n| Gölge, ağaç, bina yüksekliği | Güneş ışınları paralel → **AA benzerliği** |\n| Ortak açılı iki üçgen | **AA** ile benzerlik, sonra orantı |\n\n**Sık kullanılan Pisagor üçlüleri:** (3, 4, 5), (5, 12, 13), (8, 15, 17), (7, 24, 25) ve katları (6, 8, 10)…\n\n> ⚠ Orantı yazarken **karşılıklı** kenarları eşleştir: eşit açıların karşısındaki kenarlar karşılıklıdır.",
+     "ornekler": [
+      {
+       "soru": "Boyu 1,6 m olan bir öğrencinin gölgesi 2 m, aynı anda bir ağacın gölgesi 15 m'dir. Ağacın boyu kaç metredir?",
+       "cozum": "Güneş ışınları paralel → öğrenci–gölge ve ağaç–gölge üçgenleri **AA ile benzer**: $\\dfrac{1{,}6}{2} = \\dfrac{h}{15} \\Rightarrow h = 12$ m."
+      },
+      {
+       "soru": "Bir merdiven duvara yaslanmıştır. Merdivenin boyu 5 m, alt ucunun duvara uzaklığı 3 m ise üst ucu yerden kaç m yüksektedir?",
+       "cozum": "Duvar, yer ve merdiven dik üçgen oluşturur: $3^2 + h^2 = 5^2 \\Rightarrow h^2 = 16 \\Rightarrow h = 4$ m (3-4-5 üçlüsü)."
+      }
+     ],
      "ozet": [
       "Önce koşulu belirle (AA, KAK, KKK), sonra orantı kur.",
-      "Dik üçgen varsa Pisagor ve Öklid'i, paralel doğru varsa Tales'i düşün."
+      "Dik üçgen varsa Pisagor ve Öklid'i, paralel doğru varsa Tales'i düşün.",
+      "Pisagor üçlüleri: (3, 4, 5), (5, 12, 13), (8, 15, 17) ve katları; gölge problemlerinde AA benzerliği."
      ]
     }
    }
@@ -334,16 +416,21 @@ App.data.content["9/matematik"] = [
      "en": "Solving problems with algorithm-based approaches"
     },
     "content": {
-     "anlatim": "# Algoritma Nedir?\n\nBir problemi çözmek veya belirli bir amaca ulaşmak için izlenen **sonlu, sıralı ve açık** adımlar dizisidir.\n\n# Algoritma Gösterim Biçimleri\n\n- **Sözde kod (pseudocode):** Programlama diline yakın, doğal dilde yazılmış adımlar.\n- **Akış şeması:** Şekillerle (oval, dikdörtgen, elmas, ok) görsel gösterim.\n- **Çizge:** Düğüm ve kenarlarla ilişki gösterimi.\n\n# Akış Şeması Sembolleri\n\n| Sembol | Anlamı |\n|---|---|\n| Oval | Başla / Bitir |\n| Dikdörtgen | İşlem |\n| Paralelkenar | Girdi / Çıktı |\n| Elmas (baklava) | Karar (evet/hayır) |\n| Ok | Akış yönü |",
+     "anlatim": "# Algoritma Nedir?\n\nBir problemi çözmek veya belirli bir amaca ulaşmak için izlenen **sonlu, sıralı ve açık** adımlar dizisidir.\n\n# Algoritma Gösterim Biçimleri\n\n- **Sözde kod (pseudocode):** Programlama diline yakın, doğal dilde yazılmış adımlar.\n- **Akış şeması:** Şekillerle (oval, dikdörtgen, elmas, ok) görsel gösterim.\n- **Çizge:** Düğüm ve kenarlarla ilişki gösterimi.\n\n# Akış Şeması Sembolleri\n\n| Sembol | Anlamı |\n|---|---|\n| Oval | Başla / Bitir |\n| Dikdörtgen | İşlem |\n| Paralelkenar | Girdi / Çıktı |\n| Elmas (baklava) | Karar (evet/hayır) |\n| Ok | Akış yönü |\n\n# Algoritmada Temel Yapılar\n\n- **Sıralı yapı:** Adımlar yazıldığı sırayla bir kez çalışır.\n- **Karar (seçim) yapısı:** “Eğer … ise … değilse …” — koşula göre farklı yol izlenir.\n- **Döngü (tekrar) yapısı:** Bir koşul sağlandığı sürece adımlar tekrarlanır.\n\n**Örnek – 1'den $n$'ye kadar sayıların toplamı:**\n1. Başla. $n$'yi oku. $T \\leftarrow 0$, $i \\leftarrow 1$.\n2. $i \\le n$ olduğu sürece: $T \\leftarrow T + i$, $i \\leftarrow i + 1$.\n3. $T$'yi yaz. Bitir.\n\n> İyi bir algoritma **sonlu** olmalı (sonsuz döngüye girmemeli), her adımı **açık** olmalı ve aynı girdiye her zaman **aynı çıktıyı** vermelidir.",
      "ornekler": [
       {
        "soru": "İki sayının en büyüğünü bulan algoritmayı yazınız.",
        "cozum": "1. Başla\n2. $a$ ve $b$ sayılarını oku\n3. Eğer $a > b$ ise $a$'yı yaz, değilse $b$'yi yaz\n4. Bitir"
+      },
+      {
+       "soru": "Girilen bir tam sayının tek mi çift mi olduğunu bulan algoritmayı yazınız.",
+       "cozum": "1. Başla. 2. $n$'yi oku. 3. $n$'nin 2'ye bölümünden kalanı $k$ olarak hesapla. 4. Eğer $k = 0$ ise “çift”, değilse “tek” yaz. 5. Bitir. Karar yapısı akış şemasında **elmas** ile gösterilir."
       }
      ],
      "ozet": [
       "Algoritma: sonlu, sıralı ve açık adımlar dizisi.",
-      "Akış şemasında oval başla/bitir, dikdörtgen işlem, paralelkenar girdi/çıktı, elmas karar."
+      "Akış şemasında oval başla/bitir, dikdörtgen işlem, paralelkenar girdi/çıktı, elmas karar.",
+      "Temel yapılar: sıralı, karar (eğer–değilse), döngü (koşul sağlandıkça tekrar)."
      ]
     }
    },
@@ -381,11 +468,21 @@ App.data.content["9/matematik"] = [
      "en": "Transferring experience with logical connectives and quantifiers in algorithms to other mathematical tasks"
     },
     "content": {
-     "anlatim": "Algoritmalarda **karar yapıları** (if-else) mantık bağlaçlarıyla, **döngüler** ise niceleyicilerle ilişkilendirilebilir. Örneğin \"tüm elemanlar için kontrol et\" $\\forall$ ile, \"en az bir eleman bul\" $\\exists$ ile ifade edilir.\n\nŞifreleme algoritmalarında da mantıksal işlemler (XOR vb.) kullanılır. Öğrenciler, algoritmik düşünmeyi matematiksel ispat ve problem çözmeye aktarabilir.",
-     "ornekler": [],
+     "anlatim": "Algoritmalarda **karar yapıları** (if-else) mantık bağlaçlarıyla, **döngüler** ise niceleyicilerle ilişkilendirilebilir. Örneğin \"tüm elemanlar için kontrol et\" $\\forall$ ile, \"en az bir eleman bul\" $\\exists$ ile ifade edilir.\n\nŞifreleme algoritmalarında da mantıksal işlemler (XOR vb.) kullanılır. Öğrenciler, algoritmik düşünmeyi matematiksel ispat ve problem çözmeye aktarabilir.\n\n# Niceleyicilerin Değillenmesi\n\nBir algoritmanın “her eleman için kontrol” adımı başarısızsa, bunun anlamı “**en az bir eleman koşulu sağlamıyor**” demektir:\n\n$$\\neg(\\forall x,\\ P(x)) \\equiv \\exists x,\\ \\neg P(x) \\qquad \\neg(\\exists x,\\ P(x)) \\equiv \\forall x,\\ \\neg P(x)$$\n\n| Görev | Algoritmadaki karşılığı |\n|---|---|\n| “Listedeki **tüm** sayılar pozitif mi?” | Döngü; negatif bir sayı **bulununca dur** ve “hayır” yaz ($\\forall$'ın değili $\\exists$) |\n| “Listede **en az bir** çift sayı var mı?” | Döngü; ilk çift sayıda **dur** ve “evet” yaz |\n| Şifre: “en az 8 karakter **ve** en az bir rakam” | Koşul: $(\\text{uzunluk} \\ge 8) \\land (\\exists\\ \\text{rakam})$ |\n\n- **De Morgan kuralları:** $\\neg(p \\land q) \\equiv \\neg p \\lor \\neg q$ ve $\\neg(p \\lor q) \\equiv \\neg p \\land \\neg q$. Bir koşulun “değilse” kolunu yazarken kullanılır.",
+     "ornekler": [
+      {
+       "soru": "“Sınıftaki **her** öğrenci sınavdan geçti.” önermesinin değilini yazınız.",
+       "cozum": "$\\neg(\\forall x,\\ P(x)) \\equiv \\exists x,\\ \\neg P(x)$: “Sınıfta sınavdan **geçemeyen en az bir** öğrenci vardır.” (“Hiçbir öğrenci geçemedi” yanlış bir değillemedir.)"
+      },
+      {
+       "soru": "Bir uygulama şifreyi “en az 8 karakterli **ve** en az bir rakam içeren” koşuluyla kabul ediyor. Şifrenin reddedilmesi için hangi durum yeterlidir?",
+       "cozum": "De Morgan: $\\neg(p \\land q) \\equiv \\neg p \\lor \\neg q$. Şifre **8 karakterden kısaysa veya hiç rakam içermiyorsa** reddedilir; iki koşuldan birinin bozulması yeterlidir."
+      }
+     ],
      "ozet": [
       "Karar yapıları (if-else) ↔ mantık bağlaçları; döngüler ↔ niceleyiciler.",
-      "“Hepsi için kontrol et” → $\\forall$, “en az bir tane bul” → $\\exists$"
+      "“Hepsi için kontrol et” → $\\forall$, “en az bir tane bul” → $\\exists$",
+      "$\\neg(\\forall x,\\ P(x)) \\equiv \\exists x,\\ \\neg P(x)$; De Morgan: $\\neg(p \\land q) \\equiv \\neg p \\lor \\neg q$."
      ]
     }
    }
@@ -407,7 +504,16 @@ App.data.content["9/matematik"] = [
     },
     "content": {
      "anlatim": "# Temel Kavramlar\n\n- **Evren (popülasyon):** İncelenen tüm birimlerin oluşturduğu küme.\n- **Örneklem:** Evrenden seçilen alt küme.\n- **Nicel veri:** Sayısal ölçülebilen veri (boy, ağırlık, not vb.).\n- **Değişebilirlik:** Verilerin yayılımı / değişkenliği.\n\n# Merkezî Eğilim Ölçüleri\n\n- **Aritmetik ortalama:** Tüm verilerin toplamı / veri sayısı\n- **Medyan:** Sıralı verinin ortasındaki değer\n- **Mod:** En sık tekrar eden değer\n\n# Yayılım Ölçüleri\n\n- **Açıklık (range):** En büyük − en küçük\n- **Çeyrekler açıklığı (IQR):** $Q_3 - Q_1$\n- **Standart sapma:** Verilerin ortalamadan sapmalarının karekök ortalaması\n\n# Görselleştirme\n\n- **Histogram:** Sınıf aralıklarına göre frekans çubukları\n- **Kutu grafiği (box-plot):** Min, $Q_1$, medyan, $Q_3$, max değerlerini gösterir. Aykırı değerleri ortaya çıkarır.\n\n# Karar Verme\n\nVeri dağılımına bakarak (simetrik, çarpık, çok tepeli vb.) ortalama mı medyan mı kullanılacağına, yayılımın fazla olup olmadığına karar verilir.",
-     "ornekler": [],
+     "ornekler": [
+      {
+       "soru": "5 öğrencinin notları: 60, 70, 70, 80, 95. Ortalama, medyan, mod ve açıklığı bulunuz.",
+       "cozum": "Ortalama $= \\dfrac{60 + 70 + 70 + 80 + 95}{5} = \\dfrac{375}{5} = 75$. Medyan (ortadaki) $= 70$. Mod $= 70$. Açıklık $= 95 - 60 = 35$."
+      },
+      {
+       "soru": "2, 4, 4, 4, 6 verilerinin standart sapmasını hesaplayınız (örneklem standart sapması).",
+       "cozum": "Ortalama $\\bar{x} = 20/5 = 4$. Sapmaların kareleri: $4, 0, 0, 0, 4$ → toplam $8$. $s = \\sqrt{\\dfrac{8}{5 - 1}} = \\sqrt{2} \\approx 1{,}41$. Değerler ortalamaya yakın olduğundan yayılım küçüktür."
+      }
+     ],
      "ozet": [
       "Ortalama = toplam / veri sayısı; medyan = sıralı verinin ortası; mod = en sık değer",
       "Açıklık = en büyük − en küçük; çeyrekler açıklığı = $Q_3 - Q_1$",
@@ -423,11 +529,21 @@ App.data.content["9/matematik"] = [
      "en": "Discussing statistical conclusions based on single-variable data distributions made by others"
     },
     "content": {
-     "anlatim": "Başkalarının hazırladığı grafik, tablo veya özet istatistikleri incelerken şu sorular sorulur:\n\n- Örneklem büyüklüğü yeterli mi?\n- Örneklem rastgele ve temsil edici mi?\n- Grafik yanıltıcı mı? (eksen kesme, ölçek vb.)\n- Aykırı değerler var mı ve nasıl ele alınmış?\n- Sonuçlar genellenebilir mi?\n- Alternatif yorumlar mümkün mü?",
-     "ornekler": [],
+     "anlatim": "Başkalarının hazırladığı grafik, tablo veya özet istatistikleri incelerken şu sorular sorulur:\n\n- Örneklem büyüklüğü yeterli mi?\n- Örneklem rastgele ve temsil edici mi?\n- Grafik yanıltıcı mı? (eksen kesme, ölçek vb.)\n- Aykırı değerler var mı ve nasıl ele alınmış?\n- Sonuçlar genellenebilir mi?\n- Alternatif yorumlar mümkün mü?\n\n# Yanıltıcı Grafikler ve Hatalı Sonuçlar\n\n- **Kesilmiş eksen:** Dikey eksen 0'dan değil 90'dan başlatılırsa 92 ile 96 arasındaki küçük fark çok büyük görünür.\n- **Seçilmiş örneklem:** Yalnızca bir okulun 30 öğrencisiyle yapılan ankete bakıp “Türkiye'deki gençler…” diye genelleme yapılamaz.\n- **Aykırı değer etkisi:** Bir sınıfın not ortalaması bir iki çok yüksek ya da düşük notla değişebilir; böyle durumlarda **medyan** daha iyi bir özettir.\n- **Korelasyon ≠ neden:** Dondurma satışı ile boğulma vakaları birlikte artar; ikisinin ortak nedeni **sıcak havadır**.\n\n> Bir istatistiksel iddiayı değerlendirirken sor: **Kim**, **kaç kişiyle**, **nasıl** ölçtü? Veri ve grafik bu sonucu gerçekten destekliyor mu?",
+     "ornekler": [
+      {
+       "soru": "Bir reklamda “Kullanıcılarımızın %90'ı memnun!” yazıyor ve küçük harflerle “20 kişiyle yapılan ankete göre” notu var. Bu sonuca nasıl yaklaşmalısınız?",
+       "cozum": "**Örneklem çok küçüktür** (20 kişi) ve kimlerin seçildiği belli değildir; şirket kendi memnun müşterilerini seçmiş olabilir. Sonuç **genellenemez**; daha büyük ve rastgele bir örneklem gerekir."
+      },
+      {
+       "soru": "İki öğrencinin deneme netleri: Ali 30, 31, 29, 30, 30; Ece 20, 40, 25, 35, 30. Ortalamaları eşittir (30). Kimin performansı daha istikrarlıdır?",
+       "cozum": "**Ali'nin.** Açıklıklar: Ali $31 - 29 = 2$, Ece $40 - 20 = 20$. Ortalamalar aynı olsa da Ece'nin verileri çok **dağınıktır**; yalnızca ortalamaya bakarak karar vermek eksik olur."
+      }
+     ],
      "ozet": [
       "Örneklem yeterli ve temsil edici mi? Grafik ekseni kesilmiş ya da ölçeği yanıltıcı mı?",
-      "Aykırı değerler ve alternatif yorumlar sorgulanmalı."
+      "Aykırı değerler ve alternatif yorumlar sorgulanmalı.",
+      "Kesilmiş eksen ve küçük örneklem yanıltır; ilişki (korelasyon) neden–sonuç anlamına gelmez."
      ]
     }
    }
@@ -448,16 +564,21 @@ App.data.content["9/matematik"] = [
      "en": "Estimating the probability of events based on observation"
     },
     "content": {
-     "anlatim": "# Temel Kavramlar\n\n- **Deney:** Sonucu tesadüfe bağlı gözlem veya işlem\n- **Çıktı (outcome):** Deneyin mümkün sonuçlarından her biri\n- **Örnek uzay ($S$):** Tüm mümkün çıktıların kümesi\n- **Olay ($A$):** Örnek uzayın bir alt kümesi\n\n# Deneysel (Gözlemsel) Olasılık\n\n$$P(A) \\approx \\frac{A \\text{ olayının gerçekleşme sayısı}}{\\text{Toplam deneme sayısı}}$$\n\nDeneme sayısı arttıkça deneysel olasılık, teorik olasılığa yaklaşır (**Büyük Sayılar Yasası**).",
+     "anlatim": "# Temel Kavramlar\n\n- **Deney:** Sonucu tesadüfe bağlı gözlem veya işlem\n- **Çıktı (outcome):** Deneyin mümkün sonuçlarından her biri\n- **Örnek uzay ($S$):** Tüm mümkün çıktıların kümesi\n- **Olay ($A$):** Örnek uzayın bir alt kümesi\n\n# Deneysel (Gözlemsel) Olasılık\n\n$$P(A) \\approx \\frac{A \\text{ olayının gerçekleşme sayısı}}{\\text{Toplam deneme sayısı}}$$\n\nDeneme sayısı arttıkça deneysel olasılık, teorik olasılığa yaklaşır (**Büyük Sayılar Yasası**).\n\n# Deney Sayısı Neden Önemli?\n\n| Atış sayısı | Yazı sayısı | Deneysel olasılık |\n|---|---|---|\n| 10 | 7 | 0,70 |\n| 100 | 56 | 0,56 |\n| 1000 | 509 | 0,509 |\n\nDeneme sayısı arttıkça deneysel olasılık **0,5'e** (teorik değere) yaklaşır. Az sayıda denemeyle yapılan tahmin yanıltıcı olabilir.\n- **Simülasyon:** Zar, para ya da bilgisayarın rastgele sayı üreticisiyle bir olay çok kez yapay olarak tekrarlanır ve deneysel olasılık bulunur.\n- Teorik olasılığı hesaplanamayan olaylarda (yarın yağmur yağması, raptiyenin sivri ucu yukarı düşmesi) **gözleme dayalı** tahmin kullanılır.",
      "ornekler": [
       {
        "soru": "Bir madeni para 100 kez atıldığında 56 yazı geldi. Yazı gelme olasılığını deneysel olarak tahmin ediniz.",
        "cozum": "$P(\\text{Yazı}) \\approx \\dfrac{56}{100} = 0{,}56$"
+      },
+      {
+       "soru": "Bir raptiye 200 kez atılıyor ve 130 kez “sivri ucu yukarı” düşüyor. Raptiyenin sivri ucu yukarı düşme olasılığını tahmin ediniz. Bu olasılık teorik olarak hesaplanabilir mi?",
+       "cozum": "$P \\approx \\dfrac{130}{200} = 0{,}65$. Raptiyenin iki yüzü **eş olasılıklı değildir** (şekli simetrik değil), bu yüzden teorik olasılık hesaplanamaz; ancak **gözleme dayalı** tahmin yapılır."
       }
      ],
      "ozet": [
       "Deneysel olasılık = gerçekleşme sayısı / toplam deneme sayısı",
-      "Deneme sayısı arttıkça deneysel olasılık teorik olasılığa yaklaşır (Büyük Sayılar Yasası)."
+      "Deneme sayısı arttıkça deneysel olasılık teorik olasılığa yaklaşır (Büyük Sayılar Yasası).",
+      "Simülasyon ve gözlem: teorik olasılığı bilinmeyen olaylarda deneysel olasılık kullanılır."
      ]
     }
    },
@@ -469,11 +590,15 @@ App.data.content["9/matematik"] = [
      "en": "Inductive reasoning about the probability of events"
     },
     "content": {
-     "anlatim": "# Teorik Olasılık\n\n$$P(A) = \\frac{A \\text{ olayının elverişli çıktı sayısı}}{\\text{Örnek uzayın eleman sayısı}} = \\frac{n(A)}{n(S)}$$\n\n$$0 \\leq P(A) \\leq 1, \\qquad P(S) = 1, \\qquad P(\\emptyset) = 0$$\n\n# Olay Türleri\n\n- **Ayrık olaylar:** Ortak çıktısı olmayan olaylar ($A \\cap B = \\emptyset$)\n- **Ayrık olmayan olaylar:** Ortak çıktısı olan olaylar\n\n# Temel Olasılık Kuralları\n\n- $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$\n- $A$ ve $B$ ayrık ise: $P(A \\cup B) = P(A) + P(B)$\n- $P(A') = 1 - P(A)$ (tümleyen)\n- $P(A \\cap B) = P(A) \\cdot P(B)$ (bağımsız olaylar için)",
+     "anlatim": "# Teorik Olasılık\n\n$$P(A) = \\frac{A \\text{ olayının elverişli çıktı sayısı}}{\\text{Örnek uzayın eleman sayısı}} = \\frac{n(A)}{n(S)}$$\n\n$$0 \\leq P(A) \\leq 1, \\qquad P(S) = 1, \\qquad P(\\emptyset) = 0$$\n\n# Olay Türleri\n\n- **Ayrık olaylar:** Ortak çıktısı olmayan olaylar ($A \\cap B = \\emptyset$)\n- **Ayrık olmayan olaylar:** Ortak çıktısı olan olaylar\n\n# Temel Olasılık Kuralları\n\n- $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$\n- $A$ ve $B$ ayrık ise: $P(A \\cup B) = P(A) + P(B)$\n- $P(A') = 1 - P(A)$ (tümleyen)\n- $P(A \\cap B) = P(A) \\cdot P(B)$ (bağımsız olaylar için)\n\n# Örnek Uzayı Listeleme (İki Olaylı Deneyler)\n\nİki zar atılınca örnek uzay $6 \\cdot 6 = 36$ elemanlıdır. Tablo ile listelemek kolaydır:\n\n| + | 1 | 2 | 3 | 4 | 5 | 6 |\n|---|---|---|---|---|---|---|\n| **1** | 2 | 3 | 4 | 5 | 6 | 7 |\n| **2** | 3 | 4 | 5 | 6 | 7 | 8 |\n| **3** | 4 | 5 | 6 | 7 | 8 | 9 |\n| **4** | 5 | 6 | 7 | 8 | 9 | 10 |\n| **5** | 6 | 7 | 8 | 9 | 10 | 11 |\n| **6** | 7 | 8 | 9 | 10 | 11 | 12 |\n\n- Toplamın 7 olması **6** çıktıda görülür → $P = \\dfrac{6}{36} = \\dfrac16$ (en olası toplam).\n- **Ağaç şeması:** Bir parayı iki kez atınca YY, YT, TY, TT → 4 çıktı.\n- Tümevarımsal akıl yürütme: Birkaç örnekten “$n$ para atılınca örnek uzay $2^n$ elemanlıdır” genellemesine ulaşılır.",
      "ornekler": [
       {
        "soru": "Bir zar atıldığında tek sayı gelme olasılığı kaçtır?",
        "cozum": "$S = \\{1, 2, 3, 4, 5, 6\\}$, $A = \\{1, 3, 5\\}$, $P(A) = \\dfrac{3}{6} = \\dfrac{1}{2}$"
+      },
+      {
+       "soru": "İki zar birlikte atılıyor. Üst yüzlerdeki sayıların toplamının 10 olma olasılığı kaçtır?",
+       "cozum": "Toplamı 10 olan çıktılar: (4, 6), (5, 5), (6, 4) → 3 tane. $n(S) = 36$. $P = \\dfrac{3}{36} = \\dfrac{1}{12}$."
       }
      ],
      "ozet": [

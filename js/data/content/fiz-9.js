@@ -20,46 +20,75 @@ App.data.content["9/fizik"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "1.1",
+    "code": "FİZ.9.1.1",
     "title": {
      "tr": "Fizik biliminin diğer disiplinlerle ilişkisini belirleyerek fizik bilimini tanımlar.",
      "en": "Defines physics by identifying its relationship with other disciplines."
     },
     "content": {
-     "anlatim": "# Fizik Bilimi\n\n- **Fizik:** Evreni madde, enerji, kuvvet, uzay ve zaman ilişkileri çerçevesinde matematik ve gözlemle inceleyen yasa ve teoriler bütünü.\n- **Amacı:** Evreni ve olayları açıklamak. **Yöntemi:** deney + gözlem; **dili:** matematik.\n- Atom altı parçacıklardan galaksilere kadar her ölçeği inceler.\n- Eski Çağ'da fizik doğa felsefesi içindeydi (Aristo – *Physica*).\n- **Disiplinler iç içedir:** fotosentez (fizik + kimya + biyoloji), müzik (ses dalgaları), spor (kuvvet, hareket), coğrafya (tsunami, iklim), sanat (ışık, renk, denge).\n- **Örnekler:** gökkuşağı → ışığın kırılması · kaykay → enerji dönüşümü · GPS, LED → elektrik ve manyetizma.",
-     "ornekler": [],
+     "anlatim": "# Fizik Bilimi\n\n- **Fizik:** Evreni madde, enerji, kuvvet, uzay ve zaman ilişkileri çerçevesinde matematik ve gözlemle inceleyen yasa ve teoriler bütünü.\n- **Amacı:** Evreni ve olayları açıklamak. **Yöntemi:** deney + gözlem; **dili:** matematik.\n- Atom altı parçacıklardan galaksilere kadar her ölçeği inceler.\n- Eski Çağ'da fizik doğa felsefesi içindeydi (Aristo – *Physica*).\n- **Disiplinler iç içedir:** fotosentez (fizik + kimya + biyoloji), müzik (ses dalgaları), spor (kuvvet, hareket), coğrafya (tsunami, iklim), sanat (ışık, renk, denge).\n- **Örnekler:** gökkuşağı → ışığın kırılması · kaykay → enerji dönüşümü · GPS, LED → elektrik ve manyetizma.\n\n# Fizik Nasıl Çalışır? Bilimsel Yöntem\n\n1. **Gözlem ve problem:** \"Neden ağır cisimle hafif cisim aynı anda düşüyor?\"\n2. **Hipotez:** sınanabilir bir açıklama önerilir.\n3. **Deney:** değişkenler belirlenir — **bağımsız** (değiştirilen), **bağımlı** (ölçülen), **kontrol** (sabit tutulan).\n4. **Veri ve sonuç:** ölçümler tabloya/grafiğe dökülür, hipotez desteklenir ya da reddedilir.\n5. **Yasa ve teori:** Defalarca doğrulanan **ilişki** yasa ($F = m \\cdot a$), olayların **nedenini açıklayan** geniş yapı teoridir (görelilik).\n\n> ⚠ Bilimsel bilgi **değişebilir**: yeni kanıt gelince teori düzeltilir (Aristo'nun \"ağır cisim hızlı düşer\" görüşü Galileo'nun deneyleriyle yıkıldı).",
+     "ornekler": [
+      {
+       "soru": "Gökkuşağının oluşumunu açıklamak hangi bilim dallarının iş birliğini gerektirir?",
+       "cozum": "**Fizik** (ışığın su damlasında kırılması ve renklerine ayrılması) ve **coğrafya/meteoroloji** (yağmur damlalarının atmosferde oluşumu). Doğadaki olaylar genellikle birden fazla disiplinle açıklanır."
+      },
+      {
+       "soru": "Bir öğrenci “Sarkacın ipi uzadıkça salınım süresi uzar.” hipotezini sınamak istiyor. Bağımsız, bağımlı ve kontrol değişkenlerini yazınız.",
+       "cozum": "**Bağımsız:** ip uzunluğu (öğrencinin değiştirdiği). **Bağımlı:** bir salınımın süresi (ölçülen). **Kontrol:** kütle, salınım açısı ve ortam (sabit tutulan). Yalnızca bir değişken değiştirilirse sonuç güvenilir olur."
+      }
+     ],
      "ozet": [
       "Fizik = evreni **matematik ve gözlemle** açıklayan bilim.",
-      "Fizik diğer bilimlerle iç içedir (fotosentez: fizik + kimya + biyoloji)."
+      "Fizik diğer bilimlerle iç içedir (fotosentez: fizik + kimya + biyoloji).",
+      "Bilimsel yöntem: gözlem → hipotez → deney (bağımsız/bağımlı/kontrol değişken) → sonuç; bilimsel bilgi yeni kanıtla değişebilir."
      ]
     }
    },
    {
     "id": "k2",
-    "code": "1.2",
+    "code": "FİZ.9.1.2",
     "title": {
      "tr": "Fizik biliminin alt dallarını belirler ve sınıflandırır.",
      "en": "Identifies and classifies the branches of physics."
     },
     "content": {
      "anlatim": "# Fizik Biliminin Alt Dalları\n\n| Alt dal | Konusu | Hap örnek |\n|---|---|---|\n| **Mekanik** | Kuvvet, hareket, enerji, denge | Bisiklet, yaprağın düşmesi, kuşun uçması |\n| **Elektromanyetizma** | Elektrik + manyetizma | Pusula, yıldırım, mıknatıs, dokunmatik ekran |\n| **Termodinamik** | Isı, sıcaklık, hâl değişimi | Isı yalıtımı, yemek pişirme, kombi |\n| **Optik** | Işık: yansıma, kırılma, renk | Gözlük, dürbün, fiber optik, gökkuşağı, serap |\n| **Katı hâl fiziği** | Kristal yapılı katılar, yarı iletkenler | LCD, nanoteknoloji, maglev tren, şarjlı pil |\n| **Atom fiziği** | Atomun yapısı, elektron dizilimi, enerji seviyeleri | Lazer, elektron mikroskobu, 3D yazıcı |\n| **Nükleer fizik** | Çekirdek ve çekirdek tepkimeleri | Nükleer santral, BT, C‑14 yaş tayini |\n| **Yüksek enerji ve plazma** | Atom altı parçacıklar, plazma (4. hâl) | Neon/floresan lamba, kutup ışıkları |\n\n> ⚠ Bir olay birden fazla alt dalla ilgili olabilir (ABS fren → mekanik + elektromanyetizma).",
-     "ornekler": [],
+     "ornekler": [
+      {
+       "soru": "MR (manyetik rezonans) cihazı fiziğin hangi alt dallarıyla ilgilidir?",
+       "cozum": "Güçlü mıknatıslar ve radyo dalgaları kullandığı için **elektromanyetizma**, atom çekirdeklerinin sinyaline dayandığı için **atom/nükleer fizik**. Bir teknoloji birden çok alt dalla ilgili olabilir."
+      },
+      {
+       "soru": "Aşağıdaki olayları ilgili alt dallarla eşleştiriniz: (a) serap, (b) düdüklü tencere, (c) güneş paneli, (d) kutup ışıkları.",
+       "cozum": "(a) **Optik** — ışığın sıcak hava katmanlarında kırılması. (b) **Termodinamik** — basınç ve kaynama sıcaklığı. (c) **Katı hâl fiziği** — yarı iletkenler. (d) **Yüksek enerji ve plazma fiziği** — Güneş'ten gelen yüklü parçacıkların atmosferle etkileşimi."
+      }
+     ],
      "ozet": [
       "8 alt dal: mekanik, elektromanyetizma, termodinamik, optik, katı hâl, atom, nükleer, yüksek enerji ve plazma.",
-      "⚠ Bir olay birden çok alt dalla ilgili olabilir (ABS fren)."
+      "⚠ Bir olay birden çok alt dalla ilgili olabilir (ABS fren).",
+      "Bir teknoloji birden fazla alt dalla ilgilidir: MR → elektromanyetizma + atom/nükleer fizik."
      ]
     }
    },
    {
     "id": "k3",
-    "code": "1.3",
+    "code": "FİZ.9.1.3",
     "title": {
      "tr": "Fizik bilimine katkıda bulunan bilim insanlarının çalışmalarını ve deneyimlerini değerlendirir.",
      "en": "Evaluates the work and experiences of scientists who contributed to physics."
     },
     "content": {
      "anlatim": "# Fizik Bilimine Yön Verenler\n\n- **İbnülheysem:** Şüphecilik ve eleştirel düşünce; görme = ışığın cisimden göze gelmesi → optik.\n- **Hazini:** Yoğunluk ölçümleri; hassas terazinin ilk örnekleri.\n- **Newton:** Hareketin 3 yasası + kütle çekim yasası (\"devlerin omuzları\" → önceki bilgiden yararlanma).\n- **Einstein:** Özel (1905) ve Genel (1915) Görelilik, $E = m \\cdot c^2$; merak ve azim.\n- **Marie Curie:** Radyoaktivite, radyum–polonyum; fizik + kimya Nobel. **M. Goeppert Mayer:** çekirdek kabuk modeli.\n- **Faraday** (kendini yetiştirdi, deneyci) + **Maxwell** (matematiksel ifade) → iş birliği. **Hawking:** ALS'ye rağmen çalıştı.\n- **Türk bilim insanları:** Feza Gürsey, Asım Orhan Barut, Behram Kurşunoğlu.\n- **Bilim insanının özellikleri:** meraklı, sorgulayıcı, sabırlı, kararlı, azimli, açık fikirli, eleştiriye açık, objektif.",
-     "ornekler": [],
+     "ornekler": [
+      {
+       "soru": "Faraday ve Maxwell örneği bilimin hangi özelliğini gösterir?",
+       "cozum": "Bilimin **iş birliğiyle** ilerlediğini: Faraday deneylerle elektrik–manyetizma ilişkisini buldu, Maxwell bunu **matematiksel** denklemlere döktü. Deney ve kuram birbirini tamamlar."
+      },
+      {
+       "soru": "İbnülheysem'in “görme, gözden çıkan ışınla olur” görüşüne karşı çıkması bilim insanının hangi özelliğine örnektir?",
+       "cozum": "**Şüphecilik ve eleştirel düşünce**: Otorite kabul edilen eski görüşü sorgulamış, gözlem ve deneyle ışığın cisimden göze geldiğini göstermiştir."
+      }
+     ],
      "ozet": [
       "İbnülheysem → optik (görme = ışık cisimden göze gelir).",
       "Newton → hareket yasaları + kütle çekim; Einstein → görelilik, $E = mc^2$.",
@@ -69,17 +98,27 @@ App.data.content["9/fizik"] = [
    },
    {
     "id": "k4",
-    "code": "1.4",
+    "code": "FİZ.9.1.4",
     "title": {
      "tr": "Bilim ve teknoloji kurumlarında fizikle ilişkili kariyer olanaklarını sorgular.",
      "en": "Questions physics-related career opportunities in science and technology institutions."
     },
     "content": {
-     "anlatim": "# Fizik Bilimi ile İlgili Kariyer Keşfi\n\n- **TÜBİTAK:** AR‑GE desteği · **TENMAK:** nükleer, enerji, radyasyon · **MTA:** maden, jeoloji · **TUA:** uzay (Alper Gezeravcı) · **ASELSAN:** savunma elektroniği, MR cihazı.\n- **CERN (1954):** Büyük Hadron Çarpıştırıcısı – 27 km, yerin 100 m altında; WWW burada doğdu. **NASA / ESA:** uzay araştırmaları.\n- **Fizikle kariyer:** akademisyen, fizik öğretmeni, medikal fizik (radyoterapi, nükleer tıp), AR‑GE (savunma, enerji), bilgi teknolojileri (yazılım, yapay zekâ).\n- Kurumlarda farklı disiplinler birlikte çalışır.",
-     "ornekler": [],
+     "anlatim": "# Fizik Bilimi ile İlgili Kariyer Keşfi\n\n- **TÜBİTAK:** AR‑GE desteği · **TENMAK:** nükleer, enerji, radyasyon · **MTA:** maden, jeoloji · **TUA:** uzay (Alper Gezeravcı) · **ASELSAN:** savunma elektroniği, MR cihazı.\n- **CERN (1954):** Büyük Hadron Çarpıştırıcısı – 27 km, yerin 100 m altında; WWW burada doğdu. **NASA / ESA:** uzay araştırmaları.\n- **Fizikle kariyer:** akademisyen, fizik öğretmeni, medikal fizik (radyoterapi, nükleer tıp), AR‑GE (savunma, enerji), bilgi teknolojileri (yazılım, yapay zekâ).\n- Kurumlarda farklı disiplinler birlikte çalışır.\n\n# Kariyer Planlarken Sorulacak Sorular\n\n- **Merak ettiğim konu ne?** Uzay mı, sağlık mı, enerji mi, yazılım mı?\n- **Hangi kurum bu alanda çalışıyor?** Uzay → TUA, TÜBİTAK UZAY · Enerji → TENMAK · Sağlık → hastanelerin medikal fizik birimleri · Savunma → ASELSAN, ROKETSAN, TUSAŞ.\n- **Hangi bölümü okumalıyım?** Fizik, fizik mühendisliği, nükleer enerji mühendisliği, elektrik-elektronik, astronomi ve uzay bilimleri, biyomedikal mühendisliği.\n- **Bilgimi doğrula:** Kurumun resmî sitesi, YÖK Atlas ve gerçek çalışanlarla görüşme güvenilir kaynaklardır; sosyal medya paylaşımları tek başına yeterli değildir.\n\n| Meslek | Fizikle bağlantısı |\n|---|---|\n| Medikal fizikçi | Radyoterapide doz hesabı, MR ve BT cihazları |\n| Meteorolog | Atmosfer basıncı, ısı aktarımı, akışkanlar |\n| Ses mühendisi | Dalgalar, akustik |\n| Veri bilimci / yazılımcı | Fizik modelleri, simülasyon |\n| Uzay mühendisi | Kütle çekim, yörünge, itme kuvveti |",
+     "ornekler": [
+      {
+       "soru": "Kanser tedavisinde radyoterapi dozunu hesaplayan meslek hangisidir ve hangi alt dalla ilgilidir?",
+       "cozum": "**Medikal fizikçi.** Radyasyonun madde ile etkileşimi **nükleer ve atom fiziğinin** konusudur; doğru doz tümörü yok ederken sağlıklı dokuyu korur."
+      },
+      {
+       "soru": "CERN'de çalışan bir ekipte fizikçiler dışında hangi meslekler bulunur? Neden?",
+       "cozum": "Mühendisler (elektrik, makine, bilgisayar), yazılımcılar, veri bilimciler, teknisyenler. Dev deney düzenekleri **disiplinler arası** çalışma gerektirir; WWW de bu ortamda bilgi paylaşımı için geliştirilmiştir."
+      }
+     ],
      "ozet": [
       "CERN: 27 km'lik Büyük Hadron Çarpıştırıcısı; WWW burada doğdu.",
-      "Fizikçiler; akademi, öğretmenlik, medikal fizik, AR‑GE ve bilişimde çalışır."
+      "Fizikçiler; akademi, öğretmenlik, medikal fizik, AR‑GE ve bilişimde çalışır.",
+      "Kariyer bilgisi resmî kaynaklardan (kurum siteleri, YÖK Atlas) doğrulanmalıdır."
      ]
     }
    }
@@ -94,14 +133,23 @@ App.data.content["9/fizik"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "2.1",
+    "code": "FİZ.9.2.1",
     "title": {
      "tr": "Temel ve türetilmiş nicelikleri sınıflandırır.",
      "en": "Classifies fundamental and derived quantities."
     },
     "content": {
      "anlatim": "# Temel ve Türetilmiş Nicelikler\n\n- **SI** 1960'ta Paris'te kabul edildi → **7 temel nicelik**.\n- **Temel:** doğrudan ölçülür, kendi başına ifade edilir. **Türetilmiş:** temel niceliklerden matematiksel olarak elde edilir.\n\n| Temel nicelik | Birim | Ölçüm aleti |\n|---|---|---|\n| Uzunluk | m | cetvel |\n| Kütle | kg | terazi |\n| Zaman | s | kronometre |\n| Elektrik akımı | A | ampermetre |\n| Sıcaklık | K | termometre |\n| Işık şiddeti | cd | fotometre |\n| Madde miktarı | mol | – |\n\n**Hafıza:** \"U‑K‑Z‑E‑S‑I‑M\"\n\n- **Türetilmiş:** alan (m²), hacim (m³), hız (m/s), ivme (m/s²), yoğunluk (kg/m³), kuvvet ($\\text{N} = \\text{kg} \\cdot \\text{m/s}^2$), enerji (J), basınç (Pa), güç (W).\n\n> ⚠ Kütle temel, ağırlık türetilmiş (ağırlık bir kuvvettir, N). Sıcaklık temel, ısı türetilmiş.",
-     "ornekler": [],
+     "ornekler": [
+      {
+       "soru": "Hız, kütle, enerji, sıcaklık, kuvvet ve elektrik akımı niceliklerini temel ve türetilmiş olarak ayırınız.",
+       "cozum": "**Temel:** kütle, sıcaklık, elektrik akımı. **Türetilmiş:** hız (m/s), enerji (J), kuvvet (N). Türetilmiş nicelikler temel niceliklerin birimlerinden oluşur."
+      },
+      {
+       "soru": "Kuvvetin birimi Newton'u temel birimler cinsinden yazınız ($F = m \\cdot a$).",
+       "cozum": "$[F] = [m] \\cdot [a] = \\text{kg} \\cdot \\dfrac{\\text{m}}{\\text{s}^2}$. Yani $1\\ \\text{N} = 1\\ \\text{kg·m/s}^2$: 1 kg kütleye 1 m/s² ivme kazandıran kuvvet."
+      }
+     ],
      "ozet": [
       "7 temel nicelik: **U‑K‑Z‑E‑S‑I‑M** (uzunluk, kütle, zaman, elektrik akımı, sıcaklık, ışık şiddeti, madde miktarı).",
       "⚠ Kütle temel, ağırlık türetilmiş · sıcaklık temel, ısı türetilmiş.",
@@ -111,17 +159,21 @@ App.data.content["9/fizik"] = [
    },
    {
     "id": "k2",
-    "code": "2.2",
+    "code": "FİZ.9.2.2",
     "title": {
      "tr": "Skaler ve vektörel nicelikleri karşılaştırır.",
      "en": "Compares scalar and vector quantities."
     },
     "content": {
-     "anlatim": "# Skaler ve Vektörel Nicelikler\n\n- **Skaler:** sayı + birim yeter → kütle, zaman, uzunluk, alınan yol, hacim, sıcaklık, yoğunluk, enerji, sürat, basınç.\n- **Vektörel:** sayı + birim + **yön** → kuvvet, ağırlık, hız, konum, yer değiştirme, ivme.\n- Skalerler aritmetik toplanır (3 kg + 2 kg = 5 kg); vektörlerde sonuç yöne bağlıdır (60 N ve 40 N → aynı yön **100 N**, zıt yön **20 N**).\n\n> ⚠ İki sınıflandırma bağımsızdır: enerji = türetilmiş + skaler, kuvvet = türetilmiş + vektörel.",
+     "anlatim": "# Skaler ve Vektörel Nicelikler\n\n- **Skaler:** sayı + birim yeter → kütle, zaman, uzunluk, alınan yol, hacim, sıcaklık, yoğunluk, enerji, sürat, basınç.\n- **Vektörel:** sayı + birim + **yön** → kuvvet, ağırlık, hız, konum, yer değiştirme, ivme.\n- Skalerler aritmetik toplanır (3 kg + 2 kg = 5 kg); vektörlerde sonuç yöne bağlıdır (60 N ve 40 N → aynı yön **100 N**, zıt yön **20 N**).\n\n> ⚠ İki sınıflandırma bağımsızdır: enerji = türetilmiş + skaler, kuvvet = türetilmiş + vektörel.\n\n# Vektörel Niceliği Tanıma İpucu\n\n\"**Hangi yöne?**\" sorusu anlamlıysa nicelik vektöreldir: \"5 m/s hızla **kuzeye**\" anlamlıdır, \"5 kg **kuzeye**\" anlamsızdır.\n\n| Skaler | Vektörel karşılığı |\n|---|---|\n| Alınan yol | Yer değiştirme |\n| Sürat | Hız |\n| Kütle | Ağırlık |\n\n> ⚠ Sıcaklık eksi olabilir (−5 °C) ama bu bir **yön** değildir; sıcaklık skalerdir. Vektörlerde eksi işareti **zıt yönü** gösterir.",
      "ornekler": [
       {
        "soru": "Bir cisme 60 N ve 40 N büyüklüğünde iki kuvvet uygulanıyor. Kuvvetler (a) aynı yönde, (b) zıt yönde olduğunda bileşke kuvvet kaç N olur?",
        "cozum": "(a) Aynı yönde kuvvetler toplanır: $R = 60 + 40 = 100\\ \\text{N}$ (kuvvetlerin yönünde).\n(b) Zıt yönde büyükten küçük çıkarılır: $R = 60 - 40 = 20\\ \\text{N}$ (60 N'lik kuvvetin yönünde)."
+      },
+      {
+       "soru": "Alınan yol, hız, kütle, ağırlık, ivme, zaman niceliklerini skaler ve vektörel olarak ayırınız.",
+       "cozum": "**Skaler:** alınan yol, kütle, zaman. **Vektörel:** hız, ağırlık (aşağı yönlü kuvvet), ivme."
       }
      ],
      "ozet": [
@@ -133,14 +185,23 @@ App.data.content["9/fizik"] = [
    },
    {
     "id": "k3",
-    "code": "2.3",
+    "code": "FİZ.9.2.3",
     "title": {
      "tr": "Farklı doğrultulardaki vektörlerin yön ve büyüklüklerine yönelik çıkarım yapar.",
      "en": "Makes inferences about the direction and magnitude of vectors in different directions."
     },
     "content": {
-     "anlatim": "# Vektörler – Özellikleri\n\n- **Vektör** = yönlü doğru parçası (başlangıç, yön, büyüklük). Sembolde üstte ok: $\\vec{F}$.\n- **Eşit vektör:** yön ve büyüklük aynı → vektör paralel kaydırılabilir.\n- **Zıt vektör:** büyüklük aynı, yön ters → $\\vec{A} = -\\vec{B}$\n- **Sayıyla çarpım:** pozitif sayı → yön aynı · negatif sayı → yön ters · $|k| > 1$ büyür, $|k| < 1$ küçülür, $k = -1$ yalnızca yönü çevirir.",
-     "ornekler": [],
+     "anlatim": "# Vektörler – Özellikleri\n\n- **Vektör** = yönlü doğru parçası (başlangıç, yön, büyüklük). Sembolde üstte ok: $\\vec{F}$.\n- **Eşit vektör:** yön ve büyüklük aynı → vektör paralel kaydırılabilir.\n- **Zıt vektör:** büyüklük aynı, yön ters → $\\vec{A} = -\\vec{B}$\n- **Sayıyla çarpım:** pozitif sayı → yön aynı · negatif sayı → yön ters · $|k| > 1$ büyür, $|k| < 1$ küçülür, $k = -1$ yalnızca yönü çevirir.\n\n# Aynı Doğrultudaki Vektörler\n\n- Bir doğru üzerinde **sağ (+)** ve **sol (−)** yön seçilir; vektörler işaretleriyle toplanır.\n- Aynı yönlü iki vektör: $R = A + B$ (bileşke en büyük). Zıt yönlü: $R = |A - B|$, yönü büyük olanın yönü (bileşke en küçük).\n- Herhangi iki vektörün bileşkesi bu iki değer arasındadır:\n\n$$|A - B| \\le R \\le A + B$$\n\n- **Vektör çizimi:** ölçek seçilir (ör. 1 kare = 10 N); 30 N'lik kuvvet 3 kare uzunluğunda çizilir.",
+     "ornekler": [
+      {
+       "soru": "Doğrultuları aynı olan 30 N (doğuya), 50 N (batıya) ve 10 N (doğuya) kuvvetlerin bileşkesini bulunuz.",
+       "cozum": "Doğu (+), batı (−): $R = 30 - 50 + 10 = -10\\ \\text{N}$. Bileşke **10 N, batı yönünde**."
+      },
+      {
+       "soru": "$\\vec{A}$ vektörü 4 birim doğu yönündedir. $-2\\vec{A}$ ve $\\tfrac12\\vec{A}$ vektörlerini tanımlayınız.",
+       "cozum": "$-2\\vec{A}$: büyüklüğü $2 \\cdot 4 = 8$ birim, yönü **batı** (negatif sayı yönü çevirir). $\\tfrac12\\vec{A}$: büyüklüğü 2 birim, yönü **doğu**."
+      }
+     ],
      "ozet": [
       "Vektör: başlangıç + yön + büyüklük.",
       "Zıt vektör: $\\vec{A} = -\\vec{B}$ (büyüklük aynı, yön ters).",
@@ -150,14 +211,23 @@ App.data.content["9/fizik"] = [
    },
    {
     "id": "k4",
-    "code": "2.3",
+    "code": "FİZ.9.2.4",
     "title": {
      "tr": "Vektörleri toplar ve bileşenlerine ayırır.",
      "en": "Adds vectors and resolves them into components."
     },
     "content": {
      "anlatim": "# Vektörler – Toplama ve Bileşenlere Ayırma\n\n- Yalnızca **aynı cins** nicelikler toplanır (hız + kuvvet ✗). Etkiyi tek başına yapan vektör = **bileşke** ($\\vec{R}$).\n- **Uç uca ekleme:** 2. vektörün başlangıcı 1.nin bitişine → ilk başlangıçtan son bitişe çizilen vektör = $\\vec{R}$. Çok sayıda vektör için uygundur. Kapalı şekil → $R = 0$.\n- **Paralelkenar:** iki vektörün başlangıçları birleştirilir → uçlardan paraleller çizilir → köşegen = $\\vec{R}$.\n- **Bileşenlere ayırma:** vektör orijine taşınır, uçtan eksenlere paralel çizilir → $\\vec{A} = \\vec{A}_x + \\vec{A}_y$. x'ler kendi, y'ler kendi arasında toplanır.\n- Toplamanın sırası önemsiz: $\\vec{A} + \\vec{B} = \\vec{B} + \\vec{A}$. Üç yöntem de aynı sonucu verir.\n- **Çıkarma:** $\\vec{K} - \\vec{L} = \\vec{K} + (-\\vec{L})$",
-     "ornekler": [],
+     "ornekler": [
+      {
+       "soru": "Birbirine dik 6 N ve 8 N'lik iki kuvvetin bileşkesi kaç N'dir?",
+       "cozum": "Dik vektörlerde paralelkenar dikdörtgen olur; bileşke köşegendir: $R = \\sqrt{6^2 + 8^2} = \\sqrt{100} = 10\\ \\text{N}$."
+      },
+      {
+       "soru": "Büyüklükleri 5 N ve 12 N olan iki kuvvetin bileşkesi hangi aralıkta olabilir? 20 N olabilir mi?",
+       "cozum": "$|12 - 5| \\le R \\le 12 + 5 \\Rightarrow 7 \\le R \\le 17\\ \\text{N}$. 20 N, en büyük değer olan 17 N'yi aştığı için **olamaz**."
+      }
+     ],
      "ozet": [
       "Uç uca ekleme · paralelkenar · bileşenler → hepsi aynı bileşkeyi verir.",
       "Kapalı şekil oluşturan vektörlerin bileşkesi sıfırdır.",
@@ -167,14 +237,23 @@ App.data.content["9/fizik"] = [
    },
    {
     "id": "k5",
-    "code": "2.4",
+    "code": "FİZ.9.2.5",
     "title": {
      "tr": "Doğadaki temel kuvvetleri karşılaştırır.",
      "en": "Compares the fundamental forces of nature."
     },
     "content": {
      "anlatim": "# Doğadaki Temel Kuvvetler\n\n| Kuvvet | Görevi | Menzil | Örnek |\n|---|---|---|---|\n| **Güçlü nükleer** (en güçlü) | Proton–nötronu bir arada tutar | Çekirdek içi | Çekirdeğin dağılmaması, Güneş'te H → He |\n| **Elektromanyetik** | Yükler ve mıknatıslar arası itme–çekme | Sonsuz | Pusula, şimşek, tarağın kâğıdı çekmesi |\n| **Zayıf nükleer** | Çekirdeği kararsız yapar, parçacık dönüşümü | Çok kısa | Radyoaktif bozunma, C‑14 → N, uranyumun parçalanması |\n| **Kütle çekim** (en zayıf) | Kütleler arası çekme; ağırlığın sebebi | Sonsuz | Gezegen yörüngeleri, gelgit, elmanın düşmesi |\n\n- **Kuvvet:** harekete geçiren, hızlandıran, yavaşlatan, yön veya şekil değiştiren etki (N).\n- **Abdüsselam:** zayıf + elektromanyetik kuvvetin birleşimi (1979 Nobel).",
-     "ornekler": [],
+     "ornekler": [
+      {
+       "soru": "Atom çekirdeğindeki protonlar aynı yüklü olduğu hâlde çekirdek neden dağılmaz?",
+       "cozum": "Protonlar arasında **elektromanyetik itme** vardır; ama çok kısa mesafede etkili olan **güçlü nükleer kuvvet** bu itmeden çok daha büyüktür ve proton–nötronları bir arada tutar."
+      },
+      {
+       "soru": "Gelgit olayında hangi temel kuvvet etkilidir? Bu kuvvetin menzili nedir?",
+       "cozum": "**Kütle çekim kuvveti** (Ay ve Güneş'in Dünya'daki suları çekmesi). Menzili **sonsuzdur**, uzaklık arttıkça zayıflar; temel kuvvetlerin en zayıfıdır ama büyük kütlelerde baskındır."
+      }
+     ],
      "ozet": [
       "Güç sırası: güçlü nükleer > elektromanyetik > zayıf nükleer > kütle çekim.",
       "Sonsuz menzilli: elektromanyetik ve kütle çekim.",
@@ -184,7 +263,7 @@ App.data.content["9/fizik"] = [
    },
    {
     "id": "k6",
-    "code": "2.5.1",
+    "code": "FİZ.9.2.6",
     "title": {
      "tr": "Hareketin temel kavramlarını tanımlar, bunlarla ilgili akıl yürütür.",
      "en": "Defines the basic concepts of motion and reasons about them."
@@ -195,6 +274,10 @@ App.data.content["9/fizik"] = [
       {
        "soru": "Bir öğrenci önce 80 m doğuya, sonra 60 m kuzeye yürüyor ve bu yolu toplam 40 s'de alıyor. Alınan yolu, yer değiştirmeyi, ortalama sürati ve ortalama hızın büyüklüğünü bulunuz.",
        "cozum": "Alınan yol: $80 + 60 = 140\\ \\text{m}$.\nYer değiştirme dik üçgenin hipotenüsüdür: $\\sqrt{80^2 + 60^2} = \\sqrt{10000} = 100\\ \\text{m}$ (kuzeydoğu yönünde).\nOrtalama sürat: $\\dfrac{140}{40} = 3{,}5\\ \\text{m/s}$.\nOrtalama hız: $\\dfrac{100}{40} = 2{,}5\\ \\text{m/s}$.\n⚠ Yol ve sürat skaler; yer değiştirme ve hız vektöreldir, bu yüzden değerleri farklı çıkar."
+      },
+      {
+       "soru": "Bir araç 2 s'de hızını 4 m/s'den 16 m/s'ye çıkarıyor. Ortalama ivmesi nedir? Araç hızlanıyor mu yavaşlıyor mu?",
+       "cozum": "$a = \\dfrac{\\Delta\\upsilon}{\\Delta t} = \\dfrac{16 - 4}{2} = 6\\ \\text{m/s}^2$. İvme ile hız **aynı yönde** olduğu için araç **hızlanıyor**."
       }
      ],
      "ozet": [
@@ -207,17 +290,27 @@ App.data.content["9/fizik"] = [
    },
    {
     "id": "k7",
-    "code": "2.5.2",
+    "code": "FİZ.9.2.7",
     "title": {
      "tr": "Hareketleri türlerine göre sınıflandırır.",
      "en": "Classifies motions by type."
     },
     "content": {
-     "anlatim": "# Hareket Türleri\n\n- **Öteleme:** tüm parçalar aynı yönde eşit yer değiştirir → tren, düşen saksı, patenci, ok.\n- **Dönme:** sabit bir eksen etrafında çember çizme → fan, dönme dolap, saat akrebi, pervane.\n- **Titreşim:** denge noktası etrafında gidip gelme → gitar teli, salıncak, diyapazon, metronom.\n- **Birleşik:** öteleme + dönme → bisiklet tekerleği, yuvarlanan top, vida · öteleme + titreşim → zıplama çubuğu · dönme + titreşim → atlıkarınca.",
-     "ornekler": [],
+     "anlatim": "# Hareket Türleri\n\n- **Öteleme:** tüm parçalar aynı yönde eşit yer değiştirir → tren, düşen saksı, patenci, ok.\n- **Dönme:** sabit bir eksen etrafında çember çizme → fan, dönme dolap, saat akrebi, pervane.\n- **Titreşim:** denge noktası etrafında gidip gelme → gitar teli, salıncak, diyapazon, metronom.\n- **Birleşik:** öteleme + dönme → bisiklet tekerleği, yuvarlanan top, vida · öteleme + titreşim → zıplama çubuğu · dönme + titreşim → atlıkarınca.\n\n# Hareketleri Sınıflandırırken\n\n- **Ölçüt 1 – yörünge:** doğrusal mı (asansör), eğrisel mi (atılan top), çembersel mi (saat ibresi)?\n- **Ölçüt 2 – tekrar:** belli aralıklarla kendini tekrarlıyor mu? (sarkaç → periyodik)\n- Aynı cisim, gözlemciye ve parçasına göre farklı türlerde hareket edebilir: tekerlek **merkezi** öteleme, **jantı** öteleme + dönme yapar.\n\n| Hareket | Tür |\n|---|---|\n| Asansörün kalkması | Öteleme |\n| Dünya'nın kendi ekseni etrafında dönmesi | Dönme |\n| Dünya'nın Güneş çevresinde dolanması + ekseninde dönmesi | Birleşik (öteleme + dönme) |\n| Kalbin atması, ses telinin titremesi | Titreşim |",
+     "ornekler": [
+      {
+       "soru": "Merdivenden inen yürüyen merdiven, dönme dolabın kabini ve davul zarı hangi hareketi yapar?",
+       "cozum": "Yürüyen merdivenin basamağı → **öteleme**. Dönme dolap kabini → **dönme** (sabit eksen etrafında). Davul zarı → **titreşim**."
+      },
+      {
+       "soru": "Yuvarlanarak ilerleyen bir topun hareketi neden birleşik harekettir?",
+       "cozum": "Top hem bir yerden başka yere **ötelenir** hem de kendi ekseni etrafında **döner**. İki temel hareket aynı anda gerçekleştiği için birleşik harekettir."
+      }
+     ],
      "ozet": [
       "3 temel hareket: öteleme, dönme, titreşim.",
-      "Yuvarlanan top / bisiklet tekerleği → öteleme + dönme (birleşik)."
+      "Yuvarlanan top / bisiklet tekerleği → öteleme + dönme (birleşik).",
+      "Yürüyen/öteleme · dönme dolap/dönme · davul zarı/titreşim; yuvarlanan top öteleme + dönme."
      ]
     }
    }
@@ -232,17 +325,21 @@ App.data.content["9/fizik"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "3.1",
+    "code": "FİZ.9.3.1",
     "title": {
      "tr": "Basınçla ilgili çıkarım yapar; basınca etki eden etmenleri belirler.",
      "en": "Makes inferences about pressure and identifies the factors affecting it."
     },
     "content": {
-     "anlatim": "# Basınç\n\nSıvı ve gazlara **akışkan** denir.\n\n- **Basınç:** birim yüzeye dik etki eden kuvvet. Skaler, birimi $\\text{Pa} = \\text{N/m}^2$.\n\n$$P = \\frac{F}{A} \\qquad \\text{Katılar için: } P = \\frac{G}{A} = \\frac{m \\cdot g}{A}$$\n\n- Kuvvet ↑ → basınç ↑ · Yüzey alanı ↑ → basınç ↓.\n- Katılar **kuvveti** aynen iletir (çivinin ucu küçük → basınç büyük).\n- **Basıncı artır (küçük alan):** bıçak, çivi, iğne, raptiye, kazık, ekskavatör dişi.\n- **Basıncı azalt (büyük alan):** kar ayakkabısı, paletli araç, geniş lastik, fil ayağı, geniş çanta askısı.\n\n> ⚠ Cisim devrilince ağırlık (kuvvet) **değişmez**; yalnızca temas alanı ve basınç değişir.",
+     "anlatim": "# Basınç\n\nSıvı ve gazlara **akışkan** denir.\n\n- **Basınç:** birim yüzeye dik etki eden kuvvet. Skaler, birimi $\\text{Pa} = \\text{N/m}^2$.\n\n$$P = \\frac{F}{A} \\qquad \\text{Katılar için: } P = \\frac{G}{A} = \\frac{m \\cdot g}{A}$$\n\n- Kuvvet ↑ → basınç ↑ · Yüzey alanı ↑ → basınç ↓.\n- Katılar **kuvveti** aynen iletir (çivinin ucu küçük → basınç büyük).\n- **Basıncı artır (küçük alan):** bıçak, çivi, iğne, raptiye, kazık, ekskavatör dişi.\n- **Basıncı azalt (büyük alan):** kar ayakkabısı, paletli araç, geniş lastik, fil ayağı, geniş çanta askısı.\n\n> ⚠ Cisim devrilince ağırlık (kuvvet) **değişmez**; yalnızca temas alanı ve basınç değişir.\n\n# Katı Basıncı Problemlerinde Strateji\n\n1. Cismin **ağırlığını** bul: $G = m \\cdot g$.\n2. Yere değen **yüzeyin alanını** belirle (dikdörtgen: $a \\cdot b$).\n3. $P = G/A$ ile hesapla; birimleri m² ve N'ye çevir ($1\\ \\text{cm}^2 = 10^{-4}\\ \\text{m}^2$).\n- Aynı tuğla farklı yüzeyleri üzerine konursa **ağırlık sabit**, en küçük yüzeyle durduğunda basınç **en büyük** olur.\n- Üst üste konan cisimlerde alttaki yüzeye etki eden kuvvet, **üstteki tüm cisimlerin toplam ağırlığıdır**.",
      "ornekler": [
       {
        "soru": "Ağırlığı 600 N olan bir kişi, toplam taban alanı $0{,}04\\ \\text{m}^2$ olan ayakkabılarla duruyor. Yere uyguladığı basınç kaç Pa'dır? Kar ayakkabısıyla temas alanı $0{,}3\\ \\text{m}^2$ olursa basınç ne olur?",
        "cozum": "$P = \\dfrac{F}{A} = \\dfrac{600}{0{,}04} = 15\\,000\\ \\text{Pa}$.\nKar ayakkabısıyla: $P = \\dfrac{600}{0{,}3} = 2\\,000\\ \\text{Pa}$. Ağırlık aynı kalır, alan büyüdüğü için basınç azalır; bu yüzden karda batmaz."
+      },
+      {
+       "soru": "Kenarları 10 cm, 20 cm ve 40 cm olan 8 kg'lık bir tuğla en küçük ve en büyük yüzeyi üzerine konuyor. Bu iki durumdaki basınçları bulunuz. ($g = 10\\ \\text{m/s}^2$)",
+       "cozum": "$G = 8 \\cdot 10 = 80\\ \\text{N}$. En küçük yüzey: $0{,}1 \\cdot 0{,}2 = 0{,}02\\ \\text{m}^2 \\Rightarrow P = 80/0{,}02 = 4000\\ \\text{Pa}$. En büyük yüzey: $0{,}2 \\cdot 0{,}4 = 0{,}08\\ \\text{m}^2 \\Rightarrow P = 80/0{,}08 = 1000\\ \\text{Pa}$. Ağırlık aynı, alan 4 kat → basınç 4 kat küçük."
       }
      ],
      "ozet": [
@@ -254,17 +351,21 @@ App.data.content["9/fizik"] = [
    },
    {
     "id": "k2",
-    "code": "3.2",
+    "code": "FİZ.9.3.2",
     "title": {
      "tr": "Durgun sıvılarda basınçla ilgili çıkarım yapar.",
      "en": "Makes inferences about pressure in static liquids."
     },
     "content": {
-     "anlatim": "# Sıvılarda Basınç\n\n$$P = h \\cdot d \\cdot g$$\n\n- Derinlik ($h$), sıvının yoğunluğu ($d$) ve yer çekimi ivmesi ($g$) ile **doğru orantılıdır**.\n- Sıvılar kabın tüm yüzeylerine (taban + yan) basınç uygular.\n- Basınç; kabın **şekline, taban alanına ve sıvı miktarına bağlı değildir**, yalnızca yüksekliğe bağlıdır.\n- **Basınç kuvveti:** $F = P \\cdot A = h \\cdot d \\cdot g \\cdot A$ → bu ise alana bağlıdır.\n- Barajın altı daha kalındır (derinde basınç büyük) · alttaki delikten su daha uzağa fışkırır.\n- Kutuplarda $g$ büyük → basınç büyük; Ekvator'da küçük.\n\n> ⚠ $h$ = sıvının **serbest yüzeyinden** noktaya olan **dik** uzaklıktır.",
+     "anlatim": "# Sıvılarda Basınç\n\n$$P = h \\cdot d \\cdot g$$\n\n- Derinlik ($h$), sıvının yoğunluğu ($d$) ve yer çekimi ivmesi ($g$) ile **doğru orantılıdır**.\n- Sıvılar kabın tüm yüzeylerine (taban + yan) basınç uygular.\n- Basınç; kabın **şekline, taban alanına ve sıvı miktarına bağlı değildir**, yalnızca yüksekliğe bağlıdır.\n- **Basınç kuvveti:** $F = P \\cdot A = h \\cdot d \\cdot g \\cdot A$ → bu ise alana bağlıdır.\n- Barajın altı daha kalındır (derinde basınç büyük) · alttaki delikten su daha uzağa fışkırır.\n- Kutuplarda $g$ büyük → basınç büyük; Ekvator'da küçük.\n\n> ⚠ $h$ = sıvının **serbest yüzeyinden** noktaya olan **dik** uzaklıktır.\n\n# Farklı Kaplar, Aynı Taban Basıncı\n\nAynı yükseklikte aynı sıvıyla dolu üç kap düşünelim (geniş ağızlı, silindir, dar ağızlı): **taban basınçları eşittir** ($P = h \\cdot d \\cdot g$). Kaplardaki sıvıların ağırlıkları ise farklıdır.\n- **Karışmayan sıvılar:** Toplam basınç katmanların basınçlarının toplamıdır: $P = h_1 d_1 g + h_2 d_2 g$. Yoğunluğu büyük olan sıvı altta toplanır.\n- **Basınç–derinlik grafiği:** başlangıçtan geçen doğrudur; eğimi $d \\cdot g$'ye eşittir (yoğun sıvının doğrusu daha diktir).",
      "ornekler": [
       {
        "soru": "Yoğunluğu $1000\\ \\text{kg/m}^3$ olan suyla dolu bir havuzun 2 m derinliğindeki bir noktada suyun basıncı kaç Pa'dır? ($g = 10\\ \\text{m/s}^2$)",
        "cozum": "$P = h \\cdot d \\cdot g = 2 \\cdot 1000 \\cdot 10 = 20\\,000\\ \\text{Pa}$.\nHavuzun genişliği ya da su miktarı sonucu değiştirmez; yalnızca derinlik önemlidir."
+      },
+      {
+       "soru": "Bir kapta 20 cm su ($d = 1\\ \\text{g/cm}^3$) üzerinde 10 cm zeytinyağı ($d = 0{,}8\\ \\text{g/cm}^3$) vardır. Kabın tabanındaki sıvı basıncı kaç Pa'dır? ($g = 10\\ \\text{m/s}^2$)",
+       "cozum": "Yoğunluklar: 1000 ve 800 kg/m³. $P = h_1 d_1 g + h_2 d_2 g = 0{,}1 \\cdot 800 \\cdot 10 + 0{,}2 \\cdot 1000 \\cdot 10 = 800 + 2000 = 2800\\ \\text{Pa}$."
       }
      ],
      "ozet": [
@@ -276,17 +377,21 @@ App.data.content["9/fizik"] = [
    },
    {
     "id": "k3",
-    "code": "3.2.1",
+    "code": "FİZ.9.3.3",
     "title": {
      "tr": "Günlük hayatta sıvı basıncının kullanımına ilişkin çıkarım yapar.",
      "en": "Makes inferences about the use of liquid pressure in daily life."
     },
     "content": {
-     "anlatim": "# Sıvı Basıncının Günlük Hayatta Kullanılması\n\n- Sıvılar **sıkıştırılamaz** kabul edilir.\n- **Pascal Yasası:** Kapalı kaptaki sıvıya uygulanan basınç (değişimi) sıvının **her noktasına eşit** iletilir.\n- **Su cenderesi / hidrolik sistemler:**\n\n$$\\frac{F_1}{A_1} = \\frac{F_2}{A_2}$$\n\n  → küçük kuvvetle büyük yük kaldırılır.\n- **Örnekler:** hidrolik fren, pres, direksiyon, kriko, lift, forklift, vinç, damperli kamyon, berber koltuğu.\n- **Birleşik kaplar:** kabın şekli ne olursa olsun aynı sıvının seviyesi eşitlenir. Sıvı yüksek basınçtan alçağa akar.\n- **Su deposu:** depodan en aşağıdaki musluğun suyu en hızlı akar. Pascal'ın patlayan fıçı deneyi.",
+     "anlatim": "# Sıvı Basıncının Günlük Hayatta Kullanılması\n\n- Sıvılar **sıkıştırılamaz** kabul edilir.\n- **Pascal Yasası:** Kapalı kaptaki sıvıya uygulanan basınç (değişimi) sıvının **her noktasına eşit** iletilir.\n- **Su cenderesi / hidrolik sistemler:**\n\n$$\\frac{F_1}{A_1} = \\frac{F_2}{A_2}$$\n\n  → küçük kuvvetle büyük yük kaldırılır.\n- **Örnekler:** hidrolik fren, pres, direksiyon, kriko, lift, forklift, vinç, damperli kamyon, berber koltuğu.\n- **Birleşik kaplar:** kabın şekli ne olursa olsun aynı sıvının seviyesi eşitlenir. Sıvı yüksek basınçtan alçağa akar.\n- **Su deposu:** depodan en aşağıdaki musluğun suyu en hızlı akar. Pascal'ın patlayan fıçı deneyi.\n\n# Hidrolik Sistemlerin Bedeli\n\nHidrolik sistem **kuvvetten kazandırır, yoldan kaybettirir**. Sıvı sıkışmadığı için küçük pistondan itilen sıvı hacmi büyük pistona geçer:\n\n$$A_1 \\cdot h_1 = A_2 \\cdot h_2$$\n\nKüçük piston uzun yol alırken büyük piston kısa yol yükselir. Bu yüzden kriko birçok kez pompalanır.\n- **Sağlıkta:** tansiyon aleti, serum (şişe yükseğe asılır → sıvı basıncı damardaki kan basıncını yener).\n- **Su kuleleri:** kentlerin yüksek yerlerine kurulur; evlere suyu sıvı basıncıyla ulaştırır.",
      "ornekler": [
       {
        "soru": "Bir su cenderesinde küçük pistonun alanı $10\\ \\text{cm}^2$, büyük pistonun alanı $500\\ \\text{cm}^2$'dir. Küçük pistona 40 N kuvvet uygulanırsa büyük piston en fazla kaç N'lik yükü dengeler?",
        "cozum": "$\\dfrac{F_1}{A_1} = \\dfrac{F_2}{A_2} \\Rightarrow \\dfrac{40}{10} = \\dfrac{F_2}{500} \\Rightarrow F_2 = 2000\\ \\text{N}$.\nAlan 50 kat büyük olduğu için kuvvet de 50 kat büyür."
+      },
+      {
+       "soru": "Bir krikoda küçük piston 20 cm itildiğinde büyük piston 0,5 cm yükseliyor. Büyük pistonun alanı küçüğün kaç katıdır?",
+       "cozum": "$A_1 h_1 = A_2 h_2 \\Rightarrow A_1 \\cdot 20 = A_2 \\cdot 0{,}5 \\Rightarrow \\dfrac{A_2}{A_1} = 40$. Kuvvetten 40 kat kazanılır, yoldan 40 kat kaybedilir."
       }
      ],
      "ozet": [
@@ -298,14 +403,23 @@ App.data.content["9/fizik"] = [
    },
    {
     "id": "k4",
-    "code": "3.3",
+    "code": "FİZ.9.3.4",
     "title": {
      "tr": "Açık hava basıncıyla ilgili çıkarım yapar.",
      "en": "Makes inferences about atmospheric pressure."
     },
     "content": {
      "anlatim": "# Açık Hava Basıncı\n\n- Atmosferdeki gazların ağırlığından doğar ($P_0$). **Yükseldikçe azalır** (sıvının tersi: derine indikçe artar).\n- Gazlar sıkıştırılabilir, havanın yoğunluğu homojen değildir.\n- **Torricelli:** deniz seviyesi, 0 °C → cıva 76 cm.\n\n$$1\\ \\text{atm} = 76\\ \\text{cmHg} \\approx 1{,}013 \\cdot 10^5\\ \\text{Pa}$$\n\n  Borunun şekli ve eğimi sonucu değiştirmez.\n- **Sıcak hava** → genleşir, hafifler, yükselir → alçak basınç · **Soğuk hava** → yoğun, çöker → yüksek basınç. Nem ↑ → yoğunluk ↓.\n- **Rüzgâr:** yüksek basınçtan alçak basınca hava akışı.\n- **Magdeburg deneyi** (Guericke): havası boşaltılan küreleri atlar ayıramadı.\n- Yüksek dağda kulak tıkanması, nefes darlığı · yükselen balon patlar · pipetle içme.",
-     "ornekler": [],
+     "ornekler": [
+      {
+       "soru": "Torricelli deneyi deniz seviyesi yerine 2000 m yükseklikteki bir dağda yapılırsa borudaki cıva yüksekliği nasıl değişir? Neden?",
+       "cozum": "**Azalır** (yaklaşık 60 cm civarına iner). Yükseldikçe üstte kalan hava sütunu kısalır ve hava seyrekleşir; açık hava basıncı küçülür, cıvayı daha az yükseltir."
+      },
+      {
+       "soru": "Pipetle meyve suyu içerken sıvıyı yukarı çıkaran nedir?",
+       "cozum": "Pipetin içindeki havayı çektiğimizde **pipet içindeki basınç azalır**. Bardaktaki sıvı yüzeyine etki eden **açık hava basıncı** daha büyük kaldığından sıvıyı pipetten yukarı iter."
+      }
+     ],
      "ozet": [
       "$1\\ \\text{atm} = 76\\ \\text{cmHg} \\approx 1{,}013 \\cdot 10^5\\ \\text{Pa}$",
       "Açık hava basıncı yükseldikçe azalır.",
@@ -315,35 +429,49 @@ App.data.content["9/fizik"] = [
    },
    {
     "id": "k5",
-    "code": "3.4",
+    "code": "FİZ.9.3.5",
     "title": {
      "tr": "Deneyle kaldırma kuvvetinin bağlı olduğu değişkenleri analiz eder.",
      "en": "Analyzes, through experiments, the variables the buoyant force depends on."
     },
     "content": {
-     "anlatim": "# Kaldırma Kuvveti\n\n- Akışkanın içindeki cisme **yukarı yönde** uygulanan kuvvet. Arşimet – Kral Hiero'nun tacı (\"Eureka!\").\n\n$$F_k = V_b \\cdot d_s \\cdot g$$\n\n  → batan hacim ($V_b$), sıvının yoğunluğu ($d_s$) ve $g$ ile doğru orantılı.\n- Cismin kendi kütlesi ve yoğunluğu formülde **doğrudan yoktur**.\n- Yüklü gemi daha çok batar → daha büyük $F_k$ alır. Tuzlu suda cisim daha az batar.\n- **Denizaltı:** safra tanklarına su alır → yoğunluk ↑ → dalar; hava basar → çıkar (nautilustan esinlenme = biyomimikri).",
+     "anlatim": "# Kaldırma Kuvveti\n\n- Akışkanın içindeki cisme **yukarı yönde** uygulanan kuvvet. Arşimet – Kral Hiero'nun tacı (\"Eureka!\").\n\n$$F_k = V_b \\cdot d_s \\cdot g$$\n\n  → batan hacim ($V_b$), sıvının yoğunluğu ($d_s$) ve $g$ ile doğru orantılı.\n- Cismin kendi kütlesi ve yoğunluğu formülde **doğrudan yoktur**.\n- Yüklü gemi daha çok batar → daha büyük $F_k$ alır. Tuzlu suda cisim daha az batar.\n- **Denizaltı:** safra tanklarına su alır → yoğunluk ↑ → dalar; hava basar → çıkar (nautilustan esinlenme = biyomimikri).\n\n# Kaldırma Kuvveti Deneyi (Dinamometreyle)\n\n1. Cisim havada dinamometreye asılır → **gerçek ağırlık** $G$ okunur.\n2. Cisim suya daldırılır → **görünür ağırlık** $G'$ okunur.\n3. Fark kaldırma kuvvetidir:\n\n$$F_k = G - G'$$\n\n| Değiştirilen (bağımsız) | Sabit tutulan (kontrol) | Gözlem |\n|---|---|---|\n| Batan hacim | Sıvı cinsi | Batan hacim arttıkça $F_k$ artar |\n| Sıvının yoğunluğu (su → tuzlu su) | Batan hacim | Yoğunluk arttıkça $F_k$ artar |\n| Cismin kütlesi (aynı hacim) | Hacim, sıvı | $F_k$ değişmez |\n| Derinlik (tamamen batmışken) | Hacim, sıvı | $F_k$ değişmez |",
      "ornekler": [
       {
        "soru": "Hacminin $0{,}002\\ \\text{m}^3$'ü suya batmış bir cisme etki eden kaldırma kuvveti kaç N'dir? ($d_{su} = 1000\\ \\text{kg/m}^3$, $g = 10\\ \\text{m/s}^2$)",
        "cozum": "$F_k = V_b \\cdot d_s \\cdot g = 0{,}002 \\cdot 1000 \\cdot 10 = 20\\ \\text{N}$."
+      },
+      {
+       "soru": "Bir taş dinamometrede havada 30 N, suya tamamen batırıldığında 20 N gösteriyor. Kaldırma kuvveti kaç N'dir? Taşın hacmi kaç m³'tür? ($d_{su} = 1000\\ \\text{kg/m}^3$, $g = 10\\ \\text{m/s}^2$)",
+       "cozum": "$F_k = G - G' = 30 - 20 = 10\\ \\text{N}$. $F_k = V \\cdot d \\cdot g \\Rightarrow 10 = V \\cdot 1000 \\cdot 10 \\Rightarrow V = 0{,}001\\ \\text{m}^3$ (1 litre)."
       }
      ],
      "ozet": [
       "$F_k = V_b \\cdot d_s \\cdot g$",
-      "Kaldırma kuvveti batan hacme ve sıvının yoğunluğuna bağlıdır; cismin kütlesine doğrudan bağlı değildir."
+      "Kaldırma kuvveti batan hacme ve sıvının yoğunluğuna bağlıdır; cismin kütlesine doğrudan bağlı değildir.",
+      "Deneyde $F_k = G_{hava} - G_{sıvıda}$ (gerçek ağırlık − görünür ağırlık)."
      ]
     }
    },
    {
     "id": "k6",
-    "code": "3.4.1",
+    "code": "FİZ.9.3.6",
     "title": {
      "tr": "Kaldırma kuvveti ile basıncı oluşturan kuvvet arasındaki ilişkiyi değerlendirir.",
      "en": "Evaluates the relationship between the buoyant force and the force producing pressure."
     },
     "content": {
      "anlatim": "# Kaldırma Kuvveti – Basınç Kuvveti İlişkisi\n\n- Kaldırma kuvveti = alt yüzeye etki eden basınç kuvveti − üst yüzeye etki eden basınç kuvveti:\n\n$$F_k = F_2 - F_1$$\n\n  Yan yüzeylere etki eden kuvvetler birbirini dengeler.\n- **Arşimet İlkesi:** Kaldırma kuvveti = cismin yerini değiştirdiği sıvının ağırlığı.\n\n| Durum | Yoğunluk | Kuvvet |\n|---|---|---|\n| Yüzme | $d_{cisim} < d_{sıvı}$ | $F_k = G$ |\n| Askıda kalma | $d_{cisim} = d_{sıvı}$ | $F_k = G$ |\n| Batma | $d_{cisim} > d_{sıvı}$ | $F_k < G$ |\n\n- Tamamen batmış cismin $F_k$'si **derinliğe bağlı değildir**.\n- Çelik gemi yüzer: içi hava dolu → ortalama yoğunluğu sudan küçük.\n- Derin deniz denizaltısı daha dayanıklı malzemeyle yapılır · dalgıcın hava kabarcığı yükseldikçe büyür.",
-     "ornekler": [],
+     "ornekler": [
+      {
+       "soru": "Kütlesi 4 kg, hacmi $0{,}005\\ \\text{m}^3$ olan bir cisim suya bırakılıyor. Cisim yüzer mi, batar mı? ($d_{su} = 1000\\ \\text{kg/m}^3$)",
+       "cozum": "Cismin yoğunluğu $d = m/V = 4/0{,}005 = 800\\ \\text{kg/m}^3 < 1000$ → **yüzer**. Yüzerken $F_k = G = 40\\ \\text{N}$ olur; batan hacim $V_b = 40/(1000 \\cdot 10) = 0{,}004\\ \\text{m}^3$, yani hacminin $\\tfrac45$'ü batar."
+      },
+      {
+       "soru": "Tamamen suya batmış bir küpün alt yüzeyine 50 N, üst yüzeyine 30 N basınç kuvveti etki ediyor. Kaldırma kuvveti kaç N'dir? Küp daha derine indirilirse ne değişir?",
+       "cozum": "$F_k = F_{alt} - F_{üst} = 50 - 30 = 20\\ \\text{N}$. Derine inince iki yüzeye etki eden basınç kuvvetleri de **eşit miktarda artar**, aradaki fark (kaldırma kuvveti) **değişmez**."
+      }
+     ],
      "ozet": [
       "$F_k = F_{alt} - F_{üst}$",
       "Arşimet: kaldırma kuvveti = yeri değiştirilen sıvının ağırlığı.",
@@ -354,14 +482,23 @@ App.data.content["9/fizik"] = [
    },
    {
     "id": "k7",
-    "code": "3.5",
+    "code": "FİZ.9.3.7",
     "title": {
      "tr": "Akışkanın sürati ile basıncı arasındaki ilişkiyi günlük hayat örnekleriyle genelleştirir.",
      "en": "Generalizes the relationship between a fluid's speed and pressure with everyday examples."
     },
     "content": {
-     "anlatim": "# Bernoulli İlkesi\n\n- **Hap:** Akışkanın sürati artarsa basıncı azalır (Daniel Bernoulli).\n- **Venturi tüpü:** kesit daralır → sürat ↑ → basınç ↓ → borudaki sıvı yüksekliği ↓.\n- Fırtınada çatı uçar · rüzgârda şemsiye ters döner · yan yana hızlı araçlar birbirini çeker · sprey/parfüm püskürür · hortum ucu sıkılınca su uzağa gider · iki kâğıt arasına üfleyince birbirine yaklaşır.\n- **Uçak kanadı:** üst yüzey bombeli → üstte hava hızlı, basınç düşük → kaldırma. Uçuşta ayrıca ağırlık, itme ve sürükleme kuvvetleri etkilidir.\n- **Yarış arabası kanadı:** ters kanat → aşağı yönlü kuvvet → yol tutuş artar.\n- Damar daralırsa kan hızlanır, basınç düşer (tansiyon = kan basıncı).",
-     "ornekler": [],
+     "anlatim": "# Bernoulli İlkesi\n\n- **Hap:** Akışkanın sürati artarsa basıncı azalır (Daniel Bernoulli).\n- **Venturi tüpü:** kesit daralır → sürat ↑ → basınç ↓ → borudaki sıvı yüksekliği ↓.\n- Fırtınada çatı uçar · rüzgârda şemsiye ters döner · yan yana hızlı araçlar birbirini çeker · sprey/parfüm püskürür · hortum ucu sıkılınca su uzağa gider · iki kâğıt arasına üfleyince birbirine yaklaşır.\n- **Uçak kanadı:** üst yüzey bombeli → üstte hava hızlı, basınç düşük → kaldırma. Uçuşta ayrıca ağırlık, itme ve sürükleme kuvvetleri etkilidir.\n- **Yarış arabası kanadı:** ters kanat → aşağı yönlü kuvvet → yol tutuş artar.\n- Damar daralırsa kan hızlanır, basınç düşer (tansiyon = kan basıncı).\n\n# Süreklilik: Kesit Daralınca Neden Hızlanır?\n\nBorudan birim zamanda geçen akışkan hacmi her yerde aynıdır (akışkan bir yerde birikmez):\n\n$$A_1 \\cdot \\upsilon_1 = A_2 \\cdot \\upsilon_2$$\n\nKesit alanı yarıya inerse sürat iki katına çıkar ve o bölgede borunun çeperine uygulanan basınç azalır.\n- **Tehlike:** Hızla geçen trenin yakınında durmak tehlikelidir; aradaki havanın sürati artar, basınç düşer ve kişi trene doğru itilir. Peron çizgisi bu yüzden vardır.\n- **Futbolda falso:** dönen topun bir yanındaki hava daha hızlı akar, basınç farkı topun yolunu eğer (Magnus etkisi).",
+     "ornekler": [
+      {
+       "soru": "Kesit alanı $8\\ \\text{cm}^2$ olan borudan 2 m/s ile akan su, kesiti $2\\ \\text{cm}^2$ olan bölüme geçiyor. Buradaki sürati ve basınçtaki değişimi açıklayınız.",
+       "cozum": "$A_1 \\upsilon_1 = A_2 \\upsilon_2 \\Rightarrow 8 \\cdot 2 = 2 \\cdot \\upsilon_2 \\Rightarrow \\upsilon_2 = 8\\ \\text{m/s}$. Sürat arttığı için dar bölümde çepere uygulanan **basınç azalır** (Bernoulli)."
+      },
+      {
+       "soru": "Fırtınalı havalarda evin çatısının uçmasını Bernoulli ilkesiyle açıklayınız.",
+       "cozum": "Çatının **üstünde** rüzgârın sürati büyük → basınç **düşük**; evin **içinde** hava durgun → basınç **yüksek**. Basınç farkı çatıyı aşağıdan yukarı iter ve uçurabilir."
+      }
+     ],
      "ozet": [
       "Sürat ↑ → basınç ↓ (Bernoulli).",
       "Kesit daralırsa akışkan hızlanır, basıncı düşer (Venturi).",
@@ -380,14 +517,23 @@ App.data.content["9/fizik"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "4.1",
+    "code": "FİZ.9.4.1",
     "title": {
      "tr": "İç enerji, ısı ve sıcaklık arasındaki ilişkiyi kavrar.",
      "en": "Understands the relationship between internal energy, heat and temperature."
     },
     "content": {
-     "anlatim": "# İç Enerji, Isı ve Sıcaklık\n\n- **Sıcaklık:** taneciklerin ortalama kinetik enerjisinin göstergesi · birim K · termometreyle ölçülür.\n- **Isı:** sıcaklık farkı nedeniyle aktarılan enerji · birim J (cal) · kalorimetreyle ölçülür.\n- **İç enerji:** tüm taneciklerin toplam enerjisi (kinetik + potansiyel) → madde miktarına, cinsine ve sıcaklığa bağlı.\n- **Isı akışı:** sıcaktan soğuğa. Isı alanın iç enerjisi artar, verenin azalır.\n\n> ⚠ \"Vücut ısısı 39 °C\" yanlış → **vücut sıcaklığı**. \"Maddenin ısısı\" denmez. Kovadaki suyun iç enerjisi bardaktaki sudan büyüktür (aynı sıcaklıkta).",
-     "ornekler": [],
+     "anlatim": "# İç Enerji, Isı ve Sıcaklık\n\n- **Sıcaklık:** taneciklerin ortalama kinetik enerjisinin göstergesi · birim K · termometreyle ölçülür.\n- **Isı:** sıcaklık farkı nedeniyle aktarılan enerji · birim J (cal) · kalorimetreyle ölçülür.\n- **İç enerji:** tüm taneciklerin toplam enerjisi (kinetik + potansiyel) → madde miktarına, cinsine ve sıcaklığa bağlı.\n- **Isı akışı:** sıcaktan soğuğa. Isı alanın iç enerjisi artar, verenin azalır.\n\n> ⚠ \"Vücut ısısı 39 °C\" yanlış → **vücut sıcaklığı**. \"Maddenin ısısı\" denmez. Kovadaki suyun iç enerjisi bardaktaki sudan büyüktür (aynı sıcaklıkta).\n\n# Isı mı, Sıcaklık mı? Karıştırılan Durumlar\n\n| İfade | Doğrusu |\n|---|---|\n| \"Hava çok ısılı\" | Havanın **sıcaklığı** yüksek |\n| \"Çayın ısısı düştü\" | Çayın **sıcaklığı** düştü; çay çevreye **ısı verdi** |\n| \"Buzun soğuğu elime geçti\" | **Elimden buza ısı** aktarıldı (soğuk aktarılmaz) |\n\n- İki madde **aynı sıcaklıktaysa** aralarında ısı alışverişi olmaz, iç enerjileri farklı olabilir.\n- Sürtünme ile ellerin ısınması: iş yapılarak iç enerji artırılabilir (yalnız ısıyla değil).",
+     "ornekler": [
+      {
+       "soru": "Aynı sıcaklıktaki bir küvet su ile bir bardak suyu karşılaştırınız: sıcaklık ve iç enerji.",
+       "cozum": "**Sıcaklıkları eşittir** (taneciklerin ortalama kinetik enerjisi aynı). Küvette çok daha fazla tanecik olduğu için küvetteki suyun **iç enerjisi daha büyüktür**."
+      },
+      {
+       "soru": "Sıcak çay odada bırakılınca ne olur? Isı ve iç enerji açısından açıklayınız.",
+       "cozum": "Çay çevreye **ısı verir**, iç enerjisi ve sıcaklığı azalır; çevrenin iç enerjisi biraz artar. Çayın sıcaklığı oda sıcaklığına eşitlenince ısı akışı durur."
+      }
+     ],
      "ozet": [
       "Sıcaklık: ortalama kinetik enerji (K) · Isı: aktarılan enerji (J) · İç enerji: toplam enerji.",
       "Isı sıcaktan soğuğa akar.",
@@ -397,17 +543,21 @@ App.data.content["9/fizik"] = [
    },
    {
     "id": "k2",
-    "code": "4.2.1",
+    "code": "FİZ.9.4.1",
     "title": {
      "tr": "Kullanım amaçlarına göre termometre çeşitlerine örnek verir.",
      "en": "Gives examples of thermometer types according to their purpose."
     },
     "content": {
-     "anlatim": "# Termometreler\n\n| Termometre | Çalışma ilkesi | Kullanım |\n|---|---|---|\n| Sıvılı | Sıvının genleşmesi | Vücut ve oda sıcaklığı |\n| Metal | Metalin genleşmesi | Fırın, termostat, yüksek sıcaklıklar |\n| Gazlı | Gaz basıncının değişmesi | Çok düşük sıcaklıklar (~1 K), laboratuvar |\n| Kızılötesi | Temassız ölçüm | Hastane, havalimanı, tehlikeli ortamlar |\n| Dijital | Direnç değişimi | Vücut sıcaklığı (ani değişimi geç algılar) |\n\n- Suyun donma–kaynama noktası: **0–100 °C · 32–212 °F · 273–373 K**.\n\n$$T(\\text{K}) = t(°\\text{C}) + 273$$\n\n- Fahrenheit'in bölme sayısı en fazladır (180) → hassas; bilimde Kelvin kullanılır.",
+     "anlatim": "# Termometreler\n\n| Termometre | Çalışma ilkesi | Kullanım |\n|---|---|---|\n| Sıvılı | Sıvının genleşmesi | Vücut ve oda sıcaklığı |\n| Metal | Metalin genleşmesi | Fırın, termostat, yüksek sıcaklıklar |\n| Gazlı | Gaz basıncının değişmesi | Çok düşük sıcaklıklar (~1 K), laboratuvar |\n| Kızılötesi | Temassız ölçüm | Hastane, havalimanı, tehlikeli ortamlar |\n| Dijital | Direnç değişimi | Vücut sıcaklığı (ani değişimi geç algılar) |\n\n- Suyun donma–kaynama noktası: **0–100 °C · 32–212 °F · 273–373 K**.\n\n$$T(\\text{K}) = t(°\\text{C}) + 273$$\n\n- Fahrenheit'in bölme sayısı en fazladır (180) → hassas; bilimde Kelvin kullanılır.\n\n# Termometre Yapımı ve Ölçek Dönüşümü\n\nBir termometre ölçeği iki **sabit noktayla** kurulur: suyun donma ve kaynama noktaları. Aradaki aralık eşit bölmelere ayrılır.\n\n$$\\frac{C - 0}{100} = \\frac{F - 32}{180} = \\frac{K - 273}{100}$$\n\n- Celsius ve Kelvin'de **1 derecelik değişim aynıdır**: $\\Delta T(\\text{K}) = \\Delta t(°\\text{C})$.\n- **Mutlak sıfır** (0 K = −273 °C): taneciklerin kinetik enerjisinin en düşük olduğu, ulaşılamayan sıcaklık; Kelvin'de eksi değer yoktur.",
      "ornekler": [
       {
        "soru": "Sıcaklığı 27 °C olan bir odanın sıcaklığı Kelvin cinsinden kaçtır?",
        "cozum": "$T = t + 273 = 27 + 273 = 300\\ \\text{K}$."
+      },
+      {
+       "soru": "Sıcaklığı 50 °C olan suyun sıcaklığını Fahrenheit cinsinden bulunuz.",
+       "cozum": "$\\dfrac{C}{100} = \\dfrac{F - 32}{180} \\Rightarrow \\dfrac{50}{100} = \\dfrac{F - 32}{180} \\Rightarrow F - 32 = 90 \\Rightarrow F = 122\\ °\\text{F}$."
       }
      ],
      "ozet": [
@@ -419,17 +569,21 @@ App.data.content["9/fizik"] = [
    },
    {
     "id": "k3",
-    "code": "4.2.2",
+    "code": "FİZ.9.4.2",
     "title": {
      "tr": "Isı, öz ısı, ısı sığası ve sıcaklık farkı arasındaki matematiksel modele ulaşır.",
      "en": "Arrives at the mathematical model relating heat, specific heat, heat capacity and temperature change."
     },
     "content": {
-     "anlatim": "# Öz Isı ve Isı Sığası\n\n- **Öz ısı ($c$):** 1 kg'ın sıcaklığını 1 °C artırmak için gereken ısı → **ayırt edicidir** (cinse ve hâle bağlı).\n- **Isı sığası ($C$):** maddenin tamamının sıcaklığını 1 °C artıran ısı → $C = m \\cdot c$, ayırt edici **değildir**.\n\n$$Q = m \\cdot c \\cdot \\Delta T \\qquad (\\text{hâl değişimi yoksa})$$\n\n- Eşit kütle ve eşit ısıda **öz ısısı küçük olan daha çok ısınır** (zeytinyağı sudan hızlı ısınır).\n- $c_{su} = 1\\ \\text{cal/g·°C} \\approx 4186\\ \\text{J/kg·°C}$ (büyük) → radyatör, kalorifer; denizler geç soğur. $c_{buz} \\neq c_{su}$.",
+     "anlatim": "# Öz Isı ve Isı Sığası\n\n- **Öz ısı ($c$):** 1 kg'ın sıcaklığını 1 °C artırmak için gereken ısı → **ayırt edicidir** (cinse ve hâle bağlı).\n- **Isı sığası ($C$):** maddenin tamamının sıcaklığını 1 °C artıran ısı → $C = m \\cdot c$, ayırt edici **değildir**.\n\n$$Q = m \\cdot c \\cdot \\Delta T \\qquad (\\text{hâl değişimi yoksa})$$\n\n- Eşit kütle ve eşit ısıda **öz ısısı küçük olan daha çok ısınır** (zeytinyağı sudan hızlı ısınır).\n- $c_{su} = 1\\ \\text{cal/g·°C} \\approx 4186\\ \\text{J/kg·°C}$ (büyük) → radyatör, kalorifer; denizler geç soğur. $c_{buz} \\neq c_{su}$.\n\n# Sıcaklık–Isı Grafiği\n\n- Isı ($Q$) yatay, sıcaklık ($T$) dikey eksende çizilirse eğim $\\dfrac{\\Delta T}{Q} = \\dfrac{1}{m \\cdot c}$ olur.\n- **Eğimi küçük olan** doğru → ısı sığası ($m \\cdot c$) **büyük** madde; aynı ısıyla daha az ısınır.\n- **Isıtıcı ile ısıtma:** Özdeş ısıtıcılar eşit sürede eşit ısı verir: $Q = P \\cdot t$ (P: güç, W). Süre–sıcaklık grafiğinde de eğim ısı sığasıyla ters orantılıdır.",
      "ornekler": [
       {
        "soru": "Kütlesi 2 kg olan suyun sıcaklığını 20 °C'den 50 °C'ye çıkarmak için kaç J ısı gerekir? ($c_{su} = 4186\\ \\text{J/kg·°C}$)",
        "cozum": "$\\Delta T = 50 - 20 = 30\\ °\\text{C}$.\n$Q = m \\cdot c \\cdot \\Delta T = 2 \\cdot 4186 \\cdot 30 = 251\\,160\\ \\text{J} \\approx 251\\ \\text{kJ}$."
+      },
+      {
+       "soru": "Eşit kütleli su ($c = 1\\ \\text{cal/g·°C}$) ve zeytinyağına ($c = 0{,}5\\ \\text{cal/g·°C}$) eşit ısı veriliyor. Su 10 °C ısınırsa zeytinyağı kaç °C ısınır?",
+       "cozum": "$Q = m c \\Delta T$ eşit ve $m$ eşit → $c \\cdot \\Delta T$ eşit: $1 \\cdot 10 = 0{,}5 \\cdot \\Delta T \\Rightarrow \\Delta T = 20\\ °\\text{C}$. Öz ısısı küçük olan **iki kat** ısınır."
       }
      ],
      "ozet": [
@@ -441,7 +595,7 @@ App.data.content["9/fizik"] = [
    },
    {
     "id": "k4",
-    "code": "4.3",
+    "code": "FİZ.9.4.3",
     "title": {
      "tr": "Saf maddelerin hâl değişimini etkileyen nitelikler ve gereken ısının bağlı olduğu değişkenler hakkında çıkarım yapar.",
      "en": "Makes inferences about the factors affecting phase changes of pure substances and the variables the required heat depends on."
@@ -452,6 +606,10 @@ App.data.content["9/fizik"] = [
       {
        "soru": "0 °C'deki 2 kg buzu tamamen eritmek için kaç kJ ısı gerekir? ($L_{erime} = 334\\ \\text{kJ/kg}$)",
        "cozum": "Hâl değişimi sırasında sıcaklık değişmez, $Q = m \\cdot L$ kullanılır: $Q = 2 \\cdot 334 = 668\\ \\text{kJ}$."
+      },
+      {
+       "soru": "100 °C'deki 0,5 kg suyu tamamen buhara dönüştürmek için kaç kJ ısı gerekir? ($L_{buharlaşma} = 2260\\ \\text{kJ/kg}$) Bu sırada sıcaklık nasıl değişir?",
+       "cozum": "$Q = m \\cdot L = 0{,}5 \\cdot 2260 = 1130\\ \\text{kJ}$. Kaynama süresince sıcaklık **100 °C'de sabit kalır**; verilen enerji tanecikler arası bağları koparmaya harcanır."
       }
      ],
      "ozet": [
@@ -463,54 +621,79 @@ App.data.content["9/fizik"] = [
    },
    {
     "id": "k5",
-    "code": "4.4",
+    "code": "FİZ.9.4.4",
     "title": {
      "tr": "Isıl denge durumuyla ilgili araştırma ve bilimsel gözlem yapar.",
      "en": "Conducts research and scientific observation on thermal equilibrium."
     },
     "content": {
-     "anlatim": "# Isıl Denge\n\n- Sıcaktan soğuğa ısı akışı, sıcaklıklar eşitlenene kadar sürer. Son ortak sıcaklık = **denge sıcaklığı**.\n\n$$Q_{verilen} = Q_{alınan} \\qquad (\\text{yalıtılmış ortamda})$$\n\n- Denge sıcaklığı iki ilk sıcaklığın **arasındadır**; ısı sığası büyük olanın sıcaklığına daha yakındır.\n- Kütle, madde cinsi ve ilk sıcaklıklar denge sıcaklığını etkiler.\n- Termometreyle ölçüm = ısıl denge örneği. Buzdolabı, klima, ısı pompası ısıyı taşır.",
+     "anlatim": "# Isıl Denge\n\n- Sıcaktan soğuğa ısı akışı, sıcaklıklar eşitlenene kadar sürer. Son ortak sıcaklık = **denge sıcaklığı**.\n\n$$Q_{verilen} = Q_{alınan} \\qquad (\\text{yalıtılmış ortamda})$$\n\n- Denge sıcaklığı iki ilk sıcaklığın **arasındadır**; ısı sığası büyük olanın sıcaklığına daha yakındır.\n- Kütle, madde cinsi ve ilk sıcaklıklar denge sıcaklığını etkiler.\n- Termometreyle ölçüm = ısıl denge örneği. Buzdolabı, klima, ısı pompası ısıyı taşır.\n\n# Isıl Dengede Hâl Değişimi Varsa\n\nBuz ile su karıştırıldığında önce buzun erimesi için gereken ısı ($m \\cdot L$) hesaplanır:\n- Sıcak suyun 0 °C'ye inene kadar verebileceği ısı **yetmiyorsa** buzun bir kısmı erir, denge sıcaklığı **0 °C** olur.\n- **Yetiyorsa** buzun tamamı erir, oluşan su da ısınır; denge 0 °C'nin üstünde olur.\n\n> ⚠ Denge sıcaklığına ulaşınca ısı akışı durur; tanecikler hareket etmeye devam eder (sıcaklık 0 K değildir).",
      "ornekler": [
       {
        "soru": "40 °C'deki 300 g su ile 80 °C'deki 100 g su karıştırılıyor. Isı kaybı olmadığına göre denge sıcaklığı kaç °C olur?",
        "cozum": "$Q_{verilen} = Q_{alınan}$ ve öz ısılar aynı (ikisi de su):\n$100 \\cdot (80 - T) = 300 \\cdot (T - 40)$\n$8000 - 100T = 300T - 12000 \\Rightarrow 400T = 20000 \\Rightarrow T = 50\\ °\\text{C}$.\nDenge sıcaklığı, kütlesi (ısı sığası) büyük olan suyun sıcaklığına daha yakındır."
+      },
+      {
+       "soru": "Kalorimetre kabında 20 °C'deki 200 g suya 90 °C'deki 100 g su ekleniyor. Isı kaybı yoksa denge sıcaklığı kaç °C olur?",
+       "cozum": "$100 \\cdot (90 - T) = 200 \\cdot (T - 20) \\Rightarrow 9000 - 100T = 200T - 4000 \\Rightarrow 300T = 13000 \\Rightarrow T \\approx 43{,}3\\ °\\text{C}$. Sonuç, kütlesi büyük olan soğuk suyun sıcaklığına daha yakındır."
       }
      ],
      "ozet": [
       "$Q_{verilen} = Q_{alınan}$",
-      "Denge sıcaklığı iki ilk sıcaklık arasındadır; ısı sığası büyük olana yakındır."
+      "Denge sıcaklığı iki ilk sıcaklık arasındadır; ısı sığası büyük olana yakındır.",
+      "Buz–su karışımında ısı buzu eritmeye yetmezse denge sıcaklığı 0 °C olur."
      ]
     }
    },
    {
     "id": "k6",
-    "code": "4.5",
+    "code": "FİZ.9.4.5",
     "title": {
      "tr": "Isı aktarım yollarını sınıflandırır.",
      "en": "Classifies the ways heat is transferred."
     },
     "content": {
-     "anlatim": "# Isı Aktarım Yolları\n\n- **İletim:** tanecikten taneciğe titreşimle aktarım → en çok katılarda (metal kaşığın ısınması).\n- **Konveksiyon:** akışkan taneciklerinin yer değiştirmesi (sürüklenme + yayılma) → sıvı ve gazlarda (sobanın odayı ısıtması). Isıtıcılar bu yüzden alta konur.\n- **Işıma:** elektromanyetik dalgalarla (kızılötesi) → maddesel ortam gerekmez, boşlukta da olur (Güneş, kamp ateşi). Koyu renk daha çok soğurur.\n- Mum alevinin üstü yanından daha sıcaktır (konveksiyon + ışıma).\n- **Sera etkisi:** sera gazları yerden yayılan ışınımı tutar; artış → küresel ısınma.",
-     "ornekler": [],
+     "anlatim": "# Isı Aktarım Yolları\n\n- **İletim:** tanecikten taneciğe titreşimle aktarım → en çok katılarda (metal kaşığın ısınması).\n- **Konveksiyon:** akışkan taneciklerinin yer değiştirmesi (sürüklenme + yayılma) → sıvı ve gazlarda (sobanın odayı ısıtması). Isıtıcılar bu yüzden alta konur.\n- **Işıma:** elektromanyetik dalgalarla (kızılötesi) → maddesel ortam gerekmez, boşlukta da olur (Güneş, kamp ateşi). Koyu renk daha çok soğurur.\n- Mum alevinin üstü yanından daha sıcaktır (konveksiyon + ışıma).\n- **Sera etkisi:** sera gazları yerden yayılan ışınımı tutar; artış → küresel ısınma.\n\n# Üç Yolu Birlikte Gören Örnekler\n\n| Durum | Baskın aktarım |\n|---|---|\n| Tencerenin sapının ısınması | İletim |\n| Denizden karaya esen meltem | Konveksiyon |\n| Şömine karşısında yüzün ısınması | Işıma |\n| Termos | Üçünü de azaltır: vakum (iletim + konveksiyon), gümüş kaplama (ışıma) |\n| Bardaktaki çayın soğuması | Üçü birlikte (yüzeyden buharlaşma da etkili) |\n\n- **Parlak/açık renkli** yüzeyler ışımayı yansıtır (yazın beyaz giysi), **mat/koyu** yüzeyler soğurur ve iyi yayar.",
+     "ornekler": [
+      {
+       "soru": "Güneş'ten gelen enerji Dünya'ya hangi yolla ulaşır? Neden diğer yollar mümkün değildir?",
+       "cozum": "**Işıma** ile. Güneş ile Dünya arasında büyük ölçüde boşluk vardır; iletim ve konveksiyon **maddesel ortam** gerektirdiği için boşlukta gerçekleşemez."
+      },
+      {
+       "soru": "Kaloriferler odanın neden alt kısmına, klimalar ise üst kısmına yerleştirilir?",
+       "cozum": "**Konveksiyon** nedeniyle: Kaloriferin ısıttığı hava genleşip yükselir, odayı dolaşarak ısıtır. Klimanın soğuttuğu hava yoğunlaşıp çöker; üstten verilirse odaya yayılır."
+      }
+     ],
      "ozet": [
       "İletim → katılar · Konveksiyon → sıvı ve gazlar · Işıma → boşlukta da olur.",
-      "Güneş'in ısısı Dünya'ya ışımayla gelir."
+      "Güneş'in ısısı Dünya'ya ışımayla gelir.",
+      "Termos: vakum iletim ve konveksiyonu, parlak yüzey ışımayı azaltır."
      ]
     }
    },
    {
     "id": "k7",
-    "code": "4.6",
+    "code": "FİZ.9.4.6",
     "title": {
      "tr": "Katılarda ısı iletim hızını etkileyen etmenlerle ilgili çıkarım yapar.",
      "en": "Makes inferences about the factors affecting the rate of heat conduction in solids."
     },
     "content": {
-     "anlatim": "# Isı İletim Hızı\n\n- **Isı iletim hızı:** birim zamanda aktarılan ısı → birim J/s = W.\n- Yüzey alanı ↑ → hız ↑ · sıcaklık farkı ↑ → hız ↑ · kalınlık ↑ → hız ↓ · maddenin cinsine bağlı.\n- Isı iletim katsayısı büyük → **iletken** (metaller; en büyük elmas) · küçük → **yalıtkan** (hava, strafor, cam yünü, keçe, ahşap).\n- **Yalıtım:** strafor/cam yünü, kalın duvar, çift cam (arada kuru, seyrek hava), termal kumaş → enerji tasarrufu.\n- **İletim istenen yerler:** kalorifer peteği, tencere gövdesi metal; sapı yalıtkan.\n\n> ⚠ Aynı ortamdaki metal bank ve ahşap bank **aynı sıcaklıktadır**; metal ısıyı hızlı ilettiği için daha soğuk/sıcak hissedilir.",
-     "ornekler": [],
+     "anlatim": "# Isı İletim Hızı\n\n- **Isı iletim hızı:** birim zamanda aktarılan ısı → birim J/s = W.\n- Yüzey alanı ↑ → hız ↑ · sıcaklık farkı ↑ → hız ↑ · kalınlık ↑ → hız ↓ · maddenin cinsine bağlı.\n- Isı iletim katsayısı büyük → **iletken** (metaller; en büyük elmas) · küçük → **yalıtkan** (hava, strafor, cam yünü, keçe, ahşap).\n- **Yalıtım:** strafor/cam yünü, kalın duvar, çift cam (arada kuru, seyrek hava), termal kumaş → enerji tasarrufu.\n- **İletim istenen yerler:** kalorifer peteği, tencere gövdesi metal; sapı yalıtkan.\n\n> ⚠ Aynı ortamdaki metal bank ve ahşap bank **aynı sıcaklıktadır**; metal ısıyı hızlı ilettiği için daha soğuk/sıcak hissedilir.\n\n# Isı İletim Hızı Bağıntısı\n\nKatı bir levhadan birim zamanda iletilen ısı:\n\n$$\\frac{Q}{t} = \\frac{k \\cdot A \\cdot \\Delta T}{d}$$\n\n$k$: ısı iletim katsayısı (maddenin cinsi), $A$: yüzey alanı, $\\Delta T$: iki yüz arasındaki sıcaklık farkı, $d$: kalınlık.\n- Kalınlık iki katına çıkarsa iletim hızı **yarıya** iner; yalıtımın mantığı budur.\n- Kışın evlerde ısı kaybının büyük kısmı pencere, çatı ve dış duvarlardan olur; **ısı yalıtımı** yakıt tüketimini ve hava kirliliğini azaltır.",
+     "ornekler": [
+      {
+       "soru": "Bir evin duvar kalınlığı iki katına çıkarılırsa ve dış sıcaklık farkı aynı kalırsa duvardan ısı kaybı nasıl değişir?",
+       "cozum": "$\\dfrac{Q}{t} = \\dfrac{k A \\Delta T}{d}$ → kalınlık ($d$) 2 katına çıkınca iletim hızı **yarıya** iner; ısı kaybı yarıya düşer."
+      },
+      {
+       "soru": "Çift camlı pencerelerde iki cam arasındaki boşluk neden hava ya da argonla doldurulur?",
+       "cozum": "Hava ve argon gazının **ısı iletim katsayısı çok küçüktür**; ince ve hareketsiz gaz tabakası iyi bir yalıtkandır. İçerideki ısının dışarı iletilmesi yavaşlar."
+      }
+     ],
      "ozet": [
       "İletim hızı: alan ve sıcaklık farkıyla artar, kalınlıkla azalır.",
-      "⚠ Metal ve ahşap aynı ortamda aynı sıcaklıktadır; metal daha soğuk hissettirir."
+      "⚠ Metal ve ahşap aynı ortamda aynı sıcaklıktadır; metal daha soğuk hissettirir.",
+      "$\\dfrac{Q}{t} = \\dfrac{k \\cdot A \\cdot \\Delta T}{d}$: kalınlık iki katına çıkarsa iletim hızı yarıya iner."
      ]
     }
    }

@@ -294,7 +294,7 @@ $$\int f(x)\,dx = F(x) + C$$
 | İntegral | Sonuç |
 |---|---|
 | $\int x^n\,dx$ | $\dfrac{x^{n+1}}{n+1} + C\ (n \neq -1)$ |
-| $\int \dfrac1x\,dx$ | $\ln|x| + C$ |
+| $\int \dfrac1x\,dx$ | $\ln\lvert x \rvert + C$ |
 | $\int e^x\,dx$ | $e^x + C$ |
 | $\int a^x\,dx$ | $\dfrac{a^x}{\ln a} + C$ |
 | $\int \sin x\,dx$ | $-\cos x + C$ |

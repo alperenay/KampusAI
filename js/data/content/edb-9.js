@@ -102,6 +102,110 @@ App.data.content["9/edebiyat"] = [
       "Özdenören: geleneğin malzemesi değil **ruhu** önemlidir."
      ]
     }
+   },
+   {
+    "id": "k4",
+    "code": "1.4",
+    "title": {
+     "tr": "Mülakat ve çok modlu metinler (dinleme/izleme)",
+     "en": "Interviews and multimodal texts (listening/viewing)"
+    },
+    "content": {
+     "anlatim": "# Mülakat\n\n**Mülakat**, bir konuda bilgi ve görüşüne başvurulan **sanatçı, bilim insanı ya da uzman** kişiyle yapılan, **soru–cevap** düzenindeki konuşmanın yazıya ya da kayda geçirilmiş hâlidir. Temada sanatçılarla yapılmış çok modlu mülakatlar (ör. **Selim İleri'yle mülakat**) dinlenir/izlenir.\n\n| | **Mülakat** | **Röportaj** |\n|---|---|---|\n| Odak | Kişinin **görüşleri** (sanat, edebiyat, bilim) | Bir **olay, yer ya da kişi**; yazarın gözlemleri de vardır |\n| Biçim | Soru–cevap | Soru–cevap + betimleme ve izlenimler |\n| Kişi | Alanında uzman / tanınmış kişi | Herkes olabilir |\n\n# Çok Modlu Metin\n\nAnlamın **söz, görüntü, ses, müzik, yazı ve grafik** gibi birden fazla anlatım aracıyla birlikte oluşturulduğu metindir (video mülakat, belgesel, infografik, sunum).\n- İzlerken yalnızca söze değil; konuşanın **jest ve mimiklerine**, ses tonuna, görüntülere ve altyazılara da dikkat edilir.\n\n# Dinlerken / İzlerken Stratejiler\n\n1. **Hazırlık:** Konuşanı ve konuyu tanı; başlık ve görsellerden metnin amacını **tahmin et**.\n2. **Not alma:** Ana fikri, yardımcı fikirleri ve dikkat çeken ifadeleri kısa notlarla yaz.\n3. **Çıkarım:** Açıkça söylenenle **ima edileni** ayır; neden–sonuç ilişkilerini belirle.\n4. **Değerlendirme:** Tahminini içerikle karşılaştır; konuşanın görüşüne katılıp katılmadığını gerekçelendir.",
+     "ornekler": [
+      {
+       "soru": "Bir yazarla edebiyat anlayışı üzerine yapılan soru–cevap biçimindeki konuşma ile bir gazetecinin depremzede bir kasabada insanlarla konuşup izlenimlerini de kattığı yazı arasındaki tür farkı nedir?",
+       "cozum": "İlki **mülakattır**: odak, tanınmış bir kişinin bir konudaki **görüşleridir**. İkincisi **röportajdır**: bir olay ve yer ele alınır, yazarın **gözlem ve izlenimleri** de metne katılır."
+      },
+      {
+       "soru": "Video olarak izlenen bir mülakatı, aynı mülakatın yazılı hâlinden farklı kılan unsurlar nelerdir?",
+       "cozum": "Videoda anlam yalnızca sözle değil; **ses tonu, vurgu, jest–mimik, görüntü ve müzik** gibi farklı modlarla da oluşur. Bu yüzden video **çok modlu** bir metindir; dinleyici konuşanın duygusunu ve vurguladığı noktaları daha kolay fark eder."
+      }
+     ],
+     "ozet": [
+      "Mülakat: uzman/sanatçının görüşlerine dayalı soru–cevap; röportajda yazarın gözlemleri de vardır.",
+      "Çok modlu metin: söz, görüntü, ses, yazı birlikte anlam oluşturur.",
+      "Dinleme stratejileri: tahmin et, not al, çıkarım yap, değerlendir."
+     ]
+    }
+   },
+   {
+    "id": "k5",
+    "code": "1.5",
+    "title": {
+     "tr": "Ses bilgisi: Türkçede ses olayları",
+     "en": "Phonology: sound changes in Turkish"
+    },
+    "content": {
+     "anlatim": "# Türkçede Ses Olayları\n\nSözcükler ek aldığında ya da yan yana geldiğinde bazı sesler değişir, düşer ya da birleşir.\n\n| Ses olayı | Açıklama | Örnek |\n|---|---|---|\n| **Ünsüz benzeşmesi (sertleşme)** | Sert ünsüzle (f, s, t, k, ç, ş, h, p) biten sözcüğe c, d, g ile başlayan ek gelince ek **sertleşir**: c→ç, d→t, g→k | kitap**ç**ı, ağaç**t**an, dolap**t**a (*dolap-da*), iş**ç**i (*iş-ci*) |\n| **Ünsüz yumuşaması** | p, ç, t, k ile biten sözcüğe ünlüyle başlayan ek gelince sözcük sonu **yumuşar**: p→b, ç→c, t→d, k→ğ/g | kita**b**ı, ağa**c**ı, yur**d**u, aya**ğ**ı, ren**g**i |\n| **Ünlü daralması** | -a, -e ile biten fiillere **-yor** eki gelince a/e **ı, i, u, ü**'ye daralır | başla-yor → başl**ı**yor, izle-yor → izl**i**yor, ye-yor → **y**iyor |\n| **Ünlü düşmesi** | İki heceli bazı sözcüklere ünlüyle başlayan ek gelince ikinci hecedeki dar ünlü **düşer** | ağız → **ağzı**, burun → **burnu**, oğul → **oğlu**, alın → **alnı** |\n| **Ulama** | Ünsüzle biten sözcüğün son ünsüzü, ünlüyle başlayan sonraki sözcüğün ilk ünlüsüyle **birlikte okunur** (yazıda gösterilmez) | “Bir_elma” → bi-rel-ma; “Akşam_oldu” |\n\nDiğer ses olayları: **ünsüz düşmesi** (küçük → küçültmek), **ünsüz türemesi** (hak → hakkı), **kaynaştırma ünsüzleri** (y, n, s, ş: araba**y**ı, iki**ş**er).\n\n> **İpucu:** Tek heceli sözcüklerin çoğu yumuşamaz (top → topu, saç → saçı); özel adlarda yumuşama yazıya geçirilmez (Zonguldak'a, Sinop'a — okunuşta yumuşar).",
+     "ornekler": [
+      {
+       "soru": "“Ağzından çıkanı kulağın duysun, kitabını ve defterini ayrı çantaya koy.” cümlesindeki ses olaylarını bulunuz.",
+       "cozum": "**ağız → ağzından:** ünlü düşmesi · **kulak → kulağın:** ünsüz yumuşaması (k → ğ) · **kitap → kitabını:** ünsüz yumuşaması (p → b) · **ayrı çantaya:** kaynaştırma ünsüzü (-y-)."
+      },
+      {
+       "soru": "“Sepette elmalar, kitapçıda dergiler var.” cümlesinde ünsüz benzeşmesi örneklerini gösteriniz.",
+       "cozum": "**sepet-de → sepette** (t'den sonra d → t), **kitap-cı → kitapçı** (p'den sonra c → ç). Sert ünsüzden sonra gelen ekin ilk ünsüzü sertleşmiştir."
+      }
+     ],
+     "ozet": [
+      "Ünsüz benzeşmesi: sert ünsüzden sonra c, d, g → ç, t, k (kitapçı, sepette).",
+      "Yumuşama: p, ç, t, k → b, c, d, ğ (kitabı, ağacı); daralma: başlıyor; düşme: ağzı, burnu.",
+      "Ulama okunuşta olur, yazıda gösterilmez."
+     ]
+    }
+   },
+   {
+    "id": "k6",
+    "code": "1.6",
+    "title": {
+     "tr": "Yazım ve noktalama: virgül, üç nokta ve güncel yazım",
+     "en": "Spelling and punctuation: comma, ellipsis and current spelling"
+    },
+    "content": {
+     "anlatim": "# Güncel Yazım\n\nDoğru yazım için **Türk Dil Kurumu (TDK) Güncel Türkçe Sözlük** ve **Yazım Kılavuzu** esas alınır. Edebî metinlerde eski yazımlar (ör. **İslâm**, **hattâ**, **kâğıt**) görülebilir; şapka (düzeltme işareti) bugün yalnızca anlam ayrımı ve ince okunuş gereken yerlerde kullanılır: **hala** (babanın kız kardeşi) – **hâlâ** (henüz), **kar** – **kâr**, **dergâh**.\n\n# Virgül (,)\n\n| Kullanım | Örnek |\n|---|---|\n| Eş görevli sözcük ve söz öbeklerini ayırmak | Kalem, defter, kitap aldım. |\n| Uzun cümlelerde yüklemden uzak düşmüş ögeyi belirtmek | Okulumuzun yeni öğretmeni, geçen hafta Ankara'dan geldi. |\n| Hitaplardan sonra | Sevgili arkadaşım, mektubunu aldım. |\n| Sıralı cümleleri ayırmak | Eve geldi, yemeğini yedi, ödevine başladı. |\n| Ara sözleri ayırmak (iki virgül arasında) | Dedem, annemin babası, çok iyi saz çalar. |\n\n# Üç Nokta (…)\n\n| Kullanım | Örnek |\n|---|---|\n| Tamamlanmamış cümlenin sonunda | Bir gün o da gelecekti ama… |\n| Söylenmek istenmeyen ya da sayılabilecek başka şeylerin yerine | Elma, armut, ayva… meyve kasası doluydu. |\n| Alıntılarda atlanan bölümü göstermek (yay ayraç içinde) | “(…) Gün doğmadan neler doğar.” |\n| Kaba sözler ya da duygu yoğunluğu, sessizlik | Evet… haklısın… |",
+     "ornekler": [
+      {
+       "soru": "“Annem, babam ve ben akşam yürüyüşe çıktık.” ile “Annem, babam ve ben akşam yürüyüşe çıktık mı diye sordu.” cümleleri arasındaki virgül kullanımını yorumlayınız.",
+       "cozum": "İlk cümlede virgül **eş görevli ögeleri** (annem, babam) ayırmıştır. İkinci cümlede ise virgül “Annem” sözünü **hitap/özne** olarak ayırmış olabilir; virgülün yeri anlamı değiştirebilir. Yazarken anlam belirsizliğini virgülle önlemek gerekir."
+      },
+      {
+       "soru": "Aşağıdaki cümlede yazım yanlışını bulunuz: “Hala gelmedi, hâlam endişelendi.”",
+       "cozum": "**“Hala”** sözcüğü “henüz” anlamında kullanıldığı için **“hâlâ”** yazılmalıdır. “Hâlam” ise babanın kız kardeşi anlamındadır ve **“halam”** yazılır. Doğrusu: “**Hâlâ** gelmedi, **halam** endişelendi.”"
+      }
+     ],
+     "ozet": [
+      "Doğru yazım için TDK Güncel Türkçe Sözlük ve Yazım Kılavuzu esas alınır (hala – hâlâ, kar – kâr).",
+      "Virgül: eş görevli ögeler, hitap, sıralı cümleler, ara sözler.",
+      "Üç nokta: tamamlanmamış cümle, sayılabilecek benzerler, alıntıda atlanan bölüm (…)."
+     ]
+    }
+   },
+   {
+    "id": "k7",
+    "code": "1.7",
+    "title": {
+     "tr": "Edebiyat atölyesi: betimleyici paragraf ve düşünceyi geliştirme yolları",
+     "en": "Literary workshop: descriptive paragraphs and ways of developing ideas"
+    },
+    "content": {
+     "anlatim": "# Paragraf Yazma\n\nParagraf **giriş (konu cümlesi), gelişme ve sonuç** cümlelerinden oluşur; tek bir ana düşünceyi işler.\n\n## Betimleyici Paragraf\n\nBir varlığı, yeri ya da duyguyu okurun **zihninde canlandıracak** şekilde anlatır.\n- **Duyulardan yararlan:** görme (renk, ışık), işitme (ses), koku, tat, dokunma.\n- **Ayrıntı seç:** Her şeyi değil, varlığı **ayırt eden** özellikleri yaz.\n- **Düzenli ilerle:** Uzaktan yakına, genelden özele, soldan sağa…\n- **Söz sanatlarıyla** anlatımı güçlendir (benzetme, kişileştirme).\n\n> Şiirden yola çıkarak yazılan paragrafta şiirin uyandırdığı **duygu ve imgeler** kendi cümlelerinle betimlenir (“Duygularımı Betimliyorum”).\n\n## Düşünceyi Geliştirme Yolları\n\n| Yol | Açıklama | İpucu |\n|---|---|---|\n| **Tanımlama** | Bir kavramın ne olduğunu açıklama | “… -dır, denir” |\n| **Örneklendirme** | Düşünceyi somut örnekle destekleme | “Örneğin, mesela” |\n| **Karşılaştırma** | İki varlığın benzer ve farklı yönlerini ortaya koyma | “… -den daha, oysa” |\n| **Tanık gösterme** | Tanınmış birinin sözüne başvurma | “… der ki” |\n| **Benzetme** | Bir düşünceyi başka bir şeye benzeterek açıklama | “gibi, sanki” |\n| **Sayısal verilerden yararlanma** | İstatistikle destekleme | %, sayılar |\n\n## Konuşma (Sunum)\n\nGörüşünü sunarken düşünceyi geliştirme yollarını kullan; **göz teması**, uygun ses tonu, vurgu ve beden dili ile dinleyiciyi ikna et; sonunda düşünceni **özetle**.",
+     "ornekler": [
+      {
+       "soru": "“Kitap okumak zihni besler. Bir araştırmaya göre düzenli kitap okuyan öğrencilerin kelime dağarcığı, okumayanlardan %30 daha geniştir.” paragrafında hangi düşünceyi geliştirme yolu kullanılmıştır?",
+       "cozum": "**Sayısal verilerden yararlanma** (istatistik): Düşünce bir araştırma sonucu ve yüzde ile desteklenmiştir."
+      },
+      {
+       "soru": "Okulunuzun bahçesini betimleyen 3–4 cümlelik bir paragraf yazınız.",
+       "cozum": "Örnek: “Sabah zili çalmadan önce bahçe, çınar ağacının geniş gölgesinde uyuyan bir kedi gibi sessizdi. Islak toprağın kokusu, kantinden yayılan simit kokusuna karışıyordu. Uzakta, basketbol potasının paslı çemberi güneşte turuncu bir ışıkla parlıyordu. Birden kapılar açıldı ve bahçe kahkahalarla uyandı.” — **Görme, koku, işitme** duyuları ve **benzetme–kişileştirme** kullanılmıştır."
+      }
+     ],
+     "ozet": [
+      "Paragraf: konu cümlesi, gelişme, sonuç; tek ana düşünce.",
+      "Betimleme: duyular, ayırt edici ayrıntı, düzenli ilerleme, söz sanatları.",
+      "Düşünceyi geliştirme: tanımlama, örneklendirme, karşılaştırma, tanık gösterme, benzetme, sayısal veri."
+     ]
+    }
    }
   ]
  },
@@ -189,6 +293,32 @@ App.data.content["9/edebiyat"] = [
       "Gerçeğe bağlıdır ama yazarın öznel izlenimlerini taşır.",
       "İlk örnek Babürname; Kök Türk Kitabeleri anı-söylev özelliği taşır.",
       "Zorlutuna, İstanbul'un kurtuluşunu (6 Ekim 1923) lirik bir üslupla anlatır."
+     ]
+    }
+   },
+   {
+    "id": "k4",
+    "code": "2.4",
+    "title": {
+     "tr": "Şiir dinleme ve şiir yazma: halk şiiri geleneği",
+     "en": "Listening to and writing poetry: the folk poetry tradition"
+    },
+    "content": {
+     "anlatim": "# Dinleme/İzleme: Bir Aşk Şiiri (“Mihriban”)\n\nTemada dinlenen **“Mihriban”**, Abdurrahim Karakoç'un **halk şiiri** söyleyişine yakın, sade dille yazılmış ve **türkü** olarak bestelenip yaygınlaşmış bir şiiridir. Şiir bir **ayrılık ve özlem** temasını işler.\n\n## Halk Şiirinin Özellikleri\n\n| Özellik | Açıklama |\n|---|---|\n| **Ölçü** | **Hece ölçüsü** (7'li, 8'li, 11'li yaygın) |\n| **Birim** | Dörtlük (koşma, mani, türkü) |\n| **Kafiye** | Genellikle **yarım ve tam kafiye**; **redif** sık kullanılır |\n| **Dil** | Sade, halkın konuştuğu dil; somut imgeler |\n| **Tema** | Aşk, ayrılık, gurbet, doğa, ölüm |\n| **Sunuluş** | Çoğu zaman **saz eşliğinde** söylenir; son dörtlükte şairin adı geçer (**tapşırma**) |\n\n- **Âşık Veysel** (1894–1973), saz şairi geleneğinin 20. yüzyıldaki en önemli temsilcilerindendir (4. temada otobiyografisi ele alınır).\n\n# Edebiyat Atölyesi: Şiir Yazma (“Genç Şairlerden Mısralar”)\n\n1. Temaya uygun bir **duygu** seç (özlem, umut, arkadaşlık).\n2. Duyguyu taşıyacak **somut imgeler** bul (yağmur, eski bir fotoğraf, tren garı).\n3. Bir **ölçü** belirle (ör. 8'li hece: 4 + 4 durak) ya da serbest şiir yaz.\n4. **Kafiye ve redif** ile ahenk oluştur; tekrarlarla vurgu yap.\n5. Şiirini sesli oku, ahengi kontrol et ve arkadaşlarından geri bildirim al.",
+     "ornekler": [
+      {
+       "soru": "“Bahar geldi dağlarıma” dizesi kaç hecelidir ve duraklar nasıldır?",
+       "cozum": "Ba-har-gel-di / dağ-la-rı-ma → **8 hece**, **4 + 4** duraklı. Hece ölçüsünde önce heceler ayrılır, sonra okunuşta doğal olarak durulan yerler (duraklar) belirlenir; 8'li hece mani ve türkülerde sık kullanılır."
+      },
+      {
+       "soru": "Halk şiirinde “tapşırma” nedir? Neden yapılır?",
+       "cozum": "Şairin şiirin **son dörtlüğünde kendi adını** ya da mahlasını söylemesidir. Sözlü gelenekte şiirin **kime ait olduğunu** bildirmek amacıyla yapılır."
+      }
+     ],
+     "ozet": [
+      "Halk şiiri: hece ölçüsü, dörtlük, sade dil, yarım kafiye ve redif, saz eşliği.",
+      "Tapşırma: şairin son dörtlükte adını söylemesi.",
+      "Şiir yazarken duygu → somut imge → ölçü → kafiye/redif → sesli okuma."
      ]
     }
    }
@@ -285,6 +415,32 @@ App.data.content["9/edebiyat"] = [
       "İlk örnek Mir'âtü'l-Memâlik (Seydi Ali Reis); zirve Seyahatname (Evliya Çelebi).",
       "Anı olaya/kişiye, gezi yazısı yere odaklanır.",
       "Falih Rıfkı Atay — \"Bizim Akdeniz\": Antalya ve Toroslar."
+     ]
+    }
+   },
+   {
+    "id": "k4",
+    "code": "3.4",
+    "title": {
+     "tr": "Belgesel ve bilgi görseli (infografik): Nevruz",
+     "en": "Documentaries and infographics: Nevruz"
+    },
+    "content": {
+     "anlatim": "# Belgesel\n\n**Belgesel**, gerçek olay, kişi, yer ya da konuları **belgelere dayanarak**, gerçeğe sadık kalarak anlatan film ya da yayındır. Temada **Nevruz** konulu bir belgesel izlenir.\n\n| Özellik | Açıklama |\n|---|---|\n| Amaç | Bilgi vermek, farkındalık oluşturmak |\n| Kaynak | Uzman görüşleri, arşiv görüntüleri, tanıklıklar, yerinde çekimler |\n| Anlatım | **Dış ses** (anlatıcı), röportaj, müzik, harita ve grafiklerle desteklenir |\n| Dil | Öğretici; nesnel olmaya çalışır |\n\n# Nevruz\n\n**Nevruz** (“yeni gün”), baharın gelişini ve doğanın uyanışını kutlayan, **21 Mart** civarında Türk dünyası başta olmak üzere geniş bir coğrafyada kutlanan bayramdır. Türk kültüründe **Ergenekon'dan çıkış** anlatısıyla da ilişkilendirilir. Ateş üzerinden atlama, yumurta boyama, temizlik, bahar yemekleri gibi gelenekleri vardır. **UNESCO İnsanlığın Somut Olmayan Kültürel Mirası** listesinde yer alır (Türkiye'nin de aralarında bulunduğu ülkelerin ortak başvurusu).\n\n# Edebiyat Atölyesi: Bilgi Görseli (İnfografik)\n\n**İnfografik**, bilgiyi **metin, ikon, grafik, harita ve renkleri** birleştirerek kısa ve anlaşılır biçimde sunan görsel metindir.\n1. Belgeselden **ana bilgileri** not al (tarih, yer, gelenekler, anlamı).\n2. Bilgileri **gruplandır** (Ne? Nerede? Nasıl kutlanır?).\n3. Her grup için **kısa başlık + simge** belirle; uzun cümle yerine anahtar sözcük kullan.\n4. Okuma yönünü (yukarıdan aşağı, soldan sağa) ve **renk uyumunu** planla.\n5. **Kaynakları** infografiğin altına yaz.",
+     "ornekler": [
+      {
+       "soru": "Belgeseli kurmaca bir filmden ayıran temel özellik nedir?",
+       "cozum": "Belgesel **gerçek** olay, kişi ve yerleri **belgelere** (arşiv görüntüsü, tanıklık, uzman görüşü) dayanarak anlatır ve bilgi vermeyi amaçlar. Kurmaca film ise **hayal ürünü** bir olay örgüsünü sanatsal amaçla anlatır."
+      },
+      {
+       "soru": "Nevruz belgeselinden yola çıkarak hazırlanacak bir infografikte hangi bölümler yer alabilir?",
+       "cozum": "“Nevruz nedir?” (tanım, tarih: 21 Mart), “Nerede kutlanır?” (harita), “Gelenekler” (ateşten atlama, yumurta boyama — simgelerle), “Kültürel önemi” (UNESCO listesi) ve **kaynakça**. Bilgiler kısa ifadeler, ikonlar ve renklerle düzenlenir."
+      }
+     ],
+     "ozet": [
+      "Belgesel: gerçek konuları belgelere dayanarak anlatan öğretici film/yayın.",
+      "Nevruz: 21 Mart, baharın gelişi; Ergenekon anlatısı; UNESCO somut olmayan kültürel miras.",
+      "İnfografik: metin + ikon + grafik; bilgiyi grupla, kısa başlık ve simge kullan, kaynak yaz."
      ]
     }
    }
@@ -429,6 +585,58 @@ App.data.content["9/edebiyat"] = [
       "4 tema: Sözün İnceliği, Anlam Arayışı, Anlamın Yapı Taşları, Dilin Zenginliği.",
       "Sanatsal: şiir, hikâye, roman · Öğretici: deneme, anı, gezi, eleştiri, otobiyografi.",
       "Her metinde açık ve örtük iletileri ayırt etmeyi unutma."
+     ]
+    }
+   },
+   {
+    "id": "k6",
+    "code": "4.6",
+    "title": {
+     "tr": "Ara metin: tiyatro ve temel unsurları",
+     "en": "Intermediate text: drama and its basic elements"
+    },
+    "content": {
+     "anlatim": "# Tiyatro\n\n**Tiyatro**, bir olayın **sahnede**, oyuncular aracılığıyla **diyalog ve hareketle** canlandırılmak üzere yazılmış edebî türdür. Okunmak kadar **izlenmek** için yazılır.\n\n| Unsur | Açıklama |\n|---|---|\n| **Olay örgüsü** | Sahnelenen olaylar zinciri; giriş – gelişme (çatışma) – sonuç |\n| **Kişiler** | Oyuncuların canlandırdığı karakterler; **kişi kadrosu** metnin başında verilir |\n| **Diyalog / monolog** | Kişilerin karşılıklı konuşması / kişinin tek başına konuşması |\n| **Sahne ve dekor** | Olayın geçtiği yerin sahnede canlandırılması |\n| **Yan metin (sahne yönergesi)** | Ayraç içinde verilen, kişilerin hareketlerini, ses tonunu, ışık ve dekoru anlatan açıklamalar |\n| **Perde ve sahne** | Oyunun bölümleri |\n\n## Türleri\n\n- **Trajedi:** Soylu kişilerin acıklı yazgısı; ağır dil.\n- **Komedi:** Toplumun ve insanın gülünç yönleri; eğlendirirken düşündürür.\n- **Dram:** Trajedi ile komedinin karışımı; günlük hayattan kişiler.\n\n## Geleneksel Türk Tiyatrosu\n\n**Karagöz** (gölge oyunu), **orta oyunu**, **meddah** ve **köy seyirlik oyunları**; doğaçlamaya dayanır, sahne yönergesi ve yazılı metni yoktur.\n\n> Romanda olaylar **anlatıcı** aracılığıyla aktarılır; tiyatroda anlatıcı yoktur, olay **diyalog ve hareketle** gösterilir.",
+     "ornekler": [
+      {
+       "soru": "Bir tiyatro metninde “(Kapıya doğru yürür, durur, sesini alçaltarak.)” ifadesi hangi unsura örnektir? İşlevi nedir?",
+       "cozum": "**Yan metin (sahne yönergesi).** Oyuncuya ve yönetmene karakterin **hareketini ve ses tonunu** gösterir; okuyucunun sahneyi zihninde canlandırmasını sağlar."
+      },
+      {
+       "soru": "Karagöz oyununu modern tiyatrodan ayıran özellikler nelerdir?",
+       "cozum": "Karagöz bir **gölge oyunudur**; yazılı bir metne değil **doğaçlamaya** dayanır, sahne yönergesi yoktur, tek bir hayalî (oynatıcı) tüm karakterleri seslendirir ve kalıplaşmış bölümleri (mukaddime, muhavere, fasıl, bitiş) vardır."
+      }
+     ],
+     "ozet": [
+      "Tiyatro: sahnelenmek için yazılır; diyalog ve hareket esastır, anlatıcı yoktur.",
+      "Unsurlar: olay örgüsü, kişiler, diyalog/monolog, dekor, yan metin, perde.",
+      "Türler: trajedi, komedi, dram; geleneksel: Karagöz, orta oyunu, meddah."
+     ]
+    }
+   },
+   {
+    "id": "k7",
+    "code": "4.7",
+    "title": {
+     "tr": "Dilimizin zenginlikleri: söz varlığı ve sosyal medya dili",
+     "en": "The richness of our language: vocabulary and social media language"
+    },
+    "content": {
+     "anlatim": "# Söz Varlığı\n\nBir dilin **sözcükleri, deyimleri, atasözleri, kalıp sözleri ve terimlerinin** tamamıdır. Söz varlığı ne kadar zenginse duygu ve düşünceler o kadar **ince ayrımlarla** ifade edilir.\n\n| Unsur | Tanım | Örnek |\n|---|---|---|\n| **Deyim** | Genellikle mecaz anlamlı, kalıplaşmış söz öbeği | **Kulak asmamak**, **gözden düşmek** |\n| **Atasözü** | Uzun deneyimlere dayanan, öğüt veren, kalıplaşmış özlü söz | **Damlaya damlaya göl olur.** |\n| **İkileme** | Anlatımı güçlendirmek için sözcüklerin tekrarı ya da eş/zıt anlamlıların birlikte kullanımı | **yavaş yavaş, er geç, eşe dosta** |\n| **Kalıp söz** | Belirli durumlarda kullanılan sözler | **Geçmiş olsun, kolay gelsin, eline sağlık** |\n| **Terim** | Bir bilim, sanat ya da meslek alanına özgü sözcük | **fotosentez, kafiye, ivme** |\n\n# Edebî Dil ile Sosyal Medya Dili\n\n| Edebî dil | Sosyal medya dili |\n|---|---|\n| Zengin söz varlığı, imge ve söz sanatları | Kısa, hızlı, çoğu zaman kısaltmalı (slm, tşk) |\n| Yazım ve noktalama kurallarına uyulur | Kurallar çoğu zaman göz ardı edilir |\n| Kalıcıdır, estetik hazza yöneliktir | Anlık iletişime yöneliktir; emoji ve görselle desteklenir |\n| Türkçe karşılıklar tercih edilir | Yabancı sözcükler sık kullanılır (story, like) |\n\n**Konuşma etkinliği (“Dilimizin Zenginlikleri”):** Sosyal medya dilini edebî dilin özellikleri açısından eleştirirken **örnek** ver, **karşılaştır** ve yabancı sözcüklerin **Türkçe karşılıklarını** öner (beğeni, paylaşım, hikâye, çevrim içi).",
+     "ornekler": [
+      {
+       "soru": "“Sınava bir gün kala ders çalışmaya başlayınca iş işten geçmişti.” cümlesindeki deyimi bulup anlamını yazınız.",
+       "cozum": "**İş işten geçmek**: Bir şeyi yapmak ya da düzeltmek için uygun zamanın kaçmış olması."
+      },
+      {
+       "soru": "“Bugünkü toplantı postponed oldu, linki story'de paylaştım.” cümlesini söz varlığı açısından değerlendirip Türkçe karşılıklarla yeniden yazınız.",
+       "cozum": "Cümlede gereksiz **yabancı sözcükler** (postponed, link, story) kullanılmıştır. Doğrusu: “Bugünkü toplantı **ertelendi**, **bağlantıyı hikâyede** paylaştım.” Türkçede karşılığı olan sözcüklerin kullanılması dilin zenginliğini korur."
+      }
+     ],
+     "ozet": [
+      "Söz varlığı: sözcük, deyim, atasözü, ikileme, kalıp söz, terim.",
+      "Deyim mecazlı söz öbeği; atasözü öğüt veren özlü söz.",
+      "Sosyal medya dili kısaltmalı ve kuralsız olabilir; Türkçe karşılıklar tercih edilmelidir."
      ]
     }
    }

@@ -70,7 +70,12 @@ App.data.prereq = Object.assign(App.data.prereq || {}, {
     "u2/k9": ["u2/k7"],
     "u3/k1": ["u2/k1"],
     "u3/k2": ["u1/k2"],
-    "u3/k3": ["u2/k1", "u3/k1"]
+    "u3/k3": ["u2/k1", "u3/k1"],
+    "u2/k10": ["u2/k9", "u2/k7"],
+    "u2/k11": ["u2/k7", "u2/k9"],
+    "u2/k12": ["u2/k7", "u2/k9"],
+    "u2/k13": ["u2/k12", "u2/k7"],
+    "u3/k4": ["u3/k1", "u3/k2", "u1/k7"]
   },
   "9/biyoloji": {
     "u1/k2": ["u1/k1"],
@@ -87,7 +92,9 @@ App.data.prereq = Object.assign(App.data.prereq || {}, {
     "u2/k2": ["u2/k1", "u1/k5", "u1/k7"],
     "u2/k3": ["u1/k4"],
     "u2/k4": ["u2/k3", "u2/k1"],
-    "u2/k5": ["u2/k4"]
+    "u2/k5": ["u2/k4"],
+    "u2/k6": ["u2/k2", "u1/k2", "9/fizik/u4/k1"],
+    "u2/k7": ["u2/k1", "u1/k4"]
   },
   "9/cografya": {
     "u1/k2": ["u1/k1"],
@@ -125,7 +132,8 @@ App.data.prereq = Object.assign(App.data.prereq || {}, {
     "u3/k1": ["u2/k2"],
     "u3/k2": ["u3/k1"],
     "u3/k3": ["u3/k2"],
-    "u3/k4": ["u3/k2", "u2/k4"]
+    "u3/k4": ["u3/k2", "u2/k4"],
+    "u2/k5": ["u2/k1", "u2/k2"]
   },
   "9/edebiyat": {
     "u1/k2": ["u1/k1"],
@@ -140,7 +148,15 @@ App.data.prereq = Object.assign(App.data.prereq || {}, {
     "u4/k2": ["u4/k1", "u3/k1"],
     "u4/k3": ["u2/k2"],
     "u4/k4": ["u2/k3"],
-    "u4/k5": ["u4/k1", "u3/k2", "u4/k3"]
+    "u4/k5": ["u4/k1", "u3/k2", "u4/k3"],
+    "u1/k4": ["u1/k1"],
+    "u1/k5": ["u1/k1"],
+    "u1/k6": ["u1/k5"],
+    "u1/k7": ["u1/k2", "u1/k3"],
+    "u2/k4": ["u3/k2", "u1/k2"],
+    "u3/k4": ["u1/k4"],
+    "u4/k6": ["u2/k1", "u4/k1"],
+    "u4/k7": ["u1/k6", "u1/k2"]
   },
   "9/din": {
     "u1/k2": ["u1/k1"],
@@ -158,7 +174,10 @@ App.data.prereq = Object.assign(App.data.prereq || {}, {
     "u4/k2": ["u4/k1"],
     "u4/k3": ["u4/k2"],
     "u5/k1": ["u2/k2"],
-    "u5/k2": ["u5/k1", "u4/k1"]
+    "u5/k2": ["u5/k1", "u4/k1"],
+    "u4/k4": ["u4/k1", "u4/k3"],
+    "u5/k3": ["u5/k2"],
+    "u5/k4": ["u5/k1"]
   },
   "9/ingilizce": {
     "u1/k2": ["u1/k1"],
@@ -177,6 +196,14 @@ App.data.prereq = Object.assign(App.data.prereq || {}, {
     "u8/k1": ["u2/k1"],
     "u8/k2": ["u8/k1"],
     "u9/k1": ["u3/k1", "u6/k1", "u7/k1", "u8/k1"],
-    "u9/k2": ["u9/k1"]
+    "u9/k2": ["u9/k1"],
+    "u1/k3": ["u1/k1", "u1/k2"],
+    "u2/k3": ["u2/k1", "u2/k2"],
+    "u3/k3": ["u3/k1", "u3/k2"],
+    "u4/k3": ["u4/k1", "u4/k2"],
+    "u5/k3": ["u5/k1", "u5/k2"],
+    "u6/k3": ["u6/k1", "u6/k2"],
+    "u7/k3": ["u7/k1", "u7/k2"],
+    "u8/k3": ["u8/k1", "u8/k2"]
   }
 });

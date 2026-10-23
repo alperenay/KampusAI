@@ -120,7 +120,7 @@
         note: T("Osmoz, suyun seçici geçirgen zardan az yoğun ortamdan çok yoğun ortama geçmesidir. Hipotonik ortamda hayvan hücresi şişip patlayabilir; bitki hücresini çeperi korur (turgor). Hipertonik ortamda hücre su kaybeder; bitkide zar çeperden ayrılır (plazmoliz).",
           "Water crosses the membrane towards higher solute concentration. Plant walls prevent bursting; strong solutions cause plasmolysis.") };
     }
-  }, ["9/biyoloji/u2/k2", "9/biyoloji/u2/k1"]);
+  }, ["9/biyoloji/u2/k2", "9/biyoloji/u2/k1", "9/biyoloji/u2/k6"]);
 
   /* ======================= 10. SINIF ======================= */
 

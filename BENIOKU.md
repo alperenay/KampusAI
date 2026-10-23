@@ -80,6 +80,8 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
 
 ### Konu Anlatımı
 
+- **9–12. sınıf, 695 kazanım.** 9. sınıfın tamamı (193 kazanım) Türkiye Yüzyılı Maarif Modeli öğretim programıyla
+  karşılaştırılarak tamamlandı; her kazanımda resmî kazanım kodu, anlatım, en az iki çözümlü örnek ve hap bilgi özeti var.
 - Her dersin kendi rengi ve simgesi var (menüde, Bugün görevlerinde ve konu sayfalarında).
 - Konu Anlatımı tek sayfa: üstte sınıf sekmeleri (son seçtiğin sınıf hatırlanır), altta dersler. Her ders kutusunda
   ilerleme ve **sıradaki kazanım** görünür.
@@ -255,7 +257,7 @@ iPhone'daki web uygulaması güvenlik kısıtı nedeniyle bilgisayara bağlanama
   oynar, başı sana döner; dinlerken halesi sesinle parlar, düşünürken etrafında parçacıklar döner. Cevaptaki formüller ve
   kalın yazılı kavramlar holografik panoda görünür; konu bir deneyle eşleşirse *Deneyi hologramda aç* düğmesi çıkar (sohbet
   kaydedilir, deney doğrudan hologramda açılır). Seçim hatırlanır.
-- **Konu Podcast'i:** Menü › Çalış › Konu Podcast'i ya da her konu sayfasındaki *🎧 Podcast* düğmesi. 668 konunun hepsi,
+- **Konu Podcast'i:** Menü › Çalış › Konu Podcast'i ya da her konu sayfasındaki *🎧 Podcast* düğmesi. 695 konunun hepsi,
   Deniz (soru soran öğrenci) ile Arda'nın (anlatan öğretmen) iki sesli sohbetine dönüşür: konu anlatımının başlıkları,
   tanımları, tabloları, örnek soruları ve hap bilgileri kullanılır; internet gerekmez. Arada dinleyene soru sorulur:
   düşünme süresinden sonra (ya da *Sorularda beni bekle* açıksa *Cevabı duy*'a dokununca) çözüm anlatılır. Hız ayarı,

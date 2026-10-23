@@ -27,6 +27,11 @@
   M("9", "t4/k2", "Benzer üçgenlerde oranlar", r`\frac{a}{a'}=\frac{b}{b'}=\frac{c}{c'}=k\qquad \frac{\text{Alan}}{\text{Alan}'}=k^2`, "Benzer üçgenlerde kenar, çevre ve alan oranlarını bulurken.", "k: benzerlik oranı");
   M("9", "t6/k1", "Aritmetik ortalama ve standart sapma", r`\bar x=\frac{\sum x_i}{n}\qquad s=\sqrt{\frac{\sum (x_i-\bar x)^2}{n-1}}`, "Bir veri grubunun merkezini ve yayılımını hesaplarken.", "n: veri sayısı");
   M("9", "t7/k1", "Olasılık", r`P(A)=\frac{s(A)}{s(E)}\qquad P(A')=1-P(A)`, "Eş olasılıklı bir deneyde bir olayın olasılığını bulurken.", "s(A): istenen durum sayısı; s(E): tüm durumlar");
+  M("9", "t1/k4", "Özdeşlikler: tam kare ve iki kare farkı", r`(a\pm b)^2=a^2\pm 2ab+b^2\qquad a^2-b^2=(a-b)(a+b)`, "Çarpanlara ayırırken ve hesabı kısaltırken (101² − 99² gibi).", "");
+  M("9", "t2/k3", "Doğrusal ve mutlak değerli denklem", r`ax+b=0 \Rightarrow x=-\frac{b}{a}\qquad |ax+b|=c \Rightarrow ax+b=\pm c`, "Doğrusal fonksiyonla kurulan problemleri ve mutlak değerli denklemleri çözerken.", "a ≠ 0, c ≥ 0");
+  M("9", "t4/k1", "Koordinatlarda dönüşümler", r`(x,y)\xrightarrow{x\text{ ekseni}}(x,-y)\quad (x,y)\xrightarrow{y\text{ ekseni}}(-x,y)\quad (x,y)\xrightarrow{O,\,90^\circ}(-y,x)`, "Bir noktanın yansıma, öteleme ya da dönme sonrası görüntüsünü bulurken.", "Öteleme: (x, y) → (x + a, y + b)");
+  M("9", "t5/k3", "Değilleme kuralları (De Morgan)", r`\neg(p\land q)\equiv \neg p\lor\neg q\qquad \neg(\forall x\,P(x))\equiv \exists x\,\neg P(x)`, "Bir koşulun ya da “her”, “bazı” önermesinin değilini yazarken.", "");
+  M("9", "t7/k2", "Birleşim ve bağımsız olaylar", r`P(A\cup B)=P(A)+P(B)-P(A\cap B)\qquad P(A\cap B)=P(A)\cdot P(B)`, "“veya” içeren olasılıklarda ve birbirini etkilemeyen olayların birlikte gerçekleşmesinde.", "İkinci eşitlik yalnız bağımsız olaylar için");
   // 10. sınıf
   M("10", "t1/k1", "Dik üçgende trigonometrik oranlar", r`\sin\alpha=\frac{\text{karşı}}{\text{hipotenüs}}\quad \cos\alpha=\frac{\text{komşu}}{\text{hipotenüs}}\quad \tan\alpha=\frac{\text{karşı}}{\text{komşu}}`, "Dik üçgende bir açı ve bir kenardan diğer kenarları bulurken.", "");
   M("10", "t1/k1", "Temel trigonometrik özdeşlik", r`\sin^2\alpha+\cos^2\alpha=1\qquad \tan\alpha=\frac{\sin\alpha}{\cos\alpha}`, "Bir oran bilindiğinde diğerlerini bulurken ve ifadeleri sadeleştirirken.", "");
@@ -92,6 +97,14 @@
   P("9", "u4/k3", "Isı alışverişi", r`Q=m\cdot c\cdot\Delta T\qquad C=m\cdot c`, "Sıcaklık değişimi için gereken ya da açığa çıkan ısıyı bulurken.", "c: öz ısı (J/g°C); C: ısı sığası");
   P("9", "u4/k4", "Hâl değişimi ısısı", r`Q=m\cdot L`, "Erime, donma, buharlaşma gibi sıcaklığın sabit kaldığı hâl değişimlerinde.", "L: erime / buharlaşma ısısı");
   P("9", "u4/k5", "Isıl denge sıcaklığı", r`T_{\text{denge}}=\frac{m_1c_1T_1+m_2c_2T_2}{m_1c_1+m_2c_2}`, "Farklı sıcaklıktaki maddeler karıştırıldığında (hâl değişimi yoksa).", "Q_alınan = Q_verilen");
+  P("9", "u2/k3", "Bileşkenin alabileceği değerler", r`|A-B|\le R\le A+B`, "İki vektörün bileşkesinin en küçük ve en büyük değerini bulurken.", "Aynı yön: A + B · zıt yön: |A − B|");
+  P("9", "u2/k6", "İvme", r`a=\frac{\Delta\upsilon}{\Delta t}`, "Hızı belirli sürede değişen cismin ivmesini bulurken.", "a: m/s² · Δυ: hız değişimi");
+  P("9", "u3/k3", "Pascal ilkesi (hidrolik)", r`\frac{F_1}{A_1}=\frac{F_2}{A_2}\qquad A_1 h_1=A_2 h_2`, "Su cenderesi, kriko ve hidrolik frende kuvvet ve yol hesaplarken.", "Kuvvetten kazanılan, yoldan kaybedilir");
+  P("9", "u3/k4", "Açık hava basıncı", r`1\ \text{atm}=76\ \text{cmHg}\approx 1{,}013\cdot 10^5\ \text{Pa}`, "Torricelli deneyi ve basınç birimleri arasında dönüşüm yaparken.", "Deniz seviyesi, 0 °C");
+  P("9", "u3/k5", "Deneyde kaldırma kuvveti", r`F_k=G_{\text{hava}}-G_{\text{sıvıda}}`, "Dinamometre deneyinde gerçek ve görünür ağırlıktan kaldırma kuvvetini bulurken.", "");
+  P("9", "u3/k6", "Yüzme–batma koşulu", r`F_k=F_{\text{alt}}-F_{\text{üst}}\qquad d_{\text{cisim}}<d_{\text{sıvı}}\Rightarrow \text{yüzer}`, "Cismin yüzüp yüzmeyeceğini ve kaldırma kuvvetinin kaynağını açıklarken.", "Yüzen ve askıdaki cisimde F_k = G");
+  P("9", "u4/k2", "Sıcaklık ölçekleri", r`\frac{C}{100}=\frac{F-32}{180}=\frac{K-273}{100}`, "Celsius, Fahrenheit ve Kelvin arasında dönüşüm yaparken.", "T(K) = t(°C) + 273");
+  P("9", "u4/k7", "Isı iletim hızı", r`\frac{Q}{t}=\frac{k\cdot A\cdot\Delta T}{d}`, "Yalıtım, duvar kalınlığı ve iletim hızı sorularında.", "k: iletim katsayısı · A: alan · d: kalınlık");
   // 10
   P("10", "u1/k1", "Sabit hızlı hareket", r`x=v\cdot t`, "Hızı değişmeyen hareketlerde yol, hız ve süre ilişkisinde.", "Konum–zaman grafiğinin eğimi hızı verir");
   P("10", "u1/k2", "Bağıl hız", r`\vec v_{AB}=\vec v_A-\vec v_B`, "Bir cismin hareketini başka bir hareketli gözlemciye göre incelerken (karşılaşma, yetişme).", "v_AB: A'nın B'ye göre hızı");
@@ -159,6 +172,8 @@
   K("9", "u1/k5", "Orbital doluluk sırası (Aufbau)", r`1s\ 2s\ 2p\ 3s\ 3p\ 4s\ 3d\ 4p\ 5s\ 4d\ 5p`, "Elektron dizilimini yazarken.", "s en çok 2, p 6, d 10 elektron alır");
   K("9", "u1/k6", "Periyot ve grup", r`\text{periyot}=\text{en büyük baş kuantum sayısı}\qquad \text{A grubu}=\text{değerlik elektron sayısı}`, "Elektron diziliminden elementin periyodik tablodaki yerini bulurken.", "");
   K("9", "u2/k5", "Elektronegatiflik farkı", r`\Delta EN=|EN_A-EN_B|`, "Bağın apolar, polar kovalent ya da iyonik olduğunu tahmin ederken.", "ΔEN = 0 apolar; büyüdükçe polarlık artar");
+  K("9", "u1/k4", "Orbital enerjisi ve düzey kapasitesi", r`n+\ell \text{ küçük olan önce dolar}\qquad \text{orbital}=n^2\qquad e^-_{max}=2n^2`, "Orbitalleri enerji sırasına dizerken ve bir düzeyin alabileceği elektron sayısını bulurken.", "s: ℓ = 0 · p: 1 · d: 2 · f: 3");
+  K("9", "u3/k2", "Atom ekonomisi", r`\text{Atom ekonomisi}=\frac{\text{istenen ürünün kütlesi}}{\text{tüm ürünlerin kütlesi}}\cdot 100`, "Bir sentezin ne kadar atık oluşturduğunu (yeşil kimya) değerlendirirken.", "Yüzde değer yüksekse atık azdır");
   // 10
   K("10", "u1/k3", "Mol kavramı", r`n=\frac{m}{M_A}=\frac{N}{N_A}=\frac{V}{22{,}4}`, "Kütle, tanecik sayısı ve gaz hacmi arasında geçiş yaparken.", "M_A: mol kütlesi; N_A = 6,02·10²³; V: NŞA'da litre");
   K("10", "u1/k5", "Yüzde verim", r`\%\,\text{verim}=\frac{\text{gerçek verim}}{\text{teorik verim}}\times 100`, "Tepkimede beklenen ve elde edilen ürün miktarını karşılaştırırken.", "");

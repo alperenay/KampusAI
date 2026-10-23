@@ -19,7 +19,7 @@ App.data.content["9/ingilizce"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "T1.1",
+    "code": "ENG.9.1.G1",
     "title": {
      "tr": "Can (yetenek, olasılık, fırsat) ve to be ile tanıtım",
      "en": "Can (ability, possibility, opportunity) and 'to be' for introductions"
@@ -50,7 +50,7 @@ App.data.content["9/ingilizce"] = [
    },
    {
     "id": "k2",
-    "code": "T1.2",
+    "code": "ENG.9.1.V1–P1",
     "title": {
      "tr": "Kelime, telaffuz, sosyal dil ve beceriler (Theme 1)",
      "en": "Vocabulary, pronunciation, social language and skills (Theme 1)"
@@ -74,6 +74,32 @@ App.data.content["9/ingilizce"] = [
       "Let me introduce myself. / This is … from …"
      ]
     }
+   },
+   {
+    "id": "k3",
+    "code": "ENG.9.1.R1–W7",
+    "title": {
+     "tr": "Okuma–yazma uygulaması ve performans görevi (Theme 1)",
+     "en": "Reading–writing practice and performance task (Theme 1)"
+    },
+    "content": {
+     "anlatim": "# Reading: An International Student in Ankara\n\n*Hi! I'm Aiko and I'm from Japan. I'm a student at an international school in Ankara. My classmates are from different countries: Lucas is Brazilian, Dina is Kazakh and Omar is from Egypt. We can all speak English, and I can speak a little Turkish now. On weekends, we can visit many places in Türkiye. Last month we went to Anıtkabir, and next week we can take a boat ride on the Bosphorus in İstanbul. My favourite day is 29 October, Republic Day. The streets are full of flags and everyone is very happy!*\n\n## Okuma Stratejisi\n\n1. **Before reading:** Başlığa ve ilk cümleye bak, konuyu tahmin et.\n2. **Skimming:** Metne hızlıca göz gezdir, ana fikri bul.\n3. **Scanning:** Sorulardaki anahtar kelimeleri (isim, sayı, yer) metinde ara.\n4. **After reading:** Tahminini kontrol et; bilmediğin kelimelerin anlamını **bağlamdan** çıkar.\n\n# Writing Model\n\n**Topic sentence:** *Türkiye is a country with a rich history and beautiful places.*\n**Supporting details:** *Its capital is Ankara and people speak Turkish. Tourists can visit Cappadocia, Ephesus and Topkapı Palace. They can also take a boat ride in İstanbul.*\n**Conclusion:** *Türkiye is a wonderful country to visit!*\n\n# Performance Task\n\nBir sınıf arkadaşınla **mülakat** yap: *Where are you from? What is your capital famous for? What can tourists do there? What is your favourite national day?* Cevapları kullanarak kendi ülkeni ya da hayalî bir ülkeyi tanıtan **1 dakikalık bir self-recording** hazırla.",
+     "ornekler": [
+      {
+       "soru": "Where is Aiko from, and what languages can she speak?",
+       "cozum": "She is from **Japan**. She can speak **English** (and Japanese) and **a little Turkish**."
+      },
+      {
+       "soru": "Find the nationality words in the text and write the country for each.",
+       "cozum": "**Brazilian** → Brazil, **Kazakh** → Kazakhstan, (Omar is from) **Egypt** → Egyptian. Nationality adjectives start with a **capital letter** in English."
+      }
+     ],
+     "ozet": [
+      "Ülke tanıtım paragrafı: topic sentence + supporting details + conclusion.",
+      "Milliyet ve dil adları büyük harfle yazılır (Turkish, Brazilian).",
+      "can → olasılık/fırsat: Tourists can visit …"
+     ]
+    }
    }
   ]
  },
@@ -86,7 +112,7 @@ App.data.content["9/ingilizce"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "T2.1",
+    "code": "ENG.9.2.G1",
     "title": {
      "tr": "Simple Present Tense: rutinler ve alışkanlıklar",
      "en": "Simple Present Tense: routines and habits"
@@ -118,7 +144,7 @@ App.data.content["9/ingilizce"] = [
    },
    {
     "id": "k2",
-    "code": "T2.2",
+    "code": "ENG.9.2.V1–P1",
     "title": {
      "tr": "Kelime, telaffuz, sosyal dil ve beceriler (Theme 2)",
      "en": "Vocabulary, pronunciation, social language and skills (Theme 2)"
@@ -142,6 +168,32 @@ App.data.content["9/ingilizce"] = [
       "Hit the books! · I call it a day! · Bright and early!"
      ]
     }
+   },
+   {
+    "id": "k3",
+    "code": "ENG.9.2.R1–W7",
+    "title": {
+     "tr": "Okuma–yazma uygulaması ve performans görevi (Theme 2)",
+     "en": "Reading–writing practice and performance task (Theme 2)"
+    },
+    "content": {
+     "anlatim": "# Reading: Ece's Study Routine\n\n*Ece is a ninth grader in İzmir. She always wakes up at 6.30 and takes the bus to school. She attends classes until 3.30. After school, she has a short break and then she hits the books. She usually plans her week on Sundays. She takes notes carefully in class and highlights important points. She rarely studies late at night because she needs to sleep well. On Fridays, she plays volleyball with her friends. \"Work hard, play later!\" is her favourite saying.*\n\n## Okuma Stratejisi\n\n1. **Before reading:** Başlığa ve ilk cümleye bak, konuyu tahmin et.\n2. **Skimming:** Metne hızlıca göz gezdir, ana fikri bul.\n3. **Scanning:** Sorulardaki anahtar kelimeleri (isim, sayı, yer) metinde ara.\n4. **After reading:** Tahminini kontrol et; bilmediğin kelimelerin anlamını **bağlamdan** çıkar.\n\n# Writing Model\n\n*I usually wake up at 7.00. I never skip breakfast. I take the bus to school and I attend classes until 3.30. After school, I sometimes play football, but I always do my homework first. I study carefully and I take notes neatly. On weekends, I often help my family with household chores.*\n\n# Performance Task\n\nBir arkadaşının günlük ve ders çalışma rutinini sor (*What time do you…? How often do you…?*). Notlarını kullanarak arkadaşını **üçüncü tekil şahısla** anlatan bir paragraf yaz (*She gets up… He usually…*) ve sınıfa sun.",
+     "ornekler": [
+      {
+       "soru": "How often does Ece study late at night? Why?",
+       "cozum": "She **rarely** studies late at night because she **needs to sleep well**."
+      },
+      {
+       "soru": "Find two adverbs of frequency and one adverb of manner in the text.",
+       "cozum": "Frequency: **always, usually, rarely**. Manner: **carefully** (takes notes carefully)."
+      }
+     ],
+     "ozet": [
+      "Simple Present: rutinler; he/she/it → fiil + -s (wakes, takes, studies).",
+      "Sıklık zarfları: always > usually > often > sometimes > rarely > never; genellikle fiilden önce.",
+      "Adverbs of manner: carefully, neatly, quickly."
+     ]
+    }
    }
   ]
  },
@@ -154,7 +206,7 @@ App.data.content["9/ingilizce"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "T3.1",
+    "code": "ENG.9.3.G1",
     "title": {
      "tr": "Görünüm ve kişilik tanımlama; too & enough",
      "en": "Describing appearance and personality; too & enough"
@@ -184,7 +236,7 @@ App.data.content["9/ingilizce"] = [
    },
    {
     "id": "k2",
-    "code": "T3.2",
+    "code": "ENG.9.3.V1–P1",
     "title": {
      "tr": "Kelime, telaffuz ve beceriler (Theme 3)",
      "en": "Vocabulary, pronunciation and skills (Theme 3)"
@@ -207,6 +259,32 @@ App.data.content["9/ingilizce"] = [
       "i: /iː/ – /ɪ/ – /aɪ/."
      ]
     }
+   },
+   {
+    "id": "k3",
+    "code": "ENG.9.3.R1–W7",
+    "title": {
+     "tr": "Okuma–yazma uygulaması ve performans görevi (Theme 3)",
+     "en": "Reading–writing practice and performance task (Theme 3)"
+    },
+    "content": {
+     "anlatim": "# Reading: Who Is Mr Kaya?\n\n*Mr Kaya is my neighbour. He is middle-aged and well-built. He has short, curly grey hair and a friendly smile. He looks serious at first, but he is very kind and generous. He helps the old people in our street and he is always polite to everyone. He is not shy; he is outgoing and he loves telling funny stories. Some people say he is too talkative, but I think he is cheerful enough to make everyone happy!*\n\n## Okuma Stratejisi\n\n1. **Before reading:** Başlığa ve ilk cümleye bak, konuyu tahmin et.\n2. **Skimming:** Metne hızlıca göz gezdir, ana fikri bul.\n3. **Scanning:** Sorulardaki anahtar kelimeleri (isim, sayı, yer) metinde ara.\n4. **After reading:** Tahminini kontrol et; bilmediğin kelimelerin anlamını **bağlamdan** çıkar.\n\n# Writing Model\n\n*My best friend is Zeynep. She is tall and slim. She has long, straight brown hair and big green eyes. She is clever and confident, but sometimes she is a bit forgetful. She is never rude. She is honest and brave enough to tell the truth all the time.*\n\n# Performance Task\n\nAilenden, okulundan ya da tanıdığın birinin **fiziksel görünümünü ve kişiliğini** anlatan bir poster ya da **fact file** hazırla; adını yazma. Sınıfta sun, arkadaşların kişinin kim olduğunu tahmin etsin (*Who is he/she?*).",
+     "ornekler": [
+      {
+       "soru": "What does Mr Kaya look like?",
+       "cozum": "He is **middle-aged** and **well-built**; he has **short, curly grey hair** and a **friendly smile**."
+      },
+      {
+       "soru": "What kind of person is he? Find four personality adjectives.",
+       "cozum": "He is **kind, generous, polite, outgoing, cheerful** (also *talkative*)."
+      }
+     ],
+     "ozet": [
+      "What does she look like? → görünüm; What kind of person is she? → kişilik.",
+      "too = gereğinden fazla (too talkative); enough = yeterince (cheerful enough).",
+      "Sıfat sırası: görünüm (tall, slim) → saç/göz → kişilik."
+     ]
+    }
    }
   ]
  },
@@ -219,7 +297,7 @@ App.data.content["9/ingilizce"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "T4.1",
+    "code": "ENG.9.4.G1",
     "title": {
      "tr": "Meslekler ve iş tarifleri; prepositions of place",
      "en": "Jobs and work descriptions; prepositions of place"
@@ -245,7 +323,7 @@ App.data.content["9/ingilizce"] = [
    },
    {
     "id": "k2",
-    "code": "T4.2",
+    "code": "ENG.9.4.V1–P1",
     "title": {
      "tr": "Kelime, telaffuz ve beceriler (Theme 4)",
      "en": "Vocabulary, pronunciation and skills (Theme 4)"
@@ -268,6 +346,32 @@ App.data.content["9/ingilizce"] = [
       "-ing sesi /ŋ/."
      ]
     }
+   },
+   {
+    "id": "k3",
+    "code": "ENG.9.4.R1–W7",
+    "title": {
+     "tr": "Okuma–yazma uygulaması ve performans görevi (Theme 4)",
+     "en": "Reading–writing practice and performance task (Theme 4)"
+    },
+    "content": {
+     "anlatim": "# Reading: A Family of Professionals\n\n*My name is Kerem and my family is very busy. My father is an architect. He designs buildings and he works at an architecture office in the city centre. My mother is a pharmacist. She works at a pharmacy and she serves customers every day. My uncle is a journalist; he reports news for a TV channel. My cousin Elif is a computer programmer. She develops software at an IT company. And me? I want to be a scientist and work in a science lab!*\n\n## Okuma Stratejisi\n\n1. **Before reading:** Başlığa ve ilk cümleye bak, konuyu tahmin et.\n2. **Skimming:** Metne hızlıca göz gezdir, ana fikri bul.\n3. **Scanning:** Sorulardaki anahtar kelimeleri (isim, sayı, yer) metinde ara.\n4. **After reading:** Tahminini kontrol et; bilmediğin kelimelerin anlamını **bağlamdan** çıkar.\n\n# Writing Model\n\n*My aunt is a psychologist. She works at a clinic. She listens to people and helps them with their problems. She starts work at 9.00 and finishes at 5.00. She doesn't work on Sundays. She loves her job because she helps people every day.*\n\n# Performance Task\n\nAilenden bir kişiyle (ya da bir arkadaşının ailesinden biriyle) **mesleği, iş yeri ve iş rutini** hakkında **mülakat** yap. Sonuçları bir poster ya da kısa film olarak hazırla ve sınıfa sun.",
+     "ornekler": [
+      {
+       "soru": "What does Kerem's mother do? Where does she work?",
+       "cozum": "She is a **pharmacist**. She **serves customers** at a **pharmacy**."
+      },
+      {
+       "soru": "Match the people with their workplaces: father, uncle, Elif.",
+       "cozum": "Father → **architecture office**, uncle → **TV channel** (news agency), Elif → **IT company**."
+      }
+     ],
+     "ozet": [
+      "Meslek sormak: What does he/she do? / What's his/her job?",
+      "Simple Present olumsuz/soru: She doesn't work… / Does he design…?",
+      "Prepositions of place: at a bank, in an office, on a social media platform."
+     ]
+    }
    }
   ]
  },
@@ -280,7 +384,7 @@ App.data.content["9/ingilizce"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "T5.1",
+    "code": "ENG.9.5.G1",
     "title": {
      "tr": "Present Progressive ve possessive adjectives",
      "en": "Present Progressive and possessive adjectives"
@@ -311,7 +415,7 @@ App.data.content["9/ingilizce"] = [
    },
    {
     "id": "k2",
-    "code": "T5.2",
+    "code": "ENG.9.5.V1–P1",
     "title": {
      "tr": "Kelime, telaffuz ve beceriler (Theme 5)",
      "en": "Vocabulary, pronunciation and skills (Theme 5)"
@@ -322,12 +426,42 @@ App.data.content["9/ingilizce"] = [
       {
        "soru": "\"cottage\" ile \"block of flats\" arasındaki fark nedir?",
        "cozum": "**Cottage:** genellikle kırsalda küçük, müstakil ev. **Block of flats:** çok daireli apartman binası."
+      },
+      {
+       "soru": "“I'm making my bed in my bedroom now.” cümlesindeki aktivite ve oda kelimelerini bulunuz; *sh* sesini içeren iki ev kelimesi yazınız.",
+       "cozum": "Aktivite: **make the bed**; oda: **bedroom**. *sh* /ʃ/ sesi: **shower**, **wash** (the dishes), **dishwasher**."
       }
      ],
      "ozet": [
       "Houses: block of flats, villa, cottage, detached house.",
       "bathtub → bathroom · oven/fridge → kitchen · wardrobe/pillow → bedroom.",
       "sh: /ʃ/."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "ENG.9.5.R1–W7",
+    "title": {
+     "tr": "Okuma–yazma uygulaması ve performans görevi (Theme 5)",
+     "en": "Reading–writing practice and performance task (Theme 5)"
+    },
+    "content": {
+     "anlatim": "# Reading: Home Sweet Home\n\n*We live in a semi-detached house in a quiet neighbourhood. Our house has three bedrooms, a living room, a kitchen and a small garden. My favourite room is the living room because it is spacious and bright. Right now, my mother is cooking dinner in the kitchen, my father is watering the plants in the garden and my little brother is watching cartoons on the sofa. And me? I'm doing my homework at my desk in my bedroom. Home sweet home!*\n\n## Okuma Stratejisi\n\n1. **Before reading:** Başlığa ve ilk cümleye bak, konuyu tahmin et.\n2. **Skimming:** Metne hızlıca göz gezdir, ana fikri bul.\n3. **Scanning:** Sorulardaki anahtar kelimeleri (isim, sayı, yer) metinde ara.\n4. **After reading:** Tahminini kontrol et; bilmediğin kelimelerin anlamını **bağlamdan** çıkar.\n\n# Writing Model\n\n*I live in a flat on the fourth floor. Our flat has two bedrooms, a living room and a balcony. In my bedroom there is a bed, a wardrobe and a desk. At the moment, I'm sitting on my bed and I'm reading a book. My sister is tidying up her room.*\n\n# Performance Task\n\nBir sınıf arkadaşınla **ev türleri, odalar, mobilyalar ve evdeki aktiviteler** hakkında konuş. Evini (ya da hayalindeki evi) tanıtan ve şu anda evde kimin ne yaptığını anlatan **bir self-recording** hazırla.",
+     "ornekler": [
+      {
+       "soru": "What type of house does the writer live in, and what is their favourite room?",
+       "cozum": "A **semi-detached house**. The favourite room is the **living room** because it is **spacious and bright**."
+      },
+      {
+       "soru": "What is the writer's father doing at the moment? Which tense is used?",
+       "cozum": "He **is watering the plants** in the garden. **Present Progressive** (am/is/are + verb-ing) is used for actions **happening now**."
+      }
+     ],
+     "ozet": [
+      "Present Progressive: şu an olan eylemler (I'm doing, she is cooking).",
+      "Possessive adjectives: my, your, his, her, its, our, their.",
+      "Zaman ifadeleri: now, at the moment, at present."
      ]
     }
    }
@@ -342,7 +476,7 @@ App.data.content["9/ingilizce"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "T6.1",
+    "code": "ENG.9.6.G1",
     "title": {
      "tr": "Simple Present vs Present Progressive; \"or\" ile seçenek sorma",
      "en": "Simple Present vs Present Progressive; asking about options with \"or\""
@@ -368,7 +502,7 @@ App.data.content["9/ingilizce"] = [
    },
    {
     "id": "k2",
-    "code": "T6.2",
+    "code": "ENG.9.6.V1–P1",
     "title": {
      "tr": "Kelime, telaffuz ve beceriler (Theme 6)",
      "en": "Vocabulary, pronunciation and skills (Theme 6)"
@@ -392,6 +526,32 @@ App.data.content["9/ingilizce"] = [
       "GastroAntep Culture Route Festival."
      ]
     }
+   },
+   {
+    "id": "k3",
+    "code": "ENG.9.6.R1–W7",
+    "title": {
+     "tr": "Okuma–yazma uygulaması ve performans görevi (Theme 6)",
+     "en": "Reading–writing practice and performance task (Theme 6)"
+    },
+    "content": {
+     "anlatim": "# Reading: Gaziantep Food Festival\n\n*Every year, Gaziantep hosts an international food festival. Chefs from many countries come and cook their local dishes. This year, I'm at the festival with my family. A chef from Morocco is making couscous, and a Japanese chef is cooking noodles. Local cooks always serve delicious kebabs and baklava. \"Is this dish spicy or sweet?\" I ask a chef. \"It's a bit spicy,\" he says. Right now, people are tasting dishes, taking photos and listening to music. What a great festival!*\n\n## Okuma Stratejisi\n\n1. **Before reading:** Başlığa ve ilk cümleye bak, konuyu tahmin et.\n2. **Skimming:** Metne hızlıca göz gezdir, ana fikri bul.\n3. **Scanning:** Sorulardaki anahtar kelimeleri (isim, sayı, yer) metinde ara.\n4. **After reading:** Tahminini kontrol et; bilmediğin kelimelerin anlamını **bağlamdan** çıkar.\n\n# Writing Model\n\n*Our city has a local festival every summer. People usually sell street food and handmade souvenirs. Today, I'm at the festival. A cook is preparing gözleme and children are dancing in the square. Is the festival local or international? It's local, but many tourists visit it every year.*\n\n# Performance Task\n\nBir **yemek festivali programı** tasarla (yerel ve uluslararası yemekler, saatler, etkinlikler) ve sınıfta “festival” düzenle: bazı öğrenciler aşçı/sunucu, bazıları ziyaretçi olsun; *Is it local or international? What are the ingredients?* gibi sorular sorun.",
+     "ornekler": [
+      {
+       "soru": "Which international dishes are mentioned? Which local food do cooks always serve?",
+       "cozum": "**Couscous** (Morocco) and **noodles** (Japan). Local cooks always serve **kebabs and baklava**."
+      },
+      {
+       "soru": "Find one sentence for a routine and one for an action happening now.",
+       "cozum": "Routine (Simple Present): *Every year, Gaziantep **hosts** an international food festival.* Now (Present Progressive): *Right now, people **are tasting** dishes.*"
+      }
+     ],
+     "ozet": [
+      "Simple Present: rutin/gerçek (Every year, the city hosts…); Present Progressive: şu an (A chef is making…).",
+      "Seçenek sorma: Is it spicy or sweet? / Is this a local or an international festival?",
+      "Tat sıfatları: spicy, salty, sweet, sour, bitter, juicy, creamy."
+     ]
+    }
    }
   ]
  },
@@ -404,7 +564,7 @@ App.data.content["9/ingilizce"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "T7.1",
+    "code": "ENG.9.7.G1",
     "title": {
      "tr": "was / were, there was / there were ve should",
      "en": "was / were, there was / there were and should"
@@ -434,7 +594,7 @@ App.data.content["9/ingilizce"] = [
    },
    {
     "id": "k2",
-    "code": "T7.2",
+    "code": "ENG.9.7.V1–P1",
     "title": {
      "tr": "Kelime, telaffuz ve beceriler (Theme 7)",
      "en": "Vocabulary, pronunciation and skills (Theme 7)"
@@ -445,12 +605,42 @@ App.data.content["9/ingilizce"] = [
       {
        "soru": "\"endangered\" ve \"awareness\" kelimelerini bir cümlede kullanın.",
        "cozum": "Örnek: *We should raise **awareness** about **endangered** animals like the panda.*"
+      },
+      {
+       "soru": "*First, …  Second, …  Finally, …* kalıbıyla yaban hayatını korumanın üç yolunu yazınız.",
+       "cozum": "*First, we should protect animal habitats like forests and oceans. Second, we should stop illegal hunting. Finally, we should reduce plastic pollution.* — Her madde **should** ile öneri bildirir; sıralama sözcükleri metni düzenler."
       }
      ],
      "ozet": [
       "Habitats: grasslands, oceans, deserts, forests.",
       "endangered, survive, shelter, illegal, protect, awareness.",
       "ee: /iː/ · ea: /ɪə/ · x: /ks/."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "ENG.9.7.R1–W7",
+    "title": {
+     "tr": "Okuma–yazma uygulaması ve performans görevi (Theme 7)",
+     "en": "Reading–writing practice and performance task (Theme 7)"
+    },
+    "content": {
+     "anlatim": "# Reading: The Mediterranean Monk Seal\n\n*The Mediterranean monk seal is one of the most endangered sea animals in the world. Fifty years ago, there were monk seals along many coasts of the Mediterranean, but now there are only a few hundred. Their habitats were quiet caves near the sea, but tourism and fishing nets threaten them today. Some seals were caught in nets by accident. What should we do? We should protect their caves, we shouldn't leave plastic on the beaches and we should report any seal we see to the authorities. Every little bit helps!*\n\n## Okuma Stratejisi\n\n1. **Before reading:** Başlığa ve ilk cümleye bak, konuyu tahmin et.\n2. **Skimming:** Metne hızlıca göz gezdir, ana fikri bul.\n3. **Scanning:** Sorulardaki anahtar kelimeleri (isim, sayı, yer) metinde ara.\n4. **After reading:** Tahminini kontrol et; bilmediğin kelimelerin anlamını **bağlamdan** çıkar.\n\n# Writing Model\n\n*The sea turtle is an endangered animal. In the past, there were many sea turtles on Türkiye's beaches, like İztuzu Beach. Their main habitat was the sea and sandy beaches. Today, pollution and bright lights threaten them. We should keep beaches clean and we shouldn't disturb their nests.*\n\n# Performance Task\n\nNesli tükenmekte olan bir hayvan hakkında arkadaşlarınla **mülakat** yap (geçmişte ve bugün yaşam alanı, tehditler, koruma yolları). Bir **belgesel film metni** yaz ve sınıfta “film gösterimi” düzenle; arkadaşların koruyucu, gönüllü ya da habitata zarar veren rollerini canlandırsın.",
+     "ornekler": [
+      {
+       "soru": "How many monk seals were there fifty years ago compared with today?",
+       "cozum": "Fifty years ago **there were** monk seals along many coasts; **now there are only a few hundred**."
+      },
+      {
+       "soru": "Write two pieces of advice from the text using *should/shouldn't*.",
+       "cozum": "*We **should** protect their caves.* / *We **shouldn't** leave plastic on the beaches.* (also: *We should report any seal we see.*)"
+      }
+     ],
+     "ozet": [
+      "was/were + there was/there were: geçmişteki durum (There were 700,000 leopards…).",
+      "should / shouldn't: öneri ve tavsiye.",
+      "Habitat, endangered, threaten, protect, survive."
      ]
     }
    }
@@ -465,7 +655,7 @@ App.data.content["9/ingilizce"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "T8.1",
+    "code": "ENG.9.8.G1",
     "title": {
      "tr": "Simple Present ile film anlatımı ve Simple Future (will)",
      "en": "Narrating films with Simple Present; Simple Future (will)"
@@ -495,7 +685,7 @@ App.data.content["9/ingilizce"] = [
    },
    {
     "id": "k2",
-    "code": "T8.2",
+    "code": "ENG.9.8.V1–P1",
     "title": {
      "tr": "Kelime, telaffuz ve beceriler (Theme 8)",
      "en": "Vocabulary, pronunciation and skills (Theme 8)"
@@ -516,6 +706,32 @@ App.data.content["9/ingilizce"] = [
       "Genres: comedy, action, cartoon, drama, science fiction.",
       "Futuristic: space adventure, robots, alien invasion.",
       "/əʊ/: o, oe, ow, oa, ou, eau."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "ENG.9.8.R1–W7",
+    "title": {
+     "tr": "Okuma–yazma uygulaması ve performans görevi (Theme 8)",
+     "en": "Reading–writing practice and performance task (Theme 8)"
+    },
+    "content": {
+     "anlatim": "# Reading: Life in 2070: A Film Review\n\n*\"Life in 2070\" is a science fiction film about the future. In the film, robots help people at home and at school, and cars fly over the cities. A young scientist invents a time machine and travels to the past. The film is exciting and optimistic. I think people will live on the Moon in the future, but I don't think cars will fly very soon. What will happen in 2070? Nobody knows, but this film is a breath of fresh air!*\n\n## Okuma Stratejisi\n\n1. **Before reading:** Başlığa ve ilk cümleye bak, konuyu tahmin et.\n2. **Skimming:** Metne hızlıca göz gezdir, ana fikri bul.\n3. **Scanning:** Sorulardaki anahtar kelimeleri (isim, sayı, yer) metinde ara.\n4. **After reading:** Tahminini kontrol et; bilmediğin kelimelerin anlamını **bağlamdan** çıkar.\n\n# Writing Model\n\n*My favourite film is an adventure film. In the film, a group of friends explore a mysterious island. The film is exciting and funny. I think technology will change our lives in the future. Robots will do our homework… maybe! Students will learn with virtual reality.*\n\n# Performance Task\n\nGeleceği anlatan **fütüristik bir film senaryosu** yaz (karakterler, mekân, teknoloji, tahminler). Sınıfta bir “film gösterimi” düzenle; arkadaşların oyuncu ve yönetmen rollerini üstlensin.",
+     "ornekler": [
+      {
+       "soru": "What does the young scientist invent? What genre is the film?",
+       "cozum": "A **time machine**. It is a **science fiction** film."
+      },
+      {
+       "soru": "Find one prediction the writer believes and one they don't believe.",
+       "cozum": "Believes: *People **will live** on the Moon in the future.* Doesn't believe: *I don't think cars **will fly** very soon.*"
+      }
+     ],
+     "ozet": [
+      "Simple Future (will): tahmin, inanç, beklenti — Robots will help people.",
+      "I think … will … / I don't think … will …",
+      "Film anlatırken Simple Present: In the film, a scientist invents…"
      ]
     }
    }
@@ -567,11 +783,16 @@ App.data.content["9/ingilizce"] = [
       {
        "soru": "\"Present Progressive\" hangi temada ve hangi konu ile birlikte işlenir?",
        "cozum": "**Theme 5 – Life in the House & Neighbourhood**; evdeki o anki aktiviteleri anlatmak için (ve Theme 6'da Simple Present ile karşılaştırmalı olarak)."
+      },
+      {
+       "soru": "“Tourists can visit the Blue Mosque. Robots will help people in the future. Leopards were in danger 50 years ago.” cümlelerinin hangi temalara ve dilbilgisi yapılarına ait olduğunu belirleyiniz.",
+       "cozum": "1) **Theme 1** – *can* (possibility/opportunity). 2) **Theme 8** – *will* (Simple Future, prediction). 3) **Theme 7** – *was/were* (Simple Past of *to be*)."
       }
      ],
      "ozet": [
       "8 tema: School, Classroom, Personal, Family, House, City & Country, World & Nature, Universe & Future.",
-      "Her temada: grammar + vocabulary + pronunciation + 4 beceri + E-Portfolio."
+      "Her temada: grammar + vocabulary + pronunciation + 4 beceri + E-Portfolio.",
+      "Kontrol için her temanın dilbilgisi yapısıyla birer cümle kur ve e-portfolyona ekle."
      ]
     }
    }
