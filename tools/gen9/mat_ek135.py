@@ -62,7 +62,7 @@ $$\neg(\forall x,\ P(x)) \equiv \exists x,\ \neg P(x) \qquad \neg(\exists x,\ P(
 |---|---|
 | “Listedeki **tüm** sayılar pozitif mi?” | Döngü; negatif bir sayı **bulununca dur** ve “hayır” yaz ($\forall$'ın değili $\exists$) |
 | “Listede **en az bir** çift sayı var mı?” | Döngü; ilk çift sayıda **dur** ve “evet” yaz |
-| Şifre: “en az 8 karakter **ve** en az bir rakam” | Koşul: $(\text{uzunluk} \ge 8) \land (\exists$ rakam$)$ |
+| Şifre: “en az 8 karakter **ve** en az bir rakam” | Koşul: $(\text{uzunluk} \ge 8) \land (\exists\ \text{rakam})$ |
 
 - **De Morgan kuralları:** $\neg(p \land q) \equiv \neg p \lor \neg q$ ve $\neg(p \lor q) \equiv \neg p \land \neg q$. Bir koşulun “değilse” kolunu yazarken kullanılır.
 """,

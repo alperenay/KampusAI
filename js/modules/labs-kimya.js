@@ -402,7 +402,7 @@
         note: T("Uçucu olmayan bir madde çözünürse çözücünün buhar basıncı düşer: kaynama noktası yükselir, donma noktası alçalır. Etki maddenin türüne değil, çözeltideki tanecik sayısına bağlıdır; bu yüzden 1 mol CaCl₂, 1 mol şekerden üç kat etkilidir.",
           "Dissolved particles raise the boiling point and lower the freezing point; only their number matters.") };
     }
-  }, ["10/kimya/u3/k6"]);
+  }, ["10/kimya/u3/k6", "9/kimya/u2/k10"]);
 
   /* ======================= 11. SINIF ======================= */
 
@@ -547,7 +547,7 @@
         note: T("pH = −log[H⁺], 25 °C'de pH + pOH = 14. Kuvvetli asitler tamamen iyonlaşır; zayıf asitler kısmen (Ka küçük), bu yüzden aynı derişimde pH'ları daha yüksektir. Her 1 birim pH farkı [H⁺]'de 10 kat fark demektir.",
           "pH = −log[H⁺], pH + pOH = 14. Strong acids ionise fully, weak ones partly.") };
     }
-  }, ["11/kimya/u2/k3", "11/kimya/u2/k4"]);
+  }, ["11/kimya/u2/k3", "11/kimya/u2/k4", "9/kimya/u1/k2"]);
 
   add("titrasyon", {
     title: () => T("Asit–baz titrasyonu", "Acid–base titration"), icon: "chart", tags: "nötrleşme dönüm noktası eşdeğerlik tampon indikatör",
