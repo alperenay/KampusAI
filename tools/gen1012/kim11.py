@@ -297,6 +297,8 @@ O("k2", "3.1.3", "Mikroplastikler ve nanoplastikler", "Microplastics and nanopla
 from _ek134 import uygula  # noqa: E402
 uygula(units, "kim11_ek134")
 
+from _ek136 import uygula136; uygula136(units, "kim11")
+
 write("kim-11.js", "11/kimya", "11. Sınıf Kimya — konu anlatım notları",
       "kullanıcının verdiği \"11. Sınıf Kimya Konu Anlatım Notları\" (3 tema).",
       units, "Kazanım kodları kaynaktaki bölüm numaralarıdır. \"Endertermik\" yazımı endotermik olarak düzeltildi. Asit-baz ve çözünürlük bölümleri ders kitabı düzeyinde genişletildi (Ka, tampon, titrasyon hesabı, Kçç–çözünürlük ilişkisi); hidrojen türleri tablosu ve çözümlü örnekler eklendi.")

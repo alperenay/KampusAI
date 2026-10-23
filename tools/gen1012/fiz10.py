@@ -478,6 +478,8 @@ Yer kabuğundaki kırılmalarla oluşan **sismik dalgalar**dır.
 ]),
 ]
 
+from _ek136 import uygula136; uygula136(units, "fiz10")
+
 write("fiz-10.js", "10/fizik", "10. Sınıf Fizik — kapsamlı konu anlatım notları",
       "kullanıcının verdiği \"10. Sınıf Fizik Ders Kitabı – Kapsamlı Konu Anlatım Notları\" (4 ünite).",
       units, "Kazanım kodları kaynaktaki bölüm numaralarıdır. Tablolar ve örnek soruların bir kısmı eklendi.")

@@ -482,6 +482,8 @@ O("k2", "U10.2", "Toplumsal normlar: be supposed to, be expected to, be allowed 
 ]),
 ]
 
+from _ek136 import uygula136; uygula136(units, "ing11")
+
 write("ing-11.js", "11/ingilizce", "11. Sınıf İngilizce — konu anlatım notları",
       "MEB 11. sınıf İngilizce öğretim programının 10 ünitesi (Future Jobs … Values and Norms).",
       units, "1.34.0'da eklendi: her ünite için iki kazanım (dil işlevi + dil bilgisi), YDT tarzı çözümlü örnekler.")

@@ -450,6 +450,8 @@ O("k2", "7.2", "Örnek ülkeler: Hollanda, Almanya, Mısır, Avustralya, Rusya, 
 ]),
 ]
 
+from _ek136 import uygula136; uygula136(units, "cog11")
+
 write("cog-11.js", "11/cografya", "11. Sınıf Coğrafya — ayrıntılı ders notları",
       "kullanıcının verdiği \"11. Sınıf Coğrafya Ayrıntılı Ders Notları\" (7 ünite).",
       units, "Kazanım kodları kaynaktaki bölüm numaralarıdır. Küresel sıcaklık artışı güncel veriye göre düzeltildi (yaklaşık 1,1–1,3 °C; 2024'te yıllık 1,5 °C aşıldı); Türkiye projeksiyonu senaryoya bağlı verildi. Göl türleri, deniz yetki alanları ve enerji hatları tablolarla genişletildi.")

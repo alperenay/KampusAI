@@ -391,6 +391,8 @@ Teğet, değme noktasındaki yarıçapa **diktir**.
 from _ek134 import uygula  # noqa: E402
 uygula(units, "mat12_ek134")
 
+from _ek136 import uygula136; uygula136(units, "mat12")
+
 write("mat-12.js", "12/matematik", "12. Sınıf Matematik — detaylı konu anlatım notları",
       "kullanıcının verdiği \"Matematik 12 Detaylı Konu Anlatım Notları\" (7 ünite).",
       units, "Kazanım kodları kaynaktaki bölüm numaralarıdır. Düzeltme: üstel fonksiyonun grafiği y eksenini (0,1)'de keser, x eksenini hiç kesmez. Her konuya çözümlü örnekler, işlem tabloları ve uygulamalar eklendi.")

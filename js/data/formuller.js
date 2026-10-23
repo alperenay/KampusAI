@@ -45,6 +45,14 @@
   M("10", "t4/k1", "Parabolün tepe noktası", r`r=-\frac{b}{2a}\qquad k=f(r)\qquad f(x)=a(x-r)^2+k`, "Karesel fonksiyonun en büyük / en küçük değerini ve simetri eksenini bulurken.", "f(x) = ax² + bx + c");
   M("10", "t4/k1", "Diskriminant ve kökler", r`\Delta=b^2-4ac\qquad x_{1,2}=\frac{-b\mp\sqrt{\Delta}}{2a}`, "İkinci dereceden denklemi çözerken ya da parabolün x eksenini kaç noktada kestiğini bulurken.", "Δ > 0 iki kök, Δ = 0 çift kök, Δ < 0 gerçek kök yok");
   M("10", "t4/k1", "Kökler toplamı ve çarpımı", r`x_1+x_2=-\frac{b}{a}\qquad x_1\cdot x_2=\frac{c}{a}`, "Kökleri bulmadan köklerle ilgili ifadeleri hesaplarken.", "");
+  M("10", "t5/k1", "Permütasyon (sıralama)", r`n!=n\cdot(n-1)\cdots 1\qquad P(n,r)=\frac{n!}{(n-r)!}`, "Sıranın önemli olduğu sayma problemlerinde (şifre, dizilim, görev dağıtımı).", "0! = 1; özdeş elemanlı sıralamada n!/(n₁!·n₂!…)");
+  M("10", "t5/k1", "Kombinasyon (seçme)", r`C(n,r)=\binom{n}{r}=\frac{n!}{r!\,(n-r)!}`, "Sıranın önemli olmadığı seçimlerde (ekip, komite, grup).", "C(n,r) = C(n,n−r)");
+  M("10", "t6/k1", "İki nokta arası uzaklık", r`|AB|=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}`, "Koordinat düzleminde iki noktanın arasındaki uzaklığı bulurken.", "Pisagor bağıntısından gelir");
+  M("10", "t6/k1", "Orta nokta ve oranda bölen nokta", r`M\left(\frac{x_1+x_2}{2},\frac{y_1+y_2}{2}\right)\qquad C\left(\frac{n x_1+m x_2}{m+n},\frac{n y_1+m y_2}{m+n}\right)`, "Bir doğru parçasının orta noktasını ya da onu m:n oranında bölen noktayı bulurken.", "|AC| : |CB| = m : n");
+  M("10", "t6/k2", "Doğrunun eğimi ve denklemi", r`m=\tan\alpha=\frac{y_2-y_1}{x_2-x_1}\qquad y-y_1=m(x-x_1)`, "İki noktası ya da bir noktası ve eğimi bilinen doğrunun denklemini yazarken.", "ax + by + c = 0 ise m = −a/b");
+  M("10", "t6/k2", "Paralellik ve diklik", r`d_1\parallel d_2 \iff m_1=m_2\qquad d_1\perp d_2 \iff m_1\cdot m_2=-1`, "İki doğrunun birbirine göre durumunu belirlerken.", "");
+  M("10", "t7/k1", "Koşullu olasılık", r`P(A\mid B)=\frac{P(A\cap B)}{P(B)}\qquad P(A\cap B)=P(B)\,P(A\mid B)`, "Bir olayın gerçekleştiği bilindiğinde başka bir olayın olasılığını bulurken.", "Bağımsızlık: P(A∩B) = P(A)·P(B)");
+  M("10", "t7/k2", "Bayes teoremi", r`P(B_i\mid A)=\frac{P(B_i)\,P(A\mid B_i)}{\sum_j P(B_j)\,P(A\mid B_j)}`, "Gözlenen bir sonucun hangi nedenden kaynaklandığının olasılığını bulurken (tıbbi test, kalite kontrol).", "Payda: toplam olasılık");
   // 11. sınıf
   M("11", "u1/k1", "Doğrusal fonksiyon", r`f(x)=mx+n`, "Doğru orantılı ya da sabit hızla değişen nicelikleri modellerken.", "m: değişim oranı (eğim); n: başlangıç değeri");
   M("11", "u1/k2", "Ters orantı", r`y=\frac{k}{x}\qquad x\cdot y=k`, "Biri artarken diğeri aynı oranda azalan nicelikler için (işçi–gün, hız–zaman).", "k: orantı sabiti");
@@ -126,6 +134,7 @@
   P("10", "u4/k2", "Dalga hızı", r`v=\lambda\cdot f`, "Dalga boyu, frekans ve yayılma hızı ilişkisinde.", "λ: dalga boyu (m)");
   P("10", "u4/k4", "Gerilmiş ipte dalga hızı", r`v=\sqrt{\frac{F}{\mu}}`, "Yay ya da ipteki atmanın hızının gerilmeye bağlılığında.", "F: gerilme kuvveti; μ: birim uzunluğun kütlesi");
   P("10", "u4/k5", "Su dalgalarında kırılma", r`\frac{v_1}{v_2}=\frac{\lambda_1}{\lambda_2}=\frac{\sin i}{\sin r}`, "Su dalgası derin–sığ ortam geçişinde (frekans değişmez).", "");
+  P("10", "u4/k7", "Deprem merkezine uzaklık", r`\Delta t=\frac{d}{v_S}-\frac{d}{v_P}\;\Rightarrow\; d=\frac{\Delta t\cdot v_P\,v_S}{v_P-v_S}`, "Sismografta P ve S dalgalarının varış zaman farkından depremin uzaklığını bulurken.", "v_P ≈ 6 km/s, v_S ≈ 3,5 km/s");
   // 11
   P("11", "u1/k1", "Serbest düşme", r`v=g\,t\qquad h=\frac{1}{2}g\,t^2\qquad v^2=2gh`, "Hava direncinin ihmal edildiği, ilk hızsız düşmelerde.", "g ≈ 10 m/s²");
   P("11", "u1/k1", "Düşey yukarı atış", r`t_{\text{çıkış}}=\frac{v_0}{g}\qquad h_{\max}=\frac{v_0^2}{2g}`, "Yukarı atılan cismin çıkış süresi ve maksimum yüksekliğinde.", "");
@@ -187,6 +196,9 @@
   K("10", "u3/k5", "Kütlece yüzde ve ppm", r`\%=\frac{m_{\text{çözünen}}}{m_{\text{çözelti}}}\times 100\qquad \text{ppm}=\frac{m_{\text{çözünen}}}{m_{\text{çözelti}}}\times 10^6`, "Derişimi kütle oranı olarak ifade ederken (çok seyreltik çözeltilerde ppm).", "");
   K("10", "u3/k5", "Seyreltme", r`M_1V_1=M_2V_2`, "Çözeltiye su eklenip derişimi düşürülürken.", "");
   K("10", "u3/k6", "Kaynama noktası yükselmesi", r`\Delta T_k=K_k\cdot m\cdot i\qquad m=\frac{n_{\text{çözünen}}}{\text{kg çözücü}}`, "Çözünen eklendiğinde kaynama noktasının ne kadar yükseldiğini bulurken.", "i: iyon sayısı (tuzlarda); donma için ΔT_d = K_d·m·i");
+  K("10", "u2/k3", "Gaz yoğunluğu", r`P\cdot M_A=d\cdot R\cdot T`, "Bir gazın yoğunluğundan mol kütlesini ya da tersini bulurken.", "d: g/L");
+  K("10", "u3/k5", "Kütlece yüzdeden molariteye", r`M=\frac{\%\cdot d\cdot 10}{M_A}`, "Ticari çözeltilerin yüzde ve yoğunluk değerinden molarite hesaplarken.", "d: g/mL");
+  K("10", "u4/k1", "Atom ekonomisi", r`\text{Atom ekonomisi}=\frac{m_{\text{istenen ürün}}}{m_{\text{girenler}}}\times 100`, "Bir tepkimenin ne kadar az atık ürettiğini (yeşil kimya) değerlendirirken.", "");
   // 11
   K("11", "u1/k2", "Oluşum entalpilerinden ΔH", r`\Delta H=\sum \Delta H_{\text{ürünler}}-\sum \Delta H_{\text{girenler}}`, "Standart oluşum entalpileri verilen tepkimenin entalpisini bulurken.", "Elementlerin oluşum entalpisi 0");
   K("11", "u1/k2", "Bağ enerjilerinden ΔH", r`\Delta H=\sum E_{\text{kırılan}}-\sum E_{\text{oluşan}}`, "Bağ enerjileri verilen tepkimenin entalpisini bulurken.", "");

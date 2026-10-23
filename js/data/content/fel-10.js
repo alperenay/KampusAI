@@ -19,7 +19,7 @@ App.data.content["10/felsefe"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "1.1",
+    "code": "FEL.10.1.1",
     "title": {
      "tr": "Felsefenin anlamı",
      "en": "The meaning of philosophy"
@@ -30,6 +30,10 @@ App.data.content["10/felsefe"] = [
       {
        "soru": "Pythagoras'ın kendini 'bilge' değil 'bilgelik seven' olarak tanımlamasının anlamı nedir?",
        "cozum": "Bilgiye **sahip olmak** değil, onu **aramak** vurgulanır. Felsefe bitmiş bir bilgi değil, süregiden bir sorgulama etkinliğidir."
+      },
+      {
+       "soru": "Felsefe ile \"bir şeyi merak etmek\" arasında nasıl bir ilişki vardır? Platon ve Aristoteles'in görüşleriyle açıklayınız.",
+       "cozum": "Platon ve Aristoteles felsefenin **hayret ve merakla** başladığını söyler. İnsan, alışılmış olanı sorgulayıp *\"Bu neden böyle?\"* diye sorduğunda felsefi düşünce başlar. Merak, cevabı hazır kabul etmek yerine **akıl yoluyla** temellendirilmiş bilgi arayışına dönüşür."
       }
      ],
      "ozet": [
@@ -41,7 +45,7 @@ App.data.content["10/felsefe"] = [
    },
    {
     "id": "k2",
-    "code": "1.2",
+    "code": "FEL.10.1.1",
     "title": {
      "tr": "Felsefi düşüncenin gelişimi",
      "en": "The development of philosophical thought"
@@ -52,6 +56,10 @@ App.data.content["10/felsefe"] = [
       {
        "soru": "Thales'i 'ilk filozof' yapan şey nedir?",
        "cozum": "Evreni tanrılarla değil, **doğadaki bir ilkeyle (su)** ve **akıl yoluyla** açıklamaya çalışmasıdır; yani mitostan logosa geçiş."
+      },
+      {
+       "soru": "İlk Çağ'da felsefi düşüncenin Anadolu kıyılarında (İyonya) doğmasının nedenleri nelerdir?",
+       "cozum": "İyonya (Milet, Efes) **ticaret yollarının** kavşağındaydı; Mısır ve Mezopotamya'nın bilgi birikimiyle tanışma imkânı vardı. Şehirlerde **görece özgür** bir siyasi ortam, refah ve boş zaman bulunuyordu. Bu koşullar, doğayı mitolojik değil **akılcı** açıklamaya yönelen ilk filozofları (Thales, Anaksimandros, Herakleitos) ortaya çıkardı."
       }
      ],
      "ozet": [
@@ -63,7 +71,7 @@ App.data.content["10/felsefe"] = [
    },
    {
     "id": "k3",
-    "code": "1.3",
+    "code": "FEL.10.1.1",
     "title": {
      "tr": "Felsefenin özellikleri",
      "en": "Characteristics of philosophy"
@@ -74,6 +82,10 @@ App.data.content["10/felsefe"] = [
       {
        "soru": "'Felsefede ilerleme yoktur' sözü ne anlatır?",
        "cozum": "Bilimde yeni bir teori eskisini geçersiz kılabilir; felsefede ise eski görüşler **geçerliliğini korur**, yeniden yorumlanır. Felsefe **birikimlidir** ama doğrusal bir ilerleme göstermez."
+      },
+      {
+       "soru": "\"Felsefe eleştireldir ve refleksiftir (düşünce üzerine düşünmedir).\" Bu iki özelliği birer örnekle açıklayınız.",
+       "cozum": "**Eleştirel:** Hiçbir bilgiyi sorgulamadan kabul etmez; ör. Descartes, duyularla edindiği bilgileri şüpheyle sınar. **Refleksif:** Düşüncenin kendisini konu edinir; ör. *\"Doğru düşündüğümü nereden bilirim?\"* sorusu insanın kendi düşünme sürecini incelemesidir."
       }
      ],
      "ozet": [
@@ -85,17 +97,21 @@ App.data.content["10/felsefe"] = [
    },
    {
     "id": "k4",
-    "code": "1.4",
+    "code": "FEL.10.1.1",
     "title": {
      "tr": "Felsefi soruların özellikleri",
      "en": "Characteristics of philosophical questions"
     },
     "content": {
-     "anlatim": "# Felsefi Soru\n\n**Özellikleri:**\n- **Evrensel ve genel**dir (\"Adalet nedir?\").\n- **Kesin, tek bir cevabı yoktur;** her cevap yeni sorular doğurur.\n- **Deney ve gözlemle** cevaplanamaz.\n- **Merak ve hayret** uyandırır, düşünmeye sevk eder.\n- **Kavramsal**dır; temel kavramların anlamını sorgular.\n\n| Felsefi soru | Felsefi olmayan soru |\n|---|---|\n| Doğru bilgi mümkün müdür? | Suyun kaynama noktası kaçtır? |\n| İyi ve kötünün ölçütü nedir? | İstanbul'un nüfusu kaçtır? |\n| Güzel nesnel midir? | Bu tablo hangi yılda yapıldı? |\n\n**İpucu:** Bir soru bilimsel yöntemle ya da bir kaynağa bakarak kesin olarak cevaplanabiliyorsa felsefi değildir.",
+     "anlatim": "# Felsefi Soru\n\n**Özellikleri:**\n- **Evrensel ve genel**dir (\"Adalet nedir?\").\n- **Kesin, tek bir cevabı yoktur;** her cevap yeni sorular doğurur.\n- **Deney ve gözlemle** cevaplanamaz.\n- **Merak ve hayret** uyandırır, düşünmeye sevk eder.\n- **Kavramsal**dır; temel kavramların anlamını sorgular.\n\n| Felsefi soru | Felsefi olmayan soru |\n|---|---|\n| Doğru bilgi mümkün müdür? | Suyun kaynama noktası kaçtır? |\n| İyi ve kötünün ölçütü nedir? | İstanbul'un nüfusu kaçtır? |\n| Güzel nesnel midir? | Bu tablo hangi yılda yapıldı? |\n\n**İpucu:** Bir soru bilimsel yöntemle ya da bir kaynağa bakarak kesin olarak cevaplanabiliyorsa felsefi değildir.\n\n# Felsefi Soru Nasıl Sorulur?\n\nGündelik bir sorudan felsefi bir soruya geçmek için **genelleştirme** ve **kavrama yönelme** gerekir:\n- *\"Bu karar adil mi?\"* (somut) → *\"Adalet nedir, adil bir kararın ölçütü ne olmalıdır?\"* (felsefi)\n- *\"Bu resmi beğendin mi?\"* → *\"Bir şeyi güzel yapan nedir? Güzellik beğeniye mi bağlıdır?\"*\n\nFelsefe tarihindeki büyük soruların çoğu bu türden basit bir merakla başlamıştır. Sokrates, Atina sokaklarında insanlara *\"Cesaret nedir? Erdem öğretilebilir mi?\"* gibi sorular sorarak onları **bildiklerini sandıkları şeyleri** sorgulamaya davet etmiştir.",
      "ornekler": [
       {
        "soru": "'Zaman nedir?' ile 'Saat kaç?' sorularını karşılaştırınız.",
        "cozum": "'Saat kaç?' gözlemle kesin olarak cevaplanır → felsefi değil. 'Zaman nedir?' kavramsal, evrensel ve tek cevabı olmayan bir sorudur → **felsefi**."
+      },
+      {
+       "soru": "Aşağıdakilerden hangileri felsefi sorudur? Gerekçelendiriniz: a) Ay'ın Dünya'ya uzaklığı nedir? b) İnsan özgür müdür? c) Mutluluk nedir? ç) Türkiye'nin başkenti neresidir?",
+       "cozum": "**b** ve **c** felsefi sorulardır: Evrenseldir, kesin ve tek bir cevabı yoktur, deney ve gözlemle cevaplanamaz, kavramsaldır. **a** bilimsel ölçümle, **ç** bir kaynağa bakarak kesin biçimde cevaplanabildiği için felsefi değildir."
       }
      ],
      "ozet": [
@@ -107,7 +123,7 @@ App.data.content["10/felsefe"] = [
    },
    {
     "id": "k5",
-    "code": "1.5",
+    "code": "FEL.10.1.1",
     "title": {
      "tr": "Felsefe ile diğer alanlar",
      "en": "Philosophy and other fields"
@@ -118,6 +134,10 @@ App.data.content["10/felsefe"] = [
       {
        "soru": "Din ve felsefe benzer sorulara yönelir; temel fark nedir?",
        "cozum": "Din cevaplarını **inanç ve vahye** dayandırır ve sorgulanmaz kabul eder; felsefe **akıl ve eleştiri** yoluyla gerekçelendirir ve sorgulamayı sürdürür."
+      },
+      {
+       "soru": "Bilim \"Evren nasıl oluştu?\" sorusuyla ilgilenirken felsefe hangi soruları sorar? Aralarındaki farkı açıklayınız.",
+       "cozum": "Felsefe *\"Evrenin bir başlangıcı olabilir mi? Hiçlikten bir şey çıkabilir mi? Evreni bilmemiz mümkün mü?\"* gibi soruları sorar. **Bilim**, olguları deney ve gözlemle açıklar ve sonuçları sınanabilir; **felsefe** ise kavramları ve bilimin varsayımlarını akıl yoluyla sorgular. İkisi birbirini besler."
       }
      ],
      "ozet": [
@@ -129,17 +149,21 @@ App.data.content["10/felsefe"] = [
    },
    {
     "id": "k6",
-    "code": "1.6",
+    "code": "FEL.10.1.1",
     "title": {
      "tr": "Felsefenin bireysel ve toplumsal işlevi",
      "en": "Individual and social functions of philosophy"
     },
     "content": {
-     "anlatim": "# Felsefenin İşlevleri\n\n**Bireysel:**\n- Eleştirel ve özgür düşünme becerisi kazandırır.\n- Dogmatik ve önyargılı düşünceden uzaklaştırır.\n- Kendini ve dünyayı tanımayı, hayatı anlamlandırmayı sağlar.\n- Farklı görüşlere **hoşgörü** ile yaklaşmayı öğretir.\n\n**Toplumsal:**\n- Toplumsal sorunlara akılcı çözüm önerileri sunar.\n- Demokrasi, adalet, özgürlük gibi değerlerin gelişmesine katkı verir.\n- Bilimsel ve kültürel gelişmeye zemin hazırlar.\n\n**Örnek:** Aydınlanma filozoflarının (Locke, Montesquieu, Rousseau) görüşleri **insan hakları** ve **kuvvetler ayrılığı** ilkelerine, dolayısıyla modern demokrasilere temel oluşturmuştur.\n\n> Sokrates: \"Sorgulanmamış bir hayat yaşanmaya değmez.\"",
+     "anlatim": "# Felsefenin İşlevleri\n\n**Bireysel:**\n- Eleştirel ve özgür düşünme becerisi kazandırır.\n- Dogmatik ve önyargılı düşünceden uzaklaştırır.\n- Kendini ve dünyayı tanımayı, hayatı anlamlandırmayı sağlar.\n- Farklı görüşlere **hoşgörü** ile yaklaşmayı öğretir.\n\n**Toplumsal:**\n- Toplumsal sorunlara akılcı çözüm önerileri sunar.\n- Demokrasi, adalet, özgürlük gibi değerlerin gelişmesine katkı verir.\n- Bilimsel ve kültürel gelişmeye zemin hazırlar.\n\n**Örnek:** Aydınlanma filozoflarının (Locke, Montesquieu, Rousseau) görüşleri **insan hakları** ve **kuvvetler ayrılığı** ilkelerine, dolayısıyla modern demokrasilere temel oluşturmuştur.\n\n> Sokrates: \"Sorgulanmamış bir hayat yaşanmaya değmez.\"\n\n# Günlük Hayatta Felsefe\n\nSosyal medyada bir haberin doğruluğunu sorgulamak (**bilgi felsefesi**), yapay zekânın karar vermesinin adil olup olmadığını tartışmak (**ahlak ve siyaset felsefesi**), bir sanat eserinin değerini konuşmak (**sanat felsefesi**) felsefenin gündelik yansımalarıdır. Felsefe, \"ne düşünmeliyim?\" sorusundan çok **\"nasıl düşünmeliyim?\"** sorusuna cevap arar.",
      "ornekler": [
       {
        "soru": "Montesquieu'nün 'Kanunların Ruhu' eseri felsefenin hangi işlevine örnektir?",
        "cozum": "Kuvvetler ayrılığı fikriyle modern devlet düzenine yön vermesi, felsefenin **toplumsal işlevine** örnektir."
+      },
+      {
+       "soru": "Bir öğrenci felsefenin \"işe yaramadığını\" söylüyor. Bu iddiaya felsefenin bireysel ve toplumsal işlevleriyle nasıl cevap verirsiniz?",
+       "cozum": "Felsefe **somut bir ürün** vermese de bireye eleştirel düşünme, doğru akıl yürütme ve farklı görüşleri anlama becerisi kazandırır. Toplumsal düzeyde **insan hakları, demokrasi ve hukuk devleti** gibi kavramlar felsefi tartışmalardan doğmuştur. Bilimlerin ve yapay zekâ etiği gibi güncel alanların temel kavramları da felsefe ile şekillenir."
       }
      ],
      "ozet": [
@@ -160,17 +184,21 @@ App.data.content["10/felsefe"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "2.1",
+    "code": "FEL.10.2.1",
     "title": {
      "tr": "Düşünme ve dil ilişkisi",
      "en": "Thinking and language"
     },
     "content": {
-     "anlatim": "# Düşünme, Dil ve Mantık\n\n**Mantık:** Doğru düşünmenin kurallarını inceleyen disiplin. Kurucusu **Aristoteles**tir; mantık eserleri **Organon** (alet) adıyla toplanmıştır. Farabi'ye \"Muallim-i Sani\" (ikinci öğretmen) denir.\n\n**Düşünce ile dil:**\n- Düşünce dil ile **ifade edilir**, dil düşünceyi **biçimlendirir**.\n- Kavram → **terim**, yargı → **önerme**, akıl yürütme → **çıkarım** olarak dile gelir.\n\n| Zihinde | Dilde |\n|---|---|\n| Kavram | Terim (sözcük) |\n| Yargı | Önerme |\n| Akıl yürütme | Kıyas/çıkarım |\n\n> Belirsiz ve çok anlamlı ifadeler düşünce hatalarına yol açar; bu yüzden felsefede **kavramların açık tanımı** önemlidir.",
+     "anlatim": "# Düşünme, Dil ve Mantık\n\n**Mantık:** Doğru düşünmenin kurallarını inceleyen disiplin. Kurucusu **Aristoteles**tir; mantık eserleri **Organon** (alet) adıyla toplanmıştır. Farabi'ye \"Muallim-i Sani\" (ikinci öğretmen) denir.\n\n**Düşünce ile dil:**\n- Düşünce dil ile **ifade edilir**, dil düşünceyi **biçimlendirir**.\n- Kavram → **terim**, yargı → **önerme**, akıl yürütme → **çıkarım** olarak dile gelir.\n\n| Zihinde | Dilde |\n|---|---|\n| Kavram | Terim (sözcük) |\n| Yargı | Önerme |\n| Akıl yürütme | Kıyas/çıkarım |\n\n> Belirsiz ve çok anlamlı ifadeler düşünce hatalarına yol açar; bu yüzden felsefede **kavramların açık tanımı** önemlidir.\n\n# Dil Düşünceyi Nasıl Etkiler?\n\n- Aynı olay farklı kelimelerle anlatıldığında farklı **çağrışımlar** uyandırır: \"isyancı\" ile \"özgürlük savaşçısı\" ifadeleri aynı kişiye yönelik farklı yargılar taşır.\n- **Wittgenstein**: *\"Dilimin sınırları dünyamın sınırlarıdır.\"* — Bir kavram için kelimemiz yoksa onu düşünmekte de zorlanırız.\n- Bilimde ve hukukta **terimlerin** açık ve tek anlamlı olması bu yüzden önemlidir.",
      "ornekler": [
       {
        "soru": "'Kavram' ile 'terim' arasındaki fark nedir?",
        "cozum": "Kavram zihindeki **genel tasarım**dır (ör. 'insan' düşüncesi); terim ise bu kavramın dildeki **sözcük karşılığı**dır."
+      },
+      {
+       "soru": "\"Banka\" kelimesinin hem \"oturak\" hem \"para kurumu\" anlamına gelmesi bir akıl yürütmede nasıl hataya yol açabilir?",
+       "cozum": "Aynı kelimenin bir argümanın farklı yerlerinde **farklı anlamlarda** kullanılması **dört terim (eş seslilik)** hatasına yol açar. Ör. *\"Banka oturulacak yerdir. Ziraat bir bankadır. O hâlde Ziraat oturulacak yerdir.\"* Sonucun yanlışlığı, terimin anlamının değişmesinden kaynaklanır; bu yüzden mantıkta terimler **açık ve tek anlamlı** kullanılmalıdır."
       }
      ],
      "ozet": [
@@ -182,7 +210,7 @@ App.data.content["10/felsefe"] = [
    },
    {
     "id": "k2",
-    "code": "2.2",
+    "code": "FEL.10.2.1",
     "title": {
      "tr": "Mantığın temel kavramları ve akıl yürütme türleri",
      "en": "Basic concepts of logic and types of reasoning"
@@ -193,6 +221,10 @@ App.data.content["10/felsefe"] = [
       {
        "soru": "'Bütün kuşlar uçar. Penguen kuştur. O hâlde penguen uçar.' Bu akıl yürütme geçerli midir, sonucu doğru mudur?",
        "cozum": "**Geçerlidir**, çünkü biçimi doğrudur (öncüller doğru olsaydı sonuç zorunlu olurdu). Ancak 'Bütün kuşlar uçar' öncülü **yanlış** olduğundan sonuç da yanlıştır. Geçerlilik ≠ doğruluk."
+      },
+      {
+       "soru": "\"Gözlemlediğim tüm metaller ısıtılınca genleşti. O hâlde bütün metaller ısıtılınca genleşir.\" Bu akıl yürütme türü nedir? Sonucu kesin midir?",
+       "cozum": "Bu bir **tümevarım**dır: Tek tek örneklerden **genel bir sonuca** ulaşılır. Sonuç **olası (muhtemel)**dir, kesin değildir; çünkü gözlemlenmemiş bir durumda aksi ortaya çıkabilir. Tümdengelimde ise öncüller doğruysa ve akıl yürütme geçerliyse sonuç **zorunlu olarak** doğrudur."
       }
      ],
      "ozet": [
@@ -204,7 +236,7 @@ App.data.content["10/felsefe"] = [
    },
    {
     "id": "k3",
-    "code": "2.3",
+    "code": "FEL.10.2.1",
     "title": {
      "tr": "Argüman yapısı ve safsatalar",
      "en": "Argument structure and fallacies"
@@ -215,6 +247,10 @@ App.data.content["10/felsefe"] = [
       {
        "soru": "'Sigaranın zararlı olduğunu söyleyen doktor da sigara içiyor, öyleyse sigara zararlı değil.' Bu hangi safsatadır?",
        "cozum": "**Kişiye saldırı (ad hominem / sen de yapıyorsun)** safsatasıdır; doktorun davranışı, argümanın doğruluğunu etkilemez."
+      },
+      {
+       "soru": "\"Ya bu telefonu alırsın ya da hiç arkadaşın olmaz.\" ifadesinde hangi safsata vardır? Neden?",
+       "cozum": "**Yanlış ikilem (siyah–beyaz) safsatası**: Pek çok seçenek varken yalnızca iki seçenek sunulmuştur. Arkadaşlık ilişkisinin telefona bağlı olmadığı ve başka seçenekler bulunduğu göz ardı edilmiştir."
       }
      ],
      "ozet": [
@@ -235,17 +271,21 @@ App.data.content["10/felsefe"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "3.1",
+    "code": "FEL.10.3.1",
     "title": {
      "tr": "Varlık felsefesinin konusu ve kavramları",
      "en": "Subject and concepts of ontology"
     },
     "content": {
-     "anlatim": "# Ontoloji\n\n**Varlık felsefesi (ontoloji):** Var olanı **var olması bakımından** inceleyen felsefe dalı. \"Varlık var mıdır? Varlığın mahiyeti (ne olduğu) nedir? Evrende bir düzen var mıdır?\" sorularıyla ilgilenir.\n\n**Temel kavramlar:**\n- **Varlık:** Var olan her şey.\n- **Hiçlik:** Varlığın yokluğu.\n- **Madde:** Uzayda yer kaplayan, duyularla algılanabilen.\n- **İdea:** Değişmeyen, zihinsel/düşünsel öz (Platon).\n- **Öz (mahiyet):** Bir şeyi o şey yapan temel nitelik.\n- **Oluş:** Değişim, sürekli farklılaşma.\n- **Gerçek (reel):** Zihinden bağımsız var olan.\n- **Görünüş:** Duyulara yansıyan hâl.",
+     "anlatim": "# Ontoloji\n\n**Varlık felsefesi (ontoloji):** Var olanı **var olması bakımından** inceleyen felsefe dalı. \"Varlık var mıdır? Varlığın mahiyeti (ne olduğu) nedir? Evrende bir düzen var mıdır?\" sorularıyla ilgilenir.\n\n**Temel kavramlar:**\n- **Varlık:** Var olan her şey.\n- **Hiçlik:** Varlığın yokluğu.\n- **Madde:** Uzayda yer kaplayan, duyularla algılanabilen.\n- **İdea:** Değişmeyen, zihinsel/düşünsel öz (Platon).\n- **Öz (mahiyet):** Bir şeyi o şey yapan temel nitelik.\n- **Oluş:** Değişim, sürekli farklılaşma.\n- **Gerçek (reel):** Zihinden bağımsız var olan.\n- **Görünüş:** Duyulara yansıyan hâl.\n\n# Varlık Felsefesinin Temel Soruları\n\n1. **Varlık var mıdır?** (Gorgias gibi kuşkucular \"hiçbir şey yoktur\" diyerek bu soruyu tartışmaya açmıştır.)\n2. **Varlığın mahiyeti nedir?** Varlık madde midir (materyalizm), düşünce midir (idealizm), yoksa her ikisi mi (düalizm)?\n3. **Varlık değişken midir, değişmez mi?** Herakleitos'a göre her şey **akar** (oluş); Parmenides'e göre değişim bir **yanılsamadır**.\n\nBu sorulara verilen cevaplar, bilgi, ahlak ve din felsefesindeki görüşleri de **doğrudan etkiler**.",
      "ornekler": [
       {
        "soru": "'Masa' örneğinde öz ve görünüş nedir?",
        "cozum": "Rengi, boyutu, malzemesi **görünüş**tür (değişebilir); üzerine bir şeyler konabilen, belirli işlevi olan eşya olması ise onun **özü**dür."
+      },
+      {
+       "soru": "Herakleitos'un \"Aynı ırmakta iki kez yıkanılmaz.\" sözü varlık felsefesinin hangi kavramıyla ilgilidir? Parmenides bu söze nasıl karşı çıkar?",
+       "cozum": "Söz **oluş (değişim)** kavramıyla ilgilidir: Herakleitos'a göre varlık sürekli değişir. **Parmenides** ise değişimin duyuların bir yanılsaması olduğunu, gerçek varlığın **değişmez, bir ve bölünmez** olduğunu savunur; ona göre \"var olan vardır, olmayan yoktur\"."
       }
      ],
      "ozet": [
@@ -257,7 +297,7 @@ App.data.content["10/felsefe"] = [
    },
    {
     "id": "k2",
-    "code": "3.2",
+    "code": "FEL.10.3.1",
     "title": {
      "tr": "Varlık problemine yaklaşımlar",
      "en": "Approaches to the problem of being"
@@ -268,6 +308,10 @@ App.data.content["10/felsefe"] = [
       {
        "soru": "Descartes'ın varlık görüşü neden düalist kabul edilir?",
        "cozum": "Varlığı **iki ayrı töze** ayırır: yer kaplayan **madde** (res extensa) ve düşünen **ruh/zihin** (res cogitans)."
+      },
+      {
+       "soru": "Materyalizm ve idealizm \"Varlığın özü nedir?\" sorusuna hangi cevapları verir? Birer filozof örneği veriniz.",
+       "cozum": "**Materyalizm:** Varlığın özü **maddedir**; zihin de maddenin bir ürünüdür (Demokritos — atomlar). **İdealizm:** Varlığın özü **düşünce, idea**dır; maddi dünya ideaların gölgesidir (Platon) ya da algılanmaktır (Berkeley: \"Var olmak algılanmaktır\")."
       }
      ],
      "ozet": [
@@ -288,17 +332,21 @@ App.data.content["10/felsefe"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "4.1",
+    "code": "FEL.10.4.1",
     "title": {
      "tr": "Bilgi felsefesinin konusu ve kavramları",
      "en": "Subject and concepts of epistemology"
     },
     "content": {
-     "anlatim": "# Epistemoloji\n\n**Bilgi felsefesi (epistemoloji):** Bilginin **imkânı, kaynağı, sınırları, doğruluk ölçütü** ve değerini inceleyen felsefe dalı.\n\n**Bilginin öğeleri:**\n- **Süje (özne):** Bilen (insan).\n- **Obje (nesne):** Bilinen.\n- **Bilgi:** Süje ile obje arasındaki ilişkinin ürünü.\n\n**Temel kavramlar:**\n- **Doğruluk:** Bilginin nesnesine uygunluğu.\n- **Gerçeklik:** Zihin dışında var olan.\n- **Önsel (a priori):** Deneyimden önce, akılla bilinen (ör. \"Üçgenin iç açıları 180°\").\n- **Sonsal (a posteriori):** Deneyimle kazanılan (ör. \"Bugün hava yağmurlu\").\n- **Kesinlik:** Bilginin şüphe götürmezliği.\n- **Temellendirme:** Bilgiyi gerekçelerle destekleme.",
+     "anlatim": "# Epistemoloji\n\n**Bilgi felsefesi (epistemoloji):** Bilginin **imkânı, kaynağı, sınırları, doğruluk ölçütü** ve değerini inceleyen felsefe dalı.\n\n**Bilginin öğeleri:**\n- **Süje (özne):** Bilen (insan).\n- **Obje (nesne):** Bilinen.\n- **Bilgi:** Süje ile obje arasındaki ilişkinin ürünü.\n\n**Temel kavramlar:**\n- **Doğruluk:** Bilginin nesnesine uygunluğu.\n- **Gerçeklik:** Zihin dışında var olan.\n- **Önsel (a priori):** Deneyimden önce, akılla bilinen (ör. \"Üçgenin iç açıları 180°\").\n- **Sonsal (a posteriori):** Deneyimle kazanılan (ör. \"Bugün hava yağmurlu\").\n- **Kesinlik:** Bilginin şüphe götürmezliği.\n- **Temellendirme:** Bilgiyi gerekçelerle destekleme.\n\n# Bilgi Türleri\n\n| Tür | Özelliği | Örnek |\n|---|---|---|\n| **Gündelik bilgi** | Deneyimle kazanılır, sistemsizdir | \"Bulutlar kararınca yağmur yağar.\" |\n| **Bilimsel bilgi** | Yöntemli, sınanabilir, nesnel | Yağmurun yoğunlaşma ile açıklanması |\n| **Felsefi bilgi** | Akla dayalı, eleştirel, bütüncül | \"Doğa yasalarını bilebilir miyiz?\" |\n| **Dinî bilgi** | Vahye ve inanca dayalı | Ahiret inancı |\n| **Teknik bilgi** | Pratik fayda sağlar | Köprü yapımı |\n| **Sanat bilgisi** | Sezgiye ve duyguya dayalı, özneldir | Bir şiirin anlattığı duygu |",
      "ornekler": [
       {
        "soru": "'Bütün bekârlar evli değildir.' bilgisi önsel midir, sonsal mı?",
        "cozum": "**Önsel (a priori)**dir; 'bekâr' kavramının anlamından akılla bilinir, deneyim gerektirmez."
+      },
+      {
+       "soru": "\"Su 100 °C'de kaynar.\" ve \"Bir şey aynı anda hem var hem yok olamaz.\" önermelerini önsel–sonsal bakımından karşılaştırınız.",
+       "cozum": "İlki **sonsal (a posteriori)**dır: Deney ve gözlemle bilinir, üstelik basınca göre değişir. İkincisi **önsel (a priori)**dir: **Çelişmezlik ilkesine** dayanır, deneyime başvurmadan akılla bilinir ve zorunlu olarak doğrudur."
       }
      ],
      "ozet": [
@@ -310,7 +358,7 @@ App.data.content["10/felsefe"] = [
    },
    {
     "id": "k2",
-    "code": "4.2",
+    "code": "FEL.10.4.1",
     "title": {
      "tr": "Doğru bilginin imkânı ve kaynağı",
      "en": "Possibility and source of true knowledge"
@@ -321,6 +369,10 @@ App.data.content["10/felsefe"] = [
       {
        "soru": "Locke'un 'tabula rasa' kavramı hangi bilgi görüşünü temsil eder ve rasyonalizmle nasıl çelişir?",
        "cozum": "**Empirizmi** temsil eder: zihin doğuşta boştur, tüm bilgi deneyimle gelir. Rasyonalizm ise **doğuştan düşünceler** olduğunu savunur."
+      },
+      {
+       "soru": "Kant'ın bilgi görüşünü \"Kavramsız algılar kör, algısız kavramlar boştur.\" sözüyle açıklayınız.",
+       "cozum": "Kant **kritisizm** ile rasyonalizm ve empirizmi uzlaştırır: Bilgi **deneyimle başlar** ama yalnızca deneyimden doğmaz. Duyular malzemeyi (algıları), akıl ise bu malzemeyi düzenleyen **kategorileri** (nedensellik, birlik…) sağlar. Biri olmadan diğeri bilgi üretemez."
       }
      ],
      "ozet": [
@@ -341,17 +393,21 @@ App.data.content["10/felsefe"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "5.1",
+    "code": "FEL.10.5.1",
     "title": {
      "tr": "Ahlak felsefesinin konusu ve kavramları",
      "en": "Subject and concepts of ethics"
     },
     "content": {
-     "anlatim": "# Etik\n\n**Ahlak felsefesi (etik):** İnsan eylemlerini **iyi–kötü, doğru–yanlış** açısından inceleyen, ahlakın temellerini sorgulayan felsefe dalı.\n\n> **Ahlak** belirli bir toplumda geçerli davranış kurallarıdır; **etik** ise bu kuralların felsefi incelemesidir.\n\n**Temel kavramlar:**\n- **İyi:** Ahlaken doğru ve değerli olan.\n- **Kötü:** İyinin karşıtı, ahlaken yanlış olan.\n- **Özgürlük:** İnsanın kendi iradesiyle seçebilmesi.\n- **Sorumluluk:** Eylemlerin sonuçlarını üstlenme.\n- **Erdem:** İyiyi alışkanlık hâline getirme.\n- **Vicdan:** İç ahlaki yargı yetisi.\n- **Ödev:** Ahlak yasasına saygıdan doğan yükümlülük.\n- **Ahlak yasası:** Evrensel ahlaki ilke.",
+     "anlatim": "# Etik\n\n**Ahlak felsefesi (etik):** İnsan eylemlerini **iyi–kötü, doğru–yanlış** açısından inceleyen, ahlakın temellerini sorgulayan felsefe dalı.\n\n> **Ahlak** belirli bir toplumda geçerli davranış kurallarıdır; **etik** ise bu kuralların felsefi incelemesidir.\n\n**Temel kavramlar:**\n- **İyi:** Ahlaken doğru ve değerli olan.\n- **Kötü:** İyinin karşıtı, ahlaken yanlış olan.\n- **Özgürlük:** İnsanın kendi iradesiyle seçebilmesi.\n- **Sorumluluk:** Eylemlerin sonuçlarını üstlenme.\n- **Erdem:** İyiyi alışkanlık hâline getirme.\n- **Vicdan:** İç ahlaki yargı yetisi.\n- **Ödev:** Ahlak yasasına saygıdan doğan yükümlülük.\n- **Ahlak yasası:** Evrensel ahlaki ilke.\n\n# Ahlak Felsefesinin Temel Soruları\n\n- İyi ve kötünün **ölçütü** nedir? (Mutluluk mu, fayda mı, ödev mi, vicdan mı?)\n- Ahlak **evrensel** midir, yoksa toplumdan topluma değişir mi?\n- İnsan **özgür** müdür? Özgür değilse eylemlerinden sorumlu tutulabilir mi?\n- Ahlaki değerler **akılla mı** temellendirilir, yoksa **duygu** ve alışkanlıkla mı?",
      "ornekler": [
       {
        "soru": "Ahlak ile etik arasındaki fark nedir?",
        "cozum": "Ahlak toplumda **uygulanan kurallardır**; etik bu kuralları **sorgulayan ve temellendiren** felsefi disiplindir."
+      },
+      {
+       "soru": "Özgürlük ve sorumluluk kavramları arasındaki ilişkiyi bir örnekle açıklayınız.",
+       "cozum": "Bir kişi ancak **özgürce seçtiği** eylemlerden sorumlu tutulabilir. Örneğin zorla bir şeyi imzalatılan kişi bunun sonuçlarından sorumlu tutulamaz; ama kendi isteğiyle yalan söyleyen kişi sonuçlarından **sorumludur**. Özgürlük olmadan ahlaki sorumluluk da olmaz."
       }
      ],
      "ozet": [
@@ -363,7 +419,7 @@ App.data.content["10/felsefe"] = [
    },
    {
     "id": "k2",
-    "code": "5.2",
+    "code": "FEL.10.5.1",
     "title": {
      "tr": "Ahlak felsefesinin problemleri",
      "en": "Problems of moral philosophy"
@@ -374,6 +430,10 @@ App.data.content["10/felsefe"] = [
       {
        "soru": "Bir doktorun beş hastayı kurtarmak için bir sağlıklı kişinin organlarını alması Kant ve yararcılık açısından nasıl değerlendirilir?",
        "cozum": "**Yararcılık** (sonuç odaklı) daha fazla kişinin mutluluğu gerekçesiyle bunu savunabilir. **Kant** ise insanın asla yalnızca **araç** olarak kullanılamayacağını söyler; eylem ahlaken **yanlıştır**."
+      },
+      {
+       "soru": "\"İyi eylem, en çok insana en fazla mutluluğu sağlayandır.\" ilkesi hangi ahlak görüşüne aittir? Bu görüşe yöneltilen bir eleştiri yazınız.",
+       "cozum": "**Yararcılık (faydacılık)** — J. Bentham ve J. S. Mill. **Eleştiri:** Çoğunluğun mutluluğu için azınlığın **haklarının çiğnenmesine** izin verebilir; ayrıca mutluluğu ölçmek ve kişiler arasında karşılaştırmak zordur. Kant'a göre insan hiçbir zaman yalnızca **araç** olarak görülmemelidir."
       }
      ],
      "ozet": [
@@ -394,7 +454,7 @@ App.data.content["10/felsefe"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "6.1",
+    "code": "FEL.10.6.1",
     "title": {
      "tr": "Estetik ve sanat felsefesinin problemleri",
      "en": "Aesthetics and problems of art"
@@ -405,6 +465,10 @@ App.data.content["10/felsefe"] = [
       {
        "soru": "Kant'ın 'çıkarsız beğeni' kavramını bir örnekle açıklayınız.",
        "cozum": "Bir gün batımını izlerken ondan bir yarar (para, yiyecek) beklemeyiz; **sadece güzel olduğu için** hoşlanırız. Bu, çıkarsız beğenidir."
+      },
+      {
+       "soru": "\"Güzellik bakanın gözündedir.\" sözü güzelliğin öznel mi nesnel mi olduğu tartışmasında hangi tarafı savunur? Karşı görüşü bir filozofla açıklayınız.",
+       "cozum": "Söz güzelliğin **öznel** olduğunu, kişinin beğenisine bağlı olduğunu savunur (Hume'a yakın). Karşı görüşte **Platon**, güzelliğin nesnelerin dışında **mutlak bir idea** olduğunu; nesnelerin bu ideadan pay aldıkları ölçüde güzel olduğunu söyler. **Kant** ise güzellik yargısının öznel olduğu hâlde **herkesten onay bekleyen** (genel geçer) bir yargı olduğunu ileri sürer."
       }
      ],
      "ozet": [
@@ -425,7 +489,7 @@ App.data.content["10/felsefe"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "7.1",
+    "code": "FEL.10.7.1",
     "title": {
      "tr": "Siyaset felsefesinin konusu ve devletin kökeni",
      "en": "Political philosophy and the origin of the state"
@@ -436,6 +500,10 @@ App.data.content["10/felsefe"] = [
       {
        "soru": "Hobbes ve Locke'un doğa durumu anlayışları farkı devlet anlayışlarına nasıl yansır?",
        "cozum": "Hobbes doğa durumunu **savaş hâli** gördüğü için güvenliği sağlayacak **mutlak bir otorite** ister. Locke doğa durumunu daha barışçıl gördüğünden devletin görevini **doğal hakları korumakla** sınırlar → **liberal, sınırlı devlet**."
+      },
+      {
+       "soru": "Toplum sözleşmesi kuramına göre devlet nasıl ortaya çıkmıştır? Rousseau'nun bu kurama katkısı nedir?",
+       "cozum": "İnsanlar **doğa durumundan** çıkmak, güvenlik ve haklarını korumak için **bir sözleşmeyle** bazı yetkilerini devlete devretmiştir. **Rousseau**'ya göre egemenlik halka aittir; yasalar **genel irade**nin (ortak iyiyi isteyen halk iradesinin) ifadesi olmalıdır. Bu düşünce **demokrasi** ve halk egemenliği anlayışını etkilemiştir."
       }
      ],
      "ozet": [
@@ -447,7 +515,7 @@ App.data.content["10/felsefe"] = [
    },
    {
     "id": "k2",
-    "code": "7.2",
+    "code": "FEL.10.7.1",
     "title": {
      "tr": "Meşruiyet, ideal düzen ve adalet",
      "en": "Legitimacy, ideal order and justice"
@@ -458,6 +526,10 @@ App.data.content["10/felsefe"] = [
       {
        "soru": "Rawls'un 'cehalet peçesi' düşünce deneyi neyi amaçlar?",
        "cozum": "Kişilerin **zengin mi fakir mi, hangi cinsiyette, hangi yetenekte** olacaklarını bilmeden kuralları seçmeleri, kimseyi kayırmayan **tarafsız ve adil** ilkelerin ortaya çıkmasını sağlar."
+      },
+      {
+       "soru": "Bir yönetimin meşru olması için hangi koşullar gerekir? Max Weber'in meşruiyet türlerini yazınız.",
+       "cozum": "Meşru yönetim, halkın **rızasına** dayanır, **hukuka** bağlıdır ve temel hak ve özgürlükleri korur. **Weber**: 1) **Geleneksel** meşruiyet (soy, gelenek — monarşiler), 2) **Karizmatik** meşruiyet (liderin olağanüstü kişiliği), 3) **Yasal–ussal** meşruiyet (anayasa ve yasalar — modern devlet)."
       }
      ],
      "ozet": [
@@ -478,7 +550,7 @@ App.data.content["10/felsefe"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "8.1",
+    "code": "FEL.10.8.1",
     "title": {
      "tr": "Din felsefesinin konusu ve Tanrı anlayışları",
      "en": "Subject and conceptions of God"
@@ -489,6 +561,10 @@ App.data.content["10/felsefe"] = [
       {
        "soru": "Deizm ile teizm arasındaki temel fark nedir?",
        "cozum": "Her ikisi Tanrı'nın varlığını kabul eder. **Teizm** Tanrı'nın evrene müdahalesini ve vahyi kabul eder; **deizm** Tanrı'nın evreni yarattıktan sonra karışmadığını ve vahyin gereksiz olduğunu savunur."
+      },
+      {
+       "soru": "Panteizm ile teizmi Tanrı–evren ilişkisi bakımından karşılaştırınız.",
+       "cozum": "**Teizm:** Tanrı evreni yaratmıştır, evrenden **ayrı ve aşkındır**, evreni yönetmeye ve vahiy göndermeye devam eder. **Panteizm:** Tanrı ile evren **özdeştir**; her şey Tanrı'dır, Tanrı evrenin dışında değildir (Spinoza: \"Tanrı ya da doğa\")."
       }
      ],
      "ozet": [
@@ -500,7 +576,7 @@ App.data.content["10/felsefe"] = [
    },
    {
     "id": "k2",
-    "code": "8.2",
+    "code": "FEL.10.8.1",
     "title": {
      "tr": "Tanrı'nın varlığına ilişkin kanıtlar ve problemler",
      "en": "Arguments for God and related problems"
@@ -511,6 +587,10 @@ App.data.content["10/felsefe"] = [
       {
        "soru": "'Evrendeki düzen tesadüf olamaz, bir düzenleyicisi olmalıdır' görüşü hangi kanıta örnektir?",
        "cozum": "**Teleolojik (düzen / tasarım) kanıtı**dır."
+      },
+      {
+       "soru": "Kötülük problemi nedir? Bu probleme teistlerin verdiği bir cevabı yazınız.",
+       "cozum": "**Kötülük problemi:** Tanrı her şeye gücü yeten, her şeyi bilen ve iyi ise dünyada **kötülük neden vardır?** sorusudur. **Teist cevap (özgür irade savunması):** Tanrı insana özgür irade vermiştir; ahlaki kötülükler insanın **iradesini yanlış kullanmasından** doğar. İyiliğin anlamlı olması için insanın kötüyü de seçebilmesi gerekir."
       }
      ],
      "ozet": [
@@ -531,7 +611,7 @@ App.data.content["10/felsefe"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "9.1",
+    "code": "FEL.10.9.1",
     "title": {
      "tr": "Bilim felsefesinin konusu ve bilimin tanımı",
      "en": "Philosophy of science and defining science"
@@ -542,6 +622,10 @@ App.data.content["10/felsefe"] = [
       {
        "soru": "Bilimi 'etkinlik' olarak görmek ne demektir?",
        "cozum": "Bilim yalnızca hazır bilgiler değil, bilim insanlarının **toplumsal, tarihsel ve kültürel** koşullarda yürüttüğü bir süreçtir; bilim topluluğunun kabulleri de bu sürece dâhildir."
+      },
+      {
+       "soru": "Bilimi \"ürün\" ve \"etkinlik\" olarak görmek arasındaki farkı açıklayınız. Hangi yaklaşım hangi filozoflarla ilişkilidir?",
+       "cozum": "**Ürün olarak bilim:** Bilimi, ortaya konmuş **önermeler ve kuramlar bütünü** olarak görür; mantıksal yapısına odaklanır (Viyana Çevresi, mantıkçı pozitivistler). **Etkinlik olarak bilim:** Bilimi, bilim insanlarının **tarihsel ve toplumsal** bağlamda yürüttüğü bir faaliyet olarak görür (Thomas Kuhn — paradigma)."
       }
      ],
      "ozet": [
@@ -553,7 +637,7 @@ App.data.content["10/felsefe"] = [
    },
    {
     "id": "k2",
-    "code": "9.2",
+    "code": "FEL.10.9.1",
     "title": {
      "tr": "Bilimsel yöntem ve bilimin sınırları",
      "en": "Scientific method and limits of science"
@@ -564,6 +648,10 @@ App.data.content["10/felsefe"] = [
       {
        "soru": "'Bütün kuğular beyazdır' iddiasını Popper nasıl değerlendirir?",
        "cozum": "Binlerce beyaz kuğu görmek bu iddiayı **kanıtlamaz**; ama tek bir **siyah kuğu** onu yanlışlar. İddia yanlışlanabilir olduğu için **bilimseldir**; teori, yanlışlanana kadar geçici olarak kabul edilir."
+      },
+      {
+       "soru": "Thomas Kuhn'un \"paradigma değişimi\" kavramını bir örnekle açıklayınız.",
+       "cozum": "**Paradigma**, bir dönemde bilim topluluğunun kabul ettiği temel kuram ve yöntemlerdir. Açıklanamayan sorunlar (anomaliler) biriktiğinde **bilimsel devrim** olur ve yeni paradigma eskisinin yerini alır. Örnek: Dünya merkezli (Ptolemaios) evren modelinden **Güneş merkezli** (Kopernik) modele geçiş."
       }
      ],
      "ozet": [

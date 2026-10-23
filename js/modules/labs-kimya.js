@@ -475,7 +475,7 @@
         note: T("Tepkime için tanecikler uygun yönde ve yeterli enerjiyle çarpışmalıdır. Sıcaklık artınca eğri sağa yayılır, Ea'yı aşan pay hızla büyür. Derişim artınca çarpışma sayısı artar. Katalizör Ea'yı düşürür. (Burada hız = k·[A]·[B] varsayıldı.)",
           "Only collisions above Ea react. Heat spreads the curve; concentration adds collisions; catalysts lower Ea.") };
     }
-  }, ["11/kimya/u1/k3", "11/kimya/u1/k4"]);
+  }, ["11/kimya/u1/k3", "11/kimya/u1/k4", "10/kimya/u1/k6"]);
 
   add("denge", {
     title: () => T("Kimyasal denge ve Le Chatelier", "Chemical equilibrium and Le Chatelier"), icon: "refresh", tags: "denge sabiti Kc tepkime oranı N2O4 NO2",
@@ -547,7 +547,7 @@
         note: T("pH = −log[H⁺], 25 °C'de pH + pOH = 14. Kuvvetli asitler tamamen iyonlaşır; zayıf asitler kısmen (Ka küçük), bu yüzden aynı derişimde pH'ları daha yüksektir. Her 1 birim pH farkı [H⁺]'de 10 kat fark demektir.",
           "pH = −log[H⁺], pH + pOH = 14. Strong acids ionise fully, weak ones partly.") };
     }
-  }, ["11/kimya/u2/k3", "11/kimya/u2/k4", "9/kimya/u1/k2"]);
+  }, ["11/kimya/u2/k3", "11/kimya/u2/k4", "9/kimya/u1/k2", "10/kimya/u4/k2"]);
 
   add("titrasyon", {
     title: () => T("Asit–baz titrasyonu", "Acid–base titration"), icon: "chart", tags: "nötrleşme dönüm noktası eşdeğerlik tampon indikatör",

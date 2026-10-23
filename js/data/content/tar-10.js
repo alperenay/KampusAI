@@ -19,7 +19,7 @@ App.data.content["10/tarih"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "1.1",
+    "code": "TAR.10.1.1",
     "title": {
      "tr": "Göçler, Dandanakan, Pasinler ve Malazgirt",
      "en": "Migrations, Dandanakan, Pasinler and Manzikert"
@@ -30,6 +30,10 @@ App.data.content["10/tarih"] = [
       {
        "soru": "Malazgirt Savaşı'nda Bizans ordusundaki paralı Türk askerlerinin taraf değiştirmesi neyi gösterir?",
        "cozum": "Soy birliği ve ortak kültür bağının etkisini; Bizans ordusunun yapısının **paralı ve çok uluslu** olmasının bir zayıflık yarattığını."
+      },
+      {
+       "soru": "Dandanakan (1040) ve Malazgirt (1071) savaşlarının Türk tarihine etkilerini benzerlik ve farklılıklarıyla karşılaştırınız.",
+       "cozum": "**Benzerlik:** İkisi de Türklerin yeni bir coğrafyada **kalıcı hâkimiyetinin** kapısını açan zaferlerdir. **Farklılık:** Dandanakan, Gaznelileri yenerek **Büyük Selçuklu Devleti'ni kurdu** ve İran–Horasan'a hâkimiyet sağladı; Malazgirt ise Bizans'ı yenerek **Anadolu'nun kapılarını** açtı ve Anadolu'nun Türkleşme sürecini başlattı."
       }
      ],
      "ozet": [
@@ -41,7 +45,7 @@ App.data.content["10/tarih"] = [
    },
    {
     "id": "k2",
-    "code": "1.2",
+    "code": "TAR.10.1.1",
     "title": {
      "tr": "Miryokefalon, ilk Türk beylikleri, Haçlılar ve Kösedağ",
      "en": "Myriokephalon, first Turkish principalities, Crusades and Kösedağ"
@@ -52,6 +56,10 @@ App.data.content["10/tarih"] = [
       {
        "soru": "Malazgirt ile Miryokefalon savaşlarının sonuçlarını karşılaştırın.",
        "cozum": "**Malazgirt** Anadolu'nun kapısını açtı; **Miryokefalon** Bizans'ın Türkleri çıkarma umudunu bitirip Anadolu'nun kalıcı Türk yurdu olduğunu kesinleştirdi."
+      },
+      {
+       "soru": "Kösedağ Savaşı (1243) Anadolu'daki siyasi yapıyı nasıl değiştirmiştir?",
+       "cozum": "Türkiye Selçukluları Moğollara yenilerek **İlhanlı (Moğol) hâkimiyetine** girdi; devletin merkezî otoritesi zayıfladı. Bu süreç, Anadolu'da **II. Beylikler Dönemi**'nin başlamasına ve uç bölgelerde **Osmanlı Beyliği** gibi yeni güçlerin ortaya çıkmasına zemin hazırladı."
       }
      ],
      "ozet": [
@@ -63,7 +71,7 @@ App.data.content["10/tarih"] = [
    },
    {
     "id": "k3",
-    "code": "1.3",
+    "code": "TAR.10.1.2",
     "title": {
      "tr": "Türk devlet ve ordu teşkilatında değişim",
      "en": "Change in Turkish state and army organization"
@@ -74,6 +82,10 @@ App.data.content["10/tarih"] = [
       {
        "soru": "Kurultayın yerini Büyük Divan'ın alması neyi gösterir?",
        "cozum": "Türk devlet geleneğinin **İslam ve İran bürokrasisiyle** birleşerek daha merkezî ve kurumsal bir yönetime dönüştüğünü."
+      },
+      {
+       "soru": "Selçuklularda \"gulam\" sisteminin kurulmasının nedenleri ve sonuçları nelerdir?",
+       "cozum": "**Nedenler:** Merkezî otoriteyi güçlendirmek, boy beylerine bağlı olmayan, doğrudan sultana sadık **daimî bir ordu** kurmak. **Sonuçlar:** Sultanın gücü arttı; ancak zamanla gulam kökenli **atabeyler** güçlenerek bölgesel iktidarlar kurdu. Bu sistem Osmanlı'daki **kapıkulu** ve **devşirme** uygulamasının öncüsüdür."
       }
      ],
      "ozet": [
@@ -85,7 +97,7 @@ App.data.content["10/tarih"] = [
    },
    {
     "id": "k4",
-    "code": "1.4",
+    "code": "TAR.10.1.3",
     "title": {
      "tr": "Selçuklularda sosyal ve ekonomik hayat",
      "en": "Social and economic life of the Seljuks"
@@ -96,6 +108,10 @@ App.data.content["10/tarih"] = [
       {
        "soru": "İkta sisteminin devlete üç faydasını yazın.",
        "cozum": "1) Hazineden para çıkmadan **asker beslenir**, 2) **Vergiler toplanır**, 3) Toprak **boş kalmaz**, üretim sürer."
+      },
+      {
+       "soru": "Selçuklu döneminde Anadolu'da kervansarayların yaygınlaşması ekonomik ve sosyal hayatı nasıl etkilemiştir?",
+       "cozum": "Kervansaraylar ticaret yollarında **güvenli konaklama** sağladı; devletin tüccarlara **sigorta** benzeri güvence vermesiyle Anadolu, uluslararası ticaretin önemli bir **transit merkezi** oldu. Şehirler arası bağlantılar güçlendi, şehirler büyüdü ve **yerleşik hayat** yaygınlaştı."
       }
      ],
      "ozet": [
@@ -107,7 +123,7 @@ App.data.content["10/tarih"] = [
    },
    {
     "id": "k5",
-    "code": "1.5",
+    "code": "TAR.10.1.4",
     "title": {
      "tr": "Türk-İslam medeniyetinde bilim, eğitim ve sanat",
      "en": "Science, education and art in Turkish-Islamic civilization"
@@ -118,6 +134,10 @@ App.data.content["10/tarih"] = [
       {
        "soru": "Cezerî neden sibernetiğin öncüsü sayılır?",
        "cozum": "Kendi kendini kontrol eden **otomatik makineler** (su saatleri, robot benzeri düzenekler) tasarlamış ve *Kitâbü'l-Hiyel*'de anlatmıştır."
+      },
+      {
+       "soru": "Kaşgarlı Mahmud'un Divanü Lügati't-Türk'ü yazmasının amacı nedir? Eser ortak insanlık mirasına nasıl katkı sağlar?",
+       "cozum": "Araplara **Türkçeyi öğretmek** ve Türkçenin Arapça kadar zengin bir dil olduğunu göstermek amacıyla yazılmıştır. Türk boylarının dilleri, gelenekleri, coğrafyası ve atasözleri hakkında bilgi veren **ilk Türkçe sözlük** olması ve içindeki **dünya haritası** nedeniyle dil bilimi, tarih ve coğrafyaya katkı sağlar."
       }
      ],
      "ozet": [
@@ -138,17 +158,21 @@ App.data.content["10/tarih"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "2.1",
+    "code": "TAR.10.2.1",
     "title": {
      "tr": "Osmanlı Devleti'nin kuruluşuna dair görüşler",
      "en": "Views on the founding of the Ottoman State"
     },
     "content": {
-     "anlatim": "# Kuruluş Tezleri\n\nKaynakların azlığı nedeniyle tarihçiler farklı görüşler ileri sürmüştür.\n\n| Tarihçi | Görüş |\n|---|---|\n| **H. A. Gibbons** | Osmanlıları **yeni bir ırk** (Türk–Bizans karışımı) olarak gördü; menkıbelere dayandı |\n| **M. Fuat Köprülü** | Kuruluşu genel **Türk tarihi** ve **Türkiye Selçuklu** devamı olarak açıkladı |\n| **Paul Wittek** | **Gaza tezi**: kuruluşun temel unsuru gazi geleneği ve gazi cemaatleri |\n| **Halil İnalcık** | Batı Anadolu uç beyliklerinin siyasi-askerî koşulları; **1302 Bafeus (Koyunhisar)** Savaşı'nı kuruluş miladı saydı |\n\n> Kuruluş tarihi genel kabulde **1299** (Karacahisar'da hutbe) ya da **1302** (Koyunhisar zaferi).",
+     "anlatim": "# Kuruluş Tezleri\n\nKaynakların azlığı nedeniyle tarihçiler farklı görüşler ileri sürmüştür.\n\n| Tarihçi | Görüş |\n|---|---|\n| **H. A. Gibbons** | Osmanlıları **yeni bir ırk** (Türk–Bizans karışımı) olarak gördü; menkıbelere dayandı |\n| **M. Fuat Köprülü** | Kuruluşu genel **Türk tarihi** ve **Türkiye Selçuklu** devamı olarak açıkladı |\n| **Paul Wittek** | **Gaza tezi**: kuruluşun temel unsuru gazi geleneği ve gazi cemaatleri |\n| **Halil İnalcık** | Batı Anadolu uç beyliklerinin siyasi-askerî koşulları; **1302 Bafeus (Koyunhisar)** Savaşı'nı kuruluş miladı saydı |\n\n> Kuruluş tarihi genel kabulde **1299** (Karacahisar'da hutbe) ya da **1302** (Koyunhisar zaferi).\n\n# Görüşleri Değerlendirmek\n\nTarihçilerin görüşlerini tartışırken şu sorular sorulur: *Hangi kaynaklara dayanıyor? Döneminin hangi düşünce akımlarından etkilenmiş? Hangi olguları açıklıyor, hangilerini açıklayamıyor?*\n- **Gaza tezi**, Osmanlı'nın hızlı genişlemesini açıklasa da Osmanlı'nın Hristiyan tebaayla kurduğu **iş birliğini** ve **istimalet** politikasını yeterince açıklayamaz.\n- **İnalcık** ve **Köprülü**'nün görüşleri ise Osmanlı'yı Anadolu Türk tarihinin bir **devamı** olarak görür; Bizans'ın zayıflığı, Moğol baskısıyla batıya gelen Türkmen nüfusu ve **uç beyliği** olmanın getirdiği fırsatları birlikte değerlendirir.",
      "ornekler": [
       {
        "soru": "Gibbons'un tezi neden eleştirilmiştir?",
        "cozum": "Osmanlı'yı Türk tarihinden kopuk \"yeni bir ırk\" olarak gösterdiği ve **belgelere değil menkıbelere** dayandığı için; Köprülü bu teze karşı çıkmıştır."
+      },
+      {
+       "soru": "Fuat Köprülü'nün görüşü Gibbons'un tezine nasıl bir cevap niteliği taşır?",
+       "cozum": "Gibbons, Osmanlı'yı Hristiyanlıktan dönmüş Rumların kurduğu **\"yeni bir ırk\"** olarak görmüştür. Köprülü ise Osmanlı'nın **Türk tarihinin bir devamı** olduğunu; Oğuz boyları, Selçuklu kurumları ve Anadolu Türk kültürüyle bağlantısını belgelere dayanarak göstermiştir. Bu nedenle Köprülü'nün görüşü Gibbons'un tezinin **bilimsel bir eleştirisidir**."
       }
      ],
      "ozet": [
@@ -160,7 +184,7 @@ App.data.content["10/tarih"] = [
    },
    {
     "id": "k2",
-    "code": "2.2",
+    "code": "TAR.10.2.2",
     "title": {
      "tr": "Beylikten devlete siyasi ve askerî gelişmeler",
      "en": "Political and military developments from principality to state"
@@ -171,6 +195,10 @@ App.data.content["10/tarih"] = [
       {
        "soru": "Karesioğulları Beyliği'nin Osmanlı'ya katılması neden önemlidir?",
        "cozum": "Osmanlı **denizcilik** gücü ve deneyimli komutanlar kazanmış, **Rumeli'ye geçiş** kolaylaşmıştır; Osmanlı'ya katılan ilk beyliktir."
+      },
+      {
+       "soru": "I. Kosova Savaşı (1389) ile Ankara Savaşı (1402) Osmanlı'nın Balkan ve Anadolu politikasını nasıl etkilemiştir?",
+       "cozum": "**I. Kosova:** Balkan devletlerinin oluşturduğu ittifak yenildi; Osmanlı'nın **Balkanlardaki kalıcılığı** pekişti. **Ankara Savaşı:** Timur'a yenilen Osmanlı **Fetret Devri**'ne girdi; Anadolu birliği bozuldu, beylikler yeniden kuruldu. Ancak Rumeli'deki güçlü yapı sayesinde devlet yıkılmadı ve **Çelebi Mehmed** döneminde birlik yeniden sağlandı."
       }
      ],
      "ozet": [
@@ -182,7 +210,7 @@ App.data.content["10/tarih"] = [
    },
    {
     "id": "k3",
-    "code": "2.3",
+    "code": "TAR.10.2.2",
     "title": {
      "tr": "İstanbul'un Fethi (1453)",
      "en": "The Conquest of Istanbul (1453)"
@@ -193,6 +221,10 @@ App.data.content["10/tarih"] = [
       {
        "soru": "İstanbul'un fethi neden bir çağ kapatıp çağ açan olay sayılır?",
        "cozum": "Bin yıllık **Doğu Roma** yıkılmış, **ateşli silahların** surları aşması feodal kale düzenini sarsmış, göç eden bilginler Rönesans'ı beslemiştir."
+      },
+      {
+       "soru": "İstanbul'un fethinde kullanılan askerî teknoloji ve stratejilere iki örnek veriniz.",
+       "cozum": "1) **Şahi topları:** Macar usta Urban'a döktürülen dev toplar surları dövdü. 2) **Gemilerin karadan yürütülmesi:** Haliç'e zincir gerildiği için gemiler Kasımpaşa sırtlarından kızaklarla Haliç'e indirildi. Ayrıca **Rumeli Hisarı** ile Karadeniz'den gelecek yardım engellendi."
       }
      ],
      "ozet": [
@@ -204,7 +236,7 @@ App.data.content["10/tarih"] = [
    },
    {
     "id": "k4",
-    "code": "2.4",
+    "code": "TAR.10.2.3",
     "title": {
      "tr": "Osmanlı'da ordu, hukuk ve toprak sistemi",
      "en": "Army, law and land system of the Ottomans"
@@ -215,6 +247,10 @@ App.data.content["10/tarih"] = [
       {
        "soru": "Tımar sistemi ile Selçuklu ikta sistemi arasında nasıl bir ilişki vardır?",
        "cozum": "Tımar, **ikta sisteminin devamıdır**: devlet toprağının vergi geliri hizmet karşılığı verilir, karşılığında asker (cebelü) beslenir."
+      },
+      {
+       "soru": "Tımar sisteminin Osmanlı'nın beylikten devlete geçişine katkılarını ordu, ekonomi ve yönetim açısından açıklayınız.",
+       "cozum": "**Ordu:** Hazineye yük olmadan büyük bir **atlı asker (tımarlı sipahi)** gücü sağladı. **Ekonomi:** Toprağın boş kalması önlendi, **üretim sürekliliği** sağlandı. **Yönetim:** Taşrada **güvenlik ve düzen** tımar sahipleri eliyle korundu, merkezî otorite taşraya ulaştı. Toprak devletin (miri) olduğu için feodal bir yapı oluşmadı."
       }
      ],
      "ozet": [
@@ -226,17 +262,21 @@ App.data.content["10/tarih"] = [
    },
    {
     "id": "k5",
-    "code": "2.5",
+    "code": "TAR.10.2.4",
     "title": {
      "tr": "İskân ve istimalet politikaları",
      "en": "Settlement and istimalet policies"
     },
     "content": {
-     "anlatim": "# İskân (Yerleştirme)\n\nAnadolu'dan getirilen **konargöçer Türkmenlerin (Yörükler)** Rumeli'deki boş ve stratejik topraklara yerleştirilmesi.\n**Amaçlar:** bölgeyi Türkleştirmek ve İslamlaştırmak, **tarımsal üretimi** artırmak, askerî yolların **güvenliğini** sağlamak.\n\n# İstimalet (Gönül Alma)\n\nFethedilen bölgelerdeki gayrimüslimlere **din, dil, mezhep ve mülkiyet özgürlüğü** tanınması, adil davranılması. Feodal beylerin baskısından bunalan yerli halk Osmanlı yönetimini benimsedi → **kalıcılık**.\n\n> **Vakıflar** ve **kolonizatör Türk dervişleri** (Ahiler, abdallar) bu politikaların başarısında kilit rol oynadı.",
+     "anlatim": "# İskân (Yerleştirme)\n\nAnadolu'dan getirilen **konargöçer Türkmenlerin (Yörükler)** Rumeli'deki boş ve stratejik topraklara yerleştirilmesi.\n**Amaçlar:** bölgeyi Türkleştirmek ve İslamlaştırmak, **tarımsal üretimi** artırmak, askerî yolların **güvenliğini** sağlamak.\n\n# İstimalet (Gönül Alma)\n\nFethedilen bölgelerdeki gayrimüslimlere **din, dil, mezhep ve mülkiyet özgürlüğü** tanınması, adil davranılması. Feodal beylerin baskısından bunalan yerli halk Osmanlı yönetimini benimsedi → **kalıcılık**.\n\n> **Vakıflar** ve **kolonizatör Türk dervişleri** (Ahiler, abdallar) bu politikaların başarısında kilit rol oynadı.\n\n# Kalıcılığın Diğer Araçları\n\n- **Tahrir defterleri:** Fethedilen bölgelerin nüfusu, toprağı ve gelirleri kayda geçirilerek **adil bir vergi** düzeni kuruldu.\n- **Vergi kolaylığı:** Halk, feodal beylere ödediği ağır vergiler yerine **cizye** ve düzenli vergilerle yükümlü tutuldu.\n- **Yerel yöneticilerin korunması:** Bazı Hristiyan beylere **tımar** verilerek yönetime katılmaları sağlandı.\n- **Sürgün yöntemi:** Gerektiğinde Rumeli'den Anadolu'ya ya da tersi yönde nüfus nakledilerek bölgeler dengelendi.",
      "ornekler": [
       {
        "soru": "İstimalet politikası Balkanlarda Osmanlı'nın kalıcılığını nasıl sağladı?",
        "cozum": "Halk feodal baskıdan kurtulup **dinine ve malına dokunulmayan** adil bir yönetimle karşılaştığı için isyan yerine Osmanlı'yı benimsedi."
+      },
+      {
+       "soru": "Osmanlı'nın Rumeli'ye Türkmen aşiretlerini yerleştirmesi ile gayrimüslimlere din özgürlüğü tanıması birbirinin zıddı mıdır? Açıklayınız.",
+       "cozum": "Zıt değil, **birbirini tamamlayan** politikalardır. **İskân**, bölgeyi demografik ve ekonomik olarak güçlendirip güvenliği sağladı; **istimalet** ise yerli halkın gönlünü kazanarak isyanları önledi. İkisi birlikte Osmanlı'nın fethettiği topraklarda **kalıcı** olmasını sağladı."
       }
      ],
      "ozet": [
@@ -248,17 +288,21 @@ App.data.content["10/tarih"] = [
    },
    {
     "id": "k6",
-    "code": "2.6",
+    "code": "TAR.10.2.5",
     "title": {
      "tr": "Osmanlı'nın ilim ve irfan geleneği",
      "en": "Ottoman tradition of learning and spirituality"
     },
     "content": {
-     "anlatim": "# Şehir ve Külliye\n\nBursa, Edirne, İstanbul gibi şehirler **cami, medrese, imaret, çarşı**dan oluşan **külliyeler** etrafında şekillendi; ilim hayatının temeli **külliye ve vakıflar**dı.\n\n| Kurum | İşlevi |\n|---|---|\n| **Sıbyan mektebi** | İlk kademe: okuma-yazma, temel din eğitimi |\n| **Medrese** | Yükseköğretim: **İznik Medresesi** (ilk), **Sahn-ı Seman** (Fatih), **Süleymaniye** |\n| **Tekke ve zaviye** | Tasavvufi eğitim ve toplumsal dayanışma |\n\n# Önemli Şahsiyetler\n\n**Şeyh Edebali** (manevi kurucu, Ahi), **Davud-i Kayserî** (ilk başmüderris), **Dursun Fakih**, **Emir Sultan**, **Hacı Bayram Veli**.",
+     "anlatim": "# Şehir ve Külliye\n\nBursa, Edirne, İstanbul gibi şehirler **cami, medrese, imaret, çarşı**dan oluşan **külliyeler** etrafında şekillendi; ilim hayatının temeli **külliye ve vakıflar**dı.\n\n| Kurum | İşlevi |\n|---|---|\n| **Sıbyan mektebi** | İlk kademe: okuma-yazma, temel din eğitimi |\n| **Medrese** | Yükseköğretim: **İznik Medresesi** (ilk), **Sahn-ı Seman** (Fatih), **Süleymaniye** |\n| **Tekke ve zaviye** | Tasavvufi eğitim ve toplumsal dayanışma |\n\n# Önemli Şahsiyetler\n\n**Şeyh Edebali** (manevi kurucu, Ahi), **Davud-i Kayserî** (ilk başmüderris), **Dursun Fakih**, **Emir Sultan**, **Hacı Bayram Veli**.\n\n# Mekânın ve Kişilerin Etkisi\n\n**Bursa** (ilk başkent), **Edirne** (Rumeli'ye açılan merkez) ve **İstanbul**, kurulan vakıf ve külliyelerle ilim merkezleri hâline geldi. **Ahilik** teşkilatı meslek eğitimi ile ahlak eğitimini birleştirdi. Osmanlı ilim geleneğinde **akli ve nakli ilimler** birlikte okutuldu; **Molla Fenârî** (ilk şeyhülislam) bu geleneğin önemli temsilcilerindendir. Fetihten sonra İstanbul'a Semerkant'tan gelen **Ali Kuşçu** astronomi ve matematik çalışmalarıyla medreselere katkı sağladı.",
      "ornekler": [
       {
        "soru": "Osmanlı'nın ilk medresesi nerede, kim tarafından açılmıştır? İlk müderrisi kimdir?",
        "cozum": "**İznik**'te **Orhan Bey** döneminde (1331); ilk başmüderrisi **Davud-i Kayserî**dir."
+      },
+      {
+       "soru": "Osmanlı'da vakıfların ilim ve irfan geleneğine katkısı nedir?",
+       "cozum": "Medreselerin, sıbyan mekteplerinin, kütüphanelerin ve imaretlerin **masrafları** vakıf gelirleriyle karşılandı; müderris ve öğrencilere **maaş ve burs** verildi. Böylece eğitim **ücretsiz** ve sürekli hâle geldi, ilim kurumları devlet bütçesine yük olmadan yaygınlaştı."
       }
      ],
      "ozet": [
@@ -279,7 +323,7 @@ App.data.content["10/tarih"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "3.1",
+    "code": "TAR.10.3.1",
     "title": {
      "tr": "Cihan devletine giden seferler",
      "en": "Campaigns toward a world empire"
@@ -290,6 +334,10 @@ App.data.content["10/tarih"] = [
       {
        "soru": "Mısır Seferi'nin dinî ve ekonomik sonuçları nelerdir?",
        "cozum": "Dinî: **halifelik** Osmanlı'ya geçti, kutsal yerler Osmanlı'nın oldu. Ekonomik: **Baharat Yolu** ve Mısır'ın zengin gelirleri kontrol altına alındı."
+      },
+      {
+       "soru": "Yavuz Sultan Selim'in Çaldıran (1514) ve Mercidabık (1516) savaşlarının sonuçlarını karşılaştırınız.",
+       "cozum": "**Çaldıran:** Safevîler yenildi; **Doğu Anadolu**'da Osmanlı hâkimiyeti güçlendi, İpek Yolu'nun önemli bir kısmı kontrol altına alındı. **Mercidabık:** Memlûklar yenildi; **Suriye** alındı ve Mısır'ın yolu açıldı. Ardından Ridaniye ile **halifelik** Osmanlı'ya geçti, Baharat Yolu kontrol edildi."
       }
      ],
      "ozet": [
@@ -301,7 +349,7 @@ App.data.content["10/tarih"] = [
    },
    {
     "id": "k2",
-    "code": "3.2",
+    "code": "TAR.10.3.1",
     "title": {
      "tr": "Denizcilik, Hint seferleri, Kıbrıs ve doğu sınırı",
      "en": "Seafaring, Indian Ocean campaigns, Cyprus and the eastern border"
@@ -312,6 +360,10 @@ App.data.content["10/tarih"] = [
       {
        "soru": "Kasr-ı Şirin Antlaşması bugün için neden önemlidir?",
        "cozum": "Osmanlı–İran (Safevi) sınırını büyük ölçüde belirlemiş; **günümüz Türkiye–İran sınırı** bu antlaşmaya dayanır."
+      },
+      {
+       "soru": "Preveze Deniz Savaşı (1538) Osmanlı'nın Akdeniz'deki konumunu nasıl etkilemiştir?",
+       "cozum": "Barbaros Hayreddin Paşa komutasındaki Osmanlı donanması, Haçlı donanmasını yenerek **Akdeniz'de üstünlüğü** ele geçirdi; Akdeniz bir \"Türk gölü\" hâline geldi. Bu üstünlük, 1571 **İnebahtı** yenilgisine kadar tartışmasız sürdü."
       }
      ],
      "ozet": [
@@ -323,17 +375,21 @@ App.data.content["10/tarih"] = [
    },
    {
     "id": "k3",
-    "code": "3.3",
+    "code": "TAR.10.3.2",
     "title": {
      "tr": "Yönetim ve ordu yapısında değişim",
      "en": "Change in administration and the army"
     },
     "content": {
-     "anlatim": "# Değişimin Nedenleri\n\nİmparatorluğun büyümesi, nüfus artışı, mali krizler ve Avrupa'daki **askerî teknoloji** gelişmeleri.\n\n# Yönetimde\n\n- **Fatih Kanunnamesi**: kardeş katli yasallaştı, güç merkezde toplandı.\n- **Şehzadelerin sancağa çıkması** kaldırıldı → **kafes usulü** (sarayda gözetim).\n- **Ekber ve erşed** sistemi: tahta hanedanın **en yaşlı ve olgun** üyesi geçer (I. Ahmed).\n- Padişahlar divana katılmayıp kafes arkasından izlemeye başladı → **sadrazamların** yetkisi arttı; **valide sultanlar** saray siyasetinde etkili oldu.\n\n# Orduda\n\nAteşli silahların (tüfek, top) önemi artınca **yeniçeri** sayısı çoğaltıldı; **tımarlı sipahinin** sayısı ve önemi azaldı. Hazine yükü arttı.",
+     "anlatim": "# Değişimin Nedenleri\n\nİmparatorluğun büyümesi, nüfus artışı, mali krizler ve Avrupa'daki **askerî teknoloji** gelişmeleri.\n\n# Yönetimde\n\n- **Fatih Kanunnamesi**: kardeş katli yasallaştı, güç merkezde toplandı.\n- **Şehzadelerin sancağa çıkması** kaldırıldı → **kafes usulü** (sarayda gözetim).\n- **Ekber ve erşed** sistemi: tahta hanedanın **en yaşlı ve olgun** üyesi geçer (I. Ahmed).\n- Padişahlar divana katılmayıp kafes arkasından izlemeye başladı → **sadrazamların** yetkisi arttı; **valide sultanlar** saray siyasetinde etkili oldu.\n\n# Orduda\n\nAteşli silahların (tüfek, top) önemi artınca **yeniçeri** sayısı çoğaltıldı; **tımarlı sipahinin** sayısı ve önemi azaldı. Hazine yükü arttı.\n\n# Merkezî Yönetimin Güçlenmesi ve Devşirme\n\nFatih döneminde **devşirme kökenli** yöneticiler sadrazamlık gibi üst görevlere getirildi; böylece köklü Türk ailelerinin (Çandarlılar gibi) güç dengesi değişti ve padişahın otoritesi güçlendi. Kanuni döneminde **kanunnameler** ile yönetim kuralları sistemleştirildi. XVII. yüzyılda ise merkezde nüfuz mücadeleleri arttı; **Köprülüler** döneminde sadrazamların geniş yetkilerle düzeni yeniden kurmaya çalıştıkları görüldü.",
      "ornekler": [
       {
        "soru": "Ateşli silahların yaygınlaşması tımar sistemini nasıl etkiledi?",
        "cozum": "Savaşlarda tüfekli piyade önem kazandı; maaşlı **yeniçeri** sayısı arttı, **tımarlı sipahi** önem kaybetti. Bu, hazineye yük bindirdi ve tımar düzeninin bozulmasına katkı yaptı."
+      },
+      {
+       "soru": "Kafes usulünün uygulanması Osmanlı padişahlarının yetişmesini ve devlet yönetimini nasıl etkilemiştir?",
+       "cozum": "Şehzadeler sancakta **yönetim ve askerlik tecrübesi** kazanamadan sarayda yetişti; tahta çıkan padişahlar **tecrübesiz** oldu. Bu durum yönetimde **sadrazamların, valide sultanların** ve saray çevresinin etkisini artırdı; merkezî otorite zayıfladı."
       }
      ],
      "ozet": [
@@ -345,7 +401,7 @@ App.data.content["10/tarih"] = [
    },
    {
     "id": "k4",
-    "code": "3.4",
+    "code": "TAR.10.3.3",
     "title": {
      "tr": "Coğrafi keşifler, sömürgecilik, Rönesans ve Reform",
      "en": "Geographical discoveries, colonialism, Renaissance and Reformation"
@@ -356,6 +412,10 @@ App.data.content["10/tarih"] = [
       {
        "soru": "Coğrafi keşifler Osmanlı ekonomisini nasıl etkiledi?",
        "cozum": "Ticaret Atlantik'e kaydı, **Baharat ve İpek yolları** önemini kaybetti, gümrük gelirleri düştü; Avrupa'ya akan değerli madenler Osmanlı'da **fiyat artışına** neden oldu."
+      },
+      {
+       "soru": "Avrupa'nın sömürgeci politikalarının Amerika ve Afrika yerli halkları üzerindeki etkilerini değerlendiriniz.",
+       "cozum": "Amerika'da **Aztek ve İnka** gibi medeniyetler yıkıldı; savaşlar, zorla çalıştırma ve Avrupa'dan gelen salgın hastalıklarla yerli nüfus büyük oranda azaldı. Afrika'dan milyonlarca insan **köle ticaretiyle** zorla Amerika'ya taşındı. Değerli madenler ve hammaddeler Avrupa'ya aktarıldı; bu süreç sömürülen bölgelerde yüzyıllar süren **yoksulluk ve eşitsizliğe** yol açtı."
       }
      ],
      "ozet": [
@@ -367,7 +427,7 @@ App.data.content["10/tarih"] = [
    },
    {
     "id": "k5",
-    "code": "3.5",
+    "code": "TAR.10.3.4",
     "title": {
      "tr": "XVII. yüzyıl isyanları ve ıslahatlar",
      "en": "17th-century revolts and reforms"
@@ -378,6 +438,10 @@ App.data.content["10/tarih"] = [
       {
        "soru": "Büyük Kaçgun nedir ve ekonomiye etkisi ne olmuştur?",
        "cozum": "Celâlî isyanları sırasında köylülerin güvenlik kaygısıyla **topraklarını bırakıp kaçması**; tarımsal üretim düştü, vergi gelirleri azaldı."
+      },
+      {
+       "soru": "Celalî isyanlarının nedenlerini ekonomik, askerî ve sosyal açıdan sınıflandırınız.",
+       "cozum": "**Ekonomik:** Coğrafi keşiflerle ticaret yollarının değişmesi, **fiyat artışları (enflasyon)**, ağır vergiler. **Askerî:** Tımar sisteminin bozulması, savaşlarda kaçan askerlerin (firariler) cezalandırılmaktan korkması. **Sosyal:** Nüfus artışı, toprağını terk eden köylüler, medrese öğrencilerinin işsizliği (suhte). Sonuçta köylüler topraklarını bırakarak **Büyük Kaçgun** yaşandı."
       }
      ],
      "ozet": [
@@ -389,7 +453,7 @@ App.data.content["10/tarih"] = [
    },
    {
     "id": "k6",
-    "code": "3.6",
+    "code": "TAR.10.3.5",
     "title": {
      "tr": "Osmanlı'da bilim, kültür ve sanat",
      "en": "Science, culture and art in the Ottoman State"
@@ -400,6 +464,10 @@ App.data.content["10/tarih"] = [
       {
        "soru": "Mimar Sinan'ın \"ustalık eserim\" dediği yapı hangisidir?",
        "cozum": "Edirne'deki **Selimiye Camii**."
+      },
+      {
+       "soru": "Klasik dönemde Osmanlı minyatür ve hat sanatı hangi işlevleri üstlenmiştir?",
+       "cozum": "**Minyatür**, savaşları, sefer güzergâhlarını ve saray törenlerini **görsel bir tarih kaydı** olarak resmetti (ör. **Matrakçı Nasuh**'un şehir resimleri, **Nakkaş Osman**'ın eserleri). **Hat sanatı** ise Kur'an'ın, ferman ve kitabelerin **güzel yazıyla** yazılmasını sağladı; **Şeyh Hamdullah** ve **Ahmed Karahisarî** önemli hattatlardır."
       }
      ],
      "ozet": [

@@ -418,7 +418,7 @@
         note: T("Zorlayıcı frekans sistemin doğal frekansına eşit olunca enerji en verimli aktarılır ve genlik çok büyür: rezonans. Depremde binalar, köprüler; salıncağı doğru anda itmek; radyonun istasyon seçmesi bu olaydır.",
           "When the driving frequency equals the natural one, amplitude grows a lot: resonance.") };
     }
-  }, ["10/fizik/u4/k6"]);
+  }, ["10/fizik/u4/k6", "10/fizik/u4/k7"]);
 
   add("kirilma", {
     title: () => T("Işığın kırılması ve tam yansıma", "Refraction and total internal reflection"), icon: "eye", tags: "snell kırıcılık indisi sınır açısı",

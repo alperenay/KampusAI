@@ -349,6 +349,8 @@ O("k2", "5.2", "Konfüçyanizm ve Taoizm", "Confucianism and Taoism", r"""
 from _ek134 import uygula  # noqa: E402
 uygula(units, "din12_ek134")
 
+from _ek136 import uygula136; uygula136(units, "din12")
+
 write("din-12.js", "12/din", "12. Sınıf Din Kültürü ve Ahlak Bilgisi — konu anlatım notları",
       "kullanıcının verdiği \"12. Sınıf Din Kültürü ve Ahlak Bilgisi Konu Anlatım Notları\" (5 ünite).",
       units, "Kazanım kodları kaynaktaki bölüm numaralarıdır; yakın bölümler birleştirildi. Eklenenler: tasavvufun gelişim dönemleri, tarikat tablosu, hüküm kategorileri, kıyas örneği, Ahilik ilkeleri, En'âm 151–152'nin maddeleri. Hacı Bektaş Velî maddesine Bektaşiliğin Balım Sultan döneminde kurumsallaştığı notu eklendi; tıbbi meselelerde Diyanet'in görüşü esas alındı.")

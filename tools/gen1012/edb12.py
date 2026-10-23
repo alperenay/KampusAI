@@ -261,6 +261,8 @@ Bir topluluğu belirli bir **düşünce ya da eyleme yöneltmek**, **coşturmak 
 from _ek134 import uygula  # noqa: E402
 uygula(units, "edb12_ek134")
 
+from _ek136 import uygula136; uygula136(units, "edb12")
+
 write("edb-12.js", "12/edebiyat", "12. Sınıf Türk Dili ve Edebiyatı — detaylı konu anlatım notları",
       "kullanıcının verdiği \"TDE 12 Detaylı Konu Anlatım Notları\" (7 ünite).",
       units, "Kaynak notlar yalnızca kazanım başlıklarını ve kısa özetleri içerdiği için her ünite ders kitabı düzeyinde genişletildi (akım–felsefe tablosu, sözlükler, hikâye ve şiir akımlarının temsilcileri, roman dönemleri, epik ve absürt tiyatro, deneme–makale–sohbet karşılaştırması, söylev geleneği).")

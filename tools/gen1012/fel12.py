@@ -298,6 +298,8 @@ O("k3", "4.3", "Çıkarım kuralları ve niceleme mantığına giriş", "Rules o
 ]),
 ]
 
+from _ek136 import uygula136; uygula136(units, "fel12")
+
 write("fel-12.js", "12/felsefe", "12. Sınıf Felsefe (Mantık) — konu anlatım notları",
       "MEB Mantık öğretim programı (4 ünite): mantığa giriş, klasik mantık, mantık ve dil, sembolik mantık.",
       units, "1.34.0'da eklendi: 12. sınıf felsefe grubu dersi olarak Mantık; AYT Felsefe Grubu mantık sorularına hazırlık.")

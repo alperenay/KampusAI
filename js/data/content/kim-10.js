@@ -19,7 +19,7 @@ App.data.content["10/kimya"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "1.1",
+    "code": "KİM.10.1.1",
     "title": {
      "tr": "Kimyasal tepkimeler, göstergeleri ve gösterim düzeyleri",
      "en": "Chemical reactions, their signs and levels of representation"
@@ -30,6 +30,10 @@ App.data.content["10/kimya"] = [
       {
        "soru": "Bir deneyde iki renksiz çözelti karıştırıldığında sarı bir katı dibe çöküyor. Bu bir kimyasal değişim midir? Hangi gösterge?",
        "cozum": "Evet; yeni bir madde oluşmuştur. Gösterge: **çökelme** (katı oluşumu) ve **renk değişimi**."
+      },
+      {
+       "soru": "Demirin paslanması ve buzun erimesi olaylarını tanecik düzeyinde karşılaştırınız. Hangisi kimyasal değişimdir?",
+       "cozum": "**Buzun erimesi** fiziksel değişimdir: $H_2O$ molekülleri aynı kalır, yalnızca moleküller arası düzen değişir. **Paslanma** kimyasal değişimdir: Fe atomları $O_2$ ve suyla etkileşir, atomlar **yeniden düzenlenerek** yeni bağlar kurulur ve yeni bir madde ($Fe_2O_3\\cdot nH_2O$) oluşur. Renk değişimi kimyasal değişimin göstergesidir."
       }
      ],
      "ozet": [
@@ -41,7 +45,7 @@ App.data.content["10/kimya"] = [
    },
    {
     "id": "k2",
-    "code": "1.2",
+    "code": "KİM.10.1.3",
     "title": {
      "tr": "Kimyasal tepkime türleri",
      "en": "Types of chemical reactions"
@@ -67,7 +71,7 @@ App.data.content["10/kimya"] = [
    },
    {
     "id": "k3",
-    "code": "1.3",
+    "code": "KİM.10.1.4–5",
     "title": {
      "tr": "Mol kavramı ve mol hesaplamaları",
      "en": "The mole concept and mole calculations"
@@ -93,7 +97,7 @@ App.data.content["10/kimya"] = [
    },
    {
     "id": "k4",
-    "code": "1.4",
+    "code": "KİM.10.1.6",
     "title": {
      "tr": "Tepkime denklemlerinin denkleştirilmesi",
      "en": "Balancing chemical equations"
@@ -119,13 +123,13 @@ App.data.content["10/kimya"] = [
    },
    {
     "id": "k5",
-    "code": "1.5",
+    "code": "KİM.10.1.7",
     "title": {
      "tr": "Stokiyometri: sınırlayıcı bileşen ve yüzde verim",
      "en": "Stoichiometry: limiting reactant and percent yield"
     },
     "content": {
-     "anlatim": "# Stokiyometrik Hesaplama\n\nDenkleştirilmiş denklemde **katsayılar = mol oranları**.\n\n1. Verilen kütle/hacmi **mole** çevir.\n2. Katsayı oranıyla istenen maddenin **molünü** bul.\n3. Molü gram, litre ya da tanecik sayısına çevir.\n\n# Sınırlayıcı Bileşen\n\nTamamen tükenip tepkimeyi durduran maddedir. Her girenin **mol sayısı / katsayısı** hesaplanır; **en küçük** sonucu veren sınırlayıcıdır. Diğeri **artar**.\n\n# Yüzde Verim\n\n$$\\%\\text{ verim} = \\frac{\\text{gerçek verim}}{\\text{teorik verim}}\\times100$$",
+     "anlatim": "# Stokiyometrik Hesaplama\n\nDenkleştirilmiş denklemde **katsayılar = mol oranları**.\n\n1. Verilen kütle/hacmi **mole** çevir.\n2. Katsayı oranıyla istenen maddenin **molünü** bul.\n3. Molü gram, litre ya da tanecik sayısına çevir.\n\n# Sınırlayıcı Bileşen\n\nTamamen tükenip tepkimeyi durduran maddedir. Her girenin **mol sayısı / katsayısı** hesaplanır; **en küçük** sonucu veren sınırlayıcıdır. Diğeri **artar**.\n\n# Yüzde Verim\n\n$$\\%\\text{ verim} = \\frac{\\text{gerçek verim}}{\\text{teorik verim}}\\times100$$\n\n# Kütle–Kütle ve Kütle–Hacim Hesapları\n\n$N_2 + 3H_2 \\rightarrow 2NH_3$ tepkimesinde katsayılar şu oranları verir:\n| | $N_2$ | $H_2$ | $NH_3$ |\n|---|---|---|---|\n| Mol oranı | 1 | 3 | 2 |\n| Kütle (g) | 28 | 6 | 34 |\n| NŞA hacmi (L) | 22,4 | 67,2 | 44,8 |\n\nKütle **korunur** ($28 + 6 = 34$), ancak mol ve hacim **korunmak zorunda değildir** ($1 + 3 \\ne 2$). Hesaplarda her zaman **mol** üzerinden ilerlemek hatayı önler.",
      "ornekler": [
       {
        "soru": "4 mol $H_2$ ile 3 mol $O_2$ tepkimeye giriyor: $2H_2 + O_2 \\rightarrow 2H_2O$. Sınırlayıcı bileşen hangisidir? Kaç mol su oluşur, ne artar?",
@@ -142,6 +146,33 @@ App.data.content["10/kimya"] = [
       "% verim = gerçek / teorik × 100."
      ]
     }
+   },
+   {
+    "id": "k6",
+    "code": "KİM.10.1.2",
+    "title": {
+     "tr": "Kimyasal tepkimelerin oluşumu: tanecik modeli ve çarpışma",
+     "en": "How chemical reactions happen: particle model and collisions"
+    },
+    "content": {
+     "anlatim": "# Tepkime Nasıl Gerçekleşir? — Bir Model Kuralım\n\nBir kimyasal tepkimede **atomlar yok olmaz, yoktan da var olmaz**; yalnızca **yeniden düzenlenir**. Bu düzenlenme şu basamaklarla modellenebilir:\n1. **Çarpışma:** Tepkimeye girecek tanecikler (atom, molekül, iyon) birbirleriyle **çarpışmalıdır**.\n2. **Bağların kırılması:** Girenlerdeki bazı kimyasal bağlar kırılır — bu basamak **enerji gerektirir**.\n3. **Yeni bağların oluşması:** Atomlar yeni düzende birleşir — bu basamakta **enerji açığa çıkar**.\n\n$$2H_2 + O_2 \\rightarrow 2H_2O$$\nTanecik modelinde: 2 tane $H\\text{–}H$ bağı ve 1 tane $O\\text{=}O$ bağı kırılır; 4 tane $O\\text{–}H$ bağı oluşur. **4 H ve 2 O atomu** başta da sonda da vardır.\n\n# Etkin Çarpışma\n\nHer çarpışma tepkimeyle sonuçlanmaz. Bir çarpışmanın **etkin** olması için:\n- Taneciklerin **yeterli kinetik enerjisi** olmalıdır (bağları kırabilecek kadar),\n- Tanecikler **uygun doğrultuda (geometride)** çarpışmalıdır.\n\nSıcaklık artınca taneciklerin hızı ve etkin çarpışma sayısı artar; **derişimi artırmak** ya da katıyı **toz hâline getirmek** çarpışma sayısını artırır. Bu yüzden ince kıyılmış odun kütükten daha hızlı yanar.\n\n# Modeli Sınamak ve Revize Etmek\n\n| Gözlem | Model açıklıyor mu? |\n|---|---|\n| Kütle korunur | ✓ Atomlar yalnızca yer değiştirir |\n| Bazı tepkimeler ısı verir, bazıları alır | ✓ Kırılan ve oluşan bağların enerji farkı |\n| Kibrit kendiliğinden yanmaz, sürtünmeyle yanar | ✓ Başlangıçta bağ kırmak için **enerji** gerekir |\n| Çözeltide tepkimeler katılara göre daha hızlıdır | ✓ İyonlar serbestçe hareket edip **daha sık çarpışır** |\n\nModelimiz yeni bir gözlemi açıklayamazsa (ör. katalizörün etkisi) **revize edilir**: Katalizör, tepkimenin **daha düşük enerjili bir yoldan** gerçekleşmesini sağlar ve kendisi tükenmez.",
+     "ornekler": [
+      {
+       "soru": "Metan yanmasında ($CH_4 + 2O_2 \\rightarrow CO_2 + 2H_2O$) hangi bağlar kırılır, hangileri oluşur? Atom sayılarının korunduğunu gösteriniz.",
+       "cozum": "**Kırılan:** 4 tane $C\\text{–}H$ bağı, 2 tane $O\\text{=}O$ bağı. **Oluşan:** 2 tane $C\\text{=}O$ (karbondioksitte), 4 tane $O\\text{–}H$ (iki su molekülünde). Atomlar: Girenlerde 1 C, 4 H, 4 O; ürünlerde 1 C, 4 H, $2 + 2 = 4$ O. Atomlar korunmuş, yalnızca **yeniden düzenlenmiştir**."
+      },
+      {
+       "soru": "Bir avuç demir tozu alevde parlayarak yanarken demir çivi yanmaz. Bu durumu tanecik ve çarpışma modeliyle açıklayınız.",
+       "cozum": "Toz hâlindeki demirin **yüzey alanı** çok büyüktür; daha fazla demir atomu oksijenle **aynı anda temas eder** ve etkin çarpışma sayısı artar. Çivide yalnızca yüzeydeki atomlar oksijenle çarpışabilir; tepkime çok yavaş (paslanma) ilerler."
+      }
+     ],
+     "ozet": [
+      "Tepkimede atomlar yeniden düzenlenir: bağlar kırılır (enerji alır), yeni bağlar oluşur (enerji verir).",
+      "Tepkime için tanecikler yeterli enerji ve uygun doğrultuda çarpışmalıdır (etkin çarpışma).",
+      "Sıcaklık, derişim ve yüzey alanı çarpışma sayısını artırır.",
+      "Bilimsel model gözlemlerle sınanır, açıklayamadığı durumlarda revize edilir."
+     ]
+    }
    }
   ]
  },
@@ -154,17 +185,21 @@ App.data.content["10/kimya"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "1.6",
+    "code": "KİM.10.1.8",
     "title": {
      "tr": "Gazların özellikleri ve kinetik moleküler teori",
      "en": "Properties of gases and kinetic molecular theory"
     },
     "content": {
-     "anlatim": "# Gazların Özellikleri\n\nMaddenin en düzensiz hâlidir: belirli **şekli ve hacmi yoktur**, kabın her yönüne **eşit basınç** uygular, **sıkıştırılabilir**, diğer gazlarla her oranda **homojen** karışır.\n\n# Kinetik Moleküler Teori (varsayımlar)\n\n- Tanecikler arası boşluk çok büyüktür; taneciklerin **öz hacmi ihmal** edilir.\n- Tanecikler sürekli, hızlı, rastgele (zikzaklı — **Brown hareketi**) hareket eder.\n- Çarpışmalar **esnektir**; toplam kinetik enerji korunur.\n- Tanecikler arası **çekim–itme kuvvetleri ihmal** edilir.\n- **Ortalama kinetik enerji yalnızca mutlak sıcaklıkla** orantılıdır; aynı sıcaklıktaki tüm gazların ortalama kinetik enerjisi **eşittir**.",
+     "anlatim": "# Gazların Özellikleri\n\nMaddenin en düzensiz hâlidir: belirli **şekli ve hacmi yoktur**, kabın her yönüne **eşit basınç** uygular, **sıkıştırılabilir**, diğer gazlarla her oranda **homojen** karışır.\n\n# Kinetik Moleküler Teori (varsayımlar)\n\n- Tanecikler arası boşluk çok büyüktür; taneciklerin **öz hacmi ihmal** edilir.\n- Tanecikler sürekli, hızlı, rastgele (zikzaklı — **Brown hareketi**) hareket eder.\n- Çarpışmalar **esnektir**; toplam kinetik enerji korunur.\n- Tanecikler arası **çekim–itme kuvvetleri ihmal** edilir.\n- **Ortalama kinetik enerji yalnızca mutlak sıcaklıkla** orantılıdır; aynı sıcaklıktaki tüm gazların ortalama kinetik enerjisi **eşittir**.\n\n# Gaz Basıncı ve Ölçülmesi\n\nGaz basıncı, taneciklerin kabın çeperlerine **çarpmasından** doğar. Açık hava basıncı **barometre** ile (Torricelli: deniz seviyesinde 76 cmHg = 1 atm), kapalı kaptaki gaz basıncı **manometre** ile ölçülür.\n- $1\\ atm = 76\\ cmHg = 760\\ mmHg = 101{,}3\\ kPa$\n- Sıcaklık artınca tanecikler daha hızlı hareket eder, daha sık ve şiddetli çarpar → **basınç artar**.\n- Gazların **yoğunluğu** sıvı ve katılardan çok küçüktür; sıkıştırılabilmeleri tanecikler arası boşluğun büyüklüğünden kaynaklanır.",
      "ornekler": [
       {
        "soru": "Aynı sıcaklıktaki $H_2$ ve $O_2$ gazlarının ortalama kinetik enerjileri ve hızları nasıldır?",
        "cozum": "Ortalama kinetik enerjileri **eşittir** (yalnız sıcaklığa bağlı). $E_k = \\frac12mv^2$ olduğundan kütlesi küçük olan **$H_2$ daha hızlı** hareket eder."
+      },
+      {
+       "soru": "Bir şırınganın ucu kapatılıp pistonu itildiğinde içindeki hava sıkışır, aynı işlem suyla yapıldığında su sıkışmaz. Bu farkı kinetik moleküler teori ile açıklayınız.",
+       "cozum": "Gaz tanecikleri arasında **çok büyük boşluklar** vardır; basınç uygulanınca tanecikler birbirine yaklaşır ve hacim küçülür. Sıvılarda tanecikler **birbirine temas edecek kadar yakındır**; aradaki boşluk çok az olduğu için sıvılar pratikte sıkıştırılamaz."
       }
      ],
      "ozet": [
@@ -176,13 +211,13 @@ App.data.content["10/kimya"] = [
    },
    {
     "id": "k2",
-    "code": "1.7",
+    "code": "KİM.10.1.9",
     "title": {
      "tr": "Gaz yasaları",
      "en": "Gas laws"
     },
     "content": {
-     "anlatim": "# Gaz Değişkenleri\n\nBasınç $P$, hacim $V$, sıcaklık $T$, miktar $n$. Sıcaklık **daima Kelvin**: $T(K) = t(^\\circ C) + 273$.\n\n| Yasa | Sabit | İlişki | Formül |\n|---|---|---|---|\n| **Boyle** | $n, T$ | $P$ ile $V$ **ters** orantılı | $P_1V_1 = P_2V_2$ |\n| **Charles** | $n, P$ | $V$ ile $T$ **doğru** orantılı | $\\dfrac{V_1}{T_1} = \\dfrac{V_2}{T_2}$ |\n| **Gay-Lussac** | $n, V$ | $P$ ile $T$ **doğru** orantılı | $\\dfrac{P_1}{T_1} = \\dfrac{P_2}{T_2}$ |\n| **Avogadro** | $P, T$ | $V$ ile $n$ **doğru** orantılı | $\\dfrac{V_1}{n_1} = \\dfrac{V_2}{n_2}$ |\n\n### Birleşik gaz denklemi\n\n$$\\frac{P_1V_1}{T_1} = \\frac{P_2V_2}{T_2}$$",
+     "anlatim": "# Gaz Değişkenleri\n\nBasınç $P$, hacim $V$, sıcaklık $T$, miktar $n$. Sıcaklık **daima Kelvin**: $T(K) = t(^\\circ C) + 273$.\n\n| Yasa | Sabit | İlişki | Formül |\n|---|---|---|---|\n| **Boyle** | $n, T$ | $P$ ile $V$ **ters** orantılı | $P_1V_1 = P_2V_2$ |\n| **Charles** | $n, P$ | $V$ ile $T$ **doğru** orantılı | $\\dfrac{V_1}{T_1} = \\dfrac{V_2}{T_2}$ |\n| **Gay-Lussac** | $n, V$ | $P$ ile $T$ **doğru** orantılı | $\\dfrac{P_1}{T_1} = \\dfrac{P_2}{T_2}$ |\n| **Avogadro** | $P, T$ | $V$ ile $n$ **doğru** orantılı | $\\dfrac{V_1}{n_1} = \\dfrac{V_2}{n_2}$ |\n\n### Birleşik gaz denklemi\n\n$$\\frac{P_1V_1}{T_1} = \\frac{P_2V_2}{T_2}$$\n\n# Grafiklerle Gaz Yasaları\n\n| Yasa | Grafik | Şekil |\n|---|---|---|\n| Boyle | $P$–$V$ | Hiperbol (ters orantı); $P$–$\\frac1V$ doğrusal |\n| Charles | $V$–$T(K)$ | Orijinden geçen doğru; $V$–$t(^\\circ C)$ grafiği $-273\\ ^\\circ C$'yi keser |\n| Gay-Lussac | $P$–$T(K)$ | Orijinden geçen doğru |\n| Avogadro | $V$–$n$ | Orijinden geçen doğru |\n\n$V$–$t(^\\circ C)$ doğrularının uzatıldığında hepsinin $-273\\ ^\\circ C$'de kesişmesi, **mutlak sıfır** kavramına ulaşılmasını sağlamıştır.",
      "ornekler": [
       {
        "soru": "Sabit sıcaklıkta 2 atm basınçtaki 6 L gaz 3 L'ye sıkıştırılıyor. Yeni basınç nedir?",
@@ -202,17 +237,21 @@ App.data.content["10/kimya"] = [
    },
    {
     "id": "k3",
-    "code": "1.8",
+    "code": "KİM.10.1.10",
     "title": {
      "tr": "İdeal gaz denklemi",
      "en": "The ideal gas equation"
     },
     "content": {
-     "anlatim": "# İdeal Gaz Denklemi\n\nBoyle, Charles ve Avogadro yasalarının birleşimidir:\n$$P\\cdot V = n\\cdot R\\cdot T$$\n\n| Simge | Birim |\n|---|---|\n| $P$ | atm |\n| $V$ | L |\n| $n$ | mol |\n| $R$ | $0{,}082 \\ \\dfrac{atm\\cdot L}{mol\\cdot K}$ $\\left(= \\dfrac{22{,}4}{273}\\right)$ |\n| $T$ | K |\n\n# İdeallik\n\nGerçek gazlar **yüksek sıcaklık** ve **düşük basınçta** ideal davranışa en çok yaklaşır. Mol kütlesi küçük ve tanecikler arası çekimi zayıf gazlar ($He$, $H_2$) ideale daha yakındır.",
+     "anlatim": "# İdeal Gaz Denklemi\n\nBoyle, Charles ve Avogadro yasalarının birleşimidir:\n$$P\\cdot V = n\\cdot R\\cdot T$$\n\n| Simge | Birim |\n|---|---|\n| $P$ | atm |\n| $V$ | L |\n| $n$ | mol |\n| $R$ | $0{,}082 \\ \\dfrac{atm\\cdot L}{mol\\cdot K}$ $\\left(= \\dfrac{22{,}4}{273}\\right)$ |\n| $T$ | K |\n\n# İdeallik\n\nGerçek gazlar **yüksek sıcaklık** ve **düşük basınçta** ideal davranışa en çok yaklaşır. Mol kütlesi küçük ve tanecikler arası çekimi zayıf gazlar ($He$, $H_2$) ideale daha yakındır.\n\n# İdeal Gaz Denkleminin Türetilmesi\n\n- Boyle: $V \\propto \\dfrac1P$, Charles: $V \\propto T$, Avogadro: $V \\propto n$\n- Birleştirilirse $V \\propto \\dfrac{nT}{P}$; orantı sabiti $R$ ile $PV = nRT$.\n\n**Yoğunluk ve mol kütlesi:** $n = \\dfrac{m}{M_A}$ yazılırsa $P\\cdot M_A = d\\cdot R\\cdot T$ elde edilir. Aynı koşullarda mol kütlesi büyük olan gazın yoğunluğu da büyüktür ($CO_2$ havadan ağırdır, yere çöker; $He$ hafiftir, balonları uçurur).",
      "ornekler": [
       {
        "soru": "27 °C'de 8,2 L'lik kapta 2 mol gaz var. Basınç kaç atm'dir?",
        "cozum": "$P = \\frac{nRT}{V} = \\frac{2\\cdot0{,}082\\cdot300}{8{,}2} = 6$ atm."
+      },
+      {
+       "soru": "NŞA'da (0 °C, 1 atm) yoğunluğu 1,25 g/L olan gazın mol kütlesi kaçtır? Bu gaz ne olabilir?",
+       "cozum": "$P\\cdot M_A = d\\cdot R\\cdot T \\Rightarrow M_A = \\dfrac{1{,}25\\cdot0{,}082\\cdot273}{1} \\approx 28$ g/mol. Gaz **$N_2$** ya da **$CO$** olabilir (ikisinin de mol kütlesi 28 g/mol)."
       }
      ],
      "ozet": [
@@ -224,17 +263,21 @@ App.data.content["10/kimya"] = [
    },
    {
     "id": "k4",
-    "code": "1.9",
+    "code": "KİM.10.1.11",
     "title": {
      "tr": "Graham difüzyon ve efüzyon yasası",
      "en": "Graham's law of diffusion and effusion"
     },
     "content": {
-     "anlatim": "# Difüzyon ve Efüzyon\n\n- **Difüzyon:** gaz taneciklerinin birbiri içinde **yayılması**, karışması.\n- **Efüzyon:** sıkışmış gazın **küçük bir delikten** boşluğa kaçması.\n\n# Graham Yasası\n\nAynı sıcaklıkta gazların yayılma hızı mol kütlelerinin **karekökü ile ters orantılıdır**:\n$$\\frac{\\vartheta_1}{\\vartheta_2} = \\sqrt{\\frac{M_{A2}}{M_{A1}}}$$\n\n> Hafif gaz daha hızlı yayılır. Kokunun odaya yayılması difüzyon örneğidir.",
+     "anlatim": "# Difüzyon ve Efüzyon\n\n- **Difüzyon:** gaz taneciklerinin birbiri içinde **yayılması**, karışması.\n- **Efüzyon:** sıkışmış gazın **küçük bir delikten** boşluğa kaçması.\n\n# Graham Yasası\n\nAynı sıcaklıkta gazların yayılma hızı mol kütlelerinin **karekökü ile ters orantılıdır**:\n$$\\frac{\\vartheta_1}{\\vartheta_2} = \\sqrt{\\frac{M_{A2}}{M_{A1}}}$$\n\n> Hafif gaz daha hızlı yayılır. Kokunun odaya yayılması difüzyon örneğidir.\n\n# Deney Tasarımı: Difüzyon Hızı\n\nBir cam borunun bir ucuna **derişik HCl**, diğer ucuna **derişik NH₃** ile ıslatılmış pamuk konur. İki gaz borunun içinde karşılaştığında beyaz **NH₄Cl** halkası oluşur.\n- Halka **HCl** tarafına daha yakın oluşur; çünkü $NH_3$ ($M_A = 17$) $HCl$'den ($M_A = 36{,}5$) daha **hafiftir** ve daha hızlı yayılır.\n- Hız oranı $\\sqrt{36{,}5/17} \\approx 1{,}47$; $NH_3$ yaklaşık **1,5 kat** daha uzun yol alır.\n\n**Günlük hayattan:** Balonların zamanla sönmesi (helyum efüzyonu), parfümün odaya yayılması, doğal gaza eklenen kokulu maddenin kaçağı haber vermesi.",
      "ornekler": [
       {
        "soru": "Aynı koşullarda $H_2$ ($M_A=2$) ve $O_2$ ($M_A=32$) gazlarının yayılma hızları oranı nedir?",
        "cozum": "$\\frac{\\vartheta_{H_2}}{\\vartheta_{O_2}} = \\sqrt{\\frac{32}{2}} = 4$ → $H_2$ 4 kat hızlıdır."
+      },
+      {
+       "soru": "Aynı koşullarda bir gaz, $CH_4$ gazından ($M_A = 16$) 2 kat yavaş yayılıyor. Bu gazın mol kütlesi kaçtır?",
+       "cozum": "$\\dfrac{\\vartheta_{CH_4}}{\\vartheta_X} = \\sqrt{\\dfrac{M_X}{16}} = 2 \\Rightarrow \\dfrac{M_X}{16} = 4 \\Rightarrow M_X = 64$ g/mol (ör. $SO_2$)."
       }
      ],
      "ozet": [
@@ -255,7 +298,7 @@ App.data.content["10/kimya"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "2.1",
+    "code": "KİM.10.2.1–2",
     "title": {
      "tr": "Çözünme süreci ve \"benzer benzeri çözer\"",
      "en": "The dissolving process and \"like dissolves like\""
@@ -266,6 +309,10 @@ App.data.content["10/kimya"] = [
       {
        "soru": "İyot suda neden az, benzende neden iyi çözünür?",
        "cozum": "İyot ($I_2$) **apolar**dır. Su polar, benzen apolar çözücüdür; \"benzer benzeri çözer\"."
+      },
+      {
+       "soru": "Yağlı bir tavanın yalnızca suyla temizlenememesi, deterjanla ise temizlenebilmesini \"benzer benzeri çözer\" ilkesiyle açıklayınız.",
+       "cozum": "Yağ **apolar**, su **polar**dır; yağ suda çözünmez. Deterjan molekülünün bir ucu **apolar** (hidrokarbon zinciri, yağı çeker), diğer ucu **polar/iyonik**tir (suyu çeker). Deterjan yağ damlacıklarını sararak (misel) suyla birlikte uzaklaşmalarını sağlar."
       }
      ],
      "ozet": [
@@ -277,17 +324,21 @@ App.data.content["10/kimya"] = [
    },
    {
     "id": "k2",
-    "code": "2.2",
+    "code": "KİM.10.2.3",
     "title": {
      "tr": "Çözünme türleri: iyonik, moleküler, fiziksel, kimyasal",
      "en": "Types of dissolution"
     },
     "content": {
-     "anlatim": "# Çözünme Türleri\n\n| Tür | Açıklama | İletkenlik |\n|---|---|---|\n| **İyonik çözünme** | İyonik bileşik (tuz, baz) katyon ve anyonlarına ayrışır | İletir (elektrolit) |\n| **Moleküler çözünme** | Kovalent moleküller yapısını bozmadan dağılır (şeker, alkol) | İletmez |\n| **Fiziksel çözünme** | Çözünen kimlik değiştirmez (tuz, şeker) | — |\n| **Kimyasal çözünme** | Çözünen, çözücüyle tepkimeye girer ($CO_2$ suda asidik özellik, $NH_3$) | — |\n\n| Madde | Çözünme | Elektrolit mi? |\n|---|---|---|\n| $NaCl$ | İyonik / fiziksel | Evet |\n| $C_{12}H_{22}O_{11}$ (şeker) | Moleküler / fiziksel | Hayır |\n| $NH_3$ | Moleküler / kimyasal | Evet |",
+     "anlatim": "# Çözünme Türleri\n\n| Tür | Açıklama | İletkenlik |\n|---|---|---|\n| **İyonik çözünme** | İyonik bileşik (tuz, baz) katyon ve anyonlarına ayrışır | İletir (elektrolit) |\n| **Moleküler çözünme** | Kovalent moleküller yapısını bozmadan dağılır (şeker, alkol) | İletmez |\n| **Fiziksel çözünme** | Çözünen kimlik değiştirmez (tuz, şeker) | — |\n| **Kimyasal çözünme** | Çözünen, çözücüyle tepkimeye girer ($CO_2$ suda asidik özellik, $NH_3$) | — |\n\n| Madde | Çözünme | Elektrolit mi? |\n|---|---|---|\n| $NaCl$ | İyonik / fiziksel | Evet |\n| $C_{12}H_{22}O_{11}$ (şeker) | Moleküler / fiziksel | Hayır |\n| $NH_3$ | Moleküler / kimyasal | Evet |\n\n# Çözünme Olaylarını Gruplamak\n\nÇözünme olayları iki **ölçüte** göre birlikte sınıflandırılabilir:\n1. **Çözünenin yapısı:** İyonlarına ayrışıyor mu (iyonik), molekül olarak mı dağılıyor (moleküler)?\n2. **Kimlik değişimi:** Çözünen kimlik değiştiriyor mu (kimyasal), değiştirmiyor mu (fiziksel)?\n\nÖrneğin $HCl$ gazı suda **iyonlaşır** ($HCl \\rightarrow H^+ + Cl^-$); molekül yapılı olduğu hâlde çözeltisi elektrik iletir. **Etil alkol** ise suda hidrojen bağlarıyla moleküler olarak çözünür ve iletmez.",
      "ornekler": [
       {
        "soru": "Şekerli su elektriği iletir mi? Neden?",
        "cozum": "Hayır. Şeker **moleküler** çözünür, ortamda serbest **iyon** yoktur."
+      },
+      {
+       "soru": "$KNO_3$, etil alkol ve $SO_2$ gazının suda çözünmesini iyonik/moleküler ve fiziksel/kimyasal olarak sınıflandırınız.",
+       "cozum": "$KNO_3$: **iyonik, fiziksel** ($K^+$ ve $NO_3^-$ iyonlarına ayrışır, kimlik korunur). Etil alkol: **moleküler, fiziksel**. $SO_2$: suyla tepkimeye girerek $H_2SO_3$ oluşturur → **kimyasal** çözünme; oluşan asit kısmen iyonlaştığı için çözelti zayıf iletkendir."
       }
      ],
      "ozet": [
@@ -299,13 +350,13 @@ App.data.content["10/kimya"] = [
    },
    {
     "id": "k3",
-    "code": "2.3",
+    "code": "KİM.10.2.4–5",
     "title": {
      "tr": "Çözünürlük ve çözünürlüğü etkileyen faktörler",
      "en": "Solubility and factors affecting it"
     },
     "content": {
-     "anlatim": "# Çözünürlük\n\nBelirli sıcaklık ve basınçta **100 g çözücüde** çözünebilen **en fazla** madde miktarıdır (g/100 g su). Maddeler için **ayırt edici** özelliktir.\n\n# Etkileyen Faktörler\n\n| Faktör | Katılar | Gazlar |\n|---|---|---|\n| **Madde cinsi** | Polarite benzerliği belirleyicidir | — |\n| **Sıcaklık** | Genellikle sıcaklıkla **artar** (istisna: $Ce_2(SO_4)_3$ gibi) | Sıcaklıkla **daima azalır** |\n| **Basınç** | Etkisi ihmal edilir | Basınçla **artar** (gazlı içecekler) |\n\n> Yazın sıcak suda balıkların oksijensiz kalması: sıcaklık artınca suda çözünen $O_2$ azalır.",
+     "anlatim": "# Çözünürlük\n\nBelirli sıcaklık ve basınçta **100 g çözücüde** çözünebilen **en fazla** madde miktarıdır (g/100 g su). Maddeler için **ayırt edici** özelliktir.\n\n# Etkileyen Faktörler\n\n| Faktör | Katılar | Gazlar |\n|---|---|---|\n| **Madde cinsi** | Polarite benzerliği belirleyicidir | — |\n| **Sıcaklık** | Genellikle sıcaklıkla **artar** (istisna: $Ce_2(SO_4)_3$ gibi) | Sıcaklıkla **daima azalır** |\n| **Basınç** | Etkisi ihmal edilir | Basınçla **artar** (gazlı içecekler) |\n\n> Yazın sıcak suda balıkların oksijensiz kalması: sıcaklık artınca suda çözünen $O_2$ azalır.\n\n# Çözünürlük Eğrileri\n\nSıcaklık–çözünürlük grafiğinde eğrinin **tam üzerindeki** noktalar doymuş, eğrinin **yukarısındaki** noktalar aşırı doymuş, **altındaki** noktalar doymamış çözeltiyi gösterir. Bir doymuş çözelti soğutulduğunda (çözünürlük sıcaklıkla artıyorsa) fazla çözünen **kristallenir** — bu yöntemle maddeler saflaştırılır (**kristallendirme**).\n\nÖrnek: $KNO_3$'ün çözünürlüğü sıcaklıkla hızla artar; $NaCl$'ünki ise neredeyse sabittir. Bu yüzden $KNO_3$ soğutarak, $NaCl$ ise **buharlaştırarak** kristallendirilir (tuzlalar).",
      "ornekler": [
       {
        "soru": "Gazlı içecek açıldığında neden köpürür?",
@@ -325,17 +376,21 @@ App.data.content["10/kimya"] = [
    },
    {
     "id": "k4",
-    "code": "2.4",
+    "code": "KİM.10.2.6",
     "title": {
      "tr": "Çözeltilerin sınıflandırılması",
      "en": "Classifying solutions"
     },
     "content": {
-     "anlatim": "# Çözünen Miktarına Göre\n\n| Tür | Açıklama |\n|---|---|\n| **Doymamış** | Çözebileceğinden **daha az** çözünen içerir |\n| **Doymuş** | Çözebileceği **en fazla** maddeyi çözmüş; katısıyla dengede |\n| **Aşırı doymuş** | Çözebileceğinden **fazla** çözünen; **kararsız** (ısıtıp yavaş soğutmayla), küçük etkiyle çöker |\n\n# Elektrik İletkenliğine Göre\n\n| Elektrolit | Elektrolit olmayan |\n|---|---|\n| İyon içerir, iletir (asit, baz, tuz çözeltileri) | İyon içermez, iletmez (şekerli su, alkollü su) |\n\n# Derişik / seyreltik\n\nAynı miktar çözücüde çok çözünen → **derişik**, az çözünen → **seyreltik**.",
+     "anlatim": "# Çözünen Miktarına Göre\n\n| Tür | Açıklama |\n|---|---|\n| **Doymamış** | Çözebileceğinden **daha az** çözünen içerir |\n| **Doymuş** | Çözebileceği **en fazla** maddeyi çözmüş; katısıyla dengede |\n| **Aşırı doymuş** | Çözebileceğinden **fazla** çözünen; **kararsız** (ısıtıp yavaş soğutmayla), küçük etkiyle çöker |\n\n# Elektrik İletkenliğine Göre\n\n| Elektrolit | Elektrolit olmayan |\n|---|---|\n| İyon içerir, iletir (asit, baz, tuz çözeltileri) | İyon içermez, iletmez (şekerli su, alkollü su) |\n\n# Derişik / seyreltik\n\nAynı miktar çözücüde çok çözünen → **derişik**, az çözünen → **seyreltik**.\n\n# Aşırı Doymuş Çözeltiye Örnekler\n\n- **Bal** ve **reçel** zamanla şekerlenir: Aşırı doymuş şeker çözeltisi kararsızdır, küçük bir kristal çekirdeği oluşunca fazla şeker çöker.\n- **El ısıtıcı pedler:** Aşırı doymuş sodyum asetat çözeltisinde metal plakaya basılınca kristallenme başlar ve **ısı açığa çıkar**.",
      "ornekler": [
       {
        "soru": "Doymuş tuzlu suya bir miktar daha tuz eklenip karıştırılıyor. Ne olur?",
        "cozum": "Sıcaklık değişmezse eklenen tuz **çözünmez**, dibe çöker (çözelti zaten doymuştur)."
+      },
+      {
+       "soru": "Oda sıcaklığındaki bir şekerli su çözeltisinin doymuş mu doymamış mı olduğunu deneysel olarak nasıl anlarsınız?",
+       "cozum": "Çözeltiye **az miktar şeker** eklenip karıştırılır: Şeker çözünürse çözelti **doymamış**tır; çözünmeden dibe çökerse **doymuş**tur. Eklenen bir kristal büyüyor ve fazla madde çöküyorsa çözelti **aşırı doymuş**tur."
       }
      ],
      "ozet": [
@@ -347,13 +402,13 @@ App.data.content["10/kimya"] = [
    },
    {
     "id": "k5",
-    "code": "2.5",
+    "code": "KİM.10.2.7",
     "title": {
      "tr": "Derişim birimleri: molarite ve ppm",
      "en": "Concentration units: molarity and ppm"
     },
     "content": {
-     "anlatim": "# Molarite (M)\n\n1 litre **çözeltide** çözünen maddenin mol sayısı:\n$$M = \\frac{n}{V}\\quad(\\text{mol/L})$$\n\n### Seyreltme / deriştirme\n\nSu eklenir ya da buharlaştırılırsa çözünen mol sayısı değişmez:\n$$M_1V_1 = M_2V_2$$\n\n# ppm (milyonda bir kısım)\n\nÇok seyreltik çözeltiler için (havadaki kirleticiler, sudaki mineraller):\n$$\\text{ppm} = \\frac{\\text{çözünen (mg)}}{\\text{çözelti (kg)}} \\approx \\frac{\\text{mg}}{\\text{L}} \\ (\\text{sulu çözeltide})$$",
+     "anlatim": "# Molarite (M)\n\n1 litre **çözeltide** çözünen maddenin mol sayısı:\n$$M = \\frac{n}{V}\\quad(\\text{mol/L})$$\n\n### Seyreltme / deriştirme\n\nSu eklenir ya da buharlaştırılırsa çözünen mol sayısı değişmez:\n$$M_1V_1 = M_2V_2$$\n\n# ppm (milyonda bir kısım)\n\nÇok seyreltik çözeltiler için (havadaki kirleticiler, sudaki mineraller):\n$$\\text{ppm} = \\frac{\\text{çözünen (mg)}}{\\text{çözelti (kg)}} \\approx \\frac{\\text{mg}}{\\text{L}} \\ (\\text{sulu çözeltide})$$\n\n# Kütlece Yüzde ile Molarite Arasında Geçiş\n\nTicari çözeltilerde derişim çoğu zaman **kütlece yüzde** ve **yoğunluk** ile verilir:\n$$M = \\frac{\\%\\cdot d\\cdot 10}{M_A}$$\n($d$: g/mL cinsinden yoğunluk). Örneğin kütlece %36,5'lik, $d = 1{,}2$ g/mL HCl çözeltisi: $M = \\dfrac{36{,}5\\cdot1{,}2\\cdot10}{36{,}5} = 12$ M'dir.\n\n**ppm'in kullanım alanları:** İçme suyundaki nitrat, florür ve ağır metal sınırları; havadaki $CO_2$ (günümüzde ≈ 420 ppm) ve kirletici gazlar.",
      "ornekler": [
       {
        "soru": "0,4 mol NaOH ile hazırlanan 200 mL çözeltinin molaritesi nedir?",
@@ -377,7 +432,7 @@ App.data.content["10/kimya"] = [
    },
    {
     "id": "k6",
-    "code": "2.6",
+    "code": "KİM.10.2.8",
     "title": {
      "tr": "Koligatif özellikler",
      "en": "Colligative properties"
@@ -388,6 +443,10 @@ App.data.content["10/kimya"] = [
       {
        "soru": "Eşit derişimli şeker, NaCl ve $CaCl_2$ çözeltilerinden hangisinin donma noktası en düşüktür?",
        "cozum": "Tanecik sayısı en fazla olan **$CaCl_2$** (3 iyon) → donma noktası en düşük, kaynama noktası en yüksek."
+      },
+      {
+       "soru": "Kışın yollara tuz serpilmesinin ve araç radyatörlerine antifriz (etilen glikol) konmasının ortak nedeni nedir?",
+       "cozum": "İkisi de **donma noktası alçalması** (koligatif özellik) ilkesine dayanır: Suya çözünen tanecikler eklendiğinde çözeltinin donma noktası saf sudan **düşük** olur. Böylece yollar buz tutmaz, radyatördeki su donup motoru çatlatmaz. Antifriz ayrıca kaynama noktasını **yükselterek** yazın aşırı ısınmayı önler."
       }
      ],
      "ozet": [
@@ -408,23 +467,54 @@ App.data.content["10/kimya"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "3.1",
+    "code": "KİM.10.3.1",
     "title": {
      "tr": "Yeşil kimya ve mikro ölçekli deneyler",
      "en": "Green chemistry and micro-scale experiments"
     },
     "content": {
-     "anlatim": "# Yeşil Kimya\n\nÇevreye duyarlı, **atığı en aza indiren**, gelecek nesillere yaşanabilir bir dünya bırakmayı amaçlayan kimya anlayışı.\n\n# Makro ve Mikro Ölçekli Deneyler\n\nKlasik (makro ölçekli) deneyler çok kimyasal kullanır; atık miktarını ve **su ayak izini** büyütür. **Mikro ölçekli** deneylerle:\n- Kimyasal tüketimi ve **atık** en aza iner,\n- **Su ve karbon ayak izi** küçülür,\n- **Atom ekonomisi** artar,\n- Güvenlik artar, **maliyet** düşer.\n\n# Küresel Sorunlar\n\n**Asit yağmurları**, **sera etkisi** ve **ozon tabakasının incelmesi**; fosil yakıtların aşırı kullanımı ve endüstriyel salınımlardan kaynaklanır. Çözüm: yenilenebilir enerji ve yeşil kimya ilkeleri.",
+     "anlatim": "# Yeşil Kimya\n\nÇevreye duyarlı, **atığı en aza indiren**, gelecek nesillere yaşanabilir bir dünya bırakmayı amaçlayan kimya anlayışı.\n\n# Makro ve Mikro Ölçekli Deneyler\n\nKlasik (makro ölçekli) deneyler çok kimyasal kullanır; atık miktarını ve **su ayak izini** büyütür. **Mikro ölçekli** deneylerle:\n- Kimyasal tüketimi ve **atık** en aza iner,\n- **Su ve karbon ayak izi** küçülür,\n- **Atom ekonomisi** artar,\n- Güvenlik artar, **maliyet** düşer.\n\n# Küresel Sorunlar\n\n**Asit yağmurları**, **sera etkisi** ve **ozon tabakasının incelmesi**; fosil yakıtların aşırı kullanımı ve endüstriyel salınımlardan kaynaklanır. Çözüm: yenilenebilir enerji ve yeşil kimya ilkeleri.\n\n# Atom Ekonomisi\n\nBir tepkimede **istenen ürüne** dönüşen atomların oranı:\n$$\\text{Atom ekonomisi} = \\frac{\\text{istenen ürünün kütlesi}}{\\text{girenlerin toplam kütlesi}}\\times100$$\nAtom ekonomisi yüksek tepkimeler (ör. birleşme tepkimeleri) **daha az atık** üretir. Yeşil kimya; tehlikesiz çözücüler, oda koşullarında çalışan katalizörler ve **yenilenebilir hammaddeler** kullanmayı da önerir.\n\n**Makro–mikro karşılaştırma örneği:** 50 mL yerine 2 mL çözeltiyle yapılan bir çökelme deneyi aynı gözlemi sağlar; kimyasal tüketimi ve atık **25 kat** azalır.",
      "ornekler": [
       {
        "soru": "Okul laboratuvarında mikro ölçekli deney yapmanın iki faydasını yazın.",
        "cozum": "Daha az kimyasal ve atık; daha düşük maliyet ve daha güvenli çalışma (su ayak izi de küçülür)."
+      },
+      {
+       "soru": "$CaCO_3 \\rightarrow CaO + CO_2$ tepkimesinde istenen ürün $CaO$ ise atom ekonomisi yüzde kaçtır? ($Ca = 40$, $C = 12$, $O = 16$)",
+       "cozum": "Girenin kütlesi: $CaCO_3 = 100$ g/mol. İstenen ürün $CaO = 56$ g/mol. Atom ekonomisi $= \\dfrac{56}{100}\\times100 = \\%56$. Kalan %44 ($CO_2$) **yan ürün/atıktır** ve sera gazı olarak atmosfere karışır."
       }
      ],
      "ozet": [
       "Yeşil kimya: atığı önle, kaynakları verimli kullan.",
       "Mikro ölçek: az kimyasal, az atık, düşük maliyet.",
       "Asit yağmuru, sera etkisi, ozon incelmesi."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "KİM.10.3.2",
+    "title": {
+     "tr": "Atmosferdeki tepkimeler ve küresel sorunlar: hava kirliliği, asit yağmuru, ozon, sera etkisi",
+     "en": "Reactions in the atmosphere and global problems: air pollution, acid rain, ozone, greenhouse effect"
+    },
+    "content": {
+     "anlatim": "# Atmosferde Gerçekleşen Tepkimeler\n\nİnsan faaliyetleriyle atmosfere verilen gazlar, atmosferde **kimyasal tepkimelere** girerek ekosistemi etkileyen sorunlara yol açar.\n\n# 1. Hava Kirliliği\n\n- Kükürtlü kömürün yanması: $S + O_2 \\rightarrow SO_2$\n- Araç motorlarında yüksek sıcaklık: $N_2 + O_2 \\rightarrow 2NO$, $2NO + O_2 \\rightarrow 2NO_2$ (kahverengi duman)\n- Eksik yanma: $2C + O_2 \\rightarrow 2CO$ (renksiz, kokusuz, **zehirli** — sobadan zehirlenme)\n- **Partikül madde (PM)** ve güneş ışığıyla oluşan **fotokimyasal sis**; solunum yolu hastalıkları.\n\n# 2. Asit Yağmurları\n\n$$SO_2 + H_2O \\rightarrow H_2SO_3 \\qquad 2SO_2 + O_2 \\rightarrow 2SO_3, \\quad SO_3 + H_2O \\rightarrow H_2SO_4$$\n$$3NO_2 + H_2O \\rightarrow 2HNO_3 + NO$$\nNormal yağmur $CO_2$ nedeniyle hafif asidiktir (pH ≈ 5,6); asit yağmurunun pH'ı daha düşüktür. **Etkileri:** Göl ve akarsuların asitlenmesi (balık ölümleri), ormanların zarar görmesi, toprağın besin minerallerini kaybetmesi, **mermer ve kireç taşı** yapıların aşınması: $CaCO_3 + H_2SO_4 \\rightarrow CaSO_4 + H_2O + CO_2$.\n\n# 3. Ozon Tabakasının İncelmesi\n\nStratosferdeki ozon ($O_3$) Güneş'in zararlı **UV** ışınlarını soğurur. **CFC'ler** (eski buzdolabı ve spreylerdeki kloroflorokarbonlar) UV ile parçalanıp **klor atomu** açığa çıkarır:\n$$Cl + O_3 \\rightarrow ClO + O_2 \\qquad ClO + O \\rightarrow Cl + O_2$$\nKlor atomu tükenmez (**katalizör** gibi davranır); tek bir Cl atomu binlerce ozon molekülünü parçalayabilir. **Montreal Protokolü (1987)** ile CFC kullanımı yasaklandı ve ozon tabakası yavaşça iyileşmektedir.\n\n# 4. Sera Etkisi ve Küresel Isınma\n\n$CO_2$, $CH_4$, $N_2O$ ve su buharı, yeryüzünün yaydığı **kızılötesi** ışınları tutar. Doğal sera etkisi yaşam için gereklidir; ancak fosil yakıtlar ($CH_4 + 2O_2 \\rightarrow CO_2 + 2H_2O$) ve ormansızlaşma nedeniyle artan $CO_2$ derişimi **küresel ısınmaya** yol açar: buzulların erimesi, deniz seviyesinin yükselmesi, aşırı hava olayları, okyanusların asitlenmesi.\n\n# Çözüm Önerilerini Değerlendirme\n\n| Sorun | Çözüm önerisi |\n|---|---|\n| $SO_2$ salımı | Bacalara **filtre/desülfürizasyon** ($CaO + SO_2 \\rightarrow CaSO_3$), kükürtsüz yakıt |\n| $NO_x$ ve $CO$ | Araçlarda **katalitik konvertör** ($2CO + 2NO \\rightarrow 2CO_2 + N_2$), toplu taşıma |\n| Ozon incelmesi | CFC yerine ozon dostu soğutucular |\n| Küresel ısınma | Yenilenebilir enerji, enerji verimliliği, ağaçlandırma, **karbon ayak izini** azaltma |",
+     "ornekler": [
+      {
+       "soru": "Tarihî mermer heykellerin büyük şehirlerde kırsal alanlara göre daha hızlı aşınmasının nedenini tepkime denklemleriyle açıklayınız.",
+       "cozum": "Şehirlerde kömür ve yakıt kullanımı fazla olduğundan havada daha çok $SO_2$ ve $NO_2$ bulunur; bunlar suyla **asit yağmuru** oluşturur ($SO_3 + H_2O \\rightarrow H_2SO_4$). Asit, mermerin ana bileşeni $CaCO_3$ ile tepkimeye girer: $CaCO_3 + H_2SO_4 \\rightarrow CaSO_4 + H_2O + CO_2$. Oluşan $CaSO_4$ suda daha çok çözünür ve yağmurla yıkanır; heykel aşınır."
+      },
+      {
+       "soru": "Bir şehirde kış aylarında hava kirliliği çok yüksektir. Belediyenin önerdiği çözümler: a) kömür yerine doğal gaz, b) bacalara filtre, c) yeşil alanların artırılması. Bu çözümleri veriye dayalı değerlendiriniz.",
+       "cozum": "a) Doğal gaz ($CH_4$) kükürt içermediği için **$SO_2$ ve partikül** salımını büyük ölçüde azaltır, ama yine $CO_2$ üretir → kısa vadede en etkili çözüm. b) Filtreler mevcut kömür kullanımında $SO_2$ ve partikülü azaltır; maliyetlidir ve tüm evlerde uygulanması zordur. c) Yeşil alanlar partikülleri tutar ve $CO_2$ soğurur; etkisi **uzun vadeli** ve destekleyicidir. En iyi sonuç üç önlemin **birlikte** uygulanmasıyla alınır."
+      }
+     ],
+     "ozet": [
+      "Kirleticiler: SO₂ (kükürtlü yakıt), NOₓ (motorlar), CO (eksik yanma), partikül madde.",
+      "Asit yağmuru: SO₂/NO₂ + su → H₂SO₄/HNO₃; göller, ormanlar ve mermer yapılar zarar görür.",
+      "CFC'den çıkan Cl, ozonu katalitik olarak parçalar; Montreal Protokolü ile yasaklandı.",
+      "Artan CO₂ ve CH₄ sera etkisini güçlendirir; çözüm: filtre, katalitik konvertör, yenilenebilir enerji."
      ]
     }
    }

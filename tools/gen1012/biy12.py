@@ -342,6 +342,8 @@ O("k3", "4.3", "Çevre sorunları ve koruma", "Environmental problems and conser
 for _u in units:
     _u["outcomes"] += EK.get(_u["id"], [])
 
+from _ek136 import uygula136; uygula136(units, "biy12")
+
 write("biy-12.js", "12/biyoloji", "12. Sınıf Biyoloji — detaylı konu anlatım notları",
       "kullanıcının verdiği \"Biyoloji 12 Detaylı Konu Anlatım Notları\" (4 ünite) ve ek not paketindeki \"12. Sınıf Biyoloji Ders Notu\" (1. ve 2. ünite ayrıntıları).",
       units, "Kaynak notlar yalnızca kazanım başlıklarını ve kısa özetleri içerdiği için her ünite ders kitabı düzeyinde genişletildi (keşif tarihçesi, replikasyon ve translasyon basamakları, solunum tablosu, çift döllenme, madde döngüleri, çözümlü sorular). Ek paketten gelen kazanımlar biy12_ek.py dosyasındadır: DNA hesapları, genetik mühendisliği uygulamaları, GDO–biyoetik, ATP ve fosforilasyon, fotosentez faktörleri, kemosentez, ATP hesabı, fermantasyon ve fotosentez–solunum ilişkisi.")

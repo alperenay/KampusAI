@@ -491,6 +491,8 @@ O("k2", "9.2", "Bilimsel yöntem ve bilimin sınırları", "Scientific method an
 ]),
 ]
 
+from _ek136 import uygula136; uygula136(units, "fel10")
+
 write("fel-10.js", "10/felsefe", "10. Sınıf Felsefe — detaylı konu anlatım notları",
       "kullanıcının verdiği \"10. Sınıf Felsefe Detaylı Konu Anlatım Notları\" (9 ünite).",
       units, "Kazanım kodları kaynaktaki bölüm numaralarıdır. Filozof tabloları ve örnek sorular eklendi; safsata örnekleri genişletildi.")

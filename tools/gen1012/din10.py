@@ -330,6 +330,8 @@ O("k3", "5.3", "Kur'an'dan mesajlar: Hucurat 13", "Message from the Qur'an: Huju
 ]),
 ]
 
+from _ek136 import uygula136; uygula136(units, "din10")
+
 write("din-10.js", "10/din", "10. Sınıf Din Kültürü ve Ahlak Bilgisi — konu anlatım notları",
       "kullanıcının verdiği \"10. Sınıf Din Kültürü ve Ahlak Bilgisi Konu Anlatım Notları\" (5 ünite).",
       units, "Kazanım kodları kaynaktaki bölüm numaralarıdır. Mezhep tablolarına yaygınlık bölgeleri ve örnek sorular eklendi; Eş'arîliğin yayılım alanı düzeltildi.")
