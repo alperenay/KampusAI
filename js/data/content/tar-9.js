@@ -19,7 +19,7 @@ App.data.content["9/tarih"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "1.1",
+    "code": "TAR.9.1.1",
     "title": {
      "tr": "Tarih öğrenmenin faydaları",
      "en": "The benefits of learning history"
@@ -45,7 +45,7 @@ App.data.content["9/tarih"] = [
    },
    {
     "id": "k2",
-    "code": "1.2",
+    "code": "TAR.9.1.2",
     "title": {
      "tr": "Tarihin doğası: konu, unsurlar ve temel kavramlar",
      "en": "The nature of history: subject, elements and key concepts"
@@ -73,7 +73,7 @@ App.data.content["9/tarih"] = [
    },
    {
     "id": "k3",
-    "code": "1.3",
+    "code": "TAR.9.1.3",
     "title": {
      "tr": "Tarihsel bilginin üretim süreci ve yardımcı bilimler",
      "en": "How historical knowledge is produced; auxiliary sciences"
@@ -100,7 +100,7 @@ App.data.content["9/tarih"] = [
    },
    {
     "id": "k4",
-    "code": "1.4",
+    "code": "TAR.9.1.4",
     "title": {
      "tr": "Tarih araştırma ve yazımında dijital dönüşüm",
      "en": "Digital transformation in historical research"
@@ -136,7 +136,7 @@ App.data.content["9/tarih"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "2.1",
+    "code": "TAR.9.2.1",
     "title": {
      "tr": "Tarım Devrimi ve Eski Çağ'a etkileri",
      "en": "The Agricultural Revolution and its effects"
@@ -163,7 +163,7 @@ App.data.content["9/tarih"] = [
    },
    {
     "id": "k2",
-    "code": "2.2",
+    "code": "TAR.9.2.2",
     "title": {
      "tr": "Eski Çağ'da yönetenler ve savaşanlar",
      "en": "Rulers and warriors in the ancient world"
@@ -195,7 +195,7 @@ App.data.content["9/tarih"] = [
    },
    {
     "id": "k3",
-    "code": "2.3",
+    "code": "TAR.9.2.3",
     "title": {
      "tr": "Eski Çağ'da hukuk",
      "en": "Law in the ancient world"
@@ -223,7 +223,7 @@ App.data.content["9/tarih"] = [
    },
    {
     "id": "k4",
-    "code": "2.4",
+    "code": "TAR.9.2.4",
     "title": {
      "tr": "Eski Çağ'da inanç, bilim ve sanat",
      "en": "Belief, science and art in the ancient world"
@@ -247,6 +247,32 @@ App.data.content["9/tarih"] = [
       "Türkler: Gök Tanrı, uçmağ-tamu, balbal, Pazırık halısı."
      ]
     }
+   },
+   {
+    "id": "k5",
+    "code": "TAR.9.2.5",
+    "title": {
+     "tr": "Türklerde konargöçer yaşam",
+     "en": "Nomadic pastoral life among the Turks"
+    },
+    "content": {
+     "anlatim": "# Konargöçer Yaşam Nedir?\n\n**Konargöçer** (göçebe) yaşam; hayvan sürülerine **otlak ve su** bulmak için mevsimlere göre yer değiştiren, ama rastgele değil **belirli yaylak–kışlak düzeni** içinde hareket eden yaşam biçimidir. Orta Asya bozkırlarında iklimin **karasal**, tarıma uygun alanların sınırlı olması bu yaşamı belirlemiştir.\n\n- **Yaylak:** Yazın çıkılan serin ve otu bol yüksek alanlar.\n- **Kışlak:** Kışın korunaklı vadilerde ve nehir kenarlarında kalınan yerler.\n- **Ekonomi:** At, koyun, keçi, sığır ve deve yetiştiriciliği; et, süt, yün, deri. Gerektiğinde avcılık, sınırlı tarım ve yerleşik toplumlarla **ticaret** (İpek Yolu).\n\n# Konargöçer Yaşamın İzleri\n\n| Alan | Özellikler |\n|---|---|\n| **Konut** | Kolay sökülüp taşınabilen **otağ / çadır (yurt)**; keçeden yapılır |\n| **Ulaşım ve savaş** | **At** hayatın merkezidir; atlı okçuluk, hızlı hareket; **Turan taktiği** (sahte geri çekilme) |\n| **Teknoloji** | Üzengi, eyer, **demir işçiliği** (Göktürklerin Altay'da demircilik yapması), keçecilik, dokumacılık |\n| **Beslenme** | Kımız, ayran, yoğurt, kurut, kavurma, pastırma gibi **saklanabilir** yiyecekler |\n| **Giyim** | Ata binmeye uygun **pantolon, çizme, kaftan**; deri ve yün |\n| **Sanat** | Taşınabilir eşyalara uygulanan **hayvan üslubu** süslemeler, halı-kilim, kemer tokaları |\n| **Toplum** | Aile (oguş) → boy → budun → il (devlet); **kurultay**, töre |\n| **Hukuk** | Yazılı olmayan **töre**; sürekli göç edilen toplumda hapis yerine para ve bedensel cezalar |\n\n# Arkeolojik Kanıtlar\n\n- **Pazırık kurganı** (Altaylar, MÖ IV.–III. yüzyıl): Bilinen **en eski düğümlü halı**, at koşum takımları, keçe süslemeler.\n- **Esik kurganı** (Kazakistan): **Altın Elbiseli Adam**; binlerce altın süslemeli giysi.\n- **Kurganlar:** Konargöçer liderler için yapılan mezar tümsekleri; eşyaları ve atlarıyla gömülmeleri ölümden sonraki hayata inancı gösterir.\n\n# Dünü ve Bugünü Karşılaştırma\n\n| Geçmişte | Günümüzde |\n|---|---|\n| Orta Asya bozkırlarında yaylak–kışlak göçü | Anadolu'da **Yörükler** ve yayla geleneği; Kırgızistan ve Moğolistan'da yaylacılık |\n| Keçe çadır | Yayla evleri, karavanlar, yazın kurulan çadırlar |\n| At ile ulaşım | Kamyonlarla sürü taşımacılığı |\n| Sözlü kültür, destanlar | Âşıklık geleneği, **Dünya Göçebe Oyunları** |\n\n**Türk kültüründeki yeri:** Misafirperverlik, dayanışma, ata ve doğaya verilen değer, **töre** anlayışı, kadının toplumsal hayattaki etkin rolü (hatun), bugün de Türk kültürünün önemli öğeleri arasındadır.",
+     "ornekler": [
+      {
+       "soru": "Konargöçer Türk toplumlarında hapis cezası yerine para ve bedensel cezaların uygulanmasının nedeni nedir?",
+       "cozum": "Sürekli yer değiştiren bir toplumda **kalıcı hapishane** kurmak ve mahkûmu taşımak mümkün değildi. Cezalar bu yüzden **hızlı uygulanabilir** nitelikteydi; bu durum yaşam biçiminin hukuku nasıl etkilediğini gösterir."
+      },
+      {
+       "soru": "Pazırık kurganında bulunan halı ve at koşum takımları konargöçer yaşam hakkında hangi çıkarımları yapmamızı sağlar?",
+       "cozum": "Düğümlü halının varlığı **dokumacılığın** ileri düzeyde olduğunu; at koşum takımları ve atların birlikte gömülmesi **atın** hayatın merkezinde yer aldığını ve **ölümden sonra hayata** inanıldığını gösterir. Yazılı kaynakların az olduğu bu toplumları anlamada **arkeolojik buluntular** birincil kaynaktır."
+      }
+     ],
+     "ozet": [
+      "Konargöçer yaşam: hayvancılığa dayalı, yaylak–kışlak düzeninde mevsimlik göç.",
+      "İzleri: otağ (keçe çadır), at kültürü, demircilik, kımız, pantolon, hayvan üslubu, töre ve kurultay.",
+      "Kanıtlar: Pazırık (en eski düğümlü halı), Esik (Altın Elbiseli Adam); bugünkü izi Yörükler ve yayla geleneği."
+     ]
+    }
    }
   ]
  },
@@ -259,7 +285,7 @@ App.data.content["9/tarih"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "3.1",
+    "code": "TAR.9.3.1",
     "title": {
      "tr": "Orta Çağ'daki kitlesel göçler",
      "en": "Mass migrations in the Middle Ages"
@@ -286,7 +312,7 @@ App.data.content["9/tarih"] = [
    },
    {
     "id": "k2",
-    "code": "3.2",
+    "code": "TAR.9.3.2",
     "title": {
      "tr": "Orta Çağ'daki siyasi ve askerî gelişmeler",
      "en": "Political and military developments in the Middle Ages"
@@ -313,7 +339,7 @@ App.data.content["9/tarih"] = [
    },
    {
     "id": "k3",
-    "code": "3.3",
+    "code": "TAR.9.3.3",
     "title": {
      "tr": "Orta Çağ'da ticaret yolları",
      "en": "Trade routes in the Middle Ages"
@@ -340,7 +366,7 @@ App.data.content["9/tarih"] = [
    },
    {
     "id": "k4",
-    "code": "3.4",
+    "code": "TAR.9.3.4",
     "title": {
      "tr": "Orta Çağ'da bilim, kültür ve sanat",
      "en": "Science, culture and art in the Middle Ages"
