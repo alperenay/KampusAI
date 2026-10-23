@@ -355,6 +355,8 @@ O("k4", "3.3", "Osmanlı Devleti'nin insanlık tarihine katkıları", "Ottoman c
 from _ek134 import uygula  # noqa: E402
 uygula(units, "tar11_ek134")
 
+from _ek136 import uygula136; uygula136(units, "tar11")
+
 write("tar-11.js", "11/tarih", "11. Sınıf Tarih — kazanım odaklı konu anlatım notları",
       "kullanıcının verdiği \"11. Sınıf Tarih Kazanım Odaklı Ayrıntılı Konu Anlatım Notları\" (3 ünite).",
       units, "Kazanım kodları kaynaktaki bölüm numaralarıdır (uzun bölümler a/b/c olarak bölündü). Eklenenler: III. Selim ve II. Mahmud ıslahatları, Kütahya Antlaşması, Berlin Antlaşması ayrıntıları. Düzeltmeler: Yeni (Genç) Osmanlılar ile Jön Türkler ayrımı, Medine Müdafaası'nın Mondros'tan sonra da sürmesi, Lizbon depreminin büyüklük ve kayıp tahmini. Tehcir konusu ders kitabının görüşü ve uluslararası tartışma birlikte verilerek dengeli anlatıldı.")

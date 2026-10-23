@@ -301,6 +301,8 @@ Hz. **İsa**'nın peygamberliği (Hristiyan inancına göre ilahlığı ve **mes
 from _ek134 import uygula  # noqa: E402
 uygula(units, "din11_ek134")
 
+from _ek136 import uygula136; uygula136(units, "din11")
+
 write("din-11.js", "11/din", "11. Sınıf Din Kültürü ve Ahlak Bilgisi — konu anlatım notları",
       "kullanıcının verdiği \"11. Sınıf Din Kültürü ve Ahlak Bilgisi Analiz ve Notları\" (5 ünite).",
       units, "Kazanım kodları kaynaktaki bölüm numaralarıdır. Düzeltmeler: Beytülhikme Abbasîler döneminde Bağdat'ta kuruldu (Şam Emevî başkentidir); Kitab-ı Mukaddes Ahd-i Atik ile Ahd-i Cedid'den (dört İncil, Resullerin İşleri, mektuplar, Vahiy) oluşur. Yahudilik bölümü kaynaktaki tek paragraftan genişletildi.")

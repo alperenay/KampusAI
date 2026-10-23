@@ -19,7 +19,7 @@ App.data.content["10/din"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "1.1",
+    "code": "DKAB.10.1.1",
     "title": {
      "tr": "İslam'da bilgi ve bilginin kaynakları",
      "en": "Knowledge and its sources in Islam"
@@ -30,6 +30,10 @@ App.data.content["10/din"] = [
       {
        "soru": "Akıl hastası birinin namaz kılmakla yükümlü olmaması hangi bilgi kaynağının önemini gösterir?",
        "cozum": "**Selim aklın**: dinî sorumluluğun temel şartı akıldır; akıl sağlığı yerinde olmayan kişi dinen sorumlu tutulmaz."
+      },
+      {
+       "soru": "Bir öğrenci \"Dinî bilgiler yalnızca vahye dayanır; akıl ve duyuların dinde yeri yoktur.\" diyor. Bu görüşü İslam'daki bilgi kaynakları açısından değerlendiriniz.",
+       "cozum": "Görüş eksiktir. İslam'da bilginin kaynakları **duyular, akıl ve vahiy**dir; sağlıklı **sezgi (ilham)** de bireysel bir bilgi yolu kabul edilir. Kur'an insanı sık sık **düşünmeye, akletmeye, gözlem yapmaya** çağırır; vahyin anlaşılması da akılla olur. Bu yüzden akıl, dinî sorumluluğun ön şartıdır."
       }
      ],
      "ozet": [
@@ -41,7 +45,7 @@ App.data.content["10/din"] = [
    },
    {
     "id": "k2",
-    "code": "1.2",
+    "code": "DKAB.10.1.2",
     "title": {
      "tr": "Allah–âlem ilişkisi",
      "en": "The relationship between God and the universe"
@@ -52,6 +56,10 @@ App.data.content["10/din"] = [
       {
        "soru": "Meleklerin varlığına ilişkin bilgiyi hangi yolla ediniriz? Neden?",
        "cozum": "Melekler **gayb âlemine** aittir; duyu ve akılla doğrudan algılanamaz. Bu yüzden bilgimiz **vahiy** (sadık haber) yoluyla gelir."
+      },
+      {
+       "soru": "İslam düşüncesinde âlemin \"yaratılmış\" (hâdis) olması ile Allah'ın \"ezelî\" (kadîm) olması arasındaki ilişkiyi açıklayınız.",
+       "cozum": "Allah'ın dışındaki her şey (**âlem**) sonradan var edilmiştir; bir başlangıcı vardır ve varlığını sürdürmek için Allah'a **muhtaçtır**. Allah ise başlangıcı olmayan (**kıdem**), varlığı kendinden olan yaratıcıdır. Bu ilişki, âlemdeki düzenin ve varlığın **Allah'ın yaratması ve koruması** ile devam ettiğini anlatır."
       }
      ],
      "ozet": [
@@ -63,7 +71,7 @@ App.data.content["10/din"] = [
    },
    {
     "id": "k3",
-    "code": "1.3",
+    "code": "DKAB.10.1.3",
     "title": {
      "tr": "Kur'an'dan mesajlar: İsra 36, Mülk 23",
      "en": "Messages from the Qur'an: Isra 36, Mulk 23"
@@ -74,6 +82,10 @@ App.data.content["10/din"] = [
       {
        "soru": "Sosyal medyada kaynağı belirsiz bir haberi paylaşmak İsra 36 açısından nasıl değerlendirilir?",
        "cozum": "Ayet, **kesin bilgi olmadan** bir şeyin peşine düşmeyi yasaklar; doğrulanmamış haberi yaymak bu ilkeye aykırıdır ve kişi bundan **sorumludur**."
+      },
+      {
+       "soru": "Mülk suresi 23. ayette insana verilen işitme, görme ve gönüllerin (kalplerin) hatırlatılmasının amacı nedir?",
+       "cozum": "Bu yetiler **bilgi edinme araçlarıdır**; ayet, insanın bu nimetler için **şükretmesi** ve onları doğru kullanması gerektiğini hatırlatır. Ayetin \"Ne kadar az şükrediyorsunuz!\" uyarısı, nimetleri hakikati aramak yerine boşa harcamanın bir **nankörlük** olduğunu vurgular."
       }
      ],
      "ozet": [
@@ -94,7 +106,7 @@ App.data.content["10/din"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "2.1",
+    "code": "DKAB.10.2.1",
     "title": {
      "tr": "Allah'ın varlığının delilleri",
      "en": "Evidence for God's existence"
@@ -105,6 +117,10 @@ App.data.content["10/din"] = [
       {
        "soru": "'Bir saati gören kişi onun bir ustası olduğunu düşünür; evrendeki düzen de bir düzenleyiciyi gösterir.' Bu hangi delildir?",
        "cozum": "**Gaye ve nizam (teleolojik) delili**dir."
+      },
+      {
+       "soru": "\"Evrendeki her şey sebep–sonuç ilişkisine göre işler; her sebebin de bir sebebi vardır. Bu zincir sonsuza kadar gidemez.\" Bu akıl yürütme hangi delile örnektir? Delilin sonucu nedir?",
+       "cozum": "Bu, **hudûs (sonradan olma) / illiyet** deliline örnektir. Sonsuz bir sebepler zinciri olamayacağına göre, kendisi bir sebebe muhtaç olmayan **ilk sebep**, yani her şeyi var eden **Allah** vardır."
       }
      ],
      "ozet": [
@@ -116,7 +132,7 @@ App.data.content["10/din"] = [
    },
    {
     "id": "k2",
-    "code": "2.2",
+    "code": "DKAB.10.2.2",
     "title": {
      "tr": "Allah'ı isim ve sıfatlarıyla tanımak",
      "en": "Knowing God by His names and attributes"
@@ -127,6 +143,10 @@ App.data.content["10/din"] = [
       {
        "soru": "Kıdem ve Beka sıfatları arasındaki fark nedir?",
        "cozum": "**Kıdem**, Allah'ın varlığının **başlangıcı olmadığını**; **Beka** ise varlığının **sonu olmadığını** ifade eder."
+      },
+      {
+       "soru": "\"Rahmân\" ve \"Rahîm\" isimlerinin anlamını ve bu isimleri tanıyan bir insanın davranışlarına nasıl yansıyabileceğini açıklayınız.",
+       "cozum": "**Rahmân:** Rahmeti dünyada inanan–inanmayan ayırt etmeksizin **tüm varlıkları** kuşatan; **Rahîm:** Özellikle inananlara ahirette de **merhamet eden**. Bu isimleri tanıyan kişi, insanlara ve diğer canlılara **merhametli** davranmaya, affetmeye ve yardımlaşmaya özen gösterir."
       }
      ],
      "ozet": [
@@ -138,7 +158,7 @@ App.data.content["10/din"] = [
    },
    {
     "id": "k3",
-    "code": "2.3",
+    "code": "DKAB.10.2.3",
     "title": {
      "tr": "Kur'an'dan mesajlar: Haşr 22–24",
      "en": "Messages from the Qur'an: Hashr 22–24"
@@ -149,6 +169,10 @@ App.data.content["10/din"] = [
       {
        "soru": "Haşr suresinde Allah'ın 'gaybı ve şehadeti bilen' olarak nitelenmesi ne anlama gelir?",
        "cozum": "Allah'ın ilmi **sınırsızdır**; duyularla algılanan âlemi de, algılanamayan âlemi de eksiksiz bilir."
+      },
+      {
+       "soru": "Haşr suresi 22–24. ayetlerde geçen \"el-Melik\", \"el-Kuddûs\" ve \"es-Selâm\" isimlerinin anlamlarını yazınız.",
+       "cozum": "**el-Melik:** Mülkün ve her şeyin gerçek sahibi, hükümdarı. **el-Kuddûs:** Her türlü eksiklikten uzak, tertemiz. **es-Selâm:** Esenlik veren, her türlü kusurdan salim. Bu isimler, Allah'ın mutlak **egemenliğini ve yüceliğini** anlatır."
       }
      ],
      "ozet": [
@@ -169,7 +193,7 @@ App.data.content["10/din"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "3.1",
+    "code": "DKAB.10.3.1",
     "title": {
      "tr": "Tevhit ilkesi",
      "en": "The principle of tawhid"
@@ -180,6 +204,10 @@ App.data.content["10/din"] = [
       {
        "soru": "Tevhit inancı insanı nasıl özgürleştirir?",
        "cozum": "Yalnızca Allah'a kulluk eden insan; **para, makam, güç** gibi dünyevi otoritelere tapınırcasına bağlanmaz, onurunu korur."
+      },
+      {
+       "soru": "Tevhit inancının toplumsal hayata yansımalarına iki örnek veriniz.",
+       "cozum": "1) İnsanlar tek bir yaratıcının kulları olarak **eşit** görülür; ırk, renk ve servet üstünlük sebebi olmaz. 2) İnsan Allah'tan başka hiçbir varlığa (güç, para, şöhret) **kulluk etmez**; bu, onu batıl inanç ve sömürüye karşı **özgür** kılar ve sorumluluk bilinci kazandırır."
       }
      ],
      "ozet": [
@@ -191,7 +219,7 @@ App.data.content["10/din"] = [
    },
    {
     "id": "k2",
-    "code": "3.2",
+    "code": "DKAB.10.3.2",
     "title": {
      "tr": "İslam'da adalet ve eşitlik",
      "en": "Justice and equality in Islam"
@@ -202,6 +230,10 @@ App.data.content["10/din"] = [
       {
        "soru": "Bir yöneticinin bir göreve yakın akrabasını, daha yetenekli adaylar varken ataması hangi ilkeye aykırıdır?",
        "cozum": "**Liyakat** ilkesine (görevi ehline verme) ve dolayısıyla **adalete** aykırıdır."
+      },
+      {
+       "soru": "Hz. Ömer'in, bir Kıpti gence haksızlık yapan valinin oğlunu cezalandırması rivayeti İslam'daki hangi ilkeyi yansıtır?",
+       "cozum": "**Hukuk önünde eşitlik ve adalet** ilkesini. Yöneticinin yakını olmak, ayrıcalık sebebi değildir; Müslüman olsun olmasın her insanın hakkı korunur. Adalet, Kur'an'da kişi kendi aleyhine ya da yakınlarının aleyhine olsa bile gözetilmesi istenen bir ilkedir (Nisa, 135)."
       }
      ],
      "ozet": [
@@ -213,7 +245,7 @@ App.data.content["10/din"] = [
    },
    {
     "id": "k3",
-    "code": "3.3",
+    "code": "DKAB.10.3.3",
     "title": {
      "tr": "İslam ve barış",
      "en": "Islam and peace"
@@ -224,6 +256,10 @@ App.data.content["10/din"] = [
       {
        "soru": "Medine Vesikası'nın günümüz için önemi nedir?",
        "cozum": "Farklı inançlardan insanların **hukuk güvencesi altında, eşit haklarla** bir arada yaşayabileceğini gösteren erken bir **çoğulcu toplum sözleşmesi** örneğidir."
+      },
+      {
+       "soru": "\"Selâm\" kelimesinin İslam ile ilişkisini ve günlük hayattaki karşılığını açıklayınız.",
+       "cozum": "**İslam** kelimesi \"barış, esenlik ve teslimiyet\" anlamlarına gelen **s-l-m** kökünden türemiştir. Müslümanların birbirine \"**Esselâmü aleyküm**\" (Allah'ın esenliği üzerinize olsun) diyerek selamlaşması, barışın günlük hayatta yaşanmasının bir ifadesidir; cennetin bir adı da **Dârüsselâm**'dır (esenlik yurdu)."
       }
      ],
      "ozet": [
@@ -235,7 +271,7 @@ App.data.content["10/din"] = [
    },
    {
     "id": "k4",
-    "code": "3.4",
+    "code": "DKAB.10.3.4",
     "title": {
      "tr": "Kur'an'dan mesajlar: Nahl 90, Nisa 58, Bakara 208",
      "en": "Messages: Nahl 90, Nisa 58, Baqarah 208"
@@ -246,6 +282,10 @@ App.data.content["10/din"] = [
       {
        "soru": "Nahl 90. ayette emredilen ve yasaklanan davranışları yazınız.",
        "cozum": "Emredilenler: **adalet, iyilik (ihsan), akrabaya yardım**. Yasaklananlar: **hayâsızlık, fenalık (münker), azgınlık (zulüm)**."
+      },
+      {
+       "soru": "Nisa 58. ayette \"emanetleri ehline verin\" buyrulur. Bu ilke okul hayatında nasıl uygulanabilir?",
+       "cozum": "Sınıf başkanlığı, kulüp görevleri ve takım kaptanlığı gibi sorumluluklar **liyakate** (yetenek ve dürüstlüğe) göre verilmelidir; arkadaşlık ya da yakınlık belirleyici olmamalıdır. Ayrıca ödünç alınan eşyaları korumak ve zamanında iade etmek de **emanete riayet**tir."
       }
      ],
      "ozet": [
@@ -266,17 +306,21 @@ App.data.content["10/din"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "4.1",
+    "code": "DKAB.10.4.1",
     "title": {
      "tr": "İnsan, çevre ve ahlak",
      "en": "Humans, environment and ethics"
     },
     "content": {
-     "anlatim": "# Çevre Ahlakı\n\n**Çevre:** Canlıların yaşamını sürdürdüğü doğal ve yapay ortam.\n\nİslam ahlakına göre insan doğanın **sahibi değil, emanetçisidir**. Asıl sahip Allah'tır; insan bu emaneti korumakla yükümlüdür.\n\n**Çevre ahlakının ilkeleri:**\n- Evrende kusursuz bir **ölçü, denge (mîzan)** ve **fıtrat** vardır; insan bu dengeyi bozmamalıdır (Rahman, 7–8).\n- **İsraf yasaktır**: \"Yiyin, için fakat israf etmeyin.\" (A'raf, 31)\n- Tüm canlıların hakkı gözetilmelidir.\n\n**Çevre sorunları:** Bilinçsiz tüketim, plansız sanayileşme ve fosil yakıt kullanımı sonucu **küresel ısınma**, hava–su–toprak kirliliği, ormansızlaşma ve **biyoçeşitliliğin azalması**.",
+     "anlatim": "# Çevre Ahlakı\n\n**Çevre:** Canlıların yaşamını sürdürdüğü doğal ve yapay ortam.\n\nİslam ahlakına göre insan doğanın **sahibi değil, emanetçisidir**. Asıl sahip Allah'tır; insan bu emaneti korumakla yükümlüdür.\n\n**Çevre ahlakının ilkeleri:**\n- Evrende kusursuz bir **ölçü, denge (mîzan)** ve **fıtrat** vardır; insan bu dengeyi bozmamalıdır (Rahman, 7–8).\n- **İsraf yasaktır**: \"Yiyin, için fakat israf etmeyin.\" (A'raf, 31)\n- Tüm canlıların hakkı gözetilmelidir.\n\n**Çevre sorunları:** Bilinçsiz tüketim, plansız sanayileşme ve fosil yakıt kullanımı sonucu **küresel ısınma**, hava–su–toprak kirliliği, ormansızlaşma ve **biyoçeşitliliğin azalması**.\n\n# Hz. Peygamber'in Örnekliği\n\n- **Ağaç dikmek:** \"Kıyamet kopmak üzereyken birinizin elinde bir fidan bulunsa, onu dikebiliyorsa diksin.\" hadisi, doğaya katkının her koşulda değerli olduğunu anlatır.\n- **Hayvan hakları:** Susuz bir köpeğe su veren kişinin bağışlandığını bildiren hadis, canlılara merhametin ibadet değeri taşıdığını gösterir.\n- **Koruma alanları:** Hz. Peygamber, Medine çevresinde ağaçların kesilmesinin ve hayvanların avlanmasının yasak olduğu **hima** (koruma) alanları belirlemiştir.\n\nÇevre ahlakı yalnızca bir bilgi değil; **israf etmemek, atığı azaltmak, canlılara merhamet etmek** gibi günlük davranışlarla yaşanan bir sorumluluktur.",
      "ornekler": [
       {
        "soru": "İnsanın doğanın 'emanetçisi' olması ne anlama gelir?",
        "cozum": "Doğa insana **sınırsızca tüketmesi için değil**, korunup gelecek nesillere aktarılması için verilmiştir; insan ondan **hesap verecektir**."
+      },
+      {
+       "soru": "İsrafın yalnızca para harcamakla sınırlı olmadığını, günlük hayattan üç örnekle gösteriniz.",
+       "cozum": "1) Abdest alırken ya da diş fırçalarken **suyu boşa akıtmak**. 2) Tabağa yenmeyecek kadar yemek alıp **çöpe atmak**. 3) Kullanılmayan odada **ışığı açık bırakmak**, gereksiz yere elektronik cihaz değiştirmek. Hepsi kaynakların ölçüsüzce tüketilmesidir; A'raf 31'deki israf yasağı kapsamındadır."
       }
      ],
      "ozet": [
@@ -288,7 +332,7 @@ App.data.content["10/din"] = [
    },
    {
     "id": "k2",
-    "code": "4.2",
+    "code": "DKAB.10.4.2",
     "title": {
      "tr": "Teknoloji ve ahlak",
      "en": "Technology and ethics"
@@ -299,6 +343,10 @@ App.data.content["10/din"] = [
       {
        "soru": "Bir arkadaşının izni olmadan fotoğrafını paylaşmak hangi ilkeye aykırıdır?",
        "cozum": "**Mahremiyet** ve kişisel haklara saygı ilkesine; İslam'ın özel hayatın gizliliği ve kul hakkı anlayışına aykırıdır."
+      },
+      {
+       "soru": "Yapay zekâ ile ödev hazırlayıp kendi emeğiymiş gibi teslim etmek ahlaki açıdan nasıl değerlendirilir?",
+       "cozum": "Başkasının ya da bir aracın ürettiğini kendi emeği gibi sunmak **dürüstlük** ilkesine aykırıdır ve bir tür **aldatmadır**. Teknoloji öğrenmeyi destekleyen bir araç olarak kullanılabilir; ancak kaynak belirtilmeli, öğretmenin kurallarına uyulmalı ve **sorumluluk** kişide kalmalıdır."
       }
      ],
      "ozet": [
@@ -310,7 +358,7 @@ App.data.content["10/din"] = [
    },
    {
     "id": "k3",
-    "code": "4.3",
+    "code": "DKAB.10.4.3",
     "title": {
      "tr": "Çevre ve teknoloji ilişkisi",
      "en": "Environment and technology"
@@ -321,6 +369,10 @@ App.data.content["10/din"] = [
       {
        "soru": "'Akan nehirde bile suyu israf etme' tavsiyesi bugünkü hangi soruna ışık tutar?",
        "cozum": "**Su kaynaklarının azalması ve kuraklık** sorununa; bol görünen kaynakların bile ölçülü kullanılması gerektiğini öğretir."
+      },
+      {
+       "soru": "Elektronik atıkların (eski telefon, pil) gelişigüzel atılması çevreye nasıl zarar verir? Dinî ve ahlaki sorumluluk açısından ne yapılmalıdır?",
+       "cozum": "İçlerindeki **ağır metaller** (kurşun, cıva, kadmiyum) toprağa ve suya karışarak canlılara zarar verir. İnsan çevreye karşı **emanetçi** olduğu için atıklar **ayrı toplanmalı**, cihazlar mümkün olduğunca **onarılıp uzun kullanılmalı**, gereksiz tüketimden kaçınılmalıdır."
       }
      ],
      "ozet": [
@@ -332,17 +384,21 @@ App.data.content["10/din"] = [
    },
    {
     "id": "k4",
-    "code": "4.4",
+    "code": "DKAB.10.4.4",
     "title": {
      "tr": "Kur'an'dan mesajlar: Rum 41",
      "en": "Message from the Qur'an: Rum 41"
     },
     "content": {
-     "anlatim": "# Rum Suresi 41. Ayet\n\n> \"İnsanların kendi elleriyle yaptıkları yüzünden karada ve denizde fesat (düzensizlik) ortaya çıktı. Belki dönerler diye Allah, yaptıklarının bir kısmını onlara tattıracaktır.\"\n\n**Mesajlar:**\n- Ekolojik krizlerin (kirlilik, iklim değişikliği, türlerin yok olması) temelinde **insanın yanlış eylemleri** vardır.\n- İnsan, yaptıklarının **sonuçlarıyla** karşılaşır.\n- Ayet bir **uyarı ve çağrı**dır: hatalardan dönmek, dengeyi yeniden kurmak.",
+     "anlatim": "# Rum Suresi 41. Ayet\n\n> \"İnsanların kendi elleriyle yaptıkları yüzünden karada ve denizde fesat (düzensizlik) ortaya çıktı. Belki dönerler diye Allah, yaptıklarının bir kısmını onlara tattıracaktır.\"\n\n**Mesajlar:**\n- Ekolojik krizlerin (kirlilik, iklim değişikliği, türlerin yok olması) temelinde **insanın yanlış eylemleri** vardır.\n- İnsan, yaptıklarının **sonuçlarıyla** karşılaşır.\n- Ayet bir **uyarı ve çağrı**dır: hatalardan dönmek, dengeyi yeniden kurmak.\n\n# Ayetin Bağlamı ve Günümüze Bakan Yönü\n\nAyetteki **fesat**, toplumsal ve ahlaki bozulmanın yanında doğadaki dengenin bozulmasını da kapsayan geniş bir kavramdır. Ayet insanı **suçlamakla yetinmez**, bir **dönüş (tövbe ve ıslah)** imkânı sunar: *\"Belki dönerler.\"* ifadesi, hatadan dönüldüğünde dengenin yeniden kurulabileceğini hatırlatır.\n\nGünümüzde orman yangınları, plastik kirliliği, aşırı avlanma ve iklim değişikliği bu ayetin uyarısını somutlaştıran örneklerdir. Bireysel düzeyde **tüketimi azaltmak**, toplumsal düzeyde **çevre dostu politikaları desteklemek** ayetin çağrısına uygun davranışlardır.",
      "ornekler": [
       {
        "soru": "Rum 41. ayet ile küresel ısınma arasında nasıl bir ilişki kurulabilir?",
        "cozum": "Ayet, karada ve denizdeki bozulmanın **insan eliyle** olduğunu bildirir; fosil yakıt kullanımı ve aşırı tüketim kaynaklı küresel ısınma bunun güncel bir örneğidir."
+      },
+      {
+       "soru": "Rum 41. ayetteki \"Belki dönerler\" ifadesi insana nasıl bir mesaj verir?",
+       "cozum": "Ayet insana **umut ve sorumluluk** mesajı verir: Yaşanan bozulmalar insanın kendi eylemlerinin sonucudur ve yine insan **hatasından dönerek** (israfı bırakmak, doğayı korumak) düzeni yeniden kurabilir. Ayet, karamsarlığa değil **ıslaha** çağırır."
       }
      ],
      "ozet": [
@@ -363,7 +419,7 @@ App.data.content["10/din"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "5.1",
+    "code": "DKAB.10.5.1",
     "title": {
      "tr": "Dinî yorum farklılıklarının sebepleri",
      "en": "Causes of differing religious interpretations"
@@ -374,6 +430,10 @@ App.data.content["10/din"] = [
       {
        "soru": "Sıffin Savaşı yorum farklılıklarının hangi sebebine örnektir?",
        "cozum": "**Siyasi sebeplere** örnektir; halifelik tartışmaları Haricilik ve Şia gibi grupların ortaya çıkmasında etkili olmuştur."
+      },
+      {
+       "soru": "Kur'an'daki bazı kelimelerin birden fazla anlama gelmesi yorum farklılıklarına nasıl yol açar? Bir örnek veriniz.",
+       "cozum": "Arapçada bazı kelimeler **çok anlamlıdır**; âlimler bağlama göre farklı anlamları tercih edebilir. Örneğin Bakara 228. ayetteki **\"kurû\"** kelimesi hem \"temizlik dönemi\" hem \"hayız dönemi\" anlamına gelir; bu yüzden boşanmış kadının bekleme süresinin hesaplanması mezheplerde farklı yorumlanmıştır. **Dilin yapısı**, yorum farklılıklarının sebeplerinden biridir."
       }
      ],
      "ozet": [
@@ -385,7 +445,7 @@ App.data.content["10/din"] = [
    },
    {
     "id": "k2",
-    "code": "5.2",
+    "code": "DKAB.10.5.2",
     "title": {
      "tr": "İtikadi ve fıkhi mezhepler",
      "en": "Theological and legal schools"
@@ -396,6 +456,10 @@ App.data.content["10/din"] = [
       {
        "soru": "Türkiye'de yaygın olan itikadi ve fıkhi mezhepler hangileridir?",
        "cozum": "İtikatta ağırlıklı olarak **Mâtürîdîlik**; fıkıhta ağırlıklı olarak **Hanefîlik**, doğu ve güneydoğuda ise **Şâfiîlik** yaygındır."
+      },
+      {
+       "soru": "Mâtürîdîlik ve Eş'arîlik arasındaki farklılığın akla yaklaşım bakımından bir örneğini veriniz.",
+       "cozum": "**Mâtürîdîlere** göre akıl, vahiy gelmeden de Allah'ın varlığını ve iyi–kötünün bir kısmını **bilebilir**; bu yüzden peygamber ulaşmamış kişi de Allah'ı aklıyla bilmekle sorumludur. **Eş'arîlere** göre ise dinî sorumluluk **vahiyle** başlar. İki mezhep de **Ehl-i Sünnet** içindedir; farklılık temel inançta değil, yorumdadır."
       }
      ],
      "ozet": [
@@ -407,7 +471,7 @@ App.data.content["10/din"] = [
    },
    {
     "id": "k3",
-    "code": "5.3",
+    "code": "DKAB.10.5.3",
     "title": {
      "tr": "Kur'an'dan mesajlar: Hucurat 13",
      "en": "Message from the Qur'an: Hujurat 13"
@@ -418,6 +482,10 @@ App.data.content["10/din"] = [
       {
        "soru": "Hucurat 13'e göre farklı milletlerden olmanın amacı nedir?",
        "cozum": "Birbirini **tanımak (teâruf)**, kaynaşmak ve yardımlaşmak; üstünlük taslamak ya da çatışmak değil."
+      },
+      {
+       "soru": "Hucurat suresi 13. ayetine göre insanlar arasında üstünlük ölçüsü nedir? Bu ölçü ırkçılığa nasıl bir cevap verir?",
+       "cozum": "Ayete göre Allah katında en üstün olan, **takvası** (Allah'a saygısı ve sorumluluk bilinci) en fazla olandır. Soy, renk, millet ve zenginlik üstünlük sebebi değildir; farklılıklar **tanışmak** içindir. Bu ölçü, insanları doğuştan gelen özelliklere göre değerlendiren **ırkçılığı** kesin olarak reddeder."
       }
      ],
      "ozet": [

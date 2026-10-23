@@ -467,6 +467,8 @@ O("k8", "2.8", "Atık yönetimi", "Waste management", r"""
 ]),
 ]
 
+from _ek136 import uygula136; uygula136(units, "biy10")
+
 write("biy-10.js", "10/biyoloji", "10. Sınıf Biyoloji — detaylı konu anlatım notları",
       "kullanıcının verdiği \"10. Sınıf Biyoloji Detaylı Konu Anlatım Notları\" (Enerji ve Ekoloji temaları).",
       units, "Kazanım kodları kaynaktaki bölüm numaralarıdır (1.5–1.6 sindirim ayrı kazanımlara bölündü). Örnek sorular eklendi.")

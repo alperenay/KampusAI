@@ -394,6 +394,8 @@ Böbreklerde **nefronlar**: **süzülme** (glomerulus) → **geri emilim** (glik
 from _ek134 import uygula  # noqa: E402
 uygula(units, "biy11_ek134")
 
+from _ek136 import uygula136; uygula136(units, "biy11")
+
 write("biy-11.js", "11/biyoloji", "11. Sınıf Biyoloji — kapsamlı ders notları",
       "kullanıcının verdiği \"11. Sınıf Biyoloji Ders Kitabı Kapsamlı Notlar\" (2 tema: Tepki, Homeostazi).",
       units, "Kazanım kodları kaynaktaki bölüm numaralarıdır; Tepki teması üç üniteye bölündü. Eklenenler: oligodendrosit, Na⁺-K⁺ pompası, sempatik/parasempatik, kasılmada Ca²⁺ ve ATP rolü, endokrin bezler tablosu, nefron işleyişi. Koleoptil deneylerine araştırmacı adları eklendi.")

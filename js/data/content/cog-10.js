@@ -19,7 +19,7 @@ App.data.content["10/cografya"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "1.1",
+    "code": "COĞ.10.1.1",
     "title": {
      "tr": "Coğrafi bakış ve örnek olaylar",
      "en": "The geographical perspective and case studies"
@@ -30,6 +30,10 @@ App.data.content["10/cografya"] = [
       {
        "soru": "Bir hastalığın yayılışını incelerken coğrafi bakış açısı hangi soruları sorar?",
        "cozum": "Vakalar **nerede** yoğunlaşıyor? **Neden orada** (su kaynağı, nüfus yoğunluğu, iklim)? **Nasıl** yayılıyor (ulaşım, göç)? Bunlar haritalanarak önlem alınır."
+      },
+      {
+       "soru": "Bir şehirde yaz aylarında bazı mahallelerin diğerlerinden 3–4 °C daha sıcak olduğu tespit ediliyor. Coğrafi bakış açısıyla bu durumu hangi sorularla incelersiniz?",
+       "cozum": "**Nerede?** Sıcak mahalleler haritada nerede yoğunlaşıyor? **Neden orada?** Bina yoğunluğu, asfalt–beton yüzeyler, yeşil alan azlığı, rüzgâr koridorlarının kapanması (**kentsel ısı adası**). **Nasıl bir etkileşim?** İnsan faaliyetleri doğal ortamı nasıl değiştirmiş? **Ne yapılmalı?** Ağaçlandırma, yeşil çatılar, açık renkli yüzeyler. Coğrafya olayı **mekân, insan–doğa etkileşimi ve çözüm** açısından ele alır."
       }
      ],
      "ozet": [
@@ -50,7 +54,7 @@ App.data.content["10/cografya"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "2.1",
+    "code": "COĞ.10.2.1",
     "title": {
      "tr": "CBS ve uzaktan algılamanın uygulama alanları",
      "en": "Applications of GIS and remote sensing"
@@ -61,6 +65,10 @@ App.data.content["10/cografya"] = [
       {
        "soru": "Bir ilde buğday rekoltesini hasattan önce tahmin etmek için hangi teknoloji kullanılır?",
        "cozum": "**Uzaktan algılama** (uydu görüntüleriyle bitki sağlığı ve ekili alan) ve **CBS** analizi."
+      },
+      {
+       "soru": "Bir orman yangınından sonra yanan alanın büyüklüğünü ve yeniden ağaçlandırma ihtiyacını belirlemek için uzaktan algılama ve CBS birlikte nasıl kullanılır?",
+       "cozum": "**Uzaktan algılama:** Yangın öncesi ve sonrası uydu görüntüleri karşılaştırılarak yanan alan tespit edilir (bitki örtüsü indeksindeki düşüş). **CBS:** Yanan alan haritası eğim, toprak, yerleşme ve yol katmanlarıyla **çakıştırılır**; erozyon riski yüksek ve öncelikli ağaçlandırma alanları belirlenir."
       }
      ],
      "ozet": [
@@ -72,7 +80,7 @@ App.data.content["10/cografya"] = [
    },
    {
     "id": "k2",
-    "code": "2.2",
+    "code": "COĞ.10.2.2",
     "title": {
      "tr": "Mekânsal verilerin haritalara aktarılması",
      "en": "Transferring spatial data to maps"
@@ -83,6 +91,10 @@ App.data.content["10/cografya"] = [
       {
        "soru": "Küçük ölçekli bir Türkiye haritasında Ankara nasıl gösterilir? Büyük ölçekli bir şehir planında?",
        "cozum": "Küçük ölçekte **nokta**, büyük ölçekte şehir sınırları **alan (poligon)** sembolüyle gösterilir; sembol türü ölçeğe göre değişir."
+      },
+      {
+       "soru": "Bir ilçedeki okullar, hastaneler, ana yollar ve park alanları CBS ile haritaya aktarılacaktır. Her biri hangi vektör sembolle gösterilmelidir?",
+       "cozum": "**Nokta:** Okullar ve hastaneler (konumu tek bir noktayla ifade edilebilen nesneler). **Çizgi:** Ana yollar (uzunluğu olan doğrusal nesneler). **Alan (poligon):** Park alanları (yüzölçümü olan nesneler). Okulun adı, öğrenci sayısı gibi bilgiler **öznitelik (mekânsal olmayan) veri** olarak tabloya eklenir."
       }
      ],
      "ozet": [
@@ -103,7 +115,7 @@ App.data.content["10/cografya"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "3.1",
+    "code": "COĞ.10.3.1",
     "title": {
      "tr": "Yer'in iç yapısı ve levha tektoniği",
      "en": "Earth's interior and plate tectonics"
@@ -114,6 +126,10 @@ App.data.content["10/cografya"] = [
       {
        "soru": "Kızıldeniz zamanla genişliyor. Bu hangi levha hareketiyle açıklanır?",
        "cozum": "**Ayrılma (uzaklaşma) sınırı** — Afrika ve Arabistan levhaları birbirinden uzaklaşıyor."
+      },
+      {
+       "soru": "Yer kabuğunun kalınlığı karalarda ve okyanus tabanında neden farklıdır? Hangi kabuk daha yoğundur?",
+       "cozum": "**Kıtasal kabuk** daha kalındır (30–70 km) ve granit benzeri (sial) daha hafif kayaçlardan oluşur. **Okyanusal kabuk** incedir (5–10 km), bazalt (sima) gibi **daha yoğun** kayaçlardan oluşur. Bu yüzden iki levha çarpıştığında yoğun okyanusal levha kıtasal levhanın altına **dalar** (dalma–batma)."
       }
      ],
      "ozet": [
@@ -125,7 +141,7 @@ App.data.content["10/cografya"] = [
    },
    {
     "id": "k2",
-    "code": "3.2",
+    "code": "COĞ.10.3.1",
     "title": {
      "tr": "Orojenez, volkanizma ve deprem",
      "en": "Orogeny, volcanism and earthquakes"
@@ -136,6 +152,10 @@ App.data.content["10/cografya"] = [
       {
        "soru": "Ege Bölgesi'nde dağların ve ovaların birbirine paralel uzanması nasıl açıklanır?",
        "cozum": "Sert tabakaların **kırılmasıyla** yükselen **horstlar** (dağlar) ve çöken **grabenler** (ovalar) oluşmuştur."
+      },
+      {
+       "soru": "Türkiye'de yaşanan depremlerin büyük çoğunluğu hangi fay hatları boyunca görülür? Neden?",
+       "cozum": "**Kuzey Anadolu Fay Hattı**, **Doğu Anadolu Fay Hattı** ve **Batı Anadolu (Ege) graben sistemi**. Anadolu levhası, Arap levhasının kuzeye itmesiyle **batıya doğru** kaçmakta, bu hareket fay hatlarında gerilme biriktirip depremlere yol açmaktadır."
       }
      ],
      "ozet": [
@@ -147,7 +167,7 @@ App.data.content["10/cografya"] = [
    },
    {
     "id": "k3",
-    "code": "3.3",
+    "code": "COĞ.10.3.1",
     "title": {
      "tr": "Türkiye'nin tektonik yapısı ve jeolojik zamanlar",
      "en": "Türkiye's tectonics and geological time"
@@ -158,6 +178,10 @@ App.data.content["10/cografya"] = [
       {
        "soru": "Türkiye'nin dağlarının büyük bölümü hangi jeolojik zamanda oluşmuştur?",
        "cozum": "**Senozoyik** (III. zaman) — Alp-Himalaya orojenezi sırasında."
+      },
+      {
+       "soru": "Zonguldak'taki taş kömürü yatakları ile Türkiye'nin linyit yatakları hangi jeolojik zamanlarda oluşmuştur?",
+       "cozum": "Zonguldak taş kömürü **I. Zaman (Paleozoik)**, özellikle Karbonifer döneminin bataklık ormanlarından oluşmuştur. Linyitler (Afşin–Elbistan, Soma, Tunçbilek) daha genç olup **III. Zaman (Tersiyer)** göl ve bataklık ortamlarında oluşmuştur."
       }
      ],
      "ozet": [
@@ -169,7 +193,7 @@ App.data.content["10/cografya"] = [
    },
    {
     "id": "k4",
-    "code": "3.4",
+    "code": "COĞ.10.3.2",
     "title": {
      "tr": "Ayrışma: iklim ve kayaç yapısının etkisi",
      "en": "Weathering: effects of climate and rock type"
@@ -180,6 +204,10 @@ App.data.content["10/cografya"] = [
       {
        "soru": "Çöllerde kayaçların parçalanmasında hangi ayrışma etkindir? Neden?",
        "cozum": "**Fiziksel ayrışma** — gece-gündüz sıcaklık farkı çok büyüktür; kayaçlar genleşip büzülerek çatlar."
+      },
+      {
+       "soru": "Karadeniz kıyılarında toprak örtüsünün kalın, Güneydoğu Anadolu'nun kurak kesimlerinde ise ince olmasının nedenini ayrışma türleriyle açıklayınız.",
+       "cozum": "Karadeniz'de **nemli ve ılık** iklim nedeniyle **kimyasal ayrışma** güçlüdür; kayaçlar derinlemesine çözülür, kalın toprak oluşur ve bitki örtüsü toprağı korur. Kurak alanlarda kimyasal ayrışma zayıf, **mekanik (fiziksel) ayrışma** baskındır; toprak oluşumu yavaştır ve ince kalır."
       }
      ],
      "ozet": [
@@ -191,7 +219,7 @@ App.data.content["10/cografya"] = [
    },
    {
     "id": "k5",
-    "code": "3.5",
+    "code": "COĞ.10.3.3",
     "title": {
      "tr": "Akarsu ve karstik şekiller",
      "en": "Fluvial and karst landforms"
@@ -202,6 +230,10 @@ App.data.content["10/cografya"] = [
       {
        "soru": "Pamukkale travertenleri nasıl oluşmuştur?",
        "cozum": "Kalkerli araziden geçen **kalsiyum bikarbonatlı** kaynak suları yeryüzüne çıkınca $CO_2$ kaybeder ve kireç **çökelir**; basamak şeklinde birikinti oluşur."
+      },
+      {
+       "soru": "Bir akarsuyun yukarı, orta ve aşağı çığırındaki baskın aşındırma–biriktirme süreçlerini ve oluşan şekilleri karşılaştırınız.",
+       "cozum": "**Yukarı çığır:** Eğim fazla → **derine aşındırma**; çentik (V) vadiler, şelaleler. **Orta çığır:** Yana aşındırma artar → geniş tabanlı vadiler, **menderesler**. **Aşağı çığır:** Eğim azalır → **biriktirme**; taşkın ovası, **delta** (Çukurova, Bafra, Çarşamba). Aynı akarsuda enerji azaldıkça aşındırma yerini biriktirmeye bırakır."
       }
      ],
      "ozet": [
@@ -213,7 +245,7 @@ App.data.content["10/cografya"] = [
    },
    {
     "id": "k6",
-    "code": "3.6",
+    "code": "COĞ.10.3.3",
     "title": {
      "tr": "Rüzgâr, buzul ve kıyı şekilleri",
      "en": "Wind, glacial and coastal landforms"
@@ -224,6 +256,10 @@ App.data.content["10/cografya"] = [
       {
        "soru": "Ege kıyılarının girintili-çıkıntılı olmasının nedeni nedir?",
        "cozum": "Dağların kıyıya **dik** uzandığı **enine kıyı** tipidir; dağlar arasındaki ovalar ve koylar denize açılır."
+      },
+      {
+       "soru": "Peribacaları ile mantarkaya arasındaki fark nedir? Hangi dış kuvvetler bu şekillerin oluşumunda etkilidir?",
+       "cozum": "**Peribacaları** (Kapadokya) volkanik tüflerin **sel suları ve yağış** ile aşındırılmasıyla, sert bir başlık kayacın altındaki yumuşak tüfü koruması sonucu oluşur. **Mantarkaya** ise kurak alanlarda **rüzgârın** taşıdığı kumların kayaçların alt kısmını daha çok aşındırmasıyla oluşur (Karapınar). Her ikisinde de **farklı direnç gösteren kayaçlar** belirleyicidir."
       }
      ],
      "ozet": [
@@ -235,17 +271,21 @@ App.data.content["10/cografya"] = [
    },
    {
     "id": "k7",
-    "code": "3.7",
+    "code": "COĞ.10.3.4–5",
     "title": {
      "tr": "Saha çalışması ve yer şekillerinin beşerî faaliyetlerle etkileşimi",
      "en": "Fieldwork and human interaction with landforms"
     },
     "content": {
-     "anlatim": "# Saha Çalışması\n\n**Coğrafyanın laboratuvarı arazidir.** Saha çalışmaları yer şekillerini yerinde incelemeyi, doğal zenginlikleri fark etmeyi ve korumayı sağlar.\n\n# Yer Şekilleri ve İnsan\n\n| Alan | Etkileşim |\n|---|---|\n| **Nüfus ve yerleşme** | Verimli ovalar ve nehir vadileri (Nil, Çukurova, Büyük Menderes) yoğun; dağlık alanlar seyrek nüfuslu |\n| **Ulaşım** | Düzlükte yol yapımı ucuz; dağlık alanda **tünel ve viyadük** (Landwasser Viyadüğü) gerekir |\n| **İnsanın yer şekillerini değiştirmesi** | Maden ocakları, barajlar, dolgu alanları (**Hollanda polderleri**) — **Antroposen** |\n| **Canlılar** | Karınca, köstebek gibi canlılar küçük ölçekte şekillendirir |",
+     "anlatim": "# Saha Çalışması\n\n**Coğrafyanın laboratuvarı arazidir.** Saha çalışmaları yer şekillerini yerinde incelemeyi, doğal zenginlikleri fark etmeyi ve korumayı sağlar.\n\n# Yer Şekilleri ve İnsan\n\n| Alan | Etkileşim |\n|---|---|\n| **Nüfus ve yerleşme** | Verimli ovalar ve nehir vadileri (Nil, Çukurova, Büyük Menderes) yoğun; dağlık alanlar seyrek nüfuslu |\n| **Ulaşım** | Düzlükte yol yapımı ucuz; dağlık alanda **tünel ve viyadük** (Landwasser Viyadüğü) gerekir |\n| **İnsanın yer şekillerini değiştirmesi** | Maden ocakları, barajlar, dolgu alanları (**Hollanda polderleri**) — **Antroposen** |\n| **Canlılar** | Karınca, köstebek gibi canlılar küçük ölçekte şekillendirir |\n\n# Saha Çalışması Nasıl Yapılır?\n\n1. **Hazırlık:** Amaç ve soru belirlenir (*\"Bu vadide yerleşmeler neden yamaçta?\"*); harita, uydu görüntüsü ve kaynaklar incelenir.\n2. **Arazide gözlem:** Yer şekilleri fotoğraflanır, kroki çizilir, GPS ile konum alınır; yerel halkla görüşülür.\n3. **Değerlendirme:** Veriler haritaya ve tabloya aktarılır, sonuçlar rapor ya da sunumla paylaşılır.\n\nGidilemeyen yerler için **sanal saha çalışması** (Google Earth, 3B arazi modelleri, sanal turlar) yapılabilir. Yer şekillerinin insan faaliyetlerine etkisine **teraslama** (eğimli arazide tarım), **taşkın ovalarında yerleşme riski** ve **karstik alanlarda baraj sızıntısı** da örnek verilebilir.",
      "ornekler": [
       {
        "soru": "Hollanda'nın polderleri insan–doğa etkileşimine nasıl bir örnektir?",
        "cozum": "Deniz seviyesinin altındaki alanlar **setlerle kurutulup** tarım ve yerleşmeye açılmıştır; insan yer şekillerini doğrudan değiştirmiştir."
+      },
+      {
+       "soru": "Bir öğrenci okulunun yakınındaki dere yatağında saha çalışması yapacaktır. Hangi gözlemleri yapmalı ve hangi soruları sormalıdır?",
+       "cozum": "Gözlemler: Vadinin şekli (V ya da geniş tabanlı), yataktaki çakıl–kum boyutu, eğim, kıyıdaki yerleşmeler ve tarım alanları, taşkın izleri. Sorular: *\"Dere taşkın riski taşıyor mu? Yataktaki yapılaşma doğru mu? Dere hangi aşındırma–biriktirme şekillerini oluşturmuş?\"* Sonuçlar kroki, fotoğraf ve haritayla raporlanır."
       }
      ],
      "ozet": [
@@ -266,7 +306,7 @@ App.data.content["10/cografya"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "4.1",
+    "code": "COĞ.10.4.1",
     "title": {
      "tr": "Yerleşmelerin kuruluşu, gelişimi ve türleri",
      "en": "Founding, development and types of settlements"
@@ -277,6 +317,10 @@ App.data.content["10/cografya"] = [
       {
        "soru": "Yaz aylarında hayvancılık amacıyla kullanılan geçici yerleşme hangisidir?",
        "cozum": "**Yayla** (ayrıca konargöçerlerin çadırlarından oluşan **oba**, Doğu Anadolu'daki **kom**)."
+      },
+      {
+       "soru": "İstanbul, Ankara ve Erzurum şehirlerinin kuruluş yerini etkileyen coğrafi faktörleri karşılaştırınız.",
+       "cozum": "**İstanbul:** Boğazın iki yakasında; **ulaşım ve ticaret yollarının kesişimi**, savunmaya elverişli yarımada, liman. **Ankara:** Savunmaya uygun kale tepesi, su kaynakları, İç Anadolu'nun **merkezî konumu**; başkent olunca hızla büyüdü. **Erzurum:** Yüksek ovada, **İpek Yolu** güzergâhında, stratejik askerî konum."
       }
      ],
      "ozet": [
@@ -288,7 +332,7 @@ App.data.content["10/cografya"] = [
    },
    {
     "id": "k2",
-    "code": "4.2",
+    "code": "COĞ.10.4.2",
     "title": {
      "tr": "Yerleşmelerin fonksiyonları",
      "en": "Functions of settlements"
@@ -299,6 +343,10 @@ App.data.content["10/cografya"] = [
       {
        "soru": "Zonguldak hangi fonksiyonuyla öne çıkar?",
        "cozum": "**Madencilik** (taş kömürü)."
+      },
+      {
+       "soru": "Bir şehrin birden fazla fonksiyonu olabilir mi? Antalya örneğiyle açıklayınız.",
+       "cozum": "Evet. **Antalya** başta **turizm** olmak üzere **tarım** (seracılık, narenciye), **ticaret** (liman, serbest bölge) ve **yönetim** (il merkezi) fonksiyonlarına sahiptir. Şehirler genellikle **baskın bir fonksiyonla** (Antalya: turizm) öne çıkar ama birden çok fonksiyon taşır."
       }
      ],
      "ozet": [
@@ -310,7 +358,7 @@ App.data.content["10/cografya"] = [
    },
    {
     "id": "k3",
-    "code": "4.3",
+    "code": "COĞ.10.4.Ek",
     "title": {
      "tr": "Nüfusun dağılışı, nüfus piramitleri ve Türkiye'nin nüfus özellikleri",
      "en": "Population distribution, population pyramids and Türkiye's population"
@@ -336,7 +384,7 @@ App.data.content["10/cografya"] = [
    },
    {
     "id": "k4",
-    "code": "4.4",
+    "code": "COĞ.10.4.Ek",
     "title": {
      "tr": "Göç: nedenleri, türleri ve sonuçları",
      "en": "Migration: causes, types and consequences"
@@ -371,17 +419,21 @@ App.data.content["10/cografya"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "5.1",
+    "code": "COĞ.10.5.1",
     "title": {
      "tr": "Ekonomik sektörler",
      "en": "Economic sectors"
     },
     "content": {
-     "anlatim": "# Beş Ekonomik Sektör\n\n| Sektör | Kapsam |\n|---|---|\n| **Birincil** | Doğadan doğrudan üretim: tarım, hayvancılık, balıkçılık, ormancılık, madencilik |\n| **İkincil** | Ham maddenin işlenmesi: sanayi, inşaat, enerji üretimi |\n| **Üçüncül** | Hizmet: ticaret, eğitim, sağlık, ulaşım, turizm, finans, iletişim |\n| **Dördüncül** | Bilgi ve enformasyon: **AR-GE**, yazılım, tasarım, CBS uzmanlığı |\n| **Beşincil** | Üst düzey **karar verme**: yöneticiler, stratejik planlamacılar, hükümet yetkilileri |",
+     "anlatim": "# Beş Ekonomik Sektör\n\n| Sektör | Kapsam |\n|---|---|\n| **Birincil** | Doğadan doğrudan üretim: tarım, hayvancılık, balıkçılık, ormancılık, madencilik |\n| **İkincil** | Ham maddenin işlenmesi: sanayi, inşaat, enerji üretimi |\n| **Üçüncül** | Hizmet: ticaret, eğitim, sağlık, ulaşım, turizm, finans, iletişim |\n| **Dördüncül** | Bilgi ve enformasyon: **AR-GE**, yazılım, tasarım, CBS uzmanlığı |\n| **Beşincil** | Üst düzey **karar verme**: yöneticiler, stratejik planlamacılar, hükümet yetkilileri |\n\n# Sektörlerin Birbirine Bağlılığı\n\nBir ürün, sektörler arasında bir **değer zinciri** oluşturur: Pamuk tarlada yetiştirilir (birincil) → iplik ve kumaş fabrikasında işlenir (ikincil) → mağazada satılır ve nakliye edilir (üçüncül) → yeni kumaş teknolojisi laboratuvarda geliştirilir (dördüncül) → şirketin ihracat stratejisine yönetim kurulu karar verir (beşincil).\n\nTeknoloji ilerledikçe birincil sektörde çalışan sayısı **makineleşme** nedeniyle azalır; bilgi ve hizmet sektörlerinin payı artar.",
      "ornekler": [
       {
        "soru": "Bir yazılım şirketinde yapay zekâ geliştiren mühendis hangi sektörde çalışır?",
        "cozum": "**Dördüncül sektör** (bilgi, AR-GE, yazılım)."
+      },
+      {
+       "soru": "Aşağıdaki meslekleri ekonomik sektörlere ayırınız: madenci, öğretmen, otomobil fabrikası işçisi, bir bankanın genel müdürü, ilaç araştırmacısı.",
+       "cozum": "Madenci → **birincil**; otomobil fabrikası işçisi → **ikincil**; öğretmen → **üçüncül**; ilaç araştırmacısı (AR-GE) → **dördüncül**; bankanın genel müdürü (üst düzey karar) → **beşincil**."
       }
      ],
      "ozet": [
@@ -393,17 +445,21 @@ App.data.content["10/cografya"] = [
    },
    {
     "id": "k2",
-    "code": "5.2",
+    "code": "COĞ.10.5.2",
     "title": {
      "tr": "Ekonomik sektörler ve gelişmişlik düzeyi",
      "en": "Economic sectors and level of development"
     },
     "content": {
-     "anlatim": "# Sektörler ve Gelişmişlik\n\nÇalışan nüfusun sektörlere dağılımı ile gelişmişlik arasında **doğrudan ilişki** vardır. GSYİH ve istihdam oranları analizin temelidir.\n\n| | Gelişmiş ülkeler (Kanada, Almanya, İtalya) | Az gelişmiş ülkeler (Çad, Zambiya, Mozambik) |\n|---|---|---|\n| **Tarımda çalışan** | Çok düşük (%1–3) | Çok yüksek (%50–70+) |\n| **Sanayi ve hizmet** | Yüksek | Zayıf |\n| **Kişi başı gelir** | Yüksek | Düşük |\n| **Enerji tüketimi, okuryazarlık, yaşam süresi** | Yüksek | Düşük |\n| **Dış ticaret** | Katma değeri yüksek sanayi ve teknoloji ürünleri | Ham madde satar, işlenmiş ürün alır |",
+     "anlatim": "# Sektörler ve Gelişmişlik\n\nÇalışan nüfusun sektörlere dağılımı ile gelişmişlik arasında **doğrudan ilişki** vardır. GSYİH ve istihdam oranları analizin temelidir.\n\n| | Gelişmiş ülkeler (Kanada, Almanya, İtalya) | Az gelişmiş ülkeler (Çad, Zambiya, Mozambik) |\n|---|---|---|\n| **Tarımda çalışan** | Çok düşük (%1–3) | Çok yüksek (%50–70+) |\n| **Sanayi ve hizmet** | Yüksek | Zayıf |\n| **Kişi başı gelir** | Yüksek | Düşük |\n| **Enerji tüketimi, okuryazarlık, yaşam süresi** | Yüksek | Düşük |\n| **Dış ticaret** | Katma değeri yüksek sanayi ve teknoloji ürünleri | Ham madde satar, işlenmiş ürün alır |\n\n# Gelişmişliği Ölçen Göstergeler\n\n- **Kişi başı GSYİH:** Bir ülkede bir yılda üretilen mal ve hizmetlerin değerinin nüfusa oranı.\n- **İnsani Gelişme Endeksi (İGE):** Gelirin yanı sıra **eğitim** ve **sağlık (beklenen yaşam süresi)** göstergelerini birleştirir; tek başına gelirden daha kapsamlı bir ölçüdür.\n- **Sektörel dağılım:** Gelişmiş ekonomilerde hizmet sektörü istihdamın **%70'inden fazlasını** oluşturur.\n\nHam madde ihracatına dayanan ülkeler fiyat dalgalanmalarına karşı **kırılgandır**; katma değeri yüksek ürün üreten ülkelerin ekonomisi daha **dirençlidir**.",
      "ornekler": [
       {
        "soru": "Bir ülkede çalışanların %65'i tarımda ise bu ülkenin gelişmişlik düzeyi hakkında ne söylenebilir?",
        "cozum": "Büyük olasılıkla **az gelişmiş** bir ülkedir: sanayi ve hizmet zayıf, kişi başı gelir düşük, ham madde ihracatına bağımlıdır."
+      },
+      {
+       "soru": "A ülkesinde istihdamın %3'ü tarımda, %22'si sanayide, %75'i hizmette; B ülkesinde %60'ı tarımda, %10'u sanayide, %30'u hizmettedir. Hangi ülke daha gelişmiştir? İki gösterge daha belirtiniz.",
+       "cozum": "**A ülkesi** daha gelişmiştir: Tarımda çalışan payının düşük, hizmet payının yüksek olması **makineleşmiş tarım** ve gelişmiş hizmet ekonomisini gösterir. A ülkesinde **kişi başı gelirin**, **okuryazarlık oranının** ve **ortalama yaşam süresinin** de yüksek olması beklenir."
       }
      ],
      "ozet": [
@@ -415,17 +471,21 @@ App.data.content["10/cografya"] = [
    },
    {
     "id": "k3",
-    "code": "5.3",
+    "code": "COĞ.10.5.3",
     "title": {
      "tr": "Türkiye ekonomisinin sektörel dağılımı",
      "en": "Sectoral distribution of Türkiye's economy"
     },
     "content": {
-     "anlatim": "# Türkiye'de Ekonomik Dönüşüm\n\n- **İzmir İktisat Kongresi (1923)** ile temeller atıldı; sonra **devletçilik** dönemi ve **1980 sonrası ihracata dayalı** büyüme modeli.\n- Cumhuriyet'in ilk yıllarında nüfusun büyük kısmı **tarımda** çalışıyordu; sanayileşme ve şehirleşmeyle tarımın payı azaldı, **hizmet ve sanayi** arttı.\n\n| Yıl | Tarım | Sanayi | Hizmet |\n|---|---|---|---|\n| **1990** | %46,8 | %20,3 | %32,9 |\n| **2018** | %18,4 | %26,7 | %54,9 |\n| **Günümüz** | ≈ %15 | ≈ %27 | ≈ %57 |\n\n*(İstihdamın sektörlere dağılımı; günümüz değerleri yaklaşıktır.)*\n\n> Türkiye **tarım toplumundan sanayi ve hizmet ağırlıklı** bir ekonomiye dönüşmüştür.",
+     "anlatim": "# Türkiye'de Ekonomik Dönüşüm\n\n- **İzmir İktisat Kongresi (1923)** ile temeller atıldı; sonra **devletçilik** dönemi ve **1980 sonrası ihracata dayalı** büyüme modeli.\n- Cumhuriyet'in ilk yıllarında nüfusun büyük kısmı **tarımda** çalışıyordu; sanayileşme ve şehirleşmeyle tarımın payı azaldı, **hizmet ve sanayi** arttı.\n\n| Yıl | Tarım | Sanayi | Hizmet |\n|---|---|---|---|\n| **1990** | %46,8 | %20,3 | %32,9 |\n| **2018** | %18,4 | %26,7 | %54,9 |\n| **Günümüz** | ≈ %15 | ≈ %27 | ≈ %57 |\n\n*(İstihdamın sektörlere dağılımı; günümüz değerleri yaklaşıktır.)*\n\n> Türkiye **tarım toplumundan sanayi ve hizmet ağırlıklı** bir ekonomiye dönüşmüştür.\n\n# Bölgesel Farklar ve Güncel Eğilimler\n\nTürkiye'de sanayi ve hizmetler **Marmara** (İstanbul, Kocaeli, Bursa), **İç Anadolu** (Ankara, Konya, Kayseri) ve **Ege** (İzmir, Manisa, Denizli) çevresinde yoğunlaşır. Doğu Anadolu ve Karadeniz'in bazı bölgelerinde tarım ve hayvancılık hâlâ önemli bir istihdam alanıdır.\n- **Organize sanayi bölgeleri** ve **teknoparklar**, sanayi ve dördüncül sektörü güçlendirir.\n- Turizm (Antalya, Muğla) hizmet sektörünün önemli bir kaynağıdır.\n- Savunma sanayii, otomotiv, beyaz eşya ve tekstil ihracatta öne çıkar.",
      "ornekler": [
       {
        "soru": "1990'dan günümüze Türkiye'de istihdamın sektörel dağılımı nasıl değişmiştir?",
        "cozum": "Tarımın payı yaklaşık %47'den %15'e **düşmüş**; hizmetin payı %33'ten %57'ye **yükselmiş**, sanayi de artmıştır."
+      },
+      {
+       "soru": "Türkiye'de tarımda çalışanların oranı azalırken tarımsal üretim neden düşmemiştir?",
+       "cozum": "Tarımda **makineleşme**, sulama, sertifikalı tohum, gübre ve **verimlilik** artışı sayesinde daha az kişiyle daha çok ürün elde edilmektedir. Tarımdan ayrılan iş gücü sanayi ve hizmet sektörüne (**kente göç**) geçmiştir."
       }
      ],
      "ozet": [
@@ -446,7 +506,7 @@ App.data.content["10/cografya"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "6.1",
+    "code": "COĞ.10.6.1–2",
     "title": {
      "tr": "Afetlerle mücadele ve dirençli yaşam alanları",
      "en": "Disaster management and resilient living spaces"
@@ -457,6 +517,10 @@ App.data.content["10/cografya"] = [
       {
        "soru": "Evdeki dolapları duvara sabitlemek hangi tür risk azaltma önlemidir?",
        "cozum": "**Yapısal olmayan** risklerin azaltılması (deprem sırasında devrilen eşyalardan kaynaklanan yaralanmaları önler)."
+      },
+      {
+       "soru": "Japonya'da deprem bilincinin yüksek olmasını sağlayan iyi uygulama örneklerini sıralayınız. Türkiye'de benzer hangi çalışmalar vardır?",
+       "cozum": "Japonya: Okullarda düzenli **tatbikatlar**, sıkı **yapı denetimi** ve depreme dayanıklı mühendislik, **erken uyarı sistemi**, 1 Eylül Afet Önleme Günü. Türkiye: **AFAD** eğitimleri ve **Afet Gönüllüsü** programı, **kentsel dönüşüm**, okullarda tatbikat, **e-Devlet afet ve acil durum bilgileri**, **zorunlu deprem sigortası (DASK)**."
       }
      ],
      "ozet": [
@@ -468,7 +532,7 @@ App.data.content["10/cografya"] = [
    },
    {
     "id": "k2",
-    "code": "6.2",
+    "code": "COĞ.10.6.2",
     "title": {
      "tr": "Afet türleri: deprem, sel, heyelan, çığ ve erozyon",
      "en": "Types of disasters: earthquake, flood, landslide, avalanche and erosion"
@@ -491,6 +555,60 @@ App.data.content["10/cografya"] = [
       "AFAD, DASK; çök–kapan–tutun."
      ]
     }
+   },
+   {
+    "id": "k3",
+    "code": "COĞ.10.6.3",
+    "title": {
+     "tr": "Mekânın özelliklerine göre afetlerden korunma uygulamaları",
+     "en": "Choosing disaster protection practices according to the characteristics of a place"
+    },
+    "content": {
+     "anlatim": "# Her Yer Aynı Afete Hazırlanmaz\n\nAfetlerden korunma kararları **mekânın özelliklerine** (yer şekilleri, zemin, iklim, akarsu ağı, nüfus yoğunluğu, yapı stoku) göre verilir. Önce bölgenin **tehlike haritası** çıkarılır, sonra seçenekler oluşturulup karşılaştırılır.\n\n| Mekânın özelliği | Başlıca tehlike | Korunma uygulamaları |\n|---|---|---|\n| **Fay hattı üzerinde, alüvyal zemin** (Marmara, Ege grabenleri) | Deprem, zemin sıvılaşması | Zemin etüdü, sağlam zemine yerleşme, depreme dayanıklı yapı, kentsel dönüşüm, toplanma alanları |\n| **Dik yamaç, killi zemin, bol yağış** (Doğu Karadeniz) | Heyelan, sel | Yamaçlarda yapılaşmayı sınırlamak, **ağaçlandırma**, istinat duvarı, drenaj, dere yataklarını boşaltmak |\n| **Dar vadi, ani sağanak** | Taşkın, sel | Dere yatağına yapı yapmamak, **taşkın kanalları ve set**, erken uyarı |\n| **Yüksek dağlık, kar birikimi** (Doğu Anadolu) | Çığ | Çığ önleme çitleri, ağaçlandırma, riskli yamaçlarda yol kapatma ve uyarı |\n| **Kurak, seyrek bitki örtüsü** (İç Anadolu) | Erozyon, kuraklık, toz fırtınası | Rüzgâr perdeleri, nadas yerine **ekim nöbeti**, damla sulama |\n| **Kıyı, alçak delta** | Fırtına, kıyı taşkını, deniz seviyesi yükselmesi | Kıyı yapılaşma sınırı, dalgakıran, sulak alanları korumak |\n\n# Karar Verme Adımları\n\n1. **Amaç:** *\"Bu yerleşmeyi hangi afete karşı nasıl korumalıyız?\"*\n2. **Bilgi toplama:** Afet geçmişi, AFAD risk haritaları, jeolojik etüt, iklim verileri, yerel halkla görüşme.\n3. **Seçenek oluşturma:** Yapısal (set, istinat duvarı, güçlendirme) ve yapısal olmayan (planlama, eğitim, sigorta, erken uyarı) önlemler.\n4. **Karşılaştırma:** Maliyet, uygulanabilirlik, çevreye etkisi, kaç kişiyi koruduğu.\n5. **Seçim ve uygulama:** En uygun önlem seçilir.\n6. **Değerlendirme:** Önlemin işe yarayıp yaramadığı izlenir, gerekirse plan güncellenir.\n\n# Yeşil Vatan\n\nAğaçlandırma, erozyon ve heyelanı azaltan, sel suyunu yavaşlatan, karbon tutan **doğa temelli bir çözümdür**. Bitki örtüsü, birçok afetin etkisini azaltan en ucuz ve kalıcı \"yapı\" olarak düşünülebilir.",
+     "ornekler": [
+      {
+       "soru": "Doğu Karadeniz'de dik yamaçlı bir vadide kurulu bir köyde sık sık heyelan ve sel yaşanıyor. Mekânın özelliklerine göre iki yapısal ve iki yapısal olmayan korunma önlemi öneriniz.",
+       "cozum": "**Yapısal:** Yamaçlarda **istinat duvarı** ve **yüzey–yeraltı drenajı** (killi zemindeki suyu uzaklaştırmak); dere yatağında **taşkın duvarı ve ıslah**. **Yapısal olmayan:** Riskli yamaç ve dere yataklarında **yapılaşma yasağı** (imar planı), ağaçlandırma, yağış eşiğine bağlı **erken uyarı** ve tahliye planı."
+      },
+      {
+       "soru": "Bir belediye, alüvyal zemin üzerinde ve aktif bir faya yakın kurulmuş bir ilçede yeni bir hastane yapmak istiyor. Hangi alternatifleri değerlendirmeli, hangisini seçmelidir?",
+       "cozum": "Alternatifler: (1) Aynı yere sıradan yapı, (2) aynı yere **zemin iyileştirme + sismik izolatörlü** yapı, (3) ilçede **sağlam (kaya) zeminli** başka bir arsa. Hastaneler afet sonrası **kesintisiz çalışması** gereken kritik yapılardır; en uygun seçim sağlam zemindeki bir alana sismik izolatörlü inşa etmektir (2 ve 3'ün birleşimi). 1. seçenek risk nedeniyle reddedilir."
+      }
+     ],
+     "ozet": [
+      "Korunma kararı mekânın özelliklerine (zemin, eğim, iklim, akarsu, nüfus) göre verilir.",
+      "Deprem: zemin etüdü ve dayanıklı yapı; heyelan: drenaj, istinat duvarı, ağaçlandırma; sel: dere yatağını boşaltma, set, erken uyarı.",
+      "Önlemler yapısal ve yapısal olmayan olarak ikiye ayrılır.",
+      "Karar: amaç → bilgi → seçenekler → karşılaştırma → seçim → değerlendirme."
+     ]
+    }
+   },
+   {
+    "id": "k4",
+    "code": "COĞ.10.6.4",
+    "title": {
+     "tr": "Afet bilinci oluşturmanın faydaları",
+     "en": "Benefits of building disaster awareness"
+    },
+    "content": {
+     "anlatim": "# Afet Bilinci Nedir?\n\n**Afet bilinci**; bireyin yaşadığı yerin **tehlikelerini bilmesi**, afet öncesinde **hazırlık yapması**, afet anında **doğru davranması** ve afet sonrasında **topluma destek olmasıdır**. Afete dirençli bir toplum, ancak bilinçli bireylerle mümkündür.\n\n# Afet Döngüsünde Bilinçli Birey\n\n| Aşama | Ne yapar? |\n|---|---|\n| **Önce (zarar azaltma ve hazırlık)** | Evinin depreme dayanıklılığını yaptırır, eşyaları sabitler, **afet ve acil durum çantası** hazırlar, aile **afet planı** yapar, toplanma alanını öğrenir, DASK yaptırır |\n| **Sırasında (müdahale)** | **Çök–Kapan–Tutun**; asansör ve merdiven kullanmaz; selde yüksek yere çıkar, araçla suya girmez |\n| **Sonra (iyileştirme)** | Gaz–elektriği kontrol eder, resmî kaynakları takip eder, gönüllü destek verir, yeniden yapılanmaya katılır |\n\n# Bilincin Faydaları\n\n- **Can kayıpları azalır:** Tatbikat yapan okullarda tahliye süresi kısalır, panik azalır.\n- **Ekonomik kayıplar azalır:** Zarar azaltmaya harcanan her lira, afet sonrası çok daha büyük harcamaları önler.\n- **Toplumsal dayanışma artar:** Mahalle afet gönüllüleri ilk müdahalede kritik rol oynar; ilk 72 saat çoğu zaman yerel halkın kendi kaynaklarıyla geçer.\n- **Psikolojik dayanıklılık:** Ne yapacağını bilen kişi travmayı daha kolay atlatır.\n- **Doğru karar verme:** Bilinçli vatandaş, riskli yerde ev almaz, kaçak yapıya karşı çıkar.\n\n# Kendi Deneyimini Yansıt\n\nOkulunuzda yapılan bir deprem ya da yangın tatbikatını düşünün: *Ne öğrendim? Neyi iyi yaptık, neyi geliştirmeliyiz? Ailemle afet planımız var mı?* Bu soruların cevapları, afet bilincinin **bireyden topluma** nasıl yayıldığını gösterir.\n\n**Kurumlar:** AFAD, Kızılay, AKUT ve yerel yönetimler eğitim, tatbikat ve gönüllülük programları düzenler. **112** tek acil çağrı numarasıdır.",
+     "ornekler": [
+      {
+       "soru": "Bir ailenin deprem için hazırladığı afet ve acil durum çantasında neler bulunmalıdır? Çanta nerede durmalıdır?",
+       "cozum": "Su (kişi başı en az 3 günlük), bozulmayan yiyecekler, ilk yardım malzemeleri ve düzenli kullanılan ilaçlar, el feneri, pilli radyo ve yedek pil, düdük, battaniye, yedek kıyafet, kimlik ve önemli belgelerin kopyaları, bir miktar nakit, powerbank. Çanta **kolay ulaşılabilir**, çıkışa yakın bir yerde durmalı ve içeriği yılda bir kontrol edilmelidir."
+      },
+      {
+       "soru": "İki okuldan biri yılda iki kez deprem tatbikatı yapıyor, diğeri hiç yapmıyor. Gerçek bir depremde iki okul arasında ne gibi farklar beklenir?",
+       "cozum": "Tatbikat yapan okulda öğrenciler **Çök–Kapan–Tutun** hareketini refleks olarak yapar, **tahliye yolları ve toplanma alanı** bilinir, görevli öğretmenler sayım ve ilk yardımı organize eder; **panik ve izdiham** riski azalır. Tatbikat yapmayan okulda merdivenlerde yığılma, yanlış davranışlar ve kayıp kişilerin geç fark edilmesi gibi sorunlar beklenir. Bu, afet bilincinin **can kaybını azaltan** faydasını gösterir."
+      }
+     ],
+     "ozet": [
+      "Afet bilinci: tehlikeyi bilmek, hazırlanmak, doğru davranmak ve sonrasında destek olmak.",
+      "Hazırlık: sabitleme, afet çantası, aile afet planı, toplanma alanı, DASK.",
+      "Faydaları: can ve mal kaybının azalması, dayanışma, psikolojik dayanıklılık, doğru kararlar.",
+      "AFAD, Kızılay, AKUT eğitim ve gönüllülük programları düzenler; acil çağrı 112."
+     ]
+    }
    }
   ]
  },
@@ -503,17 +621,21 @@ App.data.content["10/cografya"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "7.1",
+    "code": "COĞ.10.7.1",
     "title": {
      "tr": "Türk kültürünün mekânsal özellikleri",
      "en": "Spatial characteristics of Turkish culture"
     },
     "content": {
-     "anlatim": "# Kültür Ocağı: Türkistan\n\nTürk kültürünün doğduğu ve yayıldığı **Orta Asya**; **Altay Dağları, Ural, Hazar ve Sibirya** arasındaki bozkır coğrafyası.\n\n# Göçler ve Yayılım\n\n**Kuraklık, nüfus artışı** ve siyasi nedenlerle Kafkasya, Karadeniz'in kuzeyi, Balkanlar ve **Anadolu**'ya kitlesel göçler (Kavimler Göçü vb.).\n\n# Konargöçer ve Türk-İslam Kültürü\n\n| İslamiyet öncesi | İslamiyet sonrası |\n|---|---|\n| **Gök Tanrı** inancı, **kurgan** ve **balbal**, **yaylak–kışlak** geleneği | **Medrese, külliye, ahilik** teşkilatı ile zenginleşme |\n\n# Ortak Miras\n\n**Orhun Yazıtları**, **Dede Korkut**, **Nevruz**, ortak Türkçe ve **Türk Devletleri Teşkilatı (TDT)** kültürel birliği güçlendirir.",
+     "anlatim": "# Kültür Ocağı: Türkistan\n\nTürk kültürünün doğduğu ve yayıldığı **Orta Asya**; **Altay Dağları, Ural, Hazar ve Sibirya** arasındaki bozkır coğrafyası.\n\n# Göçler ve Yayılım\n\n**Kuraklık, nüfus artışı** ve siyasi nedenlerle Kafkasya, Karadeniz'in kuzeyi, Balkanlar ve **Anadolu**'ya kitlesel göçler (Kavimler Göçü vb.).\n\n# Konargöçer ve Türk-İslam Kültürü\n\n| İslamiyet öncesi | İslamiyet sonrası |\n|---|---|\n| **Gök Tanrı** inancı, **kurgan** ve **balbal**, **yaylak–kışlak** geleneği | **Medrese, külliye, ahilik** teşkilatı ile zenginleşme |\n\n# Ortak Miras\n\n**Orhun Yazıtları**, **Dede Korkut**, **Nevruz**, ortak Türkçe ve **Türk Devletleri Teşkilatı (TDT)** kültürel birliği güçlendirir.\n\n# Türk Kültürünün Mekâna Yansıması\n\nTürk kültürü gittiği coğrafyalara **mimari, yer adları, mutfak ve gelenekler** yoluyla iz bırakmıştır:\n- **Mimari:** Kervansaraylar, kümbetler, camiler ve köprüler (Mostar Köprüsü, Bosna-Hersek).\n- **Yer adları:** Balkanlar'dan Orta Asya'ya Türkçe kökenli şehir, dağ ve nehir adları.\n- **Gelenek ve mutfak:** Nevruz kutlamaları, at kültürü, ayran–kımız, mantı ve pilav çeşitleri geniş bir alana yayılmıştır.\n\nBu ortak öğeler, Türk dünyası ile **kültürel, ekonomik ve siyasi bağların** güçlenmesine zemin hazırlar.",
      "ornekler": [
       {
        "soru": "Yaylak–kışlak geleneği hangi coğrafi koşulun sonucudur?",
        "cozum": "Bozkırın **iklim ve otlak** koşulları: yazın serin yaylalara, kışın daha ılık ovalara hayvanlarla göç edilir (konargöçer yaşam)."
+      },
+      {
+       "soru": "Türk Devletleri Teşkilatı'nın üyesi ülkeleri yazınız. Bu ülkeleri birbirine bağlayan coğrafi ve kültürel öğeler nelerdir?",
+       "cozum": "Üyeler: **Türkiye, Azerbaycan, Kazakistan, Kırgızistan, Özbekistan** (gözlemciler: Macaristan, Türkmenistan, KKTC). Bağlayan öğeler: Ortak **Türkçe** ve kökeni, Orta Asya'dan gelen tarihî miras, **Nevruz** gibi ortak bayramlar, İpek Yolu ve **Orta Koridor** ulaşım bağlantıları."
       }
      ],
      "ozet": [

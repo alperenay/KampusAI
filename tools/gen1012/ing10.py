@@ -402,6 +402,8 @@ spacecraft, rocket, space mission, **launch** (fırlatmak), **land** (iniş yapm
 ]),
 ]
 
+from _ek136 import uygula136; uygula136(units, "ing10")
+
 write("ing-10.js", "10/ingilizce", "10. Sınıf İngilizce (Stepwise B1.2) — kazanım rehberi",
       "kullanıcının verdiği \"10. Sınıf İngilizce (Stepwise B1.2) Kapsamlı Konu Anlatım ve Kazanım Rehberi\" (8 tema).",
       units, "Kazanım kodları tema numaralarıdır. Question tag özel durumları, mustn't/don't have to farkı, since/for ve alıştırma soruları eklendi.")

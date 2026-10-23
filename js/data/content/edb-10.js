@@ -30,6 +30,10 @@ App.data.content["10/edebiyat"] = [
       {
        "soru": "\"Gönül ne çıkarsın yüce dağlara / Yol vermez ki karlı dağlar\" gibi bir dizede ahengi sağlayan unsurları nasıl bulursunuz?",
        "cozum": "Önce dize sonlarındaki tekrar eden ek/sözcükleri (**redif**) ayırırsınız; kalan ses benzerliği **kafiye**dir. Hece sayılarını sayarak **ölçüyü** (ör. 11'li hece), varsa ses tekrarlarını belirlersiniz."
+      },
+      {
+       "soru": "Aşağıdaki dizelerde ahengi sağlayan kafiye ve redifi bulunuz:\\n\"Bahar geldi, dağlar yeşil giyindi / Dereler coşup ovaya indi\" (özgün örnek)",
+       "cozum": "Dize sonlarında **giyin-di / in-di**. \"-di\" **ek hâlindeki redif**tir (aynı görevli ek). Redifin önündeki **\"-in\"** sesleri **yarım kafiye** değil, iki ses benzerliği olduğundan **tam kafiye**dir. Ayrıca \"d\" sesinin tekrarı (**aliterasyon**) ahengi güçlendirir."
       }
      ],
      "ozet": [
@@ -52,6 +56,10 @@ App.data.content["10/edebiyat"] = [
       {
        "soru": "Koşuk ile koşma arasındaki ilişki nedir?",
        "cozum": "İkisi de dörtlüklerle, hece ölçüsüyle yazılır ve aşk, doğa, yiğitlik işler. Koşuk İslamiyet öncesi dönemin, **koşma** ise halk edebiyatının (âşık tarzı) karşılığıdır."
+      },
+      {
+       "soru": "Türk dilinin tarihî dönemlerini sırasıyla yazınız. Koşuklar hangi dönemin ürünüdür?",
+       "cozum": "**Altay Dönemi → En Eski Türkçe → İlk Türkçe → Eski Türkçe** (Göktürk ve Uygur) → **Orta Türkçe** (Karahanlı, Harezm, Kıpçak) → **Yeni Türkçe** (Eski Anadolu Türkçesi, Osmanlı Türkçesi, Türkiye Türkçesi). Koşuklar **İslamiyet öncesi** sözlü geleneğin ürünüdür; örnekleri **Divanü Lügati't-Türk**'te (Karahanlı Türkçesi) yazıya geçirilmiştir."
       }
      ],
      "ozet": [
@@ -74,6 +82,10 @@ App.data.content["10/edebiyat"] = [
       {
        "soru": "Aynı türkünün farklı yörelerde farklı sözlerle söylenmesi nasıl açıklanır?",
        "cozum": "Türkü **anonimdir** ve **sözlü** aktarılır; her anlatıcı ve yöre küçük değişiklikler yapar. Bu farklı biçimlere **varyant** denir."
+      },
+      {
+       "soru": "Türkülerin \"bağlama\" ve \"kavuştak\" bölümleri nedir? Türkü ile mani arasındaki temel farkı yazınız.",
+       "cozum": "Türkü **bent** (asıl söz bölümü) ve **bağlama/kavuştak** (her bentten sonra tekrarlanan nakarat) bölümlerinden oluşur. Türküler **bir ezgiyle** söylenmek için yazılır ve anonimdir; **mani** ise genellikle 7 heceli **dört dizelik** tek bir birimdir, söyleyeni çoğu zaman bilinmez ve kendi başına tamamlanmış bir duygu ya da düşünce aktarır."
       }
      ],
      "ozet": [
@@ -91,17 +103,75 @@ App.data.content["10/edebiyat"] = [
      "en": "The folk tale; literary and informative texts"
     },
     "content": {
-     "anlatim": "# Masal\n\nKahramanları **insan, hayvan ve olağanüstü varlıklar** olan; olayları **hayalî**; **zaman ve mekânı belirsiz**; dinleyeni eğlendirirken eğitmeyi amaçlayan tür.\n\n| Bölüm | İşlevi |\n|---|---|\n| **Döşeme** | Dinleyiciyi hazırlayan kalıplaşmış **tekerleme** (\"Evvel zaman içinde…\") |\n| **Serim** | Olay, kişi, zaman ve mekânın tanıtılması |\n| **Düğüm** | Olay ve çatışmaların derinleşmesi |\n| **Çözüm** | Olayların sonuca ulaşması |\n| **Dilek** | Kapanış tekerlemesi (\"Onlar ermiş muradına…\") |\n\n# Edebî ve Öğretici Metin\n\n| Edebî (sanatsal) | Öğretici |\n|---|---|\n| Kurmaca; estetik zevk verir | Gerçekliğe dayanır; bilgi verir |\n| Masal, şiir, hikâye, roman | Gezi yazısı, makale, rapor |",
+     "anlatim": "# Masal\n\nKahramanları **insan, hayvan ve olağanüstü varlıklar** olan; olayları **hayalî**; **zaman ve mekânı belirsiz**; dinleyeni eğlendirirken eğitmeyi amaçlayan tür.\n\n| Bölüm | İşlevi |\n|---|---|\n| **Döşeme** | Dinleyiciyi hazırlayan kalıplaşmış **tekerleme** (\"Evvel zaman içinde…\") |\n| **Serim** | Olay, kişi, zaman ve mekânın tanıtılması |\n| **Düğüm** | Olay ve çatışmaların derinleşmesi |\n| **Çözüm** | Olayların sonuca ulaşması |\n| **Dilek** | Kapanış tekerlemesi (\"Onlar ermiş muradına…\") |\n\n# Edebî ve Öğretici Metin\n\n| Edebî (sanatsal) | Öğretici |\n|---|---|\n| Kurmaca; estetik zevk verir | Gerçekliğe dayanır; bilgi verir |\n| Masal, şiir, hikâye, roman | Gezi yazısı, makale, rapor |\n\n# Masalı Okurken Dikkat Edilecekler\n\n- **Olağanüstülük:** Konuşan hayvanlar, devler, periler, sihirli nesneler; masal dünyasında **inandırıcılık** aranmaz.\n- **Kalıp ifadeler ve sayılar:** \"Üç\", \"yedi\", \"kırk\" gibi sayılar ve tekrar eden tekerlemeler sözlü geleneğin izleridir.\n- **İyi–kötü çatışması:** Masallarda iyiler ödüllendirilir, kötüler cezalandırılır; **mutlu son** yaygındır.\n- **Derleyiciler:** Türk masallarını Pertev Naili Boratav ve Eflatun Cem Güney derlemiş; Batı'da Grimm Kardeşler ve Andersen öne çıkmıştır.",
      "ornekler": [
       {
        "soru": "Masallar hangi metin grubuna girer, neden?",
        "cozum": "**Edebî (sanatsal) metin.** Tamamen kurmacadır, olağanüstü ögeler içerir ve estetik zevk vermeyi amaçlar."
+      },
+      {
+       "soru": "Bir masalın giriş tekerlemesinde \"Evvel zaman içinde, kalbur saman içinde...\" denmesinin işlevi nedir?",
+       "cozum": "Bu bölüm **döşeme**dir: Dinleyiciyi **masal dünyasına hazırlar**, olayların gerçek bir zamanda değil, **belirsiz ve hayalî** bir zamanda geçtiğini sezdirir. Kalıplaşmış, ses oyunlarına dayalı söyleyişi dinleyicinin ilgisini çeker."
       }
      ],
      "ozet": [
       "Masal: zaman-mekân belirsiz, olağanüstü kahramanlar.",
       "Döşeme → serim → düğüm → çözüm → dilek.",
       "Edebî metin kurmaca, öğretici metin gerçek."
+     ]
+    }
+   },
+   {
+    "id": "k5",
+    "code": "1.5",
+    "title": {
+     "tr": "İsim, sıfat ve tamlamalar (isim ve sıfat tamlaması)",
+     "en": "Nouns, adjectives and noun/adjective phrases"
+    },
+    "content": {
+     "anlatim": "# İsim (Ad)\n\nVarlıkları, kavramları karşılayan kelimelerdir.\n| Ölçüt | Türler | Örnek |\n|---|---|---|\n| Varlıklara verilişi | **Özel / cins** | Ankara, Kızılırmak / şehir, ırmak |\n| Varlıkların niteliği | **Somut / soyut** | kalem, rüzgâr / sevgi, özlem |\n| Sayısı | **Tekil / çoğul / topluluk** | ağaç / ağaçlar / orman, ordu |\n| Yapısı | **Basit / türemiş / birleşik** | göz / gözlük / Kuşadası |\n\n# Sıfat (Ön Ad)\n\nİsimlerden önce gelerek onları **niteleyen** ya da **belirten** kelimelerdir.\n- **Niteleme sıfatı:** *kırmızı* elma, *yorgun* yolcu (\"nasıl?\" sorusuna cevap)\n- **Belirtme sıfatları:** **İşaret** (*bu* ev), **sayı** (*üç* kitap, *ikinci* sıra, *yarım* ekmek, *üçer* elma), **belgisiz** (*bazı* insanlar, *her* gün), **soru** (*hangi* yol?)\n- Sıfat, isimden sonra gelirse **sıfat olmaktan çıkar**: \"Elma *kırmızı*.\" (yüklem)\n- Sıfatlar **isim yerine** kullanılırsa **adlaşmış sıfat** olur: \"*Gençler* geldi.\"\n\n# İsim Tamlaması\n\nİki ya da daha çok ismin anlam ilgisi kurarak oluşturduğu kelime grubu (**tamlayan + tamlanan**):\n| Tür | Yapı | Örnek |\n|---|---|---|\n| **Belirtili** | -ın + -ı | *kapının* kolu |\n| **Belirtisiz** | Ø + -ı | *kapı* kolu |\n| **Takısız** | Ø + Ø | *demir* kapı (malzeme) |\n| **Zincirleme** | En az üç isim | *evin bahçe kapısı* |\n\n# Sıfat Tamlaması\n\nSıfat + isim: *uzun* yol, *bu* şehir, *beş* kardeş. Sıfat tamlaması, isim tamlamasının unsuru olabilir: \"*eski evin* kapısı\".\n\n# Edebî Metinde İşlevi\n\nNiteleme sıfatları ve tamlamalar şiirde **imge** ve **betimleme** kurmanın temel araçlarıdır: \"*mavi* deniz\" yerine \"*denizin* hüzünlü *maviliği*\" ifadesi anlatımı derinleştirir.",
+     "ornekler": [
+      {
+       "soru": "\"Köyün eski çeşmesinden akan buz gibi su, yorgun yolculara can verdi.\" cümlesindeki tamlamaları ve türlerini bulunuz.",
+       "cozum": "**\"köyün çeşmesi\"** → belirtili isim tamlaması (araya sıfat girmiş: köyün **eski** çeşmesi). **\"eski çeşme\"** → sıfat tamlaması. **\"buz gibi su\"** → sıfat tamlaması (buz gibi: niteleme sıfatı görevli söz öbeği). **\"yorgun yolcular\"** → sıfat tamlaması."
+      },
+      {
+       "soru": "\"Bazı öğrenciler ikinci sınavda üçer soru çözdü.\" cümlesindeki sıfatları türleriyle belirtiniz.",
+       "cozum": "**bazı** → belgisiz sıfat; **ikinci** → sıra sayı sıfatı; **üçer** → üleştirme sayı sıfatı. Cümlede niteleme sıfatı yoktur; tümü **belirtme sıfatıdır**."
+      }
+     ],
+     "ozet": [
+      "İsimler özel–cins, somut–soyut, tekil–çoğul–topluluk ve yapıca basit–türemiş–birleşik olarak ayrılır.",
+      "Sıfatlar niteleme ve belirtme (işaret, sayı, belgisiz, soru) sıfatlarıdır.",
+      "İsim tamlaması: belirtili, belirtisiz, takısız, zincirleme; sıfat tamlaması: sıfat + isim.",
+      "Sıfat ve tamlamalar edebî metinlerde betimleme ve imge oluşturur."
+     ]
+    }
+   },
+   {
+    "id": "k6",
+    "code": "1.6",
+    "title": {
+     "tr": "Dinleme/izleme ve sözlü sunum: şiir dinletisi ve film şeridi",
+     "en": "Listening/viewing and oral presentation: poetry recital and filmstrip"
+    },
+    "content": {
+     "anlatim": "# Şiir Dinletisi\n\nŞiirin **sesli ve etkili okunarak** dinleyiciye ulaştırıldığı etkinliktir. Şiir, ahenk unsurlarıyla yazıldığı için ancak **sesli okununca** tam etkisini gösterir.\n\n**Hazırlık ve sunum:**\n1. Şiiri birkaç kez oku; **anlamını ve duygusunu** kavra.\n2. **Vurgu, tonlama ve duraklama** yerlerini işaretle (dize sonu her zaman durak değildir!).\n3. Sesin **hızını ve şiddetini** şiirin duygusuna göre ayarla: coşkulu bir şiir yüksek ve hızlı, hüzünlü bir şiir yavaş ve alçak tonda okunur.\n4. **Beden dili:** Dik duruş, göz teması, doğal jest ve mimikler.\n5. Gerekirse şiirin ruhuna uygun **fon müziği** kullan; müzik sesi bastırmamalıdır.\n\n# Film Şeridi (Kısa Film/Video) İzleme\n\nFilm şeridi, görüntü, ses, müzik ve yazının birlikte kullanıldığı **çok modlu** bir metindir. İzlerken:\n- **Konu ve ana fikri** belirle; görüntülerin hangi duyguyu uyandırdığını düşün.\n- **Kamera açıları** (yakın plan duyguyu, geniş plan mekânı öne çıkarır), **renk ve ışık**, **müzik** anlamı nasıl destekliyor?\n- Not al; izledikten sonra **özet** çıkar ve görüşünü gerekçeleriyle paylaş.\n\n# Kendi Film Şeridini Hazırla\n\nBir şiir ya da türkünün anlattığı duyguyu **görsellerle** anlatan 1–2 dakikalık bir video tasarla: **senaryo (sahne listesi) → görsel ve ses seçimi → kurgu → altyazı → paylaşım**. Kullanılan görsel ve müziklerin **telif ve kaynak** bilgisine dikkat et; mümkünse kendi çektiğin görüntüleri kullan.",
+     "ornekler": [
+      {
+       "soru": "Bir arkadaşınız şiiri her dize sonunda durarak ve tek düze bir sesle okuyor. Ona hangi önerilerde bulunursunuz?",
+       "cozum": "1) Anlam dize sonunda bitmiyorsa **durmadan bir sonraki dizeye geçmesini** (anlam bütünlüğüne göre duraklama), 2) önemli kelimeleri **vurgulamasını**, 3) şiirin duygusuna göre sesini **yükseltip alçaltmasını** ve hızını değiştirmesini (tonlama), 4) göz teması ve doğal jestlerle **dinleyiciyle bağ kurmasını** öneririm."
+      },
+      {
+       "soru": "Bir kısa filmde kahramanın yüzü yakın planda, gri ve soluk renklerle gösteriliyor; arka planda yavaş bir piyano ezgisi çalıyor. Bu tercihler izleyicide nasıl bir etki bırakır?",
+       "cozum": "**Yakın plan** izleyicinin kahramanın **duygusuna odaklanmasını** sağlar; **gri–soluk renkler** ve **yavaş ezgi** hüzün, yalnızlık ya da kayıp duygusu uyandırır. Çok modlu metinde görüntü, renk ve müzik **aynı anlamı birlikte** kurar."
+      }
+     ],
+     "ozet": [
+      "Şiir dinletisinde vurgu, tonlama, duraklama, ses hızı ve beden dili şiirin duygusuna göre ayarlanır.",
+      "Dize sonu her zaman durak değildir; anlam bütünlüğüne göre durulur.",
+      "Film şeridi çok modlu bir metindir: görüntü, kamera açısı, renk, müzik ve yazı anlamı birlikte kurar.",
+      "Kendi videonu hazırlarken senaryo–görsel–kurgu–altyazı adımlarını izle, telif ve kaynağa dikkat et."
      ]
     }
    }
@@ -153,6 +223,10 @@ App.data.content["10/edebiyat"] = [
       {
        "soru": "Su Kasîdesi konusu bakımından hangi kaside türüdür?",
        "cozum": "**Naat** — Hz. Muhammed'i övmek için yazılmıştır."
+      },
+      {
+       "soru": "Bir kasidenin bölümlerini sırasıyla yazınız. Su Kasîdesi'nde nesib (teşbib) bölümünün işlevi nedir?",
+       "cozum": "**Nesib (teşbib) → girizgâh → methiye → fahriye → tegazzül → dua.** Su Kasîdesi bir **na't** (Hz. Peygamber'e övgü) olduğundan nesib bölümünde **su** redifi etrafında hazırlayıcı bir tablo çizilir; şair gözyaşı, özlem ve su imgeleriyle övgü bölümüne **geçişi hazırlar**."
       }
      ],
      "ozet": [
@@ -170,11 +244,15 @@ App.data.content["10/edebiyat"] = [
      "en": "Pure poetry — Necip Fazıl and \"Kaldırımlar\""
     },
     "content": {
-     "anlatim": "# Saf (Öz) Şiir Anlayışı\n\nOkura **estetik zevk** vermek; **musiki ve biçim güzelliğini** öne çıkarmak. Şiir anlaşılmak için değil, **duyulmak ve hissedilmek** için yazılır.\n\n# Necip Fazıl Kısakürek (1904–1983)\n\n- **\"Kaldırımlar Şairi\"**.\n- Şiirlerinde **metafizik gerilim, yalnızlık, yabancılaşma** ve mistik ögeler hâkimdir.\n- **\"Kaldırımlar\":** şehir insanının yalnızlığı, sokağın karanlığı, ruhsal bunalım; kaldırımlar **kişileştirilmiştir** (çilekeş yalnızların annesi).\n\n# İmge ve Çağrışım\n\n**İmge:** şairin kelimelere yüklediği yeni anlam ve zihinsel görüntüler. \"Kaldırımlar\"da **\"gözüne mil çekilmiş âmâ evler\"**, **\"kül rengi bulutlar\"** güçlü imgelerdir.",
+     "anlatim": "# Saf (Öz) Şiir Anlayışı\n\nOkura **estetik zevk** vermek; **musiki ve biçim güzelliğini** öne çıkarmak. Şiir anlaşılmak için değil, **duyulmak ve hissedilmek** için yazılır.\n\n# Necip Fazıl Kısakürek (1904–1983)\n\n- **\"Kaldırımlar Şairi\"**.\n- Şiirlerinde **metafizik gerilim, yalnızlık, yabancılaşma** ve mistik ögeler hâkimdir.\n- **\"Kaldırımlar\":** şehir insanının yalnızlığı, sokağın karanlığı, ruhsal bunalım; kaldırımlar **kişileştirilmiştir** (çilekeş yalnızların annesi).\n\n# İmge ve Çağrışım\n\n**İmge:** şairin kelimelere yüklediği yeni anlam ve zihinsel görüntüler. \"Kaldırımlar\"da **\"gözüne mil çekilmiş âmâ evler\"**, **\"kül rengi bulutlar\"** güçlü imgelerdir.\n\n# Saf Şiirin Ses ve Biçim Özellikleri\n\nSaf şiirde anlamdan çok **ses uyumu**, **iç ahenk**, **imge** ve **kapalı anlatım** önemlidir. Kelimeler, sözlük anlamlarının ötesinde okurda **çağrışımlar** uyandırmak için seçilir. Bu anlayış Fransız sembolistlerinden (Mallarmé, Valéry) etkilenmiş; Türk şiirinde **Ahmet Haşim**, **Yahya Kemal**, **Ahmet Hamdi Tanpınar** ve **Necip Fazıl** gibi şairlerde farklı biçimlerde görülmüştür.\n\n**Şiir çözümlerken sorulacak sorular:** Şiirin ahengini hangi ses tekrarları sağlıyor? Hangi imgeler okurda hangi duyguyu uyandırıyor? Şiirdeki \"ben\" (şiir kişisi) nasıl bir ruh hâli içinde?",
      "ornekler": [
       {
        "soru": "\"Kaldırımlar, çilekeş yalnızların annesi\" ifadesinde hangi söz sanatı vardır?",
        "cozum": "Kaldırımlara insana ait \"annelik\" özelliği verilmiştir → **teşhis (kişileştirme)**; aynı zamanda bir benzetme (istiare) içerir."
+      },
+      {
+       "soru": "\"Gece, şehri karanlık bir pelerinle örttü.\" (özgün cümle) ifadesindeki imgeyi ve söz sanatını açıklayınız. Bu kullanım saf şiir anlayışına nasıl uyar?",
+       "cozum": "Gece **kişileştirilmiş** (teşhis) ve **pelerin** benzetmesiyle (istiare) karanlığın şehri sarışı somut bir görüntüye dönüştürülmüştür. Saf şiir, düşünceyi açıkça söylemek yerine bu tür **imge ve çağrışımlarla** duygu uyandırmayı amaçlar."
       }
      ],
      "ozet": [
@@ -197,12 +275,70 @@ App.data.content["10/edebiyat"] = [
       {
        "soru": "\"Siz hiç sabah ezanıyla uyanıp boğaza karşı çay içtiniz mi? İçmediyseniz bir deneyin derim.\" Bu ifade hangi türe uygundur?",
        "cozum": "**Söyleşi** — okurla doğrudan konuşma, samimi ve gündelik anlatım."
+      },
+      {
+       "soru": "Söyleşi ile deneme arasındaki benzerlik ve farkları yazınız.",
+       "cozum": "**Benzerlik:** İkisi de yazarın kişisel görüşlerini **kesin hükümlere varmadan** anlatır; kanıtlama amacı yoktur. **Fark:** Söyleşide yazar okurla **karşısındaymış gibi konuşur**; soru sorar, \"siz\" diye seslenir, dil **daha samimi ve konuşma diline yakındır**. Denemede ise yazar daha çok **kendi kendine düşünür**, üslup daha derli topludur."
       }
      ],
      "ozet": [
       "Söyleşi: okurla sohbet havası, kanıtlama yok.",
       "Ahmet Rasim, Nurullah Ataç.",
       "Deneme kendiyle, söyleşi okurla konuşur."
+     ]
+    }
+   },
+   {
+    "id": "k5",
+    "code": "2.5",
+    "title": {
+     "tr": "Zamir, edat, bağlaç ve ünlem",
+     "en": "Pronouns, postpositions, conjunctions and interjections"
+    },
+    "content": {
+     "anlatim": "# Zamir (Adıl)\n\nİsimlerin **yerini tutan** kelimelerdir.\n| Tür | Örnek |\n|---|---|\n| **Kişi zamiri** | ben, sen, o, biz, siz, onlar; **dönüşlülük:** kendi |\n| **İşaret zamiri** | bu, şu, o, bunlar, öteki, beriki |\n| **Belgisiz zamir** | biri, kimi, hepsi, birkaçı, herkes, bazısı |\n| **Soru zamiri** | kim, ne, hangisi, kaçı, nere(si) |\n| **İlgi zamiri** | -ki: \"Benim kalemim kırık, *seninki* sağlam.\" |\n| **İyelik zamiri** | -ım, -ın, -ı… ekleri: kitab*ım* |\n\n**Dikkat:** \"*Bu* kitap\" → işaret **sıfatı** (isimden önce gelir); \"*Bu* benim.\" → işaret **zamiri** (ismin yerini tutar).\n\n# Edat (İlgeç)\n\nTek başına anlamı olmayan, kelimeler arasında **anlam ilgisi** kuran kelimelerdir: *gibi, kadar, için, ile, göre, karşı, doğru, sonra, önce, beri, dolayı, rağmen, üzere, yalnız, ancak*.\n- \"Kar *gibi* beyaz\" (benzetme), \"Sabaha *kadar* çalıştı\" (sınır), \"Senin *için* geldim\" (amaç).\n\n# Bağlaç\n\nKelimeleri, kelime gruplarını ve cümleleri **anlamca birbirine bağlayan** kelimelerdir: *ve, veya, ile, ama, fakat, çünkü, ki, de/da, ya da, hem…hem, ne…ne, ya…ya, ise, oysa, yoksa, ancak, yalnız, madem*.\n- **\"de/da\" bağlacı ayrı yazılır**: \"Sen *de* gel.\" (Ek olan \"-de/-da\" bitişik yazılır: \"Okul*da*.\")\n- **\"ki\" bağlacı ayrı yazılır**: \"Öyle yorgunum *ki*...\"\n\n**ile:** Yerine \"ve\" getirilebiliyorsa **bağlaç**, \"birlikte/aracılığıyla\" anlamındaysa **edat**tır: \"Ali *ile* Ayşe geldi.\" (bağlaç) / \"Trenle geldi.\" (edat).\n\n# Ünlem\n\nSevinç, korku, şaşkınlık, acı gibi **duyguları** ya da seslenmeleri ifade eden kelimelerdir: *Ah! Eyvah! Hey! Aman! Of! Vay! Yaşasın! Ey!*\n- Ünlemden sonra genellikle **ünlem işareti (!)** konur.\n\n# Metindeki İşlevleri\n\nZamirler **tekrarı önler**, bağlaçlar ve edatlar cümleler arasında **neden–sonuç, karşıtlık, amaç** gibi anlam ilişkileri kurarak metnin **bağdaşıklığını** sağlar; ünlemler anlatıma **duygu ve canlılık** katar.",
+     "ornekler": [
+      {
+       "soru": "\"Ah, ben de seninle gelmek isterdim ama annem izin vermedi.\" cümlesindeki zamir, edat, bağlaç ve ünlemleri bulunuz.",
+       "cozum": "**Ünlem:** Ah. **Zamir:** ben, (sen-in-le: \"sen\" kişi zamiri). **Bağlaç:** de (ayrı yazılmış), ama. **Edat:** ile (\"seninle\" — \"birlikte\" anlamında). \"annem\" isim, \"izin\" isimdir."
+      },
+      {
+       "soru": "\"Kitabını bana ver, benimki evde kaldı.\" ve \"Bu kitabı okudun mu?\" cümlelerindeki altı çizili sözcükler (benimki, bu) hangi türdendir?",
+       "cozum": "**benimki** → ilgi zamiri \"-ki\" ile oluşmuş zamir (\"benim kitabım\" yerine). **bu** → işaret **sıfatı**; çünkü \"kitap\" isminden önce gelerek onu belirtmektedir. \"Bunu okudun mu?\" deseydik **işaret zamiri** olurdu."
+      }
+     ],
+     "ozet": [
+      "Zamirler ismin yerini tutar: kişi, işaret, belgisiz, soru, ilgi (-ki), iyelik.",
+      "Edatlar tek başına anlamsızdır; kelimeler arasında ilgi kurar (gibi, kadar, için, ile…).",
+      "Bağlaçlar kelime ve cümleleri bağlar; \"de/da\" ve \"ki\" bağlaçları ayrı yazılır.",
+      "Ünlemler duygu ve seslenme bildirir; metne canlılık katar."
+     ]
+    }
+   },
+   {
+    "id": "k6",
+    "code": "2.6",
+    "title": {
+     "tr": "Sesli yayın (podcast) hazırlama ve bilgilendirici metni edebî metne dönüştürme",
+     "en": "Preparing a podcast and turning an informative text into a literary one"
+    },
+    "content": {
+     "anlatim": "# Podcast (Sesli Yayın)\n\nİnternet üzerinden dinlenen, belirli bir konuda hazırlanan **ses kaydıdır**. Söyleşi, haber, hikâye anlatımı ya da kitap tanıtımı biçiminde olabilir. Dinleyici yalnızca sese odaklandığı için **açık, akıcı ve ilgi çekici** bir dil gerekir.\n\n**Hazırlık basamakları:**\n1. **Konu ve hedef kitle:** Ör. \"Divan şiirinde su imgesi\" — lise öğrencilerine yönelik 5 dakikalık bölüm.\n2. **Metin/akış planı:** Giriş (kendini ve konuyu tanıt) → gelişme (bilgiler, örnekler, varsa konukla söyleşi) → sonuç (özet ve dinleyiciye soru).\n3. **Kayıt:** Sessiz bir ortam, telefon ya da mikrofon; doğal ve canlı bir ses tonu.\n4. **Düzenleme:** Gereksiz duraklamaları kes, giriş–çıkış müziği ekle (telifsiz).\n5. **Yayın ve geri bildirim.**\n\n# Bilgilendirici Metinden Edebî Metne\n\nAynı konu farklı amaçlarla farklı metin türlerinde yazılabilir:\n| | Bilgilendirici metin | Edebî metin |\n|---|---|---|\n| Amaç | Bilgi vermek | Estetik zevk, duygu uyandırmak |\n| Dil | **Göndergesel**, açık, tek anlamlı | **Şiirsel/sanatsal**, imgeli, çok anlamlı |\n| Gerçeklik | Gerçek bilgiler | Kurmaca dünya |\n| Anlatım | Tanımlama, örnekleme, sayısal veriler | Betimleme, öyküleme, söz sanatları |\n\n**Dönüştürme adımları:** Bilgilendirici metnin **temel bilgisini** koru → bir **bakış açısı ve anlatıcı** seç (ör. suyun ağzından) → bilgileri **duyulara hitap eden betimlemelere** dönüştür → **kişileştirme, benzetme** gibi söz sanatları ekle → bir **duygu ya da düşünceyle** bitir.",
+     "ornekler": [
+      {
+       "soru": "\"Su, 100 °C'de kaynar ve buhar olarak atmosfere yükselir; burada yoğunlaşarak bulutları oluşturur.\" bilgilendirici cümlesini edebî bir anlatıma dönüştürünüz.",
+       "cozum": "Örnek dönüşüm: *\"Kazanın dibinde sabırsızca kaynayan su, bir gün gökyüzüne kavuşmak için hafifledi; incecik bir buhar olup göğe süzüldü, orada başka damlalarla el ele verip yağmuru bekleyen bembeyaz bir bulut oldu.\"* Bilgi korunmuş; **kişileştirme**, **betimleme** ve duygu katılarak anlatım edebîleştirilmiştir."
+      },
+      {
+       "soru": "Okulunuzun podcast kanalı için \"Dede Korkut'tan Bugüne Değerler\" konulu 5 dakikalık bir bölümün akış planını yazınız.",
+       "cozum": "**0:00–0:30** Giriş müziği, kendini ve konuyu tanıtma. **0:30–1:30** Dede Korkut Hikâyeleri'nin kısa tanıtımı. **1:30–3:30** Bir boydan (ör. Salur Kazan) özetlenmiş sahne ve öne çıkan değerler (cesaret, misafirperverlik, aile). **3:30–4:30** Bu değerlerin bugünkü karşılıkları; bir arkadaşla kısa söyleşi. **4:30–5:00** Özet, dinleyiciye soru ve kapanış müziği."
+      }
+     ],
+     "ozet": [
+      "Podcast: konu ve hedef kitle → akış planı → kayıt → düzenleme → yayın.",
+      "Sesli yayında dil açık, akıcı ve canlı olmalıdır.",
+      "Bilgilendirici metin göndergesel dille bilgi verir; edebî metin imgeli dille duygu uyandırır.",
+      "Dönüştürmede bilgi korunur; anlatıcı, betimleme ve söz sanatları eklenir."
      ]
     }
    }
@@ -223,11 +359,15 @@ App.data.content["10/edebiyat"] = [
      "en": "The epic tradition and motifs"
     },
     "content": {
-     "anlatim": "# Destan\n\nMilletleri derinden etkileyen olayların (savaş, göç, kıtlık, kahramanlık) anlatıldığı, **sözlü kültürün en eski** ürünleri.\n\n| Doğal destan | Yapma destan |\n|---|---|\n| **Anonim**; halkın ortak hafızasında oluşur, sonra derlenir | Tarihî bir olayın bir **şair** tarafından destan kurallarına göre yazılması |\n| Oğuz Kağan, Manas, Ergenekon | **Üç Şehitler Destanı** (F. N. Çamlıbel), **Kurtuluş Savaşı Destanı** (Nâzım Hikmet) |\n\n# Motif\n\nOlayların gelişimine yön veren **simgesel ögeler**: ışık, **kurt**, ağaç, su, kement… Oğuz Kağan Destanı'nda **gök yeleli kurt** orduya yol gösterir.\n\n# Destan Oluşum Evreleri\n\n1. Çıkış (olay) → 2. Yayılma → 3. Derleme (yazıya geçirilme)",
+     "anlatim": "# Destan\n\nMilletleri derinden etkileyen olayların (savaş, göç, kıtlık, kahramanlık) anlatıldığı, **sözlü kültürün en eski** ürünleri.\n\n| Doğal destan | Yapma destan |\n|---|---|\n| **Anonim**; halkın ortak hafızasında oluşur, sonra derlenir | Tarihî bir olayın bir **şair** tarafından destan kurallarına göre yazılması |\n| Oğuz Kağan, Manas, Ergenekon | **Üç Şehitler Destanı** (F. N. Çamlıbel), **Kurtuluş Savaşı Destanı** (Nâzım Hikmet) |\n\n# Motif\n\nOlayların gelişimine yön veren **simgesel ögeler**: ışık, **kurt**, ağaç, su, kement… Oğuz Kağan Destanı'nda **gök yeleli kurt** orduya yol gösterir.\n\n# Destan Oluşum Evreleri\n\n1. Çıkış (olay) → 2. Yayılma → 3. Derleme (yazıya geçirilme)\n\n# Türk Destanları ve Dönemleri\n\n| Dönem | Destanlar |\n|---|---|\n| **İslamiyet öncesi** | Alp Er Tunga, Şu, Oğuz Kağan, Göktürk (Bozkurt ve Ergenekon), Uygur (Türeyiş ve Göç) |\n| **İslamiyet sonrası** | Satuk Buğra Han, Manas (Kırgız), Cengiz, Battal Gazi, Danişmend, Köroğlu |\n\nDestanlarda **olağanüstü doğum**, **göğe yükselme**, **kutsal hayvan** (kurt, geyik), **ışık ve ağaç** motifleri sık görülür. Bu motifler milletin **ortak hafızasını** ve değerlerini yansıtır.",
      "ornekler": [
       {
        "soru": "Üç Şehitler Destanı doğal destan mıdır?",
        "cozum": "Hayır. Bilinen bir şair (Faruk Nafiz) tarafından yazıldığı için **yapma destandır**."
+      },
+      {
+       "soru": "Destan, efsane ve masal türlerini kahraman, gerçeklik ve işlev bakımından karşılaştırınız.",
+       "cozum": "**Destan:** Toplumu ilgilendiren olağanüstü kahramanlar, tarihî bir olay çekirdeği, millî bilinci güçlendirme işlevi. **Efsane:** Bir yerin, varlığın ya da olayın oluşumunu olağanüstü yolla açıklar; anlatılanların gerçek olduğuna **inanılır**. **Masal:** Tamamen **hayalî**, zaman–mekân belirsiz, eğlendirip eğitme amaçlı; gerçek olduğuna inanılmaz."
       }
      ],
      "ozet": [
@@ -250,6 +390,10 @@ App.data.content["10/edebiyat"] = [
       {
        "soru": "Oğuz Kağan Destanı'nda \"kurt\" motifinin işlevi nedir?",
        "cozum": "Gök yeleli kurt, Oğuz Kağan'ın ordusuna **yol gösterir**; Türk kültüründe kılavuzluk ve kutsallık sembolüdür."
+      },
+      {
+       "soru": "Oğuz Kağan Destanı'nda Oğuz'un çocuklarına verdiği adlar (Gün, Ay, Yıldız, Gök, Dağ, Deniz) neyi simgeler?",
+       "cozum": "Bu adlar Türklerin **doğa ve gökle ilgili** eski inançlarını yansıtır. Ayrıca destanda oğullar **Bozoklar** (Gün, Ay, Yıldız — büyükler, sağ kol) ve **Üçoklar** (Gök, Dağ, Deniz — küçükler, sol kol) olarak ikiye ayrılır; bu, **Oğuz boylarının teşkilatı** ve devlet düzeninin destana yansımasıdır."
       }
      ],
      "ozet": [
@@ -272,6 +416,10 @@ App.data.content["10/edebiyat"] = [
       {
        "soru": "Harnâme'nin ders verici yönü nedir?",
        "cozum": "Elindekinin değerini bilmeden başkasının durumuna özenmenin insana zarar verebileceği; **açgözlülük** eleştirisi (boynuz umarken kulaktan olmak)."
+      },
+      {
+       "soru": "Mesnevi nazım biçiminin uzun hikâyeleri anlatmaya neden uygun olduğunu açıklayınız.",
+       "cozum": "Mesnevide her beyit **kendi içinde kafiyelidir** (aa, bb, cc…). Şair her beyitte yeni bir kafiye kullanabildiği için **beyit sayısı sınırı yoktur**; bu da uzun olay örgülerinin, aşk hikâyelerinin ve öğretici konuların anlatılmasını kolaylaştırır. Harnâme ve Mesnevî bu biçimle yazılmıştır."
       }
      ],
      "ozet": [
@@ -289,17 +437,75 @@ App.data.content["10/edebiyat"] = [
      "en": "The fable — Rumi"
     },
     "content": {
-     "anlatim": "# Fabl\n\nKahramanları çoğunlukla **hayvanlar** olan (**teşhis ve intak** sanatıyla), sonunda **ahlaki ders** veren manzum ya da mensur hikâyeler.\n\n| Bölüm | |\n|---|---|\n| Serim | Kişiler ve durum |\n| Düğüm | Olayın gelişmesi |\n| Çözüm | Sonuç |\n| **Ders (öğüt)** | Ahlaki sonuç |\n\n- **Mevlana Celâleddin-i Rûmî**'nin **Mesnevî**'si pek çok hayvan hikâyesiyle Doğu fabl geleneğinin en önemli örneğidir (\"Aslan ve Av Hayvanları\").\n- Batı'da **Ezop** ve **La Fontaine**; Doğu'da **Kelile ve Dimne**.\n- Fabllarda açgözlülük, kibir, adalet, hırs, yardımlaşma gibi **evrensel** değerler işlenir.",
+     "anlatim": "# Fabl\n\nKahramanları çoğunlukla **hayvanlar** olan (**teşhis ve intak** sanatıyla), sonunda **ahlaki ders** veren manzum ya da mensur hikâyeler.\n\n| Bölüm | |\n|---|---|\n| Serim | Kişiler ve durum |\n| Düğüm | Olayın gelişmesi |\n| Çözüm | Sonuç |\n| **Ders (öğüt)** | Ahlaki sonuç |\n\n- **Mevlana Celâleddin-i Rûmî**'nin **Mesnevî**'si pek çok hayvan hikâyesiyle Doğu fabl geleneğinin en önemli örneğidir (\"Aslan ve Av Hayvanları\").\n- Batı'da **Ezop** ve **La Fontaine**; Doğu'da **Kelile ve Dimne**.\n- Fabllarda açgözlülük, kibir, adalet, hırs, yardımlaşma gibi **evrensel** değerler işlenir.\n\n# Fabl Yazarken\n\n1. **Ders (öğüt) belirle:** Örneğin *\"Acele işe şeytan karışır.\"*\n2. **Kişileri seç:** Değere uygun özellikleri temsil eden hayvanlar (sabırlı kaplumbağa, kurnaz tilki).\n3. **Olay örgüsü kur:** Serim–düğüm–çözüm; diyaloglarla hayvanları **konuştur** (intak).\n4. **Dersi sezdir ya da açıkça yaz:** Fablın sonunda kıssadan hisse verilir.\n\n**La Fontaine** fablları manzum, sade ve diyaloglu; **Kelile ve Dimne** ise iç içe geçen hikâyelerle (çerçeve hikâye) yazılmıştır.",
      "ornekler": [
       {
        "soru": "Fabllarda hayvanların konuşturulması hangi söz sanatlarıyla açıklanır?",
        "cozum": "Hayvanlara insan özellikleri verme **teşhis**, konuşturma **intak**tır."
+      },
+      {
+       "soru": "\"Tilki ile Üzüm\" fablında üzümlere ulaşamayan tilkinin \"Zaten ekşiydi.\" demesi hangi insan davranışını eleştirir?",
+       "cozum": "Ulaşamadığı şeyi **küçümseyerek** başarısızlığını örtme, kendini kandırma davranışını eleştirir (psikolojide \"ekşi üzüm\" savunması). Fabl hayvan kahraman üzerinden **evrensel bir insan zaafını** gösterir."
       }
      ],
      "ozet": [
       "Fabl: hayvan kahramanlar + ahlaki ders.",
       "Mevlana Mesnevî; La Fontaine; Kelile ve Dimne.",
       "Teşhis ve intak sanatı."
+     ]
+    }
+   },
+   {
+    "id": "k5",
+    "code": "3.5",
+    "title": {
+     "tr": "Zarflar ve cümlede neden–sonuç, amaç–sonuç, koşul ilişkileri",
+     "en": "Adverbs and cause–effect, purpose and condition relations in sentences"
+    },
+    "content": {
+     "anlatim": "# Zarf (Belirteç)\n\nFiilleri, fiilimsileri, sıfatları ya da başka zarfları **zaman, durum, miktar, yer–yön ve soru** bakımından niteleyen kelimelerdir.\n| Tür | Soru | Örnek |\n|---|---|---|\n| **Zaman** | Ne zaman? | *Yarın* gelecek. *Akşam* döndü. |\n| **Durum (hâl)** | Nasıl? | *Hızlı* koştu. *Usulca* kapıyı açtı. |\n| **Miktar (azlık–çokluk)** | Ne kadar? | *Çok* çalıştı. *En* güzel çiçek. |\n| **Yer–yön** | Nereye? | *Aşağı* indi. *İçeri* girdi. (Yalnızca ek almamış yön kelimeleri) |\n| **Soru** | — | *Niçin* gelmedin? *Nasıl* yaptın? |\n\n**Dikkat:** \"*Güzel* kız\" → sıfat (ismi niteler); \"*Güzel* konuştu\" → zarf (fiili niteler).\n\n# Cümlede Anlam İlişkileri\n\n| İlişki | Tanım | Örnek |\n|---|---|---|\n| **Neden–sonuç** | Yargının **gerçekleşme nedeni** belirtilir | \"Yağmur yağdığı *için* maç ertelendi.\" |\n| **Amaç–sonuç** | Yargının **hangi amaçla** yapıldığı belirtilir | \"Sınavı kazanmak *için* çok çalıştı.\" |\n| **Koşul–sonuç** | Yargı bir **şarta** bağlanır | \"Erken kalk*arsan* otobüsü yakalarsın.\" |\n\n**Neden mi, amaç mı?** \"…için\" ifadesinin önüne **\"-mek amacıyla\"** konabiliyorsa amaç–sonuç, **\"-dığı için / yüzünden\"** anlamı varsa neden–sonuç vardır. Neden–sonuçta eylem **gerçekleşmiştir**; amaç–sonuçta amaç henüz **hedeftir**.\n\n**Neden–sonuç bildiren yapılar:** -dığı için, -dan dolayı, -dan, -ınca, çünkü, bu yüzden, -mesi sonucunda.\n**Koşul bildiren yapılar:** -se/-sa, -dıkça, -madıkça, -mesi hâlinde, yeter ki, mademki, şayet.\n\n# Metinde İşlevi\n\nBu ilişkiler, özellikle **tartışmacı ve açıklayıcı** metinlerde düşüncelerin **gerekçelendirilmesini** ve paragrafların mantıklı biçimde birbirine bağlanmasını sağlar.",
+     "ornekler": [
+      {
+       "soru": "\"Hava çok soğuk olduğundan çocuklar dışarı çıkmadı; yarın hava ısınırsa parka gidecekler.\" cümlesindeki zarfları ve anlam ilişkilerini bulunuz.",
+       "cozum": "**Zarflar:** *çok* (miktar zarfı, \"soğuk\" sıfatını niteler), *dışarı* (yer–yön zarfı), *yarın* (zaman zarfı). **Anlam ilişkileri:** \"soğuk olduğundan\" → **neden–sonuç**; \"ısınırsa\" → **koşul–sonuç**."
+      },
+      {
+       "soru": "\"Ödevini bitirmek için erken kalktı.\" ve \"Ödevini bitirdiği için rahatladı.\" cümlelerini anlam ilişkisi bakımından karşılaştırınız.",
+       "cozum": "İlk cümlede ödevi bitirmek **hedeftir**, henüz gerçekleşmemiştir → **amaç–sonuç** (\"bitirmek amacıyla\"). İkinci cümlede ödev **bitmiştir** ve rahatlamanın **nedenidir** → **neden–sonuç** (\"bitirdiği için / bitirdiğinden\")."
+      }
+     ],
+     "ozet": [
+      "Zarflar fiil, sıfat ve zarfları zaman, durum, miktar, yer–yön ve soru bakımından niteler.",
+      "Aynı kelime ismi niteliyorsa sıfat, fiili niteliyorsa zarftır.",
+      "Neden–sonuçta eylem gerçekleşmiştir; amaç–sonuçta amaç hedeftir; koşul–sonuçta yargı şarta bağlıdır.",
+      "Bu ilişkiler tartışmacı metinlerde düşünceyi gerekçelendirir."
+     ]
+    }
+   },
+   {
+    "id": "k6",
+    "code": "3.6",
+    "title": {
+     "tr": "Yazma atölyesi: özgün fabl yazma ve Türk destanları üzerine sunum",
+     "en": "Writing workshop: an original fable and a presentation on Turkish epics"
+    },
+    "content": {
+     "anlatim": "# Özgün Fabl Yazma\n\n**1. Planlama:** Vermek istediğin **dersi** (öğüt) bir cümleyle yaz. Bu dersi temsil edecek **hayvan karakterleri** ve onların baskın özelliklerini seç.\n**2. Taslak:**\n- **Serim:** Kişileri ve ortamı kısaca tanıt.\n- **Düğüm:** Karakterlerin özelliklerinden doğan bir **çatışma** kur (açgözlülük, kibir, tembellik…).\n- **Çözüm:** Olayı, karakterin davranışının **doğal sonucu** olarak bitir.\n- **Ders:** Kıssadan hisse; açıkça yaz ya da okura sezdir.\n**3. Dil ve anlatım:** Diyaloglar (**intak**), kişileştirmeler (**teşhis**); kısa ve sade cümleler.\n**4. Gözden geçirme:** Ders olay örgüsünden **kendiliğinden** çıkıyor mu? Yazım ve noktalama doğru mu?\n\n# Türk Destanları Üzerine Sunum\n\n1. **Konu seç:** Bir destan (Ergenekon, Manas, Göç) ya da bir motif (kurt, ağaç, ışık).\n2. **Araştır:** Güvenilir kaynaklardan (ders kitabı, akademik makaleler, Kültür Bakanlığı yayınları) bilgi topla; **kaynakları not et**.\n3. **Sunuyu tasarla:** Giriş (merak uyandıran bir soru) → destanın özeti → motifler ve değerler → günümüze yansımaları (film, çizgi roman, oyun) → sonuç. Slaytlarda **az yazı, çok görsel**.\n4. **Sun:** Dinleyiciyle göz teması, akıcı ve anlaşılır dil, süre yönetimi; sonunda soru–cevap.",
+     "ornekler": [
+      {
+       "soru": "\"Birlikten kuvvet doğar.\" dersini veren kısa bir fablın serim–düğüm–çözüm planını yazınız.",
+       "cozum": "**Serim:** Ormanda karıncalar ve kibirli bir ayı yaşar. **Düğüm:** Sağanak yağmurda dere taşar; ayı tek başına yuvasını kurtarmaya çalışır ama başaramaz. Karıncalar ise sıra olup yuvalarının girişini kum ve yapraklarla kapatır. **Çözüm:** Ayı, minicik karıncaların yuvasının kurtulduğunu görür ve yardım ister; birlikte bir set yaparlar. **Ders:** *\"Birlikten kuvvet doğar.\"*"
+      },
+      {
+       "soru": "\"Ergenekon Destanı\" konulu bir sunumda hangi bölümlere yer verirsiniz? Günümüzle nasıl bağ kurarsınız?",
+       "cozum": "**Giriş:** \"Bir millet dağları eritip nasıl yeniden doğar?\" sorusu. **Özet:** Türklerin yenilgiden sonra Ergenekon'a sığınması, çoğalmaları, demir dağı eriterek **bozkurt** rehberliğinde çıkış. **Motifler:** demir, bozkurt, kutlu çıkış. **Değerler:** dayanışma, umut, bağımsızlık. **Günümüz:** **Nevruz–Ergenekon** kutlamaları, demirin dövülmesi geleneği."
+      }
+     ],
+     "ozet": [
+      "Fabl planı: ders → hayvan karakterler → serim, düğüm, çözüm → kıssadan hisse.",
+      "Fablda intak ve teşhis kullanılır; ders olay örgüsünden doğmalıdır.",
+      "Destan sunumu: güvenilir kaynak, motifler ve değerler, günümüze yansımalar.",
+      "Sunumda az yazı–çok görsel, göz teması ve süre yönetimi önemlidir."
      ]
     }
    }
@@ -325,6 +531,10 @@ App.data.content["10/edebiyat"] = [
       {
        "soru": "Dede Korkut Hikâyeleri neden destan ile halk hikâyesi arasında köprü sayılır?",
        "cozum": "Destanın olağanüstülük ve kahramanlık ögelerini taşırken **nazım-nesir karışık** anlatımı ve daha **gerçekçi** toplumsal yaşamıyla halk hikâyesine yaklaşır."
+      },
+      {
+       "soru": "Dede Korkut Hikâyelerinde \"soylama\" bölümlerinin işlevi nedir?",
+       "cozum": "Soylamalar, olayın **heyecanlı ya da duygusal** anlarında söylenen, **ahenkli, ritmik ve süslü** söz bölümleridir. Kahramanın övülmesi, yakarışlar ve meydan okumalar soylamalarla anlatılır; sözlü anlatım geleneğinin **ozan üslubunu** yansıtır."
       }
      ],
      "ozet": [
@@ -347,6 +557,10 @@ App.data.content["10/edebiyat"] = [
       {
        "soru": "\"Eski şekil – yeni muhteva\" ifadesini Hürriyet Kasîdesi üzerinden açıklayın.",
        "cozum": "Şekil olarak divan edebiyatının **kaside** biçimi (aruz, beyit, aa-ba kafiye) kullanılmış; içerik olarak ise övgü yerine **hürriyet, adalet** gibi Tanzimat'la gelen yeni kavramlar işlenmiştir."
+      },
+      {
+       "soru": "Tanzimat şiirinin Divan şiirinden ayrıldığı yönleri konu ve dil bakımından açıklayınız.",
+       "cozum": "**Konu:** Divan şiirinin soyut aşk ve tasavvuf temaları yerine **hürriyet, vatan, adalet, kanun, millet** gibi toplumsal konular işlenmiştir. **Dil:** Şinasi ve Namık Kemal'de sadeleşme çabası başlasa da dil hâlâ **ağırdır**; biçim çoğu zaman Divan nazım şekilleriyle (gazel, kaside) sürmüştür. Bu yüzden Tanzimat şiiri için **\"eski şekil, yeni muhteva\"** denir."
       }
      ],
      "ozet": [
@@ -369,6 +583,10 @@ App.data.content["10/edebiyat"] = [
       {
        "soru": "Millî Edebiyat döneminin dil anlayışı nedir?",
        "cozum": "**Sade Türkçe**; yabancı dil kurallarını ve tamlamaları atmak, **İstanbul Türkçesini** esas almak (\"Yeni Lisan\")."
+      },
+      {
+       "soru": "Ömer Seyfettin'in hikâyeciliğinin Türk edebiyatına katkılarını yazınız.",
+       "cozum": "**Sade, konuşma diline yakın** Türkçesiyle \"Yeni Lisan\" hareketinin öncüsüdür. Olay hikâyesi (Maupassant tarzı) türünün **ustası**dır; **millî duyguları** işleyen tarihî hikâyelerin yanı sıra çocukluk anıları ve mizahi hikâyeler yazmıştır. Hikâyeleri sürükleyici kurgusu ve **beklenmedik sonlarıyla** geniş okur kitlesine ulaşmıştır."
       }
      ],
      "ozet": [
@@ -391,12 +609,70 @@ App.data.content["10/edebiyat"] = [
       {
        "soru": "\"Kalbim sevinçle doldu, birden hisler beni yoklayıp kayboldu.\" cümlesindeki fiillerin yapısını belirleyin.",
        "cozum": "**dol-du**: basit; **yokla-yıp** (yok+la): türemiş; **kaybol-du** (kayıp + ol): birleşik."
+      },
+      {
+       "soru": "\"Yazıp sildi, sonra pencereden dışarı baktı.\" cümlesindeki fiilleri yapı bakımından inceleyiniz.",
+       "cozum": "**yaz-ıp sil-di:** \"sil-\" **basit** fiil (kök + çekim eki). \"yazıp\" zarf-fiildir. **bak-tı:** basit fiil. Cümlede **türemiş** (yapım eki almış) ya da **birleşik** fiil yoktur. Karşılaştırma için: \"temiz-le-di\" türemiş, \"yardım et-ti\" birleşik fiildir."
       }
      ],
      "ozet": [
       "Basit: kök; türemiş: yapım eki; birleşik: birden çok sözcük.",
       "Dönemler arası karşılaştırmada zihniyet ve dil değişir.",
       "Atölyeler: dinleti, podcast, fabl yazma."
+     ]
+    }
+   },
+   {
+    "id": "k5",
+    "code": "4.5",
+    "title": {
+     "tr": "Ara metinler: Servetifünun romanı ve Fecriati şiiri",
+     "en": "Intermediate texts: the Servet-i Fünun novel and Fecr-i Âti poetry"
+    },
+    "content": {
+     "anlatim": "# Servetifünun (Edebiyat-ı Cedide) Dönemi (1896–1901)\n\n**Servetifünun dergisi** etrafında toplanan sanatçıların oluşturduğu topluluk; **Recaizade Mahmut Ekrem**'in \"sanat için sanat\" anlayışını benimsemiştir. 1901'de dergi kapatılınca dağıldılar.\n\n**Özellikleri:**\n- **Sanat için sanat**; toplumsal konular yerine **bireysel** duygular (karamsarlık, **hayal–gerçek çatışması**, kaçış isteği).\n- **Ağır ve süslü dil:** Arapça–Farsça kelime ve tamlamalar çoktur.\n- Şiirde **serbest müstezat**, sone, terza-rima gibi Batılı biçimler; **anlam bir dizede bitmeyebilir** (anjambman).\n- Roman ve hikâyede **realizm ve natüralizm** etkisi; olaylar çoğunlukla **İstanbul** ve aydın kesim çevresinde geçer.\n\n# Halit Ziya Uşaklıgil ve Servetifünun Romanı\n\nTürk romanını **Batılı anlamda** teknik olarak olgunlaştıran yazardır.\n- **Mai ve Siyah (1897):** Şair olmak isteyen **Ahmet Cemil**'in hayalleri (mavi) ile acı gerçeklerin (siyah) çatışması; dönemin **hayal kırıklığını** yansıtır.\n- **Aşk-ı Memnu (1900):** Bir konakta geçen aile içi çatışmalar; **psikolojik tahliller** ve ayrıntılı betimlemelerle Türk edebiyatının en önemli romanlarından biri.\n- Özellikleri: Ayrıntılı **mekân ve kişi betimlemeleri**, **iç çözümleme**, gözlem; yazar olaylara karışmaz (Tanzimat'tan farklı olarak).\n\n# Fecriati (1909–1912)\n\n**\"Geleceğin şafağı\"** anlamına gelen topluluk, II. Meşrutiyet'ten sonra kuruldu; beyannamesinde **\"Sanat şahsi ve muhteremdir.\"** ilkesini savundu.\n- Servetifünun'un **devamı** niteliğindedir; sanat için sanat, ağır dil ve bireysel konular sürdü.\n- **Sembolizm** etkisi: Şiirde **müzikalite**, **telkin (sezdirme)**, belirsizlik ve izlenimler.\n- **Ahmet Haşim** topluluğun en önemli şairidir: Şiirlerinde **akşam, gurup, havuz, yalnızlık** temaları; renk ve ışık oyunlarıyla izlenimci tablolar çizer. **\"Şiir Hakkında Bazı Mülahazalar\"** yazısında şiirin **anlaşılmak için değil, hissedilmek için** yazıldığını savunur (saf şiir anlayışının kaynaklarından).\n\n# Dönemleri Karşılaştırma\n\n| | Tanzimat | Servetifünun | Fecriati | Millî Edebiyat |\n|---|---|---|---|---|\n| Sanat anlayışı | Toplum için sanat | Sanat için sanat | Sanat şahsi ve muhteremdir | Toplum için sanat |\n| Dil | Sadeleşme çabası | Ağır, süslü | Ağır | **Sade**, konuşma dili |\n| Konu | Hürriyet, vatan, eski–yeni | Bireysel bunalım, kaçış | Bireysel, doğa | Millî değerler, Anadolu |",
+     "ornekler": [
+      {
+       "soru": "Mai ve Siyah romanının adındaki \"mavi\" ve \"siyah\" renkleri neyi simgeler? Bu tema Servetifünun sanatçılarının ruh hâliyle nasıl ilişkilidir?",
+       "cozum": "**Mavi**, Ahmet Cemil'in büyük bir şair olma ve mutlu bir hayat kurma **hayallerini**; **siyah** ise yoksulluk, aile felaketleri ve başarısızlıkla gelen **acı gerçeği** simgeler. II. Abdülhamit döneminin baskı ortamında toplumsal konulara yönelemeyen Servetifünun sanatçıları **hayal–gerçek çatışmasını, karamsarlığı ve kaçış isteğini** eserlerine yansıtmıştır."
+      },
+      {
+       "soru": "Fecriati'nin \"Sanat şahsi ve muhteremdir.\" ilkesini açıklayınız. Bu ilke Millî Edebiyat anlayışından nasıl ayrılır?",
+       "cozum": "İlke, sanatın sanatçının **kişisel duygu ve zevkinin** ürünü olduğunu ve **saygı duyulması** gerektiğini; sanatın bir amaca (toplumu eğitmek vb.) hizmet etmek zorunda olmadığını anlatır. **Millî Edebiyat** ise **toplum için sanat** anlayışıyla millî değerleri, Anadolu'yu ve halkı konu edinmiş, **sade dili** benimsemiştir."
+      }
+     ],
+     "ozet": [
+      "Servetifünun: sanat için sanat, bireysel konular, ağır dil, Batılı biçimler, realist–natüralist roman.",
+      "Halit Ziya: Mai ve Siyah (hayal–gerçek çatışması), Aşk-ı Memnu; ayrıntılı betimleme, iç çözümleme.",
+      "Fecriati: \"Sanat şahsi ve muhteremdir\"; sembolizm, müzikalite, telkin; Ahmet Haşim.",
+      "Millî Edebiyat sade dil ve toplum için sanatla bu iki topluluktan ayrılır."
+     ]
+    }
+   },
+   {
+    "id": "k6",
+    "code": "4.6",
+    "title": {
+     "tr": "Metin dönüştürme ve canlandırma: hikâyeden şiire, dramatizasyon",
+     "en": "Text transformation and performance: from story to poem, dramatization"
+    },
+    "content": {
+     "anlatim": "# Hikâyeden Şiire Dönüştürme\n\nBir hikâyenin **olay örgüsü, kişileri ve duygusu** şiirin yoğun ve ahenkli diline aktarılabilir. Örneğin Millî Edebiyat döneminden bir hikâyedeki fedakârlık duygusu birkaç kıtalık bir şiire dönüştürülebilir.\n\n**Adımlar:**\n1. Hikâyenin **ana duygusunu ve temasını** belirle (vatan sevgisi, fedakârlık, özlem…).\n2. Şiirde öne çıkacak **anahtar sahneleri** seç (her şeyi anlatmaya çalışma, **yoğunlaştır**).\n3. Bir **nazım biçimi ve ölçü** seç: hece ölçüsüyle dörtlükler ya da serbest şiir.\n4. **İmge, benzetme, kişileştirme** ile sahneleri görselleştir; **kafiye, redif, ses tekrarları** ile ahenk kur.\n5. Hikâyenin sonunu şiirin **son dizelerinde** etkili bir vurguyla ver.\n\n# Dramatizasyon (Canlandırma)\n\nBir metindeki olayın **sahne üzerinde, diyalog ve hareketle** canlandırılmasıdır.\n1. **Metni seç ve sahnelere ayır** (giriş, çatışma, doruk, çözüm).\n2. **Kişileri belirle**; her kişinin ruh hâlini ve konuşma üslubunu tartış.\n3. **Diyalogları yaz**: Anlatıcının aktardığı bilgileri konuşmalara ve **sahne yönergelerine** (parantez içinde hareket ve duygu notları) dönüştür.\n4. **Prova**: Ses tonu, vurgu, jest–mimik, sahnede konumlanma; basit dekor, kostüm ve ışık.\n5. **Sergileme ve değerlendirme**: İzleyicilerden geri bildirim al; metnin canlandırmada nasıl **yeniden yorumlandığını** tartış.\n\n**Neden önemli?** Metin dönüştürme ve canlandırma, metni **derinlemesine anlamayı**, türlerin farklı anlatım imkânlarını görmeyi ve **iş birliği ile yaratıcılığı** geliştirir.",
+     "ornekler": [
+      {
+       "soru": "Bir hikâyedeki şu bölümü sahne yönergeleriyle birlikte kısa bir diyaloğa dönüştürünüz: \"Yaşlı adam torununa, dedesinden kalan saati uzattı. Çocuk saati alırken gözleri doldu.\"",
+       "cozum": "*(Akşam. Eski bir evin salonu. Dede, cebinden bir köstekli saat çıkarır.)*\n**DEDE** *(titrek bir sesle)*: Bu saat babamdan bana kaldı. Şimdi senin.\n**TORUN** *(saati iki eliyle alır, gözleri dolar)*: Dede… Hep saklayacağım, söz.\n**DEDE** *(gülümseyerek)*: Saat değil önemli olan evlat, zamanı iyi kullanmak.\n*(Işık yavaşça kararır.)*"
+      },
+      {
+       "soru": "Bir hikâyeyi şiire dönüştürürken neden \"her şeyi anlatmaya çalışmamak\" gerekir?",
+       "cozum": "Şiir **yoğun ve özlü** bir türdür; hikâyedeki tüm ayrıntılar aktarılırsa şiir **anlatımsal ve düz** bir metne dönüşür. Şiirde en etkili sahneler seçilir, duygu **imge ve çağrışımlarla** sezdirilir; okurun boşlukları kendi hayal gücüyle doldurması sağlanır."
+      }
+     ],
+     "ozet": [
+      "Hikâyeden şiire: tema ve duygu → anahtar sahneler → nazım biçimi ve ölçü → imge ve ahenk → etkili son.",
+      "Şiir yoğunlaştırır; hikâyenin tüm ayrıntılarını aktarmaz.",
+      "Dramatizasyon: sahnelere ayırma, kişiler, diyalog ve sahne yönergeleri, prova, sergileme.",
+      "Metin dönüştürme ve canlandırma metni derinlemesine anlamayı ve iş birliğini geliştirir."
      ]
     }
    }

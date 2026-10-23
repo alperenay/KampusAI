@@ -368,6 +368,8 @@ O("k6", "3.6", "Osmanlı'da bilim, kültür ve sanat", "Science, culture and art
 ]),
 ]
 
+from _ek136 import uygula136; uygula136(units, "tar10")
+
 write("tar-10.js", "10/tarih", "10. Sınıf Tarih — kapsamlı ders notları ve kazanım analizi",
       "kullanıcının verdiği \"10. Sınıf Tarih Kapsamlı Ders Notları ve Kazanım Analizi\" (3 ünite, 1040–1683).",
       units, "Kaynaktaki bazı bilgiler düzeltildi (Büyük Selçuklu ilk merkezi Nişabur, Büyük Divan). Tablolar ve örnek sorular eklendi.")

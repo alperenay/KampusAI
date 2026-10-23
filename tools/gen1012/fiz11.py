@@ -388,6 +388,8 @@ O("k2", "5.2", "Atom modelleri, spektrum, temel parçacıklar ve çekirdek", "At
 from _ek134 import uygula  # noqa: E402
 uygula(units, "fiz11_ek134")
 
+from _ek136 import uygula136; uygula136(units, "fiz11")
+
 write("fiz-11.js", "11/fizik", "11. Sınıf Fizik — konu anlatım notları",
       "kullanıcının verdiği \"11. Sınıf Fizik Konu Anlatım Notları\" (5 ünite).",
       units, "Kaynakta yalnızca Kuvvet ve Hareket ünitesi ayrıntılı, diğerleri birkaç satırlık özetti; tüm üniteler ders kitabı düzeyinde formüller, tablolar ve çözümlü örneklerle genişletildi. Enerji ünitesine itme-momentum konusu eklendi.")

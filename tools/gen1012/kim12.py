@@ -262,6 +262,8 @@ O("k2", "4.2", "Nanoteknoloji ve bilimsel gelişmeler", "Nanotechnology and scie
 from _ek134 import uygula  # noqa: E402
 uygula(units, "kim12_ek134")
 
+from _ek136 import uygula136; uygula136(units, "kim12")
+
 write("kim-12.js", "12/kimya", "12. Sınıf Kimya — detaylı konu anlatım notları",
       "kullanıcının verdiği \"Kimya 12 Detaylı Konu Anlatım Notları\" (4 ünite).",
       units, "Kaynak notlar kısa özetler hâlinde olduğu için her ünite ders kitabı düzeyinde genişletildi (yükseltgenme basamağı kuralları, yarı tepkime denkleştirme örneği, elektrot potansiyeli ve Faraday hesapları, hibritleşme ve VSEPR tabloları, IUPAC adlandırma, fonksiyonel grup tablosu).")

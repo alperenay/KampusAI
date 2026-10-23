@@ -385,6 +385,8 @@ Türk kültürünün doğduğu ve yayıldığı **Orta Asya**; **Altay Dağları
 from _ek134 import uygula  # noqa: E402
 uygula(units, "cog10_ek134")
 
+from _ek136 import uygula136; uygula136(units, "cog10")
+
 write("cog-10.js", "10/cografya", "10. Sınıf Coğrafya — kapsamlı ders notları",
       "kullanıcının verdiği \"10. Sınıf Coğrafya Kapsamlı Konu Anlatım Notları ve Kazanım Analizi\" (7 ünite).",
       units, "Kazanım kodları kaynaktaki bölüm numaralarıdır (3. ünite alt konulara bölündü). Güncel istihdam oranları yaklaşık verildi; örnek sorular eklendi.")

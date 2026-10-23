@@ -190,7 +190,7 @@ $$A \cdot B = \text{EBOB}(A,B)\cdot \text{EKOK}(A,B)$$
    ("İki sayının EBOB'u 6, EKOK'u 72'dir. Sayılardan biri 24 ise diğeri kaçtır?",
     "$A\\cdot B = 6 \\cdot 72 = 432$ → $B = 432 / 24 = 18$."),
    ("Bir zil 12 dakikada, diğeri 18 dakikada bir çalıyor. Birlikte çaldıktan en az kaç dakika sonra yine birlikte çalarlar?",
-    "EKOK$(12, 18) = 36$ dakika.")],
+    "$\\text{EKOK}(12, 18) = 36$ dakika.")],
   ["PBS $= (a+1)(b+1)\\cdots$", "$A\\cdot B = \\text{EBOB}\\cdot\\text{EKOK}$", "Bölme/parçalama → EBOB; yeniden buluşma → EKOK."]),
 
 O("k2", "3.2", "Bölünebilme kuralları", "Divisibility rules", r"""
@@ -281,6 +281,8 @@ O("k2", "4.2", "Karekök ve rasyonel referans fonksiyonlar", "Square-root and re
 
 from _ek134 import uygula  # noqa: E402
 uygula(units, "mat10_ek134")
+
+from _ek136 import uygula136; uygula136(units, "mat10")
 
 write("mat-10.js", "10/matematik", "10. Sınıf Matematik — konu anlatım notları",
       "kullanıcının verdiği \"10. Sınıf Matematik Ders Kitabı – Ayrıntılı Konu Anlatım Notları\" (4 tema).",

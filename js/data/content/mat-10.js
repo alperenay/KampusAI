@@ -19,7 +19,7 @@ App.data.content["10/matematik"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "1.1",
+    "code": "MAT.10.1.1",
     "title": {
      "tr": "Dik üçgende trigonometrik oranlar, özdeşlikler ve birim çember",
      "en": "Trigonometric ratios in a right triangle, identities and the unit circle"
@@ -46,7 +46,7 @@ App.data.content["10/matematik"] = [
    },
    {
     "id": "k2",
-    "code": "1.2",
+    "code": "MAT.10.1.2",
     "title": {
      "tr": "Üçgende yardımcı elemanlar",
      "en": "Special segments of a triangle"
@@ -72,13 +72,13 @@ App.data.content["10/matematik"] = [
    },
    {
     "id": "k3",
-    "code": "1.3",
+    "code": "MAT.10.1.3",
     "title": {
      "tr": "Üçgenin alanı",
      "en": "Area of a triangle"
     },
     "content": {
-     "anlatim": "# Üçgenin Alanı\n\n### Taban × yükseklik\n\nBir kenar ile o kenara ait yüksekliğin çarpımının yarısı:\n$$A(ABC) = \\frac{a \\cdot h_a}{2}$$\n\n### Sinüs alan teoremi\n\nİki kenarı ve **aralarındaki açı** bilinen üçgenin alanı:\n$$A(ABC) = \\frac{1}{2}\\, b \\cdot c \\cdot \\sin A$$\n\n### Sonuçlar\n\n- Yükseklikleri eşit üçgenlerin alanları **tabanlarıyla** orantılıdır.\n- Kenarortay üçgeni **iki eşit alanlı** üçgene ayırır; üç kenarortay üçgeni **6 eşit alanlı** parçaya böler.\n- Eşkenar üçgenin alanı: $A = \\dfrac{a^2\\sqrt3}{4}$.",
+     "anlatim": "# Üçgenin Alanı\n\n### Taban × yükseklik\n\nBir kenar ile o kenara ait yüksekliğin çarpımının yarısı:\n$$A(ABC) = \\frac{a \\cdot h_a}{2}$$\n\n### Sinüs alan teoremi\n\nİki kenarı ve **aralarındaki açı** bilinen üçgenin alanı:\n$$A(ABC) = \\frac{1}{2}\\, b \\cdot c \\cdot \\sin A$$\n\n### Sonuçlar\n\n- Yükseklikleri eşit üçgenlerin alanları **tabanlarıyla** orantılıdır.\n- Kenarortay üçgeni **iki eşit alanlı** üçgene ayırır; üç kenarortay üçgeni **6 eşit alanlı** parçaya böler.\n- Eşkenar üçgenin alanı: $A = \\dfrac{a^2\\sqrt3}{4}$.\n\n# Bir Kenar ve Yükseklik Değişince Alan Nasıl Değişir?\n\nAlan formülü $A = \\dfrac{a\\cdot h_a}{2}$ olduğundan alan, taban ve yükseklikle **doğru orantılıdır**:\n\n| Değişim | Yeni alan |\n|---|---|\n| Taban $k$ katına çıkar, yükseklik aynı | $k \\cdot A$ |\n| Yükseklik $k$ katına çıkar, taban aynı | $k \\cdot A$ |\n| Taban ve yükseklik birlikte $k$ katına çıkar | $k^2 \\cdot A$ |\n| Taban $k$ katına çıkar, yükseklik $\\frac1k$ katına iner | $A$ (değişmez) |\n\n- **Benzer üçgenlerde** benzerlik oranı $k$ ise alanlar oranı $k^2$'dir.\n- Tepe noktası tabana **paralel bir doğru üzerinde** hareket eden üçgenlerin yüksekliği değişmediği için alanları **eşittir**.",
      "ornekler": [
       {
        "soru": "İki kenarı 6 cm ve 8 cm, aralarındaki açı $30^\\circ$ olan üçgenin alanı kaç cm²'dir?",
@@ -87,19 +87,24 @@ App.data.content["10/matematik"] = [
       {
        "soru": "Bir kenarı 4 birim olan eşkenar üçgenin alanı nedir?",
        "cozum": "$A = \\frac{4^2\\sqrt3}{4} = 4\\sqrt3$ birimkare."
+      },
+      {
+       "soru": "Tabanı 10 cm, yüksekliği 6 cm olan bir üçgenin tabanı %20 artırılıp yüksekliği %20 azaltılırsa alan nasıl değişir?",
+       "cozum": "Yeni alan $= \\dfrac{(1{,}2\\cdot 10)(0{,}8\\cdot 6)}{2} = \\dfrac{12\\cdot 4{,}8}{2} = 28{,}8$ cm². İlk alan $30$ cm² idi; alan $1{,}2\\cdot 0{,}8 = 0{,}96$ katına iner, yani **%4 azalır**."
       }
      ],
      "ozet": [
       "$A = \\frac{a\\cdot h_a}{2}$.",
       "$A = \\frac12 bc\\sin A$ (iki kenar ve arasındaki açı).",
       "Kenarortay alanı ikiye böler.",
-      "Eşkenar üçgen: $\\frac{a^2\\sqrt3}{4}$."
+      "Eşkenar üçgen: $\\frac{a^2\\sqrt3}{4}$.",
+      "Taban ve yükseklik birlikte k katına çıkarsa alan k² katına çıkar."
      ]
     }
    },
    {
     "id": "k4",
-    "code": "1.4",
+    "code": "MAT.10.1.4",
     "title": {
      "tr": "Sinüs ve kosinüs teoremleri",
      "en": "The laws of sines and cosines"
@@ -125,7 +130,7 @@ App.data.content["10/matematik"] = [
    },
    {
     "id": "k5",
-    "code": "1.5",
+    "code": "MAT.10.1.Ek",
     "title": {
      "tr": "Çemberde açılar, yay ve kiriş",
      "en": "Angles, arcs and chords in a circle"
@@ -160,7 +165,7 @@ App.data.content["10/matematik"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "2.1",
+    "code": "MAT.10.2.1",
     "title": {
      "tr": "İki kategorik değişkenli veriler",
      "en": "Data with two categorical variables"
@@ -186,7 +191,7 @@ App.data.content["10/matematik"] = [
    },
    {
     "id": "k2",
-    "code": "2.2",
+    "code": "MAT.10.2.1",
     "title": {
      "tr": "Merkezî eğilim ve yayılım ölçüleri",
      "en": "Measures of central tendency and spread"
@@ -212,7 +217,7 @@ App.data.content["10/matematik"] = [
    },
    {
     "id": "k3",
-    "code": "2.3",
+    "code": "MAT.10.2.1",
     "title": {
      "tr": "Veri gösterimi: histogram ve kutu grafiği",
      "en": "Data displays: histograms and box plots"
@@ -235,6 +240,33 @@ App.data.content["10/matematik"] = [
       "Aykırı değer: $Q_3 + 1{,}5\\,\\text{ÇA}$ üstü ya da $Q_1 - 1{,}5\\,\\text{ÇA}$ altı."
      ]
     }
+   },
+   {
+    "id": "k4",
+    "code": "MAT.10.2.2",
+    "title": {
+     "tr": "Başkalarının iki kategorik değişkenli veri yorumlarını tartışma",
+     "en": "Discussing others' conclusions about two-categorical-variable data"
+    },
+    "content": {
+     "anlatim": "# Başkalarının Yorumlarını Eleştirel Değerlendirme\n\nHaberlerde, reklamlarda ve sosyal medyada **iki kategorik değişken** arasındaki ilişkiye dayanan pek çok iddia görürüz: *\"Kahvaltı yapan öğrencilerin başarısı daha yüksek.\"* Bu iddiaları **istatistiksel gerekçeyle kabul ya da reddetmek** gerekir.\n\n# Kontrol Listesi\n\n1. **Veri nasıl toplandı?** Örneklem **yeterince büyük** ve **temsil edici** mi? (Sadece bir okulun öğrencileri tüm Türkiye'yi temsil etmez.)\n2. **Doğru oranlar mı karşılaştırılıyor?** Ham sayılar değil, **satır ya da sütun yüzdeleri** (koşullu göreli sıklıklar) karşılaştırılmalıdır.\n3. **Grafik yanıltıcı mı?** Eksenin sıfırdan başlamaması, farklı ölçekler, 3B pasta grafikler farkları büyütebilir.\n4. **İlişki = neden mi?** İki değişken birlikte değişse de biri diğerinin **nedeni olmayabilir**; üçüncü bir değişken (ör. aile geliri, uyku düzeni) ikisini birden etkileyebilir.\n5. **Genelleme sınırı aşılıyor mu?** Sonuç yalnızca verinin toplandığı **bağlam** için geçerlidir.\n\n# Yaygın Hatalar ve Yanlılıklar\n\n| Hata | Açıklama |\n|---|---|\n| **Ham sayı yanılgısı** | Grup büyüklükleri farklıyken sayıları karşılaştırmak |\n| **Seçim yanlılığı** | Yalnızca gönüllülerden ya da belirli bir gruptan veri almak |\n| **Nedensellik yanılgısı** | Birliktelikten neden–sonuç çıkarmak |\n| **Simpson paradoksu** | Alt gruplarda görülen eğilimin gruplar birleştirilince **tersine dönmesi** |\n| **Yanlış ölçek** | Sütun grafikte eksenin kırpılmasıyla farkın abartılması |\n\n# Kabul mü, Ret mi?\n\nBir yorumu **kabul ederken** hangi oranların onu desteklediğini, **reddederken** hangi hatayı içerdiğini **verilerle** gösteririz. Gerekirse tabloyu yeniden düzenleyip doğru oranları hesaplarız.",
+     "ornekler": [
+      {
+       "soru": "Bir anket şirketi: “Okul kantininden alışveriş yapan 300 öğrenciden 180'i, yapmayan 100 öğrenciden 40'ı spor yapıyor. Demek ki kantin alışverişi spor yapmayı artırıyor.” diyor. Bu yorumu değerlendiriniz.",
+       "cozum": "Koşullu oranlar: kantin kullananlarda $\\frac{180}{300} = \\%60$, kullanmayanlarda $\\frac{40}{100} = \\%40$. Oranlar arasında bir **ilişki** var; ancak bu **nedensellik** göstermez. Örneğin spor yapan öğrenciler okulda daha uzun kaldıkları için kantini daha çok kullanıyor olabilir. Yorum, *“artırıyor”* ifadesi nedeniyle **reddedilir**."
+      },
+      {
+       "soru": "Bir haberde iki ilçedeki “kitap okuyan öğrenci sayısı” karşılaştırılıyor: A ilçesinde 900, B ilçesinde 600 öğrenci kitap okuyor ve “A ilçesindeki öğrenciler daha çok kitap okuyor” deniyor. A'da 3000, B'de 1200 öğrenci varsa yorum doğru mudur?",
+       "cozum": "Ham sayılar yanıltıcıdır. Oranlar: A'da $\\frac{900}{3000} = \\%30$, B'de $\\frac{600}{1200} = \\%50$. Kitap okuyan öğrenci **oranı B ilçesinde daha yüksektir**; yorum **ham sayı yanılgısı** içerdiği için reddedilir."
+      }
+     ],
+     "ozet": [
+      "Başkalarının yorumları satır/sütun yüzdeleriyle (koşullu oranlarla) kontrol edilir.",
+      "Örneklem büyüklüğü, temsil ediciliği ve grafik ölçeği sorgulanır.",
+      "İki değişken arasındaki ilişki, birinin diğerine neden olduğunu göstermez.",
+      "Yorum, gerekçesi verilerle gösterilerek kabul ya da reddedilir."
+     ]
+    }
    }
   ]
  },
@@ -247,7 +279,7 @@ App.data.content["10/matematik"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "3.1",
+    "code": "MAT.10.3.1–2",
     "title": {
      "tr": "Asal çarpanlar, pozitif bölen sayısı, EBOB ve EKOK",
      "en": "Prime factors, number of divisors, GCD and LCM"
@@ -265,7 +297,7 @@ App.data.content["10/matematik"] = [
       },
       {
        "soru": "Bir zil 12 dakikada, diğeri 18 dakikada bir çalıyor. Birlikte çaldıktan en az kaç dakika sonra yine birlikte çalarlar?",
-       "cozum": "EKOK$(12, 18) = 36$ dakika."
+       "cozum": "$\\text{EKOK}(12, 18) = 36$ dakika."
       }
      ],
      "ozet": [
@@ -277,7 +309,7 @@ App.data.content["10/matematik"] = [
    },
    {
     "id": "k2",
-    "code": "3.2",
+    "code": "MAT.10.3.3",
     "title": {
      "tr": "Bölünebilme kuralları",
      "en": "Divisibility rules"
@@ -303,7 +335,7 @@ App.data.content["10/matematik"] = [
    },
    {
     "id": "k3",
-    "code": "3.3",
+    "code": "MAT.10.3.Ek",
     "title": {
      "tr": "Üslü ve köklü ifadeler",
      "en": "Exponents and radicals"
@@ -329,7 +361,7 @@ App.data.content["10/matematik"] = [
    },
    {
     "id": "k4",
-    "code": "3.4",
+    "code": "MAT.10.3.3",
     "title": {
      "tr": "Modüler aritmetik",
      "en": "Modular arithmetic"
@@ -364,7 +396,7 @@ App.data.content["10/matematik"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "4.1",
+    "code": "MAT.10.4.2",
     "title": {
      "tr": "Karesel fonksiyon ve parabol",
      "en": "The quadratic function and the parabola"
@@ -390,7 +422,7 @@ App.data.content["10/matematik"] = [
    },
    {
     "id": "k2",
-    "code": "4.2",
+    "code": "MAT.10.4.3–4",
     "title": {
      "tr": "Karekök ve rasyonel referans fonksiyonlar",
      "en": "Square-root and reciprocal reference functions"
@@ -416,7 +448,7 @@ App.data.content["10/matematik"] = [
    },
    {
     "id": "k3",
-    "code": "4.3",
+    "code": "MAT.10.4.6",
     "title": {
      "tr": "İkinci dereceden denklemler ve kök–katsayı ilişkileri",
      "en": "Quadratic equations and relations between roots and coefficients"
@@ -442,7 +474,7 @@ App.data.content["10/matematik"] = [
    },
    {
     "id": "k4",
-    "code": "4.4",
+    "code": "MAT.10.4.6",
     "title": {
      "tr": "Mutlak değer ve birinci dereceden eşitsizlikler",
      "en": "Absolute value and linear inequalities"
@@ -468,7 +500,7 @@ App.data.content["10/matematik"] = [
    },
    {
     "id": "k5",
-    "code": "4.5",
+    "code": "MAT.10.4.5",
     "title": {
      "tr": "Bileşke ve ters fonksiyon",
      "en": "Composite and inverse functions"
@@ -489,6 +521,269 @@ App.data.content["10/matematik"] = [
       "$(f\\circ g)(x) = f(g(x))$; önce g.",
       "Ters fonksiyon için f bire bir ve örten olmalı.",
       "f ile $f^{-1}$ grafikleri $y = x$'e göre simetrik."
+     ]
+    }
+   },
+   {
+    "id": "k6",
+    "code": "MAT.10.4.1",
+    "title": {
+     "tr": "Fonksiyon olma koşulları ve fonksiyonların nitel özellikleri",
+     "en": "Conditions for being a function and qualitative properties of functions"
+    },
+    "content": {
+     "anlatim": "# Bağıntı Ne Zaman Fonksiyondur?\n\n$A$'dan $B$'ye bir bağıntının **fonksiyon** olması için:\n1. $A$'daki (tanım kümesi) **her eleman** eşlenmelidir — **açıkta eleman kalmamalı**.\n2. Her eleman **yalnız bir** elemanla eşlenmelidir.\n\n**Düşey doğru testi:** Grafiği verilen bir bağıntıda tanım kümesindeki her $x$ için çizilen düşey doğru grafiği **yalnız bir noktada** kesiyorsa bağıntı fonksiyondur. Örneğin $x^2 + y^2 = 1$ çemberi fonksiyon **değildir**.\n\n# Nitel Özellikler\n\n| Özellik | Grafikte nasıl görülür? |\n|---|---|\n| **Tanım kümesi** | Grafiğin $x$ ekseni üzerindeki izdüşümü |\n| **Görüntü kümesi** | Grafiğin $y$ ekseni üzerindeki izdüşümü |\n| **Sıfırlar (kökler)** | Grafiğin $x$ eksenini kestiği noktalar |\n| **İşaret** | $x$ ekseninin üstü: $f(x)>0$; altı: $f(x)<0$ |\n| **Artan / azalan** | Soldan sağa yükselen / alçalan aralıklar |\n| **Maksimum / minimum** | En yüksek / en alçak noktalar (yerel ve mutlak) |\n| **Bire bir** | Yatay doğru testi: her yatay doğru grafiği en çok bir noktada keser |\n| **Örten** | Görüntü kümesi değer kümesine eşittir |\n| **Tek / çift** | Çift: $f(-x)=f(x)$, $y$ eksenine göre simetrik; tek: $f(-x)=-f(x)$, orijine göre simetrik |\n\n# Farklı Gösterimler\n\nBir fonksiyon **sözel**, **tablo**, **cebirsel** (formül) ve **grafik** gösterimle ifade edilebilir. Cebirsel gösterim kesin değer hesaplamayı; grafik gösterim artan–azalan aralıkları, sıfırları ve ekstremumları **bir bakışta** görmeyi sağlar.",
+     "ornekler": [
+      {
+       "soru": "$f(x) = x^3 - 4x$ fonksiyonu tek mi, çift mi? Sıfırlarını bulunuz.",
+       "cozum": "$f(-x) = (-x)^3 - 4(-x) = -x^3 + 4x = -f(x)$ olduğundan **tek** fonksiyondur (orijine göre simetrik). Sıfırlar: $x(x^2-4) = 0 \\Rightarrow x \\in \\{-2, 0, 2\\}$."
+      },
+      {
+       "soru": "$f:\\mathbb{R}\\to\\mathbb{R}$, $f(x) = x^2$ fonksiyonu bire bir ve örten midir? Nasıl kısıtlanırsa bire bir ve örten olur?",
+       "cozum": "$f(-2) = f(2) = 4$ olduğundan **bire bir değildir**; negatif sayılar görüntü olmadığından **örten değildir**. Tanım kümesi $[0, \\infty)$, değer kümesi $[0, \\infty)$ alınırsa $f$ **bire bir ve örten** olur (bu yüzden tersi $\\sqrt{x}$ tanımlanabilir)."
+      }
+     ],
+     "ozet": [
+      "Fonksiyon: tanım kümesindeki her eleman yalnız bir elemanla eşlenir (düşey doğru testi).",
+      "Nitel özellikler: tanım–görüntü kümesi, sıfırlar, işaret, artan–azalan, ekstremum, bire bir, örten, tek–çift.",
+      "Bire birlik yatay doğru testiyle; tek–çiftlik f(−x) ile kontrol edilir.",
+      "Sözel, tablo, cebirsel ve grafik gösterimler birbirini tamamlar."
+     ]
+    }
+   },
+   {
+    "id": "k7",
+    "code": "MAT.10.4.6",
+    "title": {
+     "tr": "Fonksiyonlarla ifade edilen denklem ve eşitsizlik problemleri",
+     "en": "Equation and inequality problems expressed with functions"
+    },
+    "content": {
+     "anlatim": "# Denklem = İki Grafiğin Kesişimi\n\n$f(x) = g(x)$ denkleminin çözümleri, $y=f(x)$ ve $y=g(x)$ grafiklerinin **kesişim noktalarının apsisleridir**. $f(x) > g(x)$ eşitsizliğinin çözümü ise $f$ grafiğinin $g$ grafiğinin **üstünde** kaldığı $x$ değerleridir.\n\n# İkinci Dereceden Eşitsizlikler (İşaret Tablosu)\n\n$ax^2 + bx + c$ ifadesinin işareti kökler dışında $a$ ile **aynı**, kökler arasında $a$ ile **ters**tir.\n1. Kökleri bul ($\\Delta$ ile ya da çarpanlara ayırarak).\n2. Kökleri sayı doğrusuna yerleştir; en sağdan $a$'nın işaretiyle başlayıp çift katlı olmayan kökte işaret değiştir.\n3. İstenen işaretli aralıkları seç.\n\n# Karekök ve Rasyonel Denklemler\n\n- $\\sqrt{f(x)} = g(x)$: Önce **tanım koşulu** $f(x)\\ge 0$ ve $g(x) \\ge 0$; sonra kare alınır. Kare alma **yabancı kök** üretebilir, sonuç mutlaka **denetlenir**.\n- $\\dfrac{p(x)}{q(x)} = 0 \\iff p(x) = 0$ ve $q(x) \\ne 0$.\n- $\\dfrac{p(x)}{q(x)} \\ge 0$ türü eşitsizliklerde payın ve paydanın kökleri birlikte işaret tablosuna yazılır; paydanın kökleri **asla** çözüme dahil edilmez.\n\n# Problem Çözme Adımları\n\n1. Problemdeki nicelikleri değişkenlerle **modelle** (ör. kâr = gelir − maliyet).\n2. Uygun **gösterimi** seç: grafik, tablo ya da cebir.\n3. Çözümü bul ve **bağlama göre yorumla** (negatif uzunluk, kesirli kişi sayısı gibi anlamsız değerler atılır).\n4. Sonucu **başka bir yolla** (grafik ↔ cebir) doğrula.",
+     "ornekler": [
+      {
+       "soru": "$x^2 - x - 6 < 0$ eşitsizliğinin çözüm kümesini bulunuz.",
+       "cozum": "$x^2 - x - 6 = (x-3)(x+2)$; kökler $-2$ ve $3$. $a = 1 > 0$ olduğundan ifade kökler **arasında negatiftir**. Çözüm kümesi: $(-2, 3)$."
+      },
+      {
+       "soru": "$\\sqrt{x + 6} = x$ denklemini çözünüz.",
+       "cozum": "Koşullar: $x + 6 \\ge 0$ ve $x \\ge 0$. Kare alınırsa $x + 6 = x^2 \\Rightarrow x^2 - x - 6 = 0 \\Rightarrow x = 3$ ya da $x = -2$. $x = -2$, $x \\ge 0$ koşulunu sağlamadığı için **yabancı köktür**. Çözüm: $x = 3$ (denetim: $\\sqrt9 = 3$ ✓)."
+      },
+      {
+       "soru": "Bir firma $x$ adet ürün sattığında kârı $K(x) = -x^2 + 40x - 300$ (bin TL) oluyor. Firma hangi satış aralığında kâr eder?",
+       "cozum": "$K(x) > 0 \\iff x^2 - 40x + 300 < 0 \\iff (x-10)(x-30) < 0 \\iff 10 < x < 30$. Firma **11 ile 29 adet** arasında satış yaptığında kâr eder; en büyük kâr tepe noktasında, $x = 20$ adette $K(20) = 100$ bin TL'dir."
+      }
+     ],
+     "ozet": [
+      "f(x) = g(x) denkleminin çözümleri grafiklerin kesişim noktalarının apsisleridir.",
+      "İkinci dereceden ifade kökler dışında a ile aynı, kökler arasında ters işaretlidir.",
+      "Karekök denklemlerinde kare almadan önce tanım koşulu yazılır, yabancı kökler denetlenir.",
+      "Rasyonel eşitsizliklerde paydanın kökleri çözüme alınmaz."
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "t5",
+  "name": {
+   "tr": "5. Tema: Sayma, Algoritma ve Bilişim",
+   "en": "Theme 5: Counting, Algorithms and Informatics"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "MAT.10.5.1",
+    "title": {
+     "tr": "Sayma stratejileriyle problem çözme: toplama–çarpma yolu, permütasyon, kombinasyon",
+     "en": "Solving problems with counting strategies: sum and product rules, permutations, combinations"
+    },
+    "content": {
+     "anlatim": "# Sayma Problemine Nasıl Başlanır?\n\n1. **Neyi sayıyoruz?** (şifre, sıralama, ekip, yol…)\n2. **Sıra önemli mi?** Önemliyse *sıralama (permütasyon)*, değilse *seçme (kombinasyon)*.\n3. **Tekrar var mı?** Aynı eleman birden fazla kullanılabiliyor mu?\n4. Gerekirse problemi **ağaç şeması, tablo ya da kutu (yuva) modeli** ile görselleştir.\n\n# Temel İlkeler\n\n- **Toplama yolu:** Ayrık durumlardan biri seçilecekse durum sayıları **toplanır** ($m$ yol **veya** $n$ yol → $m+n$).\n- **Çarpma yolu:** Ardışık ve bağımsız adımlar yapılacaksa **çarpılır** ($m$ yol **ve** $n$ yol → $m\\cdot n$).\n\n# Faktöriyel\n\n$$n! = n\\cdot(n-1)\\cdots 2\\cdot 1, \\qquad 0! = 1$$\n$n$ farklı nesne bir sıraya $n!$ farklı biçimde dizilir.\n\n# Sıralama (Permütasyon)\n\n$n$ farklı nesneden $r$ tanesinin **sıralı** dizilişleri:\n$$P(n,r) = \\frac{n!}{(n-r)!}$$\n- **Tekrarlı elemanlı** sıralama: $n$ nesnede $n_1, n_2, \\dots$ tane özdeş varsa $\\dfrac{n!}{n_1!\\,n_2!\\cdots}$\n- **Dairesel** sıralama: $n$ farklı nesne bir daire etrafına $(n-1)!$ biçimde dizilir.\n\n# Seçme (Kombinasyon)\n\n$n$ farklı nesneden **sırasız** $r$ tanesinin seçilmesi:\n$$C(n,r) = \\binom{n}{r} = \\frac{n!}{r!\\,(n-r)!}$$\nÖzellikler: $\\binom{n}{r} = \\binom{n}{n-r}$, $\\binom{n}{0} = \\binom{n}{n} = 1$, $\\binom{n}{1} = n$.\n\n# Strateji Seçimi\n\n| Durum | Strateji |\n|---|---|\n| \"En az bir\" | **Tümleme:** Tüm durumlar $-$ hiç olmayan durumlar |\n| \"Yan yana olsun\" | Birlikte olacakları **tek blok** say, sonra blok içini sırala |\n| \"Yan yana olmasın\" | Tüm durumlar $-$ yan yana olanlar |\n| Ekip/komite | Kombinasyon; koşullu gruplar ayrı ayrı seçilip çarpılır |",
+     "ornekler": [
+      {
+       "soru": "5 kız ve 4 erkek öğrenci arasından 2 kız ve 2 erkekten oluşan 4 kişilik bir ekip kaç farklı şekilde seçilebilir?",
+       "cozum": "Sıra önemli değil → kombinasyon. Kızlar $\\binom52 = 10$, erkekler $\\binom42 = 6$; çarpma yolu ile $10 \\cdot 6 = 60$ farklı ekip."
+      },
+      {
+       "soru": "KALEM kelimesinin harfleri yer değiştirilerek anlamlı ya da anlamsız 5 harfli kaç kelime yazılabilir? Bunların kaçında A ile E yan yanadır?",
+       "cozum": "5 farklı harf: $5! = 120$ kelime. A ile E'yi tek blok sayarsak 4 nesne: $4! = 24$; blok içi $2! = 2$. Yan yana olanlar $24\\cdot 2 = 48$."
+      },
+      {
+       "soru": "Rakamları farklı, 4 basamaklı kaç tane çift doğal sayı yazılabilir?",
+       "cozum": "**Durumlara ayır** (0'ın birler basamağında olup olmamasına göre). Birler basamağı 0 ise: kalan 3 basamak $9\\cdot8\\cdot7 = 504$. Birler basamağı 2, 4, 6 ya da 8 ise (4 yol): binler basamağı 0 olamaz ve birlerdekinden farklı → 8 yol, sonra $8 \\cdot 7$: $4\\cdot 8\\cdot 8\\cdot 7 = 1792$. Toplam: $504 + 1792 = 2296$."
+      }
+     ],
+     "ozet": [
+      "Sıra önemliyse permütasyon P(n,r) = n!/(n−r)!, önemli değilse kombinasyon C(n,r) = n!/(r!(n−r)!).",
+      "Ayrık durumlar toplanır, ardışık adımlar çarpılır.",
+      "“En az bir” sorularında tümleme; “yan yana” sorularında blok yöntemi kullanılır.",
+      "Özdeş elemanlı sıralamada n! özdeşlerin faktöriyellerine bölünür; dairesel sıralama (n−1)!'dir."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "MAT.10.5.2",
+    "title": {
+     "tr": "Cebirsel ve fonksiyonel işlemlerin algoritmik yapısı",
+     "en": "Algorithmic structure of algebraic and functional operations"
+    },
+    "content": {
+     "anlatim": "# Algoritma Nedir?\n\n**Algoritma**, bir problemi çözmek için izlenen **sonlu, sıralı ve açık** adımlar dizisidir. Her adım kesin olmalı, belirli bir **girdi** ile başlayıp belirli bir **çıktı** ile bitmelidir.\n\n# Temel Yapılar\n\n| Yapı | Anlamı | Örnek |\n|---|---|---|\n| **Sıralı (ardışık)** | Adımlar sırayla yapılır | Oku $x$ → $y = 2x+1$ hesapla → yaz $y$ |\n| **Karar (koşul)** | Bir koşula göre farklı yol izlenir | **Eğer** $\\Delta < 0$ **ise** \"reel kök yok\" yaz |\n| **Döngü (tekrar)** | Bir koşul sağlanana kadar adımlar tekrarlanır | $i = 1$'den $n$'ye kadar topla |\n\nAlgoritmalar **sözde kod** (adım adım yazı) ya da **akış şeması** ile gösterilir: oval = başla/bitir, paralelkenar = girdi/çıktı, dikdörtgen = işlem, eşkenar dörtgen = karar.\n\n# Cebirsel İşlemlerin Algoritması: İkinci Dereceden Denklem\n\n```\n1. Başla; a, b, c değerlerini oku (a ≠ 0)\n2. D ← b·b − 4·a·c\n3. Eğer D < 0 ise \"Reel kök yok\" yaz, 6'ya git\n4. Eğer D = 0 ise x ← −b / (2a) yaz \"çakışık kök\", 6'ya git\n5. x1 ← (−b − √D)/(2a); x2 ← (−b + √D)/(2a); x1, x2 yaz\n6. Bitir\n```\n\n# Fonksiyonel İşlemlerin Algoritması\n\n- **Fonksiyon değeri:** Bir fonksiyon, girdi alıp çıktı üreten bir **alt algoritma** gibidir: `f(x): döndür 3·x − 2`.\n- **Bileşke:** $(f\\circ g)(x)$ hesaplanırken önce `g` çalıştırılır, çıktısı `f`'ye girdi olur.\n- **Faktöriyel (döngü):** `s ← 1; i = 1'den n'ye kadar: s ← s·i`.\n- **Özyineleme:** $n! = n\\cdot(n-1)!$; $0! = 1$ durma koşuludur.\n\n# Bilişimle Bağlantı\n\nHesap makineleri, elektronik tablolar ve programlama dilleri bu yapıları kullanır. Bir algoritmayı **test etmek** için farklı girdilerle (sınır durumları dahil: $a = 0$, $\\Delta = 0$) adım adım **iz sürme** yapılır.",
+     "ornekler": [
+      {
+       "soru": "Girilen bir $n$ doğal sayısı için $1 + 2 + \\dots + n$ toplamını hesaplayan bir algoritma yazınız. $n = 5$ için iz sürünüz.",
+       "cozum": "```\n1. Oku n\n2. t ← 0, i ← 1\n3. i ≤ n olduğu sürece: t ← t + i; i ← i + 1\n4. Yaz t\n```\n\nİz: $i=1, t=1$; $i=2, t=3$; $i=3, t=6$; $i=4, t=10$; $i=5, t=15$ → çıktı **15**. Kontrol: $\\frac{n(n+1)}{2} = \\frac{5\\cdot6}{2} = 15$ ✓"
+      },
+      {
+       "soru": "Aşağıdaki algoritmanın $x = -3$ ve $x = 4$ girdileri için çıktılarını bulunuz; algoritma hangi fonksiyonu hesaplar? `1. Oku x  2. Eğer x < 0 ise y ← −x değilse y ← x  3. Yaz y`",
+       "cozum": "$x = -3 \\Rightarrow y = 3$; $x = 4 \\Rightarrow y = 4$. Algoritma **mutlak değer fonksiyonunu** $f(x) = \\lvert x \\rvert$ hesaplar: karar yapısı, parçalı tanımlı fonksiyonun iki parçasına karşılık gelir."
+      }
+     ],
+     "ozet": [
+      "Algoritma: sonlu, sıralı ve açık adımlar; girdi → işlem → çıktı.",
+      "Üç temel yapı: sıralı, karar (eğer–ise), döngü (tekrar).",
+      "Parçalı fonksiyonlar karar yapısıyla, toplam ve faktöriyel döngüyle ifade edilir.",
+      "Algoritma farklı ve sınır girdilerle iz sürülerek test edilir."
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "t6",
+  "name": {
+   "tr": "6. Tema: Analitik İnceleme",
+   "en": "Theme 6: Analytical Examination"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "MAT.10.6.1",
+    "title": {
+     "tr": "İki nokta arasındaki uzaklık ve doğru parçasını belli oranda bölen nokta",
+     "en": "Distance between two points and the point dividing a segment in a given ratio"
+    },
+    "content": {
+     "anlatim": "# Dik Koordinat Sisteminde Uzaklık\n\n$A(x_1, y_1)$ ve $B(x_2, y_2)$ noktaları arasındaki uzaklık, yatay ve düşey farklarla oluşan **dik üçgende Pisagor bağıntısından** elde edilir:\n$$\\lvert AB \\rvert = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$$\n- Noktalar aynı yatay doğrudaysa uzaklık $\\lvert x_2 - x_1 \\rvert$, aynı düşey doğrudaysa $\\lvert y_2 - y_1 \\rvert$ olur.\n- Orijine uzaklık: $\\sqrt{x^2 + y^2}$.\n\n# Orta Nokta\n\n$[AB]$'nin orta noktası:\n$$M\\left(\\frac{x_1 + x_2}{2},\\ \\frac{y_1 + y_2}{2}\\right)$$\n\n# Belli Oranda Bölen Nokta\n\n$C$ noktası $[AB]$'yi $\\dfrac{\\lvert AC \\rvert}{\\lvert CB \\rvert} = \\dfrac{m}{n}$ oranında **içten** bölüyorsa:\n$$C\\left(\\frac{n\\,x_1 + m\\,x_2}{m+n},\\ \\frac{n\\,y_1 + m\\,y_2}{m+n}\\right)$$\n**Dikkat:** Koordinatlarda $A$'ya $n$, $B$'ye $m$ ağırlığı verilir — $C$, **daha büyük ağırlıklı** uca yakındır.\n\n# Üçgenin Ağırlık Merkezi\n\nKöşeleri $A, B, C$ olan üçgenin ağırlık merkezi (kenarortayları $2:1$ oranında böler):\n$$G\\left(\\frac{x_1+x_2+x_3}{3},\\ \\frac{y_1+y_2+y_3}{3}\\right)$$\n\n# Gerçek Hayatta\n\nHaritada iki şehir arasındaki kuş uçuşu uzaklık, bir dronun konumu, iki istasyon arasında belli oranda kurulacak bir aktarma noktası bu bağıntılarla hesaplanır.",
+     "ornekler": [
+      {
+       "soru": "$A(1, 2)$ ve $B(7, 10)$ noktaları arasındaki uzaklığı ve $[AB]$'nin orta noktasını bulunuz.",
+       "cozum": "$\\lvert AB \\rvert = \\sqrt{(7-1)^2 + (10-2)^2} = \\sqrt{36 + 64} = 10$ birim. Orta nokta $M\\left(\\frac{1+7}{2}, \\frac{2+10}{2}\\right) = (4, 6)$."
+      },
+      {
+       "soru": "$A(-2, 1)$ ve $B(8, 6)$ veriliyor. $[AB]$ üzerinde $\\lvert AC \\rvert : \\lvert CB \\rvert = 2 : 3$ olacak biçimde alınan $C$ noktasının koordinatları nedir?",
+       "cozum": "$m = 2$, $n = 3$: $x_C = \\dfrac{3\\cdot(-2) + 2\\cdot 8}{5} = \\dfrac{10}{5} = 2$, $y_C = \\dfrac{3\\cdot 1 + 2\\cdot 6}{5} = 3$. $C(2, 3)$; $C$, $A$'ya daha yakındır ($\\frac25$ yol)."
+      },
+      {
+       "soru": "Bir haritada okul $O(0,0)$, kütüphane $K(6,8)$ noktasındadır (1 birim = 100 m). Okuldan kütüphaneye giden bir öğrenci yolun $\\frac14$'ünü yürüdüğünde hangi noktadadır ve kaç metre yürümüştür?",
+       "cozum": "$\\lvert OK \\rvert = \\sqrt{36+64} = 10$ birim $= 1000$ m. Yolun $\\frac14$'ü: oran $1:3$ → $P\\left(\\frac{3\\cdot0 + 1\\cdot6}{4}, \\frac{3\\cdot0+1\\cdot8}{4}\\right) = (1{,}5;\\ 2)$. Yürünen yol $250$ m."
+      }
+     ],
+     "ozet": [
+      "İki nokta arası uzaklık: √((x₂−x₁)² + (y₂−y₁)²) — Pisagor bağıntısından gelir.",
+      "Orta nokta koordinatları uç noktaların ortalamasıdır.",
+      "m:n oranında içten bölen nokta: ((n·x₁ + m·x₂)/(m+n), (n·y₁ + m·y₂)/(m+n)).",
+      "Ağırlık merkezi üç köşe koordinatının ortalamasıdır."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "MAT.10.6.2",
+    "title": {
+     "tr": "Doğrunun eğim açısı, eğimi, denklemi ve iki doğrunun durumu",
+     "en": "Inclination angle, slope and equation of a line; relative positions of two lines"
+    },
+    "content": {
+     "anlatim": "# Eğim Açısı ve Eğim\n\nBir doğrunun $x$ ekseninin **pozitif yönüyle** yaptığı açıya **eğim açısı** ($\\alpha$, $0^\\circ \\le \\alpha < 180^\\circ$), bu açının tanjantına **eğim** denir:\n$$m = \\tan\\alpha = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{\\text{düşey değişim}}{\\text{yatay değişim}}$$\n| Eğim açısı | Eğim | Doğru |\n|---|---|---|\n| $0^\\circ$ | $m = 0$ | Yatay ($y = b$) |\n| $0^\\circ < \\alpha < 90^\\circ$ | $m > 0$ | Artan (sağa yatık) |\n| $90^\\circ$ | tanımsız | Düşey ($x = a$) |\n| $90^\\circ < \\alpha < 180^\\circ$ | $m < 0$ | Azalan (sola yatık) |\n\n# Doğru Denklemleri\n\n- **Eğim–kesen biçimi:** $y = mx + n$ ($n$: $y$ eksenini kestiği nokta)\n- **Bir noktası ve eğimi bilinen:** $y - y_1 = m(x - x_1)$\n- **İki noktası bilinen:** önce $m$ bulunur, sonra yukarıdaki biçim kullanılır.\n- **Genel biçim:** $ax + by + c = 0$ → $m = -\\dfrac{a}{b}$\n- **Eksenleri kestiği noktalar** $(a, 0)$ ve $(0, b)$ ise: $\\dfrac{x}{a} + \\dfrac{y}{b} = 1$\n\n# İki Doğrunun Birbirine Göre Durumu\n\n$d_1: y = m_1x + n_1$ ve $d_2: y = m_2x + n_2$ için:\n| Durum | Koşul |\n|---|---|\n| **Paralel** | $m_1 = m_2$ ve $n_1 \\ne n_2$ (kesişmez) |\n| **Çakışık** | $m_1 = m_2$ ve $n_1 = n_2$ (sonsuz ortak nokta) |\n| **Kesişen** | $m_1 \\ne m_2$ (tek ortak nokta; denklem sistemi çözülür) |\n| **Dik kesişen** | $m_1 \\cdot m_2 = -1$ |\n\n# Analitik Yaklaşımın Gücü\n\nDik koordinat sistemi, geometrik özellikleri (paralellik, diklik, orta nokta) **cebirsel olarak** kanıtlamayı sağlar. Örneğin bir dörtgenin karşılıklı kenarlarının eğimleri eşitse dörtgen **paralelkenardır**.",
+     "ornekler": [
+      {
+       "soru": "$A(1, 3)$ ve $B(4, 9)$ noktalarından geçen doğrunun eğimini ve denklemini bulunuz.",
+       "cozum": "$m = \\dfrac{9-3}{4-1} = 2$. $y - 3 = 2(x - 1) \\Rightarrow y = 2x + 1$."
+      },
+      {
+       "soru": "$d_1: 2x - y + 5 = 0$ ve $d_2: x + 2y - 4 = 0$ doğrularının birbirine göre durumunu belirleyiniz.",
+       "cozum": "$m_1 = -\\frac{2}{-1} = 2$, $m_2 = -\\frac12$. $m_1 \\cdot m_2 = 2\\cdot\\left(-\\frac12\\right) = -1$ olduğundan doğrular **dik kesişir**. Kesişim: $y = 2x+5$ ikinci denklemde: $x + 4x + 10 - 4 = 0 \\Rightarrow x = -\\frac65$, $y = \\frac{13}{5}$."
+      },
+      {
+       "soru": "Bir rampa yatayda 12 m ilerlerken 1 m yükseliyor. Rampanın eğimi nedir? Eğim açısı yaklaşık kaç derecedir? ($\\tan 4{,}8^\\circ \\approx 0{,}083$)",
+       "cozum": "$m = \\dfrac{1}{12} \\approx 0{,}083$; eğim açısı $\\alpha \\approx 4{,}8^\\circ$. Engelli rampalarında eğimin **%8,33'ü (1/12)** aşmaması bu yüzden önerilir."
+      }
+     ],
+     "ozet": [
+      "Eğim m = tan α = (y₂ − y₁)/(x₂ − x₁); yatay doğruda 0, düşey doğruda tanımsız.",
+      "Doğru denklemi: y − y₁ = m(x − x₁) ya da y = mx + n; ax + by + c = 0 ise m = −a/b.",
+      "Paralel: eğimler eşit; çakışık: denklemler denk; dik: m₁·m₂ = −1.",
+      "Koordinat sistemi geometrik özelliklerin cebirsel incelenmesini sağlar."
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "t7",
+  "name": {
+   "tr": "7. Tema: Veriden Olasılığa",
+   "en": "Theme 7: From Data to Probability"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "MAT.10.7.1",
+    "title": {
+     "tr": "Koşullu olasılık, bağımlı ve bağımsız olaylar",
+     "en": "Conditional probability, dependent and independent events"
+    },
+    "content": {
+     "anlatim": "# Koşullu Olasılık\n\n$B$ olayının gerçekleştiği **bilindiğinde** $A$ olayının olasılığına **koşullu olasılık** denir ve $P(A \\mid B)$ ile gösterilir (“$B$ verilmişken $A$”):\n$$P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)}, \\qquad P(B) > 0$$\nEş olasılıklı örnek uzayda: $P(A \\mid B) = \\dfrac{s(A \\cap B)}{s(B)}$ — yani **örnek uzay $B$'ye daralır**.\n\n# Çarpma Kuralı\n\n$$P(A \\cap B) = P(B)\\cdot P(A \\mid B) = P(A)\\cdot P(B \\mid A)$$\nArdışık çekilişlerde (ör. **geri koymadan** top çekme) her adımda kalan duruma göre olasılık güncellenir; **olasılık ağacı** bu hesabı düzenler: dallar boyunca **çarp**, sonuçlar arasında **topla**.\n\n# Bağımlı ve Bağımsız Olaylar\n\n- $A$ ve $B$ **bağımsızdır** $\\iff P(A \\mid B) = P(A) \\iff P(A \\cap B) = P(A)\\cdot P(B)$.\n- Birinin gerçekleşmesi diğerinin olasılığını değiştiriyorsa olaylar **bağımlıdır**.\n- **Geri koyarak** çekilişler bağımsız, **geri koymadan** çekilişler bağımlıdır.\n- **Ayrık** (aynı anda olamayan) olaylar, olasılıkları sıfırdan büyükse **bağımsız değildir**.\n\n# İki Yönlü Tablo ile Koşullu Olasılık\n\n| | Gözlüklü | Gözlüksüz | Toplam |\n|---|---|---|---|\n| Kız | 12 | 18 | 30 |\n| Erkek | 8 | 22 | 30 |\n| Toplam | 20 | 40 | 60 |\n\n$P(\\text{Gözlüklü} \\mid \\text{Kız}) = \\dfrac{12}{30} = 0{,}4$; $P(\\text{Kız} \\mid \\text{Gözlüklü}) = \\dfrac{12}{20} = 0{,}6$. **Dikkat:** $P(A \\mid B)$ ile $P(B \\mid A)$ genellikle **farklıdır**.",
+     "ornekler": [
+      {
+       "soru": "Bir torbada 4 kırmızı ve 6 mavi top var. Geri konmadan art arda iki top çekiliyor. İkisinin de kırmızı olma olasılığı nedir?",
+       "cozum": "$P(K_1) = \\frac{4}{10}$; ilk top kırmızıysa torbada 3 kırmızı, 9 top kalır: $P(K_2 \\mid K_1) = \\frac39$. Çarpma kuralı: $P = \\frac{4}{10}\\cdot\\frac{3}{9} = \\frac{12}{90} = \\frac{2}{15}$."
+      },
+      {
+       "soru": "Bir zar atılıyor. Gelen sayının **çift** olduğu biliniyorsa **4'ten büyük** olma olasılığı nedir? “Çift gelme” ile “4'ten büyük gelme” olayları bağımsız mıdır?",
+       "cozum": "$B = \\{2,4,6\\}$, $A = \\{5,6\\}$, $A\\cap B = \\{6\\}$. $P(A \\mid B) = \\frac{1}{3}$. $P(A) = \\frac26 = \\frac13$. $P(A\\mid B) = P(A)$ olduğundan olaylar **bağımsızdır** — çift olduğunu bilmek “4'ten büyük” olma olasılığını değiştirmez."
+      },
+      {
+       "soru": "Bir sınıfta öğrencilerin %60'ı İngilizce, %30'u hem İngilizce hem Almanca kursuna gidiyor. İngilizce kursuna giden bir öğrencinin Almanca kursuna da gitme olasılığı nedir?",
+       "cozum": "$P(A \\mid İ) = \\dfrac{P(A \\cap İ)}{P(İ)} = \\dfrac{0{,}30}{0{,}60} = 0{,}5$."
+      }
+     ],
+     "ozet": [
+      "P(A|B) = P(A∩B)/P(B): B bilindiğinde örnek uzay B'ye daralır.",
+      "Çarpma kuralı: P(A∩B) = P(B)·P(A|B); olasılık ağacında dallar boyunca çarpılır.",
+      "Bağımsızlık: P(A|B) = P(A) ya da P(A∩B) = P(A)·P(B).",
+      "Geri koymadan çekilişler bağımlıdır; P(A|B) ile P(B|A) genellikle farklıdır."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "MAT.10.7.2",
+    "title": {
+     "tr": "Bayes teoremi ve veriye dayalı olasılık tahmini",
+     "en": "Bayes' theorem and data-based probability prediction"
+    },
+    "content": {
+     "anlatim": "# Toplam Olasılık\n\nÖrnek uzay ayrık ve hepsini kapsayan $B_1, B_2, \\dots, B_n$ parçalarına ayrılırsa:\n$$P(A) = P(B_1)P(A\\mid B_1) + P(B_2)P(A\\mid B_2) + \\dots + P(B_n)P(A\\mid B_n)$$\n\n# Bayes Teoremi\n\n$A$ olayının gözlendiği bilindiğinde, bunun $B_i$ **nedeninden** kaynaklanma olasılığı:\n$$P(B_i \\mid A) = \\frac{P(B_i)\\cdot P(A \\mid B_i)}{P(A)}$$\n- $P(B_i)$: **önsel** (ön bilgi) olasılık\n- $P(B_i \\mid A)$: **sonsal** (yeni veriyle güncellenmiş) olasılık\n\nBayes teoremi, **yeni bir bilgi geldiğinde inancımızı güncellemenin** matematiksel yoludur.\n\n# Neden Önemli? — Tıbbi Test Örneği\n\nBir hastalık toplumda **%1** oranında görülsün. Test, hastaların **%95**'inde pozitif; sağlıklı kişilerin **%10**'unda da yanlışlıkla pozitif sonuç versin.\n- $P(+) = 0{,}01\\cdot0{,}95 + 0{,}99\\cdot0{,}10 = 0{,}0095 + 0{,}099 = 0{,}1085$\n- $P(\\text{Hasta} \\mid +) = \\dfrac{0{,}0095}{0{,}1085} \\approx 0{,}088$\n\nPozitif sonuç alan birinin gerçekten hasta olma olasılığı yalnızca **yaklaşık %9**'dur! Hastalık nadir olduğu için **yanlış pozitifler** gerçek pozitiflerden çok daha fazladır. Bu yüzden doktorlar ikinci bir test ister.\n\n# Uygulama Alanları\n\nSpam e-posta filtreleri, hava durumu tahmini, kalite kontrol (hangi makinenin hatalı ürettiği), yapay zekâ ve tıbbi tanı Bayes yaklaşımını kullanır.\n\n# Olasılık Ağacıyla Çözüm Adımları\n\n1. İlk dallara **nedenleri** ve önsel olasılıklarını yaz.\n2. İkinci dallara her nedene göre **gözlemin** koşullu olasılıklarını yaz.\n3. Gözlemi içeren yolların çarpımlarını topla → $P(A)$.\n4. İstenen yolun çarpımını $P(A)$'ya böl.",
+     "ornekler": [
+      {
+       "soru": "Bir fabrikada ürünlerin %60'ı A makinesinde, %40'ı B makinesinde üretiliyor. A'nın ürünlerinin %2'si, B'nin ürünlerinin %5'i kusurlu. Rastgele seçilen bir ürün kusurlu çıkarsa B makinesinde üretilmiş olma olasılığı nedir?",
+       "cozum": "$P(K) = 0{,}6\\cdot0{,}02 + 0{,}4\\cdot0{,}05 = 0{,}012 + 0{,}020 = 0{,}032$. $P(B \\mid K) = \\dfrac{0{,}020}{0{,}032} = 0{,}625$. Ürünlerin yalnız %40'ını üretmesine rağmen kusurlu bir ürünün **%62,5** olasılıkla B'den geldiği anlaşılır."
+      },
+      {
+       "soru": "Bir e-posta filtresine göre gelen e-postaların %30'u spam. “Ücretsiz” kelimesi spam e-postaların %40'ında, normal e-postaların %5'inde geçiyor. İçinde “ücretsiz” geçen bir e-postanın spam olma olasılığı nedir?",
+       "cozum": "$P(Ü) = 0{,}3\\cdot0{,}4 + 0{,}7\\cdot0{,}05 = 0{,}12 + 0{,}035 = 0{,}155$. $P(S \\mid Ü) = \\dfrac{0{,}12}{0{,}155} \\approx 0{,}77$. Kelimeyi görmek, spam olasılığını **%30'dan yaklaşık %77'ye** günceller."
+      }
+     ],
+     "ozet": [
+      "Toplam olasılık: P(A) = Σ P(Bᵢ)·P(A|Bᵢ).",
+      "Bayes: P(Bᵢ|A) = P(Bᵢ)·P(A|Bᵢ) / P(A) — yeni veriyle önsel olasılık güncellenir.",
+      "Nadir durumlarda yanlış pozitifler sonucu büyük ölçüde etkiler (tıbbi test örneği).",
+      "Olasılık ağacında gözlemi içeren yollar toplanır, istenen yol bu toplama bölünür."
      ]
     }
    }

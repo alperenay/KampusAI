@@ -267,6 +267,8 @@ O("k1", "S6.1", "Reading, listening, writing and speaking strategies", "Reading,
 # MEB tema üniteleri (Theme 1–9) önce, dil bilgisi tekrar üniteleri sonra.
 units = TEMALAR + units
 
+from _ek136 import uygula136; uygula136(units, "ing12")
+
 write("ing-12.js", "12/ingilizce", "12. Sınıf İngilizce — tema üniteleri, dil bilgisi ve beceri notları",
       "kullanıcının verdiği \"İngilizce 12 Detaylı Konu Anlatım Notları\" (dil bilgisi, beceriler) ve ek not paketi (Theme 1, 2, 4, 5, 6, 7, 8, 9 kazanımları, dil bilgisi özetleri, kelime çalışmaları).",
       units, "Tema üniteleri (t1–t9) ek not paketindeki kazanım kodları, işlevler ve kelimelere göre yazıldı; Theme 3 (Human Rights) ve Theme 10 (Manners) için not verilmediğinden eklenmedi. Dil bilgisi tekrar üniteleri (u1–u6) ilk notlardan gelir; kimlikleri öğrenci verisini korumak için değiştirilmedi.")

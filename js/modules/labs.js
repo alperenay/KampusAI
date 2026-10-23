@@ -686,7 +686,7 @@
     ["10/fizik/u4/k2", "dalga"], ["10/fizik/u4/k3", "dalga"], ["10/fizik/u4/k4", "dalga"],
     ["11/fizik/u4/k1", "dalga"], ["11/fizik/u4/k1", "girisim"], ["12/fizik/u3/k1", "girisim"], ["11/fizik/u4/k2", "mercek"],
     ["9/matematik/t2/k2", "fonksiyon", { fam: "donusum", base: "|x|" }], ["10/matematik/t1/k1", "cember"],
-    ["10/matematik/t4/k1", "fonksiyon", { fam: "parabol" }], ["10/matematik/t4/k2", "fonksiyon", { fam: "donusum", base: "√x" }],
+    ["10/matematik/t4/k1", "fonksiyon", { fam: "parabol" }], ["10/matematik/t4/k7", "fonksiyon", { fam: "parabol" }], ["10/matematik/t6/k2", "fonksiyon", { fam: "dogrusal" }], ["10/matematik/t4/k2", "fonksiyon", { fam: "donusum", base: "√x" }],
     ["11/matematik/u1/k1", "fonksiyon", { fam: "dogrusal" }], ["11/matematik/u1/k2", "fonksiyon", { fam: "rasyonel" }],
     ["11/matematik/u5/k1", "fonksiyon", { fam: "parabol" }], ["12/matematik/u1/k1", "fonksiyon", { fam: "ustel" }],
     ["12/matematik/u1/k2", "fonksiyon", { fam: "log" }], ["12/matematik/u3/k1", "cember"], ["12/matematik/u3/k2", "cember"],

@@ -19,7 +19,7 @@ App.data.content["10/fizik"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "1.1",
+    "code": "FİZ.10.1.1",
     "title": {
      "tr": "Sabit hızlı hareket: temel kavramlar ve grafikler",
      "en": "Uniform motion: basic concepts and graphs"
@@ -45,13 +45,13 @@ App.data.content["10/fizik"] = [
    },
    {
     "id": "k2",
-    "code": "1.2",
+    "code": "FİZ.10.1.1",
     "title": {
      "tr": "Bağıl hareket, karşılaşma ve yetişme",
      "en": "Relative motion, meeting and catching up"
     },
     "content": {
-     "anlatim": "# Bağıl Hareket\n\nBir cismin **başka bir hareketli gözlemciye göre** hızına bağıl hız denir:\n$$\\vec{\\vartheta}_{bağıl} = \\vec{\\vartheta}_{cisim} - \\vec{\\vartheta}_{gözlemci}$$\n\n- Aynı yönde giden iki araçta bağıl hız = hızlar **farkı**.\n- Zıt yönde giden iki araçta bağıl hız = hızlar **toplamı**.\n\n# Karşılaşma ve Yetişme\n\n| Durum | Süre |\n|---|---|\n| **Birbirine doğru** (zıt yön) | $t_{karşılaşma} = \\dfrac{x_{toplam}}{\\vartheta_1 + \\vartheta_2}$ |\n| **Aynı yönde, arkadaki yetişiyor** | $t_{yetişme} = \\dfrac{x_{arada}}{\\vartheta_1 - \\vartheta_2}$ ($\\vartheta_1 > \\vartheta_2$) |",
+     "anlatim": "# Bağıl Hareket\n\nBir cismin **başka bir hareketli gözlemciye göre** hızına bağıl hız denir:\n$$\\vec{\\vartheta}_{bağıl} = \\vec{\\vartheta}_{cisim} - \\vec{\\vartheta}_{gözlemci}$$\n\n- Aynı yönde giden iki araçta bağıl hız = hızlar **farkı**.\n- Zıt yönde giden iki araçta bağıl hız = hızlar **toplamı**.\n\n# Karşılaşma ve Yetişme\n\n| Durum | Süre |\n|---|---|\n| **Birbirine doğru** (zıt yön) | $t_{karşılaşma} = \\dfrac{x_{toplam}}{\\vartheta_1 + \\vartheta_2}$ |\n| **Aynı yönde, arkadaki yetişiyor** | $t_{yetişme} = \\dfrac{x_{arada}}{\\vartheta_1 - \\vartheta_2}$ ($\\vartheta_1 > \\vartheta_2$) |\n\n# Bağıl Hareketi Gözlemcinin Gözünden Düşünmek\n\nHareket **göreceli**dir: Otobüste oturan yolcu, otobüse göre **durgun**, yoldaki ağaca göre **hareketlidir**. Gözlemci kendini **durgun** kabul eder ve diğer cisimlerin hızını kendi hızını çıkararak görür.\n\n| Gözlemci → Cisim | Bağıl hız büyüklüğü | Gözlemcinin gördüğü |\n|---|---|---|\n| 60 km/h → aynı yönde 80 km/h | $80 - 60 = 20$ km/h | Öne doğru yavaşça uzaklaşıyor |\n| 60 km/h → aynı yönde 60 km/h | $0$ | Duruyor gibi |\n| 60 km/h → zıt yönde 40 km/h | $40 + 60 = 100$ km/h | Hızla yaklaşıp geçiyor |\n\n**Akıntılı ortam:** Akıntı hızı $\\vartheta_a$ olan nehirde, suya göre $\\vartheta_y$ hızlı yüzücünün yere göre hızı akıntı yönünde $\\vartheta_y + \\vartheta_a$, akıntıya karşı $\\vartheta_y - \\vartheta_a$'dır. Yürüyen merdivende yürüyen kişi de aynı şekilde düşünülür.",
      "ornekler": [
       {
        "soru": "Aralarında 300 km olan iki araç 70 km/h ve 80 km/h hızlarla birbirine doğru hareket ediyor. Kaç saat sonra karşılaşırlar?",
@@ -71,13 +71,13 @@ App.data.content["10/fizik"] = [
    },
    {
     "id": "k3",
-    "code": "1.3",
+    "code": "FİZ.10.1.2",
     "title": {
      "tr": "İvme: hızlanma ve yavaşlama",
      "en": "Acceleration: speeding up and slowing down"
     },
     "content": {
-     "anlatim": "# İvme\n\nHızdaki değişimin, bu değişimin gerçekleştiği zaman aralığına oranıdır:\n$$\\vec{a} = \\frac{\\Delta\\vec{\\vartheta}}{\\Delta t} = \\frac{\\vec{\\vartheta}_{son} - \\vec{\\vartheta}_{ilk}}{t_{son} - t_{ilk}}$$\n\n- Birimi $m/s^2$; **vektörel** bir niceliktir.\n- Yönü her zaman **hız değişimi** ve **net kuvvet** ile aynıdır.\n\n| Hız ve ivme | Hareket |\n|---|---|\n| **Aynı yönlü** | Düzgün **hızlanan** (hızın büyüklüğü artar) |\n| **Zıt yönlü** | Düzgün **yavaşlayan** (hızın büyüklüğü azalır) |\n| $a = 0$ | Sabit hızlı ya da duran |\n\n> Negatif ivme her zaman \"yavaşlama\" demek değildir; cisim negatif yönde gidiyorsa negatif ivme onu **hızlandırır**.",
+     "anlatim": "# İvme\n\nHızdaki değişimin, bu değişimin gerçekleştiği zaman aralığına oranıdır:\n$$\\vec{a} = \\frac{\\Delta\\vec{\\vartheta}}{\\Delta t} = \\frac{\\vec{\\vartheta}_{son} - \\vec{\\vartheta}_{ilk}}{t_{son} - t_{ilk}}$$\n\n- Birimi $m/s^2$; **vektörel** bir niceliktir.\n- Yönü her zaman **hız değişimi** ve **net kuvvet** ile aynıdır.\n\n| Hız ve ivme | Hareket |\n|---|---|\n| **Aynı yönlü** | Düzgün **hızlanan** (hızın büyüklüğü artar) |\n| **Zıt yönlü** | Düzgün **yavaşlayan** (hızın büyüklüğü azalır) |\n| $a = 0$ | Sabit hızlı ya da duran |\n\n> Negatif ivme her zaman \"yavaşlama\" demek değildir; cisim negatif yönde gidiyorsa negatif ivme onu **hızlandırır**.\n\n# İvmeyi Hız–Zaman Grafiğinden Okumak\n\nHız–zaman grafiğinde doğrunun **eğimi ivmeyi** verir: $a = \\dfrac{\\Delta \\vartheta}{\\Delta t}$. Eğim ne kadar dik ise hız o kadar hızlı değişir.\n- Eğim pozitif ve hız pozitif → **hızlanma**\n- Eğim negatif ve hız pozitif → **yavaşlama**\n- Grafik yatay → **ivme sıfır** (sabit hız)\n\n**Ortalama ivme**, toplam hız değişiminin toplam süreye oranıdır; araçların 0–100 km/h hızlanma süresi bu yüzden bir ivme ölçüsüdür. Örneğin 0'dan 100 km/h'e ($\\approx 27{,}8$ m/s) 10 s'de çıkan bir aracın ortalama ivmesi $\\approx 2{,}8\\ m/s^2$'dir.",
      "ornekler": [
       {
        "soru": "Durgun hâlden harekete geçen bir araç 5 s'de 20 m/s hıza ulaşıyor. İvmesi kaçtır?",
@@ -97,13 +97,13 @@ App.data.content["10/fizik"] = [
    },
    {
     "id": "k4",
-    "code": "1.4",
+    "code": "FİZ.10.1.3",
     "title": {
      "tr": "Bir boyutta sabit ivmeli hareket: denklemler ve grafikler",
      "en": "Uniformly accelerated motion: equations and graphs"
     },
     "content": {
-     "anlatim": "# Kinematik Denklemler\n\nİlk hızı $\\vartheta_0$, ivmesi $a$ olan cisim için (hızlanan $+$, yavaşlayan $-$):\n\n| Denklem | Kullanım |\n|---|---|\n| $\\vartheta = \\vartheta_0 \\pm a\\,t$ | Son hız |\n| $\\Delta x = \\vartheta_0\\,t \\pm \\tfrac{1}{2}a\\,t^2$ | Yer değiştirme |\n| $\\vartheta^2 = \\vartheta_0^2 \\pm 2a\\,\\Delta x$ | Zaman verilmediğinde |\n| $\\Delta x = \\dfrac{\\vartheta_0 + \\vartheta}{2}\\cdot t$ | Ortalama hızla |\n\n# Grafikler\n\n| Grafik | Şekli | Eğim | Alan |\n|---|---|---|---|\n| **İvme–zaman** | Yatay doğru | — | **Hız değişimi** $\\Delta\\vartheta = a\\,t$ |\n| **Hız–zaman** | Eğik doğru | **İvme** | **Yer değiştirme** |\n| **Konum–zaman** | **Parabol** | Teğetin eğimi = **anlık hız** | — |",
+     "anlatim": "# Kinematik Denklemler\n\nİlk hızı $\\vartheta_0$, ivmesi $a$ olan cisim için (hızlanan $+$, yavaşlayan $-$):\n\n| Denklem | Kullanım |\n|---|---|\n| $\\vartheta = \\vartheta_0 \\pm a\\,t$ | Son hız |\n| $\\Delta x = \\vartheta_0\\,t \\pm \\tfrac{1}{2}a\\,t^2$ | Yer değiştirme |\n| $\\vartheta^2 = \\vartheta_0^2 \\pm 2a\\,\\Delta x$ | Zaman verilmediğinde |\n| $\\Delta x = \\dfrac{\\vartheta_0 + \\vartheta}{2}\\cdot t$ | Ortalama hızla |\n\n# Grafikler\n\n| Grafik | Şekli | Eğim | Alan |\n|---|---|---|---|\n| **İvme–zaman** | Yatay doğru | — | **Hız değişimi** $\\Delta\\vartheta = a\\,t$ |\n| **Hız–zaman** | Eğik doğru | **İvme** | **Yer değiştirme** |\n| **Konum–zaman** | **Parabol** | Teğetin eğimi = **anlık hız** | — |\n\n# Grafikler Arası Dönüşüm\n\n| Elimizde | Bulmak için |\n|---|---|\n| Konum–zaman | Teğetin eğimi → **hız**; hızın değişimi → **ivme** |\n| Hız–zaman | Eğim → **ivme**; alan → **yer değiştirme** |\n| İvme–zaman | Alan → **hız değişimi**; ilk hız biliniyorsa hız–zaman grafiği çizilir |\n\n**Serbest düşme**, sabit ivmeli hareketin özel bir hâlidir: hava direnci yoksa tüm cisimler kütlesinden bağımsız olarak $g \\approx 10\\ m/s^2$ ivmeyle düşer ($\\vartheta = g\\,t$, $h = \\tfrac12 g t^2$).",
      "ornekler": [
       {
        "soru": "8 m/s hızla giden bir bisiklet $2\\ m/s^2$ ivmeyle 3 s hızlanıyor. Son hızı ve aldığı yol nedir?",
@@ -132,13 +132,13 @@ App.data.content["10/fizik"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "2.1",
+    "code": "FİZ.10.2.1",
     "title": {
      "tr": "İş ve kuvvet–yer değiştirme grafiği",
      "en": "Work and the force–displacement graph"
     },
     "content": {
-     "anlatim": "# İş\n\nFiziksel anlamda iş, kuvvet ile cismin **kuvvet doğrultusundaki** yer değiştirmesinin çarpımıdır:\n$$W = F \\cdot \\Delta x \\qquad (W = F\\,\\Delta x\\cos\\theta)$$\n\n- Birimi **joule** ($J = N\\cdot m$); **skaler**dir.\n- İş yapılması için: kuvvet uygulanmalı **ve** cisim kuvvet doğrultusunda yer değiştirmelidir.\n- **Kuvvete dik hareket iş yapmaz** (ör. çantayı taşıyarak yatay yürümek — yer çekimine karşı iş yok).\n- Kuvvet yer değiştirmeye zıtsa iş **negatif**tir (sürtünme).\n\n# Kuvvet–Yer Değiştirme ($F$–$x$) Grafiği\n\nGrafik ile yatay eksen arasındaki **alan = yapılan iş**.\n- Eksenin **üstündeki** alan: pozitif iş (cisim enerji kazanır).\n- **Altındaki** alan: negatif iş (enerji kaybı).",
+     "anlatim": "# İş\n\nFiziksel anlamda iş, kuvvet ile cismin **kuvvet doğrultusundaki** yer değiştirmesinin çarpımıdır:\n$$W = F \\cdot \\Delta x \\qquad (W = F\\,\\Delta x\\cos\\theta)$$\n\n- Birimi **joule** ($J = N\\cdot m$); **skaler**dir.\n- İş yapılması için: kuvvet uygulanmalı **ve** cisim kuvvet doğrultusunda yer değiştirmelidir.\n- **Kuvvete dik hareket iş yapmaz** (ör. çantayı taşıyarak yatay yürümek — yer çekimine karşı iş yok).\n- Kuvvet yer değiştirmeye zıtsa iş **negatif**tir (sürtünme).\n\n# Kuvvet–Yer Değiştirme ($F$–$x$) Grafiği\n\nGrafik ile yatay eksen arasındaki **alan = yapılan iş**.\n- Eksenin **üstündeki** alan: pozitif iş (cisim enerji kazanır).\n- **Altındaki** alan: negatif iş (enerji kaybı).\n\n# Değişken Kuvvette İş\n\nKuvvet sabit değilse (ör. yay kuvveti $F = k\\,x$) iş, $F$–$x$ grafiğinin altındaki **alandan** hesaplanır. Yay $x$ kadar uzatılırken yapılan iş üçgen alanıdır: $W = \\tfrac12 k x^2$ — bu iş yayda **esneklik potansiyel enerjisi** olarak depolanır.",
      "ornekler": [
       {
        "soru": "20 N'luk yatay kuvvetle bir kutu 5 m itiliyor. Yapılan iş kaç J'dir?",
@@ -158,13 +158,13 @@ App.data.content["10/fizik"] = [
    },
    {
     "id": "k2",
-    "code": "2.2",
+    "code": "FİZ.10.2.2",
     "title": {
      "tr": "İş, enerji ve güç ilişkisi",
      "en": "Work, energy and power"
     },
     "content": {
-     "anlatim": "# Enerji ve İş–Kinetik Enerji Teoremi\n\n**Enerji**, iş yapabilme yeteneğidir; iş ile aynı birime (J) sahiptir.\n\nNet kuvvetin yaptığı iş, kinetik enerjideki değişime eşittir:\n$$W_{net} = \\Delta E_k = E_{k,son} - E_{k,ilk}$$\n\n# Güç\n\nBirim zamanda yapılan iş (ya da harcanan enerji):\n$$P = \\frac{W}{t} = \\frac{E}{t} \\qquad \\text{birim: watt } (W = J/s)$$\n\n# Elektrik Faturası\n\n$$W = P \\cdot t$$\nFaturalarda birim **kilowattsaat** (kWh): $1\\ kWh = 1000\\ W \\times 3600\\ s = 3{,}6\\times10^6\\ J$.",
+     "anlatim": "# Enerji ve İş–Kinetik Enerji Teoremi\n\n**Enerji**, iş yapabilme yeteneğidir; iş ile aynı birime (J) sahiptir.\n\nNet kuvvetin yaptığı iş, kinetik enerjideki değişime eşittir:\n$$W_{net} = \\Delta E_k = E_{k,son} - E_{k,ilk}$$\n\n# Güç\n\nBirim zamanda yapılan iş (ya da harcanan enerji):\n$$P = \\frac{W}{t} = \\frac{E}{t} \\qquad \\text{birim: watt } (W = J/s)$$\n\n# Elektrik Faturası\n\n$$W = P \\cdot t$$\nFaturalarda birim **kilowattsaat** (kWh): $1\\ kWh = 1000\\ W \\times 3600\\ s = 3{,}6\\times10^6\\ J$.\n\n# Güç ve Verim\n\nAynı işi **daha kısa sürede** yapan makine daha **güçlüdür**. Asansör, vinç ve otomobil motorları bu yüzden güçleriyle karşılaştırılır (1 beygir gücü ≈ 746 W).\n\nBir makineye verilen enerjinin tamamı yararlı işe dönüşmez; bir kısmı ısı ve sesle kaybolur. **Verim**:\n$$\\eta = \\frac{\\text{yararlı iş (enerji)}}{\\text{harcanan enerji}}\\times 100$$\nSabit hızla hareket eden bir cisim için güç $P = F\\cdot\\vartheta$ biçiminde de yazılabilir.",
      "ornekler": [
       {
        "soru": "2000 W'lık bir ısıtıcı günde 3 saat çalışıyor. 30 günde kaç kWh enerji harcar?",
@@ -184,7 +184,7 @@ App.data.content["10/fizik"] = [
    },
    {
     "id": "k3",
-    "code": "2.3",
+    "code": "FİZ.10.2.3",
     "title": {
      "tr": "Enerji biçimleri ve dönüşümleri",
      "en": "Forms of energy and conversions"
@@ -210,13 +210,13 @@ App.data.content["10/fizik"] = [
    },
    {
     "id": "k4",
-    "code": "2.4",
+    "code": "FİZ.10.2.4",
     "title": {
      "tr": "Mekanik enerji ve korunumu",
      "en": "Mechanical energy and its conservation"
     },
     "content": {
-     "anlatim": "# Mekanik Enerji\n\n$$E_m = E_k + E_p$$\n\n| Enerji | Formül |\n|---|---|\n| **Öteleme kinetik enerjisi** | $E_k = \\frac{1}{2}m\\vartheta^2$ |\n| **Yer çekimi potansiyel enerjisi** | $E_p = m\\,g\\,h$ (referans noktasına göre) |\n| **Esneklik potansiyel enerjisi** | $E_{yay} = \\frac{1}{2}k\\,x^2$ ($k$: yay sabiti, $x$: sıkışma/uzama) |\n\n# Mekanik Enerjinin Korunumu\n\n- **Sürtünmesiz** ortamda: $E_{m,ilk} = E_{m,son}$.\n- **Sürtünmeli** ortamda bir kısmı ısıya dönüşür: $E_{m,ilk} = E_{m,son} + E_{ısı}$.\n\n> Serbest düşen cisimde potansiyel enerji azalırken kinetik enerji artar; toplam sabit kalır.",
+     "anlatim": "# Mekanik Enerji\n\n$$E_m = E_k + E_p$$\n\n| Enerji | Formül |\n|---|---|\n| **Öteleme kinetik enerjisi** | $E_k = \\frac{1}{2}m\\vartheta^2$ |\n| **Yer çekimi potansiyel enerjisi** | $E_p = m\\,g\\,h$ (referans noktasına göre) |\n| **Esneklik potansiyel enerjisi** | $E_{yay} = \\frac{1}{2}k\\,x^2$ ($k$: yay sabiti, $x$: sıkışma/uzama) |\n\n# Mekanik Enerjinin Korunumu\n\n- **Sürtünmesiz** ortamda: $E_{m,ilk} = E_{m,son}$.\n- **Sürtünmeli** ortamda bir kısmı ısıya dönüşür: $E_{m,ilk} = E_{m,son} + E_{ısı}$.\n\n> Serbest düşen cisimde potansiyel enerji azalırken kinetik enerji artar; toplam sabit kalır.\n\n# Korunumla Problem Çözme Adımları\n\n1. **Referans düzeyi** seç (genellikle en alçak nokta, $h=0$).\n2. İlk ve son durumun $E_k$ ve $E_p$ değerlerini yaz.\n3. Sürtünme yoksa $E_{k1} + E_{p1} = E_{k2} + E_{p2}$; varsa ısıya dönüşen enerjiyi son duruma ekle.\n\n**Not:** Sürtünmesiz eğik düzlemde ya da sarkaçta cismin belli bir yükseklikteki hızı **yolun şekline bağlı değildir**, yalnızca yükseklik farkına bağlıdır: $\\vartheta = \\sqrt{2 g h}$.",
      "ornekler": [
       {
        "soru": "2 kg'lık cisim 20 m yükseklikten serbest bırakılıyor ($g=10$). Yere çarpma hızı kaçtır?",
@@ -236,17 +236,21 @@ App.data.content["10/fizik"] = [
    },
    {
     "id": "k5",
-    "code": "2.5",
+    "code": "FİZ.10.2.5",
     "title": {
      "tr": "Enerji kaynakları ve verimlilik",
      "en": "Energy sources and efficiency"
     },
     "content": {
-     "anlatim": "# Enerji Kaynakları\n\n| Yenilenebilir | Yenilenemez |\n|---|---|\n| Güneş, rüzgâr, jeotermal, hidrolik, biyokütle, dalga, hidrojen | Fosil yakıtlar (kömür, petrol, doğal gaz), nükleer (uranyum) |\n| Kısa sürede kendini yeniler, çevre dostu | Tükenince yerine konması milyonlarca yıl sürer |\n\n# Çevresel ve Ekonomik Etkiler\n\n- Fosil yakıtlar **sera gazı** ($CO_2$) salarak **küresel ısınma** ve iklim değişikliğine yol açar.\n- Nükleer enerji az yakıtla çok enerji üretir ama **radyoaktif atık** riski taşır.\n\n# Enerji Verimliliği\n\n- **A sınıfı** cihazlar ve **LED** lambalar kullanmak\n- Fişte takılı bırakılan **\"vampir\" cihazları** kapatmak\n- Isı yalıtımı yapmak",
+     "anlatim": "# Enerji Kaynakları\n\n| Yenilenebilir | Yenilenemez |\n|---|---|\n| Güneş, rüzgâr, jeotermal, hidrolik, biyokütle, dalga, hidrojen | Fosil yakıtlar (kömür, petrol, doğal gaz), nükleer (uranyum) |\n| Kısa sürede kendini yeniler, çevre dostu | Tükenince yerine konması milyonlarca yıl sürer |\n\n# Çevresel ve Ekonomik Etkiler\n\n- Fosil yakıtlar **sera gazı** ($CO_2$) salarak **küresel ısınma** ve iklim değişikliğine yol açar.\n- Nükleer enerji az yakıtla çok enerji üretir ama **radyoaktif atık** riski taşır.\n\n# Enerji Verimliliği\n\n- **A sınıfı** cihazlar ve **LED** lambalar kullanmak\n- Fişte takılı bırakılan **\"vampir\" cihazları** kapatmak\n- Isı yalıtımı yapmak\n\n# Türkiye'de Enerji Kaynakları\n\n- **Hidroelektrik:** Fırat ve Dicle üzerindeki barajlar (Atatürk, Ilısu).\n- **Jeotermal:** Batı Anadolu (Denizli, Aydın) — Türkiye Avrupa'da ilk sıralardadır.\n- **Rüzgâr:** Ege ve Marmara kıyıları; **güneş:** Konya–Karapınar güneş enerjisi santrali.\n- **Nükleer:** Mersin–Akkuyu nükleer santrali.\n\nBir kaynağı değerlendirirken **maliyet, süreklilik, çevresel etki, depolanabilirlik ve dışa bağımlılık** birlikte düşünülür.",
      "ornekler": [
       {
        "soru": "Rüzgâr enerjisinin bir avantajını ve bir dezavantajını yazın.",
        "cozum": "Avantaj: yenilenebilir, sera gazı salmaz. Dezavantaj: rüzgâra bağlı, sürekli değil; görüntü/gürültü etkisi."
+      },
+      {
+       "soru": "Bir ailenin evinde kullandığı 100 W'lık 10 akkor lamba yerine 12 W'lık LED lambalar takılıyor. Lambalar günde 5 saat yanıyorsa ayda (30 gün) kaç kWh tasarruf edilir?",
+       "cozum": "Güç farkı: $10\\cdot(100-12) = 880$ W $= 0{,}88$ kW. Aylık süre: $5\\cdot30 = 150$ h. Tasarruf: $0{,}88\\cdot150 = 132$ kWh. Aynı aydınlatma için **yaklaşık %88** daha az enerji harcanır."
       }
      ],
      "ozet": [
@@ -267,17 +271,21 @@ App.data.content["10/fizik"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "3.1",
+    "code": "FİZ.10.3.1",
     "title": {
      "tr": "Basit elektrik devreleri ve direnç",
      "en": "Simple circuits and resistance"
     },
     "content": {
-     "anlatim": "# Basit Elektrik Devresi\n\n| Eleman | Görevi |\n|---|---|\n| **Üreteç** (pil, akü) | Potansiyel farkı (gerilim) oluşturur, birimi **volt** (V) |\n| **İletken tel** | Akımı iletir |\n| **Anahtar** | Devreyi açar/kapatır; kapalıyken akım geçer |\n| **Direnç / alıcı** | Elektrik enerjisini başka biçime dönüştürür |\n\n# Direnç\n\nİletkenin akıma gösterdiği zorluktur; birimi **ohm** ($\\Omega$):\n$$R = \\rho\\,\\frac{\\ell}{A}$$\n$\\rho$: öz direnç (maddenin cinsi), $\\ell$: boy, $A$: kesit alanı. Uzun ve ince tel → büyük direnç.\n\n### Su tesisatı benzetmesi\n\nPompa = üreteç · boru = iletken · vana = anahtar · daralma/kireçlenme = direnç · su akışı = akım.",
+     "anlatim": "# Basit Elektrik Devresi\n\n| Eleman | Görevi |\n|---|---|\n| **Üreteç** (pil, akü) | Potansiyel farkı (gerilim) oluşturur, birimi **volt** (V) |\n| **İletken tel** | Akımı iletir |\n| **Anahtar** | Devreyi açar/kapatır; kapalıyken akım geçer |\n| **Direnç / alıcı** | Elektrik enerjisini başka biçime dönüştürür |\n\n# Direnç\n\nİletkenin akıma gösterdiği zorluktur; birimi **ohm** ($\\Omega$):\n$$R = \\rho\\,\\frac{\\ell}{A}$$\n$\\rho$: öz direnç (maddenin cinsi), $\\ell$: boy, $A$: kesit alanı. Uzun ve ince tel → büyük direnç.\n\n### Su tesisatı benzetmesi\n\nPompa = üreteç · boru = iletken · vana = anahtar · daralma/kireçlenme = direnç · su akışı = akım.\n\n# Su Tesisatı Benzetmesiyle Üç Kavram\n\n| Elektrik | Su tesisatı |\n|---|---|\n| Potansiyel fark (V) | İki nokta arasındaki **basınç farkı** (su yüksekliği farkı) |\n| Akım (I) | Birim zamanda geçen **su miktarı** |\n| Direnç (R) | Borunun **daralması**, uzunluğu, iç pürüzü |\n\nBenzetmenin sınırı: Suyun aksine elektrik yükleri **tel bitince dökülmez**; devre **kapalı** olmadıkça akım hiç oluşmaz. **Açık devrede** akım sıfırdır, **kısa devrede** direnç çok küçük olduğu için akım tehlikeli derecede büyür.",
      "ornekler": [
       {
        "soru": "Aynı maddeden yapılmış iki telden birinin boyu 2 katı, kesiti yarısıdır. Dirençleri oranı nedir?",
        "cozum": "$R \\propto \\frac{\\ell}{A}$ → ikinci telin direnci $\\frac{2}{1/2} = 4$ katıdır."
+      },
+      {
+       "soru": "Bir devrede anahtar açıkken lamba yanmıyor. Lambanın uçları kalın bir telle birleştirilirse ne olur? Su tesisatı benzetmesiyle açıklayınız.",
+       "cozum": "Anahtar açıkken devre **açık devredir**, akım yoktur (vana kapalı). Lamba uçları kalın telle birleştirilirse akım direnci çok küçük telden geçer; lamba **söner** ve devre **kısa devre** olur. Su benzetmesinde bu, dar boruyla yan yana **çok geniş bir boru** açmak gibidir: su (akım) direnci en az olan yolu seçer."
       }
      ],
      "ozet": [
@@ -289,17 +297,21 @@ App.data.content["10/fizik"] = [
    },
    {
     "id": "k2",
-    "code": "3.2",
+    "code": "FİZ.10.3.2",
     "title": {
      "tr": "Elektrik akımı",
      "en": "Electric current"
     },
     "content": {
-     "anlatim": "# Elektrik Akımı\n\nİletkenin kesitinden **birim zamanda geçen net yük** miktarıdır:\n$$I = \\frac{q}{t} \\qquad \\text{birim: amper (A)}$$\n\n- Elektronlar **(−) kutuptan (+) kutba** hareket eder.\n- **Geleneksel akım yönü**: (+) kutuptan (−) kutba.\n\n# Farklı Ortamlarda Akım\n\n| Ortam | Yük taşıyıcılar |\n|---|---|\n| **Katılar (metaller)** | Serbest elektronlar |\n| **Sıvılar (elektrolitler)** | Pozitif ve negatif iyonlar (zıt kutuplara göç eder; ör. tuzlu su) |\n| **Gazlar** | Düşük basınç ve yüksek gerilimde iyonlaşan gaz (neon lamba) |",
+     "anlatim": "# Elektrik Akımı\n\nİletkenin kesitinden **birim zamanda geçen net yük** miktarıdır:\n$$I = \\frac{q}{t} \\qquad \\text{birim: amper (A)}$$\n\n- Elektronlar **(−) kutuptan (+) kutba** hareket eder.\n- **Geleneksel akım yönü**: (+) kutuptan (−) kutba.\n\n# Farklı Ortamlarda Akım\n\n| Ortam | Yük taşıyıcılar |\n|---|---|\n| **Katılar (metaller)** | Serbest elektronlar |\n| **Sıvılar (elektrolitler)** | Pozitif ve negatif iyonlar (zıt kutuplara göç eder; ör. tuzlu su) |\n| **Gazlar** | Düşük basınç ve yüksek gerilimde iyonlaşan gaz (neon lamba) |\n\n# Akım Neye Bağlıdır?\n\nBir iletkende akım, **birim hacimdeki serbest yük sayısı**, **yük taşıyıcının yükü**, **taşıyıcıların sürüklenme hızı** ve **kesit alanı** ile artar. Elektronların sürüklenme hızı çok küçüktür (mm/s düzeyinde); ancak anahtar kapatıldığında elektrik alanı devreye ışık hızına yakın bir hızla yayıldığı için lamba **hemen** yanar.\n\nBir elektronun yükü $e = 1{,}6\\times10^{-19}$ C'dir; 1 C yük yaklaşık $6{,}25\\times10^{18}$ elektrona karşılık gelir. Bu nedenle $q = n\\cdot e$ bağıntısıyla geçen elektron sayısı bulunabilir.",
      "ornekler": [
       {
        "soru": "Bir telden 4 saniyede 12 C yük geçiyor. Akım şiddeti kaç amperdir?",
        "cozum": "$I = \\frac{12}{4} = 3$ A."
+      },
+      {
+       "soru": "Bir telden 0,5 A akım 2 dakika boyunca geçiyor. Telin kesitinden kaç elektron geçmiştir? ($e = 1{,}6\\times10^{-19}$ C)",
+       "cozum": "$q = I\\cdot t = 0{,}5\\cdot120 = 60$ C. Elektron sayısı $n = \\dfrac{q}{e} = \\dfrac{60}{1{,}6\\times10^{-19}} = 3{,}75\\times10^{20}$."
       }
      ],
      "ozet": [
@@ -311,13 +323,13 @@ App.data.content["10/fizik"] = [
    },
    {
     "id": "k3",
-    "code": "3.3",
+    "code": "FİZ.10.3.3",
     "title": {
      "tr": "Ohm yasası ve ölçü aletleri",
      "en": "Ohm's law and measuring instruments"
     },
     "content": {
-     "anlatim": "# Ohm Yasası\n\nSabit sıcaklıkta iletkenin uçları arasındaki potansiyel farkın akıma oranı **sabittir**:\n$$R = \\frac{V}{I} \\qquad V = I\\cdot R$$\n\n- $V$–$I$ grafiği orijinden geçen doğrudur; **eğimi = direnç**.\n- **Reosta:** sürgüsü kaydırılarak direnci değiştirilen ve akımı ayarlayan eleman.\n\n# Ölçü Aletleri\n\n| Alet | Ölçtüğü | İç direnci | Bağlanma |\n|---|---|---|---|\n| **Ampermetre** | Akım | Sıfıra yakın | **Seri** (paralel bağlanırsa kısa devre) |\n| **Voltmetre** | Potansiyel fark | Çok büyük | **Paralel** (seri bağlanırsa akımı engeller) |",
+     "anlatim": "# Ohm Yasası\n\nSabit sıcaklıkta iletkenin uçları arasındaki potansiyel farkın akıma oranı **sabittir**:\n$$R = \\frac{V}{I} \\qquad V = I\\cdot R$$\n\n- $V$–$I$ grafiği orijinden geçen doğrudur; **eğimi = direnç**.\n- **Reosta:** sürgüsü kaydırılarak direnci değiştirilen ve akımı ayarlayan eleman.\n\n# Ölçü Aletleri\n\n| Alet | Ölçtüğü | İç direnci | Bağlanma |\n|---|---|---|---|\n| **Ampermetre** | Akım | Sıfıra yakın | **Seri** (paralel bağlanırsa kısa devre) |\n| **Voltmetre** | Potansiyel fark | Çok büyük | **Paralel** (seri bağlanırsa akımı engeller) |\n\n# Ohm Yasasını Deneyle Keşfetmek\n\n1. Bir direnç, reosta, ampermetre (seri) ve voltmetre (direnç uçlarına paralel) ile devre kur.\n2. Reostayla gerilimi adım adım değiştir; her adımda $V$ ve $I$ değerlerini tabloya yaz.\n3. $V$–$I$ grafiğini çiz: noktalar orijinden geçen bir doğru üzerindeyse direnç **sabittir** (**ohmik** iletken).\n4. Doğrunun eğimini hesapla → $R$.\n\n**Ohmik olmayan** elemanlarda (ör. ısındıkça direnci artan **akkor flamanlı lamba**, diyot) grafik doğrusal değildir.",
      "ornekler": [
       {
        "soru": "12 V'luk üretece bağlı 4 Ω'luk dirençten geçen akım kaçtır?",
@@ -337,7 +349,7 @@ App.data.content["10/fizik"] = [
    },
    {
     "id": "k4",
-    "code": "3.4",
+    "code": "FİZ.10.3.4",
     "title": {
      "tr": "Dirençlerin bağlanması",
      "en": "Connecting resistors"
@@ -363,17 +375,21 @@ App.data.content["10/fizik"] = [
    },
    {
     "id": "k5",
-    "code": "3.5",
+    "code": "FİZ.10.3.5",
     "title": {
      "tr": "Üreteçlerin bağlanması",
      "en": "Connecting cells"
     },
     "content": {
-     "anlatim": "# Üreteçlerin Bağlanması\n\n| Bağlama | Nasıl? | Toplam gerilim | Sonuç |\n|---|---|---|---|\n| **Düz seri** | Zıt kutuplar uç uca (+ → −) | $V_1 + V_2$ | Yüksek gerilim; akım artar, piller çabuk biter |\n| **Ters seri** | Aynı kutuplar birbirine | $V_1 - V_2$ | Gerilimler birbirini azaltır |\n| **Paralel** (özdeş piller) | Aynı kutuplar kendi aralarında | $V$ (tek pil kadar) | Pillerin ömrü uzar |\n\n> **Seri** bağlama yüksek gerilim, **paralel** bağlama uzun ömür sağlar.",
+     "anlatim": "# Üreteçlerin Bağlanması\n\n| Bağlama | Nasıl? | Toplam gerilim | Sonuç |\n|---|---|---|---|\n| **Düz seri** | Zıt kutuplar uç uca (+ → −) | $V_1 + V_2$ | Yüksek gerilim; akım artar, piller çabuk biter |\n| **Ters seri** | Aynı kutuplar birbirine | $V_1 - V_2$ | Gerilimler birbirini azaltır |\n| **Paralel** (özdeş piller) | Aynı kutuplar kendi aralarında | $V$ (tek pil kadar) | Pillerin ömrü uzar |\n\n> **Seri** bağlama yüksek gerilim, **paralel** bağlama uzun ömür sağlar.\n\n# Tükenme Süresi ve Ana Kol Akımı\n\nBir pilin depoladığı yük (ör. 2000 mAh) sabit olduğu için **çekilen akım arttıkça pil daha çabuk biter**: $t = \\dfrac{q}{I}$.\n- $n$ özdeş pil **seri** bağlanırsa gerilim $n$ katına çıkar; aynı dirençten geçen akım da $n$ katına çıkar, her pilden aynı akım geçer → pillerin ömrü **kısalır** (tek pile göre $\\frac1n$).\n- $n$ özdeş pil **paralel** bağlanırsa gerilim tek pil kadardır; ana kol akımı pillere **paylaştırılır** → her pil $\\frac{I}{n}$ akım verir ve ömür **$n$ katına** çıkar.",
      "ornekler": [
       {
        "soru": "1,5 V'luk 4 pil düz seri bağlanıyor. Toplam gerilim kaçtır? Paralel bağlansaydı?",
        "cozum": "Düz seri: $4\\cdot1{,}5 = 6$ V. Paralel: $1{,}5$ V (ama piller daha uzun süre dayanır)."
+      },
+      {
+       "soru": "2000 mAh kapasiteli özdeş iki pil, 100 mA akım çeken bir oyuncakta önce seri, sonra paralel bağlanıyor. Oyuncağın direnci sabit kabul edilirse hangi bağlamada piller daha uzun süre dayanır?",
+       "cozum": "Seri bağlamada gerilim iki katına çıkar, akım $200$ mA olur ve her pilden bu akım geçer: $t = \\frac{2000}{200} = 10$ h. Paralel bağlamada gerilim tek pil kadardır, akım $100$ mA ve her pil $50$ mA verir: $t = \\frac{2000}{50} = 40$ h. **Paralel** bağlama 4 kat uzun dayanır (ama oyuncak daha az güçle çalışır)."
       }
      ],
      "ozet": [
@@ -385,7 +401,7 @@ App.data.content["10/fizik"] = [
    },
    {
     "id": "k6",
-    "code": "3.6",
+    "code": "FİZ.10.3.6–7",
     "title": {
      "tr": "Akımın tehlikeleri ve topraklama",
      "en": "Dangers of current and earthing"
@@ -396,6 +412,10 @@ App.data.content["10/fizik"] = [
       {
        "soru": "220 V'a ıslak elle (500 Ω) ve kuru elle (100 000 Ω) dokunulduğunda geçen akımları karşılaştırın.",
        "cozum": "Islak: $\\frac{220}{500} = 0{,}44$ A (öldürücü olabilir). Kuru: $\\frac{220}{100000} = 0{,}0022$ A. Islak elde akım 200 kat büyük."
+      },
+      {
+       "soru": "Bir çamaşır makinesinin gövdesi topraklanmamış ve içindeki bir kablo gövdeye temas etmiştir. Makineye dokunan kişi neden çarpılır? Topraklama bu durumu nasıl önler?",
+       "cozum": "Gövde gerilim altında kalır; kişi dokunduğunda akım **vücudu üzerinden toprağa** akar. Topraklama hattı varsa yükler **direnci çok küçük** olan topraklama telinden toprağa akar; ayrıca kaçak akım rölesi (RCD) bu kaçağı algılayıp devreyi **milisaniyeler içinde keser**."
       }
      ],
      "ozet": [
@@ -416,13 +436,13 @@ App.data.content["10/fizik"] = [
   "outcomes": [
    {
     "id": "k1",
-    "code": "4.1",
+    "code": "FİZ.10.4.1",
     "title": {
      "tr": "Periyodik hareketler: sarkaçlar, periyot ve frekans",
      "en": "Periodic motion: pendulums, period and frequency"
     },
     "content": {
-     "anlatim": "# Periyodik Hareket\n\nEşit zaman aralıklarında kendini tekrarlayan harekettir.\n\n| Sarkaç | Periyodu neye bağlı? |\n|---|---|\n| **Basit sarkaç** (ipe bağlı kütle) | İpin **uzunluğu** ve **yer çekimi ivmesi** — kütleye bağlı **değil** |\n| **Yay sarkacı** | **Kütle** ve **yay sabiti** |\n\n# Periyot ve Frekans\n\n- **Periyot** $T$: bir tam salınım için geçen süre (s).\n- **Frekans** $f$: bir saniyedeki salınım sayısı (Hz).\n$$T\\cdot f = 1$$",
+     "anlatim": "# Periyodik Hareket\n\nEşit zaman aralıklarında kendini tekrarlayan harekettir.\n\n| Sarkaç | Periyodu neye bağlı? |\n|---|---|\n| **Basit sarkaç** (ipe bağlı kütle) | İpin **uzunluğu** ve **yer çekimi ivmesi** — kütleye bağlı **değil** |\n| **Yay sarkacı** | **Kütle** ve **yay sabiti** |\n\n# Periyot ve Frekans\n\n- **Periyot** $T$: bir tam salınım için geçen süre (s).\n- **Frekans** $f$: bir saniyedeki salınım sayısı (Hz).\n$$T\\cdot f = 1$$\n\n# Periyodik Hareket Örnekleri ve Formüller\n\nDünya'nın kendi ekseni etrafında dönmesi (1 gün), saat sarkacı, kalp atışı, salıncak, dikiş makinesi iğnesi periyodik hareketlere örnektir.\n\nKüçük açılarda **basit sarkacın** periyodu:\n$$T = 2\\pi\\sqrt{\\frac{\\ell}{g}}$$\n**Yay sarkacının** periyodu:\n$$T = 2\\pi\\sqrt{\\frac{m}{k}}$$\nSarkaçlı saatler yazın ip (metal çubuk) **uzadığı** için periyot artar ve saat **geri kalır**. Ay'da $g$ küçük olduğundan aynı sarkaç **daha yavaş** salınır.",
      "ornekler": [
       {
        "soru": "Bir sarkaç 10 saniyede 40 tam salınım yapıyor. Periyodu ve frekansı nedir?",
@@ -442,13 +462,13 @@ App.data.content["10/fizik"] = [
    },
    {
     "id": "k2",
-    "code": "4.2",
+    "code": "FİZ.10.4.2",
     "title": {
      "tr": "Dalgaların temel kavramları",
      "en": "Basic wave concepts"
     },
     "content": {
-     "anlatim": "# Dalga\n\nEsnek bir ortamda oluşan titreşimin **enerjiyi** bir noktadan diğerine taşımasıdır (madde taşınmaz).\n\n| Kavram | Tanım |\n|---|---|\n| **Tepe / çukur** | Denge konumunun üstündeki en yüksek / altındaki en alçak nokta |\n| **Dalga boyu** $\\lambda$ | Ardışık iki tepe (ya da çukur) arası uzaklık (m) |\n| **Genlik** $A$ | Denge konumundan en büyük uzaklık; **enerjinin** ölçüsü |\n| **Dalga sürati** $\\vartheta$ | Birim zamanda alınan yol |\n\n$$\\vartheta = \\lambda\\cdot f$$\n\n> **Frekans yalnızca kaynağa**, **sürat yalnızca ortama** bağlıdır. Dalga ortam değiştirince frekans aynı kalır; sürat ve dalga boyu değişir.",
+     "anlatim": "# Dalga\n\nEsnek bir ortamda oluşan titreşimin **enerjiyi** bir noktadan diğerine taşımasıdır (madde taşınmaz).\n\n| Kavram | Tanım |\n|---|---|\n| **Tepe / çukur** | Denge konumunun üstündeki en yüksek / altındaki en alçak nokta |\n| **Dalga boyu** $\\lambda$ | Ardışık iki tepe (ya da çukur) arası uzaklık (m) |\n| **Genlik** $A$ | Denge konumundan en büyük uzaklık; **enerjinin** ölçüsü |\n| **Dalga sürati** $\\vartheta$ | Birim zamanda alınan yol |\n\n$$\\vartheta = \\lambda\\cdot f$$\n\n> **Frekans yalnızca kaynağa**, **sürat yalnızca ortama** bağlıdır. Dalga ortam değiştirince frekans aynı kalır; sürat ve dalga boyu değişir.\n\n# Atma ve Periyodik Dalga\n\n- **Atma:** Kaynağın tek bir titreşimiyle oluşan dalga parçası.\n- **Periyodik dalga:** Kaynak düzenli titreşmeye devam ettiğinde art arda oluşan atmalar.\n\nBir dalga **bir periyotta bir dalga boyu** ilerler: $\\vartheta = \\dfrac{\\lambda}{T} = \\lambda f$. Dalga boyu ve frekans **ters orantılıdır** (aynı ortamda sürat sabit kaldığı için).",
      "ornekler": [
       {
        "soru": "Frekansı 5 Hz, dalga boyu 2 m olan dalganın sürati kaçtır?",
@@ -468,17 +488,21 @@ App.data.content["10/fizik"] = [
    },
    {
     "id": "k3",
-    "code": "4.3",
+    "code": "FİZ.10.4.3",
     "title": {
      "tr": "Dalgaların sınıflandırılması",
      "en": "Classification of waves"
     },
     "content": {
-     "anlatim": "# Taşıdığı Enerjiye Göre\n\n| Mekanik dalgalar | Elektromanyetik dalgalar |\n|---|---|\n| Yayılmak için **maddesel ortam** gerekir | Yüklü parçacıkların ivmeli hareketiyle oluşur |\n| **Boşlukta yayılamaz** | Boşlukta da yayılır |\n| Ses, yay, su, deprem dalgaları | Radyo, mikrodalga, kızılötesi, görünür ışık, morötesi, X, gama |\n\n# Titreşim Doğrultusuna Göre\n\n| Enine | Boyuna |\n|---|---|\n| Titreşim, yayılma doğrultusuna **dik** | Titreşim, yayılma doğrultusuna **paralel** |\n| Işık (tüm EM dalgalar), çırpılan ip | Ses, sıkıştırılıp bırakılan yay |\n\n> Su ve deprem dalgaları hem enine hem boyuna özellik gösterebilir.",
+     "anlatim": "# Taşıdığı Enerjiye Göre\n\n| Mekanik dalgalar | Elektromanyetik dalgalar |\n|---|---|\n| Yayılmak için **maddesel ortam** gerekir | Yüklü parçacıkların ivmeli hareketiyle oluşur |\n| **Boşlukta yayılamaz** | Boşlukta da yayılır |\n| Ses, yay, su, deprem dalgaları | Radyo, mikrodalga, kızılötesi, görünür ışık, morötesi, X, gama |\n\n# Titreşim Doğrultusuna Göre\n\n| Enine | Boyuna |\n|---|---|\n| Titreşim, yayılma doğrultusuna **dik** | Titreşim, yayılma doğrultusuna **paralel** |\n| Işık (tüm EM dalgalar), çırpılan ip | Ses, sıkıştırılıp bırakılan yay |\n\n> Su ve deprem dalgaları hem enine hem boyuna özellik gösterebilir.\n\n# Elektromanyetik Spektrum\n\nElektromanyetik dalgalar artan frekans (azalan dalga boyu) sırasıyla: **radyo → mikrodalga → kızılötesi → görünür ışık → morötesi → X ışınları → gama**. Frekans arttıkça taşınan enerji artar; morötesi, X ve gama ışınları canlı dokulara **zarar verebilir**.\n\n| Dalga | Kullanım |\n|---|---|\n| Radyo | Radyo–TV yayını |\n| Mikrodalga | Fırın, mobil iletişim, radar |\n| Kızılötesi | Uzaktan kumanda, termal kamera |\n| X ışını | Tıbbi görüntüleme, havalimanı güvenliği |",
      "ornekler": [
       {
        "soru": "Ses uzay boşluğunda neden duyulmaz?",
        "cozum": "Ses **mekanik** bir dalgadır; yayılmak için madde gerekir, boşlukta yayılamaz."
+      },
+      {
+       "soru": "Aşağıdaki dalgaları mekanik/elektromanyetik ve enine/boyuna olarak sınıflandırınız: ipte oluşturulan dalga, ses, radyo dalgası, yayda sıkıştırma dalgası.",
+       "cozum": "İpteki dalga: **mekanik, enine**. Ses: **mekanik, boyuna**. Radyo dalgası: **elektromanyetik, enine**. Yaydaki sıkıştırma dalgası: **mekanik, boyuna**."
       }
      ],
      "ozet": [
@@ -490,17 +514,21 @@ App.data.content["10/fizik"] = [
    },
    {
     "id": "k4",
-    "code": "4.4",
+    "code": "FİZ.10.4.4",
     "title": {
      "tr": "Dalgaların yayılma süratini etkileyen etmenler",
      "en": "Factors affecting wave speed"
     },
     "content": {
-     "anlatim": "# Yayılma Sürati\n\nDalganın sürati **ortamın** özelliklerine (esneklik, yoğunluk, sıcaklık) bağlıdır.\n\n| Dalga | Sürat |\n|---|---|\n| **Ses** | $\\vartheta_{katı} > \\vartheta_{sıvı} > \\vartheta_{gaz}$; sıcaklık artınca artar (havada ≈ 340 m/s) |\n| **Su dalgası** | Derinlik arttıkça sürat ve dalga boyu artar ($\\vartheta_{derin} > \\vartheta_{sığ}$) |\n| **Elektromanyetik** | Boşlukta en büyük: $c \\approx 3\\cdot10^8$ m/s; yoğun ortamda azalır |",
+     "anlatim": "# Yayılma Sürati\n\nDalganın sürati **ortamın** özelliklerine (esneklik, yoğunluk, sıcaklık) bağlıdır.\n\n| Dalga | Sürat |\n|---|---|\n| **Ses** | $\\vartheta_{katı} > \\vartheta_{sıvı} > \\vartheta_{gaz}$; sıcaklık artınca artar (havada ≈ 340 m/s) |\n| **Su dalgası** | Derinlik arttıkça sürat ve dalga boyu artar ($\\vartheta_{derin} > \\vartheta_{sığ}$) |\n| **Elektromanyetik** | Boşlukta en büyük: $c \\approx 3\\cdot10^8$ m/s; yoğun ortamda azalır |\n\n# Neden Ortama Bağlı?\n\nMekanik dalgada enerji, ortamın tanecikleri birbirini **itip çekerek** aktarılır. Tanecikler arası bağ **güçlü** (esnek) ise titreşim hızlı aktarılır; bu yüzden ses çelik rayda havadakinden yaklaşık **15 kat** hızlı yayılır. Gerilmiş bir ipte dalga sürati ipin **gerginlik kuvvetiyle artar**, birim uzunluğun kütlesiyle azalır:\n$$\\vartheta = \\sqrt{\\frac{F}{\\mu}}$$\nIşık ise boşlukta en hızlıdır; su ve camda yavaşlar. Bu yavaşlama ışığın **kırılmasının** nedenidir.",
      "ornekler": [
       {
        "soru": "Şimşeği gördükten 3 s sonra gök gürültüsü duyuluyor. Şimşek yaklaşık kaç m uzakta çakmıştır? (ses 340 m/s)",
        "cozum": "Işık neredeyse anında gelir; $340\\cdot3 = 1020$ m."
+      },
+      {
+       "soru": "Gerginliği 4 katına çıkarılan bir ipte dalga sürati nasıl değişir? Frekansı aynı tutulursa dalga boyu ne olur?",
+       "cozum": "$\\vartheta = \\sqrt{F/\\mu}$ olduğundan $F$ 4 katına çıkarsa sürat $\\sqrt4 = 2$ katına çıkar. Frekans kaynağa bağlı ve sabit olduğundan $\\lambda = \\vartheta/f$ de **2 katına** çıkar."
       }
      ],
      "ozet": [
@@ -512,17 +540,21 @@ App.data.content["10/fizik"] = [
    },
    {
     "id": "k5",
-    "code": "4.5",
+    "code": "FİZ.10.4.5",
     "title": {
      "tr": "Su dalgalarında yansıma ve kırılma",
      "en": "Reflection and refraction of water waves"
     },
     "content": {
-     "anlatim": "# Yansıma\n\nDalganın engele çarpıp **aynı ortama** geri dönmesi.\n- **Gelme açısı = yansıma açısı** ($i = r$, normale göre).\n- Yansımada frekans, sürat ve dalga boyu **değişmez**.\n- Düz engelden yansıma; çukur engel dalgayı **odakta toplar**, tümsek engel **dağıtır**.\n\n# Kırılma\n\nDalganın derin–sığ ortam değiştirirken **hız ve doğrultu** değiştirmesi.\n\n| Derinden sığa | Sığdan derine |\n|---|---|\n| Sürat azalır | Sürat artar |\n| Dalga boyu küçülür ($\\lambda_{derin} > \\lambda_{sığ}$) | Dalga boyu büyür |\n| **Normale yaklaşır** | Normalden uzaklaşır |\n\nFrekans **değişmez**.",
+     "anlatim": "# Yansıma\n\nDalganın engele çarpıp **aynı ortama** geri dönmesi.\n- **Gelme açısı = yansıma açısı** ($i = r$, normale göre).\n- Yansımada frekans, sürat ve dalga boyu **değişmez**.\n- Düz engelden yansıma; çukur engel dalgayı **odakta toplar**, tümsek engel **dağıtır**.\n\n# Kırılma\n\nDalganın derin–sığ ortam değiştirirken **hız ve doğrultu** değiştirmesi.\n\n| Derinden sığa | Sığdan derine |\n|---|---|\n| Sürat azalır | Sürat artar |\n| Dalga boyu küçülür ($\\lambda_{derin} > \\lambda_{sığ}$) | Dalga boyu büyür |\n| **Normale yaklaşır** | Normalden uzaklaşır |\n\nFrekans **değişmez**.\n\n# Dalga Leğeninde Gözlem\n\nDalga leğeninde **doğrusal** dalgalar çubukla, **dairesel** dalgalar noktasal kaynakla oluşturulur. Leğene bir **cam levha** konarak sığ bölge yapılır.\n- Dalga tepeleri **parlak**, çukurları **karanlık** çizgiler olarak görülür; ardışık iki parlak çizgi arası $\\lambda$'dır.\n- Sığ bölgede çizgiler **sıklaşır** (dalga boyu küçülür).\n- Kıyıya eğik gelen deniz dalgalarının kıyıya **paralel** hâle gelmesi kırılmanın günlük hayattaki örneğidir.",
      "ornekler": [
       {
        "soru": "Derin ortamda dalga boyu 4 cm olan dalga sığ ortama geçince 2 cm oluyor. Sürat nasıl değişir?",
        "cozum": "Frekans sabit, $\\vartheta = \\lambda f$ → dalga boyu yarıya indiğine göre sürat de **yarıya** iner."
+      },
+      {
+       "soru": "Doğrusal su dalgaları derin ortamdan sığ ortama, sınırla $30^\\circ$ açı yapacak şekilde geliyor. Sığ ortamda dalga normale yaklaşır mı, uzaklaşır mı? Frekans değişir mi?",
+       "cozum": "Derinden sığa geçen dalganın sürati azalır, bu yüzden **normale yaklaşır** (kırılma açısı gelme açısından küçük olur). Frekans kaynağa bağlı olduğundan **değişmez**; dalga boyu küçülür."
       }
      ],
      "ozet": [
@@ -534,7 +566,7 @@ App.data.content["10/fizik"] = [
    },
    {
     "id": "k6",
-    "code": "4.6",
+    "code": "FİZ.10.4.6",
     "title": {
      "tr": "Rezonans ve deprem",
      "en": "Resonance and earthquakes"
@@ -545,12 +577,43 @@ App.data.content["10/fizik"] = [
       {
        "soru": "Aynı depremin farklı şehirlerde farklı hasar vermesi büyüklükle mi şiddetle mi ilgilidir?",
        "cozum": "**Şiddet**le. Büyüklük tektir; şiddet uzaklığa, zemine ve yapıya göre değişir."
+      },
+      {
+       "soru": "Bir köprünün üzerinden asker birliklerinin \"adım uydurarak\" geçmesi neden yasaklanmıştır?",
+       "cozum": "Adımların frekansı köprünün **doğal frekansına** eşit olursa **rezonans** oluşur; her adım titreşimi büyütür ve genlik tehlikeli boyutlara ulaşabilir. Bu yüzden askerler köprüde adım uydurmadan geçer."
       }
      ],
      "ozet": [
       "Rezonans: dış frekans = doğal frekans → en büyük genlik.",
       "Hiposantr yer altında, episantr yüzeyde.",
       "Büyüklük tek, şiddet yere göre değişir."
+     ]
+    }
+   },
+   {
+    "id": "k7",
+    "code": "FİZ.10.4.7",
+    "title": {
+     "tr": "Depreme ilişkin bilimsel model geliştirme: deprem dalgaları ve depreme dayanıklı yapı",
+     "en": "Developing a scientific model of earthquakes: seismic waves and earthquake-resistant buildings"
+    },
+    "content": {
+     "anlatim": "# Deprem Nasıl Oluşur? — Model\n\nYer kabuğundaki levhalar hareket ettikçe fay hattı boyunca kayaçlarda **esneklik potansiyel enerjisi** birikir (gerilmiş bir yay gibi). Kayaçların dayanımı aşıldığında fay aniden kırılır; biriken enerji **deprem dalgaları** hâlinde her yöne yayılır.\n- **Odak (hiposantr):** Kırılmanın yer altında başladığı nokta.\n- **Merkez üssü (episantr):** Odağın yeryüzündeki izdüşümü; hasar genellikle en çok buradadır.\n\n# Deprem Dalgaları\n\n| Dalga | Tür | Sürat | Ortam | Etki |\n|---|---|---|---|---|\n| **P (birincil)** | Boyuna | En hızlı (~6 km/s) | Katı, sıvı, gaz | İstasyona **ilk** ulaşır |\n| **S (ikincil)** | Enine | Daha yavaş (~3,5 km/s) | Yalnız katı | Daha yıkıcı sarsıntı |\n| **Yüzey dalgaları** | Karma | En yavaş | Yüzeyde | En çok hasar |\n\n**Sismograf** bu dalgaları kaydeder. P ve S dalgalarının istasyona varış **zaman farkı** depremin uzaklığını verir; **üç istasyonun** verisiyle merkez üssü bulunur (üç çemberin kesişimi).\n\n# Büyüklük ve Şiddet\n\n- **Büyüklük (magnitüd):** Açığa çıkan **enerjinin** ölçüsü; aletsel, tek bir değerdir. Bir birim artış yaklaşık **32 kat** daha fazla enerji demektir.\n- **Şiddet:** Bir yerdeki **hasarın** ölçüsü; zemine, uzaklığa ve yapı kalitesine göre yerden yere değişir.\n\n# Rezonans ve Yapılar\n\nHer binanın kat sayısına bağlı bir **doğal titreşim periyodu** vardır (kabaca $T \\approx 0{,}1 \\times$ kat sayısı saniye). Zemin titreşiminin periyodu binanınkine yakınsa **rezonans** oluşur ve salınım büyür.\n- **Yumuşak zeminler** sarsıntıyı büyütür ve uzun periyotlu titreşimler üretir.\n- **Sismik izolatörler** (kauçuk–kurşun yastıklar) binayı zeminden ayırarak doğal periyodu uzatır, rezonansı önler.\n- **Perde duvarlar**, sünek betonarme ve düzenli taşıyıcı sistem yapıyı güçlendirir.\n\n# Kendi Modelini Kur\n\nSpagetti ve hamurdan ya da tahta çubuklardan farklı yükseklikte **maket binalar** yapıp bir **sarsma masası** (lastikli tabla) üzerinde farklı frekanslarda sallayın. Hangi frekansta hangi binanın en çok salındığını kaydedin, çapraz destek ekleyince sonucun nasıl değiştiğini **modelinizi revize ederek** test edin.",
+     "ornekler": [
+      {
+       "soru": "Bir sismograf istasyonuna P dalgası 10.00.00'da, S dalgası 10.00.20'de ulaşıyor. P dalgası 6 km/s, S dalgası 3,5 km/s hızla yayılıyorsa deprem istasyona yaklaşık kaç km uzaktadır?",
+       "cozum": "Uzaklık $d$ ise $\\dfrac{d}{3{,}5} - \\dfrac{d}{6} = 20$. $d\\left(\\dfrac{6 - 3{,}5}{21}\\right) = 20 \\Rightarrow d\\cdot\\dfrac{2{,}5}{21} = 20 \\Rightarrow d = 168$ km."
+      },
+      {
+       "soru": "Bir bölgedeki zemin depremde en çok 0,5 s periyotla titreşiyor. 5 katlı ve 20 katlı iki binadan hangisinin rezonansa girme riski daha yüksektir?",
+       "cozum": "Yaklaşık doğal periyotlar: 5 katlı $\\approx 0{,}5$ s, 20 katlı $\\approx 2$ s. Zemin periyodu **5 katlı binanınkine eşit** olduğundan bu binada rezonans riski yüksektir. Önlem: sismik izolatör ya da yapının rijitliğini değiştirerek doğal periyodu kaydırmak."
+      }
+     ],
+     "ozet": [
+      "Deprem: fayda biriken esneklik enerjisinin kırılmayla dalgalar hâlinde yayılması.",
+      "P dalgası boyuna ve en hızlı; S dalgası enine, yalnız katıda yayılır; yüzey dalgaları en yıkıcıdır.",
+      "P–S varış farkı uzaklığı, üç istasyon merkez üssünü verir.",
+      "Bina ile zemin periyodu yakınsa rezonans oluşur; sismik izolatör ve perde duvar riski azaltır."
      ]
     }
    }

@@ -217,6 +217,8 @@ Her ahlaki kural hukuki değildir (yalan söylememek), her hukuki kural da ahlak
 ]),
 ]
 
+from _ek136 import uygula136; uygula136(units, "fel11")
+
 write("fel-11.js", "11/felsefe", "11. Sınıf Felsefe — konu anlatım notları",
       "kullanıcının verdiği \"11. Sınıf Felsefe Konu Anlatım Notları\" (6 ünite).",
       units, "Kaynak notlar kısa olduğu için her ünite ders kitabı düzeyinde genişletildi (tablolar, düşünürler, argüman–eleştiri eşleşmeleri, örnek sorular). Düzeltmeler: \"İnanıyorum çünkü saçma\" sözü Tertullianus'a atfedilen bir ifadedir; Kelsen doğal hukukçu değil hukuki pozitivisttir.")
