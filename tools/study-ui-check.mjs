@@ -32,7 +32,10 @@ try {
   await page.locator(".study-card").waitFor();
   assert.equal(await page.locator(".study-card").count(), 1);
   for (const route of ["#/bugun", "#/"]) {
-    await page.evaluate((hash) => { location.hash = hash; }, route);
+    await page.evaluate((hash) => new Promise((resolve) => {
+      window.addEventListener("da:route", () => resolve(), { once: true });
+      App.router.go(hash.replace(/^#\//, ""));
+    }), route);
     await page.locator(".study-card").waitFor();
     for (const width of [320, 375, 390, 768, 1440]) {
       await page.setViewportSize({ width, height: 900 });
