@@ -34,3 +34,11 @@ imza-anahtari/
 # Linux (Pardus) yapay zeka motoru: CI derler (tools/llama-linux.sh)
 llama-linux/
 llama-linux.tgz
+
+# Özel STEM ağırlıkları, gerçek çıkarım günlükleri ve yerel servis sırları.
+*.gguf
+*.safetensors
+SoruAsistani/
+SoruAsistanı/
+egitim/rapor/stem-v2/
+server/.stem-local/
