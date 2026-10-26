@@ -111,7 +111,7 @@
           '<div class="research-table-wrap"><table><caption>' + esc(t("research.comparison")) + '</caption><thead><tr><th>' + esc(t("research.group")) + '</th><th>n</th><th>' + esc(t("research.accuracy")) + '</th><th>' + esc(t("research.independent")) + '</th><th>' + esc(t("research.score")) + '</th></tr></thead><tbody>' +
           ["A", "B"].map((g) => '<tr><th>' + g + '</th><td>' + c[g].n + '</td><td>' + percent(c[g].accuracy) + '</td><td>' + percent(c[g].independent) + '</td><td>' + (c[g].score === null ? "—" : c[g].score.toFixed(1)) + '</td></tr>').join("") + '</tbody></table></div>' +
           '<p class="hint">' + esc(t("research.difference", { n: c.difference === null ? "—" : (c.difference * 100).toFixed(1) })) + '</p>' +
-          resultRows.map((r) => '<details><summary>' + esc(r.participant + " · " + r.group) + '</summary>' + App.metacognition.summaryHtml(r.metrics) + '<button class="btn" data-result="' + esc(r.id) + '" type="button">' + esc(t("research.shareResult")) + '</button></details>').join("") + '</section>';
+          resultRows.map((r) => '<details><summary>' + esc(r.participant + " · " + r.group) + '</summary>' + App.metacognition.summaryHtml(r.metrics) + '<button class="btn" data-result="' + esc(r.id) + '" type="button">' + esc(t("research.shareResult")) + '</button><button class="btn" type="button" data-review-result="' + esc(r.id) + '">' + esc(t("review.share")) + '</button></details>').join("") + '</section>';
       }).join("")) + '</div></div>';
     App.hydrateIcons(view);
     const rerender = () => { if (mine === epoch) App.router.refresh(); };
@@ -119,7 +119,8 @@
       const button = e.target.closest("button");
       if (!button || button.disabled) return;
       try {
-        if (button.id === "rCreate") createDialog(rerender);
+        if (button.dataset.reviewResult) await App.teacherReview.share("research", button.dataset.reviewResult);
+        else if (button.id === "rCreate") createDialog(rerender);
         else if (button.id === "rImport") importDialog(rerender);
         else if (button.id === "rScan") {
           const text = await App.pairing.scan((value) => R().frame(value) ? value : null, { title: t("research.scan"), hint: t("research.transferNote") });
@@ -145,7 +146,7 @@
             } catch (err) { error(err); } finally { b.disabled = false; }
           };
         } else if (button.id === "rExport") {
-          const results = rows.filter((r) => r.kind === "result").map((r) => ({ sessionId: r.sessionId, participant: r.participant, group: r.group, metrics: r.metrics, data: R().resultPacket(r).data }));
+          const results = rows.filter((r) => r.kind === "result").map((r) => ({ sessionId: r.sessionId, participant: r.participant, group: r.group, metrics: r.metrics, adaptive: r.adaptive, data: R().resultPacket(r).data }));
           downloadText("kampusai-research-results.json", JSON.stringify({ v: 1, results }, null, 2));
         } else if (button.id === "rClear" && await App.ui.confirm(t("research.clearConfirm"), t("research.clear"), true)) {
           await App.db.clear("research"); rerender();

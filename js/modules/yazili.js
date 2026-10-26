@@ -16,6 +16,8 @@
   const { esc } = App.utils;
   const T = (tr, en) => (App.i18n.lang === "en" ? en : tr);
   const C = () => App.data.curriculum;
+  let pendingGeneration = null;
+  const writtenPending = new Map();
   const L = (x) => App.L(x);
   const md = (s) => App.markdown.render(String(s || ""));
   const mdi = (s) => md(s).trim().replace(/^<p>([\s\S]*)<\/p>$/, "$1");
@@ -117,43 +119,67 @@
       if (!(await App.ui.confirm(T("Bu yazılı silinsin mi?", "Delete this exam?"), T("Sil", "Delete")))) return;
       await App.db.remove("meta", "yazili-ai:" + key + "/" + b.dataset.del).catch(() => {}); subjectPage(view, g, s);
     }));
+    const pageHash = location.hash;
     view.querySelector("#yzGen").addEventListener("click", async () => {
       const units = Array.from(view.querySelectorAll(".yz-gen__units input:checked")).map((x) => x.value);
       const stEl = view.querySelector("#yzGenSt"), btn = view.querySelector("#yzGen");
       if (!units.length) { stEl.textContent = T("En az bir tema seç.", "Pick at least one theme."); return; }
-      btn.disabled = true; stEl.textContent = T("Hazırlanıyor… (yarım dakika kadar sürebilir)", "Generating…");
-      try { const ex = await generate(g, s, units, set); await App.db.put("meta", { id: "yazili-ai:" + key + "/" + ex.id, kind: "yazili-ai", key, exam: ex, at: new Date().toISOString() }); if (view.isConnected) App.router.go("yazili/" + key + "/" + ex.id); }
-      catch (e) { stEl.textContent = T("Hazırlanamadı: ", "Failed: ") + ((e && e.message) || e); btn.disabled = false; }
+      if (pendingGeneration) pendingGeneration.abort();
+      const ctrl = new AbortController(); pendingGeneration = ctrl;
+      const stop = App.generation.guard(ctrl), gen = App.generation.mount(stEl, 7, () => ctrl.abort());
+      btn.disabled = true;
+      try {
+        const ex = await generate(g, s, units, set, { signal: ctrl.signal, onDelta: () => gen.stream(), onProgress: (info) => gen.update(info) });
+        if (ctrl.signal.aborted || pageHash !== location.hash) return;
+        await App.db.put("meta", { id: "yazili-ai:" + key + "/" + ex.id, kind: "yazili-ai", key, exam: ex, at: new Date().toISOString() });
+        if (pageHash === location.hash) App.router.go("yazili/" + key + "/" + ex.id);
+      } catch (e) { if (pageHash === location.hash) stEl.textContent = T("Hazırlanamadı: ", "Failed: ") + e.message; }
+      finally { stop(); btn.disabled = false; if (pendingGeneration === ctrl) pendingGeneration = null; }
     });
   }
 
   /* ---------- yapay zekâyla yazılı üretme ---------- */
-  async function generate(g, s, units, set) {
-    const gr = C().grades.find((x) => x.id === g), sb = gr.subjects.find((x) => x.id === s);
-    const chosen = sb.units.filter((u) => units.indexOf(u.id) >= 0);
-    const outs = chosen.map((u) => L(u.name) + ":\n" + u.outcomes.map((o) => "- " + (o.code ? o.code + " " : "") + L(o.title)).join("\n")).join("\n\n");
-    const sample = set.exams[0] && set.exams[0].sorular[0];
-    const system = "Sen Türkiye Yüzyılı Maarif Modeli'ne göre ölçme-değerlendirme yapan deneyimli bir lise öğretmenisin. Yalnızca geçerli JSON döndür.";
-    const prompt = "Sınıf: " + g + "\nDers: " + L(sb.name) + "\nTemalar ve öğrenme çıktıları:\n" + outs + "\n\n" +
-      "Bu temalardan, Maarif Modeli ortak yazılı sınav biçiminde 7 soruluk AÇIK UÇLU bir yazılı hazırla.\n" +
-      "- Sorular bağlam temelli olsun: gerçek yaşamdan bir durum, tablo ya da kısa metinle başlasın; ezber değil yorumlama, gerekçelendirme, problem çözme ölçsün.\n" +
-      "- Bazı sorular a), b) gibi alt maddeli olabilir. Toplam puan tam 100 olsun.\n" +
-      "- Her soru için: beklenen cevap (öğretmenin cevap anahtarı, Markdown + LaTeX) ve puanlama ölçütü (tam / kısmi / sıfır puan düzeyleri; her düzeyde ne yazılmışsa o puan).\n" +
-      "- Matematik ifadelerini $...$ ile LaTeX yaz; JSON içinde ters bölüleri çiftle.\n" +
-      'Biçim: {"sorular":[{"tema":"' + chosen[0].id + '","beceri":"…","puan":15,"metin":"…","cevap":"…","olcut":[[15,"…"],[8,"…"],[0,"…"]]}]}  (tema: ' + chosen.map((u) => u.id).join(", ") + " değerlerinden biri)" +
-      (sample ? "\n\nÖrnek bir soru (biçim için): " + JSON.stringify({ metin: sample.metin, puan: sample.puan, cevap: sample.cevap, olcut: sample.olcut }).slice(0, 1600) : "");
-    const r = await App.ai.generate({ system, prompt, temperature: 0.7 });
-    const qs = (r.data && Array.isArray(r.data.sorular) ? r.data.sorular : []).map((q) => ({
-      tema: units.indexOf(q.tema) >= 0 ? q.tema : units[0], beceri: String(q.beceri || ""), puan: Math.max(1, Math.round(Number(q.puan) || 10)),
-      metin: String(q.metin || "").trim(), cevap: String(q.cevap || "").trim(),
-      olcut: Array.isArray(q.olcut) ? q.olcut.filter((x) => Array.isArray(x) && x.length >= 2).map((x) => [Math.round(Number(x[0]) || 0), String(x[1])]) : []
-    })).filter((q) => q.metin && q.cevap);
-    if (qs.length < 4) throw new Error(T("yapay zekâ eksik cevap verdi, tekrar dene", "incomplete output, try again"));
-    // puanları 100'e ölçekle
-    const sum = qs.reduce((a, q) => a + q.puan, 0);
-    if (sum !== 100) { let acc = 0; qs.forEach((q, i) => { const p = i === qs.length - 1 ? 100 - acc : Math.max(1, Math.round((q.puan * 100) / sum)); const k = p / q.puan; q.olcut = q.olcut.map(([v, d]) => [Math.round(v * k), d]); q.puan = p; acc += p; }); }
-    qs.forEach((q) => { if (!q.olcut.length) q.olcut = [[q.puan, T("Beklenen cevabın tamamı", "Full answer")], [Math.round(q.puan / 2), T("Kısmen doğru", "Partly correct")], [0, T("Yanlış ya da boş", "Wrong or blank")]]; q.olcut[0][0] = q.puan; });
-    return { id: "ai" + Date.now().toString(36), term: 0, title: T("Yapay zekâ yazılısı · ", "AI exam · ") + chosen.map((u) => unitName(g, s, u.id)).join(", "), sure: 40, sorular: qs, model: r.model };
+  async function generate(g, s, units, set, options) {
+    options = options || {};
+    const gr = C().grades.find((x) => x.id === g), sb = gr && gr.subjects.find((x) => x.id === s);
+    const chosen = sb && sb.units.filter((u) => units.includes(u.id));
+    if (!chosen || !chosen.length) throw new Error(T("Tema seçilmeli", "Select a theme"));
+    const cacheKey = JSON.stringify([g, s, units.slice().sort(), App.i18n.lang]);
+    const cached = writtenPending.get(cacheKey), qs = cached && Date.now() - cached.at < 600000 ? cached.questions.slice() : [];
+    const models = new Set(cached && qs.length ? cached.models : []), points = [15, 15, 15, 15, 15, 15, 10];
+    if (qs.length && options.onProgress) options.onProgress({ ready: qs.length, total: 7, questions: qs.slice() });
+    for (let stage = qs.length === 5 ? 2 : qs.length === 3 ? 1 : 0; stage < 3; stage++) {
+      const count = [3, 2, 2][stage];
+      let batch = [];
+      const allocated = Array.from({ length: count }, (_, i) => chosen[(qs.length + i) % chosen.length]);
+      for (let attempt = 0; attempt < 2; attempt++) {
+        if (options.signal && options.signal.aborted) throw new Error("aborted");
+        const prompt = g + " · " + L(sb.name) + "\n" + allocated.map((u) => u.id + ": " + L(u.name) + " · " + u.outcomes.map((o) => L(o.title)).join("; ").slice(0, 600)).join("\n") +
+          "\n" + T("TAM ", "Exactly ") + count + T(" benzersiz açık uçlu, bağlam temelli soru. Kısa cevap anahtarı ve tam/kısmi/sıfır ölçütü. LaTeX JSON kaçışlarını koru. ", " unique open-ended contextual questions. Concise answer keys and full/partial/zero rubrics. Escape LaTeX for JSON. ") +
+          '{"sorular":[{"tema":"' + allocated[0].id + '","beceri":"...","puan":15,"metin":"...","cevap":"...","olcut":[[15,"..."],[8,"..."],[0,"..."]]}]}' +
+          (qs.length ? "\n" + T("Tekrarlama: ", "Do not repeat: ") + qs.map((q) => q.metin.slice(0, 100)).join(" | ") : "");
+        const r = await App.ai.generate({ system: T("Lise öğretmeni. Yalnız geçerli JSON.", "High-school teacher. Valid JSON only."), prompt, temperature: 0.5, signal: options.signal, onDelta: options.onDelta });
+        models.add(r.model);
+        const raw = r.data && r.data.sorular;
+        const seen = new Set(qs.map((q) => q.metin.trim().toLowerCase()));
+        batch = (Array.isArray(raw) ? raw : []).filter((q) => q && typeof q.metin === "string" && q.metin.trim() && typeof q.cevap === "string" && q.cevap.trim()).filter((q) => {
+          const id = q.metin.trim().toLowerCase(); if (seen.has(id)) return false; seen.add(id); return true;
+        }).slice(0, count);
+        if (batch.length === count) break;
+      }
+      if (batch.length !== count) throw new Error(T("Eksik soru üretildi; yeniden dene.", "Incomplete questions; retry."));
+      batch.forEach((q, i) => {
+        const puan = points[qs.length], levels = Array.isArray(q.olcut) ? q.olcut : [];
+        const descriptions = levels.filter((x) => Array.isArray(x) && typeof x[1] === "string").map((x) => x[1]);
+        qs.push({ tema: allocated[i].id, beceri: String(q.beceri || ""), puan, metin: q.metin.trim(), cevap: q.cevap.trim(),
+          olcut: [[puan, descriptions[0] || T("Beklenen cevabın tamamı", "Full answer")], [Math.round(puan / 2), descriptions[1] || T("Kısmen doğru", "Partly correct")], [0, descriptions[2] || T("Yanlış veya boş", "Wrong or blank")]] });
+      });
+      if (writtenPending.size >= 8) writtenPending.delete(writtenPending.keys().next().value);
+      writtenPending.set(cacheKey, { at: Date.now(), questions: qs.slice(), models: Array.from(models) });
+      if (options.onProgress) options.onProgress({ ready: qs.length, total: 7, questions: qs.slice() });
+    }
+    writtenPending.delete(cacheKey);
+    return { id: "ai" + Date.now().toString(36), term: 0, title: T("Yapay zekâ yazılısı · ", "AI exam · ") + chosen.map((u) => unitName(g, s, u.id)).join(", "), sure: 40, sorular: qs, model: Array.from(models).join(" + ") };
   }
 
   /* ---------- 3) Sınav ---------- */

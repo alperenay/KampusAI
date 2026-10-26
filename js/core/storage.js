@@ -13,6 +13,8 @@
        sessions   : odak (Pomodoro) oturumları
        meta       : hedefler, YKS tarihi gibi tekil kayıtlar
        tomb       : eşitleme için silinen kayıtların izi
+       research   : yerel araştırma oturumları ve sonuçları
+       reviews    : yerel öğretmen gerekçe istek/değerlendirmeleri
 
    Eşitlenen depolarda her yazma kayda "_u" (son değişiklik, ms) damgası
    ekler; silmeler "tomb" deposuna yazılır. Eşitleme (sync.js) bunları
@@ -25,13 +27,13 @@
    ========================================================= */
 (function () {
   const DB_NAME = "ders-asistani";
-  const DB_VERSION = 8;               // şema değişince artırılır (2: chats + vectors, 3: test, yanlış defteri, odak, eşitleme, 4: Feynman, 5: yapay zekâ konu içeriği, 6: çözüm kontrolü, 7: hap bilgi kartları, 8: yerel araştırma)
-  const STORES = ["exams", "schedules", "progress", "notes", "chats", "vectors", "mistakes", "quizzes", "sessions", "explains", "lessons", "checks", "cards", "meta", "tomb", "research"];
+  const DB_VERSION = 9;               // şema değişince artırılır (2: chats + vectors, 3: test, yanlış defteri, odak, eşitleme, 4: Feynman, 5: yapay zekâ konu içeriği, 6: çözüm kontrolü, 7: hap bilgi kartları, 8: yerel araştırma, 9: yerel öğretmen değerlendirmeleri)
+  const STORES = ["exams", "schedules", "progress", "notes", "chats", "vectors", "mistakes", "quizzes", "sessions", "explains", "lessons", "checks", "cards", "meta", "tomb", "research", "reviews"];
   /** Cihazlar arasında eşitlenen depolar */
   const SYNC_STORES = ["exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "explains", "lessons", "checks", "cards", "meta"];
   /** Yedek dosyasına giren depolar (vektörler bilgisayarda yeniden hesaplanabildiği için hariç) */
   // research: yerel deney verisi; otomatik eşitlemeye girmez, açık yedeklemeye dahildir.
-  const BACKUP_STORES = ["research", "exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "explains", "lessons", "checks", "cards", "meta"];
+  const BACKUP_STORES = ["reviews", "research", "exams", "schedules", "progress", "notes", "chats", "mistakes", "quizzes", "sessions", "explains", "lessons", "checks", "cards", "meta"];
   const isSync = (store) => SYNC_STORES.indexOf(store) > -1;
   const TOMB_SEP = "\u0001";
   const LS_PREFIX = "da:";

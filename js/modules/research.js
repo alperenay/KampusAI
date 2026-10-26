@@ -112,7 +112,7 @@
   }
   function pack(payload) {
     const encoded = btoa(unescape(encodeURIComponent(JSON.stringify({ v: 1, type: payload.type, data: payload.data })))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-    if (!["session", "result"].includes(payload.type) || encoded.length > MAX) fail("size");
+    if (!["session", "result", "review-request", "review-feedback"].includes(payload.type) || encoded.length > MAX) fail("size");
     const digest = hash(encoded), total = Math.ceil(encoded.length / CHUNK);
     return Array.from({ length: total }, (_, i) => PREFIX + digest + ";" + i + ";" + total + ";" + encoded.slice(i * CHUNK, (i + 1) * CHUNK));
   }
@@ -130,7 +130,7 @@
     let data;
     try { data = JSON.parse(decodeURIComponent(escape(atob(encoded.replace(/-/g, "+").replace(/_/g, "/"))))); }
     catch (e) { fail("packet"); }
-    if (!data || data.v !== 1 || !["session", "result"].includes(data.type)) fail("packet");
+    if (!data || data.v !== 1 || !["session", "result", "review-request", "review-feedback"].includes(data.type)) fail("packet");
     return data;
   }
   let queue = Promise.resolve();
@@ -152,6 +152,12 @@
     const received = part.chunks.filter(Boolean).length;
     if (received < f.total) { await App.db.put("research", part); return { kind: "partial", received, total: f.total }; }
     const payload = unpack(part.chunks, f.hash);
+    if (payload.type === "review-request" || payload.type === "review-feedback") {
+      if (!App.teacherReview) fail("packet");
+      const result = await App.teacherReview.receive(payload);
+      await App.db.remove("research", id);
+      return result;
+    }
     if (payload.type === "session") {
       const session = sessionFrom(payload.data), sid = "session:" + session.id;
       const existing = await App.db.get("research", sid);

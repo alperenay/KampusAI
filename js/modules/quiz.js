@@ -14,6 +14,7 @@
   const LETTERS = "ABCDE";
   const POOL_SIZE = 30;
   let renderEpoch = 0;
+  const pendingPools = new Map();
 
   const plain = (s) => {
     const doc = new DOMParser().parseFromString("<body>" + String(s || "") + "</body>", "text/html");
@@ -33,37 +34,14 @@
 
   function prompts(grade, subject, unit, outcome, options) {
     options = options || {};
-    const count = options.count || POOL_SIZE;
-    const difficulty = options.difficulty;
-    const tr = App.i18n.lang === "tr";
-    const lesson = lessonText(outcome);
-    const system = tr
-      ? "Sen deneyimli bir lise öğretmeni ve YKS soru yazarısın. Yalnızca geçerli JSON döndür; açıklama ya da Markdown kod bloğu ekleme."
-      : "You are an experienced high-school teacher and YKS exam question writer. Return only valid JSON; no explanations or Markdown code fences.";
-    const head = (tr ? "Sınıf: " : "Grade: ") + grade.id + "\n" + (tr ? "Ders: " : "Subject: ") + L(subject.name) + "\n" +
-      (tr ? "Ünite: " : "Unit: ") + L(unit.name) + "\n" + (tr ? "Kazanım: " : "Learning outcome: ") + L(outcome.title) + (outcome.code ? " (" + outcome.code + ")" : "");
-    const rules = tr ? [
-      "Bu kazanım için TAM " + count + " soruluk bir uyarlanan test havuzu hazırla.",
-      "- Her soru 5 seçenekli (A–E) ve tek doğru cevaplı olsun; şıkların başına harf yazma.",
-      (difficulty ? "- Bu partide bütün soruların difficulty alanı " + difficulty + " olsun (1 kolay, 2 orta, 3 zor)." : "- Zorluk: 10 kolay, 10 orta, 10 zor. Her soruya difficulty alanı ekle: kolay=1, orta=2, zor=3.") + " Sorular YKS (TYT/AYT) tarzında olsun.",
-      "- Yalnızca bu kazanımın konusundan sor; aşağıdaki konu anlatımına sadık kal, ama ondaki örnekleri aynen kopyalama.",
-      "- Matematiksel ifadeleri LaTeX ile yaz ($...$). JSON içinde ters bölüleri çift yaz (\\\\frac gibi).",
-      "- \"Hepsi\" / \"Hiçbiri\" şıkkı kullanma. Doğru cevapların harfleri dengeli dağılsın.",
-      "- Her soruya en fazla 3 cümlelik kısa bir çözüm/açıklama yaz.",
-      "Biçim: {\"questions\":[{\"q\":\"soru metni\",\"options\":[\"…\",\"…\",\"…\",\"…\",\"…\"],\"answer\":0,\"difficulty\":2,\"explain\":\"…\"}]}  (answer: doğru şıkkın 0'dan başlayan sırası)"
-    ] : [
-      "Write an adaptive question pool with EXACTLY " + count + " questions for this learning outcome, in English.",
-      "- Each question has 5 options (A–E) and one correct answer; don't prefix options with letters.",
-      (difficulty ? "- Every question in this batch must have difficulty=" + difficulty + " (1 easy, 2 medium, 3 hard)." : "- Difficulty: 10 easy, 10 medium, 10 hard. Include difficulty on every question: easy=1, medium=2, hard=3.") + " Use YKS style.",
-      "- Stay strictly within this outcome and the lesson below, but don't copy its examples verbatim.",
-      "- Write math in LaTeX ($...$). Escape backslashes in JSON (\\\\frac).",
-      "- No \"all of the above\" / \"none\". Spread the correct letters evenly.",
-      "- Add a short solution/explanation (max 3 sentences) for each question.",
-      "Format: {\"questions\":[{\"q\":\"…\",\"options\":[\"…\",\"…\",\"…\",\"…\",\"…\"],\"answer\":0,\"difficulty\":2,\"explain\":\"…\"}]}  (answer: 0-based index)"
-    ];
-    rules.push(tr ? '- Her soruya 3 gerekçe seçeneği (reasonOptions) ve doğru gerekçenin sırasını (reasonAnswer, 0 tabanlı) ekle. Gerekçeler çözümü değil düşünceyi açıklasın; yanlışlar yaygın kavram yanılgılarını yansıtsın.' : '- Add 3 reasoning choices (reasonOptions) and the correct reasoning index (reasonAnswer, 0-based) to every question. Include plausible misconceptions.');
-    rules.push(tr ? '- Her soruya hints: [kavram hatırlatma, strateji veya bağıntı, çözümün ilk adımı] ekle. Üç ayrı kısa ipucu; son cevabı, doğru şıkkı veya tam çözümü verme.' : '- Add hints: [concept reminder, strategy or relation, first solution step]. Never reveal the final answer, correct option or full solution.');
-    return { system, prompt: head + "\n\n" + rules.join("\n") + "\n\n" + (tr ? "KONU ANLATIMI:\n" : "LESSON:\n") + lesson };
+    const count = options.count || 3, d = options.difficulty, tr = App.i18n.lang === "tr";
+    const system = tr ? "Lise öğretmeni. Yalnız geçerli JSON. Kısa ve doğru yaz." : "High-school teacher. Valid JSON only. Be concise and accurate.";
+    const schema = '{"questions":[{"q":"...","options":["...","...","...","...","..."],"answer":0,"difficulty":2,"explain":"...","reasonOptions":["...","...","..."],"reasonAnswer":0,"hints":["...","...","..."]}]}';
+    const head = grade.id + " · " + L(subject.name) + " · " + L(outcome.title);
+    const rule = tr ? "TAM " + count + " benzersiz soru. 5 şık, tek doğru (0 tabanlı answer). " + (d ? "Hepsinde difficulty=" + d + "." : "Birer kolay(1), orta(2), zor(3).") + " En çok 2 cümle çözüm. Üç gerekçe seçeneği ve 0 tabanlı anahtarı. Üç kısa ipucu: kavram, strateji, ilk işlem; son cevap yok. LaTeX için JSON kaçışlarını koru."
+      : "Exactly " + count + " unique questions, 5 options, one correct 0-based answer. " + (d ? "All difficulty=" + d + "." : "One easy(1), medium(2), hard(3).") + " At most 2 solution sentences. Three reasoning choices and 0-based key. Three brief hints: concept, strategy, first step; no final answer. Escape LaTeX for JSON.";
+    return { system, prompt: head + "\n" + rule + "\n" + schema + "\n" + lessonText(outcome).slice(0, 2400) +
+      (options.exclude && options.exclude.length ? "\n" + (tr ? "Tekrarlama: " : "Do not repeat: ") + options.exclude.slice(-9).map((q) => q.slice(0, 100)).join(" | ") : "") };
   }
 
   /** Modelin döndürdüğünü doğrula ve düzelt */
@@ -95,26 +73,34 @@
     return out.slice(0, adaptive ? POOL_SIZE : N);
   }
 
-  /** Gerekçe/ipucu alanlarıyla tek yanıt 8k yerel bağlamı aşmasın: 3 × 10 soru. */
+  /** İlk 3 dengeli soru hemen önizlenir; 3 küçük partiyle 12'lik havuz tamamlanır. */
   async function generatePool(grade, subject, unit, outcome, options) {
     options = options || {};
-    const questions = [], models = new Set();
-    for (let difficulty = 1; difficulty <= 3; difficulty++) {
+    const cacheKey = JSON.stringify([grade.id, subject.id || L(subject.name), unit.id || L(unit.name), outcome.id || L(outcome.title), App.i18n.lang, lessonText(outcome).slice(0, 2400)]);
+    const cached = pendingPools.get(cacheKey);
+    let questions = cached && Date.now() - cached.at < 600000 ? cached.questions.slice() : [];
+    const next = questions.length ? cached.next : 0, models = new Set(cached && questions.length ? cached.models : []);
+    if (questions.length && options.onProgress) options.onProgress({ ready: questions.length, total: 12, questions: questions.slice() });
+    for (let stage = next; stage < 4; stage++) {
+      const difficulty = [0, 1, 2, 3][stage];
       let batch = [];
       for (let attempt = 0; attempt < 2; attempt++) {
         if (options.signal && options.signal.aborted) throw new Error("aborted");
-        const pr = prompts(grade, subject, unit, outcome, { count: 10, difficulty });
-        const res = await App.ai.generate(Object.assign({}, pr, { temperature: options.temperature == null ? 0.6 : options.temperature, signal: options.signal, onStage: options.onStage }));
-        batch = normalize(res.data, true).filter((q) => q.difficulty === difficulty).slice(0, 10);
+        const pr = prompts(grade, subject, unit, outcome, { count: 3, difficulty, exclude: questions.map((q) => q.q) });
+        const res = await App.ai.generate(Object.assign({}, pr, { temperature: options.temperature == null ? 0.5 : options.temperature, signal: options.signal, onStage: options.onStage, onDelta: options.onDelta }));
+        const candidates = normalize(res.data, true).filter((q) => !questions.some((p) => p.q === q.q));
+        batch = difficulty ? candidates.filter((q) => q.difficulty === difficulty).slice(0, 3) : [1, 2, 3].map((d) => candidates.find((q) => q.difficulty === d)).filter(Boolean);
         models.add(res.model);
-        if (batch.length >= 4) break;
+        if (batch.length === 3) break;
       }
-      if (batch.length < 4) throw new Error(t("quiz.badOutput"));
-      questions.push.apply(questions, batch);
+      if (batch.length < 3) throw new Error(t("quiz.badOutput"));
+      questions = normalize({ questions: questions.concat(batch) }, true);
+      if (pendingPools.size >= 8) pendingPools.delete(pendingPools.keys().next().value);
+      pendingPools.set(cacheKey, { at: Date.now(), next: stage + 1, questions: questions.slice(), models: Array.from(models) });
+      if (options.onProgress) options.onProgress({ ready: questions.length, total: 12, questions: questions.slice() });
     }
-    const pool = normalize({ questions }, true);
-    if (pool.length < N || [1, 2, 3].some((d) => pool.filter((q) => q.difficulty === d).length < 2)) throw new Error(t("quiz.badOutput"));
-    return { data: { questions: pool }, model: Array.from(models).join(" + ") };
+    pendingPools.delete(cacheKey);
+    return { data: { questions }, model: Array.from(models).join(" + ") };
   }
 
   const outcomeLabel = (grade, subject, unit, outcome) =>
@@ -157,10 +143,12 @@
       view.innerHTML = '<div class="page page--narrow">' + head +
         '<div class="card quiz-loading"><div class="stage"><span class="spinner"></span>' + App.icon("sparkle") +
         "<span>" + esc(t("quiz.generating")) + "</span>" + (model ? "<code>" + esc(model) + "</code>" : "") + '<span class="stage__time" id="qTime"></span></div>' +
-        '<p class="hint">' + esc(t("quiz.generatingHint")) + "</p></div></div>";
+        '<p class="hint">' + esc(t("quiz.generatingHint")) + '</p><div id="qGeneration"></div></div></div>';
       App.hydrateIcons(view);
     };
     loading("");
+    const generation = App.generation.mount(view.querySelector("#qGeneration"), 12, () => ctrl.abort());
+    const stopGenerationGuard = App.generation.guard(ctrl);
     const started = Date.now();
     const tick = setInterval(() => { const el = view.querySelector("#qTime"); if (el) el.textContent = t("ai.seconds", { n: Math.round((Date.now() - started) / 1000) }); }, 1000);
 
@@ -168,15 +156,16 @@
     try {
       if (research) { pool = research.session.bank; model = t("research.offlineBank"); }
       else {
-        const res = await generatePool(grade, subject, unit, outcome, { signal: ctrl.signal, onStage: (eng, m) => { if (!gone()) loading(m); } });
+        const res = await generatePool(grade, subject, unit, outcome, { signal: ctrl.signal, onDelta: () => generation.stream(), onProgress: (info) => generation.update(info) });
         pool = res.data.questions;
         if (gone()) { clearInterval(tick); return; }
         model = res.model;
         if (!validPool(pool)) throw new Error(t("quiz.badOutput"));
       }
     } catch (e) {
+      stopGenerationGuard();
       clearInterval(tick);
-      if (ctrl.signal.aborted || gone()) return;
+      if (gone()) return;
       view.innerHTML = '<div class="page page--narrow">' + head +
         '<div class="msg__error"><b>' + esc(t("quiz.failed")) + "</b><p>" + esc(errorText(e)) + '</p><div class="msg__error-actions">' +
         '<button class="btn btn--sm" type="button" id="qRetry">' + App.icon("refresh") + esc(t("ai.retry")) + '</button><a class="btn btn--sm btn--ghost" href="' + back + '">' + esc(t("quiz.backToLesson")) + "</a></div></div></div>";
@@ -184,6 +173,7 @@
       view.querySelector("#qRetry").addEventListener("click", () => App.router.refresh());
       return () => ctrl.abort();
     }
+    stopGenerationGuard();
     clearInterval(tick);
     if (gone()) return;
 
@@ -374,6 +364,9 @@
       App.hydrateIcons(res);
       const again = res.querySelector("#qAgain");
       if (again) again.addEventListener("click", () => App.router.refresh());
+      const reviewButton = document.createElement("button"); reviewButton.className = "btn"; reviewButton.textContent = t("review.share"); reviewButton.type = "button";
+      reviewButton.onclick = () => App.teacherReview.share(research ? "research" : "quiz", research ? researchResult.id : quizId);
+      res.querySelector(".mis__actions").appendChild(reviewButton);
       const share = res.querySelector("#qResearchShare");
       if (share) share.addEventListener("click", () => App.researchUi.transfer(App.research.resultPacket(researchResult)));
       // Düşük puan: zorluğun kökü daha temel bir konuda olabilir (kök eksik analizi)
@@ -391,6 +384,7 @@
   }
 
   function errorText(e) {
+    if (e && (e.name === "AbortError" || e.message === "aborted")) return t("gen.cancelled");
     const code = e && e.code;
     if (code === "no-key") return t("ai.err.nokeyBody");
     if (code === "no-audio") return t("fey.v.errNoAudio");

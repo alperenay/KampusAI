@@ -140,7 +140,7 @@
         '<div class="page-head"><div><h1>' + esc(T("Sınıf (Öğretmen)", "Class (Teacher)")) + "</h1><p>" +
           esc(T("Öğrencilerin Haftalık Rapor → \"Öğretmenime gönder\" ile oluşturduğu anonim kodları ekle; sınıfın en çok zorlandığı konuları gör. Veriler yalnızca bu cihazda saklanır.",
             "Add the anonymous codes students create from Weekly Report → \"Send to my teacher\" and see where the class struggles. Data stays on this device.")) + "</p></div>" +
-          '<div class="page-head__actions"><a class="btn" href="#/arastirma">' + esc(App.t("research.title")) + '</a>' +
+          '<div class="page-head__actions"><a class="btn" href="#/degerlendirme">' + esc(App.t("review.title")) + '</a><a class="btn" href="#/arastirma">' + esc(App.t("research.title")) + '</a>' +
             (App.pairing.hasCamera() || App.platform.native ? '<button class="btn btn--primary" type="button" id="clsScan">' + App.icon("scan") + esc(T("QR okut", "Scan QR")) + "</button>" : "") +
             '<button class="btn" type="button" id="clsPaste">' + App.icon("plus") + esc(T("Kod yapıştır", "Paste code")) + "</button>" +
             (S.length ? '<button class="btn btn--ghost" type="button" id="clsClear">' + App.icon("trash") + esc(T("Sınıfı temizle", "Clear class")) + "</button>" : "") +

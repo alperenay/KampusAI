@@ -14,6 +14,7 @@
 
   /* [rota, simge, ad (i18n anahtarı ya da [tr,en]), açıklama [tr,en], grup, arama kelimeleri] */
   const TOOLS = [
+    ["degerlendirme", "grad", "review.title", ["Gerekçeleri ölçütle değerlendir; QR ile geri bildirim ver", "Review reasoning with a rubric and return feedback via QR"], "track", "öğretmen gerekçe eminlik değerlendirme puan rubrik"],
     ["arastirma", "chart", "nav.research", ["Gerekçe, eminlik ve ipucu etkisini çevrimdışı karşılaştır", "Compare reasoning, confidence and hints offline"], "track", "araştırma deney ab qr eminlik gerekçe ipucu"],
     ["bugun", "sun", "nav.today", ["Bugünkü program, görevler ve öneriler", "Today's plan, tasks and suggestions"], "start", "gün plan görev"],
     ["", "sparkle", "nav.newChat", ["Yapay zekâ asistanına soru sor, fotoğraftan çöz", "Ask the AI assistant, solve from a photo"], "start", "asistan sohbet soru yapay zeka"],

@@ -296,7 +296,8 @@
         model: cfg.chatModel,
         messages: [{ role: "system", content: opts.system }, userMsg],
         options: { temperature: opts.temperature != null ? opts.temperature : 0.7, num_ctx: 8192, json: true },
-        signal: opts.signal
+        signal: opts.signal,
+        onDelta: opts.onDelta
       });
       return { data: parseJSON(res.text), text: res.text, engine: eng.id, model: res.model || cfg.chatModel };
     };
