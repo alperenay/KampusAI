@@ -9,7 +9,6 @@
 (function () {
   const { esc, toMinutes, durationText, weekdayIndex } = App.utils;
   const t = App.t, L = App.L;
-  const C = () => App.data.curriculum;
 
   const nowMin = () => { const d = new Date(); return d.getHours() * 60 + d.getMinutes(); };
 
@@ -30,38 +29,10 @@
     return { has: all.length > 0, blocks, current, next };
   }
 
-  /** Önerilen konu: en düşük son test sonucu → en çok yanlışın olduğu kazanım → henüz bitmemiş ilk kazanım */
+  /** Eski App.today.suggestion API'si aynı öneri motoruna yönlenir. */
   async function suggestion() {
-    const quizzes = await App.db.getAll("quizzes");
-    const last = {};
-    quizzes.forEach((q) => { if (!last[q.key] || String(q.date) > String(last[q.key].date)) last[q.key] = q; });
-    const weak = Object.values(last).filter((q) => q.total && q.correct / q.total < 0.7).sort((a, b) => a.correct / a.total - b.correct / b.total)[0];
-    if (weak && App.lessons.find(weak.key)) {
-      // Zayıf konunun kökü daha temel bir konudaysa önce onu öner (kök eksik analizi)
-      const root = App.roots ? await App.roots.rootFor(weak.key).catch(() => null) : null;
-      if (root && App.lessons.find(root.key)) {
-        const f = App.lessons.find(weak.key);
-        return { key: root.key, why: t("today.whyRoot", { topic: App.L(f.outcome.title) }) };
-      }
-      return { key: weak.key, why: t("today.whyQuiz", { c: weak.correct, total: weak.total }) };
-    }
-    // Fotoğraftan okunan son denemelerdeki konu yanlışları (v1.21)
-    const exs = (await App.db.getAll("exams")).filter((e) => e.topics && e.topics.length).sort((a, b) => String(b.date).localeCompare(String(a.date))).slice(0, 3);
-    const done0 = new Set((await App.db.getAll("progress")).filter((p) => p.done && p.date && Date.now() - new Date(p.date).getTime() < 7 * 864e5).map((p) => p.id));
-    const exTop = [].concat(...exs.map((e) => e.topics.map((x) => Object.assign({ exam: e.name }, x)))).filter((x) => x.key && App.lessons.find(x.key) && !done0.has(x.key))
-      .sort((a, b) => b.wrong - a.wrong)[0];
-    if (exTop && exTop.wrong >= 2) return { key: exTop.key, why: App.i18n.lang === "en" ? exTop.wrong + " mistakes on this topic in " + exTop.exam : exTop.exam + " denemesinde bu konudan " + exTop.wrong + " yanlış" };
-    const mis = (await App.db.getAll("mistakes")).filter((m) => !m.mastered && m.key);
-    const byKey = {};
-    mis.forEach((m) => { byKey[m.key] = (byKey[m.key] || 0) + 1; });
-    const top = Object.entries(byKey).sort((a, b) => b[1] - a[1])[0];
-    if (top && App.lessons.find(top[0])) return { key: top[0], why: t("today.whyMistakes", { n: top[1] }) };
-    const done = new Set((await App.db.getAll("progress")).filter((p) => p.done).map((p) => p.id));
-    for (const g of C().grades) for (const s of g.subjects) for (const u of s.units) for (const k of u.outcomes) {
-      const key = C().key(g.id, s.id, u.id, k.id);
-      if (k.content && !done.has(key)) return { key, why: t("today.whyNext") };
-    }
-    return null;
+    const item = await App.study.recommend();
+    return item.complete ? null : Object.assign({}, item, { why: t(item.reason, { pct: Math.round((item.accuracy || 0) * 100) }) });
   }
 
   function blockRow(b, state) {
@@ -73,8 +44,8 @@
 
   async function render(view) {
     App.setTitle(t("today.title"));
-    const [tb, focus, mc, sug, mistakes] = await Promise.all([
-      todayBlocks(), App.focus.stats(), App.mistakes.counts(), suggestion(), App.db.getAll("mistakes")
+    const [tb, focus, mc, mistakes] = await Promise.all([
+      todayBlocks(), App.focus.stats(), App.mistakes.counts(), App.db.getAll("mistakes")
     ]);
     const name = (App.prefs.get("userName", "") || "").trim().split(/\s+/)[0];
     const dateText = new Date().toLocaleDateString(App.i18n.locale, { weekday: "long", day: "numeric", month: "long" });
@@ -121,15 +92,6 @@
       '<span class="tday-stat__n">' + (days != null && days >= 0 ? days : "–") + '</span><span class="tday-stat__l">' +
       esc(t("today.daysToYks") + (g.estimated ? " " + t("goal.estimated") : "") + (tTarget != null ? " · " + t("today.target", { n: tTarget }) : "")) + "</span></a>";
 
-    let sugCard = "";
-    if (sug) {
-      const f = App.lessons.find(sug.key);
-      sugCard = '<section class="card tday-card tday-sug"><h3>' + App.icon("target") + esc(t("today.suggest")) + "</h3>" +
-        '<p class="tday-sug__title">' + esc(L(f.outcome.title)) + "</p>" +
-        '<p class="hint">' + esc(C().gradeName(f.grade) + " · " + L(f.subject.name) + " — " + sug.why) + "</p>" +
-        '<div class="tday-actions"><a class="btn btn--sm" href="#/konular/' + sug.key + '">' + App.icon("book") + esc(t("today.read")) + "</a>" +
-        (f.outcome.content ? '<a class="btn btn--sm btn--primary" href="#/test/' + sug.key + '">' + App.icon("quiz") + esc(t("today.test")) + "</a>" : "") + "</div></section>";
-    }
 
     let errCard = "";
     const es = App.mistakes.errorStats(mistakes);
@@ -145,9 +107,9 @@
           (App.motivation ? '<p class="home-note home-note--left">' + App.icon("quote") + "<span>" + esc(App.motivation.today().text) + "</span></p>" : "") + "</div>" +
           '<div class="page-head__actions"><button class="btn btn--ai" type="button" id="todayAsk">' + App.icon("sparkle") + esc(t("today.ask")) + "</button></div></div>" +
         '<div class="tday-grid">' +
-          '<div class="tday-main">' + nowCard + '<div id="tdayDaily"></div>' + flow + "</div>" +
+          '<div class="tday-main"><div id="todayStudy"></div>' + nowCard + flow + "</div>" +
           '<div class="tday-side"><div class="tday-stats">' + review + focusStat + goalStat + "</div>" +
-            '<section class="card tday-card" id="tdayBadges" hidden></section>' + sugCard + errCard + "</div>" +
+            '<section class="card tday-card" id="tdayBadges" hidden></section>' + errCard + "</div>" +
         "</div>" +
       "</div>";
 
@@ -160,21 +122,15 @@
         return;
       }
       if (e.target.closest("#todayAsk")) App.modules.assistant.startWith(t("ai.sugg.today"), null);
-      const mk = e.target.closest("[data-mark]");
-      if (mk && App.learnmap) {
-        App.learnmap.markTopic(mk.dataset.mark, mk.getAttribute("aria-pressed") !== "true").then(() => App.learnmap.dailyCardHtml(true)).then((h) => {
-          const b = view.querySelector("#tdayDaily"); if (b) { b.innerHTML = h; App.hydrateIcons(b); }
-          if (App.badges) App.badges.check();
-        });
-      }
+
     };
     view.addEventListener("click", onClick);
-    // Bugünün 20 dakikası ve seri/rozetler (yavaş hesaplar: sayfa açıldıktan sonra doldurulur)
-    if (App.learnmap) App.learnmap.dailyCardHtml(true).then((h) => { const b = view.querySelector("#tdayDaily"); if (b) { b.innerHTML = h; App.hydrateIcons(b); } }).catch(() => {});
+    // Öneri ve rozetler görünüm yaşam döngüsüne bağlı yüklenir.
+    const stopStudy = App.study.mount(view.querySelector("#todayStudy"));
     if (App.badges) App.badges.cardHtml().then((h) => { const b = view.querySelector("#tdayBadges"); if (b) { b.innerHTML = '<h3>' + App.icon("flag") + esc(App.i18n.lang === "en" ? "Streak & badges" : "Seri ve rozetler") + '</h3>' + h + '<a class="btn btn--sm btn--ghost" href="#/harita">' + esc(App.i18n.lang === "en" ? "Learning map" : "Öğrenme haritası") + "</a>"; b.hidden = false; App.hydrateIcons(b); } }).catch(() => {});
     // Her dakika güncelle (ders başladı/bitti)
     const minute = setInterval(() => { if (location.hash === "#/bugun" && !document.querySelector(".modal-backdrop")) App.router.refresh(); }, 60000);
-    return () => { clearInterval(minute); view.removeEventListener("click", onClick); };
+    return () => { clearInterval(minute); stopStudy(); view.removeEventListener("click", onClick); };
   }
 
   App.router.register("bugun", render);

@@ -15,6 +15,7 @@
   /* ---------------- Durum ---------------- */
   const live = { chatId: null, chat: null, msg: null, controller: null, timer: null, lastSave: 0 };
   let draft = { image: null, text: "" };            // yazılıp henüz gönderilmemiş mesaj
+  let stopStudy = null;
   let mounted = null;                                // { view, chatId } ekranda olan sohbet
   let useData = App.prefs.get("aiUseData", true);
   let socratic = App.prefs.get("aiSocratic", false);     // Sokratik mod: cevap yerine ipuçlarıyla yönlendir
@@ -193,13 +194,13 @@
         (App.motivation ? '<p class="home-note">' + App.icon("quote") + "<span>" + esc(App.motivation.today().text) + "</span></p>" : "") +
         composerHtml(t("ai.placeholder")) +
         '<p class="ai-notice" id="aiNotice" hidden></p>' +
+        '<div class="home__today" data-home-today></div>' +
         '<nav class="quick" aria-label="' + esc(t("ai.quick")) + '">' +
           '<button type="button" data-prompt="' + esc(t("ai.sugg.today")) + '">' + App.icon("calendar") + esc(t("ai.quickSchedule")) + "</button>" +
           '<button type="button" data-prompt="' + esc(t("ai.sugg.exams")) + '">' + App.icon("chart") + esc(t("ai.quickProgress")) + "</button>" +
           '<button type="button" data-act="attach">' + App.icon("image") + esc(t("ai.quickPhoto")) + "</button>" +
         "</nav>" +
         (App.hub ? App.hub.homeStripHtml() : "") +
-        '<div class="home__today" data-home-today></div>' +
         '<p class="home__models" data-ai-models>' + modelsLine() + "</p>" +
       "</div>"
     );
@@ -351,7 +352,8 @@
     document.getElementById("main").classList.add("is-home");
     view.innerHTML = heroHtml();
     App.hydrateIcons(view);
-    if (App.nav) App.nav.fillToday(view);
+    if (stopStudy) stopStudy();
+    stopStudy = App.study.mount(view.querySelector("[data-home-today]"));
     bind(view, null);
     paintStatus();
     if (status.state !== "ok" && status.state !== "partial") refreshStatus();
@@ -637,7 +639,7 @@
   }
 
   function cleanup(view) {
-    return () => { view.onclick = null; view.ondragover = null; view.ondragleave = null; view.ondrop = null; mounted = null; };
+    return () => { if (stopStudy) { stopStudy(); stopStudy = null; } view.onclick = null; view.ondragover = null; view.ondragleave = null; view.ondrop = null; mounted = null; };
   }
 
   /* ---------------- Sohbet listesi (kenar çubuğu) ---------------- */
