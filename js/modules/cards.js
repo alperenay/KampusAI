@@ -268,6 +268,8 @@
           '<div><b>' + Math.min(st.fresh, st.newLeft) + "</b><span>" + esc(T("yeni kart", "new cards")) + "</span></div>" +
           '<div><b>' + learned + "/" + st.total + "</b><span>" + esc(T("kalıcı hafızada", "long-term")) + "</span></div>" +
         "</div>" +
+        (!st.total ? '<button class="btn btn--primary cards-start" type="button" id="cardsChoose">' + App.icon("plus") + esc(T("Konu seç ve kart ekle", "Choose a topic and add cards")) + "</button>" : "") +
+        (st.total && !st.todo ? '<a class="btn btn--primary cards-start" href="#/kartlar/incele">' + esc(T("Kartları incele", "Browse cards")) + "</a>" : "") +
         (st.todo ? '<a class="btn btn--primary cards-start" href="#/kartlar/calis">' + App.icon("play") + esc(T("Çalışmaya başla", "Start studying")) + "</a>"
           : '<p class="hint">' + esc(st.total ? T("Bugünlük kart kalmadı. Yarın tekrar zamanı gelenler burada olacak.", "Nothing left for today. Come back tomorrow.")
             : T("Destende henüz kart yok. Bir konuyu tamamlandı olarak işaretle, konu testini çöz ya da konu sayfasındaki \"Desteye ekle\" düğmesini kullan.", "Your deck is empty. Complete a topic, take its quiz, or use \"Add to deck\" on a lesson page.")) + "</p>") +
@@ -282,6 +284,12 @@
           esc(T("Tamamladığım ve testini çözdüğüm konuları desteye kendiliğinden ekle", "Automatically add topics I complete or take a quiz on")) + "</label>" +
         '<p class="hint">' + esc(T("Aralıklar: 1 → 3 → 7 → 16 → 35 → 75 → 150 gün. \"Bilmedim\" dersen kart 10 dakika sonra yeniden gelir ve başa döner.", "Intervals: 1 → 3 → 7 → 16 → 35 → 75 → 150 days. \"Forgot\" brings the card back in 10 minutes.")) + "</p>" +
       "</section></div>";
+    const choose = view.querySelector("#cardsChoose");
+    if (choose) choose.onclick = () => {
+      const items = App.learnmap.allOutcomes().filter((it) => buildFor(it.key).length);
+      const m = App.ui.modal({ title: T("Konu seç", "Choose a topic"), body: '<label class="field"><span>' + esc(T("Kazanım", "Learning outcome")) + '</span><select class="select" id="cardsTopic">' + items.map((it) => '<option value="' + esc(it.key) + '">' + esc(it.grade.id + " · " + L(it.subject.name) + " · " + L(it.outcome.title)) + '</option>').join('') + '</select></label>', actions: '<button class="btn" data-close>' + esc(T("Vazgeç", "Cancel")) + '</button><button class="btn btn--primary" id="cardsAddStart">' + esc(T("Ekle ve çalışmaya başla", "Add and start studying")) + '</button>' });
+      m.el.querySelector("#cardsAddStart").onclick = async () => { const b = m.el.querySelector("#cardsAddStart"); b.disabled = true; try { const key = m.el.querySelector("#cardsTopic").value; await addKey(key); m.close(); App.router.go("kartlar/konu/" + key); } catch (e) { App.ui.toast(e.message, "error"); } finally { b.disabled = false; } };
+    };
     view.querySelector("#cNew").addEventListener("change", (e) => { App.prefs.set("cardsNewPerDay", Number(e.target.value)); App.router.refresh(); });
     view.querySelector("#cAuto").addEventListener("change", (e) => App.prefs.set("cardsAuto", e.target.checked));
   }
@@ -385,7 +393,19 @@
   }
   document.addEventListener("keydown", onKey);
 
+  async function renderBrowse(view) {
+    App.setTitle(T("Kartları incele", "Browse cards"));
+    const keys = Array.from(new Set((await rows()).map((r) => r.key))).filter((key) => buildFor(key).length);
+    const paintBrowse = (key) => {
+      view.innerHTML = '<div class="page page--narrow cards-browse"><h1>' + esc(T("Kartları incele", "Browse cards")) + '</h1><p class="hint">' + esc(T("İnceleme tekrar takvimini ve puanlarını değiştirmez.", "Browsing does not change your review schedule or scores.")) + '</p><select class="select" id="cardsBrowseTopic" aria-label="' + esc(T("Konu", "Topic")) + '">' + keys.map((k) => '<option value="' + esc(k) + '"' + (key === k ? ' selected' : '') + '>' + esc(L(App.lessons.find(k).outcome.title)) + '</option>').join('') + '</select>' + buildFor(key).map((card, i) => '<details class="card research-session"><summary>' + esc(T("Kart ", "Card ") + (i + 1)) + '</summary><div class="md">' + renderSide(card.front) + '</div><hr><div class="md">' + renderSide(card.back) + '</div></details>').join('') + '<a class="btn" href="#/kartlar">' + esc(T("Kartlara dön", "Back to cards")) + '</a></div>';
+      view.querySelector("#cardsBrowseTopic").onchange = (e) => paintBrowse(e.target.value);
+    };
+    if (!keys.length) return renderHome(view);
+    paintBrowse(keys[0]);
+  }
+
   async function render(view, p) {
+    if (p[0] === "incele") return renderBrowse(view);
     if (p[0] === "calis") return renderStudy(view, null);
     if (p[0] === "konu" && p.length >= 5) return renderStudy(view, p.slice(1, 5).join("/"));
     return renderHome(view);
