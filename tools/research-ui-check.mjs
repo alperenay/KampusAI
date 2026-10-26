@@ -118,7 +118,7 @@ try {
   const profile = await p.evaluate(async () => ({ quizzes: await App.db.getAll("quizzes"), summary: await App.classroom.summary("P") }));
   assert.equal(profile.quizzes.length, 1); assert.equal(profile.quizzes[0].metacognition.independentAccuracy, 0.9);
   assert.equal(profile.summary.p.i, 90);
-  // IndexedDB v7 → v8: eski test korunur, yeni research deposu açılır.
+  // IndexedDB v7 → v9: eski test korunur, yeni research deposu açılır.
   const migration = await browser.newContext({ serviceWorkers: "block" });
   const mp = await migration.newPage();
   await mp.goto("http://127.0.0.1:" + server.address().port + "/assets/vendor/qr/qrcode.js");
@@ -137,7 +137,7 @@ try {
   const migrated = await mp.evaluate(async () => ({ old: await App.db.get("quizzes", "legacy"), research: await App.db.getAll("research"), sync: App.db.SYNC_STORES }));
   assert.equal(migrated.old.correct, 8); assert.equal(migrated.research.length, 0); assert.equal(migrated.sync.includes("research"), false);
   assert.deepEqual(errors, []);
-  console.log("Araştırma UI: iki cihaz, çevrimdışı katılım, üç ipucu, zorunlu gerekçe/eminlik, QR/kod aktarımı, mükerrer koruması, normal profil ve v7→v8 göçü geçti; iki tema / 320–1440px.");
+  console.log("Araştırma UI: iki cihaz, çevrimdışı katılım, üç ipucu, zorunlu gerekçe/eminlik, QR/kod aktarımı, mükerrer koruması, normal profil ve v7→v9 göçü geçti; iki tema / 320–1440px.");
 } finally {
   if (browser) await browser.close();
   await new Promise((resolve) => server.close(resolve));

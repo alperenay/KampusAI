@@ -39,6 +39,8 @@ Normal konu testlerinde gerekçe metni/seçimi, eminlik, ipucu basamakları ve s
 
 Araştırma oturumları ve sonuçları ayrı yerel depodadır ve otomatik bulut eşitlemesine girmez. QR/kod/yerel dosya aktarımı yalnızca kullanıcı eylemiyle yapılır; takma katılımcı kodu, cevaplar, gerekçe indisleri, eminlik, ipucu ve süre izleri taşınır. Ad, sohbet, fotoğraf ve serbest gerekçe metni bu aktarıma eklenmez. Kodlar şifreli veya imzalı değildir; katılımcı kodları başka kayıtlarla ilişkilendirilebilir. Araştırma kayıtları genel yerel yedek dosyasına dahildir. **Araştırma modu → Araştırma verilerini sil** yalnızca bu cihazdaki araştırma kayıtlarını siler; daha önce başka cihaza aktarılan kopyalar o cihazdan ayrıca silinmelidir.
 
+**Öğretmen gerekçe değerlendirmesi ayrı bir paylaşım eylemidir:** Öğrenci **Gerekçelerimi öğretmene gönder** düğmesini kullanınca serbest gerekçe metni, soru/cevap, eminlik, ipucu ve süreler öğretmene aktarılır. Öğretmenin puanları ve açıklaması öğrenciye geri paylaşılabilir. Yerel `reviews` kayıtları otomatik eşitlenmez, genel yedeğe dahildir. Normal testte öğrenci geri bildirimi içeri alırsa güncellenen testin öğretmen değerlendirmesi mevcut isteğe bağlı eşitlemeye dahil olur. Özgün araştırma sonucu değiştirilmez. Bu paketler de şifreli/imzalı değildir; öğretmen kimliği uygulama tarafından doğrulanmaz.
+
 ## Haklarım
 
 - **Erişim ve taşıma:** Ayarlar → Verilerini yedekle → Dışa aktar ile tüm verilerini bir dosya olarak alabilirsin.

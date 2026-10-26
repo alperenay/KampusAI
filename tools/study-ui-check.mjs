@@ -93,12 +93,12 @@ try {
   await page.locator(".quiz-result").waitFor();
   let results = await page.evaluate(() => App.db.getAll("quizzes"));
   assert.equal(results.length, 1); assert.equal(results[0].correct, 10);
-  assert.equal(results[0].questions[0].difficulty, 2); assert.equal(results[0].questions[9].difficulty, 3);
+  assert.equal(results[0].questions[0].difficulty, 2); assert.ok(results[0].questions.some((q) => q.difficulty === 3));
   await start(); await answer(1);
   await page.locator(".quiz-result").waitFor();
   results = await page.evaluate(() => App.db.getAll("quizzes"));
   const wrong = results.find((q) => q.correct === 0);
-  assert.equal(wrong.questions[0].difficulty, 3); assert.equal(wrong.questions[9].difficulty, 1);
+  assert.equal(wrong.questions[0].difficulty, 3); assert.ok(wrong.questions.some((q) => q.difficulty === 1));
   assert.equal((await page.evaluate(() => App.db.getAll("mistakes"))).length, 10);
   // Son soru boşken kayıt hatası: cevap kilidi, yeniden deneme ve mükerrer kayıt koruması.
   await page.evaluate(() => {

@@ -1,6 +1,6 @@
 # Gerekçe, eminlik, kademeli ipucu ve çevrimdışı araştırma
 
-1.38.0 geliştirme değişiklikleri. Yayına gönderimden önce ortak web build'i ve testler çalıştırılır; gerçek Android/iOS cihaz ve canlı model doğrulaması ayrıca yapılmalıdır.
+1.38.0 değişiklikleri. Öğretmen gerekçe değerlendirmesi, güncel partili üretim ve IndexedDB sürüm 9 için [Öğretmen paneli](TEACHER_REVIEW.md) belgesine bakın. Aşağıdaki özgün araştırma sonucu izolasyonu korunur.
 
 ## Kullanım
 
@@ -131,4 +131,4 @@ npm run test:research-ui
 
 Tarayıcı senaryoları: iki izole profil, öğretmen/öğrenci arayüzü, ağ kapalıyken araştırma testi, üç ipucu, zorunlu gerekçe/eminlik, tekrar sonuç aktarımı, normal öğrenci/sınıf özeti, IndexedDB v7→v8 veri koruma ve 320–1440px / iki tema. Kamera optiği, fiziksel Android/iPhone, Safari/WebKit ve gerçek modelin eğitimsel doğruluğu bu testlerin kapsamı dışındadır. İpucu sızıntısını azaltan şema kontrolleri anlamsal doğruluğu garanti etmez; araştırma paketini öğretmen incelemelidir.
 
-Commit düzeni: `feat: metacognitive-confidence-eval`, `feat: scaffolded-hint-system`, `feat: research-mode-qr-sync`, `test: integration-research-flow`. İlk ikisi saf çekirdekleri, üçüncüsü uygulama/QR/state entegrasyonunu, sonuncusu testleri, CI ve dokümantasyonu içerir. Mevcut `Baslat.bat` değişikliği bu geliştirmeye dahil edilmez. Bu hazırlık aşamasında GitHub'a push veya yayın yapılmaz.
+İlk dört geliştirme commit'ine öğretmen paneli, performans, Hap Kartlar ve genişletilmiş regresyon commit'leri eklenir. Mevcut `Baslat.bat` değişikliği bu geliştirmeye dahil edilmez. Yayın, testlerden sonra mevcut GitHub Actions akışıyla yapılır.

@@ -19,6 +19,10 @@ Yapay zeka: cihaza indirilen Gemma 4 (internetsiz), bilgisayardaki Ollama modell
 
 Araştırma kullanımı, veri modeli, puanlama kuralları ve deney sınırları: [Araştırma modu](RESEARCH_MODE.md).
 
+**Öğretmen gerekçe paneli:** Test sonucundan gerekçelerini öğretmene QR/kod/dosyayla gönder; öğretmen üç ölçütle puanlayıp geri bildirsin. Öğrenci sonucu aldığında normal öğrenme göstergeleri güncellenir; araştırmanın özgün A/B sonuçları korunur. [Kullanım ve puanlama](TEACHER_REVIEW.md).
+
+Test/yazılı üretimi küçük partiler, ilk soruların önizlemesi, ilerleme ve iptal/yeniden denemeyle çalışır. Hap Kartlar'da boş desteden konu seçerek başlama ve takvimi değiştirmeyen inceleme eylemleri bulunur.
+
 ## Geliştirme kontrolleri
 
 Node.js 22 veya üzeriyle, proje kökünde (ek npm paketi kurmadan):
@@ -34,3 +38,5 @@ Yeni araştırma/QR kontrollerini ayrıca çalıştırmak için `npm run test:re
 Web çıktısı `dist/web` klasörüne yazılır. İsteğe bağlı `npm run test:study-ui` kontrolü Playwright ve bir Chromium tarayıcısı gerektirir; Windows'ta Edge kullanır. Bu kontrol dış ağ isteklerini engeller ve yapay zekâ çıktısını sabit test verileriyle değiştirir.
 
 Mimari, doğrulama kapsamı ve önerilen commit grupları: [Geliştirme notları](ADAPTIVE_STUDY.md).
+
+Öğretmen ve üretim kontrolleri: `npm run test:teacher-review-ui`, `npm run test:generation-ui`. Bütün araç/deney/oyun ekranlarını taramak için `npm run test:all-features-ui`. Bu tarayıcı testleri Playwright gerektirir; canlı yapay zekâ, kamera ve mikrofon işlevlerini doğruladıkları varsayılmaz.

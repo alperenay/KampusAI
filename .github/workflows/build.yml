@@ -73,10 +73,36 @@ jobs:
           echo "::notice::Eşitleme: $(curl -sS -X POST "$URL/sync/$SC" -H 'content-type: application/json' -d '{"cursor":0,"changes":[]}' | head -c 300)"
           echo "url=$URL" >> "$GITHUB_OUTPUT"
 
+  ui-checks:
+    name: Öğretmen ve tüm ekran regresyonu
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Test tarayıcısını hazırla
+        run: |
+          npm install --no-save --package-lock=false --ignore-scripts playwright@1.62.1
+          npx playwright install --with-deps chromium
+      - name: Arayüz ve çevrimdışı veri akışları
+        run: |
+          npm run test:study-ui
+          npm run test:research-ui
+          npm run test:teacher-review-ui
+          npm run test:generation-ui
+          npm run test:all-features-ui
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ui-regression-results
+          path: dist/qa
+          if-no-files-found: ignore
+
   web:
     name: Web / iPhone
-    needs: server
-    if: ${{ !cancelled() }}
+    needs: [server, ui-checks]
+    if: ${{ !cancelled() && needs['ui-checks'].result == 'success' }}
     runs-on: ubuntu-latest
     env:
       DA_SERVER_URL: ${{ needs.server.outputs.url }}
@@ -93,6 +119,8 @@ jobs:
         run: node tools/study-check.mjs
       - name: Gerekçe/eminlik, ipucu ve çevrimdışı araştırma QR akışı
         run: node tools/research-check.mjs
+      - name: Öğretmen gerekçe ve kademeli üretim kontrolleri
+        run: node tools/teacher-review-check.mjs
       - name: Çevrendeki Fizik sınaması
         run: node tools/cevre-check.mjs
       - name: Konuşan Kavramlar sınaması
@@ -451,8 +479,8 @@ jobs:
 
   release:
     name: Sürümü yayınla
-    needs: [android, windows, linux]
-    if: ${{ github.ref == 'refs/heads/main' && !cancelled() && needs.android.result == 'success' && needs.windows.result == 'success' }}   # başka dallarda yalnızca deneme derlemesi: yayın yok
+    needs: [android, windows, linux, web, linux-test, android-test]
+    if: ${{ github.ref == 'refs/heads/main' && !cancelled() && needs.android.result == 'success' && needs.windows.result == 'success' && needs.linux.result == 'success' && needs.web.result == 'success' && needs['linux-test'].result == 'success' && needs['android-test'].result == 'success' }}   # başka dallarda yalnızca deneme derlemesi: yayın yok
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
@@ -466,7 +494,7 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          **Bu sürümde:** Gerekçe ve eminlik değerlendirmesi, üç basamaklı ipuçları ve çevrimdışı araştırma modu. Öğretmen ve öğrenci arasında oturum/sonuçlar QR veya yerel dosyayla paylaşılır; ipucu kullanımı adaptif test ve günlük öneriyle birlikte değerlendirilir.
+          **Bu sürümde:** Öğretmen gerekçe değerlendirme paneli; gerekçe ve eminlik, kademeli ipuçları, çevrimdışı araştırma ve QR geri bildirimi. İlk soruları erken gösteren kademeli test/yazılı üretimi ve boş desteden Hap Kartlar çalışmasına başlama.
 
           **Windows:** \`KampusAI-Kurulum-$APP_VERSION.exe\` dosyasını indirip çalıştır.
           Uygulama henüz yeni ve kod imzası olmadığı için Windows "**Windows kişisel bilgisayarınızı korudu**" diyebilir: **Ek bilgi → Yine de çalıştır**. Bu bir virüs uyarısı değil, "bu yayımcıyı henüz tanımıyorum" uyarısıdır. Kaynak kodun tamamı bu sayfada açık.

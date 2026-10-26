@@ -32,15 +32,15 @@ function device(records = new Map()) {
 const teacher = device(), student = device(), M = teacher.App.metacognition, H = teacher.App.scaffolding, A = teacher.App.adaptive;
 const question = researchBank()[0];
 const observation = (params) => Object.assign(M.observation(), { reasonChoice: 0, confidence: 100 }, params);
-await check("Model üretimi üç küçük partiye bölünür ve zorluk etiketleri doğrulanır", async () => {
+await check("Model üretimi dört küçük partiye bölünür ve zorluk etiketleri doğrulanır", async () => {
   let calls = 0;
   teacher.App.ai = { generate: async (options) => {
-    calls++; assert.ok(options.prompt.includes("TAM 10"));
+    calls++; assert.ok(options.prompt.includes("TAM 3"));
     return { data: { questions: researchBank(30) }, model: "test-model" };
   } };
   const result = await teacher.App.quiz.generatePool({ id: "9" }, { name: "Fizik" }, { name: "Ünite" }, { title: "Kazanım", content: {} });
-  assert.equal(calls, 3); assert.equal(result.data.questions.length, 30);
-  assert.equal(new Set(result.data.questions.map((q) => q.q)).size, 30);
+  assert.equal(calls, 4); assert.equal(result.data.questions.length, 12);
+  assert.equal(new Set(result.data.questions.map((q) => q.q)).size, 12);
   teacher.App.ai.generate = async () => ({ data: { questions: researchBank(1) }, model: "bad" });
   await assert.rejects(() => teacher.App.quiz.generatePool({ id: "9" }, { name: "Fizik" }, { name: "Ünite" }, { title: "Kazanım", content: {} }));
 });
