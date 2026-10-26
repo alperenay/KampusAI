@@ -1,5 +1,7 @@
 # Uyarlanan test ve günlük çalışma önerisi
 
+Bu belge 1.37.0 temel akışını açıklar. 1.38.0 geliştirmesinde eklenen gerekçe/eminlik, ipucu etkisi, `research` deposu ve güncel puanlama kuralları için [Araştırma modu](RESEARCH_MODE.md) belgesine bakın; bu ek kurallar aşağıdaki eski veri modeli ve hâkimiyet hesabını genişletir.
+
 ## Mimari ve state
 
 Yeni bağımlılık veya state kütüphanesi eklenmedi. Modüller mevcut IIFE / `App.*` düzenini kullanır. `App.adaptive` saf seviye hesaplamalarını, `App.study` günlük öneri ve kartın yaşam döngüsünü yönetir. Mevcut `App.quiz`, `App.today.suggestion` ve asistan rotaları korunur.

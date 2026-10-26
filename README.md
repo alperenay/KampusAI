@@ -13,6 +13,11 @@ Yapay zeka: cihaza indirilen Gemma 4 (internetsiz), bilgisayardaki Ollama modell
 - **Seviyeye uyarlanan test:** Her konu testi 10 sorudan oluşur. Başlangıç zorluğu aynı konudaki son beş testten hesaplanır; sonraki sorular cevaplarına göre kolaylaşır veya zorlaşır. Sonuçta doğru/yanlış/boş sayısı, zorluk ağırlıklı başarı ve tahmini seviye gösterilir. Yanlışlar mevcut yanlış defterine eklenir.
 - **Bugün ne çalışmalıyım?** Ana sayfa ve Bugün ekranındaki tek eylem kartı; son testlerini, öğrenme haritandaki eksikleri, unutulan konuları ve ders programındaki zaman aralığını kullanarak test ya da konu tekrarı önerir. Yeni test üretmek için yapay zekâ gerekir; öneri hesaplaması cihazda yapılır.
 - Test sonuçları mevcut yedekleme ve cihaz eşitlemesine dahildir. Ayrı hesap veya yeni veri deposu gerekmez.
+- **Gerekçe ve eminlik:** Cevapla birlikte gerekçe ve %25–100 eminlik toplanır. Test sonunda aday pedagojik göstergeler ve ipucusuz doğruluk gösterilir; serbest metin gerekçesi otomatik doğru/yanlış sayılmaz.
+- **Kademeli ipuçları:** Kavram, strateji ve çözüm başlangıcından oluşan üç basamak; destek kullanımı adaptif zorluğa ve günlük tekrar önerisine katılır.
+- **Çevrimdışı araştırma:** Sınıf/Öğretmen ekranından aynı soru paketine dayalı ipucu veya adaptif akış karşılaştırması oluşturulur. Oturum ve sonuçlar parçalı QR, kod veya yerel dosyayla taşınır. Araştırma sonuçları normal çalışma geçmişine yazılmaz ve otomatik bulut eşitlemesine girmez.
+
+Araştırma kullanımı, veri modeli, puanlama kuralları ve deney sınırları: [Araştırma modu](RESEARCH_MODE.md).
 
 ## Geliştirme kontrolleri
 
@@ -23,6 +28,8 @@ npm run lint
 npm test
 npm run build
 ```
+
+Yeni araştırma/QR kontrollerini ayrıca çalıştırmak için `npm run test:research`; iki cihazlı çevrimdışı tarayıcı akışı için `npm run test:research-ui` kullanılır. Tarayıcı testi Playwright ve tarayıcı gerektirir.
 
 Web çıktısı `dist/web` klasörüne yazılır. İsteğe bağlı `npm run test:study-ui` kontrolü Playwright ve bir Chromium tarayıcısı gerektirir; Windows'ta Edge kullanır. Bu kontrol dış ağ isteklerini engeller ve yapay zekâ çıktısını sabit test verileriyle değiştirir.
 

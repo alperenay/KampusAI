@@ -1,6 +1,6 @@
 # KampüsAI Gizlilik ve Kişisel Verilerin Korunması Notu
 
-Son güncelleme: 17 Ekim 2026 · Sürüm 1.14.1
+Son güncelleme: 26 Ekim 2026 · Sürüm 1.38.0 geliştirme
 
 KampüsAI, lise öğrencileri için ücretsiz ve açık kaynaklı bir YKS çalışma uygulamasıdır. Kullanıcılarının çoğu 18 yaşından küçük olduğu için uygulama **mümkün olan en az veriyle** çalışacak şekilde tasarlandı. Bu not, 6698 sayılı Kişisel Verilerin Korunması Kanunu'nun (KVKK) temel ilkeleri gözetilerek hazırlanmıştır.
 
@@ -9,7 +9,7 @@ KampüsAI, lise öğrencileri için ücretsiz ve açık kaynaklı bir YKS çalı
 - Hesap açılmaz. E-posta, telefon, T.C. kimlik numarası, okul numarası istenmez.
 - Kayıtların (denemeler, testler, yanlış defteri, program, notlar, isteğe bağlı adın) **yalnızca kendi cihazında** saklanır.
 - Cihaza indirilen yapay zekâ ile çalışırken hiçbir veri cihazdan çıkmaz.
-- Reklam, analiz/izleme aracı, veri satışı ya da profilleme yoktur.
+- Reklam, üçüncü taraf analiz/izleme aracı veya veri satışı yoktur. Çalışma önerileri ve öğrenme göstergeleri uygulamanın kendi eğitim kayıtlarından hesaplanır.
 
 ## Veri nereye gider?
 
@@ -32,6 +32,12 @@ KampüsAI, lise öğrencileri için ücretsiz ve açık kaynaklı bir YKS çalı
 | Konu Podcast'i, Hologram öğretmen | Hiçbir şey (sesli okuma cihazda); yalnızca "Yapay zekâyla daha doğal yap" seçilirse konu metni ve sesli öğretmende soru, seçili yapay zekâya gider | Seçili yapay zekâ | Podcast metni yalnızca cihazda saklanır |
 | Videodan Çalış (YouTube bağlantısı) | Video bağlantısı ve istem | KampüsAI sunucusu üzerinden Google Gemini (ya da kendi Gemini anahtarın) | Hazırlanan özet yalnızca cihazda saklanır |
 | Öğretmene gönderilen özet | Zayıf/unutulan konu kodları, ders bazında sayılar, isteğe bağlı takma ad | QR veya kodla doğrudan öğretmenin cihazına | Yalnızca öğretmenin cihazında |
+
+## Gerekçe, eminlik ve araştırma kayıtları
+
+Normal konu testlerinde gerekçe metni/seçimi, eminlik, ipucu basamakları ve soruda geçen süre test sonucuyla birlikte saklanır; isteğe bağlı cihaz eşitlemesi açıksa mevcut test kayıtlarıyla birlikte eşitlenir. Öğretmene gönderilen sınıf özetinde son değerlendirilmiş testlerin soru sayısı ve ipucusuz doğruluk oranı da bulunabilir; serbest gerekçe metni bu özete eklenmez.
+
+Araştırma oturumları ve sonuçları ayrı yerel depodadır ve otomatik bulut eşitlemesine girmez. QR/kod/yerel dosya aktarımı yalnızca kullanıcı eylemiyle yapılır; takma katılımcı kodu, cevaplar, gerekçe indisleri, eminlik, ipucu ve süre izleri taşınır. Ad, sohbet, fotoğraf ve serbest gerekçe metni bu aktarıma eklenmez. Kodlar şifreli veya imzalı değildir; katılımcı kodları başka kayıtlarla ilişkilendirilebilir. Araştırma kayıtları genel yerel yedek dosyasına dahildir. **Araştırma modu → Araştırma verilerini sil** yalnızca bu cihazdaki araştırma kayıtlarını siler; daha önce başka cihaza aktarılan kopyalar o cihazdan ayrıca silinmelidir.
 
 ## Haklarım
 

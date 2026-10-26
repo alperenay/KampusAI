@@ -72,6 +72,16 @@ check("Yeni sonuç eski başarısızlığı geçersiz kılar; unutulan konu önc
   const r = S.rank(items, new Map([["b", { parts: { fading: true } }]]), quizzes, [], [], now);
   assert.equal(r[0].key, "b"); assert.equal(r[0].reason, "study.fading");
 });
+check("İpucuyla yapılan doğrular günlük öneride bağımsız başarı yerine geçmez", () => {
+  const quizzes = [{ key: "a", date: now.toISOString(), total: 10, correct: 10, metacognition: { independentAccuracy: 0 } }];
+  const r = S.rank(items, new Map(), quizzes, [], [], now);
+  assert.equal(r[0].key, "a"); assert.equal(r[0].review, true);
+});
+check("Doğru şıkla birlikte hatalı gerekçe de günlük tekrar önceliğini etkiler", () => {
+  const quizzes = [{ key: "a", date: now.toISOString(), total: 10, correct: 10, metacognition: { independentAccuracy: 1, learningEvidence: 0.5 } }];
+  const r = S.rank(items, new Map([["a", { status: "weak" }]]), quizzes, [], [], now);
+  assert.equal(r[0].reason, "study.supportReview"); assert.equal(r[0].review, true);
+});
 // Öneri entegrasyonu: gerçek zaman penceresi, seçili sınıf ve kök eksik yönlendirmesi.
 let rows = { quizzes: [], mistakes: [], progress: [], schedules: { id: "user", blocks: [{ day: 0, start: "12:08", end: "13:00" }] } };
 ctx.App.db = { getAll: async (store) => rows[store] || [], get: async (store) => rows[store] };

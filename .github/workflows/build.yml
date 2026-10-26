@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.37.0
+  APP_VERSION: 1.38.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -91,6 +91,8 @@ jobs:
         run: node tools/syntax-check.mjs
       - name: Uyarlanan test ve günlük öneri motoru
         run: node tools/study-check.mjs
+      - name: Gerekçe/eminlik, ipucu ve çevrimdışı araştırma QR akışı
+        run: node tools/research-check.mjs
       - name: Çevrendeki Fizik sınaması
         run: node tools/cevre-check.mjs
       - name: Konuşan Kavramlar sınaması
@@ -464,7 +466,7 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          **Bu sürümde:** Geçmiş sonuçlara ve her cevaba göre zorluğu değişen 10 soruluk testler; ana sayfa ve Bugün ekranında eksiklere ve uygun süreye göre çalışma önerisi; sadeleştirilmiş, mobil uyumlu çalışma kartları.
+          **Bu sürümde:** Gerekçe ve eminlik değerlendirmesi, üç basamaklı ipuçları ve çevrimdışı araştırma modu. Öğretmen ve öğrenci arasında oturum/sonuçlar QR veya yerel dosyayla paylaşılır; ipucu kullanımı adaptif test ve günlük öneriyle birlikte değerlendirilir.
 
           **Windows:** \`KampusAI-Kurulum-$APP_VERSION.exe\` dosyasını indirip çalıştır.
           Uygulama henüz yeni ve kod imzası olmadığı için Windows "**Windows kişisel bilgisayarınızı korudu**" diyebilir: **Ek bilgi → Yine de çalıştır**. Bu bir virüs uyarısı değil, "bu yayımcıyı henüz tanımıyorum" uyarısıdır. Kaynak kodun tamamı bu sayfada açık.

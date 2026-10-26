@@ -67,6 +67,10 @@ try {
       if (blankLast && i === 9) await page.locator("#qSkip").click();
       else {
         await page.locator('.quiz-q:visible .opt[data-o="' + index + '"]').click();
+        const reason = page.locator('.quiz-q:visible input[data-reason][value="0"]');
+        if (await reason.count()) await reason.check();
+        else await page.locator('.quiz-q:visible textarea[data-reason-text]').fill('Eşitliğin iki tarafına aynı işlem uygulanır.');
+        await page.locator('.quiz-q:visible input[data-confidence][value="75"]').check();
         await page.locator("#qFinish").click();
       }
     }
