@@ -5,6 +5,24 @@
    ========================================================= */
 App.locales = App.locales || {};
 App.locales.tr = {
+  /* Metacognition and hints */
+  "meta.hintUse": "{n} ipucu açıldı",
+  "meta.expectedReason": "Beklenen gerekçe:",
+  "meta.reason": "Bu cevabı neden seçtin?",
+  "meta.confidence": "Cevabından ne kadar eminsin?",
+  "meta.textNote": "Kendi gerekçeni yaz. Serbest metin gerekçesi otomatik olarak doğru/yanlış puanlanmaz.",
+  "meta.summary": "Gerekçe, eminlik ve yardım kullanımı",
+  "meta.metrics": "Doğruluk: %{raw} · İpucusuz doğruluk: %{independent} · Pedagojik puan: {score}/100",
+  "meta.caution": "Bunlar kural tabanlı aday göstergelerdir. Tahmin, kavram yanılgısı veya öğrenme düzeyi hakkında kesin teşhis değildir.",
+  "meta.category.unanswered": "Boş bırakıldı",
+  "meta.category.consciousCorrect": "Bilinçli doğru göstergesi",
+  "meta.category.supportedCorrect": "İpucuyla desteklenen doğru",
+  "meta.category.guessCandidate": "Şans eseri doğru adayı (eminlik düşük)",
+  "meta.category.fragileCorrect": "Doğru cevap, hatalı gerekçe",
+  "meta.category.misconceptionCandidate": "Kavram yanılgısı adayı (emin ama yanlış)",
+  "meta.category.gapCandidate": "Bilgi eksiği adayı",
+  "meta.category.unverifiedCorrect": "Doğru cevap; gerekçe henüz değerlendirilmedi",
+  "meta.classSummary": "Gerekçe/eminlik değerlendirmesi: {n} soru · İpucusuz doğruluk: %{pct}",
   /* Adaptive testing & daily study */
   "adaptive.intro": "10 soru, seviyene göre seçilir. Sonraki soruya geçtiğinde cevabın kesinleşir; çözümler test sonunda açılır.",
   "adaptive.next": "Sonraki soru",

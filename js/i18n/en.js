@@ -5,6 +5,24 @@
    ========================================================= */
 App.locales = App.locales || {};
 App.locales.en = {
+  /* Metacognition and hints */
+  "meta.hintUse": "{n} hints opened",
+  "meta.expectedReason": "Expected reasoning:",
+  "meta.reason": "Why did you choose this answer?",
+  "meta.confidence": "How confident are you?",
+  "meta.textNote": "Write your reasoning. Free-text reasoning is not automatically graded for correctness.",
+  "meta.summary": "Reasoning, confidence and support use",
+  "meta.metrics": "Accuracy: {raw}% · Unassisted accuracy: {independent}% · Pedagogical score: {score}/100",
+  "meta.caution": "These are rule-based candidate indicators, not definitive diagnoses of guessing, misconceptions or mastery.",
+  "meta.category.unanswered": "Unanswered",
+  "meta.category.consciousCorrect": "Informed-correct indicator",
+  "meta.category.supportedCorrect": "Correct with hints",
+  "meta.category.guessCandidate": "Possible guessed answer (low confidence)",
+  "meta.category.fragileCorrect": "Correct answer, incorrect reasoning",
+  "meta.category.misconceptionCandidate": "Possible misconception (confident but incorrect)",
+  "meta.category.gapCandidate": "Possible knowledge gap",
+  "meta.category.unverifiedCorrect": "Correct; reasoning not yet assessed",
+  "meta.classSummary": "Reasoning/confidence assessment: {n} questions · Unassisted accuracy: {pct}%",
   /* Adaptive testing & daily study */
   "adaptive.intro": "10 questions are selected for your level. Moving on locks your answer; solutions appear at the end.",
   "adaptive.next": "Next question",
