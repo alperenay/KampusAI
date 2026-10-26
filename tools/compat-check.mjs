@@ -3,7 +3,8 @@
 // desteklemez: bu sözdizimi bir dosyada geçerse o dosyanın TAMAMI yüklenmez. Bu betik js/ altında arar.
 import fs from "node:fs";
 import path from "node:path";
-const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..", "js");
+import { fileURLToPath } from "node:url";
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "js");
 const bad = [];
 const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).forEach((e) => {
   const p = path.join(d, e.name);

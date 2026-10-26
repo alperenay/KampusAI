@@ -1,7 +1,8 @@
 // İçerik doğrulayıcı: kazanım alanları, kimlik tekilliği, bozuk kaçış karakterleri ve KaTeX hataları.
 // Kullanım: node tools/content-check.mjs   (çıkış kodu 1 = hata var)
+import { fileURLToPath } from "node:url";
 import fs from "node:fs"; import vm from "node:vm"; import path from "node:path";
-const root = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/(\w:)/, "$1")), "..");
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const ctx = { window: {}, App: { data: {} }, console };
 ctx.window = ctx; ctx.self = ctx; vm.createContext(ctx);
 const run = (f) => vm.runInContext(fs.readFileSync(path.join(root, f), "utf8"), ctx, { filename: f });

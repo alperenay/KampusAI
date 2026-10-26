@@ -1,0 +1,12 @@
+{
+  "name": "kampusai-web",
+  "private": true,
+  "version": "1.37.0",
+  "scripts": {
+    "build": "node tools/build-web.mjs dist/web",
+    "lint": "node tools/syntax-check.mjs && node tools/compat-check.mjs",
+    "test": "node tools/study-check.mjs && node tools/ar-check.mjs && node tools/cevre-check.mjs && node tools/kavram-check.mjs && node tools/content-check.mjs",
+    "test:study": "node tools/study-check.mjs",
+    "test:study-ui": "node tools/study-ui-check.mjs"
+  }
+}
