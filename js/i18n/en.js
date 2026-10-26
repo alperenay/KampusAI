@@ -22,6 +22,12 @@ App.locales.en = {
   "meta.category.misconceptionCandidate": "Possible misconception (confident but incorrect)",
   "meta.category.gapCandidate": "Possible knowledge gap",
   "meta.category.unverifiedCorrect": "Correct; reasoning not yet assessed",
+  "hint.next": "Hint level {n}",
+  "hint.step": "Level {n}",
+  "hint.usedAll": "All three hints opened",
+  "hint.fallback1": "Identify the concept being tested. Separate what is asked from the information given.",
+  "hint.fallback2": "List the given values and units. Find a relation or principle connecting them to the unknown.",
+  "hint.fallback3": "1. Make a short list of the given and unknown quantities. 2. Write your relation symbolically, then substitute the known values. Complete the final operation yourself.",
   "meta.classSummary": "Reasoning/confidence assessment: {n} questions · Unassisted accuracy: {pct}%",
   /* Adaptive testing & daily study */
   "adaptive.intro": "10 questions are selected for your level. Moving on locks your answer; solutions appear at the end.",

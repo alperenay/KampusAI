@@ -1,0 +1,50 @@
+/* Mevcut renk ve study ölçüleriyle aynı tasarım sistemi. */
+.meta-inputs { display: grid; gap: 16px; margin-block: 24px 16px; }
+.meta-inputs fieldset { min-inline-size: 0; margin: 0; padding: 12px 0 0; border: 0; border-top: 1px solid var(--border-strong); }
+.meta-inputs legend { padding: 0 8px 0 0; color: var(--text); font-size: .9375rem; font-weight: 600; }
+.meta-inputs textarea { display: block; width: 100%; margin-top: 8px; resize: vertical; }
+.meta-reason { display: flex; gap: 12px; align-items: flex-start; min-height: 44px; padding: 10px 0; line-height: 1.5; overflow-wrap: anywhere; }
+.meta-reason input { flex: none; margin-top: 5px; accent-color: var(--accent); }
+.meta-reason span { min-width: 0; }
+.meta-confidence { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding-top: 8px; }
+.meta-confidence label { position: relative; min-width: 0; }
+.meta-confidence input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.meta-confidence span { display: grid; place-items: center; min-height: 44px; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); color: var(--text); background: var(--surface-2); }
+.meta-confidence input:checked + span { border-color: var(--accent-text); background: var(--accent-soft); font-weight: 700; }
+.meta-confidence input:focus-visible + span { outline: 2px solid var(--accent-text); outline-offset: 2px; }
+.meta-confidence input:disabled { cursor: default; }
+.hint-ladder { margin-block: 16px; min-width: 0; }
+.hint-ladder .btn { min-height: 44px; white-space: normal; }
+.hint-ladder__steps { display: grid; gap: 12px; margin: 12px 0 0; padding-inline-start: 24px; color: var(--text-2); }
+.hint-ladder__steps:empty { display: none; }
+.hint-ladder__steps li { padding: 8px; border-inline-start: 2px solid var(--accent-text); overflow-wrap: anywhere; }
+.hint-ladder__steps b { color: var(--text); font-size: .875rem; }
+.meta-summary { width: 100%; min-width: 0; text-align: start; padding-top: 16px; border-top: 1px solid var(--border-strong); line-height: 1.6; }
+.meta-summary h3 { font-size: 1rem; margin-bottom: 8px; }
+.meta-summary ul { margin: 12px 0; padding-inline-start: 24px; }
+.meta-summary p { margin-block: 8px; }
+.meta-question-result { margin-block: 16px 8px; font-size: .875rem; font-weight: 600; color: var(--text); line-height: 1.6; }
+/* Uzun gerekçe/ipucu içeriği eylem çubuğunun altında kalmadan kaydırılabilsin. */
+.adaptive-help ~ .quiz-finish { position: static; background: var(--surface-solid); }
+.research-page, .research-sessions, .research-session, .research-form { min-width: 0; }
+.research-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-block: 12px; }
+.research-controls .btn, .research-page .btn { min-height: 44px; white-space: normal; max-width: 100%; }
+.research-sessions, .research-form { display: grid; gap: 16px; }
+.research-session { padding: var(--study-padding, 24px); overflow-wrap: anywhere; }
+.research-session h2 { font-size: var(--study-title, 1.125rem); margin-bottom: 8px; }
+.research-session details { border-top: 1px solid var(--border); padding-block: 12px; }
+.research-session summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; }
+.research-page > .hint, .research-form .hint { margin-block: 16px; line-height: 1.6; color: var(--text-2); }
+.research-table-wrap { overflow-x: auto; max-width: 100%; margin-block: 16px; }
+.research-table-wrap table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+.research-table-wrap caption { text-align: start; padding-block: 8px; font-weight: 600; }
+.research-table-wrap th, .research-table-wrap td { padding: 8px; text-align: start; border-bottom: 1px solid var(--border); overflow-wrap: normal; }
+.research-qr { width: 100%; max-width: 340px; margin: 16px auto; padding: 12px; background: #fff; border-radius: var(--radius-sm); }
+.research-qr svg { display: block; width: 100%; height: auto; }
+.research-code { width: 100%; max-width: 100%; min-width: 0; font-family: var(--mono); font-size: .8125rem; overflow-wrap: anywhere; resize: vertical; }
+.research-banner { margin-block: 16px; padding: 12px 16px; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); background: var(--accent-soft); color: var(--text); font-size: .875rem; line-height: 1.6; }
+@media (max-width: 480px) {
+  .research-controls > .btn { flex: 1 1 120px; }
+  .research-table-wrap th, .research-table-wrap td { padding: 8px 4px; }
+  .research-page .page-head { align-items: start; }
+}

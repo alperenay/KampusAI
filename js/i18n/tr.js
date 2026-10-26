@@ -22,6 +22,12 @@ App.locales.tr = {
   "meta.category.misconceptionCandidate": "Kavram yanılgısı adayı (emin ama yanlış)",
   "meta.category.gapCandidate": "Bilgi eksiği adayı",
   "meta.category.unverifiedCorrect": "Doğru cevap; gerekçe henüz değerlendirilmedi",
+  "hint.next": "{n}. basamak ipucu",
+  "hint.step": "Basamak {n}",
+  "hint.usedAll": "Üç ipucu da açıldı",
+  "hint.fallback1": "Sorunun hangi kavramı sınadığını düşün. İstenen büyüklüğü verilenlerden ayır.",
+  "hint.fallback2": "Verilenleri ve birimlerini yaz. İstenenle bu verilenleri ilişkilendiren bağıntıyı veya ilkeyi belirle.",
+  "hint.fallback3": "1. Verilenler ve istenenler için kısa bir liste oluştur. 2. Seçtiğin bağıntıyı önce sembollerle yaz; ardından verilenleri yerleştir. Son işlemi kendin tamamla.",
   "meta.classSummary": "Gerekçe/eminlik değerlendirmesi: {n} soru · İpucusuz doğruluk: %{pct}",
   /* Adaptive testing & daily study */
   "adaptive.intro": "10 soru, seviyene göre seçilir. Sonraki soruya geçtiğinde cevabın kesinleşir; çözümler test sonunda açılır.",
