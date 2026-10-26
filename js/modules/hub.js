@@ -14,6 +14,7 @@
 
   /* [rota, simge, ad (i18n anahtarı ya da [tr,en]), açıklama [tr,en], grup, arama kelimeleri] */
   const TOOLS = [
+    ["arastirma", "chart", "nav.research", ["Gerekçe, eminlik ve ipucu etkisini çevrimdışı karşılaştır", "Compare reasoning, confidence and hints offline"], "track", "araştırma deney ab qr eminlik gerekçe ipucu"],
     ["bugun", "sun", "nav.today", ["Bugünkü program, görevler ve öneriler", "Today's plan, tasks and suggestions"], "start", "gün plan görev"],
     ["", "sparkle", "nav.newChat", ["Yapay zekâ asistanına soru sor, fotoğraftan çöz", "Ask the AI assistant, solve from a photo"], "start", "asistan sohbet soru yapay zeka"],
     ["sesli", "mic", "nav.voiceTeacher", ["Konuşarak sor, sesli cevap al; hologram öğretmen ekranda anlatır", "Ask by voice and hear the answer; the hologram teacher explains on screen"], "start", "sesli öğretmen hologram konuş ses mikrofon voice"],

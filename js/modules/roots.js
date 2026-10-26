@@ -103,7 +103,7 @@
         const recent = s.quiz.slice(0, 3);
         const ws = [3, 1.5, 1];
         let qs = 0, qw = 0;
-        recent.forEach((q, i) => { qs += (q.correct / q.total) * ws[i]; qw += ws[i]; });
+        recent.forEach((q, i) => { qs += (q.metacognition ? Math.min(q.metacognition.independentAccuracy, q.metacognition.learningEvidence == null ? 1 : q.metacognition.learningEvidence) : q.correct / q.total) * ws[i]; qw += ws[i]; });
         parts.quiz = Math.round((qs / qw) * 100);
         parts.quizLast = s.quiz[0];
         sum += parts.quiz * 3; w += 3;
@@ -130,7 +130,7 @@
         const dates = [s.quiz[0] && s.quiz[0].date, ...s.fey.map((x) => x.date), ...s.chk.map((c) => c.date), s.card && s.card.last].map((d) => Date.parse(d)).filter((x) => !isNaN(x));
         const last = dates.length ? Math.max(...dates) : null;
         if (last) {
-          const reps = s.quiz.filter((q) => q.correct / q.total >= 0.7).length + s.fey.filter((x) => Number(x.score) >= 70).length + (s.card ? Math.min(3, s.card.goodReps) : 0);
+          const reps = s.quiz.filter((q) => (q.metacognition ? Math.min(q.metacognition.independentAccuracy, q.metacognition.learningEvidence == null ? 1 : q.metacognition.learningEvidence) : q.correct / q.total) >= 0.7).length + s.fey.filter((x) => Number(x.score) >= 70).length + (s.card ? Math.min(3, s.card.goodReps) : 0);
           const stab = Math.min(120, 7 * Math.pow(2, Math.max(0, reps - 1)));
           const days = Math.max(0, (Date.now() - last) / 86400000);
           const R = Math.exp(-days / stab);

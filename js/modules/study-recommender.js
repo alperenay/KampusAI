@@ -20,7 +20,7 @@
     mistakes.filter((m) => !m.mastered && m.key).forEach((m) => counts.set(m.key, (counts.get(m.key) || 0) + 1));
     return items.filter((it) => it.outcome.content).map((it) => {
       const q = last.get(it.key), m = mastery.get(it.key);
-      const accuracy = q ? q.correct / q.total : null;
+      const accuracy = q ? (q.metacognition ? Math.min(q.metacognition.independentAccuracy, q.metacognition.learningEvidence == null ? 1 : q.metacognition.learningEvidence) : q.correct / q.total) : null;
       const today = q && dayKey(q.date) === dayKey(now);
       // Başarılı bir testi aynı gün tekrar önermeyiz; düşük sonuçlar önce özet tekrarı alır.
       if (today && accuracy >= 0.7) return null;
@@ -28,7 +28,7 @@
       const fading = m && m.parts && m.parts.fading;
       const errors = counts.get(it.key) || 0;
       let reason = weak ? "study.weak" : fading ? "study.fading" : errors ? "study.mistakes" : done.has(it.key) ? "study.check" : "study.new";
-      if (accuracy !== null && accuracy < 0.7) reason = "study.lastQuiz";
+      if (accuracy !== null && accuracy < 0.7) reason = q.metacognition ? "study.supportReview" : "study.lastQuiz";
       const score = (accuracy !== null && accuracy < 0.7 ? 100 + (1 - accuracy) * 30 : 0) +
         (weak ? 70 : 0) + (fading ? 60 : 0) + Math.min(errors, 5) * 10 + (done.has(it.key) ? 5 : 10);
       return { key: it.key, score, reason, accuracy, review: accuracy !== null && accuracy < 0.5 || weak || fading };

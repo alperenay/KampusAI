@@ -56,7 +56,10 @@
       const [quizzes, exams, sessions, mistakes, explains] = await Promise.all(["quizzes", "exams", "sessions", "mistakes", "explains"].map(get));
       return { quizzes, exams, sessions, mistakes, explains, days: App.badges ? await App.badges.activeDays() : new Set() };
     })(), end.getTime() - 7 * 86400000, end.getTime()) : {};
-    return { v: 1, a: String(alias || "").slice(0, 24), t: new Date().toISOString().slice(0, 10),
+    const assessed = (await App.db.getAll("quizzes")).filter((q) => q.metacognition).sort((a, b) => String(b.date).localeCompare(String(a.date))).slice(0, 10);
+    const total = assessed.reduce((n, q) => n + q.total, 0);
+    const independent = total ? Math.round(100 * assessed.reduce((n, q) => n + q.metacognition.independentAccuracy * q.total, 0) / total) : null;
+    return { p: { n: total, i: independent }, v: 1, a: String(alias || "").slice(0, 24), t: new Date().toISOString().slice(0, 10),
       w: weak.slice(0, 25).map((x) => x[0]), f: fading.slice(0, 15), s: subj,
       d: w.studyDays || 0, m: Math.round(w.focus || 0), q: w.quizzes || 0 };
   }
@@ -137,7 +140,7 @@
         '<div class="page-head"><div><h1>' + esc(T("Sınıf (Öğretmen)", "Class (Teacher)")) + "</h1><p>" +
           esc(T("Öğrencilerin Haftalık Rapor → \"Öğretmenime gönder\" ile oluşturduğu anonim kodları ekle; sınıfın en çok zorlandığı konuları gör. Veriler yalnızca bu cihazda saklanır.",
             "Add the anonymous codes students create from Weekly Report → \"Send to my teacher\" and see where the class struggles. Data stays on this device.")) + "</p></div>" +
-          '<div class="page-head__actions">' +
+          '<div class="page-head__actions"><a class="btn" href="#/arastirma">' + esc(App.t("research.title")) + '</a>' +
             (App.pairing.hasCamera() || App.platform.native ? '<button class="btn btn--primary" type="button" id="clsScan">' + App.icon("scan") + esc(T("QR okut", "Scan QR")) + "</button>" : "") +
             '<button class="btn" type="button" id="clsPaste">' + App.icon("plus") + esc(T("Kod yapıştır", "Paste code")) + "</button>" +
             (S.length ? '<button class="btn btn--ghost" type="button" id="clsClear">' + App.icon("trash") + esc(T("Sınıfı temizle", "Clear class")) + "</button>" : "") +
@@ -160,7 +163,7 @@
           }).join("") + "</div></section>" +
         '<section class="card"><div class="card__title">' + App.icon("list") + esc(T("Öğrenciler", "Students")) + "</div>" +
           '<ul class="cls-students">' + S.map((s) => "<li><b>" + esc(s.data.a || T("İsimsiz", "Anonymous")) + "</b><small>" +
-            esc(T("Gönderim: ", "Sent: ") + s.data.t + " · " + (s.data.d || 0) + T("/7 gün · ", "/7 days · ") + (s.data.m || 0) + T(" dk odak · ", " min focus · ") + (s.data.w || []).length + T(" zayıf konu", " weak")) + "</small>" +
+            esc((s.data.p && Number.isFinite(s.data.p.n) && Number.isFinite(s.data.p.i) ? App.t("meta.classSummary", { n: s.data.p.n, pct: Math.max(0, Math.min(100, s.data.p.i)) }) + " · " : "") + T("Gönderim: ", "Sent: ") + s.data.t + " · " + (s.data.d || 0) + T("/7 gün · ", "/7 days · ") + (s.data.m || 0) + T(" dk odak · ", " min focus · ") + (s.data.w || []).length + T(" zayıf konu", " weak")) + "</small>" +
             '<button class="icon-btn icon-btn--sm" type="button" data-del="' + esc(s.id) + '" title="' + esc(T("Çıkar", "Remove")) + '">' + App.icon("close") + "</button></li>").join("") + "</ul></section>") +
       "</div>";
     App.hydrateIcons(view);
