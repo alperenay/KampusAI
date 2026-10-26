@@ -1,0 +1,45 @@
+/* Ortak tema renkleri, 4px tabanlı boşluklar; yalnızca çalışma bileşenleri. */
+:root {
+  --study-gap: 16px;
+  --study-padding: 24px;
+  --study-title: 1.125rem;
+  --study-body: 1rem;
+}
+.study-card {
+  min-width: 0;
+  padding: var(--study-padding);
+  display: grid;
+  gap: var(--study-gap);
+  color: var(--text);
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+.study-card__head { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; justify-content: space-between; }
+.study-card h2 { display: flex; align-items: center; gap: 8px; margin: 0; font-size: var(--study-title); line-height: 1.4; }
+.study-card p { margin: 0; line-height: 1.6; }
+.study-card__task { font-size: var(--study-body); font-weight: 600; }
+.study-card .hint { color: var(--text-2); }
+.study-card__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.study-card .btn { min-height: 44px; max-width: 100%; white-space: normal; text-align: center; }
+.home__today:has(.study-card) { width: 100%; max-width: 760px; }
+.today .tday-main, .today .tday-side, #todayStudy { min-width: 0; }
+#adaptiveQuestions { min-width: 0; }
+#adaptiveQuestions .quiz-q[hidden] { display: none; }
+#adaptiveQuestions .quiz-q { padding: var(--study-padding); overflow-wrap: anywhere; }
+#adaptiveQuestions .quiz-q__head { gap: 8px; flex-wrap: wrap; }
+#adaptiveQuestions .opt { min-width: 0; min-height: 48px; }
+#adaptiveQuestions .opt__text { min-width: 0; overflow-wrap: anywhere; }
+#adaptiveQuestions .katex-display { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+.adaptive-help { margin: 16px 0; line-height: 1.6; color: var(--text-2); }
+.adaptive-help ~ .quiz-finish { display: flex; flex-wrap: wrap; gap: 12px; padding: 16px; }
+.adaptive-help ~ .quiz-finish #qProgress { flex: 1 1 180px; }
+.adaptive-help ~ .quiz-finish .btn { min-height: 44px; }
+.adaptive-summary { margin: 16px 0; line-height: 1.6; color: var(--text); }
+.study-card a:focus-visible, #adaptiveQuestions button:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; }
+@media (max-width: 480px) {
+  :root { --study-padding: 16px; }
+  .study-card__actions { flex-direction: column; }
+  .study-card__actions .btn { width: 100%; }
+  .adaptive-help ~ .quiz-finish #qProgress { flex-basis: 100%; }
+  .adaptive-help ~ .quiz-finish .btn { flex: 1 1 100px; white-space: normal; }
+}
