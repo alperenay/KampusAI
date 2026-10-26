@@ -5,6 +5,16 @@
    ========================================================= */
 App.locales = App.locales || {};
 App.locales.tr = {
+  /* Adaptive testing & daily study */
+  "adaptive.intro": "10 soru, seviyene göre seçilir. Sonraki soruya geçtiğinde cevabın kesinleşir; çözümler test sonunda açılır.",
+  "adaptive.next": "Sonraki soru",
+  "adaptive.skip": "Boş bırak",
+  "adaptive.level1": "Kolay",
+  "adaptive.level2": "Orta",
+  "adaptive.level3": "Zor",
+  "adaptive.progress": "Soru {n}/{total} · {level}",
+  "adaptive.result": "Zorluk ağırlıklı başarı: {score}/100 · Tahmini güncel seviye: {level}",
+  "adaptive.saveFailed": "Sonuç kaydedilemedi. Yeniden denemek için Testi bitir düğmesine bas.",
   /* Genel */
   "appName": "KampüsAI",
   "defaultName": "Öğrenci",

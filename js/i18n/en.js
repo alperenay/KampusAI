@@ -5,6 +5,16 @@
    ========================================================= */
 App.locales = App.locales || {};
 App.locales.en = {
+  /* Adaptive testing & daily study */
+  "adaptive.intro": "10 questions are selected for your level. Moving on locks your answer; solutions appear at the end.",
+  "adaptive.next": "Next question",
+  "adaptive.skip": "Leave blank",
+  "adaptive.level1": "Easy",
+  "adaptive.level2": "Medium",
+  "adaptive.level3": "Hard",
+  "adaptive.progress": "Question {n}/{total} · {level}",
+  "adaptive.result": "Difficulty-weighted accuracy: {score}/100 · Estimated current level: {level}",
+  "adaptive.saveFailed": "Could not save the result. Press Finish test to try again.",
   /* General */
   "appName": "KampüsAI",
   "defaultName": "Student",
