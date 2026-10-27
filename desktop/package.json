@@ -129,5 +129,5 @@
       "artifactName": "KampusAI-${version}-x86_64.${ext}"
     }
   },
-  "homepage": "https://github.com/alperenay/ders-asistani"
+  "homepage": "https://github.com/alperenay/KampusAI"
 }

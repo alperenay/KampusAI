@@ -1,13 +1,13 @@
 # KampüsAI Gizlilik ve Kişisel Verilerin Korunması Notu
 
-Son güncelleme: 26 Ekim 2026 · Sürüm 1.38.0 geliştirme
+Son güncelleme: 27 Ekim 2026
 
 KampüsAI, lise öğrencileri için ücretsiz ve açık kaynaklı bir YKS çalışma uygulamasıdır. Kullanıcılarının çoğu 18 yaşından küçük olduğu için uygulama **mümkün olan en az veriyle** çalışacak şekilde tasarlandı. Bu not, 6698 sayılı Kişisel Verilerin Korunması Kanunu'nun (KVKK) temel ilkeleri gözetilerek hazırlanmıştır.
 
 ## Kısaca
 
-- Hesap açılmaz. E-posta, telefon, T.C. kimlik numarası, okul numarası istenmez.
-- Kayıtların (denemeler, testler, yanlış defteri, program, notlar, isteğe bağlı adın) **yalnızca kendi cihazında** saklanır.
+- Hesap açılmaz. Genel kullanımda e-posta, telefon veya T.C. kimlik numarası istenmez. Sınıf Modu paylaşımında öğrenci kodu/adı kullanıcı tarafından girilebilir.
+- Kayıtların (denemeler, testler, yanlış defteri, program, notlar, isteğe bağlı adın) varsayılan olarak **kendi cihazında** saklanır. İsteğe bağlı eşitleme ve paylaşım yolları aşağıda açıklanmıştır.
 - Cihaza indirilen yapay zekâ ile çalışırken hiçbir veri cihazdan çıkmaz.
 - Reklam, üçüncü taraf analiz/izleme aracı veya veri satışı yoktur. Çalışma önerileri ve öğrenme göstergeleri uygulamanın kendi eğitim kayıtlarından hesaplanır.
 
@@ -41,6 +41,10 @@ Araştırma oturumları ve sonuçları ayrı yerel depodadır ve otomatik bulut 
 
 **Öğretmen gerekçe değerlendirmesi ayrı bir paylaşım eylemidir:** Öğrenci **Gerekçelerimi öğretmene gönder** düğmesini kullanınca serbest gerekçe metni, soru/cevap, eminlik, ipucu ve süreler öğretmene aktarılır. Öğretmenin puanları ve açıklaması öğrenciye geri paylaşılabilir. Yerel `reviews` kayıtları otomatik eşitlenmez, genel yedeğe dahildir. Normal testte öğrenci geri bildirimi içeri alırsa güncellenen testin öğretmen değerlendirmesi mevcut isteğe bağlı eşitlemeye dahil olur. Özgün araştırma sonucu değiştirilmez. Bu paketler de şifreli/imzalı değildir; öğretmen kimliği uygulama tarafından doğrulanmaz.
 
+## QR Sınıf Modu ve haftalık karne
+
+Sınıf Modu ödev ve sonuçları `meta` deposunda tutulur; öğrenci sonuçları konu bazında `quizzes` deposuna da yazılır. Bu depolar isteğe bağlı eşitleme kapsamındadır. QR paketleri öğrenci kodu/adı, cevap, eminlik ve süre bilgilerini taşıyabilir; gönderim kullanıcı eylemiyle yapılır. Haftalık karne yerel kayıtlardan üretilir; yazdırılan/PDF olarak alınan kopyaların paylaşımı kullanıcıya aittir.
+
 ## Haklarım
 
 - **Erişim ve taşıma:** Ayarlar → Verilerini yedekle → Dışa aktar ile tüm verilerini bir dosya olarak alabilirsin.
@@ -57,4 +61,4 @@ Yapay zekâ hata yapabilir. Cevap notlara dayandığında kaynağı [K1] gibi et
 
 ## İletişim
 
-Sorular ve silme talepleri için: GitHub'da [alperenay/ders-asistani](https://github.com/alperenay/ders-asistani/issues) üzerinden bildirim açabilirsiniz.
+Sorular ve silme talepleri için: GitHub'da [alperenay/KampusAI](https://github.com/alperenay/KampusAI/issues) üzerinden bildirim açabilirsiniz.
