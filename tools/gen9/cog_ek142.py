@@ -71,4 +71,33 @@ O("k2", "COĞ.9.E2", "Coğrafi konum: enlem, boylam ve saat hesapları", "Geogra
     r"$40 \times 111 \approx $ **4 440 km**.")],
   [r"Enlem Ekvator'a, boylam başlangıç meridyenine olan açısal uzaklıktır.", r"İki meridyen arası 4 dakika; doğudaki yerin saati ileridir.",
    r"Aynı yarım kürede boylamlar çıkarılır, farklı yarım kürede toplanır.", r"Türkiye ortak saat olarak 45° D (UTC+3) kullanır; 36–42° K, 26–45° D arasındadır."]),
+
+O("k3", "COĞ.9.E3", "Toprak oluşumu, toprak türleri ve bitki örtüsü", "Soil formation, soil types and natural vegetation", r"""
+# Toprak Nasıl Oluşur?
+Kayaçların **ayrışması** (fiziksel ve kimyasal parçalanma) ve bu malzemeye organik maddelerin (**humus**) karışmasıyla oluşur. Oluşumu çok yavaştır: birkaç santimetre toprak yüzlerce yılda meydana gelir.
+**Etkileyen faktörler:** ana kaya, iklim (en önemlisi), yer şekilleri (eğim), canlılar ve zaman.
+- Sıcak ve nemli iklimde **kimyasal**, kurak ve soğuk iklimde **fiziksel** ayrışma etkilidir.
+- Eğimli yamaçlarda toprak taşındığı için incedir; düzlüklerde kalındır.
+
+# Toprak Türleri
+- **Yerinde (sabit) topraklar:** Oluştuğu yerde kalan topraklar. **Zonal** (iklime bağlı): laterit (ekvatoral, kırmızı), terra rossa (Akdeniz, kırmızı), çernozyom (bozkır, kara toprak, çok verimli), podzol (tayga, asitli), tundra toprağı. **İntrazonal** (ana kayaya bağlı): rendzina (kalkerli kayaçlar üzerinde), halomorfik (tuzlu) topraklar.
+- **Taşınmış topraklar:** Akarsu (**alüvyal**, çok verimli; delta ve ovalar), rüzgâr (**lös**), buzul (**moren**) ve yer çekimiyle (**kolüvyal**) taşınan topraklar.
+- **Erozyon** (toprak aşınması) eğim, bitki örtüsünün yok olması, yanlış tarım (eğime paralel sürme) ve aşırı otlatmayla artar; Türkiye'de ciddi bir sorundur. Önlemler: ağaçlandırma, setleme (taraslama), eğime dik sürme, mera düzenlemesi.
+
+# Bitki Örtüsü
+İklim, özellikle **sıcaklık ve yağış**, bitki örtüsünü belirler.
+| Bitki örtüsü | İklim | Örnek bölge |
+|---|---|---|
+| Yağmur ormanları | Ekvatoral (sıcak, her mevsim yağışlı) | Amazon, Kongo |
+| Savan | Yazı yağışlı tropikal | Doğu Afrika |
+| **Maki** | Akdeniz (yazı kurak) | Türkiye'nin Akdeniz ve Ege kıyıları |
+| **Bozkır (step)** | Yarı kurak karasal | İç Anadolu |
+| Karışık ve geniş yapraklı orman | Ilıman, her mevsim yağışlı | Karadeniz kıyıları |
+| Tayga (iğne yapraklı orman) | Soğuk | Sibirya, Kanada |
+| Tundra | Kutup çevresi | Kuzey Kanada, Sibirya kuzeyi |
+""",
+  [(r"İç Anadolu'da bozkırın, Karadeniz kıyılarında ise ormanların yaygın olmasının temel nedeni nedir?", r"**Yağış farkı**: İç Anadolu yarı kurak karasal iklimdedir; Karadeniz kıyıları ise her mevsim yağışlıdır."),
+   (r"Delta ovalarının tarım açısından verimli olmasının nedeni nedir?", r"Akarsuların taşıyıp biriktirdiği **alüvyal topraklar** mineral bakımından zengin ve verimlidir.")],
+  [r"Toprak ayrışma + humusla, çok yavaş oluşur; iklim en etkili faktördür.", r"Yerinde topraklar zonal (laterit, terra rossa, çernozyom, podzol) ve intrazonal (rendzina); taşınmış topraklar alüvyal, lös, moren.",
+   r"Erozyonu bitki örtüsü azaltır; ağaçlandırma ve setleme önlemdir.", r"Bitki örtüsü sıcaklık ve yağışa bağlıdır: maki Akdeniz, bozkır İç Anadolu, orman Karadeniz."]),
 ])]
