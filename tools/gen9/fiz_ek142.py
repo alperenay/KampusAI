@@ -56,4 +56,51 @@ Sıvının ince borularda (kılcal) yükselmesi ya da alçalmasıdır.
     r"Hayır, zorlaşır. Sabun **yüzey gerilimini azaltır**; iğneyi taşıyan yüzey zarı zayıflar ve iğne batar.")],
   [r"Kohezyon: aynı cins, adezyon: farklı cins moleküller arası çekim.", r"Su–cam: adezyon > kohezyon → iç bükey yüzey, kılcalda yükselme.",
    r"Yüzey gerilimi sıcaklık ve sabunla azalır.", r"Kılcal yükselme ince boruda daha fazladır."]),
+]),
+U("u6", "6. Ünite (Ek): Genleşme ve Basit Makineler", "Unit 6 (Extra): Thermal Expansion and Simple Machines", [
+
+O("k1", "FİZ.9.E3", "Katı, sıvı ve gazlarda genleşme", "Thermal expansion of solids, liquids and gases", r"""
+# Genleşme Nedir?
+Isıtılan maddenin taneciklerinin hareketi artar, aralarındaki ortalama uzaklık büyür ve **hacim artar** (genleşme); soğuyunca **büzülme** olur. Genleşme miktarı **ilk boyuta**, **sıcaklık değişimine** ve maddenin **cinsine** bağlıdır.
+
+# Katılarda Genleşme
+$$\Delta L = L_0\cdot\lambda\cdot\Delta T$$
+($\lambda$: boyca genleşme katsayısı, ayırt edicidir.) Yüzeyce genleşme katsayısı yaklaşık $2\lambda$, hacimce $3\lambda$'dır.
+- **Delikli levha** ısıtılınca delik de **büyür** (levha bütün olarak büyür).
+- **Bimetal** (farklı katsayılı iki metal şerit) ısıtılınca katsayısı **küçük** olan tarafa doğru bükülür → termostat, ütü, yangın alarmı.
+- Uygulamalar: Raylar ve köprülerde **genleşme aralıkları**, elektrik tellerinin yazın sarkık bırakılması, sıcak suda gevşeyen kavanoz kapağı.
+
+# Sıvı ve Gazlarda Genleşme
+- Sıvılar katılardan, gazlar sıvılardan **daha çok** genleşir. Sıvıların yalnızca hacimce genleşmesi incelenir; termometreler bu ilkeyle çalışır.
+- **Suyun düzensiz genleşmesi:** Su 0–4 °C arasında ısıtılınca **büzülür**; en küçük hacim ve en büyük özkütle **+4 °C**'dedir. Donarken hacmi artar: kışın su boruları patlayabilir; buz suyun üstünde kalır ve göllerde canlılar yaşamını sürdürür.
+""",
+  [(r"Boyu 10 m olan demir rayın sıcaklığı 30 °C artıyor ($\lambda = 1{,}2\times10^{-5}$ 1/°C). Ray ne kadar uzar?",
+    r"$\Delta L = 10 \cdot 1{,}2\times10^{-5} \cdot 30 = 3{,}6\times10^{-3}$ m = **3,6 mm**."),
+   (r"Ortasında delik olan metal bir levha ısıtılırsa delik ne olur?", r"Delik de **büyür**; levha her yönde orantılı genleşir.")],
+  [r"$\Delta L = L_0\lambda\Delta T$; genleşme katsayısı ayırt edicidir.", r"Bimetal katsayısı küçük olan tarafa bükülür.",
+   r"Gazlar > sıvılar > katılar genleşir.", r"Su +4 °C'de en yoğundur; donarken genleşir."]),
+
+O("k2", "FİZ.9.E4", "Basit makineler: kaldıraç, makara, eğik düzlem", "Simple machines: lever, pulley, inclined plane", r"""
+# Basit Makinelerin Amacı
+Kuvvetin **yönünü** ya da **büyüklüğünü** değiştirerek iş yapmayı kolaylaştırırlar. **İşten kazanç sağlanmaz**: kuvvetten kazanılan kadar yoldan kaybedilir (sürtünmesiz ideal durumda $F\cdot x_F = P\cdot x_P$).
+$$\text{Kuvvet kazancı} = \frac{P}{F}, \qquad \text{Verim} = \frac{\text{Alınan iş}}{\text{Verilen iş}}\times100$$
+
+# Kaldıraç
+Bir destek noktası etrafında dönebilen çubuk. Denge: $F\cdot a = P\cdot b$ ($a$: kuvvet kolu, $b$: yük kolu).
+- Destek ortada: tahterevalli, makas, pense. Yük ortada: el arabası, ceviz kıracağı. Kuvvet ortada: cımbız, maşa (kuvvetten kazanç yok, hızdan kazanç var).
+
+# Makaralar
+- **Sabit makara:** Yalnızca kuvvetin **yönünü** değiştirir, $F = P$.
+- **Hareketli makara:** Yükü iki ip taşır, $F = \dfrac{P}{2}$ (makara ağırlığı ihmal); ip, yükün iki katı kadar çekilir.
+- **Palanga:** Sabit ve hareketli makaraların birleşimi; yükü taşıyan ip sayısı $n$ ise $F = \dfrac{P}{n}$.
+
+# Eğik Düzlem, Vida, Çıkrık, Dişli
+- **Eğik düzlem:** $F\cdot L = P\cdot h$ → uzun rampa daha az kuvvet ister.
+- **Vida:** Silindire sarılmış eğik düzlemdir. **Çıkrık:** kuyu çıkrığı, direksiyon ($F\cdot R = P\cdot r$).
+- **Dişliler:** Birbirine geçmiş dişliler zıt yönde döner; diş sayısı büyük olan daha yavaş döner (bisiklet vitesi).
+""",
+  [(r"Yük kolu 20 cm, kuvvet kolu 80 cm olan kaldıraçla 400 N'luk yük kaç N kuvvetle dengelenir?", r"$F\cdot80 = 400\cdot20$ → $F = $ **100 N** (kuvvet kazancı 4)."),
+   (r"Uzunluğu 5 m, yüksekliği 1 m olan sürtünmesiz eğik düzlemde 500 N'luk yük kaç N'luk kuvvetle çıkarılır?", r"$F\cdot5 = 500\cdot1$ → **100 N**.")],
+  [r"Basit makineler işten kazanç sağlamaz; kuvvetten kazanılan yoldan kaybedilir.", r"Kaldıraç: $F\cdot a = P\cdot b$.",
+   r"Sabit makara yön değiştirir; hareketli makara kuvveti yarıya indirir; palangada $F = P/n$.", r"Eğik düzlem: $F\cdot L = P\cdot h$."]),
 ])]

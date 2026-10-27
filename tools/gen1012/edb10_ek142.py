@@ -155,4 +155,35 @@ O("k6", "TDE.10.E6", "Anlatım bozuklukları", "Errors of expression", r"""
   (r"“Bu soruyu kesinlikle çözebilir.” cümlesinde nasıl bir bozukluk vardır?", r"\"Kesinlikle\" kesinlik, \"çözebilir\" olasılık bildirir → **anlamca çelişki**.")],
  [r"Anlamsal bozukluklar: gereksiz sözcük, yanlış anlam, çelişki, belirsizlik.", r"Yapısal bozukluklar: özne–yüklem uyumsuzluğu, öge eksikliği, ek yanlışlığı, çatı uyumsuzluğu.",
   r"Ortak öge farklı hâl eki istiyorsa ayrıca yazılmalıdır."]),
+
+O("k7", "TDE.10.E7", "Yapı bilgisi: kök, gövde, yapım ve çekim ekleri", "Morphology: roots, stems, derivational and inflectional suffixes", r"""
+# Kök ve Gövde
+- **Kök:** Sözcüğün anlamlı en küçük parçası. **İsim kökü** (göz, kitap) ya da **fiil kökü** (gel-, oku-) olabilir; bazı kökler hem isim hem fiildir (**sesteş kök**: *boya*, *göç*, *tat*).
+- **Gövde:** Köke **yapım eki** getirilerek oluşan yeni sözcük: *göz-lük*, *oku-l*.
+- Türkçe **sondan eklemeli** bir dildir: ekler köke arka arkaya eklenir; kök değişmez.
+
+# Yapım Ekleri
+Sözcüğe **yeni anlam** kazandırır, yeni sözcük türetir. Dört türü vardır:
+| Tür | Örnek |
+|---|---|
+| İsimden isim | göz-**lük**, tuz-**lu**, kitap-**çı** |
+| İsimden fiil | su-**la**-, baş-**la**-, yaş-**a**- |
+| Fiilden isim | sev-**gi**, yaz-**ı**, oku-**l** |
+| Fiilden fiil | yaz-**dır**-, sev-**il**-, gör-**ün**- |
+
+# Çekim Ekleri
+Sözcüğün anlamını değiştirmez, cümledeki **görevini** belirler.
+- **İsim çekim ekleri:** Çoğul (-lar), iyelik (-ım, -ın…), hâl (-ı, -e, -de, -den), ilgi (-ın), eşitlik (-ca), soru eki (mi).
+- **Fiil çekim ekleri:** Kip (-dı, -mış, -yor, -acak, -r, -malı, -sa…) ve kişi ekleri.
+- Sıra: yapım ekleri **önce**, çekim ekleri **sonra** gelir (*göz-lük-çü-ler-den*).
+
+# Sözcük Yapısı
+- **Basit:** Yapım eki almamış (*ev*; *ev-ler-de* de basittir).
+- **Türemiş:** Yapım eki almış (*ev-li*, *gör-gü*).
+- **Birleşik:** İki ya da daha çok sözcüğün yeni anlamda birleşmesi (*hanımeli*, *bilgisayar*, *ayakkabı*).
+""",
+ [(r"“Kitapçılardan” sözcüğünü köküne ve eklerine ayırınız.", r"*kitap* (isim kökü) + *-çı* (isimden isim yapım eki) + *-lar* (çoğul) + *-dan* (ayrılma hâl eki). Sözcük **türemiştir**."),
+  (r"“Evlerimizde” sözcüğü yapısına göre hangi türdendir?", r"Yalnızca çekim eki almıştır (çoğul, iyelik, bulunma) → **basit** sözcük.")],
+ [r"Kök anlamlı en küçük parça; gövde kök + yapım eki.", r"Yapım eki yeni sözcük türetir; çekim eki görev belirler.",
+  r"Yapım ekleri çekim eklerinden önce gelir.", r"Yapı: basit, türemiş, birleşik."]),
 ])]

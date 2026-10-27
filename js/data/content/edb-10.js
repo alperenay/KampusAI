@@ -842,6 +842,33 @@ App.data.content["10/edebiyat"] = [
       "Ortak öge farklı hâl eki istiyorsa ayrıca yazılmalıdır."
      ]
     }
+   },
+   {
+    "id": "k7",
+    "code": "TDE.10.E7",
+    "title": {
+     "tr": "Yapı bilgisi: kök, gövde, yapım ve çekim ekleri",
+     "en": "Morphology: roots, stems, derivational and inflectional suffixes"
+    },
+    "content": {
+     "anlatim": "# Kök ve Gövde\n\n- **Kök:** Sözcüğün anlamlı en küçük parçası. **İsim kökü** (göz, kitap) ya da **fiil kökü** (gel-, oku-) olabilir; bazı kökler hem isim hem fiildir (**sesteş kök**: *boya*, *göç*, *tat*).\n- **Gövde:** Köke **yapım eki** getirilerek oluşan yeni sözcük: *göz-lük*, *oku-l*.\n- Türkçe **sondan eklemeli** bir dildir: ekler köke arka arkaya eklenir; kök değişmez.\n\n# Yapım Ekleri\n\nSözcüğe **yeni anlam** kazandırır, yeni sözcük türetir. Dört türü vardır:\n| Tür | Örnek |\n|---|---|\n| İsimden isim | göz-**lük**, tuz-**lu**, kitap-**çı** |\n| İsimden fiil | su-**la**-, baş-**la**-, yaş-**a**- |\n| Fiilden isim | sev-**gi**, yaz-**ı**, oku-**l** |\n| Fiilden fiil | yaz-**dır**-, sev-**il**-, gör-**ün**- |\n\n# Çekim Ekleri\n\nSözcüğün anlamını değiştirmez, cümledeki **görevini** belirler.\n- **İsim çekim ekleri:** Çoğul (-lar), iyelik (-ım, -ın…), hâl (-ı, -e, -de, -den), ilgi (-ın), eşitlik (-ca), soru eki (mi).\n- **Fiil çekim ekleri:** Kip (-dı, -mış, -yor, -acak, -r, -malı, -sa…) ve kişi ekleri.\n- Sıra: yapım ekleri **önce**, çekim ekleri **sonra** gelir (*göz-lük-çü-ler-den*).\n\n# Sözcük Yapısı\n\n- **Basit:** Yapım eki almamış (*ev*; *ev-ler-de* de basittir).\n- **Türemiş:** Yapım eki almış (*ev-li*, *gör-gü*).\n- **Birleşik:** İki ya da daha çok sözcüğün yeni anlamda birleşmesi (*hanımeli*, *bilgisayar*, *ayakkabı*).",
+     "ornekler": [
+      {
+       "soru": "“Kitapçılardan” sözcüğünü köküne ve eklerine ayırınız.",
+       "cozum": "*kitap* (isim kökü) + *-çı* (isimden isim yapım eki) + *-lar* (çoğul) + *-dan* (ayrılma hâl eki). Sözcük **türemiştir**."
+      },
+      {
+       "soru": "“Evlerimizde” sözcüğü yapısına göre hangi türdendir?",
+       "cozum": "Yalnızca çekim eki almıştır (çoğul, iyelik, bulunma) → **basit** sözcük."
+      }
+     ],
+     "ozet": [
+      "Kök anlamlı en küçük parça; gövde kök + yapım eki.",
+      "Yapım eki yeni sözcük türetir; çekim eki görev belirler.",
+      "Yapım ekleri çekim eklerinden önce gelir.",
+      "Yapı: basit, türemiş, birleşik."
+     ]
+    }
    }
   ]
  }

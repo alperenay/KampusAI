@@ -752,6 +752,37 @@ App.data.content["9/matematik"] = [
       "Karışımda saf madde miktarları toplanır; su eklemek maddeyi değiştirmez."
      ]
     }
+   },
+   {
+    "id": "k6",
+    "code": "MAT.9.E6",
+    "title": {
+     "tr": "Özdeşlikler ve çarpanlara ayırma",
+     "en": "Identities and factorisation"
+    },
+    "content": {
+     "anlatim": "# Temel Özdeşlikler\n\n$$(a+b)^2 = a^2 + 2ab + b^2, \\qquad (a-b)^2 = a^2 - 2ab + b^2$$\n$$a^2 - b^2 = (a-b)(a+b) \\quad \\text{(iki kare farkı)}$$\n$$(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3, \\qquad a^3 \\pm b^3 = (a \\pm b)(a^2 \\mp ab + b^2)$$\nFaydalı bağıntı: $a^2 + b^2 = (a+b)^2 - 2ab$.\n\n# Çarpanlara Ayırma Yöntemleri\n\n1. **Ortak çarpan parantezine alma:** $6x^2 + 9x = 3x(2x + 3)$\n2. **Gruplandırma:** $ax + ay + bx + by = (a+b)(x+y)$\n3. **Özdeşlikleri kullanma:** $x^2 - 49 = (x-7)(x+7)$, $x^2 + 6x + 9 = (x+3)^2$\n4. **$x^2 + bx + c$ üç terimlisi:** Çarpımı $c$, toplamı $b$ olan iki sayı bulunur: $x^2 - 5x + 6 = (x-2)(x-3)$\n5. **$ax^2 + bx + c$:** Çarpraz yöntemle: $2x^2 + 7x + 3 = (2x+1)(x+3)$\n\n# Rasyonel İfadelerin Sadeleştirilmesi\n\nPay ve payda çarpanlarına ayrılır, ortak çarpanlar sadeleştirilir (paydayı sıfır yapan değerler hariç):\n$$\\frac{x^2 - 9}{x^2 + 3x} = \\frac{(x-3)(x+3)}{x(x+3)} = \\frac{x-3}{x}$$",
+     "ornekler": [
+      {
+       "soru": "$a + b = 7$ ve $ab = 10$ ise $a^2 + b^2$ kaçtır?",
+       "cozum": "$a^2 + b^2 = (a+b)^2 - 2ab = 49 - 20 = $ **29**."
+      },
+      {
+       "soru": "$x^2 - x - 12$ ifadesini çarpanlarına ayırınız.",
+       "cozum": "Çarpımı $-12$, toplamı $-1$ olan sayılar $-4$ ve $3$ → **$(x-4)(x+3)$**."
+      },
+      {
+       "soru": "$101^2 - 99^2$ işleminin sonucu kaçtır?",
+       "cozum": "İki kare farkı: $(101-99)(101+99) = 2\\cdot200 = $ **400**."
+      }
+     ],
+     "ozet": [
+      "$(a\\pm b)^2 = a^2 \\pm 2ab + b^2$; $a^2 - b^2 = (a-b)(a+b)$.",
+      "$x^2 + bx + c$: çarpımı $c$, toplamı $b$ olan sayılar.",
+      "Sadeleştirmeden önce pay ve payda çarpanlarına ayrılır.",
+      "$a^2 + b^2 = (a+b)^2 - 2ab$."
+     ]
+    }
    }
   ]
  }

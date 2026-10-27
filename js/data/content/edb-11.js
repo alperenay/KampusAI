@@ -365,5 +365,122 @@ App.data.content["11/edebiyat"] = [
     }
    }
   ]
+ },
+ {
+  "id": "u5",
+  "name": {
+   "tr": "5. Tema (Ek): AYT Edebiyat Tarihi Temelleri",
+   "en": "Theme 5 (Extra): Foundations of Turkish Literary History"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "TDE.11.E1",
+    "title": {
+     "tr": "Şiir bilgisi: ölçü, kafiye, redif, nazım birimi",
+     "en": "Poetics: metre, rhyme, redif and stanza"
+    },
+    "content": {
+     "anlatim": "# Nazım Birimi\n\nŞiirin en küçük anlam ve yapı bölümüdür: **beyit** (iki dize, divan şiirinde temel birim), **dörtlük** (halk şiirinde), **bent** (beşten fazla dizeli bölümler).\n\n# Ölçü (Vezin)\n\n- **Hece ölçüsü (parmak hesabı):** Dizelerdeki hece **sayısının** eşitliğine dayanır; Türklerin millî ölçüsüdür. Duraklar dizeyi bölümlere ayırır (ör. 11'li: 6+5 ya da 4+4+3).\n- **Aruz ölçüsü:** Hecelerin **açıklık–kapalılık** (uzunluk–kısalık) değerine dayanır; Arap ve Fars şiirinden alınmıştır, divan şiirinde kullanılır. Kapalı hece (uzun) \"—\", açık hece (kısa) \".\" ile gösterilir; ölçüyü sağlamak için **imale** (kısa heceyi uzatma) ve **zihaf** (uzunu kısaltma) yapılabilir.\n- **Serbest şiir:** Ölçü ve uyak zorunluluğu yoktur (Nâzım Hikmet, Garipçiler).\n\n# Kafiye (Uyak) ve Redif\n\n- **Redif:** Dize sonlarında tekrarlanan **aynı görevdeki** ek, sözcük ya da söz öbekleri.\n- **Kafiye:** Rediften önce gelen, yazılışı ve okunuşu aynı, anlamı farklı ses benzerliği.\n| Kafiye türü | Benzeşen ses |\n|---|---|\n| **Yarım** | Tek ses (ör. a**ğ**ı – da**ğ**ı) |\n| **Tam** | İki ses |\n| **Zengin** | Üç ya da daha fazla ses |\n| **Cinaslı** | Yazılışı aynı, anlamı farklı sözcükler |\n\n> Bulma yöntemi: Dize sonundan geriye doğru **aynı görevli ekleri redif** olarak ayır; kalan benzer sesler kafiyedir.\n\n# Kafiye Örgüsü\n\nDüz (aaaa), çapraz (abab), sarma (abba), mani tipi (aaxa). Gazel ve kasidede **aa, xa, xa…** düzeni vardır.",
+     "ornekler": [
+      {
+       "soru": "“Gönül **dağı**nda açan çiçek / Yolun **ağı**nda kalan yürek” dizelerinde redif ve kafiyeyi bulunuz.",
+       "cozum": "Sözcük sonlarındaki **-ında** iyelik + bulunma eki aynı görevde → **redif**. Kalan **dağ / ağ** sözcüklerindeki **ağ** sesleri → iki ses benzeşmesi, **tam kafiye**."
+      },
+      {
+       "soru": "Hece ölçüsü ile aruz ölçüsü arasındaki temel fark nedir?",
+       "cozum": "Hece ölçüsü dizelerdeki **hece sayısına**, aruz ölçüsü hecelerin **uzunluk–kısalık (açık–kapalı)** değerine dayanır."
+      }
+     ],
+     "ozet": [
+      "Beyit divan şiirinin, dörtlük halk şiirinin nazım birimidir.",
+      "Hece ölçüsü sayı eşitliğine, aruz açık–kapalı hece düzenine dayanır.",
+      "Redif aynı görevli ek/sözcük tekrarı; kafiye rediften önceki ses benzerliğidir.",
+      "Yarım uyak tek ses, tam uyak iki ses, zengin uyak üç ve daha fazla ses."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "TDE.11.E2",
+    "title": {
+     "tr": "İslamiyet öncesi ve geçiş dönemi Türk edebiyatı",
+     "en": "Pre-Islamic and transitional Turkish literature"
+    },
+    "content": {
+     "anlatim": "# İslamiyet Öncesi Türk Edebiyatı\n\n**Sözlü dönem:** Ürünler törenlerde (sığır, şölen, yuğ) ortaya çıkar, **ozan, kam, baksı** gibi kişilerce **kopuz** eşliğinde söylenir; hece ölçüsü ve dörtlük kullanılır, **anonimdir**.\n- **Koşuk:** Sığır törenlerinde söylenen, doğa ve aşk konulu lirik şiir (halk edebiyatındaki koşmanın atası).\n- **Sagu:** Yuğ (yas) törenlerinde ölenin ardından söylenen ağıt (halk edebiyatındaki ağıtın atası). En bilinen örneği Alp Er Tunga Sagusu'dur.\n- **Sav:** Atasözü. **Destan:** Toplumu derinden etkileyen olayların olağanüstü öğelerle anlatılması (Oğuz Kağan, Ergenekon, Türeyiş).\n**Yazılı dönem:** **Orhun Yazıtları** (Göktürk), Uygur metinleri.\n\n# Geçiş Dönemi (11–13. yüzyıllar)\n\nTürklerin İslamiyet'i kabulüyle iki kültürün ortak ürünleri verilir; hem hece hem aruz, hem dörtlük hem beyit kullanılır.\n| Eser | Yazar | Özelliği |\n|---|---|---|\n| **Kutadgu Bilig** | Yusuf Has Hacib | İlk siyasetname örneği; mutluluk veren bilgi, aruzla yazılmış ilk eser; mesnevi biçiminde |\n| **Divânu Lugâti't-Türk** | Kaşgarlı Mahmud | Türkçe–Arapça sözlük; sözlü edebiyat örneklerini (koşuk, sagu, sav) içerir |\n| **Atabetü'l-Hakayık** | Edip Ahmet Yükneki | Ahlak ve öğüt kitabı (didaktik) |\n| **Divân-ı Hikmet** | Hoca Ahmet Yesevi | Tasavvufi hikmetler; hece ölçüsü ve dörtlük — tekke edebiyatının temeli |\n| **Dede Korkut Hikâyeleri** | Anonim | Oğuzların hayatını anlatan, destandan halk hikâyesine geçişi gösteren 12 hikâye |",
+     "ornekler": [
+      {
+       "soru": "Divânu Lugâti't-Türk sözlü edebiyat açısından neden önemlidir?",
+       "cozum": "İslamiyet öncesi **koşuk, sagu ve savları** derleyerek günümüze ulaştırmıştır."
+      },
+      {
+       "soru": "Dede Korkut Hikâyeleri hangi iki anlatı türü arasında köprü kabul edilir?",
+       "cozum": "**Destan** ile **halk hikâyesi** arasında."
+      }
+     ],
+     "ozet": [
+      "Sözlü dönem: koşuk (sığır), sagu (yuğ), sav, destan; ozanlar kopuzla söyler.",
+      "Geçiş dönemi: Kutadgu Bilig, Divânu Lugâti't-Türk, Atabetü'l-Hakayık, Divân-ı Hikmet.",
+      "Kutadgu Bilig aruzla yazılmış ilk Türkçe eser ve ilk siyasetnamedir.",
+      "Dede Korkut destandan halk hikâyesine geçiş örneğidir."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "TDE.11.E3",
+    "title": {
+     "tr": "Halk edebiyatı: anonim, âşık ve tekke-tasavvuf edebiyatı",
+     "en": "Folk literature: anonymous, minstrel and Sufi traditions"
+    },
+    "content": {
+     "anlatim": "# Ortak Özellikler\n\nHece ölçüsü, dörtlük nazım birimi, çoğunlukla **yarım uyak** ve redif, sade bir dil; sözlü gelenek.\n\n# Anonim Halk Edebiyatı\n\nSöyleyeni bilinmeyen, halkın ortak malı olan ürünler.\n- **Mani:** Genellikle 7 heceli tek dörtlük; kafiye örgüsü **aaxa**; ilk iki dize çoğu zaman doldurmadır.\n- **Türkü:** Ezgiyle söylenen, bölümleri **bent** ve **bağlama (nakarat)** olan şiir.\n- **Ninni, ağıt, bilmece, tekerleme, masal, efsane, halk hikâyesi** (Kerem ile Aslı, Köroğlu).\n\n# Âşık Edebiyatı\n\n**Saz eşliğinde** şiir söyleyen, şiirin sonunda adını söyleyen (**tapşırma / mahlas**) âşıkların edebiyatı.\n| Nazım biçimi | Özelliği |\n|---|---|\n| **Koşma** | 11'li hece, 3–5 dörtlük; aşk ve doğa (güzelleme), ölüm (ağıt), toplum eleştirisi (taşlama), kahramanlık (koçaklama) |\n| **Semai** | 8'li hece, özel ezgi |\n| **Varsağı** | 8'li hece, \"bre, hey\" gibi ünlemler, yiğitçe söyleyiş |\n| **Destan** | Bir olayı (deprem, savaş) anlatan uzun koşma |\n- Temsilciler: **Karacaoğlan** (doğa ve aşk), **Köroğlu** (koçaklama), **Dadaloğlu**, **Kayıkçı Kul Mustafa**, **Âşık Ömer**, **Gevherî**.\n\n# Tekke-Tasavvuf Edebiyatı\n\nTasavvufi düşünceleri (**Allah sevgisi, insan sevgisi, nefsin terbiyesi**) halka sade dille anlatır; hem hece hem aruz kullanılır.\n- Nazım biçimleri: **ilahi**, **nefes** (Bektaşi), **nutuk**, **devriye** (varlık döngüsü), **şathiye** (alaycı görünümlü derin anlam).\n- Temsilciler: **Yunus Emre** (sade Türkçe, insan sevgisi), **Hacı Bayram Veli**, **Pir Sultan Abdal**, **Kaygusuz Abdal**.",
+     "ornekler": [
+      {
+       "soru": "Âşık edebiyatında şairin son dörtlükte adını söylemesine ne ad verilir?",
+       "cozum": "**Tapşırma** (mahlas kullanımı)."
+      },
+      {
+       "soru": "Koşmanın konularına göre türlerini sayınız.",
+       "cozum": "**Güzelleme** (aşk ve doğa), **koçaklama** (yiğitlik), **taşlama** (eleştiri), **ağıt** (ölüm)."
+      }
+     ],
+     "ozet": [
+      "Halk edebiyatı: hece ölçüsü, dörtlük, yarım uyak, sade dil.",
+      "Anonim: mani (aaxa), türkü (bent + bağlama), masal, efsane.",
+      "Âşık: koşma (11'li), semai ve varsağı (8'li); Karacaoğlan, Dadaloğlu.",
+      "Tekke: ilahi, nefes, nutuk, devriye, şathiye; Yunus Emre, Pir Sultan Abdal."
+     ]
+    }
+   },
+   {
+    "id": "k4",
+    "code": "TDE.11.E4",
+    "title": {
+     "tr": "Divan edebiyatı: özellikleri, nazım biçimleri ve şairleri",
+     "en": "Divan literature: features, verse forms and poets"
+    },
+    "content": {
+     "anlatim": "# Genel Özellikler\n\n13. yüzyıldan Tanzimat'a kadar süren, saray ve çevresinde gelişen, **Arap ve Fars** edebiyatlarının etkisindeki **yazılı** edebiyattır.\n- **Aruz ölçüsü**, **beyit** nazım birimi; dil ağır, Arapça ve Farsça sözcük ve tamlamalar yoğundur.\n- Şiirde **mazmun** (kalıplaşmış benzetmeler: sevgilinin boyu servi, dudağı gonca) ve **söz sanatları** çok kullanılır; **parça güzelliği** (her beytin kendi içinde anlamca bağımsız olması) esastır.\n- Şiirler **divan** adlı kitaplarda toplanır.\n\n# Nazım Biçimleri\n\n| Biçim | Özellik |\n|---|---|\n| **Gazel** | 5–15 beyit, aşk ve şarap; aa xa xa…; ilk beyit **matla**, son beyit (şairin mahlası) **makta**, en güzel beyit **beytü'l-gazel** |\n| **Kaside** | Din ve devlet büyüklerini öven uzun şiir; bölümleri: nesib (giriş), girizgâh, methiye, fahriye, dua. Allah'ı öven **tevhid**, Peygamber'i öven **naat** |\n| **Mesnevi** | Her beyti kendi arasında kafiyeli, uzun konuların anlatıldığı biçim (aa bb cc); \"hamse\" beş mesnevi demektir |\n| **Rubai** | Tek dörtlük, felsefi ve tasavvufi; aaxa, özel aruz kalıpları |\n| **Tuyuğ** | Türklerin divan şiirine kattığı tek dörtlük; aaxa, *fâilâtün fâilâtün fâilün* kalıbı |\n| **Şarkı** | Bestelenmek için yazılan, nakaratlı (Nedîm) |\n\n# Önemli Şairler\n\n- **Fuzûlî** (16. yy): Aşk ve ıstırap; Leylâ vü Mecnûn, Su Kasidesi.\n- **Bâkî** (16. yy): \"Sultânü'ş-şuarâ\", İstanbul Türkçesi ve sanatlı söyleyiş; Kanuni Mersiyesi.\n- **Nef'î** (17. yy): Kaside ustası, hiciv (Sihâm-ı Kazâ).\n- **Nedîm** (18. yy, Lale Devri): **Mahallîleşme**, İstanbul hayatı, şarkı türü.\n- **Şeyh Gâlib** (18. yy): Sebk-i Hindî ve tasavvuf; Hüsn ü Aşk.\n- Nesirde: **Evliya Çelebi** (Seyahatname), **Katip Çelebi**, **Sinan Paşa** (Tazarruname).",
+     "ornekler": [
+      {
+       "soru": "Gazelin ilk ve son beyitleri nasıl adlandırılır?",
+       "cozum": "İlk beyit **matla**, şairin mahlasının geçtiği son beyit **makta**dır."
+      },
+      {
+       "soru": "Türklerin divan edebiyatına kazandırdığı nazım biçimi hangisidir?",
+       "cozum": "**Tuyuğ**."
+      }
+     ],
+     "ozet": [
+      "Divan edebiyatı: aruz, beyit, mazmun, parça güzelliği, ağır dil.",
+      "Gazel (matla, makta), kaside (tevhid, naat), mesnevi (aa bb cc), rubai, tuyuğ, şarkı.",
+      "Fuzûlî aşk ve ıstırap; Bâkî sultânü'ş-şuarâ; Nedîm mahallîleşme ve şarkı; Şeyh Gâlib sebk-i Hindî.",
+      "Tuyuğ Türklerin divan şiirine kattığı biçimdir."
+     ]
+    }
+   }
+  ]
  }
 ];
