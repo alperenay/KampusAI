@@ -17,7 +17,7 @@ try {
   await page.locator('[name="choice"][value="0"]').check(); await page.locator('.pr-submit').click(); await page.waitForSelector('#prNext');
   await page.reload(); await page.waitForSelector('#prForm');
   assert.match(await page.locator('.pr-progress').innerText(), /2\/3/);
-  for (let i = 1; i < 3; i++) { await page.locator('[name="choice"][value="0"]').check(); await page.locator('.pr-submit').click(); await page.waitForSelector('#prNext'); await page.locator('#prNext').click(); }
+  for (let i = 1; i < 3; i++) { await page.locator('[name="choice"][value="0"]').check(); await page.locator('.pr-submit').click(); await page.waitForSelector('#prNext'); await page.locator('#prNext').click(); if(i<2)assert.equal(await page.evaluate(()=>document.activeElement===document.querySelector('#prForm legend')),true,'Next task receives keyboard focus'); }
   await page.waitForSelector('.pr-result'); assert.match(await page.locator('.pr-result h2').innerText(), /3\/3/); report.flows.push('transfer: validation, three contexts, reload/resume, result');
   // No-network mode is real browser offline, not an AI response fixture.
   await context.setOffline(true);
