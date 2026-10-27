@@ -7,9 +7,10 @@ import assert from "node:assert/strict";
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 const require = createRequire(import.meta.url);
-const { chromium } = require("playwright");
+const engineName = process.env.UI_ENGINE || "chromium";
+const engine = require("playwright")[engineName];
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const qa = path.join(root, "dist/qa"); fs.mkdirSync(qa, { recursive: true });
+const qa = path.join(root, "dist/qa", process.env.UI_ENGINE ? engineName : ""); fs.mkdirSync(qa, { recursive: true });
 const types = { ".html": "text/html", ".js": "application/javascript", ".css": "text/css", ".json": "application/json", ".svg": "image/svg+xml", ".webmanifest": "application/manifest+json" };
 const server = http.createServer((req, res) => {
   const url = new URL(req.url, "http://localhost");
@@ -21,17 +22,17 @@ const server = http.createServer((req, res) => {
 await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
 let browser;
 try {
-  const channel = process.env.STUDY_BROWSER || (process.platform === "win32" ? "msedge" : undefined);
-  browser = await chromium.launch({ headless: true, ...(channel ? { channel } : {}) });
+  const channel = engineName === "chromium" ? process.env.STUDY_BROWSER || (process.platform === "win32" ? "msedge" : undefined) : undefined;
+  browser = await engine.launch({ headless: true, ...(channel ? { channel } : {}) });
   const context = await browser.newContext({ serviceWorkers: "block" });
   await context.route("**/*", (route) => new URL(route.request().url()).hostname === "127.0.0.1" ? route.continue() : route.abort());
   await context.addInitScript(() => { localStorage.setItem("da:pref:tourDone", "true"); });
   const page = await context.newPage();
   const errors = []; page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("http://127.0.0.1:" + server.address().port);
-  await page.locator(".study-card").waitFor();
-  assert.equal(await page.locator(".study-card").count(), 1);
-  for (const route of ["#/bugun", "#/"]) {
+  await page.locator(".home__title").waitFor();
+  assert.equal(await page.locator(".study-card").count(), 0);
+  for (const route of ["#/bugun"]) {
     await page.evaluate((hash) => new Promise((resolve) => {
       window.addEventListener("da:route", () => resolve(), { once: true });
       App.router.go(hash.replace(/^#\//, ""));

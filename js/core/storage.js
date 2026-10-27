@@ -99,6 +99,14 @@
       put: (store, obj) => tx(store, "readwrite", (s) => s.put(obj)).then(() => obj),
       remove: (store, id) => tx(store, "readwrite", (s) => s.delete(id)),
       clear: (store) => tx(store, "readwrite", (s) => s.clear()),
+      replaceAll: (rowsByStore) => new Promise((resolve, reject) => {
+        const t = db.transaction(Object.keys(rowsByStore), "readwrite");
+        t.oncomplete = () => resolve();
+        t.onerror = () => reject(t.error);
+        t.onabort = () => reject(t.error || new Error("Restore aborted"));
+        try { Object.entries(rowsByStore).forEach(([name, rows]) => { const s = t.objectStore(name); s.clear(); rows.forEach((row) => s.put(row)); }); }
+        catch (e) { t.abort(); reject(e); }
+      }),
       putMany: (store, rows) => tx(store, "readwrite", (s) => { rows.forEach((r) => s.put(r)); }),
       removeMany: (store, ids) => tx(store, "readwrite", (s) => { ids.forEach((id) => s.delete(id)); })
     };
@@ -108,7 +116,7 @@
   function lsEngine() {
     const key = (store) => LS_PREFIX + "store:" + store;
     const read = (store) => {
-      try { return JSON.parse(localStorage.getItem(key(store)) || "{}"); } catch (e) { return {}; }
+      try { const v = JSON.parse(localStorage.getItem(key(store)) || "{}"); return Object.assign(Object.create(null), v && typeof v === "object" && !Array.isArray(v) ? v : {}); } catch (e) { return Object.create(null); }
     };
     const write = (store, map) => localStorage.setItem(key(store), JSON.stringify(map));
     return {
@@ -118,6 +126,17 @@
       put: async (store, obj) => { const m = read(store); m[obj.id] = obj; write(store, m); return obj; },
       remove: async (store, id) => { const m = read(store); delete m[id]; write(store, m); },
       clear: async (store) => write(store, {}),
+      replaceAll: async (rowsByStore) => {
+        const before = {}, after = {};
+        Object.entries(rowsByStore).forEach(([store, rows]) => { before[key(store)] = localStorage.getItem(key(store)); const map = Object.create(null); rows.forEach((r) => { map[r.id] = r; }); after[key(store)] = JSON.stringify(map); });
+        try { Object.entries(after).forEach(([k, v]) => localStorage.setItem(k, v)); }
+        catch (e) {
+          // Free partial replacements first so the original values fit again after a quota error.
+          Object.keys(before).forEach((k) => localStorage.removeItem(k));
+          Object.entries(before).forEach(([k, v]) => { if (v !== null) localStorage.setItem(k, v); });
+          throw e;
+        }
+      },
       putMany: async (store, rows) => { const m = read(store); rows.forEach((r) => { m[r.id] = r; }); write(store, m); },
       removeMany: async (store, ids) => { const m = read(store); ids.forEach((id) => delete m[id]); write(store, m); }
     };
@@ -214,16 +233,25 @@
 
     /** Yedekten geri yükleme (mevcut veriyi değiştirir) */
     async importAll(data) {
-      if (!data || data.app !== "ders-asistani" || !data.stores) throw new Error(App.t("set.notBackup"));
+      const object = (x) => x && typeof x === "object" && !Array.isArray(x);
+      const invalid = () => { throw new Error(App.t("set.notBackup")); };
+      if (!object(data) || data.app !== "ders-asistani" || !object(data.stores) || data.prefs != null && !object(data.prefs) ||
+          data.schema != null && (!Number.isInteger(data.schema) || data.schema < 1 || data.schema > DB_VERSION)) invalid();
       const now = Date.now();
+      const prepared = {};
       for (const s of BACKUP_STORES) {
-        await engine.clear(s);
-        const rows = (data.stores[s] || []).filter((row) => row && row.id != null);
-        rows.forEach((r) => { r._u = now; });            // geri yüklenen veri diğer cihazlara da gitsin
-        if (rows.length) await engine.putMany(s, rows);
-        emit(s);
+        const rows = data.stores[s] === undefined ? [] : data.stores[s], ids = new Set();
+        if (!Array.isArray(rows)) invalid();
+        prepared[s] = rows.map((row) => {
+          if (!object(row) || !(typeof row.id === "string" && row.id.length > 0 || typeof row.id === "number" && Number.isFinite(row.id))) invalid();
+          const id = typeof row.id + ":" + row.id; if (ids.has(id)) invalid(); ids.add(id);
+          return Object.assign({}, row, { _u: now });
+        });
       }
+      // No data changes until every store has been validated. IndexedDB commits all stores together.
+      await engine.replaceAll(prepared);
       Object.entries(data.prefs || {}).forEach(([k, v]) => { if (!PRIVATE_PREF.test(k)) App.prefs.set(k, v); });
+      BACKUP_STORES.forEach((s) => emit(s));
     },
 
     async resetAll() {

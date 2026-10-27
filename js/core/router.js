@@ -12,7 +12,7 @@
 
   function parse() {
     const hash = (location.hash || "#/").replace(/^#\/?/, "");
-    const segs = hash.split("/").filter(Boolean).map(decodeURIComponent);
+    const segs = hash.split("/").filter(Boolean).map((s) => { try { return decodeURIComponent(s); } catch (e) { return s; } });
     return { name: segs[0] || "", params: segs.slice(1), path: segs.join("/") };
   }
 
@@ -23,6 +23,7 @@
 
     if (current && current.cleanup) { try { current.cleanup(); } catch (e) { /* yok say */ } }
     current = { name: r.name, cleanup: null };
+    const entry = current;
 
     main.classList.toggle("is-home", r.name === "");
     view.scrollTop = 0;
@@ -42,8 +43,10 @@
       // Sayfa modülü de isteğe bağlı yüklenmiş olabilir (ör. #/modeller): işleyici beklemeden sonra seçilir
       const handler = routes[r.name] || routes[""];
       const cleanup = await handler(view, r.params, r);
-      if (typeof cleanup === "function") current.cleanup = cleanup;
+      if (my !== seq) { if (typeof cleanup === "function") { try { cleanup(); } catch (e) { /* old route only */ } } return; }
+      if (typeof cleanup === "function") entry.cleanup = cleanup;
     } catch (e) {
+      if (my !== seq) return;
       console.error(e);
       view.innerHTML = '<div class="page">' + App.ui.empty("close", App.t("errorTitle"), String(e && e.message || e)) + "</div>";
     }

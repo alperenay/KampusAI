@@ -142,6 +142,7 @@
   const fmt = (x, d) => (x == null || !isFinite(x) ? "—" : Number(x).toFixed(d == null ? 2 : d).replace(".", App.i18n.lang === "en" ? "." : ","));
   async function saveResult(id, data) {
     const rid = "sensor:" + id, cur = (await App.db.get("meta", rid).catch(() => null)) || { id: rid, kind: "sensor", items: [] };
+    if (!Array.isArray(cur.items)) cur.items = [];
     cur.items.unshift(Object.assign({ at: new Date().toISOString() }, data)); cur.items = cur.items.slice(0, 10);
     await App.db.put("meta", cur);
   }
@@ -203,29 +204,42 @@
           (id === "ses" ? '<button class="btn" type="button" id="slF0" disabled>' + esc(T("f₀ olarak kaydet", "Save as f₀")) + "</button>" : "") +
           (id === "isik" ? '<button class="btn" type="button" id="slAdd" disabled>' + App.icon("plus") + esc(T("Bu uzaklıkta ekle", "Add reading")) + '</button><button class="btn btn--ghost" type="button" id="slClear">' + esc(T("Temizle", "Clear")) + "</button>" : "") +
           '<span class="sl-status" id="slStatus" aria-live="polite"></span></div></section>' +
-      '<aside class="card sl-side"><div class="sl-params">' + E.params.map((p) => '<label class="field"><span class="field__label">' + esc(p.label) + '</span><input class="input" type="number" step="' + p.step + '" data-p="' + p.id + '" value="' + P[p.id] + '"></label>').join("") + "</div>" +
+      '<aside class="card sl-side"><div class="sl-params">' + E.params.map((p) => '<label class="field"><span class="field__label">' + esc(p.label) + '</span><input class="input" type="number" min="' + p.step + '" required step="' + p.step + '" data-p="' + p.id + '" value="' + P[p.id] + '"></label>').join("") + "</div>" +
         '<div class="lab__read sl-read" id="slRead"></div><div id="slHist"></div>' +
         '<div class="sl-links">' + E.keys.filter((k) => App.lessons.find(k)).map((k) => '<a href="#/konular/' + k + '">' + App.icon("book") + esc(App.L(App.lessons.find(k).outcome.title)) + "</a>").join("") + "</div></aside></div></div>";
     App.hydrateIcons(view);
     const $ = (s) => view.querySelector(s), cv = $("#slCv"), status = $("#slStatus"), read = $("#slRead");
-    view.querySelectorAll("[data-p]").forEach((inp) => inp.addEventListener("change", () => { P[inp.dataset.p] = Number(inp.value); App.prefs.set("sl:" + id + ":" + inp.dataset.p, P[inp.dataset.p]); }));
-    let stopFn = null;
-    const cleanup = () => { if (stopFn) { try { stopFn(); } catch (e) { /* yok */ } stopFn = null; } };
+    const validParams = () => { const invalid = Array.from(view.querySelectorAll("[data-p]")).find((inp) => !inp.checkValidity()); if (invalid) { invalid.reportValidity(); return false; } return true; };
+    view.querySelectorAll("[data-p]").forEach((inp) => inp.addEventListener("change", () => {
+      const value = inp.valueAsNumber;
+      inp.setCustomValidity(Number.isFinite(value) && value > 0 ? "" : T("Sıfırdan büyük, geçerli bir değer gir.", "Enter a finite value greater than zero."));
+      if (!inp.checkValidity()) { inp.reportValidity(); return; }
+      P[inp.dataset.p] = value; App.prefs.set("sl:" + id + ":" + inp.dataset.p, value);
+    }));
+    let stopFn = null, epoch = 0;
+    const gone = (mine) => mine !== epoch || !document.contains(cv);
+    const stopStream = (stream) => stream.getTracks().forEach((track) => track.stop());
+    const cleanup = () => { epoch++; if (stopFn) { try { stopFn(); } catch (e) { /* yok */ } stopFn = null; } };
     const paintHist = async () => {
       const h = await App.db.get("meta", "sensor:" + id).catch(() => null);
-      $("#slHist").innerHTML = h && h.items.length ? '<h3 class="sl-h">' + esc(T("Son ölçümler", "Recent results")) + '</h3><ul class="sl-hist">' + h.items.slice(0, 5).map((x) => "<li>" + esc(App.utils.fmtDateTime ? App.utils.fmtDateTime(x.at) : x.at) + " · <b>" + esc(x.summary) + "</b></li>").join("") + "</ul>" : "";
+      if (!document.contains(cv)) return;
+      $("#slHist").innerHTML = h && Array.isArray(h.items) && h.items.length ? '<h3 class="sl-h">' + esc(T("Son ölçümler", "Recent results")) + '</h3><ul class="sl-hist">' + h.items.slice(0, 5).map((x) => "<li>" + esc(App.utils.fmtDateTime ? App.utils.fmtDateTime(x.at) : x.at) + " · <b>" + esc(x.summary) + "</b></li>").join("") + "</ul>" : "";
     };
     paintHist();
     chart(cv, [], { xName: "t (s)" });
 
     /* ---- İvmeölçer deneyleri ---- */
     async function motionRun() {
+      if (!validParams()) return;
       cleanup();
+      const mine = epoch;
       try { await motionPermission(); } catch (e) { status.textContent = e.message; return; }
+      if (gone(mine)) return;
       const S = []; let t0 = null, err = null;
       status.textContent = T("Kaydediliyor…", "Recording…");
       $("#slGo").disabled = true;
       stopFn = listenMotion((s) => {
+        if (gone(mine)) return;
         if (s.error) { err = s.error; return; }
         if (t0 == null) t0 = s.t;
         S.push(Object.assign(s, { t: s.t - t0 }));
@@ -279,11 +293,14 @@
 
     /* ---- Ses ---- */
     async function soundRun() {
+      if (!validParams()) return;
       cleanup();
+      const mine = epoch;
       let stream, ac;
       try {
         stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false } });
       } catch (e) { status.textContent = T("Mikrofon açılamadı (izin verilmedi ya da mikrofon yok).", "Microphone unavailable."); return; }
+      if (gone(mine)) { stopStream(stream); return; }
       ac = new (window.AudioContext || window.webkitAudioContext)();
       const src = ac.createMediaStreamSource(stream), an = ac.createAnalyser();
       an.fftSize = 4096; an.smoothingTimeConstant = 0.6; src.connect(an);
@@ -332,14 +349,19 @@
           '<div class="sl-tbl">' + fit.errors.map((e) => "<span>d = " + fmt(e.d, 2) + " m · E = " + fmt(e.E, 1) + " · " + T("kuram ", "theory ") + fmt(e.fit, 1) + " · %" + fmt(e.err, 0) + "</span>").join("") + "</div>" : "");
     }
     async function lightRun() {
+      if (!validParams()) return;
       cleanup();
+      const mine = epoch;
       let stream;
       try { stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: "environment" }, width: { ideal: 320 } } }); }
       catch (e) { status.textContent = T("Kamera açılamadı.", "Camera unavailable."); return; }
+      if (gone(mine)) { stopStream(stream); return; }
       // Mümkünse pozlamayı sabitle (desteklenmezse kamera otomatik pozlar; sonuç yaklaşık kalır)
       const track = stream.getVideoTracks()[0];
       try { const cap = track.getCapabilities ? track.getCapabilities() : {}; if (cap.exposureMode && cap.exposureMode.includes("manual")) await track.applyConstraints({ advanced: [{ exposureMode: "manual" }] }); } catch (e) { /* desteklenmiyor */ }
+      if (gone(mine)) { stopStream(stream); return; }
       const video = document.createElement("video"); video.playsInline = true; video.muted = true; video.srcObject = stream; await video.play().catch(() => {});
+      if (gone(mine)) { stopStream(stream); video.srcObject = null; return; }
       const c2 = document.createElement("canvas"), x2 = c2.getContext("2d", { willReadFrequently: true });
       c2.width = 64; c2.height = 48;
       let cur = null, timer = 0;

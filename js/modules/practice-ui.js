@@ -46,9 +46,9 @@
       const i = s.responses.length, q = E.question(s, i); started = Date.now();
       body.innerHTML = '<section class="card pr-question"><div class="pr-progress"><span>' + (i + 1) + '/3 · ' + esc(mode === 'transfer' ? ctx(q.context) : L(q.title)) + '</span><progress max="3" value="' + i + '" aria-label="' + esc(T('Tamamlanan görev', 'Completed tasks')) + '"></progress></div><form id="prForm"><fieldset><legend>' + esc(mode === 'transfer' ? L(q.q) : T('İlk hatalı adım hangisi?', 'Which is the first incorrect step?')) + '</legend>' + (mode === 'transfer' ? visual(q) : '<p class="hint">' + esc(T('Bu çözüm öğrenme amacıyla kasıtlı olarak hatalı yazılmıştır; canlı AI yanıtı değildir.', 'This intentionally flawed authored example is not a live AI response.')) + '</p>') + (mode === 'transfer' ? E.order(s, q, q.options.length) : q.steps.map((_, n) => n)).map((n) => '<label class="pr-option"><input type="radio" name="choice" value="' + n + '" required><span>' + (mode === 'transfer' ? esc(q.options[n] + (q.unit ? ' ' + q.unit : '')) : '<b>' + (n + 1) + '.</b> ' + esc(L(q.steps[n]))) + '</span></label>').join('') + '</fieldset>' + (mode === 'error' ? '<fieldset><legend>' + esc(T('Hatanın nedeni nedir?', 'What causes the error?')) + '</legend>' + E.order(s, q, q.reasons.length).map((n) => '<label class="pr-option"><input type="radio" name="reason" value="' + n + '" required><span>' + esc(L(q.reasons[n])) + '</span></label>').join('') + '</fieldset>' : '') + '<button class="btn btn--primary pr-submit" type="submit">' + esc(T('Yanıtımı kontrol et', 'Check my answer')) + '</button></form><div class="pr-feedback" role="status" hidden></div></section>';
       const form = body.querySelector('#prForm');
-      const legend = form.querySelector('legend');
-      legend.tabIndex = -1;
-      legend.focus({ preventScroll: true });
+      const questionGroup = form.querySelector('fieldset');
+      questionGroup.tabIndex = -1;
+      questionGroup.focus({ preventScroll: true });
       form.scrollIntoView({ block: 'start', behavior: 'auto' });
       form.addEventListener('submit', async (e) => {
         e.preventDefault(); if (busy || !form.reportValidity()) return;

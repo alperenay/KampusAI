@@ -6,9 +6,10 @@ import assert from "node:assert/strict";
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import { researchBank } from "./fixtures/research-bank.mjs";
-const { chromium } = createRequire(import.meta.url)("playwright");
+const engineName = process.env.UI_ENGINE || "chromium";
+const engine = createRequire(import.meta.url)("playwright")[engineName];
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const qa = path.join(root, "dist/qa"); fs.mkdirSync(qa, { recursive: true });
+const qa = path.join(root, "dist/qa", process.env.UI_ENGINE ? engineName : ""); fs.mkdirSync(qa, { recursive: true });
 const types = { ".html": "text/html", ".js": "application/javascript", ".css": "text/css", ".svg": "image/svg+xml" };
 const server = http.createServer((req, res) => {
   const url = new URL(req.url, "http://localhost");
@@ -20,7 +21,7 @@ const server = http.createServer((req, res) => {
 await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
 let browser;
 try {
-  browser = await chromium.launch({ headless: true, ...(process.platform === "win32" ? { channel: process.env.STUDY_BROWSER || "msedge" } : {}) });
+  browser = await engine.launch({ headless: true, ...(engineName === "chromium" && process.platform === "win32" ? { channel: process.env.STUDY_BROWSER || "msedge" } : {}) });
   const errors = [];
   async function device() {
     const context = await browser.newContext({ serviceWorkers: "block" });
