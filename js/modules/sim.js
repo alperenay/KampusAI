@@ -25,7 +25,7 @@
     tyt: { tr: "TYT", en: "TYT", grades: ["9", "10"], subjects: ["edebiyat", "matematik", "fizik", "kimya", "biyoloji", "tarih", "cografya", "felsefe", "din"] },
     say: { tr: "AYT Sayısal", en: "AYT Science", grades: ["11", "12"], subjects: ["matematik", "fizik", "kimya", "biyoloji"] },
     ea:  { tr: "AYT Eşit Ağırlık", en: "AYT Equal Weight", grades: ["11", "12"], subjects: ["matematik", "edebiyat", "tarih", "cografya"] },
-    soz: { tr: "AYT Sözel", en: "AYT Verbal", grades: ["11", "12"], subjects: ["edebiyat", "tarih", "cografya", "felsefe", "din", "inkilap"] }
+    soz: { tr: "AYT Sözel", en: "AYT Verbal", grades: ["11", "12"], subjects: ["edebiyat", "tarih", "cografya", "felsefe", "psikoloji", "sosyoloji", "din", "inkilap", "cagdas"] }
   };
 
   const inline = (s) => App.markdown.render(String(s == null ? "" : s)).replace(/^<p>([\s\S]*)<\/p>$/, "$1");

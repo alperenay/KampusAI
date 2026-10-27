@@ -392,5 +392,95 @@ App.data.content["9/tarih"] = [
     }
    }
   ]
+ },
+ {
+  "id": "u4",
+  "name": {
+   "tr": "4. Ünite (Ek): İlk Türk Devletleri ve Türk-İslam Devletleri",
+   "en": "Unit 4 (Extra): Early Turkic States and Turkic-Islamic States"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "TAR.9.E1",
+    "title": {
+     "tr": "İlk Türk devletleri: Asya Hun, Kök Türk ve Uygur",
+     "en": "Early Turkic states: Asian Huns, Göktürks and Uyghurs"
+    },
+    "content": {
+     "anlatim": "# Asya Hun Devleti\n\n- Bilinen **ilk Türk devletidir**; en parlak dönemi **Mete Han** zamanıdır. Mete Han orduyu **onlu sisteme** göre teşkilatlandırdı (bu sistem bugün de kullanılır).\n- Çin'le mücadele ettiler; Çinliler Hun akınlarına karşı **Çin Seddi**'ni yaptı.\n\n# Kök Türk (Göktürk) Devleti\n\n- **Türk** adıyla kurulan ilk devlettir (552, Bumin Kağan). Doğu ve Batı olarak ikiye ayrıldı.\n- **Orhun (Göktürk) Yazıtları** (Kül Tigin, Bilge Kağan, Tonyukuk adına) **Türk adının geçtiği ve Türk alfabesiyle yazılmış ilk yazılı belgelerdir**; devlet anlayışını, kağanın halka karşı sorumluluğunu anlatır.\n- II. Kök Türk Devleti'ni Kutluk Kağan kurdu.\n\n# Uygur Devleti\n\n- **Yerleşik hayata geçen** ilk Türk devletidir; tarım, ticaret ve kalıcı mimari (saray, tapınak) gelişti.\n- **Mani dinini** benimsediler; bu, savaşçı özelliklerini zayıflattı. Kendi **Uygur alfabesini** kullandılar ve **matbaayı** kullanan ilk Türk topluluğu oldular.\n\n# Ortak Özellikler\n\n**Kut** anlayışı (yönetme yetkisinin Tanrı'dan verildiğine inanılması), **töre** (yazısız hukuk), **kurultay** (danışma meclisi), **ikili teşkilat** (devletin doğu ve batı olarak yönetilmesi), **Gök Tanrı** inancı ve konargöçer hayat.",
+     "ornekler": [
+      {
+       "soru": "Türk adının geçtiği ilk yazılı belge hangisidir?",
+       "cozum": "**Orhun (Göktürk) Yazıtları**."
+      },
+      {
+       "soru": "Uygurların Mani dinini benimsemesinin sonucu ne olmuştur?",
+       "cozum": "Et yemeyi yasaklayan bu dinin etkisiyle **savaşçı özellikleri zayıflamış**, yerleşik hayata geçiş hızlanmıştır."
+      }
+     ],
+     "ozet": [
+      "Asya Hun: ilk Türk devleti, Mete Han, onlu sistem.",
+      "Kök Türk: Türk adıyla kurulan ilk devlet; Orhun Yazıtları.",
+      "Uygur: yerleşik hayat, Mani dini, Uygur alfabesi, matbaa.",
+      "Ortak: kut, töre, kurultay, ikili teşkilat."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "TAR.9.E2",
+    "title": {
+     "tr": "İslamiyet'in doğuşu ve yayılışı",
+     "en": "The rise and spread of Islam"
+    },
+    "content": {
+     "anlatim": "# İslamiyet Öncesi Arabistan\n\nMekke önemli bir **ticaret** ve inanç merkeziydi (Kâbe); kabile yaşamı ve kan davaları yaygındı; siyasi birlik yoktu.\n\n# Hz. Muhammed Dönemi (610–632)\n\n- **610**'da peygamberlik; Mekke'de baskılar üzerine **622**'de Medine'ye **hicret** (hicri takvimin başlangıcı).\n- Medine'de ilk İslam devleti örgütlendi; **Bedir**, **Uhud**, **Hendek** savaşları; **Hudeybiye Antlaşması** (628) Müslümanların siyasi varlığının Mekkeliler tarafından tanınmasıdır; **630**'da Mekke'nin fethi.\n\n# Dört Halife Dönemi (632–661)\n\nHalifeler seçimle iş başına geldi. İslamiyet Arap Yarımadası dışına yayıldı (İran, Suriye, Mısır); **Kur'an-ı Kerim** kitap hâline getirilip çoğaltıldı.\n\n# Emevîler (661–750) ve Abbasîler (750–1258)\n\n- **Emevîler:** Halifelik **saltanata** dönüştü; **Arap milliyetçiliği** (mevali politikası) Arap olmayan Müslümanları rahatsız etti ve Türklerle ilişkileri olumsuz etkiledi.\n- **Abbasîler:** Arap olmayan Müslümanlara eşit davrandı; **Talas Savaşı** (751) ile Türkler ve Müslümanlar Çinlilere karşı birlikte savaştı → Türklerin **İslamiyet'e geçişi** hızlandı. **Bağdat**'taki **Beytü'l-Hikme** bilim merkezi oldu. Abbasî sarayında Türk askerlerinin etkisi arttı (Samarra şehri).",
+     "ornekler": [
+      {
+       "soru": "Talas Savaşı'nın Türk tarihi açısından önemi nedir?",
+       "cozum": "Türklerle Müslüman Araplar arasındaki ilişkileri düzeltmiş ve **Türklerin İslamiyet'e geçişini hızlandırmıştır**."
+      },
+      {
+       "soru": "Hudeybiye Antlaşması'nın önemi nedir?",
+       "cozum": "Mekkelilerin, Medine'deki Müslümanların **siyasi varlığını resmen tanıması**dır."
+      }
+     ],
+     "ozet": [
+      "622 Hicret, hicri takvimin başlangıcıdır.",
+      "Hudeybiye (628): Müslümanların siyasi varlığı tanındı; 630 Mekke'nin fethi.",
+      "Emevîler Arap milliyetçiliği uyguladı; Abbasîler eşitlikçiydi.",
+      "Talas (751) Türklerin İslamiyet'e geçişini hızlandırdı."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "TAR.9.E3",
+    "title": {
+     "tr": "İlk Türk-İslam devletleri: Karahanlılar, Gazneliler ve Büyük Selçuklu",
+     "en": "The first Turkic-Islamic states: Karakhanids, Ghaznavids and Great Seljuks"
+    },
+    "content": {
+     "anlatim": "# Karahanlılar (840–1212)\n\n- **İslamiyet'i resmî din olarak kabul eden ilk Türk devletidir** (Satuk Buğra Han).\n- Türk dili ve kültürü korundu: **Kutadgu Bilig** (Yusuf Has Hacib — ideal devlet yöneticisi), **Divânu Lugâti't-Türk** (Kaşgarlı Mahmud — Türkçenin Arapça kadar zengin olduğunu göstermek için yazılmış ilk Türkçe sözlük), **Atabetü'l-Hakayık** (Edip Ahmet Yükneki).\n- **Ribat** (kervansaray) ve medrese yapıları; mimaride Türk-İslam sentezi.\n\n# Gazneliler (963–1187)\n\n- En parlak dönemi **Gazneli Mahmut**: **Hindistan seferleri** ile İslamiyet'i Hindistan'a yaydı; \"**sultan**\" unvanını kullanan ilk Türk hükümdarı sayılır.\n- Bilgin ve sanatçıları himaye ettiler: **Firdevsi** (Şehnâme), **Bîrûnî**.\n- **Dandanakan Savaşı** (1040) ile Selçuklulara yenildiler.\n\n# Büyük Selçuklu Devleti (1040–1157)\n\n- Dandanakan zaferiyle kuruldu (Tuğrul ve Çağrı Beyler). **1071 Malazgirt Zaferi** ile Anadolu'nun kapıları Türklere açıldı.\n- **Nizamiye Medreseleri** (Vezir Nizâmülmülk) ilk devlet destekli yükseköğretim kurumlarıdır; Nizâmülmülk *Siyasetnâme*'yi yazdı.\n- **Abbasî halifesini Büveyhoğulları baskısından kurtararak** İslam dünyasının siyasi liderliğini üstlendiler.\n- **Katvan Savaşı** (1141) ve Oğuz isyanları zayıflattı; devlet **1157**'de Sultan Sencer'in ölümüyle dağıldı.",
+     "ornekler": [
+      {
+       "soru": "İslamiyet'i resmî din olarak kabul eden ilk Türk devleti hangisidir?",
+       "cozum": "**Karahanlılar** (Satuk Buğra Han döneminde)."
+      },
+      {
+       "soru": "Divânu Lugâti't-Türk hangi amaçla yazılmıştır?",
+       "cozum": "Türkçenin **Arapça kadar zengin bir dil olduğunu** göstermek ve Araplara Türkçeyi öğretmek amacıyla (Kaşgarlı Mahmud)."
+      }
+     ],
+     "ozet": [
+      "Karahanlılar İslamiyet'i resmî din kabul eden ilk Türk devleti; Kutadgu Bilig ve Divânu Lugâti't-Türk.",
+      "Gazneli Mahmut: Hindistan seferleri, sultan unvanı.",
+      "Büyük Selçuklu: Dandanakan (1040) ile kuruldu, Malazgirt (1071) ile Anadolu'ya açıldı.",
+      "Nizamiye Medreseleri devlet destekli ilk yükseköğretim kurumlarıdır."
+     ]
+    }
+   }
+  ]
  }
 ];

@@ -235,3 +235,28 @@
   html.print-karne .main, html.print-karne #view, html.print-karne .page { padding: 0 !important; margin: 0 !important; max-width: none !important; }
   html.print-karne .tabbar { display: none !important; }
 }
+
+/* ---------------- Eminlik işaretleme (confidence.js) ---------------- */
+.conf-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
+.conf-chips__l { margin-right: 2px; }
+.conf-chips label { position: relative; cursor: pointer; }
+.conf-chips input { position: absolute; opacity: 0; }
+.conf-chips label span { display: inline-flex; align-items: center; min-height: 34px; padding: 0 11px; border-radius: var(--radius-pill); border: 1px solid var(--border-strong); color: var(--text-2); }
+.conf-chips input:checked + span { background: var(--accent-soft); border-color: var(--accent); color: var(--text); font-weight: 650; }
+.conf-chips input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+.cards-conf { display: flex; justify-content: center; margin: 10px 0 2px; }
+.ai-conf { margin-top: 8px; font-size: 12.5px; }
+.ai-conf > summary { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; list-style: none; min-height: 30px; padding: 0 10px; border-radius: var(--radius-pill); border: 1px solid var(--border); color: var(--text-2); }
+.ai-conf > summary::-webkit-details-marker { display: none; }
+.ai-conf__bar { width: 46px; height: 6px; border-radius: 3px; background: var(--surface-3); overflow: hidden; }
+.ai-conf__bar i { display: block; height: 100%; background: var(--c-conf); }
+.ai-conf--high { --c-conf: var(--good); }
+.ai-conf--mid { --c-conf: var(--warn); }
+.ai-conf--low { --c-conf: var(--bad); }
+.ai-conf--low > summary { border-color: var(--bad); color: var(--text); }
+.ai-conf__pop { margin-top: 6px; padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface-2); max-width: 420px; line-height: 1.5; }
+.ai-conf__pop ul { margin: 6px 0; padding-left: 0; list-style: none; }
+.ai-conf__pop .is-plus { color: var(--good-text); }
+.ai-conf__pop .is-minus { color: var(--text-2); }
+.ai-conf__pop p { margin: 4px 0; color: var(--text); }
+.ai-conf__pop small { color: var(--muted); }

@@ -29,6 +29,10 @@
     inkilap: [["TYT", "sosyal"], ["AYT", "tarih1"], ["AYT", "tarih2"]],
     cografya: [["TYT", "sosyal"], ["AYT", "cografya1"], ["AYT", "cografya2"]],
     felsefe: [["TYT", "sosyal"], ["AYT", "felsefe"]],
+    psikoloji: [["AYT", "felsefe"]],
+    sosyoloji: [["AYT", "felsefe"]],
+    cagdas: [["AYT", "tarih2"]],
+    saglik: [], beden: [], gorsel: [], muzik: [], almanca: [],
     din: [["TYT", "sosyal"], ["AYT", "din"]],
     ingilizce: []
   };

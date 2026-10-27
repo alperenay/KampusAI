@@ -369,5 +369,149 @@ App.data.content["12/inkilap"] = [
     }
    }
   ]
+ },
+ {
+  "id": "u7",
+  "name": {
+   "tr": "7. Ünite (Ek): Millî Mücadele (1918–1923)",
+   "en": "Unit 7 (Extra): The National Struggle (1918–1923)"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "İTA.E1",
+    "title": {
+     "tr": "Mondros Ateşkesi, işgaller ve cemiyetler",
+     "en": "The Armistice of Mudros, occupations and societies"
+    },
+    "content": {
+     "anlatim": "# Mondros Ateşkes Antlaşması (30 Ekim 1918)\n\nOsmanlı Devleti I. Dünya Savaşı'ndan yenik çıkınca imzalandı. Ağır maddeleri:\n- **7. madde:** İtilaf Devletleri güvenliklerini tehdit eden bir durumda **herhangi bir stratejik yeri işgal** edebilecekti (işgallere kapı açtı).\n- **24. madde:** \"Vilayât-ı Sitte\"de (altı doğu ili) karışıklık çıkarsa buralar işgal edilebilecekti (Ermeni devleti kurulmasına zemin).\n- Ordu terhis edilecek, boğazlar ve tüneller İtilaf Devletlerine açılacaktı.\n\n# İşgaller ve Tepkiler\n\n- İngilizler Musul, Urfa, Antep, Maraş'ı; Fransızlar Adana çevresini; İtalyanlar Antalya'yı işgal etti; **15 Mayıs 1919**'da **Yunanlar İzmir'i** işgal etti. İzmir'in işgalinde **Hasan Tahsin** ilk kurşunu attı.\n- Halk **Kuvâ-yı Millîye** (millî kuvvetler) birliklerini kurdu: Batı Anadolu'da Yunan ilerleyişini yavaşlattı, düzenli ordu kurulana kadar zaman kazandırdı; ancak disiplinsizliği nedeniyle sonra düzenli orduya katıldı.\n\n# Cemiyetler\n\n| Zararlı cemiyetler | Yararlı (millî) cemiyetler |\n|---|---|\n| Azınlık cemiyetleri (Mavri Mira, Pontus, Taşnak) | **Müdafaa-i Hukuk** cemiyetleri (Trakya-Paşaeli, İzmir, Doğu Anadolu) |\n| İngiliz Muhipler, Wilson Prensipleri (manda yanlısı) | **Kilikyalılar**, **Redd-i İlhak** |\n| Kürt Teali, Teali-i İslam | Millî Kongre Cemiyeti |\n- Millî cemiyetler **bölgesel** çalıştı; Sivas Kongresi'nde tek çatı altında birleşti.",
+     "ornekler": [
+      {
+       "soru": "Mondros Ateşkesi'nin hangi maddesi, İtilaf Devletlerine Anadolu'nun her yerini işgal etme olanağı vermiştir?",
+       "cozum": "**7. madde** (stratejik bir noktanın güvenlik gerekçesiyle işgali)."
+      },
+      {
+       "soru": "Kuvâ-yı Millîye'nin Millî Mücadele'ye en önemli katkısı nedir?",
+       "cozum": "Düzenli ordu kurulana kadar düşman ilerleyişini **yavaşlatıp zaman kazandırması**."
+      }
+     ],
+     "ozet": [
+      "Mondros: 7. madde işgallere, 24. madde doğuda Ermeni devletine zemin hazırladı.",
+      "15 Mayıs 1919'da Yunanlar İzmir'i işgal etti.",
+      "Kuvâ-yı Millîye düzenli ordu kurulana kadar zaman kazandırdı.",
+      "Müdafaa-i Hukuk cemiyetleri bölgeseldi; Sivas'ta birleştirildi."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "İTA.E2",
+    "title": {
+     "tr": "Samsun'dan Sivas'a: genelge, kongreler ve Misak-ı Millî",
+     "en": "From Samsun to Sivas: circular, congresses and the National Pact"
+    },
+    "content": {
+     "anlatim": "# Mustafa Kemal'in Samsun'a Çıkışı (19 Mayıs 1919)\n\n9. Ordu Müfettişi olarak Samsun'a çıktı; **Millî Mücadele'nin başlangıcı** kabul edilir. Havza Genelgesi'yle işgallerin mitinglerle protesto edilmesini istedi.\n\n# Amasya Genelgesi (22 Haziran 1919)\n\n\"**Vatanın bütünlüğü, milletin bağımsızlığı tehlikededir.** İstanbul hükûmeti sorumluluğunu yerine getirememektedir. **Milletin bağımsızlığını yine milletin azim ve kararı kurtaracaktır.**\"\n- Millî egemenliğe ilk kez vurgu yapıldı; Sivas'ta bir kongre toplanması kararlaştırıldı. Bunun üzerine Mustafa Kemal askerlik görevinden istifa etti.\n\n# Erzurum Kongresi (23 Temmuz–7 Ağustos 1919)\n\nToplanış amacı **bölgesel**, aldığı kararlar **ulusal** niteliktedir: millî sınırlar içinde vatan bir bütündür, **manda ve himaye kabul edilemez**, Kuvâ-yı Millîye'yi etken ve millî iradeyi hâkim kılmak esastır. **Temsil Heyeti** seçildi.\n\n# Sivas Kongresi (4–11 Eylül 1919)\n\nUlusal nitelikteki ilk kongredir. Bütün millî cemiyetler **Anadolu ve Rumeli Müdafaa-i Hukuk Cemiyeti** adıyla birleştirildi; **manda ve himaye kesin olarak reddedildi**; Temsil Heyeti tüm yurdu temsil eder hâle geldi.\n\n# Misak-ı Millî (28 Ocak 1920)\n\nSon Osmanlı Mebusan Meclisi'nde kabul edilen **millî ant**: Mondros'ta işgal edilmemiş topraklar bölünemez; Batı Trakya, Kars–Ardahan–Batum'da halk oylaması; kapitülasyonlar kabul edilmez; azınlık hakları komşu ülkelerdeki Müslümanlara tanınan haklar ölçüsünde olacaktır. Bunun üzerine İtilaf Devletleri **16 Mart 1920**'de İstanbul'u resmen işgal etti ve meclis dağıtıldı.",
+     "ornekler": [
+      {
+       "soru": "Erzurum Kongresi'nin toplanış amacı ile aldığı kararlar arasındaki farkı açıklayınız.",
+       "cozum": "Doğu illerini korumak amacıyla **bölgesel** olarak toplanmış, ancak \"millî sınırlar içinde vatan bir bütündür\" gibi **ulusal** kararlar almıştır."
+      },
+      {
+       "soru": "Millî egemenliğe ilk kez hangi belgede vurgu yapılmıştır?",
+       "cozum": "**Amasya Genelgesi**: \"Milletin bağımsızlığını yine milletin azim ve kararı kurtaracaktır.\""
+      }
+     ],
+     "ozet": [
+      "19 Mayıs 1919 Samsun'a çıkış Millî Mücadele'nin başlangıcıdır.",
+      "Amasya Genelgesi millî egemenliği ilk kez vurguladı.",
+      "Erzurum: bölgesel toplanıp ulusal kararlar; Sivas: cemiyetler birleştirildi, manda reddedildi.",
+      "Misak-ı Millî son Osmanlı Mebusan Meclisi'nde kabul edildi; ardından İstanbul resmen işgal edildi."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "İTA.E3",
+    "title": {
+     "tr": "TBMM'nin açılması, isyanlar ve Sevr Antlaşması",
+     "en": "Opening of the Grand National Assembly, revolts and the Treaty of Sèvres"
+    },
+    "content": {
+     "anlatim": "# TBMM'nin Açılması (23 Nisan 1920)\n\nİstanbul'un işgali ve meclisin dağıtılması üzerine Ankara'da açıldı.\n- **Güçler birliği** ilkesini benimsedi (yasama, yürütme ve yargı mecliste); **meclis hükûmeti** sistemi uygulandı.\n- Olağanüstü dönemde çıkarılan önemli kararlar: **Hıyanet-i Vataniye Kanunu** (vatana ihanet), **İstiklal Mahkemeleri**, düzenli ordunun kurulması.\n\n# İç İsyanlar\n\nİstanbul hükûmetinin kışkırttığı (Kuva-yı İnzibatiye, Anzavur), azınlıkların, Kuvâ-yı Millîye yanlılarının (Çerkez Ethem) ve bazı yerel çıkar gruplarının isyanları bastırıldı. İsyanlar düzenli ordunun kurulmasını geciktirdi ama **düzenli ordu ihtiyacını** da ortaya koydu.\n\n# Sevr Antlaşması (10 Ağustos 1920)\n\nİstanbul hükûmeti ile İtilaf Devletleri arasında imzalandı. Anadolu'yu paylaşmayı, boğazları uluslararası yönetime bırakmayı, doğuda Ermeni devleti kurulmasını öngörüyordu.\n- **Osmanlı Mebusan Meclisi onaylamadığı için hukuken geçersizdir**; TBMM tanımadı ve imzalayanları vatan haini ilan etti. **Ölü doğmuş** bir antlaşmadır ama İtilaf Devletlerinin amacını açıkça ortaya koymuştur.\n\n# 1921 Anayasası (Teşkilât-ı Esasiye)\n\n\"**Egemenlik kayıtsız şartsız milletindir**\" ilkesini koyan ilk anayasadır; yeni Türk devletinin hukuki temelini oluşturdu.",
+     "ornekler": [
+      {
+       "soru": "Sevr Antlaşması neden hukuken geçersizdir?",
+       "cozum": "Osmanlı anayasasına göre antlaşmaların **Mebusan Meclisi tarafından onaylanması** gerekiyordu; meclis kapatıldığı için onaylanmamıştır."
+      },
+      {
+       "soru": "TBMM'nin güçler birliği ilkesini benimsemesinin nedeni nedir?",
+       "cozum": "Olağanüstü savaş koşullarında **hızlı ve etkili karar** alabilmek."
+      }
+     ],
+     "ozet": [
+      "TBMM 23 Nisan 1920'de açıldı; güçler birliği ve meclis hükûmeti sistemi.",
+      "İsyanlar düzenli ordunun gerekliliğini gösterdi.",
+      "Sevr Mebusan Meclisi'nce onaylanmadığından hukuken geçersizdir.",
+      "1921 Anayasası: egemenlik kayıtsız şartsız milletindir."
+     ]
+    }
+   },
+   {
+    "id": "k4",
+    "code": "İTA.E4",
+    "title": {
+     "tr": "Cepheler ve Büyük Taarruz",
+     "en": "The fronts and the Great Offensive"
+    },
+    "content": {
+     "anlatim": "# Doğu Cephesi (Ermenilere karşı)\n\nKâzım Karabekir komutasında kazanıldı; **Gümrü Antlaşması** (3 Aralık 1920) TBMM'nin uluslararası alanda imzaladığı **ilk antlaşmadır** ve TBMM'nin ilk askerî ve siyasi başarısıdır.\n\n# Güney Cephesi (İngiliz ve Fransızlara karşı)\n\nDüzenli ordu yerine **Kuvâ-yı Millîye** ile savaşıldı. Antep, Maraş ve Urfa halkının direnişi öne çıktı; TBMM bu şehirlere **gazi** ve **şanlı** unvanları verdi; Kahramanmaraş \"kahraman\" unvanını aldı. Fransızlarla **Ankara Antlaşması** (1921) imzalandı.\n\n# Batı Cephesi (Yunanlara karşı)\n\n| Savaş | Önemi |\n|---|---|\n| **I. İnönü** (Ocak 1921) | Düzenli ordunun ilk zaferi; **Teşkilât-ı Esasiye** kabul edildi, **İstiklâl Marşı** kabul edildi (12 Mart 1921) |\n| **II. İnönü** (Mart–Nisan 1921) | Mustafa Kemal: \"Siz orada yalnız düşmanı değil, milletin makûs talihini de yendiniz.\" |\n| **Kütahya–Eskişehir** (Temmuz 1921) | Ordu Sakarya'nın doğusuna çekildi; Mustafa Kemal'e **Başkomutanlık** yetkisi verildi, **Tekâlif-i Millîye** emirleri çıkarıldı |\n| **Sakarya Meydan Muharebesi** (Ağustos–Eylül 1921) | \"**Hattı müdafaa yoktur, sathı müdafaa vardır.**\" Türk ordusunun geri çekilmesi sona erdi; Mustafa Kemal'e **Mareşal** rütbesi ve **Gazi** unvanı verildi |\n| **Büyük Taarruz** (26 Ağustos 1922) | Başkomutanlık Meydan Muharebesi (30 Ağustos) kazanıldı; \"Ordular, ilk hedefiniz Akdeniz'dir. İleri!\" — **9 Eylül 1922**'de İzmir kurtarıldı |",
+     "ornekler": [
+      {
+       "soru": "TBMM'nin uluslararası alanda imzaladığı ilk antlaşma hangisidir?",
+       "cozum": "**Gümrü Antlaşması** (Doğu Cephesi, 1920)."
+      },
+      {
+       "soru": "\"Hattı müdafaa yoktur, sathı müdafaa vardır\" sözü hangi savaşta söylenmiştir ve ne anlama gelir?",
+       "cozum": "**Sakarya Meydan Muharebesi**'nde; savunmanın bir çizgiye değil, **vatanın tüm yüzeyine** dayandığını ve her karışın savunulacağını anlatır."
+      }
+     ],
+     "ozet": [
+      "Doğu Cephesi: Gümrü, TBMM'nin ilk uluslararası antlaşması.",
+      "Güney Cephesi'nde Kuvâ-yı Millîye savaştı; Antep, Maraş, Urfa'ya unvanlar verildi.",
+      "I. İnönü: ilk düzenli ordu zaferi; İstiklâl Marşı kabul edildi.",
+      "Sakarya: Mareşal ve Gazi unvanı; Büyük Taarruz: 30 Ağustos ve 9 Eylül 1922."
+     ]
+    }
+   },
+   {
+    "id": "k5",
+    "code": "İTA.E5",
+    "title": {
+     "tr": "Mudanya Ateşkesi, saltanatın kaldırılması ve Lozan Barış Antlaşması",
+     "en": "The Armistice of Mudanya, abolition of the sultanate and the Treaty of Lausanne"
+    },
+    "content": {
+     "anlatim": "# Mudanya Ateşkes Antlaşması (11 Ekim 1922)\n\nBatı Cephesi'ndeki zaferden sonra imzalandı. **Doğu Trakya ve İstanbul savaş yapılmadan** (diplomatik yolla) kurtarıldı; Kurtuluş Savaşı'nın askerî dönemi sona erdi ve siyasi dönem başladı.\n\n# Saltanatın Kaldırılması (1 Kasım 1922)\n\nİtilaf Devletlerinin Lozan'a hem TBMM'yi hem İstanbul hükûmetini davet etmesi üzerine **saltanat kaldırıldı**; Osmanlı Devleti hukuken sona erdi ve TBMM ülkenin tek temsilcisi oldu.\n\n# Lozan Barış Antlaşması (24 Temmuz 1923)\n\nTürk heyetine **İsmet Paşa** başkanlık etti.\n- **Kapitülasyonlar** tamamen kaldırıldı.\n- Sınırlar: Yunanistan ile Meriç nehri; Suriye sınırı Ankara Antlaşması'ndaki gibi; **Irak (Musul) sınırı** sonraya bırakıldı.\n- **Boğazlar** uluslararası bir komisyona bırakıldı (1936 Montrö ile Türkiye'ye geçti).\n- Azınlıklar **Türk vatandaşı** sayıldı; Türkiye ile Yunanistan arasında **nüfus mübadelesi** kararlaştırıldı.\n- Osmanlı borçları paylaştırıldı, taksitle ödenmesi kararlaştırıldı.\n\n> Lozan, Sevr'in yerine geçen ve yeni Türk devletinin bağımsızlığını uluslararası alanda tescil eden belgedir; ancak Musul, boğazlar ve Hatay gibi bazı sorunlar sonraya kalmıştır.",
+     "ornekler": [
+      {
+       "soru": "Mudanya Ateşkesi'nin önemi nedir?",
+       "cozum": "İstanbul ve Doğu Trakya **savaşmadan** kurtarıldı; Kurtuluş Savaşı'nın askerî safhası sona erdi."
+      },
+      {
+       "soru": "Lozan Antlaşması'nda çözümsüz kalan konulara iki örnek veriniz.",
+       "cozum": "**Musul (Irak sınırı)** ve **boğazların** yönetimi (ayrıca Hatay sorunu ve dış borçların ödenmesi)."
+      }
+     ],
+     "ozet": [
+      "Mudanya: İstanbul ve Doğu Trakya savaşsız kurtarıldı.",
+      "1 Kasım 1922'de saltanat kaldırıldı.",
+      "Lozan: kapitülasyonlar kaldırıldı, azınlıklar Türk vatandaşı sayıldı, nüfus mübadelesi yapıldı.",
+      "Musul ve boğazlar sorunu Lozan'dan sonraya kaldı."
+     ]
+    }
+   }
+  ]
  }
 ];

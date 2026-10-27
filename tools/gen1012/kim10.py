@@ -375,6 +375,8 @@ Klasik (makro ölçekli) deneyler çok kimyasal kullanır; atık miktarını ve 
 
 from _ek136 import uygula136; uygula136(units, "kim10")
 
+from ek_genel import uygula; uygula(units, "kim10_ek142")  # 1.42: eksik TYT konuları
+
 write("kim-10.js", "10/kimya", "10. Sınıf Kimya — kazanım odaklı konu anlatım notları",
       "kullanıcının verdiği \"Kimya 10. Sınıf Kapsamlı Kazanım Odaklı Ders Notları\" (Etkileşim, Çeşitlilik, Sürdürülebilirlik).",
       units, "Kazanım kodları sıra numarasıdır. Örnek sorular eklendi.")

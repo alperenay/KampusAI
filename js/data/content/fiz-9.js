@@ -698,5 +698,132 @@ App.data.content["9/fizik"] = [
     }
    }
   ]
+ },
+ {
+  "id": "u5",
+  "name": {
+   "tr": "5. Ünite (Ek): Madde ve Özellikleri",
+   "en": "Unit 5 (Extra): Matter and Its Properties"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "FİZ.9.E1",
+    "title": {
+     "tr": "Kütle, hacim ve özkütle; karışımların özkütlesi",
+     "en": "Mass, volume and density; density of mixtures"
+    },
+    "content": {
+     "anlatim": "# Madde ve Ortak Özellikler\n\nKütlesi ve hacmi olan her şey maddedir. **Kütle** (kg, g) madde miktarının ölçüsüdür, eşit kollu terazi ile ölçülür ve **her yerde aynıdır**; **ağırlık** ise kütleye etki eden yer çekimi kuvvetidir (N) ve bulunduğu yere göre değişir. **Hacim** maddenin kapladığı yerdir (m³, L, cm³); düzgün olmayan katıların hacmi taşırma kabıyla ölçülür.\n\n# Özkütle (Yoğunluk)\n\nBirim hacimdeki madde miktarıdır ve **ayırt edici** bir özelliktir:\n$$d = \\frac{m}{V} \\qquad \\left(\\text{g/cm}^3 \\text{ ya da kg/m}^3\\right), \\qquad 1\\ \\text{g/cm}^3 = 1000\\ \\text{kg/m}^3$$\n- Aynı sıcaklık ve basınçta saf bir maddenin özkütlesi **sabittir**; madde miktarından bağımsızdır.\n- Isıtılan maddenin genellikle hacmi artar, özkütlesi **azalır**. Su istisnadır: $+4\\ °C$'de özkütlesi en büyüktür; buz sudan hafiftir (göllerin üstten donması).\n- Kütle–hacim grafiğinin **eğimi** özkütleyi verir.\n\n# Karışımların Özkütlesi\n\n$$d_{karışım} = \\frac{m_1 + m_2}{V_1 + V_2}$$\n- **Eşit hacim** karıştırılırsa: $d = \\dfrac{d_1 + d_2}{2}$\n- **Eşit kütle** karıştırılırsa: $d = \\dfrac{2d_1d_2}{d_1 + d_2}$\n- Karışımın özkütlesi her zaman iki özkütlenin **arasındadır**; hangi maddeden daha çok hacim varsa ona daha yakındır.\n\n# Dayanıklılık ve Boyut\n\nBir yapının dayanıklılığı, **kesit alanı / hacim** oranıyla ilişkilidir. Boyutlar $k$ katına çıkınca kesit alanı $k^2$, hacim (ve ağırlık) $k^3$ katına çıkar; bu nedenle büyük canlıların kemikleri orantısal olarak daha kalındır, karınca kendi ağırlığının katlarını taşıyabilir.",
+     "ornekler": [
+      {
+       "soru": "Kütlesi 270 g, hacmi 100 cm³ olan bir metal parçanın özkütlesi nedir? Bu metal hangisi olabilir? (Alüminyum 2,7; demir 7,9 g/cm³)",
+       "cozum": "$d = \\frac{270}{100} = $ **2,7 g/cm³** → **alüminyum** olabilir (özkütle ayırt edicidir)."
+      },
+      {
+       "soru": "Özkütlesi 1 g/cm³ olan sudan 200 cm³ ile özkütlesi 0,8 g/cm³ olan alkolden 200 cm³ karıştırılıyor (hacim değişmediği varsayılıyor). Karışımın özkütlesi nedir?",
+       "cozum": "Eşit hacim: $d = \\frac{1 + 0{,}8}{2} = $ **0,9 g/cm³**. (Kontrol: $\\frac{200 + 160}{400} = 0{,}9$)"
+      }
+     ],
+     "ozet": [
+      "Kütle her yerde aynıdır; ağırlık yer çekimine bağlıdır.",
+      "Özkütle $d = m/V$; saf maddeler için ayırt edicidir.",
+      "Eşit hacim karışımı: $(d_1+d_2)/2$; eşit kütle karışımı: $2d_1d_2/(d_1+d_2)$.",
+      "Su +4 °C'de en yoğundur; buz suda yüzer.",
+      "Boyut $k$ katı → kesit $k^2$, ağırlık $k^3$ katı."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "FİZ.9.E2",
+    "title": {
+     "tr": "Adezyon, kohezyon, yüzey gerilimi ve kılcallık",
+     "en": "Adhesion, cohesion, surface tension and capillarity"
+    },
+    "content": {
+     "anlatim": "# Kohezyon ve Adezyon\n\n- **Kohezyon:** Aynı cins moleküller arasındaki çekim kuvveti.\n- **Adezyon:** Farklı cins moleküller arasındaki çekim kuvveti.\n- Cam bardaktaki suyun yüzeyi kenarlarda **yukarı kıvrılır** (adezyon > kohezyon, iç bükey yüzey). Cıvanın yüzeyi ise **dış bükeydir** (kohezyon > adezyon).\n\n# Yüzey Gerilimi\n\nSıvının yüzeyindeki moleküller yalnızca yanlardan ve alttan çekildiği için yüzey **gerilmiş bir zar** gibi davranır.\n- Su örümcekleri suyun üstünde yürüyebilir; iğne dikkatle bırakılırsa yüzebilir; damlalar küresel olur.\n- **Sıcaklık arttıkça** ve **deterjan/sabun** eklendikçe yüzey gerilimi **azalır** (sıcak ve sabunlu su kirleri daha kolay temizler).\n\n# Kılcallık\n\nSıvının ince borularda (kılcal) yükselmesi ya da alçalmasıdır.\n- Adezyon kohezyondan büyükse sıvı **yükselir** (su–cam), küçükse **alçalır** (cıva–cam).\n- Boru **inceldikçe** yükselme miktarı **artar**.\n- Örnekler: bitkilerde suyun gövdede taşınmasına katkı, kâğıt havlunun suyu emmesi, gaz lambasında fitil, duvarda nemin yükselmesi.",
+     "ornekler": [
+      {
+       "soru": "Aynı sıvıya daldırılan çapları farklı iki cam kılcal boruda sıvı hangi boruda daha çok yükselir?",
+       "cozum": "**İnce olan** boruda; kılcal yükselme boru yarıçapı küçüldükçe artar."
+      },
+      {
+       "soru": "Sabunlu suyla iğne yüzdürülebilir mi? Neden?",
+       "cozum": "Hayır, zorlaşır. Sabun **yüzey gerilimini azaltır**; iğneyi taşıyan yüzey zarı zayıflar ve iğne batar."
+      }
+     ],
+     "ozet": [
+      "Kohezyon: aynı cins, adezyon: farklı cins moleküller arası çekim.",
+      "Su–cam: adezyon > kohezyon → iç bükey yüzey, kılcalda yükselme.",
+      "Yüzey gerilimi sıcaklık ve sabunla azalır.",
+      "Kılcal yükselme ince boruda daha fazladır."
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "u6",
+  "name": {
+   "tr": "6. Ünite (Ek): Genleşme ve Basit Makineler",
+   "en": "Unit 6 (Extra): Thermal Expansion and Simple Machines"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "FİZ.9.E3",
+    "title": {
+     "tr": "Katı, sıvı ve gazlarda genleşme",
+     "en": "Thermal expansion of solids, liquids and gases"
+    },
+    "content": {
+     "anlatim": "# Genleşme Nedir?\n\nIsıtılan maddenin taneciklerinin hareketi artar, aralarındaki ortalama uzaklık büyür ve **hacim artar** (genleşme); soğuyunca **büzülme** olur. Genleşme miktarı **ilk boyuta**, **sıcaklık değişimine** ve maddenin **cinsine** bağlıdır.\n\n# Katılarda Genleşme\n\n$$\\Delta L = L_0\\cdot\\lambda\\cdot\\Delta T$$\n($\\lambda$: boyca genleşme katsayısı, ayırt edicidir.) Yüzeyce genleşme katsayısı yaklaşık $2\\lambda$, hacimce $3\\lambda$'dır.\n- **Delikli levha** ısıtılınca delik de **büyür** (levha bütün olarak büyür).\n- **Bimetal** (farklı katsayılı iki metal şerit) ısıtılınca katsayısı **küçük** olan tarafa doğru bükülür → termostat, ütü, yangın alarmı.\n- Uygulamalar: Raylar ve köprülerde **genleşme aralıkları**, elektrik tellerinin yazın sarkık bırakılması, sıcak suda gevşeyen kavanoz kapağı.\n\n# Sıvı ve Gazlarda Genleşme\n\n- Sıvılar katılardan, gazlar sıvılardan **daha çok** genleşir. Sıvıların yalnızca hacimce genleşmesi incelenir; termometreler bu ilkeyle çalışır.\n- **Suyun düzensiz genleşmesi:** Su 0–4 °C arasında ısıtılınca **büzülür**; en küçük hacim ve en büyük özkütle **+4 °C**'dedir. Donarken hacmi artar: kışın su boruları patlayabilir; buz suyun üstünde kalır ve göllerde canlılar yaşamını sürdürür.",
+     "ornekler": [
+      {
+       "soru": "Boyu 10 m olan demir rayın sıcaklığı 30 °C artıyor ($\\lambda = 1{,}2\\times10^{-5}$ 1/°C). Ray ne kadar uzar?",
+       "cozum": "$\\Delta L = 10 \\cdot 1{,}2\\times10^{-5} \\cdot 30 = 3{,}6\\times10^{-3}$ m = **3,6 mm**."
+      },
+      {
+       "soru": "Ortasında delik olan metal bir levha ısıtılırsa delik ne olur?",
+       "cozum": "Delik de **büyür**; levha her yönde orantılı genleşir."
+      }
+     ],
+     "ozet": [
+      "$\\Delta L = L_0\\lambda\\Delta T$; genleşme katsayısı ayırt edicidir.",
+      "Bimetal katsayısı küçük olan tarafa bükülür.",
+      "Gazlar > sıvılar > katılar genleşir.",
+      "Su +4 °C'de en yoğundur; donarken genleşir."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "FİZ.9.E4",
+    "title": {
+     "tr": "Basit makineler: kaldıraç, makara, eğik düzlem",
+     "en": "Simple machines: lever, pulley, inclined plane"
+    },
+    "content": {
+     "anlatim": "# Basit Makinelerin Amacı\n\nKuvvetin **yönünü** ya da **büyüklüğünü** değiştirerek iş yapmayı kolaylaştırırlar. **İşten kazanç sağlanmaz**: kuvvetten kazanılan kadar yoldan kaybedilir (sürtünmesiz ideal durumda $F\\cdot x_F = P\\cdot x_P$).\n$$\\text{Kuvvet kazancı} = \\frac{P}{F}, \\qquad \\text{Verim} = \\frac{\\text{Alınan iş}}{\\text{Verilen iş}}\\times100$$\n\n# Kaldıraç\n\nBir destek noktası etrafında dönebilen çubuk. Denge: $F\\cdot a = P\\cdot b$ ($a$: kuvvet kolu, $b$: yük kolu).\n- Destek ortada: tahterevalli, makas, pense. Yük ortada: el arabası, ceviz kıracağı. Kuvvet ortada: cımbız, maşa (kuvvetten kazanç yok, hızdan kazanç var).\n\n# Makaralar\n\n- **Sabit makara:** Yalnızca kuvvetin **yönünü** değiştirir, $F = P$.\n- **Hareketli makara:** Yükü iki ip taşır, $F = \\dfrac{P}{2}$ (makara ağırlığı ihmal); ip, yükün iki katı kadar çekilir.\n- **Palanga:** Sabit ve hareketli makaraların birleşimi; yükü taşıyan ip sayısı $n$ ise $F = \\dfrac{P}{n}$.\n\n# Eğik Düzlem, Vida, Çıkrık, Dişli\n\n- **Eğik düzlem:** $F\\cdot L = P\\cdot h$ → uzun rampa daha az kuvvet ister.\n- **Vida:** Silindire sarılmış eğik düzlemdir. **Çıkrık:** kuyu çıkrığı, direksiyon ($F\\cdot R = P\\cdot r$).\n- **Dişliler:** Birbirine geçmiş dişliler zıt yönde döner; diş sayısı büyük olan daha yavaş döner (bisiklet vitesi).",
+     "ornekler": [
+      {
+       "soru": "Yük kolu 20 cm, kuvvet kolu 80 cm olan kaldıraçla 400 N'luk yük kaç N kuvvetle dengelenir?",
+       "cozum": "$F\\cdot80 = 400\\cdot20$ → $F = $ **100 N** (kuvvet kazancı 4)."
+      },
+      {
+       "soru": "Uzunluğu 5 m, yüksekliği 1 m olan sürtünmesiz eğik düzlemde 500 N'luk yük kaç N'luk kuvvetle çıkarılır?",
+       "cozum": "$F\\cdot5 = 500\\cdot1$ → **100 N**."
+      }
+     ],
+     "ozet": [
+      "Basit makineler işten kazanç sağlamaz; kuvvetten kazanılan yoldan kaybedilir.",
+      "Kaldıraç: $F\\cdot a = P\\cdot b$.",
+      "Sabit makara yön değiştirir; hareketli makara kuvveti yarıya indirir; palangada $F = P/n$.",
+      "Eğik düzlem: $F\\cdot L = P\\cdot h$."
+     ]
+    }
+   }
+  ]
  }
 ];

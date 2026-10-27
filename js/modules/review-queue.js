@@ -184,7 +184,8 @@
 
   function panelHtml(it, m) {
     const md = (s) => (App.markdown ? App.markdown.render(String(s || "")) : esc(s));
-    const btns = '<div class="rq-grade"><button class="btn btn--sm btn--primary" type="button" data-rq-ok>' + App.icon("check") + esc(T("Bildim", "Got it")) + "</button>" +
+    const conf = App.confidence ? App.confidence.chipsHtml("rqc-" + it.id) : "";
+    const btns = conf + '<div class="rq-grade"><button class="btn btn--sm btn--primary" type="button" data-rq-ok>' + App.icon("check") + esc(T("Bildim", "Got it")) + "</button>" +
       '<button class="btn btn--sm" type="button" data-rq-again>' + App.icon("refresh") + esc(T("Bilemedim, yarın tekrar", "Missed — again tomorrow")) + "</button></div>";
     if (it.type === "mistake" && m) {
       const opts = Array.isArray(m.options) && m.options.length ? '<ol class="rq-opts" type="A">' + m.options.map((o, i) =>
@@ -263,6 +264,8 @@
       const ok = !!e.target.closest("[data-rq-ok]"), again = !!e.target.closest("[data-rq-again]");
       if (!ok && !again) return;
       await grade(it, ok);
+      const c = App.confidence ? App.confidence.read(row, "rqc-" + it.id) : null;
+      if (c) App.confidence.record(it.type, it.key, c, ok).catch(() => {});
       items = items.filter((x) => x !== it); open.delete(it.id);
       row.classList.add("is-done");
       App.ui.toast(ok ? T("Güzel! Sonraki tekrar daha ileri bir tarihte.", "Nice! The next review is further out.") : T("Yarın yeniden sorulacak.", "It will come back tomorrow."));

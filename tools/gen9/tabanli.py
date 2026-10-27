@@ -7,6 +7,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
 ders = sys.argv[1]
 b = json.loads((pathlib.Path(__file__).parent / "base" / (ders + "-9.json")).read_text(encoding="utf-8"))
 units = uygula135(b["units"], ders)
+from ek_genel import uygula; uygula(units, ders + "_ek142")  # 1.42: eksik TYT konuları
 out = ROOT / "js/data/content" / (ders + "-9.js")
 out.write_text(b["header"] + "App.data.content = App.data.content || {};\nApp.data.content[\"" + b["key"] + "\"] = " + json.dumps(units, ensure_ascii=False, indent=1) + ";\n", encoding="utf-8")
 print(out.name, "kazanımlar", sum(len(u["outcomes"]) for u in units))

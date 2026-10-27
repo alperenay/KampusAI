@@ -495,5 +495,204 @@ App.data.content["10/biyoloji"] = [
     }
    }
   ]
+ },
+ {
+  "id": "u3",
+  "name": {
+   "tr": "3. Tema (Ek): Hücre Bölünmeleri, Üreme ve Kalıtım",
+   "en": "Theme 3 (Extra): Cell Division, Reproduction and Heredity"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "BİY.10.E1",
+    "title": {
+     "tr": "Hücre döngüsü ve mitoz",
+     "en": "The cell cycle and mitosis"
+    },
+    "content": {
+     "anlatim": "# Hücreler Neden Bölünür?\n\nÇok hücreli bir canlı **büyümek**, **yıpranan dokuları yenilemek** ve **yaraları onarmak** için yeni hücrelere ihtiyaç duyar. Tek hücreliler ise bölünerek **çoğalır**. Hücre büyüdükçe hacmi yüzey alanından hızlı arttığı için madde alışverişi zorlaşır; bölünme bu dengeyi yeniden kurar.\n\n# Hücre Döngüsü\n\nBir hücrenin oluşmasından bölünüp iki hücre vermesine kadar geçen süreçtir. İki ana kısımdan oluşur:\n- **İnterfaz (hazırlık evresi):** Döngünün en uzun bölümüdür.\n  - **G1:** Hücre büyür, organel ve enzim sayısı artar.\n  - **S:** **DNA eşlenir**; her kromozom iki **kardeş kromatitli** hâle gelir.\n  - **G2:** Bölünmede kullanılacak proteinler üretilir, son kontroller yapılır.\n- **Mitoz (çekirdek bölünmesi) + sitokinez (sitoplazma bölünmesi)**\n\n> Döngüde **kontrol noktaları** vardır. DNA hasarlıysa döngü durdurulur; bu denetim bozulursa hücreler kontrolsüz çoğalabilir (**kanser**).\n\n# Mitozun Evreleri\n\n| Evre | Olaylar |\n|---|---|\n| **Profaz** | Kromatin kısalıp kalınlaşarak kromozom hâline gelir, çekirdek zarı ve çekirdekçik kaybolur, iğ iplikleri oluşmaya başlar. |\n| **Metafaz** | Kromozomlar hücrenin ortasında (ekvatoral düzlem) tek sıra dizilir. Kromozomlar en belirgin bu evrede görülür. |\n| **Anafaz** | Kardeş kromatitler birbirinden ayrılıp zıt kutuplara çekilir. |\n| **Telofaz** | Kutuplarda yeni çekirdek zarları oluşur, kromozomlar tekrar gevşer. |\n\n# Sitokinez\n\n- **Hayvan hücresinde:** Hücre zarı ortadan içe doğru **boğumlanır**.\n- **Bitki hücresinde:** Çeper sert olduğu için ortada **ara lamel (hücre plağı)** oluşur.\n\n# Mitozun Sonucu\n\nBir **2n** hücreden kalıtsal yapısı **aynı** iki **2n** hücre oluşur. Mitoz; büyüme, onarım ve **eşeysiz üremenin** temelidir.",
+     "ornekler": [
+      {
+       "soru": "Kromozom sayısı $2n = 46$ olan bir insan vücut hücresi mitozla bölünüyor. S evresinden sonra ve bölünme sonunda her hücrede kaç kromozom ve kaç kromatit bulunur?",
+       "cozum": "S evresinden sonra kromozom sayısı yine **46**'dır ama her kromozom iki kromatitli olduğu için kromatit sayısı **92** olur. Bölünme sonunda oluşan iki hücrenin her birinde **46** kromozom (tek kromatitli) bulunur."
+      },
+      {
+       "soru": "Bir hücrede kromozomların sayılması için hangi evre en uygundur? Neden?",
+       "cozum": "**Metafaz.** Kromozomlar en yoğun (kısa ve kalın) hâldedir ve ekvatoral düzlemde tek sıra dizildikleri için ayrı ayrı görülüp sayılabilir."
+      }
+     ],
+     "ozet": [
+      "Hücre döngüsü: interfaz (G1, S, G2) + mitoz + sitokinez.",
+      "DNA eşlenmesi interfazın S evresinde olur.",
+      "Mitoz evreleri: profaz → metafaz → anafaz → telofaz.",
+      "Mitoz sonunda 2n hücreden kalıtsal olarak aynı iki 2n hücre oluşur.",
+      "Kontrol noktalarının bozulması kanserleşmeye yol açabilir."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "BİY.10.E2",
+    "title": {
+     "tr": "Mayoz ve genetik çeşitlilik",
+     "en": "Meiosis and genetic variation"
+    },
+    "content": {
+     "anlatim": "# Mayoz Nedir?\n\n**Üreme ana hücrelerinde** görülen, kromozom sayısını **yarıya indiren** bölünmedir. Bir **2n** hücreden dört **n** hücre (gamet ya da spor) oluşur. Böylece döllenmeyle birleşen iki gamet yeniden **2n** sayısını verir ve türün kromozom sayısı kuşaktan kuşağa sabit kalır.\n\n# İki Ardışık Bölünme\n\n**Mayoz I (indirgeme bölünmesi)**\n- **Profaz I:** **Homolog kromozomlar** yan yana gelir (sinapsis) ve dört kromatitli **tetratlar** oluşur. Homologların kromatitleri arasında parça değişimi olabilir: **krossing over**.\n- **Metafaz I:** Homolog çiftler ekvatoral düzlemde **karşılıklı** dizilir.\n- **Anafaz I:** **Homolog kromozomlar** ayrılır (kardeş kromatitler ayrılmaz). Kromozom sayısı burada yarıya iner.\n- **Telofaz I:** İki **n** hücre oluşur; kromozomlar hâlâ çift kromatitlidir.\n\n**Mayoz II** mitoza benzer: Anafaz II'de **kardeş kromatitler** ayrılır ve sonuçta dört **n** hücre oluşur. Mayoz I ile II arasında DNA eşlenmesi **olmaz**.\n\n# Genetik Çeşitliliğin Kaynakları\n\n1. **Krossing over:** Homolog kromozomlar arasında gen değişimi yeni gen kombinasyonları oluşturur.\n2. **Bağımsız dağılım:** Metafaz I'de homolog çiftlerin hangi kutba gideceği rastgeledir. $n$ çift kromozomlu bir canlıda $2^n$ farklı gamet çeşidi oluşabilir (insanda $2^{23}$ ≈ 8 milyon).\n3. **Rastgele döllenme:** Hangi spermin hangi yumurtayı dölleyeceği şansa bağlıdır.\n\n# Mitoz ile Mayozun Karşılaştırılması\n\n| | Mitoz | Mayoz |\n|---|---|---|\n| Görüldüğü hücre | Vücut hücreleri | Üreme ana hücreleri |\n| Bölünme sayısı | 1 | 2 |\n| Oluşan hücre | 2 tane, 2n | 4 tane, n |\n| Kalıtsal yapı | Ana hücreyle aynı | Birbirinden farklı |\n| Tetrat / krossing over | Yok | Var (Profaz I) |",
+     "ornekler": [
+      {
+       "soru": "$2n = 8$ olan bir canlıda krossing over olmadığı varsayılırsa bağımsız dağılımla en fazla kaç çeşit gamet oluşabilir?",
+       "cozum": "Kromozom çifti sayısı $n = 4$ olduğundan gamet çeşidi $2^4 = $ **16** olur."
+      },
+      {
+       "soru": "Mayozda kromozom sayısı hangi evrede yarıya iner? Mayoz II'de neden yeniden yarılanmaz?",
+       "cozum": "**Anafaz I**'de homolog kromozomlar ayrılınca sayı yarıya iner. Mayoz II'de ayrılan yapılar kardeş kromatitlerdir; kromozom sayısı değişmez, yalnızca kromatit sayısı yarıya iner."
+      }
+     ],
+     "ozet": [
+      "Mayoz: 2n → dört tane n hücre; üreme ana hücrelerinde olur.",
+      "Krossing over Profaz I'de homolog kromozomlar arasında olur.",
+      "Anafaz I'de homologlar, Anafaz II'de kardeş kromatitler ayrılır.",
+      "Çeşitlilik: krossing over + bağımsız dağılım ($2^n$) + rastgele döllenme."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "BİY.10.E3",
+    "title": {
+     "tr": "Eşeysiz ve eşeyli üreme",
+     "en": "Asexual and sexual reproduction"
+    },
+    "content": {
+     "anlatim": "# Eşeysiz Üreme\n\nTek bir atadan, **mitoz** temelinde, kalıtsal olarak ataya **benzer** bireyler oluşur. Hızlıdır ve eş bulmaya gerek yoktur; ancak çeşitlilik düşük olduğu için değişen çevreye uyum sınırlıdır.\n| Çeşit | Örnek |\n|---|---|\n| **İkiye bölünme** | Bakteri, amip, öglena |\n| **Tomurcuklanma** | Bira mayası, hidra |\n| **Rejenerasyon** (yenilenme ile çoğalma) | Planarya, deniz yıldızı |\n| **Sporla üreme** | Küf mantarı, eğreltiotu (yaşam döngüsünün bir evresinde) |\n| **Vejetatif üreme** | Patates yumrusu, çilek stolonu, çelikle söğüt |\n| **Partenogenez** (döllenmemiş yumurtadan gelişme) | Arı erkekleri (yumurta n olduğu için erkek arı n kromozomludur) |\n\n> **Klonlama** da eşeysiz üremeye dayanır: Vücut hücresinin çekirdeği, çekirdeği çıkarılmış bir yumurtaya aktarılır (Dolly koyunu).\n\n# Eşeyli Üreme\n\nİki farklı bireyden gelen **gametlerin** (n) **döllenmeyle** birleşip **zigotu** (2n) oluşturmasıdır. Mayoz ve döllenme sayesinde **genetik çeşitlilik** yüksektir; tür değişen koşullara daha kolay uyum sağlar.\n- **Dış döllenme:** Suda yaşayan balık ve kurbağalarda; çok sayıda gamet bırakılır.\n- **İç döllenme:** Karada yaşayan sürüngen, kuş ve memelilerde; gametler kurumaktan korunur.\n\n# Karşılaştırma\n\n| | Eşeysiz | Eşeyli |\n|---|---|---|\n| Birey sayısı | 1 | Genellikle 2 |\n| Temel bölünme | Mitoz | Mayoz + döllenme |\n| Çeşitlilik | Düşük (mutasyon dışında) | Yüksek |\n| Hız / enerji | Hızlı, az enerji | Yavaş, çok enerji |",
+     "ornekler": [
+      {
+       "soru": "Bir patates tarlasının tamamı aynı bitkiden alınan yumrularla dikilmiştir. Yeni bir bitki hastalığı ortaya çıktığında bu tarla neden risk altındadır?",
+       "cozum": "Yumruyla üreme **vejetatif (eşeysiz)** üremedir; bütün bitkiler kalıtsal olarak aynıdır. Hastalığa dayanıklı bir birey yoksa hastalık **tüm tarlayı** etkileyebilir. Eşeyli üremedeki çeşitlilik bu riski azaltır."
+      },
+      {
+       "soru": "Arılarda erkek bireyler kaç kromozomludur, neden?",
+       "cozum": "Erkek arılar **döllenmemiş yumurtadan** (partenogenez) gelişir; yumurta mayozla oluştuğu için **n** kromozomludurlar."
+      }
+     ],
+     "ozet": [
+      "Eşeysiz üreme mitoza dayanır; yavrular ataya benzer.",
+      "Eşeyli üreme mayoz + döllenme ile genetik çeşitlilik sağlar.",
+      "Eşeysiz üreme çeşitleri: bölünme, tomurcuklanma, rejenerasyon, spor, vejetatif üreme, partenogenez."
+     ]
+    }
+   },
+   {
+    "id": "k4",
+    "code": "BİY.10.E4",
+    "title": {
+     "tr": "Mendel ilkeleri: monohibrit ve dihibrit çaprazlama",
+     "en": "Mendel's principles: monohybrid and dihybrid crosses"
+    },
+    "content": {
+     "anlatim": "# Temel Kavramlar\n\n- **Gen:** Bir özelliği belirleyen DNA parçası. **Alel:** Aynı genin farklı biçimleri (ör. sarı **Y**, yeşil **y**).\n- **Genotip:** Alellerin bileşimi (YY, Yy, yy). **Fenotip:** Gözlenen özellik (sarı, yeşil). Fenotip = genotip + çevre etkisi.\n- **Homozigot (saf döl):** Aynı aleller (YY, yy). **Heterozigot (melez):** Farklı aleller (Yy).\n- **Baskın (dominant)** alel heterozigotta etkisini gösterir; **çekinik (resesif)** alel yalnızca homozigotken (yy) görünür.\n\n# Mendel'in Bezelye Deneyleri\n\nMendel, kolay yetişen, kısa sürede çok döl veren ve belirgin karşıt özellikleri olan bezelyeyle çalıştı; sonuçları **sayılarla** değerlendirdi.\n- **Ayrılma ilkesi:** Her birey bir özellik için iki alel taşır; gamet oluşurken bunlar ayrılır ve her gamete **yalnızca biri** geçer.\n- **Bağımsız dağılım ilkesi:** Farklı kromozomlardaki genler gametlere birbirinden bağımsız dağılır.\n\n# Monohibrit Çaprazlama (tek özellik)\n\n$Yy \\times Yy$ → Punnett karesi:\n| | **Y** | **y** |\n|---|---|---|\n| **Y** | YY | Yy |\n| **y** | Yy | yy |\n- Genotip oranı **1 YY : 2 Yy : 1 yy**, fenotip oranı **3 sarı : 1 yeşil**.\n\n**Test çaprazlaması:** Baskın fenotipli bireyin genotipini bulmak için **homozigot çekinikle** (yy) çaprazlanır. Döllerin hepsi baskınsa birey YY, yarısı çekinikse Yy'dir.\n\n# Dihibrit Çaprazlama (iki özellik)\n\nTohum rengi (Y/y) ve şekli (R düzgün / r buruşuk): $YyRr \\times YyRr$\n- Her ebeveyn **4** çeşit gamet verir: YR, Yr, yR, yr.\n- Fenotip oranı **9 : 3 : 3 : 1** (9 sarı-düzgün, 3 sarı-buruşuk, 3 yeşil-düzgün, 1 yeşil-buruşuk).\n\n# Olasılıkla Hızlı Çözüm\n\nBağımsız özellikler için olasılıklar **çarpılır**. Bir bireyin oluşturabileceği gamet çeşidi $2^{h}$ ($h$: heterozigot gen çifti sayısı).",
+     "ornekler": [
+      {
+       "soru": "$AaBbCc$ genotipli bir birey kaç çeşit gamet oluşturur? $AaBb \\times AaBb$ çaprazlamasında $aabb$ olasılığı nedir?",
+       "cozum": "Heterozigot çift sayısı 3 → $2^3 = $ **8** çeşit gamet. $P(aa) = \\frac14$, $P(bb) = \\frac14$ → $P(aabb) = \\frac14\\cdot\\frac14 = $ **$\\frac{1}{16}$**."
+      },
+      {
+       "soru": "Sarı tohumlu bir bezelye yeşil tohumluyla çaprazlanınca döllerin yarısı sarı, yarısı yeşil oluyor. Sarı bireyin genotipi nedir?",
+       "cozum": "Döllerde yeşil (yy) çıktığına göre sarı ebeveyn de $y$ aleli vermiştir: genotip **Yy**. ($Yy \\times yy$ → 1 Yy : 1 yy)"
+      }
+     ],
+     "ozet": [
+      "Ayrılma ilkesi: her gamete bir alel geçer.",
+      "$Yy \\times Yy$ → fenotip 3 : 1, genotip 1 : 2 : 1.",
+      "$YyRr \\times YyRr$ → fenotip 9 : 3 : 3 : 1.",
+      "Gamet çeşidi $= 2^{h}$; bağımsız olasılıklar çarpılır.",
+      "Test çaprazlaması homozigot çekinikle yapılır."
+     ]
+    }
+   },
+   {
+    "id": "k5",
+    "code": "BİY.10.E5",
+    "title": {
+     "tr": "Eksik ve eş baskınlık, çok alellilik ve kan grupları",
+     "en": "Incomplete and codominance, multiple alleles and blood groups"
+    },
+    "content": {
+     "anlatim": "# Eksik Baskınlık\n\nHeterozigot birey, iki homozigotun **arasında** bir fenotip gösterir. Örnek: Aslanağzı çiçeğinde kırmızı (KK) × beyaz (BB) → **pembe** (KB).\n- $KB \\times KB$ → kırmızı : pembe : beyaz = **1 : 2 : 1** (fenotip oranı genotip oranına eşittir).\n\n# Eş Baskınlık (Kodominantlık)\n\nHeterozigotta **iki alel de** etkisini tam olarak gösterir. Örnek: **AB** kan grubunda hem A hem B antijeni bulunur.\n\n# Çok Alellilik\n\nBir gen için popülasyonda **ikiden fazla** alel bulunmasıdır; ama bir birey yine **en fazla iki** alel taşır.\n- ABO kan grubu: $I^A$, $I^B$, $i$ (0) alelleri. $I^A$ ve $I^B$ birbirine **eş baskın**, $i$'ye karşı **baskındır**.\n\n| Fenotip | Olası genotipler | Alyuvarda antijen | Plazmada antikor |\n|---|---|---|---|\n| A | AA, A0 | A | anti-B |\n| B | BB, B0 | B | anti-A |\n| AB | AB | A ve B | yok |\n| 0 | 00 | yok | anti-A, anti-B |\n\n# Rh Faktörü\n\nAlyuvarda Rh antijeni varsa **Rh⁺** (baskın, R), yoksa **Rh⁻** (rr). Rh⁻ anne Rh⁺ bebek taşıdığında ikinci gebeliklerde **bebeğin alyuvarlarına karşı antikor** sorunu (eritroblastoz fetalis) görülebilir; doğum sonrası yapılan iğneyle önlenir.\n\n# Kan Nakli\n\nVerilecek kandaki **antijen**, alıcının **antikoruyla** karşılaşmamalıdır. 0 grubu \"genel verici\", AB grubu \"genel alıcı\" olarak bilinir; ancak uygulamada aynı grup kan tercih edilir.",
+     "ornekler": [
+      {
+       "soru": "Anne A0, baba B0 kan grubundandır. Çocukların kan grubu olasılıkları nedir?",
+       "cozum": "Gametler: anne {A, 0}, baba {B, 0}. Olası çocuklar: AB, A0, B0, 00 → **AB, A, B ve 0** gruplarının her biri $\\frac14$ olasılıkla."
+      },
+      {
+       "soru": "Pembe çiçekli iki aslanağzı çaprazlanıyor. 160 dölde kaç kırmızı beklenir?",
+       "cozum": "$KB \\times KB$ → kırmızı (KK) olasılığı $\\frac14$ → $160 \\cdot \\frac14 = $ **40**."
+      }
+     ],
+     "ozet": [
+      "Eksik baskınlık: heterozigot ara fenotip (pembe), oran 1 : 2 : 1.",
+      "Eş baskınlık: iki alel de görülür (AB kan grubu).",
+      "ABO'da üç alel vardır; birey en fazla iki alel taşır.",
+      "Nakilde vericinin antijeni alıcının antikoruyla karşılaşmamalıdır."
+     ]
+    }
+   },
+   {
+    "id": "k6",
+    "code": "BİY.10.E6",
+    "title": {
+     "tr": "Eşeye bağlı kalıtım ve soyağacı",
+     "en": "Sex-linked inheritance and pedigrees"
+    },
+    "content": {
+     "anlatim": "# Cinsiyetin Belirlenmesi\n\nİnsanda 22 çift **vücut (otozom) kromozomu** ve 1 çift **eşey kromozomu** vardır: kadın **XX**, erkek **XY**. Yumurtaların hepsi X taşır; çocuğun cinsiyetini **spermin** taşıdığı X ya da Y belirler. Her doğumda kız ya da erkek olasılığı $\\frac12$'dir.\n\n# X'e Bağlı Çekinik Kalıtım\n\nGeni X kromozomunda bulunan ve Y'de karşılığı olmayan özelliklerdir: **renk körlüğü**, **hemofili**.\n- Kadın: $X^RX^R$ sağlam, $X^RX^r$ **taşıyıcı** (fenotipi sağlam), $X^rX^r$ hasta.\n- Erkek: tek X taşıdığı için $X^rY$ ise **hastadır**; taşıyıcı erkek olmaz.\n- Bu yüzden bu hastalıklar **erkeklerde daha sık** görülür. Erkek, X kromozomunu **annesinden** alır.\n\n# Y'ye Bağlı Kalıtım\n\nGeni yalnızca Y'de olan özellikler babadan **yalnızca oğullara** geçer (ör. bazı kulak kıllılığı örnekleri).\n\n# Soyağacı (Pedigri) Okuma\n\nKareler erkeği, daireler kadını; dolu şekiller özelliği gösteren bireyi gösterir.\n- **Otozomal çekinik:** Sağlam iki ebeveynden hasta çocuk doğabilir; iki cinsiyette eşit sıklıktadır.\n- **Otozomal baskın:** Hasta her bireyin en az bir ebeveyni hastadır; kuşak atlamaz.\n- **X'e bağlı çekinik:** Çoğunlukla erkeklerde görülür; hasta kızın babası mutlaka hastadır, hasta annenin bütün oğulları hastadır.",
+     "ornekler": [
+      {
+       "soru": "Taşıyıcı bir anne ile renk körü olmayan bir babanın çocuklarında renk körlüğü olasılıkları nedir?",
+       "cozum": "$X^RX^r \\times X^RY$ → kızlar: $X^RX^R$, $X^RX^r$ (hepsi sağlam, yarısı taşıyıcı). Oğullar: $X^RY$, $X^rY$. **Oğulların yarısı** renk körü olabilir; tüm çocuklar içinde olasılık $\\frac14$."
+      },
+      {
+       "soru": "Renk körü bir kızın babası için ne söylenebilir?",
+       "cozum": "Kız $X^rX^r$ olmalıdır; X'lerinden biri babadan gelir. Babanın tek X'i $X^r$ olduğundan baba **kesinlikle renk körüdür**."
+      }
+     ],
+     "ozet": [
+      "Kadın XX, erkek XY; cinsiyeti spermin taşıdığı kromozom belirler.",
+      "X'e bağlı çekinik özellikler (renk körlüğü, hemofili) erkeklerde daha sık görülür.",
+      "Erkekte taşıyıcılık olmaz; X'ini annesinden alır.",
+      "Soyağacında sağlam ebeveynden hasta çocuk varsa özellik çekiniktir."
+     ]
+    }
+   },
+   {
+    "id": "k7",
+    "code": "BİY.10.E7",
+    "title": {
+     "tr": "Genetik varyasyon, mutasyon ve kalıtsal hastalıklar",
+     "en": "Genetic variation, mutation and inherited disorders"
+    },
+    "content": {
+     "anlatim": "# Varyasyon (Çeşitlilik) Kaynakları\n\nAynı türün bireyleri arasındaki kalıtsal farklılıklara **varyasyon** denir. Doğal seçilimin üzerinde çalıştığı ham maddedir.\n- **Mutasyon:** DNA'daki kalıcı değişmeler; yeni alellerin asıl kaynağıdır.\n- **Krossing over** ve **bağımsız dağılım** (mayoz)\n- **Rastgele döllenme**\n\n**Modifikasyon** ise çevrenin fenotipi değiştirmesidir (ör. güneşte bronzlaşma, ortanca çiçeğinin toprak pH'sına göre renk değiştirmesi); DNA değişmediği için **kalıtsal değildir**.\n\n# Mutasyon Türleri\n\n- **Gen (nokta) mutasyonu:** Bir ya da birkaç nükleotidin değişmesi, eklenmesi ya da kaybı (ör. orak hücre anemisinde tek bir baz değişikliği).\n- **Kromozom mutasyonu:** Kromozom yapısında (parça kopması, yer değiştirme) ya da sayısında değişim. Mayozda kromozomların ayrılamaması (**ayrılmama**) sayı değişikliğine yol açar: **Down sendromu** (21. kromozomdan üç tane, 47 kromozom).\n- Mutasyonlar **vücut hücresinde** olursa yalnızca o bireyi, **üreme hücresinde** olursa sonraki kuşakları etkileyebilir.\n- Etkenler: radyasyon (UV, X ışını), bazı kimyasallar, yüksek sıcaklık, bazı virüsler.\n\n# Kalıtsal Hastalıklar ve Akraba Evliliği\n\n- **Fenilketonüri (FKÜ), talasemi (Akdeniz anemisi), kistik fibrozis** otozomal çekinik hastalıklardır. Çoğu kişi bunların alelini fark etmeden **taşıyıcı** olarak taşır.\n- **Akraba evliliğinde** aynı çekinik aleli taşıma olasılığı artar; bu nedenle çekinik hastalıklı çocuk olasılığı yükselir.\n- **Yenidoğan topuk kanı taraması** (FKÜ vb.) ve **evlilik öncesi talasemi taraması** erken tanı ve önlem için yapılır. FKÜ'de erken tanı ve uygun beslenmeyle zihinsel gelişim geriliği önlenebilir.",
+     "ornekler": [
+      {
+       "soru": "İki taşıyıcının ($Aa \\times Aa$) bir çekinik hastalık için hasta çocuk sahibi olma olasılığı nedir? Bu kişiler akraba olmasaydı olasılık değişir miydi?",
+       "cozum": "$P(aa) = \\frac14$. İki kişi zaten taşıyıcıysa olasılık **akrabalıktan bağımsız olarak** $\\frac14$'tür. Akrabalık, iki eşin **aynı çekinik aleli taşıma olasılığını** artırdığı için riski yükseltir."
+      },
+      {
+       "soru": "Güneşte uzun süre kalan birinin derisinin koyulaşması çocuklarına geçer mi?",
+       "cozum": "Hayır. Bu bir **modifikasyondur**; DNA değişmez, kalıtsal değildir."
+      }
+     ],
+     "ozet": [
+      "Varyasyon kaynakları: mutasyon, krossing over, bağımsız dağılım, rastgele döllenme.",
+      "Modifikasyon çevresel değişimdir; kalıtsal değildir.",
+      "Üreme hücrelerindeki mutasyon yavrulara geçebilir.",
+      "Akraba evliliği çekinik hastalık riskini artırır; tarama programları erken önlem sağlar."
+     ]
+    }
+   }
+  ]
  }
 ];

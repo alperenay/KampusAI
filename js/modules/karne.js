@@ -53,6 +53,8 @@
         items.push({ key: q.key, correct: x.chosen === x.answer, confidence: CONF.includes(c) ? c : null });
       });
     });
+    // Kart ve tekrar listesindeki eminlik işaretlemeleri (confidence.js)
+    (data.confLog || []).forEach((x) => { if (inRange(x.at, from, to)) items.push({ key: x.k, correct: !!x.ok, confidence: CONF.includes(x.c) ? x.c : null }); });
     const total = days.reduce((a, d) => a + d.focus + d.quiz, 0);
     const activeDays = days.filter((d) => d.focus + d.quiz >= 1).length;
 
@@ -183,7 +185,8 @@
     const get = (s) => App.db.getAll(s).catch(() => []);
     const [sessions, quizzes] = await Promise.all([get("sessions"), get("quizzes")]);
     const mastery = App.roots ? await App.roots.mastery().catch(() => new Map()) : new Map();
-    const R = compute({ sessions, quizzes, mastery }, from);
+    const confLog = App.confidence ? await App.confidence.log(from, from + 7 * DAY).catch(() => []) : [];
+    const R = compute({ sessions, quizzes, mastery, confLog }, from);
     const name = (App.prefs.get("userName", "") || "").trim();
     const range = new Date(R.from).toLocaleDateString(App.i18n.locale, { day: "numeric", month: "long" }) + " – " +
       new Date(R.to - 1).toLocaleDateString(App.i18n.locale, { day: "numeric", month: "long", year: "numeric" });
@@ -205,7 +208,7 @@
             '<div class="k-head__idx">' + (m ? '<span class="k-badge k-badge--' + m.zone + '">' + esc(zoneName) + "</span>" : "") + "</div></header>" +
           '<section class="k-tiles">' +
             tile(fmtMin(R.total), T("toplam çalışma", "total study")) + tile(R.activeDays + "/7", T("çalışılan gün", "active days")) +
-            tile(String(R.questions), T("çözülen soru", "questions answered")) +
+            tile(String(R.questions), T("yanıtlanan soru ve kart", "questions and cards answered")) +
             tile(m ? (m.index > 0 ? "+" : "") + m.index : "–", T("üstbiliş indeksi", "metacognition index")) + "</section>" +
           '<section class="k-sec"><h3>1 · ' + esc(T("Günlük çalışma süresi (dakika)", "Daily study time (minutes)")) + "</h3>" +
             '<div class="k-daily">' + dailyChart(R) +
