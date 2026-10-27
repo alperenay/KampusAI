@@ -1,5 +1,5 @@
 .stem-page { max-width: 980px; }
-.stem-connect,.stem-input { padding: 20px; margin-bottom: 18px; min-width: 0; }
+.stem-connect,.stem-input,.stem-mode { padding: 20px; margin-bottom: 18px; min-width: 0; }
 .stem-connect summary { cursor: pointer; font-weight: 650; }
 .stem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .stem-input .field { margin: 16px 0; }
