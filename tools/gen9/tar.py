@@ -443,6 +443,8 @@ Orta Çağ Avrupa'sında **kilisenin baskısı** altında akıl ve bilimin geri 
 from _ek135 import uygula135  # noqa: E402
 uygula135(units, "tar")
 
+from ek_genel import uygula; uygula(units, "tar_ek142")  # 1.43: ilk Türk ve Türk-İslam devletleri
+
 write("tar-9.js", "9/tarih", "9. Sınıf Tarih — kazanım konu anlatım notları",
       "kullanıcının verdiği \"9. Sınıf Tarih Ders Kitabı Ayrıntılı Kazanım Konu Anlatım Notları\" (3 ünite).",
       units, "Kazanım kodları kaynaktaki bölüm numaralarıdır. Kaynaktaki yazım ve küçük bilgi hataları düzeltildi; tablolar ve örnek sorular eklendi.")
