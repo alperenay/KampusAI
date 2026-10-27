@@ -1,42 +1,40 @@
-# KampüsAI
+<p align="center">
+  <img src="assets/icons/icon-192.png" width="88" alt="KampüsAI logosu">
+</p>
 
-Ders programı, konu anlatımı, TYT-AYT deneme takibi, yazılı sınavlar, formül defteri, hologram öğretmenle İngilizce konuşma pratiği ve yapay zeka asistanı: Windows, Pardus/Linux, Android ve iPhone.
+<h1 align="center">KampüsAI</h1>
 
-- **İndir:** [Son sürüm (Releases)](../../releases/latest): Windows için `.exe`, Pardus için `.deb` (diğer Linux'lar: `.AppImage`), Android için `.apk`
-- **iPhone:** Safari'de bu deponun GitHub Pages adresini aç → Paylaş → Ana Ekrana Ekle
-- **Kurulum ve kullanım:** [BENIOKU.md](BENIOKU.md)
+<p align="center">Lise ve YKS için yapay zekâ destekli çalışma asistanı.</p>
 
-Yapay zeka: cihaza indirilen Gemma 4 (internetsiz), bilgisayardaki Ollama modelleri ya da internetten Google Gemini / OpenAI-uyumlu servisler.
+<p align="center">
+  <a href="https://alperenay.github.io/KampusAI/"><strong>Web'de aç</strong></a> ·
+  <a href="https://github.com/alperenay/KampusAI/releases/latest"><strong>Uygulamayı indir</strong></a> ·
+  <a href="docs/KULLANIM.md">Kullanım kılavuzu</a>
+</p>
 
-## Kişisel çalışma akışı
+## İndir ve başla
 
-- **Seviyeye uyarlanan test:** Her konu testi 10 sorudan oluşur. Başlangıç zorluğu aynı konudaki son beş testten hesaplanır; sonraki sorular cevaplarına göre kolaylaşır veya zorlaşır. Sonuçta doğru/yanlış/boş sayısı, zorluk ağırlıklı başarı ve tahmini seviye gösterilir. Yanlışlar mevcut yanlış defterine eklenir.
-- **Bugün ne çalışmalıyım?** Ana sayfa ve Bugün ekranındaki tek eylem kartı; son testlerini, öğrenme haritandaki eksikleri, unutulan konuları ve ders programındaki zaman aralığını kullanarak test ya da konu tekrarı önerir. Yeni test üretmek için yapay zekâ gerekir; öneri hesaplaması cihazda yapılır.
-- Test sonuçları mevcut yedekleme ve cihaz eşitlemesine dahildir. Ayrı hesap veya yeni veri deposu gerekmez.
-- **Gerekçe ve eminlik:** Cevapla birlikte gerekçe ve %25–100 eminlik toplanır. Test sonunda aday pedagojik göstergeler ve ipucusuz doğruluk gösterilir; serbest metin gerekçesi otomatik doğru/yanlış sayılmaz.
-- **Kademeli ipuçları:** Kavram, strateji ve çözüm başlangıcından oluşan üç basamak; destek kullanımı adaptif zorluğa ve günlük tekrar önerisine katılır.
-- **Çevrimdışı araştırma:** Sınıf/Öğretmen ekranından aynı soru paketine dayalı ipucu veya adaptif akış karşılaştırması oluşturulur. Oturum ve sonuçlar parçalı QR, kod veya yerel dosyayla taşınır. Araştırma sonuçları normal çalışma geçmişine yazılmaz ve otomatik bulut eşitlemesine girmez.
+| Cihaz | Kullanım |
+|---|---|
+| Windows | [Son sürümden](https://github.com/alperenay/KampusAI/releases/latest) `.exe` kurucusunu indir. |
+| Android | [Son sürümden](https://github.com/alperenay/KampusAI/releases/latest) `.apk` dosyasını indir. |
+| Pardus / Linux | [Son sürümden](https://github.com/alperenay/KampusAI/releases/latest) `.deb` veya `.AppImage` indir. |
+| iPhone / iPad | [Web sürümünü](https://alperenay.github.io/KampusAI/) Safari'de aç → Paylaş → Ana Ekrana Ekle. |
+| Tarayıcı | [KampüsAI'ı aç](https://alperenay.github.io/KampusAI/); kurulum gerekmez. |
 
-Araştırma kullanımı, veri modeli, puanlama kuralları ve deney sınırları: [Araştırma modu](RESEARCH_MODE.md).
+## Neler yapabilirsin?
 
-**Öğretmen gerekçe paneli:** Test sonucundan gerekçelerini öğretmene QR/kod/dosyayla gönder; öğretmen üç ölçütle puanlayıp geri bildirsin. Öğrenci sonucu aldığında normal öğrenme göstergeleri güncellenir; araştırmanın özgün A/B sonuçları korunur. [Kullanım ve puanlama](TEACHER_REVIEW.md).
+- **Çalış:** Konu anlatımları, formül defteri, testler ve açık uçlu yazılılar.
+- **Tekrar et:** Yanlış defteri, Hap Kartlar ve tek listede günlük tekrarlar.
+- **Soru sor:** Yazı, fotoğraf veya sesle yapay zekâdan destek al.
+- **Gelişimini izle:** Ders programı, deneme sonuçları ve haftalık üstbiliş karnesi.
+- **Keşfet:** Etkileşimli deneyler, 3B modeller ve İngilizce konuşma pratiği.
+- **Sınıfta kullan:** Çevrimdışı QR ödev dağıtımı ve öğretmen geri bildirimi.
 
-Test/yazılı üretimi küçük partiler, ilk soruların önizlemesi, ilerleme ve iptal/yeniden denemeyle çalışır. Hap Kartlar'da boş desteden konu seçerek başlama ve takvimi değiştirmeyen inceleme eylemleri bulunur.
+İnternet üzerinden yapay zekâ kullanılabilir. Desteklenen bilgisayar ve Android cihazlara model indirerek yerel kullanım da mümkündür. Yapay zekâ yanıtlarını öğretmenin veya güvenilir kaynaklarla kontrol et.
 
-## Geliştirme kontrolleri
+## Bağlantılar
 
-Node.js 22 veya üzeriyle, proje kökünde (ek npm paketi kurmadan):
+[Kullanım](docs/KULLANIM.md) · [Öğretmen ve QR](docs/OGRETMEN.md) · [Araştırma modu](docs/ARASTIRMA.md) · [Gizlilik](docs/GIZLILIK.md) · [Geliştirme](docs/GELISTIRME.md)
 
-```sh
-npm run lint
-npm test
-npm run build
-```
-
-Yeni araştırma/QR kontrollerini ayrıca çalıştırmak için `npm run test:research`; iki cihazlı çevrimdışı tarayıcı akışı için `npm run test:research-ui` kullanılır. Tarayıcı testi Playwright ve tarayıcı gerektirir.
-
-Web çıktısı `dist/web` klasörüne yazılır. İsteğe bağlı `npm run test:study-ui` kontrolü Playwright ve bir Chromium tarayıcısı gerektirir; Windows'ta Edge kullanır. Bu kontrol dış ağ isteklerini engeller ve yapay zekâ çıktısını sabit test verileriyle değiştirir.
-
-Mimari, doğrulama kapsamı ve önerilen commit grupları: [Geliştirme notları](ADAPTIVE_STUDY.md).
-
-Öğretmen ve üretim kontrolleri: `npm run test:teacher-review-ui`, `npm run test:generation-ui`. Bütün araç/deney/oyun ekranlarını taramak için `npm run test:all-features-ui`. Bu tarayıcı testleri Playwright gerektirir; canlı yapay zekâ, kamera ve mikrofon işlevlerini doğruladıkları varsayılmaz.
+Hata veya öneri için [Issues](https://github.com/alperenay/KampusAI/issues) sayfasını kullan. Kullanılan kütüphane ve veri kaynakları uygulamanın **Hakkında → Kaynakça ve lisanslar** bölümünde listelenir; dağıtılan bileşenlerin lisans dosyaları kaynak kodda korunur.

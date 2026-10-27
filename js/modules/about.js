@@ -250,8 +250,8 @@
         '<ul class="about-meta">' +
           "<li><b>" + esc(t("set.version")) + "</b> " + esc(App.version || "dev") + "</li>" +
           "<li><b>" + esc(T("Platformlar", "Platforms")) + "</b> Windows · Pardus/Linux · Android · iPhone · " + esc(T("web", "web")) + "</li>" +
-          "<li><b>" + esc(T("Kaynak kod", "Source code")) + "</b> " + link("https://github.com/alperenay/ders-asistani", "github.com/alperenay/ders-asistani") + "</li>" +
-          "<li><b>" + esc(T("Geri bildirim", "Feedback")) + "</b> " + link("https://github.com/alperenay/ders-asistani/issues", T("GitHub üzerinden bildir", "Report on GitHub")) + "</li>" +
+          "<li><b>" + esc(T("Kaynak kod", "Source code")) + "</b> " + link("https://github.com/alperenay/KampusAI", "github.com/alperenay/KampusAI") + "</li>" +
+          "<li><b>" + esc(T("Geri bildirim", "Feedback")) + "</b> " + link("https://github.com/alperenay/KampusAI/issues", T("GitHub üzerinden bildir", "Report on GitHub")) + "</li>" +
         "</ul></div></div>") +
 
       card("abt-ozellik", "sparkle", T("Neler yapabilirsin?", "What can you do?"), '<div class="about-feats">' + feats + "</div>") +
