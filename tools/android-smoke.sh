@@ -46,16 +46,30 @@ import sys, re, xml.etree.ElementTree as ET
 want = sys.argv[1].lower()
 try: root = ET.parse("shots/ui.xml").getroot()
 except Exception: sys.exit(0)
+parents = {child: parent for parent in root.iter() for child in parent}
+def rect(node):
+    values = re.findall(r"-?\d+", node.get("bounds", ""))
+    return tuple(map(int, values)) if len(values) == 4 else None
+def in_scroll_view(node, x, y):
+    # WebView may expose offscreen DOM bounds beyond the visible scroll area.
+    # Such a coordinate can hit Android's system navigation instead of the form.
+    parent = parents.get(node)
+    while parent is not None:
+        if parent.get("scrollable") == "true":
+            bounds = rect(parent)
+            if bounds and not (bounds[0] <= x < bounds[2] and bounds[1] <= y < bounds[3]): return False
+        parent = parents.get(parent)
+    return True
 best = None
 edit = want == "@edit"
 radio = want == "@radio"
 for n in root.iter("node"):
     hay = " ".join(n.get(k, "") for k in ("text", "content-desc", "hint")).lower()
     if (edit and n.get("class", "").endswith("EditText")) or (radio and n.get("class", "").endswith("RadioButton")) or (not edit and not radio and want in hay):
-        m = re.findall(r"\d+", n.get("bounds", ""))
-        if len(m) == 4:
-            x1, y1, x2, y2 = map(int, m)
-            if x2 > x1 and y2 > y1:
+        m = rect(n)
+        if m:
+            x1, y1, x2, y2 = m
+            if x2 > x1 and y2 > y1 and in_scroll_view(n, (x1+x2)//2, (y1+y2)//2):
                 area = (x2 - x1) * (y2 - y1)
                 if edit: area = -y1             # en alttaki yazı alanı
                 # A tool title also occurs in its pin button's accessibility label.
