@@ -45,12 +45,15 @@
     psikoloji: { name: { tr: "Psikoloji", en: "Psychology" }, color: "#b39ddb", icon: "lightbulb" },
     sosyoloji: { name: { tr: "Sosyoloji", en: "Sociology" }, color: "#80cbc4", icon: "chat" },
     cagdas:    { name: { tr: "Çağdaş Türk ve Dünya Tarihi", en: "Contemporary Turkish and World History" }, color: "#d7a86e", icon: "globe" },
-    saglik:    { name: { tr: "Sağlık Bilgisi ve Trafik Kültürü", en: "Health and Traffic Safety" }, color: "#ef9a9a", icon: "checkCircle" }
+    saglik:    { name: { tr: "Sağlık Bilgisi ve Trafik Kültürü", en: "Health and Traffic Safety" }, color: "#ef9a9a", icon: "checkCircle" },
+    beden:     { name: { tr: "Beden Eğitimi ve Spor", en: "Physical Education" }, color: "#81c784", icon: "timer" },
+    gorsel:    { name: { tr: "Görsel Sanatlar", en: "Visual Arts" }, color: "#ffb74d", icon: "image" },
+    muzik:     { name: { tr: "Müzik", en: "Music" }, color: "#64b5f6", icon: "volume" }
   };
 
   // Her sınıfta hangi dersler var
   const GRADES = {
-    "9":  ["edebiyat", "matematik", "fizik", "kimya", "biyoloji", "tarih", "cografya", "din", "ingilizce", "saglik"],
+    "9":  ["edebiyat", "matematik", "fizik", "kimya", "biyoloji", "tarih", "cografya", "din", "ingilizce", "saglik", "beden", "gorsel", "muzik"],
     "10": ["edebiyat", "matematik", "fizik", "kimya", "biyoloji", "tarih", "cografya", "felsefe", "din", "ingilizce"],
     "11": ["edebiyat", "matematik", "fizik", "kimya", "biyoloji", "tarih", "cografya", "felsefe", "psikoloji", "sosyoloji", "din", "ingilizce"],
     "12": ["edebiyat", "matematik", "fizik", "kimya", "biyoloji", "inkilap", "cagdas", "cografya", "felsefe", "din", "ingilizce"]

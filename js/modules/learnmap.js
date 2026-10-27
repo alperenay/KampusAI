@@ -32,7 +32,7 @@
     psikoloji: [["AYT", "felsefe"]],
     sosyoloji: [["AYT", "felsefe"]],
     cagdas: [["AYT", "tarih2"]],
-    saglik: [],
+    saglik: [], beden: [], gorsel: [], muzik: [],
     din: [["TYT", "sosyal"], ["AYT", "din"]],
     ingilizce: []
   };

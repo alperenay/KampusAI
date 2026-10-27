@@ -18,6 +18,9 @@
 .subj-sosyoloji { --subj: #6fd3c5; }
 .subj-cagdas    { --subj: #e0b07a; }
 .subj-saglik    { --subj: #f4a3a3; }
+.subj-beden     { --subj: #8fd694; }
+.subj-gorsel    { --subj: #ffc078; }
+.subj-muzik     { --subj: #7cc0f7; }
 :root[data-theme="light"] .subj-edebiyat  { --subj: #c0392f; }
 :root[data-theme="light"] .subj-matematik { --subj: #2d5bd2; }
 :root[data-theme="light"] .subj-fizik     { --subj: #08808f; }
@@ -33,6 +36,9 @@
 :root[data-theme="light"] .subj-sosyoloji { --subj: #0f6f63; }
 :root[data-theme="light"] .subj-cagdas    { --subj: #8a4f12; }
 :root[data-theme="light"] .subj-saglik    { --subj: #a8262b; }
+:root[data-theme="light"] .subj-beden     { --subj: #2e7d32; }
+:root[data-theme="light"] .subj-gorsel    { --subj: #a35a00; }
+:root[data-theme="light"] .subj-muzik     { --subj: #1565c0; }
 
 /* Ders simgesi kutusu */
 .subj-ico {
