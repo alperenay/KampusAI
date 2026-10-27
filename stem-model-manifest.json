@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "release": "v1.39.0",
+  "model": "kampusai-stem-v2",
+  "file": "KampusAI-STEM-3B-v2-Q8_0.gguf",
+  "size": 3285475872,
+  "sha256": "8861e20cc8906167d73d777fe118108009c750ce9f97eb9a7b5cbd19b243e91a",
+  "quantization": "Q8_0",
+  "adapter_strength": 0.2,
+  "base": "Qwen/Qwen2.5-3B-Instruct",
+  "base_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+  "license": "qwen-research",
+  "usage": "Non-commercial research and evaluation only",
+  "parts": [
+    {
+      "name": "KampusAI-STEM-3B-v2-Q8_0.gguf.part01",
+      "size": 1700000000,
+      "sha256": "720134ac37a8c4cc48850f8899d6eee7b12d1be7b0c43c204a6ff6f1a7d99350",
+      "url": "https://github.com/alperenay/ders-asistani/releases/download/v1.39.0/KampusAI-STEM-3B-v2-Q8_0.gguf.part01"
+    },
+    {
+      "name": "KampusAI-STEM-3B-v2-Q8_0.gguf.part02",
+      "size": 1585475872,
+      "sha256": "2f5a1150616dc4f3756efe01cb44b543766ba15e75c0635c3cde72fde38fbda8",
+      "url": "https://github.com/alperenay/ders-asistani/releases/download/v1.39.0/KampusAI-STEM-3B-v2-Q8_0.gguf.part02"
+    }
+  ]
+}
