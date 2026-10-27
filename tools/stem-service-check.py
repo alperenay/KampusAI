@@ -55,7 +55,8 @@ class Tests(unittest.TestCase):
             self.assertEqual(bool(events[-1].get('done')),mode=='ok')
             if mode!='ok':self.assertIn('error',events[-1])
     def test_ocr_limits(self):
-        self.assertEqual(self.client.post('/ocr',headers=AUTH,content=b'not an image').status_code,415)
+        with patch.dict(sys.modules,{'numpy':None,'easyocr':None}):
+            self.assertEqual(self.client.post('/ocr',headers=AUTH,content=b'not an image').status_code,415)
         self.assertEqual(self.client.post('/ocr',headers=AUTH,content=b'x'*(s.MAX_BYTES+1)).status_code,413)
         with patch.object(s,'transcribe',return_value={'text':'2x+3=11','requires_confirmation':True}):
             self.assertTrue(self.client.post('/ocr',headers=AUTH,content=b'fixture').json()['requires_confirmation'])

@@ -79,8 +79,8 @@ def ocr_reader():
     import easyocr
     return easyocr.Reader(['tr','en'],gpu=False,download_enabled=False,verbose=False)
 def transcribe(raw):
-    import numpy as np
     image=image_bytes(raw)
+    import numpy as np
     try:boxes=ocr_reader().readtext(np.asarray(image),detail=1,paragraph=False)
     except FileNotFoundError:raise HTTPException(503,'OCR dosyaları eksik. Kurulumdaki --prepare-ocr adımını çalıştırın.')
     text=' '.join(str(b[1]) for b in boxes).strip()
