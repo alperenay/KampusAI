@@ -155,6 +155,7 @@ function olustur({ userData, bildir, log, stem = false }) {
       fs.mkdirSync(kok, { recursive: true });
       fs.writeFileSync(secimDosyasi, v);
     }
+    if (kurulu()) { yay({ asama: sunucular.sohbet ? "hazir" : "kurulu" }); return durum; }
     iptal = new AbortController();
     fs.mkdirSync(modeller, { recursive: true });
     try {

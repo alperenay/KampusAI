@@ -199,11 +199,11 @@ public class DeviceAi {
             saveVariant(v);
             stage = installed() ? "kurulu" : "yok";
         }
+        if (installed()) { emit(true); return; }
         cancel = false;
         worker = new Thread(() -> {
             try {
                 dir.mkdirs();
-                if (stem && installed()) { start(); return; }
                 long need = stem ? size() : 0;
                 String[][] fs = files();
                 for (int i = 0; i < fs.length; i++) {
