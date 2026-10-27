@@ -677,5 +677,172 @@ App.data.content["10/edebiyat"] = [
     }
    }
   ]
+ },
+ {
+  "id": "u5",
+  "name": {
+   "tr": "5. Tema (Ek): TYT Türkçe — Anlam ve Dil Bilgisi",
+   "en": "Theme 5 (Extra): Turkish for the Exam — Meaning and Grammar"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "TDE.10.E1",
+    "title": {
+     "tr": "Sözcükte anlam",
+     "en": "Word meaning"
+    },
+    "content": {
+     "anlatim": "# Anlam Türleri\n\n- **Gerçek (temel) anlam:** Sözcüğün akla ilk gelen anlamı. *Kapıyı kapattı.*\n- **Yan anlam:** Temel anlamla bağını koruyarak kazanılan yeni anlam. *Masanın ayağı*, *dağın eteği*.\n- **Mecaz anlam:** Temel anlamdan tamamen uzaklaşan anlam. *Bu konuda çok **soğuk** davrandı.*\n- **Terim anlam:** Bir bilim, sanat ya da meslek alanına özgü anlam. *Üçgenin **açısı***.\n\n# Sözcükler Arası İlişkiler\n\n- **Eş anlamlı:** yanıt–cevap, kırmızı–al. **Zıt anlamlı:** uzun–kısa.\n- **Eş sesli (sesteş):** Yazılışı aynı, anlamı farklı: *yüz* (sayı / surat / yüzmek).\n- **Somut–soyut:** Beş duyuyla algılanan (masa) / algılanamayan (sevgi).\n- **Genel–özel**, **nitel–nicel** anlam.\n\n# Söz Öbekleri\n\n- **Deyim:** Genellikle mecaz anlamlı, kalıplaşmış söz öbeği: *gözden düşmek*, *kulak vermek*.\n- **Atasözü:** Uzun deneyimlerden çıkmış, öğüt veren kalıp söz: *Damlaya damlaya göl olur.*\n- **İkileme:** Anlamı güçlendirmek için sözcük tekrarı: *yavaş yavaş*, *eğri büğrü*.\n- **Ad aktarması (mecaz-ı mürsel):** Bir sözü benzetme amacı gütmeden başka söz yerine kullanma: *Bütün **sınıf** güldü* (sınıftakiler).\n- **Dolaylama:** Bir kavramı birden çok sözcükle anlatma: *Kara elmas* (kömür).",
+     "ornekler": [
+      {
+       "soru": "“Sınavdan sonra yüzü **kızardı**.” ve “Tavada balık **kızardı**.” cümlelerinde altı çizili sözcükler hangi anlamlarda kullanılmıştır?",
+       "cozum": "İlkinde utanma/heyecan nedeniyle **yan (ya da mecaz) anlam**, ikincisinde pişme sonucu renk değiştirme olarak **gerçek anlam**."
+      },
+      {
+       "soru": "“Bütün **İstanbul** bu maçı izledi.” cümlesindeki söz sanatı nedir?",
+       "cozum": "**Ad aktarması (mecaz-ı mürsel)**: İstanbul sözüyle İstanbul'da yaşayanlar kastediliyor."
+      }
+     ],
+     "ozet": [
+      "Gerçek, yan, mecaz ve terim anlam ayırt edilmelidir.",
+      "Deyim kalıplaşmış ve çoğu zaman mecazlıdır; atasözü öğüt verir.",
+      "Ad aktarması benzetme olmadan bir sözü başka söz yerine kullanmaktır."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "TDE.10.E2",
+    "title": {
+     "tr": "Cümlede anlam",
+     "en": "Sentence meaning"
+    },
+    "content": {
+     "anlatim": "# Cümle Yorumu Türleri\n\n| Tür | İpucu | Örnek |\n|---|---|---|\n| **Neden–sonuç** | çünkü, için, -den dolayı | *Yağmur yağdığı **için** maç ertelendi.* |\n| **Amaç–sonuç** | amacıyla, için (henüz gerçekleşmemiş) | *Sınavı kazanmak **için** çalışıyor.* |\n| **Koşul** | -sa/-se, -dıkça | *Erken kalkarsan otobüse yetişirsin.* |\n| **Karşılaştırma** | -den daha, gibi, kadar | *Bu kitap öncekinden **daha** sürükleyici.* |\n| **Öznel yargı** | Kişiden kişiye değişir, kanıtlanamaz | *Bu film çok etkileyici.* |\n| **Nesnel yargı** | Kanıtlanabilir, herkese göre aynı | *Kitap 320 sayfadır.* |\n| **Varsayım** | diyelim, farz edelim | *Diyelim ki yarın tatil oldu…* |\n| **Ön yargı** | Denemeden peşin hüküm | *Bu yazarın kitapları okunmaz.* |\n| **Örtülü anlam** | Söylenmeden sezdirilen | *Ali **de** sınavı kazandı.* (başkaları da kazandı) |\n\n# Dikkat\n\n- **Amaç–sonuç** ile **neden–sonuç** ayrımı: eylem **gerçekleşmeden** önceki hedef ise amaç, gerçekleşmiş bir durumun gerekçesi ise neden.\n- **Kesinlik** (\"kesinlikle\", \"mutlaka\") ve **olasılık** (\"belki\", \"sanırım\") bildiren anlatımlar soru kökünde sık sorulur.",
+     "ornekler": [
+      {
+       "soru": "“Bu yaz tatile gidemedik çünkü babamın izni çıkmadı.” cümlesinde hangi anlam ilişkisi vardır?",
+       "cozum": "**Neden–sonuç** (izin çıkmaması, tatile gidememenin nedeni)."
+      },
+      {
+       "soru": "“Bu şarkı geçen yılın en güzel şarkısıydı.” cümlesi öznel mi nesnel mi?",
+       "cozum": "**Öznel**: \"en güzel\" kişiden kişiye değişen bir değerlendirmedir."
+      }
+     ],
+     "ozet": [
+      "Amaç–sonuç gerçekleşmemiş hedefi, neden–sonuç gerçekleşmiş bir durumun gerekçesini bildirir.",
+      "Öznel yargı kanıtlanamaz, nesnel yargı kanıtlanabilir.",
+      "\"de\" bağlacı ve \"bile\" gibi sözcükler örtülü anlam taşıyabilir."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "TDE.10.E3",
+    "title": {
+     "tr": "Paragraf: ana düşünce, yardımcı düşünce ve anlatım biçimleri",
+     "en": "Paragraph: main idea, supporting ideas and modes"
+    },
+    "content": {
+     "anlatim": "# Paragrafın Bölümleri\n\n- **Giriş cümlesi:** Bağlaçla başlamaz, kendinden önceki cümleye gönderme yapmaz, genel bir yargı içerir.\n- **Gelişme:** Ana düşünceyi açıklar ve örnekler.\n- **Sonuç:** Çoğu zaman ana düşüncenin söylendiği yerdir (\"Kısacası\", \"Bu yüzden\").\n\n# Ana Düşünce ve Yardımcı Düşünce\n\n- **Ana düşünce:** Yazarın okura vermek istediği temel mesaj; paragrafın tamamını kapsar. Sorusu: *\"Yazar ne demek istiyor?\"*\n- **Konu:** Paragrafta neden söz edildiği (ör. *okuma alışkanlığı*).\n- **Yardımcı düşünceler:** Ana düşünceyi destekleyen ayrıntılar. \"Değinilmemiştir\" sorularında paragrafta **olmayan** bilgi aranır.\n- **Akışı bozan cümle:** Konudan ya da düşünceden sapan cümle.\n\n# Anlatım Biçimleri ve Düşünceyi Geliştirme Yolları\n\n| Anlatım biçimi | Özelliği |\n|---|---|\n| **Açıklayıcı** | Bilgi verir, öğretir |\n| **Tartışmacı** | Bir düşünceyi savunur, karşıt görüşü çürütür |\n| **Öyküleyici** | Olay, kişi, zaman, mekân vardır |\n| **Betimleyici** | Sözcüklerle resim çizer; duyulara seslenir |\n| Düşünceyi geliştirme yolu | İpucu |\n|---|---|\n| **Tanımlama** | \"… nedir?\" sorusuna cevap |\n| **Örnekleme** | \"örneğin, mesela\" |\n| **Karşılaştırma** | İki varlığın benzer ve farklı yanları |\n| **Tanık gösterme** | Ünlü birinin sözüne başvurma |\n| **Sayısal verilerden yararlanma** | İstatistik, yüzde |\n| **Benzetme** | Bir varlığı başka bir varlığa benzetme |",
+     "ornekler": [
+      {
+       "soru": "Bir paragrafta \"Ünlü bilim insanı Einstein'ın dediği gibi hayal gücü bilgiden önemlidir\" cümlesi kullanılmıştır. Hangi düşünceyi geliştirme yolu kullanılmıştır?",
+       "cozum": "**Tanık gösterme** (ünlü birinin sözüne başvurma)."
+      },
+      {
+       "soru": "Paragrafın ilk cümlesi neden \"Bu nedenle\" ile başlayamaz?",
+       "cozum": "Giriş cümlesi kendinden önceki bir düşünceye bağlanamaz; \"bu nedenle\" önceki bir cümleye **gönderme** yaptığı için giriş cümlesi olamaz."
+      }
+     ],
+     "ozet": [
+      "Ana düşünce paragrafın tamamını kapsayan temel mesajdır; çoğu zaman sonuç cümlesindedir.",
+      "Giriş cümlesi bağlaçla başlamaz ve önceki cümleye gönderme yapmaz.",
+      "Anlatım biçimleri: açıklayıcı, tartışmacı, öyküleyici, betimleyici.",
+      "Düşünceyi geliştirme yolları: tanımlama, örnekleme, karşılaştırma, tanık gösterme, sayısal veri, benzetme."
+     ]
+    }
+   },
+   {
+    "id": "k4",
+    "code": "TDE.10.E4",
+    "title": {
+     "tr": "Fiiller, ek fiil ve fiilimsiler",
+     "en": "Verbs, the copula and verbals"
+    },
+    "content": {
+     "anlatim": "# Fiil (Eylem)\n\nİş, oluş ya da durum bildirir; **-mek/-mak** eki alabilir.\n- **Anlamına göre:** İş (kesmek — nesne alır), durum (uyumak — nesne almaz), oluş (sararmak — kendiliğinden değişim).\n- **Kip:** *Haber kipleri:* görülen geçmiş (-dı), öğrenilen geçmiş (-mış), şimdiki (-yor), gelecek (-acak), geniş (-r). *Dilek kipleri:* gereklilik (-malı), istek (-a), dilek–şart (-sa), emir.\n- **Ek fiil (i-):** İsim soylu sözcükleri yüklem yapar (*öğrenci-y-di*) ya da fiillerde birleşik zaman kurar (*gel-iyor-du*).\n\n# Fiilimsiler (Eylemsiler)\n\nFiillerden türeyip cümlede isim, sıfat ya da zarf görevinde kullanılan sözcüklerdir; **yüklem olmazlar**, olumsuzu -ma/-me ile yapılır.\n| Tür | Ekler | Örnek |\n|---|---|---|\n| **İsim-fiil** | -ma, -ış, -mak | *Okuma**k** güzeldir.* |\n| **Sıfat-fiil** | -an, -ası, -mez, -ar, -dık, -acak, -mış | *Koş**an** çocuk düştü.* |\n| **Zarf-fiil** | -ıp, -arak, -ınca, -ken, -dıkça, -madan, -alı | *Eve gel**ince** aradı.* |\n\n> Kalıcı ad olmuş sözcükler fiilimsi sayılmaz: *dondurma*, *dolma*, *çakmak* (bir nesnenin adı oldukları için).",
+     "ornekler": [
+      {
+       "soru": "“Gülerek içeri giren arkadaşı, okumayı çok sevdiğini söyledi.” cümlesindeki fiilimsileri türleriyle bulunuz.",
+       "cozum": "*Gülerek* → **zarf-fiil**; *giren* → **sıfat-fiil**; *okumayı* → **isim-fiil**; *sevdiğini* → **sıfat-fiil** (-dık, adlaşmış)."
+      },
+      {
+       "soru": "“Annem bize dolma yaptı.” cümlesindeki \"dolma\" fiilimsi midir?",
+       "cozum": "Hayır; bir yemeğin **kalıcı adı** olduğu için fiilimsi sayılmaz."
+      }
+     ],
+     "ozet": [
+      "Haber kipleri: -dı, -mış, -yor, -acak, -r; dilek kipleri: -malı, -a, -sa, emir.",
+      "Ek fiil isim soylu sözcükleri yüklem yapar.",
+      "İsim-fiil: -ma, -ış, -mak; sıfat-fiil: -an, -ası, -mez, -ar, -dık, -acak, -mış; zarf-fiil: -ıp, -arak, -ınca, -ken…",
+      "Kalıcı ad olmuş sözcükler fiilimsi değildir."
+     ]
+    }
+   },
+   {
+    "id": "k5",
+    "code": "TDE.10.E5",
+    "title": {
+     "tr": "Cümlenin ögeleri ve cümle türleri",
+     "en": "Sentence elements and sentence types"
+    },
+    "content": {
+     "anlatim": "# Cümlenin Ögeleri\n\nÖnce **yüklem** bulunur; diğer ögeler yükleme soru sorularak bulunur.\n| Öge | Soru | Örnek: *Ali dün akşam kütüphanede arkadaşına kitabı verdi.* |\n|---|---|---|\n| **Yüklem** | — | *verdi* |\n| **Özne** | Kim? Ne? (yüklemi yapan) | *Ali* |\n| **Belirtili nesne** | Neyi? Kimi? | *kitabı* |\n| **Dolaylı tümleç** | Nereye, nerede, nereden, kime? (-e, -de, -den) | *kütüphanede, arkadaşına* |\n| **Zarf tümleci** | Ne zaman, nasıl, niçin, ne kadar? | *dün akşam* |\n- Belirtisiz nesne yalın hâldedir: *Kitap okudu.* Söz öbekleri bölünmeden tek öge sayılır.\n\n# Cümle Türleri\n\n- **Yüklemin türüne göre:** Fiil cümlesi (*geldi*) / isim cümlesi (*öğrencidir*).\n- **Yüklemin yerine göre:** Kurallı (yüklem sonda) / devrik.\n- **Anlamına göre:** Olumlu–olumsuz, soru, ünlem.\n- **Yapısına göre:** **Basit** (tek yüklem), **birleşik** (fiilimsi ya da yan cümle içerir, ör. *Eve gelince yemek yedi.*), **sıralı** (virgül/noktalı virgülle bağlı bağımsız cümleler), **bağlı** (bağlaçla bağlanan cümleler).",
+     "ornekler": [
+      {
+       "soru": "“Yarın sabah erkenden okula gideceğiz.” cümlesinin ögelerini bulunuz.",
+       "cozum": "*gideceğiz* yüklem; özne gizli (**biz**); *yarın sabah erkenden* **zarf tümleci**; *okula* **dolaylı tümleç**."
+      },
+      {
+       "soru": "“Kitabı bitirince arkadaşına verdi.” cümlesi yapısına göre nasıl bir cümledir?",
+       "cozum": "Zarf-fiil (*bitirince*) içerdiği için **birleşik cümle**."
+      }
+     ],
+     "ozet": [
+      "Ögeler bulunurken önce yüklem bulunur, sorular yükleme sorulur.",
+      "Belirtili nesne -ı hâli alır; dolaylı tümleç -e, -de, -den ekli.",
+      "Yapısına göre: basit, birleşik (fiilimsi/yan cümle), sıralı, bağlı."
+     ]
+    }
+   },
+   {
+    "id": "k6",
+    "code": "TDE.10.E6",
+    "title": {
+     "tr": "Anlatım bozuklukları",
+     "en": "Errors of expression"
+    },
+    "content": {
+     "anlatim": "# Anlamsal Bozukluklar\n\n- **Gereksiz sözcük:** *Geri **iade** etti* (iade zaten geri vermek), *yaklaşık **olarak** on kişi*.\n- **Sözcüğün yanlış anlamda kullanılması:** *Fiyatlar **ucuzladı**.* (fiyat ucuzlamaz, **düşer**; ürün ucuzlar) · *Bu yarışmada **ilk** iki sırayı aldı.* (doğrusu: ilk iki sıraya girdi)\n- **Mantık hatası ve çelişki:** *Kesinlikle gelebilir.* (kesinlik ile olasılık çelişir)\n- **Anlam belirsizliği:** *Yaşlı adamın oğluyla konuştum.* (kim yaşlı? virgülle ya da sıralamayla giderilir)\n- **Deyim yanlışlığı:** Deyimin sözcüklerinin değiştirilmesi.\n\n# Yapısal (Dil Bilgisi) Bozukluklar\n\n- **Özne–yüklem uyumsuzluğu:** *Bu konuda ben de, siz de çok çalıştınız* — kişi uyumuna dikkat; sayı uyumu (*Öğrenciler sınıfa girdiler/girdi*).\n- **Ortak öge eksikliği:** Farklı hâl eki isteyen yüklemlerde ortak öge eksik bırakılmamalıdır: *Ona güveniyor ve seviyordu* → *Ona güveniyor ve **onu** seviyordu*.\n- **Ek eksikliği / yanlışlığı:** *Okula ve eve gitti* doğru; *Annesine ve babasını aradı* yanlış.\n- **Tamlama yanlışlığı**, **çatı uyumsuzluğu** (*Sorunlar konuşuldu ve çözüme kavuşturdu* → *kavuşturuldu*).",
+     "ornekler": [
+      {
+       "soru": "“Ona saygı duyuyor ve çok seviyordu.” cümlesindeki anlatım bozukluğunu açıklayınız.",
+       "cozum": "\"Saygı duyuyor\" **ona** (yönelme), \"seviyordu\" ise **onu** (belirtme) ister; ortak kullanılan öge uygun değildir → **nesne eksikliği**. Doğrusu: *Ona saygı duyuyor ve onu çok seviyordu.*"
+      },
+      {
+       "soru": "“Bu soruyu kesinlikle çözebilir.” cümlesinde nasıl bir bozukluk vardır?",
+       "cozum": "\"Kesinlikle\" kesinlik, \"çözebilir\" olasılık bildirir → **anlamca çelişki**."
+      }
+     ],
+     "ozet": [
+      "Anlamsal bozukluklar: gereksiz sözcük, yanlış anlam, çelişki, belirsizlik.",
+      "Yapısal bozukluklar: özne–yüklem uyumsuzluğu, öge eksikliği, ek yanlışlığı, çatı uyumsuzluğu.",
+      "Ortak öge farklı hâl eki istiyorsa ayrıca yazılmalıdır."
+     ]
+    }
+   }
+  ]
  }
 ];

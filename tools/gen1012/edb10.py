@@ -361,6 +361,8 @@ Dede Korkut ile bir Servet-i Fünun romanı (Mai ve Siyah) ya da Hürriyet Kasî
 
 from _ek136 import uygula136; uygula136(units, "edb10")
 
+from ek_genel import uygula; uygula(units, "edb10_ek142")  # 1.43: TYT Türkçe anlam ve dil bilgisi
+
 write("edb-10.js", "10/edebiyat", "10. Sınıf Türk Dili ve Edebiyatı — ders notları ve kazanım analizi",
       "kullanıcının verdiği \"10. Sınıf Türk Dili ve Edebiyatı Kapsamlı Ders Notları ve Kazanım Analizi\" (4 tema).",
       units, "Kaynaktaki bazı bilgiler düzeltildi (Dede Korkut: giriş + 12 hikâye; kaside 33–99 beyit). Tablolar ve örnek sorular eklendi.")
