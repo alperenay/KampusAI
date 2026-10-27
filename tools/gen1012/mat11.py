@@ -223,6 +223,8 @@ uygula(units, "mat11_ek134")
 
 from _ek136 import uygula136; uygula136(units, "mat11")
 
+from ek_genel import uygula; uygula(units, "mat11_ek142")  # 1.42: eksik AYT/TYT konuları
+
 write("mat-11.js", "11/matematik", "11. Sınıf Temel Matematik — konu anlatım notları",
       "kullanıcının verdiği \"11. Sınıf Temel Matematik Konu Anlatım Notları\" (5 tema).",
       units, "Kaynak notlar kısa olduğu için her tema ders kitabı düzeyinde genişletildi (çözümlü örnekler, tablolar). Dörtgen tablosuna deltoit, benzerlik ünitesine özel dik üçgenler, olasılık ünitesine olay işlemleri eklendi.")

@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.42.0
+  APP_VERSION: 1.43.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -500,7 +500,7 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          **Bu sürümde:** Yeni *Bugün Tekrar Etmen Gerekenler*: hap kartları, yanlış defteri, zayıf test konuları ve düzeltilen yapay zekâ cevapları tek tekrar listesinde. Yeni *Sınıf Modu*: öğretmen internetsiz ödevi sıkıştırılmış (gerekirse dönen çoklu) QR ile dağıtır, öğrenci sonucunu QR ile gönderir, öğretmen sınıf listesini ve CSV'yi alır. Yeni *Haftalık Üstbiliş Karnesi*: veli/öğrenci için tek A4 sayfa (yazdır / PDF), eminlik-doğruluk farkı ve kalibrasyon grafiği. Daha hızlı açılış: konu anlatımları ve hologram modülleri yalnızca gerektiğinde yüklenir.
+          **Bu sürümde:** *Eminlik işaretleme*: hap kartlarında ve tekrar listesinde "Ne kadar eminsin?" seçimi (haftalık karnedeki üstbiliş indeksine katılır); yapay zekâ cevaplarında kaynak, hesap doğrulaması, fotoğraf okuma ve çekincelere dayanan, gerekçeli *güven göstergesi*. Deney Laboratuvarı 67'den *82 deneye* çıktı (türev, integral, diziler, üstel büyüme, parabol, olasılık, istatistik, üçgen çözme, dönüşümler, katı cisimler, mevsimler, iklim, nüfus piramidi, mitoz–mayoz, kalıtım). Müfredata eksik TYT/AYT konuları eklendi (725 → 742 kazanım): hücre bölünmeleri, üreme ve kalıtım; çember–daire ve katı cisimler; Dünya'nın hareketleri ve coğrafi konum; madde ve özkütle, adezyon–kohezyon; karışımlar ve asit–baz–tuz. Tüm yeni anlatımlar özgün olarak yazıldı.
 
           **Windows:** \`KampusAI-Kurulum-$APP_VERSION.exe\` dosyasını indirip çalıştır.
           Uygulama henüz yeni ve kod imzası olmadığı için Windows "**Windows kişisel bilgisayarınızı korudu**" diyebilir: **Ek bilgi → Yine de çalıştır**. Bu bir virüs uyarısı değil, "bu yayımcıyı henüz tanımıyorum" uyarısıdır. Kaynak kodun tamamı bu sayfada açık.

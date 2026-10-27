@@ -519,5 +519,67 @@ App.data.content["10/kimya"] = [
     }
    }
   ]
+ },
+ {
+  "id": "u5",
+  "name": {
+   "tr": "4. Tema (Ek): Karışımlar; Asitler, Bazlar ve Tuzlar",
+   "en": "Theme 4 (Extra): Mixtures; Acids, Bases and Salts"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "KİM.10.E1",
+    "title": {
+     "tr": "Karışımlar ve ayırma teknikleri",
+     "en": "Mixtures and separation techniques"
+    },
+    "content": {
+     "anlatim": "# Karışım Nedir?\n\nİki ya da daha fazla maddenin **kimyasal özelliklerini kaybetmeden**, istenilen oranda bir araya gelmesidir. Karışımın belirli bir formülü, erime-kaynama noktası yoktur; bileşenler **fiziksel yollarla** ayrılabilir.\n- **Homojen karışım (çözelti):** Her yerinde aynı özellik gösterir (tuzlu su, hava, alaşımlar).\n- **Heterojen karışım:** Bileşenler ayırt edilebilir.\n  - **Süspansiyon** (katı–sıvı): tebeşir tozu–su, ayran\n  - **Emülsiyon** (sıvı–sıvı): zeytinyağı–su, mayonez\n  - **Aerosol** (katı/sıvı–gaz): sis, deodorant spreyi\n  - **Kolloit:** Tanecik boyutu çözelti ile süspansiyon arasında (jöle, süt); ışığı saçar (**Tyndall etkisi**).\n\n# Ayırma Teknikleri\n\n| Ayırmada kullanılan özellik | Yöntem | Örnek |\n|---|---|---|\n| Tanecik boyutu | **Süzme**, eleme, diyaliz | Kum–su, un eleme |\n| Özkütle | **Yüzdürme**, ayırma hunisi, santrifüj, dekantasyon | Zeytinyağı–su, kan bileşenleri |\n| Çözünürlük farkı | **Kristallendirme**, ekstraksiyon (özütleme) | Tuz–kum (suda çöz, süz, buharlaştır), çay demleme |\n| Kaynama noktası farkı | **Basit / ayrımsal damıtma** | Ham petrolün rafinerilerde ayrılması, alkol–su |\n| Erime noktası farkı | Ayrımsal erime | Alaşımların geri kazanımı |\n| Manyetik özellik | **Mıknatısla ayırma** | Demir tozu–kükürt |",
+     "ornekler": [
+      {
+       "soru": "Tuz, kum ve demir tozundan oluşan bir karışımın bileşenleri hangi sırayla ayrılabilir?",
+       "cozum": "1) **Mıknatısla** demir tozu alınır. 2) Kalan karışım **suda çözülür** ve **süzülür**: kum süzgeçte kalır. 3) Süzüntüdeki su **buharlaştırılarak** tuz elde edilir."
+      },
+      {
+       "soru": "Ham petrol rafineride hangi özellik farkıyla ayrılır?",
+       "cozum": "Bileşenlerin **kaynama noktası farkıyla**; yöntem **ayrımsal (fraksiyonlu) damıtmadır**."
+      }
+     ],
+     "ozet": [
+      "Karışımda bileşenler özelliklerini korur, fiziksel yollarla ayrılır.",
+      "Homojen = çözelti; heterojen = süspansiyon, emülsiyon, aerosol; kolloit Tyndall etkisi gösterir.",
+      "Süzme boyuta, ayırma hunisi özkütleye, damıtma kaynama noktasına, kristallendirme çözünürlüğe dayanır."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "KİM.10.E2",
+    "title": {
+     "tr": "Asitler, bazlar ve tuzlar; nötralleşme ve günlük hayat",
+     "en": "Acids, bases and salts; neutralisation in daily life"
+    },
+    "content": {
+     "anlatim": "# Asit ve Baz Tanımları\n\n- **Arrhenius:** Suda çözündüğünde $\\text{H}^+$ (ya da $\\text{H}_3\\text{O}^+$) iyonu veren madde **asit**, $\\text{OH}^-$ iyonu veren madde **bazdır**.\n- **Brønsted–Lowry:** Proton ($\\text{H}^+$) veren **asit**, proton alan **bazdır** ($\\text{NH}_3$ da bu tanıma göre bazdır).\n\n# Özellikler\n\n| Asitler | Bazlar |\n|---|---|\n| Ekşi tatlıdır (tadına bakılmaz!) | Acı tatlıdır, ele kayganlık hissi verir |\n| Mavi turnusolü **kırmızıya** çevirir | Kırmızı turnusolü **maviye** çevirir |\n| $\\text{pH} < 7$ | $\\text{pH} > 7$ |\n| Aktif metallerle $\\text{H}_2$ gazı açığa çıkarır | Amfoter metallerle (Al, Zn) $\\text{H}_2$ çıkarır |\n| Örnek: HCl (tuz ruhu), $\\text{H}_2\\text{SO}_4$, sirke asidi | Örnek: NaOH (sud kostik), $\\text{NH}_3$, sabun |\n\n- **Kuvvetli** asit/bazlar suda **tamamen** iyonlaşır (HCl, NaOH); zayıflar kısmen iyonlaşır ($\\text{CH}_3\\text{COOH}$, $\\text{NH}_3$).\n\n# pH\n\n$\\text{pH} = 7$ nötr; değer küçüldükçe asitlik artar. pH'ın 1 birim azalması $\\text{H}^+$ derişiminin **10 kat** artması demektir.\n\n# Nötralleşme ve Tuzlar\n\n$$\\text{Asit} + \\text{Baz} \\rightarrow \\text{Tuz} + \\text{Su}, \\qquad \\text{HCl} + \\text{NaOH} \\rightarrow \\text{NaCl} + \\text{H}_2\\text{O}$$\nTepkime **ekzotermiktir** (ısı açığa çıkar).\n\n# Günlük Hayatta\n\n- Mide asidinin fazlası (**mide ekşimesi**) bazik antasitlerle giderilir.\n- Arı sokması (asidik) karbonatlı suyla, eşek arısı sokması (bazik) sirkeyle hafifletilebilir.\n- Asidik topraklara **kireç** eklenir. **Asit yağmurları** ($\\text{SO}_2$, $\\text{NO}_x$ kaynaklı) tarihî yapıları aşındırır.\n- **Güvenlik:** Çamaşır suyu (hipoklorit) ile tuz ruhu (HCl) **asla karıştırılmamalıdır**; zehirli klor gazı oluşur. Asit seyreltilirken **asit suya** eklenir.",
+     "ornekler": [
+      {
+       "soru": "pH'ı 3 olan bir çözeltinin $\\text{H}^+$ derişimi, pH'ı 5 olan çözeltininkinin kaç katıdır?",
+       "cozum": "pH farkı 2 birim → $10^2 = $ **100 katı**."
+      },
+      {
+       "soru": "Temizlik yaparken çamaşır suyu ile tuz ruhunun karıştırılması neden tehlikelidir?",
+       "cozum": "Hipoklorit ile hidroklorik asit tepkimeye girerek **zehirli klor gazı** ($\\text{Cl}_2$) açığa çıkarır; solunum yollarına ciddi zarar verir."
+      }
+     ],
+     "ozet": [
+      "Asit suda $\\text{H}^+$, baz $\\text{OH}^-$ verir (Arrhenius); Brønsted–Lowry'de asit proton verir, baz alır.",
+      "pH < 7 asidik, = 7 nötr, > 7 bazik; 1 birim = 10 kat.",
+      "Asit + baz → tuz + su (nötralleşme, ekzotermik).",
+      "Çamaşır suyu ile tuz ruhu karıştırılmaz; asit suya eklenir."
+     ]
+    }
+   }
+  ]
  }
 ];

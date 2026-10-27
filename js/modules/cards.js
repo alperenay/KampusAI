@@ -334,6 +334,8 @@
         '<span class="flashcard__q md">' + renderSide(c.front) + "</span>" +
         (S.flipped ? '<span class="flashcard__a md">' + renderSide(c.back) + "</span>" : '<span class="flashcard__tap">' + esc(T("Hatırla, sonra çevirmek için dokun", "Recall it, then tap to flip")) + "</span>") +
       "</button>" +
+      // Eminlik (v1.42): çevirmeden önce isteğe bağlı; karnedeki üstbiliş indeksine katılır
+      (App.confidence ? '<div class="cards-conf">' + (S.flipped ? (S.conf ? '<span class="hint">' + esc(T("Eminliğin: %", "Your confidence: ") + S.conf + (App.i18n.lang === "en" ? "%" : "")) + "</span>" : "") : App.confidence.chipsHtml("fcConf", S.conf)) + "</div>" : "") +
       '<div class="cards-dock">' + (S.flipped ? btns
         : '<button class="btn btn--primary cards-show" type="button" id="fcShow">' + App.icon("eye") + esc(T("Cevabı göster", "Show answer")) + "</button>") + "</div>" +
       '<p class="hint cards-keys">' + esc(T("Klavye: Boşluk = çevir · 1 Bilmedim · 2 Zor · 3 Bildim. Telefonda çevirdikten sonra sola kaydır = Bilmedim, sağa = Bildim.",
@@ -343,6 +345,7 @@
     const fc = view.querySelector("#fc");
     fc.addEventListener("click", flip);
     const show = view.querySelector("#fcShow"); if (show) show.addEventListener("click", flip);
+    view.querySelectorAll('input[name="fcConf"]').forEach((r) => r.addEventListener("change", () => { S.conf = Number(r.value); }));
     view.querySelectorAll("[data-grade]").forEach((b) => b.addEventListener("click", () => rate(Number(b.dataset.grade))));
     // Kaydırma: çevrildikten sonra sola = Bilmedim, sağa = Bildim
     let x0 = null;
@@ -367,10 +370,11 @@
     if (!S || !S.flipped) return;
     const c = S.q[S.i];
     const row = await grade(c.row, g);
+    if (App.confidence && S.conf) App.confidence.record("card", c.key, S.conf, g > 0).catch(() => {});
     S.done++; if (g > 0) S.ok++; else S.again++;
     if (g === 0 && !S.seen.has(c.id)) S.q.push(Object.assign({}, c, { row }));   // bilinmeyen kart oturum sonunda bir kez daha
     S.seen.add(c.id);
-    S.i++; S.flipped = false;
+    S.i++; S.flipped = false; S.conf = null;
     paint();
     if (App.badges) App.badges.check();
   }

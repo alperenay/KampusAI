@@ -568,6 +568,8 @@ Bu nedenle bölgeler **dinamik** yapılardır ve zaman içinde yeniden tanımlan
 from _ek135 import uygula135  # noqa: E402
 uygula135(units, "cog")
 
+from ek_genel import uygula; uygula(units, "cog_ek142")  # 1.42: eksik AYT/TYT konuları
+
 write("cog-9.js", "9/cografya", "9. Sınıf Coğrafya — konu anlatım notları",
       "kullanıcının verdiği \"9. Sınıf Coğrafya Ders Kitabı – Konu Anlatım Notları\" (7 ünite).",
       units, "Kazanım kodları kaynaktaki bölüm numaralarıdır. Örnek soruların bir kısmı kazanımı uygulamak için eklendi.")

@@ -124,6 +124,29 @@ try {
   assert.ok(fills.length && fills.every((f) => /url\(/.test(f)), "test çubukları desenli olmalı");
   ok("karne yazdırma ortamında tam 1 A4 sayfa (dist/qa/karne-a4.pdf), siyah-beyazda desenle ayrışıyor");
 
+  // 8) Yeni deneyler (labs-ek.js): hepsi açılır, ölçüm tablosu dolar; olasılık deneyi gerçekten atış yapar
+  await page.setViewportSize({ width: 1280, height: 900 });
+  const newLabs = ["turev", "integral", "dizi", "ustel", "parabol", "olasilik", "istatistik", "ucgencoz", "donusum", "katicisim", "mevsim", "iklim", "nufus", "mitoz", "kalitim"];
+  assert.ok((await page.evaluate(() => Object.keys(App.labs.LABS).length)) >= 82);
+  for (const id of newLabs) {
+    await page.evaluate((x) => App.router.go("lab/" + x), id);
+    await page.waitForFunction(() => /\d/.test((document.querySelector(".lab__read") || {}).textContent || ""), null, { timeout: 8000 });
+  }
+  await page.evaluate(() => App.router.go("lab/olasilik"));
+  await page.waitForFunction(() => /Deney sayısı\s*[1-9]/.test(document.querySelector("#view").innerText), null, { timeout: 10000 });
+  ok("15 yeni deney açılıyor (toplam ≥ 82); olasılık deneyi atış yapıyor");
+
+  // 9) Eminlik: kartta seçilen eminlik kaydedilir ve karneye girer; yapay zekâ güven göstergesi gerekçeli
+  const conf = await page.evaluate(async () => {
+    await App.confidence.record("card", "9/matematik/t1/k1", 100, false);
+    const log = await App.confidence.log(Date.now() - 864e5, Date.now() + 1000);
+    const low = App.confidence.aiScore({ text: "Sanırım sonuç 32 olabilir, emin değilim. 2^5 = 32", models: [{ role: "vision" }, { role: "answer" }], transcription: "x" });
+    const high = App.confidence.aiScore({ text: "Üsler toplanır: 2^3 · 2^2 = 2^5 = 32. Bu kural ders notunda da var.", models: [{ role: "answer" }, { role: "calc" }], sources: [{}, {}] });
+    return { n: log.length, low: low.level, high: high.level, reasons: low.reasons.length, badge: /Güven/.test(App.confidence.aiBadgeHtml({ text: "x", models: [] })) };
+  });
+  assert.ok(conf.n >= 1 && conf.low === "low" && conf.high === "high" && conf.reasons >= 3 && conf.badge, JSON.stringify(conf));
+  ok("eminlik kaydı ve yapay zekâ güven göstergesi çalışıyor");
+
   assert.deepEqual(h.errors, []);
   ok("sayfa hatası yok");
 } finally {

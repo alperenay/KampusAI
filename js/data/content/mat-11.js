@@ -488,5 +488,122 @@ App.data.content["11/matematik"] = [
     }
    }
   ]
+ },
+ {
+  "id": "u6",
+  "name": {
+   "tr": "6. Tema (Ek): Çember, Daire ve Katı Cisimler",
+   "en": "Theme 6 (Extra): Circle, Disc and Solids"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "MAT.11.E1",
+    "title": {
+     "tr": "Çemberde teğet, daire alanı, yay uzunluğu ve daire dilimi",
+     "en": "Tangents, area of a disc, arc length and sectors"
+    },
+    "content": {
+     "anlatim": "# Temel Tanımlar\n\n- **Çember:** Bir merkeze eşit uzaklıktaki noktaların kümesi (yalnızca sınır çizgisi). **Daire:** Çember ile iç bölgesinin birleşimi.\n- **Yarıçap** $r$, **çap** $2r$; çapı gören çevre açı $90°$'dir.\n\n# Çemberde Teğet\n\n- Teğet, değme noktasındaki **yarıçapa diktir**.\n- Dışarıdaki bir noktadan çembere çizilen iki teğet parçasının uzunlukları **eşittir**.\n- Merkezi $O$, dış nokta $P$ ve teğet uzunluğu $t$ ise: $t^2 = |PO|^2 - r^2$ (Pisagor).\n\n# Uzunluk ve Alan\n\n$$\\text{Çevre} = 2\\pi r, \\qquad \\text{Daire alanı} = \\pi r^2$$\nMerkez açısı $\\alpha$ (derece) olan:\n$$\\text{Yay uzunluğu} = 2\\pi r\\cdot\\frac{\\alpha}{360°}, \\qquad \\text{Daire dilimi alanı} = \\pi r^2\\cdot\\frac{\\alpha}{360°} = \\frac{\\text{yay}\\cdot r}{2}$$\n- **Daire halkası** (yarıçaplar $R > r$): $\\pi(R^2 - r^2)$\n- **Daire parçası** (kiriş ile yay arası) = dilim alanı − üçgen alanı\n\n# Çemberin Kuvveti (kesişen kirişler)\n\nİki kiriş bir iç noktada kesişirse parçaların çarpımları eşittir: $|AP|\\cdot|PB| = |CP|\\cdot|PD|$.",
+     "ornekler": [
+      {
+       "soru": "Yarıçapı 6 cm olan bir dairede $120°$'lik daire diliminin alanını ve yay uzunluğunu bulunuz ($\\pi$ cinsinden).",
+       "cozum": "Alan $= \\pi\\cdot36\\cdot\\frac{120}{360} = $ **$12\\pi$ cm²**. Yay $= 2\\pi\\cdot6\\cdot\\frac13 = $ **$4\\pi$ cm**. Kontrol: $\\frac{4\\pi\\cdot6}{2} = 12\\pi$ ✓"
+      },
+      {
+       "soru": "Merkezi $O$ ve yarıçapı 5 olan çembere, $|PO| = 13$ olan $P$ noktasından çizilen teğet parçasının uzunluğu kaçtır?",
+       "cozum": "$t^2 = 13^2 - 5^2 = 144$ → $t = $ **12**."
+      }
+     ],
+     "ozet": [
+      "Teğet, değme noktasındaki yarıçapa diktir; dış noktadan çizilen iki teğet eşit uzunluktadır.",
+      "Çevre $2\\pi r$, alan $\\pi r^2$.",
+      "Yay ve dilim: tam çemberin $\\alpha/360$'ı kadarı.",
+      "Dilim alanı $= \\frac{\\text{yay}\\cdot r}{2}$."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "MAT.11.E2",
+    "title": {
+     "tr": "Prizmalar ve küp: hacim ve yüzey alanı",
+     "en": "Prisms and cubes: volume and surface area"
+    },
+    "content": {
+     "anlatim": "# Prizma\n\nİki **eş ve paralel** tabanı olan, yan yüzleri paralelkenar (dik prizmada dikdörtgen) olan cisimdir. Adını tabanından alır: üçgen prizma, kare prizma, altıgen prizma…\n$$V = \\text{Taban alanı}\\times h, \\qquad A = 2\\cdot\\text{Taban alanı} + \\text{Taban çevresi}\\times h$$\n($h$: iki taban arasındaki dik uzaklık; yanal alan dik prizmada **taban çevresi × yükseklik**tir.)\n\n# Dikdörtgenler Prizması ve Küp\n\nAyrıtları $a, b, c$ olan dikdörtgenler prizması:\n- $V = abc$, $A = 2(ab + ac + bc)$\n- Cisim köşegeni: $\\sqrt{a^2 + b^2 + c^2}$\n\nAyrıtı $a$ olan küp:\n- $V = a^3$, $A = 6a^2$, yüz köşegeni $a\\sqrt2$, cisim köşegeni $a\\sqrt3$.\n\n# Ölçek Etkisi\n\nBir cismin bütün uzunlukları $k$ katına çıkarsa **alanları $k^2$**, **hacmi $k^3$** katına çıkar.",
+     "ornekler": [
+      {
+       "soru": "Ayrıtları 3, 4 ve 12 cm olan dikdörtgenler prizmasının hacmini, yüzey alanını ve cisim köşegenini bulunuz.",
+       "cozum": "$V = 3\\cdot4\\cdot12 = $ **144 cm³**. $A = 2(12 + 36 + 48) = $ **192 cm²**. Köşegen $= \\sqrt{9 + 16 + 144} = \\sqrt{169} = $ **13 cm**."
+      },
+      {
+       "soru": "Bir küpün ayrıtı 2 katına çıkarılırsa yüzey alanı ve hacmi kaç katına çıkar?",
+       "cozum": "Alan $2^2 = $ **4** katına, hacim $2^3 = $ **8** katına çıkar."
+      }
+     ],
+     "ozet": [
+      "Prizma: $V = $ taban alanı × yükseklik.",
+      "Dikdörtgenler prizması: $V = abc$, $A = 2(ab+ac+bc)$, köşegen $\\sqrt{a^2+b^2+c^2}$.",
+      "Küp: $V = a^3$, $A = 6a^2$, cisim köşegeni $a\\sqrt3$.",
+      "Uzunluk $k$ katı → alan $k^2$, hacim $k^3$ katı."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "MAT.11.E3",
+    "title": {
+     "tr": "Piramitler: hacim, yüzey alanı ve yan yüz yüksekliği",
+     "en": "Pyramids: volume, surface area and slant height"
+    },
+    "content": {
+     "anlatim": "# Piramit\n\nBir çokgen taban ile tabanın dışındaki bir **tepe noktasının** taban köşelerine birleştirilmesiyle oluşan cisimdir. Yan yüzleri üçgendir.\n$$V = \\frac{\\text{Taban alanı}\\times h}{3}$$\nAynı taban ve yükseklikteki prizmanın hacminin **üçte biri** kadardır.\n\n# Düzgün Piramit\n\nTabanı düzgün çokgen ve tepe noktası tabanın merkezinin tam üstünde olan piramittir. Yan yüzler eş ikizkenar üçgenlerdir.\n- **Yan yüz yüksekliği (apotem) $h'$:** Tepeden taban kenarına inen dikme. Kare tabanlı (kenar $a$) düzgün piramitte:\n$$h'^2 = h^2 + \\left(\\frac a2\\right)^2$$\n- Yanal alan $= \\frac{\\text{Taban çevresi}\\times h'}{2}$, Yüzey alanı = taban alanı + yanal alan.\n\n# Düzgün Dörtyüzlü\n\nBütün yüzleri eşkenar üçgen olan piramittir (ayrıt $a$): $A = a^2\\sqrt3$, $V = \\dfrac{a^3\\sqrt2}{12}$.",
+     "ornekler": [
+      {
+       "soru": "Taban kenarı 6 cm, yüksekliği 4 cm olan kare dik piramidin hacmini ve yüzey alanını bulunuz.",
+       "cozum": "$V = \\frac{36\\cdot4}{3} = $ **48 cm³**. Yan yüz yüksekliği $h' = \\sqrt{4^2 + 3^2} = 5$. Yanal alan $= \\frac{24\\cdot5}{2} = 60$; yüzey alanı $= 36 + 60 = $ **96 cm²**."
+      },
+      {
+       "soru": "Bir prizma ile aynı taban ve yükseklikteki piramidin hacimleri oranı nedir?",
+       "cozum": "$V_{piramit} : V_{prizma} = \\frac13 : 1 = $ **1 : 3**."
+      }
+     ],
+     "ozet": [
+      "Piramit hacmi: $\\frac13\\cdot$ taban alanı · yükseklik.",
+      "Yan yüz yüksekliği: $h'^2 = h^2 + (a/2)^2$ (kare tabanlı).",
+      "Yanal alan = taban çevresi · $h'$ / 2.",
+      "Düzgün dörtyüzlü: $V = a^3\\sqrt2/12$."
+     ]
+    }
+   },
+   {
+    "id": "k4",
+    "code": "MAT.11.E4",
+    "title": {
+     "tr": "Silindir, koni ve küre",
+     "en": "Cylinder, cone and sphere"
+    },
+    "content": {
+     "anlatim": "# Silindir (dik dairesel)\n\n$$V = \\pi r^2 h, \\qquad A = 2\\pi r^2 + 2\\pi r h$$\nYanal yüzey açıldığında kenarları $2\\pi r$ ve $h$ olan bir **dikdörtgen** elde edilir.\n\n# Koni (dik dairesel)\n\nAna doğru (yan yüz uzunluğu) $l$: $l^2 = r^2 + h^2$\n$$V = \\frac{\\pi r^2 h}{3}, \\qquad A = \\pi r^2 + \\pi r l$$\nYanal yüzey açıldığında yarıçapı $l$ olan bir **daire dilimi** oluşur; dilimin merkez açısı $\\alpha = 360°\\cdot\\dfrac{r}{l}$.\n\n# Küre\n\n$$V = \\frac43\\pi r^3, \\qquad A = 4\\pi r^2$$\n- Küreyi tam içine alan silindirin (yarıçap $r$, yükseklik $2r$) hacmi $2\\pi r^3$'tür; küre bunun **üçte ikisi**dir (Arşimet'in mezar taşına kazıttığı sonuç).\n- Küre bir düzlemle kesilirse kesit **daire** olur; merkezden $d$ uzaklıktaki kesitin yarıçapı $\\sqrt{r^2 - d^2}$.\n\n# Dönel Cisimler\n\nBir dikdörtgen kenarı etrafında döndürülürse **silindir**, dik üçgen bir dik kenarı etrafında döndürülürse **koni**, yarım daire çapı etrafında döndürülürse **küre** oluşur.",
+     "ornekler": [
+      {
+       "soru": "Yarıçapı 3 cm, yüksekliği 4 cm olan dik koninin hacmini ve yüzey alanını bulunuz.",
+       "cozum": "$l = \\sqrt{9 + 16} = 5$. $V = \\frac{\\pi\\cdot9\\cdot4}{3} = $ **$12\\pi$ cm³**. $A = 9\\pi + \\pi\\cdot3\\cdot5 = $ **$24\\pi$ cm²**."
+      },
+      {
+       "soru": "Yarıçapı 6 cm olan metal bir küre eritilerek yarıçapı 2 cm olan kürecikler yapılıyor. Kaç kürecik elde edilir?",
+       "cozum": "Hacimler oranı $\\left(\\frac62\\right)^3 = 27$ → **27** kürecik."
+      }
+     ],
+     "ozet": [
+      "Silindir: $V = \\pi r^2h$, $A = 2\\pi r^2 + 2\\pi rh$.",
+      "Koni: $V = \\frac13\\pi r^2h$, $A = \\pi r^2 + \\pi rl$, $l^2 = r^2 + h^2$.",
+      "Küre: $V = \\frac43\\pi r^3$, $A = 4\\pi r^2$.",
+      "Koni hacmi aynı taban/yükseklikteki silindirin $\\frac13$'ü; küre çevreleyen silindirin $\\frac23$'ü."
+     ]
+    }
+   }
+  ]
  }
 ];

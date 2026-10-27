@@ -311,6 +311,8 @@
       }
       const chain = (msg.models || []).map((m) => '<span class="chip-model" title="' + esc(t("ai.role." + m.role)) + '">' + App.icon(STAGE_ICON[m.role]) + esc(shortModel(m.model)) + "</span>").join("");
       const speed = msg.stats && msg.stats.evalMs ? t("ai.speed", { n: Math.round(msg.stats.evalCount / (msg.stats.evalMs / 1000)) }) : "";
+      // Güven göstergesi (v1.42): kaynak, hesap doğrulaması, fotoğraf okuma ve çekincelere göre açıklanabilir puan
+      if (msg.text && App.confidence) parts.push(App.confidence.aiBadgeHtml(msg));
       parts.push('<div class="msg__foot">' + chain +
         (msg.durationMs ? '<span class="msg__meta">' + esc(t("ai.seconds", { n: Math.round(msg.durationMs / 1000) })) + (speed ? " · " + esc(speed) : "") + "</span>" : "") +
         (msg.text ? '<button class="icon-btn icon-btn--sm" type="button" data-act="copy" data-mid="' + esc(msg.id) + '" title="' + esc(t("ai.copy")) + '">' + App.icon("copy") + "</button>" : "") +

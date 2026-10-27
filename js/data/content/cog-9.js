@@ -699,5 +699,68 @@ App.data.content["9/cografya"] = [
     }
    }
   ]
+ },
+ {
+  "id": "u8",
+  "name": {
+   "tr": "8. Ünite (Ek): Dünya'nın Şekli, Hareketleri ve Coğrafi Konum",
+   "en": "Unit 8 (Extra): Earth's Shape, Motions and Location"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "COĞ.9.E1",
+    "title": {
+     "tr": "Dünya'nın şekli ve hareketleri; mevsimlerin oluşumu",
+     "en": "Earth's shape and motions; why we have seasons"
+    },
+    "content": {
+     "anlatim": "# Dünya'nın Şekli: Geoit\n\nDünya tam bir küre değildir; kutuplardan hafifçe basık, Ekvator'dan şişkindir. Bu kendine özgü şekle **geoit** denir.\n**Kanıtları:** Ay tutulmasında Dünya'nın gölgesinin hep yuvarlak olması, ufuktan yaklaşan geminin önce direğinin görünmesi, uzaydan çekilen fotoğraflar, aynı anda farklı enlemlerde Güneş'in farklı yükseklikte görülmesi.\n\n**Sonuçları:**\n- Güneş ışınlarının geliş açısı Ekvator'dan kutuplara doğru **küçülür** → sıcaklık genel olarak kutuplara doğru azalır.\n- Ekvator çevresi kutuplar çevresinden biraz uzundur; yer çekimi kutuplarda biraz **daha fazladır**.\n- Paralellerin boyu kutuplara doğru kısalır; iki meridyen arası uzaklık kutuplara doğru azalır.\n\n# Günlük Hareket (Kendi Ekseni Çevresinde Dönüş)\n\nDünya **batıdan doğuya** doğru, yaklaşık **24 saatte** bir tur atar.\n- **Gece ile gündüz** birbirini izler.\n- Güneş **doğudan doğar**, batıdan batar; doğudaki yerlerde Güneş daha erken doğar.\n- Her meridyen arasında **4 dakika** zaman farkı oluşur (yerel saat).\n- Çizgisel dönüş hızı Ekvator'da en fazladır, kutuplara doğru azalır; rüzgâr ve akıntılar Kuzey Yarım Küre'de sağa, Güney'de sola sapar (**Coriolis etkisi**).\n\n# Yıllık Hareket (Güneş Çevresinde Dolanma)\n\nDünya, Güneş çevresindeki elips biçimli yörüngesini **365 gün 6 saatte** tamamlar. Eksen, yörünge düzlemine göre **23°27′** eğiktir ve bu eğiklik yıl boyunca **aynı yönü** korur.\n**Sonuçları:** Mevsimler, gece ile gündüz sürelerinin yıl içinde değişmesi, Güneş ışınlarının dik geldiği yerin dönenceler arasında yer değiştirmesi, matematik iklim kuşakları.\n\n| Tarih | Işınların dik geldiği yer | Kuzey Yarım Küre'de |\n|---|---|---|\n| 21 Mart | Ekvator | İlkbahar başlangıcı; gece = gündüz (ekinoks) |\n| 21 Haziran | Yengeç Dönencesi (23°27′ K) | En uzun gündüz; yaz başlangıcı |\n| 23 Eylül | Ekvator | Sonbahar başlangıcı; gece = gündüz |\n| 21 Aralık | Oğlak Dönencesi (23°27′ G) | En kısa gündüz; kış başlangıcı |\n\n> Mevsimlerin nedeni Güneş'e uzaklık değil, **eksen eğikliğidir**. Dünya Güneş'e en yakın konumuna (günberi) Ocak başında gelir; o sırada Kuzey Yarım Küre'de kıştır.",
+     "ornekler": [
+      {
+       "soru": "21 Haziran'da Güneş ışınlarının Yengeç Dönencesi'ne dik geldiği bilinmektedir. Bu tarihte 40° K enleminde öğle vakti Güneş'in ufuk düzlemiyle yaptığı açı kaç derecedir?",
+       "cozum": "Geliş açısı $= 90° - (\\text{enlem farkı}) = 90° - (40° - 23°27′) = $ **73°27′** (yaklaşık 73,5°)."
+      },
+      {
+       "soru": "Eksen eğikliği olmasaydı Türkiye'de mevsimler ve gündüz süreleri nasıl olurdu?",
+       "cozum": "Işınlar yıl boyu Ekvator'a dik gelirdi; **mevsimler oluşmaz**, gece ile gündüz her yerde yıl boyunca **eşit (12 saat)** olurdu."
+      }
+     ],
+     "ozet": [
+      "Dünya'nın şekli geoittir; sıcaklık genel olarak Ekvator'dan kutuplara azalır.",
+      "Günlük hareket: batıdan doğuya, 24 saat → gece-gündüz, yerel saat farkları, Coriolis.",
+      "Yıllık hareket + eksen eğikliği (23°27′) → mevsimler ve gündüz süresinin değişmesi.",
+      "21 Haziran Yengeç, 21 Aralık Oğlak dönencesine; 21 Mart ve 23 Eylül Ekvator'a dik ışın."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "COĞ.9.E2",
+    "title": {
+     "tr": "Coğrafi konum: enlem, boylam ve saat hesapları",
+     "en": "Geographic location: latitude, longitude and time"
+    },
+    "content": {
+     "anlatim": "# Paraleller ve Enlem\n\n- **Paralel:** Ekvator'a paralel çizilen hayali daireler. Ekvator **0°**, kutuplar **90°**; her yarım kürede 90, toplam **180** paralel vardır.\n- **Enlem:** Bir yerin Ekvator'a olan açısal uzaklığıdır (K ya da G).\n- Enlemin etkileri: güneş ışınlarının geliş açısı, sıcaklık, gece-gündüz süre farkı, iklim kuşakları, bitki örtüsü, kalıcı kar sınırı yüksekliği. Ardışık iki paralel arası yaklaşık **111 km**'dir.\n\n# Meridyenler ve Boylam\n\n- **Meridyen:** Kutuplar arasında uzanan yarım daireler. Başlangıç meridyeni (0°) **Greenwich**'ten geçer; doğuda ve batıda 180'er, toplam **360** meridyen vardır.\n- **Boylam:** Bir yerin başlangıç meridyenine olan açısal uzaklığıdır (D ya da B).\n- İki meridyen arasında **4 dakika** zaman farkı vardır; $360° \\times 4 \\text{ dk} = 24$ saat.\n\n# Yerel Saat Hesabı\n\n1. İki yer **aynı yarım küredeyse** boylamlar **çıkarılır**, farklıysa **toplanır**.\n2. Boylam farkı × 4 dakika = zaman farkı.\n3. **Doğudaki** yerin saati **ileridir**: doğuya gidince ekle, batıya gidince çıkar.\n\n# Ortak (Ulusal) Saat\n\nÜlke içinde karışıklığı önlemek için tek bir meridyenin saati kullanılır. **Türkiye**, yıl boyunca **45° D** meridyeninin yerel saatini (UTC+3) kullanır. Doğu ile batı uçları arasında yaklaşık 19 meridyen, yani **76 dakika** yerel saat farkı vardır.\n\n# Matematik ve Özel Konum\n\n- **Matematik konum:** Enlem ve boylamla belirtilen kesin yer. Türkiye: **36°–42° K** enlemleri, **26°–45° D** boylamları arası.\n- **Özel konum:** Bir yerin yer şekilleri, denizlere ve komşulara göre durumu (ör. Türkiye'nin Asya ile Avrupa arasında köprü olması, üç tarafının denizlerle çevrili olması).",
+     "ornekler": [
+      {
+       "soru": "30° D boylamındaki İstanbul'da yerel saat 12.00 iken 45° D boylamındaki Kars'ta yerel saat kaçtır?",
+       "cozum": "Boylam farkı $45 - 30 = 15$; zaman farkı $15 \\times 4 = 60$ dk. Kars doğuda olduğundan saat **13.00**."
+      },
+      {
+       "soru": "Bir yerin enlemi 40° K'dir. Bu yerin Ekvator'a olan kuzey-güney uzaklığı yaklaşık kaç km'dir?",
+       "cozum": "$40 \\times 111 \\approx $ **4 440 km**."
+      }
+     ],
+     "ozet": [
+      "Enlem Ekvator'a, boylam başlangıç meridyenine olan açısal uzaklıktır.",
+      "İki meridyen arası 4 dakika; doğudaki yerin saati ileridir.",
+      "Aynı yarım kürede boylamlar çıkarılır, farklı yarım kürede toplanır.",
+      "Türkiye ortak saat olarak 45° D (UTC+3) kullanır; 36–42° K, 26–45° D arasındadır."
+     ]
+    }
+   }
+  ]
  }
 ];
