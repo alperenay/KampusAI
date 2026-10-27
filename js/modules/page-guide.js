@@ -67,6 +67,10 @@
     view.querySelector('#guideFullTour').onclick = () => App.tour.start(0);
   }
   window.addEventListener('da:route', paint);
+  // Some existing tools replace their root after lazy data loads or filter changes.
+  // Observe only root replacement, not the frequent SVG/canvas/control updates within a page.
+  const root = document.querySelector('#view');
+  if (root) new MutationObserver(paint).observe(root, { childList: true });
   App.router.register("rehber", render);
   App.pageGuide = { paint, entries: GUIDE };
 })();
