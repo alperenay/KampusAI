@@ -203,8 +203,9 @@ function olustur({ userData, bildir, log, stem = false }) {
         const gerekli = new Set(dosyalar().map((d) => d.ad));
         catalog[onceki].dosyalar.forEach((d) => { if (!gerekli.has(d.ad)) fs.rmSync(yol(d), { force: true }); });
       }
-      yay({ asama: stem ? "kurulu" : "hazirlaniyor", indirilen: toplam });
-      if (!stem) await baslat();
+      // Keep downloads on disk; load only when explicitly started / first used.
+      // A background Gemma download must not start another model during STEM inference.
+      yay({ asama: "kurulu", indirilen: toplam });
       return durum;
     } catch (e) {
       const iptalEdildi = iptal && iptal.signal.aborted;

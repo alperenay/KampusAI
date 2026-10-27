@@ -72,8 +72,7 @@
     const result = await engine.chat({ model: engine.config().visionModel, messages: [{ role: "user", content: "Görseldeki soruyu çözmeden eksiksiz yazıya dök. Formülleri LaTeX yaz; okuyamadığını [okunamadı] belirt.", images: [image.base64] }], signal, options: { temperature: 0, num_predict: 1024 } });
     return { text: result.text, requires_confirmation: true };
   }
-  const cloudBase = () => { const u = App.config && App.config.serverUrl; if (!u) throw new Error(T("İnternet servisi bu kurulumda tanımlı değil.", "Internet service is not configured in this build.")); return u.replace(/\/+$/, "") + "/stem"; };
-  App.stemRuntime = { bridge, mode, route, refresh, state: () => state, cloudBase, solve, read,
+  App.stemRuntime = { bridge, mode, route, refresh, state: () => state, solve, read,
     subscribe: (f) => { listeners.add(f); return () => listeners.delete(f); },
     async action(name) { if (!bridge || !["download", "cancel", "remove", "start"].includes(name)) return; set(await bridge[name]()); return state; }
   };

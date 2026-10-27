@@ -227,7 +227,8 @@ public class DeviceAi {
                 }
                 if (stem) assembleStem();
                 removeOthers();
-                if (stem) set("kurulu", null); else start();
+                // Do not auto-load a second model when a background download completes.
+                set("kurulu", null);
             } catch (Exception e) {
                 Log.w(TAG, "ai download", e);
                 String m = String.valueOf(e.getMessage());
