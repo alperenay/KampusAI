@@ -71,7 +71,7 @@ public class MainActivity extends BridgeActivity {
     private final List<Runnable> ttsQueue = new ArrayList<>();
 
     /* Telefona indirilen yapay zeka (DeviceAi.java) */
-    private DeviceAi ai, stemAi;
+    private DeviceAi ai;
 
     /* Widget'a ya da bildirime dokununca açılacak sayfa (ör. "bugun") */
     private volatile String pendingRoute = null;
@@ -94,16 +94,18 @@ public class MainActivity extends BridgeActivity {
         });
         if (getBridge() == null) return;
         webView = getBridge().getWebView();
+        new Thread(() -> {
+            try {
+                java.io.File root = new java.io.File(getFilesDir(), "sayisal-model");
+                String expected = getFilesDir().getCanonicalPath() + java.io.File.separator + "sayisal-model";
+                if (root.getCanonicalPath().equals(expected)) removeRetiredModel(root, expected);
+            } catch (Exception e) { Log.w("KampusAI", "retired model cleanup", e); }
+        }, "retired-model-cleanup").start();
         ai = new DeviceAi(this, st -> {
             if (webView == null) return;
             final String js = "window.__nativeAi&&window.__nativeAi(" + st.toString() + ")";
             runOnUiThread(() -> webView.evaluateJavascript(js, null));
         });
-        stemAi = new DeviceAi(this, st -> {
-            if (webView == null) return;
-            final String js = "window.__nativeStem&&window.__nativeStem(" + st.toString() + ")";
-            runOnUiThread(() -> webView.evaluateJavascript(js, null));
-        }, true);
         webView.addJavascriptInterface(new NativeBridge(), "KampusNative");
         if (!EDGE) return;
 
@@ -271,12 +273,19 @@ public class MainActivity extends BridgeActivity {
         if (tts != null) tts.stop();
     }
 
+    private void removeRetiredModel(java.io.File file, String root) throws java.io.IOException {
+        String canonical = file.getCanonicalPath();
+        if (!canonical.equals(root) && !canonical.startsWith(root + java.io.File.separator)) return;
+        java.io.File[] children = file.listFiles();
+        if (children != null) for (java.io.File child : children) removeRetiredModel(child, root);
+        if (file.exists() && !file.delete()) Log.w("KampusAI", "retired model file could not be removed");
+    }
+
     @Override
     public void onDestroy() {
         if (recognizer != null) { try { recognizer.destroy(); } catch (Exception e) { /* yok say */ } recognizer = null; }
         if (tts != null) { try { tts.shutdown(); } catch (Exception e) { /* yok say */ } tts = null; }
         if (ai != null && isFinishing()) ai.stop();
-        if (stemAi != null && isFinishing()) stemAi.stop();
         super.onDestroy();
     }
 
@@ -349,19 +358,13 @@ public class MainActivity extends BridgeActivity {
             });
         }
 
-        @JavascriptInterface public String stemStatus() { return stemAi == null ? "{}" : stemAi.status().toString(); }
-        @JavascriptInterface public void stemDownload() { if (stemAi != null) { if(ai!=null) ai.stop(); stemAi.download(null); } }
-        @JavascriptInterface public void stemCancel() { if (stemAi != null) stemAi.cancel(); }
-        @JavascriptInterface public void stemStop() { if (stemAi != null) stemAi.stop(); }
-        @JavascriptInterface public void stemStart() { if (stemAi != null) { if(ai!=null) ai.stop(); stemAi.startAsync(); } }
-        @JavascriptInterface public void stemRemove() { if (stemAi != null) new Thread(stemAi::remove, "stem-remove").start(); }
         /* ---- Yapay zekayı bu telefona indir ---- */
         @JavascriptInterface public String aiStatus() { return ai == null ? "{}" : ai.status().toString(); }
-        @JavascriptInterface public void aiDownload() { if (ai != null) { if(stemAi!=null) stemAi.stop(); ai.download(null); } }
+        @JavascriptInterface public void aiDownload() { if (ai != null) ai.download(null); }
         /** "tam" (Gemma 4 E4B) ya da "hafif" (Gemma 4 E2B) */
-        @JavascriptInterface public void aiDownloadVariant(String v) { if (ai != null) { if(stemAi!=null) stemAi.stop(); ai.download(v); } }
+        @JavascriptInterface public void aiDownloadVariant(String v) { if (ai != null) ai.download(v); }
         @JavascriptInterface public void aiCancel() { if (ai != null) ai.cancel(); }
-        @JavascriptInterface public void aiStart() { if (ai != null) { if(stemAi!=null) stemAi.stop(); ai.startAsync(); } }
+        @JavascriptInterface public void aiStart() { if (ai != null) ai.startAsync(); }
         @JavascriptInterface public void aiRemove() { if (ai != null) new Thread(ai::remove, "ai-remove").start(); }
 
         /* ---- Ana ekran widget'ı (KampusWidget.java) ---- */

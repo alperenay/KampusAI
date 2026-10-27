@@ -5,7 +5,6 @@
    ========================================================= */
 App.locales = App.locales || {};
 App.locales.en = {
-  "nav.stem": "STEM Assistant",
   /* Teacher review and progressive generation */
   "review.stats": "Original adaptive score: {score}/100 · Evidence-weighted score: {support}/100 · Total time: {seconds} s",
   "review.title": "Teacher reasoning review",

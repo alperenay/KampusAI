@@ -14,7 +14,6 @@
 
   /* [rota, simge, ad (i18n anahtarı ya da [tr,en]), açıklama [tr,en], grup, arama kelimeleri] */
   const TOOLS = [
-    ["sayisal", "calc", "nav.stem", ["Özel modelle matematik, fizik, kimya ve biyoloji; fotoğraftan metin ve adım adım çözüm", "Custom STEM model, photo transcription and step-by-step solutions"], "study", "sayısal stem soru çöz matematik fizik kimya biyoloji ocr"],
     ["degerlendirme", "grad", "review.title", ["Gerekçeleri ölçütle değerlendir; QR ile geri bildirim ver", "Review reasoning with a rubric and return feedback via QR"], "track", "öğretmen gerekçe eminlik değerlendirme puan rubrik"],
     ["arastirma", "chart", "nav.research", ["Gerekçe, eminlik ve ipucu etkisini çevrimdışı karşılaştır", "Compare reasoning, confidence and hints offline"], "track", "araştırma deney ab qr eminlik gerekçe ipucu"],
     ["bugun", "sun", "nav.today", ["Bugünkü program, görevler ve öneriler", "Today's plan, tasks and suggestions"], "start", "gün plan görev"],

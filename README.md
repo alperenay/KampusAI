@@ -8,12 +8,6 @@ Ders programı, konu anlatımı, TYT-AYT deneme takibi, yazılı sınavlar, form
 
 Yapay zeka: cihaza indirilen Gemma 4 (internetsiz), bilgisayardaki Ollama modelleri ya da internetten Google Gemini / OpenAI-uyumlu servisler.
 
-## Sayısal Asistan — deneysel özel model
-
-Matematik/Fizik/Kimya/Biyoloji için düzenlenebilir soru metni ve akışlı KaTeX çözüm kartları. Windows/Linux ve Android'de **Modeli bu cihaza indir** ile 3,29 GB özel model uygulamanın içinde internetsiz çalışır; Ollama/Python gerekmez. Fotoğraf okuma için ayrıca yerel Gemma görsel modeli kullanılabilir. Kendi bilgisayarına/sunucuna bağlantı korunur. **Özel modelin ortak internet çıkarım servisi henüz bağlı değildir**; genel asistanın mevcut Gemini internet modu ayrıdır. [Kurulum ve platform sınırları](STEM_MODEL.md) · [Model kartı ve açık başarı/sınırlama tablosu](STEM_MODEL_CARD.md) · [Veri temizliği ve eğitim](STEM_DATASET.md).
-
-Built with Qwen. Model ağırlıkları **ticari olmayan araştırma/değerlendirme** lisansındadır ve ayrı model paketinden kurulur. Eğitilen aday 48 sentetik nihai soruda önceki modele göre 14 → 21 doğru aldı; temiz temel modelin 30 doğrusunu geçemedi. Bu bir uzman doğruluğu veya gerçek sınav başarı iddiası değildir. Genel asistanın mevcut motoru bu modele geçirilmez.
-
 ## Kişisel çalışma akışı
 
 - **Seviyeye uyarlanan test:** Her konu testi 10 sorudan oluşur. Başlangıç zorluğu aynı konudaki son beş testten hesaplanır; sonraki sorular cevaplarına göre kolaylaşır veya zorlaşır. Sonuçta doğru/yanlış/boş sayısı, zorluk ağırlıklı başarı ve tahmini seviye gösterilir. Yanlışlar mevcut yanlış defterine eklenir.

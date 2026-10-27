@@ -58,6 +58,3 @@ Yapay zekâ hata yapabilir. Cevap notlara dayandığında kaynağı [K1] gibi et
 ## İletişim
 
 Sorular ve silme talepleri için: GitHub'da [alperenay/ders-asistani](https://github.com/alperenay/ders-asistani/issues) üzerinden bildirim açabilirsiniz.
-# Sayısal Asistan ek bilgisi
-
-Sayısal Asistan görseli yalnız kullanıcı "Görseldeki metni oku" dediğinde yapılandırdığı STEM sunucusuna gönderir. Metin düzenlenip "Adım adım çöz" seçildiğinde soru, bu sunucunun yapılandırdığı Ollama uç noktasına iletilir. Sağlanan yerel servis görselleri ve çözümleri dosyaya veya uygulamanın araştırma/profil kayıtlarına yazmaz. Üçüncü taraf bir sunucu seçilirse o işletmecinin veri işleme koşulları ayrıca geçerlidir. Bağlantı kodu ve sunucu adresi uygulama yedeğine/QR aktarımına dahil edilmez. Yerel kod kullanıcı ana dizinindeki `.kampusai/stem/connection-code.txt` içinde saklanır; GitHub'a gönderilmez.

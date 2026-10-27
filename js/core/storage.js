@@ -48,6 +48,8 @@
   })();
 
   /* ---------------- Ayarlar (localStorage) ---------------- */
+  // Retired optional model: clear only its old settings, preserving other AI credentials.
+  try { ["stemToken", "stemServiceUrl", "stemMode"].forEach((key) => localStorage.removeItem(LS_PREFIX + "pref:" + key)); } catch (e) { /* restricted storage */ }
   /** Yedeğe girmeyen ayarlar: anahtarlar, bağlantı kodu/adresi, otomatik seçilen modeller */
   const PRIVATE_PREF = /(Key|Token|Busy|AutoModel|AutoAt|AutoSpeed)$|^aiUrl$|^stemServiceUrl$|^sync|^focusState$|^feyDraft:|^feyVoice:|^tourDone$|^remindCount$/;
 
