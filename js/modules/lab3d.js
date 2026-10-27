@@ -173,7 +173,10 @@
       if (w === W && h === H) return;
       W = w; H = h; renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); render();
     }
-    const ro = new ResizeObserver(size); ro.observe(host);
+    // Canvas dimensions affect the observed host. Write in the next frame to
+    // avoid ResizeObserver feedback errors while WebKit changes breakpoints.
+    let resizeRaf = 0;
+    const ro = new ResizeObserver(() => { cancelAnimationFrame(resizeRaf); resizeRaf = requestAnimationFrame(size); }); ro.observe(host);
     const AR = { on: false }, HO = { on: false };
 
     let raf = 0;
@@ -974,7 +977,7 @@
       el, _S: S,
       frame(p, t, s) { if ((!vis || covered()) && !AR.on && !HO.on) return; try { D.update(S, p, t, s || {}); } catch (e) { console.error("[3B] güncelleme", id, e); } if (!AR.on && !HO.on && W) { cancelAnimationFrame(raf); draw(); } },
       visible: () => vis || AR.on || HO.on, perf: () => ({ pr, max: PR_MAX, min: PR_MIN, aa: useAA, shadow: useShadow, mobile }),
-      dispose() { arStop(); holoStop(); handStop(); holoMats.forEach((m) => { if (m) m.dispose(); }); holoMats.clear(); cancelAnimationFrame(raf); ro.disconnect(); if (io) io.disconnect(); clear(scene); renderer.dispose(); try { renderer.forceContextLoss(); } catch (e) { /* yok */ } el.remove(); },
+      dispose() { arStop(); holoStop(); handStop(); holoMats.forEach((m) => { if (m) m.dispose(); }); holoMats.clear(); cancelAnimationFrame(raf); cancelAnimationFrame(resizeRaf); ro.disconnect(); if (io) io.disconnect(); clear(scene); renderer.dispose(); try { renderer.forceContextLoss(); } catch (e) { /* yok */ } el.remove(); },
       resize: size,
       arStart, arStop, arOn: () => AR.on, onArStop: (fn) => { AR.onStop = fn; },
       arState: () => el.__arState(),

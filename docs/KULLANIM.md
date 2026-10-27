@@ -11,6 +11,18 @@
 
 Tüm özelliklere menüdeki **Tüm araçlar** sayfasından ulaşabilirsin. Sık kullandığın araçları yıldızla sabitle.
 
+Yan menünün üstündeki **Özellik ara** alanı, kapalı gruplardaki ve **Daha fazla** altındaki araçları da bulur. Enter ilk sonucu açar, Esc aramayı temizler. **Takip → Bilgi Evreni / Üstbiliş Karnesi**, **Pratik → Arkadaş Düellosu / Sensör Laboratuvarı** ve **Araçlar → Sınıf Modu / Gerekçe Değerlendirme / Araştırma Modu** doğrudan menüdedir. Günlük çalışma önerisi yalnız **Bugün** ekranındadır. Ana sohbet ekranındaki öneri kartı ve araç kısayolu düğmeleri kaldırılmıştır; fotoğraf yükleme sohbet kutusundan yapılır.
+
+## Bilgi Evreni
+
+1. Sınıfını ve dersini seç. Her yıldız bir kazanımı, her kol bir üniteyi gösterir.
+2. Yıldıza dokun veya **Tüm konuları gör ve ara** listesini aç. Konu adı, ünite ve çalışma durumuyla listeyi daraltabilirsin. Seçili konunun tam adı ve eylemleri ayrıntı kartında görünür.
+3. **Konu anlatımı** veya **Test çöz** ile devam et. Renklerin anlamları ve her durumdaki konu sayısı haritanın üstündedir.
+
+Harita başlangıçta sabittir; istersen **Dönüşü başlat** ile hareket ettir. Sürükleyerek çevirebilir, yakınlaştırabilir ve çift dokunuşla görünümü sıfırlayabilirsin. Azaltılmış hareket tercihi otomatik dönüşü durdurur. 3B desteklenmediğinde konu listesi ve çalışma bağlantıları kullanılabilir.
+
+Renkler kayıtlı çalışmalardan türetilen göstergelerdir. Ön koşul haritası bulunmayan derslerde bağlantılar yalnız ünite içindeki konu sırasını gösterir; bilimsel olarak doğrulanmış ön koşul bağı sayılmaz.
+
 **Kullanım Rehberi** ilk gün adımlarını ve bölümlere ayrılmış ekran turunu sunar. Ayarlar'daki tanıtım seçeneği de bu rehberi açar. Turda bölüm seçebilir, geri/ileri gidebilir veya Esc / Geç ile çıkabilirsin. Güncelleme yapan mevcut kullanıcıya tur zorla yeniden gösterilmez. Araç ekranlarının üstündeki **Bu ekranı nasıl kullanırım?** alanı amaca uygun kısa yönlendirme ve ilgili araç bağlantılarını içerir.
 
 ## Yeni çevrimdışı pratikler

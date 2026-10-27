@@ -91,3 +91,38 @@
 .ev-list ol { margin: 6px 0 0; padding-left: 0; list-style: none; display: grid; gap: 2px; max-height: 320px; overflow: auto; }
 .ev-li { display: flex; align-items: center; width: 100%; text-align: left; font: inherit; font-size: 13.5px; color: var(--text); background: none; border: 0; padding: 6px 4px; border-radius: 6px; cursor: pointer; }
 .ev-li:hover, .ev-li:focus-visible { background: var(--surface-2); }
+
+/* Clear feature discovery and an outcome map that works without 3D. */
+.nav-filter { display: block; padding: 6px 8px 12px; }
+.nav-filter .input { width: 100%; min-width: 0; font-size: 14px; }
+.nav.is-filtering .nav-group__body { display: flex !important; }
+.nav.is-filtering .nav__item[data-more]:not([hidden]) { display: flex !important; }
+.nav.is-filtering .nav__more, .nav .nav-filter-empty, .nav a[hidden] { display: none !important; }
+.nav.is-filtering .nav-group__head { pointer-events: none; }
+.nav__item .sidebar__label { overflow-wrap: anywhere; line-height: 1.4; }
+.nav__item { min-height: 44px; }
+.app.is-collapsed .nav-filter { display: none; }
+.ev-intro { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-bottom: 18px; color: var(--muted); font-size: 13px; }
+.ev-bar .select, .ev-bar .btn { min-height: 44px; max-width: 100%; }
+.ev-legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; line-height: 1.5; }
+.ev-legend > span { display: inline-flex; align-items: center; padding: 7px 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); font-size: 12px; }
+.ev-legend b { margin-left: 8px; font-variant-numeric: tabular-nums; }
+.ev-context { line-height: 1.6; margin-bottom: 16px; }
+.ev-visual { min-width: 0; }
+.ev-visual > p { margin: 10px 4px; line-height: 1.6; }
+.ev-stage { border: 1px solid #30384f; box-shadow: 0 12px 40px #05060f22; }
+.ev-info { padding-bottom: 14px; border-bottom: 1px solid var(--border); overflow-wrap: anywhere; }
+.ev-eyebrow { text-transform: uppercase; letter-spacing: .06em; font-size: 11px; font-weight: 700; color: var(--accent-text); margin: 0 0 6px; }
+.ev-h { align-items: baseline; font-size: 17px; }
+.ev-acts .btn { min-height: 44px; flex: 1 1 120px; justify-content: center; }
+.ev-filter { display: grid; gap: 5px; font-size: 13px; margin-top: 10px; }
+.ev-filter .input, .ev-filter .select { min-height: 44px; width: 100%; min-width: 0; }
+.ev-list > summary { min-height: 44px; }
+.ev-list ol { max-height: 360px; }
+.ev-list li[hidden] { display: none; }
+.ev-li { min-height: 48px; padding: 10px 8px; align-items: flex-start; gap: 3px; }
+.ev-li .ev-dot { margin-top: 4px; }
+.ev-li small { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; }
+.ev-li[aria-pressed="true"] { background: var(--accent-soft); box-shadow: inset 3px 0 var(--accent); }
+.ev-li > span:last-child { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 520px) { .ev-bar .select { flex: 1 1 130px; min-width: 0; } .ev-intro { display: grid; gap: 5px; } .ev-stage { min-height: 220px; } }

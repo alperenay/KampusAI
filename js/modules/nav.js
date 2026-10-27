@@ -103,6 +103,41 @@
   /* ---------------- Arama paleti ---------------- */
   const norm = (s) => String(s || "").toLocaleLowerCase("tr").replace(/[ıİ]/g, "i").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\s+/g, " ").trim();
 
+  function bindMenuSearch() {
+    const input = $("#navFilter"), nav = input.closest(".nav"), empty = $("#navEmpty");
+    const labels = { duel: ["Arkadaş Düellosu", "Friend Duel"], sensor: ["Sensör Laboratuvarı", "Sensor Lab"], cosmos: ["Bilgi Evreni", "Knowledge Cosmos"], report: ["Üstbiliş Karnesi", "Metacognition Report"], classQR: ["Sınıf Modu · QR Aktarımı", "Class Mode · QR Transfer"] };
+    function filter() {
+      const words = norm(input.value).split(" ").filter(Boolean);
+      nav.classList.toggle("is-filtering", !!words.length);
+      let count = 0;
+      nav.querySelectorAll("a.nav__item").forEach((a) => {
+        const tool = App.hub && App.hub.TOOLS.find((x) => x[0] === a.dataset.route);
+        const text = norm(a.textContent + " " + (tool ? tool[5] : ""));
+        a.hidden = words.length > 0 && !words.every((w) => text.includes(w));
+        if (!a.hidden) count++;
+      });
+      nav.querySelectorAll(".nav-group").forEach((g) => {
+        g.classList.toggle("nav-filter-empty", !!words.length && !g.querySelector("a.nav__item:not([hidden])"));
+      });
+      empty.hidden = !words.length || count > 0;
+      empty.textContent = App.i18n.lang === "en" ? "No matching feature. Try another word." : "Eşleşen özellik yok. Başka bir kelime dene.";
+    }
+    function language() {
+      const en = App.i18n.lang === "en";
+      $("#navFilterLabel").textContent = en ? "Search menu" : "Menüde ara";
+      input.placeholder = en ? "Find a feature…" : "Özellik ara…";
+      nav.querySelectorAll("[data-nav-label]").forEach((el) => { el.textContent = labels[el.dataset.navLabel][en ? 1 : 0]; });
+      titles(); filter();
+    }
+    input.addEventListener("input", filter);
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") { input.value = ""; filter(); }
+      if (e.key === "Enter" && input.value.trim()) { const first = nav.querySelector("a.nav__item:not([hidden])"); if (first) first.click(); }
+    });
+    window.addEventListener("hashchange", () => { input.value = ""; filter(); });
+    App.i18n.onChange(language); language();
+  }
+
   function pages() {
     return Array.from(document.querySelectorAll("#sidebar .nav__item")).filter((a) => !a.closest("#navPins")).map((a) => {
       const lab = a.querySelector(".sidebar__label"), ic = a.querySelector("[data-icon]");
@@ -276,6 +311,7 @@
   function init() {
     titles(); App.i18n.onChange(titles);
     bindGroups();
+    bindMenuSearch();
     bindQuick();
     bindPalette();
   }
