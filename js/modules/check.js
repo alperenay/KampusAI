@@ -136,6 +136,8 @@
     }[v];
     return '<section class="card chk-result" id="chkResult">' +
       '<div class="chk-banner chk--' + banner[0] + '">' + App.icon(banner[1]) + "<div><b>" + esc(banner[2]) + "</b><p>" + esc(banner[3]) + "</p></div></div>" +
+      // Düzeltme turu (v1.44): aynı soruda kaçıncı deneme, önceki denemede hata nerede
+      (rec.attempt > 1 ? '<p class="chk-attempt">' + App.icon("refresh") + esc(t("chk.attempt", { n: rec.attempt }) + (rec.prevFirstWrong ? " · " + t("chk.prevWrong", { n: rec.prevFirstWrong }) : "") + (v === "correct" ? " · " + t("chk.fixedNow") : "")) + "</p>" : "") +
       '<div class="chk-grid">' +
         '<figure class="chk-photo"><img src="' + esc(rec.image) + '" alt="' + esc(t("chk.yourPhoto")) + '"><figcaption>' + esc(t("chk.yourPhoto")) + "</figcaption></figure>" +
         '<div class="chk-main">' +
@@ -156,6 +158,7 @@
         "</div></div>" +
       '<div class="mis__actions">' +
         (v === "wrong" || v === "partial" ? '<button class="btn btn--primary" type="button" data-chk="mistake"' + (rec.mistakeId ? " disabled" : "") + ">" + App.icon("bookmark") + esc(rec.mistakeId ? t("chk.added") : t("chk.addMistake")) + "</button>" : "") +
+        (v === "wrong" || v === "partial" ? '<button class="btn btn--primary" type="button" data-chk="retry">' + App.icon("edit") + esc(t("chk.retry")) + "</button>" : "") +
         '<button class="btn" type="button" data-chk="again">' + App.icon("refresh") + esc(t("chk.again")) + "</button>" +
         '<button class="btn btn--ghost" type="button" data-chk="ask">' + App.icon("sparkle") + esc(t("chk.ask")) + "</button>" +
         (rec.key ? '<a class="btn btn--ghost" href="#/konular/' + rec.key + '">' + App.icon("book") + esc(t("quiz.backToLesson")) + "</a>" : "") +
@@ -270,7 +273,7 @@
     const onPaste = (e) => { const f = Array.from((e.clipboardData && e.clipboardData.files) || []).find((x) => /^image\//.test(x.type)); if (f) pick(f); };
     document.addEventListener("paste", onPaste);
 
-    let current = null;
+    let current = null, retryOf = null;
     async function check() {
       if (!sol) return;
       if (ctrl) ctrl.abort();
@@ -300,8 +303,11 @@
           id: uid("chk"), date: new Date().toISOString(), key: k || null,
           label: f ? C().gradeName(f.grade) + " · " + L(f.subject.name) + " · " + L(f.outcome.title) : "",
           image: sol.dataUrl, qImage: qImg ? qImg.dataUrl : null, qText: o.qText, given: o.given,
-          verdict: verdictOf(r), result: r, model: res.model
+          verdict: verdictOf(r), result: r, model: res.model,
+          attempt: retryOf ? (retryOf.attempt || 1) + 1 : 1, prevId: retryOf ? retryOf.id : undefined,
+          prevFirstWrong: retryOf && retryOf.result ? retryOf.result.firstWrong || undefined : undefined
         };
+        retryOf = null;
         await App.db.put("checks", rec);
         if (my !== ctrl || !document.body.contains(out)) return;
         current = rec;
@@ -339,8 +345,19 @@
       if (act === "reveal") {
         const fx = out.querySelector("#chkFix");
         if (fx) { fx.hidden = false; b.remove(); }
+      } else if (act === "retry") {
+        // Düzeltme turu: soru, konu ve soru görseli korunur; yalnızca düzeltilmiş çözümün fotoğrafı istenir
+        retryOf = current; sol = null;
+        view.querySelector("#chkPrev").hidden = true;
+        view.querySelector("#chkEmpty").hidden = false;
+        view.querySelector("#chkDrop").classList.remove("has-img");
+        go.disabled = true;
+        out.innerHTML = '<section class="card chk-retry">' + App.icon("lightbulb") + "<div><b>" + esc(t("chk.retryTitle", { n: (current.attempt || 1) + 1 })) + "</b>" +
+          (current.result.hint ? '<div class="md">' + md(current.result.hint) + "</div>" : "") + "<p class=\"hint\">" + esc(t("chk.retryHint")) + "</p></div></section>";
+        App.hydrateIcons(out);
+        view.querySelector(".chk-form").scrollIntoView({ behavior: "smooth", block: "start" });
       } else if (act === "again") {
-        sol = null; qImg = null;
+        retryOf = null; sol = null; qImg = null;
         ["#chkPrev", "#chkQPrev"].forEach((s) => { view.querySelector(s).hidden = true; });
         view.querySelector("#chkEmpty").hidden = false;
         view.querySelector("#chkDrop").classList.remove("has-img");

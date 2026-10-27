@@ -68,6 +68,7 @@
     { id: "feynman", icon: "mic",         tr: ["Öğretmen gibi", "Feynman modunda 80+ puan aldın"],          en: ["Like a teacher", "Scored 80+ in Feynman mode"], p: (D) => [D.explains.some((x) => Number(x.score) >= 80) ? 1 : 0, 1] },
     { id: "harita20",icon: "target",      tr: ["Sağlam temel", "20 kazanım güçlü seviyede"],               en: ["Solid base", "20 outcomes at strong level"], p: (D, c) => [c.strong, 20] },
     { id: "gunluk5", icon: "calendar",    tr: ["Günlük görev", "Bugünün 20 dakikası'nı 5 gün tamamladın"], en: ["Daily goal", "Completed Today's 20 minutes on 5 days"], p: (D) => [D.meta.filter((r) => String(r.id).indexOf("daily:") === 0 && r.completed).length, 5] },
+    { id: "duello",  icon: "star",        tr: ["Düello galibi", "Bir arkadaş düellosunu kazandın"],        en: ["Duel winner", "Won a friend duel"], p: (D) => [D.meta.filter((r) => r.kind === "duel" && r.won).length, 1] },
     { id: "hedef",   icon: "target",      tr: ["Hedefim belli", "Puan ve Hedef'te hedef bölümünü seçtin"],  en: ["Goal set", "Set your target program"], p: (D) => [D.meta.some((r) => r.id === "scoreTarget" && r.base) ? 1 : 0, 1] }
   ];
 

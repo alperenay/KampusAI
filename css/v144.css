@@ -1,0 +1,93 @@
+/* =========================================================
+   v144.css — 1.44
+   • Sensör Laboratuvarı (sensor-lab.js) · Sesli grafik düğmeleri (sonify.js)
+   • Çözüm kontrolünde düzeltme turu (check.js) · Arkadaş Düellosu (duello.js) · Bilgi Evreni (evren.js)
+   ========================================================= */
+
+/* ---------------- Sesli grafik ---------------- */
+.lab__son { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.lab__cv:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* ---------------- Sensör Laboratuvarı ---------------- */
+.sl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 14px; }
+.sl-card { display: grid; gap: 6px; padding: 16px; text-decoration: none; color: var(--text); }
+.sl-card__ico { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-text); }
+.sl-card small { color: var(--text-2); line-height: 1.45; }
+.sl-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 320px); gap: 14px; align-items: start; margin-top: 8px; }
+@media (max-width: 860px) { .sl-wrap { grid-template-columns: minmax(0, 1fr); } }
+.sl-stage { display: grid; gap: 10px; min-width: 0; }
+.sl-cv { width: 100%; height: 240px; display: block; border-radius: var(--radius-sm); background: color-mix(in srgb, var(--surface-2) 50%, transparent); }
+.sl-cv--2 { height: 180px; }
+.sl-acts { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.sl-status { color: var(--muted); font-size: 14px; }
+.sl-side { display: grid; gap: 12px; min-width: 0; }
+.sl-params { display: grid; gap: 10px; }
+.sl-read { display: grid; gap: 4px; }
+.sl-read > div { display: flex; justify-content: space-between; gap: 10px; font-size: 14px; border-bottom: 1px dashed var(--border); padding: 4px 0; }
+.sl-read > div b { font-variant-numeric: tabular-nums; text-align: right; }
+.sl-tbl { display: grid; gap: 2px; font-size: 12.5px; color: var(--text-2); margin-top: 6px; font-variant-numeric: tabular-nums; }
+.sl-h { font-size: 14px; margin: 6px 0; }
+.sl-hist { margin: 0; padding-left: 18px; font-size: 13px; color: var(--text-2); display: grid; gap: 2px; }
+.sl-links { display: grid; gap: 6px; }
+.sl-links a { display: flex; gap: 6px; align-items: center; font-size: 13.5px; color: var(--accent-text); text-decoration: none; }
+
+/* ---------------- Çözüm kontrolü: düzeltme turu ---------------- */
+.chk-attempt { display: flex; gap: 8px; align-items: center; margin: 10px 0 0; padding: 8px 12px; border-radius: var(--radius-sm); background: var(--accent-soft); font-weight: 600; }
+.chk-retry { display: flex; gap: 12px; align-items: flex-start; }
+.chk-retry > .ico { color: var(--warn); width: 24px; height: 24px; flex: none; }
+
+/* ---------------- Düello ---------------- */
+.du-acts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 14px; }
+.du-act { display: grid; gap: 6px; padding: 18px; text-align: left; color: var(--text); text-decoration: none; font: inherit; cursor: pointer; border: 1px solid var(--border); }
+.du-act .ico { width: 28px; height: 28px; color: var(--accent-text); }
+.du-act small { color: var(--text-2); }
+.du-badges h2 { display: flex; gap: 8px; align-items: center; font-size: 16px; }
+.du-badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.du-badge { display: inline-flex; gap: 6px; align-items: center; padding: 6px 12px; border-radius: var(--radius-pill); border: 1px dashed var(--border-strong); color: var(--muted); }
+.du-badge.is-on { border-style: solid; border-color: var(--warn); color: var(--text); background: color-mix(in srgb, var(--warn) 16%, transparent); }
+.du-form { display: grid; gap: 12px; }
+.du-count { display: grid; place-items: center; gap: 6px; text-align: center; }
+.du-count b { font-size: 48px; font-variant-numeric: tabular-nums; color: var(--accent-text); }
+.du-ready { display: flex; gap: 8px; align-items: center; }
+.du-q__top { display: flex; justify-content: space-between; font-weight: 700; font-variant-numeric: tabular-nums; }
+.du-timer { font-size: 22px; color: var(--accent-text); }
+.du-bar { height: 6px; border-radius: 3px; background: var(--surface-3); overflow: hidden; margin: 8px 0 12px; }
+.du-bar i { display: block; height: 100%; background: var(--accent); transition: width .2s linear; }
+.du-q__text { font-size: 17px; line-height: 1.55; }
+.du-opt { width: 100%; text-align: left; font: inherit; color: var(--text); background: transparent; }
+.du-opt.is-picked { border-color: var(--accent); background: var(--accent-soft); }
+.du-opt:disabled:not(.is-picked) { opacity: .55; }
+.du-wait { margin-top: 10px; }
+.du-board { text-align: center; margin-bottom: 14px; }
+.du-board h2 { display: flex; gap: 8px; align-items: center; justify-content: center; font-size: 20px; }
+.du-board.is-win { border-color: var(--warn); background: color-mix(in srgb, var(--warn) 10%, var(--surface)); }
+.du-score { display: flex; justify-content: center; align-items: center; gap: 18px; margin: 10px 0; }
+.du-score div { display: grid; gap: 2px; }
+.du-score span { color: var(--muted); font-size: 13px; }
+.du-score b { font-size: 34px; font-variant-numeric: tabular-nums; }
+.du-vs { font-size: 26px; color: var(--muted); }
+.du-both { font-size: 12px; padding: 2px 8px; border-radius: var(--radius-pill); background: color-mix(in srgb, var(--bad) 18%, transparent); }
+@media (prefers-reduced-motion: reduce) { .du-bar i { transition: none; } }
+
+/* ---------------- Bilgi Evreni ---------------- */
+.ev-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.ev-bar .select { width: auto; min-width: 150px; }
+.ev-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 320px); gap: 14px; align-items: start; }
+@media (max-width: 860px) { .ev-wrap { grid-template-columns: minmax(0, 1fr); } }
+.ev-stage { min-width: 0; border-radius: var(--radius); overflow: hidden; background: #05060f; min-height: 280px; }
+.ev-stage .lab__3d { position: relative; }
+.ev-load { color: #aab; padding: 20px; }
+.ev-side { display: grid; gap: 12px; min-width: 0; }
+.ev-legend { font-size: 13.5px; line-height: 2; }
+.ev-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; vertical-align: -1px; flex: none; }
+.ev-dot--strong { background: #ffd36b; box-shadow: 0 0 8px #ffb300; }
+.ev-dot--mid { background: #8fb8ff; box-shadow: 0 0 5px #3d7bff; }
+.ev-dot--weak { background: #ff6b6b; opacity: .75; }
+.ev-dot--studied { background: #9aa3ad; }
+.ev-dot--unknown { background: #4a5160; border: 1px solid var(--border-strong); }
+.ev-h { font-size: 15px; display: flex; align-items: center; line-height: 1.4; }
+.ev-acts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.ev-list > summary { cursor: pointer; color: var(--accent-text); min-height: 32px; display: flex; align-items: center; }
+.ev-list ol { margin: 6px 0 0; padding-left: 0; list-style: none; display: grid; gap: 2px; max-height: 320px; overflow: auto; }
+.ev-li { display: flex; align-items: center; width: 100%; text-align: left; font: inherit; font-size: 13.5px; color: var(--text); background: none; border: 0; padding: 6px 4px; border-radius: 6px; cursor: pointer; }
+.ev-li:hover, .ev-li:focus-visible { background: var(--surface-2); }

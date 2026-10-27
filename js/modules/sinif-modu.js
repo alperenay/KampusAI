@@ -115,8 +115,17 @@
   const str = (s, n) => typeof s === "string" && s.length <= n;
   const KEY = /^\d{1,2}\/[\w-]+\/[\w-]+\/[\w-]+$/;
   function validate(d) {
-    if (!d || d.v !== 1 || !["a", "r"].includes(d.t) || !str(d.id || d.a, 40)) throw new Error("packet");
-    if (d.t === "a") {
+    if (!d || d.v !== 1 || !["a", "r", "d", "dr"].includes(d.t) || !str(d.id || d.a, 40)) throw new Error("packet");
+    // Düello paketleri (duello.js, v1.44): "d" soru seti + başlama zamanı, "dr" oyuncunun cevapları ve süreleri
+    if (d.t === "d") {
+      if (!Number.isFinite(d.st) || !Number.isInteger(d.sec) || d.sec < 5 || d.sec > 120 || !str(d.hn, 40)) throw new Error("packet");
+    }
+    if (d.t === "dr") {
+      if (!str(d.s, 40) || !d.s.trim() || !Array.isArray(d.r) || d.r.length > 15 || !d.r.every((x) => Number.isInteger(x) && x >= -1 && x < 8) ||
+        !Array.isArray(d.ms) || d.ms.length !== d.r.length || !d.ms.every((x) => Number.isFinite(x) && x >= 0)) throw new Error("packet");
+      return d;
+    }
+    if (d.t === "a" || d.t === "d") {
       if (!str(d.ti, 120) || !Array.isArray(d.ks) || !d.ks.length || d.ks.length > 20 || !d.ks.every((k) => KEY.test(k))) throw new Error("packet");
       if (!Array.isArray(d.q) || !d.q.length || d.q.length > 60) throw new Error("packet");
       d.q.forEach((q) => {
@@ -214,7 +223,7 @@
       async function done() {
         try {
           const res = await unpack([c.body()].map((b) => PREFIX + c.digest() + ";0;1;" + b));
-          if (expect && res.data.t !== expect) throw new Error(expect === "a" ? T("Bu bir ödev kodu değil.", "This is not an assignment code.") : T("Bu bir sonuç kodu değil.", "This is not a result code."));
+          if (expect && res.data.t !== expect) throw new Error(expect === "a" ? T("Bu bir ödev kodu değil.", "This is not an assignment code.") : expect === "d" ? T("Bu bir düello kodu değil.", "This is not a duel code.") : T("Bu bir sonuç kodu değil.", "This is not a result code."));
           finish(res); m.close();
         } catch (e) { status.textContent = e.message; c.reset(); bar.style.width = "0%"; }
       }
@@ -672,5 +681,5 @@
   }
 
   App.router.register("sinif-modu", render);
-  App.sinifModu = { pack, unpack, frame, collector, validate, score, parseManual, pickBalanced, encodeBody, decodeBody, fnv, PREFIX, CHUNK };
+  App.sinifModu = { pack, unpack, frame, collector, validate, score, parseManual, pickBalanced, encodeBody, decodeBody, fnv, PREFIX, CHUNK, scan, mountPlayer, fromSaved, fromAI };
 })();

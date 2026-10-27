@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.43.0
+  APP_VERSION: 1.44.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -94,6 +94,7 @@ jobs:
           node tools/removed-model-ui-check.mjs
           npm run test:all-features-ui
           npm run test:v142-ui
+          npm run test:v144-ui
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -133,6 +134,8 @@ jobs:
         run: node tools/build-content-index.mjs --check
       - name: Tekrar kuyruğu, QR Sınıf Modu ve karne sınaması
         run: node tools/v142-check.mjs
+      - name: Sensör, sesli grafik, düello ve bilgi evreni sınaması
+        run: node tools/v144-check.mjs
       - name: Eski cihaz uyumu (iOS 16.3 düzenli ifade sözdizimi)
         run: node tools/compat-check.mjs
       - name: Web dosyalarını hazırla
@@ -500,7 +503,7 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          **Bu sürümde:** *Eminlik işaretleme*: hap kartlarında ve tekrar listesinde "Ne kadar eminsin?" seçimi (haftalık karnedeki üstbiliş indeksine katılır); yapay zekâ cevaplarında kaynak, hesap doğrulaması, fotoğraf okuma ve çekincelere dayanan, gerekçeli *güven göstergesi*. Deney Laboratuvarı 67'den *82 deneye* çıktı (türev, integral, diziler, üstel büyüme, parabol, olasılık, istatistik, üçgen çözme, dönüşümler, katı cisimler, mevsimler, iklim, nüfus piramidi, mitoz–mayoz, kalıtım). Müfredata eksik TYT/AYT konuları eklendi (725 → 808 kazanım): yeni dersler *Sağlık Bilgisi ve Trafik Kültürü*, *Beden Eğitimi ve Spor*, *Görsel Sanatlar*, *Müzik* ve *Almanca* (9. sınıf), divan ve halk edebiyatı, şiir bilgisi, yapı bilgisi, çarpanlara ayırma, genleşme ve basit makineler, ilk Türk ve Türk-İslam devletleri, toprak ve bitki örtüsü, Millî Mücadele (Mondros'tan Lozan'a), mıknatıs ve manyetik alan, kimya her yerde, TYT Türkçe (anlam bilgisi, paragraf, fiilimsiler, cümlenin ögeleri, anlatım bozuklukları), TYT optik (aydınlanma, gölge, düz ayna, renkler), kümeler, oran–orantı–yüzde ve problemler (yaş, işçi, hareket, karışım); yeni dersler *Psikoloji* ve *Sosyoloji* (11. sınıf) ile *Çağdaş Türk ve Dünya Tarihi* (12. sınıf); hücre bölünmeleri, üreme ve kalıtım; çember–daire ve katı cisimler; Dünya'nın hareketleri ve coğrafi konum; madde ve özkütle, adezyon–kohezyon; karışımlar ve asit–baz–tuz. Tüm yeni anlatımlar özgün olarak yazıldı.
+          **Bu sürümde:** *Sensör Laboratuvarı*: telefonun ivmeölçeriyle sarkaç periyodu, g ve asansörde ivme; mikrofonla frekans, spektrum ve Doppler; kamerayla ters kare yasası. Ölçüm, kuramsal eğri ve bağıl hatayla karşılaştırılır. *Sesli grafikler*: görme engelli öğrenciler için deney grafikleri sese çevrilir (tepe, dip, kök ve kesişim sesleri; parmak/ok tuşlarıyla gezinti ve sesli koordinat). *Arkadaş Düellosu*: internetsiz QR ile eşleşip aynı soruları eş zamanlı çözme, hız bonusu, rozet; kaçırılan sorular tekrar listesine. *3B Bilgi Evreni*: kazanımlar ve ön koşul bağları takımyıldız olarak, hâkimiyete göre parlayan yıldızlar; AR ve hologram. *Çözüm kontrolü*: hatalı adımı düzeltip aynı soruyu yeniden kontrol ettirme turu.
 
           | Platform | Dosya |
           |---|---|

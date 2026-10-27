@@ -59,6 +59,8 @@
     }
   }
   function plot(ctx, F, fn, color, w, dash) {
+    // Sesli grafik (sonify.js) için çizilen eğriler tuvalde kaydedilir; her çizimde sıfırlanır
+    if (ctx.canvas && ctx.canvas.__curves && ctx.canvas.__curves.length < 6) ctx.canvas.__curves.push({ fn, x0: F.x0, x1: F.x1, F, color });
     ctx.save(); ctx.beginPath(); ctx.rect(F.px, F.py, F.pw, F.ph); ctx.clip();
     ctx.strokeStyle = color; ctx.lineWidth = w || 2.2; ctx.setLineDash(dash || []);
     ctx.beginPath(); let pen = false, prevY = null;
@@ -537,8 +539,21 @@
         (lab.animated && !lab.custom ? '<div class="lab__play"><button class="btn btn--sm btn--primary" type="button" data-lab="play"></button>' +
           '<button class="btn btn--sm btn--ghost" type="button" data-lab="reset">' + App.icon("refresh") + esc(T("Baştan", "Reset")) + "</button></div>" : "") +
       "</div>" +
+      (App.sonify ? '<div class="lab__son"><button class="btn btn--sm" type="button" data-son="play">' + App.icon("volume") + esc(T("Grafiği dinle", "Listen to graph")) + '</button><button class="btn btn--sm btn--ghost" type="button" data-son="say">' + esc(T("Sesli özet", "Spoken summary")) + "</button></div>" : "") +
       '<div class="lab__side"><div class="lab__ctrls"></div><div class="lab__read"></div><p class="hint lab__note"></p></div>';
     const cv = host.querySelector("canvas"), ctrls = host.querySelector(".lab__ctrls"), read = host.querySelector(".lab__read"), note = host.querySelector(".lab__note");
+    // Sesli grafik: düğmeler her zaman; ayarlarda açıksa tuval parmakla/klavyeyle taranır
+    if (App.sonify) {
+      const curves = () => (cv.__curves || []).filter((x) => x.F && x.F.pw > 40);
+      host.querySelector(".lab__son").addEventListener("click", (e) => {
+        const b = e.target.closest("[data-son]"); if (!b) return;
+        const cs = curves();
+        if (!cs.length) { App.ui.toast(T("Bu deneyde seslendirilecek bir eğri yok.", "No curve to sonify in this lab.")); return; }
+        if (b.dataset.son === "play") App.sonify.play(cs.slice(0, 2)); else if (App.speech) App.speech.say(App.sonify.describe(cs.slice(0, 2)));
+      });
+      App.sonify.attachScrub(cv, curves);
+      if (App.sonify.enabled()) { cv.tabIndex = 0; cv.setAttribute("aria-label", lab.title() + T(" — sesli grafik: sağ/sol oklarla gez, Enter ile dinle, D ile özet", " — audio graph: arrows to explore, Enter to play, D for summary")); }
+    }
 
     function slider(pid, labTxt, min, max, step, value, unit, hint) {
       p[pid] = value;
@@ -613,6 +628,7 @@
       if (!host.isConnected) return destroy();
       const ctx = cv.getContext("2d"), c = colors();
       ctx.clearRect(0, 0, st.W, st.H);
+      cv.__curves = [];
       const out = lab.custom ? drawFunc(ctx, st.W, st.H, st, c) : lab.draw(ctx, st.W, st.H, p, st.t, c, st.s);
       // ölçüm tablosu: yalnızca değiştiyse ve oynarken saniyede en çok ~12 kez yazılır (her karede DOM yazmak takılmaya yol açıyordu)
       const nowR = performance.now();

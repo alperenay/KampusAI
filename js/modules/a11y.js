@@ -18,7 +18,7 @@
 (function () {
   const { esc } = App.utils;
   const t = App.t;
-  const KEYS = { text: "a11yText", dys: "a11yDys", spacing: "a11ySpacing", contrast: "a11yContrast", motion: "a11yMotion", ruler: "a11yRuler", rate: "ttsRate" };
+  const KEYS = { text: "a11yText", dys: "a11yDys", spacing: "a11ySpacing", contrast: "a11yContrast", motion: "a11yMotion", ruler: "a11yRuler", sonify: "a11ySonify", rate: "ttsRate" };
   const get = (k, d) => App.prefs.get(KEYS[k], d);
   const RATES = [0.75, 1, 1.25];
 
@@ -273,7 +273,7 @@
         '<p class="hint" style="margin-top:-4px">' + esc(t("a11y.intro")) + "</p>" +
         '<div class="a11y-row"><span class="a11y-row__ico">' + App.icon("textSize") + '</span><span class="a11y-row__t"><b>' + esc(t("a11y.text")) + "</b><small>" + esc(t("a11y.textHint")) + "</small></span>" +
           seg("text", get("text", "md"), [["md", "A", t("a11y.textMd")], ["lg", '<span style="font-size:1.15em">A</span>', t("a11y.textLg")], ["xl", '<span style="font-size:1.35em">A</span>', t("a11y.textXl")]]) + "</div>" +
-        sw("dys", "book") + sw("spacing", "list") + sw("ruler", "eye") + sw("contrast", "sun") + sw("motion", "pause") +
+        sw("dys", "book") + sw("spacing", "list") + sw("ruler", "eye") + sw("contrast", "sun") + sw("motion", "pause") + sw("sonify", "volume") +
         '<div class="a11y-row"><span class="a11y-row__ico">' + App.icon("volume") + '</span><span class="a11y-row__t"><b>' + esc(t("a11y.tts")) + "</b><small>" + esc(voiceNote || t("a11y.ttsHint")) + "</small></span>" +
           seg("rate", get("rate", 1), RATES.map((r) => [r, r === 1 ? "1×" : String(r).replace(".", App.i18n.lang === "tr" ? "," : ".") + "×", ""])) + "</div>" +
         '<div class="a11y-try" data-read-scope><p>' + esc(t("a11y.sample")) + " $\\frac{x^2+1}{2} = 5$</p>" + listenBtnHtml() + "</div>",
