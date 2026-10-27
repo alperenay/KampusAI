@@ -21,6 +21,7 @@
 .subj-beden     { --subj: #8fd694; }
 .subj-gorsel    { --subj: #ffc078; }
 .subj-muzik     { --subj: #7cc0f7; }
+.subj-almanca   { --subj: #ffd66b; }
 :root[data-theme="light"] .subj-edebiyat  { --subj: #c0392f; }
 :root[data-theme="light"] .subj-matematik { --subj: #2d5bd2; }
 :root[data-theme="light"] .subj-fizik     { --subj: #08808f; }
@@ -39,6 +40,7 @@
 :root[data-theme="light"] .subj-beden     { --subj: #2e7d32; }
 :root[data-theme="light"] .subj-gorsel    { --subj: #a35a00; }
 :root[data-theme="light"] .subj-muzik     { --subj: #1565c0; }
+:root[data-theme="light"] .subj-almanca   { --subj: #8a6d00; }
 
 /* Ders simgesi kutusu */
 .subj-ico {

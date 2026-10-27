@@ -48,12 +48,13 @@
     saglik:    { name: { tr: "Sağlık Bilgisi ve Trafik Kültürü", en: "Health and Traffic Safety" }, color: "#ef9a9a", icon: "checkCircle" },
     beden:     { name: { tr: "Beden Eğitimi ve Spor", en: "Physical Education" }, color: "#81c784", icon: "timer" },
     gorsel:    { name: { tr: "Görsel Sanatlar", en: "Visual Arts" }, color: "#ffb74d", icon: "image" },
-    muzik:     { name: { tr: "Müzik", en: "Music" }, color: "#64b5f6", icon: "volume" }
+    muzik:     { name: { tr: "Müzik", en: "Music" }, color: "#64b5f6", icon: "volume" },
+    almanca:   { name: { tr: "Almanca (2. yabancı dil)", en: "German (second foreign language)" }, color: "#ffd54f", icon: "sLang" }
   };
 
   // Her sınıfta hangi dersler var
   const GRADES = {
-    "9":  ["edebiyat", "matematik", "fizik", "kimya", "biyoloji", "tarih", "cografya", "din", "ingilizce", "saglik", "beden", "gorsel", "muzik"],
+    "9":  ["edebiyat", "matematik", "fizik", "kimya", "biyoloji", "tarih", "cografya", "din", "ingilizce", "almanca", "saglik", "beden", "gorsel", "muzik"],
     "10": ["edebiyat", "matematik", "fizik", "kimya", "biyoloji", "tarih", "cografya", "felsefe", "din", "ingilizce"],
     "11": ["edebiyat", "matematik", "fizik", "kimya", "biyoloji", "tarih", "cografya", "felsefe", "psikoloji", "sosyoloji", "din", "ingilizce"],
     "12": ["edebiyat", "matematik", "fizik", "kimya", "biyoloji", "inkilap", "cagdas", "cografya", "felsefe", "din", "ingilizce"]
