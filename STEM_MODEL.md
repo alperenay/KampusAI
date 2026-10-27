@@ -1,5 +1,19 @@
 # Sayısal Asistan kurulumu ve kullanım
 
+## 1.40: uygulama içinden indir, cihazda çalıştır
+
+Windows/Linux ve Android uygulamasında **Sayısal Asistan → Modeli bu cihaza indir** seçilir. Model yaklaşık 3,29 GB; kurulum sırasında parçalarla birleşik model için yaklaşık 7 GB boş alan, kullanımda en az 8 GB RAM önerilir. İndirme kesilirse devam eder; iki parça ve birleşik dosya SHA256 ile doğrulanır. **Ollama, Python, adres veya bağlantı kodu gerekmez.** İndirme bitince model diskte bekler, ilk soruda uygulamanın llama.cpp motoruyla açılır. Metinle soru çözümü indirmeden sonra internetsizdir.
+
+**Çalışma şekli**: Otomatik indirilmiş STEM modelini seçer; Bu cihaz yalnız yerel çalışır; Kendi bilgisayarım/sunucum önceki kimlik doğrulamalı bağlantıyı korur. **İnternet** seçeneği henüz kullanıma açık değildir: aynı özel modeli barındıran bir çıkarım sunucusu bağlı değildir. Başka model/Gemini özel modelmiş gibi kullanılmaz; bu seçenek soru veya fotoğraf göndermez. Mevcut genel asistanın internet/Gemini modu ayrı olarak çalışmaya devam eder. Cloudflare geçidi tek başına bu 3B özel modeli çalıştırmaz; kullanıcı tarafından yetkilendirilmiş bir çıkarım hedefi gerekir.
+
+Çevrimdışı **fotoğraf okuma**, Ayarlar → Yapay zeka bölümünden ayrıca indirilen mevcut **Gemma görsel modelini** kullanır; çözümü özel STEM modeli üretir. Gemma indirilmemişse soru yazılarak çözülebilir. Okunan metin düzenlenmeden otomatik çözülmez. OCR/görsel okuma ile STEM doğruluğu ayrı yeteneklerdir. Model hâlâ doğrudan vision desteklemez. Bellek kullanımını azaltmak için iki yerel motor aynı anda çalıştırılmaz.
+
+STEM dosyaları Gemma'dan ayrı `sayisal-model` klasöründe tutulur. **Modeli kaldır** yalnız STEM dosyalarını siler. Genel asistan, profil, araştırma ve öğretmen verileri bu modül tarafından değiştirilmez. Web/PWA ve iPhone sürümünde bağımsız yerel çıkarım henüz yoktur; indirme kartı desteklenmeyen platformlarda gösterilmez. Android derlemesi/emülatör testi fiziksel telefon üzerinde 3,29 GB model performansını doğrulamakla eşdeğer değildir.
+
+Model ağırlıkları değişmedi; 1.39.0 sürümündeki hash ile sabitlenmiş iki parça kullanılır. Ticari olmayan Qwen araştırma lisansı ve model kartındaki **21/48, temiz temel 30/48** sınırı geçerlidir. Gerçek Windows cihaz motoru testi Ollama/Python olmadan eğitimli GGUF'yi açıp akışlı yanıt aldı; indirme/bozulma testleri ve tarayıcı köprü testleri sentetik fixture kullanır, model doğruluğu iddiası değildir.
+
+## Önceki kurulum: isteğe bağlı kendi bilgisayarına bağlantı
+
 KampüsAI 1.39.0'da ana menüde **Ders Programı'nın yanındaki Sayısal Asistan** açılır. Matematik, Fizik, Kimya veya Biyoloji seçilir; soru yazılır ya da kamera/galeriden fotoğraf alınır. **Görseldeki metni oku** yalnız OCR yapar. Metni kontrol edip düzelttikten sonra **Adım adım çöz** seçilir. Akış tamamlandığında çözüm kartları ve KaTeX formülleri gösterilir; iptal ve sayfa değişimi devam eden isteği keser.
 
 ## Çalışma biçimi

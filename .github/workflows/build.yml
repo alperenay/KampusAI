@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.39.0
+  APP_VERSION: 1.40.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -98,6 +98,7 @@ jobs:
           python egitim/scripts/stem_dataset.py --out dist/stem-ci-data
           python egitim/scripts/stem_dataset.py --out dist/stem-ci-data --verify
           node tools/stem-client-check.mjs
+          node tools/stem-device-check.mjs
       - name: Arayüz ve çevrimdışı veri akışları
         run: |
           npm run test:study-ui
@@ -105,6 +106,7 @@ jobs:
           npm run test:teacher-review-ui
           npm run test:generation-ui
           npm run test:stem-ui
+          npm run test:stem-device-ui
           npm run test:all-features-ui
       - uses: actions/upload-artifact@v4
         if: always()
@@ -508,9 +510,11 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          **Bu sürümde:** Sayısal Asistan sekmesi; özel eğitilmiş Qwen türevi, CPU OCR, kamera/galeri girişi, düzenlenebilir soru metni ve akışlı KaTeX çözüm kartları. Önceki adaptif test, Hap Kartlar ve öğretmen/araştırma akışları korunur.
+          **Bu sürümde:** Sayısal Asistan modelini Windows/Linux ve Android uygulamasının içinden indirip Ollama/Python kurmadan cihazda çalıştırma; devam eden indirme, SHA256 denetimi, ayrı model kaldırma ve akışlı KaTeX çözümü. Fotoğraf okuma için ayrıca yerel Gemma görsel modeli gerekir. Önceki adaptif test, Hap Kartlar ve öğretmen/araştırma akışları korunur.
 
           **STEM model kurulumu:** [Kurulum ve platform gereksinimleri](https://github.com/$OWNER/$REPO/blob/main/STEM_MODEL.md). Model ayrı indirilir, kendi bilgisayarınız/sunucunuzda çalışır; herkese barındırılmış ücretsiz çıkarım servisi sağlanmaz. Built with Qwen — model ağırlıkları ticari olmayan araştırma/değerlendirme lisansındadır.
+
+          **İnternet durumu:** Özel modeli barındıran ortak çıkarım servisi henüz bağlı değildir. Mevcut Gemini internet asistanı farklı bir modeldir; özel model yerine gizlice kullanılmaz. Özel model deneysel: sabit 48 soruda eski model14, yeni21, temiz temel30 doğru. [Model kartı](https://github.com/$OWNER/$REPO/blob/main/STEM_MODEL_CARD.md).
 
           **Windows:** \`KampusAI-Kurulum-$APP_VERSION.exe\` dosyasını indirip çalıştır.
           Uygulama henüz yeni ve kod imzası olmadığı için Windows "**Windows kişisel bilgisayarınızı korudu**" diyebilir: **Ek bilgi → Yine de çalıştır**. Bu bir virüs uyarısı değil, "bu yayımcıyı henüz tanımıyorum" uyarısıdır. Kaynak kodun tamamı bu sayfada açık.
