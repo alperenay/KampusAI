@@ -55,6 +55,7 @@
   <link rel="stylesheet" href="css/study.css">
   <link rel="stylesheet" href="css/research.css">
   <link rel="stylesheet" href="css/v142.css">
+  <link rel="stylesheet" href="css/v144.css">
 </head>
 <body>
   <a class="a11y-skip" href="#view" data-i18n="a11y.skip">İçeriğe geç</a>
@@ -137,6 +138,8 @@
           <div class="nav-group" data-group="practice">
             <button class="nav-group__head" type="button" aria-expanded="true" aria-controls="ng-practice"><span class="sidebar__label" data-i18n="nav.group.practice">Pratik</span><span data-icon="chevronD"></span></button>
             <div class="nav-group__body" id="ng-practice">
+          <a class="nav__item" href="#/aktarim" data-route="aktarim"><span data-icon="layers"></span><span class="sidebar__label" data-i18n="nav.transfer">Bilgiyi Başka Yerde Kullan</span></a>
+          <a class="nav__item" href="#/hata-avcisi" data-route="hata-avcisi"><span data-icon="scan"></span><span class="sidebar__label" data-i18n="nav.errorHunt">Çözümdeki Hatayı Bul</span></a>
           <a class="nav__item" href="#/lab" data-route="lab">
             <span data-icon="lightbulb"></span><span class="sidebar__label" data-i18n="nav.lab">Deney Laboratuvarı</span>
           </a>
@@ -195,6 +198,7 @@
           <div class="nav-group" data-group="tools">
             <button class="nav-group__head" type="button" aria-expanded="true" aria-controls="ng-tools"><span class="sidebar__label" data-i18n="nav.group.tools">Araçlar</span><span data-icon="chevronD"></span></button>
             <div class="nav-group__body" id="ng-tools">
+          <a class="nav__item" href="#/rehber" data-route="rehber"><span data-icon="compass"></span><span class="sidebar__label" data-i18n="nav.guide">Kullanım Rehberi</span></a>
           <a class="nav__item" href="#/odak" data-route="odak">
             <span data-icon="timer"></span><span class="sidebar__label" data-i18n="nav.focus">Odak Sayacı</span>
           </a>
@@ -394,6 +398,9 @@
   <script src="js/modules/review-queue.js"></script>
   <script src="js/modules/sinif-modu.js"></script>
   <script src="js/modules/karne.js"></script>
+  <script src="js/data/practice-bank.js"></script>
+  <script src="js/modules/practice.js"></script>
+  <script src="js/modules/practice-ui.js"></script>
   <script src="js/modules/tour.js"></script>
   <script src="js/modules/tercih.js"></script>
   <script src="js/data/tarih-olaylar.js"></script>
@@ -404,9 +411,11 @@
   <script src="js/modules/yolculuk.js"></script>
   <script src="js/modules/podcast.js"></script>
   <script src="js/modules/hub.js"></script>
+  <script src="js/modules/page-guide.js"></script>
   <script src="js/modules/nav.js"></script>
 
   <script src="js/core/viewport.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
+
