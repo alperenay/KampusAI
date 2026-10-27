@@ -706,6 +706,33 @@ App.data.content["10/fizik"] = [
       "Tamamlayıcı renkler toplanınca beyaz olur."
      ]
     }
+   },
+   {
+    "id": "k4",
+    "code": "FİZ.10.E4",
+    "title": {
+     "tr": "Mıknatıslar, manyetik alan ve akımın manyetik etkisi",
+     "en": "Magnets, magnetic fields and the magnetic effect of current"
+    },
+    "content": {
+     "anlatim": "# Mıknatıslar\n\n- Her mıknatısın **N (kuzey)** ve **S (güney)** olmak üzere iki kutbu vardır; kutuplar ayrılamaz: mıknatıs kırılırsa her parça yine iki kutuplu olur.\n- **Aynı kutuplar iter, zıt kutuplar çeker.** Mıknatıslar demir, nikel ve kobalt gibi **ferromanyetik** maddeleri çeker.\n- Mıknatıs ısıtılır ya da sert darbelere maruz kalırsa mıknatıslık özelliği azalabilir.\n\n# Manyetik Alan\n\nMıknatısın etki gösterdiği bölgedir. **Manyetik alan çizgileri** dışarıda **N'den S'ye** yönelir, birbirini kesmez; çizgilerin sık olduğu yerde alan güçlüdür (kutuplar).\n- **Pusula** iğnesi küçük bir mıknatıstır ve bulunduğu yerdeki manyetik alan doğrultusunda durur.\n- **Dünya** büyük bir mıknatıs gibi davranır: coğrafi kuzey kutbunun yakınında manyetik **güney (S)** kutbu bulunur; bu yüzden pusulanın N ucu kuzeyi gösterir. Coğrafi kuzey ile manyetik kuzey arasındaki açıya **sapma açısı** denir.\n\n# Akımın Manyetik Etkisi\n\n- Üzerinden **akım geçen tel** çevresinde manyetik alan oluşur (Oersted deneyi: tel yanındaki pusula sapar).\n- Alanın yönü **sağ el kuralıyla** bulunur: başparmak akım yönünü gösterirse kıvrılan parmaklar alan çizgilerinin dönme yönünü gösterir.\n- **Bobin (akım makarası)** içinde düzgün bir alan oluşur ve bobin bir çubuk mıknatıs gibi davranır. Sarım sayısı ve akım arttıkça, içine **demir çekirdek** konulunca alan güçlenir → **elektromıknatıs** (hurda vinçleri, elektrik zili, röle, hoparlör, MR cihazları).",
+     "ornekler": [
+      {
+       "soru": "Bir çubuk mıknatıs ortadan ikiye kırılırsa ne olur?",
+       "cozum": "Her parça yeniden **N ve S kutuplu** iki ayrı mıknatıs olur; tek kutuplu mıknatıs elde edilemez."
+      },
+      {
+       "soru": "Bir elektromıknatısın çekim gücünü artırmak için neler yapılabilir?",
+       "cozum": "**Akımı artırmak**, **sarım sayısını artırmak** ve bobinin içine **demir çekirdek** yerleştirmek."
+      }
+     ],
+     "ozet": [
+      "Aynı kutuplar iter, zıt kutuplar çeker; mıknatısın kutupları ayrılamaz.",
+      "Alan çizgileri dışarıda N'den S'ye yönelir, birbirini kesmez.",
+      "Pusulanın N ucu kuzeyi gösterir; Dünya'nın coğrafi kuzeyine yakın yerde manyetik S kutbu vardır.",
+      "Akım geçen tel ve bobin manyetik alan oluşturur; demir çekirdekle elektromıknatıs elde edilir."
+     ]
+    }
    }
   ]
  }

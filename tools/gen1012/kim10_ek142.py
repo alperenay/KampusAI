@@ -67,4 +67,31 @@ Tepkime **ekzotermiktir** (ısı açığa çıkar).
     r"Hipoklorit ile hidroklorik asit tepkimeye girerek **zehirli klor gazı** ($\text{Cl}_2$) açığa çıkarır; solunum yollarına ciddi zarar verir.")],
   [r"Asit suda $\text{H}^+$, baz $\text{OH}^-$ verir (Arrhenius); Brønsted–Lowry'de asit proton verir, baz alır.", r"pH < 7 asidik, = 7 nötr, > 7 bazik; 1 birim = 10 kat.",
    r"Asit + baz → tuz + su (nötralleşme, ekzotermik).", r"Çamaşır suyu ile tuz ruhu karıştırılmaz; asit suya eklenir."]),
+
+O("k3", "KİM.10.E3", "Kimya her yerde: ev kimyasalları, polimerler ve gıda kimyası", "Chemistry everywhere: household chemicals, polymers and food chemistry", r"""
+# Yaygın Ev Kimyasalları
+| Madde | Kimyasal içerik | Dikkat |
+|---|---|---|
+| Çamaşır suyu | Sodyum hipoklorit (NaClO) | Asitlerle (tuz ruhu, kireç çözücü) karıştırılmaz: **klor gazı** çıkar |
+| Tuz ruhu | Hidroklorik asit (HCl) | Aşındırıcı; eldivenle kullanılır |
+| Kabartma tozu | Sodyum bikarbonat ($\text{NaHCO}_3$) | Isıtılınca $\text{CO}_2$ verir, hamuru kabartır |
+| Sabun ve deterjan | Uzun zincirli karboksilik asit tuzları / sentetik yüzey aktif maddeler | Molekülün bir ucu yağı (apolar), diğer ucu suyu (polar) sever |
+| Kireç çözücü | Asitler | Mermer ve metal yüzeyleri aşındırabilir |
+- Ürün etiketlerindeki **tehlike işaretleri** (aşındırıcı, yanıcı, zehirli, çevreye zararlı) okunmalıdır.
+
+# Polimerler
+Çok sayıda küçük molekülün (**monomer**) birbirine bağlanarak oluşturduğu dev moleküllerdir.
+- **Doğal polimerler:** Selüloz, nişasta, protein, doğal kauçuk, DNA.
+- **Sentetik polimerler:** Polietilen (poşet), PVC (boru), PET (su şişesi), naylon, teflon.
+- Plastikler doğada çok uzun sürede bozunur; **geri dönüşüm kodları** (1 PET, 2 HDPE, …) ayrıştırmayı kolaylaştırır. **Mikroplastikler** besin zincirine karışabilir.
+
+# Gıda Kimyası
+- **Katkı maddeleri (E kodları):** Koruyucular, renklendiriciler, tatlandırıcılar, kıvam artırıcılar; yasal sınırlarda kullanılır.
+- **Gıdaların bozulması:** Mikroorganizmalar, oksidasyon (yağların acıması), enzimler. Önleme: soğutma, kurutma, tuzlama, pastörizasyon, vakumlama.
+- **Temel besin öğeleri:** Karbonhidrat, yağ, protein (enerji ve yapı), vitamin, mineral ve su.
+""",
+  [(r"Kekte kabartma tozunun işlevi nedir?", r"Isıtılınca sodyum bikarbonat ayrışarak **$\text{CO}_2$ gazı** verir; gaz kabarcıkları hamuru kabartır."),
+   (r"Sabun hem yağı hem suyu nasıl tutar?", r"Sabun molekülünün **apolar (yağ seven)** uzun zinciri yağa, **polar (su seven)** ucu suya yönelir; yağ damlacıkları sarılıp suyla taşınır.")],
+  [r"Çamaşır suyu asitlerle karıştırılmaz; zehirli klor gazı oluşur.", r"Polimerler monomerlerin birleşmesiyle oluşur; doğal ve sentetik olabilir.",
+   r"Plastiklerin geri dönüşüm kodları ayrıştırmayı kolaylaştırır; mikroplastikler çevre sorunudur.", r"Gıda bozulmasını soğutma, kurutma, pastörizasyon gibi yöntemler yavaşlatır."]),
 ])]

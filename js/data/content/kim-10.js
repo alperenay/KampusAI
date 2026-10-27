@@ -579,6 +579,33 @@ App.data.content["10/kimya"] = [
       "Çamaşır suyu ile tuz ruhu karıştırılmaz; asit suya eklenir."
      ]
     }
+   },
+   {
+    "id": "k3",
+    "code": "KİM.10.E3",
+    "title": {
+     "tr": "Kimya her yerde: ev kimyasalları, polimerler ve gıda kimyası",
+     "en": "Chemistry everywhere: household chemicals, polymers and food chemistry"
+    },
+    "content": {
+     "anlatim": "# Yaygın Ev Kimyasalları\n\n| Madde | Kimyasal içerik | Dikkat |\n|---|---|---|\n| Çamaşır suyu | Sodyum hipoklorit (NaClO) | Asitlerle (tuz ruhu, kireç çözücü) karıştırılmaz: **klor gazı** çıkar |\n| Tuz ruhu | Hidroklorik asit (HCl) | Aşındırıcı; eldivenle kullanılır |\n| Kabartma tozu | Sodyum bikarbonat ($\\text{NaHCO}_3$) | Isıtılınca $\\text{CO}_2$ verir, hamuru kabartır |\n| Sabun ve deterjan | Uzun zincirli karboksilik asit tuzları / sentetik yüzey aktif maddeler | Molekülün bir ucu yağı (apolar), diğer ucu suyu (polar) sever |\n| Kireç çözücü | Asitler | Mermer ve metal yüzeyleri aşındırabilir |\n- Ürün etiketlerindeki **tehlike işaretleri** (aşındırıcı, yanıcı, zehirli, çevreye zararlı) okunmalıdır.\n\n# Polimerler\n\nÇok sayıda küçük molekülün (**monomer**) birbirine bağlanarak oluşturduğu dev moleküllerdir.\n- **Doğal polimerler:** Selüloz, nişasta, protein, doğal kauçuk, DNA.\n- **Sentetik polimerler:** Polietilen (poşet), PVC (boru), PET (su şişesi), naylon, teflon.\n- Plastikler doğada çok uzun sürede bozunur; **geri dönüşüm kodları** (1 PET, 2 HDPE, …) ayrıştırmayı kolaylaştırır. **Mikroplastikler** besin zincirine karışabilir.\n\n# Gıda Kimyası\n\n- **Katkı maddeleri (E kodları):** Koruyucular, renklendiriciler, tatlandırıcılar, kıvam artırıcılar; yasal sınırlarda kullanılır.\n- **Gıdaların bozulması:** Mikroorganizmalar, oksidasyon (yağların acıması), enzimler. Önleme: soğutma, kurutma, tuzlama, pastörizasyon, vakumlama.\n- **Temel besin öğeleri:** Karbonhidrat, yağ, protein (enerji ve yapı), vitamin, mineral ve su.",
+     "ornekler": [
+      {
+       "soru": "Kekte kabartma tozunun işlevi nedir?",
+       "cozum": "Isıtılınca sodyum bikarbonat ayrışarak **$\\text{CO}_2$ gazı** verir; gaz kabarcıkları hamuru kabartır."
+      },
+      {
+       "soru": "Sabun hem yağı hem suyu nasıl tutar?",
+       "cozum": "Sabun molekülünün **apolar (yağ seven)** uzun zinciri yağa, **polar (su seven)** ucu suya yönelir; yağ damlacıkları sarılıp suyla taşınır."
+      }
+     ],
+     "ozet": [
+      "Çamaşır suyu asitlerle karıştırılmaz; zehirli klor gazı oluşur.",
+      "Polimerler monomerlerin birleşmesiyle oluşur; doğal ve sentetik olabilir.",
+      "Plastiklerin geri dönüşüm kodları ayrıştırmayı kolaylaştırır; mikroplastikler çevre sorunudur.",
+      "Gıda bozulmasını soğutma, kurutma, pastörizasyon gibi yöntemler yavaşlatır."
+     ]
+    }
    }
   ]
  }

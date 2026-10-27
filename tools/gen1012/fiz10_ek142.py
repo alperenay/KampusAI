@@ -73,4 +73,25 @@ Boyalar ışığı **soğurarak** renk verir; karışımda renkler çıkarılır
   (r"Kırmızı ve yeşil ışık aynı noktaya düşürülürse hangi renk görülür?", r"**Sarı**.")],
  [r"Beyaz ışık prizmada renklere ayrılır; mor en çok kırılır.", r"Opak cisim yansıttığı ışığın renginde görünür.",
   r"Işık toplamada K + Y + M = beyaz; boya karışımında renkler çıkarılır.", r"Tamamlayıcı renkler toplanınca beyaz olur."]),
+
+O("k4", "FİZ.10.E4", "Mıknatıslar, manyetik alan ve akımın manyetik etkisi", "Magnets, magnetic fields and the magnetic effect of current", r"""
+# Mıknatıslar
+- Her mıknatısın **N (kuzey)** ve **S (güney)** olmak üzere iki kutbu vardır; kutuplar ayrılamaz: mıknatıs kırılırsa her parça yine iki kutuplu olur.
+- **Aynı kutuplar iter, zıt kutuplar çeker.** Mıknatıslar demir, nikel ve kobalt gibi **ferromanyetik** maddeleri çeker.
+- Mıknatıs ısıtılır ya da sert darbelere maruz kalırsa mıknatıslık özelliği azalabilir.
+
+# Manyetik Alan
+Mıknatısın etki gösterdiği bölgedir. **Manyetik alan çizgileri** dışarıda **N'den S'ye** yönelir, birbirini kesmez; çizgilerin sık olduğu yerde alan güçlüdür (kutuplar).
+- **Pusula** iğnesi küçük bir mıknatıstır ve bulunduğu yerdeki manyetik alan doğrultusunda durur.
+- **Dünya** büyük bir mıknatıs gibi davranır: coğrafi kuzey kutbunun yakınında manyetik **güney (S)** kutbu bulunur; bu yüzden pusulanın N ucu kuzeyi gösterir. Coğrafi kuzey ile manyetik kuzey arasındaki açıya **sapma açısı** denir.
+
+# Akımın Manyetik Etkisi
+- Üzerinden **akım geçen tel** çevresinde manyetik alan oluşur (Oersted deneyi: tel yanındaki pusula sapar).
+- Alanın yönü **sağ el kuralıyla** bulunur: başparmak akım yönünü gösterirse kıvrılan parmaklar alan çizgilerinin dönme yönünü gösterir.
+- **Bobin (akım makarası)** içinde düzgün bir alan oluşur ve bobin bir çubuk mıknatıs gibi davranır. Sarım sayısı ve akım arttıkça, içine **demir çekirdek** konulunca alan güçlenir → **elektromıknatıs** (hurda vinçleri, elektrik zili, röle, hoparlör, MR cihazları).
+""",
+  [(r"Bir çubuk mıknatıs ortadan ikiye kırılırsa ne olur?", r"Her parça yeniden **N ve S kutuplu** iki ayrı mıknatıs olur; tek kutuplu mıknatıs elde edilemez."),
+   (r"Bir elektromıknatısın çekim gücünü artırmak için neler yapılabilir?", r"**Akımı artırmak**, **sarım sayısını artırmak** ve bobinin içine **demir çekirdek** yerleştirmek.")],
+  [r"Aynı kutuplar iter, zıt kutuplar çeker; mıknatısın kutupları ayrılamaz.", r"Alan çizgileri dışarıda N'den S'ye yönelir, birbirini kesmez.",
+   r"Pusulanın N ucu kuzeyi gösterir; Dünya'nın coğrafi kuzeyine yakın yerde manyetik S kutbu vardır.", r"Akım geçen tel ve bobin manyetik alan oluşturur; demir çekirdekle elektromıknatıs elde edilir."]),
 ])]
