@@ -135,21 +135,28 @@ ipcMain.handle("lan:set", async (e, on) => {
 ipcMain.handle("lan:regenerate", () => { settings.token = newToken(); saveSettings(); return lanInfo(); });
 
 /* ---------------- Cihaza indirilen yapay zeka (Ollama'sız) ---------------- */
-let cihaz = null;
+let cihaz = null, stemCihaz = null;
 function cihazKur() {
   cihaz = cihazAi.olustur({
     userData: app.getPath("userData"),
     bildir: (d) => { if (win && !win.isDestroyed()) win.webContents.send("cihaz:ilerleme", d); },
     log: (...a) => console.log("[cihaz]", ...a)
   });
+  stemCihaz = cihazAi.olustur({ userData: app.getPath("userData"), stem: true, bildir: (d) => { if (win && !win.isDestroyed()) win.webContents.send("stem:ilerleme", d); }, log: (...a) => console.log("[stem]", ...a) });
   if (cihaz.bilgi().kurulu) cihaz.baslat();           // önceden indirildiyse arka planda aç
 }
 ipcMain.handle("cihaz:bilgi", () => cihaz.bilgi());
-ipcMain.handle("cihaz:indir", (e, v) => cihaz.indir(v));
+ipcMain.handle("cihaz:indir", (e, v) => { if (stemCihaz) stemCihaz.durdur(); return cihaz.indir(v); });
 ipcMain.handle("cihaz:vazgec", () => { cihaz.vazgec(); return cihaz.bilgi(); });
-ipcMain.handle("cihaz:baslat", () => cihaz.baslat());
+ipcMain.handle("cihaz:baslat", () => { if (stemCihaz) stemCihaz.durdur(); return cihaz.baslat(); });
 ipcMain.handle("cihaz:sil", () => cihaz.sil());
-app.on("will-quit", () => { if (cihaz) cihaz.durdur(); });
+ipcMain.handle("stem:bilgi", () => stemCihaz.bilgi());
+ipcMain.handle("stem:indir", () => { cihaz.durdur(); return stemCihaz.indir("stem"); });
+ipcMain.handle("stem:durdur", () => { stemCihaz.durdur(); return stemCihaz.bilgi(); });
+ipcMain.handle("stem:vazgec", () => { stemCihaz.vazgec(); return stemCihaz.bilgi(); });
+ipcMain.handle("stem:baslat", () => { cihaz.durdur(); return stemCihaz.baslat(); });
+ipcMain.handle("stem:sil", () => stemCihaz.sil());
+app.on("will-quit", () => { if (cihaz) cihaz.durdur(); if (stemCihaz) stemCihaz.durdur(); });
 
 /* ---------------- Pencere ---------------- */
 let win = null;
@@ -245,11 +252,12 @@ app.whenReady().then(async () => {
     if (url.pathname === "/ollama" || url.pathname.startsWith("/ollama/")) {
       return proxyOllama(request, url.pathname.slice("/ollama".length) + url.search);
     }
-    const c = url.pathname.match(/^\/cihaz\/(sohbet|hafiza)(\/.*)?$/);
+    const c = url.pathname.match(/^\/(cihaz|stem-cihaz)\/(sohbet|hafiza)(\/.*)?$/);
     if (c) {
-      const hedef = cihaz && cihaz.adres(c[1]);
+      const manager = c[1] === "stem-cihaz" ? stemCihaz : cihaz;
+      const hedef = manager && manager.adres(c[2]);
       if (!hedef) return new Response(JSON.stringify({ error: "cihaz yapay zekası hazır değil" }), { status: 503, headers: { "content-type": "application/json" } });
-      return proxyOllama(request, (c[2] || "/") + url.search, hedef);
+      return proxyOllama(request, (c[3] || "/") + url.search, hedef);
     }
     const r = await serveStatic(WEB_ROOT, url.pathname);
     return new Response(r.body, { status: r.status, headers: r.headers });

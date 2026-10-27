@@ -46,6 +46,13 @@ public class DeviceAi {
 
     public interface Emitter { void emit(JSONObject state); }
 
+    private final boolean stem;
+    private static final String STEM_FILE = "KampusAI-STEM-3B-v2-Q8_0.gguf";
+    private static final String STEM_SHA = "8861e20cc8906167d73d777fe118108009c750ce9f97eb9a7b5cbd19b243e91a";
+    private static final String[][] STEM_FILES = {
+        { "KampusAI-STEM-3B-v2-Q8_0.gguf.part01","1700000000","https://github.com/alperenay/ders-asistani/releases/download/v1.39.0/KampusAI-STEM-3B-v2-Q8_0.gguf.part01","720134ac37a8c4cc48850f8899d6eee7b12d1be7b0c43c204a6ff6f1a7d99350" },
+        { "KampusAI-STEM-3B-v2-Q8_0.gguf.part02","1585475872","https://github.com/alperenay/ders-asistani/releases/download/v1.39.0/KampusAI-STEM-3B-v2-Q8_0.gguf.part02","2f5a1150616dc4f3756efe01cb44b543766ba15e75c0635c3cde72fde38fbda8" }
+    };
     private final Context ctx;
     private final Emitter emitter;
     private final File dir;
@@ -60,16 +67,19 @@ public class DeviceAi {
     private long lastEmit = 0;
     private volatile String variant;        // tam | hafif
 
-    public DeviceAi(Context ctx, Emitter emitter) {
+    public DeviceAi(Context ctx, Emitter emitter) { this(ctx, emitter, false); }
+    public DeviceAi(Context ctx, Emitter emitter, boolean stem) {
+        this.stem = stem;
         this.ctx = ctx.getApplicationContext();
         this.emitter = emitter;
-        this.dir = new File(this.ctx.getFilesDir(), "yapay-zeka");
+        this.dir = new File(this.ctx.getFilesDir(), stem ? "sayisal-model" : "yapay-zeka");
         this.variant = readVariant();
         this.stage = installed() ? "kurulu" : "yok";
     }
 
     private static String[][] filesOf(String v) { return "hafif".equals(v) ? HAFIF : TAM; }
-    private String[][] files() { return filesOf(variant); }
+    private String[][] files() { return stem ? STEM_FILES : filesOf(variant); }
+    private File modelFile() { return stem ? new File(dir, STEM_FILE) : f(0); }
     private File f(int i) { return new File(dir, files()[i][0]); }
 
     private long totalMem() {
@@ -79,9 +89,10 @@ public class DeviceAi {
             return mi.totalMem;
         } catch (Exception e) { return 0; }
     }
-    private String suggested() { long m = totalMem(); return m > 0 && m < HAFIF_SINIR ? "hafif" : "tam"; }
+    private String suggested() { if (stem) return "stem"; long m = totalMem(); return m > 0 && m < HAFIF_SINIR ? "hafif" : "tam"; }
 
     private String readVariant() {
+        if (stem) return "stem";
         try {
             File sf = new File(dir, "secim.txt");
             if (sf.exists()) {
@@ -106,6 +117,7 @@ public class DeviceAi {
 
     /** Seçili olmayan modelin dosyalarını sil (yer açılsın) */
     private void removeOthers() {
+        if (stem) return;
         java.util.Set<String> keep = new java.util.HashSet<>();
         for (String[] x : files()) keep.add(x[0]);
         File[] all = dir.listFiles();
@@ -120,6 +132,10 @@ public class DeviceAi {
     public boolean supported() { return Build.VERSION.SDK_INT >= 28 && exe().exists(); }
 
     public boolean installed() {
+        if (stem) {
+            try { byte[] marker=new byte[64]; int n;try(InputStream in=new java.io.FileInputStream(new File(dir,"verified.sha256"))) { n=in.read(marker); } return modelFile().length()==3285475872L && n==64 && STEM_SHA.equals(new String(marker,"UTF-8")); }
+            catch(Exception e) { return false; }
+        }
         for (int i = 0; i < files().length; i++) if (!f(i).exists()) return false;
         return true;
     }
@@ -129,7 +145,7 @@ public class DeviceAi {
         for (String[] x : filesOf(v)) s += Long.parseLong(x[1]);
         return s;
     }
-    private long size() { return sizeOf(variant); }
+    private long size() { return stem ? 3285475872L : sizeOf(variant); }
 
     public synchronized JSONObject status() {
         JSONObject o = new JSONObject();
@@ -149,6 +165,7 @@ public class DeviceAi {
             JSONObject sec = new JSONObject();
             sec.put("tam", new JSONObject().put("ad", "Gemma 4 E4B").put("boyut", sizeOf("tam")));
             sec.put("hafif", new JSONObject().put("ad", "Gemma 4 E2B").put("boyut", sizeOf("hafif")));
+            if (stem) { sec = new JSONObject(); sec.put("stem", new JSONObject().put("ad", "Sayısal Asistan (deneysel)").put("boyut", size())); }
             o.put("secenekler", sec);
             dir.mkdirs();
             o.put("bosAlan", dir.getUsableSpace());
@@ -176,7 +193,7 @@ public class DeviceAi {
     /** v: "tam" | "hafif" | null (seçili olan) */
     public synchronized void download(String v) {
         if (worker != null) return;
-        if (("tam".equals(v) || "hafif".equals(v)) && !v.equals(variant)) {
+        if (!stem && ("tam".equals(v) || "hafif".equals(v)) && !v.equals(variant)) {
             stop();                                   // eski model çalışıyorsa kapat
             variant = v;
             saveVariant(v);
@@ -186,7 +203,8 @@ public class DeviceAi {
         worker = new Thread(() -> {
             try {
                 dir.mkdirs();
-                long need = 0;
+                if (stem && installed()) { start(); return; }
+                long need = stem ? size() : 0;
                 String[][] fs = files();
                 for (int i = 0; i < fs.length; i++) {
                     if (f(i).exists()) continue;
@@ -204,11 +222,12 @@ public class DeviceAi {
                 for (int i = 0; i < fs.length; i++) {
                     if (f(i).exists()) continue;
                     file = fs[i][0];
-                    fetch(HF + fs[i][2] + "/resolve/main/" + fs[i][0], f(i), Long.parseLong(fs[i][1]));
+                    fetch(stem ? fs[i][2] : HF + fs[i][2] + "/resolve/main/" + fs[i][0], f(i), Long.parseLong(fs[i][1]));
                     if (cancel) { set(installed() ? "kurulu" : "yok", null); return; }
                 }
+                if (stem) assembleStem();
                 removeOthers();
-                start();
+                if (stem) set("kurulu", null); else start();
             } catch (Exception e) {
                 Log.w(TAG, "ai download", e);
                 String m = String.valueOf(e.getMessage());
@@ -254,10 +273,37 @@ public class DeviceAi {
         }
         if (cancel) return;
         if (part.length() != expected) throw new java.io.IOException("Dosya eksik indi (" + part.length() + " / " + expected + "). Tekrar deneyin.");
+        if (stem && !sha(part).equals(files()[fileIndex(target)][3])) { part.delete(); throw new java.io.IOException("Model parçası SHA256 hatası; tekrar indir."); }
         if (!part.renameTo(target)) throw new java.io.IOException("Dosya kaydedilemedi");
         done = base + expected;
     }
 
+    private int fileIndex(File target) {
+        for (int i=0;i<files().length;i++) if (f(i).equals(target)) return i;
+        throw new IllegalArgumentException("Unknown model part");
+    }
+    private String sha(File file) throws Exception {
+        java.security.MessageDigest hash=java.security.MessageDigest.getInstance("SHA-256");
+        try (InputStream in=new java.io.FileInputStream(file)) { byte[] buf=new byte[1024*1024]; int n; while((n=in.read(buf))>0) { if(cancel) throw new java.io.IOException("İndirme durduruldu"); hash.update(buf,0,n); } }
+        StringBuilder out=new StringBuilder();for(byte b:hash.digest()) out.append(String.format("%02x",b&255));return out.toString();
+    }
+    private void assembleStem() throws Exception {
+        set("hazirlaniyor", "Model doğrulanıyor...");
+        File joined=new File(dir,STEM_FILE+".joining");
+        try {
+            try(FileOutputStream out=new FileOutputStream(joined)) {
+                byte[] buf=new byte[1024*1024];
+                for(int i=0;i<files().length;i++) {
+                    if(!sha(f(i)).equals(files()[i][3])) { f(i).delete(); throw new java.io.IOException("Model parçası SHA256 hatası"); }
+                    try(InputStream in=new java.io.FileInputStream(f(i))) { int n;while((n=in.read(buf))>0) { if(cancel) throw new java.io.IOException("İndirme durduruldu");out.write(buf,0,n); } }
+                }
+            }
+            if(!sha(joined).equals(STEM_SHA)) throw new java.io.IOException("Birleşik model SHA256 hatası");
+            if(!joined.renameTo(modelFile())) throw new java.io.IOException("Model kaydedilemedi");
+            try(FileOutputStream out=new FileOutputStream(new File(dir,"verified.sha256"))) { out.write(STEM_SHA.getBytes("UTF-8")); }
+            for(int i=0;i<files().length;i++) f(i).delete();
+        } finally { joined.delete(); }
+    }
     public void cancel() {
         cancel = true;
     }
@@ -281,10 +327,12 @@ public class DeviceAi {
             try (ServerSocket s = new ServerSocket(0)) { p = s.getLocalPort(); }
             int threads = Math.max(2, Math.min(6, Runtime.getRuntime().availableProcessors() - 2));
             List<String> cmd = new ArrayList<>();
-            String[] args = { exe().getPath(), "-m", f(0).getPath(), "--mmproj", f(1).getPath(),
+            String[] args = { exe().getPath(), "-m", modelFile().getPath(),
                 "--host", "127.0.0.1", "--port", String.valueOf(p), "-c", "4096", "-np", "1", "-t", String.valueOf(threads),
                 "--jinja" };
             for (String a : args) cmd.add(a);
+            if (!stem) { cmd.add("--mmproj"); cmd.add(f(1).getPath()); }
+            else { cmd.add("--alias"); cmd.add("kampusai-stem-v2"); }
             ProcessBuilder pb = new ProcessBuilder(cmd).directory(dir).redirectErrorStream(true);
             Process pr = pb.start();
             proc = pr;
@@ -347,6 +395,7 @@ public class DeviceAi {
         proc = null;
         port = 0;
         if (pr != null) pr.destroy();
+        if ("hazir".equals(stage)) set(installed() ? "kurulu" : "yok", null);
     }
 
     public void remove() {

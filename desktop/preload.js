@@ -12,6 +12,15 @@ contextBridge.exposeInMainWorld("desktopApp", {
     regenerate: () => ipcRenderer.invoke("lan:regenerate")
   },
   /* Yapay zekayı bu bilgisayara indir (Gemma 4 E4B ya da hafif E2B + bge-m3, Ollama gerekmez) */
+  stem: {
+    stop: () => ipcRenderer.invoke("stem:durdur"),
+    status: () => ipcRenderer.invoke("stem:bilgi"),
+    download: () => ipcRenderer.invoke("stem:indir"),
+    cancel: () => ipcRenderer.invoke("stem:vazgec"),
+    start: () => ipcRenderer.invoke("stem:baslat"),
+    remove: () => ipcRenderer.invoke("stem:sil"),
+    onProgress: (fn) => { const h = (e, d) => fn(d); ipcRenderer.on("stem:ilerleme", h); return () => ipcRenderer.removeListener("stem:ilerleme", h); }
+  },
   device: {
     status: () => ipcRenderer.invoke("cihaz:bilgi"),
     download: (v) => ipcRenderer.invoke("cihaz:indir", v === "tam" || v === "hafif" || v === "guclu" ? v : undefined),
