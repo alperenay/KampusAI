@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.42.1
+  APP_VERSION: 1.44.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -94,6 +94,8 @@ jobs:
           node tools/removed-model-ui-check.mjs
           npm run test:all-features-ui
           npm run test:v142-ui
+          npm run test:practice
+          npm run test:practice-ui
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -500,7 +502,10 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          Depo KampusAI adıyla düzenlendi; indirme, kullanım ve yardım bağlantıları yenilendi.
+          Bilgiyi Başka Yerde Kullan: altı kavramda denklem, grafik/tablo ve günlük yaşam görevleri.
+          Çözümdeki Hatayı Bul: dört derste ilk yanlış adım ve gerekçe pratiği.
+          Bölümlere ayrılmış kapsamlı tanıtım turu, Kullanım Rehberi ve ekran içi yardım eklendi.
+          Formlar, dokunma hedefleri, klavye odağı ve dar ekran düzenleri iyileştirildi.
 
           | Platform | Dosya |
           |---|---|
@@ -524,3 +529,4 @@ jobs:
             out/*.exe
             out/*.deb
             out/*.AppImage
+
