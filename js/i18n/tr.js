@@ -5,6 +5,7 @@
    ========================================================= */
 App.locales = App.locales || {};
 App.locales.tr = {
+  "nav.stem": "Sayısal Asistan",
   /* Teacher review and progressive generation */
   "review.stats": "Özgün adaptif skor: {score}/100 · Kanıt ağırlıklı skor: {support}/100 · Toplam süre: {seconds} sn",
   "review.title": "Öğretmen gerekçe değerlendirmesi",

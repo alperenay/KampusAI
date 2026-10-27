@@ -1,0 +1,19 @@
+.stem-page { max-width: 980px; }
+.stem-connect,.stem-input { padding: 20px; margin-bottom: 18px; min-width: 0; }
+.stem-connect summary { cursor: pointer; font-weight: 650; }
+.stem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.stem-input .field { margin: 16px 0; }
+.stem-page input,.stem-page select,.stem-page textarea { width: 100%; min-width: 0; box-sizing: border-box; }
+.stem-page textarea { max-width: 100%; }
+.stem-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0; }
+.stem-actions .btn { min-height: 44px; white-space: normal; }
+.stem-preview { display: block; max-width: 100%; max-height: 280px; object-fit: contain; margin: 14px auto; border-radius: 12px; }
+.stem-preview[hidden] { display: none; }
+.stem-camera { display: block; width: 100%; max-height: 65vh; object-fit: contain; }
+.stem-answer { display: grid; gap: 14px; }
+.stem-step { padding: 20px; min-width: 0; overflow-wrap: anywhere; }
+.stem-step--result { border-color: var(--accent-text); }
+.stem-step .md { overflow-x: auto; }
+.stem-stream { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; padding: 20px; border: 1px solid var(--border); border-radius: 14px; }
+.stem-error { color: var(--danger, #dc6666); }
+@media (max-width: 600px) { .stem-grid { grid-template-columns: 1fr; } .stem-connect,.stem-input,.stem-step { padding: 15px; } .stem-actions .btn { flex: 1 1 130px; } }
