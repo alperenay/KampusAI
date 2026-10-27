@@ -48,9 +48,10 @@ try: root = ET.parse("shots/ui.xml").getroot()
 except Exception: sys.exit(0)
 best = None
 edit = want == "@edit"
+radio = want == "@radio"
 for n in root.iter("node"):
     hay = " ".join(n.get(k, "") for k in ("text", "content-desc", "hint")).lower()
-    if (edit and n.get("class", "").endswith("EditText")) or (not edit and want in hay):
+    if (edit and n.get("class", "").endswith("EditText")) or (radio and n.get("class", "").endswith("RadioButton")) or (not edit and not radio and want in hay):
         m = re.findall(r"\d+", n.get("bounds", ""))
         if len(m) == 4:
             x1, y1, x2, y2 = map(int, m)
@@ -73,28 +74,52 @@ PY
   adb shell input tap $xy
 }
 
+# Required actions have no coordinate fallback: a missing control is a failed test.
+fail=0
+required_tap() { tap_text "$1" "" "" || { echo "FAIL: required control $1"; fail=$((fail+1)); return 1; }; }
+has_text() {
+  adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1
+  adb pull /sdcard/ui.xml shots/ui.xml >/dev/null 2>&1
+  python3 - "$1" <<'PY2'
+import sys,xml.etree.ElementTree as ET
+want=sys.argv[1].lower()
+root=ET.parse('shots/ui.xml').getroot()
+sys.exit(0 if any(want in ' '.join(n.get(k,'') for k in ['text','content-desc']).lower() for n in root.iter('node')) else 1)
+PY2
+}
+require_text() { has_text "$1" || { echo "FAIL: expected UI text $1"; fail=$((fail+1)); return 1; }; }
+scroll_tap() {
+  for attempt in 1 2 3 4 5; do
+    tap_text "$1" "" "" && return 0
+    adb shell input swipe $((W/2)) $((H*78/100)) $((W/2)) $((H*35/100)) 350
+    sleep 1
+  done
+  echo "FAIL: scroll target $1"; fail=$((fail+1)); return 1
+}
 shot tur-hosgeldin
-tap_text "Turu başlat" 0.75 0.62; sleep 4; shot tur-asistan
-for i in 1 2 3 4 5 6 7; do tap_text "İleri" 0.85 0.93; sleep 3; done
-shot tur-hatirlatici
-tap_text "Hatırlatıcıları aç"; sleep 10; shot tur-hatirlatici-acik
-echo "== bildirimler"; adb shell dumpsys notification --noredact | grep -iE "pkg=$APP|android.title=|android.text=" | head -20
-echo "== alarmlar"; adb shell dumpsys alarm | grep -c "$APP" || true
-tap_text "İleri" 0.85 0.93; sleep 4; shot tur-konular
-tap_text "Turu geç" 0.85 0.06; sleep 4; shot ana-ekran
-
-# Klavye testi: yazı kutusuna dokun, yaz → kutu klavyenin üstünde görünmeli
-tap_text "@edit" 0.5 0.42; sleep 3
-adb shell input text "Merhaba"; sleep 3; shot klavye-ana
+required_tap "Turu başlat"; sleep 3; shot tur-asistan
+require_text "İstediğin bölüme geç"
+required_tap "Turu geç"; sleep 3; shot ana-ekran
+# Test keyboard entry without sending a billable/cloud AI request.
+required_tap "@edit"; sleep 2
+adb shell input text "Audit"; sleep 1; shot klavye-ana
 adb shell dumpsys input_method | grep -E "mInputShown|mIsInputViewShown" | head -3
-adb shell input keyevent 66; sleep 15; shot sohbet-yanit
-tap_text "@edit" 0.5 0.86; sleep 3
-adb shell input text "Turev"; sleep 3; shot klavye-sohbet
-adb shell dumpsys input_method | grep -E "mInputShown|mIsInputViewShown" | head -3
-adb shell input keyevent 4; sleep 2; shot klavye-kapali
-
+adb shell input keyevent 4; sleep 1
+# Open the real mobile feature hub and complete an offline practice through native accessibility controls.
+required_tap "Araçlar"; sleep 2
+required_tap "@edit"; adb shell input text "aktarim"; sleep 2; adb shell input keyevent 4; sleep 1
+required_tap "Bilgiyi Başka Yerde Kullan"; sleep 2; shot aktarim-giris
+require_text "Aynı kavram"
+scroll_tap "Başla / devam et"; sleep 2
+for task in 1 2 3; do
+  required_tap "@radio"
+  scroll_tap "Yanıtımı kontrol et"; sleep 1; shot "aktarim-yanit-$task"
+  if [ "$task" -lt 3 ]; then scroll_tap "Sonraki görev"; else scroll_tap "Sonuçları gör"; fi
+  sleep 1
+ done
+require_text "Çalışma tamamlandı"; shot aktarim-sonuc
 adb logcat -d > shots/android-logcat.txt || true
-grep -iE "Capacitor|chromium|Console|AndroidRuntime|LN" shots/android-logcat.txt | tail -80
+if grep -q "FATAL EXCEPTION" shots/android-logcat.txt; then echo "FAIL: Android fatal exception"; fail=$((fail+1)); fi
 pidof_app=$(adb shell pidof $APP)
-echo "app pid: $pidof_app"
-test -n "$pidof_app"
+echo "app pid: $pidof_app; required UI failures: $fail"
+test -n "$pidof_app" && test "$fail" -eq 0

@@ -27,7 +27,9 @@ protocol.registerSchemesAsPrivileged([{
 }]);
 
 // Uygulamanın adı değişse de (Ders Asistanı → KampüsAI) veriler aynı klasörde kalsın
-app.setPath("userData", path.join(app.getPath("appData"), "Ders Asistani"));
+const profile = process.env.DA_SMOKE_OUT ? path.resolve(process.env.DA_SMOKE_OUT + ".profile") : path.join(app.getPath("appData"), "Ders Asistani");
+if (process.env.DA_SMOKE_OUT) fs.mkdirSync(profile, { recursive: true });
+app.setPath("userData", profile);
 
 if (!app.requestSingleInstanceLock()) { app.quit(); }
 
@@ -224,9 +226,16 @@ async function smokeTest(outFile) {
       r.lanInfo = await window.desktopApp.lan.get();
       return r;
     })()`));
+    result.rendererAudit = [];
+    const auditRenderer = require("./audit");
+    win.webContents.setZoomFactor(1);
+    for (const width of [390, 1280]) {
+      win.setSize(width, 900);
+      result.rendererAudit.push(await win.webContents.executeJavaScript("(" + auditRenderer.toString() + ")()"));
+    }
     try { fs.writeFileSync(outFile.replace(/\.json$/, ".png"), (await win.webContents.capturePage()).toPNG()); } catch (e) { result.shotError = String(e); }
     result.ok = result.app && result.title && result.desktop && result.idb === "indexeddb" && (result.proxyStatus === 200 || result.proxyStatus === 502)
-      && (process.platform !== "linux" || result.cihaz.gomuluMotor === true);
+      && (process.platform !== "linux" || result.cihaz.gomuluMotor === true) && result.rendererAudit.every((x) => x.ok);
   } catch (e) { result.error = String(e && e.stack || e); }
   fs.writeFileSync(outFile, JSON.stringify(result, null, 2));
   app.exit(result.ok ? 0 : 1);

@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.45.0
+  APP_VERSION: 1.46.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -98,6 +98,10 @@ jobs:
           npm run test:practice-ui
           node tools/usability-ui-check.mjs
           npm run test:v145-ui
+          node tools/navigation-ui-check.mjs
+          node tools/storage-ui-check.mjs
+          node tools/lifecycle-ui-check.mjs
+          node tools/lab-interactions-ui-check.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -105,10 +109,40 @@ jobs:
           path: dist/qa
           if-no-files-found: ignore
 
+  cross-engine:
+    name: ${{ matrix.engine }} / ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - engine: firefox
+            os: ubuntu-latest
+          - engine: webkit
+            os: macos-latest
+    runs-on: ${{ matrix.os }}
+    env:
+      UI_ENGINE: ${{ matrix.engine }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Test motorunu hazırla
+        run: |
+          npm install --no-save --package-lock=false --ignore-scripts playwright@1.62.1
+          npx playwright install --with-deps ${{ matrix.engine }}
+      - name: Bütün araçlar ve etkileşimler
+        run: node tools/audit-web.mjs --full
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-${{ matrix.engine }}
+          path: dist/qa/${{ matrix.engine }}
+
   web:
     name: Web / iPhone
-    needs: [server, ui-checks]
-    if: ${{ !cancelled() && needs['ui-checks'].result == 'success' }}
+    needs: [server, ui-checks, cross-engine]
+    if: ${{ !cancelled() && needs['ui-checks'].result == 'success' && needs['cross-engine'].result == 'success' }}
     runs-on: ubuntu-latest
     env:
       DA_SERVER_URL: ${{ needs.server.outputs.url }}
@@ -281,7 +315,6 @@ jobs:
     needs: android
     if: ${{ !cancelled() && needs.android.result == 'success' }}
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
@@ -506,7 +539,9 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          **Bu sürümde:** *Sensör Laboratuvarı*: telefonun ivmeölçeriyle sarkaç periyodu, g ve asansörde ivme; mikrofonla frekans, spektrum ve Doppler; kamerayla ters kare yasası. Ölçüm, kuramsal eğri ve bağıl hatayla karşılaştırılır. *Sesli grafikler*: görme engelli öğrenciler için deney grafikleri sese çevrilir (tepe, dip, kök ve kesişim sesleri; parmak/ok tuşlarıyla gezinti ve sesli koordinat). *Arkadaş Düellosu*: internetsiz QR ile eşleşip aynı soruları eş zamanlı çözme, hız bonusu, rozet; kaçırılan sorular tekrar listesine. *3B Bilgi Evreni*: kazanımlar ve ön koşul bağları takımyıldız olarak, hâkimiyete göre parlayan yıldızlar; AR ve hologram. *Çözüm kontrolü*: hatalı adımı düzeltip aynı soruyu yeniden kontrol ettirme turu.
+          Bilgi Evreni, Arkadaş Düellosu, Sensör Laboratuvarı ve diğer büyük araçlar yan menüye eklendi. Menüde arama, Bilgi Evreni'nde konu/ünite/durum filtreleri, açık açıklamalar ve dönme kontrolü var. Ana ekrandaki öneri/kısayol düğmeleri kaldırıldı.
+          Yedek geri yükleme veri kaybı, eski ekran işlemleri, geç kamera/mikrofon izni ve Firefox klavye odağı düzeltildi.
+          Chromium, Firefox ve macOS WebKit; paketlenmiş Windows/Linux ekran taraması ve Android çevrimdışı etkileşim testleri yayın kapılarına eklendi.
 
           | Platform | Dosya |
           |---|---|

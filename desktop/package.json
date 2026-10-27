@@ -29,6 +29,7 @@
     },
     "files": [
       "main.js",
+      "audit.js",
       "preload.js",
       "server.js",
       "device.js",

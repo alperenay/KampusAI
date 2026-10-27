@@ -18,10 +18,14 @@ try {
   await page.waitForSelector("#slGo");
   await page.evaluate(() => {
     App.sensorLab.EXP.sarkac.dur = 8;
+    // Simulated sensor contract, including browsers whose native permission API is unavailable in CI.
+    window.DeviceMotionEvent = class extends Event { static async requestPermission() { return "granted"; } };
     const Tth = 2 * Math.PI * Math.sqrt(0.8 / 9.81), t0 = performance.now();
     window.__fake = setInterval(() => {
       const t = (performance.now() - t0) / 1000;
-      window.dispatchEvent(new DeviceMotionEvent("devicemotion", { accelerationIncludingGravity: { x: 1.4 * Math.cos((2 * Math.PI * t) / Tth) + 0.2 * (Math.random() - 0.5), y: 9.7, z: 0.3 } }));
+      const event = new Event("devicemotion");
+      Object.defineProperty(event, "accelerationIncludingGravity", { value: { x: 1.4 * Math.cos((2 * Math.PI * t) / Tth) + 0.2 * (Math.random() - 0.5), y: 9.7, z: 0.3 } });
+      window.dispatchEvent(event);
     }, 16);
   });
   await page.click("#slGo");
@@ -40,12 +44,13 @@ try {
   const son = await page.evaluate(() => {
     const cv = document.querySelector(".lab__cv"), cs = cv.__curves.filter((x) => x.F && x.F.pw > 40);
     const dur = App.sonify.play(cs.slice(0, 1), { duration: 0.5 });
-    return { n: cs.length, dur, tab: cv.tabIndex, desc: App.sonify.describe(cs.slice(0, 1)) };
+    return { audioSupported: !!(window.AudioContext || window.webkitAudioContext), n: cs.length, dur, tab: cv.tabIndex, desc: App.sonify.describe(cs.slice(0, 1)) };
   });
-  assert.ok(son.n >= 1 && son.dur > 0 && son.tab === 0 && /dip noktası|tepe noktası/.test(son.desc), JSON.stringify(son));
+  assert.ok(son.n >= 1 && (son.audioSupported ? son.dur > 0 : son.dur === 0) && son.tab === 0 && /dip noktası|tepe noktası/.test(son.desc), JSON.stringify(son));
+  if (!son.audioSupported) console.log("AudioContext unavailable on this host: text/keyboard fallback verified; no audio playback claim.");
   await page.focus(".lab__cv"); await page.keyboard.press("ArrowRight"); await page.keyboard.press("ArrowRight");
   await page.click('[data-son="say"]');
-  ok("sesli grafik: eğri kaydedildi, çalındı, klavyeyle tarandı ve sözlü özet üretildi");
+  ok("sesli grafik: eğri kaydedildi, " + (son.audioSupported ? "ses API'sinde oynatıldı, " : "ses API'siz metin geri dönüşü, ") + "klavyeyle tarandı ve sözlü özet üretildi");
 
   // 3) Çözüm kontrolü: düzeltme turu
   await page.evaluate(async () => {
@@ -79,7 +84,8 @@ try {
   assert.ok(myScore >= 400 && myScore <= 600, "puan " + myScore);
   const opCode = await page.evaluate(async () => (await App.sinifModu.pack({ v: 1, t: "dr", a: "duel_ui", s: "Ali", r: [1, 1, 0, 0, 1], ms: [4000, 4000, 4000, 4000, 4000] })).join("\n"));
   await page.click("#duScanR");
-  await page.waitForSelector("#smPaste");
+  await page.waitForSelector("#smPaste", { state: "attached" });
+  await page.locator('.sm-paste summary').click();
   await page.evaluate((code) => { document.querySelector(".sm-paste").open = true; document.querySelector("#smPaste").value = code; document.querySelector("#smPasteGo").click(); }, opCode);
   await page.waitForSelector(".du-board");
   const board = await page.$eval(".du-board", (e) => e.innerText);
