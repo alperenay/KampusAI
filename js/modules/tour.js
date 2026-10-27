@@ -18,7 +18,7 @@
   /** Konu anlatımı içeriği olan ilk kazanım (9. sınıf matematik) */
   function sampleOutcome() {
     for (const g of C().grades) for (const s of g.subjects) for (const u of s.units || []) for (const k of u.outcomes || []) {
-      if (k.content && k.content.anlatim) return C().key(g.id, s.id, u.id, k.id);
+      if ((k.content && k.content.anlatim) || k.curatedContent) return C().key(g.id, s.id, u.id, k.id);
     }
     const g = C().grades[0], s = g.subjects[0], u = s.units[0], k = u.outcomes[0];
     return C().key(g.id, s.id, u.id, k.id);

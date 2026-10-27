@@ -33,7 +33,7 @@ try {
   }
   const teacher = await device(), student = await device();
   const p = teacher.page, s = student.page;
-  const key = await p.evaluate(() => App.learnmap.allOutcomes().find((x) => x.outcome.content).key);
+  const key = await p.evaluate(() => App.learnmap.allOutcomes().find((x) => x.outcome.content || x.outcome.curatedContent).key);
   await p.locator("#rCreate").click();
   await p.locator("#rTitle").fill("Çevrimdışı araştırma sınaması");
   await p.locator("#rTopic").selectOption(key);

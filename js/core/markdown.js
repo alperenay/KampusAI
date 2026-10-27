@@ -46,7 +46,7 @@
     return html.replace(new RegExp("[" + MARK + DMARK + "](\\d+)[" + MARK + DMARK + "]", "g"), (m, i) => store[Number(i)]);
   }
 
-  // Not: iOS 16.3 ve öncesi geriye bakan düzenli ifadeleri ((?<!…)) desteklemez; o yüzden kullanılmaz.
+  // Not: iOS 16.3 ve öncesi geriye bakan düzenli ifadeleri (lookbehind) desteklemez; o yüzden kullanılmaz.
   function inline(s) {
     // Kalın içinde italik olabilir: **Camus – *Yabancı*** → <strong>Camus – <em>Yabancı</em></strong>
     s = s.replace(/\*\*((?:[^*]|\*(?![\s*])[^*\n]*?[^\s*\n]\*)+?)\*\*/g, (m, inner) =>

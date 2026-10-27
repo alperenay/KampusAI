@@ -152,6 +152,18 @@
     await renderSideExams();
     await renderSideChats();
     App.db.on("exams", renderSideExams);
+    // Birleşik tekrar kuyruğu (v1.42): bugün tekrar edilecek öğe sayısı
+    const rqBadge = async () => {
+      if (!App.reviewQueue) return;
+      const s = await App.reviewQueue.summary().catch(() => null);
+      const b = document.getElementById("rqBadge");
+      if (b && s) { b.hidden = !s.total; b.textContent = s.total; }
+    };
+    rqBadge();
+    const rqLater = App.utils.debounce(rqBadge, 400);
+    ["cards", "mistakes", "quizzes"].forEach((st) => App.db.on(st, rqLater));
+    window.addEventListener("da:review-queue", rqLater);
+    window.addEventListener("da:ai-fb", rqLater);
     // Yanlış defterinde bugün tekrar edilecek soru sayısı
     const misBadge = async () => {
       const c = await App.mistakes.counts();

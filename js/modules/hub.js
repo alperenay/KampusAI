@@ -23,6 +23,7 @@
     ["formuller", "sMath", "nav.formulas", ["Matematik, fizik ve kimya formülleri: ne zaman kullanılır, hızlı tekrar", "Maths, physics and chemistry formulas with quick review"], "study", "formül formul defteri matematik fizik kimya türev integral ivme mol"],
     ["yazili", "pen", "nav.written", ["Maarif Modeli açık uçlu yazılılar: cevap anahtarı ve puanlama ölçütü", "Open-ended written exams with answer keys and rubrics"], "study", "yazılı sınav açık uçlu maarif dönem ortak sınav cevap anahtarı"],
     ["konusma", "sLang", "nav.speaking", ["Hologram öğretmenle sesli İngilizce: dilbilgisi ve telaffuz geri bildirimi", "Speak English with the hologram teacher: grammar and pronunciation feedback"], "study", "ingilizce english konuşma speaking telaffuz pronunciation dilbilgisi grammar hologram sesli"],
+    ["tekrar", "refresh", "nav.review", ["Kart, yanlış, test ve düzeltilen bilgiler tek tekrar listesinde", "Cards, mistakes, quizzes and corrections in one review list"], "study", "tekrar aralıklı bugün srs review due"],
     ["kartlar", "layers", "nav.cards", ["Kutu sistemiyle hap bilgi tekrarı", "Spaced-repetition flashcards"], "study", "kart flashcard tekrar"],
     ["yanlislar", "bookmark", "nav.mistakes", ["Yanlışların aralıklı tekrarla geri gelir", "Your mistakes come back for review"], "study", "yanlış hata tekrar"],
     ["video", "play", "nav.video", ["YouTube ders videosundan özet, bölümler, kartlar ve test", "Summary, chapters, cards and a quiz from a lesson video"], "study", "video youtube özet transkript ders izle"],
@@ -48,8 +49,10 @@
     ["tercih", "grad", "nav.tercih", ["Denemelerine göre yerleşebileceğin bölümler; 2025 taban puan ve sıralamalar", "Programmes you could get into; 2025 cut-offs"], "track", "tercih üniversite bölüm taban puan sıralama yök atlas"],
     ["kariyer", "compass", "nav.career", ["İlgi envanteri, 52 meslek kartı ve girebileceğin bölümler", "Interest inventory, 52 careers and programmes you could enter"], "track", "kariyer meslek ilgi envanteri riasec bölüm seçimi"],
     ["rapor", "note", "nav.report", ["Haftalık gelişim özeti", "Weekly progress summary"], "track", "rapor haftalık"],
+    ["karne", "chart", ["Üstbiliş Karnesi", "Metacognition Report"], ["Veli/öğrenci için tek sayfa A4 haftalık karne", "One-page weekly A4 report for parents"], "track", "karne veli haftalık rapor üstbiliş eminlik pdf yazdır"],
     ["odak", "timer", "nav.focus", ["Pomodoro sayacı ve çalışma süresi", "Pomodoro timer and study time"], "tools", "odak pomodoro sayaç"],
     ["hesap", "calc", "nav.calc", ["Bilimsel hesap makinesi", "Scientific calculator"], "tools", "hesap makinesi"],
+    ["sinif-modu", "scan", ["Sınıf Modu", "Class Mode"], ["İnternetsiz QR ödev dağıt, sonuçları QR ile topla", "Offline QR assignments and result collection"], "tools", "sınıf modu qr ödev offline çevrimdışı öğretmen sonuç"],
     ["sinif", "grad", "nav.class", ["Öğretmen için anonim sınıf özeti", "Anonymous class overview for teachers"], "tools", "sınıf öğretmen"],
     ["hakkinda", "info", "nav.about", ["Proje, gizlilik, kaynakça ve lisanslar", "Project, privacy, references, licences"], "tools", "hakkında kaynakça lisans"]
   ];

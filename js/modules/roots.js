@@ -49,7 +49,8 @@
   function aiValid(sk) {
     if (!aiMaps[sk]) return false;
     if (aiSigs[sk]) return aiSigs[sk] === sigOf(sk);
-    return !((App.data.content || {})[sk]);
+    // v1.42: anlatımlar isteğe bağlı yüklendiğinden "hazır not var mı" bilgisi içerik dizininden okunur
+    return !((App.data.content || {})[sk] || (App.data.contentIndex || {})[sk]);
   }
 
   const subjKey = (key) => String(key).split("/").slice(0, 2).join("/");

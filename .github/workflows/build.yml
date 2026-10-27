@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.41.0
+  APP_VERSION: 1.42.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -93,6 +93,7 @@ jobs:
           npm run test:generation-ui
           node tools/removed-model-ui-check.mjs
           npm run test:all-features-ui
+          npm run test:v142-ui
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -128,6 +129,10 @@ jobs:
         run: node tools/kavram-check.mjs
       - name: Kazanım içeriği denetimi (alanlar, kimlikler, KaTeX)
         run: node tools/content-check.mjs
+      - name: İçerik dizini güncel mi (isteğe bağlı ders yükleme)
+        run: node tools/build-content-index.mjs --check
+      - name: Tekrar kuyruğu, QR Sınıf Modu ve karne sınaması
+        run: node tools/v142-check.mjs
       - name: Eski cihaz uyumu (iOS 16.3 düzenli ifade sözdizimi)
         run: node tools/compat-check.mjs
       - name: Web dosyalarını hazırla
@@ -495,7 +500,7 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          **Bu sürümde:** İsteğe bağlı özel eğitilmiş model ve ona ait Sayısal Asistan sekmesi, indirme/çalıştırma köprüleri ve servis kaldırıldı. Mevcut Gemma, Gemini ve diğer genel asistan seçenekleri korunur. Adaptif test, Hap Kartlar, öğretmen gerekçe değerlendirmesi, QR aktarımı ve araştırma modu aynı şekilde çalışır.
+          **Bu sürümde:** Yeni *Bugün Tekrar Etmen Gerekenler*: hap kartları, yanlış defteri, zayıf test konuları ve düzeltilen yapay zekâ cevapları tek tekrar listesinde. Yeni *Sınıf Modu*: öğretmen internetsiz ödevi sıkıştırılmış (gerekirse dönen çoklu) QR ile dağıtır, öğrenci sonucunu QR ile gönderir, öğretmen sınıf listesini ve CSV'yi alır. Yeni *Haftalık Üstbiliş Karnesi*: veli/öğrenci için tek A4 sayfa (yazdır / PDF), eminlik-doğruluk farkı ve kalibrasyon grafiği. Daha hızlı açılış: konu anlatımları ve hologram modülleri yalnızca gerektiğinde yüklenir.
 
           **Windows:** \`KampusAI-Kurulum-$APP_VERSION.exe\` dosyasını indirip çalıştır.
           Uygulama henüz yeni ve kod imzası olmadığı için Windows "**Windows kişisel bilgisayarınızı korudu**" diyebilir: **Ek bilgi → Yine de çalıştır**. Bu bir virüs uyarısı değil, "bu yayımcıyı henüz tanımıyorum" uyarısıdır. Kaynak kodun tamamı bu sayfada açık.

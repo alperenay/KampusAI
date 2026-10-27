@@ -11,7 +11,7 @@ try {
       if (calls === 2) await new Promise((resolve, reject) => options.signal.addEventListener("abort", () => reject(new DOMException("Cancelled", "AbortError")), { once: true }));
       return { model: "fixture", data: { questions: bank } };
     };
-    const key = App.learnmap.allOutcomes().find((it) => it.outcome.content).key; App.router.go("test/" + key); return key;
+    const key = App.learnmap.allOutcomes().find((it) => it.outcome.content || it.outcome.curatedContent).key; App.router.go("test/" + key); return key;
   }, researchBank(30));
   await p.waitForFunction(() => document.querySelector("#qGeneration progress") && document.querySelector("#qGeneration progress").value === 3);
   assert.equal(await p.locator(".generation-preview li").count(), 3);

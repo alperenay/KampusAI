@@ -54,6 +54,7 @@
   <link rel="stylesheet" href="css/v134.css">
   <link rel="stylesheet" href="css/study.css">
   <link rel="stylesheet" href="css/research.css">
+  <link rel="stylesheet" href="css/v142.css">
 </head>
 <body>
   <a class="a11y-skip" href="#view" data-i18n="a11y.skip">İçeriğe geç</a>
@@ -100,6 +101,9 @@
           </a>
           <a class="nav__item" href="#/konusma" data-route="konusma">
             <span data-icon="sLang"></span><span class="sidebar__label" data-i18n="nav.speaking">İngilizce Konuşma</span>
+          </a>
+          <a class="nav__item" href="#/tekrar" data-route="tekrar">
+            <span data-icon="refresh"></span><span class="sidebar__label" data-i18n="nav.review">Bugünkü Tekrarlar</span><span class="nav__badge" id="rqBadge" hidden></span>
           </a>
           <a class="nav__item" href="#/kartlar" data-route="kartlar">
             <span data-icon="layers"></span><span class="sidebar__label" data-i18n="nav.cards">Hap Kartları</span><span class="nav__badge" id="cardsBadge" hidden></span>
@@ -267,7 +271,7 @@
       <!-- Telefonda alt sekme çubuğu: en sık kullanılan bölümler başparmağın altında -->
       <nav class="tabbar" id="tabbar" data-i18n-aria="nav.tabbar">
         <a class="tabbar__item" href="#/bugun" data-route="bugun"><span data-icon="sun"></span><span data-i18n="nav.today">Bugün</span></a>
-        <a class="tabbar__item" href="#/konular" data-route="konular" data-route-also="yazili,formuller,kartlar,yanlislar,podcast"><span data-icon="book"></span><span data-i18n="nav.tab.topics">Konular</span></a>
+        <a class="tabbar__item" href="#/konular" data-route="konular" data-route-also="yazili,formuller,kartlar,yanlislar,podcast,tekrar"><span data-icon="book"></span><span data-i18n="nav.tab.topics">Konular</span></a>
         <a class="tabbar__item tabbar__fab" href="#/" data-route="" data-route-also="sohbet" data-i18n-aria="nav.tab.assistant" aria-label="Asistan"><span class="tabbar__fab-btn" data-icon="sparkle"></span></a>
         <a class="tabbar__item" href="#/denemeler" data-route="denemeler" data-route-also="rapor,harita,puan,kok,simulasyon,tercih,yolculuk"><span data-icon="chart"></span><span data-i18n="nav.tab.progress">Gelişim</span></a>
         <a class="tabbar__item" href="#/araclar" data-route="araclar"><span data-icon="widget"></span><span data-i18n="nav.tab.tools">Araçlar</span></a>
@@ -302,46 +306,8 @@
   <!-- Veriler -->
   <script src="js/data/exam-config.js"></script>
   <script src="js/data/default-schedule.js"></script>
-  <!-- Konu anlatımı içerikleri (curriculum-data.js'den önce yüklenmeli) -->
-  <script src="js/data/content/mat-9.js"></script>
-  <script src="js/data/content/fiz-9.js"></script>
-  <script src="js/data/content/kim-9.js"></script>
-  <script src="js/data/content/biy-9.js"></script>
-  <script src="js/data/content/edb-9.js"></script>
-  <script src="js/data/content/tar-9.js"></script>
-  <script src="js/data/content/cog-9.js"></script>
-  <script src="js/data/content/din-9.js"></script>
-  <script src="js/data/content/ing-9.js"></script>
-  <script src="js/data/content/mat-10.js"></script>
-  <script src="js/data/content/fiz-10.js"></script>
-  <script src="js/data/content/kim-10.js"></script>
-  <script src="js/data/content/biy-10.js"></script>
-  <script src="js/data/content/edb-10.js"></script>
-  <script src="js/data/content/tar-10.js"></script>
-  <script src="js/data/content/cog-10.js"></script>
-  <script src="js/data/content/fel-10.js"></script>
-  <script src="js/data/content/din-10.js"></script>
-  <script src="js/data/content/ing-10.js"></script>
-  <script src="js/data/content/mat-11.js"></script>
-  <script src="js/data/content/fiz-11.js"></script>
-  <script src="js/data/content/kim-11.js"></script>
-  <script src="js/data/content/biy-11.js"></script>
-  <script src="js/data/content/edb-11.js"></script>
-  <script src="js/data/content/tar-11.js"></script>
-  <script src="js/data/content/cog-11.js"></script>
-  <script src="js/data/content/fel-11.js"></script>
-  <script src="js/data/content/din-11.js"></script>
-  <script src="js/data/content/ing-11.js"></script>
-  <script src="js/data/content/mat-12.js"></script>
-  <script src="js/data/content/fiz-12.js"></script>
-  <script src="js/data/content/kim-12.js"></script>
-  <script src="js/data/content/biy-12.js"></script>
-  <script src="js/data/content/edb-12.js"></script>
-  <script src="js/data/content/ink-12.js"></script>
-  <script src="js/data/content/cog-12.js"></script>
-  <script src="js/data/content/fel-12.js"></script>
-  <script src="js/data/content/din-12.js"></script>
-  <script src="js/data/content/ing-12.js"></script>
+  <!-- Konu anlatımı: açılışta yalnızca ünite/kazanım iskeleti; anlatım dosyaları (js/data/content/*.js) ders açılınca yüklenir -->
+  <script src="js/data/content-index.js"></script>
   <script src="js/data/curriculum-data.js"></script>
   <script src="js/data/elements.js"></script>
   <script src="js/data/game-data.js"></script>
@@ -397,8 +363,6 @@
   <script src="js/modules/labs-biyoloji.js"></script>
   <script src="js/modules/labs3d-temel.js"></script>
   <script src="js/modules/labs3d-fizik.js"></script>
-  <script src="js/modules/holo-ogretmen.js"></script>
-  <script src="js/modules/holo-modeller.js"></script>
   <script src="js/modules/kure.js"></script>
   <script src="js/modules/yazili.js"></script>
   <script src="js/modules/formuller.js"></script>
@@ -421,13 +385,15 @@
   <script src="js/modules/cevre-model.js"></script>
   <script src="js/modules/cevre.js"></script>
   <script src="js/modules/kavram-model.js"></script>
-  <script src="js/modules/kavram-holo.js"></script>
   <script src="js/modules/kavram.js"></script>
   <script src="js/modules/focus.js"></script>
   <script src="js/modules/reminders.js"></script>
   <script src="js/modules/widget.js"></script>
   <script src="js/modules/study-recommender.js"></script>
   <script src="js/modules/today.js"></script>
+  <script src="js/modules/review-queue.js"></script>
+  <script src="js/modules/sinif-modu.js"></script>
+  <script src="js/modules/karne.js"></script>
   <script src="js/modules/tour.js"></script>
   <script src="js/modules/tercih.js"></script>
   <script src="js/data/tarih-olaylar.js"></script>

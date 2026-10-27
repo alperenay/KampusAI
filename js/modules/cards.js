@@ -98,6 +98,7 @@
 
   /** Desteye kazanım ekle: kartlarını "yeni" olarak kaydet (var olanlara dokunmaz) */
   async function addKey(key) {
+    if (App.content) await App.content.ensureKeys([key]).catch(() => {});
     const cards = buildFor(key);
     const have = new Map((await rows()).filter((r) => r.key === key).map((r) => [r.id, r]));
     const now = new Date().toISOString();
@@ -154,7 +155,8 @@
     // Tek konu çalışılırken o konunun tüm yeni kartları gelir; genel tekrarda günlük sınır uygulanır
     const nNew = onlyKey ? fresh.length : st.newLeft;
     const list = due.concat(fresh.slice(0, nNew)).slice(0, onlyKey ? 999 : SESSION_MAX);
-    // Kart içeriğini ekle; içeriği kaybolmuş kartlar atlanır
+    // Kart içeriğini ekle; içeriği kaybolmuş kartlar atlanır (anlatımlar isteğe bağlı yüklenir: önce ilgili dersler)
+    if (App.content) await App.content.ensureKeys(list.map((r) => r.key)).catch(() => {});
     const built = new Map();
     const out = [];
     for (const r of list) {

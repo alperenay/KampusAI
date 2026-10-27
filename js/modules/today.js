@@ -81,7 +81,11 @@
     const flow = tb.blocks.length ? '<section class="card tday-card"><h3>' + App.icon("calendar") + esc(t("today.flow")) + '</h3><ol class="tday-flow">' +
       tb.blocks.map((b) => blockRow(b, b === tb.current ? "now" : toMinutes(b.end) <= n ? "done" : "later")).join("") + "</ol></section>" : "";
 
-    const review = '<a class="card tday-stat" href="#/yanlislar">' + App.icon("bookmark") +
+    // v1.42: birleşik tekrar kuyruğu (kart + yanlış + test + düzeltilen bilgi); yoksa eski yanlış sayısı
+    const rq = App.reviewQueue ? await App.reviewQueue.summary().catch(() => null) : null;
+    const review = rq ? '<a class="card tday-stat" href="#/tekrar">' + App.icon("refresh") +
+      '<span class="tday-stat__n">' + rq.total + '</span><span class="tday-stat__l">' + esc(rq.total ? t("today.rqDue") : t("today.rqNone")) + "</span></a>"
+      : '<a class="card tday-stat" href="#/yanlislar">' + App.icon("bookmark") +
       '<span class="tday-stat__n">' + mc.due + '</span><span class="tday-stat__l">' + esc(mc.due ? t("today.reviewDue") : t("today.reviewNone")) + "</span></a>";
     const focusStat = '<a class="card tday-stat" href="#/odak">' + App.icon("timer") +
       '<span class="tday-stat__n">' + esc(durationText(focus.today) || "0") + '</span><span class="tday-stat__l">' + esc(t("today.focusToday", { streak: focus.streak })) + "</span></a>";

@@ -97,6 +97,7 @@
       '<div class="page report-page">' +
         '<div class="page-head"><div><h1>' + esc(T("Haftalık Gelişim Raporu", "Weekly Progress Report")) + "</h1><p>" + esc(rangeTxt) + "</p></div>" +
           '<div class="page-head__actions no-print">' +
+            '<a class="btn" href="#/karne">' + App.icon("chart") + esc(T("Üstbiliş karnesi (A4)", "Metacognition report (A4)")) + "</a>" +
             '<button class="btn" type="button" id="repPrint">' + App.icon("download") + esc(T("Yazdır / PDF", "Print / PDF")) + "</button>" +
             '<button class="btn" type="button" id="repShare">' + App.icon("send") + esc(T("Paylaş", "Share")) + "</button>" +
             '<button class="btn btn--primary" type="button" id="repTeacher">' + App.icon("grad") + esc(T("Öğretmenime gönder", "Send to my teacher")) + "</button>" +

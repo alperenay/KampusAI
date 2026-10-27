@@ -158,6 +158,19 @@
   }
 
   const isDue = (m) => !m.mastered && Date.parse(m.nextAt || 0) <= Date.now();
+  /** Tekrar sonucu (Bildim / Tekrar sor) — bu sayfa ve birleşik tekrar kuyruğu (#/tekrar) aynı kuralı kullanır */
+  async function review(m, knew) {
+    if (knew) {
+      m.reviews = (m.reviews || 0) + 1;
+      if (m.reviews >= STEPS.length) m.mastered = true;
+      else m.nextAt = new Date(Date.now() + STEPS[m.reviews] * DAY).toISOString();
+    } else {
+      m.reviews = 0; m.mastered = false; m.nextAt = new Date(Date.now() + DAY).toISOString();
+    }
+    m.lastReviewAt = new Date().toISOString();          // çalışma serisi için
+    await App.db.put("mistakes", m);
+    return m;
+  }
 
   async function counts() {
     const all = await App.db.getAll("mistakes");
@@ -282,18 +295,13 @@
         await App.db.remove("mistakes", m.id); card.remove(); App.ui.toast(t("mis.deleted")); return;
       }
       if (a === "knew") {
-        m.reviews = (m.reviews || 0) + 1;
-        if (m.reviews >= STEPS.length) m.mastered = true;
-        else m.nextAt = new Date(Date.now() + STEPS[m.reviews] * DAY).toISOString();
-        m.lastReviewAt = new Date().toISOString();          // çalışma serisi için
-        await App.db.put("mistakes", m);
+        await review(m, true);
         App.ui.toast(m.mastered ? t("mis.toastMastered") : t("mis.toastNext", { n: STEPS[m.reviews] }));
         if (filter === "due") card.remove(); else { card.outerHTML = cardHtml(m, false); App.hydrateIcons(view); }
         return;
       }
       if (a === "again") {
-        m.reviews = 0; m.mastered = false; m.nextAt = new Date(Date.now() + DAY).toISOString(); m.lastReviewAt = new Date().toISOString();
-        await App.db.put("mistakes", m);
+        await review(m, false);
         App.ui.toast(t("mis.toastAgain"));
         if (filter === "due") card.remove(); else { card.outerHTML = cardHtml(m, false); App.hydrateIcons(view); }
         return;
@@ -342,5 +350,5 @@
   }
 
   App.router.register("yanlislar", render);
-  App.mistakes = { add, counts, isDue, errorStats, classifyPending, ERR, ERR_TYPES };
+  App.mistakes = { add, counts, isDue, review, STEPS, errorStats, classifyPending, ERR, ERR_TYPES };
 })();

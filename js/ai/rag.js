@@ -189,6 +189,8 @@
     const engaged = new Set();
     [data.progress, data.quizzes, data.explains, data.notes].forEach((list) => (list || []).forEach((r) => engaged.add(r.key || r.id)));
     (data.mistakes || []).forEach((m) => { if (m.key) engaged.add(m.key); });
+    // v1.42: yalnızca ilgilenilen derslerin anlatımlarını yükle (hepsi değil)
+    if (App.content) await App.content.ensureKeys([...engaged]).catch(() => {});
     C().grades.forEach((g) => g.subjects.forEach((s) => s.units.forEach((u) => u.outcomes.forEach((o) => {
       if (!o.content) return;
       const key = [g.id, s.id, u.id, o.id].join("/");

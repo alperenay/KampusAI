@@ -8,7 +8,7 @@ const h = await uiHarness(), results = [];
 try {
   const { page } = await h.device();
   const info = await page.evaluate((bank) => {
-    const first = App.learnmap.allOutcomes().find((it) => it.outcome.content);
+    const first = App.learnmap.allOutcomes().find((it) => it.outcome.content || it.outcome.curatedContent);
     App.ai.generate = async () => ({ model: "smoke-fixture", data: { questions: bank } });
     return { key: first.key, tools: App.hub.TOOLS.map((x) => x[0]), labs: Object.keys(App.labs.LABS), games: Object.keys(App.games.GAMES) };
   }, researchBank(30));

@@ -18,7 +18,8 @@
     const done = new Set(progress.filter((p) => p.done).map((p) => p.id));
     const counts = new Map();
     mistakes.filter((m) => !m.mastered && m.key).forEach((m) => counts.set(m.key, (counts.get(m.key) || 0) + 1));
-    return items.filter((it) => it.outcome.content).map((it) => {
+    // Hazır anlatımı olan (henüz yüklenmemiş olsa da: curatedContent) ya da yapay zekâyla hazırlanmış kazanımlar
+    return items.filter((it) => it.outcome.content || it.outcome.curatedContent).map((it) => {
       const q = last.get(it.key), m = mastery.get(it.key);
       const accuracy = q ? (q.metacognition ? Math.min(q.metacognition.independentAccuracy, q.metacognition.learningEvidence == null ? 1 : q.metacognition.learningEvidence) : q.correct / q.total) : null;
       const today = q && dayKey(q.date) === dayKey(now);
@@ -51,7 +52,8 @@
     if (!pick) return { minutes, complete: true };
     // Kök eksik biliniyorsa doğrudan ön koşulu çalıştır; öneri için AI çağırma.
     const root = App.roots.rootFor ? await App.roots.rootFor(pick.key).catch(() => null) : null;
-    if (root && App.lessons.find(root.key) && App.lessons.find(root.key).outcome.content) {
+    const rf = root && App.lessons.find(root.key);
+    if (rf && (rf.outcome.content || rf.outcome.curatedContent)) {
       pick.key = root.key; pick.reason = "study.root"; pick.review = true;
     }
     return Object.assign(pick, { minutes, action: pick.review || minutes < 15 ? "review" : "quiz" });

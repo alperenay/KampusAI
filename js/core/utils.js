@@ -102,5 +102,18 @@ App.utils = (function () {
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
 
-  return { esc, $, $$, uid, pad, todayISO, fmtDate, fmtDateTime, round, fmtNum, toMinutes, durationText, weekdayIndex, debounce, initials, downloadText };
+  /** Betiği bir kez, isteğe bağlı yükler (v1.42: ağır modüller açılışta değil ilk kullanımda gelir) */
+  const scripts = {};
+  function loadScript(src) {
+    if (!scripts[src]) scripts[src] = new Promise((res, rej) => {
+      const sc = document.createElement("script");
+      sc.src = src; sc.async = true;
+      sc.onload = res;
+      sc.onerror = () => { delete scripts[src]; sc.remove(); rej(new Error("Yüklenemedi: " + src)); };
+      document.head.appendChild(sc);
+    });
+    return scripts[src];
+  }
+
+  return { esc, $, $$, uid, pad, todayISO, fmtDate, fmtDateTime, round, fmtNum, toMinutes, durationText, weekdayIndex, debounce, initials, downloadText, loadScript };
 })();

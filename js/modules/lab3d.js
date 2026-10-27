@@ -24,6 +24,27 @@
     });
     return loading;
   }
+  /* Hologram modülleri (v1.42): açılışta yüklenmez. #/modeller sayfası ve konu sayfasındaki 3B model kartı
+     holo-modeller.js'i, sesli asistan/konuşma pratiği holo-ogretmen.js'i, kavram sohbeti kavram-holo.js'i ilk
+     kullanımda yükler. Gerçek modül yüklenince bu vekillerin yerini alır. */
+  const HOLO = { modeller: "js/modules/holo-modeller.js", ogretmen: "js/modules/holo-ogretmen.js", kavram: "js/modules/kavram-holo.js" };
+  const loadHolo = (k) => App.utils.loadScript(HOLO[k]);
+  if (App.router && App.router.need) App.router.need((r) => (r.name === "modeller" && !App.modeller ? loadHolo("modeller").catch(() => {}) : null));
+  if (!App.holoTeacher) App.holoTeacher = {
+    lazy: true,
+    supported: () => supported(),
+    async attach(host, opts) { await loadHolo("ogretmen"); return App.holoTeacher.attach(host, opts); },
+    detach() { /* henüz hiçbir şey bağlanmadı */ },
+    panoHtml: () => "",
+    matchLab: () => null
+  };
+  if (!App.kavramHolo) App.kavramHolo = {
+    lazy: true,
+    supported: () => supported(),
+    async load() { await loadHolo("kavram"); return App.kavramHolo.load(); },
+    create() { throw new Error("kavram-holo yüklenmedi"); }
+  };
+
   // AR çekirdeği (kâğıda sabitleme, v1.33): yalnızca AR açılınca yüklenir
   let arcP = null;
   function loadArCore() {

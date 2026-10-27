@@ -7,7 +7,8 @@
    ========================================================= */
 (function () {
   const routes = {};
-  let current = null;
+  const needs = [];    // sayfa çizilmeden önce beklenecek yüklemeler (v1.42: isteğe bağlı ders içeriği)
+  let current = null, seq = 0;
 
   function parse() {
     const hash = (location.hash || "#/").replace(/^#\/?/, "");
@@ -17,7 +18,6 @@
 
   async function render() {
     const r = parse();
-    const handler = routes[r.name] || routes[""];
     const view = document.getElementById("view");
     const main = document.getElementById("main");
 
@@ -29,7 +29,18 @@
     setActiveNav(r);
     App.setTitle("");
 
+    const my = ++seq;
     try {
+      const waits = needs.map((fn) => { try { return fn(r); } catch (e) { return null; } }).filter((p) => p && p.then);
+      if (waits.length) {
+        // Yükleme kısa sürmezse boş sayfa yerine yükleniyor göstergesi
+        const tm = setTimeout(() => { if (my === seq) view.innerHTML = '<div class="page"><div class="generation-skeleton" aria-busy="true"><i></i><i></i><i></i></div></div>'; }, 120);
+        await Promise.all(waits).catch(() => {});
+        clearTimeout(tm);
+        if (my !== seq) return;           // bu arada başka sayfaya geçildi
+      }
+      // Sayfa modülü de isteğe bağlı yüklenmiş olabilir (ör. #/modeller): işleyici beklemeden sonra seçilir
+      const handler = routes[r.name] || routes[""];
       const cleanup = await handler(view, r.params, r);
       if (typeof cleanup === "function") current.cleanup = cleanup;
     } catch (e) {
@@ -60,6 +71,8 @@
 
   App.router = {
     register(name, handler) { routes[name] = handler; },
+    /** fn(route) bir Promise döndürürse sayfa ondan sonra çizilir (ör. ders içeriğini isteğe bağlı yükleme) */
+    need(fn) { needs.push(fn); },
     start() {
       window.addEventListener("hashchange", render);
       render();

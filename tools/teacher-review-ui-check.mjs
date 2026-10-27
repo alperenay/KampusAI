@@ -17,7 +17,7 @@ try {
   const bank = researchBank(30).map((q) => { const out = { ...q }; delete out.reasonOptions; delete out.reasonAnswer; return out; });
   const key = await s.evaluate((bank) => {
     App.ai.generate = async () => ({ model: "fixture", data: { questions: bank } });
-    const it = App.learnmap.allOutcomes().find((x) => x.outcome.content); App.router.go("test/" + it.key); return it.key;
+    const it = App.learnmap.allOutcomes().find((x) => x.outcome.content || x.outcome.curatedContent); App.router.go("test/" + it.key); return it.key;
   }, bank);
   await s.locator(".quiz-finish").waitFor();
   for (let i = 0; i < 10; i++) {

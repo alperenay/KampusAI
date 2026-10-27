@@ -53,7 +53,7 @@ try {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.locator(".study-card").screenshot({ path: path.join(qa, "home-mobile.png"), animations: "disabled" });
   const key = await page.evaluate(() => {
-    const item = App.learnmap.allOutcomes().find((x) => x.outcome.content);
+    const item = App.learnmap.allOutcomes().find((x) => x.outcome.content || x.outcome.curatedContent);
     App.ai.generate = async () => ({ model: "test-double", data: { questions: Array.from({ length: 30 }, (_, i) => ({
       q: "Test sorusu " + (i + 1) + ": $x + 1 = 2$ ise $x$ kaçtır?", options: ["1", "2", "3", "4", "5"], answer: 0,
       difficulty: 1 + Math.floor(i / 10), explain: "$x = 1$."

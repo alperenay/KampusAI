@@ -88,14 +88,14 @@
       const firstPer = {};
       items.forEach((it) => {
         const sid = it.subject.id;
-        if (firstPer[sid] || !it.outcome.content) return;
+        if (firstPer[sid] || !(it.outcome.content || it.outcome.curatedContent)) return;
         const st = (M.get(it.key) || { status: "unknown" }).status;
         if (st !== "strong") firstPer[sid] = { key: it.key, sid, status: st, score: (w[sid] || 0) * NEED[st] };
       });
       // Zayıf olarak işaretli kazanımlar sırayı beklemeden öne geçer
       items.forEach((it) => {
         const m = M.get(it.key);
-        if (m && m.status === "weak" && it.outcome.content) {
+        if (m && m.status === "weak" && (it.outcome.content || it.outcome.curatedContent)) {
           const sc = (w[it.subject.id] || 0) * NEED.weak * 1.15;
           const cur = firstPer[it.subject.id];
           if (!cur || cur.score < sc) firstPer[it.subject.id] = { key: it.key, sid: it.subject.id, status: "weak", score: sc };

@@ -251,6 +251,8 @@
     const cardsCard = ct && App.cards ? await App.cards.cardHtml(key).catch(() => "") : "";
     const fmCard = App.formuller ? await App.formuller.cardHtml(key).catch(() => "") : "";
     const ksCard = subject.id === "ingilizce" && App.konusma ? App.konusma.cardHtml(unit) : "";
+    // 3B modeller yalnızca model bulunan derslerde (biyoloji/kimya/coğrafya) ve gerektiğinde yüklenir (v1.42)
+    if (!App.modeller && ["biyoloji", "kimya", "cografya"].includes(subject.id)) await App.utils.loadScript("js/modules/holo-modeller.js").catch(() => {});
     const labCards = ksCard + fmCard + (App.labs ? App.labs.sectionHtml(key) : "") + (App.modeller ? App.modeller.cardHtml(key) : "");
     // Okunabilir bölümlerde "Dinle" düğmesi (erişilebilirlik: sesli okuma)
     const section = (icon, title, inner, listen) =>

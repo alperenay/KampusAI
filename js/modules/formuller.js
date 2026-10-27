@@ -25,7 +25,7 @@
   const stars = () => new Set(App.prefs.get("fmStar", []) || []);
   const idOf = (f) => f.g + "/" + f.d + "/" + f.k + "/" + f.ad;
   const unitOf = (f) => {
-    const units = (App.data.content || {})[f.g + "/" + f.d] || [];
+    const s = App.data.curriculum.findSubject(f.g, f.d), units = (s && s.units) || [];
     const u = units.find((x) => x.id === f.k.split("/")[0]);
     return u ? App.L(u.name).replace(/^\d+\.\s*(Tema|Ünite|Unit|Theme)\s*(\([A-Z]\))?:\s*/, "") : "";
   };
