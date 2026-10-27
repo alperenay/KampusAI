@@ -5,6 +5,9 @@
    ========================================================= */
 App.locales = App.locales || {};
 App.locales.tr = {
+  "nav.transfer": "Bilgiyi Başka Yerde Kullan",
+  "nav.errorHunt": "Çözümdeki Hatayı Bul",
+  "nav.guide": "Kullanım Rehberi",
   /* Teacher review and progressive generation */
   "review.stats": "Özgün adaptif skor: {score}/100 · Kanıt ağırlıklı skor: {support}/100 · Toplam süre: {seconds} sn",
   "review.title": "Öğretmen gerekçe değerlendirmesi",

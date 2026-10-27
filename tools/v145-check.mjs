@@ -1,4 +1,4 @@
-// v1.44 sınaması: sensör laboratuvarı algoritmaları (sentetik sensör verisiyle), sesli grafik analizi,
+// v1.45 sınaması: sensör laboratuvarı algoritmaları (sentetik sensör verisiyle), sesli grafik analizi,
 // düello puanlama/zamanlama ve QR paketleri, Bilgi Evreni yerleşimi. Ağ, kamera ve mikrofon gerekmez.
 import fs from "node:fs";
 import path from "node:path";
@@ -110,4 +110,4 @@ await check("Bilgi Evreni: yerleşim, ön koşul kenarları ve harita yoksa müf
   eq(EV.statusOf({ status: "strong" }), "strong"); eq(EV.statusOf(undefined), "unknown");
 });
 
-console.log(checks + " v1.44 sınaması geçti (sensör, sesli grafik, düello, bilgi evreni).");
+console.log(checks + " v1.45 sınaması geçti (sensör, sesli grafik, düello, bilgi evreni).");

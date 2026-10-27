@@ -136,7 +136,7 @@
     }[v];
     return '<section class="card chk-result" id="chkResult">' +
       '<div class="chk-banner chk--' + banner[0] + '">' + App.icon(banner[1]) + "<div><b>" + esc(banner[2]) + "</b><p>" + esc(banner[3]) + "</p></div></div>" +
-      // Düzeltme turu (v1.44): aynı soruda kaçıncı deneme, önceki denemede hata nerede
+      // Düzeltme turu (v1.45): aynı soruda kaçıncı deneme, önceki denemede hata nerede
       (rec.attempt > 1 ? '<p class="chk-attempt">' + App.icon("refresh") + esc(t("chk.attempt", { n: rec.attempt }) + (rec.prevFirstWrong ? " · " + t("chk.prevWrong", { n: rec.prevFirstWrong }) : "") + (v === "correct" ? " · " + t("chk.fixedNow") : "")) + "</p>" : "") +
       '<div class="chk-grid">' +
         '<figure class="chk-photo"><img src="' + esc(rec.image) + '" alt="' + esc(t("chk.yourPhoto")) + '"><figcaption>' + esc(t("chk.yourPhoto")) + "</figcaption></figure>" +

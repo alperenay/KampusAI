@@ -1,11 +1,11 @@
 {
   "name": "kampusai-web",
   "private": true,
-  "version": "1.44.0",
+  "version": "1.45.0",
   "scripts": {
     "build": "node tools/build-web.mjs dist/web",
     "lint": "node tools/syntax-check.mjs && node tools/compat-check.mjs",
-    "test": "node tools/study-check.mjs && node tools/research-check.mjs && node tools/teacher-review-check.mjs && node tools/retired-model-check.mjs && node tools/ar-check.mjs && node tools/cevre-check.mjs && node tools/kavram-check.mjs && node tools/content-check.mjs && node tools/build-content-index.mjs --check && node tools/v142-check.mjs && node tools/v144-check.mjs",
+    "test": "node tools/study-check.mjs && node tools/research-check.mjs && node tools/teacher-review-check.mjs && node tools/retired-model-check.mjs && node tools/ar-check.mjs && node tools/cevre-check.mjs && node tools/kavram-check.mjs && node tools/content-check.mjs && node tools/build-content-index.mjs --check && node tools/v142-check.mjs && node tools/practice-check.mjs && node tools/v145-check.mjs",
     "test:study": "node tools/study-check.mjs",
     "test:study-ui": "node tools/study-ui-check.mjs",
     "test:research": "node tools/research-check.mjs",
@@ -16,7 +16,10 @@
     "test:all-features-ui": "node tools/all-features-ui-check.mjs",
     "test:v142": "node tools/v142-check.mjs",
     "test:v142-ui": "node tools/v142-ui-check.mjs",
-    "test:v144": "node tools/v144-check.mjs",
-    "test:v144-ui": "node tools/v144-ui-check.mjs"
+    "test:practice": "node tools/practice-check.mjs",
+    "test:practice-ui": "node tools/practice-ui-check.mjs",
+    "test:v145": "node tools/v145-check.mjs",
+    "test:v145-ui": "node tools/v145-ui-check.mjs"
   }
 }
+

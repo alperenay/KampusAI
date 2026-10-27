@@ -1,5 +1,5 @@
 /* =========================================================
-   tour.js — ilk açılışta canlı tanıtım turu (20 adım)
+   tour.js — bölümlere ayrılmış canlı ilk kullanım rehberi
 
    Uygulamayı ilk kez açan kişiye gerçek sayfalar üzerinde gezinerek her
    özelliği gösterir: ilgili sayfaya geçer, öğeyi ışıkla vurgular, yanında
@@ -37,6 +37,7 @@
     { id: "data", route: "#/", target: '#composer [data-act="data"]' },
     { id: "socratic", route: "#/", target: '#composer [data-act="socratic"]' },
     { id: "today", route: "#/bugun", target: ".tday-now" },
+    { id: "recommend", route: "#/bugun", target: ".study-card, .page", title: ["Bugün ne çalışmalıyım?", "What should I study today?"], text: ["Önerilen görevi açarak başla. Öneriler geçmiş çalışmana dayanır; programını kendi zamanına göre değiştirebilirsin.", "Start with the recommended task. Suggestions use your history; adjust the plan to your time."] },
     { id: "aiPlan", route: "#/program/benim", target: "#aiPlan" },
     { id: "roots", route: "#/kok", target: ".root-how, .root-map" },
     { id: "remind", route: "#/program/benim", target: "#remindBtn", action: "remind" },
@@ -44,14 +45,49 @@
     { id: "lesson", route: () => "#/konular/" + sampleOutcome(), target: ".lesson .lesson__section" },
     { id: "quiz", route: () => "#/konular/" + sampleOutcome(), target: ".quiz-card:not(.fey-card):not(.chk-card)" },
     { id: "feynman", route: () => "#/konular/" + sampleOutcome(), target: ".fey-card" },
+    { id: "transfer", route: "#/aktarim", target: ".pr-intro", title: ["Bilgiyi başka yerde kullan", "Apply it elsewhere"], text: ["Altı kavramdan birini seç. Aynı bilgiyi denklem, grafik/tablo ve günlük yaşam problemiyle kullan. Üç görevdeki ilk yanıtlarını bağlama göre gör.", "Choose one of six concepts. Apply it to an equation, visual data and an everyday problem. Review first responses by context."] },
+    { id: "errorHunt", route: "#/hata-avcisi", target: ".pr-intro", title: ["Çözümdeki hatayı bul", "Find the solution error"], text: ["Kasıtlı hata içeren örnekte ilk yanlış adımı ve nedenini seç. Açıklama, doğru çözümü ve sonraki adımların neden etkilendiğini gösterir.", "Select the first wrong step and its reason in an intentionally flawed example. The explanation shows the correction."] },
+    { id: "cards", route: "#/kartlar", target: ".cards-start, .page", title: ["Hap kartlarla düzenli tekrar", "Review with flashcards"], text: ["Deste boşsa bir konudan kart ekle. Çalışmaya başla ile hatırla, kartı çevir ve kendini değerlendir. Zamanı gelen kartlar yeniden karşına çıkar.", "Add a topic if the deck is empty. Start studying, recall, flip and rate yourself. Due cards return for review."] },
+    { id: "reviewQueue", route: "#/tekrar", target: ".page", title: ["Bütün tekrarların tek listede", "One review queue"], text: ["Geciken yanlışlar, kartlar, test konuları ve düzeltilen AI bilgileri burada toplanır. Bir satırdaki eylemi açıp kaldığın yerden devam et.", "Due mistakes, cards, quiz topics and corrected AI information appear here. Open a row to continue."] },
+    { id: "mistakes", route: "#/yanlislar", target: ".mis-bar" },
+    { id: "solutionCheck", route: "#/kontrol", target: ".page", title: ["Kendi çözümünü kontrol et", "Check your own solution"], text: ["Çözümünü yaz, çiz veya fotoğraf ekle. AI geri bildirimini kaynakla karşılaştır; bu araç kesin doğruluk garantisi vermez.", "Type, draw or photograph your solution. Check AI feedback against a source; accuracy is not guaranteed."] },
+    { id: "labs", route: "#/lab", target: ".page", title: ["Deney yaparak keşfet", "Explore through experiments"], text: ["Deney seç, parametreyi değiştir ve gözlem yap. Kamera/AR isteğe bağlıdır; ekran kontrolleri de kullanılabilir.", "Choose a lab, change a parameter and observe. Camera/AR is optional; screen controls are available."] },
+    { id: "models", route: "#/modeller", target: ".page", title: ["3B modeller", "3D models"], text: ["Hücre, atom veya güneş sistemi gibi modelleri döndür, etiketleri incele. AR ve el takibi cihaz desteğine bağlıdır.", "Rotate models such as cells, atoms and the solar system. AR and hand tracking depend on device support."] },
+    { id: "atlas", route: "#/atlas", target: ".page", title: ["Haritayla öğren", "Learn with maps"], text: ["Türkiye ve dünya haritasında keşif yap. Sonra kısa sınamayla konumları ve bilgileri hatırlayıp hatırlamadığını kontrol et.", "Explore Turkey and world maps, then test your recall of places and facts."] },
+    { id: "globe", route: "#/kure", target: ".page", title: ["Dünyayı katmanlarla incele", "Explore the globe in layers"], text: ["Küreyi döndür; iklim, levha ve saat dilimi gibi katmanları incele. Yakınlaştırma kontrolleri dokunmatik ekranda da kullanılabilir.", "Rotate the globe and inspect layers such as climate, plates and time zones. Zoom controls also work on touchscreens."] },
+    { id: "timeline", route: "#/zaman", target: ".page", title: ["Tarih zaman çizelgesi", "History timeline"], text: ["Bir dönemi ve olayı seç; zamanı, yeri ve bağlantıları birlikte incele. Sorularla kendini sına.", "Choose a period and event; explore dates, places and connections, then test yourself."] },
+    { id: "formulas", route: "#/formuller", target: ".page", title: ["Formül defteri", "Formula notebook"], text: ["Formülü ara; yalnız eşitliğini değil, ne zaman kullanılacağını da oku. İlgili konuya tek dokunuşla geç.", "Find a formula and read when to use it. Open its lesson with one tap."] },
+    { id: "video", route: "#/video", target: ".page", title: ["Videodan çalışma", "Study from a video"], text: ["Video veya transkriptle not, kart ve soru hazırla. AI ile üretilen notları kaynak içerikle karşılaştır.", "Use a video or transcript to make notes, cards and questions. Verify generated notes against the source."] },
+    { id: "podcast", route: "#/podcast", target: ".page", title: ["Dinleyerek tekrar", "Audio revision"], text: ["Bir konuyu sesli çalışma içeriğine dönüştür. Dinlerken duraklatıp not al; ses üretimi için uygun sağlayıcı gerekir.", "Turn a topic into audio study. Pause to take notes; audio generation requires a suitable provider."] },
+    { id: "speaking", route: "#/konusma", target: ".page", title: ["İngilizce konuşma pratiği", "English speaking practice"], text: ["Konu seçip konuş veya metinle katıl. Mikrofon ve ses hizmeti gereksinimlerini kontrol et, geri bildirimle yeniden dene.", "Choose a topic and speak or type. Check microphone and speech-service requirements, then retry with feedback."] },
+    { id: "concepts", route: "#/kavram", target: ".page", title: ["Kavramla konuş", "Talk to a concept"], text: ["Kavramı seç ve merak ettiğin soruyu sor. Canlandırma öğrenmeyi destekleyen bir anlatım aracıdır; yanıtları doğrulamayı sürdür.", "Choose a concept and ask a question. The character is an explanation aid; keep checking its answers."] },
+    { id: "around", route: "#/cevre", target: ".page", title: ["Çevrendeki fiziği keşfet", "Explore physics around you"], text: ["Bir sahnenin fotoğrafından fizik problemi ve deney önerisi oluştur. Modelin varsayımlarını ve birimlerini kontrol et.", "Use a scene photo for a physics problem and lab suggestion. Check assumptions and units."] },
+    { id: "journey", route: "#/yolculuk", target: ".page", title: ["Görevler ve oyunlar", "Quests and games"], text: ["YKS Yolculuğu ve kısa ders oyunlarıyla katılımını sürdür. Puanların yanında öğrenmeni sorularla ayrıca kontrol et.", "Stay engaged with curriculum quests and subject games. Check learning with questions alongside points."] },
     { id: "exams", route: "#/denemeler", target: 'a[href^="#/denemeler/yeni"]' },
     { id: "goals", route: "#/denemeler", target: ".goal-card" },
-    { id: "mistakes", route: "#/yanlislar", target: ".mis-bar" },
     { id: "focus", route: "#/odak", target: ".focus__ring" },
+    { id: "report", route: "#/rapor", target: ".page", title: ["Gelişimini takip et", "Track your progress"], text: ["Haftalık süre, test ve konu özetini incele. Eksik verilerin bir sonucu değiştirebileceğini göz önünde bulundur.", "Review weekly time, quizzes and topics. Missing records can affect summaries."] },
+    { id: "reportCard", route: "#/karne", target: ".page", title: ["Haftalık üstbiliş karnesi", "Weekly metacognition report"], text: ["Haftanı seçip tek sayfalık karne al. Eminlik ve başarı göstergeleri pedagojik işaretlerdir; öğrenciye ilişkin bir teşhis değildir.", "Choose a week and get a one-page report. Confidence and accuracy indicators are educational signals, not diagnoses."] },
+    { id: "classroom", route: "#/sinif-modu", target: ".page", title: ["İnternetsiz QR ödev aktarımı", "Offline QR assignments"], text: ["Öğretmen ödev QR'si paylaşır; öğrenci çözer ve sonuç QR'sini geri verir. Kamera kullanılamıyorsa kod yapıştırma alanını aç.", "Teachers share assignment QR codes; students solve and return results. Paste codes if the camera is unavailable."] },
+    { id: "teacher", route: "#/degerlendirme", target: ".page", title: ["Öğretmen gerekçe değerlendirmesi", "Teacher reasoning review"], text: ["Öğrencinin gerekçesini üç ölçütle değerlendir. Geri bildirimi QR veya kodla geri gönder; araştırma kayıtları ayrı korunur.", "Review reasoning with three rubric criteria. Return feedback by QR or code; research records remain separate."] },
+    { id: "research", route: "#/arastirma", target: ".page", title: ["Araştırma modu", "Research mode"], text: ["Öğretmen incelemesinden geçmiş bir bankayla ipucu veya adaptif akışı karşılaştır. Grupları ve sınırlılıkları kaydet; sonuçları genellemeden önce araştırma tasarımını değerlendir.", "Compare hints or adaptive flow with a reviewed bank. Record groups and limitations and evaluate the study design before generalising."] },
+    { id: "discover", route: "#/araclar", target: "#hubQ", title: ["Aradığın özelliği hemen bul", "Find any feature"], text: ["Tüm özelliklerde ada veya amaca göre ara. Sık kullandıklarını yıldızla sabitle. Her ekranın üstündeki kullanım ipucunu açabilirsin.", "Search all features by name or purpose and pin favourites. Open the usage tip at the top of each tool."] },
     { id: "sync", route: "#/", target: "#setSync, #setAi", enter: () => App.modules.settings.open(), leave: closeModals },
     { id: "a11y", route: "#/", target: "#a11yBtn" },
+    { id: "backup", route: "#/rehber", target: ".page", title: ["Verilerini koru ve geri dön", "Protect your data and return"], text: ["Ayarlar'dan yedek al; eşitleme isteğe bağlıdır. Kullanım Rehberi üzerinden bu turun istediğin bölümünü yeniden açabilirsin.", "Back up from Settings; sync is optional. Reopen any tour section from the User Guide."] },
     { id: "done", center: true, route: "#/" }
   ];
+  const SECTIONS = [
+    ["welcome", "Başlangıç ve asistan", "Getting started", "Soru sorma, fotoğraf ve kaynak kullanımı.", "Questions, photos and sources."],
+    ["today", "Çalışmanı planla", "Plan your study", "Bugün, kişisel program ve temel eksikler.", "Today, personal plans and prerequisites."],
+    ["topics", "Konuyu öğren", "Learn a topic", "Konu anlatımı, test, gerekçe ve açıklama.", "Lessons, quizzes, reasoning and self-explanation."],
+    ["transfer", "Bilgiyi uygula", "Apply your knowledge", "Yeni pratikler, kartlar, yanlışlar ve tekrar.", "New practice, cards, mistakes and review."],
+    ["labs", "Keşfet ve deney yap", "Explore and experiment", "Laboratuvar, modeller, haritalar, ses ve video.", "Labs, models, maps, audio and video."],
+    ["exams", "Gelişimini izle", "Track progress", "Denemeler, hedefler, odak ve karne.", "Exams, goals, focus and reports."],
+    ["classroom", "Öğretmen ve araştırma", "Teachers and research", "QR aktarımı, gerekçe değerlendirme ve deneyler.", "QR transfer, reasoning review and experiments."],
+    ["discover", "Kısayollar ve güvenli kullanım", "Shortcuts and safe use", "Arama, eşitleme, erişilebilirlik ve yedekleme.", "Search, sync, accessibility and backups."]
+  ].map((g) => ({ step: STEPS.findIndex((s) => s.id === g[0]), tr: g[1], en: g[2], descTr: g[3], descEn: g[4] }));
+  const T = (pair) => pair[App.i18n.lang === "en" ? 1 : 0];
 
   let el = null, idx = 0, raf = 0, active = false, token = 0, curTarget = null, lastRect = "";
 
@@ -112,22 +148,32 @@
       '<div class="tour__card" role="document">' +
         '<div class="tour__top"><span class="tour__count"></span><button class="tour__skip" type="button" data-tour="skip"></button></div>' +
         '<div class="tour__progress"><span></span></div>' +
+        '<div class="tour__jump"><label for="tourSection">' + T(["İstediğin bölüme geç", "Jump to a section"]) + '</label><select class="select" id="tourSection">' + SECTIONS.map((s) => '<option value="' + s.step + '">' + esc(T([s.tr, s.en])) + '</option>').join("") + '</select></div>' +
         '<div class="tour__body"></div>' +
         '<div class="tour__nav"><button class="btn btn--ghost btn--sm" type="button" data-tour="back"></button>' +
           '<button class="btn btn--primary btn--sm" type="button" data-tour="next"></button></div>' +
       "</div>";
     document.body.appendChild(el);
+    el.setAttribute("aria-label", T(["KampüsAI tanıtım turu", "KampüsAI guided tour"]));
+    el.querySelector('#tourSection').addEventListener('change', (e) => go(Number(e.target.value)));
     el.addEventListener("click", onClick);
     document.addEventListener("keydown", onKey, true);
   }
 
   function onKey(e) {
     if (!active) return;
+    if (e.key === "Tab") {
+      const focusable = Array.from(el.querySelectorAll('button:not(:disabled),input,select,a[href]')).filter(visible);
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && (document.activeElement === first || !el.contains(document.activeElement))) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && (document.activeElement === last || !el.contains(document.activeElement))) { e.preventDefault(); first.focus(); }
+      return;
+    }
     const typing = e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName) && e.target.closest(".tour");
     if (e.key === "Escape") { e.preventDefault(); e.stopPropagation(); finish(true); }
     else if (e.key === "ArrowRight" && !typing) { e.preventDefault(); go(idx + 1); }
     else if (e.key === "ArrowLeft" && !typing) { e.preventDefault(); go(idx - 1); }
-    else if (e.key === "Enter" && typing) { e.preventDefault(); go(idx + 1); }
+    else if (e.key === "Enter" && typing && e.target.tagName !== "SELECT") { e.preventDefault(); go(idx + 1); }
   }
 
   async function onClick(e) {
@@ -198,6 +244,8 @@
     const card = el.querySelector(".tour__card");
     const n = STEPS.length;
     el.querySelector(".tour__count").textContent = t("tour.count", { n: idx + 1, total: n });
+    const section = SECTIONS.slice().reverse().find((g) => idx >= g.step);
+    el.querySelector('#tourSection').value = String(section ? section.step : 0);
     el.querySelector(".tour__progress span").style.width = ((idx + 1) / n * 100).toFixed(1) + "%";
     const skip = el.querySelector('[data-tour="skip"]');
     skip.textContent = t("tour.skip");
@@ -220,8 +268,8 @@
     const name = (App.prefs.get("userName", "") || "").split(" ")[0];
     body.innerHTML =
       (s.center ? '<div class="tour__logo" aria-hidden="true">' + App.icon("logo") + "</div>" : "") +
-      "<h2>" + esc(t("tour." + s.id + ".title", { name: name ? ", " + name : "" })) + "</h2>" +
-      "<p>" + esc(t("tour." + s.id + ".text")) + "</p>" + extra;
+      "<h2>" + esc(s.title ? T(s.title) : t("tour." + s.id + ".title", { name: name ? ", " + name : "" })) + "</h2>" +
+      "<p>" + esc(s.text ? T(s.text) : t("tour." + s.id + ".text")) + "</p>" + extra + (s.id === 'welcome' ? '<span class="tour__tip">' + esc(T(["Tur bölümlere ayrılır. İstediğin bölüme geçebilir, Esc veya Geç ile çıkıp Kullanım Rehberi'nden yeniden açabilirsin.", "Jump between sections, or exit with Esc / Skip and reopen the tour from the User Guide."])) + '</span>' : '');
     App.hydrateIcons(body);
     el.classList.toggle("is-center", !!s.center || !curTarget);
     if (s.name) setTimeout(() => { const i = el.querySelector("#tourName"); if (i && !App.platform.mobile) i.focus(); }, 60);
@@ -289,6 +337,7 @@
 
   function start(fromStep) {
     if (active) return;
+    document.querySelectorAll('.tour.is-leaving').forEach((node) => node.remove());
     active = true;
     App.prefs.set("tourDone", false);
     build();
@@ -338,5 +387,5 @@
     setTimeout(() => { if (App.prefs.get("tourDone", null) === "demo") return; start(App.prefs.get("tourStep", 0)); }, 500);
   }
 
-  App.tour = { start, finish, maybeStart, shouldShow, steps: STEPS, isActive: () => active, current: () => idx };
+  App.tour = { start, finish, maybeStart, shouldShow, steps: STEPS, sections: SECTIONS, isActive: () => active, current: () => idx };
 })();

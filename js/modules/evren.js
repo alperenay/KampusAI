@@ -1,5 +1,5 @@
 /* =========================================================
-   evren.js — 3B Bilgi Evreni (v1.44)   #/evren  ·  #/evren/<sınıf>/<ders>
+   evren.js — 3B Bilgi Evreni (v1.45)   #/evren  ·  #/evren/<sınıf>/<ders>
 
    Bir dersin kazanımları 3B bir takımyıldız olarak çizilir:
      • Düğüm = kazanım. Üniteler galaksinin sarmal kollarıdır; kazanımlar müfredat sırasıyla kol boyunca dizilir.

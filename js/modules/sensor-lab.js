@@ -1,5 +1,5 @@
 /* =========================================================
-   sensor-lab.js — Telefon Sensörleriyle Gerçek Deney (v1.44)   #/sensor  ·  #/sensor/<deney>
+   sensor-lab.js — Telefon Sensörleriyle Gerçek Deney (v1.45)   #/sensor  ·  #/sensor/<deney>
 
    Telefonun kendi sensörleri ölçüm aleti olur; ölçülen veri, Maarif programındaki formülle hesaplanan kuramsal
    eğriyle aynı grafikte karşılaştırılır ve bağıl hata yüzdesi verilir.

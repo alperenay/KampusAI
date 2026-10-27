@@ -1,4 +1,4 @@
-// v1.44 arayüz sınaması (gerçek tarayıcı): sensör laboratuvarı (sahte ivmeölçer olaylarıyla sarkaç ölçümü),
+// v1.45 arayüz sınaması (gerçek tarayıcı): sensör laboratuvarı (sahte ivmeölçer olaylarıyla sarkaç ölçümü),
 // sesli grafikler, çözüm kontrolünde düzeltme turu, iki oyunculu düello (QR kodları metin olarak) ve Bilgi Evreni.
 import assert from "node:assert/strict";
 import { uiHarness } from "./ui-harness.mjs";
@@ -114,4 +114,4 @@ try {
 } finally {
   await h.close();
 }
-console.log(checks + " v1.44 arayüz sınaması geçti.");
+console.log(checks + " v1.45 arayüz sınaması geçti.");

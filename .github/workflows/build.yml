@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.44.0
+  APP_VERSION: 1.45.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -94,7 +94,10 @@ jobs:
           node tools/removed-model-ui-check.mjs
           npm run test:all-features-ui
           npm run test:v142-ui
-          npm run test:v144-ui
+          npm run test:practice
+          npm run test:practice-ui
+          node tools/usability-ui-check.mjs
+          npm run test:v145-ui
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -135,7 +138,7 @@ jobs:
       - name: Tekrar kuyruğu, QR Sınıf Modu ve karne sınaması
         run: node tools/v142-check.mjs
       - name: Sensör, sesli grafik, düello ve bilgi evreni sınaması
-        run: node tools/v144-check.mjs
+        run: node tools/v145-check.mjs
       - name: Eski cihaz uyumu (iOS 16.3 düzenli ifade sözdizimi)
         run: node tools/compat-check.mjs
       - name: Web dosyalarını hazırla
@@ -527,3 +530,4 @@ jobs:
             out/*.exe
             out/*.deb
             out/*.AppImage
+

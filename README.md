@@ -25,6 +25,7 @@
 ## Neler yapabilirsin?
 
 - **Çalış:** Konu anlatımları, formül defteri, testler ve açık uçlu yazılılar.
+- **Uygula:** Aynı kavramı farklı bağlamlarda kullan; örnek çözümlerde ilk hatayı ve nedenini bul.
 - **Tekrar et:** Yanlış defteri, Hap Kartlar ve tek listede günlük tekrarlar.
 - **Soru sor:** Yazı, fotoğraf veya sesle yapay zekâdan destek al.
 - **Gelişimini izle:** Ders programı, deneme sonuçları ve haftalık üstbiliş karnesi.

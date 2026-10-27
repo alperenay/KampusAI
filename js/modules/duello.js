@@ -1,5 +1,5 @@
 /* =========================================================
-   duello.js — İnternetsiz Arkadaş Düellosu (v1.44)   #/duello
+   duello.js — İnternetsiz Arkadaş Düellosu (v1.45)   #/duello
 
    İki telefon, sunucu ve internet olmadan, Sınıf Modu'nun sıkıştırılmış QR protokolüyle (KAIC1) eşleşir:
      1. Kuran oyuncu kazanımı, soru sayısını (5/10/15) ve soru süresini seçer; düello paketi ("d") QR olur.

@@ -101,7 +101,7 @@
     const syncBtn = m.el.querySelector("#setSync");
     if (syncBtn) syncBtn.addEventListener("click", () => { m.close(); App.modules.syncUi.open(); });
     m.el.querySelector("#setRemind").addEventListener("click", () => { m.close(); App.reminders.openSettings(); });
-    m.el.querySelector("#setTour").addEventListener("click", () => { m.close(); App.tour.start(0); });
+    m.el.querySelector("#setTour").addEventListener("click", () => { m.close(); App.router.go("rehber"); });
     m.el.querySelector("#setA11y").addEventListener("click", () => { m.close(); App.a11y.open(); });
     m.el.querySelector("#setAbout").addEventListener("click", () => { m.close(); App.modules.about.open(); });
     m.el.querySelector("#setDemo").addEventListener("click", () => { m.close(); App.demo.toggle(); });

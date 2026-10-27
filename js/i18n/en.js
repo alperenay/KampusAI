@@ -5,6 +5,9 @@
    ========================================================= */
 App.locales = App.locales || {};
 App.locales.en = {
+  "nav.transfer": "Apply It Elsewhere",
+  "nav.errorHunt": "Find the Solution Error",
+  "nav.guide": "User Guide",
   /* Teacher review and progressive generation */
   "review.stats": "Original adaptive score: {score}/100 · Evidence-weighted score: {support}/100 · Total time: {seconds} s",
   "review.title": "Teacher reasoning review",

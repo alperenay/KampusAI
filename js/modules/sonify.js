@@ -1,5 +1,5 @@
 /* =========================================================
-   sonify.js — Sesli grafikler (v1.44)
+   sonify.js — Sesli grafikler (v1.45)
 
    Görme engelli ve az gören öğrenciler için grafiklerin sese çevrilmesi:
      • y değeri ses perdesine eşlenir: en küçük y → 200 Hz, en büyük y → 2000 Hz (logaritmik; kulak perdeyi

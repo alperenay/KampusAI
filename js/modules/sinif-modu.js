@@ -116,7 +116,7 @@
   const KEY = /^\d{1,2}\/[\w-]+\/[\w-]+\/[\w-]+$/;
   function validate(d) {
     if (!d || d.v !== 1 || !["a", "r", "d", "dr"].includes(d.t) || !str(d.id || d.a, 40)) throw new Error("packet");
-    // Düello paketleri (duello.js, v1.44): "d" soru seti + başlama zamanı, "dr" oyuncunun cevapları ve süreleri
+    // Düello paketleri (duello.js, v1.45): "d" soru seti + başlama zamanı, "dr" oyuncunun cevapları ve süreleri
     if (d.t === "d") {
       if (!Number.isFinite(d.st) || !Number.isInteger(d.sec) || d.sec < 5 || d.sec > 120 || !str(d.hn, 40)) throw new Error("packet");
     }

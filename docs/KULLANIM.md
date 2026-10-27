@@ -11,6 +11,18 @@
 
 Tüm özelliklere menüdeki **Tüm araçlar** sayfasından ulaşabilirsin. Sık kullandığın araçları yıldızla sabitle.
 
+**Kullanım Rehberi** ilk gün adımlarını ve bölümlere ayrılmış ekran turunu sunar. Ayarlar'daki tanıtım seçeneği de bu rehberi açar. Turda bölüm seçebilir, geri/ileri gidebilir veya Esc / Geç ile çıkabilirsin. Güncelleme yapan mevcut kullanıcıya tur zorla yeniden gösterilmez. Araç ekranlarının üstündeki **Bu ekranı nasıl kullanırım?** alanı amaca uygun kısa yönlendirme ve ilgili araç bağlantılarını içerir.
+
+## Yeni çevrimdışı pratikler
+
+**Pratik → Bilgiyi Başka Yerde Kullan:** Doğru orantı, yüzde, doğrusal ilişki, net kuvvet–ivme, kütlece yüzde derişim veya tek karakterde kalıtım kavramlarından birini seç. Üç görev aynı kavramı denklem, grafik/tablo ve günlük yaşam bağlamında sorgular. Her yanıttan sonra açıklamayı oku; sonuçta bağlamlara göre ilk yanıtlarını gör. Grafiklerin altında erişilebilir veri tablosu vardır.
+
+**Pratik → Çözümdeki Hatayı Bul:** Matematik, fizik, kimya, biyoloji veya karışık pratik seç. Kasıtlı hata içeren çözümde **ilk** yanlış adımı ve hatanın nedenini işaretle. Sonraki satırlar ilk hatayı sürdürüyor olabilir. Sonuç ekranı adım seçimini ve gerekçeyi ayrı gösterir. Bunlar uygulama için yazılmış örneklerdir; canlı AI çıktısı veya öğretmen onaylı soru olarak sunulmaz.
+
+İki etkinlik de AI bağlantısı gerektirmez. Yanıtlar cihazda kaydedilir; sayfa yenilendiğinde son kaydedilmiş görevden devam edilir. Normal test, adaptif skor, Hap Kartlar ve araştırma kayıtları değişmez. Taslaklar ve sonuçlar mevcut `meta` deposunda ayrı kimliklerle saklanır; genel yedeklemeye ve kullanıcı etkinleştirdiyse mevcut eşitlemeye dahildir. QR araştırma/ödev aktarımı bu yeni kayıtları otomatik taşımaz.
+
+Başlangıç paketi 18 bağlam görevi ve 12 hata örneği içerir. Aynı sorular tekrar görülebilir. Üç alıştırmanın sonucu, bilimsel olarak kalibre edilmiş aktarım testi veya genel başarı/öğrenme kanıtı değildir; önceki soruların geri bildiriminden de etkilenebilir.
+
 ## Yapay zekâ
 
 **Ayarlar → Yapay zekâ ayarları** üzerinden bağlantını seç.

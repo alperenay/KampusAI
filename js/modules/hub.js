@@ -14,6 +14,9 @@
 
   /* [rota, simge, ad (i18n anahtarı ya da [tr,en]), açıklama [tr,en], grup, arama kelimeleri] */
   const TOOLS = [
+    ["aktarim", "layers", "nav.transfer", ["Aynı kavramı denklem, grafik/tablo ve günlük yaşamda uygula", "Apply one concept to equations, visual data and everyday problems"], "practice", "aktarım transfer bağlam grafik tablo kavram offline çevrimdışı"],
+    ["hata-avcisi", "scan", "nav.errorHunt", ["Kasıtlı hatalı çözümde ilk yanlış adımı ve nedenini bul", "Find the first wrong step and its reason in an intentionally flawed solution"], "practice", "hata avcısı yanlış çözüm eleştirel düşünme gerekçe offline çevrimdışı"],
+    ["rehber", "compass", "nav.guide", ["Bölümlere ayrılmış ekran turu, ilk adımlar ve kullanım ipuçları", "Sectioned guided tour, first steps and usage tips"], "start", "yardım nasıl kullanılır tanıtım tur rehber help onboarding"],
     ["degerlendirme", "grad", "review.title", ["Gerekçeleri ölçütle değerlendir; QR ile geri bildirim ver", "Review reasoning with a rubric and return feedback via QR"], "track", "öğretmen gerekçe eminlik değerlendirme puan rubrik"],
     ["arastirma", "chart", "nav.research", ["Gerekçe, eminlik ve ipucu etkisini çevrimdışı karşılaştır", "Compare reasoning, confidence and hints offline"], "track", "araştırma deney ab qr eminlik gerekçe ipucu"],
     ["bugun", "sun", "nav.today", ["Bugünkü program, görevler ve öneriler", "Today's plan, tasks and suggestions"], "start", "gün plan görev"],
