@@ -1,11 +1,11 @@
 {
   "name": "kampusai-web",
   "private": true,
-  "version": "1.38.0",
+  "version": "1.39.0",
   "scripts": {
     "build": "node tools/build-web.mjs dist/web",
     "lint": "node tools/syntax-check.mjs && node tools/compat-check.mjs",
-    "test": "node tools/study-check.mjs && node tools/research-check.mjs && node tools/teacher-review-check.mjs && node tools/ar-check.mjs && node tools/cevre-check.mjs && node tools/kavram-check.mjs && node tools/content-check.mjs",
+    "test": "node tools/study-check.mjs && node tools/research-check.mjs && node tools/teacher-review-check.mjs && node tools/stem-client-check.mjs && node tools/ar-check.mjs && node tools/cevre-check.mjs && node tools/kavram-check.mjs && node tools/content-check.mjs",
     "test:study": "node tools/study-check.mjs",
     "test:study-ui": "node tools/study-ui-check.mjs",
     "test:research": "node tools/research-check.mjs",
@@ -13,6 +13,9 @@
     "test:teacher-review": "node tools/teacher-review-check.mjs",
     "test:teacher-review-ui": "node tools/teacher-review-ui-check.mjs",
     "test:generation-ui": "node tools/generation-ui-check.mjs",
-    "test:all-features-ui": "node tools/all-features-ui-check.mjs"
+    "test:all-features-ui": "node tools/all-features-ui-check.mjs",
+    "test:stem-ui": "node tools/stem-ui-check.mjs",
+    "test:stem-client": "node tools/stem-client-check.mjs",
+    "test:stem-service": "python tools/stem-service-check.py"
   }
 }

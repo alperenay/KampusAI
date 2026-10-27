@@ -25,7 +25,7 @@ def summarize(model,data,items):
         x['correct']=x['predicted'] is not None and math.isclose(x['predicted'],x['expected'],rel_tol=.001,abs_tol=.001)
     return dict(model=model,split=Path(data).stem,dataset_sha256=hashlib.sha256(Path(data).read_bytes()).hexdigest(),
         benchmark_sha256=hashlib.sha256(json.dumps([(x['id'],x['question'],x['expected']) for x in items],ensure_ascii=False).encode()).hexdigest(),
-        parser_version=2,metric='Explicit final numeric answer within 0.1%; measures answer format and value, not proof validity or exam generalisation.',count=len(items),
+        protocol=3,parser_version=2,max_predict=512,metric='Explicit final numeric answer within 0.1% in requested units; numeric/format score, not an automatic certification of units, reasoning or exam generalisation.',count=len(items),
         correct=sum(x['correct'] for x in items),accuracy=sum(x['correct'] for x in items)/len(items),
         median_seconds=statistics.median(x['seconds'] for x in items),by_subject={s:dict(count=len(xs),correct=sum(x['correct'] for x in xs))
             for s in sorted({x['subject'] for x in items}) if (xs:=[x for x in items if x['subject']==s])},items=items)
@@ -33,15 +33,25 @@ def evaluate(model,data,out,limit=None):
     out=Path(out);out.parent.mkdir(parents=True,exist_ok=True)
     rows=[json.loads(x) for x in Path(data).read_text(encoding='utf8').splitlines()]
     if limit:rows=rows[:limit]
-    prior=json.loads(out.read_text(encoding='utf8'))['items'] if out.exists() else []
+    previous=json.loads(out.read_text(encoding='utf8')) if out.exists() else None
+    if previous and previous.get('protocol')!=3:raise ValueError('Use a new output file for protocol 3 (explicit units, 512 output tokens).')
+    prior=previous['items'] if previous else []
     done={x['id']:x for x in prior};items=[]
     for i,row in enumerate(rows):
         if row['id'] in done:items.append(done[row['id']]);continue
         start=time.monotonic()
-        r=requests.post('http://127.0.0.1:11434/api/chat',json={'model':model,'messages':row['messages'][:2],
-            'stream':False,'keep_alive':'5m','options':{'temperature':0,'num_ctx':2048,'num_predict':256,'seed':42}},timeout=(10,180))
+        question=row['messages'][1]['content']+'\nKısa çöz. Son satırı Sonuç: biçiminde yaz.'+((' Sayısal sonucu '+row['unit']+' cinsinden ver.') if row.get('unit') else '')
+        messages=[row['messages'][0],{'role':'user','content':question}]
+        payload={'model':model,'messages':messages,'stream':False,'keep_alive':'5m',
+                 'options':{'temperature':0,'num_ctx':2048,'num_predict':512,'seed':42}}
+        for attempt in range(3):
+            r=requests.post('http://127.0.0.1:11434/api/chat',json=payload,timeout=(10,180))
+            if r.status_code not in (429,500,503) or attempt==2:break
+            print(f'Retrying transient Ollama HTTP {r.status_code}',flush=True)
+            requests.post('http://127.0.0.1:11434/api/generate',json={'model':model,'keep_alive':0},timeout=30)
+            time.sleep(1+attempt)
         r.raise_for_status();body=r.json();answer=body['message']['content'];pred=number(answer)
-        item=dict(id=row['id'],subject=row['subject'],family=row['family'],question=row['messages'][1]['content'],expected=row['expected'],
+        item=dict(id=row['id'],subject=row['subject'],family=row['family'],question=question,expected=row['expected'],unit=row.get('unit',''),
             predicted=pred,correct=pred is not None and math.isclose(pred,row['expected'],rel_tol=.001,abs_tol=.001),
             seconds=round(time.monotonic()-start,3),answer=answer,finish=body.get('done_reason'),eval_count=body.get('eval_count'))
         items.append(item)
