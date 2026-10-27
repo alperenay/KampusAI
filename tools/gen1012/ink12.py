@@ -239,6 +239,8 @@ uygula(units, "ink12_ek134")
 
 from _ek136 import uygula136; uygula136(units, "ink12")
 
+from ek_genel import uygula; uygula(units, "ink12_ek142")  # 1.43: Millî Mücadele
+
 write("ink-12.js", "12/inkilap", "12. Sınıf T.C. İnkılap Tarihi ve Atatürkçülük — konu anlatım notları",
       "kullanıcının verdiği \"İnkılap Tarihi 12 Detaylı Konu Anlatım Notları\" (6 ünite).",
       units, "Kaynak notlar yalnızca ünite başlıklarını ve kazanımları içerdiği için her ünite ders kitabı düzeyinde genişletildi (ilkelerin uygulamaları, inkılap kronolojisi, Lozan'dan kalan sorunlar tablosu, II. Dünya Savaşı ve Soğuk Savaş dönemi). 21. yüzyıl bölümü 2026 ortasına kadarki gelişmeleri kapsar; güncel dış politika konuları tarafsız biçimde özetlenmiştir.")
