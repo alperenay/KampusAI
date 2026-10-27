@@ -40,15 +40,19 @@
     cografya:  { name: { tr: "Coğrafya", en: "Geography" }, color: "#d4b45a", icon: "sGeo" },
     felsefe:   { name: { tr: "Felsefe", en: "Philosophy" }, color: "#c08cff", icon: "sPhil" },
     din:       { name: { tr: "Din Kültürü ve Ahlak Bilgisi", en: "Religious Culture and Ethics" }, color: "#9fa8da", icon: "sRel" },
-    ingilizce: { name: { tr: "İngilizce", en: "English" }, color: "#f48fb1", icon: "sLang" }
+    ingilizce: { name: { tr: "İngilizce", en: "English" }, color: "#f48fb1", icon: "sLang" },
+    // 1.43: AYT Felsefe grubu ve Tarih-2 kapsamındaki dersler
+    psikoloji: { name: { tr: "Psikoloji", en: "Psychology" }, color: "#b39ddb", icon: "lightbulb" },
+    sosyoloji: { name: { tr: "Sosyoloji", en: "Sociology" }, color: "#80cbc4", icon: "chat" },
+    cagdas:    { name: { tr: "Çağdaş Türk ve Dünya Tarihi", en: "Contemporary Turkish and World History" }, color: "#d7a86e", icon: "globe" }
   };
 
   // Her sınıfta hangi dersler var
   const GRADES = {
     "9":  ["edebiyat", "matematik", "fizik", "kimya", "biyoloji", "tarih", "cografya", "din", "ingilizce"],
     "10": ["edebiyat", "matematik", "fizik", "kimya", "biyoloji", "tarih", "cografya", "felsefe", "din", "ingilizce"],
-    "11": ["edebiyat", "matematik", "fizik", "kimya", "biyoloji", "tarih", "cografya", "felsefe", "din", "ingilizce"],
-    "12": ["edebiyat", "matematik", "fizik", "kimya", "biyoloji", "inkilap", "cografya", "felsefe", "din", "ingilizce"]
+    "11": ["edebiyat", "matematik", "fizik", "kimya", "biyoloji", "tarih", "cografya", "felsefe", "psikoloji", "sosyoloji", "din", "ingilizce"],
+    "12": ["edebiyat", "matematik", "fizik", "kimya", "biyoloji", "inkilap", "cagdas", "cografya", "felsefe", "din", "ingilizce"]
   };
 
   // İçerikler js/data/content/*.js dosyalarından gelir: App.data.content["9/matematik"] = [ ...üniteler ].

@@ -609,5 +609,150 @@ App.data.content["9/matematik"] = [
     }
    }
   ]
+ },
+ {
+  "id": "t8",
+  "name": {
+   "tr": "8. Tema (Ek): TYT Temel Kavramlar, Kümeler ve Problemler",
+   "en": "Theme 8 (Extra): Core Concepts, Sets and Word Problems"
+  },
+  "outcomes": [
+   {
+    "id": "k1",
+    "code": "MAT.9.E1",
+    "title": {
+     "tr": "Kümeler: gösterim, alt küme ve işlemler",
+     "en": "Sets: notation, subsets and operations"
+    },
+    "content": {
+     "anlatim": "# Küme Kavramı\n\nİyi tanımlanmış nesneler topluluğuna **küme**, her bir nesneye **eleman** denir. Gösterimler: liste ($A = \\{1, 2, 3\\}$), ortak özellik ($A = \\{x \\mid x < 4,\\ x \\in \\mathbb{Z}^+\\}$) ve **Venn şeması**. Eleman sayısı $s(A)$ ile gösterilir; boş küme $\\emptyset$.\n\n# Alt Küme\n\n$A$'nın her elemanı $B$'de de varsa $A \\subseteq B$.\n- $n$ elemanlı bir kümenin alt küme sayısı $2^n$, **öz alt küme** sayısı $2^n - 1$'dir.\n- $r$ elemanlı alt küme sayısı $\\binom{n}{r}$'dir.\n\n# İşlemler\n\n| İşlem | Gösterim | Anlamı |\n|---|---|---|\n| Birleşim | $A \\cup B$ | En az birinde olanlar |\n| Kesişim | $A \\cap B$ | Her ikisinde olanlar |\n| Fark | $A \\setminus B$ | $A$'da olup $B$'de olmayanlar |\n| Tümleyen | $A'$ | Evrensel kümede olup $A$'da olmayanlar |\n$$s(A \\cup B) = s(A) + s(B) - s(A \\cap B)$$\nÜç küme için: $s(A\\cup B\\cup C) = s(A)+s(B)+s(C) - s(A\\cap B) - s(A\\cap C) - s(B\\cap C) + s(A\\cap B\\cap C)$.\n- **De Morgan:** $(A \\cup B)' = A' \\cap B'$, $(A \\cap B)' = A' \\cup B'$.",
+     "ornekler": [
+      {
+       "soru": "Bir sınıfta 18 kişi basketbol, 12 kişi voleybol oynuyor; 5 kişi ikisini de oynuyor. En az bir oyunu oynayan kaç kişi vardır?",
+       "cozum": "$s(B \\cup V) = 18 + 12 - 5 = $ **25**."
+      },
+      {
+       "soru": "5 elemanlı bir kümenin kaç alt kümesi ve kaç öz alt kümesi vardır? 2 elemanlı alt kümesi kaç tanedir?",
+       "cozum": "Alt küme $2^5 = 32$, öz alt küme $31$, 2 elemanlı alt küme $\\binom52 = 10$."
+      }
+     ],
+     "ozet": [
+      "$n$ elemanlı kümenin $2^n$ alt kümesi vardır.",
+      "$s(A\\cup B) = s(A) + s(B) - s(A\\cap B)$.",
+      "De Morgan: $(A\\cup B)' = A'\\cap B'$."
+     ]
+    }
+   },
+   {
+    "id": "k2",
+    "code": "MAT.9.E2",
+    "title": {
+     "tr": "Basamak analizi, rasyonel ve ondalık sayılar",
+     "en": "Place value, rational and decimal numbers"
+    },
+    "content": {
+     "anlatim": "# Basamak Analizi\n\nİki basamaklı $\\overline{ab} = 10a + b$, üç basamaklı $\\overline{abc} = 100a + 10b + c$. ($a \\neq 0$)\n- $\\overline{ab} + \\overline{ba} = 11(a + b)$, $\\overline{ab} - \\overline{ba} = 9(a - b)$.\n- Rakamları farklı en büyük üç basamaklı sayı 987, en küçüğü 102'dir.\n\n# Rasyonel Sayılar\n\n$\\dfrac{a}{b}$ ($b \\neq 0$) biçiminde yazılabilen sayılardır.\n- Toplama/çıkarmada paydalar eşitlenir; çarpmada paylar ve paydalar çarpılır; bölmede ikinci kesir ters çevrilip çarpılır.\n- Sıralama: paydalar eşitse payı büyük olan büyüktür; paylar eşitse paydası küçük olan büyüktür.\n\n# Ondalık Sayılar ve Devirli Sayılar\n\n- $0{,}25 = \\dfrac{25}{100} = \\dfrac14$.\n- **Devirli sayı:** $0{,}\\overline{3} = \\dfrac{3}{9} = \\dfrac13$. Genel kural: $\\dfrac{\\text{sayının tamamı} - \\text{devretmeyen kısım}}{\\text{devreden basamak kadar 9, devretmeyen kadar 0}}$. Örneğin $1{,}2\\overline{3} = \\dfrac{123 - 12}{90} = \\dfrac{111}{90}$.",
+     "ornekler": [
+      {
+       "soru": "İki basamaklı $\\overline{ab}$ sayısı ile rakamlarının yer değiştirmesiyle oluşan sayının toplamı 121'dir. $a + b$ kaçtır?",
+       "cozum": "$11(a + b) = 121$ → $a + b = $ **11**."
+      },
+      {
+       "soru": "$0{,}1\\overline{6}$ sayısını kesir olarak yazınız.",
+       "cozum": "$\\dfrac{16 - 1}{90} = \\dfrac{15}{90} = $ **$\\dfrac16$**."
+      }
+     ],
+     "ozet": [
+      "$\\overline{abc} = 100a + 10b + c$.",
+      "$\\overline{ab}+\\overline{ba} = 11(a+b)$, $\\overline{ab}-\\overline{ba} = 9(a-b)$.",
+      "Devirli sayı: (tamamı − devretmeyen) / (9'lar ve 0'lar)."
+     ]
+    }
+   },
+   {
+    "id": "k3",
+    "code": "MAT.9.E3",
+    "title": {
+     "tr": "Oran–orantı, yüzde, kâr–zarar ve faiz",
+     "en": "Ratio and proportion, percentages, profit–loss and interest"
+    },
+    "content": {
+     "anlatim": "# Oran ve Orantı\n\n- **Doğru orantı:** Biri artarken diğeri aynı oranda artar: $\\dfrac{x}{y} = k$.\n- **Ters orantı:** Biri artarken diğeri aynı oranda azalır: $x\\cdot y = k$.\n- $\\dfrac ab = \\dfrac cd$ ise $a\\cdot d = b\\cdot c$ (içler–dışlar çarpımı).\n- $a : b : c = 2 : 3 : 5$ ise $a = 2k$, $b = 3k$, $c = 5k$ yazılır.\n\n# Yüzde\n\n$x$'in %$p$'si $= x\\cdot\\dfrac{p}{100}$.\n- %20 artış: $\\times 1{,}2$; %20 indirim: $\\times 0{,}8$.\n- **Art arda değişimler çarpılır:** %20 artış sonra %20 indirim → $1{,}2 \\times 0{,}8 = 0{,}96$ → **%4 kayıp** (yüzdeler toplanmaz!).\n\n# Kâr–Zarar\n\nKâr ve zarar **maliyet (alış fiyatı)** üzerinden hesaplanır:\n$$\\text{Satış} = \\text{Maliyet}\\cdot\\left(1 + \\frac{\\text{kâr \\%}}{100}\\right)$$\n\n# Faiz\n\n- **Basit faiz:** $F = A\\cdot\\dfrac{n}{100}\\cdot t$ ($A$ ana para, $n$ yıllık faiz oranı, $t$ yıl).\n- **Bileşik faiz:** $A_t = A\\left(1 + \\dfrac{n}{100}\\right)^t$ — her dönem faiz ana paraya eklenir.",
+     "ornekler": [
+      {
+       "soru": "Bir ürünün fiyatı önce %25 artırılıyor, sonra %20 indiriliyor. Son fiyat ilk fiyata göre nasıl değişmiştir?",
+       "cozum": "$1{,}25 \\times 0{,}80 = 1{,}00$ → fiyat **değişmemiştir**."
+      },
+      {
+       "soru": "Maliyeti 400 TL olan ürün %35 kârla satılıyor. Satış fiyatı nedir?",
+       "cozum": "$400 \\times 1{,}35 = $ **540 TL**."
+      }
+     ],
+     "ozet": [
+      "Doğru orantıda bölüm, ters orantıda çarpım sabittir.",
+      "Art arda yüzde değişimler çarpılır, toplanmaz.",
+      "Kâr–zarar maliyet üzerinden hesaplanır.",
+      "Bileşik faiz: $A(1 + n/100)^t$."
+     ]
+    }
+   },
+   {
+    "id": "k4",
+    "code": "MAT.9.E4",
+    "title": {
+     "tr": "Sayı, kesir ve yaş problemleri",
+     "en": "Number, fraction and age problems"
+    },
+    "content": {
+     "anlatim": "# Problem Çözme Adımları\n\n1. Bilinmeyeni belirle ve bir harfle göster ($x$).\n2. Verilenleri denkleme dönüştür.\n3. Denklemi çöz, sonucu soruda istenen biçimde yaz ve **kontrol et**.\n\n# Sayı Problemleri\n\n- Ardışık tam sayılar: $x, x+1, x+2$; ardışık çift/tek sayılar: $x, x+2, x+4$.\n- \"Bir sayının 3 katının 5 fazlası\" → $3x + 5$; \"5 fazlasının 3 katı\" → $3(x + 5)$. Sıraya dikkat!\n\n# Kesir Problemleri\n\n\"Paranın $\\frac13$'ünü, sonra **kalanın** $\\frac14$'ünü harcadı\" → kalanlar üzerinden çarp: harcamadan sonra kalan $= x\\cdot\\frac23\\cdot\\frac34 = \\frac x2$. Toplam yerine çoğu zaman **paydaların EKOK'u** kadar başlangıç değeri seçmek işi kolaylaştırır.\n\n# Yaş Problemleri\n\n- Kişiler arasındaki **yaş farkı hiç değişmez**.\n- $t$ yıl sonra her kişinin yaşı $t$ artar; $n$ kişinin yaşları toplamı $n\\cdot t$ artar.\n- \"Ben senin yaşındayken…\" tipi sorularda yaş farkını kullan.",
+     "ornekler": [
+      {
+       "soru": "Ardışık üç çift sayının toplamı 78'dir. En büyüğü kaçtır?",
+       "cozum": "$x + (x+2) + (x+4) = 78$ → $3x = 72$, $x = 24$ → en büyük **28**."
+      },
+      {
+       "soru": "Annenin yaşı kızının yaşının 3 katıdır. 12 yıl sonra annenin yaşı kızının yaşının 2 katı olacaktır. Kızın bugünkü yaşı kaçtır?",
+       "cozum": "Kız $x$, anne $3x$. $3x + 12 = 2(x + 12)$ → $x = $ **12**."
+      }
+     ],
+     "ozet": [
+      "Ardışık çift/tek sayılar $x, x+2, x+4$.",
+      "\"Kalanın\" kesri ardışık çarpılarak hesaplanır.",
+      "Yaş farkı değişmez; $t$ yıl sonra toplam yaş $n\\cdot t$ artar."
+     ]
+    }
+   },
+   {
+    "id": "k5",
+    "code": "MAT.9.E5",
+    "title": {
+     "tr": "İşçi–havuz, hareket ve karışım problemleri",
+     "en": "Work, motion and mixture problems"
+    },
+    "content": {
+     "anlatim": "# İşçi ve Havuz Problemleri\n\nBir işi tek başına $a$ saatte bitiren kişi 1 saatte işin $\\frac1a$'sını yapar.\n$$\\frac1a + \\frac1b = \\frac1t \\quad (t: \\text{birlikte bitirme süresi})$$\n- Havuzu dolduran musluk (+), boşaltan musluk (−) yazılır.\n\n# Hareket Problemleri\n\n$$\\text{Yol} = \\text{Hız} \\times \\text{Zaman}$$\n- **Zıt yönde (karşılaşma):** $t = \\dfrac{x}{V_1 + V_2}$\n- **Aynı yönde (yetişme):** $t = \\dfrac{x}{V_1 - V_2}$ ($V_1 > V_2$)\n- **Ortalama hız** = toplam yol / toplam zaman (hızların ortalaması değildir!). Eşit yollar $V_1$ ve $V_2$ ile gidilirse ortalama hız $\\dfrac{2V_1V_2}{V_1 + V_2}$.\n- Akıntıda: akıntı yönünde $V + V_a$, akıntıya karşı $V - V_a$.\n\n# Karışım Problemleri\n\nÇözeltideki madde miktarı = toplam miktar × yüzde oranı.\n- Karıştırmada **saf madde miktarları toplanır**: $m_1\\cdot\\%p_1 + m_2\\cdot\\%p_2 = (m_1 + m_2)\\cdot\\%p$.\n- Su eklemek: madde miktarı aynı kalır, toplam artar. Su buharlaştırmak: toplam azalır, madde aynı kalır.",
+     "ornekler": [
+      {
+       "soru": "Bir işi Ali 6 günde, Ayşe 3 günde bitiriyor. Birlikte kaç günde bitirirler?",
+       "cozum": "$\\frac16 + \\frac13 = \\frac12$ → **2 gün**."
+      },
+      {
+       "soru": "Bir araç A'dan B'ye 60 km/sa, dönüşte 40 km/sa hızla gidiyor. Ortalama hızı kaçtır?",
+       "cozum": "$\\dfrac{2\\cdot60\\cdot40}{60 + 40} = $ **48 km/sa** (50 değil!)."
+      },
+      {
+       "soru": "%20'lik 30 litre tuzlu suya kaç litre saf su eklenirse %12'lik olur?",
+       "cozum": "Tuz $= 6$ L. $\\dfrac{6}{30 + x} = 0{,}12$ → $30 + x = 50$ → **20 litre**."
+      }
+     ],
+     "ozet": [
+      "Birlikte çalışma: $\\frac1a + \\frac1b = \\frac1t$.",
+      "Karşılaşma $x/(V_1+V_2)$, yetişme $x/(V_1-V_2)$.",
+      "Ortalama hız = toplam yol / toplam zaman.",
+      "Karışımda saf madde miktarları toplanır; su eklemek maddeyi değiştirmez."
+     ]
+    }
+   }
+  ]
  }
 ];
