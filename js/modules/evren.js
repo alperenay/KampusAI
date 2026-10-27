@@ -181,8 +181,14 @@
     };
     view.querySelectorAll(".ev-li").forEach((b) => b.addEventListener("click", () => select(b.dataset.k)));
     if (nodes.length) select((nodes.find((n) => n.status === "weak") || nodes.find((n) => n.status === "unknown") || nodes[0]).key);
-    if (!App.lab3d || !App.lab3d.supported()) { $("#evStage").innerHTML = '<p class="hint">' + esc(T("Bu cihazda 3B görüntü açılamıyor; kazanım listesini kullanabilirsin.", "3D is not available; use the list.")) + "</p>"; return; }
-    try { await App.lab3d.load(); } catch (e) { if (current()) $("#evStage").innerHTML = '<p class="hint">' + esc(T("3B görünüm yüklenemedi. Konu listesinden çalışmaya devam edebilirsin.", "The 3D view could not load. Continue using the topic list.")) + "</p>"; return; }
+    function fallback(message) {
+      $("#evStage").innerHTML = '<p class="hint ev-load">' + esc(message) + "</p>";
+      $("#evRotate").disabled = true;
+      $("#evRotate").textContent = T("3B görünüm kullanılamıyor", "3D view unavailable");
+      $(".ev-list").open = true;
+    }
+    if (!App.lab3d || !App.lab3d.supported()) { fallback(T("Bu cihazda 3B görüntü açılamıyor; kazanım listesini kullanabilirsin.", "3D is not available; use the list.")); return; }
+    try { await App.lab3d.load(); } catch (e) { if (current()) fallback(T("3B görünüm yüklenemedi. Konu listesinden çalışmaya devam edebilirsin.", "The 3D view could not load. Continue using the topic list.")); return; }
     if (!alive || !current()) return;
     defineScene();
     $("#evStage").innerHTML = "";

@@ -17,7 +17,7 @@
   const isMobile = () => window.matchMedia("(max-width: 860px)").matches;
 
   /* ---------------- Menü grupları ---------------- */
-  const DEFAULT_OPEN = { pins: true, study: true, practice: true, track: true, tools: false, chats: true, grades: false, recentExams: false };
+  const DEFAULT_OPEN = { pins: true, explore: true, study: true, practice: true, track: true, tools: false, chats: true, grades: false, recentExams: false };
   const openState = () => Object.assign({}, DEFAULT_OPEN, App.prefs.get("navOpen", {}));
 
   function setGroup(el, open, save) {
@@ -105,7 +105,7 @@
 
   function bindMenuSearch() {
     const input = $("#navFilter"), nav = input.closest(".nav"), empty = $("#navEmpty");
-    const labels = { duel: ["Arkadaş Düellosu", "Friend Duel"], sensor: ["Sensör Laboratuvarı", "Sensor Lab"], cosmos: ["Bilgi Evreni", "Knowledge Cosmos"], report: ["Üstbiliş Karnesi", "Metacognition Report"], classQR: ["Sınıf Modu · QR Aktarımı", "Class Mode · QR Transfer"] };
+    const labels = { explore: ["Keşfet ve yarış", "Explore and compete"], duel: ["Arkadaş Düellosu", "Friend Duel"], sensor: ["Sensör Laboratuvarı", "Sensor Lab"], cosmos: ["Bilgi Evreni", "Knowledge Cosmos"], report: ["Üstbiliş Karnesi", "Metacognition Report"], classQR: ["Sınıf Modu · QR Aktarımı", "Class Mode · QR Transfer"] };
     function filter() {
       const words = norm(input.value).split(" ").filter(Boolean);
       nav.classList.toggle("is-filtering", !!words.length);

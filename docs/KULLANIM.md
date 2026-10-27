@@ -11,7 +11,7 @@
 
 Tüm özelliklere menüdeki **Tüm araçlar** sayfasından ulaşabilirsin. Sık kullandığın araçları yıldızla sabitle.
 
-Yan menünün üstündeki **Özellik ara** alanı, kapalı gruplardaki ve **Daha fazla** altındaki araçları da bulur. Enter ilk sonucu açar, Esc aramayı temizler. **Takip → Bilgi Evreni / Üstbiliş Karnesi**, **Pratik → Arkadaş Düellosu / Sensör Laboratuvarı** ve **Araçlar → Sınıf Modu / Gerekçe Değerlendirme / Araştırma Modu** doğrudan menüdedir. Günlük çalışma önerisi yalnız **Bugün** ekranındadır. Ana sohbet ekranındaki öneri kartı ve araç kısayolu düğmeleri kaldırılmıştır; fotoğraf yükleme sohbet kutusundan yapılır.
+Yan menünün üstündeki **Özellik ara** alanı, kapalı gruplardaki ve **Daha fazla** altındaki araçları da bulur. Enter ilk sonucu açar, Esc aramayı temizler. **Keşfet ve yarış → Bilgi Evreni / Arkadaş Düellosu / Sensör Laboratuvarı**, **Takip → Üstbiliş Karnesi** ve **Araçlar → Sınıf Modu / Gerekçe Değerlendirme / Araştırma Modu** doğrudan menüdedir. Günlük çalışma önerisi yalnız **Bugün** ekranındadır. Ana sohbet ekranındaki öneri kartı ve araç kısayolu düğmeleri kaldırılmıştır; fotoğraf yükleme sohbet kutusundan yapılır.
 
 ## Bilgi Evreni
 

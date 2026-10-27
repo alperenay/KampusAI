@@ -96,14 +96,17 @@ try {
 
   // 5) Bilgi Evreni: 3B sahne, düğüm sayısı ve seçme
   await go(page, "evren/9/matematik");
-  await page.waitForSelector(".ev-stage canvas", { timeout: 15000 });
+  await page.waitForSelector(".ev-stage");
+  const evGL = await page.evaluate(() => App.lab3d.supported());
+  if (evGL) await page.waitForSelector(".ev-stage canvas", { timeout: 15000 });
+  else assert.match(await page.locator(".ev-stage").innerText(), /3B görüntü açılamıyor/);
   await page.waitForTimeout(800);
   const ev = await page.evaluate(() => ({ list: document.querySelectorAll(".ev-li").length }));
   assert.ok(ev.list >= 20, JSON.stringify(ev));
-  await page.click(".ev-list summary");
+  await page.locator(".ev-list").evaluate((el) => { el.open = true; });
   await page.click(".ev-li");
   await page.waitForSelector("#evInfo .ev-acts");
-  ok("bilgi evreni: " + ev.list + " kazanım 3B sahnede; listeden seçince kazanım kartı açıldı");
+  ok("bilgi evreni: " + ev.list + " kazanım; " + (evGL ? "3B sahne" : "WebGL yok, erişilebilir liste geri dönüşü") + "; listeden seçince kazanım kartı açıldı");
 
   // 6) Yeni sayfalar telefonda taşmıyor
   for (const width of [390, 1280]) {

@@ -19,9 +19,11 @@ try {
  await page.waitForURL('**/#/arastirma');
  await page.evaluate(()=>App.router.go('evren/9/matematik'));
  await page.waitForSelector('#evInfo .ev-acts');
- await page.waitForSelector('.ev-stage canvas');
+ const hasGL=await page.evaluate(()=>App.lab3d.supported());
+ if(hasGL) await page.waitForSelector('.ev-stage canvas');
+ else { assert.match(await page.locator('#evStage').innerText(),/3B görüntü açılamıyor/); console.log('WebGL unavailable: topic-list fallback tested; no 3D rendering claim.'); }
  assert.equal(await page.locator('.ev-li[aria-pressed="true"]').count(),1);
- await page.click('.ev-list summary');
+ await page.locator('.ev-list').evaluate(el=>{el.open=true;});
  await page.selectOption('#evUnit','0');
  assert.ok(await page.locator('.ev-list li:not([hidden])').count()>0);
  assert.ok(await page.locator('.ev-list li:not([hidden])').count()<await page.locator('.ev-li').count());
@@ -29,11 +31,17 @@ try {
  assert.equal(await page.locator('.ev-list li:not([hidden])').count(),0);
  assert.match(await page.locator('#evCount').innerText(),/uygun konu yok/);
  await page.fill('#evSearch','');await page.selectOption('#evUnit','');
+ await page.selectOption('#evStatus','weak');
+ assert.equal(await page.locator('.ev-list li:not([hidden])').count(),0,'Fresh profile has no weak topics');
+ await page.selectOption('#evStatus','unknown');
+ assert.equal(await page.locator('.ev-list li:not([hidden])').count(),await page.locator('.ev-li').count());
+ await page.selectOption('#evStatus','');
  await page.locator('.ev-li').nth(4).click();
  const selected=await page.locator('.ev-li[aria-pressed="true"]').getAttribute('data-k');
  assert.equal(await page.locator('#evInfo a').first().getAttribute('href'),'#/konular/'+selected);
- await page.click('#evRotate');assert.equal(await page.getAttribute('#evRotate','aria-pressed'),'true');
- await page.click('#evRotate');assert.equal(await page.getAttribute('#evRotate','aria-pressed'),'false');
+ if(hasGL) { await page.click('#evRotate');assert.equal(await page.getAttribute('#evRotate','aria-pressed'),'true');
+ await page.click('#evRotate');assert.equal(await page.getAttribute('#evRotate','aria-pressed'),'false'); }
+ else assert.equal(await page.locator('#evRotate').isDisabled(),true);
  for(const width of [320,390,768,1280]) {
   await page.setViewportSize({width,height:900});
   await page.waitForTimeout(350);
@@ -47,10 +55,15 @@ try {
  await page.fill('#navFilter','no-such-feature');assert.equal(await page.locator('#navEmpty').isVisible(),true);
  await page.locator('#navFilter').press('Escape');assert.equal(await page.locator('#navEmpty').isVisible(),false);
  await page.evaluate(()=>App.i18n.setLang('tr'));
+ await page.setViewportSize({width:390,height:844});await page.waitForTimeout(350);
+ await page.click('#menuBtn');await page.fill('#navFilter','bilgi evreni');
+ await page.click('#sidebar a[data-route="evren"]');
+ await page.waitForFunction(()=>!document.querySelector('#app').classList.contains('is-menu-open'));
+ await page.waitForSelector('#evInfo .ev-acts');
  // An unavailable 3D engine must leave the entire searchable topic workflow usable.
  await page.evaluate(()=>{App.lab3d.supported=()=>false;App.router.go('evren/10/fizik');});
  await page.waitForFunction(()=>document.querySelector('#evStage').textContent.includes('3B görüntü açılamıyor'));
- await page.click('.ev-list summary');await page.locator('.ev-li').first().click();
+ await page.locator('.ev-list').evaluate(el=>{el.open=true;});await page.locator('.ev-li').first().click();
  assert.equal(await page.locator('#evInfo .ev-acts a').count(),2);
  assert.deepEqual(h.errors,[]);
  console.log(h.engineName+': full menu catalogue, search/keyboard/language, clean home, cosmos selection/filter/rotation, 320–1280 px and no-WebGL fallback passed.');
