@@ -121,7 +121,7 @@
     const p = pins(), rc = recents();
     view.innerHTML = '<div class="page hub">' +
       '<div class="page-head"><div><h1>' + esc(T("Tüm araçlar", "All tools")) + "</h1><p>" +
-        esc(T("Aradığını yaz ya da gruptan seç. Yıldızla sabitlediklerin menünün üstünde ve asistan açılışında görünür.", "Search or pick from a group. Starred tools appear at the top of the menu and on the home screen.")) + "</p></div></div>" +
+        esc(T("Aradığını yaz ya da gruptan seç. Yıldızla sabitlediklerin yan menünün üstünde görünür.", "Search or pick from a group. Starred tools appear at the top of the sidebar.")) + "</p></div></div>" +
       '<div class="hub-search"><span aria-hidden="true">' + App.icon("search") + '</span><input type="search" id="hubQ" autocomplete="off" placeholder="' + esc(T("Araç ara: harita, deney, paragraf…", "Search: map, lab, reading…")) + '" aria-label="' + esc(T("Araç ara", "Search tools")) + '" aria-describedby="hubCount"><span class="hint" id="hubCount" aria-live="polite"></span></div>' +
       (rc.length ? '<section class="hub-sec" data-sec="recent"><h2>' + esc(T("Son kullanılanlar", "Recently used")) + '</h2><div class="hub-recent">' +
         rc.map((r) => { const x = byRoute(r); return '<a href="#/' + x[0] + '">' + App.icon(x[1]) + "<span>" + esc(title(x)) + "</span></a>"; }).join("") + "</div></section>" : "") +

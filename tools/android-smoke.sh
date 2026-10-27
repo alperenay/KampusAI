@@ -5,7 +5,7 @@
 # Her adımda ekran görüntüsü alınır (shots/), sonuçlar ci-sonuc-android dalına yazılır.
 mkdir -p shots
 exec > >(tee shots/report.txt) 2>&1   # günlük dala da yazılsın (Actions günlükleri okunamıyor)
-set -x
+set -ex
 APP=com.dersasistani.app
 APK=$(ls apk/*.apk | head -1)
 # Güncelleme testi: önce yayındaki son sürümü kur, sonra yenisini üzerine kur
@@ -39,7 +39,7 @@ shot() { n=$((n+1)); adb exec-out screencap -p > "shots/$(printf %02d $n)-$1.png
 # Ekrandaki (WebView dahil) bir yazıyı bul ve dokun; bulunamazsa verilen oransal konuma dokun
 tap_text() {
   local text="$1" fx="$2" fy="$3" xy=""
-  for try in 1 2 3; do
+  for try in $(seq 1 "${TAP_TRIES:-3}"); do
     adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1 && adb pull /sdcard/ui.xml shots/ui.xml >/dev/null 2>&1
     xy=$(python3 - "$text" <<'PY'
 import sys, re, xml.etree.ElementTree as ET
@@ -58,7 +58,11 @@ for n in root.iter("node"):
             if x2 > x1 and y2 > y1:
                 area = (x2 - x1) * (y2 - y1)
                 if edit: area = -y1             # en alttaki yazı alanı
-                if best is None or area < best[0]: best = (area, (x1 + x2) // 2, (y1 + y2) // 2)
+                # A tool title also occurs in its pin button's accessibility label.
+                # Prefer the exact heading; never mistake "Pin: title" for the link.
+                exact = any(n.get(k, "").lower() == want for k in ("text", "content-desc", "hint"))
+                rank = (0 if edit or radio or exact else 1, area)
+                if best is None or rank < best[0]: best = (rank, (x1 + x2) // 2, (y1 + y2) // 2)
 if best: print(best[1], best[2])
 PY
 )
@@ -90,7 +94,7 @@ PY2
 require_text() { has_text "$1" || { echo "FAIL: expected UI text $1"; fail=$((fail+1)); return 1; }; }
 scroll_tap() {
   for attempt in 1 2 3 4 5; do
-    tap_text "$1" "" "" && return 0
+    TAP_TRIES=1 tap_text "$1" "" "" && return 0
     adb shell input swipe $((W/2)) $((H*78/100)) $((W/2)) $((H*35/100)) 350
     sleep 1
   done
