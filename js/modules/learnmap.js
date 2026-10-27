@@ -32,6 +32,7 @@
     psikoloji: [["AYT", "felsefe"]],
     sosyoloji: [["AYT", "felsefe"]],
     cagdas: [["AYT", "tarih2"]],
+    saglik: [],
     din: [["TYT", "sosyal"], ["AYT", "din"]],
     ingilizce: []
   };
