@@ -49,7 +49,7 @@
 
   /* ---------------- Ayarlar (localStorage) ---------------- */
   /** Yedeğe girmeyen ayarlar: anahtarlar, bağlantı kodu/adresi, otomatik seçilen modeller */
-  const PRIVATE_PREF = /(Key|Token|Busy|AutoModel|AutoAt|AutoSpeed)$|^aiUrl$|^sync|^focusState$|^feyDraft:|^feyVoice:|^tourDone$|^remindCount$/;
+  const PRIVATE_PREF = /(Key|Token|Busy|AutoModel|AutoAt|AutoSpeed)$|^aiUrl$|^stemServiceUrl$|^sync|^focusState$|^feyDraft:|^feyVoice:|^tourDone$|^remindCount$/;
 
   App.prefs = {
     get(key, fallback) {
