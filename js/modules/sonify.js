@@ -64,6 +64,8 @@
   let ac = null;
   const audio = () => {
     if (!ac) { const C = window.AudioContext || window.webkitAudioContext; if (!C) return null; ac = new C(); }
+    // Duraklatılmış çalma varken başka bir ses (tarama, çan) isterse önce çalma durdurulur
+    if (paused) stop();
     if (ac.state === "suspended") ac.resume();
     return ac;
   };
@@ -83,10 +85,27 @@
   const featName = (f) => ({ max: T("tepe noktası", "maximum"), min: T("dip noktası", "minimum"), root: T("x eksenini kesiyor", "crosses the x-axis"), cross: T("eğriler kesişiyor", "curves intersect") }[f.type]);
   const num = (v) => (Math.abs(v) < 5e-4 ? "0" : String(Number(v.toFixed(2))).replace(".", App.i18n && App.i18n.lang === "en" ? "." : ","));
 
-  let playing = null;
+  /* Oynatma durumu (v1.51): "idle" | "playing" | "paused". Çalma ses bağlamının zaman çizelgesine planlandığı için
+     duraklatma bağlamı askıya alır (suspend), devam ettirme sürdürür (resume); süre ve tepe/dip sesleri kaymaz. */
+  let playing = null, paused = false;
+  const listeners = new Set();
+  const state = () => (playing ? (paused ? "paused" : "playing") : "idle");
+  const emit = () => listeners.forEach((fn) => { try { fn(state()); } catch (e) { /* dinleyici hatası */ } });
+  function onState(fn) { listeners.add(fn); return () => listeners.delete(fn); }
   function stop() {
     if (playing) { try { playing.o.stop(); } catch (e) { /* bitti */ } playing = null; }
+    if (paused && ac) { paused = false; ac.resume(); }
+    emit();
   }
+  function pause() {
+    if (!playing || paused || !ac) return false;
+    paused = true; ac.suspend(); emit(); return true;
+  }
+  function resume() {
+    if (!playing || !paused || !ac) return false;
+    paused = false; ac.resume(); emit(); return true;
+  }
+  window.addEventListener("hashchange", () => { if (playing) stop(); });
   /** Eğrileri soldan sağa çal (süre saniye). curves: [{ fn, x0, x1, name? }] — birden çok eğri sırayla çalınır */
   function play(curves, opts) {
     opts = opts || {};
@@ -115,7 +134,8 @@
     });
     o.start(); o.stop(t);
     playing = { o };
-    o.onended = () => { if (playing && playing.o === o) playing = null; };
+    o.onended = () => { if (playing && playing.o === o) { playing = null; emit(); } };
+    emit();
     return t - a.currentTime;
   }
   /** Grafiğin sözlü özeti (önemli noktalar) */
@@ -177,5 +197,5 @@
 
   const enabled = () => !!App.prefs.get("a11ySonify", false);
 
-  App.sonify = { freqFor, analyze, intersections, play, stop, describe, attachScrub, enabled, chime, F_MIN, F_MAX };
+  App.sonify = { freqFor, analyze, intersections, play, stop, pause, resume, state, onState, describe, attachScrub, enabled, chime, F_MIN, F_MAX };
 })();

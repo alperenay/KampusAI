@@ -539,7 +539,7 @@
         (lab.animated && !lab.custom ? '<div class="lab__play"><button class="btn btn--sm btn--primary" type="button" data-lab="play"></button>' +
           '<button class="btn btn--sm btn--ghost" type="button" data-lab="reset">' + App.icon("refresh") + esc(T("Baştan", "Reset")) + "</button></div>" : "") +
       "</div>" +
-      (App.sonify ? '<div class="lab__son"><button class="btn btn--sm" type="button" data-son="play">' + App.icon("volume") + esc(T("Grafiği dinle", "Listen to graph")) + '</button><button class="btn btn--sm btn--ghost" type="button" data-son="say">' + esc(T("Sesli özet", "Spoken summary")) + "</button></div>" : "") +
+      (App.sonify ? '<div class="lab__son"><button class="btn btn--sm" type="button" data-son="play" aria-pressed="false">' + App.icon("volume") + '<span>' + esc(T("Grafiği dinle", "Listen to graph")) + '</span></button><button class="btn btn--sm btn--ghost" type="button" data-son="stop" hidden>' + App.icon("stop") + esc(T("Durdur", "Stop")) + '</button><button class="btn btn--sm btn--ghost" type="button" data-son="say">' + esc(T("Sesli özet", "Spoken summary")) + '</button><span class="sr-only" aria-live="polite" data-son-state></span></div>' : "") +
       '<div class="lab__side"><div class="lab__ctrls"></div><div class="lab__read"></div><p class="hint lab__note"></p></div>';
     const cv = host.querySelector("canvas"), ctrls = host.querySelector(".lab__ctrls"), read = host.querySelector(".lab__read"), note = host.querySelector(".lab__note");
     // Sesli grafik: düğmeler her zaman; ayarlarda açıksa tuval parmakla/klavyeyle taranır
@@ -549,8 +549,27 @@
         const b = e.target.closest("[data-son]"); if (!b) return;
         const cs = curves();
         if (!cs.length) { App.ui.toast(T("Bu deneyde seslendirilecek bir eğri yok.", "No curve to sonify in this lab.")); return; }
-        if (b.dataset.son === "play") App.sonify.play(cs.slice(0, 2)); else if (App.speech) App.speech.say(App.sonify.describe(cs.slice(0, 2)));
+        if (b.dataset.son === "stop") { App.sonify.stop(); return; }
+        if (b.dataset.son === "play") {
+          // Tek düğme: dinle → duraklat → devam et
+          const st = App.sonify.state ? App.sonify.state() : "idle";
+          if (st === "playing") App.sonify.pause(); else if (st === "paused") App.sonify.resume(); else App.sonify.play(cs.slice(0, 2));
+        } else if (App.speech) App.speech.say(App.sonify.describe(cs.slice(0, 2)));
       });
+      // Düğme metni ve Durdur görünürlüğü oynatma durumuyla eşitlenir; laboratuvar kapanınca dinleyici bırakılır
+      if (App.sonify.onState) {
+        const son = host.querySelector(".lab__son"), pb = son.querySelector('[data-son="play"]'), sb = son.querySelector('[data-son="stop"]'), live = son.querySelector("[data-son-state]");
+        const paintSon = (st) => {
+          if (!son.isConnected) { off(); return; }
+          pb.innerHTML = App.icon(st === "playing" ? "pause" : "volume") + "<span>" + esc(st === "playing" ? T("Duraklat", "Pause") : st === "paused" ? T("Devam et", "Resume") : T("Grafiği dinle", "Listen to graph")) + "</span>";
+          pb.setAttribute("aria-pressed", String(st === "playing"));
+          sb.hidden = st === "idle";
+          live.textContent = st === "playing" ? T("Grafik çalıyor", "Playing graph") : st === "paused" ? T("Duraklatıldı", "Paused") : "";
+          App.hydrateIcons(son);
+        };
+        const off = App.sonify.onState(paintSon);
+        paintSon(App.sonify.state());
+      }
       App.sonify.attachScrub(cv, curves);
       if (App.sonify.enabled()) { cv.tabIndex = 0; cv.setAttribute("aria-label", lab.title() + T(" — sesli grafik: sağ/sol oklarla gez, Enter ile dinle, D ile özet", " — audio graph: arrows to explore, Enter to play, D for summary")); }
     }
