@@ -1,5 +1,67 @@
 # Sürüm notları
 
+## 1.51.0 — 2026-10-28
+
+### Dil öğrenme (İngilizce ve Almanca)
+- Tek pratik motoru (`language-practice.js`) iki dili aynı akışla çalıştırır: `#/konusma/pratik` (English) ve `#/konusma/de` (Deutsch). İngilizce yapay zekâ konuşma pratiği (`#/konusma`) ayrıca sürer.
+- Her dilde ve her seviyede (A1–B2) 20 kelime, 5 gramer kuralı, 4 diyalog, 2 çok adımlı rol oyunu (kafe, okul, istasyon, doktor, grup projesi, şikâyet, münazara, burs mülakatı) ve 4 dinle-yaz cümlesi var (`js/data/languages-ext.js`).
+- Altı etkinlik var: kelimeler, kelime testi, gramer, diyalog, rol oyunu ve dinle-yaz. Kelime testinde çeldiriciler aynı seviyeden gelir. Seçenek sırası tohumlu karıştırmayla belirlenir; doğru şık hep aynı yerde olmaz. Dinle-yaz sözcük sözcük karşılaştırılır.
+- İlk yanıtlar dil başına ayrı saklanır; seviye ilerleme çubuğu gösterilir.
+
+### Seslendirme
+- Sesler kaliteye göre sıralanır; Natural, Neural, Enhanced ve Premium sesler önce gelir. Kullanıcı Erişilebilirlik panelinden ses seçip deneyebilir.
+- Uzun metinler cümle sınırlarından 220 karaktere kadar parçalara bölünür ve aralarda kısa duraklamalar olur. Türkçede birim ve kısaltmalar okunur hâle gelir (m/s, km, °C, %, vb., örn.).
+- Android'de yüklü en yüksek kaliteli ses seçilir; yeni `ttsSpeak3` köprüsü ses sırasını da alır. Podcast'in iki konuşmacısı ayrı seslerle konuşur, ses tonu daha az kaydırılır ve konuşmacılar arasında doğal bir ara verilir.
+
+### Yapay zekâ soru üretimi
+- İlk önizleme partisinden sonra kolay, orta ve zor partiler bulut sağlayıcılarda paralel istenir. Tek iş parçacıklı yerel modelde sırayla üretilir.
+- Konu testinde tamamlanan havuz 21 gün saklanır (`meta "qpool:*"`). Konu yeniden açılınca test beklemeden başlar; arka planda 3 yeni soru eklenir (en çok 30). Araştırma modu bu önbelleği kullanmaz.
+- İstem değişiklikleri:
+  - Orta sorular iki adımlı ya da tablo/grafik yorumu ister.
+  - Zor sorular gerçek hayat bağlamında çok adımlıdır.
+  - Çeldiriciler yaygın kavram yanılgılarından gelir.
+  - Çözüm en çok 3 numaralı adım olarak yazılır.
+
+### Bilgiyi Başka Yerde Kullan ve Çözümdeki Hatayı Bul
+- 6 yeni disiplinlerarası aktarım ailesi: ortalama sürat, özkütle, üstel büyüme, olasılık, harita ölçeği, elektrik enerjisi. Her biri denklem, grafik/tablo ve günlük yaşam bağlamında sorulur; kuralı ve başka hangi alanlarda kullanıldığı gösterilir.
+- 12 yeni hata analizi eklendi; her biri adı konmuş bir kavram yanılgısına dayanır. Geri bildirimde adım adım çözümleme yer alır: doğru adım, ilk hata ve hatadan türeyen adımlar.
+
+### Oyunlar
+- **Sayı Doğrusu Avcısı:** tahmin edilen değere ne kadar yakın dokunulduğuna göre puan; klavyeyle de oynanır.
+- **Birim Avcısı:** SI birimlerinde seri çarpanı.
+- **Sırala!:** 10 farklı veri seti.
+
+### Laboratuvar ve deneyler
+- **Grafiği dinle:** Duraklat, Devam et ve Durdur kontrolleri eklendi. Ses bağlamı askıya alınıp sürdürüldüğü için tepe ve dip sesleri kaymaz. Sayfadan çıkınca çalma durur.
+- **Sensör ölçümü:**
+  - Yeni kanallar: doğrusal ivme (yer çekimi çıkarılmış) ve yönelim/eğim açısı.
+  - Metrikler: örnekleme hızı, ortalama, standart sapma, RMS, en küçük/en büyük, tepeden tepeye ve baskın frekans ile periyot.
+  - Görünümler: zaman grafiği, büyüklük grafiği ve histogram.
+- **pH ölçer:**
+  - Renk skalasıyla analog kadran ve ibre, dijital LCD ekran ve kararlılık lambası.
+  - HOLD düğmesi değeri sabitler.
+  - Bilinen çözeltilerle bir ya da iki noktalı kalibrasyon yapılabilir.
+- **Ekosistem Kavanozu:**
+  - Kartal ikinci avcı olarak eklendi; ayrıca mevsimsel ot büyümesi, salgın olayı ve tilki ölüm hızı ayarı var.
+  - Dengeye uzaklık ve Shannon çeşitlilik indeksi gösterilir.
+  - Kavanoz yüksek çözünürlükte çiziliyor: çizilmiş hayvanlar, mevsime göre gökyüzü.
+  - Kartal ve mevsimler kapalıyken model 1.49 ile aynıdır.
+- **Rehberler:** Telefon Fizik Atölyesi, Çiz Çalışsın ve Canlanan Ders Kitabı'na adım adım "Nasıl kullanılır?" rehberi eklendi (`onboarding.js`). Rehber, bitirilene ya da kapatılana kadar ilk girişte açılır.
+
+### Windows
+- Ollama, ayrık (detached) olmadan ve gizli tek bir konsolla başlatılır. Böylece açılışta ekran kartı taraması sırasında yaklaşık 20 cmd penceresinin yanıp sönmesi giderildi.
+
+### Testler
+- `tools/v151-check.mjs`: 11 sınama. Bu sınamalar üç hatayı yakaladı ve düzeltildi:
+  - Tohumlu karıştırmada doğru şık hep aynı konuma düşüyordu.
+  - Baskın frekans hesabında sistematik sapma vardı.
+  - Çeşitlilik indeksi tek türde −0 veriyordu.
+- `tools/v151-ui-check.mjs`: gerçek tarayıcıda 11 sınama.
+- Güncellenen sınamalar:
+  - `practice-check`: yeni ailelerin yanıtları bağımsız olarak yeniden hesaplanıyor.
+  - `research-check`: kalıcı önbellek denetleniyor; araştırma cihazının yalnızca kendi deposuna yazdığı doğrulanıyor.
+  - `v147-check`: genişleyen Almanca içerik.
+
 ## 1.50.0 — 2026-10-28
 
 - Mikrofon onarımları ve yeni çalışma alanı tek sürümde yayınlanır.

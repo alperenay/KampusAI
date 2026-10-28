@@ -1,4 +1,50 @@
-# KampüsAI 1.49 kullanım notları
+# KampüsAI 1.51 kullanım notları
+
+[Kullanım](KULLANIM.md) · [Değişiklik günlüğü](../CHANGELOG.md)
+
+## İngilizce ve Almanca pratik
+
+Menüden **İngilizce ve Almanca** seçilir. İngilizce için **English · pratik**, Almanca için **Deutsch** açılır; ikisi aynı altı etkinliği sunar:
+1. Kelimeler
+2. Kelime testi
+3. Gramer
+4. Diyalog
+5. Rol oyunu: sırayla yanıtla, sonda puanını gör.
+6. Dinle-yaz: Dinle'ye bas, cümleyi yaz, Kontrol et; yanlış sözcükler işaretlenir.
+
+Seviyeni seçince ilerleme çubuğu o seviyedeki ilk yanıtlarının doğruluğunu gösterir.
+
+## Daha doğal ses
+
+**Erişilebilirlik → Ses** bölümünden cihazındaki sesleri görebilir ve **Dene** ile dinleyebilirsin. ★ ile işaretli sesler doğal (sinirsel) seslerdir, ☁ işaretliler internet ister. Otomatik seçim en doğal sesi kullanır.
+
+## Daha hızlı testler
+
+Bir konunun testini ilk açtığında sorular üretilir ve saklanır. Aynı konuya yeniden girdiğinde test beklemeden başlar ve arka planda yeni sorular eklenir.
+
+## Grafiği dinle
+
+Deney sayfasında **Grafiği dinle** ile çalmaya başla. Aynı düğme önce **Duraklat**, sonra **Devam et** olur; **Durdur** çalmayı tamamen bitirir.
+
+## Sensör ölçümü
+
+**Sensör Laboratuvarı → Çoklu sensör** ekranında iki yeni kanal var: **Doğrusal ivme** ve **Yönelim**. **Görünüm** listesinden zaman grafiği, büyüklük ya da histogram seçilir. Ölçüm sırasında metrikler canlı güncellenir: ortalama, sapma, RMS ve baskın frekans.
+
+## pH ölçer
+
+Ölçüm kadranda ve dijital ekranda görünür. Lamba yeşil yanıp "kararlı" yazınca değeri kaydet; **HOLD** değeri sabitler.
+
+**Kalibrasyon** için pH'ını bildiğin bir çözeltiyi (ör. damıtık su, pH 7) ölç, listeden seç ve **Bu okumayla kalibre et**'e bas. İkinci bir çözeltiyle eğim de düzeltilir.
+
+## Ekosistem Kavanozu
+
+Yeni müdahaleler: **+3 kartal**, **Salgın** ve **Mevsimler**. Kartal tavşan avlayan ikinci avcıdır. Mevsimler açıkken otun büyümesi yıl boyunca değişir (1 yıl = 12 birim). Alttaki göstergeler dengeye uzaklığı ve tür çeşitliliğini gösterir.
+
+## Keşif atölyelerinde rehber
+
+Telefon Fizik Atölyesi, Çiz Çalışsın ve Canlanan Ders Kitabı ilk açılışta adım adım rehber gösterir. Rehberi istediğin an başlığın altındaki **Nasıl kullanılır?** düğmesiyle yeniden açabilirsin.
+
+# KampüsAI 1.49 kullanım notları (önceki sürüm)
 
 [Kullanım](KULLANIM.md) · [Öğretmen ve sınıf](OGRETMEN.md) · [Araştırma](ARASTIRMA.md) · [Değişiklik günlüğü](../CHANGELOG.md)
 
