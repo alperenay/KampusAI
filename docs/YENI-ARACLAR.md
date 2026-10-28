@@ -1,4 +1,58 @@
-# KampüsAI 1.47 kullanım notları
+# KampüsAI 1.49 kullanım notları
+
+[Kullanım](KULLANIM.md) · [Öğretmen ve sınıf](OGRETMEN.md) · [Araştırma](ARASTIRMA.md) · [Değişiklik günlüğü](../CHANGELOG.md)
+
+## pH Ölçer
+
+**Tüm araçlar → pH Ölçer.** Önce "Göstergeyi hazırla" adımlarıyla kırmızı lahana suyu yap. Bardağı beyaz kâğıdın önüne koy.
+1. **Kamerayı aç**, kamerayı kâğıda tut ve **Beyaz referans al**'a bas.
+2. Bardağı ortadaki halkaya getir. pH, güven aralığı ve benzer pH'lı evsel maddeler görünür.
+3. Ne ölçtüğünü yaz ve **Ölçümü kaydet**'e bas.
+
+Kamera yoksa **Fotoğraf seç** (fotoğrafta ölçülecek yere dokun) ya da **Renk** ile elle seçim yapılabilir. Sonuç yaklaşıktır, bir pH metre yerine geçmez. Çamaşır suyunu asla asitle karıştırma.
+
+## Vatandaş Bilimi Ağı
+
+**Ölç** sekmesi iki ölçüm sunar:
+- **10 saniye ölç:** Gürültünün eşdeğer seviyesini (Leq, dB) konumla kaydeder.
+- **Gökyüzünü ölç:** Gece, açık gökyüzünde ışık kirliliğini Bortle sınıfıyla kaydeder.
+
+Kalibrasyon bölümünde bir ses ölçerin değerini girerek telefonun farkını düzeltebilirsin.
+
+**Paylaş ve birleştir** sekmesi kendi ölçümlerini QR olarak gösterir. **Kod oku** ile arkadaşlarının kodlarını internetsiz eklersin; aynı ölçüm iki kez sayılmaz.
+
+**Harita** sekmesi ortak ısı haritasını gürültü ve ışık katmanlarıyla gösterir. CSV indirilebilir.
+
+## Ekosistem Kavanozu
+
+**Başlat** ile zamanı ilerlet; hız 1×, 5× ya da 10× seçilir. Müdahaleler:
+- **Tilkileri çıkar**, **+5 tilki**, **+20 tavşan**
+- **Kuraklık**
+- **Ot sınırı** ve **av başarısı** kaydırıcıları
+
+Zaman grafiği ve faz grafiği canlı çizilir. Olay günlüğü nesil tükenmelerini yazar. Alttaki tahmin sorularını önce tahmin edip sonra dene.
+
+## Meslek Haritası
+
+**Takip → Meslek Haritası.** Konu testleri çözdükçe en uygun beş rota netleşir. Her rotada şunlar görünür:
+- Kazanım uyumu ve veri kapsamı
+- Güçlü yönlerin
+- Sıradaki adımlar
+
+Kariyer Keşfi envanterini doldurduysan ilgi uyumu da hesaba katılır. Konu anlatımında **Hangi meslekte?** bağlantısı o kazanımın kullanıldığı meslekleri açar. Sonuçlar yönlendirme değil, keşif içindir.
+
+## Disleksi dostu mod
+
+Üst çubuktaki **Erişilebilirlik** düğmesi → **Disleksi dostu mod.** Tek dokunuşla şunlar açılır:
+- Disleksi dostu yazı tipi
+- Geniş aralıklar
+- Okuma cetveli
+- Hece renklendirme (ki·tap, öğ·ret·men)
+- Okunan kelime vurgusu
+
+Bunlar ayrı ayrı da açılıp kapatılabilir. Formüller ve düğmeler renklendirilmez. "Dinle" ile sesli okumada o an okunan kelime metnin üstünde sarı ile vurgulanır.
+
+# KampüsAI 1.47 kullanım notları (önceki sürüm)
 
 [Kullanım](KULLANIM.md) · [Öğretmen ve sınıf](OGRETMEN.md) · [Araştırma](ARASTIRMA.md)
 

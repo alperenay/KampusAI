@@ -1,7 +1,7 @@
 {
   "name": "kampusai-web",
   "private": true,
-  "version": "1.48.0",
+  "version": "1.49.0",
   "scripts": {
     "build": "node tools/build-web.mjs dist/web",
     "lint": "node tools/syntax-check.mjs && node tools/compat-check.mjs",
