@@ -43,6 +43,17 @@ await check("Model üretimi dört küçük partiye bölünür ve zorluk etiketle
   assert.equal(new Set(result.data.questions.map((q) => q.q)).size, 12);
   teacher.App.ai.generate = async () => ({ data: { questions: researchBank(1) }, model: "bad" });
   await assert.rejects(() => teacher.App.quiz.generatePool({ id: "9" }, { name: "Fizik" }, { name: "Ünite" }, { title: "Kazanım", content: {} }));
+  // v1.51: konu testi (cache: true) tamamlanan havuzu cihazda saklar; aynı konu yeniden açılınca model çağrılmadan gelir.
+  // Ayrı cihazda denenir: araştırma cihazı yalnız kendi deposuna yazmalı.
+  const learner = device(); let n = 0;
+  learner.App.ai = { generate: async () => { n++; return { data: { questions: researchBank(30) }, model: "m" }; } };
+  const args = [{ id: "9" }, { name: "Fizik" }, { name: "Ünite" }, { title: "Kazanım", content: {} }];
+  await learner.App.quiz.generatePool(...args, { cache: true });
+  assert.equal(n, 4);
+  const again = await learner.App.quiz.generatePool(...args, { cache: true, noRefresh: true });
+  assert.equal(n, 4); assert.equal(again.cached, true); assert.equal(again.data.questions.length, 12);
+  learner.App.ai.generate = async () => ({ data: { questions: researchBank(1) }, model: "bad" });
+  await assert.rejects(() => learner.App.quiz.generatePool(...args, { cache: true, fresh: true }));
 });
 await check("Gerekçe/eminlik göstergeleri: bilinçli, tahmin adayı, emin yanlış, hatalı gerekçe", () => {
   assert.equal(M.evaluate(question, 0, observation()).category, "consciousCorrect");

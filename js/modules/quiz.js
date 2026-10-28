@@ -38,8 +38,15 @@
     const system = tr ? "Lise öğretmeni. Yalnız geçerli JSON. Kısa ve doğru yaz." : "High-school teacher. Valid JSON only. Be concise and accurate.";
     const schema = '{"questions":[{"q":"...","options":["...","...","...","...","..."],"answer":0,"difficulty":2,"explain":"...","reasonOptions":["...","...","..."],"reasonAnswer":0,"hints":["...","...","..."]}]}';
     const head = grade.id + " · " + L(subject.name) + " · " + L(outcome.title);
-    const rule = tr ? "TAM " + count + " benzersiz soru. 5 şık, tek doğru (0 tabanlı answer). " + (d ? "Hepsinde difficulty=" + d + "." : "Birer kolay(1), orta(2), zor(3).") + " En çok 2 cümle çözüm. Üç gerekçe seçeneği ve 0 tabanlı anahtarı. Üç kısa ipucu: kavram, strateji, ilk işlem; son cevap yok. LaTeX için JSON kaçışlarını koru."
-      : "Exactly " + count + " unique questions, 5 options, one correct 0-based answer. " + (d ? "All difficulty=" + d + "." : "One easy(1), medium(2), hard(3).") + " At most 2 solution sentences. Three reasoning choices and 0-based key. Three brief hints: concept, strategy, first step; no final answer. Escape LaTeX for JSON.";
+    // v1.51: orta ve zor sorular çok adımlı ve bağlamlı; çözüm kısa numaralı adımlar; çeldiriciler yaygın yanılgılardan
+    const rule = tr ? "TAM " + count + " benzersiz soru. 5 şık, tek doğru (0 tabanlı answer). " + (d ? "Hepsinde difficulty=" + d + "." : "Birer kolay(1), orta(2), zor(3).") +
+        " Kolay: tek kavram. Orta: iki adım ya da tablo/grafik yorumu. Zor: gerçek hayat bağlamında en az iki kavramı birleştiren çok adımlı soru." +
+        " Yanlış şıklar öğrencilerin yaygın kavram yanılgılarından gelsin. explain: en çok 3 kısa adım (1) … (2) … (3) …; son adımda diğer şıkların neden yanlış olduğunu bir cümleyle söyle." +
+        " Üç gerekçe seçeneği ve 0 tabanlı anahtarı. Üç kısa ipucu: kavram, strateji, ilk işlem; son cevap yok. LaTeX için JSON kaçışlarını koru."
+      : "Exactly " + count + " unique questions, 5 options, one correct 0-based answer. " + (d ? "All difficulty=" + d + "." : "One easy(1), medium(2), hard(3).") +
+        " Easy: one concept. Medium: two steps or reading a table/graph. Hard: a multi-step real-life problem combining at least two concepts." +
+        " Wrong options should come from common misconceptions. explain: at most 3 short steps (1) … (2) … (3) …, ending with one sentence on why the other options fail." +
+        " Three reasoning choices and 0-based key. Three brief hints: concept, strategy, first step; no final answer. Escape LaTeX for JSON.";
     return { system, prompt: head + "\n" + rule + "\n" + schema + "\n" + lessonText(outcome).slice(0, 2400) +
       (options.exclude && options.exclude.length ? "\n" + (tr ? "Tekrarlama: " : "Do not repeat: ") + options.exclude.slice(-9).map((q) => q.slice(0, 100)).join(" | ") : "") };
   }
@@ -73,34 +80,93 @@
     return out.slice(0, adaptive ? POOL_SIZE : N);
   }
 
-  /** İlk 3 dengeli soru hemen önizlenir; 3 küçük partiyle 12'lik havuz tamamlanır. */
+  /* ---------------- Kalıcı soru havuzu önbelleği (v1.51) ----------------
+     Tamamlanan havuz cihazda saklanır (meta "qpool:<özet>", 21 gün). Aynı konuya yeniden girildiğinde test beklemeden
+     başlar; arka planda havuza 3 yeni soru eklenir (en çok 30), böylece tekrarlar zamanla çeşitlenir. */
+  const POOL_TTL = 21 * 86400000;
+  const poolId = (cacheKey) => { let h = 2166136261; for (let i = 0; i < cacheKey.length; i++) { h ^= cacheKey.charCodeAt(i); h = Math.imul(h, 16777619); } return "qpool:" + (h >>> 0).toString(36); };
+  async function loadPool(cacheKey) {
+    try {
+      const r = await App.db.get("meta", poolId(cacheKey));
+      if (!r || r.key !== cacheKey || Date.now() - r.at > POOL_TTL) return null;
+      const questions = normalize({ questions: r.questions }, true);
+      return questions.length >= 12 ? { questions, model: r.model || "" } : null;
+    } catch (e) { return null; }
+  }
+  async function savePool(cacheKey, questions, model) {
+    try { await App.db.put("meta", { id: poolId(cacheKey), key: cacheKey, at: Date.now(), questions: questions.slice(-POOL_SIZE), model }); } catch (e) { /* depolama dolu: yalnızca bellekte kalır */ }
+  }
+  /** Bulut sağlayıcıda partiler paralel istenir; yerel model (tek iş parçacığı) için sırayla */
+  async function canParallel(signal) {
+    try { const eng = await App.engine.resolve(signal); return !!eng && eng.kind !== "local"; } catch (e) { return false; }
+  }
+
+  /** İlk 3 dengeli soru hemen önizlenir; kalan 3 parti (kolay/orta/zor) bulutta paralel üretilir; 12'lik havuz saklanır. */
   async function generatePool(grade, subject, unit, outcome, options) {
     options = options || {};
     const cacheKey = JSON.stringify([grade.id, subject.id || L(subject.name), unit.id || L(unit.name), outcome.id || L(outcome.title), App.i18n.lang, lessonText(outcome).slice(0, 2400)]);
+    // Kalıcı önbellek yalnızca çağıran isterse (konu testi): araştırma modu yalnız kendi deposuna yazar
+    if (options.cache && !options.fresh) {
+      const stored = await loadPool(cacheKey);
+      if (stored) {
+        if (options.onProgress) options.onProgress({ ready: stored.questions.length, total: stored.questions.length, questions: stored.questions.slice() });
+        if (stored.questions.length < POOL_SIZE && !options.noRefresh) refreshPool(grade, subject, unit, outcome, cacheKey, stored);
+        return { data: { questions: stored.questions }, model: stored.model, cached: true };
+      }
+    }
     const cached = pendingPools.get(cacheKey);
     let questions = cached && Date.now() - cached.at < 600000 ? cached.questions.slice() : [];
     const next = questions.length ? cached.next : 0, models = new Set(cached && questions.length ? cached.models : []);
     if (questions.length && options.onProgress) options.onProgress({ ready: questions.length, total: 12, questions: questions.slice() });
-    for (let stage = next; stage < 4; stage++) {
-      const difficulty = [0, 1, 2, 3][stage];
-      let batch = [];
+    const batchFor = async (difficulty, exclude) => {
+      let batch = [], model = "";
       for (let attempt = 0; attempt < 2; attempt++) {
         if (options.signal && options.signal.aborted) throw new Error("aborted");
-        const pr = prompts(grade, subject, unit, outcome, { count: 3, difficulty, exclude: questions.map((q) => q.q) });
+        const pr = prompts(grade, subject, unit, outcome, { count: 3, difficulty, exclude });
         const res = await App.ai.generate(Object.assign({}, pr, { temperature: options.temperature == null ? 0.5 : options.temperature, signal: options.signal, onStage: options.onStage, onDelta: options.onDelta }));
-        const candidates = normalize(res.data, true).filter((q) => !questions.some((p) => p.q === q.q));
+        const candidates = normalize(res.data, true).filter((q) => !exclude.includes(q.q));
         batch = difficulty ? candidates.filter((q) => q.difficulty === difficulty).slice(0, 3) : [1, 2, 3].map((d) => candidates.find((q) => q.difficulty === d)).filter(Boolean);
-        models.add(res.model);
+        model = res.model;
         if (batch.length === 3) break;
       }
       if (batch.length < 3) throw new Error(t("quiz.badOutput"));
+      return { batch, model };
+    };
+    const commit = (stage, batch, model) => {
+      models.add(model);
       questions = normalize({ questions: questions.concat(batch) }, true);
       if (pendingPools.size >= 8) pendingPools.delete(pendingPools.keys().next().value);
       pendingPools.set(cacheKey, { at: Date.now(), next: stage + 1, questions: questions.slice(), models: Array.from(models) });
       if (options.onProgress) options.onProgress({ ready: questions.length, total: 12, questions: questions.slice() });
+    };
+    let stage = next;
+    if (stage === 0) { const r = await batchFor(0, []); commit(0, r.batch, r.model); stage = 1; }
+    if (stage < 4 && (await canParallel(options.signal))) {
+      const exclude = questions.map((q) => q.q);
+      const rest = [1, 2, 3].slice(stage - 1);
+      const results = await Promise.all(rest.map((d) => batchFor(d, exclude)));
+      results.forEach((r, k) => commit(stage + k, r.batch, r.model));
+    } else {
+      for (; stage < 4; stage++) { const r = await batchFor(stage, questions.map((q) => q.q)); commit(stage, r.batch, r.model); }
     }
     pendingPools.delete(cacheKey);
-    return { data: { questions }, model: Array.from(models).join(" + ") };
+    const model = Array.from(models).join(" + ");
+    if (options.cache) savePool(cacheKey, questions, model);
+    return { data: { questions }, model };
+  }
+
+  /** Önbellekten açılan havuza arka planda 3 yeni soru ekler (hata sessizce yok sayılır) */
+  const refreshing = new Set();
+  async function refreshPool(grade, subject, unit, outcome, cacheKey, stored) {
+    if (refreshing.has(cacheKey)) return;
+    refreshing.add(cacheKey);
+    try {
+      const pr = prompts(grade, subject, unit, outcome, { count: 3, difficulty: 0, exclude: stored.questions.map((q) => q.q) });
+      const res = await App.ai.generate(Object.assign({}, pr, { temperature: 0.7 }));
+      const fresh = normalize(res.data, true).filter((q) => !stored.questions.some((p) => p.q === q.q));
+      if (fresh.length) await savePool(cacheKey, normalize({ questions: stored.questions.concat(fresh) }, true), stored.model);
+    } catch (e) { /* arka plan yenilemesi isteğe bağlıdır */ }
+    finally { refreshing.delete(cacheKey); }
   }
 
   const outcomeLabel = (grade, subject, unit, outcome) =>
@@ -156,7 +222,7 @@
     try {
       if (research) { pool = research.session.bank; model = t("research.offlineBank"); }
       else {
-        const res = await generatePool(grade, subject, unit, outcome, { signal: ctrl.signal, onDelta: () => generation.stream(), onProgress: (info) => generation.update(info) });
+        const res = await generatePool(grade, subject, unit, outcome, { cache: true, signal: ctrl.signal, onDelta: () => generation.stream(), onProgress: (info) => generation.update(info) });
         pool = res.data.questions;
         if (gone()) { clearInterval(tick); return; }
         model = res.model;
