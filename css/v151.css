@@ -18,3 +18,13 @@
 .lp-dict b.is-bad { background: color-mix(in srgb, var(--bad) 22%, transparent); text-decoration: line-through; }
 .a11y-voice { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
 .a11y-voice .select { max-width: 220px; }
+
+/* ---------------- Aktarım ve hata analizi ---------------- */
+.pr-link, .pr-rule { font-size: 13.5px; color: var(--text-2); margin: 6px 0; }
+.pr-analysis { list-style: none; padding: 0; margin: 10px 0; display: grid; gap: 4px; }
+.pr-analysis li { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; padding: 7px 10px; border-radius: var(--radius-sm); border-left: 4px solid var(--border-strong); background: var(--surface-2); font-size: 14px; }
+.pr-analysis li.is-ok { border-left-color: #3fb950; }
+.pr-analysis li.is-bad { border-left-color: var(--bad); background: color-mix(in srgb, var(--bad) 12%, var(--surface-2)); }
+.pr-analysis li.is-carry { border-left-color: var(--warn); }
+.pr-analysis b { font-size: 12px; color: var(--text-2); white-space: nowrap; }
+.pr-misc { padding: 8px 12px; border-radius: var(--radius-sm); background: color-mix(in srgb, var(--warn) 14%, transparent); font-size: 14px; }
