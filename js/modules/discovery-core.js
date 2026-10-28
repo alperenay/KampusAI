@@ -12,7 +12,9 @@
       "</p>" +
       body +
       "</div>";
-    return view.querySelector(".discovery");
+    const root = view.querySelector(".discovery");
+    if (App.onboarding) App.onboarding.attach(root, id);
+    return root;
   }
   const input = (id, label, value, min, max, step = "any") =>
     "<label>" +
