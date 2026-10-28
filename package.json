@@ -1,11 +1,11 @@
 {
   "name": "kampusai-web",
   "private": true,
-  "version": "1.47.0",
+  "version": "1.48.0",
   "scripts": {
     "build": "node tools/build-web.mjs dist/web",
     "lint": "node tools/syntax-check.mjs && node tools/compat-check.mjs",
-    "test": "node tools/study-check.mjs && node tools/research-check.mjs && node tools/teacher-review-check.mjs && node tools/retired-model-check.mjs && node tools/ar-check.mjs && node tools/cevre-check.mjs && node tools/kavram-check.mjs && node tools/content-check.mjs && node tools/build-content-index.mjs --check && node tools/v142-check.mjs && node tools/practice-check.mjs && node tools/v145-check.mjs && node tools/runtime-check.mjs && node tools/v147-check.mjs",
+    "test": "node tools/study-check.mjs && node tools/research-check.mjs && node tools/teacher-review-check.mjs && node tools/retired-model-check.mjs && node tools/ar-check.mjs && node tools/cevre-check.mjs && node tools/kavram-check.mjs && node tools/content-check.mjs && node tools/build-content-index.mjs --check && node tools/v142-check.mjs && node tools/practice-check.mjs && node tools/v145-check.mjs && node tools/runtime-check.mjs && node tools/v147-check.mjs && node tools/discovery-check.mjs && node tools/discovery-signal-check.mjs",
     "test:study": "node tools/study-check.mjs",
     "test:study-ui": "node tools/study-ui-check.mjs",
     "test:research": "node tools/research-check.mjs",
@@ -23,8 +23,10 @@
     "test:audit-web": "node tools/audit-web.mjs --full",
     "test:storage-ui": "node tools/storage-ui-check.mjs",
     "test:lifecycle-ui": "node tools/lifecycle-ui-check.mjs",
-    "type-check": "npm exec --yes --package typescript@5.9.3 -- tsc -p tsconfig.check.json",
+    "type-check": "npm exec --yes --package typescript@5.9.3 -- tsc -p tsconfig.check.json && npm exec --yes --package typescript@5.9.3 -- tsc -p tsconfig.discovery.json",
     "test:v147": "node tools/v147-check.mjs",
-    "test:v147-ui": "node tools/v147-ui-check.mjs"
+    "test:v147-ui": "node tools/v147-ui-check.mjs",
+    "test:discovery": "node tools/discovery-check.mjs && node tools/discovery-signal-check.mjs",
+    "test:discovery-ui": "node tools/discovery-ui-check.mjs"
   }
 }

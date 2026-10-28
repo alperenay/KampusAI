@@ -62,6 +62,8 @@
     ["sinif", "grad", "nav.class", ["Öğretmen için anonim sınıf özeti", "Anonymous class overview for teachers"], "tools", "sınıf öğretmen"],
     ["hakkinda", "info", "nav.about", ["Proje, gizlilik, kaynakça ve lisanslar", "Project, privacy, references, licences"], "tools", "hakkında kaynakça lisans"]
   ];
+  App.data.discovery.modules.forEach(m => TOOLS.push([m[0],m[3],[m[1],m[1]],[m[2],m[2]],"practice",m[1]+" keşif deney fizik görsel tarih gökyüzü"]));
+  TOOLS.push(["kesif","compass",["Keşif Atölyeleri","Discovery Workshops"],["Dokuz yeni ölçüm, modelleme ve öğretme aracı","Nine measurement, modelling and teaching tools"],"practice","keşif deney dokuz atölye"]);
   const GROUPS = { start: ["Başla", "Start"], study: ["Çalış", "Study"], practice: ["Pratik", "Practice"], track: ["Takip", "Track"], tools: ["Araçlar", "Tools"] };
   const title = (x) => (Array.isArray(x[2]) ? T(x[2][0], x[2][1]) : App.t(x[2]));
   const desc = (x) => T(x[3][0], x[3][1]);

@@ -29,7 +29,7 @@
 - **Tekrar et:** Yanlış defteri, Hap Kartlar ve tek listede günlük tekrarlar.
 - **Soru sor:** Yazı, fotoğraf veya sesle yapay zekâdan destek al.
 - **Gelişimini izle:** Ders programı, deneme sonuçları ve haftalık üstbiliş karnesi.
-- **Keşfet:** NASA dokulu dünya küresi, etkileşimli deneyler ve 3B modeller.
+- **Keşfet:** Dünya küresi ve 3B modeller; dokuz yeni [Keşif Atölyesi](docs/KESIF-ATOLYELERI.md): Bana Öğret, telefon fiziği, dokunsal grafik, deney raporu, sismograf, gökyüzü, çizimden simülasyon, kamera grafiği ve tarih haritası.
 - **Dil çalış:** İngilizce konuşma ve Almanca A1–B2 kelime, gramer, diyalog alıştırmaları.
 - **Ölç:** Desteklenen cihaz sensörleri veya etiketli simülasyon; canlı grafik, eşik ve CSV/JSON.
 - **Sınıfta kullan:** Çevrimdışı QR ödev dağıtımı ve öğretmen geri bildirimi.

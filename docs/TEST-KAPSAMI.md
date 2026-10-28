@@ -39,3 +39,7 @@ Tarayıcı testleri Playwright 1.62.1 kullanır. Windows'ta varsayılan Chromium
 - Windows üzerinde WebKit derlemesi AudioContext sunmayabilir. Böyle bir ortamda metin/klavye geri dönüşü doğrulanır; ses çalındığı iddia edilmez.
 - Yerel depolama geri alma testi yakalanabilir yazma hatalarını kapsar. localStorage birden çok anahtarda transaction sağlamaz; güç kesintisine karşı atomiklik iddiası yoktur. IndexedDB içe aktarma tek transaction kullanır.
 - Ekran/parametre taraması tüm oyun seviyelerini, tüm olası sayı birleşimlerini veya her üreticiye ait donanımı kapsamaz.
+
+## 1.48 Keşif Atölyeleri
+
+`discovery-check.mjs`: sayısal fizik, MNA, Kepler/J2000 referansı, güvenli ifade ayrıştırma, rubrik ve veri şemaları. `discovery-signal-check.mjs`: gerçek AudioWorklet kodunun denetimli ses örnekleri. `discovery-ui-check.mjs`: dokuz rota, 320/768/1440 genişlik, sensörden rapora aktarım, AI önerisinin onay kapısı, kontrollü sensör/yönelim/kamera fixture’ları ve kaynak temizliği. Yeni hesaplama çekirdeği `tsconfig.discovery.json` strict kapısındadır. Fiziksel iki telefon ses zamanlama doğruluğu, gerçek afet ölçümü veya çevrimiçi modelin OCR başarısı bu testlerle doğrulanmış sayılmaz.

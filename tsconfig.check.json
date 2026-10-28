@@ -4,7 +4,10 @@
     "checkJs": true,
     "noEmit": true,
     "target": "ES2022",
-    "lib": ["ES2022", "DOM"],
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
     "strict": false,
     "skipLibCheck": true
   },
@@ -14,6 +17,19 @@
     "js/modules/language-practice.js",
     "js/modules/ai-favorites.js",
     "js/modules/sensor-workbench.js",
-    "js/modules/module-safety.js"
+    "js/modules/module-safety.js",
+    "js/modules/discovery-core.js",
+    "js/modules/discovery-model.js",
+    "js/modules/discovery-vision.js",
+    "js/modules/draw-simulation.js",
+    "js/modules/equation-camera.js",
+    "js/modules/haptic-graph.js",
+    "js/modules/history-map.js",
+    "js/modules/phone-physics.js",
+    "js/modules/planetarium.js",
+    "js/modules/reverse-tutor.js",
+    "js/modules/science-report.js",
+    "js/modules/seismograph.js",
+    "js/data/discovery.js"
   ]
 }

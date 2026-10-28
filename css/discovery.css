@@ -1,0 +1,228 @@
+.discovery {
+  max-width: 1100px;
+  margin: auto;
+}
+.discovery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 16px;
+}
+.discovery-tile {
+  padding: 20px;
+  text-decoration: none;
+  color: inherit;
+}
+.discovery h1 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+.discovery h2 {
+  font-size: 1.15rem;
+}
+.discovery .panel {
+  padding: 18px;
+  margin: 16px 0;
+  border: 1px solid var(--border, #5555);
+  border-radius: 16px;
+  background: var(--panel, #8881);
+}
+.discovery label {
+  display: block;
+  margin: 10px 0;
+  font-size: 0.95rem;
+}
+.discovery input:not([type="checkbox"]),
+.discovery select,
+.discovery textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 44px;
+  margin-top: 6px;
+  padding: 10px;
+  border: 1px solid #8887;
+  border-radius: 10px;
+  background: var(--input-bg, #8881);
+  color: inherit;
+  font: inherit;
+}
+.discovery select option {
+  background: var(--bg, #222);
+  color: var(--text, #eee);
+}
+.discovery textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+.discovery .controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: end;
+}
+.discovery .controls > label {
+  flex: 1;
+  min-width: 125px;
+}
+.discovery .btn {
+  min-height: 44px;
+  white-space: normal;
+}
+.discovery canvas,
+.discovery svg,
+.discovery video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 12px;
+}
+.discovery canvas {
+  background: #101727;
+  touch-action: none;
+}
+.discovery [data-status] {
+  min-height: 1.5em;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.discovery .reading {
+  font-size: 1.1rem;
+  font-variant-numeric: tabular-nums;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.discovery .notice {
+  border-left: 4px solid #eab54b;
+  padding: 12px;
+  background: #eab54b12;
+  line-height: 1.6;
+}
+.discovery .transcript {
+  max-height: 360px;
+  overflow: auto;
+}
+.discovery .transcript p {
+  padding: 12px;
+  border-radius: 12px;
+  background: #8881;
+  white-space: pre-wrap;
+}
+.discovery .camera-stage {
+  position: relative;
+  min-height: 220px;
+  background: #101727;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.discovery .camera-stage video {
+  min-height: 220px;
+  max-height: 420px;
+  object-fit: cover;
+}
+.discovery .camera-stage canvas {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  background: transparent;
+  pointer-events: none;
+}
+.discovery .checks {
+  list-style: none;
+  padding: 0;
+}
+.discovery .checks li {
+  margin: 8px 0;
+}
+.discovery table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.discovery td,
+.discovery th {
+  padding: 8px;
+  border-bottom: 1px solid #8885;
+  text-align: left;
+}
+.discovery .table-scroll {
+  overflow: auto;
+  max-height: 320px;
+}
+.discovery .qr svg {
+  max-width: 260px;
+  background: white;
+}
+.discovery .anchor-box {
+  position: absolute;
+  border: 2px dashed #ffcc66;
+  pointer-events: none;
+}
+.discovery .map-route {
+  stroke-dasharray: 8 6;
+  animation: discovery-dash 6s linear infinite;
+}
+@keyframes discovery-dash {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .discovery .map-route {
+    animation: none;
+  }
+}
+@media print {
+  html:has(body.discovery-print),
+  body.discovery-print {
+    background: white !important;
+    color: black !important;
+    color-scheme: light !important;
+  }
+  body.discovery-print > :not(#discovery-print-sheet) {
+    display: none !important;
+  }
+  body.discovery-print #discovery-print-sheet {
+    display: block !important;
+    page: discovery-report;
+    font:
+      12pt "Times New Roman",
+      serif;
+    color: #000;
+    background: white;
+  }
+  #discovery-print-sheet table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  #discovery-print-sheet td,
+  #discovery-print-sheet th {
+    border: 1px solid #aaa;
+    padding: 5px;
+  }
+  #discovery-print-sheet img {
+    max-width: 100%;
+    break-inside: avoid;
+  }
+  #discovery-print-sheet h2,
+  #discovery-print-sheet h3 {
+    break-after: avoid;
+    font-family: "Times New Roman", serif;
+    color: black;
+    margin: 12pt 0 4pt;
+  }
+  #discovery-print-sheet p {
+    margin: 4pt 0;
+  }
+  #discovery-print-sheet .raw-appendix {
+    break-before: page;
+  }
+  #discovery-print-sheet tr {
+    break-inside: avoid;
+  }
+  #discovery-print-sheet thead {
+    display: table-header-group;
+  }
+  @page discovery-report {
+    size: A4;
+    margin: 20mm;
+    background: white;
+  }
+}

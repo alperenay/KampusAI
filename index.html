@@ -58,6 +58,7 @@
   <link rel="stylesheet" href="css/v144.css">
   <link rel="stylesheet" href="css/v145.css">
   <link rel="stylesheet" href="css/v147.css">
+  <link rel="stylesheet" href="css/discovery.css">
 </head>
 <body>
   <a class="a11y-skip" href="#view" data-i18n="a11y.skip">İçeriğe geç</a>
@@ -148,9 +149,24 @@
           </a>
             </div>
           </div>
+          <div class="nav-group" data-group="discovery">
+            <button class="nav-group__head" type="button" aria-expanded="true" aria-controls="ng-discovery"><span class="sidebar__label">Keşif Atölyeleri</span><span data-icon="chevronD"></span></button>
+            <div class="nav-group__body" id="ng-discovery">
+              <a class="nav__item" href="#/bana-ogret" data-route="bana-ogret"><span data-icon="grad"></span><span class="sidebar__label">Bana Öğret</span></a>
+              <a class="nav__item" href="#/telefon-fizik" data-route="telefon-fizik"><span data-icon="mic"></span><span class="sidebar__label">Telefon Fizik Atölyesi</span></a>
+              <a class="nav__item" href="#/dokunsal-grafik" data-route="dokunsal-grafik"><span data-icon="chart"></span><span class="sidebar__label">Titreşimli Grafik</span></a>
+              <a class="nav__item" href="#/deney-raporu" data-route="deney-raporu"><span data-icon="note"></span><span class="sidebar__label">Bilimsel Deney Raporu</span></a>
+              <a class="nav__item" href="#/sismograf" data-route="sismograf"><span data-icon="layers"></span><span class="sidebar__label">Sismograf Atölyesi</span></a>
+              <a class="nav__item" href="#/gokyuzu" data-route="gokyuzu"><span data-icon="star"></span><span class="sidebar__label">Gökyüzü Modu</span></a>
+              <a class="nav__item" href="#/ciz-calissin" data-route="ciz-calissin"><span data-icon="pen"></span><span class="sidebar__label">Çiz, Çalışsın</span></a>
+              <a class="nav__item" href="#/canlanan-kitap" data-route="canlanan-kitap"><span data-icon="camera"></span><span class="sidebar__label">Canlanan Ders Kitabı</span></a>
+              <a class="nav__item" href="#/tarih-haritasi" data-route="tarih-haritasi"><span data-icon="map"></span><span class="sidebar__label">Yaşayan Tarih Haritası</span></a>
+            </div>
+          </div>
           <div class="nav-group" data-group="practice">
             <button class="nav-group__head" type="button" aria-expanded="true" aria-controls="ng-practice"><span class="sidebar__label" data-i18n="nav.group.practice">Pratik</span><span data-icon="chevronD"></span></button>
             <div class="nav-group__body" id="ng-practice">
+          <a class="nav__item" href="#/kesif" data-route="kesif" data-route-also="bana-ogret,telefon-fizik,dokunsal-grafik,deney-raporu,sismograf,gokyuzu,ciz-calissin,canlanan-kitap,tarih-haritasi"><span data-icon="compass"></span><span class="sidebar__label">Keşif Atölyeleri · 9 araç</span></a>
           <a class="nav__item" href="#/aktarim" data-route="aktarim"><span data-icon="layers"></span><span class="sidebar__label" data-i18n="nav.transfer">Bilgiyi Başka Yerde Kullan</span></a>
           <a class="nav__item" href="#/hata-avcisi" data-route="hata-avcisi"><span data-icon="scan"></span><span class="sidebar__label" data-i18n="nav.errorHunt">Çözümdeki Hatayı Bul</span></a>
           <a class="nav__item" href="#/lab" data-route="lab">
@@ -438,6 +454,19 @@
   <script src="js/modules/kariyer.js"></script>
   <script src="js/modules/yolculuk.js"></script>
   <script src="js/modules/podcast.js"></script>
+  <script src="js/data/discovery.js"></script>
+  <script src="js/modules/discovery-model.js"></script>
+  <script src="js/modules/discovery-core.js"></script>
+  <script src="js/modules/discovery-vision.js"></script>
+  <script src="js/modules/reverse-tutor.js"></script>
+  <script src="js/modules/phone-physics.js"></script>
+  <script src="js/modules/haptic-graph.js"></script>
+  <script src="js/modules/science-report.js"></script>
+  <script src="js/modules/seismograph.js"></script>
+  <script src="js/modules/planetarium.js"></script>
+  <script src="js/modules/draw-simulation.js"></script>
+  <script src="js/modules/equation-camera.js"></script>
+  <script src="js/modules/history-map.js"></script>
   <script src="js/modules/hub.js"></script>
   <script src="js/modules/page-guide.js"></script>
   <script src="js/modules/nav.js"></script>

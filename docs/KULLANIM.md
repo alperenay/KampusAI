@@ -66,3 +66,7 @@ Asistana soru yazabilir veya fotoğraf yükleyebilirsin. **Verilerim** açıkken
 Bağlantı sorunu varsa seçili servisi ve interneti kontrol et. Yerel model açılamıyorsa daha küçük modeli dene. Kamerayı kullanamıyorsan görsel dosyası seç; QR okuyamıyorsan kod yapıştırma veya dosya aktarımını kullan.
 
 Kurulum dosyalarını yalnız [resmî sürümlerden](https://github.com/alperenay/KampusAI/releases/latest) indir. İşletim sistemi bir uyarı verirse dosyanın kaynağını ve yayımcı bilgisini kontrol et.
+
+## Keşif Atölyeleri
+
+Pratik menüsündeki **Keşif Atölyeleri · 9 araç** girişini aç. Her aracın adımları, veri aktarımı, cihaz desteği ve bilimsel sınırları [bu kılavuzda](KESIF-ATOLYELERI.md) açıklanır.

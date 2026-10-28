@@ -15,3 +15,8 @@ interface Window {
   Magnetometer?: new (options: { frequency: number }) => GenericReadingSensor;
   webkitAudioContext?: typeof AudioContext;
 }
+
+interface Window {
+  jsQR: (data: Uint8ClampedArray, width: number, height: number) => { data: string } | null;
+  qrcode: (version: number, correction: string) => { addData(text: string): void; make(): void; createSvgTag(options: {cellSize: number; margin: number; scalable: boolean}): string };
+}

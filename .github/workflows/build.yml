@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.47.0
+  APP_VERSION: 1.48.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -100,6 +100,7 @@ jobs:
           npm run test:v145-ui
           node tools/navigation-ui-check.mjs
           npm run test:v147-ui
+          npm run test:discovery-ui
           node tools/storage-ui-check.mjs
           node tools/lifecycle-ui-check.mjs
           node tools/lab-interactions-ui-check.mjs
@@ -180,6 +181,7 @@ jobs:
         run: |
           npm run type-check
           npm run test:v147
+          npm run test:discovery
       - name: Web dosyalarını hazırla
         run: |
           node tools/build-web.mjs dist/web --version "$APP_VERSION"
@@ -544,8 +546,8 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          NASA dokulu dünya küresi, atmosfer ve POI kartları; Almanca A1–B2 pratikleri; kalıcı AI favorileri; beş kanallı sensör ölçümü/simülasyon, eşik uyarısı ve CSV/JSON aktarımı eklendi. Öğretmen, araştırma ve sınıf ekranları bozuk kayıt ve eski ekran yüklemelerine karşı korundu; adım adım kullanım eklendi.
-          Gerçek cihaz ve simülasyon verileri ayrı etiketlenir. Ses seviyesi dBFS'dir; kalibre edilmiş dB SPL değildir. Donanım desteği cihaz/tarayıcıya bağlıdır.
+          Dokuz Keşif Atölyesi eklendi: Bana Öğret, Telefon Fizik Atölyesi, Titreşimli Grafik, Bilimsel Deney Raporu, Sismograf, Gökyüzü, Çiz Çalışsın, Canlanan Ders Kitabı ve Yaşayan Tarih Haritası. Ayrıntılar: CHANGELOG.md ve docs/KESIF-ATOLYELERI.md.
+          Gerçek/elle/simülasyon verileri ayrıdır. Akustik QR saat eşzamanlamaz; sensör örnek hızı ölçülür. P/S, kesin tarih sınırları ve metrik AR doğrulaması iddia edilmez. Kamera AI önerileri çalıştırılmadan önce incelenir.
           Lint, yeni modül tip denetimi, birim testleri, üç tarayıcı motoru ve Android/Windows/Linux regresyon kapıları tamamlandı.
 
           | Platform | Dosya |
