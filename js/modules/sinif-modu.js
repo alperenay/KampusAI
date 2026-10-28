@@ -120,7 +120,7 @@
     if (d.t === "vb") {
       if (!str(d.s, 40) || !Array.isArray(d.m) || !d.m.length || d.m.length > 200 ||
         !d.m.every((r) => Array.isArray(r) && r.length === 5 && r.every((x) => x === null || Number.isInteger(x)) && (r[0] === 0 || r[0] === 1) && Number.isInteger(r[1]) && Number.isInteger(r[4]) &&
-          (r[2] === null || Math.abs(r[2]) <= 9000000) && (r[3] === null || Math.abs(r[3]) <= 18000000))) throw new Error("packet");
+          (r[2] === null || Math.abs(r[2]) <= 9000000) && (r[3] === null || Math.abs(r[3]) <= 18000000) && (r[2]===null)===(r[3]===null) && Number.isFinite(new Date(r[4]*60000).getTime()) && (r[0]===1 ? r[1]>=10&&r[1]<=90 : r[1]>=-1400&&r[1]<=2000))) throw new Error("packet");
       return d;
     }
     // Düello paketleri (duello.js, v1.45): "d" soru seti + başlama zamanı, "dr" oyuncunun cevapları ve süreleri

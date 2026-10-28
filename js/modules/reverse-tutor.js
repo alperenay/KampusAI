@@ -275,7 +275,7 @@
     $("rtExport").onclick = () =>
       U0.download("bana-ogret.json", { schema: 1, selected, turns, checks });
     life.add(() => {
-      if (listener) listener.stop();
+      if (listener) {if(listener.cancel)listener.cancel();else listener.stop().catch(()=>{});}
     });
     return () => life.close();
   }

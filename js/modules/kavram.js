@@ -261,7 +261,7 @@
       const L = S.listen; if (!L) return; S.listen = null; clearTimeout(S.sil);
       $('[data-kv="mic"]') && $('[data-kv="mic"]').setAttribute("aria-pressed", "false");
       if (S.holo) S.holo.setMic(0);
-      L.stop().then((r) => { setState("idle"); const t = (r && r.text) || $("#kvQ").value; if (send && t.trim()) { $("#kvQ").value = ""; ask(t.trim()); } });
+      (send ? L.stop() : (L.cancel ? (L.cancel(), Promise.resolve({text:""})) : L.stop())).then((r) => { setState("idle"); const t = (r && r.text) || $("#kvQ").value; if (send && t.trim()) { $("#kvQ").value = ""; ask(t.trim()); } }).catch(e=>{if(room.isConnected)App.ui.toast(App.media.errorMessage(e),"error");});
     }
     function micStart() {
       cancel();

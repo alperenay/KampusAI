@@ -163,13 +163,14 @@
   function open(startTab) {
     const m = App.ui.modal({
       title: t("ais.title"),
-      body: body(),
+      body: body()+'<section class="card"><h3>'+esc(App.i18n.lang==="en"?"Microphone":"Mikrofon")+'</h3><button type="button" class="btn" id="aisMicTest">'+esc(App.i18n.lang==="en"?"Test microphone":"Mikrofonu test et")+'</button></section>',
       actions:
         '<button class="btn btn--ghost" type="button" id="aisReset" style="margin-right:auto">' + esc(t("ais.defaults")) + "</button>" +
         '<button class="btn btn--ghost" type="button" data-close>' + esc(t("cancel")) + "</button>" +
         '<button class="btn btn--primary" type="button" id="aisSave">' + esc(t("save")) + "</button>"
     });
     const el = m.el;
+    el.querySelector("#aisMicTest").onclick=()=>App.media.openTest();
     el.classList.add("modal--wide");
     const $ = (s) => el.querySelector(s);
     const segVal = (name) => { const b = el.querySelector('[data-seg="' + name + '"] [aria-checked="true"]'); return b ? b.dataset.val : ""; };

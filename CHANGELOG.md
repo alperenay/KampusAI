@@ -1,5 +1,24 @@
 # Sürüm notları
 
+## 1.50.0 — 2026-10-28
+
+- Mikrofon onarımları ve yeni çalışma alanı tek sürümde yayınlanır.
+- Yan menü ve araç kataloğu ortak sekiz kategoriye ayrıldı; tüm büyük özellikler erişilebilir.
+- AI favorileri: 12 hazır başlangıç, 12 sabitleme, 20 kişisel şablon, arama, düzenleme ve sıralama. Kişisel metinler bu cihazda saklanır; seçim otomatik istek göndermez.
+
+- Android WebView mikrofon erişiminde RECORD_AUDIO yanında gerekli MODIFY_AUDIO_SETTINGS izni eklendi; kurulu APK testine izin kontrolü kondu.
+- Mikrofon erişimi için ortak servis: izin, bulunamayan aygıt, meşgul/sürücü, güvenli bağlantı ve desteklenmeyen ayar hataları ayrıldı; uygun ayar hatasında varsayılan kayıtla yeniden denenir.
+- Web Speech için ikinci mikrofon akışı açılması kaldırıldı. Ses tanıma hizmeti kullanılamadığında uygun mevcut AI sağlayıcısıyla kayıt/yazıya çevirme yolu kullanılabilir.
+- Eski/iptal edilmiş ses oturumlarının yeni oturumu değiştirmesi ve geç gelen izinle kayıt başlaması önlendi. Kapatma/duraklatma artık ses kaydını AI’ye göndermeden iptal eder.
+- AI Ayarları ve Sesli Öğretmen içine yalnız yerel seviye gösteren mikrofon testi eklendi. Askıya alınmış Web Audio bağlamları yeniden çalıştırılır.
+- pH kamerasında eşzamanlı izin yanıtlarının yeni akışı kapatması, bozuk beyaz referans/geçmiş kayıtları ve eski görsel yüklemeleri düzeltildi.
+- Vatandaş bilimi ve meslek ekranlarının geciken okumaları mevcut sayfadan yalıtıldı. Geçersiz ölçüm verileri görüntüden ayrılır; saklı hatalı satırlar `invalidItems` içinde korunur.
+- Vatandaş bilimi QR’ında tarih, değer ve koordinat çifti doğrulaması; CSV hücrelerinde formül enjeksiyonu koruması eklendi. Kalibrasyon ve tahmin sınırları açıklandı.
+- WebKit’te boyut gözlemcisi içinden anında canvas ölçüsü değiştirilmesinin döngü oluşturması, işlemi sonraki çizim karesine taşıyarak giderildi.
+- Erişilebilirlikte hatalı kök ifadesinin metin ayrıştırmayı kilitlemesi giderildi. 1.49 ekran testlerinin WebKit zamanlama kontrolü düzeltildi.
+- 1.49’un beş yeni özelliği ve mikrofon senaryoları üç tarayıcılı tam regresyon hattına alındı. Kaynak sürüm numarası da yayın numarasıyla eşitlendi.
+
+
 ## 1.49.0 — 2026-10-28
 
 Beş yeni modül. Hepsi internetsiz çalışır; ölçümler ve sonuçlar yalnızca cihazda saklanır.

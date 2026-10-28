@@ -36,6 +36,8 @@
     "js/modules/ekosistem.js",
     "js/data/meslek-harita.js",
     "js/modules/meslek.js",
-    "js/modules/hece.js"
+    "js/modules/hece.js",
+    "js/core/media.js",
+    "js/core/speech.js"
   ]
 }

@@ -681,11 +681,12 @@
         draw(); loop();
       });
     }
-    const ro = new ResizeObserver(() => { size(); draw(); });
+    let resizeRaf=0;
+    const ro = new ResizeObserver(() => { cancelAnimationFrame(resizeRaf); resizeRaf=requestAnimationFrame(()=>{if(host.isConnected){size();draw();}}); });
     ro.observe(cv.parentElement);
     const io = "IntersectionObserver" in window ? new IntersectionObserver((en) => { st.vis = en[en.length - 1].isIntersecting; st.last = null; loop(); }) : null;
     if (io) io.observe(host);
-    function destroy() { cancelAnimationFrame(st.raf); ro.disconnect(); if (io) io.disconnect(); if (S3) { S3.dispose(); S3 = null; } }
+    function destroy() { cancelAnimationFrame(st.raf); cancelAnimationFrame(resizeRaf); ro.disconnect(); if (io) io.disconnect(); if (S3) { S3.dispose(); S3 = null; } }
     size(); draw(); loop();
     paintMode(); if (mode === "3d") setMode("3d", false);
     return { destroy };

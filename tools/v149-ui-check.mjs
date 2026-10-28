@@ -38,11 +38,11 @@ try {
       { k: "l", v: 8, lat: 41.0151, lon: 28.9795, at: at(3), by: "Elif", m: 17.8 }] });
   });
   await go(page, "vatandas/harita");
-  await page.waitForFunction(() => /2 konumlu ölçüm/.test(document.querySelector("#vbMapInfo").textContent));
+  await page.waitForFunction(() => /2 konumlu ölçüm/.test(document.querySelector("#vbMapInfo")?.textContent||""));
   const px = await page.evaluate(() => { const c = document.querySelector("#vbMap"), d = c.getContext("2d").getImageData(0, 0, c.width, c.height).data; let n = 0; for (let i = 0; i < d.length; i += 4) if (d[i] > 120 && d[i + 2] < 120) n++; return n; });
   assert.ok(px > 200, "ısı haritası boyandı: " + px);
   await page.click('#vbLayer [data-v="l"]');
-  await page.waitForFunction(() => /Bortle/.test(document.querySelector("#vbList").textContent));
+  await page.waitForFunction(() => /Bortle/.test(document.querySelector("#vbList")?.textContent||""));
   await go(page, "vatandas/paylas");
   await page.waitForSelector("#vbQr .sm-qr svg", { timeout: 10000 });
   const frames = await page.evaluate(async () => (await App.sinifModu.pack(App.vatandas.toPacket([
@@ -52,7 +52,7 @@ try {
   await page.evaluate(() => { const d = document.querySelector(".sm-paste"); if (d) d.open = true; });
   await page.fill("#smPaste", frames);
   await page.click("#smPasteGo");
-  await page.waitForFunction(() => /1 yeni ölçüm/.test(document.querySelector("#vbScanRes").textContent), null, { timeout: 8000 });
+  await page.waitForFunction(() => /1 yeni ölçüm/.test(document.querySelector("#vbScanRes")?.textContent||""), null, { timeout: 8000 });
   const total = await page.evaluate(async () => (await App.db.get("meta", "vb:data")).items.length);
   assert.equal(total, 4);
   ok("vatandaş bilimi: ısı haritası ve katman değişimi, QR paylaşımı, birleştirmede mükerrer kayıt atlandı (1 yeni, 1 tekrar)");

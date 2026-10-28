@@ -162,7 +162,8 @@
     const onMove = (e) => { const r = host.getBoundingClientRect(); st.px = ((e.clientX - r.left) / r.width - 0.5) * 2; st.py = ((e.clientY - r.top) / r.height - 0.5) * 2; };
     const onTilt = (e) => { if (e.gamma == null) return; st.px = Math.max(-1, Math.min(1, e.gamma / 30)); st.py = Math.max(-1, Math.min(1, (e.beta - 45) / 30)); };
     host.addEventListener("pointermove", onMove); window.addEventListener("deviceorientation", onTilt);
-    const ro = new ResizeObserver(() => { st.W = 0; size(); }); ro.observe(host);
+    let resizeRaf=0;
+    const ro = new ResizeObserver(() => { cancelAnimationFrame(resizeRaf);resizeRaf=requestAnimationFrame(()=>{if(st.on&&host.isConnected)size();}); }); ro.observe(host);
     const io = "IntersectionObserver" in window ? new IntersectionObserver((en) => { st.vis = en[en.length - 1].isIntersecting; if (st.vis) loop(); }) : null;
     if (io) io.observe(host);
 
@@ -225,7 +226,7 @@
     function dispose() {
       if (!st.on) return;
       st.on = false; cancelAnimationFrame(st.raf);
-      ro.disconnect(); if (io) io.disconnect();
+      cancelAnimationFrame(resizeRaf);ro.disconnect(); if (io) io.disconnect();
       host.removeEventListener("pointermove", onMove); window.removeEventListener("deviceorientation", onTilt); document.removeEventListener("visibilitychange", onVis);
       geos.forEach((g) => g.dispose()); mats.forEach((m) => m.dispose());
       gl.dispose(); try { gl.forceContextLoss(); } catch (e) { /* yok */ }

@@ -298,10 +298,11 @@
       const mine = epoch;
       let stream, ac;
       try {
-        stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false } });
-      } catch (e) { status.textContent = T("Mikrofon açılamadı (izin verilmedi ya da mikrofon yok).", "Microphone unavailable."); return; }
+        stream = await App.media.microphone({ echoCancellation: false, noiseSuppression: false, autoGainControl: false });
+      } catch (e) { if(!gone(mine)) status.textContent = App.media.errorMessage(e); return; }
       if (gone(mine)) { stopStream(stream); return; }
-      ac = new (window.AudioContext || window.webkitAudioContext)();
+      try { ac = new (window.AudioContext || window.webkitAudioContext)(); await App.media.resume(ac); } catch(e) { stopStream(stream); if(ac)ac.close().catch(()=>{}); if(!gone(mine))status.textContent=App.media.errorMessage(e);return; }
+      if(gone(mine)){stopStream(stream);ac.close().catch(()=>{});return;}
       const src = ac.createMediaStreamSource(stream), an = ac.createAnalyser();
       an.fftSize = 4096; an.smoothingTimeConstant = 0.6; src.connect(an);
       const buf = new Float32Array(an.fftSize), db = new Float32Array(an.frequencyBinCount);

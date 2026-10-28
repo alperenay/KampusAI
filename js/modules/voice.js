@@ -80,7 +80,7 @@
   function pause() {
     if (!s) return;
     const rec = s.rec; s.rec = null; s.finish = null;
-    try { if (rec) rec.stop(); } catch (e) { /* yok */ }
+    try { if (rec) { if(rec.cancel)rec.cancel();else rec.stop().catch(()=>{}); } } catch (e) { /* yok */ }
     try { if (s.controller) s.controller.abort(); } catch (e) { /* yok */ }
     App.speech.stopSaying();
     s.phase = "paused"; s.heard = ""; paint();
@@ -90,13 +90,15 @@
     if (!s || s.closed) return;
     s.phase = "listening"; s.heard = ""; paint();
     if (navigator.vibrate) try { navigator.vibrate(12); } catch (e) { /* yok */ }
+    const owner = s;
     let finalText = "", timer = null;
     const finish = async () => {
       clearTimeout(timer);
-      if (!s || !s.rec) return;
+      if (s !== owner || !s.rec) return;
       const rec = s.rec; s.rec = null;
       const out = await rec.stop().catch(() => ({ text: "" }));
-      const text = (out.text || finalText || s.heard || "").trim();
+      if (s !== owner || owner.closed || owner.phase !== "listening") return;
+      const text = (out.text || finalText || owner.heard || "").trim();
       if (!s || s.closed) return;
       if (!text) { listen(); return; }
       ask(text);
@@ -104,14 +106,14 @@
     s.finish = finish;
     s.rec = App.speech.listen({
       lang: App.i18n.lang,
-      onPartial: (p) => { if (!s) return; s.heard = (finalText ? finalText + " " : "") + p; paint(); clearTimeout(timer); timer = setTimeout(finish, SILENCE_MS + 800); },
-      onFinal: (piece, full) => { if (!s) return; finalText = full; s.heard = full; paint(); clearTimeout(timer); timer = setTimeout(finish, SILENCE_MS); },
-      onLevel: (v) => { if (s) { s.el.querySelector(".voice-orb").style.setProperty("--lvl", String(v)); if (s.holo) s.holo.mic = Number(v) || 0; } },
+      onPartial: (p) => { if (s !== owner) return; s.heard = (finalText ? finalText + " " : "") + p; paint(); clearTimeout(timer); timer = setTimeout(finish, SILENCE_MS + 800); },
+      onFinal: (piece, full) => { if (s !== owner) return; finalText = full; s.heard = full; paint(); clearTimeout(timer); timer = setTimeout(finish, SILENCE_MS); },
+      onLevel: (v) => { if (s === owner) { s.el.querySelector(".voice-orb").style.setProperty("--lvl", String(v)); if (s.holo) s.holo.mic = Number(v) || 0; } },
       onError: (code) => {
-        if (!s) return;
+        if (s !== owner) return;
+        clearTimeout(timer);s.rec=null;s.finish=null;
         s.phase = "error"; paint();
-        s.el.querySelector("#vHeard").textContent = code === "permission" ? T("Mikrofon izni gerekiyor.", "Microphone permission is needed.")
-          : code === "unsupported" ? T("Bu cihazda ses tanıma yok.", "Speech recognition isn't available here.") : T("Ses anlaşılamadı, tekrar dene.", "Couldn't hear that, try again.");
+        s.el.querySelector("#vHeard").textContent = App.media.errorMessage(code);
       }
     });
   }
@@ -119,6 +121,7 @@
   async function ask(text) {
     if (!s) return;
     s.phase = "thinking"; s.heard = text; s.answer = ""; paint();
+    const owner=s;
     const userMsg = { id: uid("m"), role: "user", text, at: new Date().toISOString() };
     s.controller = new AbortController();
     try {
@@ -127,15 +130,15 @@
         history: s.messages.slice(-8),
         useData: true,
         signal: s.controller.signal,
-        on: { delta: (full) => { if (s) { s.answer = full; paint(); } } }
+        on: { delta: (full) => { if (s===owner && s.phase==="thinking") { s.answer = full; paint(); } } }
       });
-      if (!s || s.closed || s.phase !== "thinking") return;
+      if (s!==owner || s.closed || s.phase !== "thinking") return;
       s.answer = res.text;
       paintPano(text, res.text);
       s.messages.push(userMsg, { id: uid("m"), role: "assistant", text: res.text, models: res.models, engine: res.engine, at: new Date().toISOString() });
       speak(res.text);
     } catch (e) {
-      if (!s || s.closed || (e && e.code === "aborted")) return;
+      if (s!==owner || s.closed || (e && e.code === "aborted")) return;
       s.phase = "error"; s.answer = ""; paint();
       s.el.querySelector("#vHeard").textContent = T("Yapay zekâ cevap veremedi: ", "The AI couldn't answer: ") + ((e && e.message) || "");
     }
@@ -160,11 +163,11 @@
     window.removeEventListener("popstate", cur.onPop);
     // Açarken eklenen geçmiş kaydını temizle (sohbete geçilecekse yerinde bırak, hash değişimi üstüne yazar)
     if (fromBack !== true && history.state && history.state.voice) {
-      try { if (cur.messages.length) history.replaceState(null, ""); else history.back(); } catch (e) { /* yok */ }
+      try { history.replaceState(null, ""); } catch (e) { /* yok */ }
     }
     cur.closed = true;
     try { if (cur.controller) cur.controller.abort(); } catch (e) { /* yok */ }
-    try { if (cur.rec) cur.rec.stop(); } catch (e) { /* yok */ }
+    try { if (cur.rec) { if(cur.rec.cancel)cur.rec.cancel();else cur.rec.stop().catch(()=>{}); } } catch (e) { /* yok */ }
     App.speech.stopSaying();
     if (cur.holo) { App.holoTeacher.detach(cur.holo); cur.holo = null; }
     cur.holoWant = false;
@@ -186,6 +189,7 @@
     if (!App.speech.sttMode()) {
       App.ui.toast(T("Bu cihazda ses tanıma kullanılamıyor. Chrome/Edge tarayıcısı, Android uygulaması ya da internet modu gerekir.",
         "Speech recognition isn't available here. Use Chrome/Edge, the Android app or online mode."), "error");
+      App.media.openTest();
       return;
     }
     const el = document.createElement("div");
@@ -203,15 +207,16 @@
         '<p class="hint voice-tip">' + esc(T("Sorunu söyle, kısa bir sessizlikten sonra kendiliğinden gönderilir. Cevaplar sesli okunur, sonra yeniden seni dinlerim. Küreye dokunmak ortadaki düğmeyle aynı işi yapar.",
           "Say your question; it sends after a short pause. Answers are read aloud, then I listen again. Tapping the orb does the same as the middle button.")) + "</p>" +
       "</div>" +
-      '<div class="voice-dock">' +
+      '<button class="btn btn--ghost" type="button" id="vMicTest">'+esc(T('Mikrofon testi','Microphone test'))+'</button><div class="voice-dock">' +
         '<button class="voice-dock__btn voice-dock__btn--end" type="button" id="vEnd">' + App.icon("close") + "<span>" + esc(T("Bitir", "Finish")) + "</span></button>" +
         '<button class="voice-dock__btn voice-dock__btn--main" type="button" id="vMain"></button>' +
         '<button class="voice-dock__btn" type="button" id="vPause">' + App.icon("pause") + "<span>" + esc(T("Duraklat", "Pause")) + "</span></button>" +
       "</div>";
     document.body.appendChild(el);
+    el.querySelector("#vMicTest").onclick=()=>{pause();App.media.openTest();};
     App.hydrateIcons(el);
     s = { el, phase: "idle", heard: "", answer: "", messages: [], startedAt: new Date().toISOString(), rec: null, controller: null };
-    s.onKey = (e) => { if (e.key === "Escape") { e.preventDefault(); close(); } else if (e.key === " " && e.target === document.body) { e.preventDefault(); mainAction(); } };
+    s.onKey = (e) => { if(document.querySelector(".microphone-test"))return;if (e.key === "Escape") { e.preventDefault(); close(); } else if (e.key === " " && e.target === document.body) { e.preventDefault(); mainAction(); } };
     document.addEventListener("keydown", s.onKey, true);
     el.querySelector("#vClose").addEventListener("click", close);
     el.querySelector("#vEnd").addEventListener("click", close);

@@ -4,7 +4,7 @@
    • Bütün özellikler tek sayfada, kısa açıklamalarıyla ve gruplu; üstte arama
      kutusu (yazdıkça süzer, Enter ilk sonucu açar).
    • Her aracın yıldızı ile sabitleme: sabitlenenler sol menünün üstünde
-     "Sabitlenenler" grubunda ve asistan açılışında kısayol olarak görünür.
+     "Sabitlenenler" grubunda görünür. AI başlangıç metinleri ayrı favorilerde yönetilir.
    • Son kullanılan araçlar otomatik tutulur (tercih "recentTools").
    ========================================================= */
 (function () {
@@ -46,7 +46,7 @@
     ["evren", "globe", ["Bilgi Evreni", "Knowledge Cosmos"], ["Kazanımların 3B takımyıldız haritası; AR ve hologram", "3D constellation of outcomes; AR and hologram"], "track", "bilgi evreni 3b harita kazanım ön koşul hologram ar yıldız"],
     ["kure", "globe", "nav.globe", ["Elle çevrilen küre: ülkeler, levhalar, depremler, iklim kuşakları, saat dilimleri, gündüz–gece", "Globe: countries, plates, quakes, climate belts, time zones, day–night"], "practice", "küre dünya 3b levha deprem volkan saat dilimi iklim kuşağı ekvator dönence güneş mevsim"],
     ["modeller", "cube", "nav.models", ["Hücre, kalp, DNA, atom, güneş sistemi; elle molekül kurma", "Cell, heart, DNA, atoms, solar system; build molecules by hand"], "practice", "3b model hologram hücre kalp dna atom orbital molekül vsepr güneş sistemi"],
-    ["ph", "sChem", ["pH Ölçer", "pH Meter"], ["Kırmızı lahana suyunun rengini kamerayla oku, pH ve güven aralığını bul", "Read red cabbage indicator colour with the camera to estimate pH"], "practice", "ph asit baz gösterge indikatör kırmızı lahana antosiyanin kamera renk sirke limon sabun kimya"],
+    ["ph", "sChem", ["pH Ölçer", "pH Meter"], ["Kırmızı lahana göstergesinden yaklaşık pH aralığı ölç", "Read red cabbage indicator colour with the camera to estimate pH"], "practice", "ph asit baz gösterge indikatör kırmızı lahana antosiyanin kamera renk sirke limon sabun kimya"],
     ["vatandas", "map", ["Vatandaş Bilimi Ağı", "Citizen Science Network"], ["Gürültü ve ışık kirliliğini ölç, QR ile birleştir, ortak ısı haritası çıkar", "Measure noise and light pollution, merge by QR, build a shared heat map"], "practice", "vatandaş bilimi gürültü desibel db ışık kirliliği bortle gökyüzü harita ısı haritası qr internetsiz çevre"],
     ["ekosistem", "sBio", ["Ekosistem Kavanozu", "Ecosystem Jar"], ["Ot, tavşan ve tilki: Lotka–Volterra popülasyon simülasyonu; kuraklık ve avcılık", "Grass, rabbits and foxes: Lotka–Volterra population simulation"], "practice", "ekosistem popülasyon av avcı lotka volterra besin zinciri biyoloji ekoloji simülasyon tilki tavşan kuraklık"],
     ["oyunlar", "game", "nav.games", ["Derslere göre kısa oyunlar", "Short subject games"], "practice", "oyun eğlence"],
@@ -68,7 +68,8 @@
   ];
   App.data.discovery.modules.forEach(m => TOOLS.push([m[0],m[3],[m[1],m[1]],[m[2],m[2]],"practice",m[1]+" keşif deney fizik görsel tarih gökyüzü"]));
   TOOLS.push(["kesif","compass",["Keşif Atölyeleri","Discovery Workshops"],["Dokuz yeni ölçüm, modelleme ve öğretme aracı","Nine measurement, modelling and teaching tools"],"practice","keşif deney dokuz atölye"]);
-  const GROUPS = { start: ["Başla", "Start"], study: ["Çalış", "Study"], practice: ["Pratik", "Practice"], track: ["Takip", "Track"], tools: ["Araçlar", "Tools"] };
+  const GROUPS = Object.fromEntries(App.toolCategories.groups.map(g=>[g.id,g.title]));
+  TOOLS.forEach(t=>{t[4]=App.toolCategories.groupFor(t[0]).id;});
   const title = (x) => (Array.isArray(x[2]) ? T(x[2][0], x[2][1]) : App.t(x[2]));
   const desc = (x) => T(x[3][0], x[3][1]);
   const byRoute = (r) => TOOLS.find((x) => x[0] === r);
@@ -122,13 +123,15 @@
       '<a class="hub-tile__link" href="#/' + x[0] + '"><span class="hub-tile__ico">' + App.icon(x[1]) + '</span><span class="hub-tile__txt"><b>' + esc(title(x)) + "</b><small>" + esc(desc(x)) + "</small></span></a>" +
       '<button type="button" class="hub-pin' + (pinned ? " is-on" : "") + '" data-pin="' + esc(x[0]) + '" aria-pressed="' + pinned + '" aria-label="' + esc((pinned ? T("Sabitlemeyi kaldır: ", "Unpin: ") : T("Sabitle: ", "Pin: ")) + title(x)) + '">' + App.icon("star") + "</button></div>";
   }
-  function render(view) {
+  function render(view, params = []) {
+    let category = App.toolCategories.groups.some(g=>g.id===params[0]) ? params[0] : "all";
     App.setTitle(T("Tüm araçlar", "All tools"));
     const p = pins(), rc = recents();
     view.innerHTML = '<div class="page hub">' +
       '<div class="page-head"><div><h1>' + esc(T("Tüm araçlar", "All tools")) + "</h1><p>" +
         esc(T("Aradığını yaz ya da gruptan seç. Yıldızla sabitlediklerin yan menünün üstünde görünür.", "Search or pick from a group. Starred tools appear at the top of the sidebar.")) + "</p></div></div>" +
       '<div class="hub-search"><span aria-hidden="true">' + App.icon("search") + '</span><input type="search" id="hubQ" autocomplete="off" placeholder="' + esc(T("Araç ara: harita, deney, paragraf…", "Search: map, lab, reading…")) + '" aria-label="' + esc(T("Araç ara", "Search tools")) + '" aria-describedby="hubCount"><span class="hint" id="hubCount" aria-live="polite"></span></div>' +
+      '<div class="hub-categories" aria-label="'+esc(T('Kategoriler','Categories'))+'">'+[['all',T('Tümü','All')],...App.toolCategories.groups.map(g=>[g.id,App.toolCategories.text(g.title)])].map(([id,label])=>'<button class="btn" data-hub-category="'+id+'" aria-pressed="'+(category===id)+'">'+esc(label)+'</button>').join('')+'</div>' +
       (rc.length ? '<section class="hub-sec" data-sec="recent"><h2>' + esc(T("Son kullanılanlar", "Recently used")) + '</h2><div class="hub-recent">' +
         rc.map((r) => { const x = byRoute(r); return '<a href="#/' + x[0] + '">' + App.icon(x[1]) + "<span>" + esc(title(x)) + "</span></a>"; }).join("") + "</div></section>" : "") +
       Object.keys(GROUPS).map((g) => '<section class="hub-sec" data-sec="' + g + '"><h2>' + esc(T(GROUPS[g][0], GROUPS[g][1])) + '</h2><div class="hub-grid">' +
@@ -145,11 +148,13 @@
     const filter = () => {
       const v = norm(q.value), words = v.split(" ").filter(Boolean);
       let n = 0;
-      view.querySelectorAll(".hub-tile").forEach((tEl) => { const ok = !words.length || words.every((w) => tEl.dataset.q.indexOf(w) >= 0); tEl.hidden = !ok; if (ok) n++; });
-      view.querySelectorAll(".hub-sec").forEach((sec) => { sec.hidden = sec.dataset.sec === "recent" ? !!words.length : !sec.querySelector(".hub-tile:not([hidden])"); });
+      view.querySelectorAll(".hub-tile").forEach((tEl) => { const ok = (category === "all" || tEl.closest("[data-sec]").dataset.sec === category) && (!words.length || words.every((w) => tEl.dataset.q.indexOf(w) >= 0)); tEl.hidden = !ok; if (ok) n++; });
+      view.querySelectorAll(".hub-sec").forEach((sec) => { sec.hidden = sec.dataset.sec === "recent" ? !!words.length || category !== "all" : !sec.querySelector(".hub-tile:not([hidden])"); });
       view.querySelector("#hubNone").hidden = n > 0;
-      count.textContent = words.length ? T(n + " araç", n + " tools") : "";
+      count.textContent = T(n + " araç", n + " tools");
     };
+    view.querySelectorAll('[data-hub-category]').forEach(b=>b.addEventListener('click',()=>{category=b.dataset.hubCategory;view.querySelectorAll('[data-hub-category]').forEach(x=>x.setAttribute('aria-pressed',x===b));filter();}));
+    filter();
     q.addEventListener("input", filter);
     q.addEventListener("keydown", (e) => {
       if (e.key === "Enter") { const f = view.querySelector(".hub-tile:not([hidden]) .hub-tile__link"); if (f) { e.preventDefault(); location.hash = f.getAttribute("href"); } }

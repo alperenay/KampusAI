@@ -35,14 +35,14 @@
   }
   /** Beyaz dengesi: white verilirse beyaz-yama (von Kries), verilmezse rgb olduğu gibi döner. Doğrusal ışıkta çalışır. */
   function whiteBalance(rgb, white) {
-    if (!white || white.some((x) => !(x > 8))) return rgb.slice();
+    if (!Array.isArray(white) || white.length!==3 || white.some((x) => !Number.isFinite(x) || x<=8 || x>255)) return rgb.slice();
     const wl = white.map(lin), target = Math.max(...wl);
     return rgb.map((c, i) => gam(Math.min(1, (lin(c) * target) / wl[i])));
   }
   /** Gri dünya varsayımıyla bir karenin ortalamasından beyaz tahmini */
   function grayWorldWhite(avg) {
     const m = (avg[0] + avg[1] + avg[2]) / 3;
-    return m > 8 ? avg.map((c) => (c / m) * 230) : null;
+    return m > 8 ? avg.map((c) => Math.min(255,(c / m) * 230)) : null;
   }
 
   /** Antosiyanin skalası: [pH, RGB] (yaklaşık; ders kitaplarındaki göstergelerin ortak tonları)
@@ -74,6 +74,7 @@
 
   /** Renkten pH tahmini. white: beyaz referans (isteğe bağlı). Dönüş: { ph, lo, hi, band, cls, chroma, ok, why } */
   function estimate(rgb, white) {
+    if(!Array.isArray(rgb)||rgb.length!==3||rgb.some(x=>!Number.isFinite(x)||x<0||x>255))return {ok:false,why:"invalid",chroma:0,rgb:[0,0,0]};
     const c = whiteBalance(rgb, white), lab = rgbToLab(c), chroma = Math.hypot(lab.a, lab.b);
     if (chroma < 10) return { ok: false, why: "gray", chroma, rgb: c };
     if (lab.L < 8) return { ok: false, why: "dark", chroma, rgb: c };
@@ -134,6 +135,7 @@
   function render(view) {
     App.setTitle(T("pH Ölçer", "pH Meter"));
     let white = App.prefs.get("ph:white", null);
+    if(!Array.isArray(white)||white.length!==3||white.some(x=>!Number.isFinite(x)||x<0||x>255))white=null;
     view.innerHTML = '<div class="page ph">' +
       '<div class="page-head"><div><h1>' + esc(T("Kırmızı Lahana pH Ölçer", "Red Cabbage pH Meter")) + "</h1><p>" +
         esc(T("Kırmızı lahana suyu doğal bir göstergedir: asitte kırmızı, bazda yeşil-sarı olur. Telefon kamerası rengi okur, pH değerini ve güven aralığını tahmin eder.", "Red cabbage juice is a natural indicator. The camera reads its colour and estimates pH with a confidence interval.")) + "</p></div></div>" +
@@ -174,7 +176,7 @@
       }
       const m = matches(r, 3);
       res.innerHTML = '<div class="ph-swatch" style="background:' + hex(rgb) + '"></div>' +
-        '<div class="ph-num ph-num--' + r.cls + '"><small>pH</small><b>' + fmt(r.ph) + "</b><span>" + esc(T("güven aralığı ", "range ")) + fmt(r.lo) + " – " + fmt(r.hi) + "</span></div>" +
+        '<div class="ph-num ph-num--' + r.cls + '"><small>pH</small><b>' + fmt(r.ph) + "</b><span>" + esc(T("yaklaşık tahmin aralığı ", "approximate estimate range ")) + fmt(r.lo) + " – " + fmt(r.hi) + "</span></div>" +
         '<p class="ph-band"><b>' + esc(r.band) + "</b> · " + esc(T("renk: ", "colour: ")) + esc(r.colorName) + (r.edge ? " · " + esc(T("ton skalanın dışında, en yakın uca bağlandı", "hue outside the scale")) : "") + "</p>" +
         '<p class="ph-match">' + esc(T("Benzer pH: ", "Similar pH: ")) + m.map((x) => "<span" + (x.danger ? ' class="is-danger"' : "") + ">" + esc(x.name) + " (" + fmt(x.ph) + ")</span>").join(" ") + "</p>";
       mark.hidden = band.hidden = false;
@@ -192,13 +194,17 @@
     const stop = () => { epoch++; clearTimeout(timer); if (stream) stream.getTracks().forEach((t) => t.stop()); stream = null; video.srcObject = null; };
     async function startCam() {
       stop(); const mine = epoch;
-      try { stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: "environment" }, width: { ideal: 640 } } }); }
+      let acquired;
+      try { acquired = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: "environment" }, width: { ideal: 640 } } }); }
       catch (e) { status.textContent = T("Kamera açılamadı. Fotoğraf seçebilir ya da rengi elle girebilirsin.", "Camera unavailable. Pick a photo or a colour instead."); return; }
-      if (mine !== epoch || !document.contains(video)) { stop(); return; }
+      if (mine !== epoch || !document.contains(video)) { App.media.stop(acquired); return; }
+      stream=acquired;
       // Otomatik beyaz dengesi rengi kaydırır; destekleniyorsa sabitlenir
       try { const tr = stream.getVideoTracks()[0], cap = /** @type {any} */ (tr.getCapabilities ? tr.getCapabilities() : {}); if (cap.whiteBalanceMode && cap.whiteBalanceMode.includes("manual")) await tr.applyConstraints(/** @type {any} */ ({ advanced: [{ whiteBalanceMode: "manual" }] })); } catch (e) { /* desteklenmiyor */ }
+      if(mine!==epoch||!view.isConnected){App.media.stop(acquired);return;}
       video.srcObject = stream; photo.hidden = true; video.hidden = false; $("#phEmpty").hidden = true;
       await video.play().catch(() => {});
+      if(mine!==epoch||!view.isConnected){App.media.stop(acquired);return;}
       const loop = () => {
         if (mine !== epoch || !document.contains(video)) return;
         if (video.readyState >= 2 && video.videoWidth) { const a = sampleFrom(video, video.videoWidth, video.videoHeight); if (a) show(a); }
@@ -209,9 +215,11 @@
     $("#phGo").onclick = startCam;
     $("#phFile").onchange = (e) => {
       const f = e.target.files && e.target.files[0]; if (!f) return;
-      stop();
+      stop();const mine=epoch;
       const img = new Image();
+      img.onerror=()=>{URL.revokeObjectURL(img.src);if(mine===epoch&&view.isConnected)status.textContent=T("Görsel açılamadı.","Could not open image.");};
       img.onload = () => {
+        if(mine!==epoch||!view.isConnected){URL.revokeObjectURL(img.src);return;}
         const w = Math.min(640, img.naturalWidth), h = Math.round((w * img.naturalHeight) / img.naturalWidth);
         photo.width = w; photo.height = h; photo.getContext("2d").drawImage(img, 0, 0, w, h);
         photo.hidden = false; video.hidden = true; $("#phEmpty").hidden = true;
@@ -233,7 +241,7 @@
       white = lastRgb.slice(); App.prefs.set("ph:white", white); setStatus(); App.ui.toast(T("Beyaz referans kaydedildi", "White reference saved"));
     };
     async function paintLog() {
-      const rec = await App.db.get("meta", "ph:log").catch(() => null), items = (rec && Array.isArray(rec.items) ? rec.items : []).slice(0, 8);
+      const rec = await App.db.get("meta", "ph:log").catch(() => null), items = (rec && Array.isArray(rec.items) ? rec.items : []).filter(x=>x&&[x.ph,x.lo,x.hi].every(Number.isFinite)&&x.ph>=0&&x.ph<=14&&typeof x.name==="string"&&/^#[0-9a-f]{6}$/i.test(x.hex)).slice(0, 8);
       if (!document.contains(status)) return;
       $("#phLog").innerHTML = items.length ? '<h3 class="sl-h">' + esc(T("Ölçümlerin", "Your readings")) + '</h3><ul class="ph-log">' + items.map((x) =>
         '<li><i style="background:' + esc(x.hex) + '"></i><b>' + esc(x.name) + "</b><span>pH " + fmt(x.ph) + " (" + fmt(x.lo) + "–" + fmt(x.hi) + ")</span></li>").join("") + "</ul>" : "";
@@ -242,7 +250,7 @@
       if (!last || !last.ok) return;
       const name = $("#phName").value.trim() || T("Örnek", "Sample");
       const rec = (await App.db.get("meta", "ph:log").catch(() => null)) || { id: "ph:log", items: [] };
-      rec.items = [{ at: new Date().toISOString(), name, ph: +last.ph.toFixed(2), lo: +last.lo.toFixed(2), hi: +last.hi.toFixed(2), hex: hex(lastRgb) }].concat(rec.items || []).slice(0, 60);
+      rec.items = [{ at: new Date().toISOString(), name, ph: +last.ph.toFixed(2), lo: +last.lo.toFixed(2), hi: +last.hi.toFixed(2), hex: hex(lastRgb) }].concat(Array.isArray(rec.items)?rec.items:[]).slice(0, 60);
       await App.db.put("meta", rec);
       App.ui.toast(T("Kaydedildi: ", "Saved: ") + name + " · pH " + fmt(last.ph));
       if (App.badges && App.badges.check) App.badges.check();
@@ -253,6 +261,6 @@
     return stop;
   }
 
-  App.router.register("ph", render);
+  App.router.register("ph", (view,p) => App.moduleSafety.mount(view, scope => render(scope)));
   App.phMetre = { rgbToHsv, rgbToLab, whiteBalance, grayWorldWhite, estimate, matches, averageDisk, SCALE, REF, HOUSE, hex, fromHex };
 })();

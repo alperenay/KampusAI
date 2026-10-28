@@ -61,9 +61,9 @@
   const recKey = (r) => [r.k, Math.round(r.v * 10), r.lat == null ? "x" : Math.round(r.lat * 1e5), r.lon == null ? "x" : Math.round(r.lon * 1e5), Math.round(Date.parse(r.at) / 60000)].join("|");
   /** Ölçüm listesini birleştirir; aynı ölçüm yalnızca bir kez kalır */
   function merge(base, extra) {
-    const seen = new Set((base || []).map(recKey)), out = (base || []).slice();
+    const seen = new Set((base || []).filter(validReading).map(recKey)), out = (base || []).filter(validReading).slice();
     let added = 0;
-    (extra || []).forEach((r) => { const k = recKey(r); if (!seen.has(k)) { seen.add(k); out.push(r); added++; } });
+    (extra || []).filter(validReading).forEach((r) => { const k = recKey(r); if (!seen.has(k)) { seen.add(k); out.push(r); added++; } });
     return { items: out, added };
   }
   /** Ölçümler → QR paketi (yalnızca sayılar; tamsayıya yuvarlanır) */
@@ -74,6 +74,7 @@
   }
   /** QR paketi → ölçümler */
   function fromPacket(d) {
+    App.sinifModu.validate(d);
     return d.m.map((r) => ({ k: r[0] === 1 ? "l" : "n", v: r[1] / 10, lat: r[2] == null ? null : r[2] / 1e5, lon: r[3] == null ? null : r[3] / 1e5, at: new Date(r[4] * 60000).toISOString(), by: d.s }));
   }
 
@@ -118,8 +119,9 @@
   }
 
   /* ================= Depolama ================= */
-  const load = async () => { const r = await App.db.get("meta", "vb:data").catch(() => null); return r && Array.isArray(r.items) ? r.items : []; };
-  const saveAll = (items) => App.db.put("meta", { id: "vb:data", items: items.slice(-2000) });
+  function validReading(r) { return !!r && ["n","l"].includes(r.k) && Number.isFinite(r.v) && (r.k === "l" ? r.v>=1&&r.v<=9 : r.v>=-140&&r.v<=200) && ((r.lat===null&&r.lon===null)||([r.lat,r.lon].every(Number.isFinite)&&Math.abs(r.lat)<=90&&Math.abs(r.lon)<=180)) && typeof r.at==="string" && Number.isFinite(Date.parse(r.at)) && typeof r.by==="string"; }
+  const load = async () => { const r = await App.db.get("meta", "vb:data").catch(() => null); return r && Array.isArray(r.items) ? r.items.filter(validReading) : []; };
+  const saveAll = async (items) => { const prior=await App.db.get("meta","vb:data").catch(()=>null);const invalid=Array.isArray(prior?.items)?prior.items.filter(x=>!validReading(x)):[];return App.db.put("meta",{...(prior||{}),id:"vb:data",items:items.slice(-2000),invalidItems:[...(Array.isArray(prior?.invalidItems)?prior.invalidItems:[]),...invalid]}); };
   async function add(rec) { const items = await load(); const r = merge(items, [rec]); await saveAll(r.items); return r.added; }
   const myName = () => App.prefs.get("vbName", "") || App.prefs.get("userName", "") || T("Öğrenci", "Student");
   function locate() {
@@ -158,25 +160,29 @@
     const $ = (s) => view.querySelector(s);
     let stopFn = null, epoch = 0, lastNoise = null;
     const cleanup = () => { epoch++; if (stopFn) { try { stopFn(); } catch (e) { /* yok */ } stopFn = null; } };
-    const offset = () => Number(App.prefs.get("vbOffset", DEFAULT_OFFSET)) || DEFAULT_OFFSET;
+    const offset = () => {const v=App.prefs.get("vbOffset",DEFAULT_OFFSET);return Number.isFinite(v)?v:DEFAULT_OFFSET;};
     const paintCal = () => { $("#vbCalNow").textContent = T("Şu anki fark: ", "Current offset: ") + fmt(offset(), 1) + " dB"; };
     const paintCount = async () => { const it = await load(); if (!document.contains($("#vbCount"))) return; const n = it.filter((x) => x.k === "n").length, l = it.length - n; $("#vbCount").textContent = T("Cihazdaki ölçümler: " + n + " gürültü, " + l + " ışık (" + new Set(it.map((x) => x.by)).size + " kişi).", "Stored: " + n + " noise, " + l + " light."); };
     paintCal(); paintCount();
+    const notice=document.createElement("p");notice.className="hint";notice.textContent=T("Kalibrasyon olmadan mutlak dB SPL ölçülmez. Varsayılan fark yalnız eğitim tahminidir. Kamera tabanlı Bortle/SQM sonucu da fotometrik kalibrasyon olmadan yaklaşık ve karşılaştırılamazdır.","Without calibration, dB SPL is not measured. The default offset and camera Bortle/SQM are educational estimates, not calibrated comparable measurements.");$("#vbCalNow").parentElement.appendChild(notice);
     $("#vbNameI").addEventListener("change", (e) => App.prefs.set("vbName", e.target.value.trim()));
     async function saveRec(k, v, extra) {
       const pos = await locate();
       const rec = Object.assign({ k, v: +v.toFixed(1), lat: pos ? +pos.lat.toFixed(5) : null, lon: pos ? +pos.lon.toFixed(5) : null, at: new Date().toISOString(), by: myName() }, extra || {});
       await add(rec);
+      if(!view.isConnected)return;
       App.ui.toast(pos ? T("Ölçüm konumuyla kaydedildi", "Saved with location") : T("Konum alınamadı; ölçüm konumsuz kaydedildi (haritada görünmez).", "No location; saved without it."));
       paintCount();
     }
     $("#vbMic").onclick = async () => {
       cleanup(); const mine = epoch;
       let stream;
-      try { stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false } }); }
-      catch (e) { App.ui.toast(T("Mikrofon açılamadı.", "Microphone unavailable."), "error"); return; }
+      try { stream = await App.media.microphone({ echoCancellation: false, noiseSuppression: false, autoGainControl: false }); }
+      catch (e) { App.ui.toast(App.media.errorMessage(e), "error"); return; }
       if (mine !== epoch) { stream.getTracks().forEach((t) => t.stop()); return; }
-      const ac = new (window.AudioContext || window.webkitAudioContext)(), an = ac.createAnalyser();
+      let ac; try{ac = new (window.AudioContext || window.webkitAudioContext)(); await App.media.resume(ac);}catch(e){App.media.stop(stream);if(ac)ac.close().catch(()=>{});if(mine===epoch&&view.isConnected)App.ui.toast(App.media.errorMessage(e),"error");return;}
+      if(mine!==epoch||!view.isConnected){App.media.stop(stream);ac.close().catch(()=>{});return;}
+      const an = ac.createAnalyser();
       an.fftSize = 2048; ac.createMediaStreamSource(stream).connect(an);
       const buf = new Float32Array(an.fftSize), levels = [], t0 = performance.now(), cv = $("#vbSpark"), g = cv.getContext("2d");
       let raf = 0;
@@ -198,7 +204,7 @@
         $("#vbDb").textContent = fmt(v, 1); $("#vbDbLab").textContent = "Leq · " + noiseLabel(v);
         await saveRec("n", v);
       };
-      stopFn = () => { cancelAnimationFrame(raf); stream.getTracks().forEach((t) => t.stop()); ac.close(); if ($("#vbMic")) $("#vbMic").disabled = false; };
+      stopFn = () => { cancelAnimationFrame(raf); stream.getTracks().forEach((t) => t.stop()); ac.close().catch(()=>{}); if ($("#vbMic")) $("#vbMic").disabled = false; };
       loop();
     };
     $("#vbCal").onclick = () => {
@@ -213,7 +219,10 @@
       try { stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: "environment" }, width: { ideal: 320 } } }); }
       catch (e) { App.ui.toast(T("Kamera açılamadı.", "Camera unavailable."), "error"); return; }
       if (mine !== epoch) { stream.getTracks().forEach((t) => t.stop()); return; }
-      const video = view.querySelector(".vb-sky video"); video.srcObject = stream; await video.play().catch(() => {});
+      const video = view.querySelector(".vb-sky video"); video.srcObject = stream;
+      stopFn = () => {stream.getTracks().forEach(t=>t.stop());video.srcObject=null;};
+      await video.play().catch(() => {});
+      if(mine!==epoch||!view.isConnected)return;
       const c = document.createElement("canvas"), x = c.getContext("2d", { willReadFrequently: true }); c.width = 64; c.height = 48;
       const vals = [], t0 = performance.now(); let timer = 0;
       $("#vbCam").disabled = true; $("#vbSkyLab").textContent = T("Ölçülüyor…", "Measuring…");
@@ -276,7 +285,7 @@
       $("#vbList").innerHTML = pts.length ? '<ul class="vb-list">' + pts.slice(-30).reverse().map((p) => "<li><i style=\"background:rgb(" + colorFor(kind, p.v).join(",") + ')"></i><b>' + (kind === "n" ? fmt(p.v, 1) + " dB" : "Bortle " + p.v) + "</b><span>" + esc(p.by || "") + " · " + esc(App.utils.fmtDateTime ? App.utils.fmtDateTime(p.at) : p.at) + (p.lat == null ? " · " + esc(T("konumsuz", "no location")) : "") + "</span></li>").join("") + "</ul>" : "";
     }
     $("#vbLayer").addEventListener("click", (e) => { const b = e.target.closest("[data-v]"); if (!b) return; kind = b.dataset.v; App.prefs.set("vbLayer", kind); $("#vbLayer").querySelectorAll("[data-v]").forEach((x) => x.setAttribute("aria-checked", String(x === b))); draw(); });
-    $("#vbCsv").onclick = () => App.utils.downloadText("vatandas-bilimi.csv", "tur,deger,enlem,boylam,zaman,olcen\n" + items.map((r) => [r.k === "n" ? "gurultu_dB" : "isik_Bortle", r.v, r.lat == null ? "" : r.lat, r.lon == null ? "" : r.lon, r.at, '"' + String(r.by || "").replace(/"/g, "'") + '"'].join(",")).join("\n"), "text/csv");
+    $("#vbCsv").onclick = () => App.utils.downloadText("vatandas-bilimi.csv", "tur,deger,enlem,boylam,zaman,olcen\n" + items.map((r) => [r.k === "n" ? "gurultu_dB" : "isik_Bortle", r.v, r.lat == null ? "" : r.lat, r.lon == null ? "" : r.lon, r.at, csvCell(r.by)].join(",")).join("\n"), "text/csv");
     $("#vbClear").onclick = async () => { if (!confirm(T("Bu cihazdaki tüm ölçümler silinsin mi?", "Delete all readings on this device?"))) return; items = []; await saveAll([]); draw(); };
     const onResize = () => draw();
     window.addEventListener("resize", onResize);
@@ -306,10 +315,11 @@
     return () => { if (player) player.stop(); };
   }
 
+  function csvCell(value){let s=String(value||"");if(/^[=+@\-\t\r\n]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';}
   function render(view, p) {
     App.setTitle(T("Vatandaş Bilimi Ağı", "Citizen Science Network"));
     return p[0] === "harita" ? renderMap(view) : p[0] === "paylas" ? renderShare(view) : renderMeasure(view);
   }
-  App.router.register("vatandas", render);
-  App.vatandas = { dbFromRms, rms, leq, noiseLabel, sqmEstimate, bortleFromSqm, merge, toPacket, fromPacket, bbox, idwGrid, colorFor, DEFAULT_OFFSET };
+  App.router.register("vatandas", (view,p) => App.moduleSafety.mount(view, scope => render(scope,p)));
+  App.vatandas = { dbFromRms, rms, leq, noiseLabel, sqmEstimate, bortleFromSqm, merge, toPacket, fromPacket, bbox, idwGrid, colorFor, DEFAULT_OFFSET, validReading, csvCell };
 })();

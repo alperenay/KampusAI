@@ -22,6 +22,10 @@ adb shell dumpsys package $APP | grep -iE "signatures|pastSigningCertificates|si
 # Emülatörde donanım klavyesi tanımlı: ekran klavyesi yine de açılsın (gerçek telefon gibi)
 adb shell settings put secure show_ime_with_hard_keyboard 1 || true
 adb shell pm grant $APP android.permission.POST_NOTIFICATIONS || true
+# WebView capture needs both RECORD_AUDIO and the normal MODIFY_AUDIO_SETTINGS permission.
+adb shell dumpsys package $APP > shots/android-permissions.txt
+grep -q 'android.permission.RECORD_AUDIO' shots/android-permissions.txt
+grep -q 'android.permission.MODIFY_AUDIO_SETTINGS.*granted=true' shots/android-permissions.txt
 # Gömülü yapay zeka motoru kurulumda çıkarılmış ve çalışıyor mu?
 APKDIR=$(adb shell pm path $APP | head -1 | sed 's/^package://; s#/base.apk.*##' | tr -d '\r')
 adb shell ls -la "$APKDIR/lib/x86_64/" || true

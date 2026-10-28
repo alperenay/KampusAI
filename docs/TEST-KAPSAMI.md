@@ -43,3 +43,15 @@ Tarayıcı testleri Playwright 1.62.1 kullanır. Windows'ta varsayılan Chromium
 ## 1.48 Keşif Atölyeleri
 
 `discovery-check.mjs`: sayısal fizik, MNA, Kepler/J2000 referansı, güvenli ifade ayrıştırma, rubrik ve veri şemaları. `discovery-signal-check.mjs`: gerçek AudioWorklet kodunun denetimli ses örnekleri. `discovery-ui-check.mjs`: dokuz rota, 320/768/1440 genişlik, sensörden rapora aktarım, AI önerisinin onay kapısı, kontrollü sensör/yönelim/kamera fixture’ları ve kaynak temizliği. Yeni hesaplama çekirdeği `tsconfig.discovery.json` strict kapısındadır. Fiziksel iki telefon ses zamanlama doğruluğu, gerçek afet ölçümü veya çevrimiçi modelin OCR başarısı bu testlerle doğrulanmış sayılmaz.
+
+## 1.50.0 mikrofon ve yeni araç regresyonları
+
+`audio-check.mjs`: Android izin çifti, medya hata sınıfları, kısıt geri dönüşü, geç izin/iptal, tek mikrofon akışı, kayıt geri dönüşü ve native oturum kimliği. `audio-ui-check.mjs`: yerel mikrofon testi, meşgul/izin/eksik aygıt, askıdaki ses bağlamı, sesli ekran kapat/aç, eski AI yanıtı, bozuk pH/vatandaş kayıtları, geciken ekran okuması, eşzamanlı kamera izinleri ve QR/CSV doğrulaması. Bunlar kontrollü girdilerdir. `v149-ui-check` ve ses testleri üç tarayıcılı tam denetime dahil; Android kurulumunda manifest izinleri ayrıca doğrulanır. Fiziksel cihazın sürücüsü, işletim sistemi ayarı ve konuşma tanıma doğruluğu bu testlerin kapsamı dışındadır.
+
+`audio-browser-check.mjs` Chromium’da yapay sinyali gerçek Web Audio ve MediaRecorder üzerinden geçirir, gerçek kodlanmış ses blobunu kontrollü transkripsiyon adaptörüne verir. Fiziksel mikrofon ve çevrimiçi transkripsiyon kullanılmaz.
+
+## 1.50 birleşik sürüm doğrulaması
+
+Mikrofon onarımları ve menü/favori geliştirmeleri aynı sürümde teslim edilir. `npm run test:v150` kategori eşlemesini, eski favorileri, kişisel şablon doğrulamasını, sınırları ve sıralamayı doğrular. `npm run test:v150-ui` gerçek tarayıcıda kategori süzme, şablon oluşturma/düzenleme/silme, arama, kalıcılık, taslak koruma ve 320–1440 piksel genişlikleri sınar. Tam çoklu motor denetimine dahildir.
+
+Donanım izinleri ve ses sağlayıcısı testlerinde kontrollü örnekler ile gerçek ses kayıt API testi ayrı tutulur. Fiziksel mikrofonların ve her telefon modelinin tamamı sertifikalandırılmış değildir. Android manifest izni ve paket açılışı CI emülatör testine tabidir; iOS doğrulaması web motoru/PWA kapsamındadır.

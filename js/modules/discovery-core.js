@@ -176,13 +176,7 @@
   async function microphone(life, onImpulse, onFrequency) {
     if (!navigator.mediaDevices?.getUserMedia)
       throw new Error("Mikrofon desteklenmiyor; elle veri kullan.");
-    const stream = await navigator.mediaDevices.getUserMedia({
-      audio: {
-        echoCancellation: false,
-        noiseSuppression: false,
-        autoGainControl: false,
-      },
-    });
+    const stream = await App.media.microphone({echoCancellation:false,noiseSuppression:false,autoGainControl:false});
     if (!life.alive || document.hidden) {
       stream.getTracks().forEach((t) => t.stop());
       return;

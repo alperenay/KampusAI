@@ -213,7 +213,7 @@
     let leaving = false;
 
     const stopAll = () => {
-      if (st && st.rec) { const r = st.rec; st.rec = null; r.stop().catch(() => {}); }
+      if (st && st.rec) { const r = st.rec; st.rec = null; if(r.cancel)r.cancel();else r.stop().catch(() => {}); }
       if (st && st.ctrl) { try { st.ctrl.abort(); } catch (e) { /* yok */ } }
       if (st) clearTimeout(st.timer);
       try { App.speech.stopSaying(); } catch (e) { /* yok */ }
@@ -395,11 +395,7 @@
         onError: (code) => {
           if (st !== cur) return;
           clearTimeout(cur.timer); st.rec = null;
-          phase("idle", code === "permission" || code === "not-allowed" ? T("Mikrofon izni gerekiyor. İzin verip tekrar dene ya da yazarak cevap ver.", "Microphone permission is needed. Allow it or type your answer.")
-            : code === "unsupported" ? T("Bu cihazda ses tanıma yok; yazarak cevap ver.", "No speech recognition here; type your answer.")
-            : code === "nomic" ? T("Mikrofon bulunamadı; yazarak cevap ver.", "No microphone found; type your answer.")
-            : code === "network" ? T("Ses tanıma için internet gerekiyor; yazarak da cevap verebilirsin.", "Speech recognition needs internet; you can type instead.")
-            : T("Ses anlaşılamadı, tekrar dene.", "Couldn't hear that, try again."));
+          phase("idle", App.media.errorMessage(code));
           if (code !== "error") { const f = view.querySelector("#ksType"); if (f) f.hidden = false; }
         }
       });
@@ -419,7 +415,7 @@
     function stopListening(silent) {
       if (!st) return;
       clearTimeout(st.timer);
-      if (st.rec) { const r = st.rec; st.rec = null; r.stop().catch(() => {}); if (!silent) phase("idle"); }
+      if (st.rec) { const r = st.rec; st.rec = null; if(r.cancel)r.cancel();else r.stop().catch(() => {}); if (!silent) phase("idle"); }
     }
     function setHeard(t, live) {
       const h = view.querySelector("#ksHeard");

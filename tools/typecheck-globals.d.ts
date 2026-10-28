@@ -20,3 +20,5 @@ interface Window {
   jsQR: (data: Uint8ClampedArray, width: number, height: number) => { data: string } | null;
   qrcode: (version: number, correction: string) => { addData(text: string): void; make(): void; createSvgTag(options: {cellSize: number; margin: number; scalable: boolean}): string };
 }
+
+interface Window { SpeechRecognition?: any; webkitSpeechRecognition?: any; KampusNative?: any; __nativeSpeech?: (event: any) => void; }

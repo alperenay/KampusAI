@@ -62,6 +62,9 @@ public class MainActivity extends BridgeActivity {
     private SpeechRecognizer recognizer;
     private ActivityResultLauncher<String> micPermission;
     private String pendingLang = null;
+    private String sttSessionId = "legacy";
+    private boolean micPermissionPending = false;
+    private long recognitionEpoch = 0;
     private boolean offlineFailed = false;
     private String lastLang = "tr-TR";
     private long lastRms = 0;
@@ -87,10 +90,12 @@ public class MainActivity extends BridgeActivity {
         super.onCreate(savedInstanceState);
         pendingRoute = routeOf(getIntent());
         micPermission = registerForActivityResult(new ActivityResultContracts.RequestPermission(), granted -> {
+            micPermissionPending = false;
             String lang = pendingLang;
             pendingLang = null;
-            if (granted && lang != null) startRecognition(lang);
-            else emit(ev("stt", "error", "permission"));
+            if (lang == null) return; // a closed session must not restart after a late permission grant
+            if (granted) startRecognition(lang);
+            else emitStt(ev("stt", "error", "permission"), sttSessionId, recognitionEpoch);
         });
         if (getBridge() == null) return;
         webView = getBridge().getWebView();
@@ -149,8 +154,9 @@ public class MainActivity extends BridgeActivity {
     }
 
     /* ---------------- Konuşma → yazı ---------------- */
-    private final RecognitionListener listener = new RecognitionListener() {
-        @Override public void onReadyForSpeech(Bundle b) { emit(ev("stt", "ready", null)); }
+    private RecognitionListener listenerFor(final String sid, final long epoch) {
+      return new RecognitionListener() {
+        @Override public void onReadyForSpeech(Bundle b) { emitStt(ev("stt", "ready", null), sid, epoch); }
         @Override public void onBeginningOfSpeech() { }
         @Override public void onRmsChanged(float v) {
             long now = System.currentTimeMillis();
@@ -158,11 +164,12 @@ public class MainActivity extends BridgeActivity {
             lastRms = now;
             JSONObject o = ev("stt", "rms", null);
             try { o.put("v", (double) v); } catch (Exception e) { /* yok say */ }
-            emit(o);
+            emitStt(o, sid, epoch);
         }
         @Override public void onBufferReceived(byte[] b) { }
         @Override public void onEndOfSpeech() { }
         @Override public void onError(int code) {
+            if (epoch != recognitionEpoch) return;
             String c;
             switch (code) {
                 case SpeechRecognizer.ERROR_NO_MATCH: c = "no-match"; break;
@@ -180,35 +187,49 @@ public class MainActivity extends BridgeActivity {
             if (("lang".equals(c) || "network".equals(c)) && !offlineFailed) {
                 offlineFailed = true;
                 Log.d("KampusAI", "stt: offline failed (" + code + "), retry online");
-                runOnUiThread(() -> startRecognition(lastLang));
+                runOnUiThread(() -> { if (epoch == recognitionEpoch) startRecognition(lastLang); });
                 return;
             }
-            emit(ev("stt", "error", c));
+            emitStt(ev("stt", "error", c), sid, epoch);
         }
         @Override public void onResults(Bundle r) {
             ArrayList<String> list = r.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
             JSONObject o = ev("stt", "final", null);
             try { o.put("text", list != null && !list.isEmpty() ? list.get(0) : ""); } catch (Exception e) { /* yok say */ }
-            emit(o);
-            emit(ev("stt", "end", null));
+            emitStt(o, sid, epoch);
+            emitStt(ev("stt", "end", null), sid, epoch);
         }
         @Override public void onPartialResults(Bundle r) {
             ArrayList<String> list = r.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
             if (list == null || list.isEmpty()) return;
             JSONObject o = ev("stt", "partial", null);
             try { o.put("text", list.get(0)); } catch (Exception e) { /* yok say */ }
-            emit(o);
+            emitStt(o, sid, epoch);
         }
         @Override public void onEvent(int type, Bundle b) { }
-    };
+      };
+    }
+
+    private void emitStt(JSONObject event, String sid, long epoch) {
+        if (epoch != recognitionEpoch || sid == null || !sid.equals(sttSessionId)) return;
+        try { event.put("sid", sid); } catch (Exception e) { /* unchanged payload */ }
+        emit(event);
+    }
+
+    private void cancelRecognition() {
+        pendingLang = null;
+        recognitionEpoch++;
+        if (recognizer != null) { try { recognizer.cancel(); recognizer.destroy(); } catch (Exception e) { /* already stopped */ } recognizer = null; }
+    }
 
     private void startRecognition(String lang) {
         lastLang = lang;
+        final String sid = sttSessionId;
+        final long epoch = ++recognitionEpoch;
         try {
-            if (recognizer == null) {
-                recognizer = SpeechRecognizer.createSpeechRecognizer(this);
-                recognizer.setRecognitionListener(listener);
-            }
+            if (recognizer != null) { try { recognizer.cancel(); recognizer.destroy(); } catch (Exception e) { /* replace previous recognizer */ } }
+            recognizer = SpeechRecognizer.createSpeechRecognizer(this);
+            recognizer.setRecognitionListener(listenerFor(sid, epoch));
             Intent it = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
             it.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
             it.putExtra(RecognizerIntent.EXTRA_LANGUAGE, lang);
@@ -220,7 +241,7 @@ public class MainActivity extends BridgeActivity {
             recognizer.startListening(it);
         } catch (Exception e) {
             Log.w("KampusAI", "stt start failed", e);
-            emit(ev("stt", "error", "error"));
+            emitStt(ev("stt", "error", "error"), sid, epoch);
         }
     }
 
@@ -308,11 +329,17 @@ public class MainActivity extends BridgeActivity {
 
         /** Dinlemeyi başlat (gerekirse önce mikrofon izni istenir) */
         @JavascriptInterface
-        public void speechStart(final String lang) {
+        public void speechStart(final String lang) { speechStartSession(lang, "legacy"); }
+
+        @JavascriptInterface
+        public void speechStartSession(final String lang, final String sessionId) {
+            final String safeSession = sessionId == null ? "legacy" : sessionId.substring(0, Math.min(80, sessionId.length()));
             runOnUiThread(() -> {
+                if (!safeSession.equals(sttSessionId)) { cancelRecognition(); offlineFailed = false; }
+                sttSessionId = safeSession;
                 if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
                     pendingLang = lang;
-                    micPermission.launch(Manifest.permission.RECORD_AUDIO);
+                    if (!micPermissionPending) { micPermissionPending = true; micPermission.launch(Manifest.permission.RECORD_AUDIO); }
                     return;
                 }
                 startRecognition(lang);
@@ -320,8 +347,12 @@ public class MainActivity extends BridgeActivity {
         }
 
         @JavascriptInterface
+        public void speechCancel() { runOnUiThread(() -> cancelRecognition()); }
+
+        @JavascriptInterface
         public void speechStop() {
             runOnUiThread(() -> {
+                pendingLang = null;
                 if (recognizer != null) {
                     try { recognizer.stopListening(); } catch (Exception e) { /* yok say */ }
                 }

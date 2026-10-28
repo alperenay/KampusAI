@@ -266,7 +266,7 @@
       ta.value = (ta.value && !/\s$/.test(ta.value) ? ta.value + " " : ta.value) + s;
       ta.dispatchEvent(new Event("input"));
     };
-    const micErr = (code) => App.ui.toast(t(code === "permission" ? "fey.v.errPermission" : code === "network" || code === "lang" ? "fey.v.errOffline" : code === "no-audio" ? "fey.v.errNoAudio" : "fey.micError"), "error");
+    const micErr = (code) => App.ui.toast(App.media.errorMessage(code), "error");
 
     async function stopRec() {
       const s = session;
@@ -305,7 +305,7 @@
         if (ms >= MAX_VOICE_MS) { stopRec(); App.ui.toast(t("fey.v.maxReached")); }
       }, 500);
     });
-    const stopMic = () => { if (session) stopRec(); };
+    const stopMic = () => { if(session){if(session.cancel)session.cancel();else session.stop().catch(()=>{});session=null;}clearInterval(timer); };
 
     /* --- Değerlendir --- */
     const out = view.querySelector("#feyOut");

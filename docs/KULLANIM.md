@@ -70,3 +70,17 @@ Kurulum dosyalarını yalnız [resmî sürümlerden](https://github.com/alperena
 ## Keşif Atölyeleri
 
 Pratik menüsündeki **Keşif Atölyeleri · 9 araç** girişini aç. Her aracın adımları, veri aktarımı, cihaz desteği ve bilimsel sınırları [bu kılavuzda](KESIF-ATOLYELERI.md) açıklanır.
+
+## Mikrofon çalışmıyorsa
+
+AI Ayarları → **Mikrofonu test et** ile yerel giriş seviyesini kontrol et. Sesli Öğretmen ekranında da test bulunur. İzin, aygıt ve ses tanıma hizmeti ayrı ayrı kontrol edilir; [adımlar ve hata mesajları](MIKROFON.md).
+## Menü ve kişisel AI çalışma alanı (1.50)
+
+- **Yan menü:** Yeni sohbet, Bugün ve Tüm araçlar üstte kalır. Özellikler AI ile öğren, Dersler ve kaynaklar, Tekrar ve pratik, Deney ve ölçüm, Haritalar ve 3B, Plan ve gelişim, Öğretmen ve sınıf, Yardım ve araçlar altında toplanır. Başlığa basarak grubu aç; Daha fazla ile kalan araçları gör. Özellik araması kapalı kategorilerde de arar.
+- **Tüm araçlar:** Kategori düğmesiyle kapsamı daralt, arama kutusuyla istediğin aracı bul. Yıldız düğmesi sayfayı yan menüye sabitler. Arama kutusunda Enter ilk sonucu açar, Escape aramayı temizler.
+- **AI favorileri:** Ana AI sayfasından bir başlangıç seç. Mevcut taslak metnin ve ekli fotoğrafın korunur; isteği göndermeden önce düzenleyebilirsin. Bir favori seçmek sunucuya istek göndermez.
+- **Favorileri düzenle:** 12 hazır şablondan en fazla 12 favori sabitle. Yukarı/aşağı düğmeleri sırayı değiştirir. Kişisel kopya, hazır metni kendi şablonuna dönüştürür.
+- **Kişisel şablon:** Ad ve başlangıç metni yaz, istersen Sokratik koçu seç, Kaydet'e bas. En fazla 20 kişisel şablon oluşturulur. Düzenle ile değiştir, Sil ile kaldır. Silinen kişisel şablon geri getirilemez. Favori değiştirmek düzenlemekte olduğun metni silmez.
+- Bu ayarlar aynı cihaz/tarayıcıda saklanır. Tarayıcı verilerinin silinmesi kişisel şablonları kaldırır; cihazlar arası otomatik eşitleme yapılmaz.
+
+Mikrofon tanılama ve hata açıklamaları: [Mikrofon kılavuzu](MIKROFON.md).

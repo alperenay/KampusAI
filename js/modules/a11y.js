@@ -95,7 +95,7 @@
         } else if (src.startsWith("\\sqrt", i)) {
           i += 5;
           let n = null;
-          if (src[i] === "[") { const k = src.indexOf("]", i); n = src.slice(i + 1, k); i = k + 1; }
+          if (src[i] === "[") { const k = src.indexOf("]", i); if(k<0){out += " "+src.slice(i)+" ";i=src.length;continue;} n = src.slice(i + 1, k); i = k + 1; }
           const a = group(src, i);
           out += " " + (n ? W.root.replace("{n}", walk(n)) : W.sqrt) + " " + walk(a.inner) + " ";
           i = a.end;

@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.49.0
+  APP_VERSION: 1.50.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -101,6 +101,10 @@ jobs:
           node tools/navigation-ui-check.mjs
           npm run test:v147-ui
           npm run test:discovery-ui
+          npm run test:v149-ui
+          npm run test:audio-ui
+          npm run test:audio-browser
+          npm run test:v150-ui
           node tools/storage-ui-check.mjs
           node tools/lifecycle-ui-check.mjs
           node tools/lab-interactions-ui-check.mjs
@@ -182,6 +186,9 @@ jobs:
           npm run type-check
           npm run test:v147
           npm run test:discovery
+          npm run test:v149
+          npm run test:audio
+          npm run test:v150
       - name: Web dosyalarını hazırla
         run: |
           node tools/build-web.mjs dist/web --version "$APP_VERSION"
@@ -273,6 +280,9 @@ jobs:
           # Sesli Feynman (konuşma → yazı) için mikrofon; Android 11+ paket görünürlüğü: ses tanıma ve sesli okuma servisleri
           grep -q "android.permission.RECORD_AUDIO" app/src/main/AndroidManifest.xml || \
             sed -i 's#</manifest>#    <uses-permission android:name="android.permission.RECORD_AUDIO" />\n</manifest>#' app/src/main/AndroidManifest.xml
+          # Capacitor WebView audio capture checks this normal permission as well as RECORD_AUDIO.
+          grep -q "android.permission.MODIFY_AUDIO_SETTINGS" app/src/main/AndroidManifest.xml || \
+            sed -i 's#</manifest>#    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />\n</manifest>#' app/src/main/AndroidManifest.xml
           grep -q "android.speech.RecognitionService" app/src/main/AndroidManifest.xml || \
             sed -i 's#</manifest>#    <queries>\n        <intent><action android:name="android.speech.RecognitionService" /></intent>\n        <intent><action android:name="android.intent.action.TTS_SERVICE" /></intent>\n    </queries>\n</manifest>#' app/src/main/AndroidManifest.xml
           # Klavye açılınca sayfa küçülsün (yazı kutusu klavyenin altında kalmasın)
@@ -546,8 +556,10 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          Beş yeni modül: Kırmızı Lahana pH Ölçer (kamerayla renk → pH ve güven aralığı), Çevrimdışı Vatandaş Bilimi Ağı (gürültü dB ve ışık kirliliği Bortle ölçümü, QR ile birleştirme, ısı haritası), Ekosistem Kavanozu (Lotka–Volterra ot–tavşan–tilki simülasyonu), Kazanım Odaklı Meslek Haritası (53 meslek, gelişim rotası) ve Disleksi Dostu Mod (Türkçe hece renklendirme, okunan kelime vurgusu). 1.48'deki dokuz Keşif Atölyesi de bu sürümde. Ayrıntılar: CHANGELOG.md.
-          pH ve dB/Bortle değerleri yaklaşık eğitim ölçümleridir; kalibre edilmiş laboratuvar cihazı yerine geçmez. Meslek haritası yönlendirme değil, keşif aracıdır. Ölçümler cihazda kalır.
+          Tek birleşik güncelleme: yan menü ve araç kataloğu sekiz anlaşılır kategoride toplandı. AI çalışma alanına 12 hazır başlangıç, kişisel şablon oluşturma/düzenleme, arama ve favori sıralama eklendi. Mevcut favoriler ve taslaklar korunur.
+
+          Mikrofon düzeltmesi: Android WebView için eksik ses izni tamamlandı; aygıt/izin/servis hataları ayrıldı, güvenli kayıt geri dönüşü ve yerel mikrofon testi eklendi. Eski ses oturumlarının yenisini bozması, geç izin/kamera yanıtları ve bozuk 1.49 kayıtları düzeltildi. QR/CSV doğrulaması ve WebKit yeniden boyutlandırma düzeltmesi bu sürümdedir.
+          1.49’daki pH, vatandaş bilimi, ekosistem, meslek haritası ve disleksi özellikleri korunur. Kullanım: docs/MIKROFON.md; ayrıntılar: CHANGELOG.md. Kontrollü mikrofon/AI testleri fiziksel donanım veya konuşma tanıma doğruluk sertifikası değildir.
           Lint, yeni modül tip denetimi, birim testleri, üç tarayıcı motoru ve Android/Windows/Linux regresyon kapıları tamamlandı.
 
           | Platform | Dosya |

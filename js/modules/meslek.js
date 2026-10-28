@@ -154,7 +154,7 @@
     if (p[0] === "k" && p.length >= 5) return renderOutcome(view, p.slice(1, 5).join("/"));
     return renderHome(view);
   }
-  App.router.register("meslek", render);
+  App.router.register("meslek", (view,p) => App.moduleSafety.mount(view, scope => render(scope,p)));
   /** Bir kazanımı doğrudan kullanan meslek sayısı (konu sayfasındaki bağlantı için) */
   function useCount(subjectId, title) {
     const it = { subject: subjectId, title: trTitle(title) };

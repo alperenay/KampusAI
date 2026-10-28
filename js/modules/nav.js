@@ -1,8 +1,7 @@
 /* =========================================================
-   nav.js — menü grupları, hızlı ayarlar, arama (Ctrl+K) ve
-   asistan açılışındaki "Bugün" şeridi
+   nav.js — menü grupları, hızlı ayarlar, arama (Ctrl+K) ve kategorili özellik kataloğu
 
-   • Sol menü gruplara ayrılır (Sabitlenenler · Çalış · Pratik · Takip · Araçlar); gruplar açılıp
+   • Sol menü gruplara ayrılır (AI · Dersler · Pratik · Deney · Haritalar · Gelişim · Sınıf · Yardım); gruplar açılıp
      kapanır, açık olduğu sayfanın grubu her zaman açılır. Kapalı grupta
      bekleyen bir rozet varsa başlığında nokta görünür.
    • Üst çubuk sadeleşti: tema, dil, yedek ve ayarlar tek bir açılır panelde.
@@ -17,7 +16,7 @@
   const isMobile = () => window.matchMedia("(max-width: 860px)").matches;
 
   /* ---------------- Menü grupları ---------------- */
-  const DEFAULT_OPEN = { pins: true, explore: true, study: true, practice: true, track: true, tools: false, chats: true, grades: false, recentExams: false };
+  const DEFAULT_OPEN = { pins: true, ai: false, science: false, classroom: false, explore: false, study: true, practice: false, track: false, tools: false, chats: true, grades: false, recentExams: false };
   const openState = () => Object.assign({}, DEFAULT_OPEN, App.prefs.get("navOpen", {}));
 
   function setGroup(el, open, save) {
@@ -112,7 +111,9 @@
       let count = 0;
       nav.querySelectorAll("a.nav__item").forEach((a) => {
         const tool = App.hub && App.hub.TOOLS.find((x) => x[0] === a.dataset.route);
-        const text = norm(a.textContent + " " + (tool ? tool[5] : ""));
+        const category=App.toolCategories?.groupFor(a.dataset.route);
+        const text = norm(a.textContent + " " + (tool ? tool[5] : "")+" "+(category?App.toolCategories.text(category.title):""));
+        if(words.length&&a.closest("#navPins")){a.hidden=true;return;}
         a.hidden = words.length > 0 && !words.every((w) => text.includes(w));
         if (!a.hidden) count++;
       });
@@ -309,6 +310,7 @@
     document.querySelectorAll("#sidebar .nav__item").forEach((a) => { const l = a.querySelector(".sidebar__label"); if (l) { a.title = l.textContent.trim(); } });
   }
   function init() {
+    if(App.navigationLayout)App.navigationLayout.organize();
     titles(); App.i18n.onChange(titles);
     bindGroups();
     bindMenuSearch();

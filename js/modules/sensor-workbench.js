@@ -310,9 +310,7 @@
                 "Microphone/audio API unavailable.",
               ),
             );
-          const stream = await navigator.mediaDevices.getUserMedia({
-            audio: true,
-          });
+          const stream = await App.media.microphone(true);
           if (gone()) {
             stream.getTracks().forEach((t) => t.stop());
             return;
@@ -320,6 +318,8 @@
           let ac;
           try {
             ac = new Audio();
+            await App.media.resume(ac);
+            if(gone()){App.media.stop(stream);await ac.close();return;}
             const src = ac.createMediaStreamSource(stream),
               an = ac.createAnalyser();
             an.fftSize = 1024;
