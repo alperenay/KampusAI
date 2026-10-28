@@ -48,3 +48,9 @@
 .so-picked li.is-ok { background: color-mix(in srgb, #3fb950 22%, var(--surface-2)); }
 .so-picked li.is-bad { background: color-mix(in srgb, var(--bad) 20%, var(--surface-2)); }
 .so-picked small { color: var(--text-2); margin-left: 6px; }
+
+/* ---------------- Çoklu sensör metrikleri ---------------- */
+.sw-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 6px 14px; margin: 10px 0 0; }
+.sw-stats div { padding: 6px 10px; border-radius: var(--radius-sm); background: var(--surface-2); }
+.sw-stats dt { font-size: 12px; color: var(--text-2); }
+.sw-stats dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; }

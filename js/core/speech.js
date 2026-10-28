@@ -630,6 +630,7 @@
   }
 
   /* Doğal okuma için metin hazırlığı: kısaltma ve birimler okunur hâle gelir (yalnızca kelime takibi yokken) */
+  /** @type {Array<[RegExp, string]>} */
   const SAY_TR = [[/(^|\s)vb\./g, "$1ve benzeri"], [/(^|\s)örn\./gi, "$1örneğin"], [/(\d)\s?yy\./g, "$1 yüzyıl"],
     [/(\d)\s?m\/s²/g, "$1 metre bölü saniye kare"], [/(\d)\s?m\/s(?![a-zA-Z])/g, "$1 metre bölü saniye"], [/(\d)\s?km\/sa(?![a-zA-Z])/g, "$1 kilometre bölü saat"],
     [/(\d)\s?km(?![a-zA-Z])/g, "$1 kilometre"], [/(\d)\s?cm(?![a-zA-Z])/g, "$1 santimetre"], [/(\d)\s?kg(?![a-zA-Z])/g, "$1 kilogram"], [/(\d)\s?°C/g, "$1 santigrat derece"], [/(\d)\s?Hz(?![a-zA-Z])/g, "$1 hertz"], [/%\s?(\d)/g, "yüzde $1"]];

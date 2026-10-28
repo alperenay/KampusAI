@@ -36,7 +36,50 @@
       unit: "dBFS",
       limit: -15,
     },
+    // v1.51: yer çekimi çıkarılmış ivme (DeviceMotion acceleration) ve cihaz yönelimi (DeviceOrientation)
+    linear: {
+      label: "Doğrusal ivme (yer çekimsiz)",
+      en: "Linear acceleration (no gravity)",
+      unit: "m/s²",
+      limit: 5,
+      vector: true,
+    },
+    orient: {
+      label: "Yönelim / eğim açısı",
+      en: "Orientation / tilt",
+      unit: "°",
+      limit: 45,
+      vector: true,
+    },
   };
+  /* ---------- Ölçüm metrikleri (v1.51) ----------
+     n, ortalama örnekleme hızı, en küçük/en büyük, ortalama, standart sapma, RMS, tepeden tepeye ve
+     baskın frekans (ortalamadan histerezisli yukarı geçişler; titreşim/salınım için yaklaşık). */
+  function stats(samples, vector) {
+    const v = samples.map((s) => magnitude(s, vector)).filter(Number.isFinite);
+    if (v.length < 2) return null;
+    const n = v.length, mean = v.reduce((a, b) => a + b, 0) / n;
+    const sd = Math.sqrt(v.reduce((a, b) => a + (b - mean) * (b - mean), 0) / n);
+    const rms = Math.sqrt(v.reduce((a, b) => a + b * b, 0) / n);
+    const min = Math.min(...v), max = Math.max(...v);
+    const dur = samples[samples.length - 1].t - samples[0].t;
+    const h = sd * 0.3;
+    let armed = false, ups = 0;
+    for (let i = 1; i < n; i++) {
+      if (v[i] < mean - h) armed = true;
+      if (armed && v[i - 1] < mean && v[i] >= mean) { ups++; armed = false; }
+    }
+    return { n, rate: dur > 0 ? (n - 1) / dur : 0, min, max, mean, sd, rms, p2p: max - min, freq: dur > 0 && ups >= 2 && sd > 1e-9 ? ups / dur : null };
+  }
+  /** Değerlerin histogramı: bins adet eşit aralık → [{ from, to, n }] */
+  function histogram(values, bins) {
+    const v = values.filter(Number.isFinite);
+    if (!v.length) return [];
+    const lo = Math.min(...v), hi = Math.max(...v), k = bins || 12, w = (hi - lo) / k || 1;
+    const out = Array.from({ length: k }, (_, i) => ({ from: lo + i * w, to: lo + (i + 1) * w, n: 0 }));
+    v.forEach((x) => { out[Math.min(k - 1, Math.floor((x - lo) / w))].n++; });
+    return out;
+  }
   function validSample(s) {
     return (
       !!s &&
@@ -105,6 +148,11 @@
         )
         .join("") +
       '</select></label><label class="field">' +
+      T("Görünüm", "View") +
+      '<select id="swView" class="select"><option value="time">' + T("Zaman grafiği (x, y, z)", "Time chart (x, y, z)") +
+      '</option><option value="mag">' + T("Büyüklük |v|", "Magnitude |v|") +
+      '</option><option value="hist">' + T("Dağılım (histogram)", "Distribution (histogram)") +
+      '</option></select></label><label class="field">' +
       T("Veri kaynağı", "Data source") +
       '<select id="swSource" class="select"><option value="device">' +
       T("Gerçek cihaz", "Device") +
@@ -136,7 +184,7 @@
       T("Durdur", "Stop") +
       '</button><button class="btn" id="swCSV" disabled>CSV</button><button class="btn" id="swJSON" disabled>JSON</button></div></section><section class="card"><p id="swStatus" role="status"></p><p class="hint" id="swUnit"></p><canvas id="swChart" class="sl-cv" height="240" aria-label="' +
       T("Sensör zaman grafiği", "Sensor time chart") +
-      '"></canvas><p id="swValue" aria-live="off"></p><p id="swAlert" role="status"></p></section><p class="hint">' +
+      '"></canvas><p id="swValue" aria-live="off"></p><dl id="swStats" class="sw-stats" aria-label="' + T("Ölçüm metrikleri", "Measurement metrics") + '"></dl><p id="swAlert" role="status"></p></section><p class="hint">' +
       T(
         "En fazla son 600 örnek saklanır. Ses dBFS: kalibre edilmemiş dijital seviye, dB SPL değildir. Ortam ışığı yalnız gerçek ışık sensörü desteklenirse lux ölçer; kamera parlaklığı bu ölçüm yerine kullanılmaz. Manyetik değerler pusula doğruluğu garantisi vermez.",
         "Only the last 600 samples are retained. Audio uses uncalibrated digital dBFS, not dB SPL. Lux requires an ambient-light sensor; camera brightness is not substituted. Magnetic readings do not guarantee compass accuracy.",
@@ -205,8 +253,25 @@
         "sw-warning",
         Number.isFinite(limit) && v > limit,
       );
+      draw();
+      if (rows.length % 4 === 0) paintStats();
+      $("#swCSV").disabled = false;
+      $("#swJSON").disabled = false;
+    }
+    function draw() {
+      if (!session) return;
+      const c = CHANNELS[session.sensor], mode = $("#swView").value, cv = $("#swChart");
+      if (mode === "hist") {
+        const bins = histogram(rows.map((s) => magnitude(s, c.vector)), 14);
+        App.sensorLab.chart(cv, bins.length ? [{ pts: bins.flatMap((b) => [[b.from, 0], [b.from, b.n], [b.to, b.n], [b.to, 0]]), color: "accent", w: 2 }] : [], { xName: (c.vector ? "|v| " : "") + "(" + c.unit + ")", yName: T("örnek", "samples"), y0: 0 });
+        return;
+      }
+      if (mode === "mag") {
+        App.sensorLab.chart(cv, [{ pts: rows.map((s) => [s.t, magnitude(s, c.vector)]), color: "accent" }], { xName: "t (s)", yName: (c.vector ? "|v| " : "") + c.unit });
+        return;
+      }
       App.sensorLab.chart(
-        $("#swChart"),
+        cv,
         [
           { pts: rows.map((s) => [s.t, s.x]) },
           ...(c.vector
@@ -218,8 +283,22 @@
         ],
         { xName: "t (s)", yName: c.unit },
       );
-      $("#swCSV").disabled = false;
-      $("#swJSON").disabled = false;
+    }
+    function paintStats() {
+      const box = $("#swStats");
+      if (!session || !box) return;
+      const c = CHANNELS[session.sensor], st = stats(rows, c.vector);
+      if (!st) { box.innerHTML = ""; return; }
+      const f = (x, d) => (x == null || !Number.isFinite(x) ? "—" : x.toFixed(d == null ? 2 : d));
+      const item = (k, v) => "<div><dt>" + esc(k) + "</dt><dd>" + v + "</dd></div>";
+      box.innerHTML =
+        item(T("Örnek", "Samples"), st.n + " · " + f(st.rate, 1) + " Hz") +
+        item(T("Ortalama", "Mean"), f(st.mean) + " " + esc(c.unit)) +
+        item(T("Std. sapma", "Std dev"), f(st.sd) + " " + esc(c.unit)) +
+        item("RMS", f(st.rms) + " " + esc(c.unit)) +
+        item(T("En küçük / en büyük", "Min / max"), f(st.min) + " / " + f(st.max)) +
+        item(T("Tepeden tepeye", "Peak to peak"), f(st.p2p) + " " + esc(c.unit)) +
+        item(T("Baskın frekans", "Dominant frequency"), st.freq ? f(st.freq) + " Hz · T ≈ " + f(1 / st.freq) + " s" : T("salınım yok", "no oscillation"));
     }
     async function start() {
       if (pending || running) return;
@@ -249,6 +328,7 @@
       session = { sensor, source, at: new Date().toISOString() };
       $("#swValue").textContent = "";
       $("#swAlert").textContent = "";
+      $("#swStats").innerHTML = "";
       App.sensorLab.chart($("#swChart"), [], {xName:"t (s)",yName:CHANNELS[sensor].unit});
       t0 = performance.now();
       const gone = () => !alive || mine !== epoch;
@@ -267,7 +347,24 @@
               );
           }, 100);
           stopFn = () => clearInterval(timer);
-        } else if (sensor === "accel" || sensor === "gyro") {
+        } else if (sensor === "orient") {
+          const O =
+            /** @type {typeof DeviceOrientationEvent & {requestPermission?: () => Promise<string>}} */ (
+              window.DeviceOrientationEvent
+            );
+          if (!O)
+            throw new Error(T("Yönelim sensörü desteklenmiyor.", "Orientation sensor unavailable."));
+          if (O.requestPermission && (await O.requestPermission()) !== "granted")
+            throw new Error(T("Sensör izni verilmedi.", "Sensor permission denied."));
+          if (gone()) return;
+          running = true;
+          // alpha: pusula yönü, beta: öne-arkaya eğim, gamma: sağa-sola eğim (derece)
+          const fn = (e) => {
+            if ([e.alpha, e.beta, e.gamma].every(Number.isFinite)) add(e.alpha, e.beta, e.gamma);
+          };
+          window.addEventListener("deviceorientation", fn);
+          stopFn = () => window.removeEventListener("deviceorientation", fn);
+        } else if (sensor === "accel" || sensor === "gyro" || sensor === "linear") {
           const C =
             /** @type {typeof DeviceMotionEvent & {requestPermission?: () => Promise<string>}} */ (
               window.DeviceMotionEvent
@@ -292,10 +389,12 @@
             const v =
               sensor === "accel"
                 ? e.accelerationIncludingGravity
-                : e.rotationRate;
+                : sensor === "linear"
+                  ? e.acceleration
+                  : e.rotationRate;
             if (!v) return;
             const keys =
-              sensor === "accel" ? ["x", "y", "z"] : ["alpha", "beta", "gamma"];
+              sensor === "gyro" ? ["alpha", "beta", "gamma"] : ["x", "y", "z"];
             if (keys.every((k) => Number.isFinite(v[k])))
               add(...keys.map((k) => v[k]));
           };
@@ -401,9 +500,11 @@
     $("#swStart").onclick = start;
     $("#swStop").onclick = () => {
       stop();
+      paintStats();
       status.textContent = T("Durduruldu.", "Stopped.");
     };
     $("#swSensor").onchange = label;
+    $("#swView").onchange = () => { draw(); paintStats(); };
     $("#swSource").onchange = label;
     $("#swCSV").onclick = () =>
       downloadText(
@@ -426,5 +527,5 @@
       stop();
     };
   }
-  App.sensorWorkbench = { CHANNELS, validSample, magnitude, packet, csv, page };
+  App.sensorWorkbench = { CHANNELS, validSample, magnitude, packet, csv, page, stats, histogram };
 })();
