@@ -84,7 +84,7 @@
   /** Shannon çeşitlilik indeksi (hayvan türleri): H = −Σ pᵢ ln pᵢ — denge ve çeşitlilik göstergesi */
   function diversity(s) {
     const n = [s.R, s.F, s.E || 0].filter((x) => x > 0), tot = n.reduce((a, b) => a + b, 0);
-    return tot ? -n.reduce((a, x) => a + (x / tot) * Math.log(x / tot), 0) : 0;
+    return tot ? Math.abs(n.reduce((a, x) => a + (x / tot) * Math.log(x / tot), 0)) : 0;
   }
 
   /* ================= Arayüz ================= */

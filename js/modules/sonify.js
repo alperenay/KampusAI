@@ -105,7 +105,7 @@
     if (!playing || !paused || !ac) return false;
     paused = false; ac.resume(); emit(); return true;
   }
-  window.addEventListener("hashchange", () => { if (playing) stop(); });
+  if (typeof window !== "undefined" && window.addEventListener) window.addEventListener("hashchange", () => { if (playing) stop(); });
   /** Eğrileri soldan sağa çal (süre saniye). curves: [{ fn, x0, x1, name? }] — birden çok eğri sırayla çalınır */
   function play(curves, opts) {
     opts = opts || {};

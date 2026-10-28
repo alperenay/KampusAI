@@ -63,13 +63,18 @@
     const rms = Math.sqrt(v.reduce((a, b) => a + b * b, 0) / n);
     const min = Math.min(...v), max = Math.max(...v);
     const dur = samples[samples.length - 1].t - samples[0].t;
-    const h = sd * 0.3;
-    let armed = false, ups = 0;
+    // Frekans: ilk ve son yukarı geçiş arasındaki tam periyotlar (geçiş anı doğrusal aradeğerlemeyle)
+    const h = sd * 0.3, ups = [];
+    let armed = false;
     for (let i = 1; i < n; i++) {
       if (v[i] < mean - h) armed = true;
-      if (armed && v[i - 1] < mean && v[i] >= mean) { ups++; armed = false; }
+      if (armed && v[i - 1] < mean && v[i] >= mean) {
+        const k = (mean - v[i - 1]) / (v[i] - v[i - 1]);
+        ups.push(samples[i - 1].t + k * (samples[i].t - samples[i - 1].t)); armed = false;
+      }
     }
-    return { n, rate: dur > 0 ? (n - 1) / dur : 0, min, max, mean, sd, rms, p2p: max - min, freq: dur > 0 && ups >= 2 && sd > 1e-9 ? ups / dur : null };
+    const span = ups.length >= 3 ? ups[ups.length - 1] - ups[0] : 0;
+    return { n, rate: dur > 0 ? (n - 1) / dur : 0, min, max, mean, sd, rms, p2p: max - min, freq: span > 0 && sd > 1e-9 ? (ups.length - 1) / span : null };
   }
   /** Değerlerin histogramı: bins adet eşit aralık → [{ from, to, n }] */
   function histogram(values, bins) {

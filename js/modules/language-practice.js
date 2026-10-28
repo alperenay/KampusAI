@@ -55,11 +55,12 @@
   /** Tohumlu karıştırma: aynı soru her açılışta aynı sırayla gelir (doğru şık hep ilk sırada olmaz) */
   function order(n, seed) {
     const idx = Array.from({ length: n }, (_, i) => i);
-    let s = 0;
-    for (const ch of String(seed)) s = (s * 31 + ch.charCodeAt(0)) >>> 0;
+    // FNV-1a özeti + xorshift32; indeks yüksek bitlerden alınır (doğrusal üretecin düşük bitleri tekdüze değildir)
+    let s = 2166136261;
+    for (const ch of String(seed)) s = Math.imul(s ^ ch.charCodeAt(0), 16777619) >>> 0;
     for (let i = n - 1; i > 0; i--) {
-      s = (s * 1103515245 + 12345) >>> 0;
-      const j = s % (i + 1);
+      s ^= s << 13; s >>>= 0; s ^= s >>> 17; s ^= s << 5; s >>>= 0;
+      const j = Math.floor((s / 4294967296) * (i + 1));
       [idx[i], idx[j]] = [idx[j], idx[i]];
     }
     return idx;
