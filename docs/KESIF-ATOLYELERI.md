@@ -58,7 +58,7 @@ Enlem/boylam ve **UTC** zaman gir → hesapla. Konum izni isteğe bağlıdır. A
 - Devre: ideal gerilim kaynağı, direnç, sabit dirençli lamba ve açık/kapalı anahtar; topraklı düğüm gerilimleri MNA ile çözülür. Tekil/açıkta düğümler hata verir. Elektron hareketi nitel animasyondur; hız ölçekli yük taşıyıcı modeli değildir.
 - Serbest cisim: vektör toplamı ve `a=ΣF/m`; yüzey bilgisi verildiğinde eksik normal kuvvet için uyarı. Çizimden tüm kuvvetlerin zorunlu olarak tanınması garanti edilmez.
 - Optik: Snell, tam iç yansıma, ince mercek/küresel ayna görüntü bağıntıları ve paraksiyel ışın çizimi. Eğri yüzeylerin genel optik geometrisi tanınmaz.
-- Rampa: çizilmiş çoklu çizgi boyunca noktasal kılavuz hareketi ve potansiyel/kinetik enerji; ayrıca 1B iki cisim çarpışması. Keyfî poligonlarla genel 2B rijit cisim/yuvarlanma/döngü temas çözücüsü değildir.
+- Rampa: çizilmiş çoklu çizgi boyunca noktasal kılavuz hareketi ve potansiyel/kinetik enerji; ayrıca 1B iki cisim çarpışması. İsteğe bağlı `loopRadius` metre cinsindedir; `2.5R` eşiği rampa yüksekliğinden bağımsız yarıçapla hesaplanır. Keyfî poligonlarla genel 2B rijit cisim/yuvarlanma/döngü temas çözücüsü değildir.
 
 AI sembol/değer/bağlantı önerir; okunmayan alanlar null kalır ve öğrenci tarafından tamamlanır. Yerel kontur analizi tek başına sembolleri veya devre topolojisini tanıdığını iddia etmez.
 

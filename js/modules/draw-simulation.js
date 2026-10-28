@@ -30,6 +30,7 @@
       height: 2,
       mass: 1,
       loss: 0.1,
+      loopRadius: 0.5,
       m1: 1,
       v1: 3,
       m2: 2,
@@ -48,7 +49,7 @@
       };
     if (kind === "ramp")
       return {
-        ramp: m.ramp(data.height, data.mass, data.loss),
+        ramp: m.ramp(data.height, data.mass, data.loss, data.loopRadius ?? 0),
         collision: m.collision(
           data.m1,
           data.v1,

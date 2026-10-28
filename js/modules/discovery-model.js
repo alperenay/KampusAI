@@ -326,10 +326,11 @@
   }
   /** @param {number} height
    * @param {number} mass
-   * @param {number} [friction] */
-  function ramp(height, mass, friction = 0) {
+   * @param {number} [friction]
+   * @param {number} [loopRadius] */
+  function ramp(height, mass, friction = 0, loopRadius = 0) {
     positive(mass);
-    if (!finite(height, friction) || height < 0 || friction < 0 || friction > 1)
+    if (!finite(height, friction, loopRadius) || height < 0 || friction < 0 || friction > 1 || loopRadius < 0)
       throw new Error("Geçersiz yükseklik/kayıp oranı");
     const potential = mass * G * height,
       loss = potential * friction;
@@ -338,7 +339,8 @@
       kinetic: potential - loss,
       loss,
       speed: Math.sqrt(2 * G * height * (1 - friction)),
-      loopMinHeight: 2.5 * height,
+      loopMinHeight: loopRadius > 0 ? 2.5 * loopRadius : null,
+      idealLoopEnergySufficient: loopRadius > 0 ? height * (1 - friction) >= 2.5 * loopRadius : null,
     };
   }
   /** @param {number} m1
