@@ -247,7 +247,11 @@ public class MainActivity extends BridgeActivity {
     private void speakNow(String id, String text, String lang, float rate, float pitch) {
         if (!ttsReady || tts == null) { emitTts(id, "error", "init"); return; }
         try {
-            tts.setLanguage(Locale.forLanguageTag(lang));
+            int languageStatus = tts.setLanguage(Locale.forLanguageTag(lang));
+            if (languageStatus == TextToSpeech.LANG_MISSING_DATA || languageStatus == TextToSpeech.LANG_NOT_SUPPORTED) {
+                emitTts(id, "error", "language");
+                return;
+            }
             tts.setSpeechRate(rate > 0 ? rate : 1f);
             tts.setPitch(pitch > 0 ? pitch : 1f);
             int max = TextToSpeech.getMaxSpeechInputLength();

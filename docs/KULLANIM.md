@@ -37,6 +37,8 @@ Başlangıç paketi 18 bağlam görevi ve 12 hata örneği içerir. Aynı sorula
 
 ## Yapay zekâ
 
+1.47'de eklenen **Almanca, AI favorileri, geliştirilmiş dünya küresi ve çoklu sensör ölçümü** için [ayrıntılı kullanım notlarını](YENI-ARACLAR.md) aç.
+
 **Ayarlar → Yapay zekâ ayarları** üzerinden bağlantını seç.
 
 | Seçenek | Gerekenler |

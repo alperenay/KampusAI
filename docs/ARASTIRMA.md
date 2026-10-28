@@ -13,6 +13,10 @@ Araştırma modu, aynı soru bankası üzerinde **ipucu** veya **adaptif akış*
 5. Öğrenciler testi tamamlayıp sonuç paketini öğretmene aktarır.
 6. Öğretmen grup tablosunu inceler; ham sonuçları JSON olarak dışa aktarabilir.
 
+Ekrandaki **Adım adım kullanım** aynı akışı uygulama içinde gösterir. Kamera çalışmıyorsa **İçe aktar** alanına bütün kodları yapıştır veya araştırma aktarım JSON dosyasını seç. Eksik QR kareleri tamamlanmadan oturum/sonuç içe aktarılmış sayılmaz. Kontrol/deney grubu farkını örneklem sayısıyla birlikte yorumla; ön test, son test ve araştırma tasarımı olmadan öğrenme etkisi kanıtlandığı sonucuna varma.
+
+Liste, oturum şemasını ve özgün sonuç vektörlerini doğrular; özetleri bu yanıtlardan yeniden hesaplar. Geçersiz kayıtlar uyarıyla görüntüleme dışında bırakılır, silinmez. Önce yedek alıp özgün paketi kontrol et. Kayıtlar normal test, sınıf ödevi ve Almanca pratik kayıtlarından ayrı tutulur.
+
 ## Veri ve puanlama
 
 - Aynı oturum ve katılımcı kodu aynı gruba atanır; grup büyüklüklerinin eşitliği garanti edilmez.

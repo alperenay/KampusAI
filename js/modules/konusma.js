@@ -206,6 +206,7 @@
 
   /* ---------------- Sayfa ---------------- */
   async function page(view, params) {
+    if (params[0] === "de") return App.languagePractice.page(view);
     App.setTitle(T("İngilizce Konuşma Pratiği", "English Speaking Practice"));
     let st = null;                       // aktif oturum
     let holo = null, holoBusy = false;   // hologram sahnesi
@@ -225,7 +226,7 @@
       const mode = App.prefs.get("ksMode", "sohbet"), level = App.prefs.get("ksLevel", "A2");
       const mist = App.prefs.get("ksMist", []) || [], mine = App.prefs.get("ksMine", []) || [];
       const stt = App.speech.sttMode();
-      view.innerHTML = '<div class="page ks"><div class="page-head"><div><h1>' + esc(T("İngilizce Konuşma Pratiği", "English Speaking Practice")) + '</h1><p class="hint">' +
+      view.innerHTML = '<div class="page ks">' + App.languagePractice.choices() + '<div class="page-head"><div><h1>' + esc(T("İngilizce Konuşma Pratiği", "English Speaking Practice")) + '</h1><p class="hint">' +
         esc(T("Hologram öğretmen İngilizce konuşur, sen sesli cevap verirsin; dilbilgisi düzeltmesi, telaffuz ipucu ve puan anında gelir.", "The hologram teacher speaks English and you answer out loud; you get grammar fixes, pronunciation tips and a score right away.")) + "</p></div></div>" +
         (stt ? "" : '<div class="notice ks-note">' + App.icon("info") + "<span>" + esc(T("Bu cihazda ses tanıma yok; cevaplarını yazarak da pratik yapabilirsin. Telaffuz için Chrome/Edge ya da Android uygulamasını kullan.", "Speech recognition isn't available here; you can type your answers. For pronunciation use Chrome/Edge or the Android app.")) + "</span></div>") +
         '<div class="card ks-setup">' +

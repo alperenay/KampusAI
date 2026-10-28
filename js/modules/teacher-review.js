@@ -116,9 +116,19 @@
     await App.db.put("reviews", Object.assign({}, row, { evaluation, metrics: result.metrics }));
     return evaluation;
   }
+  let renderEpoch = 0;
   async function render(view) {
-    const hash = location.hash, rows = (await App.db.getAll("reviews")).filter((r) => r.kind === "request");
-    if (hash !== location.hash) return;
+    const hash = location.hash, mine = ++renderEpoch, raw = await App.db.getAll("reviews"), rows = [];
+    let skipped = 0;
+    for (const row of raw) {
+      if (row && row.kind !== "request") continue;
+      try {
+        if (!row || !["teacher", "student"].includes(row.role)) fail();
+        const request = cleanRequest(row.request), evaluation = row.evaluation ? grade(request, row.evaluation) : null;
+        rows.push(Object.assign({}, row, { request, evaluation, metrics: evaluation ? assessed(request, evaluation).metrics : null }));
+      } catch (e) { skipped++; }
+    }
+    if (mine !== renderEpoch || hash !== location.hash || !view.isConnected) return;
     App.setTitle(t("review.title"));
     view.innerHTML = '<div class="page review-page"><div class="page-head"><div><h1>' + esc(t("review.title")) + '</h1><p>' + esc(t("review.intro")) + '</p></div><a class="btn" href="#/sinif">' + esc(t("research.classroom")) + '</a></div>' +
       '<div class="research-controls"><button class="btn" id="reviewImport">' + esc(t("research.import")) + '</button><button class="btn" id="reviewScan">' + esc(t("research.scan")) + '</button><button class="btn btn--ghost" id="reviewExport">' + esc(t("research.export")) + '</button></div>' +
@@ -158,8 +168,9 @@
         await save(row.id, ratings); App.ui.toast(t("review.saved")); reload();
       } catch (err) { App.ui.toast(err.message, "error"); } finally { b.disabled = false; }
     }; });
+    App.moduleSafety.help(view, "reviews", skipped);
     App.hydrateIcons(view);
   }
-  App.router.register("degerlendirme", render);
+  App.router.register("degerlendirme", (view) => App.moduleSafety.mount(view, render));
   App.teacherReview = { rubric, cleanRequest, digest, grade, assessed, requestFor, receive, save, share, render };
 })();

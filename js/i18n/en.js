@@ -723,7 +723,7 @@ App.locales.en = {
   "nav.models": "3D Models",
   "nav.formulas": "Formula Book",
   "nav.voiceTeacher": "Hologram Teacher",
-  "nav.speaking": "English Speaking",
+  "nav.speaking": "English & German",
   "nav.written": "Written Exams",
   "nav.more": "More ({n})",
   "nav.less": "Less",

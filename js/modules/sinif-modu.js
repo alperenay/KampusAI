@@ -151,8 +151,24 @@
   const outcomeCode = (key, i) => { const f = App.lessons && App.lessons.find(key); return (f && f.outcome.code) || "K" + (i + 1); };
 
   /* ================= Depolama ================= */
-  const getMeta = (id) => App.db.get("meta", id).catch(() => null);
-  const allMeta = async (prefix) => (await App.db.getAll("meta").catch(() => [])).filter((r) => r.id && r.id.indexOf(prefix) === 0);
+  function validRecord(r) {
+    try {
+      if (!r || typeof r.id !== "string") return false;
+      if (r.id.startsWith("sm:a:") || r.id.startsWith("sm:s:")) {
+        validate(r.data); if (r.data.t !== "a") return false;
+        if (r.result) { validate(r.result.data); if (r.result.data.r.length !== r.data.q.length) return false; const scored = score(r.data, r.result.data.r); r = Object.assign({}, r, { result: Object.assign({}, scored, { data: Object.assign({}, r.result.data, { sc: scored.sc }) }) }); }
+        if (r.draft && (!Array.isArray(r.draft.r) || r.draft.r.length !== r.data.q.length || !Array.isArray(r.draft.c) || r.draft.c.length !== r.data.q.length || !r.draft.r.every((v,i) => Number.isInteger(v) && v >= -1 && v < r.data.q[i].o.length))) r = Object.assign({}, r, { draft: null });
+        return r;
+      }
+      if (r.id.startsWith("sm:r:") && typeof r.sid === "string" && Array.isArray(r.answers) && Array.isArray(r.sc) && r.sc.every(x => Array.isArray(x) && x.length === 2 && x.every(Number.isFinite))) return r;
+    } catch (e) { /* keep original record in backup, exclude it from rendering */ }
+    return false;
+  }
+  const getMeta = async (id) => validRecord(await App.db.get("meta", id).catch(() => null)) || null;
+  const allMeta = async (prefix) => {
+    const rows = (await App.db.getAll("meta")).filter(r => r && typeof r.id === "string" && r.id.startsWith(prefix)), out = rows.map(validRecord).filter(Boolean);
+    out.skipped = rows.length - out.length; return out;
+  };
 
   /* ================= QR gösterimi ================= */
   async function qrSvg(text) {
@@ -339,6 +355,7 @@
     App.setTitle(T("Sınıf Modu", "Class Mode"));
     const [mine, got] = await Promise.all([allMeta("sm:a:"), allMeta("sm:s:")]);
     const results = await allMeta("sm:r:");
+    if (!view.isConnected) return;
     const nRes = (id) => results.filter((r) => r.aid === id).length;
     mine.sort((a, b) => String(b.data.at).localeCompare(String(a.data.at)));
     got.sort((a, b) => String(b.at).localeCompare(String(a.at)));
@@ -364,6 +381,7 @@
           '<li><a class="card sm-li" href="#/sinif-modu/coz/' + esc(r.data.id) + '"><b>' + esc(r.data.ti) + "</b><span>" +
             esc(r.result ? T("Tamamlandı · %", "Done · ") + r.result.pct + (App.i18n.lang === "en" ? "%" : "") : T("Çözülmedi", "Not solved yet")) + "</span>" + App.icon("chevron") + "</a></li>").join("") + "</ul>" : "") +
       "</div>";
+    App.moduleSafety.help(view, "classroom", mine.skipped + got.skipped + results.skipped);
     App.hydrateIcons(view);
     view.querySelector("#smScanA").addEventListener("click", async () => {
       const res = await scan(T("Ödev QR'ını okut", "Scan assignment QR"), "a");
@@ -499,11 +517,14 @@
   /* ---------- Öğretmen: ödev + sınıf listesi ---------- */
   async function renderAssignment(view, id) {
     const rec = await getMeta("sm:a:" + id);
+    if (!view.isConnected) return;
     if (!rec) { view.innerHTML = '<div class="page">' + App.ui.empty("close", T("Ödev bulunamadı", "Assignment not found"), "") + "</div>"; return; }
     const a = rec.data;
     App.setTitle(a.ti);
     const frames = await pack(a);
     let rows = (await allMeta("sm:r:" + id + ":")).sort((x, y) => String(x.sid).localeCompare(String(y.sid), "tr", { numeric: true }));
+    if (!view.isConnected) return;
+    rows = rows.filter(r => r.answers.length === a.q.length && r.answers.every((v,i) => Number.isInteger(v) && v >= -1 && v < a.q[i].o.length)).map(r => Object.assign({}, r, score(a, r.answers)));
 
     function rosterHtml() {
       if (!rows.length) return App.ui.empty("scan", T("Henüz sonuç yok", "No results yet"), T("Öğrenciler ödevi bitirince sonuç QR'larını okut.", "When students finish, scan their result QRs."));
@@ -580,6 +601,7 @@
   /* ---------- Öğrenci: çöz ---------- */
   async function renderSolve(view, id) {
     const rec = await getMeta("sm:s:" + id);
+    if (!view.isConnected) return;
     if (!rec) { view.innerHTML = '<div class="page">' + App.ui.empty("close", T("Ödev bulunamadı", "Assignment not found"), T("Ödev QR'ını yeniden okut.", "Scan the assignment QR again.")) + "</div>"; return; }
     const a = rec.data;
     App.setTitle(a.ti);
@@ -680,6 +702,6 @@
     return renderHome(view);
   }
 
-  App.router.register("sinif-modu", render);
+  App.router.register("sinif-modu", (view, p) => App.moduleSafety.mount(view, scope => render(scope, p)));
   App.sinifModu = { pack, unpack, frame, collector, validate, score, parseManual, pickBalanced, encodeBody, decodeBody, fnv, PREFIX, CHUNK, scan, mountPlayer, fromSaved, fromAI };
 })();

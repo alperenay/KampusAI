@@ -57,7 +57,7 @@
     try { const c = App.engine && App.engine.cloud(); return !!(c && c.configured() && typeof c.toContents === "function"); } catch (e) { return false; }
   }
 
-  const langTag = (lang) => (lang || App.i18n.lang) === "tr" ? "tr-TR" : "en-US";
+  const langTag = (lang) => ({ tr: "tr-TR", en: "en-US", de: "de-DE" }[String(lang || App.i18n.lang).toLowerCase().split(/[-_]/)[0]] || "en-US");
 
   /* ---------------- Dinleme ---------------- */
   function listen(o) {
@@ -286,5 +286,5 @@
   // Ses listesi bazı tarayıcılarda geç yüklenir
   if ("speechSynthesis" in window) { try { speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged = () => {}; } catch (e) { /* yok say */ } }
 
-  App.speech = { sttMode, listen, say, stopSaying, ttsAvailable, hasVoice, canTranscribe, voiceCount, speaking: () => !!current };
+  App.speech = { langTag, sttMode, listen, say, stopSaying, ttsAvailable, hasVoice, canTranscribe, voiceCount, speaking: () => !!current };
 })();

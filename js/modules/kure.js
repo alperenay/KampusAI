@@ -17,6 +17,9 @@
   const T = (tr, en) => (App.i18n.lang === "en" ? en : tr);
   const R = 2;                               // küre yarıçapı (sahne birimi)
   const TILT = 23.44;                        // eksen eğikliği (23°27')
+  let earthImage = null, pageEpoch = 0;
+  const POI = [[31.1347,29.9778,'Gize Piramitleri','Giza Plateau','https://web.astronomicalheritage.net/index.php/show-entity?identity=24'],[0,0,'Ekvator · başlangıç meridyeni','Equator · prime meridian'],[0,90,'Kuzey Kutbu','North Pole'],[0,-90,'Güney Kutbu','South Pole'],[30,23.44,'Yengeç Dönencesi','Tropic of Cancer'],[30,-23.44,'Oğlak Dönencesi','Tropic of Capricorn']];
+  function loadEarth() { if (earthImage) return Promise.resolve(); return new Promise(resolve => { const image = new Image(); image.onload = () => { earthImage = image; resolve(); }; image.onerror = () => resolve(); image.src = 'assets/globe/earth-nasa-2048.png'; }); }
 
   /* ---------- konum dönüşümleri: sahnedeki SphereGeometry'nin uv'siyle aynı ---------- */
   function vec(THREE, lon, lat, r) {
@@ -44,7 +47,8 @@
   const PBT = [["Okyanus ortası sırtı (uzaklaşan)", "#ff6b4a", "div"], ["Okyanusal dönüşüm fayı", "#ffd166", "tr"], ["Dalma-batma (yakınlaşan)", "#4cc9f0", "con"],
     ["Kıtasal yarık (uzaklaşan)", "#ff6b4a", "div"], ["Kıtasal dönüşüm fayı", "#ffd166", "tr"], ["Kıta–kıta çarpışması (yakınlaşan)", "#4cc9f0", "con"], ["Okyanus–kıta yakınlaşması", "#4cc9f0", "con"]];
   const LAYERS = [
-    ["ulke", ["Ülkeler", "Countries"], true], ["baskent", ["Başkentler", "Capitals"], false], ["ag", ["Paralel ve meridyenler", "Graticule"], true],
+    ["satellite", ["NASA yüzey dokusu", "NASA surface texture"], true], ["poi", ["Önemli noktalar", "Points of interest"], true],
+    ["ulke", ["Ülkeler", "Countries"], true], ["baskent", ["Başkentler", "Capitals"], true], ["ag", ["Paralel ve meridyenler", "Graticule"], true],
     ["iklim", ["Matematik iklim kuşakları", "Climate belts"], false], ["saat", ["Saat dilimleri", "Time zones"], false],
     ["levha", ["Levha sınırları", "Plate boundaries"], false], ["deprem", ["Büyük depremler", "Major earthquakes"], false], ["volkan", ["Volkanlar", "Volcanoes"], false],
     ["tarih", ["Tarih olayları", "History events"], false], ["gunes", ["Güneş: gündüz–gece", "Sun: day–night"], false]
@@ -57,6 +61,7 @@
     x.fillStyle = "#1d4f7a"; x.fillRect(0, 0, W, H);
     // okyanus derinlik izlenimi
     const gr = x.createLinearGradient(0, 0, 0, H); gr.addColorStop(0, "rgba(255,255,255,.08)"); gr.addColorStop(0.5, "rgba(0,0,0,0)"); gr.addColorStop(1, "rgba(255,255,255,.08)"); x.fillStyle = gr; x.fillRect(0, 0, W, H);
+    if (L.satellite && earthImage) x.drawImage(earthImage, 0, 0, W, H);
     if (L.iklim) {
       const band = (a, b, col) => { x.fillStyle = col; x.fillRect(0, py(b), W, py(a) - py(b)); };
       band(-TILT, TILT, "rgba(255,120,60,.30)"); band(TILT, 90 - TILT, "rgba(120,220,120,.22)"); band(-(90 - TILT), -TILT, "rgba(120,220,120,.22)");
@@ -68,8 +73,8 @@
     G.countries.forEach((c) => {
       x.beginPath();
       c.r.forEach((rg) => { let prev = null; rg.forEach(([lo, la], i) => { if (i === 0 || (prev != null && Math.abs(lo - prev) > 180)) x.moveTo(px(lo), py(la)); else x.lineTo(px(lo), py(la)); prev = lo; }); x.closePath(); });
-      x.fillStyle = c.id === "TUR" ? "#e08a5a" : landCol; x.fill();
-      if (L.ulke) { x.strokeStyle = "rgba(60,40,20,.55)"; x.lineWidth = 1; x.stroke(); }
+      x.fillStyle = L.satellite && earthImage ? (c.id === "TUR" ? "rgba(255,150,70,.25)" : "rgba(255,255,255,.015)") : c.id === "TUR" ? "#e08a5a" : landCol; x.fill();
+      if (L.ulke) { x.strokeStyle = L.satellite && earthImage ? "rgba(255,235,180,.75)" : "rgba(60,40,20,.55)"; x.lineWidth = W / 2048; x.stroke(); }
     });
     // ağ ve özel paraleller
     if (L.ag) {
@@ -98,7 +103,7 @@
     build(S) {
       const THREE = S.THREE, o = S.o; S.hideFloor();
       o.globe = S.group(); o.globe.rotation.y = -0.6;
-      o.cv = document.createElement("canvas"); o.cv.width = 2048; o.cv.height = 1024;
+      o.cv = document.createElement("canvas"); o.cv.width = Math.min(S.renderer.capabilities.maxTextureSize, S.mobile || S.q === 'low' ? 2048 : 4096); o.cv.height = o.cv.width / 2;
       o.tex = new THREE.CanvasTexture(o.cv); o.tex.encoding = THREE.sRGBEncoding; o.tex.anisotropy = 4;
       o.mat = new THREE.MeshStandardMaterial({ map: o.tex, roughness: 0.95, metalness: 0 });
       const seg = S.mobile ? [72, 48] : [96, 64];
@@ -106,7 +111,7 @@
       o.ball = new THREE.Mesh(o.geoHi, o.mat); o.globe.add(o.ball);
       o.ball.userData.keep = [o.geoLo];
       // atmosfer halesi
-      o.atmo = new THREE.Mesh(new THREE.SphereGeometry(R * 1.035, 48, 32), new THREE.MeshBasicMaterial({ color: 0x6fb7ff, transparent: true, opacity: 0.12, side: THREE.BackSide, depthWrite: false })); o.globe.add(o.atmo);
+      o.atmo = new THREE.Mesh(new THREE.SphereGeometry(R * 1.045, 48, 32), new THREE.ShaderMaterial({transparent:true,depthWrite:false,side:THREE.BackSide,blending:THREE.AdditiveBlending,vertexShader:'varying vec3 n; varying vec3 v; void main(){vec4 p=modelViewMatrix*vec4(position,1.0); n=normalize(normalMatrix*normal); v=normalize(-p.xyz); gl_Position=projectionMatrix*p;}',fragmentShader:'varying vec3 n; varying vec3 v; void main(){float rim=pow(1.0-abs(dot(normalize(n),normalize(v))),2.2);gl_FragColor=vec4(0.18,0.5,1.0,rim*0.7);}'})); o.globe.add(o.atmo);
       // eksen
       const ax = S.cyl(0.015, 0.015, R * 2.5, 0xcfd6e0, o.globe, 8); ax.castShadow = false;
       o.marks = S.group(o.globe); o.key = "";
@@ -148,13 +153,15 @@
       }
       // seçili işaret nabzı
       if (o.hl) { const a = performance.now() - (o.hlT || 0), k = a < 2400 ? 1 + 0.3 * Math.sin(a / 180) : 1; o.hl.scale.setScalar(k); }
+      S.orbit({});
     },
     pointer(S, type, nx, ny) {
       if (type !== "down") return false;
       const o = S.o, rc = S.ray(nx, ny);
+      const surface = rc.intersectObject(o.ball, false)[0];
       const mk = rc.intersectObjects(o.marks.children, true).find((h) => { const u = h.object.userData; return u.info || (u.infos && h.instanceId != null && u.infos[h.instanceId]); });
-      if (mk) { const u = mk.object.userData; o.pick = { kind: "mark", info: u.info || u.infos[mk.instanceId] }; return false; }
-      const hit = rc.intersectObject(o.ball, false)[0];
+      if (mk && (!surface || mk.distance <= surface.distance + 0.07)) { const u = mk.object.userData; o.pick = { kind: "mark", info: u.info || u.infos[mk.instanceId] }; return false; }
+      const hit = surface;
       o.pick = hit && hit.uv ? { kind: "geo", lon: lonOfU(hit.uv.x), lat: latOfV(hit.uv.y) } : null;
       return false;
     }
@@ -186,6 +193,7 @@
   function buildMarks(S, L) {
     const o = S.o, G = App.data.globe, THREE = S.THREE; clearMarks(o); o.hl = null;
     const ball = (seg) => new THREE.SphereGeometry(1, seg || 10, Math.round((seg || 10) * 0.8));
+    if (L.poi) instanced(S, POI.map(([lon,lat,tr,en,url]) => ({lon,lat,size:0.035,info:{t:T(tr,en),s:T('Yaklaşık konum · eğitim işaretçisi','Approximate location · educational marker'),lon,lat,url}})), ball(12), new THREE.MeshBasicMaterial({color:0x6cffa6}), 'poi');
     if (L.baskent) instanced(S, G.caps.map(([lo, la, n, id]) => { const c = G.countries.find((x) => x.id === id); return { lon: lo, lat: la, size: 0.022, info: { t: n, s: T("Başkent", "Capital") + (c ? " · " + c.n : ""), lon: lo, lat: la } }; }),
       ball(8), new THREE.MeshBasicMaterial({ color: 0xffffff }), "cap");
     if (L.deprem) instanced(S, QUAKES.map(([lo, la, y, mw, n]) => ({ lon: lo, lat: la, h: 0.01, size: 0.02 + (mw - 6.5) * 0.025, info: { t: n + " depremi", s: y + " · Mw " + String(mw).replace(".", ","), lon: lo, lat: la, q: true } })),
@@ -223,21 +231,22 @@
   /** nokta-çokgen testi (ışın atma) */
   function inRing(lon, lat, r) { let c = false; for (let i = 0, j = r.length - 1; i < r.length; j = i++) { const [xi, yi] = r[i], [xj, yj] = r[j]; if ((yi > lat) !== (yj > lat) && lon < ((xj - xi) * (lat - yi)) / (yj - yi) + xi) c = !c; } return c; }
   function countryAt(lon, lat) { return App.data.globe.countries.find((c) => c.r.some((r) => inRing(lon, lat, r))) || null; }
-  function solarTime(lon, hourUTC) { let h = hourUTC + lon / 15; h = ((h % 24) + 24) % 24; const hh = Math.floor(h), mm = Math.round((h - hh) * 60) % 60; return String(hh).padStart(2, "0") + ":" + String(mm).padStart(2, "0"); }
+  function solarTime(lon, hourUTC) { const total = ((Math.round((hourUTC + lon / 15) * 60) % 1440) + 1440) % 1440; return String(Math.floor(total / 60)).padStart(2, "0") + ":" + String(total % 60).padStart(2, "0"); }
   const DAYS = [[80, "21 Mart", "Ekinoks"], [172, "21 Haziran", "Yaz gündönümü (K.Y.)"], [266, "23 Eylül", "Ekinoks"], [355, "21 Aralık", "Kış gündönümü (K.Y.)"]];
   function dayName(doy) { const d = new Date(Date.UTC(2026, 0, 1) + (doy - 1) * 864e5); return d.getUTCDate() + " " + ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"][d.getUTCMonth()]; }
 
   async function page(view) {
+    const mine = ++pageEpoch;
     stop();
     App.setTitle(T("3B Dünya Küresi", "3D Globe"));
     const Lp = Object.assign({}, Object.fromEntries(LAYERS.map((l) => [l[0], l[2]])), App.prefs.get("kureL", {}) || {});
     const P = { L: Lp, year: 1453, doy: 172, hour: 12, spin: App.prefs.get("kureSpin", true) !== false };
     view.innerHTML = '<div class="page hm kr3"><div class="hm-head"><div><h1>' + esc(T("3B Dünya Küresi", "3D Globe")) + '</h1><p class="hint">' + esc(T("Döndür, katman aç, bir yere dokun. Hologramda ya da elinle de çevirebilirsin.", "Rotate, toggle layers, tap a place. Works as a hologram and with hand control.")) + '</p></div>' +
         '<div class="hm-head__acts"><button type="button" class="btn btn--sm hm-holo" id="kHolo">✦ ' + esc(T("Hologram", "Hologram")) + "</button></div></div>" +
-      '<div class="hm-layout"><div class="hm-stage" id="kStage"><div class="hm-loading">' + esc(T("Küre yükleniyor…", "Loading globe…")) + "</div></div>" +
+      '<div class="kr3-orbit" role="group" aria-label="'+esc(T('Küre görünüm kontrolleri','Globe view controls'))+'">'+[['zin','+','Yakınlaştır'],['zout','−','Uzaklaştır'],['left','↶','Sola döndür'],['right','↷','Sağa döndür'],['panleft','←','Sola kaydır'],['panright','→','Sağa kaydır'],['up','↑','Yukarı kaydır'],['down','↓','Aşağı kaydır'],['reset','⌂','Görünümü sıfırla']].map(([id,icon,label])=>'<button class="btn btn--sm" data-korbit="'+id+'" aria-label="'+esc(label)+'">'+icon+'</button>').join('')+'</div><p class="hint">'+esc(T('Sürükle: döndür · Tekerlek/iki parmak: yakınlaştır · Oklar: döndür · Shift+ok: kaydır · +/−: yakınlaştır.','Drag: orbit · wheel/pinch: zoom · arrows: rotate · Shift+arrows: pan · +/−: zoom.'))+'</p><div class="hm-layout"><div class="hm-stage" id="kStage"><div class="hm-loading">' + esc(T("Küre yükleniyor…", "Loading globe…")) + "</div></div>" +
       '<aside class="hm-side" id="kSide">' +
         '<label class="tc-search"><span aria-hidden="true">' + App.icon("search") + '</span><input type="search" id="kQ" placeholder="' + esc(T("Ülke ara: Japonya, Brezilya…", "Find a country…")) + '" aria-label="' + esc(T("Ülke ara", "Find a country")) + '" list="kList"></label><datalist id="kList"></datalist>' +
-        '<div class="kr3-layers" role="group" aria-label="' + esc(T("Katmanlar", "Layers")) + '">' + LAYERS.map(([k, n]) => '<label class="kr3-chip"><input type="checkbox" data-l="' + k + '"' + (Lp[k] ? " checked" : "") + "> " + esc(T(n[0], n[1])) + "</label>").join("") + "</div>" +
+        '<label class="field">'+esc(T('Önemli bir noktaya git','Go to a point of interest'))+'<select id="kPoi" class="select"><option value="">—</option>'+POI.map((p,i)=>'<option value="'+i+'">'+esc(T(p[2],p[3]))+'</option>').join('')+'</select></label><div class="kr3-layers" role="group" aria-label="' + esc(T("Katmanlar", "Layers")) + '">' + LAYERS.map(([k, n]) => '<label class="kr3-chip"><input type="checkbox" data-l="' + k + '"' + (Lp[k] ? " checked" : "") + "> " + esc(T(n[0], n[1])) + "</label>").join("") + "</div>" +
         '<div class="kr3-sun" id="kSun"' + (Lp.gunes ? "" : " hidden") + '><div class="kr3-days">' + DAYS.map(([d, n]) => '<button type="button" class="btn btn--sm btn--ghost" data-doy="' + d + '">' + esc(n) + "</button>").join("") + '</div>' +
           '<label class="hm-ex"><span>' + esc(T("Tarih: ", "Date: ")) + '<b id="kDoyL"></b></span><input type="range" min="1" max="365" value="172" id="kDoy"></label>' +
           '<label class="hm-ex"><span>' + esc(T("Saat (UTC): ", "Hour (UTC): ")) + '<b id="kHrL"></b></span><input type="range" min="0" max="23.75" step="0.25" value="12" id="kHr"></label><p class="hint" id="kSunInfo"></p></div>' +
@@ -245,14 +254,24 @@
         '<label class="check-row"><input type="checkbox" id="kSpin"' + (P.spin ? " checked" : "") + '> ' + esc(T("Kendi kendine dönsün", "Auto-rotate")) + "</label>" +
         '<div class="hm-info" id="kInfo" aria-live="polite"><p class="hint">' + esc(T("Küreye ya da bir işarete dokun.", "Tap the globe or a marker.")) + "</p></div>" +
         '<div class="kr3-legend" id="kLeg"></div>' +
-      "</aside></div></div>";
+      '</aside></div><p class="hint">NASA Blue Marble · Reto Stöckli / Robert Simmon · <a href="https://science.nasa.gov/earth/earth-observatory/the-blue-marble-true-color-global-imagery-at-1km-resolution/" target="_blank" rel="noopener">'+esc(T('Doku kaynağı','Texture source'))+'</a> · '+esc(T('Tarihsel bileşik görüntü; güncel uydu yayını değildir. Sınırlar ve işaretler yaklaşık eğitim verisidir.','Historical composite, not live satellite imagery. Borders and markers are approximate educational data.'))+'</p></div>';
     App.hydrateIcons(view);
     const $ = (s) => view.querySelector(s);
-    if (!App.lab3d.supported()) { $("#kStage").innerHTML = '<p class="hint">' + esc(T("Bu cihazda 3B (WebGL) desteklenmiyor.", "3D (WebGL) is not supported here.")) + "</p>"; return; }
-    try { await Promise.all([App.lab3d.load(), loadData(), loadEvents()]); } catch (e) { $("#kStage").innerHTML = '<p class="error-text">' + esc(T("Küre verisi yüklenemedi.", "Could not load globe data.")) + "</p>"; return; }
+    if (!App.lab3d.supported()) {
+      $("#kStage").innerHTML = '<p class="hint">' + esc(T("Bu cihazda 3B (WebGL) desteklenmiyor.", "3D (WebGL) is not supported here.")) + '</p><a class="btn" href="#/atlas">'+esc(T('2B haritayı aç','Open the 2D map'))+'</a>';
+      view.querySelectorAll('button,input,select').forEach(el => { el.disabled = true; });
+      return;
+    }
+    try { await Promise.all([App.lab3d.load(), loadData(), loadEvents(), loadEarth()]); } catch (e) { if (view.isConnected && mine === pageEpoch) $("#kStage").innerHTML = '<p class="error-text">' + esc(T("Küre verisi yüklenemedi.", "Could not load globe data.")) + "</p>"; return; }
+    if (!view.isConnected || mine !== pageEpoch || App.router.current().name !== 'kure') return;
     const host = $("#kStage"); if (!host || !host.isConnected) return;
     host.innerHTML = "";
     const S3 = App.lab3d.mount(host, "kure", 0.78), S = S3._S;
+    const overlay = document.createElement('div'); overlay.className = 'kr3-overlay'; overlay.id = 'kOverlay'; overlay.hidden = true; overlay.setAttribute('role','status'); host.appendChild(overlay);
+    function orbit(id) { P.focus = null; P.spin = false; setSpin(false, true); const delta = {zin:{zoom:0.82},zout:{zoom:1.22},left:{rotate:-0.22},right:{rotate:0.22},panleft:{panX:-0.3},panright:{panX:0.3},up:{panY:0.3},down:{panY:-0.3},reset:{reset:true}}[id]; if (delta) S.orbit(delta); st.dirty = true; }
+    view.querySelectorAll('[data-korbit]').forEach(b => b.onclick = () => orbit(b.dataset.korbit));
+    const canvas = S.renderer.domElement; canvas.tabIndex = 0; canvas.setAttribute('aria-label',T('Etkileşimli dünya küresi','Interactive globe'));
+    canvas.addEventListener('keydown',e => { const id = {'+':'zin','=':'zin','-':'zout',ArrowLeft:e.shiftKey?'panleft':'left',ArrowRight:e.shiftKey?'panright':'right',ArrowUp:'up',ArrowDown:'down',Home:'reset'}[e.key]; if (id) {e.preventDefault();orbit(id);} });
     // Dönmeyi durdur / başlat düğmesi (sahnenin sağ üstünde; yan paneldeki onay kutusuyla eşli)
     const spinBtn = document.createElement("button");
     spinBtn.type = "button"; spinBtn.className = "kr3-spinbtn"; spinBtn.id = "kSpinBtn";
@@ -297,7 +316,7 @@
       $("#kDoyL").textContent = dayName(P.doy); $("#kHrL").textContent = String(Math.floor(P.hour)).padStart(2, "0") + ":" + String(Math.round((P.hour % 1) * 60)).padStart(2, "0");
       $("#kSunInfo").textContent = T("Güneş ışınları " + deg(dec, "K", "G") + " enlemine dik geliyor (" + deg(slon, "D", "B") + " boylamında öğle). Türkiye'de güneş saati ≈ " + solarTime(35, P.hour) + ".", "Sun overhead at " + dec.toFixed(1) + "°.");
     };
-    const info = (html) => { $("#kInfo").innerHTML = html; };
+    const info = (html) => { $("#kInfo").innerHTML = html; overlay.innerHTML = html; overlay.hidden = false; };
     const showGeo = (lon, lat) => {
       const c = countryAt(lon, lat);
       const pos = deg(lat, T("K", "N"), T("G", "S")) + " · " + deg(lon, T("D", "E"), T("B", "W"));
@@ -317,7 +336,7 @@
       P.drag = false; st.dirty = true;
       if (!down || performance.now() - down[2] > 400 || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 8 || e.target !== S.renderer.domElement) return;
       const pk = S.o.pick; if (!pk) return;
-      if (pk.kind === "mark") { const i = pk.info; info("<b>" + esc(i.t) + "</b><p>" + esc(i.s) + '</p><p class="hint">' + esc(deg(i.lat, "K", "G") + " · " + deg(i.lon, "D", "B")) + "</p>"); }
+      if (pk.kind === "mark") { const i = pk.info; info("<b>" + esc(i.t) + "</b><p>" + esc(i.s) + '</p><p class="hint">' + esc(deg(i.lat, "K", "G") + " · " + deg(i.lon, "D", "B")) + "</p>" + (i.url ? '<a target="_blank" rel="noopener" href="'+esc(i.url)+'">'+T('Kaynak','Source')+'</a>' : '')); }
       else showGeo(pk.lon, pk.lat);
     });
     view.querySelectorAll("[data-l]").forEach((cb) => cb.addEventListener("change", () => {
@@ -330,6 +349,7 @@
     const yl = () => { $("#kYL").textContent = P.year < 0 ? "MÖ " + (-P.year) : String(P.year); };
     $("#kY").addEventListener("input", (e) => { P.year = +e.target.value; yl(); }); yl();
     $("#kSpin").addEventListener("change", (e) => setSpin(e.target.checked, true));
+    $("#kPoi").onchange = e => { if (e.target.value === '') return; const p = POI[+e.target.value]; setSpin(false); P.focus = {lon:p[0],lat:p[1]}; showGeo(p[0],p[1]); info('<b>'+esc(T(p[2],p[3]))+'</b><p>'+esc(deg(p[1],'K','G')+' · '+deg(p[0],'D','B'))+'</p>'+(p[4]?'<a href="'+esc(p[4])+'" target="_blank" rel="noopener">'+T('Kaynak','Source')+'</a>':'')); };
     $("#kQ").addEventListener("change", (e) => {
       const q = String(e.target.value || "").toLocaleLowerCase("tr").trim(); if (!q) return;
       const c = App.data.globe.countries.find((x) => x.n.toLocaleLowerCase("tr") === q) || App.data.globe.countries.find((x) => x.n.toLocaleLowerCase("tr").indexOf(q) === 0 || (x.en || "").toLowerCase().indexOf(q) === 0);
@@ -346,5 +366,5 @@
   }
 
   App.router.register("kure", (view) => page(view));
-  App.kure = { vec, countryAt, solarTime, loadData, QUAKES, VOLC, stop: () => stop() };
+  App.kure = { vec, countryAt, solarTime, loadData, QUAKES, VOLC, POI, viewState: () => RUN ? { radius: RUN.S3._S.cam.r, target: RUN.S3._S.cam.t.toArray() } : null, stop: () => stop() };
 })();

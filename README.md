@@ -29,10 +29,14 @@
 - **Tekrar et:** Yanlış defteri, Hap Kartlar ve tek listede günlük tekrarlar.
 - **Soru sor:** Yazı, fotoğraf veya sesle yapay zekâdan destek al.
 - **Gelişimini izle:** Ders programı, deneme sonuçları ve haftalık üstbiliş karnesi.
-- **Keşfet:** Etkileşimli deneyler, 3B modeller ve İngilizce konuşma pratiği.
+- **Keşfet:** NASA dokulu dünya küresi, etkileşimli deneyler ve 3B modeller.
+- **Dil çalış:** İngilizce konuşma ve Almanca A1–B2 kelime, gramer, diyalog alıştırmaları.
+- **Ölç:** Desteklenen cihaz sensörleri veya etiketli simülasyon; canlı grafik, eşik ve CSV/JSON.
 - **Sınıfta kullan:** Çevrimdışı QR ödev dağıtımı ve öğretmen geri bildirimi.
 
 İnternet üzerinden yapay zekâ kullanılabilir. Desteklenen bilgisayar ve Android cihazlara model indirerek yerel kullanım da mümkündür. Yapay zekâ yanıtlarını öğretmenin veya güvenilir kaynaklarla kontrol et.
+
+AI ana ekranında sık kullandığın araçları sabitleyebilirsin. Yeni bölümlerin adımları ve cihaz gereksinimleri: [Yeni araçlar kılavuzu](docs/YENI-ARACLAR.md).
 
 ## Bağlantılar
 

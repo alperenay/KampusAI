@@ -18,6 +18,11 @@ Kamera yerine kod yapıştırma yolu da kullanılabilir. Ödev ve sonuç paylaş
 2. Öğretmen **Öğretmen gerekçe değerlendirmesi** ekranından QR, kod veya dosyayı alır.
 3. Kavramsal doğruluk, cevapla mantıksal bağlantı ve açıklık/yeterlilik ölçütlerini ayrı ayrı **0–2** puanlar.
 4. Geri bildirimi QR/kod/dosya ile öğrenciye gönderir. Öğrenci aynı ekrandan içeri alır.
+5. **Kaydet** öncesinde her gerekli ölçütü doldur. Aynı öğrenciye yeni değerlendirme kaydedilirse sürüm numarası artar; eski/çelişkili geri bildirim kabul edilmez.
+
+Bu ekranların üstündeki **Adım adım kullanım** alanında aynı akış uygulama içinde de açıklanır. Çok parçalı QR aktarımında bütün kareleri tamamla. Araştırma ve öğretmen paketleri JSON dosyasıyla veya manuel kodla alınabilir; çevrimdışı Sınıf Modu'nda kamera yerine **Kamera yok / açılmıyor: kodu yapıştır** kullanılır. Sınıf tablosunun dışa aktarımı CSV'dir.
+
+Geçersiz kayıt uyarısı görürsen kayıtlar otomatik silinmez. Ayarlar'dan yedek al; özgün aktarım paketini kontrol et. Ödev bulunamadı ekranı, bilinmeyen veya doğrulanamayan ödeve erişildiğini belirtir; ödev QR'ını yeniden al. Ayrıntılar: [Yeni araçlar ve veri uyarıları](YENI-ARACLAR.md).
 
 Normal testin öğrenme göstergeleri güncellenir; araştırmanın özgün A/B sonucu korunur. Serbest metin gerekçeleri öğretmen incelemesinden önce otomatik doğru sayılmaz. Aynı geri bildirimin ikinci kez alınması puanı tekrar artırmaz.
 

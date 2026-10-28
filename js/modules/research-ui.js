@@ -58,7 +58,7 @@
     };
   }
   function createDialog(done) {
-    const all = App.learnmap.allOutcomes().filter((x) => x.outcome.content);
+    const all = App.learnmap.allOutcomes().filter((x) => x.outcome.content || x.outcome.curatedContent);
     const m = App.ui.modal({ title: t("research.create"), body:
       '<div class="research-form"><label class="field"><span>' + esc(t("research.titleField")) + '</span><input class="input" id="rTitle" maxlength="100"></label>' +
       '<label class="field"><span>' + esc(t("research.topic")) + '</span><select class="select" id="rTopic">' + all.map((it) => '<option value="' + esc(it.key) + '">' + esc(it.grade.id + " · " + App.L(it.subject.name) + " · " + App.L(it.outcome.title)) + '</option>').join("") + '</select></label>' +
@@ -74,6 +74,7 @@
       const found = App.lessons.find(q("#rTopic").value);
       q("#rGenerate").disabled = true; q("#rCreateGo").disabled = true; q("#rCreateStatus").textContent = t("research.generating");
       try {
+        if (!found) throw new Error(t("research.error.session"));
         const result = await App.quiz.generatePool(found.grade, found.subject, found.unit, found.outcome, { temperature: 0.5, signal: ctrl.signal });
         if (!m.el.isConnected) return;
         q("#rBank").value = JSON.stringify({ questions: App.quiz.normalize(result.data, true) }, null, 2);
@@ -90,13 +91,19 @@
         const data = JSON.parse(q("#rBank").value);
         const session = await R().create({ title: q("#rTitle").value.trim(), key: q("#rTopic").value,
           variable: q("#rVariable").value, reviewed: q("#rReviewed").checked, bank: data.questions || data });
-        m.close(); done(); transfer({ type: "session", data: session });
-      } catch (e) { error(e); } finally { if (m.el.isConnected) q("#rCreateGo").disabled = false; }
+        if (!m.el.isConnected || ctrl.signal.aborted) return;
+        m.close(); await done();
+        if (App.router.current().name === "arastirma") await transfer({ type: "session", data: session });
+      } catch (e) { error(e); if (m.el.isConnected) q("#rCreateStatus").textContent = e.message; } finally { if (m.el.isConnected) q("#rCreateGo").disabled = false; }
     };
   }
   async function render(view) {
-    const mine = ++epoch, rows = await App.db.getAll("research");
-    if (mine !== epoch || App.router.current().name !== "arastirma") return;
+    const mine = ++epoch, raw = await App.db.getAll("research"), rows = [], validSessions = new Map();
+    let skipped = 0;
+    raw.forEach((r) => { if (!r) { skipped++; return; } if (r.kind !== "session") return; try { const session = R().sessionFrom(r.session); validSessions.set(session.id, session); rows.push(Object.assign({}, r, { session })); } catch (e) { skipped++; } });
+    raw.forEach((r) => { if (!r || r.kind !== "result") return; try { const s = validSessions.get(r.sessionId); if (!s) throw new Error("missing session"); rows.push(R().resultFrom(r.data, s)); } catch (e) { skipped++; } });
+    raw.forEach((r) => { if (r && !["session", "result"].includes(r.kind)) rows.push(r); });
+    if (mine !== epoch || App.router.current().name !== "arastirma" || !view.isConnected) return;
     App.setTitle(t("research.title"));
     const sessions = rows.filter((r) => r.kind === "session");
     const percent = (n) => n === null ? "—" : Math.round(n * 100) + "%";
@@ -113,8 +120,9 @@
           '<p class="hint">' + esc(t("research.difference", { n: c.difference === null ? "—" : (c.difference * 100).toFixed(1) })) + '</p>' +
           resultRows.map((r) => '<details><summary>' + esc(r.participant + " · " + r.group) + '</summary>' + App.metacognition.summaryHtml(r.metrics) + '<button class="btn" data-result="' + esc(r.id) + '" type="button">' + esc(t("research.shareResult")) + '</button><button class="btn" type="button" data-review-result="' + esc(r.id) + '">' + esc(t("review.share")) + '</button></details>').join("") + '</section>';
       }).join("")) + '</div></div>';
+    App.moduleSafety.help(view, "research", skipped);
     App.hydrateIcons(view);
-    const rerender = () => { if (mine === epoch) App.router.refresh(); };
+    const rerender = () => { if (mine === epoch && view.isConnected) return App.router.refresh(); };
     const onClick = async (e) => {
       const button = e.target.closest("button");
       if (!button || button.disabled) return;
@@ -156,6 +164,6 @@
     view.addEventListener("click", onClick);
     return () => { epoch++; view.removeEventListener("click", onClick); };
   }
-  App.router.register("arastirma", render);
+  App.router.register("arastirma", (view) => App.moduleSafety.mount(view, render));
   App.researchUi = { transfer, importText, createDialog };
 })();

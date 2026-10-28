@@ -208,6 +208,15 @@
     const mesh = (geo, mat, parent) => { const m = new THREE.Mesh(geo, mat && mat.isMaterial ? mat : M(mat)); m.castShadow = useShadow; m.receiveShadow = useShadow; (parent || root).add(m); return m; };
     const S = {
       THREE, scene, root, camera, renderer, cols, el, o: {}, q, cam, mobile, visible: () => vis || HO.on || AR.on,
+      orbit(delta) {
+        if (AR.on || HO.on) return; // AR/hologram owns its camera while active.
+        if (delta.reset) { reset(); return; }
+        if (delta.zoom) cam.r = Math.max(2.5, Math.min(22, cam.r * delta.zoom));
+        cam.th += delta.rotate || 0;
+        const dx = delta.panX || 0; cam.t.x += dx * Math.cos(cam.th); cam.t.z -= dx * Math.sin(cam.th); cam.t.y += delta.panY || 0;
+        if (cam.t.length() > 4) cam.t.setLength(4);
+        place(); render();
+      },
       /** Ekran konumundan (0..1) ışın: nesne seçmek ya da düzlemde nokta bulmak için */
       ray(nx, ny) { const rc = new THREE.Raycaster(); rc.setFromCamera(new THREE.Vector2(nx * 2 - 1, -(ny * 2 - 1)), camera); return rc; },
       /** Kameraya bakan, hedef noktadan geçen düzlemde ekran konumuna denk gelen dünya noktası */

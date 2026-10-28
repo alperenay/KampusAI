@@ -2,6 +2,8 @@
 
 Bu belge otomasyonun kapsamını tanımlar. Bir ekranın açılması, o ekrandaki bütün olası girdilerin veya gerçek donanımın doğrulandığı anlamına gelmez. Sürüme ait yürütme sonuçları GitHub Actions günlükleri ve test çıktılarındadır.
 
+1.47 ek kontrolleri: `npm run type-check`, `npm run test:v147`, `npm run test:v147-ui`. Yeni modüller checkJs ile denetlenir; dinamik eski `App` sınırı genel bir tür bildirimidir ve tüm eski kodun tip güvenliği iddiası yoktur. Almancada dört seviyenin üç etkinliği, İngilizce kayıt ayrımı ve doğru `de-DE` ses etiketi; favori sabitleme/yeniden yükleme ve taslak koruma; beş sensör kanalının etiketli simülasyonu, JSON birim/kaynak bilgisi ve hareket olayı test girdisi; geç mikrofon izninin kapatılması; üç panelde bozuk kayıtların korunup uyarıyla dışlanması ve eski sayfa yüklemesinin yeni sayfayı bozmaması; kapatılan araştırma penceresinin geç aktarım açmaması; küre seçimi, zoom/pan/reset ve holograma giriş/çıkış test edilir. Bunlar kalibre edilmiş gerçek sensör/Almanca telaffuz doğruluğu veya her fiziksel cihazın sertifikasyonu değildir.
+
 ## Tekrarlanabilir kontroller
 
 ```sh

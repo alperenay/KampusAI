@@ -185,7 +185,7 @@
     view.innerHTML = '<div class="page sl">' +
       '<div class="page-head"><div><h1>' + esc(T("Sensör Laboratuvarı", "Sensor Lab")) + "</h1><p>" +
         esc(T("Telefonunun ivmeölçeri, mikrofonu ve kamerası ölçüm aletine dönüşür. Ölçtüğün değer, formülden hesaplanan kuramsal değerle aynı grafikte karşılaştırılır.", "Your phone's sensors become lab instruments, compared against theory.")) + "</p></div></div>" +
-      '<div class="sl-grid">' + Object.entries(EXP).map(([id, e]) =>
+      '<a class="card sl-workbench" href="#/sensor/olcum"><h2>' + esc(T("Çoklu sensör · grafik ve dışa aktarım", "Multi-sensor · charts and export")) + '</h2><p>' + esc(T("İvme, jiroskop, ortam ışığı, manyetometre, dBFS ses seviyesi ve etiketli simülasyonlar", "Acceleration, gyroscope, ambient light, magnetometer, dBFS audio and labelled simulation")) + '</p></a><div class="sl-grid">' + Object.entries(EXP).map(([id, e]) =>
         '<a class="card sl-card" href="#/sensor/' + id + '"><span class="sl-card__ico">' + App.icon(e.icon) + "</span><b>" + esc(e.title()) + "</b><small>" + esc(e.how().split(".")[0] + ".") + "</small></a>").join("") + "</div>" +
       '<p class="hint">' + esc(T("İvmeölçer deneyleri telefon ve tablette çalışır; bilgisayarda yalnızca ses ve ışık deneyleri yapılabilir. Telefonu düşürme deneyini yalnızca yumuşak bir yüzeyin üstünde ve kısa yükseklikten yap.", "Accelerometer labs need a phone or tablet; drop only onto a soft surface.")) + "</p></div>";
     App.hydrateIcons(view);
@@ -388,8 +388,8 @@
     return cleanup;
   }
 
-  function render(view, p) { return p[0] ? renderExp(view, p[0]) : renderHome(view); }
+  function render(view, p) { return p[0] === "olcum" ? App.sensorWorkbench.page(view) : p[0] ? renderExp(view, p[0]) : renderHome(view); }
 
   App.router.register("sensor", render);
-  App.sensorLab = { lowPass, periodByCrossings, autocorrPitch, spectrumPeak, dopplerSpeed, fitInverseSquare, relErr, pendulumT, freeFallTime, mean, variance, EXP };
+  App.sensorLab = { chart, lowPass, periodByCrossings, autocorrPitch, spectrumPeak, dopplerSpeed, fitInverseSquare, relErr, pendulumT, freeFallTime, mean, variance, EXP };
 })();

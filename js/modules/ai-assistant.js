@@ -194,6 +194,7 @@
         composerHtml(t("ai.placeholder")) +
         '<p class="ai-notice" id="aiNotice" hidden></p>' +
         '<p class="home__models" data-ai-models>' + modelsLine() + "</p>" +
+        (App.aiFavorites ? App.aiFavorites.html() : "") +
       "</div>"
     );
   }
@@ -345,6 +346,7 @@
     mounted = { view, chatId: null };
     document.getElementById("main").classList.add("is-home");
     view.innerHTML = heroHtml();
+    if (App.aiFavorites) App.aiFavorites.mount(view.querySelector('[data-ai-favs]'));
     App.hydrateIcons(view);
     bind(view, null);
     paintStatus();
@@ -677,5 +679,17 @@
 
   function reset() { if (!live.controller) draft = { image: null, text: "" }; }
 
-  App.modules.assistant = { render, reset, startWith, refreshStatus, status, statusText, listChats, deleteChat, onStatus: (fn) => statusListeners.push(fn), isBusy: () => !!live.controller, liveChatId: () => live.chatId };
+  let toolPrefix = "";
+  function prepareTool(text, coach) {
+    if (live.controller) { App.ui.toast(t("ai.busy")); return; }
+    socratic = !!coach; App.prefs.set("aiSocratic", socratic);
+    const input = document.querySelector('#composer textarea');
+    const current = input ? input.value : draft.text;
+    const content = toolPrefix && current.startsWith(toolPrefix) ? current.slice(toolPrefix.length) : current;
+    toolPrefix = String(text || "");
+    draft = { text: toolPrefix + content, image: draft.image }; autoSend = false;
+    if (location.hash === "#/" || location.hash === "") App.router.refresh(); else App.router.go("");
+    requestAnimationFrame(() => { const input = document.querySelector('#composer textarea'); if (input) { input.focus(); input.setSelectionRange(input.value.length, input.value.length); } });
+  }
+  App.modules.assistant = { render, reset, startWith, prepareTool, refreshStatus, status, statusText, listChats, deleteChat, onStatus: (fn) => statusListeners.push(fn), isBusy: () => !!live.controller, liveChatId: () => live.chatId };
 })();

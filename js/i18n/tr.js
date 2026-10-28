@@ -721,7 +721,7 @@ App.locales.tr = {
   "nav.models": "3B Modeller",
   "nav.formulas": "Formül Defteri",
   "nav.voiceTeacher": "Hologram Öğretmen",
-  "nav.speaking": "İngilizce Konuşma",
+  "nav.speaking": "İngilizce ve Almanca",
   "nav.written": "Yazılı Sınavlar",
   "nav.more": "Daha fazla ({n})",
   "nav.less": "Daha az",
