@@ -14,6 +14,7 @@
   "files": [
     "tools/typecheck-globals.d.ts",
     "js/data/languages.js",
+    "js/data/languages-ext.js",
     "js/modules/language-practice.js",
     "js/modules/ai-favorites.js",
     "js/modules/sensor-workbench.js",

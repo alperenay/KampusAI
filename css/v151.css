@@ -1,0 +1,20 @@
+/* =========================================================
+   v151.css — 1.51
+   • Dil pratiği: İngilizce + Almanca ortak akış, rol oyunu, dinle-yaz (language-practice.js)
+   ========================================================= */
+
+/* ---------------- Dil pratiği ---------------- */
+.lang-choice { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.lp-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.lp-level { display: grid; grid-template-columns: auto minmax(80px, 1fr); gap: 10px; align-items: center; font-size: 13.5px; color: var(--text-2); margin: 8px 0 0; }
+.lp-role { list-style: none; display: flex; gap: 6px; padding: 0; margin: 8px 0; }
+.lp-role li { flex: 1; height: 6px; border-radius: 3px; background: var(--surface-2); }
+.lp-role li.is-done { background: var(--good, #3fb950); }
+.lp-role li.is-now { background: var(--accent); }
+.lp-bubble { position: relative; padding: 12px 14px; border-radius: 14px 14px 14px 4px; background: var(--accent-soft); max-width: 46ch; }
+.lp-dict { display: inline-flex; flex-wrap: wrap; gap: 4px; margin-right: 6px; }
+.lp-dict b { padding: 1px 6px; border-radius: 6px; font-weight: 600; }
+.lp-dict b.is-ok { background: color-mix(in srgb, #3fb950 22%, transparent); }
+.lp-dict b.is-bad { background: color-mix(in srgb, var(--bad) 22%, transparent); text-decoration: line-through; }
+.a11y-voice { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.a11y-voice .select { max-width: 220px; }

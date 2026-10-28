@@ -206,7 +206,8 @@
 
   /* ---------------- Sayfa ---------------- */
   async function page(view, params) {
-    if (params[0] === "de") return App.languagePractice.page(view);
+    if (params[0] === "de") return App.languagePractice.page(view, "de");
+    if (params[0] === "pratik") return App.languagePractice.page(view, "en");
     App.setTitle(T("İngilizce Konuşma Pratiği", "English Speaking Practice"));
     let st = null;                       // aktif oturum
     let holo = null, holoBusy = false;   // hologram sahnesi

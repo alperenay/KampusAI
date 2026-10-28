@@ -13,6 +13,7 @@ const prefs = new Map(),
 const ctx = vm.createContext({ App, console, Date, Map, Set, Number, Math });
 for (const f of [
   "js/data/languages.js",
+  "js/data/languages-ext.js",
   "js/modules/language-practice.js",
   "js/modules/ai-favorites.js",
   "js/modules/sensor-workbench.js",
@@ -21,8 +22,8 @@ for (const f of [
   vm.runInContext(fs.readFileSync(f, "utf8"), ctx, { filename: f });
 const de = App.data.languages.profiles.de;
 for (const level of App.data.languages.levels) {
-  assert.equal(de.vocab[level].length, 12);
-  assert.equal(new Set(de.vocab[level].map((x) => x[0])).size, 12);
+  assert.ok(de.vocab[level].length >= 20);
+  assert.equal(new Set(de.vocab[level].map((x) => x[0])).size, de.vocab[level].length);
   for (const q of de.grammar[level]) {
     assert.ok(q[2].includes("___"));
     assert.ok(Number.isInteger(q[4]) && q[3][q[4]]);
