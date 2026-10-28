@@ -67,3 +67,27 @@
 .ob-step h3 { margin: 0 0 6px; }
 .ob-step ul { margin: 6px 0 0; padding-left: 20px; display: grid; gap: 3px; }
 .ob-skip { margin-top: 10px; font-size: 13.5px; }
+
+/* ---------------- pH metre (kadran + dijital ekran) ---------------- */
+.ph-meter { display: grid; gap: 8px; padding: 12px; border-radius: 16px; background: linear-gradient(160deg, #1b2230, #0e131c); color: #e8f0ff; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+.ph-gauge { width: 100%; max-width: 280px; margin: 0 auto; display: block; }
+.ph-gauge__ticks text { font-size: 11px; fill: #c9d4ea; font-variant-numeric: tabular-nums; }
+.ph-needle { transform-origin: 120px 112px; transition: transform .45s cubic-bezier(.3,1.4,.5,1); }
+.ph-needle line { stroke: #fff; stroke-width: 3.5; stroke-linecap: round; }
+.ph-needle circle { fill: #fff; }
+.ph-lcd { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 0 8px; padding: 8px 14px; border-radius: 10px; background: #a9c4a0; color: #14240f; box-shadow: inset 0 2px 6px rgba(0,0,0,.35); font-family: var(--mono, ui-monospace, monospace); }
+.ph-lcd__v { font-size: 44px; line-height: 1; font-weight: 700; letter-spacing: .04em; font-variant-numeric: tabular-nums; }
+.ph-lcd small { font-size: 16px; font-weight: 700; }
+.ph-lcd__st { grid-column: 1 / -1; display: flex; gap: 8px; align-items: center; font-size: 12px; }
+.ph-lcd__st em { font-style: normal; font-weight: 700; }
+.ph-led { width: 10px; height: 10px; border-radius: 50%; background: #6b7a66; display: inline-block; }
+.ph-led.is-moving { background: #e0a400; animation: phBlink 1s steps(2) infinite; }
+.ph-led.is-stable { background: #2f9e44; box-shadow: 0 0 6px #2f9e44; }
+@keyframes phBlink { 50% { opacity: .3; } }
+:root[data-a11y-motion] .ph-led.is-moving { animation: none; }
+.ph-meter__acts { display: flex; justify-content: center; }
+.ph-cal { color: inherit; }
+.ph-cal summary { cursor: pointer; font-size: 13.5px; }
+.ph-cal .hint { color: #c9d4ea; }
+.eko-balance { font-size: 13px; color: var(--text-2); }
+.eko-jar { height: 340px; }

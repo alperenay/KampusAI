@@ -120,6 +120,38 @@
       }
     return n ? [r / n, g / n, b / n] : null;
   }
+  /* ---------- Gerçek pH metre davranışı (v1.51) ----------
+     Kalibrasyon: bilinen çözeltilerle (tampon gibi) bir ya da iki nokta. 1 nokta: kayma düzeltmesi;
+     2 nokta: eğim + kayma (eğim 0,5–2 aralığına sınırlanır). Kararlılık: son okumaların standart sapması küçükse "kararlı". */
+  function applyCal(ph, points) {
+    const pts = (Array.isArray(points) ? points : []).filter((x) => x && Number.isFinite(x.raw) && Number.isFinite(x.ref)).slice(-2);
+    let v = ph;
+    if (pts.length === 1) v = ph + (pts[0].ref - pts[0].raw);
+    else if (pts.length === 2 && Math.abs(pts[1].raw - pts[0].raw) > 0.5) {
+      const k = Math.max(0.5, Math.min(2, (pts[1].ref - pts[0].ref) / (pts[1].raw - pts[0].raw)));
+      v = pts[0].ref + k * (ph - pts[0].raw);
+    } else if (pts.length === 2) v = ph + (pts[1].ref - pts[1].raw);
+    return Math.max(0, Math.min(14, v));
+  }
+  function stability(history, tol) {
+    const h = history.filter(Number.isFinite).slice(-8);
+    if (h.length < 5) return { stable: false, sd: null };
+    const m = h.reduce((a, b) => a + b, 0) / h.length, sd = Math.sqrt(h.reduce((a, b) => a + (b - m) * (b - m), 0) / h.length);
+    return { stable: sd <= (tol || 0.12), sd };
+  }
+  /** Analog kadran: 0–14 yarım daire, renk bantları antosiyanin skalasından; ibre açısı -90°…+90° */
+  const needleAngle = (ph) => -90 + (Math.max(0, Math.min(14, ph)) / 14) * 180;
+  function gaugeSvg() {
+    const cx = 120, cy = 112, r = 92, seg = [];
+    for (let i = 0; i < 14; i++) {
+      const a0 = Math.PI * (1 - i / 14), a1 = Math.PI * (1 - (i + 1) / 14), c = SCALE[Math.min(13, i)][1];
+      seg.push('<path d="M' + (cx + r * Math.cos(a0)).toFixed(1) + " " + (cy - r * Math.sin(a0)).toFixed(1) + " A" + r + " " + r + " 0 0 1 " + (cx + r * Math.cos(a1)).toFixed(1) + " " + (cy - r * Math.sin(a1)).toFixed(1) +
+        '" stroke="' + hex(c) + '" stroke-width="16" fill="none"/>');
+    }
+    const ticks = [0, 2, 4, 6, 7, 8, 10, 12, 14].map((v) => { const a = Math.PI * (1 - v / 14); return '<text x="' + (cx + (r - 26) * Math.cos(a)).toFixed(1) + '" y="' + (cy - (r - 26) * Math.sin(a) + 4).toFixed(1) + '" text-anchor="middle">' + v + "</text>"; });
+    return '<svg class="ph-gauge" viewBox="0 0 240 132" aria-hidden="true">' + seg.join("") + '<g class="ph-gauge__ticks">' + ticks.join("") + "</g>" +
+      '<g class="ph-needle" id="phNeedle" style="transform:rotate(-90deg)"><line x1="120" y1="112" x2="120" y2="30"/><circle cx="120" cy="112" r="7"/></g></svg>';
+  }
   const hex = (rgb) => "#" + rgb.map((x) => Math.round(x).toString(16).padStart(2, "0")).join("");
   const fromHex = (s) => { const m = /^#?([0-9a-f]{6})$/i.exec(s || ""); return m ? [0, 2, 4].map((i) => parseInt(m[1].slice(i, i + 2), 16)) : null; };
   const fmt = (x, d) => (x == null || !Number.isFinite(x) ? "—" : x.toFixed(d == null ? 1 : d).replace(".", App.i18n && App.i18n.lang === "en" ? "." : ","));
@@ -151,7 +183,15 @@
           '<label class="btn ph-pick">' + esc(T("Renk", "Colour")) + ' <input type="color" id="phColor" value="#5f58b9" aria-label="' + esc(T("Rengi elle seç", "Pick colour manually")) + '"></label>' +
           '<button class="btn" type="button" id="phWhite">' + App.icon("sun") + esc(T("Beyaz referans al", "Take white reference")) + "</button></div>" +
         '<p class="hint" id="phStatus" aria-live="polite"></p></section>' +
-      '<aside class="card ph-side"><div class="ph-result" id="phResult" aria-live="polite"></div>' + scaleBar() +
+      '<aside class="card ph-side"><div class="ph-meter">' + gaugeSvg() +
+        '<div class="ph-lcd" role="status" aria-label="' + esc(T("pH metre göstergesi", "pH meter display")) + '"><span class="ph-lcd__v" id="phLcd">--.-</span><small>pH</small>' +
+          '<span class="ph-lcd__st"><i class="ph-led" id="phLed"></i><em id="phStab">' + esc(T("bekleniyor", "waiting")) + '</em><em id="phHoldTag" hidden>HOLD</em><em id="phCalTag" hidden>CAL</em></span></div>' +
+        '<div class="ph-meter__acts"><button class="btn btn--sm" type="button" id="phHold" aria-pressed="false">' + esc(T("Değeri sabitle (HOLD)", "Hold reading")) + "</button></div>" +
+        '<details class="ph-cal"><summary>' + esc(T("Kalibrasyon (bilinen çözeltiyle)", "Calibration (known solution)")) + "</summary>" +
+          '<p class="hint">' + esc(T("Gerçek pH metreler tampon çözeltilerle kalibre edilir. pH'ını bildiğin bir çözeltiyi ölç, değerini seç ve kalibre et. İkinci bir çözeltiyle eğim de düzeltilir.", "Real meters are calibrated with buffers. Measure a solution of known pH, pick its value and calibrate; a second solution corrects the slope.")) + "</p>" +
+          '<label class="field"><span class="field__label">' + esc(T("Başvuru çözeltisi", "Reference solution")) + '</span><select class="select" id="phRef"><option value="7">' + esc(T("Saf (damıtık) su · pH 7,0", "Distilled water · pH 7.0")) + '</option><option value="2.8">' + esc(T("Sirke · pH 2,8", "Vinegar · pH 2.8")) + '</option><option value="8.4">' + esc(T("Karbonat çözeltisi · pH 8,4", "Baking soda · pH 8.4")) + '</option><option value="4">' + esc(T("Tampon · pH 4,0", "Buffer · pH 4.0")) + '</option><option value="10">' + esc(T("Tampon · pH 10,0", "Buffer · pH 10.0")) + "</option></select></label>" +
+          '<div class="ph-acts"><button class="btn btn--sm" type="button" id="phCal">' + esc(T("Bu okumayla kalibre et", "Calibrate with this reading")) + '</button><button class="btn btn--sm btn--ghost" type="button" id="phCalReset">' + esc(T("Sıfırla", "Reset")) + '</button></div><p class="hint" id="phCalInfo"></p></details></div>' +
+        '<div class="ph-result" id="phResult" aria-live="polite"></div>' + scaleBar() +
         '<div class="ph-save"><label class="field"><span class="field__label">' + esc(T("Ne ölçtün?", "What did you measure?")) + '</span><input class="input" id="phName" list="phHouse" maxlength="40" placeholder="' + esc(T("ör. Sirke", "e.g. Vinegar")) + '"></label>' +
           '<datalist id="phHouse">' + HOUSE().map(([n]) => '<option value="' + esc(n) + '">').join("") + "</datalist>" +
           '<button class="btn btn--primary" type="button" id="phSave" disabled>' + App.icon("plus") + esc(T("Ölçümü kaydet", "Save reading")) + "</button></div>" +
@@ -160,14 +200,36 @@
     App.hydrateIcons(view);
     const $ = (s) => view.querySelector(s), status = $("#phStatus"), video = view.querySelector("video"), photo = $("#phPhoto");
     const work = document.createElement("canvas"), wx = work.getContext("2d", { willReadFrequently: true });
-    let stream = null, timer = 0, last = null, lastRgb = null, frameAvg = null, epoch = 0;
+    let stream = null, timer = 0, last = null, lastRgb = null, frameAvg = null, epoch = 0, hold = false;
+    const hist = [];
+    let cal = App.prefs.get("ph:cal", []);
+    if (!Array.isArray(cal)) cal = [];
+    const paintCal = () => {
+      $("#phCalTag").hidden = !cal.length;
+      $("#phCalInfo").textContent = cal.length ? T(cal.length + " noktalı kalibrasyon: ", cal.length + "-point calibration: ") + cal.map((c) => fmt(c.raw) + " → " + fmt(c.ref)).join(", ") : T("Kalibrasyon yok (fabrika skalası).", "No calibration (factory scale).");
+    };
+    const meter = (r) => {
+      if (hold) return;
+      const lcd = $("#phLcd"), led = $("#phLed"), st = $("#phStab"), nd = $("#phNeedle");
+      if (!r || !r.ok) { lcd.textContent = "--.-"; led.className = "ph-led"; st.textContent = T("okunamıyor", "no reading"); return; }
+      hist.push(r.ph); if (hist.length > 12) hist.shift();
+      const sb = stability(hist);
+      lcd.textContent = r.ph.toFixed(1).replace(".", App.i18n.lang === "en" ? "." : ",");
+      nd.style.transform = "rotate(" + needleAngle(r.ph).toFixed(1) + "deg)";
+      led.className = "ph-led" + (sb.stable ? " is-stable" : " is-moving");
+      st.textContent = sb.stable ? T("kararlı", "stable") : T("ölçülüyor…", "settling…");
+    };
     const setStatus = () => { status.textContent = white ? T("Beyaz referans kayıtlı: renkler ışığa göre düzeltiliyor.", "White reference set: colours are corrected for the light.") : T("Beyaz referans yok: ışık rengine göre sonuç kayabilir (gri dünya varsayımı kullanılıyor).", "No white reference: results may drift with lighting (gray-world assumed)."); };
     setStatus();
 
     function show(rgb) {
       lastRgb = rgb;
-      const r = estimate(rgb, white || (frameAvg && grayWorldWhite(frameAvg)));
+      const raw = estimate(rgb, white || (frameAvg && grayWorldWhite(frameAvg)));
+      // Kalibrasyon tüm tahmin aralığını kaydırır; ham değer kalibrasyon için saklanır
+      const r = raw.ok && cal.length ? Object.assign({}, raw, { raw: raw.ph, ph: applyCal(raw.ph, cal), lo: applyCal(raw.lo, cal), hi: applyCal(raw.hi, cal) }) : Object.assign({}, raw, { raw: raw.ph });
+      if (hold) return;
       last = r;
+      meter(r);
       const res = $("#phResult"), mark = $("#phMark"), band = $("#phBand");
       $("#phSave").disabled = !r.ok;
       if (!r.ok) {
@@ -256,11 +318,26 @@
       if (App.badges && App.badges.check) App.badges.check();
       paintLog();
     };
+    $("#phHold").onclick = () => {
+      hold = !hold;
+      $("#phHold").setAttribute("aria-pressed", String(hold));
+      $("#phHoldTag").hidden = !hold;
+      $("#phHold").textContent = hold ? T("Ölçüme devam et", "Resume") : T("Değeri sabitle (HOLD)", "Hold reading");
+    };
+    $("#phCal").onclick = () => {
+      if (!last || !last.ok) { App.ui.toast(T("Önce başvuru çözeltisinin rengini ölç.", "Measure the reference solution first."), "error"); return; }
+      const ref = Number($("#phRef").value);
+      cal = cal.filter((c) => Math.abs(c.ref - ref) > 0.3).concat([{ raw: +last.raw.toFixed(2), ref }]).slice(-2);
+      App.prefs.set("ph:cal", cal); hist.length = 0; paintCal();
+      App.ui.toast(T("Kalibre edildi: pH ", "Calibrated: pH ") + fmt(ref));
+    };
+    $("#phCalReset").onclick = () => { cal = []; App.prefs.set("ph:cal", []); hist.length = 0; paintCal(); };
+    paintCal();
     paintLog();
     show(fromHex($("#phColor").value));
     return stop;
   }
 
   App.router.register("ph", (view,p) => App.moduleSafety.mount(view, scope => render(scope)));
-  App.phMetre = { rgbToHsv, rgbToLab, whiteBalance, grayWorldWhite, estimate, matches, averageDisk, SCALE, REF, HOUSE, hex, fromHex };
+  App.phMetre = { rgbToHsv, rgbToLab, whiteBalance, grayWorldWhite, estimate, matches, averageDisk, SCALE, REF, HOUSE, hex, fromHex, applyCal, stability, needleAngle };
 })();
