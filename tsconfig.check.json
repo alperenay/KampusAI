@@ -30,6 +30,12 @@
     "js/modules/reverse-tutor.js",
     "js/modules/science-report.js",
     "js/modules/seismograph.js",
-    "js/data/discovery.js"
+    "js/data/discovery.js",
+    "js/modules/ph-metre.js",
+    "js/modules/vatandas.js",
+    "js/modules/ekosistem.js",
+    "js/data/meslek-harita.js",
+    "js/modules/meslek.js",
+    "js/modules/hece.js"
   ]
 }

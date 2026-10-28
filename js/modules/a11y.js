@@ -12,13 +12,17 @@
    • Ekran okuyucu uyumu: yalnızca simgeli düğmelere otomatik etiket,
      "İçeriğe geç" bağlantısı, sayfa değişince başlığın duyurulması
 
+   • Disleksi dostu mod (v1.49): tek dokunuşla yazı tipi + geniş aralık + okuma cetveli + hece renklendirme
+     (Türkçe hece kural motoru: hece.js) + sesli okumada okunan kelimenin metin üstünde eş zamanlı vurgulanması.
+
    Tercihler cihazda (prefs) saklanır ve eşitlenir:
-     a11yText: "md" | "lg" | "xl", a11yDys, a11ySpacing, a11yContrast, a11yMotion, a11yRuler (bool), ttsRate
+     a11yText: "md" | "lg" | "xl", a11yDys, a11ySpacing, a11yContrast, a11yMotion, a11yRuler, a11yHece, a11yWord (bool), ttsRate
    ========================================================= */
 (function () {
   const { esc } = App.utils;
   const t = App.t;
-  const KEYS = { text: "a11yText", dys: "a11yDys", spacing: "a11ySpacing", contrast: "a11yContrast", motion: "a11yMotion", ruler: "a11yRuler", sonify: "a11ySonify", rate: "ttsRate" };
+  const KEYS = { text: "a11yText", dys: "a11yDys", spacing: "a11ySpacing", contrast: "a11yContrast", motion: "a11yMotion", ruler: "a11yRuler", sonify: "a11ySonify", hece: "a11yHece", word: "a11yWord", rate: "ttsRate" };
+  const DYS_MODE = ["dys", "spacing", "ruler", "hece", "word"];
   const get = (k, d) => App.prefs.get(KEYS[k], d);
   const RATES = [0.75, 1, 1.25];
 
@@ -31,10 +35,12 @@
     h.toggleAttribute("data-a11y-contrast", !!get("contrast", false));
     h.toggleAttribute("data-a11y-motion", !!get("motion", false));
     ruler(!!get("ruler", false));
+    if (App.hece) App.hece.set(!!get("hece", false));
     const btn = document.getElementById("a11yBtn");
     if (btn) btn.classList.toggle("is-on", active());
   }
-  const active = () => get("text", "md") !== "md" || ["dys", "spacing", "contrast", "motion", "ruler"].some((k) => get(k, false));
+  const active = () => get("text", "md") !== "md" || ["dys", "spacing", "contrast", "motion", "ruler", "hece"].some((k) => get(k, false));
+  const dysModeOn = () => DYS_MODE.every((k) => get(k, k === "word"));
 
   /* ---------------- Okuma cetveli ---------------- */
   let rulerEl = null;
@@ -157,6 +163,33 @@
     return inner.length ? inner : [scope];
   }
 
+  /* ---------------- Okunan kelimeyi vurgulama ---------------- */
+  const hlOk = () => typeof CSS !== "undefined" && CSS.highlights && typeof Highlight === "function";
+  const lowTr = (x) => x.toLocaleLowerCase("tr");
+  /** Konuşulan metindeki charIndex konumundaki kelimenin bloktaki yeri (Range). Formüller sese çevrildiği için
+      metinde aynen geçmeyen kelimeler atlanır; aynı kelime birden çok kez geçerse kaçıncı olduğu sayılır. */
+  function wordRange(block, spoken, charIndex) {
+    const m = /^[^\s,.;:!?()"“”]+/.exec(spoken.slice(charIndex));
+    if (!m) return null;
+    const word = lowTr(m[0]), before = lowTr(spoken.slice(0, charIndex));
+    let nth = 0, k = -1;
+    while ((k = before.indexOf(word, k + 1)) >= 0) nth++;
+    const nodes = [], walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT, { acceptNode: (n) => (n.parentElement && n.parentElement.closest(".katex, [data-listen], .cite, button, svg") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT) });
+    let n, text = "";
+    while ((n = walker.nextNode())) { nodes.push([n, text.length]); text += n.nodeValue; }
+    const low = lowTr(text);
+    let at = -1;
+    for (let i = 0; i <= nth; i++) { at = low.indexOf(word, at + 1); if (at < 0) break; }
+    if (at < 0) at = low.indexOf(word);
+    if (at < 0) return null;
+    const pos = (off) => { for (let i = nodes.length - 1; i >= 0; i--) if (off >= nodes[i][1]) return [nodes[i][0], Math.min(off - nodes[i][1], nodes[i][0].nodeValue.length)]; return null; };
+    const a = pos(at), b = pos(at + word.length);
+    if (!a || !b) return null;
+    const r = document.createRange(); r.setStart(a[0], a[1]); r.setEnd(b[0], b[1]);
+    return r;
+  }
+  function markWord(range) { if (!hlOk()) return; if (range) CSS.highlights.set("a11y-word", new Highlight(range)); else CSS.highlights.delete("a11y-word"); }
+
   /* ---------------- Sesli okuma (oynatıcı) ---------------- */
   let reading = null;      // { btn, blocks, i, scope }
 
@@ -165,6 +198,7 @@
     const r = reading;
     reading = null;
     App.speech.stopSaying();
+    markWord(null);
     r.blocks.forEach((b) => b.classList.remove("is-reading"));
     paintBtn(r.btn, false);
   }
@@ -196,9 +230,11 @@
       b.classList.add("is-reading");
       const r = b.getBoundingClientRect();
       if (r.top < 60 || r.bottom > window.innerHeight - 40) b.scrollIntoView({ block: "center", behavior: get("motion", false) ? "auto" : "smooth" });
-      App.speech.say(speakable(b), {
+      const spoken = speakable(b);
+      App.speech.say(spoken, {
         lang: App.i18n.lang, rate: Number(get("rate", 1)) || 1,
-        onEnd: (why) => { if (why === "stop") return; next(); },
+        onWord: get("word", true) ? (ci) => { if (reading === me) markWord(wordRange(b, spoken, ci)); } : undefined,
+        onEnd: (why) => { markWord(null); if (why === "stop") return; next(); },
         onError: () => { if (reading === me) { App.ui.toast(t("a11y.ttsError"), "error"); stopReading(); } }
       });
     };
@@ -265,15 +301,16 @@
     const seg = (name, cur, opts) => '<div class="lang-switch seg a11y-seg" role="radiogroup" data-seg="' + name + '">' +
       opts.map(([v, label, aria]) => '<button type="button" role="radio" data-v="' + v + '" aria-checked="' + String(String(cur) === String(v)) + '"' + (aria ? ' aria-label="' + esc(aria) + '"' : "") + ">" + label + "</button>").join("") + "</div>";
     const sw = (k, icon) => '<label class="a11y-row"><span class="a11y-row__ico">' + App.icon(icon) + '</span><span class="a11y-row__t"><b>' + esc(t("a11y." + k)) + "</b><small>" + esc(t("a11y." + k + "Hint")) + "</small></span>" +
-      '<input type="checkbox" class="switch" data-k="' + k + '"' + (get(k, false) ? " checked" : "") + "></label>";
+      '<input type="checkbox" class="switch" data-k="' + k + '"' + (get(k, k === "word") ? " checked" : "") + "></label>";
     const voiceNote = !App.speech.ttsAvailable() ? t("a11y.noTts") : !App.speech.hasVoice(App.i18n.lang) ? t("a11y.noVoice") : "";
     const m = App.ui.modal({
       title: t("a11y.title"),
       body:
         '<p class="hint" style="margin-top:-4px">' + esc(t("a11y.intro")) + "</p>" +
+        '<button type="button" class="btn a11y-dysmode' + (dysModeOn() ? " is-on" : "") + '" id="a11yDysMode" aria-pressed="' + dysModeOn() + '">' + App.icon("book") + '<span><b>' + esc(t("a11y.dysMode")) + "</b><small>" + esc(t("a11y.dysModeHint")) + "</small></span></button>" +
         '<div class="a11y-row"><span class="a11y-row__ico">' + App.icon("textSize") + '</span><span class="a11y-row__t"><b>' + esc(t("a11y.text")) + "</b><small>" + esc(t("a11y.textHint")) + "</small></span>" +
           seg("text", get("text", "md"), [["md", "A", t("a11y.textMd")], ["lg", '<span style="font-size:1.15em">A</span>', t("a11y.textLg")], ["xl", '<span style="font-size:1.35em">A</span>', t("a11y.textXl")]]) + "</div>" +
-        sw("dys", "book") + sw("spacing", "list") + sw("ruler", "eye") + sw("contrast", "sun") + sw("motion", "pause") + sw("sonify", "volume") +
+        sw("dys", "book") + sw("spacing", "list") + sw("ruler", "eye") + sw("hece", "textSize") + sw("word", "volume") + sw("contrast", "sun") + sw("motion", "pause") + sw("sonify", "volume") +
         '<div class="a11y-row"><span class="a11y-row__ico">' + App.icon("volume") + '</span><span class="a11y-row__t"><b>' + esc(t("a11y.tts")) + "</b><small>" + esc(voiceNote || t("a11y.ttsHint")) + "</small></span>" +
           seg("rate", get("rate", 1), RATES.map((r) => [r, r === 1 ? "1×" : String(r).replace(".", App.i18n.lang === "tr" ? "," : ".") + "×", ""])) + "</div>" +
         '<div class="a11y-try" data-read-scope><p>' + esc(t("a11y.sample")) + " $\\frac{x^2+1}{2} = 5$</p>" + listenBtnHtml() + "</div>",
@@ -289,7 +326,14 @@
       b.parentElement.querySelectorAll("[data-v]").forEach((x) => x.setAttribute("aria-checked", String(x === b)));
       apply();
     });
-    m.el.querySelectorAll("input[data-k]").forEach((cb) => cb.addEventListener("change", () => { App.prefs.set(KEYS[cb.dataset.k], cb.checked); apply(); }));
+    const syncDys = () => { const b = m.el.querySelector("#a11yDysMode"), v = dysModeOn(); b.classList.toggle("is-on", v); b.setAttribute("aria-pressed", String(v)); };
+    m.el.querySelectorAll("input[data-k]").forEach((cb) => cb.addEventListener("change", () => { App.prefs.set(KEYS[cb.dataset.k], cb.checked); apply(); syncDys(); }));
+    m.el.querySelector("#a11yDysMode").addEventListener("click", () => {
+      const v = !dysModeOn();
+      DYS_MODE.forEach((k) => { App.prefs.set(KEYS[k], v); const cb = m.el.querySelector('input[data-k="' + k + '"]'); if (cb) cb.checked = v; });
+      apply(); syncDys();
+      App.ui.toast(v ? t("a11y.dysModeOn") : t("a11y.dysModeOff"));
+    });
     m.el.querySelector("#a11yReset").addEventListener("click", () => {
       Object.values(KEYS).forEach((k) => App.prefs.remove(k));
       apply();
@@ -307,5 +351,5 @@
     labelIcons(document);
   }
 
-  App.a11y = { init, apply, open, listenBtnHtml, readScope, readText, stopReading, texToSpeech, speakable, isActive: active };
+  App.a11y = { init, apply, open, listenBtnHtml, readScope, readText, stopReading, texToSpeech, speakable, wordRange, isActive: active, dysModeOn };
 })();

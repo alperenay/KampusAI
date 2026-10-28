@@ -314,7 +314,8 @@
         (ct ? '<div class="lesson-aside__acts"><a class="btn btn--sm" href="#/test/' + key + '">' + App.icon("quiz") + esc(t("cur.dockQuiz")) + "</a>" +
           '<a class="btn btn--sm" href="#/anlat/' + key + '">' + App.icon("mic") + esc(t("cur.dockExplain")) + "</a>" +
           (App.cards && App.cards.buildFor(key).length ? '<a class="btn btn--sm" href="#/kartlar/konu/' + key + '">' + App.icon("layers") + esc(t("cur.sec.cards")) + "</a>" : "") +
-          (ct.anlatim && App.podcast ? '<a class="btn btn--sm" href="#/podcast/' + key + '">🎧 ' + esc(T2("Podcast", "Podcast")) + "</a>" : "") + "</div>" : "") +
+          (ct.anlatim && App.podcast ? '<a class="btn btn--sm" href="#/podcast/' + key + '">🎧 ' + esc(T2("Podcast", "Podcast")) + "</a>" : "") +
+          (App.meslek && App.meslek.useCount(subject.id, outcome.title) ? '<a class="btn btn--sm" href="#/meslek/k/' + key + '">' + App.icon("compass") + esc(T2("Hangi meslekte?", "Used in careers")) + "</a>" : "") + "</div>" : "") +
         '<div class="lesson-aside__nav">' + (prev ? '<a class="btn btn--sm" href="' + link(prev) + '" title="' + esc(L(prev.outcome.title)) + '">' + App.icon("chevronL") + esc(t("cur.dockPrev")) + "</a>" : "") +
           (next ? '<a class="btn btn--sm" href="' + link(next) + '" title="' + esc(L(next.outcome.title)) + '">' + esc(t("cur.dockNext")) + App.icon("chevron") + "</a>" : "") + "</div>" +
       "</aside>" +

@@ -115,7 +115,14 @@
   const str = (s, n) => typeof s === "string" && s.length <= n;
   const KEY = /^\d{1,2}\/[\w-]+\/[\w-]+\/[\w-]+$/;
   function validate(d) {
-    if (!d || d.v !== 1 || !["a", "r", "d", "dr"].includes(d.t) || !str(d.id || d.a, 40)) throw new Error("packet");
+    if (!d || d.v !== 1 || !["a", "r", "d", "dr", "vb"].includes(d.t) || !str(d.id || d.a, 40)) throw new Error("packet");
+    // Vatandaş bilimi paketi (vatandas.js, v1.49): ölçümler [tür 0/1, değer×10, enlem×1e5, boylam×1e5, dakika]
+    if (d.t === "vb") {
+      if (!str(d.s, 40) || !Array.isArray(d.m) || !d.m.length || d.m.length > 200 ||
+        !d.m.every((r) => Array.isArray(r) && r.length === 5 && r.every((x) => x === null || Number.isInteger(x)) && (r[0] === 0 || r[0] === 1) && Number.isInteger(r[1]) && Number.isInteger(r[4]) &&
+          (r[2] === null || Math.abs(r[2]) <= 9000000) && (r[3] === null || Math.abs(r[3]) <= 18000000))) throw new Error("packet");
+      return d;
+    }
     // Düello paketleri (duello.js, v1.45): "d" soru seti + başlama zamanı, "dr" oyuncunun cevapları ve süreleri
     if (d.t === "d") {
       if (!Number.isFinite(d.st) || !Number.isInteger(d.sec) || d.sec < 5 || d.sec > 120 || !str(d.hn, 40)) throw new Error("packet");
@@ -239,7 +246,7 @@
       async function done() {
         try {
           const res = await unpack([c.body()].map((b) => PREFIX + c.digest() + ";0;1;" + b));
-          if (expect && res.data.t !== expect) throw new Error(expect === "a" ? T("Bu bir ödev kodu değil.", "This is not an assignment code.") : expect === "d" ? T("Bu bir düello kodu değil.", "This is not a duel code.") : T("Bu bir sonuç kodu değil.", "This is not a result code."));
+          if (expect && res.data.t !== expect) throw new Error(expect === "a" ? T("Bu bir ödev kodu değil.", "This is not an assignment code.") : expect === "d" ? T("Bu bir düello kodu değil.", "This is not a duel code.") : expect === "vb" ? T("Bu bir ölçüm paylaşım kodu değil.", "This is not a measurement code.") : T("Bu bir sonuç kodu değil.", "This is not a result code."));
           finish(res); m.close();
         } catch (e) { status.textContent = e.message; c.reset(); bar.style.width = "0%"; }
       }

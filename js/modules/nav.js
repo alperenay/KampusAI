@@ -105,7 +105,7 @@
 
   function bindMenuSearch() {
     const input = $("#navFilter"), nav = input.closest(".nav"), empty = $("#navEmpty");
-    const labels = { explore: ["Keşfet ve yarış", "Explore and compete"], duel: ["Arkadaş Düellosu", "Friend Duel"], sensor: ["Sensör Laboratuvarı", "Sensor Lab"], cosmos: ["Bilgi Evreni", "Knowledge Cosmos"], report: ["Üstbiliş Karnesi", "Metacognition Report"], classQR: ["Sınıf Modu · QR Aktarımı", "Class Mode · QR Transfer"] };
+    const labels = { explore: ["Keşfet ve yarış", "Explore and compete"], duel: ["Arkadaş Düellosu", "Friend Duel"], sensor: ["Sensör Laboratuvarı", "Sensor Lab"], citizen: ["Vatandaş Bilimi Ağı", "Citizen Science"], cosmos: ["Bilgi Evreni", "Knowledge Cosmos"], report: ["Üstbiliş Karnesi", "Metacognition Report"], classQR: ["Sınıf Modu · QR Aktarımı", "Class Mode · QR Transfer"] };
     function filter() {
       const words = norm(input.value).split(" ").filter(Boolean);
       nav.classList.toggle("is-filtering", !!words.length);
