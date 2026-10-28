@@ -3,7 +3,7 @@
 ## 1.50.0 — 2026-10-28
 
 - Mikrofon onarımları ve yeni çalışma alanı tek sürümde yayınlanır.
-- Yan menü ve araç kataloğu ortak sekiz kategoriye ayrıldı; tüm büyük özellikler erişilebilir.
+- Yan menü ve araç kataloğu ortak sekiz kategoriye ayrıldı; tüm büyük özellikler erişilebilir. Küçük mobil ekranlarda kategori şeridi yatay kaydırılır; arama sonucu alt menünün arkasında kalmaz.
 - AI favorileri: 12 hazır başlangıç, 12 sabitleme, 20 kişisel şablon, arama, düzenleme ve sıralama. Kişisel metinler bu cihazda saklanır; seçim otomatik istek göndermez.
 
 - Android WebView mikrofon erişiminde RECORD_AUDIO yanında gerekli MODIFY_AUDIO_SETTINGS izni eklendi; kurulu APK testine izin kontrolü kondu.

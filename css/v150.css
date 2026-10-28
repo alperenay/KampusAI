@@ -201,3 +201,8 @@
   font-size: 11px;
   opacity: 0.85;
 }
+@media (max-width: 640px) {
+  /* Keep search results above the mobile bottom bar, including 320×640 screens. */
+  .hub-categories { flex-wrap: nowrap; overflow-x: auto; max-width: 100%; padding: 4px 2px; scrollbar-width: thin; }
+  .hub-categories .btn { flex: 0 0 auto; white-space: nowrap; }
+}

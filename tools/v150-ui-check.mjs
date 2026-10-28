@@ -60,6 +60,15 @@ try {
   await page.fill("#hubQ", "zz-no-match");
   assert.equal(await page.locator("#hubNone").isVisible(), true);
   await page.locator("#hubQ").press("Escape");
+  await page.setViewportSize({width:320,height:640});
+  await page.evaluate(()=>App.router.go('araclar'));
+  await page.waitForSelector('#hubQ');await page.fill('#hubQ','aktarim');
+  const reachable=await page.evaluate(()=>{
+    const title=document.querySelector('.hub-tile:not([hidden]) .hub-tile__link b').getBoundingClientRect();
+    const bottom=document.querySelector('[aria-label="Alt menü"]')?.getBoundingClientRect().top ?? innerHeight;
+    return title.top>=0 && title.bottom<bottom;
+  });assert.equal(reachable,true,'Search result title must be tappable above mobile navigation at 320×640');
+  await page.locator('#hubQ').press('Escape');
   for (const width of [320, 390, 768, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     assert.equal(
