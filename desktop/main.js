@@ -64,7 +64,11 @@ async function ensureOllama() {
   if (process.platform === "win32" && process.env.LOCALAPPDATA) candidates.push(path.join(process.env.LOCALAPPDATA, "Programs", "Ollama", "ollama.exe"));
   for (const exe of candidates) {
     try {
-      const child = spawn(exe, ["serve"], { detached: true, stdio: "ignore", windowsHide: true });
+      // Windows'ta detached = DETACHED_PROCESS: Ollama konsolsuz kalır ve açılışta ekran kartı taraması için
+      // başlattığı her alt süreç kendine görünür bir cmd penceresi açar (açılışta ~20 pencere yanıp söner).
+      // Ayrılmadan ve gizli başlatınca Windows tek bir gizli konsol oluşturur; alt süreçler onu paylaşır.
+      // Uygulama kapansa da Ollama çalışmaya devam eder (Windows çocuk süreçleri birlikte kapatmaz).
+      const child = spawn(exe, ["serve"], { detached: process.platform !== "win32", stdio: "ignore", windowsHide: true });
       const ok = await new Promise((resolve) => {
         child.once("error", () => resolve(false));
         child.once("spawn", () => resolve(true));
