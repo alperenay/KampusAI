@@ -28,3 +28,23 @@
 .pr-analysis li.is-carry { border-left-color: var(--warn); }
 .pr-analysis b { font-size: 12px; color: var(--text-2); white-space: nowrap; }
 .pr-misc { padding: 8px 12px; border-radius: var(--radius-sm); background: color-mix(in srgb, var(--warn) 14%, transparent); font-size: 14px; }
+
+/* ---------------- Yeni oyunlar ---------------- */
+.nl-q { font-size: 34px; text-align: center; margin: 18px 0 26px; }
+.nl-line { position: relative; height: 70px; margin: 0 14px 10px; cursor: crosshair; touch-action: none; outline-offset: 6px; }
+.nl-track { position: absolute; left: 0; right: 0; top: 28px; height: 4px; border-radius: 2px; background: var(--text-2); }
+.nl-tick { position: absolute; top: 20px; transform: translateX(-50%); font-size: 12px; padding-top: 18px; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.nl-tick::before { content: ""; position: absolute; left: 50%; top: 0; width: 2px; height: 20px; background: var(--text-2); }
+.nl-cursor, .nl-true { position: absolute; top: 6px; width: 4px; height: 48px; margin-left: -2px; border-radius: 2px; }
+.nl-cursor { background: var(--accent); }
+.nl-true { background: #3fb950; box-shadow: 0 0 0 3px color-mix(in srgb, #3fb950 30%, transparent); }
+.nl-msg, .so-msg { text-align: center; min-height: 1.4em; font-weight: 600; }
+.bu-q { font-size: 26px; font-weight: 700; text-align: center; margin: 16px 0; }
+.so-q { font-size: 17px; margin: 10px 0; }
+.so-items { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.so-item { min-height: 44px; }
+.so-picked { min-height: 44px; display: grid; gap: 4px; padding-left: 22px; margin: 8px 0; }
+.so-picked li { padding: 6px 10px; border-radius: var(--radius-sm); background: var(--surface-2); }
+.so-picked li.is-ok { background: color-mix(in srgb, #3fb950 22%, var(--surface-2)); }
+.so-picked li.is-bad { background: color-mix(in srgb, var(--bad) 20%, var(--surface-2)); }
+.so-picked small { color: var(--text-2); margin-left: 6px; }
