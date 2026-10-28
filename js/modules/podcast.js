@@ -17,7 +17,8 @@
   const T = (tr, en) => (App.i18n.lang === "en" ? en : tr);
   const C = () => App.data.curriculum;
   const L = (x) => App.L(x);
-  const SP = { A: { name: "Deniz", pitch: 1.18, voice: 0, cls: "a" }, B: { name: "Arda", pitch: 0.86, voice: 1, cls: "b" } };
+  // v1.51: iki farklı doğal ses varsa ses tonu bozulmaz (yapay ton kaydırma robotik duyuluyordu); tek ses varsa hafif ton farkı
+  const SP = { A: { name: "Deniz", pitch: 1.1, voice: 0, cls: "a" }, B: { name: "Arda", pitch: 0.92, voice: 1, cls: "b" } };
 
   /* ---------------- Metin yardımcıları ---------------- */
   function hash(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
@@ -281,7 +282,7 @@
         st.i++; st.timer = setTimeout(() => speakLine(tk), 260);
       };
       if (!App.speech.ttsAvailable()) { st.timer = setTimeout(next, Math.min(9000, 1200 + line.say.length * 55)); return; }
-      App.speech.say(line.say, { lang: ep.lang, rate: Number($("#pdRate").value) || 1, pitch: who.pitch, voice: who.voice, onEnd: (why) => { if (why === "stop") return; next(); }, onError: () => { st.timer = setTimeout(next, 400); } });
+      App.speech.say(line.say, { lang: ep.lang, rate: Number($("#pdRate").value) || 1, pitch: App.speech.voiceCount(ep.lang) > 1 ? 1 : who.pitch, voice: who.voice, onEnd: (why) => { if (why === "stop") return; st.timer = setTimeout(next, 320); }, onError: () => { st.timer = setTimeout(next, 400); } });
     }
     async function play() {
       if (st.playing) return;

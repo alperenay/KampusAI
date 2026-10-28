@@ -296,6 +296,18 @@
   }
   window.addEventListener("hashchange", () => setTimeout(() => announce(document.title), 400));
 
+  /* ---------------- Ses seçimi (v1.51) ---------------- */
+  /** Bu dil için cihazdaki sesler; doğal (sinirsel) sesler önce ve işaretli. Yerel uygulamada en iyi ses otomatik seçilir. */
+  function voiceRow() {
+    const list = App.speech.voiceList ? App.speech.voiceList(App.i18n.lang) : [];
+    if (!list.length) return "";
+    const key = "ttsVoice:" + App.speech.langTag(App.i18n.lang).slice(0, 2), cur = App.prefs.get(key, "");
+    return '<div class="a11y-row"><span class="a11y-row__ico">' + App.icon("mic") + '</span><span class="a11y-row__t"><b>' + esc(t("a11y.voice")) + "</b><small>" + esc(t("a11y.voiceHint")) + "</small></span>" +
+      '<span class="a11y-voice"><select class="select" id="a11yVoice" aria-label="' + esc(t("a11y.voice")) + '"><option value="">' + esc(t("a11y.voiceAuto")) + "</option>" +
+      list.map((v) => '<option value="' + esc(v.id) + '"' + (v.id === cur ? " selected" : "") + ">" + (v.natural ? "★ " : "") + esc(v.name) + "</option>").join("") +
+      '</select><button type="button" class="btn btn--sm" id="a11yVoiceTry">' + App.icon("volume") + esc(t("a11y.voiceTry")) + "</button></span></div>";
+  }
+
   /* ---------------- Ayarlar paneli ---------------- */
   function open() {
     const seg = (name, cur, opts) => '<div class="lang-switch seg a11y-seg" role="radiogroup" data-seg="' + name + '">' +
@@ -313,6 +325,7 @@
         sw("dys", "book") + sw("spacing", "list") + sw("ruler", "eye") + sw("hece", "textSize") + sw("word", "volume") + sw("contrast", "sun") + sw("motion", "pause") + sw("sonify", "volume") +
         '<div class="a11y-row"><span class="a11y-row__ico">' + App.icon("volume") + '</span><span class="a11y-row__t"><b>' + esc(t("a11y.tts")) + "</b><small>" + esc(voiceNote || t("a11y.ttsHint")) + "</small></span>" +
           seg("rate", get("rate", 1), RATES.map((r) => [r, r === 1 ? "1×" : String(r).replace(".", App.i18n.lang === "tr" ? "," : ".") + "×", ""])) + "</div>" +
+        voiceRow() +
         '<div class="a11y-try" data-read-scope><p>' + esc(t("a11y.sample")) + " $\\frac{x^2+1}{2} = 5$</p>" + listenBtnHtml() + "</div>",
       actions: '<button class="btn btn--ghost" type="button" id="a11yReset">' + App.icon("refresh") + esc(t("a11y.reset")) + '</button><button class="btn btn--primary" type="button" data-close>' + esc(t("close")) + "</button>"
     });
@@ -334,6 +347,12 @@
       apply(); syncDys();
       App.ui.toast(v ? t("a11y.dysModeOn") : t("a11y.dysModeOff"));
     });
+    const vs = m.el.querySelector("#a11yVoice");
+    if (vs) {
+      const key = "ttsVoice:" + App.speech.langTag(App.i18n.lang).slice(0, 2);
+      vs.addEventListener("change", () => App.prefs.set(key, vs.value));
+      m.el.querySelector("#a11yVoiceTry").addEventListener("click", () => App.speech.say(t("a11y.voiceSample"), { lang: App.i18n.lang, rate: Number(get("rate", 1)) || 1 }));
+    }
     m.el.querySelector("#a11yReset").addEventListener("click", () => {
       Object.values(KEYS).forEach((k) => App.prefs.remove(k));
       apply();

@@ -589,28 +589,69 @@
     );
   }
 
-  function pickVoice(tag, nth) {
-    const voices =
-      (window.speechSynthesis && speechSynthesis.getVoices()) || [];
+  /* Ses kalitesi sıralaması (v1.51): sinirsel/doğal sesler önce. Tarayıcılar ve işletim sistemleri bunları
+     adlarında belirtir: Microsoft "… Online (Natural)", Apple "Enhanced/Premium", Google, "Neural", "Wavenet". */
+  function voiceScore(v, tag) {
+    const n = String(v.name || ""), lang = String(v.lang || "").replace("_", "-");
+    let s = 0;
+    if (/natural|neural|wavenet|studio|journey/i.test(n)) s += 60;
+    if (/premium|enhanced|siri/i.test(n)) s += 45;
+    if (/google/i.test(n)) s += 30;
+    if (/online/i.test(n)) s += 10;
+    if (/compact|espeak|robot|novelty|whisper|bad news|bells|cellos|zarvox|trinoids/i.test(n)) s -= 80;
+    if (lang === tag) s += 12;
+    if (v.default) s += 3;
+    if (v.localService) s += 2;          // çevrimdışı da çalışır
+    return s;
+  }
+  /** Bu dil için sesler, en doğal olandan başlayarak */
+  function rankVoices(tag) {
+    const voices = (window.speechSynthesis && speechSynthesis.getVoices()) || [];
     const base = tag.slice(0, 2);
-    if (nth) {
-      // ikinci konuşmacı için (podcast) varsa farklı bir ses
-      const all = voices.filter(
-        (v) => (v.lang || "").replace("_", "-").slice(0, 2) === base,
-      );
-      const good = all
-        .filter((v) => /natural|online|neural/i.test(v.name))
-        .concat(all.filter((v) => !/natural|online|neural/i.test(v.name)));
-      if (good.length > 1) return good[nth % good.length];
+    return voices.filter((v) => (v.lang || "").replace("_", "-").slice(0, 2) === base)
+      .map((v) => ({ v, s: voiceScore(v, tag) }))
+      .sort((a, b) => b.s - a.s)
+      .map((x) => x.v);
+  }
+  /** Seçilen ses: kullanıcının tercihi (Erişilebilirlik › Ses) yoksa en doğal ses; nth > 0 podcast'te ikinci konuşmacı */
+  function pickVoice(tag, nth) {
+    const list = rankVoices(tag);
+    if (!list.length) return null;
+    const want = App.prefs && App.prefs.get("ttsVoice:" + tag.slice(0, 2), "");
+    const chosen = want && list.find((v) => v.voiceURI === want || v.name === want);
+    const ordered = chosen ? [chosen].concat(list.filter((v) => v !== chosen)) : list;
+    return ordered[(nth || 0) % ordered.length];
+  }
+  /** Ayar ekranı için: [{ id, name, natural }] */
+  function voiceList(lang) {
+    if (nativeHas("ttsSpeak") || !("speechSynthesis" in window)) return [];
+    const tag = langTag(lang);
+    return rankVoices(tag).map((v) => ({ id: v.voiceURI || v.name, name: v.name + (v.localService ? "" : " ☁"), natural: voiceScore(v, tag) >= 40 }));
+  }
+
+  /* Doğal okuma için metin hazırlığı: kısaltma ve birimler okunur hâle gelir (yalnızca kelime takibi yokken) */
+  const SAY_TR = [[/(^|\s)vb\./g, "$1ve benzeri"], [/(^|\s)örn\./gi, "$1örneğin"], [/(\d)\s?yy\./g, "$1 yüzyıl"],
+    [/(\d)\s?m\/s²/g, "$1 metre bölü saniye kare"], [/(\d)\s?m\/s(?![a-zA-Z])/g, "$1 metre bölü saniye"], [/(\d)\s?km\/sa(?![a-zA-Z])/g, "$1 kilometre bölü saat"],
+    [/(\d)\s?km(?![a-zA-Z])/g, "$1 kilometre"], [/(\d)\s?cm(?![a-zA-Z])/g, "$1 santimetre"], [/(\d)\s?kg(?![a-zA-Z])/g, "$1 kilogram"], [/(\d)\s?°C/g, "$1 santigrat derece"], [/(\d)\s?Hz(?![a-zA-Z])/g, "$1 hertz"], [/%\s?(\d)/g, "yüzde $1"]];
+  function naturalText(text, tag) {
+    let t = String(text || "");
+    if (tag.slice(0, 2) === "tr") SAY_TR.forEach(([re, to]) => { t = t.replace(re, to); });
+    return t.replace(/\s*[•·]\s*/g, ", ").replace(/\s{2,}/g, " ");
+  }
+  /** Uzun metni cümle sınırlarından ≤ 220 karakterlik parçalara böler (Chrome'un uzun ifadede kesilmesini önler
+      ve cümle aralarında doğal duraklama verir). Dönüş: [{ text, at }] (at: özgün metindeki başlangıç) */
+  function chunks(text) {
+    const out = [], re = /[^.!?…;:]+[.!?…;:]*\s*/g;
+    let m, cur = "", at = 0, start = 0;
+    while ((m = re.exec(text))) {
+      if (cur && (cur + m[0]).length > 220) { out.push({ text: cur.trim(), at: start }); cur = ""; }
+      if (!cur) start = m.index;
+      cur += m[0];
+      at = m.index + m[0].length;
     }
-    return (
-      voices.find(
-        (v) => v.lang === tag && /natural|online|neural/i.test(v.name),
-      ) ||
-      voices.find((v) => v.lang === tag) ||
-      voices.find((v) => (v.lang || "").slice(0, 2) === base) ||
-      null
-    );
+    if (cur.trim()) out.push({ text: cur.trim(), at: start });
+    if (at < text.length && text.slice(at).trim()) out.push({ text: text.slice(at).trim(), at });
+    return out.length ? out : [{ text, at: 0 }];
   }
   /** Bu dilde kaç farklı ses var (web); yerel uygulamada bilinmez → 1 */
   function voiceCount(lang) {
@@ -652,7 +693,9 @@
         onStart: o.onStart,
       };
       try {
-        if (nativeHas("ttsSpeak2")) N().ttsSpeak2(id, text, tag, rate, pitch);
+        const nt = o.onWord ? text : naturalText(text, tag);
+        if (nativeHas("ttsSpeak3")) N().ttsSpeak3(id, nt, tag, rate, pitch, Number(o.voice) || 0);
+        else if (nativeHas("ttsSpeak2")) N().ttsSpeak2(id, nt, tag, rate, pitch);
         else N().ttsSpeak(id, text, tag, rate);
       } catch (e) {
         delete ttsWait[id];
@@ -664,29 +707,40 @@
       if (o.onError) setTimeout(() => o.onError("unsupported"));
       return id;
     }
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = tag;
-    u.rate = rate;
-    u.pitch = Math.max(0.1, Math.min(2, pitch));
     const v = pickVoice(tag, o.voice || 0);
-    if (v) u.voice = v;
-    if (o.onWord)
-      u.onboundary = (e) => {
-        if (current === id && (!e.name || e.name === "word"))
-          o.onWord(e.charIndex || 0);
+    const parts = o.onWord ? chunks(text) : chunks(naturalText(text, tag));
+    let k = 0;
+    const speakPart = () => {
+      if (current !== id) return;
+      const part = parts[k];
+      const u = new SpeechSynthesisUtterance(part.text);
+      u.lang = tag;
+      u.rate = rate;
+      // soru cümlelerinde ses tonu hafifçe yükselir
+      u.pitch = Math.max(0.1, Math.min(2, pitch * (/[?]\s*$/.test(part.text) ? 1.04 : 1)));
+      if (v) u.voice = v;
+      if (o.onWord)
+        u.onboundary = (e) => {
+          if (current === id && (!e.name || e.name === "word"))
+            o.onWord(part.at + (e.charIndex || 0));
+        };
+      if (o.onStart && k === 0) u.onstart = () => o.onStart();
+      u.onend = () => {
+        if (current !== id) return;
+        k++;
+        if (k < parts.length) { setTimeout(speakPart, /[.!?…]\s*$/.test(part.text) ? 140 : 60); return; }
+        current = null;
+        if (o.onEnd) o.onEnd("done");
       };
-    if (o.onStart) u.onstart = () => o.onStart();
-    u.onend = () => {
-      if (current === id) current = null;
-      if (o.onEnd) o.onEnd("done");
+      u.onerror = (e) => {
+        if (current === id) current = null;
+        if (e.error === "interrupted" || e.error === "canceled") {
+          if (o.onEnd) o.onEnd("stop");
+        } else if (o.onError) o.onError(e.error || "tts");
+      };
+      speechSynthesis.speak(u);
     };
-    u.onerror = (e) => {
-      if (current === id) current = null;
-      if (e.error === "interrupted" || e.error === "canceled") {
-        if (o.onEnd) o.onEnd("stop");
-      } else if (o.onError) o.onError(e.error || "tts");
-    };
-    speechSynthesis.speak(u);
+    speakPart();
     return id;
   }
 
@@ -733,6 +787,9 @@
     hasVoice,
     canTranscribe,
     voiceCount,
+    voiceList,
+    naturalText,
+    chunks,
     speaking: () => !!current,
   };
 })();

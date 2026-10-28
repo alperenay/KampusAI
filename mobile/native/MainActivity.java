@@ -12,6 +12,7 @@ import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
+import android.speech.tts.Voice;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
@@ -26,6 +27,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 import com.getcapacitor.BridgeActivity;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import org.json.JSONObject;
@@ -265,13 +267,45 @@ public class MainActivity extends BridgeActivity {
         emit(o);
     }
 
-    private void speakNow(String id, String text, String lang, float rate, float pitch) {
+    /** v1.51: dil için en doğal sesler (yüksek kalite önce, ağ gerektirmeyen önce, düşük gecikme önce) */
+    private List<Voice> bestVoices(Locale locale) {
+        List<Voice> out = new ArrayList<>();
+        try {
+            if (tts == null || tts.getVoices() == null) return out;
+            for (Voice v : tts.getVoices()) {
+                if (v == null || v.getLocale() == null) continue;
+                if (!v.getLocale().getLanguage().equals(locale.getLanguage())) continue;
+                if (v.getFeatures() != null && v.getFeatures().contains(TextToSpeech.Engine.KEY_FEATURE_NOT_INSTALLED)) continue;
+                out.add(v);
+            }
+            final String country = locale.getCountry();
+            Collections.sort(out, (a, b) -> {
+                int q = Integer.compare(b.getQuality(), a.getQuality());
+                if (q != 0) return q;
+                int n = Boolean.compare(a.isNetworkConnectionRequired(), b.isNetworkConnectionRequired());
+                if (n != 0) return n;
+                int c = Boolean.compare(!country.equals(a.getLocale().getCountry()), !country.equals(b.getLocale().getCountry()));
+                if (c != 0) return c;
+                return Integer.compare(a.getLatency(), b.getLatency());
+            });
+        } catch (Exception e) { /* eski motor: varsayılan ses */ }
+        return out;
+    }
+
+    private void speakNow(String id, String text, String lang, float rate, float pitch) { speakNow(id, text, lang, rate, pitch, 0); }
+
+    private void speakNow(String id, String text, String lang, float rate, float pitch, int voiceIndex) {
         if (!ttsReady || tts == null) { emitTts(id, "error", "init"); return; }
         try {
-            int languageStatus = tts.setLanguage(Locale.forLanguageTag(lang));
+            Locale locale = Locale.forLanguageTag(lang);
+            int languageStatus = tts.setLanguage(locale);
             if (languageStatus == TextToSpeech.LANG_MISSING_DATA || languageStatus == TextToSpeech.LANG_NOT_SUPPORTED) {
                 emitTts(id, "error", "language");
                 return;
+            }
+            List<Voice> voices = bestVoices(locale);
+            if (!voices.isEmpty()) {
+                try { tts.setVoice(voices.get(Math.max(0, voiceIndex) % voices.size())); } catch (Exception e) { /* varsayılan ses kalır */ }
             }
             tts.setSpeechRate(rate > 0 ? rate : 1f);
             tts.setPitch(pitch > 0 ? pitch : 1f);
@@ -368,8 +402,14 @@ public class MainActivity extends BridgeActivity {
         /** Sesli oku, ses tonuyla (podcast'te iki farklı konuşmacı) */
         @JavascriptInterface
         public void ttsSpeak2(final String id, final String text, final String lang, final float rate, final float pitch) {
+            ttsSpeak3(id, text, lang, rate, pitch, 0);
+        }
+
+        /** v1.51: ses sırası da seçilir (0 = en doğal ses, 1 = ikinci en iyi ses: podcast'in ikinci konuşmacısı) */
+        @JavascriptInterface
+        public void ttsSpeak3(final String id, final String text, final String lang, final float rate, final float pitch, final int voiceIndex) {
             runOnUiThread(() -> {
-                Runnable r = () -> speakNow(id, text, lang, rate, pitch);
+                Runnable r = () -> speakNow(id, text, lang, rate, pitch, voiceIndex);
                 if (ttsReady) { r.run(); return; }
                 ttsQueue.add(r);
                 if (ttsInit) return;
