@@ -293,6 +293,7 @@
     async chatOnce({ model, messages, options, signal, onDelta }) {
       const { system, contents } = this.toContents(messages);
       const body = { contents, generationConfig: { temperature: options && options.temperature != null ? options.temperature : 0.4 } };
+      // Çıktı bütçesi Gemini'ye verilmez: maxOutputTokens düşünme jetonlarını da sayar, JSON yarıda kesilebilir.
       if (system) body.systemInstruction = { parts: [{ text: system }] };
       // Gemini 3 Flash modelleri varsayılan olarak uzun "düşünür" (ilk kelime 10 sn'yi bulabiliyor):
       // düşünmeyi "low" seviyesine çek. Desteklemeyen model 400 verirse ayarsız tekrar dene.
@@ -481,6 +482,8 @@
         stream: true,
         temperature: options && options.temperature != null ? options.temperature : 0.4
       };
+      // OpenAI'nin akıl yürüten modelleri max_tokens'ı reddeder ve bütçeye düşünmeyi de katar; orada sınır verilmez.
+      if (Number.isFinite(options?.num_predict) && !/api\.openai\.com/.test(this.base())) body.max_tokens = options.num_predict;
       if (tools && tools.length) body.tools = tools;
       const toolCalls = [];
       const res = await send(this.base() + "/chat/completions",

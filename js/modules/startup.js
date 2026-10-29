@@ -1,9 +1,11 @@
 /* One short brand entrance per document; never awaits or gates app initialisation. */
 (function () {
   let el = null,
-    timer;
+    timer,
+    preferences;
   function dismiss() {
     clearTimeout(timer);
+    preferences?.disconnect();
     if (el) {
       el.remove();
       el = null;
@@ -23,6 +25,7 @@
     }
   }
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  const DURATION_MS = 1650;
   App.startup = {
     dismiss,
     get active() {
@@ -36,13 +39,27 @@
   el.setAttribute("aria-hidden", "true");
   const en = App.prefs.get("lang", App.i18n.lang) === "en";
   el.innerHTML =
-    '<div class="startup-scene"><div class="startup-floor"><i></i><i></i><i></i></div><svg class="startup-frame" viewBox="0 0 240 240" focusable="false"><path class="startup-scan" d="M 120 12 L 214 66 V 174 L 120 228 L 26 174 V 66 Z"/><path class="startup-grid" d="M 120 22 V 218 M 35 72 L 205 168 M 35 168 L 205 72"/><path class="startup-corners" d="M 92 28 L 120 12 L 148 28 M 214 82 V 66 L 190 52 M 214 158 V 174 L 190 188 M 148 212 L 120 228 L 92 212 M 50 188 L 26 174 V 158 M 26 82 V 66 L 50 52"/></svg><div class="startup-core"><span class="startup-beam"></span><span class="startup-logo">' + App.icon("logo") + '</span></div><span class="startup-node startup-node--a"></span><span class="startup-node startup-node--b"></span><span class="startup-node startup-node--c"></span></div><div class="startup-word">Kampüs<span>AI</span></div><div class="startup-caption">' +
+    '<div class="startup-scene"><div class="startup-floor"><i></i><i></i><i></i></div><svg class="startup-frame" viewBox="0 0 240 240" focusable="false"><path class="startup-scan" d="M 120 12 L 214 66 V 174 L 120 228 L 26 174 V 66 Z"/><path class="startup-grid" d="M 120 22 V 218 M 35 72 L 205 168 M 35 168 L 205 72"/><path class="startup-corners" d="M 92 28 L 120 12 L 148 28 M 214 82 V 66 L 190 52 M 214 158 V 174 L 190 188 M 148 212 L 120 228 L 92 212 M 50 188 L 26 174 V 158 M 26 82 V 66 L 50 52"/></svg><div class="startup-core"><span class="startup-beam"></span><span class="startup-logo">' +
+    App.icon("logo") +
+    '</span></div><span class="startup-node startup-node--a"></span><span class="startup-node startup-node--b"></span><span class="startup-node startup-node--c"></span></div><div class="startup-word">Kampüs<span>AI</span></div><div class="startup-caption">' +
     (en ? "A NEW PERSPECTIVE ON LEARNING" : "ÖĞRENMEYE YENİ BİR BAKIŞ") +
     '</div><div class="startup-skip">' +
     (en ? "Tap or press Escape to skip" : "Dokunarak veya Escape ile geç") +
     "</div>";
 
+  el.style.setProperty("--startup-duration", DURATION_MS + "ms");
+  el.addEventListener("animationend", (e) => {
+    if (e.target === el && e.animationName === "hud-release") dismiss();
+  });
   document.body.appendChild(el);
+  // Switching accessibility preferences during launch must also release the overlay.
+  preferences = new MutationObserver(() => {
+    if (document.documentElement.hasAttribute("data-a11y-motion")) dismiss();
+  });
+  preferences.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-a11y-motion"],
+  });
   el.addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -60,5 +77,5 @@
     if (document.hidden) dismiss();
   }
   document.addEventListener("visibilitychange", visibility);
-  timer = setTimeout(dismiss, 1450);
+  timer = setTimeout(dismiss, DURATION_MS);
 })();

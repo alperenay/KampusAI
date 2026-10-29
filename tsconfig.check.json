@@ -41,6 +41,14 @@
     "js/core/media.js",
     "js/core/speech.js",
     "js/modules/motion.js",
-    "js/modules/appearance.js"
+    "js/modules/appearance.js",
+    "js/ai/pipeline.js",
+    "js/ai/cloud.js",
+    "js/modules/quiz.js",
+    "js/modules/yazili.js",
+    "js/modules/generation-ui.js",
+    "js/modules/gorsel.js",
+    "js/core/ui.js",
+    "js/modules/startup.js"
   ]
 }

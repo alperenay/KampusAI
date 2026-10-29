@@ -272,13 +272,46 @@
     return fix(data);
   }
 
+  /** Extract only complete JSON objects from a schema-first root array. Never repairs partial JSON.
+      Bounded to 200k chars; invalid/prose prefixes simply defer to final parsing. */
+  function arrayPreview(key, onItems) {
+    if (!['questions', 'sorular'].includes(key)) return () => {};
+    const prefix = new RegExp('^\\s*(?:```(?:json)?\\s*)?\\{\\s*"' + key + '"\\s*:\\s*\\[');
+    let source = '', pos = 0, start = -1, depth = 0, quoted = false, escaped = false, opened = false, ended = false;
+    const items = [];
+    return full => {
+      if (ended || typeof full !== 'string' || full.length > 200000) return;
+      if (full.length < source.length || full.slice(0, source.length) !== source) { ended = true; return; }
+      source = full;
+      if (!opened) { const match = prefix.exec(source); if (!match) return; pos = match[0].length; opened = true; }
+      for (; pos < source.length; pos++) {
+        const c = source[pos];
+        if (quoted) { if (escaped) escaped = false; else if (c === '\\') escaped = true; else if (c === '"') quoted = false; continue; }
+        if (c === '"') { quoted = true; continue; }
+        if (c === '{') { if (!depth) start = pos; depth++; }
+        else if (c === '}' && depth) {
+          if (--depth === 0) {
+            try { const item = JSON.parse(source.slice(start, pos + 1)); items.push(item); onItems(items.slice()); }
+            catch (e) { /* partial previews are optional; final parsing handles repair/retry */ }
+            start = -1;
+          }
+        } else if (!depth && c === ']') { ended = true; break; }
+      }
+    };
+  }
+
   async function generate(opts) {
     let engine = await App.engine.resolve(opts.signal);
     // opts.image / opts.images: data URL ya da { base64 } — doğrudan görebilen modele verilir, göremeyene önce yazıya dökülür
     // (opts.visionPrompt: yazıya dökme talimatı; ör. el yazısı çözüm için satır satır)
     const asImg = (x) => (typeof x === "string" ? { base64: x.split(",")[1] } : x);
     const images = (opts.images || (opts.image ? [opts.image] : [])).filter(Boolean).map(asImg);
+    let recoveryTokens = null;
     const once = async (eng) => {
+      if (opts.onPreview) opts.onPreview([]);
+      const preview = opts.onPreview ? arrayPreview(opts.arrayKey, opts.onPreview) : null;
+      const now = () => typeof performance !== "undefined" ? performance.now() : Date.now();
+      const started = now(); let firstToken = null;
       await eng.prepare(opts.signal);
       const cfg = eng.config();
       const userMsg = { role: "user", content: opts.prompt };
@@ -295,22 +328,33 @@
       const res = await eng.chat({
         model: cfg.chatModel,
         messages: [{ role: "system", content: opts.system }, userMsg],
-        options: { temperature: opts.temperature != null ? opts.temperature : 0.7, num_ctx: 8192, json: true },
+        options: Object.assign({ temperature: Number.isFinite(opts.temperature) ? Math.max(0,Math.min(2,opts.temperature)) : 0.7, num_ctx: 8192, json: true }, Number.isFinite(opts.maxTokens) ? {num_predict: Math.max(1024, Math.min(8192, Math.floor(recoveryTokens || opts.maxTokens)))} : {}),
         signal: opts.signal,
-        onDelta: opts.onDelta
+        onDelta: (piece, full) => {
+          if (opts.signal?.aborted) return;
+          if (firstToken === null) firstToken = now() - started;
+          if (opts.onDelta) opts.onDelta(piece, full);
+          if (preview) preview(full);
+        }
       });
-      return { data: parseJSON(res.text), text: res.text, engine: eng.id, model: res.model || cfg.chatModel };
+      return { data: parseJSON(res.text), text: res.text, engine: eng.id, model: res.model || cfg.chatModel,
+        stats: {scope:"successful-attempt", ttftMs: firstToken, totalMs: now() - started, provider: res.stats || null} };
     };
     try {
       return await once(engine);
     } catch (e) {
+      if (opts.onPreview) opts.onPreview([]);
       const alt = !(opts.signal && opts.signal.aborted) ? await App.engine.fallbackFor(engine, e, opts.signal) : null;
       if (alt) {
         if (engine.kind === "local") App.engine.markLocalDown();
         return once(alt);
       }
       // JSON bozuk geldiyse bir kez daha dene
-      if (e && (e.message === "json" || e instanceof SyntaxError)) return once(engine);
+      if (e && (e.message === "json" || e instanceof SyntaxError)) {
+        // Output may have reached the batch budget. One bounded recovery gets more room.
+        if (Number.isFinite(opts.maxTokens)) recoveryTokens = Math.min(8192, Math.max(1024,opts.maxTokens)*2);
+        return once(engine);
+      }
       throw e;
     }
   }
@@ -344,5 +388,5 @@
     return String(res.text || "").replace(/^["«]|["»]$/g, "").trim();
   }
 
-  App.ai = { run, systemPrompt, generate, parseJSON, fixMath, transcribe };
+  App.ai = { run, systemPrompt, generate, parseJSON, arrayPreview, fixMath, transcribe };
 })();

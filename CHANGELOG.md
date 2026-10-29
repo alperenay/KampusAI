@@ -1,5 +1,14 @@
 # Sürüm notları
 
+## 1.55.0 — 2026-10-29
+
+- Açık tema yüzey hiyerarşisi, metin/durum kontrastı ve giriş sınırları iyileştirildi; açılış 1,65 saniyelik yumuşak geçişle yenilendi.
+- Derslerde yerel SVG görsellerine gecikmeli oluşturma, tutarlı açıklamalar ve yakınlaştırmalı inceleme eklendi.
+- Test/yazılı üretiminde kompakt prompt, akıştan doğrulanan geçici soru önizlemesi ve sınırlı çıktı bütçeleri. Son doğrulama ve iptal/kayıt yalıtımı korunur.
+- Üst üste pencerelerde Escape/odak ve erken kapatma zamanlayıcısı düzeltildi. WebKit viewport uyarısı giderildi.
+- Ölçümler ve sınırlar: [ön yayın raporu](docs/ON-YAYIN-1.55.md).
+
+
 ## 1.54.0 — 2026-10-29
 
 - Android açılış testinde dış UiAutomation süreç çöküşünün uygulamaya mal edilmesi düzeltildi. Uygulama, yeniden başlatılmış süreç ve bağlı WebView çöküşleri testi durdurmaya devam eder; dış hatalar ayrı raporlanır.

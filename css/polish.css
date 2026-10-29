@@ -43,43 +43,82 @@
   --fab-shadow: 0 6px 18px rgba(111, 91, 223, 0.28);
 }
 :root[data-theme="light"]:not([data-a11y-contrast]) {
-  --bg: #f4f5f9;
+  --bg: #edf0f5;
   --bg-image: none;
   --bg-overlay: radial-gradient(
     ellipse at 85% 0%,
-    rgba(112, 94, 214, 0.055),
+    rgba(100, 92, 165, 0.035),
     transparent 55%
   );
-  --bg-sidebar: #f9f9fc;
-  --bg-drawer: #fff;
-  --surface: rgba(255, 255, 255, 0.97);
-  --surface-2: #eeedf6;
-  --surface-3: #e2e3ef;
-  --surface-solid: #fff;
-  --surface-head: #f5f5fa;
-  --surface-hover: #f7f7fc;
-  --border: rgba(44, 42, 75, 0.1);
-  --border-strong: rgba(44, 42, 75, 0.22);
-  --text: #232437;
-  --text-2: #474b63;
-  --muted: #5a6078;
-  --faint: #697087;
-  --accent: #5c4dc6;
-  --accent-hover: #4e3fb3;
-  --accent-soft: rgba(92, 77, 198, 0.09);
-  --accent-text: #5142bb;
-  --title-grad: linear-gradient(110deg, #34286e, #4f518c);
-  --on-bg-muted: #545b73;
+  --surface-primary: #f7f8fb;
+  --surface-secondary: #e6eaf2;
+  --surface-elevated: #fcfcfe;
+  --bg-sidebar: #f2f4f8;
+  --bg-drawer: var(--surface-primary);
+  --surface: var(--surface-primary);
+  --surface-2: var(--surface-secondary);
+  --surface-3: #dce2ed;
+  --surface-solid: var(--surface-elevated);
+  --surface-head: #eef1f7;
+  --surface-hover: #eff2f8;
+  --border: rgba(42, 53, 82, 0.12);
+  --border-strong: #798399;
+  --control-border: #798399;
+  --text: #212b40;
+  --text-2: #38455e;
+  --muted: #4d5b73;
+  --faint: #56647a;
+  --accent: #5748be;
+  --accent-hover: #493ba8;
+  --accent-soft: rgba(87, 72, 190, 0.085);
+  --accent-text: #4d3fa8;
+  --title-grad: linear-gradient(110deg, #302a5d, #465078);
+  --on-bg-muted: #4d5b73;
   --on-bg-shadow: none;
-  --shadow: 0 14px 40px rgba(35, 33, 69, 0.09);
-  --shadow-soft: 0 3px 14px rgba(35, 33, 69, 0.045);
-  --chart-line: #6354d7;
-  --chart-grid: rgba(44, 42, 75, 0.1);
-  --chip-bg: #eeedf6;
-  --tooltip-bg: #fff;
-  --chat-fade: #f4f5f9;
-  --fab-shadow: 0 6px 16px rgba(92, 77, 198, 0.2);
+  --good: #17653b;
+  --good-text: #145b35;
+  --good-soft: #e0eee5;
+  --warn: #775009;
+  --bad: #a02c36;
+  --chart-line: #5748be;
+  --chart-grid: rgba(42, 53, 82, 0.13);
+  --shadow: 0 14px 40px rgba(28, 42, 68, 0.085);
+  --shadow-soft: 0 3px 14px rgba(28, 42, 68, 0.045);
+  --chip-bg: #e8ecf4;
+  --tooltip-bg: var(--surface-elevated);
+  --chat-fade: #edf0f5;
+  --fab-shadow: 0 6px 16px rgba(87, 72, 190, 0.18);
 }
+/* Hierarchy names remain available to shared components in every theme. */
+:root:not([data-theme="light"]),
+:root[data-a11y-contrast] {
+  --surface-primary: var(--surface);
+  --surface-secondary: var(--surface-2);
+  --surface-elevated: var(--surface-solid);
+}
+:root[data-theme="light"]:not([data-a11y-contrast])
+  :is(.input, .select, .textarea) {
+  background: var(--surface-elevated);
+  border-color: var(--control-border);
+}
+:root[data-theme="light"]:not([data-a11y-contrast])
+  :is(.input, .select, .textarea):hover {
+  border-color: var(--accent-text);
+}
+:root[data-theme="light"]:not([data-a11y-contrast])
+  :is(.input, .select, .textarea):focus {
+  background: var(--surface-elevated);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+:root[data-theme="light"]:not([data-a11y-contrast])
+  :is(.input, .textarea)::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+:root[data-theme="light"]:not([data-a11y-contrast]) .badge {
+  border-color: var(--border);
+}
+
 .page-head {
   gap: 16px;
   margin-bottom: 24px;
@@ -325,4 +364,9 @@ svg.ico {
   .motion-atmosphere {
     display: none;
   }
+}
+/* Placeholder text retains readable contrast in both themes. */
+:root:not([data-a11y-contrast]) :is(.input, .textarea)::placeholder {
+  color: var(--muted);
+  opacity: 1;
 }

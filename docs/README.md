@@ -18,5 +18,6 @@
 
 - [Geliştirme](GELISTIRME.md): mimari, yerel çalıştırma, test ve yayın.
 - [Test kapsamı](TEST-KAPSAMI.md): doğrulanan davranışlar ve teknik sınırlar.
+- [1.55 doğrulama notları](ON-YAYIN-1.55.md): yeni görseller, üretim akışı ve ölçüm sınırları.
 - [Pratik geliştirme](PRATIK-GELISTIRME.md): yeni pratik içeriği hazırlama.
 - [Sürüm notları](../CHANGELOG.md): sürümlere göre değişiklikler.

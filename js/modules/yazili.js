@@ -154,17 +154,26 @@
       const allocated = Array.from({ length: count }, (_, i) => chosen[(qs.length + i) % chosen.length]);
       for (let attempt = 0; attempt < 2; attempt++) {
         if (options.signal && options.signal.aborted) throw new Error("aborted");
-        const prompt = g + " · " + L(sb.name) + "\n" + allocated.map((u) => u.id + ": " + L(u.name) + " · " + u.outcomes.map((o) => L(o.title)).join("; ").slice(0, 600)).join("\n") +
+        const prompt = g + " · " + L(sb.name) + "\n" + [...new Map(allocated.map(u=>[u.id,u])).values()].map((u) => u.id + ": " + L(u.name) + " · " + u.outcomes.map((o) => L(o.title)).join("; ").slice(0, 600)).join("\n") +
           "\n" + T("TAM ", "Exactly ") + count + T(" benzersiz açık uçlu, bağlam temelli soru. Kısa cevap anahtarı ve tam/kısmi/sıfır ölçütü. LaTeX JSON kaçışlarını koru. ", " unique open-ended contextual questions. Concise answer keys and full/partial/zero rubrics. Escape LaTeX for JSON. ") +
           '{"sorular":[{"tema":"' + allocated[0].id + '","beceri":"...","puan":15,"metin":"...","cevap":"...","olcut":[[15,"..."],[8,"..."],[0,"..."]]}]}' +
           (qs.length ? "\n" + T("Tekrarlama: ", "Do not repeat: ") + qs.map((q) => q.metin.slice(0, 100)).join(" | ") : "");
-        const r = await App.ai.generate({ system: T("Lise öğretmeni. Yalnız geçerli JSON.", "High-school teacher. Valid JSON only."), prompt, temperature: 0.5, signal: options.signal, onDelta: options.onDelta });
+        const select = items => {
+          const seen = new Set(qs.map(q=>q.metin.trim().toLocaleLowerCase()));
+          return (Array.isArray(items)?items:[]).filter(q=>q && typeof q.metin==='string' && q.metin.trim() && q.metin.length<=3000 && typeof q.cevap==='string' && q.cevap.trim() && q.cevap.length<=3000 && Array.isArray(q.olcut) && q.olcut.length===3 && q.olcut.every(x=>Array.isArray(x)&&typeof x[0]==='number'&&Number.isFinite(x[0])&&typeof x[1]==='string'&&x[1].trim())).filter(q=>{
+            const key=q.metin.trim().toLocaleLowerCase();if(seen.has(key))return false;seen.add(key);return true;
+          }).slice(0,count);
+        };
+        const r = await App.ai.generate({
+          system: T("Lise öğretmeni. Yalnız geçerli JSON.", "High-school teacher. Valid JSON only."), prompt,
+          temperature: 0.45, maxTokens: count*1200, signal: options.signal, onDelta: options.onDelta, arrayKey:'sorular',
+          onPreview: items=>{
+            if(options.signal?.aborted || !options.onProgress)return;
+            const preview=qs.concat(select(items));options.onProgress({ready:preview.length,total:7,questions:preview,provisional:true});
+          }
+        });
         models.add(r.model);
-        const raw = r.data && r.data.sorular;
-        const seen = new Set(qs.map((q) => q.metin.trim().toLowerCase()));
-        batch = (Array.isArray(raw) ? raw : []).filter((q) => q && typeof q.metin === "string" && q.metin.trim() && typeof q.cevap === "string" && q.cevap.trim()).filter((q) => {
-          const id = q.metin.trim().toLowerCase(); if (seen.has(id)) return false; seen.add(id); return true;
-        }).slice(0, count);
+        batch = select(r.data && r.data.sorular);
         if (batch.length === count) break;
       }
       if (batch.length !== count) throw new Error(T("Eksik soru üretildi; yeniden dene.", "Incomplete questions; retry."));

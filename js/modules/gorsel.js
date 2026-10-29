@@ -18,8 +18,12 @@
   /* ---------------- SVG yardımcıları ---------------- */
   const DEFS = '<defs><marker id="gv-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">' +
     '<path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>';
-  const svg = (w, h, body, label) =>
-    '<svg class="gv-svg" viewBox="0 0 ' + w + " " + h + '" role="img" aria-label="' + esc(label) + '" xmlns="http://www.w3.org/2000/svg">' + DEFS + body + "</svg>";
+  let svgSequence = 0;
+  const svg = (w, h, body, label) => {
+    const marker = 'gv-arrow-' + ++svgSequence;
+    return '<svg class="gv-svg" viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="' + esc(label) + '" xmlns="http://www.w3.org/2000/svg">' +
+      (DEFS + body).replace(/gv-ok/g, marker) + '</svg>';
+  };
   /** metin: c = sınıf (gv-t ana, gv-m soluk, gv-s ders rengi, gv-a vurgu, gv-b kalın), a = hizalama */
   const tx = (x, y, s, c, a, size) => '<text x="' + x + '" y="' + y + '" class="' + (c || "gv-t") + '"' + (a ? ' text-anchor="' + a + '"' : "") +
     (size ? ' font-size="' + size + '"' : "") + ">" + esc(s) + "</text>";
@@ -89,14 +93,14 @@
       tx(200, 205, "6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂", "gv-b", "middle"), "Fotosentezin girdileri, evreleri ve ürünleri"));
 
   ekle(/hücresel solunum|oksijenli solunum|solunuma katıl|fermantasyon|\bATP\b|metabolizma/i, ["biyoloji"], "Hücresel solunum", "Glikoz önce sitoplazmada pirüvata parçalanır (glikoliz); oksijen varsa mitokondride tamamen yıkılır.",
-    "Oksijenli solunum ~36–38 ATP, fermantasyon yalnızca 2 ATP kazandırır. Fermantasyonda son ürün etil alkol + CO₂ ya da laktik asittir.", () => svg(400, 230,
+    "ATP verimi hücreye ve koşullara bağlıdır; bu şema sabit bir toplam verim belirtmez. Fermantasyona eşlik eden glikolizin net kazancı glikoz başına 2 ATP’dir.", () => svg(400, 230,
       kutu(150, 10, 100, 32, "Glikoz", "gv-subj") + ln(200, 42, 200, 64, "gv-l", true) + tx(206, 58, "Glikoliz · 2 ATP", "gv-m") +
       kutu(150, 66, 100, 32, "2 Pirüvat", "gv-box2") +
       ln(190, 98, 110, 140, "gv-l2", true) + ln(210, 98, 290, 140, "gv-l3", true) +
       tx(95, 125, "O₂ yok", "gv-m", "middle") + tx(305, 125, "O₂ var", "gv-m", "middle") +
       kutu(30, 142, 150, 40, "Fermantasyon (sitoplazma)", "gv-box2") + kutu(220, 142, 150, 40, "Krebs + ETS (mitokondri)", "gv-box2") +
       tx(105, 205, "Etil alkol/laktik asit", "gv-t", "middle") + tx(105, 222, "toplam 2 ATP", "gv-s", "middle") +
-      tx(295, 205, "CO₂ + H₂O", "gv-t", "middle") + tx(295, 222, "toplam ~36–38 ATP", "gv-s", "middle"), "Glikozun oksijenli ve oksijensiz yıkımı"));
+      tx(295, 205, "CO₂ + H₂O", "gv-t", "middle") + tx(295, 222, "ATP verimi koşula bağlı", "gv-s", "middle"), "Glikozun oksijenli ve oksijensiz yıkımı"));
 
   ekle(/su döngüsü|suyun dağılış/i, ["biyoloji", "cografya"], "Su döngüsü", "Güneş enerjisiyle buharlaşan su yoğunlaşıp bulut olur, yağışla yeryüzüne döner ve akarsu, yer altı suyu yoluyla denize ulaşır.",
     "Bitkilerin terlemesi de atmosfere su verir. Döngüyü çalıştıran enerji Güneş'tir.", () => svg(400, 220,
@@ -130,9 +134,9 @@
       tx(200, 168, "A–T · G–C   (RNA'da A–U)", "gv-s", "middle"), "DNA, mRNA ve protein ilişkisi"));
 
   ekle(/enzim/i, ["biyoloji"], "Enzim aktivitesi", "Her enzimin en hızlı çalıştığı bir optimum sıcaklık ve pH değeri vardır; bunun dışında aktivite düşer.",
-    "Yüksek sıcaklık enzimin yapısını bozar (denatürasyon, geri dönmez); düşük sıcaklık yalnızca yavaşlatır.", () => svg(380, 210,
+    "Optimum sıcaklık enzime ve organizmaya bağlıdır; grafikteki eğri şematiktir. Yüksek sıcaklık enzimin yapısını bozabilir; düşük sıcaklık çoğu enzimde tepkimeyi yavaşlatır.", () => svg(380, 210,
       eksen(40, 180, 320, 160, "Sıcaklık (°C)", "Hız") + pth("M45 175 C120 170 150 40 185 35 C210 32 225 100 250 175", "gv-l2") +
-      ln(185, 35, 185, 180, "gv-l4") + tx(185, 196, "optimum (~37 °C)", "gv-s", "middle") +
+      ln(185, 35, 185, 180, "gv-l4") + tx(185, 196, "optimum sıcaklık", "gv-s", "middle") +
       tx(270, 120, "Denatürasyon", "gv-m"), "Sıcaklığa bağlı enzim aktivitesi grafiği"));
 
   /* ===== FİZİK ===== */
@@ -385,7 +389,7 @@
         }
         if (!m2 && /^\s*\|/.test(line) && !ayirici(line) && !ayirici(satirlar[i + 1])) m2 = line.match(/^\s*\|\s*([^|$]{2,30}?)\s*\|/);
         // iki noktasız kısa madde ("- Örneklem büyüklüğü yeterli mi?") → ilk 30 karaktere kadar, kelime sınırında
-        if (!m2) { const m3 = line.match(/^\s*(?:[-*+]|\d+[.)])\s+(.{3,})$/); if (m3) m2 = [0, m3[1].length <= 30 ? m3[1] : m3[1].slice(0, 30).replace(/\s\S*$/, "") + "…"]; }
+        if (!m2) { const m3 = line.match(/^\s*(?:[-*+]|\d+[.)])\s+(.{3,})$/); if (m3) m2 = ["", m3[1].length <= 30 ? m3[1] : m3[1].slice(0, 30).replace(/\s\S*$/, "") + "…"]; }
         if (!m2) return;
         const k = m2[1].replace(/\*\*/g, "").trim();
         const key = k.toLocaleLowerCase("tr");
@@ -457,8 +461,13 @@
   /* ---------------- Bölüm HTML'i ---------------- */
   const sekil = (icerik, baslik, aciklama, ipucu, cls) =>
     '<figure class="gv-fig' + (cls ? " " + cls : "") + '">' + icerik +
-    '<figcaption><b>' + esc(baslik) + "</b> " + esc(aciklama) + "</figcaption>" +
-    (ipucu ? '<p class="gv-tip"><span aria-hidden="true">💡</span> ' + esc(ipucu) + "</p>" : "") + "</figure>";
+    '<figcaption class="gv-figure-copy"><span class="gv-figure-label">' + T('Görsel özet', 'Visual summary') + '</span><b>' + esc(baslik) + '</b><span class="gv-figure-description">' + esc(aciklama) + '</span>' +
+    (ipucu ? '<p class="gv-tip"><span class="gv-tip__label">' + T('Hatırla', 'Remember') + '</span>' + esc(ipucu) + '</p>' : '') + '</figcaption></figure>';
+
+  function lazyVisual(recipe) {
+    return '<div class="gv-visual" data-gv-recipe="' + esc(JSON.stringify(recipe)) + '"><div class="gv-placeholder"><span>' +
+      T('Vektör çizim', 'Vector illustration') + '</span><button class="btn btn--sm" type="button" data-gv-load>' + T('Görseli göster', 'Show figure') + '</button></div></div>';
+  }
 
   /** Kazanım için görsel bölümün iç HTML'i (görsel yoksa ""). subjectId: "fizik" gibi. */
   function htmlFor(outcome, subjectId) {
@@ -470,7 +479,7 @@
     const parcalar = [];
     const d = diyagramBul(h1, ad, subjectId);
     if (d) {
-      try { parcalar.push(sekil(d.ciz(), d.baslik, d.aciklama, d.ipucu, "gv-fig--ana")); } catch (e) { /* çizim hatası görseli düşürür, sayfayı değil */ }
+      try { parcalar.push(sekil(lazyVisual({diagram:D.indexOf(d)}), d.baslik, d.aciklama, d.ipucu, "gv-fig--ana")); } catch (e) { /* çizim hatası görseli düşürür, sayfayı değil */ }
     }
     const tl = zamanCizelgesi(md);
     if (tl) parcalar.push(sekil(tl, T("Zaman çizelgesi:", "Timeline:"), T("Konuda geçen önemli tarihler sırasıyla.", "Key dates in this topic, in order."),
@@ -478,32 +487,79 @@
     const terimler = kavramlar(md);
     if (terimler.length >= 2) {
       const kisa = (h1 || ad).replace(/\$[^$]*\$/g, "").replace(/\s*\(.*?\)\s*/g, " ").trim();
-      parcalar.push(sekil(kavramHaritasi(kisa.length > 40 ? kisa.slice(0, 38) + "…" : kisa, terimler), T("Kavram haritası:", "Concept map:"),
+      parcalar.push(sekil(lazyVisual({title:kisa.length > 40 ? kisa.slice(0, 38) + "…" : kisa, terms:terimler}), T("Kavram haritası: ", "Concept map: ") + (kisa || ad),
         T("Konunun anahtar kavramları. Bir kavrama dokun, metinde geçtiği yeri göstereyim.", "Key concepts of the topic. Tap one to see it in the text."),
         T("Kendini dene: Her kavramı tek cümleyle açıklayabiliyor musun? Açıklayamadığın kavrama dokunup tekrar oku.", "Self-check: can you explain each concept in one sentence?"), "gv-fig--harita"));
     }
     return parcalar.join("");
   }
 
-  /** Kavram düğümüne tıklayınca metindeki ilk geçişi kaydırıp vurgula */
-  function bind(view) {
-    const git = (node) => {
-      const terim = node.getAttribute("data-gv-term");
-      const govde = view.querySelector(".lesson__section .lesson__body");
-      if (!govde || !terim) return;
-      const hedef = Array.from(govde.querySelectorAll("strong, b")).find((s) => s.textContent.replace(/[:：.,;]+$/, "").trim().toLocaleLowerCase("tr") === terim.toLocaleLowerCase("tr"))
-        || Array.from(govde.querySelectorAll("strong, b")).find((s) => s.textContent.toLocaleLowerCase("tr").includes(terim.toLocaleLowerCase("tr")));
-      if (!hedef) return;
-      hedef.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
-      hedef.classList.remove("gv-flash");
-      void hedef.offsetWidth;
-      hedef.classList.add("gv-flash");
-    };
-    view.querySelectorAll(".gv-node").forEach((n) => {
-      n.addEventListener("click", () => git(n));
-      n.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); git(n); } });
+  let unbind = () => {};
+  let viewer = null;
+  function enlarge(svgElement, figure) {
+    if (!svgElement) return;
+    if (viewer) viewer.close();
+    const drawing = svgElement.cloneNode(true), prefix = 'gv-detail-' + ++svgSequence + '-';
+    drawing.querySelectorAll('[id]').forEach(el => {
+      const id = el.id; el.id = prefix + id;
+      drawing.querySelectorAll('[marker-end],[marker-start]').forEach(x => {
+        for(const attr of ['marker-end','marker-start']) if(x.getAttribute(attr)==='url(#'+id+')')x.setAttribute(attr,'url(#'+prefix+id+')');
+      });
     });
+    drawing.querySelectorAll('[tabindex],[role="button"]').forEach(el=>{el.removeAttribute('tabindex');el.removeAttribute('role');el.removeAttribute('data-gv-term');});
+    const title = figure.querySelector('figcaption b')?.textContent || T('Görsel inceleme','Figure details');
+    const caption = figure.classList.contains('gv-fig--harita')
+      ? T('Konunun anahtar kavramları. Metindeki yerlerini görmek için inceleme penceresini kapatıp kavrama dokun.', 'Key concepts of the topic. Close this viewer and tap a concept to find it in the lesson text.')
+      : figure.querySelector('.gv-figure-description')?.textContent || '';
+    const restoreFocus = document.activeElement;
+    const m = App.ui.modal({title, body:
+      '<div class="gv-detail"><div class="gv-detail-tools"><button class="btn" type="button" data-gv-zoom="out" aria-label="'+esc(T('Uzaklaştır','Zoom out'))+'">−</button><output class="gv-zoom-value" aria-live="polite">100%</output><button class="btn" type="button" data-gv-zoom="in" aria-label="'+esc(T('Yakınlaştır','Zoom in'))+'">+</button><button class="btn" type="button" data-gv-zoom="reset">'+T('Sıfırla','Reset')+'</button></div><p class="hint" id="gvZoomHelp">'+T('İki parmakla yakınlaştır; büyüyen çizimi sürükle. Klavye: + / −, oklar ve 0 ile sıfırlama.','Pinch to zoom; drag to move the enlarged figure. Keyboard: + / −, arrows and 0 to reset.')+'</p><div class="gv-detail-stage" tabindex="0" role="group" aria-label="'+esc(title)+'" aria-describedby="gvZoomHelp"><div class="gv-detail-art"></div></div><p class="gv-detail-caption">'+esc(caption)+'</p></div>',
+      onClose:()=>{document.removeEventListener('keydown',keyboard,true);window.removeEventListener('hashchange',close);if(viewer===m)viewer=null; if(restoreFocus instanceof HTMLElement&&restoreFocus.isConnected)restoreFocus.focus({preventScroll:true});}
+    });
+    viewer=m;m.el.classList.add('gv-lightbox');m.el.style.setProperty('--subj',getComputedStyle(figure).getPropertyValue('--subj'));
+    const stage=m.el.querySelector('.gv-detail-stage'),art=m.el.querySelector('.gv-detail-art'),output=m.el.querySelector('output');art.appendChild(drawing);
+    let scale=1,x=0,y=0,pinch=null,last=null;const pointers=new Map();
+    function paint(){const rect=stage.getBoundingClientRect(),maxX=rect.width*(scale-1)/2,maxY=rect.height*(scale-1)/2;x=Math.max(-maxX,Math.min(maxX,x));y=Math.max(-maxY,Math.min(maxY,y));art.style.transform='translate('+x+'px,'+y+'px) scale('+scale+')';output.textContent=Math.round(scale*100)+'%';stage.dataset.zoom=String(scale);}
+    function zoom(next){scale=Math.max(1,Math.min(4,next));paint();}
+    function close(){m.close();}
+    function keyboard(e){if(!m.el.isConnected||!m.el.contains(document.activeElement))return;
+      if(['+','=','-','0','ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){
+        if(e.target.matches('input,textarea,select'))return;e.preventDefault();e.stopPropagation();
+        if(e.key==='+'||e.key==='=')zoom(scale+.25);else if(e.key==='-')zoom(scale-.25);else if(e.key==='0'){x=y=0;zoom(1);}else{x+=e.key==='ArrowLeft'?30:e.key==='ArrowRight'?-30:0;y+=e.key==='ArrowUp'?30:e.key==='ArrowDown'?-30:0;paint();}
+      }
+    }
+    m.el.querySelectorAll('[data-gv-zoom]').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.gvZoom==='reset'){x=y=0;zoom(1);}else zoom(scale+(b.dataset.gvZoom==='in'?.25:-.25));}));
+    const distance=()=>{const p=[...pointers.values()];return Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y);};
+    stage.addEventListener('pointerdown',e=>{if(e.button>0)return;stage.focus({preventScroll:true});pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});try{stage.setPointerCapture(e.pointerId);}catch(ignore){}if(pointers.size===2){pinch={distance:distance(),scale};last=null;}else last={x:e.clientX,y:e.clientY};});
+    stage.addEventListener('pointermove',e=>{if(!pointers.has(e.pointerId))return;e.preventDefault();pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size===2&&pinch&&pinch.distance>0){zoom(pinch.scale*distance()/pinch.distance);}else if(pointers.size===1&&last&&scale>1){x+=e.clientX-last.x;y+=e.clientY-last.y;paint();}last={x:e.clientX,y:e.clientY};});
+    const end=e=>{pointers.delete(e.pointerId);pinch=null;last=null;};stage.addEventListener('pointerup',end);stage.addEventListener('pointercancel',end);stage.addEventListener('lostpointercapture',end);
+    stage.addEventListener('wheel',e=>{if(!e.ctrlKey)return;e.preventDefault();zoom(scale+(e.deltaY<0?.15:-.15));},{passive:false});
+    document.addEventListener('keydown',keyboard,true);window.addEventListener('hashchange',close);paint();stage.focus({preventScroll:true});
   }
+
+  /** Defer constructing below-the-fold SVGs; never load external assets or change lesson text. */
+  function bind(view) {
+    unbind();let observer=null;
+    function load(host){if(!host.isConnected||!host.dataset.gvRecipe)return;
+      try{const recipe=JSON.parse(host.dataset.gvRecipe),drawing=Number.isInteger(recipe.diagram)&&D[recipe.diagram]?D[recipe.diagram].ciz():kavramHaritasi(recipe.title,recipe.terms);
+        host.innerHTML=drawing+'<button class="btn btn--sm gv-expand" type="button" data-gv-expand>'+App.icon('search')+T('Büyüt ve incele','Enlarge figure')+'</button>';delete host.dataset.gvRecipe;host.dataset.gvReady='true';
+      }catch(error){host.innerHTML='<p class="hint">'+T('Görsel çizilemedi. Konu metninden çalışmaya devam edebilirsin.','This figure could not be drawn. The lesson text remains available.')+'</p>';delete host.dataset.gvRecipe;}
+      observer?.unobserve(host);
+    }
+    const git=node=>{
+      const terim=node.getAttribute('data-gv-term'),govde=view.querySelector('.lesson__section .lesson__body');if(!govde||!terim)return;
+      const hedef=Array.from(govde.querySelectorAll('strong,b')).find(s=>s.textContent.replace(/[:：.,;]+$/,'').trim().toLocaleLowerCase('tr')===terim.toLocaleLowerCase('tr'))||Array.from(govde.querySelectorAll('strong,b')).find(s=>s.textContent.toLocaleLowerCase('tr').includes(terim.toLocaleLowerCase('tr')));if(!hedef)return;
+      hedef.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches||document.documentElement.hasAttribute('data-a11y-motion')?'auto':'smooth',block:'center'});hedef.classList.remove('gv-flash');void hedef.offsetWidth;hedef.classList.add('gv-flash');
+    };
+    function click(e){const loadButton=e.target.closest('[data-gv-load]'),expand=e.target.closest('[data-gv-expand]'),node=e.target.closest('.gv-node');if(loadButton)load(loadButton.closest('.gv-visual'));else if(expand){const figure=expand.closest('figure');enlarge(figure.querySelector('svg'),figure);}else if(node)git(node);}
+    function key(e){const node=e.target.closest('.gv-node');if(node&&(e.key==='Enter'||e.key===' ')){e.preventDefault();git(node);}}
+    view.addEventListener('click',click);view.addEventListener('keydown',key);
+    const hosts=view.querySelectorAll('[data-gv-recipe]');
+    if(window.IntersectionObserver){observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)load(entry.target);}),{root:view,rootMargin:'300px'});hosts.forEach(host=>observer.observe(host));}else hosts.forEach(load);
+    const beforePrint=()=>view.querySelectorAll('[data-gv-recipe]').forEach(load);window.addEventListener('beforeprint',beforePrint);
+    unbind=()=>{window.removeEventListener('beforeprint',beforePrint);observer?.disconnect();view.removeEventListener('click',click);view.removeEventListener('keydown',key);if(viewer)viewer.close();unbind=()=>{};};
+  }
+  window.addEventListener('hashchange',()=>unbind());
 
   /** Kapsama raporu (geliştirici aracı): App.gorsel.kapsam() */
   function kapsam() {
@@ -514,7 +570,7 @@
       const md = L(o.content.anlatim), h1 = (md.match(/^#\s+(.+)$/m) || [])[1] || "";
       const dv = !!diyagramBul(h1, L(o.title), s.id);
       const zv = !!zamanCizelgesi(md), hv = kavramlar(md).length >= 2;
-      out.diyagram += dv; out.zaman += zv; out.harita += hv;
+      out.diyagram += Number(dv); out.zaman += Number(zv); out.harita += Number(hv);
       if (!dv && !zv && !hv) out.hicbiri.push(g.id + "/" + s.id + "/" + u.id + "/" + o.id);
     }))));
     return out;
