@@ -1,5 +1,13 @@
 # Sürüm notları
 
+## 1.53.0 — 2026-10-29
+
+- Yalnız görsel tasarım: nötr koyu ve kırık beyaz açık tema, tutarlı mor–mavi vurgu, sakin arka planlar.
+- Kart, düğme, başlık, menü, AI çalışma alanı, boş durum ve grafik tema renkleri ortak tasarım değişkenlerinde birleştirildi.
+- Atmosfer tercihi, yüksek karşıtlık, hareket azaltma, okuma modu ve mobil güvenli alanlar korunur. Yeni bağımlılık veya işlev eklenmedi.
+- Açık/koyu temalarda 18 yerleşim senaryosu ve temel metin renkleri için 4.5:1 kontrast sınaması eklendi.
+
+
 ## 1.52.0 — 2026-10-29
 
 - Akan ışık şeritleri: mor, okyanus, kutup ışığı veya sade görünüm; yerel renk ve arka plan hareket tercihi. Arka plan yalnız ana çalışma ekranlarında görünür; okuma ve deneyleri örtmez.

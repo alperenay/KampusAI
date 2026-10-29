@@ -61,3 +61,9 @@ Donanım izinleri ve ses sağlayıcısı testlerinde kontrollü örnekler ile ge
 `npm run test:motion-ui`: gerçek Web Animations API ile kart girişleri, sekme göstergesinin konum değiştirmesi, tıklama katmanının işlevleri engellememesi, hızlı gezinme sonunda animasyonların temizlenmesi, işletim sistemi ve uygulama hareket azaltma tercihleri, 320–1440 px yatay taşma kontrolü. Görsel hareket animasyon desteklenmediğinde içeriği gizlemez; bilimsel grafik ve sensör döngülerine müdahale etmez. Tam tarayıcı denetimine dahildir.
 
 `npm run test:appearance-ui`: renk tercihinin kalıcılığı, arka planı durdurma/sade seçim, okuma modunun düğme ve Escape ile geri dönüşü, açık menünün üstten kapanması ve 24/48/80px sistem alt boşluğunda Ayarlar'ın gerçek hit-test ile erişimi. Hedefler 320×640 dahil mobil/tablet boyutlarında kontrol edilir. Fiziksel telefon modellerinin tamamının sertifikalandırıldığı iddia edilmez.
+
+## Görsel sistem (1.53)
+
+Ortak tasarım katmanı `css/polish.css` içindedir. Tema değişkenleri, kart yüzeyleri, başlıklar, kenarlıklar ve temel simgeler burada eşitlenir. Kullanıcı işlevleri ve öğrenme verisi değiştirilmez. Yüksek karşıtlık seçildiğinde özel renk değişkenleri uygulanmaz; hareket azaltma ve kişisel atmosfer tercihi korunur.
+
+`npm run test:polish-ui` açık/koyu temalarda 320/768/1440px genişlik ve ana ekran/Bugün/araçlar kombinasyonlarını, temel metin renklerinin 4.5:1 kontrastını ve yüksek karşıtlık/hareket azaltma uyumunu denetler. Bütün renkli grafik/çizimlerin her noktasında kontrast ölçüldüğü iddia edilmez.

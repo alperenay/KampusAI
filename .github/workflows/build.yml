@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.52.0
+  APP_VERSION: 1.53.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -107,6 +107,7 @@ jobs:
           npm run test:v150-ui
           npm run test:motion-ui
           npm run test:appearance-ui
+          npm run test:polish-ui
           node tools/storage-ui-check.mjs
           node tools/lifecycle-ui-check.mjs
           node tools/lab-interactions-ui-check.mjs
@@ -558,9 +559,9 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          Videolardaki hareket dilinden esinlenen arayüz: seçili sekmeyi takip eden renkli/esnek ışık göstergesi, kademeli kart ve başlık girişleri, tıklama geri bildirimi ve fareyle kart yükselmesi. Akan vektör ışık şeritleri ve mor/okyanus/kutup ışığı/sade görünüm tercihleri eklendi. Kategoriler belirginleştirildi; menüye üstten Ayarlar girişi, Android güvenli alan düzeltmesi ve konu anlatımına menüleri gizleyen okuma modu eklendi. Özgün kod kullanır; yeni kütüphane veya indirilen görsel yoktur.
-          İşletim sistemi veya uygulamadaki Hareketleri azalt ayarı etkinse hareketler durur. Uygulama arka plana alındığında animasyon durur; sayfa geçişlerinde önceki hareketler temizlenir. 1.51 özellikleri korunur.
-          Lint, tip denetimi, birim testleri, tarayıcı regresyonları ve paket açılış kapıları yayın öncesinde çalıştırılır.
+          Görsel tasarım birliği: sakin nötr arka planlar, mor–mavi vurgular, dengeli kart yüzeyleri, okunaklı başlıklar ve tutarlı düğme/simge ölçüleri. Açık tema kırık beyaz yüzeyler ve yumuşak gölgelerle yenilendi. Mevcut özellikler ve kullanım akışları korunur.
+          Menü, AI çalışma alanı, boş durumlar, günlük istatistikler ve grafik tema renkleri aynı görsel sistemde. Kişisel atmosferler, okuma modu, yüksek karşıtlık ve hareket azaltma korunur. Görsel düzenlemeler ek bağımlılık veya ağ isteği gerektirmez.
+          Testler açık/koyu temada 320–1440px yerleşimleri, temel metin kontrastını, mevcut özellik regresyonlarını ve paket açılışını kapsar.
 
           | Platform | Dosya |
           |---|---|
