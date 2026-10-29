@@ -9,7 +9,7 @@
     ["calisma-odasi","chat",["Ortak Çalışma Odası","Shared Study Room"],["Davet koduyla ortak notlar","Collaborative notes with invite codes"],"classroom","arkadaş ortak çalışma oda eşli"]
   ];
   for(const item of tools){
-    App.toolCategories.groupFor(item[0]).routes.push(item[0]);
+    App.toolCategories.groups.find(g=>g.id===item[4])?.routes.push(item[0]);
     App.hub.TOOLS.push(item);
   }
   const isMobile=()=>matchMedia("(max-width:860px),(pointer:coarse)").matches;
