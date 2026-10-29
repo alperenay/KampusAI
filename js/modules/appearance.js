@@ -178,21 +178,6 @@
         .setAttribute("aria-expanded", "false");
       open();
     });
-    const topSettings = document.createElement("button");
-    topSettings.type = "button";
-    topSettings.className = "btn sidebar-settings";
-    topSettings.id = "sidebarSettingsTop";
-    topSettings.innerHTML =
-      App.icon("settings") +
-      "<span>" +
-      esc(T("Ayarlar", "Settings")) +
-      "</span>";
-    document.querySelector(".sidebar__head").after(topSettings);
-    topSettings.addEventListener("click", () => {
-      document.querySelector("#app").classList.remove("is-menu-open");
-      document.getElementById("scrim").hidden = true;
-      App.modules.settings.open();
-    });
     const close = document.createElement("button");
     close.type = "button";
     close.className = "icon-btn sidebar-close";
@@ -226,10 +211,6 @@
     if (media.addEventListener) media.addEventListener("change", apply);
     else media.addListener(apply);
     App.i18n.onChange(() => {
-      topSettings.querySelector("span:last-child").textContent = T(
-        "Ayarlar",
-        "Settings",
-      );
       b.querySelector(".qs__text").textContent = T(
         "Görünümü özelleştir",
         "Personalise appearance",
