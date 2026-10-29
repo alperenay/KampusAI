@@ -30,3 +30,12 @@ new_sqlite_classes = ["SyncRoom"]
 [[migrations]]
 tag = "v2"
 new_sqlite_classes = ["Kota"]
+
+# Davet koduyla açılan ortak çalışma notları, kişisel eşitlemeden tamamen ayrı.
+[[durable_objects.bindings]]
+name = "STUDY"
+class_name = "StudyRoom"
+
+[[migrations]]
+tag = "v3"
+new_sqlite_classes = ["StudyRoom"]
