@@ -63,7 +63,7 @@
     el.style.setProperty("--startup-duration", DURATION_MS + "ms");
     el.addEventListener("animationend", (e) => {
       if (e.target === el && e.animationName === "hud-release") dismiss();
-    }, { once: true });
+    });
     // Hard fallback if an old WebView does not emit animationend.
     timer = setTimeout(dismiss, DURATION_MS + 200);
   }
