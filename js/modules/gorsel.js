@@ -496,7 +496,7 @@
 
   let unbind = () => {};
   let viewer = null;
-  function enlarge(svgElement, figure) {
+  function enlarge(svgElement, figure, trigger) {
     if (!svgElement) return;
     if (viewer) viewer.close();
     const drawing = svgElement.cloneNode(true), prefix = 'gv-detail-' + ++svgSequence + '-';
@@ -511,7 +511,8 @@
     const caption = figure.classList.contains('gv-fig--harita')
       ? T('Konunun anahtar kavramları. Metindeki yerlerini görmek için inceleme penceresini kapatıp kavrama dokun.', 'Key concepts of the topic. Close this viewer and tap a concept to find it in the lesson text.')
       : figure.querySelector('.gv-figure-description')?.textContent || '';
-    const restoreFocus = document.activeElement;
+    // Safari does not focus a clicked button, so the trigger is passed in explicitly.
+    const restoreFocus = trigger || document.activeElement;
     const m = App.ui.modal({title, body:
       '<div class="gv-detail"><div class="gv-detail-tools"><button class="btn" type="button" data-gv-zoom="out" aria-label="'+esc(T('Uzaklaştır','Zoom out'))+'">−</button><output class="gv-zoom-value" aria-live="polite">100%</output><button class="btn" type="button" data-gv-zoom="in" aria-label="'+esc(T('Yakınlaştır','Zoom in'))+'">+</button><button class="btn" type="button" data-gv-zoom="reset">'+T('Sıfırla','Reset')+'</button></div><p class="hint" id="gvZoomHelp">'+T('İki parmakla yakınlaştır; büyüyen çizimi sürükle. Klavye: + / −, oklar ve 0 ile sıfırlama.','Pinch to zoom; drag to move the enlarged figure. Keyboard: + / −, arrows and 0 to reset.')+'</p><div class="gv-detail-stage" tabindex="0" role="group" aria-label="'+esc(title)+'" aria-describedby="gvZoomHelp"><div class="gv-detail-art"></div></div><p class="gv-detail-caption">'+esc(caption)+'</p></div>',
       onClose:()=>{document.removeEventListener('keydown',keyboard,true);window.removeEventListener('hashchange',close);if(viewer===m)viewer=null; if(restoreFocus instanceof HTMLElement&&restoreFocus.isConnected)restoreFocus.focus({preventScroll:true});}
@@ -539,25 +540,29 @@
 
   /** Defer constructing below-the-fold SVGs; never load external assets or change lesson text. */
   function bind(view) {
-    unbind();let observer=null;
+    unbind();
     function load(host){if(!host.isConnected||!host.dataset.gvRecipe)return;
       try{const recipe=JSON.parse(host.dataset.gvRecipe),drawing=Number.isInteger(recipe.diagram)&&D[recipe.diagram]?D[recipe.diagram].ciz():kavramHaritasi(recipe.title,recipe.terms);
         host.innerHTML=drawing+'<button class="btn btn--sm gv-expand" type="button" data-gv-expand>'+App.icon('search')+T('Büyüt ve incele','Enlarge figure')+'</button>';delete host.dataset.gvRecipe;host.dataset.gvReady='true';
       }catch(error){host.innerHTML='<p class="hint">'+T('Görsel çizilemedi. Konu metninden çalışmaya devam edebilirsin.','This figure could not be drawn. The lesson text remains available.')+'</p>';delete host.dataset.gvRecipe;}
-      observer?.unobserve(host);
     }
     const git=node=>{
       const terim=node.getAttribute('data-gv-term'),govde=view.querySelector('.lesson__section .lesson__body');if(!govde||!terim)return;
       const hedef=Array.from(govde.querySelectorAll('strong,b')).find(s=>s.textContent.replace(/[:：.,;]+$/,'').trim().toLocaleLowerCase('tr')===terim.toLocaleLowerCase('tr'))||Array.from(govde.querySelectorAll('strong,b')).find(s=>s.textContent.toLocaleLowerCase('tr').includes(terim.toLocaleLowerCase('tr')));if(!hedef)return;
       hedef.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches||document.documentElement.hasAttribute('data-a11y-motion')?'auto':'smooth',block:'center'});hedef.classList.remove('gv-flash');void hedef.offsetWidth;hedef.classList.add('gv-flash');
     };
-    function click(e){const loadButton=e.target.closest('[data-gv-load]'),expand=e.target.closest('[data-gv-expand]'),node=e.target.closest('.gv-node');if(loadButton)load(loadButton.closest('.gv-visual'));else if(expand){const figure=expand.closest('figure');enlarge(figure.querySelector('svg'),figure);}else if(node)git(node);}
+    function click(e){const loadButton=e.target.closest('[data-gv-load]'),expand=e.target.closest('[data-gv-expand]'),node=e.target.closest('.gv-node');if(loadButton)load(loadButton.closest('.gv-visual'));else if(expand){const figure=expand.closest('figure');enlarge(figure.querySelector('svg'),figure,expand);}else if(node)git(node);}
     function key(e){const node=e.target.closest('.gv-node');if(node&&(e.key==='Enter'||e.key===' ')){e.preventDefault();git(node);}}
     view.addEventListener('click',click);view.addEventListener('keydown',key);
-    const hosts=view.querySelectorAll('[data-gv-recipe]');
-    if(window.IntersectionObserver){observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)load(entry.target);}),{root:view,rootMargin:'300px'});hosts.forEach(host=>observer.observe(host));}else hosts.forEach(load);
+    // Draw a figure once it is within 300px of the screen. Plain rect checks on scroll instead of IntersectionObserver:
+    // WebKit (headless on Windows) never ran those callbacks or rAF here, so a short timer throttles the check.
+    let frame=0;
+    const check=()=>{frame=0;const near=innerHeight+300;view.querySelectorAll('[data-gv-recipe]').forEach(host=>{
+      if(!host.getClientRects().length)return;const r=host.getBoundingClientRect();if(r.top<near&&r.bottom>-300)load(host);});};
+    const schedule=()=>{if(!frame)frame=setTimeout(check,60);};
+    document.addEventListener('scroll',schedule,{capture:true,passive:true});window.addEventListener('resize',schedule);schedule();
     const beforePrint=()=>view.querySelectorAll('[data-gv-recipe]').forEach(load);window.addEventListener('beforeprint',beforePrint);
-    unbind=()=>{window.removeEventListener('beforeprint',beforePrint);observer?.disconnect();view.removeEventListener('click',click);view.removeEventListener('keydown',key);if(viewer)viewer.close();unbind=()=>{};};
+    unbind=()=>{window.removeEventListener('beforeprint',beforePrint);document.removeEventListener('scroll',schedule,{capture:true});window.removeEventListener('resize',schedule);clearTimeout(frame);view.removeEventListener('click',click);view.removeEventListener('keydown',key);if(viewer)viewer.close();unbind=()=>{};};
   }
   window.addEventListener('hashchange',()=>unbind());
 
