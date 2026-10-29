@@ -4,10 +4,12 @@
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
   const DURATION_MS = 1750;
   let el = document.getElementById("startupPreload");
-  let timer = 0, observer = null, started = false;
+  let timer = 0, safety = 0, observer = null, started = false;
+  let appReady = false, minElapsed = false, leaving = false;
 
   function dismiss() {
     clearTimeout(timer);
+    clearTimeout(safety);
     clearTimeout(window.__startupFallback);
     observer?.disconnect();
     if (el) { el.remove(); el = null; }
@@ -29,8 +31,15 @@
     if (!document.hidden && !started) run();
     else if (document.hidden && started) dismiss();
   }
+  function maybeLeave() {
+    if (!el || !started || leaving || !minElapsed || !appReady) return;
+    leaving = true;
+    el.classList.add("is-leaving");
+    safety = setTimeout(dismiss, 500);
+  }
   App.startup = {
     dismiss,
+    ready() { appReady = true; maybeLeave(); },
     get active() { return !!el; }
   };
   if (reduced.matches || App.prefs.get("a11yMotion", false) || window.__startupSkip) {
@@ -62,10 +71,12 @@
 
     el.style.setProperty("--startup-duration", DURATION_MS + "ms");
     el.addEventListener("animationend", (e) => {
-      if (e.target === el && e.animationName === "hud-release") dismiss();
+      if (e.target === el && e.animationName === "hud-leave") dismiss();
     });
-    // Hard fallback if an old WebView does not emit animationend.
-    timer = setTimeout(dismiss, DURATION_MS + 200);
+    // Stay visible until routing is ready: do not reveal an empty application view.
+    timer = setTimeout(() => { minElapsed = true; maybeLeave(); }, DURATION_MS);
+    // Still release if initialization fails (never block the app forever).
+    safety = setTimeout(() => { appReady = true; minElapsed = true; maybeLeave(); }, 8000);
   }
 
   // Do not disable the entrance permanently because Android initially reports hidden.
