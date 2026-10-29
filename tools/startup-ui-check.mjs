@@ -32,7 +32,7 @@ try {
           const candidate = row.type === "attributes" && row.target.id === "startupPreload"
             && row.target.classList.contains("startup-brand") ? [row.target] : row.addedNodes;
           for (const n of candidate)
-            if (n.nodeType === 1 && n.classList.contains("startup-brand")) {
+            if (n.nodeType === 1 && n.classList.contains("startup-brand") && !window.__startupTrace.includes("added")) {
               window.__startupTrace.push("added");
               window.__startupMetrics = {
                 duration: parseFloat(getComputedStyle(n).animationDuration),
@@ -63,7 +63,7 @@ try {
     if (metrics) {
       assert.ok(
         metrics.duration >= 1.2 && metrics.duration <= 1.8,
-        "Bounded CSS timing",
+        "Bounded first-entrance CSS timing (not the shorter exit)",
       );
       assert.equal(metrics.glow, "hud-glow");
     }
