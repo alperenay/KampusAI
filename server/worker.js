@@ -91,6 +91,48 @@ export class SyncRoom {
   }
 }
 
+/* Shared study boards: invite-only 20-character codes (100-bit), not user accounts.
+   No AI keys, chats, grades, progress or private sync data reach this room.
+   7-day inactivity expiry, 8 KB note cap, version-conflict protection. */
+export class StudyRoom {
+  constructor(state) {
+    this.state = state;
+    this.sql = state.storage.sql;
+    this.sql.exec("CREATE TABLE IF NOT EXISTS board (id INTEGER PRIMARY KEY CHECK(id=1), rev INTEGER NOT NULL, note TEXT NOT NULL, author TEXT NOT NULL, modified INTEGER NOT NULL)");
+    this.sql.exec("CREATE TABLE IF NOT EXISTS people (name TEXT PRIMARY KEY, seen INTEGER NOT NULL)");
+  }
+  async alarm() {
+    this.sql.exec("DELETE FROM board");
+    this.sql.exec("DELETE FROM people");
+  }
+  async fetch(request) {
+    if (request.method !== "POST") return json(405, { error: "POST only" });
+    const raw = await request.text();
+    if (raw.length > 11000) return json(413, { error: "too large" });
+    let data;
+    try { data = JSON.parse(raw); } catch(e) { return json(400, { error: "bad body" }); }
+    const action = data?.action;
+    if (!["read","write"].includes(action)) return json(400, { error: "bad action" });
+    const author = String(data.author || "Öğrenci").trim().slice(0, 24).replace(/[\x00-\x1F<>]/g, "");
+    const now = Date.now();
+    this.sql.exec("DELETE FROM people WHERE seen < ?", now - 15 * 60 * 1000);
+    this.sql.exec("INSERT OR REPLACE INTO people(name, seen) VALUES(?,?)",author || "Öğrenci",now);
+    let current = this.sql.exec("SELECT rev,note,author,modified FROM board WHERE id=1").toArray()[0];
+    if (!current) { this.sql.exec("INSERT INTO board(id,rev,note,author,modified) VALUES(1,0,'','',?)",now); current={rev:0,note:"",author:"",modified:now}; }
+    if (action === "write") {
+      if (typeof data.note !== "string" || data.note.length > 8000) return json(413, { error: "note too long" });
+      if (!Number.isSafeInteger(data.base) || data.base !== Number(current.rev))
+        return json(409, { error:"conflict", rev:Number(current.rev), note:current.note, author:current.author });
+      const rev = Number(current.rev) + 1;
+      this.sql.exec("UPDATE board SET rev=?,note=?,author=?,modified=? WHERE id=1",rev,data.note,author,now);
+      current = { rev,note:data.note,author,modified:now };
+    }
+    await this.state.storage.setAlarm(now + 7 * 24 * 3600 * 1000);
+    const people = this.sql.exec("SELECT name FROM people WHERE seen >= ? ORDER BY name LIMIT 12",now - 15 * 60 * 1000).toArray().map(x=>x.name);
+    return json(200,{rev:Number(current.rev),note:current.note,author:current.author,modified:Number(current.modified),people,expiresInDays:7});
+  }
+}
+
 /* =========================================================
    Kota: tek örnek (idFromName("genel")), tüm sunucu örnekleri için ortak sayaçlar
      • dakikalık sayaçlar bellekte (örnek yeniden başlarsa sıfırlanır; sorun değil)
@@ -228,6 +270,18 @@ export default {
       if (!kota) return json(503, { error: "kota yok" });
       const d = await kotaCagir("/durum");
       return json(200, Object.assign({ ok: !!key }, d || {}));
+    }
+    // Davet koduna sahip kullanıcıların ortak *not* odası; kişisel verilerden ayrı.
+    const studyMatch = url.pathname.match(/^\/studyroom\/([A-HJ-NP-Z2-9]{20})$/);
+    if (studyMatch) {
+      if (request.method !== "POST") return json(405,{error:"POST only"});
+      if (!env.STUDY) return json(503,{error:"study room unavailable"});
+      const ip = request.headers.get("CF-Connecting-IP") || "?";
+      if (limited(ip,"study",24)) return json(429,{error:"too many requests"});
+      if (Number(request.headers.get("content-length")||0)>11000) return json(413,{error:"too large"});
+      const room = env.STUDY.get(env.STUDY.idFromName(studyMatch[1]));
+      const response = await room.fetch("https://study/board",{method:"POST",headers:{"content-type":"application/json"},body:request.body});
+      return new Response(response.body,{status:response.status,headers:{...CORS,"content-type":"application/json","cache-control":"no-store"}});
     }
     // Eşitleme (Gemini anahtarı gerektirmez)
     const sm = url.pathname.match(/^\/sync\/([A-Za-z0-9-]+)$/);
