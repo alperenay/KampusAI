@@ -195,6 +195,7 @@
         '<p class="ai-notice" id="aiNotice" hidden></p>' +
         '<p class="home__models" data-ai-models>' + modelsLine() + "</p>" +
         (App.aiFavorites ? App.aiFavorites.html() : "") +
+        (App.smartHome ? App.smartHome.html() : "") +
       "</div>"
     );
   }
