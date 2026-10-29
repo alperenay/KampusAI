@@ -107,6 +107,7 @@ jobs:
           npm run test:v150-ui
           npm run test:motion-ui
           npm run test:appearance-ui
+          node tools/v159-ui-check.mjs
           npm run test:polish-ui
           npm run test:startup-ui
           npm run test:lesson-layout-ui
