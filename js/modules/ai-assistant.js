@@ -206,9 +206,14 @@
     let label = t("ai.stage." + (msg.stage || "answer"));
     if (msg.stage === "memory" && msg.memProgress && msg.memProgress[1]) label = t("ai.stage.indexing", { i: msg.memProgress[0], n: msg.memProgress[1] });
     const model = (msg.models || []).filter((m) => m.role === msg.stage).map((m) => m.model)[0] || "";
-    return '<div class="stage"><span class="spinner" aria-hidden="true"></span>' + App.icon(STAGE_ICON[msg.stage] || "sparkle") +
-      "<span>" + esc(label) + "</span>" + (model ? '<code>' + esc(shortModel(model)) + "</code>" : "") +
-      '<span class="stage__time">' + esc(t("ai.seconds", { n: secs })) + "</span></div>";
+    const key = (msg.stage || "answer") + "|" + model + "|" + (msg.memProgress || []).join(":");
+    return '<div class="stage stage--orbit" role="status" aria-live="off" data-stage-key="' + esc(key) + '">' +
+      '<span class="stage__visual" aria-hidden="true"><i class="stage__ring stage__ring--outer"></i><i class="stage__ring stage__ring--inner"></i><i class="stage__core"></i></span>' +
+      '<span class="stage__content"><span class="stage__title">' + App.icon(STAGE_ICON[msg.stage] || "sparkle") +
+      '<span class="stage__label">' + esc(label) + '</span></span>' +
+      '<span class="stage__meta">' + (model ? '<code>' + esc(shortModel(model)) + '</code>' : '') +
+      '<span class="stage__time" data-stage-seconds>' + esc(t("ai.seconds", { n: secs })) + '</span></span>' +
+      '<span class="stage__track" aria-hidden="true"><i></i></span></span></div>';
   }
 
   function sourcesHtml(src) {
@@ -373,19 +378,44 @@
   }
 
   let paintQueued = false;
-  /** Yanıt akarken yalnızca son mesajı yeniden çizer */
-  function paintLive() {
+  let lastPaintAt = 0;
+  function updateStageTime(el) {
+    const counter = el?.querySelector("[data-stage-seconds]");
+    if (counter && live.msg) {
+      const secs = Math.max(0, Math.round((Date.now() - (live.msg.startedAt || Date.now())) / 1000));
+      counter.textContent = t("ai.seconds", { n: secs });
+    }
+  }
+  /* A running timer only changes text; do NOT destroy the animation every second.
+     On mobile, batch streamed Markdown updates to avoid WebView frame drops. */
+  function paintLive(changed = true) {
+    if (!changed) {
+      if (mounted?.chatId === live.chatId) {
+        updateStageTime(mounted.view.querySelector('.msg[data-mid="' + live.msg?.id + '"]'));
+      }
+      return;
+    }
     if (paintQueued) return;
     paintQueued = true;
-    requestAnimationFrame(() => {
+    const mobile = window.matchMedia("(max-width: 860px), (pointer: coarse)").matches;
+    const delay = mobile ? Math.max(0, 90 - (performance.now() - lastPaintAt)) : 0;
+    setTimeout(() => requestAnimationFrame(() => {
       paintQueued = false;
-      if (!mounted || !live.msg || mounted.chatId !== live.chatId) return;
+      lastPaintAt = performance.now();
+      if (!mounted || !live.msg || mounted.chatId !== live.chatId || document.hidden) return;
       const el = mounted.view.querySelector('.msg[data-mid="' + live.msg.id + '"]');
       if (!el) return;
       const stick = mounted.view.scrollHeight - mounted.view.scrollTop - mounted.view.clientHeight < 160;
+      const existingStage = el.querySelector(".stage--orbit");
+      if (existingStage) existingStage.remove();
       el.innerHTML = assistantHtml(live.msg);
+      const freshStage = el.querySelector(".stage--orbit");
+      if (existingStage && freshStage && existingStage.dataset.stageKey === freshStage.dataset.stageKey) {
+        freshStage.replaceWith(existingStage); // continuous animation: no restart per token
+        updateStageTime(existingStage);
+      }
       if (stick) mounted.view.scrollTop = mounted.view.scrollHeight;
-    });
+    }), delay);
   }
 
   function repaintComposerButton() {
@@ -425,7 +455,7 @@
     live.chatId = chat.id; live.chat = chat; live.msg = aiMsg;
     live.controller = new AbortController();
     live.lastSave = 0;
-    live.timer = setInterval(paintLive, 1000);
+    live.timer = setInterval(() => paintLive(false), 1000);
     await saveChat(chat);
     if (mounted && (mounted.chatId === chat.id || !mounted.chatId)) await renderChat(mounted.view, chat.id);
 
