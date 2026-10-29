@@ -74,7 +74,7 @@
       if (!tts || S.muted) { it.timer = setTimeout(() => { if (S.cur === it) next(); }, env.dur * 1000 + 150); return; }   // ses yok: okuma hızında
       let started = false;
       it.say0 = performance.now();
-      App.speech.say(it.text, { lang, rate: o.rate || 1, pitch: o.pitch || 1,
+      App.speech.say(it.text, { lang, rate: o.rate || 1, pitch: o.pitch || 1, natural: true,
         onStart: () => { started = true; it.t0 = performance.now(); },
         onWord: (ci) => { started = true; it.t0 = performance.now() - KM().wordTime(env, ci) * 1000; },   // zarfı gerçek konuşmaya oturt
         onEnd: (why) => {

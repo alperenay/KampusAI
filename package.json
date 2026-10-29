@@ -1,11 +1,11 @@
 {
   "name": "kampusai-web",
   "private": true,
-  "version": "1.55.0",
+  "version": "1.56.0",
   "scripts": {
     "build": "node tools/build-web.mjs dist/web",
     "lint": "node tools/syntax-check.mjs && node tools/compat-check.mjs",
-    "test": "node tools/study-check.mjs && node tools/research-check.mjs && node tools/teacher-review-check.mjs && node tools/retired-model-check.mjs && node tools/ar-check.mjs && node tools/cevre-check.mjs && node tools/kavram-check.mjs && node tools/content-check.mjs && node tools/build-content-index.mjs --check && node tools/v142-check.mjs && node tools/practice-check.mjs && node tools/v145-check.mjs && node tools/runtime-check.mjs && node tools/v147-check.mjs && node tools/discovery-check.mjs && node tools/discovery-signal-check.mjs && node tools/v149-check.mjs && node tools/v151-check.mjs && node tools/audio-check.mjs && node tools/v150-check.mjs && node tools/inference-check.mjs",
+    "test": "node tools/study-check.mjs && node tools/research-check.mjs && node tools/teacher-review-check.mjs && node tools/retired-model-check.mjs && node tools/ar-check.mjs && node tools/cevre-check.mjs && node tools/kavram-check.mjs && node tools/content-check.mjs && node tools/build-content-index.mjs --check && node tools/v142-check.mjs && node tools/practice-check.mjs && node tools/v145-check.mjs && node tools/runtime-check.mjs && node tools/v147-check.mjs && node tools/discovery-check.mjs && node tools/discovery-signal-check.mjs && node tools/v149-check.mjs && node tools/v151-check.mjs && node tools/audio-check.mjs && node tools/v150-check.mjs && node tools/inference-check.mjs && node tools/tts-check.mjs",
     "test:study": "node tools/study-check.mjs",
     "test:study-ui": "node tools/study-ui-check.mjs",
     "test:research": "node tools/research-check.mjs",
@@ -43,6 +43,8 @@
     "test:startup-ui": "node tools/startup-ui-check.mjs",
     "test:lesson-layout-ui": "node tools/lesson-layout-ui-check.mjs",
     "test:inference": "node tools/inference-check.mjs",
+    "test:tts": "node tools/tts-check.mjs",
+    "test:voice-ui": "node tools/voice-ui-check.mjs",
     "test:inference-ui": "node tools/inference-ui-check.mjs",
     "test:lecture-visuals-ui": "node tools/lecture-visuals-ui-check.mjs",
     "test:prerelease-ui": "node tools/prerelease-ui-check.mjs"

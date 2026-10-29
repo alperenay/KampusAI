@@ -1157,6 +1157,8 @@ App.locales.en = {
   "a11y.voice": "Voice",
   "a11y.voiceHint": "★ marks natural (neural) voices; ☁ needs the internet. Automatic picks the most natural voice.",
   "a11y.voiceAuto": "Automatic (most natural)",
+  "a11y.haptic": "Touch vibration",
+  "a11y.hapticHint": "A short, light vibration when you press a button on a phone.",
   "a11y.voiceTry": "Try",
   "a11y.voiceSample": "Hello! Let's explore photosynthesis together today. Ready?",
   "a11y.dysMode": "Dyslexia-friendly mode",

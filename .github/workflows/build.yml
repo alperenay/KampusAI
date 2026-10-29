@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.55.0
+  APP_VERSION: 1.56.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -114,6 +114,7 @@ jobs:
           npm run test:inference-ui
           npm run test:lecture-visuals-ui
           npm run test:prerelease-ui
+          npm run test:voice-ui
           node tools/storage-ui-check.mjs
           node tools/lifecycle-ui-check.mjs
           node tools/lab-interactions-ui-check.mjs
@@ -291,6 +292,9 @@ jobs:
           # Sesli Feynman (konuşma → yazı) için mikrofon; Android 11+ paket görünürlüğü: ses tanıma ve sesli okuma servisleri
           grep -q "android.permission.RECORD_AUDIO" app/src/main/AndroidManifest.xml || \
             sed -i 's#</manifest>#    <uses-permission android:name="android.permission.RECORD_AUDIO" />\n</manifest>#' app/src/main/AndroidManifest.xml
+          # Dokunuş titreşimi (navigator.vibrate) WebView'da bu normal izni ister
+          grep -q "android.permission.VIBRATE" app/src/main/AndroidManifest.xml || \
+            sed -i 's#</manifest>#    <uses-permission android:name="android.permission.VIBRATE" />\n</manifest>#' app/src/main/AndroidManifest.xml
           # Capacitor WebView audio capture checks this normal permission as well as RECORD_AUDIO.
           grep -q "android.permission.MODIFY_AUDIO_SETTINGS" app/src/main/AndroidManifest.xml || \
             sed -i 's#</manifest>#    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />\n</manifest>#' app/src/main/AndroidManifest.xml
@@ -567,10 +571,11 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          Açık tema: slate/off-white yüzey katmanları, iyileştirilmiş metin/durum/rozet kontrastı ve belirgin giriş sınırları. Açılış 1,65 saniyelik yumuşak bir geçişle tamamlanır; hareket azaltma ve geçme seçenekleri korunur.
-          Derslerde yerel vektör görselleri gerektiğinde oluşturulur; tutarlı açıklamalar ve büyütme/klavye/dokunma destekli inceleme penceresi eklendi. Dış görsel indirme veya yeni kütüphane gerektirmez.
-          Test/yazılı üretiminde daha kısa promptlar, kademeli JSON soru önizlemesi, sınırlı çıktı bütçesi ve yeniden deneme; nihai şema doğrulaması ve kayıt sınırları korunur. Yerel model değiştirilmedi; model kalitesi veya gerçek servis gecikmesi için ölçülmemiş hız iddiası yoktur.
-          Modal odak/zamanlayıcı temizliği ve WebKit viewport uyarısı düzeltildi. Genişletilmiş ön yayın testleri kontrollü servis örnekleriyle çalışır; fiziksel cihaz veya canlı AI doğruluğu sertifikası değildir.
+          Gerçekçi ses: Gemini, OpenAI ya da ElevenLabs anahtarı varsa sesli öğretmen, podcast, sesli okuma ve konuşan kavramlar insan sesine yakın bulut sesiyle okunur (Erişilebilirlik › Gerçekçi ses). Anahtar yoksa ya da servis hata verirse cihaz sesi devam eder.
+          Sesli öğretmen cevabı gelirken okumaya başlar: tamamlanan her cümle hemen seslendirilir; ilk ses tüm cevabı beklemez.
+          Yeni açılış: nöral çekirdek, perspektif ızgara, tarama ışığı, şok dalgası ve hologram geçişi (1,75 sn; dokunarak geçilir, hareket azaltmada gösterilmez).
+          Sesli öğretmen küresi dinlerken mikrofonla bükülen dalga, düşünürken hızlanan parçacıklar, konuşurken sesle atan aura gösterir. Düğmelerde neon dokunuş ışıması ve telefonda hafif titreşim (kapatılabilir).
+          Telefonda kare düşüren sonsuz gölge/filtre animasyonları transform/opacity'ye taşındı. Bulut sesi ve kontrollü servis örnekleriyle yapılan testler gerçek ses kalitesi veya gecikme ölçümü değildir.
 
           | Platform | Dosya |
           |---|---|

@@ -16,7 +16,10 @@
      App.speech.sttMode()  → "native" | "web" | "record" | null
      App.speech.listen({ lang, onPartial(text), onFinal(text), onLevel(0..1), onState(s), onError(code) })
         → { stop(): Promise<{ text, durationMs }> }
-     App.speech.say(text, { lang, rate, onEnd, onError }) / App.speech.stopSaying()
+     App.speech.say(text, { lang, rate, natural, onStart, onWord, onEnd, onError }) / App.speech.stopSaying()
+       natural: true → anahtar varsa doğal bulut sesi (js/ai/tts.js), yoksa cihaz sesi
+     App.speech.stream({ …, transform }) → { push(metin), end(metin), stop() }  (cevap gelirken okur)
+     App.speech.level() → 0..1 okunan sesin seviyesi
      App.speech.ttsAvailable()
    ========================================================= */
 (function () {
@@ -641,11 +644,12 @@
   }
   /** Uzun metni cümle sınırlarından ≤ 220 karakterlik parçalara böler (Chrome'un uzun ifadede kesilmesini önler
       ve cümle aralarında doğal duraklama verir). Dönüş: [{ text, at }] (at: özgün metindeki başlangıç) */
-  function chunks(text) {
+  function chunks(text, quick) {
     const out = [], re = /[^.!?…;:]+[.!?…;:]*\s*/g;
     let m, cur = "", at = 0, start = 0;
     while ((m = re.exec(text))) {
-      if (cur && (cur + m[0]).length > 220) { out.push({ text: cur.trim(), at: start }); cur = ""; }
+      // quick: ilk parça ilk cümlede biter (çok kısaysa bir sonrakini alır), ilk ses beklemeden başlar
+      if (cur && ((cur + m[0]).length > 220 || (quick && !out.length && cur.trim().length >= 25))) { out.push({ text: cur.trim(), at: start }); cur = ""; }
       if (!cur) start = m.index;
       cur += m[0];
       at = m.index + m[0].length;
@@ -673,80 +677,202 @@
     return !!pickVoice(langTag(lang));
   }
 
+  /* ---------------- Okuma kuyruğu (v1.56) ----------------
+     say() ve stream() aynı kuyruğu kullanır: Q = { segs: [{ text, at, say }], finished, onAdd, full }.
+     Çağıran natural:true derse ve bir doğal bulut sesi (App.tts) kullanılabiliyorsa o çalar; yoksa cihaz sesi.
+     Bulut sesi yolda hata verirse kalan parçalar cihaz sesiyle okunur, okuma yarıda kalmaz. */
+  let lastWord = 0, cloudEnd = null;
+  const newQueue = () => ({ segs: [], finished: false, onAdd: null, full: "" });
+  function addSeg(Q, seg) { Q.segs.push(seg); if (Q.onAdd) Q.onAdd(); }
+  function finishQueue(Q) { Q.finished = true; if (Q.onAdd) Q.onAdd(); }
+
+  function play(Q, o) {
+    stopSaying();
+    const tag = langTag(o.lang);
+    const rate = Number(o.rate) || 1;
+    const pitch = Number(o.pitch) || 1;
+    const id = "u" + ++seq;
+    current = id;
+    const alive = () => current === id;
+    let started = false;
+    const onStart = () => { if (alive() && !started) { started = true; if (o.onStart) o.onStart(); } };
+    const end = (reason) => { if (!alive()) return; current = null; cloudEnd = null; if (o.onEnd) o.onEnd(reason); };
+
+    function web(from) {
+      if (!ttsAvailable() || nativeHas("ttsSpeak")) return native(from);
+      const v = pickVoice(tag, o.voice || 0);
+      let k = from;
+      const speakPart = () => {
+        if (!alive()) return;
+        if (k >= Q.segs.length) {
+          if (Q.finished) end("done");
+          else Q.onAdd = () => { Q.onAdd = null; speakPart(); };
+          return;
+        }
+        const part = Q.segs[k];
+        const u = new SpeechSynthesisUtterance(part.say || part.text);
+        u.lang = tag;
+        u.rate = rate;
+        // soru cümlelerinde ses tonu hafifçe yükselir
+        u.pitch = Math.max(0.1, Math.min(2, pitch * (/[?]\s*$/.test(part.text) ? 1.04 : 1)));
+        if (v) u.voice = v;
+        u.onboundary = (e) => {
+          lastWord = performance.now();
+          if (o.onWord && alive() && (!e.name || e.name === "word")) o.onWord(part.at + (e.charIndex || 0));
+        };
+        u.onstart = onStart;
+        u.onend = () => {
+          if (!alive()) return;
+          k++;
+          setTimeout(speakPart, /[.!?…]\s*$/.test(part.text) ? 140 : 60);
+        };
+        u.onerror = (e) => {
+          if (current === id) current = null;
+          if (e.error === "interrupted" || e.error === "canceled") {
+            if (o.onEnd) o.onEnd("stop");
+          } else if (o.onError) o.onError(e.error || "tts");
+        };
+        speechSynthesis.speak(u);
+      };
+      speakPart();
+    }
+
+    function native(from) {
+      if (!nativeHas("ttsSpeak")) {
+        current = null;
+        if (o.onError) setTimeout(() => o.onError("unsupported"));
+        return;
+      }
+      const speakOne = (key, text, onWord, next) => {
+        ttsWait[key] = {
+          onStart,
+          onWord: (n) => { lastWord = performance.now(); if (onWord) onWord(n); },
+          onError: (c) => { if (current === id) current = null; if (o.onError) o.onError(c); },
+          onEnd: (type) => { if (type === "stop" || !alive()) { if (current === id) current = null; if (o.onEnd) o.onEnd("stop"); } else next(); }
+        };
+        try {
+          if (nativeHas("ttsSpeak3")) N().ttsSpeak3(key, text, tag, rate, pitch, Number(o.voice) || 0);
+          else if (nativeHas("ttsSpeak2")) N().ttsSpeak2(key, text, tag, rate, pitch);
+          else N().ttsSpeak(key, text, tag, rate);
+        } catch (e) {
+          delete ttsWait[key];
+          if (current === id) current = null;
+          if (o.onError) o.onError("tts");
+        }
+      };
+      // Bütün metin baştan biliniyorsa telefonun motoruna tek seferde verilir (kendi duraklamalarıyla okur)
+      if (from === 0 && Q.finished && Q.full) {
+        speakOne(id, o.onWord ? Q.full : naturalText(Q.full, tag), o.onWord, () => end("done"));
+        return;
+      }
+      let k = from;
+      const nextPart = () => {
+        if (!alive()) return;
+        if (k >= Q.segs.length) {
+          if (Q.finished) end("done");
+          else Q.onAdd = () => { Q.onAdd = null; nextPart(); };
+          return;
+        }
+        const part = Q.segs[k++];
+        speakOne(id + "-" + k, part.say || part.text, o.onWord && ((n) => o.onWord(part.at + n)), nextPart);
+      };
+      nextPart();
+    }
+
+    if (o.natural && App.tts && App.tts.provider()) {
+      cloudEnd = (reason) => { if (o.onEnd) o.onEnd(reason); };
+      App.tts.consume(Q, {
+        lang: tag.slice(0, 2), nth: o.voice || 0, rate,
+        onStart,
+        onWord: o.onWord && ((at) => { if (alive()) o.onWord(at); }),
+        onEnd: end
+      }, {
+        fail: (from) => { if (!alive()) return; cloudEnd = null; web(from); }
+      });
+    } else web(0);
+    return id;
+  }
+
   function say(text, o) {
     o = o || {};
-    stopSaying();
     text = String(text || "").trim();
     if (!text) {
+      stopSaying();
       if (o.onEnd) setTimeout(() => o.onEnd("done"));
       return;
     }
-    const tag = langTag(o.lang);
-    const rate = Number(o.rate) || 1;
-    const id = "u" + ++seq;
-    current = id;
-    const pitch = Number(o.pitch) || 1;
-    if (nativeHas("ttsSpeak")) {
-      ttsWait[id] = {
-        onEnd: o.onEnd,
-        onError: o.onError,
-        onWord: o.onWord,
-        onStart: o.onStart,
-      };
-      try {
-        const nt = o.onWord ? text : naturalText(text, tag);
-        if (nativeHas("ttsSpeak3")) N().ttsSpeak3(id, nt, tag, rate, pitch, Number(o.voice) || 0);
-        else if (nativeHas("ttsSpeak2")) N().ttsSpeak2(id, nt, tag, rate, pitch);
-        else N().ttsSpeak(id, text, tag, rate);
-      } catch (e) {
-        delete ttsWait[id];
-        if (o.onError) o.onError("tts");
-      }
-      return id;
+    const tag = langTag(o.lang), Q = newQueue();
+    Q.full = text;
+    chunks(text, true).forEach((c) => Q.segs.push({ text: c.text, at: c.at, say: o.onWord ? c.text : naturalText(c.text, tag) }));
+    Q.finished = true;
+    return play(Q, o);
+  }
+
+  /** Yapay zekâ cevabı gelirken okumaya başlar: push(şimdiye kadarki metin) tamamlanan cümleleri sıraya ekler,
+      end(son metin) kalanını ekler. o.transform(parça) okunacak metni verir (ör. markdown → sözcükler).
+      Kapanmamış **, $ ve ` içindeki ya da "3." gibi sayıdan sonra gelen noktada bölünmez. */
+  function stream(o) {
+    o = o || {};
+    const Q = newQueue(), tag = langTag(o.lang), tf = o.transform || ((x) => x);
+    let used = 0, spoken = 0, id = null, closed = false;
+    const count = (s, re) => (s.match(re) || []).length;
+    const balanced = (s) => s.split("**").length % 2 === 1 && count(s.replace(/\\\$/g, ""), /\$/g) % 2 === 0 && count(s, /`/g) % 2 === 0;
+    function take(piece) {
+      const said = String(tf(piece) || "").replace(/\s+/g, " ").trim();
+      if (!said) return;
+      chunks(said, !Q.segs.length).forEach((c) => addSeg(Q, { text: c.text, at: spoken + c.at, say: o.onWord ? c.text : naturalText(c.text, tag) }));
+      spoken += said.length + 1;
+      if (!id) id = play(Q, o);
     }
-    if (!ttsAvailable()) {
-      if (o.onError) setTimeout(() => o.onError("unsupported"));
-      return id;
-    }
-    const v = pickVoice(tag, o.voice || 0);
-    const parts = o.onWord ? chunks(text) : chunks(naturalText(text, tag));
-    let k = 0;
-    const speakPart = () => {
-      if (current !== id) return;
-      const part = parts[k];
-      const u = new SpeechSynthesisUtterance(part.text);
-      u.lang = tag;
-      u.rate = rate;
-      // soru cümlelerinde ses tonu hafifçe yükselir
-      u.pitch = Math.max(0.1, Math.min(2, pitch * (/[?]\s*$/.test(part.text) ? 1.04 : 1)));
-      if (v) u.voice = v;
-      if (o.onWord)
-        u.onboundary = (e) => {
-          if (current === id && (!e.name || e.name === "word"))
-            o.onWord(part.at + (e.charIndex || 0));
-        };
-      if (o.onStart && k === 0) u.onstart = () => o.onStart();
-      u.onend = () => {
-        if (current !== id) return;
-        k++;
-        if (k < parts.length) { setTimeout(speakPart, /[.!?…]\s*$/.test(part.text) ? 140 : 60); return; }
-        current = null;
-        if (o.onEnd) o.onEnd("done");
-      };
-      u.onerror = (e) => {
-        if (current === id) current = null;
-        if (e.error === "interrupted" || e.error === "canceled") {
-          if (o.onEnd) o.onEnd("stop");
-        } else if (o.onError) o.onError(e.error || "tts");
-      };
-      speechSynthesis.speak(u);
+    return {
+      push(raw) {
+        raw = String(raw || "");
+        if (closed || raw.length <= used) return;
+        const rest = raw.slice(used), re = /([.!?…:;])(?=\s)|\n\s*\n/g;
+        let cut = -1, m;
+        while ((m = re.exec(rest))) {
+          if (m[1] === "." && /\d/.test(rest.charAt(m.index - 1))) continue;
+          const stop = m.index + m[0].length;
+          if (balanced(raw.slice(0, used + stop))) cut = stop;
+        }
+        if (cut > 0) { take(rest.slice(0, cut)); used += cut; }
+      },
+      end(raw) {
+        if (closed) return;
+        closed = true;
+        raw = String(raw || "");
+        if (raw.length > used) take(raw.slice(used));
+        used = raw.length;
+        finishQueue(Q);
+        if (!id && o.onEnd) setTimeout(() => o.onEnd("done"));
+      },
+      stop() {
+        closed = true;
+        finishQueue(Q);
+        if (id && current === id) stopSaying();
+      },
+      get started() { return !!id; }
     };
-    speakPart();
-    return id;
+  }
+
+  /** Okunan sesin anlık seviyesi 0..1 (görseller için). Bulut sesinde gerçek genlik; cihaz sesinde
+      kelime sınırlarından türetilen zarf (sınır olayı yoksa hafif dalgalanma). */
+  function level() {
+    if (App.tts && App.tts.active()) return App.tts.level();
+    if (!current) return 0;
+    const now = performance.now();
+    const env = Math.exp(-(now - lastWord) / 240);
+    return Math.max(0.18 + 0.1 * Math.sin(now / 95), 0.95 * env);
   }
 
   function stopSaying() {
     current = null;
+    if (App.tts) App.tts.stop();
+    if (cloudEnd) {
+      const f = cloudEnd;
+      cloudEnd = null;
+      setTimeout(() => f("stop"));
+    }
     if (nativeHas("ttsStop")) {
       try {
         N().ttsStop();
@@ -791,6 +917,8 @@
     voiceList,
     naturalText,
     chunks,
+    stream,
+    level,
     speaking: () => !!current,
   };
 })();

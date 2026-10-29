@@ -282,7 +282,7 @@
         st.i++; st.timer = setTimeout(() => speakLine(tk), 260);
       };
       if (!App.speech.ttsAvailable()) { st.timer = setTimeout(next, Math.min(9000, 1200 + line.say.length * 55)); return; }
-      App.speech.say(line.say, { lang: ep.lang, rate: Number($("#pdRate").value) || 1, pitch: App.speech.voiceCount(ep.lang) > 1 ? 1 : who.pitch, voice: who.voice, onEnd: (why) => { if (why === "stop") return; st.timer = setTimeout(next, 320); }, onError: () => { st.timer = setTimeout(next, 400); } });
+      App.speech.say(line.say, { lang: ep.lang, natural: true, rate: Number($("#pdRate").value) || 1, pitch: App.speech.voiceCount(ep.lang) > 1 ? 1 : who.pitch, voice: who.voice, onEnd: (why) => { if (why === "stop") return; st.timer = setTimeout(next, 320); }, onError: () => { st.timer = setTimeout(next, 400); } });
     }
     async function play() {
       if (st.playing) return;

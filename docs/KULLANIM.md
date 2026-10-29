@@ -103,3 +103,9 @@ Hareket istemiyorsan üst çubuktaki **Erişilebilirlik → Hareketleri azalt** 
 Derslerde **Görsel Anlatım** bölümündeki çizimler sayfaya yaklaştıkça hazırlanır. Görseli büyüt düğmesiyle inceleme penceresini aç; +/−, sıfırla, klavye okları veya iki parmakla yakınlaştırmayı kullan. Escape pencereyi kapatır. Görseller yerel SVG'dir; internet gerekmez.
 
 Açık tema yüzeyleri ve durum renkleri yenilendi. Açılış 1,65 saniyede tamamlanır; hareket azaltma tercihi korunur. Soru üretiminde görünen ilk soru önizlemeleri parti doğrulanana kadar geçicidir.
+
+## 1.56 gerçekçi ses ve yeni açılış
+
+**Erişilebilirlik › Gerçekçi ses** bölümünden sesi seç. Otomatik seçimde sırasıyla ElevenLabs, OpenAI ve Gemini anahtarı aranır: Ayarlar › Yapay zekâ bölümüne ücretsiz bir Gemini anahtarı eklemek yeterlidir; ElevenLabs anahtarı aynı bölümde girilir. Sesli öğretmen, podcast, konu okuma ve konuşan kavramlar bu sesle okunur; metin seçilen servise gönderilir. Anahtar yoksa ya da servis hata verirse cihaz sesi kullanılır.
+
+Sesli öğretmen cevabın ilk cümlesi gelir gelmez konuşmaya başlar. Küre dinlerken sesine göre dalgalanır, düşünürken parçacıklar hızlanır, konuşurken sesle atar. Düğmelerdeki titreşim **Erişilebilirlik › Dokunuş titreşimi** ile kapatılabilir.
