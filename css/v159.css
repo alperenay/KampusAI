@@ -1,0 +1,95 @@
+/* Settings and sidebar profile refresh (development branch; version not yet bumped). */
+#sidebar .sidebar-profile {
+  display:flex; align-items:center; gap:11px; flex:none; width:100%; min-width:0; min-height:68px;
+  padding:10px; border:1px solid var(--border); border-radius:16px;
+  background:linear-gradient(118deg,var(--accent-soft),var(--surface));
+  color:var(--text); cursor:pointer; text-align:left;
+  transition:border-color .18s ease,background .18s ease;
+}
+#sidebar .sidebar-profile:hover { border-color:var(--border-strong); background:var(--surface-2); }
+#sidebar .sidebar-profile:focus-visible { outline:3px solid var(--accent-text); outline-offset:2px; }
+.sidebar-profile__avatar {
+  width:42px;height:42px;flex:none;border-radius:14px;display:grid;place-items:center;
+  background:linear-gradient(140deg,#7563d9,#5b87d6);font-size:15px;font-weight:750;
+  color:#fff;box-shadow:0 4px 14px rgba(70,65,150,.19);
+}
+.sidebar-profile__info{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px}
+.sidebar-profile__name{color:var(--text);font-size:14px;font-weight:730;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sidebar-profile__subtitle{color:var(--muted);font-size:11px}
+.sidebar-profile__gear{width:20px;height:20px;flex:none;color:var(--accent-text)}
+.sidebar-profile__gear .ico{width:19px;height:19px}
+.app.is-collapsed #sidebar .sidebar-profile{width:46px;min-height:48px;padding:3px;margin:4px auto 0;justify-content:center}
+.app.is-collapsed .sidebar-profile__avatar{width:38px;height:38px;border-radius:13px}
+.app.is-collapsed .sidebar-profile__info,.app.is-collapsed .sidebar-profile__gear{display:none}
+#sidebar .sidebar__scroll{margin-top:13px}
+.modal--settings{width:min(720px,100%)}
+.modal--settings .modal__head h2{font-size:21px;font-weight:750}
+.modal--settings .modal__body{min-width:0}
+.settings-panel{display:grid;gap:19px;min-width:0}
+.settings-hero{
+  display:flex;align-items:center;gap:14px;padding:18px;min-width:0;
+  border:1px solid var(--border);border-radius:19px;
+  background:linear-gradient(115deg,var(--accent-soft),var(--surface) 83%);
+}
+.settings-hero__avatar{
+  display:grid;place-items:center;flex:none;width:60px;height:60px;border-radius:17px;
+  background:linear-gradient(145deg,#8068e4,#4e8bcb);color:#fff;font-size:22px;font-weight:750
+}
+.settings-hero__info{display:grid;min-width:0;flex:1;gap:4px}
+.settings-hero__eyebrow{font-size:11px;font-weight:700;color:var(--accent-text);letter-spacing:.05em;text-transform:uppercase}
+.settings-hero__info strong{font-size:21px;line-height:1.2;font-weight:750;overflow-wrap:anywhere}
+.settings-hero__info small{font-size:12px;line-height:1.4;color:var(--muted)}
+.settings-hero__version{align-self:flex-start;flex:none;border:1px solid var(--border);border-radius:9px;background:var(--surface-2);color:var(--text-2);padding:5px 8px;font:600 12px var(--mono)}
+.settings-section{display:grid;gap:11px;min-width:0}
+.settings-section__title{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:720}
+.settings-section__title .ico{width:18px;height:18px;color:var(--accent-text)}
+.settings-fields{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;
+  padding:16px;background:var(--surface);border:1px solid var(--border);border-radius:17px
+}
+.settings-fields .field:first-child{grid-column:1 / -1}
+.settings-fields .field{min-width:0}
+.settings-fields .input,.settings-fields .select{min-height:44px;border-radius:12px}
+.settings-options{overflow:hidden;border:1px solid var(--border);border-radius:17px;background:var(--surface)}
+.settings-link{display:flex;align-items:center;gap:11px;width:100%;min-height:64px;padding:12px 14px;text-align:left;color:var(--text);border:0;background:transparent;cursor:pointer}
+.settings-link+.settings-link{border-top:1px solid var(--border)}
+.settings-link:hover,.settings-link:focus-visible{background:var(--surface-2)}
+.settings-link:focus-visible{outline:2px solid var(--accent-text);outline-offset:-2px}
+.settings-link__icon{display:grid;place-items:center;flex:none;width:38px;height:38px;border-radius:12px;background:var(--accent-soft);color:var(--accent-text)}
+.settings-link__icon .ico{width:19px;height:19px}
+.settings-link__content{display:grid;flex:1;min-width:0;gap:3px}
+.settings-link__content strong{font-size:14px;font-weight:650;line-height:1.35}
+.settings-link__content small{font-size:12px;line-height:1.35;color:var(--muted)}
+.settings-link__status{font-size:11px;white-space:nowrap;border-radius:9px;padding:4px 6px;background:var(--accent-soft);color:var(--accent-text)}
+.settings-link__arrow{display:grid;place-items:center;flex:none;transform:rotate(-90deg);color:var(--muted)}
+.settings-link__arrow .ico{width:15px;height:15px}
+.settings-backup{padding:15px;border:1px solid var(--border);border-radius:17px;background:var(--surface);display:grid;gap:10px}
+.settings-backup p{font-size:13px;line-height:1.6;color:var(--text-2)}
+.settings-backup__date{font-size:12px;color:var(--muted)}
+.settings-backup__actions{display:flex;gap:9px;flex-wrap:wrap}
+.settings-backup__actions .btn{min-height:43px;border-radius:12px}
+.settings-import{position:relative;cursor:pointer}
+.settings-import:focus-within{outline:2px solid var(--accent-text)}
+.settings-meta{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:11px;color:var(--muted)}
+.settings-danger{border:1px solid var(--border);border-radius:14px;padding:11px 13px}
+.settings-danger summary{display:flex;gap:9px;align-items:center;font-size:13px;color:var(--muted);cursor:pointer}
+.settings-danger summary .ico{width:16px;height:16px;color:var(--bad)}
+.settings-danger p{font-size:12px;color:var(--muted);margin:10px 0;line-height:1.6}
+@media(max-width:860px),(pointer:coarse){
+  #sidebar .sidebar-profile{min-height:70px}
+  .settings-link{min-height:70px}
+  .modal--settings .modal__head{background:var(--surface-solid)}
+}
+@media(max-width:420px){
+  .settings-hero{gap:10px;padding:13px}
+  .settings-hero__avatar{width:48px;height:48px;font-size:19px;border-radius:14px}
+  .settings-hero__info strong{font-size:18px}
+  .settings-hero__version{font-size:10px;padding:4px 6px}
+  .settings-fields{grid-template-columns:minmax(0,1fr);padding:13px}
+  .settings-fields .field:first-child{grid-column:auto}
+  .settings-link{padding:11px}
+  .settings-link__icon{width:34px;height:34px}
+}
+@media(prefers-reduced-motion:reduce){
+  #sidebar .sidebar-profile{transition:none}
+}
