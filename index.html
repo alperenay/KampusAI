@@ -79,6 +79,7 @@
   <link rel="stylesheet" href="css/lecture-visuals.css">
   <link rel="stylesheet" href="css/v156.css">
   <link rel="stylesheet" href="css/v158.css">
+  <link rel="stylesheet" href="css/v159.css">
 </head>
 <body>
   <!-- Visible before any blocking scripts: prevents a blank Android launch. -->
@@ -109,8 +110,15 @@
         </a>
         <button class="icon-btn sidebar__toggle" id="sidebarToggle" type="button" data-i18n-title="nav.collapse" data-icon="panel"></button>
       </div>
-
-
+      <!-- Tek profil ve ayarlar girişi; öğrenci bilgisi menünün en üstünde. -->
+      <button class="sidebar-profile" id="profileBtn" type="button" data-i18n-title="nav.profile" data-i18n-aria="nav.profile">
+        <span class="avatar sidebar-profile__avatar" id="avatar">Ö</span>
+        <span class="sidebar-profile__info sidebar__label-block">
+          <span class="sidebar-profile__name" id="profileName"></span>
+          <span class="sidebar-profile__subtitle" data-i18n="nav.profile">Profil ve ayarlar</span>
+        </span>
+        <span class="sidebar-profile__gear" data-icon="settings" aria-hidden="true"></span>
+      </button>
 
       <div class="sidebar__scroll">
         <nav class="nav" data-i18n-aria="nav.modules">
@@ -307,13 +315,7 @@
         </section>
       </div>
 
-      <div class="sidebar__foot">
-        <button class="profile" id="profileBtn" type="button" data-i18n-title="nav.profile">
-          <span class="avatar" id="avatar">Ö</span>
-          <span class="profile__name sidebar__label" id="profileName"></span>
-        </button>
-        <button class="icon-btn sidebar__label" id="settingsBtn" type="button" data-i18n-title="nav.settings" data-icon="settings"></button>
-      </div>
+
     </aside>
 
     <div class="scrim" id="scrim" hidden></div>
