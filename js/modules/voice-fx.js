@@ -14,6 +14,7 @@
    ========================================================= */
 (function () {
   const TAU = Math.PI * 2;
+  const mobileFx = matchMedia("(max-width: 860px), (pointer: coarse)").matches;
   const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches || document.documentElement.hasAttribute("data-a11y-motion");
 
   /** "#rrggbb" ya da "rgb(...)" → [r,g,b] */
@@ -37,7 +38,7 @@
     let raf = 0, on = true, last = performance.now(), t = 0, phase = "", phaseAt = 0, mic = 0, speech = 0, spin = 0;
 
     function size() {
-      const dpr = Math.min(2, window.devicePixelRatio || 1), w = canvas.clientWidth || 200, h = canvas.clientHeight || 200;
+      const dpr = Math.min(mobileFx ? 1.5 : 2, window.devicePixelRatio || 1), w = canvas.clientWidth || 200, h = canvas.clientHeight || 200;
       if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) { canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr); }
       return { w: canvas.width, h: canvas.height };
     }
@@ -127,12 +128,18 @@
       g.restore();
     }
 
+    let lastMobileFrame = 0;
     function loop(now) {
       if (!on) return;
       raf = 0;
       if (!canvas.isConnected) { api.stop(); return; }
       const visible = !document.hidden && canvas.offsetParent !== null;
-      if (visible) draw(now);
+      // Android WebView: cap costly gradient/canvas work to ~30 fps,
+      // while keeping the existing desktop 60 fps behaviour.
+      if (visible && (!mobileFx || now - lastMobileFrame >= 33)) {
+        lastMobileFrame = now;
+        draw(now);
+      }
       if (reduced()) { quiet(); return; }
       raf = requestAnimationFrame(loop);
     }
