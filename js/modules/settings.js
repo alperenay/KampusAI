@@ -80,7 +80,8 @@
                 '<select class="select" id="setTheme">' + themeOptions + '</select></label>' +
             '</div>' +
             '<div class="settings-options">' +
-              row("setAppearance", "sun", T("Görünümü özelleştir", "Customize appearance"), T("Renkler, arka plan ve hareketler", "Colors, backgrounds and motion")) +
+              row("setAppearance", "sun", T("Görünümü özelleştir", "Customize appearance"), T("Arka plan ve hareketler", "Backgrounds and motion")) +
+              row("setVisualTheme", "sparkle", T("Beş arayüz teması", "Five interface themes"), T("Kozmik, Buz, Orman, Gün Batımı, Gül", "Cosmic, Frost, Forest, Sunset, Rose")) +
             '</div>' +
           '</section>' +
 
@@ -88,6 +89,11 @@
             '<h3 class="settings-section__title" id="setToolsHeading">' + App.icon("settings") + esc(T("Uygulama tercihleri", "App preferences")) + '</h3>' +
             '<div class="settings-options">' +
               row("setAi", "sparkle", t("set.aiSettings"), T("Model, bağlantı ve asistan seçenekleri", "Models, connections and assistant options")) +
+              '<label class="settings-smart-routing"><input id="setSmartRoute" type="checkbox" ' +
+              (App.prefs.get("aiSmartRouting", true) !== false ? "checked" : "") + '><span><strong>' +
+              esc(T("Akıllı model yönlendirme", "Smart model routing")) + '</strong><small>' +
+              esc(T("Zor sorularda güçlü modele öncelik verir; manuel model seçimini değiştirmez.", "Prefer stronger AI for complex questions; manual selection is unaffected.")) +
+              '</small></span></label>' +
               (App.sync.available() ? row("setSync", "refresh", t("sync.title"), T("Ders verilerini cihazlar arasında eşitle", "Keep study data in sync across devices"), App.sync.enabled() ? t("sync.on") : "") : "") +
               row("setRemind", "bell", t("rem.title"), T("Ders ve çalışma hatırlatmaları", "Study and lesson reminders"), App.reminders.config().on ? t("sync.on") : "") +
               row("setA11y", "a11y", t("a11y.title"), T("Yazı boyutu, okuma ve erişilebilirlik", "Text size, reading and accessibility"), App.a11y.isActive() ? t("sync.on") : "") +
@@ -133,6 +139,7 @@
     const nameInput = m.el.querySelector("#setName");
     const save = () => {
       App.prefs.set("userName", nameInput.value.trim());
+      App.prefs.set("aiSmartRouting", m.el.querySelector("#setSmartRoute").checked);
       App.applyProfile();
       m.close();
       App.theme.set(m.el.querySelector("#setTheme").value);
@@ -149,6 +156,9 @@
     });
     m.el.querySelector("#setAppearance").addEventListener("click", () => {
       m.close(); App.appearance.open();
+    });
+    m.el.querySelector("#setVisualTheme").addEventListener("click", () => {
+      m.close(); App.visualThemes.chooseTheme();
     });
     m.el.querySelector("#setAi").addEventListener("click", () => { m.close(); App.modules.aiSettings.open(); });
     const syncBtn = m.el.querySelector("#setSync");
