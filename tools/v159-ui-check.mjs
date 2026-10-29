@@ -49,8 +49,6 @@ try {
   await page.evaluate(()=>App.router.go("sunum"));
   await page.waitForSelector("#slideTopic");
   await page.fill("#slideTopic","Işık");
-  await page.click("#slideGenerate");
-  await page.waitForSelector(".v159-slide",{timeout:8000}).catch(()=>{});
   // Mock structured slide response, do not contact outside AI providers.
   await page.evaluate(()=>{
     App.ai.generate=async()=>({data:{title:"Işık",slides:[{title:"Işığın Özellikleri",bullets:["Yayılır","Yansır"],speakerNotes:"Örnek"}]}});
