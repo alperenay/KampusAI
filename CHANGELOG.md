@@ -1,5 +1,16 @@
 # Sürüm notları
 
+## 1.59.0 — 2026-10-30
+
+- Menünün altındaki mükerrer öğrenci profili ve Ayarlar düğmesi kaldırıldı; üst profil kartı ve Ayarlar ekranı yenilendi.
+- Akıllı menü, sabitlenenler ve son kullanılan araçlar için kısayollar, kişiselleştirilebilir ana panel ve beş renk teması eklendi.
+- AI aşamalarına model seçimi eklendi. Zor sorularda, manuel seçim yapılmadıysa, daha güçlü bulut modeline yönlendirme eklendi; model yoksa mevcut seçeneklere geri dönülür.
+- Sohbet kod bloklarını kopyalama ve gönderilmemiş metni yalnızca cihazda tutan taslak kurtarma eklendi.
+- PDF/ODF/TXT belgesinden çalışma paketi, yerel öğrenci portfolyosu ve AI sunum taslağı eklendi.
+- Davet kodlu ortak not odaları (7 günlük kullanılmama süresi, eşzamanlı düzenleme çakışma denetimi); kişisel notlar ve kayıtlar odalara otomatik gönderilmez.
+- Yeni ağır belge/portfolyo/sunum/oda modülü ilk açılışta değil, ihtiyaç halinde yüklenir.
+
+
 ## 1.58.0 — 2026-10-30
 
 - Android/WebView açılışında beyaz veya siyah boş ekran yerine HTML ilk çiziminden itibaren KampüsAI markalı karşılama ekranı gösterilir. Uygulama hazır olduğunda hafifletilmiş nöral çekirdek animasyonuna geçilir; WebView başlangıçta gizli görünüyorsa ilk görünür an beklenir.
