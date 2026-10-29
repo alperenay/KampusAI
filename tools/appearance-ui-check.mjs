@@ -62,7 +62,7 @@ try {
     await page.waitForTimeout(350);
     const geometry = await page.evaluate(() => {
       const s = document.querySelector("#sidebar").getBoundingClientRect(),
-        b = document.querySelector("#settingsBtn").getBoundingClientRect();
+        b = document.querySelector("#profileBtn").getBoundingClientRect();
       return {
         top: s.top,
         bottom: s.bottom,
@@ -70,17 +70,20 @@ try {
         buttonTop: b.top,
         hit: document
           .elementFromPoint(b.x + b.width / 2, b.y + b.height / 2)
-          ?.closest("#settingsBtn")?.id,
+          ?.closest("#profileBtn")?.id,
       };
     });
     assert.ok(geometry.top >= 28);
     assert.ok(geometry.bottom <= height - bottom + 1);
     assert.ok(geometry.buttonBottom <= height - bottom);
     assert.ok(geometry.buttonTop >= 28);
-    assert.equal(geometry.hit, "settingsBtn");
-    assert.equal(await page.locator("#sidebarSettingsTop").isVisible(), true);
+    assert.equal(geometry.hit, "profileBtn");
+    assert.equal(await page.locator("#sidebar #profileBtn").count(), 1, "Only one student profile/settings entry remains");
+    assert.equal(await page.locator("#sidebarSettingsTop, #settingsBtn").count(), 0, "No duplicate settings buttons");
     assert.equal(await page.locator(".nav-category__icon").count(), 8);
-    await page.click("#sidebarSettingsTop");
+    await page.click("#profileBtn");
+    await page.waitForSelector(".modal--settings .settings-hero");
+    assert.equal(await page.locator(".modal--settings #setAppearance").count(), 1);
     await page.waitForSelector("#setName");
     await page.locator(".modal-backdrop [data-close]").first().click();
     assert.equal(
@@ -90,6 +93,19 @@ try {
       true,
     );
   }
+  // The name in the new settings sheet updates the top profile without storing a second copy.
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.click("#menuBtn");
+  await page.click("#profileBtn");
+  await page.fill("#setName", "Deneme Öğrenci");
+  await page.click("#setSave");
+  assert.equal(await page.locator("#profileName").innerText(), "Deneme Öğrenci");
+  await page.evaluate(() => App.modules.settings.open());
+  assert.equal(await page.inputValue("#setName"), "Deneme Öğrenci");
+  await page.click("#setAppearance");
+  await page.waitForSelector("[data-atmosphere-choice]");
+  await page.locator(".modal-backdrop [data-close]").first().click();
+
   await page.setViewportSize({ width: 320, height: 640 });
   await page.evaluate(() => window.__nativeInsets({ top: 28, bottom: 48 }));
   await page.click("#menuBtn");
@@ -104,7 +120,7 @@ try {
   await page.waitForTimeout(350);
   assert.ok(
     await page
-      .locator("#settingsBtn")
+      .locator("#profileBtn")
       .evaluate((el) => el.getBoundingClientRect().bottom <= 352),
     "Drawer footer stays above a simulated visual-viewport keyboard",
   );

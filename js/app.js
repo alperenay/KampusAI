@@ -88,8 +88,12 @@
     }, 120));
 
     $("#backupBtn").addEventListener("click", () => App.modules.settings.exportBackup());
-    $("#settingsBtn").addEventListener("click", () => App.modules.settings.open());
-    $("#profileBtn").addEventListener("click", () => App.modules.settings.open());
+    $("#profileBtn").addEventListener("click", () => {
+      // Close the mobile drawer before opening the settings sheet.
+      app.classList.remove("is-menu-open");
+      $("#scrim").hidden = true;
+      App.modules.settings.open();
+    });
 
     $("#themeSwitch").addEventListener("click", (e) => {
       const b = e.target.closest("[data-theme-set]");
@@ -138,6 +142,7 @@
     setCollapsed(App.prefs.get("sidebarCollapsed", false));
     bindChrome();
     if (App.nav) App.nav.init();
+    if (App.smartMenu) App.smartMenu.init();
     App.theme.onChange(renderThemeSwitch);
 
     await App.db.init();

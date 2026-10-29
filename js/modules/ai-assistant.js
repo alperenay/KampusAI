@@ -14,7 +14,7 @@
 
   /* ---------------- Durum ---------------- */
   const live = { chatId: null, chat: null, msg: null, controller: null, timer: null, lastSave: 0 };
-  let draft = { image: null, text: "" };            // yazılıp henüz gönderilmemiş mesaj
+  let draft = { image: null, text: App.prefs.get("aiDraftPrivate", "") || "" };            // yazılıp henüz gönderilmemiş mesaj
   let mounted = null;                                // { view, chatId } ekranda olan sohbet
   let useData = App.prefs.get("aiUseData", true);
   let socratic = App.prefs.get("aiSocratic", false);     // Sokratik mod: cevap yerine ipuçlarıyla yönlendir
@@ -195,11 +195,12 @@
         '<p class="ai-notice" id="aiNotice" hidden></p>' +
         '<p class="home__models" data-ai-models>' + modelsLine() + "</p>" +
         (App.aiFavorites ? App.aiFavorites.html() : "") +
+        (App.smartHome ? App.smartHome.html() : "") +
       "</div>"
     );
   }
 
-  const STAGE_ICON = { vision: "eye", memory: "search", answer: "sparkle", calc: "calc", web: "search" };
+  const STAGE_ICON = { routing: "sparkle", vision: "eye", memory: "search", answer: "sparkle", calc: "calc", web: "search" };
 
   function stageHtml(msg) {
     const secs = Math.max(0, Math.round((Date.now() - (msg.startedAt || Date.now())) / 1000));
@@ -358,6 +359,19 @@
     if (status.state !== "ok" && status.state !== "partial") refreshStatus();
   }
 
+  // Code blocks stay readable on narrow screens and can be copied independently.
+  function decorateCodeBlocks(host) {
+    if (!host) return;
+    host.querySelectorAll("pre.md-code").forEach(pre => {
+      if (pre.querySelector("[data-copy-code]")) return;
+      const b=document.createElement("button");
+      b.type="button";b.className="v159-code-copy";b.dataset.copyCode="";
+      b.setAttribute("aria-label", App.i18n.lang==="en"?"Copy code":"Kodu kopyala");
+      b.textContent=App.i18n.lang==="en"?"Copy":"Kopyala";
+      pre.appendChild(b);
+    });
+  }
+
   async function renderChat(view, chatId) {
     const chat = live.chatId === chatId && live.chat ? live.chat : await App.db.get("chats", chatId);
     if (!chat) { App.ui.toast(t("ai.chatNotFound"), "error"); App.router.go(""); return; }
@@ -366,6 +380,7 @@
     App.setTitle(chat.title);
     App.router.syncNav();
     view.innerHTML = chatHtml(chat);
+    decorateCodeBlocks(view);
     App.hydrateIcons(view);
     bind(view, chat);
     paintStatus();
@@ -409,6 +424,7 @@
       const existingStage = el.querySelector(".stage--orbit");
       if (existingStage) existingStage.remove();
       el.innerHTML = assistantHtml(live.msg);
+      decorateCodeBlocks(el);
       const freshStage = el.querySelector(".stage--orbit");
       if (existingStage && freshStage && existingStage.dataset.stageKey === freshStage.dataset.stageKey) {
         freshStage.replaceWith(existingStage); // continuous animation: no restart per token
@@ -444,10 +460,11 @@
     }
     const history_ = chat.messages.slice();
     const userMsg = { id: uid("m"), role: "user", text, image: image ? image.dataUrl : null, at: new Date().toISOString() };
-    const aiMsg = { id: uid("m"), role: "assistant", text: "", pending: true, stage: image ? "vision" : useData ? "memory" : "answer", models: [], startedAt: Date.now(), socratic };
+    const aiMsg = { id: uid("m"), role: "assistant", text: "", pending: true, stage: "routing", models: [], startedAt: Date.now(), socratic };
     chat.messages.push(userMsg, aiMsg);
     latestAiId = aiMsg.id;
     draft = { image: null, text: "" };
+    App.prefs.set("aiDraftPrivate", "");
     await start(chat, userMsg, aiMsg, history_, image);
   }
 
@@ -509,7 +526,7 @@
     await saveChat(chat);
     if (mounted && mounted.chatId === chat.id) {
       const el = mounted.view.querySelector('.msg[data-mid="' + aiMsg.id + '"]');
-      if (el) { el.innerHTML = assistantHtml(aiMsg); App.hydrateIcons(el); }
+      if (el) { el.innerHTML = assistantHtml(aiMsg); decorateCodeBlocks(el); App.hydrateIcons(el); }
       repaintComposerButton();
     }
   }
@@ -556,6 +573,7 @@
       input.style.height = "auto";
       input.style.height = Math.min(input.scrollHeight, 180) + "px";
       draft.text = input.value;
+      if (draft.text.length < 12000) App.prefs.set("aiDraftPrivate", draft.text);
       const sendBtn = form.querySelector(".composer__send:not(.composer__stop)");
       if (sendBtn) sendBtn.hidden = !(input.value.trim() || draft.image);
     };
@@ -603,6 +621,14 @@
 
     // Sohbet alanındaki düğmeler (kopyala, yeniden dene, fotoğrafı büyüt)
     view.onclick = async (e) => {
+      const codeButton=e.target.closest("[data-copy-code]");
+      if(codeButton) {
+        try {
+          await navigator.clipboard.writeText(codeButton.closest("pre")?.querySelector("code")?.textContent||"");
+          App.ui.toast(App.i18n.lang==="en"?"Code copied":"Kod kopyalandı");
+        }catch(err){App.ui.toast(App.i18n.lang==="en"?"Could not copy":"Kopyalanamadı","error");}
+        return;
+      }
       const prompt = e.target.closest("[data-prompt]");
       if (prompt) {
         // Yanıt bitince yazı kutusu yeniden çiziliyor: her zaman güncel öğeleri kullan
