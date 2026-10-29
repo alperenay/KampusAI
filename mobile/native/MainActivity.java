@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.graphics.Color;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
@@ -101,6 +102,9 @@ public class MainActivity extends BridgeActivity {
         });
         if (getBridge() == null) return;
         webView = getBridge().getWebView();
+        // Match the web first-paint colour; prevent a white flash before WebView loads HTML.
+        getWindow().getDecorView().setBackgroundColor(Color.rgb(7, 8, 22));
+        webView.setBackgroundColor(Color.rgb(7, 8, 22));
         new Thread(() -> {
             try {
                 java.io.File root = new java.io.File(getFilesDir(), "sayisal-model");

@@ -186,6 +186,8 @@
 
     App.router.register("", (view) => App.modules.assistant.render(view));
     App.router.start();
+    // Release the branded launch stage only once the first route can render.
+    if (App.startup?.ready) App.startup.ready();
 
     // Cihazlar arası eşitleme (kod girilmişse)
     App.sync.init();
