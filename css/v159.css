@@ -167,3 +167,19 @@
   .v159-slide{padding:16px;min-height:180px}
   .v159-smart-menu__links a{min-height:42px}
 }
+
+/* Chat copy control and mobile scrolling. */
+.msg__body pre.md-code{position:relative;max-width:100%;overflow-x:auto;padding-top:36px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.v159-code-copy{position:absolute;right:9px;top:7px;border:1px solid var(--border-strong);color:var(--text);background:var(--surface-3);border-radius:8px;padding:4px 8px;font-size:11px;line-height:1.4;cursor:pointer}
+.v159-code-copy:focus-visible{outline:2px solid var(--accent-text)}
+.settings-smart-routing{display:flex;align-items:center;gap:12px;padding:14px;border-top:1px solid var(--border);cursor:pointer;color:var(--text)}
+.settings-smart-routing input{width:20px;height:20px;accent-color:var(--accent);flex:none}
+.settings-smart-routing span{display:grid;gap:4px}
+.settings-smart-routing strong{font-size:13px}
+.settings-smart-routing small{font-size:12px;color:var(--muted);line-height:1.4}
+@media(max-width:860px),(pointer:coarse){
+  .chat__log,.main,.sidebar__scroll{overscroll-behavior:contain}
+  .msg__body{min-width:0;max-width:100%}
+  .msg__body .md,.msg__body .md-table{max-width:100%;overflow-x:auto}
+  .v159-code-copy{min-height:31px;min-width:54px}
+}
