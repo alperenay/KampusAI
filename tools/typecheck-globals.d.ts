@@ -22,3 +22,11 @@ interface Window {
 }
 
 interface Window { SpeechRecognition?: any; webkitSpeechRecognition?: any; KampusNative?: any; __nativeSpeech?: (event: any) => void; }
+
+// Early branded splash is declared by the inline index.html bootstrap before modules load.
+interface Window {
+  __startupFallback?: ReturnType<typeof setTimeout>;
+  __startupSkip?: boolean;
+  __startupDismissEarly?: () => void;
+}
+

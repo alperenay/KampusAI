@@ -161,7 +161,29 @@ for task in 1 2 3; do
   sleep 1
  done
 require_text "Çalışma tamamlandı"; shot aktarim-sonuc
-adb logcat -d > shots/android-logcat.txt || true
+
+# CI emulator/ADB can disconnect *after* the final successful UI assertion.
+# Reconnect before verifying the live app and reading crash logs; never treat
+# an offline emulator as an application crash or silently pass without checking.
+device_ready=0
+for attempt in 1 2 3 4 5 6 7 8 9 10; do
+  if [ "$(adb get-state 2>/dev/null || true)" = "device" ] &&
+     [ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r' || true)" = "1" ]; then
+    device_ready=1
+    break
+  fi
+  echo "ADB offline after completed UI test (attempt $attempt): checking emulator connection"
+  if [ "$attempt" -eq 2 ] || [ "$attempt" -eq 5 ]; then
+    adb kill-server || true
+    adb start-server || true
+  fi
+  sleep 3
+done
+if [ "$device_ready" -ne 1 ]; then
+  echo "FAIL: emulator remained offline after UI test; cannot verify running app or crash logs"
+  exit 1
+fi
+adb logcat -d > shots/android-logcat.txt
 pidof_app=$(adb shell pidof $APP || true)
 # Retain all logs, but distinguish the app/its WebView from unrelated emulator tools.
 if ! python3 tools/check-android-log.py shots/android-logcat.txt "$APP" "$pidof_app" > shots/crash-summary.json; then
