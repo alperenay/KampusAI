@@ -88,7 +88,12 @@
     }, 120));
 
     $("#backupBtn").addEventListener("click", () => App.modules.settings.exportBackup());
-    $("#profileBtn").addEventListener("click", () => App.modules.settings.open());
+    $("#profileBtn").addEventListener("click", () => {
+      // Close the mobile drawer before opening the settings sheet.
+      app.classList.remove("is-menu-open");
+      $("#scrim").hidden = true;
+      App.modules.settings.open();
+    });
 
     $("#themeSwitch").addEventListener("click", (e) => {
       const b = e.target.closest("[data-theme-set]");
