@@ -2,7 +2,7 @@
   "appId": "com.dersasistani.app",
   "appName": "KampüsAI",
   "webDir": "www",
-  "backgroundColor": "#ffffff",
+  "backgroundColor": "#070816",
   "server": {
     "androidScheme": "https",
     "cleartext": true
