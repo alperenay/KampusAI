@@ -1,0 +1,111 @@
+/* 1.58 – Lightweight orbital AI response indicator and WebView tuning. */
+.stage.stage--orbit {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-width: 0;
+  padding: 6px 0;
+  color: var(--text-2);
+}
+.stage__visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,108,255,.24), rgba(73,224,255,.06) 60%, transparent 72%);
+  isolation: isolate;
+}
+.stage__ring,
+.stage__core {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.stage__ring--outer {
+  inset: 3px;
+  border: 2px solid rgba(139, 123, 255, .25);
+  border-top-color: #8b7bff;
+  border-right-color: #49e0ff;
+  animation: ai-orbit 2.4s linear infinite;
+}
+.stage__ring--inner {
+  inset: 10px;
+  border: 2px dashed rgba(73, 224, 255, .7);
+  border-bottom-color: transparent;
+  animation: ai-orbit 3.1s linear infinite reverse;
+}
+.stage__core {
+  width: 13px;
+  height: 13px;
+  background: radial-gradient(circle at 35% 30%, #fff, #a2a1ff 44%, #7154d9 86%);
+  box-shadow: 0 0 12px rgba(139,123,255,.65);
+  animation: ai-core-breathe 1.8s ease-in-out infinite;
+}
+.stage__content { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.stage__title { display: flex; gap: 7px; align-items: center; min-width: 0; font-weight: 600; }
+.stage__title .ico { width: 16px; height: 16px; flex-shrink: 0; color: #9c8aff; }
+.stage__label { min-width: 0; overflow-wrap: anywhere; }
+.stage__meta { display: flex; align-items: center; flex-wrap: wrap; gap: 7px 10px; font-size: 12px; min-width: 0; }
+.stage.stage--orbit code {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: var(--mono);
+  font-size: 11px;
+  border: 1px solid var(--border);
+  background: var(--surface-3);
+  padding: 3px 8px;
+  border-radius: 8px;
+}
+.stage.stage--orbit .stage__time {
+  white-space: nowrap;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+}
+.stage__track {
+  position: relative;
+  display: block;
+  height: 3px;
+  border-radius: 10px;
+  background: rgba(139, 123, 255, .14);
+  overflow: hidden;
+}
+.stage__track i {
+  display: block;
+  width: 33%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #8b7bff, #49e0ff);
+  animation: ai-travel 1.9s ease-in-out infinite alternate;
+}
+@keyframes ai-orbit { to { transform: rotate(360deg); } }
+@keyframes ai-core-breathe { 50% { transform: scale(.78); opacity: .72; } }
+@keyframes ai-travel { from { transform: translateX(-100%); } to { transform: translateX(310%); } }
+@media (max-width: 860px), (pointer: coarse) {
+  .stage.stage--orbit { grid-template-columns: 44px minmax(0,1fr); gap: 10px; }
+  .stage__visual { width: 42px; height: 42px; }
+  .stage__ring--inner { inset: 8px; }
+  .stage__meta { gap: 5px 9px; }
+  /* Expensive glass blurs add no value to compact chat bubbles in Android WebView. */
+  .msg--ai .msg__body, .msg--user .msg__bubble {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  /* Prevent scroll chaining while the virtual keyboard is open. */
+  #view { overscroll-behavior-y: contain; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stage__ring, .stage__core, .stage__track i { animation: none !important; }
+}
+[data-a11y-motion] .stage__ring,
+[data-a11y-motion] .stage__core,
+[data-a11y-motion] .stage__track i { animation: none !important; }
