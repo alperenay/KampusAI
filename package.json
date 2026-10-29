@@ -39,6 +39,7 @@
     "test:v150-ui": "node tools/v150-ui-check.mjs",
     "test:motion-ui": "node tools/motion-ui-check.mjs",
     "test:appearance-ui": "node tools/appearance-ui-check.mjs",
-    "test:polish-ui": "node tools/polish-ui-check.mjs"
+    "test:polish-ui": "node tools/polish-ui-check.mjs",
+    "test:startup-ui": "node tools/startup-ui-check.mjs"
   }
 }

@@ -43,3 +43,8 @@ SoruAsistanı/
 egitim/rapor/stem-v2/
 server/.stem-local/
 .kampusai-stem/
+
+# Yerel sohbet ekleri ve üretilen çalışma çıktıları (kaynak kod değildir)
+.codex-remote-attachments/
+output/
+tmp/

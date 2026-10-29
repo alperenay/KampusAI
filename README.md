@@ -1,45 +1,38 @@
-<p align="center">
-  <img src="assets/icons/icon-192.png" width="88" alt="KampüsAI logosu">
-</p>
-
+<p align="center"><img src="assets/icons/icon-192.png" width="80" alt="KampüsAI logosu"></p>
 <h1 align="center">KampüsAI</h1>
+<p align="center">Lise ve YKS için ders, tekrar ve yapay zekâ çalışma asistanı.</p>
+<p align="center"><a href="https://alperenay.github.io/KampusAI/"><strong>Web'de aç</strong></a> · <a href="https://github.com/alperenay/KampusAI/releases/latest"><strong>İndir</strong></a> · <a href="docs/README.md">Kılavuzlar</a></p>
 
-<p align="center">Lise ve YKS için yapay zekâ destekli çalışma asistanı.</p>
+## Hangi sürümü kullanmalıyım?
 
-<p align="center">
-  <a href="https://alperenay.github.io/KampusAI/"><strong>Web'de aç</strong></a> ·
-  <a href="https://github.com/alperenay/KampusAI/releases/latest"><strong>Uygulamayı indir</strong></a> ·
-  <a href="docs/KULLANIM.md">Kullanım kılavuzu</a>
-</p>
-
-## İndir ve başla
-
-| Cihaz | Kullanım |
+| Platform | Başlangıç |
 |---|---|
 | Windows | [Son sürümden](https://github.com/alperenay/KampusAI/releases/latest) `.exe` kurucusunu indir. |
-| Android | [Son sürümden](https://github.com/alperenay/KampusAI/releases/latest) `.apk` dosyasını indir. |
-| Pardus / Linux | [Son sürümden](https://github.com/alperenay/KampusAI/releases/latest) `.deb` veya `.AppImage` indir. |
+| Android | Aynı sayfadan `.apk` paketini indir. |
+| Pardus / Linux | `.deb` veya `.AppImage` paketini seç. |
 | iPhone / iPad | [Web sürümünü](https://alperenay.github.io/KampusAI/) Safari'de aç → Paylaş → Ana Ekrana Ekle. |
-| Tarayıcı | [KampüsAI'ı aç](https://alperenay.github.io/KampusAI/); kurulum gerekmez. |
+| Tarayıcı | [Kurulumsuz kullan](https://alperenay.github.io/KampusAI/). |
 
-## Neler yapabilirsin?
+Windows/Android, mağaza dışından indirilen paketlerde güvenlik uyarısı gösterebilir. Dosyanın kaynağını ve yayıncı bilgisini kontrol et. Güncellemeden önce uygulama ayarlarından yedek al.
 
-- **Çalış:** Konu anlatımları, formül defteri, testler ve açık uçlu yazılılar.
-- **Uygula:** Aynı kavramı farklı bağlamlarda kullan; örnek çözümlerde ilk hatayı ve nedenini bul.
-- **Tekrar et:** Yanlış defteri, Hap Kartlar ve tek listede günlük tekrarlar.
-- **Soru sor:** Yazı, fotoğraf veya sesle yapay zekâdan destek al.
-- **Gelişimini izle:** Ders programı, deneme sonuçları ve haftalık üstbiliş karnesi.
-- **Keşfet:** Dünya küresi ve 3B modeller; dokuz yeni [Keşif Atölyesi](docs/KESIF-ATOLYELERI.md): Bana Öğret, telefon fiziği, dokunsal grafik, deney raporu, sismograf, gökyüzü, çizimden simülasyon, kamera grafiği ve tarih haritası.
-- **Dil çalış:** İngilizce konuşma ve Almanca A1–B2 kelime, gramer, diyalog alıştırmaları.
-- **Ölç:** Desteklenen cihaz sensörleri veya etiketli simülasyon; canlı grafik, eşik ve CSV/JSON.
-- **Sınıfta kullan:** Çevrimdışı QR ödev dağıtımı ve öğretmen geri bildirimi.
+## Neler var?
 
-İnternet üzerinden yapay zekâ kullanılabilir. Desteklenen bilgisayar ve Android cihazlara model indirerek yerel kullanım da mümkündür. Yapay zekâ yanıtlarını öğretmenin veya güvenilir kaynaklarla kontrol et.
+| Alan | Özellikler |
+|---|---|
+| Öğrenme | Konu anlatımı, formüller, adaptif test ve açık uçlu yazılılar |
+| Tekrar | Hap Kartlar, yanlış defteri, bağlam değiştirme ve hata bulma pratikleri |
+| Yapay zekâ | Yazı/fotoğraf/sesle soru sorma, Sokratik koç ve kişisel başlangıç şablonları |
+| Keşif | 3B küre/modeller, deneyler, sensörler, bilgi evreni ve arkadaş düellosu |
+| Gelişim | Ders programı, denemeler, hedefler ve haftalık karne |
+| Dil ve sınıf | İngilizce/Almanca alıştırmaları; çevrimdışı QR ödev ve öğretmen geri bildirimi |
 
-AI ana ekranında sık kullandığın araçları sabitleyebilirsin. Yeni bölümlerin adımları ve cihaz gereksinimleri: [Yeni araçlar kılavuzu](docs/YENI-ARACLAR.md).
+AI için desteklenen internet sağlayıcısı veya uyumlu cihazda yerel model gerekir. Yanıtları güvenilir kaynaklarla kontrol et. Sensörlerin kullanılabilirliği cihaza ve izinlere bağlıdır.
 
-## Bağlantılar
+## Aradığın yere git
 
-[Kullanım](docs/KULLANIM.md) · [Öğretmen ve QR](docs/OGRETMEN.md) · [Araştırma modu](docs/ARASTIRMA.md) · [Gizlilik](docs/GIZLILIK.md) · [Geliştirme](docs/GELISTIRME.md)
+- **Kullanıcı:** [Kullanım kılavuzu](docs/KULLANIM.md) · [Yeni araçlar](docs/YENI-ARACLAR.md)
+- **Öğretmen:** [Sınıf ve QR](docs/OGRETMEN.md) · [Araştırma modu](docs/ARASTIRMA.md)
+- **Geliştirici:** [Kurulum, klasörler ve testler](docs/GELISTIRME.md) · [Test kapsamı](docs/TEST-KAPSAMI.md)
+- **Proje:** [Sürüm notları](CHANGELOG.md) · [Gizlilik](docs/GIZLILIK.md) · [Hata bildir](https://github.com/alperenay/KampusAI/issues)
 
-Hata veya öneri için [Issues](https://github.com/alperenay/KampusAI/issues) sayfasını kullan. Kullanılan kütüphane ve veri kaynakları uygulamanın **Hakkında → Kaynakça ve lisanslar** bölümünde listelenir; dağıtılan bileşenlerin lisans dosyaları kaynak kodda korunur.
+Kütüphane ve veri kaynakları uygulamanın **Hakkında → Kaynakça ve lisanslar** bölümünde listelenir. Bileşenlerin lisans dosyaları kaynak kodda korunur.

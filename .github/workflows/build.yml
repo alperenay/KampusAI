@@ -108,6 +108,7 @@ jobs:
           npm run test:motion-ui
           npm run test:appearance-ui
           npm run test:polish-ui
+          npm run test:startup-ui
           node tools/storage-ui-check.mjs
           node tools/lifecycle-ui-check.mjs
           node tools/lab-interactions-ui-check.mjs
@@ -558,6 +559,8 @@ jobs:
           OWNER="${GITHUB_REPOSITORY%%/*}"; REPO="${GITHUB_REPOSITORY##*/}"
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
+
+          Tüm platformlarda kısa, geçilebilir ve hareket azaltmaya uyumlu KampüsAI açılış animasyonu eklendi.
 
           Görsel tasarım birliği: sakin nötr arka planlar, mor–mavi vurgular, dengeli kart yüzeyleri, okunaklı başlıklar ve tutarlı düğme/simge ölçüleri. Açık tema kırık beyaz yüzeyler ve yumuşak gölgelerle yenilendi. Mevcut özellikler ve kullanım akışları korunur.
           Menü, AI çalışma alanı, boş durumlar, günlük istatistikler ve grafik tema renkleri aynı görsel sistemde. Kişisel atmosferler, okuma modu, yüksek karşıtlık ve hareket azaltma korunur. Görsel düzenlemeler ek bağımlılık veya ağ isteği gerektirmez.

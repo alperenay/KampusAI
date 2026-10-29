@@ -2,6 +2,8 @@
 
 ## 1.53.0 — 2026-10-29
 
+- Her platformun uygulama açılışında kısa logo/yörünge animasyonu. Yalnız belge açılışında oynar; dokunma veya klavyeyle geçilir, en geç 1.05 saniyede temizlenir. Hareket azaltma açıkken gösterilmez; uygulama başlangıcı animasyonu beklemez.
+
 - Yalnız görsel tasarım: nötr koyu ve kırık beyaz açık tema, tutarlı mor–mavi vurgu, sakin arka planlar.
 - Kart, düğme, başlık, menü, AI çalışma alanı, boş durum ve grafik tema renkleri ortak tasarım değişkenlerinde birleştirildi.
 - Atmosfer tercihi, yüksek karşıtlık, hareket azaltma, okuma modu ve mobil güvenli alanlar korunur. Yeni bağımlılık veya işlev eklenmedi.

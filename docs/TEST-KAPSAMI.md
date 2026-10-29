@@ -67,3 +67,6 @@ Donanım izinleri ve ses sağlayıcısı testlerinde kontrollü örnekler ile ge
 Ortak tasarım katmanı `css/polish.css` içindedir. Tema değişkenleri, kart yüzeyleri, başlıklar, kenarlıklar ve temel simgeler burada eşitlenir. Kullanıcı işlevleri ve öğrenme verisi değiştirilmez. Yüksek karşıtlık seçildiğinde özel renk değişkenleri uygulanmaz; hareket azaltma ve kişisel atmosfer tercihi korunur.
 
 `npm run test:polish-ui` açık/koyu temalarda 320/768/1440px genişlik ve ana ekran/Bugün/araçlar kombinasyonlarını, temel metin renklerinin 4.5:1 kontrastını ve yüksek karşıtlık/hareket azaltma uyumunu denetler. Bütün renkli grafik/çizimlerin her noktasında kontrast ölçüldüğü iddia edilmez.
+
+
+`npm run test:startup-ui`: üç tarayıcı motorunda açılış katmanının oluşması/temizlenmesi, sayfa değişiminde tekrar oynamaması, klavyeyle geçiş, sistem ve kaydedilmiş hareket azaltma ayarları. Uygulama başlatma veya veri yükleme bu katmanı beklemez.
