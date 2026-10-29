@@ -1,4 +1,4 @@
-/* One short brand entrance per document; never awaits or gates app initialisation. */
+/* One short brand entrance per document (v1.56 neural core boot); never awaits or gates app initialisation. */
 (function () {
   let el = null,
     timer,
@@ -25,7 +25,7 @@
     }
   }
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
-  const DURATION_MS = 1650;
+  const DURATION_MS = 1750;
   App.startup = {
     dismiss,
     get active() {
@@ -38,14 +38,18 @@
   el.className = "startup-brand";
   el.setAttribute("aria-hidden", "true");
   const en = App.prefs.get("lang", App.i18n.lang) === "en";
+  // Parçacıklar: her biri kendi açısıyla dışarı fırlar (yalnız transform/opacity)
+  const burst = Array.from({ length: 18 }, (_, i) =>
+    '<i class="startup-p" style="--i:' + i + ";--a:" + Math.round((i / 18) * 360 + ((i * 37) % 13)) + "deg;--d:" + (110 + ((i * 53) % 70)) + 'px"></i>').join("");
   el.innerHTML =
-    '<div class="startup-scene"><div class="startup-floor"><i></i><i></i><i></i></div><svg class="startup-frame" viewBox="0 0 240 240" focusable="false"><path class="startup-scan" d="M 120 12 L 214 66 V 174 L 120 228 L 26 174 V 66 Z"/><path class="startup-grid" d="M 120 22 V 218 M 35 72 L 205 168 M 35 168 L 205 72"/><path class="startup-corners" d="M 92 28 L 120 12 L 148 28 M 214 82 V 66 L 190 52 M 214 158 V 174 L 190 188 M 148 212 L 120 228 L 92 212 M 50 188 L 26 174 V 158 M 26 82 V 66 L 50 52"/></svg><div class="startup-core"><span class="startup-beam"></span><span class="startup-logo">' +
-    App.icon("logo") +
-    '</span></div><span class="startup-node startup-node--a"></span><span class="startup-node startup-node--b"></span><span class="startup-node startup-node--c"></span></div><div class="startup-word">Kampüs<span>AI</span></div><div class="startup-caption">' +
+    '<div class="startup-grid"></div><div class="startup-scanline"></div>' +
+    '<div class="startup-scene"><span class="startup-wave"></span><span class="startup-wave startup-wave--b"></span>' + burst +
+    '<span class="startup-ring startup-ring--c"></span><span class="startup-ring startup-ring--b"></span><span class="startup-ring"></span>' +
+    '<span class="startup-orb"></span><span class="startup-logo">' + App.icon("logo") + "</span></div>" +
+    '<div class="startup-word">Kampüs<span>AI</span></div><div class="startup-caption">' +
     (en ? "A NEW PERSPECTIVE ON LEARNING" : "ÖĞRENMEYE YENİ BİR BAKIŞ") +
-    '</div><div class="startup-skip">' +
-    (en ? "Tap or press Escape to skip" : "Dokunarak veya Escape ile geç") +
-    "</div>";
+    '</div><div class="startup-status"><i></i>' + (en ? "NEURAL CORE ONLINE" : "NÖRAL ÇEKİRDEK HAZIR") + "</div>" +
+    '<div class="startup-skip">' + (en ? "Tap or press Escape to skip" : "Dokunarak veya Escape ile geç") + "</div>";
 
   el.style.setProperty("--startup-duration", DURATION_MS + "ms");
   el.addEventListener("animationend", (e) => {

@@ -21,7 +21,7 @@
 (function () {
   const { esc } = App.utils;
   const t = App.t;
-  const KEYS = { text: "a11yText", dys: "a11yDys", spacing: "a11ySpacing", contrast: "a11yContrast", motion: "a11yMotion", ruler: "a11yRuler", sonify: "a11ySonify", hece: "a11yHece", word: "a11yWord", rate: "ttsRate" };
+  const KEYS = { text: "a11yText", dys: "a11yDys", spacing: "a11ySpacing", contrast: "a11yContrast", motion: "a11yMotion", ruler: "a11yRuler", sonify: "a11ySonify", hece: "a11yHece", word: "a11yWord", haptic: "fxHaptic", rate: "ttsRate" };
   const DYS_MODE = ["dys", "spacing", "ruler", "hece", "word"];
   const get = (k, d) => App.prefs.get(KEYS[k], d);
   const RATES = [0.75, 1, 1.25];
@@ -232,7 +232,7 @@
       if (r.top < 60 || r.bottom > window.innerHeight - 40) b.scrollIntoView({ block: "center", behavior: get("motion", false) ? "auto" : "smooth" });
       const spoken = speakable(b);
       App.speech.say(spoken, {
-        lang: App.i18n.lang, rate: Number(get("rate", 1)) || 1,
+        lang: App.i18n.lang, rate: Number(get("rate", 1)) || 1, natural: true,
         onWord: get("word", true) ? (ci) => { if (reading === me) markWord(wordRange(b, spoken, ci)); } : undefined,
         onEnd: (why) => { markWord(null); if (why === "stop") return; next(); },
         onError: () => { if (reading === me) { App.ui.toast(t("a11y.ttsError"), "error"); stopReading(); } }
@@ -256,7 +256,7 @@
     reading = { btn, blocks: [], i: 0 };
     paintBtn(btn, true);
     const me = reading;
-    App.speech.say(speakable(div), { lang: App.i18n.lang, rate: Number(get("rate", 1)) || 1, onEnd: () => { if (reading === me) stopReading(); }, onError: () => { if (reading === me) stopReading(); } });
+    App.speech.say(speakable(div), { lang: App.i18n.lang, rate: Number(get("rate", 1)) || 1, natural: true, onEnd: () => { if (reading === me) stopReading(); }, onError: () => { if (reading === me) stopReading(); } });
   }
 
   document.addEventListener("click", (e) => {
@@ -308,12 +308,47 @@
       '</select><button type="button" class="btn btn--sm" id="a11yVoiceTry">' + App.icon("volume") + esc(t("a11y.voiceTry")) + "</button></span></div>";
   }
 
+  /* ---------------- Gerçekçi ses (v1.56) ----------------
+     Anahtar varsa uzun anlatımlar bulut sesiyle okunur (js/ai/tts.js). Anahtarlar yalnızca bu cihazda kalır. */
+  const T = (tr, en) => (App.i18n.lang === "en" ? en : tr);
+  const ENGINES = () => [["auto", T("Otomatik", "Automatic")], ["eleven", "ElevenLabs"], ["openai", "OpenAI"], ["gemini", "Google Gemini"], ["device", T("Yalnız cihaz sesi", "Device voice only")]];
+  function naturalStatus() {
+    const p = App.tts && App.tts.provider();
+    const name = { eleven: "ElevenLabs", openai: "OpenAI", gemini: "Google Gemini" }[p];
+    if (name) return T("Uzun anlatımlar ", "Long readings use ") + name + T(" sesiyle okunur. Metin bu servise gönderilir.", " voice. The text is sent to this service.");
+    if ((App.prefs.get("ttsEngine", "auto") || "auto") === "device") return T("Cihazın kendi sesi kullanılıyor.", "Using the device's own voice.");
+    return T("Gerçekçi ses için anahtar gerekiyor: Ayarlar › Yapay zekâ bölümüne ücretsiz Gemini anahtarı ekle ya da aşağıya ElevenLabs anahtarı gir. O zamana kadar cihaz sesi kullanılır.",
+      "A realistic voice needs a key: add a free Gemini key in Settings › AI, or enter an ElevenLabs key below. Until then the device voice is used.");
+  }
+  function naturalRow() {
+    if (!App.tts) return "";
+    const cur = App.prefs.get("ttsEngine", "auto") || "auto", el = String(App.prefs.get("elKey", "") || "");
+    return '<div class="a11y-row a11y-natural"><span class="a11y-row__ico">' + App.icon("sparkle") + '</span><span class="a11y-row__t"><b>' + esc(T("Gerçekçi ses", "Realistic voice")) + '</b><small id="a11yNaturalNote">' + esc(naturalStatus()) + "</small></span>" +
+      '<span class="a11y-voice"><select class="select" id="a11yTtsEngine" aria-label="' + esc(T("Gerçekçi ses servisi", "Realistic voice service")) + '">' +
+      ENGINES().map(([v, l]) => '<option value="' + v + '"' + (v === cur ? " selected" : "") + ">" + esc(l) + "</option>").join("") + "</select>" +
+      '<button type="button" class="btn btn--sm" id="a11yNaturalTry">' + App.icon("volume") + esc(T("Dinle", "Listen")) + "</button></span>" +
+      '<label class="a11y-elkey"' + (cur === "auto" || cur === "eleven" ? "" : " hidden") + '><span>' + esc(T("ElevenLabs anahtarı (isteğe bağlı)", "ElevenLabs key (optional)")) + "</span>" +
+      '<input class="input" id="a11yElKey" type="password" autocomplete="off" spellcheck="false" placeholder="sk_…" value="' + esc(el) + '"></label></div>';
+  }
+  function bindNatural(root) {
+    const sel = root.querySelector("#a11yTtsEngine");
+    if (!sel) return;
+    const note = root.querySelector("#a11yNaturalNote"), keyRow = root.querySelector(".a11y-elkey"), key = root.querySelector("#a11yElKey");
+    const refresh = () => { note.textContent = naturalStatus(); keyRow.hidden = !(sel.value === "auto" || sel.value === "eleven"); };
+    sel.addEventListener("change", () => { App.prefs.set("ttsEngine", sel.value); refresh(); });
+    key.addEventListener("change", () => { App.prefs.set("elKey", key.value.trim()); refresh(); });
+    root.querySelector("#a11yNaturalTry").addEventListener("click", () => App.speech.say(t("a11y.voiceSample"), {
+      lang: App.i18n.lang, rate: Number(get("rate", 1)) || 1, natural: true,
+      onError: () => App.ui.toast(T("Ses çalınamadı.", "Couldn't play the voice."), "error")
+    }));
+  }
+
   /* ---------------- Ayarlar paneli ---------------- */
   function open() {
     const seg = (name, cur, opts) => '<div class="lang-switch seg a11y-seg" role="radiogroup" data-seg="' + name + '">' +
       opts.map(([v, label, aria]) => '<button type="button" role="radio" data-v="' + v + '" aria-checked="' + String(String(cur) === String(v)) + '"' + (aria ? ' aria-label="' + esc(aria) + '"' : "") + ">" + label + "</button>").join("") + "</div>";
     const sw = (k, icon) => '<label class="a11y-row"><span class="a11y-row__ico">' + App.icon(icon) + '</span><span class="a11y-row__t"><b>' + esc(t("a11y." + k)) + "</b><small>" + esc(t("a11y." + k + "Hint")) + "</small></span>" +
-      '<input type="checkbox" class="switch" data-k="' + k + '"' + (get(k, k === "word") ? " checked" : "") + "></label>";
+      '<input type="checkbox" class="switch" data-k="' + k + '"' + (get(k, k === "word" || k === "haptic") ? " checked" : "") + "></label>";
     const voiceNote = !App.speech.ttsAvailable() ? t("a11y.noTts") : !App.speech.hasVoice(App.i18n.lang) ? t("a11y.noVoice") : "";
     const m = App.ui.modal({
       title: t("a11y.title"),
@@ -322,10 +357,10 @@
         '<button type="button" class="btn a11y-dysmode' + (dysModeOn() ? " is-on" : "") + '" id="a11yDysMode" aria-pressed="' + dysModeOn() + '">' + App.icon("book") + '<span><b>' + esc(t("a11y.dysMode")) + "</b><small>" + esc(t("a11y.dysModeHint")) + "</small></span></button>" +
         '<div class="a11y-row"><span class="a11y-row__ico">' + App.icon("textSize") + '</span><span class="a11y-row__t"><b>' + esc(t("a11y.text")) + "</b><small>" + esc(t("a11y.textHint")) + "</small></span>" +
           seg("text", get("text", "md"), [["md", "A", t("a11y.textMd")], ["lg", '<span style="font-size:1.15em">A</span>', t("a11y.textLg")], ["xl", '<span style="font-size:1.35em">A</span>', t("a11y.textXl")]]) + "</div>" +
-        sw("dys", "book") + sw("spacing", "list") + sw("ruler", "eye") + sw("hece", "textSize") + sw("word", "volume") + sw("contrast", "sun") + sw("motion", "pause") + sw("sonify", "volume") +
+        sw("dys", "book") + sw("spacing", "list") + sw("ruler", "eye") + sw("hece", "textSize") + sw("word", "volume") + sw("contrast", "sun") + sw("motion", "pause") + sw("haptic", "sparkle") + sw("sonify", "volume") +
         '<div class="a11y-row"><span class="a11y-row__ico">' + App.icon("volume") + '</span><span class="a11y-row__t"><b>' + esc(t("a11y.tts")) + "</b><small>" + esc(voiceNote || t("a11y.ttsHint")) + "</small></span>" +
           seg("rate", get("rate", 1), RATES.map((r) => [r, r === 1 ? "1×" : String(r).replace(".", App.i18n.lang === "tr" ? "," : ".") + "×", ""])) + "</div>" +
-        voiceRow() +
+        naturalRow() + voiceRow() +
         '<div class="a11y-try" data-read-scope><p>' + esc(t("a11y.sample")) + " $\\frac{x^2+1}{2} = 5$</p>" + listenBtnHtml() + "</div>",
       actions: '<button class="btn btn--ghost" type="button" id="a11yReset">' + App.icon("refresh") + esc(t("a11y.reset")) + '</button><button class="btn btn--primary" type="button" data-close>' + esc(t("close")) + "</button>"
     });
@@ -347,6 +382,7 @@
       apply(); syncDys();
       App.ui.toast(v ? t("a11y.dysModeOn") : t("a11y.dysModeOff"));
     });
+    bindNatural(m.el);
     const vs = m.el.querySelector("#a11yVoice");
     if (vs) {
       const key = "ttsVoice:" + App.speech.langTag(App.i18n.lang).slice(0, 2);

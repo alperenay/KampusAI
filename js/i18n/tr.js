@@ -1155,6 +1155,8 @@ App.locales.tr = {
   "a11y.voice": "Ses",
   "a11y.voiceHint": "★ ile işaretli sesler doğal (sinirsel) seslerdir; ☁ internet ister. Otomatik seçim en doğal sesi kullanır.",
   "a11y.voiceAuto": "Otomatik (en doğal ses)",
+  "a11y.haptic": "Dokunuş titreşimi",
+  "a11y.hapticHint": "Telefonda düğmeye basınca kısa, hafif bir titreşim.",
   "a11y.voiceTry": "Dene",
   "a11y.voiceSample": "Merhaba! Bugün fotosentezi birlikte keşfedelim. Hazır mısın?",
   "a11y.dysMode": "Disleksi dostu mod",

@@ -1,0 +1,173 @@
+/* =========================================================
+   v1.56 — sesli öğretmen küresi, dokunuş ışıması ve mobil hafifletme
+   ========================================================= */
+
+/* ---- Sesli öğretmen küresi: canlı görsel canvas'ta (voice-fx.js); CSS yalnız camsı küre ---- */
+.voice-orb {
+  overflow: visible;
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0) 24%),
+    radial-gradient(circle at 50% 58%, #49e0ff 0%, var(--accent) 52%, #1b1450 100%);
+  box-shadow: 0 0 0 1px rgba(73, 224, 255, 0.35), 0 12px 40px rgba(73, 74, 200, 0.35);
+  transition: transform 0.3s var(--ease);
+  isolation: isolate;
+}
+.voice-center .voice-orb {
+  margin: 22px 0 18px;
+}
+.voice-orb__fx {
+  position: absolute;
+  left: -54px;
+  top: -54px;
+  width: calc(100% + 108px);
+  height: calc(100% + 108px);
+  pointer-events: none;
+  z-index: -1;
+}
+/* Eski CSS darbeleri ve mikrofona bağlı gölge geçişi canvas'a taşındı (her seviye değişiminde gölge boyanmasın) */
+.voice-orb.is-listening,
+.voice-orb.is-speaking,
+.voice-orb.is-thinking span {
+  animation: none;
+}
+.voice-orb.is-speaking {
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0) 24%),
+    radial-gradient(circle at 50% 58%, #7dffc4 0%, var(--good) 55%, #0b3d2a 100%);
+}
+.voice-orb.is-thinking {
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 24%),
+    radial-gradient(circle at 50% 58%, #c9a8ff 0%, var(--accent) 50%, #140f3d 100%);
+}
+.voice-orb.is-error {
+  background: radial-gradient(circle at 50% 58%, #ff9aa6 0%, var(--bad) 60%, #3d0b14 100%);
+}
+.voice-orb.is-paused {
+  background: radial-gradient(circle at 50% 58%, var(--surface-2) 0%, var(--surface-3) 100%);
+  box-shadow: 0 0 0 1px var(--border);
+}
+.voice-orb span {
+  width: 34%;
+  height: 34%;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.35);
+}
+
+/* ---- Dokunuş ışıması (fx.js): tek, sabit konumlu öğe ---- */
+.fx-glow {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 3000;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.25);
+  background: radial-gradient(circle, rgba(139, 123, 255, 0.55), rgba(73, 224, 255, 0.22) 45%, transparent 70%);
+  will-change: transform, opacity;
+}
+.fx-glow.is-strong {
+  background: radial-gradient(circle, rgba(73, 224, 255, 0.6), rgba(139, 123, 255, 0.28) 45%, transparent 70%);
+}
+:root[data-theme="light"] .fx-glow {
+  background: radial-gradient(circle, rgba(87, 72, 190, 0.32), rgba(87, 72, 190, 0.1) 45%, transparent 70%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .fx-glow { display: none; }
+}
+[data-a11y-motion] .fx-glow {
+  display: none;
+}
+
+/* ---- Dokunma gecikmesi: tüm etkileşimli öğelerde çift dokunuş yakınlaştırması beklenmez ---- */
+a, button, input, select, textarea, label, summary, [role="button"], [role="radio"], [role="tab"] {
+  touch-action: manipulation;
+}
+
+/* ---- Erişilebilirlik › Ses: gerçekçi ses satırı ---- */
+.a11y-natural {
+  cursor: default;
+}
+.a11y-elkey {
+  grid-column: 2 / -1;
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.a11y-elkey[hidden] {
+  display: none;
+}
+/* Dar ekranda satır iki sütuna iner: seçim kutusu ve anahtar alanı tam genişlikte alta geçer (30 px simge sütununa sıkışmasın) */
+@media (max-width: 520px) {
+  .a11y-row > .a11y-voice,
+  .a11y-elkey {
+    grid-column: 1 / -1;
+  }
+  .a11y-row > .a11y-voice .select {
+    flex: 1;
+    max-width: none;
+  }
+}
+
+/* ---- Kare düşüşü avı: sonsuz gölge/filtre animasyonları her karede yeniden boyar ----
+   Gölge ya da renk filtresi yerine sözde öğede transform/opacity halkası kullanılır (birleştirici katmanda çalışır). */
+.tour__spot {
+  animation: none;
+}
+.tour__spot::after,
+.pod-sp.is-talk .pod-av::after,
+#feyMic.is-rec::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  border: 2px solid var(--accent-text);
+  pointer-events: none;
+  animation: fx-ring 1.6s ease-out infinite;
+  will-change: transform, opacity;
+}
+.pod-sp.is-talk .pod-av {
+  position: relative;
+  animation: none;
+}
+#feyMic.is-rec {
+  position: relative;
+  animation: none;
+}
+#feyMic.is-rec::after {
+  border-color: var(--bad);
+}
+.fey-rec.is-rec::after {
+  box-shadow: 0 0 0 3px rgba(229, 72, 77, 0.55);
+  animation: fx-ring 1.6s ease-out infinite;
+}
+.ks-avatar.is-thinking {
+  animation: fx-breathe 1.2s ease-in-out infinite;
+}
+@keyframes fx-ring {
+  from { transform: scale(1); opacity: 0.75; }
+  to { transform: scale(1.4); opacity: 0; }
+}
+@keyframes fx-breathe {
+  50% { opacity: 0.72; transform: scale(0.97); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour__spot::after, .pod-sp.is-talk .pod-av::after, #feyMic.is-rec::after, .fey-rec.is-rec::after, .ks-avatar.is-thinking { animation: none !important; }
+}
+[data-a11y-motion] :is(.tour__spot, .pod-sp.is-talk .pod-av, #feyMic.is-rec, .fey-rec.is-rec)::after {
+  animation: none !important;
+}
+
+/* ---- Telefonda kalan sabit bulanıklıklar (cam bulanıklığı v129'da zaten kapalı) ---- */
+@media (max-width: 860px), (pointer: coarse) {
+  .tour.is-center .tour__shade,
+  .kr3-overlay {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .tour.is-center .tour__shade {
+    background: rgba(6, 7, 11, 0.78);
+  }
+}

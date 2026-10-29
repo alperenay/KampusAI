@@ -1,5 +1,15 @@
 # Sürüm notları
 
+## 1.56.0 — 2026-10-29
+
+- Gerçekçi ses: anahtar varsa uzun anlatımlar ElevenLabs, OpenAI ya da Gemini bulut sesiyle okunur; ilk cümle ayrı istenir, sonraki iki parça çalarken hazırlanır. Hata ya da kotada cihaz sesine geçilir, servis 10 dakika denenmez. Ayar: Erişilebilirlik › Gerçekçi ses.
+- Sesli öğretmen, yapay zekâ cevabı gelirken tamamlanan cümleleri okur (`App.speech.stream`); Sustur hem okumayı hem isteği keser.
+- Açılış animasyonu yeniden yazıldı: nöral çekirdek, ızgara, tarama ışığı, şok dalgası, parçacıklar ve hologram geçişi (1,75 sn).
+- Sesli öğretmen küresi canvas'ta durumlara göre canlanır; düğmelerde dokunuş ışıması ve telefonda 10 ms titreşim (Erişilebilirlik › Dokunuş titreşimi).
+- Telefonda performans: sonsuz gölge/filtre animasyonları ve kürenin mikrofon gölgesi transform/opacity'ye taşındı; kalan sabit bulanıklıklar kapatıldı.
+- Yeni testler: `test:tts`, `test:voice-ui`.
+
+
 ## 1.55.0 — 2026-10-29
 
 - Açık tema yüzey hiyerarşisi, metin/durum kontrastı ve giriş sınırları iyileştirildi; açılış 1,65 saniyelik yumuşak geçişle yenilendi.

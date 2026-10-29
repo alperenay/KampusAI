@@ -71,9 +71,17 @@
     if (!s) return;
     const ph = s.phase;
     if (ph === "listening") { if (s.finish) s.finish(); }
-    else if (ph === "speaking") { App.speech.stopSaying(); listen(); }
-    else if (ph === "thinking") { try { if (s.controller) s.controller.abort(); } catch (e) { /* yok */ } s.answer = ""; listen(); }
+    else if (ph === "speaking") { stopAnswer(); listen(); }   // cevap hâlâ geliyorsa o da kesilir
+    else if (ph === "thinking") { stopAnswer(); s.answer = ""; listen(); }
     else listen();
+  }
+
+  /** Süren cevabı (yapay zekâ akışı ve okuma) keser */
+  function stopAnswer() {
+    if (!s) return;
+    try { if (s.controller) s.controller.abort(); } catch (e) { /* yok */ }
+    if (s.stream) { s.stream.stop(); s.stream = null; }
+    App.speech.stopSaying();
   }
 
   /** Mikrofonu kapat: öğrenci düşünürken ya da ortam gürültülüyken */
@@ -81,9 +89,8 @@
     if (!s) return;
     const rec = s.rec; s.rec = null; s.finish = null;
     try { if (rec) { if(rec.cancel)rec.cancel();else rec.stop().catch(()=>{}); } } catch (e) { /* yok */ }
-    try { if (s.controller) s.controller.abort(); } catch (e) { /* yok */ }
-    App.speech.stopSaying();
-    s.phase = "paused"; s.heard = ""; paint();
+    stopAnswer();
+    s.phase = "paused"; s.heard = ""; s.mic = 0; paint();
   }
 
   function listen() {
@@ -108,7 +115,7 @@
       lang: App.i18n.lang,
       onPartial: (p) => { if (s !== owner) return; s.heard = (finalText ? finalText + " " : "") + p; paint(); clearTimeout(timer); timer = setTimeout(finish, SILENCE_MS + 800); },
       onFinal: (piece, full) => { if (s !== owner) return; finalText = full; s.heard = full; paint(); clearTimeout(timer); timer = setTimeout(finish, SILENCE_MS); },
-      onLevel: (v) => { if (s === owner) { s.el.querySelector(".voice-orb").style.setProperty("--lvl", String(v)); if (s.holo) s.holo.mic = Number(v) || 0; } },
+      onLevel: (v) => { if (s === owner) { s.mic = Number(v) || 0; s.el.querySelector(".voice-orb").style.setProperty("--lvl", String(v)); if (s.holo) s.holo.mic = s.mic; } },
       onError: (code) => {
         if (s !== owner) return;
         clearTimeout(timer);s.rec=null;s.finish=null;
@@ -120,27 +127,44 @@
 
   async function ask(text) {
     if (!s) return;
-    s.phase = "thinking"; s.heard = text; s.answer = ""; paint();
+    s.phase = "thinking"; s.heard = text; s.answer = ""; s.mic = 0; paint();
     const owner=s;
     const userMsg = { id: uid("m"), role: "user", text, at: new Date().toISOString() };
     s.controller = new AbortController();
+    // v1.56: cevap gelirken tamamlanan cümleler hemen okunur (ilk ses tüm cevabı beklemez)
+    const live = App.speech.ttsAvailable() || (App.tts && App.tts.provider());
+    owner.stream = live ? App.speech.stream({
+      lang: App.i18n.lang,
+      rate: Number(App.prefs.get("ttsRate", 1)) || 1,
+      natural: true,
+      transform: toSpeech,
+      onStart: () => { if (s === owner && owner.phase === "thinking") { owner.phase = "speaking"; paint(); } },
+      onWord: () => { if (owner.holo) owner.holo.wordAt = performance.now(); },
+      onEnd: (why) => { if (why !== "stop" && s === owner && !owner.closed && owner.phase === "speaking") { owner.stream = null; listen(); } },
+      onError: () => { if (s === owner && !owner.closed && owner.phase === "speaking") { owner.stream = null; listen(); } }
+    }) : null;
+    const speaking = () => owner.phase === "thinking" || owner.phase === "speaking";
     try {
       const res = await App.ai.run({
         text: text + (App.i18n.lang === "en" ? VOICE_HINT_EN : VOICE_HINT_TR),
         history: s.messages.slice(-8),
         useData: true,
         signal: s.controller.signal,
-        on: { delta: (full) => { if (s===owner && s.phase==="thinking") { s.answer = full; paint(); } } }
+        on: { delta: (full) => { if (s===owner && speaking()) { owner.answer = full; paint(); if (owner.stream) owner.stream.push(full); } } }
       });
-      if (s!==owner || s.closed || s.phase !== "thinking") return;
-      s.answer = res.text;
+      if (s!==owner || owner.closed || !speaking()) return;
+      owner.answer = res.text;
       paintPano(text, res.text);
-      s.messages.push(userMsg, { id: uid("m"), role: "assistant", text: res.text, models: res.models, engine: res.engine, at: new Date().toISOString() });
-      speak(res.text);
+      owner.messages.push(userMsg, { id: uid("m"), role: "assistant", text: res.text, models: res.models, engine: res.engine, at: new Date().toISOString() });
+      if (owner.stream) {
+        if (owner.phase === "thinking" && !owner.stream.started) { owner.phase = "speaking"; paint(); }
+        owner.stream.end(res.text);
+      } else speak(res.text);
     } catch (e) {
-      if (s!==owner || s.closed || (e && e.code === "aborted")) return;
-      s.phase = "error"; s.answer = ""; paint();
-      s.el.querySelector("#vHeard").textContent = T("Yapay zekâ cevap veremedi: ", "The AI couldn't answer: ") + ((e && e.message) || "");
+      if (owner.stream) { owner.stream.stop(); owner.stream = null; }
+      if (s!==owner || owner.closed || (e && e.code === "aborted")) return;
+      owner.phase = "error"; owner.answer = ""; paint();
+      owner.el.querySelector("#vHeard").textContent = T("Yapay zekâ cevap veremedi: ", "The AI couldn't answer: ") + ((e && e.message) || "");
     }
   }
 
@@ -151,6 +175,7 @@
     App.speech.say(toSpeech(md), {
       lang: App.i18n.lang,
       rate: Number(App.prefs.get("ttsRate", 1)) || 1,
+      natural: true,
       onWord: () => { if (s && s.holo) s.holo.wordAt = performance.now(); },
       onEnd: () => { if (s && !s.closed && s.phase === "speaking") listen(); },
       onError: () => { if (s && !s.closed && s.phase === "speaking") listen(); }
@@ -166,6 +191,8 @@
       try { history.replaceState(null, ""); } catch (e) { /* yok */ }
     }
     cur.closed = true;
+    if (cur.fx) cur.fx.stop();
+    if (cur.stream) cur.stream.stop();
     try { if (cur.controller) cur.controller.abort(); } catch (e) { /* yok */ }
     try { if (cur.rec) { if(cur.rec.cancel)cur.rec.cancel();else cur.rec.stop().catch(()=>{}); } } catch (e) { /* yok */ }
     App.speech.stopSaying();
@@ -201,7 +228,7 @@
         '<span class="voice-top__r">' + (App.holoTeacher && App.holoTeacher.supported() ? '<button class="voice-holobtn" type="button" id="vHoloBtn" aria-pressed="false" title="' + esc(T("Hologram öğretmen: ekranın içinde konuşan 3B öğretmen", "Hologram teacher: a talking 3D teacher inside the screen")) + '">✦ ' + esc(T("Hologram", "Hologram")) + "</button>" : "") +
         '<button class="icon-btn" type="button" id="vClose" title="' + esc(T("Bitir", "Finish")) + '" aria-label="' + esc(T("Bitir", "Finish")) + '">' + App.icon("close") + "</button></span></div>" +
       '<div class="voice-body">' +
-        '<div class="voice-center"><div class="voice-holo" id="vHolo" hidden></div><div class="vh-pano" id="vPano" hidden></div><button class="voice-orb is-idle" type="button" id="vOrb"><span></span></button>' +
+        '<div class="voice-center"><div class="voice-holo" id="vHolo" hidden></div><div class="vh-pano" id="vPano" hidden></div><button class="voice-orb is-idle" type="button" id="vOrb"><canvas class="voice-orb__fx" aria-hidden="true"></canvas><span></span></button>' +
           '<p class="voice-state" id="vState" aria-live="polite"></p><p class="voice-heard" id="vHeard"></p></div>' +
         '<div class="voice-answer md" id="vAnswer" aria-live="polite"></div>' +
         '<p class="hint voice-tip">' + esc(T("Sorunu söyle, kısa bir sessizlikten sonra kendiliğinden gönderilir. Cevaplar sesli okunur, sonra yeniden seni dinlerim. Küreye dokunmak ortadaki düğmeyle aynı işi yapar.",
@@ -215,7 +242,9 @@
     document.body.appendChild(el);
     el.querySelector("#vMicTest").onclick=()=>{pause();App.media.openTest();};
     App.hydrateIcons(el);
-    s = { el, phase: "idle", heard: "", answer: "", messages: [], startedAt: new Date().toISOString(), rec: null, controller: null };
+    s = { el, phase: "idle", heard: "", answer: "", messages: [], startedAt: new Date().toISOString(), rec: null, controller: null, mic: 0, stream: null };
+    const mine = s;
+    s.fx = App.voiceFx ? App.voiceFx.attach(el.querySelector(".voice-orb__fx"), () => ({ phase: mine.phase, mic: mine.mic })) : null;
     s.onKey = (e) => { if(document.querySelector(".microphone-test"))return;if (e.key === "Escape") { e.preventDefault(); close(); } else if (e.key === " " && e.target === document.body) { e.preventDefault(); mainAction(); } };
     document.addEventListener("keydown", s.onKey, true);
     el.querySelector("#vClose").addEventListener("click", close);

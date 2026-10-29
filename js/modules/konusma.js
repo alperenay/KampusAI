@@ -365,7 +365,7 @@
       phase("speaking");
       const cur = st;
       App.speech.say(text, {
-        lang: "en", rate: st.slow ? 0.75 : 0.95,
+        lang: "en", rate: st.slow ? 0.75 : 0.95, natural: true,
         onWord: () => { if (holo) holo.wordAt = performance.now(); },
         onEnd: () => { if (st === cur && st.phase === "speaking") phase("idle"); },
         onError: () => { if (st === cur && st.phase === "speaking") phase("idle", T("Ses çalınamadı; metni okuyup cevap ver.", "Couldn't play audio; read and answer.")); }
