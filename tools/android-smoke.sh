@@ -40,11 +40,33 @@ echo "ekran: $W x $H"
 n=0
 shot() { n=$((n+1)); adb exec-out screencap -p > "shots/$(printf %02d $n)-$1.png"; }
 
+# Emülatörün kendi "… isn't responding" (ANR) penceresi uygulamanın üstünü kaplarsa (ör. Pixel Launcher)
+# "Wait" ile kapatılır ve ekran yeniden okunur; uygulama hatası değildir, testi düşürmemeli.
+dump_ui() {
+  adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1 && adb pull /sdcard/ui.xml shots/ui.xml >/dev/null 2>&1
+  grep -qiE "isn.t responding|yanıt vermiyor" shots/ui.xml 2>/dev/null || return 0
+  local wxy
+  wxy=$(python3 - <<'PYW'
+import re, xml.etree.ElementTree as ET
+root = ET.parse("shots/ui.xml").getroot()
+for n in root.iter("node"):
+    if n.get("text", "").strip().lower() in ("wait", "bekle"):
+        v = re.findall(r"-?\d+", n.get("bounds", ""))
+        if len(v) == 4:
+            x1, y1, x2, y2 = map(int, v); print((x1 + x2) // 2, (y1 + y2) // 2); break
+PYW
+)
+  echo "sistem ANR penceresi kapatılıyor (Wait): ${wxy:-geri tuşu}"
+  if [ -n "$wxy" ]; then adb shell input tap $wxy; else adb shell input keyevent KEYCODE_BACK; fi
+  sleep 2
+  adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1 && adb pull /sdcard/ui.xml shots/ui.xml >/dev/null 2>&1
+}
+
 # Ekrandaki (WebView dahil) bir yazıyı bul ve dokun; bulunamazsa verilen oransal konuma dokun
 tap_text() {
   local text="$1" fx="$2" fy="$3" xy=""
   for try in $(seq 1 "${TAP_TRIES:-3}"); do
-    adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1 && adb pull /sdcard/ui.xml shots/ui.xml >/dev/null 2>&1
+    dump_ui
     xy=$(python3 - "$text" <<'PY'
 import sys, re, xml.etree.ElementTree as ET
 want = sys.argv[1].lower()
@@ -100,8 +122,7 @@ PY
 fail=0
 required_tap() { tap_text "$1" "" "" || { echo "FAIL: required control $1"; fail=$((fail+1)); return 1; }; }
 has_text() {
-  adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1
-  adb pull /sdcard/ui.xml shots/ui.xml >/dev/null 2>&1
+  dump_ui
   python3 - "$1" <<'PY2'
 import sys,xml.etree.ElementTree as ET
 want=sys.argv[1].lower()

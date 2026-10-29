@@ -5,18 +5,38 @@ import assert from "node:assert/strict";
 import { uiHarness } from "./ui-harness.mjs";
 const h = await uiHarness();
 try {
-  const { page } = await h.device("");
-  await page.waitForFunction(() => !App.startup.active);
-  await page.evaluate(() => {
-    window.__t = { spoken: [], answerDone: 0, runs: 0 };
-    // Some engines (Playwright WebKit on Windows/Linux) ship without speechSynthesis: the fixture voice stands in.
-    if (!window.speechSynthesis) { window.speechSynthesis = { getVoices: () => [] }; window.SpeechSynthesisUtterance = class { constructor(text) { this.text = text; } }; }
-    speechSynthesis.speak = (u) => {
-      window.__t.spoken.push({ text: u.text, at: performance.now() });
-      window.__t.cur = u;
-      setTimeout(() => { if (window.__t.cur !== u) return; u.onstart && u.onstart(); setTimeout(() => { if (window.__t.cur === u) u.onend && u.onend(); }, 180); }, 10);
+  // The fixture voice replaces speechSynthesis before the app loads: macOS WebKit ignores patched methods on its real
+  // synthesizer, and some engines (Playwright WebKit on Windows/Linux) have none at all.
+  const context = await h.browser.newContext({ serviceWorkers: "block" });
+  await context.route("**/*", (r) => (new URL(r.request().url()).hostname === "127.0.0.1" ? r.continue() : r.abort()));
+  await context.addInitScript(() => {
+    localStorage.setItem("da:pref:tourDone", "true");
+    const t = (window.__t = { spoken: [], answerDone: 0, runs: 0, cur: null });
+    const voice = {
+      getVoices: () => [],
+      speak(u) {
+        t.spoken.push({ text: u.text, at: performance.now() });
+        t.cur = u;
+        setTimeout(() => { if (t.cur !== u) return; u.onstart && u.onstart(); setTimeout(() => { if (t.cur === u) u.onend && u.onend(); }, 180); }, 10);
+      },
+      cancel() { const u = t.cur; t.cur = null; if (u && u.onerror) u.onerror({ error: "interrupted" }); },
+      addEventListener() {},
+      removeEventListener() {}
     };
-    speechSynthesis.cancel = () => { const u = window.__t.cur; window.__t.cur = null; if (u && u.onerror) u.onerror({ error: "interrupted" }); };
+    voice.speak.__fixture = true;
+    const define = (obj, name, value) => { try { Object.defineProperty(obj, name, { value, configurable: true, writable: true }); } catch (e) { /* not replaceable here */ } };
+    define(window, "speechSynthesis", voice);
+    define(window, "SpeechSynthesisUtterance", class { constructor(text) { this.text = text; } });
+    // Fallback where the window attribute cannot be replaced: override the methods on the real object and its prototype.
+    const real = window.speechSynthesis;
+    if (real && real !== voice) for (const k of ["speak", "cancel", "getVoices"]) { define(Object.getPrototypeOf(real), k, voice[k]); define(real, k, voice[k]); }
+  });
+  const page = await context.newPage();
+  page.on("pageerror", (e) => h.errors.push({ message: e.message, url: page.url() }));
+  await page.goto(h.baseUrl + "/#/");
+  await page.waitForFunction(() => window.App && App.voice && App.startup && !App.startup.active);
+  assert.equal(await page.evaluate(() => speechSynthesis.speak.__fixture === true), true, "Fixture voice is installed");
+  await page.evaluate(() => {
     App.speech.sttMode = () => "web";
     App.speech.listen = (o) => {
       setTimeout(() => { o.onState && o.onState("listening"); o.onLevel && o.onLevel(0.7); o.onFinal && o.onFinal("Kuvvet nedir?", "Kuvvet nedir?"); }, 30);
