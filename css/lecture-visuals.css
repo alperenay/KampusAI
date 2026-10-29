@@ -1,0 +1,25 @@
+/* Lecture figures are native vectors: resolution independent, local and theme aware. */
+.gv-fig{container-type:inline-size;display:grid;gap:16px;padding:18px;align-items:start;}
+.gv-visual{position:relative;min-width:0;min-height:210px;display:flex;flex-direction:column;justify-content:center;gap:10px;background:var(--surface-primary,var(--surface));border:1px solid var(--border);border-radius:12px;padding:14px;}
+.gv-placeholder{min-height:210px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--muted);font-size:13px;background:radial-gradient(ellipse,var(--accent-soft),transparent 68%);}
+.gv-figure-copy{min-width:0;}
+.gv-figure-description{display:block;}
+.gv-fig figcaption{margin:0;display:grid;gap:7px;font-size:14px;line-height:1.65;color:var(--text-2);}
+.gv-fig figcaption b{font-size:17px;letter-spacing:-.02em;color:var(--text);}
+.gv-figure-label,.gv-tip__label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;line-height:1.5;color:var(--muted);}
+.gv-tip{display:grid;gap:6px;margin-top:14px;border-left:3px solid var(--subj,var(--accent-text));font-size:13px;line-height:1.65;}
+.gv-visual .gv-svg{max-width:720px;overflow:visible;flex-shrink:0;}
+.gv-expand{align-self:flex-end;min-height:40px;}
+.gv-lightbox{width:min(1100px,calc(100vw - 32px))!important;max-width:1100px;}
+.gv-detail{display:grid;gap:12px;min-width:0;}
+.gv-detail-tools{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;}
+.gv-detail-tools .btn{min-width:44px;min-height:44px;}
+.gv-zoom-value{min-width:60px;text-align:center;font-variant-numeric:tabular-nums;font-size:14px;}
+.gv-detail-stage{height:min(58vh,600px);min-height:200px;overflow:hidden;position:relative;border:1px solid var(--border-strong);border-radius:12px;background:var(--surface-primary,var(--surface));touch-action:none;overscroll-behavior:contain;cursor:grab;}
+.gv-detail-stage:active{cursor:grabbing;}
+.gv-detail-art{min-height:0;min-width:0;height:100%;width:100%;display:grid;place-items:center;transform-origin:center;}
+.gv-detail-art .gv-svg{min-width:0;min-height:0;width:100%;height:100%;max-width:none;object-fit:contain;overflow:visible;pointer-events:none;}
+.gv-detail-caption{font-size:13px;color:var(--text-2);line-height:1.6;}
+@media(min-width:1000px){.gv-fig--ana,.gv-fig--harita{grid-template-columns:minmax(0,1.5fr) minmax(180px,1fr);gap:22px;}.gv-fig--tl{grid-template-columns:1fr;}}
+@media(max-width:600px){.gv-fig{padding:12px;gap:12px;}.gv-visual{padding:10px;min-height:180px;}.gv-placeholder{min-height:180px;}.gv-detail-stage{height:48vh;min-height:180px;}.gv-lightbox{width:100%!important;}.gv-detail-caption{font-size:12px;}}
+@media print{.gv-expand,.gv-placeholder{display:none!important;}.gv-fig{break-inside:avoid;}.gv-visual{border:0;}}

@@ -38,15 +38,10 @@
     const system = tr ? "Lise öğretmeni. Yalnız geçerli JSON. Kısa ve doğru yaz." : "High-school teacher. Valid JSON only. Be concise and accurate.";
     const schema = '{"questions":[{"q":"...","options":["...","...","...","...","..."],"answer":0,"difficulty":2,"explain":"...","reasonOptions":["...","...","..."],"reasonAnswer":0,"hints":["...","...","..."]}]}';
     const head = grade.id + " · " + L(subject.name) + " · " + L(outcome.title);
-    // v1.51: orta ve zor sorular çok adımlı ve bağlamlı; çözüm kısa numaralı adımlar; çeldiriciler yaygın yanılgılardan
-    const rule = tr ? "TAM " + count + " benzersiz soru. 5 şık, tek doğru (0 tabanlı answer). " + (d ? "Hepsinde difficulty=" + d + "." : "Birer kolay(1), orta(2), zor(3).") +
-        " Kolay: tek kavram. Orta: iki adım ya da tablo/grafik yorumu. Zor: gerçek hayat bağlamında en az iki kavramı birleştiren çok adımlı soru." +
-        " Yanlış şıklar öğrencilerin yaygın kavram yanılgılarından gelsin. explain: en çok 3 kısa adım (1) … (2) … (3) …; son adımda diğer şıkların neden yanlış olduğunu bir cümleyle söyle." +
-        " Üç gerekçe seçeneği ve 0 tabanlı anahtarı. Üç kısa ipucu: kavram, strateji, ilk işlem; son cevap yok. LaTeX için JSON kaçışlarını koru."
-      : "Exactly " + count + " unique questions, 5 options, one correct 0-based answer. " + (d ? "All difficulty=" + d + "." : "One easy(1), medium(2), hard(3).") +
-        " Easy: one concept. Medium: two steps or reading a table/graph. Hard: a multi-step real-life problem combining at least two concepts." +
-        " Wrong options should come from common misconceptions. explain: at most 3 short steps (1) … (2) … (3) …, ending with one sentence on why the other options fail." +
-        " Three reasoning choices and 0-based key. Three brief hints: concept, strategy, first step; no final answer. Escape LaTeX for JSON.";
+    const rule = tr ? "TAM " + count + " benzersiz soru; 5 farklı şık; answer ve reasonAnswer 0 tabanlı. " + (d ? "difficulty=" + d + ". " : "Birer kolay(1), orta(2), zor(3). ") +
+      "Kolay tek kavram; orta iki adım/tablo; zor gerçek bağlamda iki kavramlı çok adım. Çeldiriciler kavram yanılgılarından. explain: 1–3 kısa çözüm adımı ve yanlış şıkların nedeni. 3 gerekçe; 3 ipucu: kavram, strateji, ilk işlem; cevap sızdırma. JSON LaTeX kaçışlarını koru."
+      : count + " unique questions; 5 distinct options; answer/reasonAnswer zero-based. " + (d ? "difficulty=" + d + ". " : "One easy(1), medium(2), hard(3). ") +
+      "Easy one concept; medium two steps/table; hard real context combining two concepts. Misconception distractors. explain: 1–3 short solution steps plus why distractors fail. 3 reasoning choices; 3 hints: concept, strategy, first step; no answer leak. Escape JSON LaTeX.";
     return { system, prompt: head + "\n" + rule + "\n" + schema + "\n" + lessonText(outcome).slice(0, 2400) +
       (options.exclude && options.exclude.length ? "\n" + (tr ? "Tekrarlama: " : "Do not repeat: ") + options.exclude.slice(-9).map((q) => q.slice(0, 100)).join(" | ") : "") };
   }
@@ -118,15 +113,31 @@
     let questions = cached && Date.now() - cached.at < 600000 ? cached.questions.slice() : [];
     const next = questions.length ? cached.next : 0, models = new Set(cached && questions.length ? cached.models : []);
     if (questions.length && options.onProgress) options.onProgress({ ready: questions.length, total: 12, questions: questions.slice() });
+    const signature = q => q.trim().toLocaleLowerCase().replace(/\s+/g, ' ');
+    // normalize() şıkları, cevap anahtarını ve zorluğu doğrular ("B" / "2" gibi değerleri çevirir). Gerekçe ve ipucu
+    // isteğe bağlıdır (yoksa serbest gerekçe ve genel ipuçları kullanılır); eksik diye partiyi atmak yalnız gecikme getirir.
+    const validGenerated = q => q.options.length === 5 && !!q.explain;
     const batchFor = async (difficulty, exclude) => {
       let batch = [], model = "";
+      const excluded = new Set(exclude.map(signature));
+      const select = data => {
+        const candidates = normalize(data, true).filter(q => validGenerated(q) && !excluded.has(signature(q.q)));
+        return difficulty ? candidates.filter(q => q.difficulty === difficulty).slice(0, 3)
+          : [1, 2, 3].map(d => candidates.find(q => q.difficulty === d)).filter(Boolean);
+      };
       for (let attempt = 0; attempt < 2; attempt++) {
         if (options.signal && options.signal.aborted) throw new Error("aborted");
         const pr = prompts(grade, subject, unit, outcome, { count: 3, difficulty, exclude });
-        const res = await App.ai.generate(Object.assign({}, pr, { temperature: options.temperature == null ? 0.5 : options.temperature, signal: options.signal, onStage: options.onStage, onDelta: options.onDelta }));
-        const candidates = normalize(res.data, true).filter((q) => !exclude.includes(q.q));
-        batch = difficulty ? candidates.filter((q) => q.difficulty === difficulty).slice(0, 3) : [1, 2, 3].map((d) => candidates.find((q) => q.difficulty === d)).filter(Boolean);
-        model = res.model;
+        const res = await App.ai.generate(Object.assign({}, pr, {
+          temperature: options.temperature == null ? 0.45 : options.temperature, maxTokens: 3600,
+          signal: options.signal, onStage: options.onStage, onDelta: options.onDelta, arrayKey: 'questions',
+          onPreview: items => {
+            if (options.signal?.aborted || !options.onProgress) return;
+            const preview = normalize({questions: questions.concat(select({questions:items}))}, true);
+            options.onProgress({ready: preview.length, total:12, questions:preview, provisional:true});
+          }
+        }));
+        batch = select(res.data); model = res.model;
         if (batch.length === 3) break;
       }
       if (batch.length < 3) throw new Error(t("quiz.badOutput"));
@@ -150,6 +161,7 @@
       for (; stage < 4; stage++) { const r = await batchFor(stage, questions.map((q) => q.q)); commit(stage, r.batch, r.model); }
     }
     pendingPools.delete(cacheKey);
+    if (questions.length < 12) throw new Error(t("quiz.badOutput"));
     const model = Array.from(models).join(" + ");
     if (options.cache) savePool(cacheKey, questions, model);
     return { data: { questions }, model };

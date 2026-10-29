@@ -100,6 +100,12 @@
     display: none;
   }
 }
+[data-a11y-motion] *,
+[data-a11y-motion] *::before,
+[data-a11y-motion] *::after {
+  animation: none !important;
+  transition: none !important;
+}
 [data-a11y-motion] .motion-touch {
   display: none;
 }

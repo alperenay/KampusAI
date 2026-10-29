@@ -15,9 +15,17 @@ try {
   await s.locator(".cards-browse details").first().locator("summary").click();
   assert.equal(await s.evaluate(async () => JSON.stringify(await App.db.getAll("cards"))), before);
   const bank = researchBank(30).map((q) => { const out = { ...q }; delete out.reasonOptions; delete out.reasonAnswer; return out; });
-  const key = await s.evaluate((bank) => {
-    App.ai.generate = async () => ({ model: "fixture", data: { questions: bank } });
-    const it = App.learnmap.allOutcomes().find((x) => x.outcome.content || x.outcome.curatedContent); App.router.go("test/" + it.key); return it.key;
+  const key = await s.evaluate(async (bank) => {
+    const it = App.learnmap.allOutcomes().find((x) => x.outcome.content || x.outcome.curatedContent);
+    // Existing pools without auto-assessed reasoning must remain usable for teacher review.
+    // Fresh generation now requires reasoning choices; this scenario exercises the legacy cache path.
+    const { grade, subject, unit, outcome } = it;
+    const cacheKey = JSON.stringify([grade.id, subject.id || App.L(subject.name), unit.id || App.L(unit.name), outcome.id || App.L(outcome.title), App.i18n.lang, App.quiz.lessonText(outcome).slice(0, 2400)]);
+    let hash = 2166136261;
+    for (let i = 0; i < cacheKey.length; i++) { hash ^= cacheKey.charCodeAt(i); hash = Math.imul(hash, 16777619); }
+    await App.db.put("meta", { id: "qpool:" + (hash >>> 0).toString(36), key: cacheKey, at: Date.now(), questions: bank, model: "legacy-free-reason-fixture" });
+    App.ai.generate = async () => { throw new Error("Legacy review fixture must load from its saved pool"); };
+    App.router.go("test/" + it.key); return it.key;
   }, bank);
   await s.locator(".quiz-finish").waitFor();
   for (let i = 0; i < 10; i++) {

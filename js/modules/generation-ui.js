@@ -11,15 +11,16 @@
     const t = App.t, esc = App.utils.esc;
     el.innerHTML = '<section class="generation-card"><p class="generation-status" role="status" aria-live="polite">' + esc(t("gen.scanning")) + '</p><progress max="' + total + '" value="0" aria-label="' + esc(t("gen.progress")) + '"></progress><p class="generation-count">0/' + total + '</p><div class="generation-skeleton" aria-hidden="true"><i></i><i></i><i></i></div><ol class="generation-preview"></ol><button class="btn btn--ghost" type="button">' + esc(t("cancel")) + '</button></section>';
     const b = el.querySelector("button"); b.onclick = () => { b.disabled = true; cancel(); };
-    let last = 0;
+    let last = 0, provisional = false;
     return {
-      stream() { if (Date.now() - last < 400 || !el.isConnected) return; last = Date.now(); el.querySelector(".generation-status").textContent = t("gen.receiving"); },
+      stream() { if (provisional || Date.now() - last < 400 || !el.isConnected) return; last = Date.now(); el.querySelector(".generation-status").textContent = t("gen.receiving"); },
       update(info) {
         if (!el.isConnected) return;
+        provisional = info.provisional === true && info.ready > 0;
         el.querySelector("progress").max = info.total;
         el.querySelector("progress").value = info.ready;
         el.querySelector(".generation-count").textContent = info.ready + "/" + info.total;
-        el.querySelector(".generation-status").textContent = t("gen.preparing");
+        el.querySelector(".generation-status").textContent = provisional ? (App.i18n.lang === "en" ? "Question preview · checking the complete batch…" : "Soru önizlemesi · parti tamamlanınca doğrulanacak…") : t("gen.preparing");
         const list = el.querySelector("ol"); list.textContent = "";
         (info.questions || []).slice(0, 3).forEach((q) => { const li = document.createElement("li"); li.textContent = q.q || q.metin; list.appendChild(li); });
       }

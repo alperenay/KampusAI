@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.54.0
+  APP_VERSION: 1.55.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -111,6 +111,9 @@ jobs:
           npm run test:startup-ui
           npm run test:lesson-layout-ui
           npm run test:v151-ui
+          npm run test:inference-ui
+          npm run test:lecture-visuals-ui
+          npm run test:prerelease-ui
           node tools/storage-ui-check.mjs
           node tools/lifecycle-ui-check.mjs
           node tools/lab-interactions-ui-check.mjs
@@ -564,9 +567,10 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          Konu anlatımında masaüstü sütun hatası düzeltildi: yardım kartı artık dersin içerik alanında; anlatım dar bir yan sütuna sıkışmaz. Okuma modundan dönüşte sayfanın başlığa sıçraması önlendi.
-          Yeni fütüristik açılış: çizilen altıgen HUD, holografik halka ve logo belirimi. Kısa/geçilebilir; hareket azaltmada gösterilmez, uygulama başlangıcını bekletmez.
-          Beş derste 320–1600px sütun/genişlik regresyonu eklendi; son dil/sensör/deney modüllerinin etkileşim testleri tüm tarayıcı motorlarına dahil edildi. Build, lint, tip ve birim kontrolleri ile paket açılış kapıları yayın öncesinde çalıştırılır. Donanım ve AI örnekleriyle yapılan testler fiziksel cihaz/gerçek model doğruluğu sertifikası değildir.
+          Açık tema: slate/off-white yüzey katmanları, iyileştirilmiş metin/durum/rozet kontrastı ve belirgin giriş sınırları. Açılış 1,65 saniyelik yumuşak bir geçişle tamamlanır; hareket azaltma ve geçme seçenekleri korunur.
+          Derslerde yerel vektör görselleri gerektiğinde oluşturulur; tutarlı açıklamalar ve büyütme/klavye/dokunma destekli inceleme penceresi eklendi. Dış görsel indirme veya yeni kütüphane gerektirmez.
+          Test/yazılı üretiminde daha kısa promptlar, kademeli JSON soru önizlemesi, sınırlı çıktı bütçesi ve yeniden deneme; nihai şema doğrulaması ve kayıt sınırları korunur. Yerel model değiştirilmedi; model kalitesi veya gerçek servis gecikmesi için ölçülmemiş hız iddiası yoktur.
+          Modal odak/zamanlayıcı temizliği ve WebKit viewport uyarısı düzeltildi. Genişletilmiş ön yayın testleri kontrollü servis örnekleriyle çalışır; fiziksel cihaz veya canlı AI doğruluğu sertifikası değildir.
 
           | Platform | Dosya |
           |---|---|
