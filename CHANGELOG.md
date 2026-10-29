@@ -2,6 +2,8 @@
 
 ## 1.54.0 — 2026-10-29
 
+- Android açılış testinde dış UiAutomation süreç çöküşünün uygulamaya mal edilmesi düzeltildi. Uygulama, yeniden başlatılmış süreç ve bağlı WebView çöküşleri testi durdurmaya devam eder; dış hatalar ayrı raporlanır.
+
 - Konu anlatımında rehber kartının iki sütunlu masaüstü düzenine üçüncü öğe olarak eklenip metni 250 piksele sıkıştırması düzeltildi. Yardım dersin ana alanında gösterilir.
 - Diğer ızgaralı araçlarda yardım kartı kendi satırını kaplar. Okuma modundan çıkışta klavye odağı korunurken sayfa başlığa sıçramaz.
 - Fütüristik açılış: altıgen HUD çizimi, perspektif halka ve logo belirimi. 1,45 saniyede temizlenir; dokunma/klavyeyle geçilir, hareket azaltmada gösterilmez. Animasyon dinleyicileri kapatılırken temizlenir.

@@ -78,3 +78,5 @@ Ortak tasarım katmanı `css/polish.css` içindedir. Tema değişkenleri, kart y
 `test:v151-ui` de tam motor denetimine dahil edilmiştir: iki dil, sesli grafik, sensör ölçüm görünümleri, pH metre, ekosistem, oyun ve pratik etkileşimleri. Sensör örnekleri ve AI verileri kontrollü test girdileridir; gerçek donanım veya canlı AI doğruluk iddiası taşımaz.
 
 Fütüristik açılış 1,45 saniyede kaldırılır. CSS, JavaScript temizliği çalışmazsa katmanı 1,45 saniyede görünmez/tıklamayı engellemez hale getirir. İşletim sistemi ve kayıtlı hareket azaltma ayarı korunur.
+
+Android açılış testi tüm sistem günlüğünü `shots/android-logcat.txt` içinde korur. `tools/check-android-log.py`, süreç başlangıcı ve `Process` kayıtlarından uygulama/bağlı WebView PID'lerini ayırır; yeniden başlatılmış süreçlerdeki çöküşler de testi durdurur. Kaynağı belirlenemeyen fatal kayıtlar veya boş günlük de başarısızdır. Kimliği doğrulanan dış emülatör/test aracı hataları ayrı `crash-summary.json` alanında raporlanır. `--self-test` uygulama, yeniden başlama, WebView, dış UiAutomation, belirsiz ve eksik günlük durumlarını kontrol eder.

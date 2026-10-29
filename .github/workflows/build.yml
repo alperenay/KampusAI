@@ -196,6 +196,7 @@ jobs:
           npm run test:audio
           npm run test:v150
           npm test
+          python3 tools/check-android-log.py --self-test
       - name: Web dosyalarını hazırla
         run: |
           node tools/build-web.mjs dist/web --version "$APP_VERSION"

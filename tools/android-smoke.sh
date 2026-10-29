@@ -141,7 +141,11 @@ for task in 1 2 3; do
  done
 require_text "Çalışma tamamlandı"; shot aktarim-sonuc
 adb logcat -d > shots/android-logcat.txt || true
-if grep -q "FATAL EXCEPTION" shots/android-logcat.txt; then echo "FAIL: Android fatal exception"; fail=$((fail+1)); fi
-pidof_app=$(adb shell pidof $APP)
+pidof_app=$(adb shell pidof $APP || true)
+# Retain all logs, but distinguish the app/its WebView from unrelated emulator tools.
+if ! python3 tools/check-android-log.py shots/android-logcat.txt "$APP" "$pidof_app" > shots/crash-summary.json; then
+  echo "FAIL: app/WebView fatal exception or unavailable crash verification"; fail=$((fail+1))
+fi
+cat shots/crash-summary.json
 echo "app pid: $pidof_app; required UI failures: $fail"
 test -n "$pidof_app" && test "$fail" -eq 0
