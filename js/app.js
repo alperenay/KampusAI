@@ -142,6 +142,7 @@
     setCollapsed(App.prefs.get("sidebarCollapsed", false));
     bindChrome();
     if (App.nav) App.nav.init();
+    if (App.smartMenu) App.smartMenu.init();
     App.theme.onChange(renderThemeSwitch);
 
     await App.db.init();
