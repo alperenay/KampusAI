@@ -88,7 +88,6 @@
     }, 120));
 
     $("#backupBtn").addEventListener("click", () => App.modules.settings.exportBackup());
-    $("#settingsBtn").addEventListener("click", () => App.modules.settings.open());
     $("#profileBtn").addEventListener("click", () => App.modules.settings.open());
 
     $("#themeSwitch").addEventListener("click", (e) => {
