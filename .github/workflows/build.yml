@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.56.0
+  APP_VERSION: 1.57.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
