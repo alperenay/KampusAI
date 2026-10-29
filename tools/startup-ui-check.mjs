@@ -27,7 +27,11 @@ try {
       window.__startupMetrics = null;
       new MutationObserver((rows) => {
         for (const row of rows) {
-          for (const n of row.addedNodes)
+          // Startup is inserted on the very first paint and upgraded in place.
+          // Observe the class change, not just newly inserted brand elements.
+          const candidate = row.type === "attributes" && row.target.id === "startupPreload"
+            && row.target.classList.contains("startup-brand") ? [row.target] : row.addedNodes;
+          for (const n of candidate)
             if (n.nodeType === 1 && n.classList.contains("startup-brand")) {
               window.__startupTrace.push("added");
               window.__startupMetrics = {
@@ -45,7 +49,7 @@ try {
             if (n.nodeType === 1 && n.classList.contains("startup-brand"))
               window.__startupTrace.push("removed");
         }
-      }).observe(document, { subtree: true, childList: true });
+      }).observe(document, { subtree: true, childList: true, attributes: true, attributeFilter: ["class"] });
     }, mode);
     const p = await c.newPage();
     const errors = [];
