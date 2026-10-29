@@ -206,12 +206,6 @@
     let label = t("ai.stage." + (msg.stage || "answer"));
     if (msg.stage === "memory" && msg.memProgress && msg.memProgress[1]) label = t("ai.stage.indexing", { i: msg.memProgress[0], n: msg.memProgress[1] });
     const model = (msg.models || []).filter((m) => m.role === msg.stage).map((m) => m.model)[0] || "";
-
-    // Holografik bekleme animasyonu (cevap yazılırken)
-    if (msg.stage === "answer" && App.loadingAnimation) {
-      return App.loadingAnimation.createHtml(shortModel(model));
-    }
-
     return '<div class="stage"><span class="spinner" aria-hidden="true"></span>' + App.icon(STAGE_ICON[msg.stage] || "sparkle") +
       "<span>" + esc(label) + "</span>" + (model ? '<code>' + esc(shortModel(model)) + "</code>" : "") +
       '<span class="stage__time">' + esc(t("ai.seconds", { n: secs })) + "</span></div>";
