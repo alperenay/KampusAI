@@ -41,7 +41,7 @@
       document.querySelector("#app").classList.remove("is-menu-open");
       document.getElementById("scrim").hidden = true;
       restore.focus();
-    } else if (returnFocus?.isConnected) returnFocus.focus();
+    } else if (returnFocus?.isConnected) returnFocus.focus({preventScroll:true});
   }
   function lesson() {
     setReading(false);

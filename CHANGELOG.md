@@ -1,5 +1,13 @@
 # Sürüm notları
 
+## 1.54.0 — 2026-10-29
+
+- Konu anlatımında rehber kartının iki sütunlu masaüstü düzenine üçüncü öğe olarak eklenip metni 250 piksele sıkıştırması düzeltildi. Yardım dersin ana alanında gösterilir.
+- Diğer ızgaralı araçlarda yardım kartı kendi satırını kaplar. Okuma modundan çıkışta klavye odağı korunurken sayfa başlığa sıçramaz.
+- Fütüristik açılış: altıgen HUD çizimi, perspektif halka ve logo belirimi. 1,45 saniyede temizlenir; dokunma/klavyeyle geçilir, hareket azaltmada gösterilmez. Animasyon dinleyicileri kapatılırken temizlenir.
+- Beş ders, masaüstü eşik genişlikleri, sütun sırası, yardım yüksekliği ve okuma konumu testleri eklendi. Son dil/sensör/oyun/deney modülleri çoklu motor regresyonuna dahil edildi.
+
+
 ## 1.53.0 — 2026-10-29
 
 - Her platformun uygulama açılışında kısa logo/yörünge animasyonu. Yalnız belge açılışında oynar; dokunma veya klavyeyle geçilir, en geç 1.05 saniyede temizlenir. Hareket azaltma açıkken gösterilmez; uygulama başlangıcı animasyonu beklemez.

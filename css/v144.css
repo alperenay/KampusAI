@@ -64,3 +64,6 @@
 }
 @media(prefers-reduced-motion:reduce) { .page *, .tour * { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
 @media print { .page-guide,.pr-back { display: none !important; } }
+
+/* Guides span their own row when a tool uses a grid layout. */
+.page>.page-guide{grid-column:1 / -1;align-self:start;min-width:0;}

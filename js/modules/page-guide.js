@@ -58,7 +58,10 @@
     const box = document.createElement('div'); box.className = 'page-guide';
     const related = info ? info.slice(2) : ['araclar'];
     box.innerHTML = '<nav aria-label="' + esc(T('Sayfa yolu', 'Breadcrumb')) + '"><a href="#/araclar">' + esc(T('Tüm özellikler', 'All features')) + '</a><span aria-hidden="true"> / </span><span>' + esc(title) + '</span></nav><details><summary>' + esc(T('Bu ekranı nasıl kullanırım?', 'How do I use this page?')) + '</summary><p>' + esc(text) + '</p><div class="guide-links">' + related.map((id) => { const x = App.hub.TOOLS.find((x) => x[0] === id), label = x ? Array.isArray(x[2]) ? T.apply(null, x[2]) : App.t(x[2]) : T('Kullanım rehberi', 'User guide'); return '<a href="#/' + esc(id) + '">' + esc(label) + ' →</a>'; }).join('') + '</div></details>';
-    page.insertBefore(box, page.firstChild);
+    // The desktop lesson page is a two-column grid: main content + sticky outline.
+    // A third direct child would take the main column and squeeze the lesson into the outline.
+    const host = Array.from(page.children).find(el => el.classList.contains('lesson-main')) || page;
+    host.insertBefore(box, host.firstChild);
   }
   function render(view) {
     App.setTitle(T('Kullanım Rehberi', 'User Guide'));

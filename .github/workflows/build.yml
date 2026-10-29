@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.53.0
+  APP_VERSION: 1.54.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -109,6 +109,8 @@ jobs:
           npm run test:appearance-ui
           npm run test:polish-ui
           npm run test:startup-ui
+          npm run test:lesson-layout-ui
+          npm run test:v151-ui
           node tools/storage-ui-check.mjs
           node tools/lifecycle-ui-check.mjs
           node tools/lab-interactions-ui-check.mjs
@@ -193,6 +195,7 @@ jobs:
           npm run test:v149
           npm run test:audio
           npm run test:v150
+          npm test
       - name: Web dosyalarını hazırla
         run: |
           node tools/build-web.mjs dist/web --version "$APP_VERSION"
@@ -560,11 +563,9 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          Tüm platformlarda kısa, geçilebilir ve hareket azaltmaya uyumlu KampüsAI açılış animasyonu eklendi.
-
-          Görsel tasarım birliği: sakin nötr arka planlar, mor–mavi vurgular, dengeli kart yüzeyleri, okunaklı başlıklar ve tutarlı düğme/simge ölçüleri. Açık tema kırık beyaz yüzeyler ve yumuşak gölgelerle yenilendi. Mevcut özellikler ve kullanım akışları korunur.
-          Menü, AI çalışma alanı, boş durumlar, günlük istatistikler ve grafik tema renkleri aynı görsel sistemde. Kişisel atmosferler, okuma modu, yüksek karşıtlık ve hareket azaltma korunur. Görsel düzenlemeler ek bağımlılık veya ağ isteği gerektirmez.
-          Testler açık/koyu temada 320–1440px yerleşimleri, temel metin kontrastını, mevcut özellik regresyonlarını ve paket açılışını kapsar.
+          Konu anlatımında masaüstü sütun hatası düzeltildi: yardım kartı artık dersin içerik alanında; anlatım dar bir yan sütuna sıkışmaz. Okuma modundan dönüşte sayfanın başlığa sıçraması önlendi.
+          Yeni fütüristik açılış: çizilen altıgen HUD, holografik halka ve logo belirimi. Kısa/geçilebilir; hareket azaltmada gösterilmez, uygulama başlangıcını bekletmez.
+          Beş derste 320–1600px sütun/genişlik regresyonu eklendi; son dil/sensör/deney modüllerinin etkileşim testleri tüm tarayıcı motorlarına dahil edildi. Build, lint, tip ve birim kontrolleri ile paket açılış kapıları yayın öncesinde çalıştırılır. Donanım ve AI örnekleriyle yapılan testler fiziksel cihaz/gerçek model doğruluğu sertifikası değildir.
 
           | Platform | Dosya |
           |---|---|

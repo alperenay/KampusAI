@@ -70,3 +70,11 @@ Ortak tasarım katmanı `css/polish.css` içindedir. Tema değişkenleri, kart y
 
 
 `npm run test:startup-ui`: üç tarayıcı motorunda açılış katmanının oluşması/temizlenmesi, sayfa değişiminde tekrar oynamaması, klavyeyle geçiş, sistem ve kaydedilmiş hareket azaltma ayarları. Uygulama başlatma veya veri yükleme bu katmanı beklemez.
+
+## 1.54 konu yerleşimi ve açılış
+
+`npm run test:lesson-layout-ui`: edebiyat, matematik, kimya, biyoloji ve coğrafya anlatımlarında 320/768/1239/1240/1440/1600px kontrolü. Ders genişliği, yardım kartının ebeveyni/yüksekliği ve sağ sütunun metnin yanında kalması ölçülür. Okuma modundan dönüşte kaydırma konumu korunur. Bu ölçümler, yalnız yatay taşma veya sayfanın açılmasını kontrol eden sınamalardan farklı olarak içerik sıkışmasını yakalar.
+
+`test:v151-ui` de tam motor denetimine dahil edilmiştir: iki dil, sesli grafik, sensör ölçüm görünümleri, pH metre, ekosistem, oyun ve pratik etkileşimleri. Sensör örnekleri ve AI verileri kontrollü test girdileridir; gerçek donanım veya canlı AI doğruluk iddiası taşımaz.
+
+Fütüristik açılış 1,45 saniyede kaldırılır. CSS, JavaScript temizliği çalışmazsa katmanı 1,45 saniyede görünmez/tıklamayı engellemez hale getirir. İşletim sistemi ve kayıtlı hareket azaltma ayarı korunur.
