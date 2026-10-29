@@ -200,7 +200,7 @@
     );
   }
 
-  const STAGE_ICON = { vision: "eye", memory: "search", answer: "sparkle", calc: "calc", web: "search" };
+  const STAGE_ICON = { routing: "sparkle", vision: "eye", memory: "search", answer: "sparkle", calc: "calc", web: "search" };
 
   function stageHtml(msg) {
     const secs = Math.max(0, Math.round((Date.now() - (msg.startedAt || Date.now())) / 1000));
@@ -445,7 +445,7 @@
     }
     const history_ = chat.messages.slice();
     const userMsg = { id: uid("m"), role: "user", text, image: image ? image.dataUrl : null, at: new Date().toISOString() };
-    const aiMsg = { id: uid("m"), role: "assistant", text: "", pending: true, stage: image ? "vision" : useData ? "memory" : "answer", models: [], startedAt: Date.now(), socratic };
+    const aiMsg = { id: uid("m"), role: "assistant", text: "", pending: true, stage: "routing", models: [], startedAt: Date.now(), socratic };
     chat.messages.push(userMsg, aiMsg);
     latestAiId = aiMsg.id;
     draft = { image: null, text: "" };
