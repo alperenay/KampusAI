@@ -111,7 +111,8 @@ try {
   await page.evaluate(()=>{window.__realCreate=App.research.create;App.research.create=async options=>{const session=await window.__realCreate(options);await new Promise(resolve=>window.__finishCreate=resolve);return session;};});
   await page.click('#rCreate');await page.fill('#rTitle','Cancelled transfer test');
   await page.fill('#rBank',JSON.stringify({questions:researchBank()}));await page.check('#rReviewed');await page.click('#rCreateGo');
-  await page.waitForFunction(()=>!!window.__finishCreate);
+  try { await page.waitForFunction(()=>!!window.__finishCreate); }
+  catch(e) { console.log('Research create diagnostic',await page.evaluate(()=>({status:document.querySelector('#rCreateStatus')?.textContent,reviewed:document.querySelector('#rReviewed')?.checked,title:document.querySelector('#rTitle')?.value,disabled:document.querySelector('#rCreateGo')?.disabled})));await page.screenshot({path:path.join(h.qa,'research-create-failure.png')});throw e; }
   await page.locator('.modal-backdrop [data-close]').first().click();await go('bugun');
   await page.evaluate(()=>{App.research.create=window.__realCreate;window.__finishCreate();});await page.waitForTimeout(100);
   assert.equal(await page.locator('#rCodes').count(),0);assert.equal(await page.locator('.tday-grid').count(),1);

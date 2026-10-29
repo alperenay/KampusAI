@@ -39,6 +39,8 @@
     "js/modules/meslek.js",
     "js/modules/hece.js",
     "js/core/media.js",
-    "js/core/speech.js"
+    "js/core/speech.js",
+    "js/modules/motion.js",
+    "js/modules/appearance.js"
   ]
 }

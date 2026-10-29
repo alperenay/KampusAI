@@ -1,5 +1,17 @@
 # Sürüm notları
 
+## 1.52.0 — 2026-10-29
+
+- Akan ışık şeritleri: mor, okyanus, kutup ışığı veya sade görünüm; yerel renk ve arka plan hareket tercihi. Arka plan yalnız ana çalışma ekranlarında görünür; okuma ve deneyleri örtmez.
+- Menü kategorileri simgeli, belirgin kutulara ayrıldı. Mobil menü uygulamanın mevcut açık/koyu tema renklerini kullanan opak yüzeyde; üstte ek Ayarlar ve kapat düğmesi var. Kenardan kenara Android güvenli alanları alt/üst düğmeleri sistem çubuklarından uzak tutar.
+- Konu anlatımında Menüleri gizle: menüleri/ders araçlarını gizleyen okuma modu, sabit Menüleri göster ve Escape ile geri dönüş.
+
+- Mobil alt menüde seçili sekmeyi izleyen renkli ışık ve esnek geçiş.
+- Görünür kart ve başlıklarda sınırlı, kademeli belirme; fareyle kart yükselmesi ve tıklama halkası.
+- Hareket azaltma (sistem/uygulama), arka plan durdurma, hızlı gezinmede temizleme ve eski tarayıcıda statik geri dönüş.
+- Dekoratif katmanlar tıklamaları engellemez, öğrenme verisini veya form içeriğini değiştirmez. En fazla 18 görünür öğe hareketlendirilir; yeni bağımlılık eklenmez.
+
+
 ## 1.51.0 — 2026-10-28
 
 ### Dil öğrenme (İngilizce ve Almanca)

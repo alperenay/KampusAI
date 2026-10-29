@@ -84,3 +84,16 @@ AI Ayarları → **Mikrofonu test et** ile yerel giriş seviyesini kontrol et. S
 - Bu ayarlar aynı cihaz/tarayıcıda saklanır. Tarayıcı verilerinin silinmesi kişisel şablonları kaldırır; cihazlar arası otomatik eşitleme yapılmaz.
 
 Mikrofon tanılama ve hata açıklamaları: [Mikrofon kılavuzu](MIKROFON.md).
+
+## Arayüz hareketleri (1.52)
+
+Alt menüdeki renkli ışık seçilen sekmeye geçer. Kartlar ve başlıklar sayfa açılışında kısa, kademeli hareketlerle görünür; düğmeler dokunma geri bildirimi verir. Bunlar yalnız görsel etkilerdir; sonuçları, sensör ölçümlerini veya AI yanıtlarını değiştirmez.
+
+Hareket istemiyorsan üst çubuktaki **Erişilebilirlik → Hareketleri azalt** ayarını aç. Telefon/bilgisayarın sistemdeki hareket azaltma tercihi de otomatik uygulanır. İki tercihten biri açıksa hareket durur. Desteklemeyen eski tarayıcılarda arayüz statik çalışır.
+
+## Görünümü özelleştir ve rahat oku (1.52)
+
+- Üst çubuktan **Görünüm ve yedek → Görünümü özelleştir** açılır. Kampüs moru, Okyanus, Kutup ışığı veya Sade seçilir. Arka plan ışıklarının hareketi ayrıca kapatılabilir; tercih cihazda saklanır.
+- Işık şeritleri yalnız AI ana ekranı, Bugün ve araç kataloğunda görünür. Konu anlatımı/deney ekranı ve yüksek karşıtlık modu sade kalır. Sistem veya uygulama hareket azaltma ayarı arka planı da durdurur.
+- Mobil menüde **Ayarlar** üstte sürekli erişilebilen bir düğmedir. Sağ üst çarpı menüyü kapatır; kategoriler simge ve kutularla ayrılır. Alt Ayarlar da Android/iOS güvenli alanının üstünde kalır.
+- Bir konu anlatımını aç → **Menüleri gizle**. Yan menü, üst/alt çubuk ve ders araçları gizlenir. **Menüleri göster** veya **Escape** ile geri dön. Ders değişince mod kapanır; ilerleme ve okuma içeriği değişmez.

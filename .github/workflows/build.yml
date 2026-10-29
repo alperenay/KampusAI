@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.51.0
+  APP_VERSION: 1.52.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -105,6 +105,8 @@ jobs:
           npm run test:audio-ui
           npm run test:audio-browser
           npm run test:v150-ui
+          npm run test:motion-ui
+          npm run test:appearance-ui
           node tools/storage-ui-check.mjs
           node tools/lifecycle-ui-check.mjs
           node tools/lab-interactions-ui-check.mjs
@@ -556,10 +558,9 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          Dil: İngilizce ve Almanca artık aynı pratik ekranında; her seviyede 20 kelime, kelime testi, gramer, diyalog, çok adımlı rol oyunu (kafe, istasyon, doktor, münazara, mülakat) ve dinle-yaz. Ses: en doğal (sinirsel) sesler önce seçilir, cümle cümle doğal duraklamalarla okunur, birim ve kısaltmalar okunur hâle gelir; Erişilebilirlik panelinden ses seçilebilir, Android'de en yüksek kaliteli ses ve podcast'te iki ayrı ses kullanılır.
-          Soru üretimi: bulut modellerde partiler paralel istenir, tamamlanan havuz 21 gün saklanır (aynı konu anında açılır), zor sorular çok adımlı ve bağlamlı, çözümler numaralı adımlarla gelir. Pratik: 6 yeni disiplinlerarası aktarım ailesi ve kavram yanılgısı adlandırılmış 12 yeni hata analizi; adım adım çözümleme.
-          Oyunlar: Sayı Doğrusu Avcısı, Birim Avcısı, Sırala!. Laboratuvar: sesli grafikte Duraklat/Devam/Durdur; sensörde doğrusal ivme ve yönelim kanalları, metrikler ve histogram; pH ölçer kadran, dijital ekran, HOLD ve kalibrasyonla; ekosisteme kartal, mevsim ve salgın; Telefon Fizik, Çiz Çalışsın ve Canlanan Ders Kitabı'na adım adım rehber. Windows: Ollama başlarken açılan cmd pencereleri giderildi. Ayrıntılar: CHANGELOG.md.
-          Lint, yeni modül tip denetimi, birim testleri, üç tarayıcı motoru ve Android/Windows/Linux regresyon kapıları tamamlandı.
+          Videolardaki hareket dilinden esinlenen arayüz: seçili sekmeyi takip eden renkli/esnek ışık göstergesi, kademeli kart ve başlık girişleri, tıklama geri bildirimi ve fareyle kart yükselmesi. Akan vektör ışık şeritleri ve mor/okyanus/kutup ışığı/sade görünüm tercihleri eklendi. Kategoriler belirginleştirildi; menüye üstten Ayarlar girişi, Android güvenli alan düzeltmesi ve konu anlatımına menüleri gizleyen okuma modu eklendi. Özgün kod kullanır; yeni kütüphane veya indirilen görsel yoktur.
+          İşletim sistemi veya uygulamadaki Hareketleri azalt ayarı etkinse hareketler durur. Uygulama arka plana alındığında animasyon durur; sayfa geçişlerinde önceki hareketler temizlenir. 1.51 özellikleri korunur.
+          Lint, tip denetimi, birim testleri, tarayıcı regresyonları ve paket açılış kapıları yayın öncesinde çalıştırılır.
 
           | Platform | Dosya |
           |---|---|

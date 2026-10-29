@@ -45,7 +45,9 @@
       el.innerHTML =
         '<button class="nav-group__head" type="button" aria-expanded="true" aria-controls="ng-' +
         group.id +
-        '"><span class="nav-category__text"><span class="sidebar__label" data-category-title="' +
+        '"><span class="nav-category__icon sidebar__label-block" aria-hidden="true">' +
+        App.icon(group.icon) +
+        '</span><span class="nav-category__text"><span class="sidebar__label" data-category-title="' +
         group.id +
         '">' +
         esc(App.toolCategories.text(group.title)) +

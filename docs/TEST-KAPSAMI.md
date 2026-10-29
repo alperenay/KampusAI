@@ -55,3 +55,9 @@ Tarayıcı testleri Playwright 1.62.1 kullanır. Windows'ta varsayılan Chromium
 Mikrofon onarımları ve menü/favori geliştirmeleri aynı sürümde teslim edilir. `npm run test:v150` kategori eşlemesini, eski favorileri, kişisel şablon doğrulamasını, sınırları ve sıralamayı doğrular. `npm run test:v150-ui` gerçek tarayıcıda kategori süzme, şablon oluşturma/düzenleme/silme, arama, kalıcılık, taslak koruma ve 320–1440 piksel genişlikleri sınar. Tam çoklu motor denetimine dahildir.
 
 Donanım izinleri ve ses sağlayıcısı testlerinde kontrollü örnekler ile gerçek ses kayıt API testi ayrı tutulur. Fiziksel mikrofonların ve her telefon modelinin tamamı sertifikalandırılmış değildir. Android manifest izni ve paket açılışı CI emülatör testine tabidir; iOS doğrulaması web motoru/PWA kapsamındadır.
+
+## 1.52 animasyon kontrolleri
+
+`npm run test:motion-ui`: gerçek Web Animations API ile kart girişleri, sekme göstergesinin konum değiştirmesi, tıklama katmanının işlevleri engellememesi, hızlı gezinme sonunda animasyonların temizlenmesi, işletim sistemi ve uygulama hareket azaltma tercihleri, 320–1440 px yatay taşma kontrolü. Görsel hareket animasyon desteklenmediğinde içeriği gizlemez; bilimsel grafik ve sensör döngülerine müdahale etmez. Tam tarayıcı denetimine dahildir.
+
+`npm run test:appearance-ui`: renk tercihinin kalıcılığı, arka planı durdurma/sade seçim, okuma modunun düğme ve Escape ile geri dönüşü, açık menünün üstten kapanması ve 24/48/80px sistem alt boşluğunda Ayarlar'ın gerçek hit-test ile erişimi. Hedefler 320×640 dahil mobil/tablet boyutlarında kontrol edilir. Fiziksel telefon modellerinin tamamının sertifikalandırıldığı iddia edilmez.
