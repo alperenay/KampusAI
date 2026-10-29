@@ -1,5 +1,14 @@
 # Sürüm notları
 
+## 1.58.0 — 2026-10-30
+
+- Android/WebView açılışında beyaz veya siyah boş ekran yerine HTML ilk çiziminden itibaren KampüsAI markalı karşılama ekranı gösterilir. Uygulama hazır olduğunda hafifletilmiş nöral çekirdek animasyonuna geçilir; WebView başlangıçta gizli görünüyorsa ilk görünür an beklenir.
+- Yapay zekâ yanıtı beklenirken yeni mor/camgöbeği yörüngeli animasyon, aşama, model adı ve süre sayacı görünür. Metin akarken animasyon korunur.
+- Mobilde yanıt akışı en fazla yaklaşık 11 kez/saniye yeniden çizilir. Süre sayacı yalnız kendi metnini günceller, bütün mesajı yeniden oluşturmaz.
+- Açılış animasyonunda pahalı süs katmanları telefonda azaltıldı, mobil sohbet kartlarında gereksiz bulanıklıklar kaldırıldı; düşük hareket tercihleri desteklenir.
+- Sesli öğretmen küresi mobilde daha düşük tuval çözünürlüğü ve yaklaşık 30 FPS çizim bütçesi kullanır. Mevcut ders/veri kayıtları ve yapay zekâ sağlayıcıları değiştirilmedi.
+
+
 ## 1.56.0 — 2026-10-29
 
 - Gerçekçi ses: anahtar varsa uzun anlatımlar ElevenLabs, OpenAI ya da Gemini bulut sesiyle okunur; ilk cümle ayrı istenir, sonraki iki parça çalarken hazırlanır. Hata ya da kotada cihaz sesine geçilir, servis 10 dakika denenmez. Ayar: Erişilebilirlik › Gerçekçi ses.
