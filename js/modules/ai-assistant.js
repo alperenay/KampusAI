@@ -186,7 +186,7 @@
     const name = App.prefs.get("userName", "");
     const first = name ? name.trim().split(/\s+/)[0] : "";
     return (
-      '<div class="home">' +
+      '<div class="home">' + '<p class="chat__note">' + esc(t("ai.note")) + '</p>' +
         '<div class="home__brand" aria-hidden="true">' + App.icon("logo") + "</div>" +
         '<h1 class="home__title">' + (first ? "<b>" + esc(t("ai.hello", { name: first })) + "</b><br>" : "") + esc(t("ai.headline")) + "</h1>" +
         (App.goals ? App.goals.countdownHtml() : "") +

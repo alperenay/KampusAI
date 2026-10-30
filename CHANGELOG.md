@@ -1,5 +1,15 @@
 # Sürüm notları
 
+## 1.57.0 — Belge, ödev, not ve sözlü prova
+
+- Kaynak bölümlerine bağlı belge çalışma paketi: yerel PDF/DOCX/TXT/MD okuma, özet, kavramlar, kartlar ve test.
+- Elle/fotoğraftan ödev taslağı, teslim tarihi, adımlar, tamamlanma ve düzenleme.
+- Defter fotoğrafından düzenlenebilir metin; genel notlar ve mevcut konu notuna ekleme.
+- Kaynaktan sözlü prova; sesli/yazılı yanıt, üç ölçütlü geri bildirim ve geçmiş.
+- Görünür doğruluk uyarıları. Çevrendeki Fizik ve Canlı AR Çözüm kaldırıldı; ortak laboratuvar AR motoru korundu.
+- [Kullanım, gizlilik, kaynaklar ve sınırlar](docs/CALISMA-ALANI.md).
+
+
 ## 1.56.0 — 2026-10-29
 
 - Gerçekçi ses: anahtar varsa uzun anlatımlar ElevenLabs, OpenAI ya da Gemini bulut sesiyle okunur; ilk cümle ayrı istenir, sonraki iki parça çalarken hazırlanır. Hata ya da kotada cihaz sesine geçilir, servis 10 dakika denenmez. Ayar: Erişilebilirlik › Gerçekçi ses.

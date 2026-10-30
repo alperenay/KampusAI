@@ -6,6 +6,7 @@
 
 | Kılavuz | Ne için? |
 |---|---|
+| [Belge, ödev, not ve sözlü prova](CALISMA-ALANI.md) | Dört yeni çalışma aracının adımları ve sınırları |
 | [Kullanım](KULLANIM.md) | İlk başlangıç, görünüm, okuma modu, yedek ve temel kullanım |
 | [Yeni araçlar](YENI-ARACLAR.md) | Dil, sensör, 3B ve yeni modüller |
 | [Keşif atölyeleri](KESIF-ATOLYELERI.md) | Deney ve modelleme araçlarının adımları |

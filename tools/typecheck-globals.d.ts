@@ -22,3 +22,5 @@ interface Window {
 }
 
 interface Window { SpeechRecognition?: any; webkitSpeechRecognition?: any; KampusNative?: any; __nativeSpeech?: (event: any) => void; }
+
+interface Window { fflate?: any; }

@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "module": "es2022",
     "checkJs": true,
     "noEmit": true,
     "target": "ES2022",
@@ -52,6 +53,9 @@
     "js/core/ui.js",
     "js/modules/startup.js",
     "js/modules/voice-fx.js",
-    "js/modules/fx.js"
+    "js/modules/fx.js",
+    "js/modules/study-workspace-model.js",
+    "js/modules/document-import.js",
+    "js/modules/study-workspace.js"
   ]
 }

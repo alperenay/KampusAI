@@ -14,6 +14,10 @@
 
   /* [rota, simge, ad (i18n anahtarı ya da [tr,en]), açıklama [tr,en], grup, arama kelimeleri] */
   const TOOLS = [
+    ["belge-paketi", "book", ["Belgeden Çalışma Paketi", "Document Study Pack"], ["PDF/DOCX veya metinden kaynaklı özet, kavramlar, kart ve test", "Source-linked summaries, concepts, cards and quiz from PDF/DOCX or text"], "study", "belge pdf docx özet paket kaynak test kart"],
+    ["odevler", "calendar", ["Ödev ve Teslim Takibi", "Assignments & Deadlines"], ["Ödevlerini tarih ve küçük adımlarla yönet; fotoğraftan taslak çıkar", "Manage deadlines and steps; read assignment photos"], "track", "ödev teslim tarih görev takip fotoğraf"],
+    ["notlar", "note", ["Notlarım · Defterden Aktar", "My Notes · Notebook Import"], ["El yazısı fotoğrafını düzeltip genel veya konu notlarına ekle", "Correct handwriting transcription and save general or topic notes"], "study", "not defter el yazısı fotoğraf ocr kayıt"],
+    ["sozlu-prova", "mic", ["Sözlü Sınav Provası", "Oral Exam Practice"], ["Kaynağından sorular, sesli/yazılı yanıt ve ölçüt bazlı geri bildirim", "Source-based questions, voice/text answers and rubric feedback"], "practice", "sözlü sınav prova ses mikrofon rubrik"],
     ["aktarim", "layers", "nav.transfer", ["Aynı kavramı denklem, grafik/tablo ve günlük yaşamda uygula", "Apply one concept to equations, visual data and everyday problems"], "practice", "aktarım transfer bağlam grafik tablo kavram offline çevrimdışı"],
     ["hata-avcisi", "scan", "nav.errorHunt", ["Kasıtlı hatalı çözümde ilk yanlış adımı ve nedenini bul", "Find the first wrong step and its reason in an intentionally flawed solution"], "practice", "hata avcısı yanlış çözüm eleştirel düşünme gerekçe offline çevrimdışı"],
     ["rehber", "compass", "nav.guide", ["Bölümlere ayrılmış ekran turu, ilk adımlar ve kullanım ipuçları", "Sectioned guided tour, first steps and usage tips"], "start", "yardım nasıl kullanılır tanıtım tur rehber help onboarding"],
@@ -31,8 +35,6 @@
     ["yanlislar", "bookmark", "nav.mistakes", ["Yanlışların aralıklı tekrarla geri gelir", "Your mistakes come back for review"], "study", "yanlış hata tekrar"],
     ["video", "play", "nav.video", ["YouTube ders videosundan özet, bölümler, kartlar ve test", "Summary, chapters, cards and a quiz from a lesson video"], "study", "video youtube özet transkript ders izle"],
     ["podcast", "volume", "nav.podcast", ["Her konu iki sesli sohbet podcast'i; arada sorular", "Every topic as a two-voice podcast with quiz breaks"], "study", "podcast dinle sesli sohbet kulaklık konu"],
-    ["canli", "camera", "nav.live", ["Kamerayı soruya tut: çözüm adımları kâğıdın üstünde (AR)", "Point the camera at a question: steps appear on the paper (AR)"], "study", "canlı kamera ar artırılmış gerçeklik soru çöz fotoğraf"],
-    ["cevre", "lightbulb", "nav.around", ["Bir sahnenin fotoğrafından fizik sorusu ve aynı değerlerle deney", "A physics question and matching lab from a photo of a scene"], "practice", "çevre fizik fotoğraf salıncak kaydırak atış çaydanlık soru üret deney simülasyon"],
     ["kavram", "sparkle", "nav.concepts", ["Kavramın kendisiyle sesli konuş: mitokondri, Mars, DNA; hologram ve piramit", "Talk aloud with the concept itself: mitochondrion, Mars, DNA; hologram and pyramid"], "practice", "kavram konuş sesli hologram piramit mitokondri mars dna atom foton karakter"],
     ["kontrol", "scan", "nav.check", ["Çözümünün fotoğrafını çek ya da ekrana yaz; adım adım kontrol", "Photo or handwrite your solution for a step check"], "study", "çözüm kontrol el yazısı"],
     ["program", "calendar", "nav.schedule", ["Haftalık ders programı ve hatırlatıcılar", "Weekly study plan and reminders"], "study", "program takvim hatırlatma"],

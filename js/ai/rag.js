@@ -133,8 +133,8 @@
     data.notes.forEach((n) => {
       const info = outcomeInfo(n.id);
       if (!n.text || !n.text.trim()) return;
-      add("note:" + n.id, "note", (info ? info.label : n.id), info ? info.link : "#/konular",
-        "Öğrencinin notu — " + (info ? info.pathTR : n.id) + ":\n" + n.text.trim());
+      add("note:" + n.id, "note", (info ? info.label : n.title || n.id), info ? info.link : "#/notlar",
+        "Öğrencinin notu — " + (info ? info.pathTR : n.title || n.id) + ":\n" + n.text.trim());
     });
 
     // Tamamlanan kazanımlar (ders ders tek parça)

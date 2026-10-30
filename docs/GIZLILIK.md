@@ -1,6 +1,6 @@
 # KampüsAI Gizlilik ve Kişisel Verilerin Korunması Notu
 
-Son güncelleme: 27 Ekim 2026
+Son güncelleme: 30 Ekim 2026
 
 KampüsAI, lise öğrencileri için ücretsiz ve açık kaynaklı bir YKS çalışma uygulamasıdır. Kullanıcılarının çoğu 18 yaşından küçük olduğu için uygulama **mümkün olan en az veriyle** çalışacak şekilde tasarlandı. Bu not, 6698 sayılı Kişisel Verilerin Korunması Kanunu'nun (KVKK) temel ilkeleri gözetilerek hazırlanmıştır.
 
@@ -21,10 +21,11 @@ KampüsAI, lise öğrencileri için ücretsiz ve açık kaynaklı bir YKS çalı
 | Kota sayacı (internet modu) | Rastgele cihaz numarası, IP adresi | KampüsAI sunucusu | Yalnızca soru sayısı; her gün silinir |
 | Cihazlar arası eşitleme (isteğe bağlı) | Eşitlenen kayıtlar | KampüsAI sunucusu, 12 karakterlik rastgele koda bağlı | Kullanıcı silene kadar. HTTPS ile aktarılır |
 | Deneylerde AR, Hologram ve El ile kontrol (kamera) | Hiçbir şey: görüntü yalnızca ekranda arka plan ya da cihazda yüz ve el konumunu bulmak için kullanılır | — | Hayır; görüntü kaydedilmez, çıkınca kamera kapanır |
+| Belgeden Çalışma Paketi | Belgenin düzenleyip gönderdiğin metin bölümü | Seçili AI sağlayıcısı | Özgün dosya saklanmaz; kaynak metin ve paket cihazda, isteğe bağlı eşitleme/yedekte |
+| Ödev ve defter fotoğrafları | Yalnız okuma düğmesine basınca seçilen fotoğrafın boyutu azaltılmış kopyası | Seçili AI sağlayıcısı | Fotoğraf saklanmaz; kontrol edip kaydettiğin görev/not cihazda, isteğe bağlı eşitleme/yedekte |
+| Sözlü Sınav Provası | Soru hazırlamak için kaynak; geri bildirim için kaynak/soru/yanıt. Ses tanıma cihaz/tarayıcı hizmeti veya ayarlı transkripsiyon sağlayıcısı kullanır | Seçili hizmet/AI sağlayıcısı | Ses kalıcı saklanmaz; sorular, yazılı yanıtlar ve geri bildirim cihazda, isteğe bağlı eşitleme/yedekte |
 | Yazılı Sınavlar | Hiçbir şey; cevaplar ve puanlar yalnızca cihazda saklanır. Yalnızca "Yapay zekâ puanlasın" ya da "Yapay zekâyla yeni yazılı hazırla" seçilirse soru, ölçüt ve cevap metni seçili yapay zekâya gider | Seçili yapay zekâ (yalnızca isteğe bağlı) | Cevap taslakları ve puanlar cihazda |
 | İngilizce Konuşma Pratiği | Sesin yazıya çevrilmesi: Android uygulamasında telefonun ses tanıması (İngilizce dil paketi indirildiyse internetsiz), tarayıcıda tarayıcının ses tanıma hizmeti, Windows uygulamasında ses kaydı. Değerlendirme için söylediğin cümle ve öğretmenin sorusu | Telefonun/tarayıcının ses tanıma hizmeti; Windows'ta ve değerlendirmede seçili yapay zekâ | Ses kaydı saklanmaz; yalnızca puanlar, düzeltmeler ve "Benim cümlelerim" cihazda |
-| Canlı AR Çözüm (kamera) | Yalnızca kadrajdaki soru bölgesinin kırpılmış görüntüsü; kameranın geri kalanı cihazda işlenir | Seçili yapay zekâ (cihazdaki model ya da internet) | Görüntü ve çözüm kaydedilmez; çıkınca kamera kapanır |
-| Çevrendeki Fiziği Bul | Çektiğin ya da yüklediğin sahne fotoğrafı (ya da yazdığın sahne tarifi) | Seçili yapay zekâ | Fotoğraf kaydedilmez; üretilen soru yalnızca cihazda |
 | Konuşan Kavramlar | Kavrama sorduğun soru; "Doğal ses" açıksa cevap metni ses için Google Gemini'ye (kendi anahtarınla) | Seçili yapay zekâ; doğal seste Google Gemini | Konuşma kaydedilmez |
 | Formül Defteri | Hiçbir şey; formüller uygulamanın içindedir | — | Yıldızladıkların yalnızca cihazda |
 | Yapay zekâ cevaplarına 👍 / 👎 ve "Soru hatalı" | Hiçbir şey; kayıt (soru, cevap, hata türü, yazdığın düzeltme) yalnızca cihazda tutulur. Yalnızca sen "Dışa aktar" dersen bir dosyaya yazılır | — | Cihazda; Ayarlar › Yapay zeka › Geri bildirimlerim sayfasından silinebilir |

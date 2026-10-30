@@ -290,6 +290,7 @@
           (ct ? section("lightbulb", t("cur.keyFacts"), ct.ozet && ct.ozet.length ? '<ul class="facts">' + ct.ozet.map((s) => "<li>" + richInline(s) + "</li>").join("") + "</ul>" : soon, !!(ct.ozet && ct.ozet.length)) : "") +
           labCards + rootCard + cardsCard + quizCard + feyCard + chkCard +
           section("note", t("cur.myNotes"),
+            '<a class="btn btn--sm" href="#/notlar/' + esc(key) + '">' + App.icon("camera") + esc(T2("Defter fotoğrafından not ekle", "Add notes from a notebook photo")) + '</a>' +
             '<textarea class="textarea" id="myNote" aria-label="' + esc(t("cur.myNotes")) + '" placeholder="' + esc(t("cur.notesPh")) + '">' + esc(note ? note.text : "") + "</textarea>" +
             '<p class="hint" id="noteState" style="margin-top:6px">' + esc(note && note.updatedAt ? t("cur.saved") : t("cur.notesLocal")) + "</p>") +
         "</div>" +

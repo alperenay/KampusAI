@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.56.0
+  APP_VERSION: 1.57.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -115,6 +115,7 @@ jobs:
           npm run test:lecture-visuals-ui
           npm run test:prerelease-ui
           npm run test:voice-ui
+          npm run test:workspace-ui
           node tools/storage-ui-check.mjs
           node tools/lifecycle-ui-check.mjs
           node tools/lab-interactions-ui-check.mjs
@@ -177,8 +178,6 @@ jobs:
         run: node tools/research-check.mjs
       - name: Öğretmen gerekçe ve kademeli üretim kontrolleri
         run: node tools/teacher-review-check.mjs
-      - name: Çevrendeki Fizik sınaması
-        run: node tools/cevre-check.mjs
       - name: Konuşan Kavramlar sınaması
         run: node tools/kavram-check.mjs
       - name: Kazanım içeriği denetimi (alanlar, kimlikler, KaTeX)
@@ -571,11 +570,12 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          Gerçekçi ses: Gemini, OpenAI ya da ElevenLabs anahtarı varsa sesli öğretmen, podcast, sesli okuma ve konuşan kavramlar insan sesine yakın bulut sesiyle okunur (Erişilebilirlik › Gerçekçi ses). Anahtar yoksa ya da servis hata verirse cihaz sesi devam eder.
-          Sesli öğretmen cevabı gelirken okumaya başlar: tamamlanan her cümle hemen seslendirilir; ilk ses tüm cevabı beklemez.
-          Yeni açılış: nöral çekirdek, perspektif ızgara, tarama ışığı, şok dalgası ve hologram geçişi (1,75 sn; dokunarak geçilir, hareket azaltmada gösterilmez).
-          Sesli öğretmen küresi dinlerken mikrofonla bükülen dalga, düşünürken hızlanan parçacıklar, konuşurken sesle atan aura gösterir. Düğmelerde neon dokunuş ışıması ve telefonda hafif titreşim (kapatılabilir).
-          Telefonda kare düşüren sonsuz gölge/filtre animasyonları transform/opacity'ye taşındı. Bulut sesi ve kontrollü servis örnekleriyle yapılan testler gerçek ses kalitesi veya gecikme ölçümü değildir.
+          Belgeden çalışma paketi: PDF/DOCX/TXT/MD dosyalarını cihazda oku; seçtiğin kaynaktan özet, kavramlar, kartlar ve test oluştur. Kaynak bölüm bağlantıları ve şema doğrulaması vardır.
+          Ödev ve teslim takibi: elle veya fotoğraftan taslak, tarih, küçük adımlar ve tamamlanma durumu.
+          Notlarım: defter fotoğrafını metne çevir, düzelt ve genel notlara veya mevcut konu notunun sonuna ekle.
+          Sözlü sınav provası: kaynağından sorular, sesli/yazılı yanıt ve üç ölçütlü prova geri bildirimi. Puanlar resmî not değildir.
+          İçerik/AI doğruluk uyarıları eklendi. Çevrendeki Fizik ve Canlı AR Çözüm kaldırıldı; diğer laboratuvar ve kamera araçları korundu.
+          [Yeni araçların kullanımı ve veri sınırları](https://github.com/$OWNER/$REPO/blob/main/docs/CALISMA-ALANI.md). AI/görsel/ses testleri kontrollü örneklerdir; canlı model doğruluğu veya her fiziksel cihaz sertifikası değildir.
 
           | Platform | Dosya |
           |---|---|

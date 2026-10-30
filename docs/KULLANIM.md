@@ -109,3 +109,7 @@ Açık tema yüzeyleri ve durum renkleri yenilendi. Açılış 1,65 saniyede tam
 **Erişilebilirlik › Gerçekçi ses** bölümünden sesi seç. Otomatik seçimde sırasıyla ElevenLabs, OpenAI ve Gemini anahtarı aranır: Ayarlar › Yapay zekâ bölümüne ücretsiz bir Gemini anahtarı eklemek yeterlidir; ElevenLabs anahtarı aynı bölümde girilir. Sesli öğretmen, podcast, konu okuma ve konuşan kavramlar bu sesle okunur; metin seçilen servise gönderilir. Anahtar yoksa ya da servis hata verirse cihaz sesi kullanılır.
 
 Sesli öğretmen cevabın ilk cümlesi gelir gelmez konuşmaya başlar. Küre dinlerken sesine göre dalgalanır, düşünürken parçacıklar hızlanır, konuşurken sesle atar. Düğmelerdeki titreşim **Erişilebilirlik › Dokunuş titreşimi** ile kapatılabilir.
+
+## Belge, ödev, defter notları ve sözlü prova
+
+Yeni araçlar yan menüde kategorilerine yerleştirilmiştir. [Adım adım kullanım ve veri sınırları](CALISMA-ALANI.md). Defter fotoğraflarını okuyup düzelttikten sonra genel veya konu notlarına ekleyebilirsin.

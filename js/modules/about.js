@@ -116,6 +116,8 @@
       ["Dettmers, T. vd. (2023). QLoRA: Efficient finetuning of quantized LLMs. NeurIPS 2023.", "https://arxiv.org/abs/2305.14314"],
       ["Zelikman, E. vd. (2022). STaR: Bootstrapping reasoning with reasoning. NeurIPS 2022.", "https://arxiv.org/abs/2203.14465"],
       ["ggml-org. llama.cpp: yapay zekâ modellerini cihazda çalıştırma.", "https://github.com/ggml-org/llama.cpp"],
+      ["Mozilla. PDF.js 6.4.299, Apache-2.0 (belge çalışma paketinde yerel PDF metni okuma).", "https://mozilla.github.io/pdf.js/"],
+      ["fflate 0.8.3, MIT (DOCX içinden boyutu sınırlı belge metni okuma).", "https://github.com/101arrowz/fflate"],
       ["Unsloth AI. Unsloth: hızlı ve az bellekli ince ayar.", "https://github.com/unslothai/unsloth"],
       ["W3C Community Group. Web Speech API (ses tanıma ve sesli okuma; Sesli öğretmen).", "https://webaudio.github.io/web-speech-api/"],
       ["Ouyang, L. vd. (2022). Training language models to follow instructions with human feedback. NeurIPS 2022. (Cevaplara 👍 / 👎 geri bildirimi ve bunun model değerlendirmesinde kullanılması)", "https://arxiv.org/abs/2203.02155"],

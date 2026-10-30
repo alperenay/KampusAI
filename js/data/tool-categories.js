@@ -14,9 +14,7 @@
         "sesli",
         "bana-ogret",
         "kavram",
-        "canli",
         "kontrol",
-        "cevre",
       ],
     },
     {
@@ -27,7 +25,7 @@
         "Konu, formül, yazılı ve dil çalış",
         "Topics, formulas, exams and languages",
       ],
-      routes: ["konular", "formuller", "yazili", "konusma", "video", "podcast"],
+      routes: ["belge-paketi", "notlar", "konular", "formuller", "yazili", "konusma", "video", "podcast"],
     },
     {
       id: "practice",
@@ -38,6 +36,7 @@
         "Practise, find errors and test yourself",
       ],
       routes: [
+        "sozlu-prova",
         "tekrar",
         "kartlar",
         "yanlislar",
@@ -100,6 +99,7 @@
         "Plan your day and follow your goals",
       ],
       routes: [
+        "odevler",
         "bugun",
         "program",
         "denemeler",

@@ -19,6 +19,7 @@ Windows/Android, mağaza dışından indirilen paketlerde güvenlik uyarısı g�
 
 | Alan | Özellikler |
 |---|---|
+| Çalışma alanı | Belgeden paket, ödev/teslim takibi, defterden not aktarımı ve sözlü prova |
 | Öğrenme | Konu anlatımı, formüller, adaptif test ve açık uçlu yazılılar |
 | Tekrar | Hap Kartlar, yanlış defteri, bağlam değiştirme ve hata bulma pratikleri |
 | Yapay zekâ | Yazı/fotoğraf/sesle soru sorma, Sokratik koç ve kişisel başlangıç şablonları |

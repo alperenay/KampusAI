@@ -2,6 +2,10 @@
 (function () {
   const { esc } = App.utils, T = (tr, en) => App.i18n.lang === 'en' ? en : tr;
   const GUIDE = {
+    "belge-paketi": ["Dosyayı cihazda oku veya kaynak metin yapıştır. Kontrol ettikten sonra paket oluştur; S bağlantıları kaynak bölümlerini açar.", "Read a file locally or paste a source. Review before generating. S links open source sections.", "notlar", "kartlar"],
+    odevler: ["Ödevini elle gir veya fotoğraftan taslak çıkar. Tarihi kontrol edip kaydet; adımları ve tamamlanma durumunu izle.", "Enter an assignment or read its photo. Review the date before saving; track steps and completion.", "program", "bugun"],
+    notlar: ["Fotoğrafı seçip el yazısını oku. Metni düzelt, genel not veya konu seç ve kaydet. Konu notları mevcut metne eklenir.", "Read handwriting from a photo, correct it and save as a general or topic note. Topic notes append to existing text.", "konular", "belge-paketi"],
+    "sozlu-prova": ["Kaynak metinle üç soruluk prova hazırla. Sesli veya yazılı yanıtı kontrol edip değerlendir; 0–6 puan yalnız prova göstergesidir.", "Prepare three source-based questions. Review voice/text answers before grading; 0–6 is a practice indicator only.", "notlar", "konular"],
     bugun: ["Önce önerilen görevi aç. Sonra bekleyen tekrarları tamamla; programını bu ekrandan izle.", "Open the suggested task, complete due reviews, then check your plan.", "tekrar", "program"],
     program: ["Hazır programı incele veya kendi haftanı oluştur. Ders bloklarını günlük zamanına göre düzenle.", "Explore a preset or build your week. Adjust blocks to your available time.", "bugun", "odak"],
     konular: ["Sınıfını ve dersini seç. Konuyu oku, ardından test, kart veya kendi sözlerinle anlatma etkinliğine geç.", "Choose a grade and subject. Read a lesson, then try a quiz, flashcards or self-explanation.", "aktarim", "kartlar"],
@@ -26,8 +30,6 @@
     yazili: ["Sınıf, ders ve kapsamı seçip sınav hazırla. Soruları, cevap anahtarını ve puanlama ölçütlerini kullanmadan önce incele.", "Choose grade, subject and scope. Review questions, answer keys and rubrics before use.", "konular", "degerlendirme"],
     video: ["Video veya transkript ekle. Üretilen notların kaynak videoyla uyuştuğunu kontrol et, sonra kart ve testleri kullan.", "Add a video or transcript. Verify generated notes against the source, then use cards and quizzes.", "kartlar", "konular"],
     podcast: ["Konu seçip sesli çalışma içeriği hazırla. Dinlerken duraklat, not al ve sorularla kendini kontrol et.", "Choose a topic for audio study. Pause, take notes and check your understanding.", "konular", "kartlar"],
-    canli: ["Kamera izni ver, soruyu net ve kişisel bilgi görünmeyecek biçimde kadraja al. AI yanıtını kaynakla karşılaştır.", "Allow the camera and frame the question clearly without personal information. Check AI output against a source.", "kontrol", "konular"],
-    cevre: ["Bir fizik sahnesi ekle. Modelin çıkardığı varsayımları ve birimleri kontrol ederek deneyle karşılaştır.", "Add a physics scene. Check assumptions and units before comparing it with a lab.", "lab", "aktarim"],
     kavram: ["Bir kavram seç ve soru sor. Canlandırma bir anlatım aracıdır; yanıtların bilimsel kaynaklarla tutarlı olduğunu kontrol et.", "Choose a concept and ask a question. The character is an explanation aid; check scientific accuracy.", "konular", "modeller"],
     konusma: ["Bir konuşma konusu seç. Mikrofon izniyle pratik yap veya metin alanını kullan; geri bildirimle yeniden dene.", "Choose a speaking topic. Use the microphone or text fallback, then retry after feedback.", "konular", "sesli"],
     sesli: ["Yapay zekâ sağlayıcını ayarla ve mikrofon iznini kontrol et. Ses kullanılamıyorsa yazılı asistana geç.", "Configure your AI provider and microphone. Use text chat when voice is unavailable.", "", "konular"],
@@ -58,6 +60,7 @@
     const box = document.createElement('div'); box.className = 'page-guide';
     const related = info ? info.slice(2) : ['araclar'];
     box.innerHTML = '<nav aria-label="' + esc(T('Sayfa yolu', 'Breadcrumb')) + '"><a href="#/araclar">' + esc(T('Tüm özellikler', 'All features')) + '</a><span aria-hidden="true"> / </span><span>' + esc(title) + '</span></nav><details><summary>' + esc(T('Bu ekranı nasıl kullanırım?', 'How do I use this page?')) + '</summary><p>' + esc(text) + '</p><div class="guide-links">' + related.map((id) => { const x = App.hub.TOOLS.find((x) => x[0] === id), label = x ? Array.isArray(x[2]) ? T.apply(null, x[2]) : App.t(x[2]) : T('Kullanım rehberi', 'User guide'); return '<a href="#/' + esc(id) + '">' + esc(label) + ' →</a>'; }).join('') + '</div></details>';
+    box.insertAdjacentHTML('beforeend', '<p class="sw-content-notice">' + esc(T('İçerikler, simülasyonlar ve AI değerlendirmeleri hata veya basitleştirme içerebilir; kesin doğruluk garantisi yoktur. Önemli bilgileri kaynaklarınla ve öğretmeninle kontrol et.', 'Content, simulations and AI assessments may include errors or simplifications; accuracy is not guaranteed. Check important information with sources and your teacher.')) + '</p>');
     // The desktop lesson page is a two-column grid: main content + sticky outline.
     // A third direct child would take the main column and squeeze the lesson into the outline.
     const host = Array.from(page.children).find(el => el.classList.contains('lesson-main')) || page;

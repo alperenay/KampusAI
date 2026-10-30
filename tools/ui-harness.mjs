@@ -9,7 +9,7 @@ export async function uiHarness() {
   if (!["chromium", "firefox", "webkit"].includes(engineName)) throw new Error("Unknown UI_ENGINE: " + engineName);
   const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
   const qa = path.join(root, "dist/qa", process.env.UI_ENGINE ? engineName : ""); fs.mkdirSync(qa, { recursive: true });
-  const types = { ".js": "application/javascript", ".html": "text/html", ".css": "text/css", ".svg": "image/svg+xml", ".json": "application/json" };
+  const types = { ".js": "application/javascript", ".mjs": "application/javascript", ".html": "text/html", ".css": "text/css", ".svg": "image/svg+xml", ".json": "application/json" };
   const server = http.createServer((req, res) => {
     const u = new URL(req.url, "http://localhost"), file = path.resolve(root, "." + decodeURIComponent(u.pathname === "/" ? "/index.html" : u.pathname));
     if (!file.startsWith(root + path.sep)) { res.writeHead(403).end(); return; }
@@ -23,7 +23,11 @@ export async function uiHarness() {
   const errors = [];
   async function device(route = "", options = {}) {
     const context = await browser.newContext({ serviceWorkers: "block" });
-    await context.route("**/*", (r) => new URL(r.request().url()).hostname === "127.0.0.1" ? r.continue() : r.abort());
+    await context.route("**/*", (r) => {
+      const url = r.request().url();
+      // WebKit routes same-origin object URLs too; do not block local photo decoding.
+      return new URL(url).hostname === "127.0.0.1" || url.startsWith("blob:" + baseUrl + "/") ? r.continue() : r.abort();
+    });
     await context.addInitScript(() => localStorage.setItem("da:pref:tourDone", "true"));
     if (options.storageFallback) await context.addInitScript(() => Object.defineProperty(window, "indexedDB", { value: undefined }));
     const page = await context.newPage(); page.on("pageerror", (e) => errors.push({ message: e.message, url: page.url() }));
