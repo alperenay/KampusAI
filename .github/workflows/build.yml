@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.60.0
+  APP_VERSION: 1.61.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -572,12 +572,9 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          Belgeden çalışma paketi: PDF/DOCX/TXT/MD dosyalarını cihazda oku; seçtiğin kaynaktan özet, kavramlar, kartlar ve test oluştur. Kaynak bölüm bağlantıları ve şema doğrulaması vardır.
-          Ödev ve teslim takibi: elle veya fotoğraftan taslak, tarih, küçük adımlar ve tamamlanma durumu.
-          Notlarım: defter fotoğrafını metne çevir, düzelt ve genel notlara veya mevcut konu notunun sonuna ekle.
-          Sözlü sınav provası: kaynağından sorular, sesli/yazılı yanıt ve üç ölçütlü prova geri bildirimi. Puanlar resmî not değildir.
-          İçerik/AI doğruluk uyarıları eklendi. Çevrendeki Fizik ve Canlı AR Çözüm kaldırıldı; diğer laboratuvar ve kamera araçları korundu.
-          [Yeni araçların kullanımı ve veri sınırları](https://github.com/$OWNER/$REPO/blob/main/docs/CALISMA-ALANI.md). AI/görsel/ses testleri kontrollü örneklerdir; canlı model doğruluğu veya her fiziksel cihaz sertifikası değildir.
+          Glassmorphism tasarımı: gezinme ve pencerelerde buzlu cam, kartlarda hafif saydam yüzeyler, ince kenarlıklar ve yumuşak arka plan ışıkları.
+          Açık/koyu tema ve mevcut renk seçimleri korunur. Mobilde sınırlı bulanıklık, düşük GPU/yüksek karşıtlık için düz yüzeyler; ders okuma ve güvenli alan yerleşimleri korunmuştur.
+          [Tasarım sistemi ve test kapsamı](https://github.com/$OWNER/$REPO/blob/main/docs/GLASSMORPHISM.md).
 
           | Platform | Dosya |
           |---|---|

@@ -1,5 +1,13 @@
 # Sürüm notları
 
+## 1.61.0 — Glassmorphism
+
+- Web/PWA, Android ve masaüstü için ortak cam tasarım katmanı.
+- Açık/koyu temada yarı saydam yüzeyler, kenar ışığı ve statik arka plan renkleri.
+- Mobilde sınırlı blur; düşük GPU, yüksek karşıtlık ve azaltılmış saydamlık için sade görünüm.
+- Üç tarayıcı motorunda tasarım, kontrast ve araç yerleşimi kontrolleri.
+- [Ayrıntılar](docs/GLASSMORPHISM.md).
+
 ## 1.60.0 — Belge, ödev, not ve sözlü prova
 
 - Kaynak bölümlerine bağlı belge çalışma paketi: yerel PDF/DOCX/TXT/MD okuma, özet, kavramlar, kartlar ve test.
