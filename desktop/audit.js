@@ -15,6 +15,9 @@ module.exports = async function auditRenderer() {
     App.prefs.set('tourDone', true);
     await new Promise((r) => setTimeout(r, 250));
     document.querySelectorAll('.modal-backdrop [data-close]').forEach((b) => b.click());
+    // Enumerating the library requires its on-demand registries, just as visiting it does.
+    // Keep production startup lazy; only this isolated packaged-app audit preloads them.
+    if (App.lazy) await App.lazy.load(['labs', 'games']);
     const key = App.learnmap.allOutcomes().find((x) => x.outcome.content || x.outcome.curatedContent).key;
     const routes = [...new Set(App.hub.TOOLS.map((x) => x[0]).concat(Object.keys(App.labs.LABS).map((id) => 'lab/' + id), Object.keys(App.games.GAMES).map((id) => 'oyunlar/' + id), ['konusma/de', 'sensor/olcum', 'test/' + key, 'konular/' + key, 'aktarim/calis/oran', 'hata-avcisi/calis/Fizik']))];
     for (const route of routes) {

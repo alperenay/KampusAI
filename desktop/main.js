@@ -227,7 +227,8 @@ async function smokeTest(outFile) {
         desktop: !!(window.desktopApp && window.desktopApp.lan), origin: location.origin, katex: !!window.katex,
         idb: App.db && App.db.engine, local: App.engine && App.engine.localPossible() };
       try { const x = await fetch("app://local/ollama/api/version"); r.proxyStatus = x.status; r.proxyBody = (await x.text()).slice(0, 80); } catch (e) { r.proxyError = String(e); }
-      r.lanInfo = await window.desktopApp.lan.get();
+      const lanInfo = await window.desktopApp.lan.get();
+      r.lanInfo = { enabled: lanInfo.enabled, port: lanInfo.port, addresses: lanInfo.addresses, error: lanInfo.error };
       return r;
     })()`));
     result.rendererAudit = [];
