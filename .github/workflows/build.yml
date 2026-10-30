@@ -117,6 +117,7 @@ jobs:
           npm run test:prerelease-ui
           npm run test:voice-ui
           npm run test:workspace-ui
+          npm run test:glass-ui
           node tools/storage-ui-check.mjs
           node tools/lifecycle-ui-check.mjs
           node tools/lab-interactions-ui-check.mjs

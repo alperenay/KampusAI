@@ -1,0 +1,113 @@
+/* Shared glass system. Static light fields; blur is limited to navigation and overlays. */
+:root:not([data-a11y-contrast]) {
+  --glass-blur: none;
+  --glass-frame-blur: blur(16px) saturate(1.12);
+  --glass-panel: rgba(26, 29, 42, .89);
+  --glass-edge: rgba(212, 222, 255, .18);
+  --glass-highlight: rgba(225, 232, 255, .08);
+  --glass-inset: inset 0 1px 0 var(--glass-highlight);
+  --glass-shadow: var(--glass-inset), 0 12px 36px rgba(4, 8, 22, .19);
+  --surface: rgba(29, 30, 37, .93);
+  --surface-2: rgba(41, 43, 53, .94);
+  --surface-solid: #202129;
+  --surface-primary: var(--surface);
+  --surface-secondary: var(--surface-2);
+  --surface-elevated: var(--surface-solid);
+  --bg-sidebar: rgba(21, 24, 35, .9);
+  --bg-drawer: rgba(21, 24, 35, .97);
+  --bg-image: none;
+  --bg-overlay: radial-gradient(ellipse at 12% 5%, rgba(135, 111, 243, .22), transparent 51%), radial-gradient(ellipse at 94% 80%, rgba(49, 157, 204, .16), transparent 55%);
+  --radius: 18px;
+  --radius-lg: 24px;
+}
+:root[data-theme="light"]:not([data-a11y-contrast]) {
+  --glass-panel: rgba(248, 250, 255, .91);
+  --glass-edge: rgba(81, 102, 145, .23);
+  --glass-highlight: rgba(255, 255, 255, .85);
+  --glass-shadow: var(--glass-inset), 0 10px 32px rgba(43, 61, 99, .09);
+  --surface: rgba(247, 248, 251, .94);
+  --surface-2: rgba(230, 234, 242, .95);
+  --surface-solid: #fcfcfe;
+  --bg-sidebar: rgba(242, 245, 252, .92);
+  --bg-drawer: rgba(242, 245, 252, .98);
+  --bg-overlay: radial-gradient(ellipse at 12% 5%, rgba(139, 118, 230, .17), transparent 51%), radial-gradient(ellipse at 94% 80%, rgba(71, 170, 213, .12), transparent 55%);
+}
+@supports (background: color-mix(in srgb, red, transparent)) {
+  :root:not([data-a11y-contrast]):not([data-atmosphere="off"]) {
+    --bg-overlay: radial-gradient(ellipse at 12% 5%, color-mix(in srgb, var(--atmosphere-a) 19%, transparent), transparent 51%), radial-gradient(ellipse at 94% 80%, color-mix(in srgb, var(--atmosphere-b) 13%, transparent), transparent 55%);
+  }
+}
+:root[data-atmosphere="off"]:not([data-a11y-contrast]) { --bg-overlay: linear-gradient(135deg, rgba(127, 135, 166, .055), transparent); }
+:root:not([data-a11y-contrast]) :is(.card, .hub-tile, .subj-card, .ai-fav, .tday-stat, .tday-now, .study-card, .discovery-tile, .v159-widget, .v159-record, .generation-card, .page-guide, .sw-task, .sw-card, .gv-fig, .nav-category) {
+  background-color: var(--surface);
+  background-image: linear-gradient(140deg, var(--glass-highlight), transparent 60%);
+  border: 1px solid var(--glass-edge);
+  border-radius: var(--radius);
+  box-shadow: var(--glass-shadow);
+  /* Thousands of nested lessons/cards must never each allocate a blur layer. */
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+:root:not([data-a11y-contrast]) :is(.sidebar, .topbar, .tabbar, .lesson-dock, .modal, .quick-pop) {
+  background: var(--glass-panel);
+  border-color: var(--glass-edge);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: var(--glass-frame-blur);
+  backdrop-filter: var(--glass-frame-blur);
+}
+:root:not([data-a11y-contrast]) #sidebar { background: var(--bg-sidebar); -webkit-backdrop-filter: var(--glass-frame-blur); backdrop-filter: var(--glass-frame-blur); border-right: 1px solid var(--glass-edge); }
+:root:not([data-a11y-contrast]) .topbar { border-bottom: 1px solid var(--glass-edge); }
+:root:not([data-a11y-contrast]) .modal { background: var(--glass-panel); border: 1px solid var(--glass-edge); }
+:root:not([data-a11y-contrast]) .modal-backdrop { background: rgba(4, 8, 20, .56); }
+:root[data-theme="light"]:not([data-a11y-contrast]) .modal-backdrop { background: rgba(30, 42, 66, .32); }
+:root:not([data-a11y-contrast]) :is(.input, .textarea, .select, select.input) {
+  background: var(--surface-2);
+  box-shadow: var(--glass-inset);
+  border-color: var(--control-border, var(--border-strong));
+}
+:root:not([data-a11y-contrast]) .btn:not(.btn--primary):not(.btn--danger) { box-shadow: var(--glass-inset); }
+:root:not([data-a11y-contrast]) .nav__item.is-active {
+  background: var(--accent-soft);
+  border: 1px solid var(--glass-edge);
+  box-shadow: var(--glass-inset);
+}
+:root:not([data-a11y-contrast]) .sidebar-profile { box-shadow: var(--glass-inset); }
+/* Reading, plots and native media retain stable backgrounds and original semantics. */
+:root:not([data-a11y-contrast]) :is(.lesson, .md-table, .msg--ai .msg__body, .sw-notice) {
+  background-color: var(--surface);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  :root:not([data-a11y-contrast]) :is(.hub-tile, .subj-card, .ai-fav, .v159-widget):hover {
+    border-color: var(--accent-text);
+    box-shadow: var(--glass-inset), 0 14px 32px rgba(4, 8, 22, .14);
+  }
+}
+@media (max-width: 860px), (pointer: coarse) {
+  :root:not([data-a11y-contrast]) { --glass-frame-blur: blur(8px); }
+  :root:not([data-a11y-contrast]) #sidebar { background: var(--bg-drawer); }
+  :root:not([data-a11y-contrast]) .topbar { -webkit-backdrop-filter: none; backdrop-filter: none; }
+  :root:not([data-a11y-contrast]) :is(.card, .hub-tile, .tday-stat, .discovery-tile, .v159-widget) {
+    box-shadow: var(--glass-inset), 0 4px 14px rgba(4, 8, 22, .09);
+  }
+}
+/* Solid fallbacks: limited GPUs, high contrast, reduced transparency and unsupported browsers. */
+:root.lite, :root.nogpu { --glass-frame-blur: none; }
+:root.lite :is(.sidebar, .topbar, .modal, .tabbar, .lesson-dock),
+:root.nogpu :is(.sidebar, .topbar, .modal, .tabbar, .lesson-dock) { background: var(--surface-solid) !important; }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root:not([data-a11y-contrast]) { --glass-frame-blur: none; --glass-panel: var(--surface-solid); --bg-sidebar: var(--surface-solid); --bg-drawer: var(--surface-solid); --surface: var(--surface-solid); --surface-2: var(--surface-solid); }
+  :root:not([data-a11y-contrast]) :is(.sidebar, .topbar, .modal, .tabbar, .lesson-dock) { background: var(--surface-solid); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  :root:not([data-a11y-contrast]) { --surface: var(--surface-solid); --surface-2: var(--surface-solid); --glass-panel: var(--surface-solid); --bg-sidebar: var(--surface-solid); --bg-drawer: var(--surface-solid); --glass-frame-blur: none; --bg-overlay: none; --glass-highlight: transparent; }
+}
+:root[data-a11y-contrast] :is(.sidebar, .topbar, .modal, .tabbar, .lesson-dock, .quick-pop) { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+@media (forced-colors: active) {
+  :root body { background: Canvas !important; }
+  :root :is(.card, .hub-tile, .sidebar, .topbar, .modal, .tabbar, .page-guide) { background: Canvas !important; background-image: none !important; color: CanvasText !important; border: 1px solid CanvasText !important; box-shadow: none !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+}
+@media print {
+  :root body, :root :is(.card, .lesson, .page-guide, .sw-task, .gv-fig) { background: white !important; background-image: none !important; box-shadow: none !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+}

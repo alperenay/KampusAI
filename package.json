@@ -48,6 +48,7 @@
     "test:inference-ui": "node tools/inference-ui-check.mjs",
     "test:lecture-visuals-ui": "node tools/lecture-visuals-ui-check.mjs",
     "test:prerelease-ui": "node tools/prerelease-ui-check.mjs",
-    "test:workspace-ui": "node tools/study-workspace-ui-check.mjs"
+    "test:workspace-ui": "node tools/study-workspace-ui-check.mjs",
+    "test:glass-ui": "node tools/glass-ui-check.mjs"
   }
 }
