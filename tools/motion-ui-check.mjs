@@ -1,34 +1,32 @@
 import assert from "node:assert/strict";
 import path from "node:path";
-import { uiHarness } from "./ui-harness.mjs";
+import { uiHarness, navigate } from "./ui-harness.mjs";
 const h = await uiHarness();
 try {
   const { page } = await h.device();
-  await page.waitForFunction(() => !!App.motion);
+  await page.waitForFunction(() => !!App.motion && !App.startup.active);
+  await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.setViewportSize({ width: 390, height: 844 });
   const go = async (r) => {
-    await page.evaluate((r) => App.router.go(r), r);
+    await navigate(page, r);
     await page.waitForTimeout(80);
   };
   await go("bugun");
-  assert.ok(
-    (await page
-      .locator("#view")
-      .evaluate((el) => el.getAnimations({ subtree: true }).length)) > 0,
-    "Dashboard entrance must animate",
-  );
-  await page.evaluate(() => {
-    window.__motionBefore = document
-      .querySelector("#view")
-      .getAnimations({ subtree: true })
-      .filter((a) => a.effect.getTiming().duration === 260);
+  // Capture and pause a fresh REAL entrance in one browser turn. A short animation
+  // can otherwise finish between separate automation RPCs on slower macOS runners.
+  const started = await page.evaluate(() => {
+    App.motion.refresh();
+    window.__motionBefore = document.querySelector("#view").getAnimations({ subtree: true }).filter(a => a.effect.getTiming().duration === 260);
+    window.__motionBefore.forEach(a => a.pause());
+    return window.__motionBefore.length;
   });
+  assert.ok(started > 0, "Dashboard entrance must animate");
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.waitForFunction(
     () =>
       window.__motionBefore.length > 0 &&
       window.__motionBefore.every((a) => a.playState === "idle"),
-    { timeout: 1500 },
+    null, { timeout: 1500 },
   );
   assert.equal(
     await page

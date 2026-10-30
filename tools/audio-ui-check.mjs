@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { uiHarness } from "./ui-harness.mjs";
+import { uiHarness, navigate } from "./ui-harness.mjs";
 const h = await uiHarness();
 try {
   const { page } = await h.device();
@@ -183,10 +183,7 @@ try {
     });
     App.prefs.set("ph:white", { bad: true });
   });
-  const go = async (r) => {
-    await page.evaluate((r) => App.router.go(r), r);
-    await page.waitForTimeout(100);
-  };
+  const go = (r) => navigate(page, r);
   for (const r of [
     "ph",
     "vatandas",
