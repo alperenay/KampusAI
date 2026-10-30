@@ -47,6 +47,8 @@ try{
   assert.equal((await read('.sidebar')).blur,'none');
   await page.evaluate(()=>{['data-a11y-dys','data-a11y-spacing','data-a11y-contrast'].forEach(a=>document.documentElement.removeAttribute(a));});
   await page.evaluate(()=>App.appearance.open('effects'));
+  // Native-style sheets animate from below; measure the settled panel, not an intermediate frame.
+  await page.locator('.modal--appearance').evaluate(async el=>{await Promise.all(el.getAnimations().map(a=>a.finished.catch(()=>{})));});
   const bounds=await page.locator('.modal--appearance').boundingBox();assert.ok(bounds.y>=44-1);assert.ok(bounds.y+bounds.height<=720-48+1);
   await page.selectOption('[data-appearance-option="motion"]','full');await page.emulateMedia({reducedMotion:'reduce'});
   await page.waitForFunction(()=>App.motion.reduced()&&!document.documentElement.hasAttribute('data-ambient-running'));assert.equal(await page.evaluate(()=>document.documentElement.hasAttribute('data-ambient-running')),false);
