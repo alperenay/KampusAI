@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "grade": 9,
+  "apiGradeId": 11,
+  "courseId": 21,
+  "slug": "biyoloji-dersi",
+  "name": "Biyoloji Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/biyoloji-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "2",
+      "title": "1. Tema: Yaşam",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2",
+      "retrievedAt": "2026-10-30T16:27:01.676335+00:00",
+      "sourceSha256": "bc3da491446a0b2d3012d56ad8a6ea37fe35464234181c6e65d023428c3a08d9",
+      "status": "codes-indexed",
+      "codes": [
+        "BİY.9.1.1",
+        "BİY.9.1.2",
+        "BİY.9.1.3",
+        "BİY.9.1.4",
+        "BİY.9.1.5",
+        "BİY.9.1.6",
+        "BİY.9.1.7",
+        "BİY.9.1.8"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "30.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "3",
+      "title": "2. Tema: Organizasyon",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3",
+      "retrievedAt": "2026-10-30T16:27:03.802512+00:00",
+      "sourceSha256": "d31b03037c4b0a652f9b12eff440b0600a6aee64cc362ef98d641b274fbcb64f",
+      "status": "codes-indexed",
+      "codes": [
+        "BİY.9.2.1",
+        "BİY.9.2.2",
+        "BİY.9.2.3",
+        "BİY.9.2.4",
+        "BİY.9.2.5",
+        "BİY.9.2.6"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "30.09.2026",
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

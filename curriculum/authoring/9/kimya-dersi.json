@@ -1,0 +1,768 @@
+{
+  "schemaVersion": 1,
+  "grade": 9,
+  "program": "kimya-dersi",
+  "lessons": [
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "92",
+      "officialCode": "KİM.9.1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/92",
+        "sha256": "bf1ba94462777645d720e1dce4a052aa4d39a9594453e278df9ec86fb2654149"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/92"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u1/k1"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "92",
+      "officialCode": "KİM.9.1.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/92",
+        "sha256": "bf1ba94462777645d720e1dce4a052aa4d39a9594453e278df9ec86fb2654149"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/92"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u1/k2"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "92",
+      "officialCode": "KİM.9.1.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/92",
+        "sha256": "bf1ba94462777645d720e1dce4a052aa4d39a9594453e278df9ec86fb2654149"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/92"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u1/k3"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "92",
+      "officialCode": "KİM.9.1.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/92",
+        "sha256": "bf1ba94462777645d720e1dce4a052aa4d39a9594453e278df9ec86fb2654149"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/92"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u1/k4"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "92",
+      "officialCode": "KİM.9.1.5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/92",
+        "sha256": "bf1ba94462777645d720e1dce4a052aa4d39a9594453e278df9ec86fb2654149"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/92"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u1/k5"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "92",
+      "officialCode": "KİM.9.1.6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/92",
+        "sha256": "bf1ba94462777645d720e1dce4a052aa4d39a9594453e278df9ec86fb2654149"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/92"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u1/k6"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "92",
+      "officialCode": "KİM.9.1.7",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/92",
+        "sha256": "bf1ba94462777645d720e1dce4a052aa4d39a9594453e278df9ec86fb2654149"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/92"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u1/k7"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "92",
+      "officialCode": "KİM.9.1.8",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/92",
+        "sha256": "bf1ba94462777645d720e1dce4a052aa4d39a9594453e278df9ec86fb2654149"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/92"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u1/k8"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "121",
+      "officialCode": "KİM.9.2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/121",
+        "sha256": "5b2835168b8e67337b3d6fda18c48110a761226137701333eb8482fd3dab23c9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/121"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u2/k1"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "121",
+      "officialCode": "KİM.9.2.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/121",
+        "sha256": "5b2835168b8e67337b3d6fda18c48110a761226137701333eb8482fd3dab23c9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/121"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u2/k2"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "121",
+      "officialCode": "KİM.9.2.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/121",
+        "sha256": "5b2835168b8e67337b3d6fda18c48110a761226137701333eb8482fd3dab23c9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/121"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u2/k3"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "121",
+      "officialCode": "KİM.9.2.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/121",
+        "sha256": "5b2835168b8e67337b3d6fda18c48110a761226137701333eb8482fd3dab23c9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/121"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u2/k4"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "121",
+      "officialCode": "KİM.9.2.5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/121",
+        "sha256": "5b2835168b8e67337b3d6fda18c48110a761226137701333eb8482fd3dab23c9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/121"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u2/k5"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "121",
+      "officialCode": "KİM.9.2.6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/121",
+        "sha256": "5b2835168b8e67337b3d6fda18c48110a761226137701333eb8482fd3dab23c9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/121"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u2/k6"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "121",
+      "officialCode": "KİM.9.2.7",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/121",
+        "sha256": "5b2835168b8e67337b3d6fda18c48110a761226137701333eb8482fd3dab23c9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/121"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u2/k7"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "121",
+      "officialCode": "KİM.9.2.8",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/121",
+        "sha256": "5b2835168b8e67337b3d6fda18c48110a761226137701333eb8482fd3dab23c9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/121"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u2/k8"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "121",
+      "officialCode": "KİM.9.2.9",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/121",
+        "sha256": "5b2835168b8e67337b3d6fda18c48110a761226137701333eb8482fd3dab23c9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/121"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u2/k9"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "121",
+      "officialCode": "KİM.9.2.10",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/121",
+        "sha256": "5b2835168b8e67337b3d6fda18c48110a761226137701333eb8482fd3dab23c9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/121"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u2/k10"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "121",
+      "officialCode": "KİM.9.2.11",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/121",
+        "sha256": "5b2835168b8e67337b3d6fda18c48110a761226137701333eb8482fd3dab23c9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/121"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u2/k11"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "121",
+      "officialCode": "KİM.9.2.12",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/121",
+        "sha256": "5b2835168b8e67337b3d6fda18c48110a761226137701333eb8482fd3dab23c9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/121"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u2/k12"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "121",
+      "officialCode": "KİM.9.2.13",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/121",
+        "sha256": "5b2835168b8e67337b3d6fda18c48110a761226137701333eb8482fd3dab23c9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/121"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u2/k13"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "137",
+      "officialCode": "KİM.9.3.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/137",
+        "sha256": "daa23cdd075c03e1d91065c9c59458ab32e0cf3349b34d8acd799c8f71ad1cc3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/137"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u3/k1",
+        "9/kimya/u3/k4"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "kimya-dersi",
+      "unitId": "137",
+      "officialCode": "KİM.9.3.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/137",
+        "sha256": "daa23cdd075c03e1d91065c9c59458ab32e0cf3349b34d8acd799c8f71ad1cc3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/kimya-dersi/unite/137"
+        ]
+      },
+      "legacyCandidates": [
+        "9/kimya/u3/k2",
+        "9/kimya/u3/k3"
+      ]
+    }
+  ]
+}

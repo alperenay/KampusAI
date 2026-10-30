@@ -1,0 +1,472 @@
+{
+  "schemaVersion": 1,
+  "grade": 11,
+  "program": "matematik-dersi",
+  "lessons": [
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "matematik-dersi",
+      "unitId": "298",
+      "officialCode": "MAT.11.1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/298",
+        "sha256": "dd39f10d9de976f331e0c75d3b4ed928309377ff8dbd6421c3af9f0d1ec7e77a"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-dersi/unite/298"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "matematik-dersi",
+      "unitId": "298",
+      "officialCode": "MAT.11.1.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/298",
+        "sha256": "dd39f10d9de976f331e0c75d3b4ed928309377ff8dbd6421c3af9f0d1ec7e77a"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-dersi/unite/298"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "matematik-dersi",
+      "unitId": "297",
+      "officialCode": "MAT.11.2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/297",
+        "sha256": "9e08c0f377f86b76eac1f878780d7e5f1f92f138a57083a11829dba53ef964a2"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-dersi/unite/297"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "matematik-dersi",
+      "unitId": "297",
+      "officialCode": "MAT.11.2.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/297",
+        "sha256": "9e08c0f377f86b76eac1f878780d7e5f1f92f138a57083a11829dba53ef964a2"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-dersi/unite/297"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "matematik-dersi",
+      "unitId": "297",
+      "officialCode": "MAT.11.2.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/297",
+        "sha256": "9e08c0f377f86b76eac1f878780d7e5f1f92f138a57083a11829dba53ef964a2"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-dersi/unite/297"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "matematik-dersi",
+      "unitId": "297",
+      "officialCode": "MAT.11.2.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/297",
+        "sha256": "9e08c0f377f86b76eac1f878780d7e5f1f92f138a57083a11829dba53ef964a2"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-dersi/unite/297"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "matematik-dersi",
+      "unitId": "297",
+      "officialCode": "MAT.11.2.5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/297",
+        "sha256": "9e08c0f377f86b76eac1f878780d7e5f1f92f138a57083a11829dba53ef964a2"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-dersi/unite/297"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "matematik-dersi",
+      "unitId": "281",
+      "officialCode": "MAT.11.3.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/281",
+        "sha256": "fe5889c2cf29a116804c7ced3d3a87d270ef74ca734d49afd32d28448f06961b"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-dersi/unite/281"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "matematik-dersi",
+      "unitId": "281",
+      "officialCode": "MAT.11.3.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/281",
+        "sha256": "fe5889c2cf29a116804c7ced3d3a87d270ef74ca734d49afd32d28448f06961b"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-dersi/unite/281"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "matematik-dersi",
+      "unitId": "295",
+      "officialCode": "MAT.11.3.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/295",
+        "sha256": "6bca948f5043c7b1e8d927c677587fdc7f06382ebc4f585411f7cb85947eb2c8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-dersi/unite/295"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "matematik-dersi",
+      "unitId": "295",
+      "officialCode": "MAT.11.3.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/295",
+        "sha256": "6bca948f5043c7b1e8d927c677587fdc7f06382ebc4f585411f7cb85947eb2c8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-dersi/unite/295"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "matematik-dersi",
+      "unitId": "295",
+      "officialCode": "MAT.11.3.5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/295",
+        "sha256": "6bca948f5043c7b1e8d927c677587fdc7f06382ebc4f585411f7cb85947eb2c8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-dersi/unite/295"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "matematik-dersi",
+      "unitId": "295",
+      "officialCode": "MAT.11.3.6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/295",
+        "sha256": "6bca948f5043c7b1e8d927c677587fdc7f06382ebc4f585411f7cb85947eb2c8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-dersi/unite/295"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "matematik-dersi",
+      "unitId": "296",
+      "officialCode": "MAT.11.3.7",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/296",
+        "sha256": "998b8146ac68c55e9303435f109ce7a4dd1963f0cafe9ccece69b5e6db97cb23"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-dersi/unite/296"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "matematik-dersi",
+      "unitId": "296",
+      "officialCode": "MAT.11.3.8",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/296",
+        "sha256": "998b8146ac68c55e9303435f109ce7a4dd1963f0cafe9ccece69b5e6db97cb23"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-dersi/unite/296"
+        ]
+      },
+      "legacyCandidates": []
+    }
+  ]
+}

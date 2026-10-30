@@ -1,4 +1,4 @@
-/* On-demand learning suite: portfolio, PDF/ODF study packs, slide decks and invite-only note rooms. */
+/* On-demand learning suite: portfolio and invite-only shared documents. */
 (function(){
   const esc=App.utils.esc, T=(tr,en)=>App.i18n.lang==="en"?en:tr;
   const page=(title,body)=>'<div class="page v159-page"><div class="page-head"><div><h1>'+esc(title)+'</h1></div></div>'+body+'</div>';
@@ -42,52 +42,6 @@
       });
     }
     paint();
-  }
-
-  // Both document entry points use the same local, bounded parser and study engine.
-  const extract = (file) => App.documentImport.read(file);
-  const study = (view, params) => App.studyWorkspace.renderPack(view, params || []);
-
-  function presentation(view){
-    let generation = null;
-    App.setTitle(T("Yapay Zekâ Sunum Hazırlama","AI Presentation Maker"));
-    view.innerHTML=page(T("Yapay Zekâ Sunum Hazırlama","AI Presentation Maker"),
-      '<div class="card v159-form"><label class="field"><span class="field__label">'+esc(T("Sunum konusu","Presentation topic"))+'</span><input class="input" maxlength="180" id="slideTopic" placeholder="'+esc(T("Örn. Fotosentez","e.g. Photosynthesis"))+'"></label>'+
-      '<label class="field"><span class="field__label">'+esc(T("Slayt sayısı","Number of slides"))+'</span><select class="select" id="slideCount"><option value="5">5</option><option value="7" selected>7</option><option value="10">10</option></select></label>'+
-      '<button id="slideGenerate" class="btn btn--primary">'+App.icon("sparkle")+esc(T("Sunumu oluştur","Generate presentation"))+'</button><p class="hint" id="slideStatus" role="status"></p></div><div id="slidesOutput"></div>');
-    const btn=view.querySelector("#slideGenerate"),out=view.querySelector("#slidesOutput"),status=view.querySelector("#slideStatus");
-    btn.onclick=async()=>{
-      const topic=view.querySelector("#slideTopic").value.trim();
-      if(!topic){notice(status,T("Bir konu yaz.","Enter a topic."),true);return;}
-      const count=Number(view.querySelector("#slideCount").value);
-      btn.disabled=true;generation?.abort();generation=new AbortController();notice(status,T("Slaytlar oluşturuluyor…","Generating slides…"));
-      try{
-        const res=await App.ai.generate({signal:generation.signal,temperature:0.55,maxTokens:4500,
-          system:"Create an educational presentation, not HTML. Return valid JSON: {\"title\":\"...\",\"slides\":[{\"title\":\"...\",\"bullets\":[\"...\", \"...\"],\"speakerNotes\":\"...\"}]} . Exactly requested count. Each slide has 2-5 concise factual bullets. No fabricated sources. Use Turkish unless prompt requests another language.",
-          prompt:"Presentation topic: "+topic+"\nNumber of slides: "+count});
-        if (generation.signal.aborted || !btn.isConnected) return;
-        const title=String(res.data?.title||topic);
-        const slides=(Array.isArray(res.data?.slides)?res.data.slides:[]).slice(0,12);
-        if(!slides.length)throw Error(T("Slayt üretilemedi.","No slides generated."));
-        const render=()=>'<section class="v159-slides"><h2>'+esc(title)+'</h2>'+slides.map((x,i)=>
-          '<article class="v159-slide"><small>'+(i+1)+' / '+slides.length+'</small><h3>'+esc(String(x.title||""))+'</h3><ul>'+
-          (Array.isArray(x.bullets)?x.bullets.slice(0,6):[]).map(b=>'<li>'+esc(String(b))+'</li>').join("")+
-          '</ul><details><summary>'+esc(T("Konuşmacı notları","Speaker notes"))+'</summary><p>'+esc(String(x.speakerNotes||""))+'</p></details></article>').join("")+'</section>';
-        out.innerHTML=render();
-        const safeName="kampusai-sunum-"+stamp()+".html";
-        const eHtml=(x)=>esc(x);
-        const doc='<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>'+eHtml(title)+'</title>'+
-          '<style>body{margin:0;background:#0d1224;color:#f4f5ff;font-family:system-ui,sans-serif}section{padding:8vh 9vw;min-height:84vh;box-sizing:border-box;border-bottom:2px solid #283255;display:flex;flex-direction:column;justify-content:center}h1{font-size:6vw}h2{font-size:4vw}li{font-size:2vw;line-height:1.6;margin:.8rem 0}small{color:#a0b3ff}@media print{section{height:100vh;page-break-after:always;border:0}}</style></head><body>'+
-          '<section><h1>'+eHtml(title)+'</h1><p>KampüsAI · '+stamp()+'</p></section>'+
-          slides.map((x,i)=>'<section><small>'+(i+1)+'/'+slides.length+'</small><h2>'+eHtml(String(x.title||""))+'</h2><ul>'+
-            (Array.isArray(x.bullets)?x.bullets.slice(0,6):[]).map(b=>'<li>'+eHtml(String(b))+'</li>').join("")+'</ul></section>').join("")+'</body></html>';
-        const exportBtn=document.createElement("button");exportBtn.type="button";exportBtn.className="btn btn--primary";exportBtn.textContent=T("Sunumu HTML indir / Yazdır-PDF","Download HTML / Print to PDF");
-        exportBtn.onclick=()=>download(safeName,doc);out.prepend(exportBtn);
-        notice(status,T("Sunum hazır. Bilgileri sunmadan önce kontrol et.","Presentation ready. Review facts before presenting."));
-      }catch(e){notice(status,generation.signal.aborted?T("İptal edildi.","Cancelled."):String(e.message||e),true);}
-      finally{btn.disabled=false;}
-    };
-    return()=>generation?.abort();
   }
 
   const alphabet="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -149,8 +103,5 @@
     return()=>{stop();document.removeEventListener("visibilitychange",hidden);};
   }
   App.router.register("portfolyo",portfolio);
-  App.router.register("belgeden",study);
-  App.router.register("sunum",presentation);
-  App.router.register("calisma-odasi",rooms);
-  App.v159Studio={extract,portfolio,study,presentation,rooms};
+  App.v159Studio={portfolio,rooms};
 })();

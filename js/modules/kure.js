@@ -19,7 +19,7 @@
   const TILT = 23.44;                        // eksen eğikliği (23°27')
   let earthImage = null, pageEpoch = 0;
   const POI = [[31.1347,29.9778,'Gize Piramitleri','Giza Plateau','https://web.astronomicalheritage.net/index.php/show-entity?identity=24'],[0,0,'Ekvator · başlangıç meridyeni','Equator · prime meridian'],[0,90,'Kuzey Kutbu','North Pole'],[0,-90,'Güney Kutbu','South Pole'],[30,23.44,'Yengeç Dönencesi','Tropic of Cancer'],[30,-23.44,'Oğlak Dönencesi','Tropic of Capricorn']];
-  function loadEarth() { if (earthImage) return Promise.resolve(); return new Promise(resolve => { const image = new Image(); image.onload = () => { earthImage = image; resolve(); }; image.onerror = () => resolve(); image.src = 'assets/globe/earth-nasa-2048.png'; }); }
+  function loadEarth() { if (earthImage) return Promise.resolve(); return new Promise(resolve => { const image = new Image(); image.onload = () => { earthImage = image; resolve(); }; image.onerror = () => { if (!image.src.endsWith('earth-nasa-2048.png')) image.src='assets/globe/earth-nasa-2048.png'; else resolve(); }; image.src = 'assets/globe/earth-nasa-' + (innerWidth < 768 || App.prefs.get('lab3dQuality','auto') === 'low' || (navigator.deviceMemory && navigator.deviceMemory <= 4) ? '2048.png' : '4096.webp'); }); }
 
   /* ---------- konum dönüşümleri: sahnedeki SphereGeometry'nin uv'siyle aynı ---------- */
   function vec(THREE, lon, lat, r) {
@@ -104,9 +104,9 @@
       const THREE = S.THREE, o = S.o; S.hideFloor();
       o.globe = S.group(); o.globe.rotation.y = -0.6;
       o.cv = document.createElement("canvas"); o.cv.width = Math.min(S.renderer.capabilities.maxTextureSize, S.mobile || S.q === 'low' ? 2048 : 4096); o.cv.height = o.cv.width / 2;
-      o.tex = new THREE.CanvasTexture(o.cv); o.tex.encoding = THREE.sRGBEncoding; o.tex.anisotropy = 4;
+      o.tex = new THREE.CanvasTexture(o.cv); o.tex.encoding = THREE.sRGBEncoding; o.tex.anisotropy = Math.min(8, S.renderer.capabilities.getMaxAnisotropy());
       o.mat = new THREE.MeshStandardMaterial({ map: o.tex, roughness: 0.95, metalness: 0 });
-      const seg = S.mobile ? [72, 48] : [96, 64];
+      const seg = S.mobile || S.q === "low" ? [72, 48] : [160, 112];
       o.geoHi = new THREE.SphereGeometry(R, seg[0], seg[1]); o.geoLo = new THREE.SphereGeometry(R, 40, 28);
       o.ball = new THREE.Mesh(o.geoHi, o.mat); o.globe.add(o.ball);
       o.ball.userData.keep = [o.geoLo];

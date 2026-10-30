@@ -1,0 +1,436 @@
+{
+  "schemaVersion": 1,
+  "grade": 9,
+  "program": "tarih-dersi",
+  "lessons": [
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "tarih-dersi",
+      "unitId": "26",
+      "officialCode": "TAR.9.1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/26",
+        "sha256": "c0de22a65b24ab24a98ad4420f76ab9ea7d1f734fdd55ea074daaeea12ed7188"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/tarih-dersi/unite/26"
+        ]
+      },
+      "legacyCandidates": [
+        "9/tarih/u1/k1"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "tarih-dersi",
+      "unitId": "26",
+      "officialCode": "TAR.9.1.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/26",
+        "sha256": "c0de22a65b24ab24a98ad4420f76ab9ea7d1f734fdd55ea074daaeea12ed7188"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/tarih-dersi/unite/26"
+        ]
+      },
+      "legacyCandidates": [
+        "9/tarih/u1/k2"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "tarih-dersi",
+      "unitId": "26",
+      "officialCode": "TAR.9.1.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/26",
+        "sha256": "c0de22a65b24ab24a98ad4420f76ab9ea7d1f734fdd55ea074daaeea12ed7188"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/tarih-dersi/unite/26"
+        ]
+      },
+      "legacyCandidates": [
+        "9/tarih/u1/k3"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "tarih-dersi",
+      "unitId": "26",
+      "officialCode": "TAR.9.1.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/26",
+        "sha256": "c0de22a65b24ab24a98ad4420f76ab9ea7d1f734fdd55ea074daaeea12ed7188"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/tarih-dersi/unite/26"
+        ]
+      },
+      "legacyCandidates": [
+        "9/tarih/u1/k4"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "tarih-dersi",
+      "unitId": "27",
+      "officialCode": "TAR.9.2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/27",
+        "sha256": "5677d3d92f4a29a7affb7b660dc793b5fcc24fe3472e089b4a9f3035fefaa772"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/tarih-dersi/unite/27"
+        ]
+      },
+      "legacyCandidates": [
+        "9/tarih/u2/k1"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "tarih-dersi",
+      "unitId": "27",
+      "officialCode": "TAR.9.2.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/27",
+        "sha256": "5677d3d92f4a29a7affb7b660dc793b5fcc24fe3472e089b4a9f3035fefaa772"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/tarih-dersi/unite/27"
+        ]
+      },
+      "legacyCandidates": [
+        "9/tarih/u2/k2"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "tarih-dersi",
+      "unitId": "27",
+      "officialCode": "TAR.9.2.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/27",
+        "sha256": "5677d3d92f4a29a7affb7b660dc793b5fcc24fe3472e089b4a9f3035fefaa772"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/tarih-dersi/unite/27"
+        ]
+      },
+      "legacyCandidates": [
+        "9/tarih/u2/k3"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "tarih-dersi",
+      "unitId": "27",
+      "officialCode": "TAR.9.2.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/27",
+        "sha256": "5677d3d92f4a29a7affb7b660dc793b5fcc24fe3472e089b4a9f3035fefaa772"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/tarih-dersi/unite/27"
+        ]
+      },
+      "legacyCandidates": [
+        "9/tarih/u2/k4"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "tarih-dersi",
+      "unitId": "27",
+      "officialCode": "TAR.9.2.5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/27",
+        "sha256": "5677d3d92f4a29a7affb7b660dc793b5fcc24fe3472e089b4a9f3035fefaa772"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/tarih-dersi/unite/27"
+        ]
+      },
+      "legacyCandidates": [
+        "9/tarih/u2/k5"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "tarih-dersi",
+      "unitId": "29",
+      "officialCode": "TAR.9.3.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/29",
+        "sha256": "66b1d2f9c1007322f3e64d64ba63e6bf957b0168cd3e3625886569f85df26f87"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/tarih-dersi/unite/29"
+        ]
+      },
+      "legacyCandidates": [
+        "9/tarih/u3/k1"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "tarih-dersi",
+      "unitId": "29",
+      "officialCode": "TAR.9.3.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/29",
+        "sha256": "66b1d2f9c1007322f3e64d64ba63e6bf957b0168cd3e3625886569f85df26f87"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/tarih-dersi/unite/29"
+        ]
+      },
+      "legacyCandidates": [
+        "9/tarih/u3/k2"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "tarih-dersi",
+      "unitId": "29",
+      "officialCode": "TAR.9.3.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/29",
+        "sha256": "66b1d2f9c1007322f3e64d64ba63e6bf957b0168cd3e3625886569f85df26f87"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/tarih-dersi/unite/29"
+        ]
+      },
+      "legacyCandidates": [
+        "9/tarih/u3/k3"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "tarih-dersi",
+      "unitId": "29",
+      "officialCode": "TAR.9.3.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/29",
+        "sha256": "66b1d2f9c1007322f3e64d64ba63e6bf957b0168cd3e3625886569f85df26f87"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/tarih-dersi/unite/29"
+        ]
+      },
+      "legacyCandidates": [
+        "9/tarih/u3/k4"
+      ]
+    }
+  ]
+}

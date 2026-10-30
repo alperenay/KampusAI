@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:kampusai:curriculum:lesson:1",
+  "title": "KampüsAI resmî kaynak eşlemeli ders notu",
+  "type": "object",
+  "required": ["schemaVersion", "grade", "program", "unitId", "officialCode", "source", "status", "title", "content", "review", "rights"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "grade": {"enum": [9, 10, 11, 12, null]},
+    "program": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "unitId": {"type": "string", "pattern": "^[0-9]+$"},
+    "officialCode": {"type": "string", "minLength": 3},
+    "source": {
+      "type": "object", "required": ["url", "sha256"],
+      "properties": {"url": {"type": "string", "pattern": "^https://(tymm|mufredat)\\.meb\\.gov\\.tr/"}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "pages": {"type": "array", "minItems": 1, "items": {"type": "integer", "minimum": 1}}},
+      "additionalProperties": false
+    },
+    "status": {"enum": ["draft", "reviewed"]},
+    "title": {"type": "string"},
+    "content": {
+      "type": "object", "required": ["anlatim", "ornekler", "ozet"],
+      "properties": {
+        "anlatim": {"type": "string"},
+        "ornekler": {"type": "array", "items": {"type": "object", "required": ["soru", "cozum"], "properties": {"soru": {"type": "string", "minLength": 1}, "cozum": {"type": "string", "minLength": 1}}, "additionalProperties": false}},
+        "ozet": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }, "additionalProperties": false
+    },
+    "review": {"type": "object", "required": ["alignmentApproved", "contentApproved", "reviewer"], "properties": {"alignmentApproved": {"type": "boolean"}, "contentApproved": {"type": "boolean"}, "reviewer": {"type": ["string", "null"]}}, "additionalProperties": false},
+    "rights": {"type": "object", "required": ["status", "licence", "sourceUrls"], "properties": {"status": {"enum": ["unverified", "original", "open-licensed", "permission-granted"]}, "licence": {"type": ["string", "null"]}, "sourceUrls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}}}, "additionalProperties": false},
+    "legacyCandidates": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false,
+  "allOf": [{"if": {"properties": {"status": {"const": "reviewed"}}}, "then": {
+    "properties": {
+      "title": {"minLength": 5},
+      "content": {"properties": {"anlatim": {"minLength": 400}, "ornekler": {"minItems": 1}, "ozet": {"minItems": 2}}},
+      "review": {"properties": {"alignmentApproved": {"const": true}, "contentApproved": {"const": true}, "reviewer": {"type": "string", "minLength": 2}}},
+      "rights": {"properties": {"status": {"enum": ["original", "open-licensed", "permission-granted"]}, "licence": {"type": "string", "minLength": 3}}}
+    }
+  }}]
+}

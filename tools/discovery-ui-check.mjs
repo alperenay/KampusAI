@@ -10,7 +10,8 @@ try {
       await page.waitForSelector("#view .discovery");
     };
   await page.waitForSelector(".discovery-tile");
-  assert.equal(await page.locator(".discovery-tile").count(), 9);
+  assert.equal(await page.locator(".discovery-grid .discovery-tile").count(), 7);
+  assert.equal(await page.locator(".science-lab-shortcut").count(), 1);
   const routes = await page.evaluate(() =>
     App.data.discovery.modules.map((x) => x[0]),
   );

@@ -1,0 +1,565 @@
+{
+  "schemaVersion": 1,
+  "grade": null,
+  "program": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+  "lessons": [
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+      "unitId": "1646",
+      "officialCode": "İÇYÇ.1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1646",
+        "sha256": "0d4b394ac0422c1d28979fcd474a96fbb29337d3e2bc679cb718537ad17dc28f"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1646"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+      "unitId": "1647",
+      "officialCode": "İÇYÇ.2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1647",
+        "sha256": "80545ecb853075a1523b6424059184c7102f6234054e2fa9782b5d0377d05bf7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1647"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+      "unitId": "1647",
+      "officialCode": "İÇYÇ.2.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1647",
+        "sha256": "80545ecb853075a1523b6424059184c7102f6234054e2fa9782b5d0377d05bf7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1647"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+      "unitId": "1647",
+      "officialCode": "İÇYÇ.2.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1647",
+        "sha256": "80545ecb853075a1523b6424059184c7102f6234054e2fa9782b5d0377d05bf7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1647"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+      "unitId": "1647",
+      "officialCode": "İÇYÇ.2.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1647",
+        "sha256": "80545ecb853075a1523b6424059184c7102f6234054e2fa9782b5d0377d05bf7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1647"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+      "unitId": "1648",
+      "officialCode": "İÇYÇ.3.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1648",
+        "sha256": "28a7751ac538164c567c24a4dad14ffe152b37ff07226086f21fdc765b51b909"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1648"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+      "unitId": "1648",
+      "officialCode": "İÇYÇ.3.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1648",
+        "sha256": "28a7751ac538164c567c24a4dad14ffe152b37ff07226086f21fdc765b51b909"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1648"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+      "unitId": "1648",
+      "officialCode": "İÇYÇ.3.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1648",
+        "sha256": "28a7751ac538164c567c24a4dad14ffe152b37ff07226086f21fdc765b51b909"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1648"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+      "unitId": "1648",
+      "officialCode": "İÇYÇ.3.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1648",
+        "sha256": "28a7751ac538164c567c24a4dad14ffe152b37ff07226086f21fdc765b51b909"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1648"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+      "unitId": "1648",
+      "officialCode": "İÇYÇ.3.5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1648",
+        "sha256": "28a7751ac538164c567c24a4dad14ffe152b37ff07226086f21fdc765b51b909"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1648"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+      "unitId": "1649",
+      "officialCode": "İÇYÇ.4.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1649",
+        "sha256": "aae0c2105f541ecf7d8dafb079ce8d6d82d6f84a28a4fc4241dde6aa79802047"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1649"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+      "unitId": "1649",
+      "officialCode": "İÇYÇ.4.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1649",
+        "sha256": "aae0c2105f541ecf7d8dafb079ce8d6d82d6f84a28a4fc4241dde6aa79802047"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1649"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+      "unitId": "1649",
+      "officialCode": "İÇYÇ.4.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1649",
+        "sha256": "aae0c2105f541ecf7d8dafb079ce8d6d82d6f84a28a4fc4241dde6aa79802047"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1649"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+      "unitId": "1649",
+      "officialCode": "İÇYÇ.4.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1649",
+        "sha256": "aae0c2105f541ecf7d8dafb079ce8d6d82d6f84a28a4fc4241dde6aa79802047"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1649"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+      "unitId": "1650",
+      "officialCode": "İÇYÇ.5.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1650",
+        "sha256": "18bc60c2185afcd760543dbcb7452eb3ec403ec67888bf578a28d5c8d2f21f90"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1650"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+      "unitId": "1650",
+      "officialCode": "İÇYÇ.5.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1650",
+        "sha256": "18bc60c2185afcd760543dbcb7452eb3ec403ec67888bf578a28d5c8d2f21f90"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1650"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+      "unitId": "1650",
+      "officialCode": "İÇYÇ.5.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1650",
+        "sha256": "18bc60c2185afcd760543dbcb7452eb3ec403ec67888bf578a28d5c8d2f21f90"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1650"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+      "unitId": "1650",
+      "officialCode": "İÇYÇ.5.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1650",
+        "sha256": "18bc60c2185afcd760543dbcb7452eb3ec403ec67888bf578a28d5c8d2f21f90"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1650"
+        ]
+      },
+      "legacyCandidates": []
+    }
+  ]
+}

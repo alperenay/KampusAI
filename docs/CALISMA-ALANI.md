@@ -1,10 +1,14 @@
+# Birleştirilmiş Dokümanlar
+
+Belge Düzenleyici, notlar, çalışma paketleri, deney raporu ve ortak belge artık tek **Dokümanlar** sekmesindedir. [Güncel kullanım ve eski bağlantıların taşınması](DOKUMANLAR.md). Aşağıdaki araçların veri/AI sınırları bu bölümler için geçerlidir.
+
 # Belge, ödev, defter notu ve sözlü prova
 
 Araçlar yan menüde ve **Tüm araçlar** aramasında bulunur. İçerikler, OCR metni ve AI puanları hata içerebilir; resmî not veya doğruluk garantisi değildir.
 
 ## Belgeden Çalışma Paketi
 
-1. **Dersler ve kaynaklar → Belgeden Çalışma Paketi** ekranını aç.
+1. **Dersler ve kaynaklar → Dokümanlar → Belgeden Çalış** ekranını aç.
 2. PDF, DOCX, ODF (ODT/ODP/ODS), TXT veya MD seç; **Belgeyi cihazda oku** düğmesine bas. Dosya en fazla 12 MB, PDF en fazla 60 sayfa olabilir. Çıkarılan metin en fazla 60.000 karakterdir. Şifreli/bozuk belgelerde metin yapıştırmayı kullan.
 3. Metni incele; paket için 40–12.000 karakterlik bir bölüm seç. Kaynakta kişisel bilgiler varsa sil. PDF sayfa etiketleri korunur; DOCX/ODF/TXT için uydurma sayfa numarası verilmez.
 4. **Çalışma paketi oluştur** ile metni ayarlı AI sağlayıcına gönder. Özet, kavram ağı, açılır kartlar ve dört seçenekli test hazırlanır. S1, S2… bağlantıları dayanak metin bölümünü gösterir; bağlantının bulunması iddianın doğrulandığı anlamına gelmez.
@@ -23,11 +27,11 @@ Bu sürüm arka planda sistem bildirimi planlamaz; tarihler ödev ekranında izl
 
 ## Notlarım · Defterden Aktar
 
-1. **Dersler ve kaynaklar → Notlarım** ekranını aç. Konu anlatımındaki **Defter fotoğrafından not ekle** düğmesi ilgili konuyu önceden seçer.
+1. **Dersler ve kaynaklar → Dokümanlar → Belge Düzenleyici** ekranını aç. Konu anlatımındaki **Dokümanlarda yaz / düzenle** düğmesi ilgili konuyu önceden seçer.
 2. JPEG/PNG/WebP fotoğraf seç (en fazla 12 MB); **El yazısını oku** düğmesine bas. Metin okunamayan yerlerde `[??]` içerebilir; doğru okunduğu varsayılmaz.
 3. Okunan metni düzelt; başlık ve **Genel notlarım** veya konu seç.
-4. Kaydet. Konu seçilirse eski konu notu korunur ve yeni metin sonuna eklenir. Konu anlatımının Notlarım alanında aynı kayıt görünür. Genel notlar Notlarım ekranında listelenir.
-5. **Aç ve düzenle** mevcut kaydı günceller; **Yeni not** ayrı kayıt hazırlar. Silme yalnız seçilen notu siler.
+4. Kaydet. Boş yeni belge formunda konu seçildiğinde metin mevcut nota eklenir; konu bağlantısından açılan veya Aç ve düzenle ile seçilen belgede ise mevcut metin güncellenir. Konu anlatımının Notlarım alanında aynı kayıt görünür. Genel notlar Notlarım ekranında listelenir.
+5. **Aç ve düzenle** mevcut kaydı günceller; **Yeni belge** ayrı kayıt hazırlar. Silme yalnız seçilen notu siler.
 
 Fotoğraflar kalıcı saklanmaz. Okuma için seçili sağlayıcıda görsel desteği gerekir; yoksa metni elle yazabilirsin. Metin kaydı 60.000 karakterle sınırlıdır.
 

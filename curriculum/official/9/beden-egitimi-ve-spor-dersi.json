@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "grade": 9,
+  "apiGradeId": 11,
+  "courseId": 30,
+  "slug": "beden-egitimi-ve-spor-dersi",
+  "name": "Beden Eğitimi ve Spor Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/beden-egitimi-ve-spor-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "601",
+      "title": "1. Tema: Zindelik Ve Fiziksel Aktivite",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/601",
+      "retrievedAt": "2026-10-30T16:26:53.189660+00:00",
+      "sourceSha256": "753962d1bdec52992aacd31fc780e4ff913de7c7301a1a448ffda4d334904edf",
+      "status": "codes-indexed",
+      "codes": [
+        "BES.9.1.1",
+        "BES.9.1.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": null,
+      "normalizations": []
+    },
+    {
+      "id": "602",
+      "title": "2. Tema: Spor Eğitimi",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/602",
+      "retrievedAt": "2026-10-30T16:26:53.943144+00:00",
+      "sourceSha256": "f31c7f6642d949fcf1befb43ec5de5e748cd44ad46cc37c564b6a0d571bcabc7",
+      "status": "codes-indexed",
+      "codes": [
+        "BES.9.2.1",
+        "BES.9.2.2",
+        "BES.9.2.3",
+        "BES.9.2.4"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": null,
+      "normalizations": []
+    },
+    {
+      "id": "603",
+      "title": "3. Tema: Spor Kültürü",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/603",
+      "retrievedAt": "2026-10-30T16:26:54.873227+00:00",
+      "sourceSha256": "fc91aa67cf42b80ea4c9c420d641c328d8672f11d29a68fdbb4f875a4ba7b4a7",
+      "status": "codes-indexed",
+      "codes": [
+        "BES.9.3.1",
+        "BES.9.3.2",
+        "BES.9.3.3"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": null,
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

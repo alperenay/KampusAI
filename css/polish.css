@@ -202,9 +202,6 @@ svg.ico {
   outline: 2px solid var(--accent-text);
   outline-offset: 3px;
 }
-.topbar {
-  border-bottom: 1px solid var(--border);
-}
 .topbar__title {
   font-size: 16px;
   font-weight: 650;

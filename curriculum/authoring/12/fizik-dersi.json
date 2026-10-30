@@ -1,0 +1,844 @@
+{
+  "schemaVersion": 1,
+  "grade": 12,
+  "program": "fizik-dersi",
+  "lessons": [
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "266",
+      "officialCode": "FİZ.12.1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/266",
+        "sha256": "068aee450b879c4ead43198d1d049e76c02054e78591832df915ba5a2a2621d0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/266"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "266",
+      "officialCode": "FİZ.12.1.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/266",
+        "sha256": "068aee450b879c4ead43198d1d049e76c02054e78591832df915ba5a2a2621d0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/266"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "266",
+      "officialCode": "FİZ.12.1.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/266",
+        "sha256": "068aee450b879c4ead43198d1d049e76c02054e78591832df915ba5a2a2621d0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/266"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "266",
+      "officialCode": "FİZ.12.1.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/266",
+        "sha256": "068aee450b879c4ead43198d1d049e76c02054e78591832df915ba5a2a2621d0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/266"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "266",
+      "officialCode": "FİZ.12.1.5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/266",
+        "sha256": "068aee450b879c4ead43198d1d049e76c02054e78591832df915ba5a2a2621d0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/266"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "266",
+      "officialCode": "FİZ.12.1.6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/266",
+        "sha256": "068aee450b879c4ead43198d1d049e76c02054e78591832df915ba5a2a2621d0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/266"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "268",
+      "officialCode": "FİZ.12.2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/268",
+        "sha256": "fb81e9c13c2028812ba33a568402fc2f5d6f1ceea6f661c9b707d0147c768fa0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/268"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "268",
+      "officialCode": "FİZ.12.2.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/268",
+        "sha256": "fb81e9c13c2028812ba33a568402fc2f5d6f1ceea6f661c9b707d0147c768fa0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/268"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "268",
+      "officialCode": "FİZ.12.2.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/268",
+        "sha256": "fb81e9c13c2028812ba33a568402fc2f5d6f1ceea6f661c9b707d0147c768fa0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/268"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "268",
+      "officialCode": "FİZ.12.2.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/268",
+        "sha256": "fb81e9c13c2028812ba33a568402fc2f5d6f1ceea6f661c9b707d0147c768fa0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/268"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "268",
+      "officialCode": "FİZ.12.2.5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/268",
+        "sha256": "fb81e9c13c2028812ba33a568402fc2f5d6f1ceea6f661c9b707d0147c768fa0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/268"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "268",
+      "officialCode": "FİZ.12.2.6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/268",
+        "sha256": "fb81e9c13c2028812ba33a568402fc2f5d6f1ceea6f661c9b707d0147c768fa0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/268"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "273",
+      "officialCode": "FİZ.12.3.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/273",
+        "sha256": "c8736d4a78621eb13da1ccef75978732bc173dbb885625848f75526c2941b5c7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/273"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "273",
+      "officialCode": "FİZ.12.3.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/273",
+        "sha256": "c8736d4a78621eb13da1ccef75978732bc173dbb885625848f75526c2941b5c7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/273"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "273",
+      "officialCode": "FİZ.12.3.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/273",
+        "sha256": "c8736d4a78621eb13da1ccef75978732bc173dbb885625848f75526c2941b5c7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/273"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "273",
+      "officialCode": "FİZ.12.3.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/273",
+        "sha256": "c8736d4a78621eb13da1ccef75978732bc173dbb885625848f75526c2941b5c7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/273"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "273",
+      "officialCode": "FİZ.12.3.5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/273",
+        "sha256": "c8736d4a78621eb13da1ccef75978732bc173dbb885625848f75526c2941b5c7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/273"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "273",
+      "officialCode": "FİZ.12.3.6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/273",
+        "sha256": "c8736d4a78621eb13da1ccef75978732bc173dbb885625848f75526c2941b5c7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/273"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "273",
+      "officialCode": "FİZ.12.3.7",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/273",
+        "sha256": "c8736d4a78621eb13da1ccef75978732bc173dbb885625848f75526c2941b5c7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/273"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "279",
+      "officialCode": "FİZ.12.4.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/279",
+        "sha256": "998f0a22cce9842c529b22b9232ceb40f21b2da561e23eba4cd08796558b72c0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/279"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "279",
+      "officialCode": "FİZ.12.4.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/279",
+        "sha256": "998f0a22cce9842c529b22b9232ceb40f21b2da561e23eba4cd08796558b72c0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/279"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "279",
+      "officialCode": "FİZ.12.4.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/279",
+        "sha256": "998f0a22cce9842c529b22b9232ceb40f21b2da561e23eba4cd08796558b72c0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/279"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "279",
+      "officialCode": "FİZ.12.4.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/279",
+        "sha256": "998f0a22cce9842c529b22b9232ceb40f21b2da561e23eba4cd08796558b72c0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/279"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "279",
+      "officialCode": "FİZ.12.4.5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/279",
+        "sha256": "998f0a22cce9842c529b22b9232ceb40f21b2da561e23eba4cd08796558b72c0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/279"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "279",
+      "officialCode": "FİZ.12.4.6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/279",
+        "sha256": "998f0a22cce9842c529b22b9232ceb40f21b2da561e23eba4cd08796558b72c0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/279"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "279",
+      "officialCode": "FİZ.12.4.7",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/279",
+        "sha256": "998f0a22cce9842c529b22b9232ceb40f21b2da561e23eba4cd08796558b72c0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/279"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "fizik-dersi",
+      "unitId": "279",
+      "officialCode": "FİZ.12.4.8",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/279",
+        "sha256": "998f0a22cce9842c529b22b9232ceb40f21b2da561e23eba4cd08796558b72c0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/fizik-dersi/unite/279"
+        ]
+      },
+      "legacyCandidates": []
+    }
+  ]
+}

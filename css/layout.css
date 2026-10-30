@@ -159,6 +159,12 @@
   height: 64px;
   flex: none;
   padding: 0 18px 0 22px;
+  /* Blend into the app background instead of drawing a separate panel. */
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
 .icon-btn.topbar__menu { display: none; }
 .topbar__title { text-shadow: var(--on-bg-shadow); flex: 1; min-width: 0; font-size: 18px; font-family: var(--font-display); color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

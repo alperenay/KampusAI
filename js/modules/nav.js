@@ -104,7 +104,7 @@
 
   function bindMenuSearch() {
     const input = $("#navFilter"), nav = input.closest(".nav"), empty = $("#navEmpty");
-    const labels = { explore: ["Keşfet ve yarış", "Explore and compete"], duel: ["Arkadaş Düellosu", "Friend Duel"], sensor: ["Sensör Laboratuvarı", "Sensor Lab"], citizen: ["Vatandaş Bilimi Ağı", "Citizen Science"], ph: ["pH Ölçer", "pH Meter"], eco: ["Ekosistem Kavanozu", "Ecosystem Jar"], careerMap: ["Meslek Haritası", "Career Map"], cosmos: ["Bilgi Evreni", "Knowledge Cosmos"], report: ["Üstbiliş Karnesi", "Metacognition Report"], classQR: ["Sınıf Modu · QR Aktarımı", "Class Mode · QR Transfer"] };
+    const labels = { scienceLab: ["Bilim ve Sensör Laboratuvarı", "Science & Sensor Laboratory"], explore: ["Keşfet ve yarış", "Explore and compete"], duel: ["Arkadaş Düellosu", "Friend Duel"], sensor: ["Sensör Laboratuvarı", "Sensor Lab"], citizen: ["Vatandaş Bilimi Ağı", "Citizen Science"], ph: ["pH Ölçer", "pH Meter"], eco: ["Ekosistem Kavanozu", "Ecosystem Jar"], careerMap: ["Meslek Haritası", "Career Map"], cosmos: ["Bilgi Evreni", "Knowledge Cosmos"], report: ["Üstbiliş Karnesi", "Metacognition Report"], classQR: ["Sınıf Modu · QR Aktarımı", "Class Mode · QR Transfer"] };
     function filter() {
       const words = norm(input.value).split(" ").filter(Boolean);
       nav.classList.toggle("is-filtering", !!words.length);
@@ -143,7 +143,7 @@
     return Array.from(document.querySelectorAll("#sidebar .nav__item")).filter((a) => !a.closest("#navPins")).map((a) => {
       const lab = a.querySelector(".sidebar__label"), ic = a.querySelector("[data-icon]");
       const grp = a.closest(".nav-group");
-      return { kind: "page", title: lab ? lab.textContent.trim() : "", sub: grp ? grp.querySelector(".nav-group__head .sidebar__label").textContent : "", icon: ic ? ic.dataset.icon : "chevron", href: a.getAttribute("href") };
+      return { kind: "page", extra: App.hub?.TOOLS.find(t=>t[0]===a.dataset.route)?.[5] || "", title: lab ? lab.textContent.trim() : "", sub: grp ? grp.querySelector(".nav-group__head .sidebar__label").textContent : "", icon: ic ? ic.dataset.icon : "chevron", href: a.getAttribute("href") };
     }).filter((p) => p.title && p.href !== "#/");
   }
   function actions() {

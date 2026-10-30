@@ -2,7 +2,7 @@
    The app never waits for this animation to finish. */
 (function () {
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const DURATION_MS = 1750;
+  const DURATION_MS = document.documentElement.dataset.uiMotionLevel === "gentle" ? 400 : 1750;
   let el = document.getElementById("startupPreload");
   let timer = 0, safety = 0, observer = null, started = false;
   let appReady = false, minElapsed = false, leaving = false;
@@ -42,7 +42,8 @@
     ready() { appReady = true; maybeLeave(); },
     get active() { return !!el; }
   };
-  if (reduced.matches || App.prefs.get("a11yMotion", false) || window.__startupSkip) {
+  if (reduced.matches || App.prefs.get("a11yMotion", false) || window.__startupSkip ||
+      document.documentElement.dataset.uiMotionLevel === "off" || document.documentElement.dataset.uiIntro === "off") {
     dismiss();
     return;
   }
@@ -86,8 +87,8 @@
   reduced.addEventListener?.("change", onReduced);
   el.addEventListener("click", dismiss, { once: true });
   observer = new MutationObserver(() => {
-    if (document.documentElement.hasAttribute("data-a11y-motion")) dismiss();
+    if (document.documentElement.hasAttribute("data-a11y-motion") || document.documentElement.dataset.uiMotionLevel === "off" || document.documentElement.dataset.uiIntro === "off") dismiss();
   });
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-a11y-motion"] });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-a11y-motion", "data-ui-motion-level", "data-ui-intro"] });
   if (!document.hidden) run();
 })();

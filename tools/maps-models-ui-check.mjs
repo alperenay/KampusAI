@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';import path from 'node:path';import {uiHarness,navigate} from './ui-harness.mjs';
+const h=await uiHarness();try{const {page}=await h.device('modeller');let rendered=0;
+for(const id of ['alveol','nefron','iyon-kristal','kondansator']){await navigate(page,'modeller/'+id);await page.waitForSelector('#hmStage');if(await page.evaluate(()=>App.lab3d.supported())){await page.waitForFunction(()=>!!App.modeller.run());assert.ok(await page.evaluate(()=>Object.values(App.modeller.run().S3._S.o.parts).every(a=>a.length>0)));await page.locator('.hm-part').first().click();assert.ok((await page.locator('#hmInfo').innerText()).length>15);rendered++;}}
+await navigate(page,'tarih-haritasi');await page.waitForFunction(()=>document.querySelector('#hmMap polygon:not(#hmRegion)'));
+await page.selectOption('#hmPeriod','1839');assert.match(await page.locator('#hmDossier').innerText(),/Tanzimat/);
+await page.click('#hmZoomIn');assert.notEqual(await page.locator('#hmMap').getAttribute('viewBox'),'0 0 1000 480');await page.click('#hmReset');assert.equal(await page.locator('#hmMap').getAttribute('viewBox'),'0 0 1000 480');
+await page.locator('[data-city="0"]').focus();await page.keyboard.press('Enter');assert.match(await page.locator('#hmCityInfo').innerText(),/İstanbul/);await page.uncheck('#hmCities');assert.equal(await page.locator('[data-city]').count(),0);
+for(const width of [320,768,1440]){await page.setViewportSize({width,height:900});for(const r of ['tarih-haritasi','modeller','kure']){await navigate(page,r);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,r+' overflow');}}
+await navigate(page,'kure');if(await page.evaluate(()=>App.lab3d.supported()))await page.waitForSelector('#kStage canvas');
+await navigate(page,'tarih-haritasi');await page.screenshot({path:path.join(h.qa,'history-enhanced.png'),fullPage:true});assert.deepEqual(h.errors,[]);console.log(h.engineName+': four added models ('+rendered+' real WebGL scenes), map geography/cities/period/zoom and responsive routes passed.');}finally{await h.close();}

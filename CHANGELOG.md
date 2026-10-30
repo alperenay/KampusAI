@@ -1,5 +1,16 @@
 # Sürüm notları
 
+## 1.62.0 — Yayın adayı
+
+- Şeffaf üst çubuk, 12 palet ve ayrıntılı görünüm/efekt ayarları.
+- Sunum oluşturma kaldırıldı; belge, not, çalışma paketi ve raporlar Dokümanlar altında toplandı.
+- Birleşik Bilim ve Sensör Laboratuvarı, dört yeni kuramsal deney ve kaynak temizliği.
+- NASA 4K küre dokusu, dört yeni 3B model ve geliştirilmiş Yaşayan Tarih Haritası.
+- 184 olaylı zaman çizelgesi; 24 kaynak bağlantılı ayrıntılı dosya, odak okuma penceresi ve derin içerik araması. Eski olaylarda doğrulama sınırı açıkça belirtilir.
+- Hakkında/Kaynakça ve kullanım belgeleri güncellendi.
+- Müfredat JSON/şablon paketi ayrı kapsam raporuyla hazırlandı; tüm ders notlarının eksiksiz tamamlandığı iddia edilmez.
+- Üç motorlu genel test ve yayın hazırlığı: [Doğrulama raporu](docs/ON-YAYIN-1.62.md).
+
 ## 1.61.0 — Glassmorphism
 
 - Web/PWA, Android ve masaüstü için ortak cam tasarım katmanı.

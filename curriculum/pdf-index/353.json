@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "programmeId": 353,
+  "subjectId": "edebiyat",
+  "edition": "legacy",
+  "name": "TÜRK DİLİ VE EDEBİYATI",
+  "sourceUrl": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=353",
+  "applicability": "confirm-school-year-and-school-type",
+  "status": "machine-extracted-candidates-require-review",
+  "licenceVerified": false,
+  "pdfUrl": "https://mufredat.meb.gov.tr/Dosyalar/20221229132522794-Türk Dili ve Edebiyatı Dersi Öğretim Programı.pdf",
+  "pdfSha256": "26165bf1bde7c1372805b5e8bf5f5e3f1720f25bf5f1f9f969a9e0bedf0de105",
+  "pageCount": 64,
+  "codeCandidates": [
+    {
+      "code": "A.1",
+      "gradeCandidate": null,
+      "pages": [
+        19,
+        20
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "A.1.12",
+      "gradeCandidate": null,
+      "pages": [
+        20
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "A.2",
+      "gradeCandidate": null,
+      "pages": [
+        21,
+        22
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "A.3",
+      "gradeCandidate": null,
+      "pages": [
+        23,
+        24
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "A.4",
+      "gradeCandidate": null,
+      "pages": [
+        24,
+        25,
+        26
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "B.1",
+      "gradeCandidate": null,
+      "pages": [
+        26
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "B.2",
+      "gradeCandidate": null,
+      "pages": [
+        26
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "B.3",
+      "gradeCandidate": null,
+      "pages": [
+        26
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "B.4",
+      "gradeCandidate": null,
+      "pages": [
+        26
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "B.5",
+      "gradeCandidate": null,
+      "pages": [
+        26
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "B.6",
+      "gradeCandidate": null,
+      "pages": [
+        26
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "B.7",
+      "gradeCandidate": null,
+      "pages": [
+        27
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "B.8",
+      "gradeCandidate": null,
+      "pages": [
+        27
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "B.9",
+      "gradeCandidate": null,
+      "pages": [
+        27
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "B.10",
+      "gradeCandidate": null,
+      "pages": [
+        27
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "B.11",
+      "gradeCandidate": null,
+      "pages": [
+        27
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "B.12",
+      "gradeCandidate": null,
+      "pages": [
+        27
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "C.1",
+      "gradeCandidate": null,
+      "pages": [
+        27,
+        28,
+        29
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "C.2",
+      "gradeCandidate": null,
+      "pages": [
+        29
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "II.DÖNEM",
+      "gradeCandidate": null,
+      "pages": [
+        43
+      ],
+      "status": "candidate-requires-review"
+    }
+  ],
+  "indexedAt": "2026-10-30T16:35:50.608418+00:00",
+  "fullTextRedistributed": false
+}

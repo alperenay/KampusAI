@@ -290,8 +290,8 @@
           (ct ? section("lightbulb", t("cur.keyFacts"), ct.ozet && ct.ozet.length ? '<ul class="facts">' + ct.ozet.map((s) => "<li>" + richInline(s) + "</li>").join("") + "</ul>" : soon, !!(ct.ozet && ct.ozet.length)) : "") +
           labCards + rootCard + cardsCard + quizCard + feyCard + chkCard +
           section("note", t("cur.myNotes"),
-            '<a class="btn btn--sm" href="#/notlar/' + esc(key) + '">' + App.icon("camera") + esc(T2("Defter fotoğrafından not ekle", "Add notes from a notebook photo")) + '</a>' +
-            '<textarea class="textarea" id="myNote" aria-label="' + esc(t("cur.myNotes")) + '" placeholder="' + esc(t("cur.notesPh")) + '">' + esc(note ? note.text : "") + "</textarea>" +
+            '<a class="btn btn--sm" href="#/dokumanlar/notlar/' + esc(key) + '">' + App.icon("camera") + esc(T2("Dokümanlarda yaz / düzenle", "Write / edit in Documents")) + '</a>' +
+            '<div class="documents-note-preview" id="myNote">' + esc(note ? note.text : T2("Henüz not eklenmedi.", "No note yet.")) + '</div>' +
             '<p class="hint" id="noteState" style="margin-top:6px">' + esc(note && note.updatedAt ? t("cur.saved") : t("cur.notesLocal")) + "</p>") +
         "</div>" +
 
@@ -358,25 +358,7 @@
       App.ui.toast(isDone ? t("cur.toastDone") : t("cur.toastUndone"));
     });
 
-    const area = view.querySelector("#myNote");
-    const state = view.querySelector("#noteState");
-    let noteTimer = null, noteDirty = false;
-    const saveNote = () => {
-      clearTimeout(noteTimer);
-      if (!noteDirty) return;
-      noteDirty = false;
-      const text = area.value;
-      // Queue the write before the next route reads/appends this note. No detached timer may overwrite it.
-      const operation = text.trim()
-        ? App.db.put("notes", { ...note, id: key, text, updatedAt: new Date().toISOString() })
-        : App.db.remove("notes", key);
-      operation.then(() => { if (state.isConnected) state.textContent = t("cur.saved"); })
-        .catch(() => { if (state.isConnected) state.textContent = T2("Not kaydedilemedi; metnini kopyalayıp yeniden dene.", "Could not save. Copy your text and retry."); });
-    };
-    area.addEventListener("input", () => { noteDirty = true;state.textContent = t("cur.saving");clearTimeout(noteTimer);noteTimer = setTimeout(saveNote, 600); });
-    area.addEventListener("blur", saveNote);
-    window.addEventListener("pagehide", saveNote);
-    return () => { saveNote();window.removeEventListener("pagehide", saveNote); };
+
   }
 
   App.router.register("konular", async (view, p) => {

@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "grade": null,
+  "program": "turk-kultur-ve-medeniyet-tarihi-dersi",
+  "lessons": [
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "turk-kultur-ve-medeniyet-tarihi-dersi",
+      "unitId": "1657",
+      "officialCode": "TKMT 1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-kultur-ve-medeniyet-tarihi-dersi/unite/1657",
+        "sha256": "30b52e0c2e777adcc1876294d5f267f0a4571d6397020b317668d302cdf44b26"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-kultur-ve-medeniyet-tarihi-dersi/unite/1657"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "turk-kultur-ve-medeniyet-tarihi-dersi",
+      "unitId": "1657",
+      "officialCode": "TKMT 1.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-kultur-ve-medeniyet-tarihi-dersi/unite/1657",
+        "sha256": "30b52e0c2e777adcc1876294d5f267f0a4571d6397020b317668d302cdf44b26"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-kultur-ve-medeniyet-tarihi-dersi/unite/1657"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "turk-kultur-ve-medeniyet-tarihi-dersi",
+      "unitId": "1658",
+      "officialCode": "TKMT 2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-kultur-ve-medeniyet-tarihi-dersi/unite/1658",
+        "sha256": "7ff872031c706387857340cf6cf02f264b141d0ddcd45c5672088359361a7955"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-kultur-ve-medeniyet-tarihi-dersi/unite/1658"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "turk-kultur-ve-medeniyet-tarihi-dersi",
+      "unitId": "1658",
+      "officialCode": "TKMT 2.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-kultur-ve-medeniyet-tarihi-dersi/unite/1658",
+        "sha256": "7ff872031c706387857340cf6cf02f264b141d0ddcd45c5672088359361a7955"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-kultur-ve-medeniyet-tarihi-dersi/unite/1658"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "turk-kultur-ve-medeniyet-tarihi-dersi",
+      "unitId": "1688",
+      "officialCode": "TKMT 3.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-kultur-ve-medeniyet-tarihi-dersi/unite/1688",
+        "sha256": "b6b33ad18bcac8fd764c31a85360dbc9a56b9155bcd170be4997b7bec1d8e46f"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-kultur-ve-medeniyet-tarihi-dersi/unite/1688"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "turk-kultur-ve-medeniyet-tarihi-dersi",
+      "unitId": "1688",
+      "officialCode": "TKMT 3.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-kultur-ve-medeniyet-tarihi-dersi/unite/1688",
+        "sha256": "b6b33ad18bcac8fd764c31a85360dbc9a56b9155bcd170be4997b7bec1d8e46f"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-kultur-ve-medeniyet-tarihi-dersi/unite/1688"
+        ]
+      },
+      "legacyCandidates": []
+    }
+  ]
+}

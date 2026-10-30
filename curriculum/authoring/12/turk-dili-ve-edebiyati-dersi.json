@@ -1,0 +1,1991 @@
+{
+  "schemaVersion": 1,
+  "grade": 12,
+  "program": "turk-dili-ve-edebiyati-dersi",
+  "lessons": [
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "335",
+      "officialCode": "TDE1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335",
+        "sha256": "d02c01a4cee47f779cc2e77b961bed37732a36bcf53ef6ddbaa460e5b7192264"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "335",
+      "officialCode": "TDE1.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335",
+        "sha256": "d02c01a4cee47f779cc2e77b961bed37732a36bcf53ef6ddbaa460e5b7192264"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "335",
+      "officialCode": "TDE1.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335",
+        "sha256": "d02c01a4cee47f779cc2e77b961bed37732a36bcf53ef6ddbaa460e5b7192264"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "335",
+      "officialCode": "TDE1.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335",
+        "sha256": "d02c01a4cee47f779cc2e77b961bed37732a36bcf53ef6ddbaa460e5b7192264"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "335",
+      "officialCode": "TDE2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335",
+        "sha256": "d02c01a4cee47f779cc2e77b961bed37732a36bcf53ef6ddbaa460e5b7192264"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "335",
+      "officialCode": "TDE2.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335",
+        "sha256": "d02c01a4cee47f779cc2e77b961bed37732a36bcf53ef6ddbaa460e5b7192264"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "335",
+      "officialCode": "TDE2.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335",
+        "sha256": "d02c01a4cee47f779cc2e77b961bed37732a36bcf53ef6ddbaa460e5b7192264"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "335",
+      "officialCode": "TDE2.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335",
+        "sha256": "d02c01a4cee47f779cc2e77b961bed37732a36bcf53ef6ddbaa460e5b7192264"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "335",
+      "officialCode": "TDE3.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335",
+        "sha256": "d02c01a4cee47f779cc2e77b961bed37732a36bcf53ef6ddbaa460e5b7192264"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "335",
+      "officialCode": "TDE3.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335",
+        "sha256": "d02c01a4cee47f779cc2e77b961bed37732a36bcf53ef6ddbaa460e5b7192264"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "335",
+      "officialCode": "TDE3.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335",
+        "sha256": "d02c01a4cee47f779cc2e77b961bed37732a36bcf53ef6ddbaa460e5b7192264"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "335",
+      "officialCode": "TDE3.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335",
+        "sha256": "d02c01a4cee47f779cc2e77b961bed37732a36bcf53ef6ddbaa460e5b7192264"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "335",
+      "officialCode": "TDE4.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335",
+        "sha256": "d02c01a4cee47f779cc2e77b961bed37732a36bcf53ef6ddbaa460e5b7192264"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "335",
+      "officialCode": "TDE4.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335",
+        "sha256": "d02c01a4cee47f779cc2e77b961bed37732a36bcf53ef6ddbaa460e5b7192264"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "335",
+      "officialCode": "TDE4.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335",
+        "sha256": "d02c01a4cee47f779cc2e77b961bed37732a36bcf53ef6ddbaa460e5b7192264"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "335",
+      "officialCode": "TDE4.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335",
+        "sha256": "d02c01a4cee47f779cc2e77b961bed37732a36bcf53ef6ddbaa460e5b7192264"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "340",
+      "officialCode": "TDE1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340",
+        "sha256": "289e368b0032763e2d42d5fa6f60718a343973ff120f2db1eccaae29ef655964"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "340",
+      "officialCode": "TDE1.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340",
+        "sha256": "289e368b0032763e2d42d5fa6f60718a343973ff120f2db1eccaae29ef655964"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "340",
+      "officialCode": "TDE1.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340",
+        "sha256": "289e368b0032763e2d42d5fa6f60718a343973ff120f2db1eccaae29ef655964"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "340",
+      "officialCode": "TDE1.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340",
+        "sha256": "289e368b0032763e2d42d5fa6f60718a343973ff120f2db1eccaae29ef655964"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "340",
+      "officialCode": "TDE2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340",
+        "sha256": "289e368b0032763e2d42d5fa6f60718a343973ff120f2db1eccaae29ef655964"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "340",
+      "officialCode": "TDE2.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340",
+        "sha256": "289e368b0032763e2d42d5fa6f60718a343973ff120f2db1eccaae29ef655964"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "340",
+      "officialCode": "TDE2.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340",
+        "sha256": "289e368b0032763e2d42d5fa6f60718a343973ff120f2db1eccaae29ef655964"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "340",
+      "officialCode": "TDE2.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340",
+        "sha256": "289e368b0032763e2d42d5fa6f60718a343973ff120f2db1eccaae29ef655964"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "340",
+      "officialCode": "TDE3.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340",
+        "sha256": "289e368b0032763e2d42d5fa6f60718a343973ff120f2db1eccaae29ef655964"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "340",
+      "officialCode": "TDE3.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340",
+        "sha256": "289e368b0032763e2d42d5fa6f60718a343973ff120f2db1eccaae29ef655964"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "340",
+      "officialCode": "TDE3.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340",
+        "sha256": "289e368b0032763e2d42d5fa6f60718a343973ff120f2db1eccaae29ef655964"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "340",
+      "officialCode": "TDE3.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340",
+        "sha256": "289e368b0032763e2d42d5fa6f60718a343973ff120f2db1eccaae29ef655964"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "340",
+      "officialCode": "TDE4.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340",
+        "sha256": "289e368b0032763e2d42d5fa6f60718a343973ff120f2db1eccaae29ef655964"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "340",
+      "officialCode": "TDE4.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340",
+        "sha256": "289e368b0032763e2d42d5fa6f60718a343973ff120f2db1eccaae29ef655964"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "340",
+      "officialCode": "TDE4.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340",
+        "sha256": "289e368b0032763e2d42d5fa6f60718a343973ff120f2db1eccaae29ef655964"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "340",
+      "officialCode": "TDE4.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340",
+        "sha256": "289e368b0032763e2d42d5fa6f60718a343973ff120f2db1eccaae29ef655964"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "348",
+      "officialCode": "TDE1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348",
+        "sha256": "470a0b0f0e248bf848377d96d84f290ab5ab856e927e6c5764f55940aa0af5f8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "348",
+      "officialCode": "TDE1.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348",
+        "sha256": "470a0b0f0e248bf848377d96d84f290ab5ab856e927e6c5764f55940aa0af5f8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "348",
+      "officialCode": "TDE1.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348",
+        "sha256": "470a0b0f0e248bf848377d96d84f290ab5ab856e927e6c5764f55940aa0af5f8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "348",
+      "officialCode": "TDE1.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348",
+        "sha256": "470a0b0f0e248bf848377d96d84f290ab5ab856e927e6c5764f55940aa0af5f8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "348",
+      "officialCode": "TDE2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348",
+        "sha256": "470a0b0f0e248bf848377d96d84f290ab5ab856e927e6c5764f55940aa0af5f8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "348",
+      "officialCode": "TDE2.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348",
+        "sha256": "470a0b0f0e248bf848377d96d84f290ab5ab856e927e6c5764f55940aa0af5f8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "348",
+      "officialCode": "TDE2.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348",
+        "sha256": "470a0b0f0e248bf848377d96d84f290ab5ab856e927e6c5764f55940aa0af5f8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "348",
+      "officialCode": "TDE2.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348",
+        "sha256": "470a0b0f0e248bf848377d96d84f290ab5ab856e927e6c5764f55940aa0af5f8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "348",
+      "officialCode": "TDE3.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348",
+        "sha256": "470a0b0f0e248bf848377d96d84f290ab5ab856e927e6c5764f55940aa0af5f8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "348",
+      "officialCode": "TDE3.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348",
+        "sha256": "470a0b0f0e248bf848377d96d84f290ab5ab856e927e6c5764f55940aa0af5f8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "348",
+      "officialCode": "TDE3.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348",
+        "sha256": "470a0b0f0e248bf848377d96d84f290ab5ab856e927e6c5764f55940aa0af5f8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "348",
+      "officialCode": "TDE3.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348",
+        "sha256": "470a0b0f0e248bf848377d96d84f290ab5ab856e927e6c5764f55940aa0af5f8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "348",
+      "officialCode": "TDE4.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348",
+        "sha256": "470a0b0f0e248bf848377d96d84f290ab5ab856e927e6c5764f55940aa0af5f8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "348",
+      "officialCode": "TDE4.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348",
+        "sha256": "470a0b0f0e248bf848377d96d84f290ab5ab856e927e6c5764f55940aa0af5f8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "348",
+      "officialCode": "TDE4.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348",
+        "sha256": "470a0b0f0e248bf848377d96d84f290ab5ab856e927e6c5764f55940aa0af5f8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "348",
+      "officialCode": "TDE4.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348",
+        "sha256": "470a0b0f0e248bf848377d96d84f290ab5ab856e927e6c5764f55940aa0af5f8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "351",
+      "officialCode": "TDE1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351",
+        "sha256": "346ee0da31b3bcfce691e72df6bf6d814bfbfbcb06314d65335265055be96ae8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "351",
+      "officialCode": "TDE1.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351",
+        "sha256": "346ee0da31b3bcfce691e72df6bf6d814bfbfbcb06314d65335265055be96ae8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "351",
+      "officialCode": "TDE1.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351",
+        "sha256": "346ee0da31b3bcfce691e72df6bf6d814bfbfbcb06314d65335265055be96ae8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "351",
+      "officialCode": "TDE1.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351",
+        "sha256": "346ee0da31b3bcfce691e72df6bf6d814bfbfbcb06314d65335265055be96ae8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "351",
+      "officialCode": "TDE2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351",
+        "sha256": "346ee0da31b3bcfce691e72df6bf6d814bfbfbcb06314d65335265055be96ae8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "351",
+      "officialCode": "TDE2.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351",
+        "sha256": "346ee0da31b3bcfce691e72df6bf6d814bfbfbcb06314d65335265055be96ae8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "351",
+      "officialCode": "TDE2.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351",
+        "sha256": "346ee0da31b3bcfce691e72df6bf6d814bfbfbcb06314d65335265055be96ae8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "351",
+      "officialCode": "TDE2.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351",
+        "sha256": "346ee0da31b3bcfce691e72df6bf6d814bfbfbcb06314d65335265055be96ae8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "351",
+      "officialCode": "TDE3.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351",
+        "sha256": "346ee0da31b3bcfce691e72df6bf6d814bfbfbcb06314d65335265055be96ae8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "351",
+      "officialCode": "TDE3.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351",
+        "sha256": "346ee0da31b3bcfce691e72df6bf6d814bfbfbcb06314d65335265055be96ae8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "351",
+      "officialCode": "TDE3.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351",
+        "sha256": "346ee0da31b3bcfce691e72df6bf6d814bfbfbcb06314d65335265055be96ae8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "351",
+      "officialCode": "TDE3.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351",
+        "sha256": "346ee0da31b3bcfce691e72df6bf6d814bfbfbcb06314d65335265055be96ae8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "351",
+      "officialCode": "TDE4.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351",
+        "sha256": "346ee0da31b3bcfce691e72df6bf6d814bfbfbcb06314d65335265055be96ae8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "351",
+      "officialCode": "TDE4.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351",
+        "sha256": "346ee0da31b3bcfce691e72df6bf6d814bfbfbcb06314d65335265055be96ae8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "351",
+      "officialCode": "TDE4.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351",
+        "sha256": "346ee0da31b3bcfce691e72df6bf6d814bfbfbcb06314d65335265055be96ae8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "turk-dili-ve-edebiyati-dersi",
+      "unitId": "351",
+      "officialCode": "TDE4.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351",
+        "sha256": "346ee0da31b3bcfce691e72df6bf6d814bfbfbcb06314d65335265055be96ae8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351"
+        ]
+      },
+      "legacyCandidates": []
+    }
+  ]
+}

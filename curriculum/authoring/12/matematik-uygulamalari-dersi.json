@@ -1,0 +1,379 @@
+{
+  "schemaVersion": 1,
+  "grade": 12,
+  "program": "matematik-uygulamalari-dersi",
+  "lessons": [
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "matematik-uygulamalari-dersi",
+      "unitId": "1636",
+      "officialCode": "MAT.U.2.1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1636",
+        "sha256": "d6ac59ea247c2b777bcda23f72981e184a3bf42ebc8b4cf5d99a1766fb12204d"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1636"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "matematik-uygulamalari-dersi",
+      "unitId": "1636",
+      "officialCode": "MAT.U.2.1.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1636",
+        "sha256": "d6ac59ea247c2b777bcda23f72981e184a3bf42ebc8b4cf5d99a1766fb12204d"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1636"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "matematik-uygulamalari-dersi",
+      "unitId": "1639",
+      "officialCode": "MAT.U.2.2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1639",
+        "sha256": "17b973bfe3c1da8d0e261ae543de6e37e904fca4c40fb9fbb4dd96e88f7ac594"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1639"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "matematik-uygulamalari-dersi",
+      "unitId": "1641",
+      "officialCode": "MAT.U.2.3.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1641",
+        "sha256": "aa78fbc5a765e03daaa348b5195e16baaf8f461e8884280d836f91c82c858aa8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1641"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "matematik-uygulamalari-dersi",
+      "unitId": "1641",
+      "officialCode": "MAT.U.2.3.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1641",
+        "sha256": "aa78fbc5a765e03daaa348b5195e16baaf8f461e8884280d836f91c82c858aa8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1641"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "matematik-uygulamalari-dersi",
+      "unitId": "1642",
+      "officialCode": "MAT.U.2.4.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1642",
+        "sha256": "94ebc890752da1d5c9052eb5734e6588369b1fb39e90d721afad22f394730705"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1642"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "matematik-uygulamalari-dersi",
+      "unitId": "1642",
+      "officialCode": "MAT.U.2.4.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1642",
+        "sha256": "94ebc890752da1d5c9052eb5734e6588369b1fb39e90d721afad22f394730705"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1642"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "matematik-uygulamalari-dersi",
+      "unitId": "1642",
+      "officialCode": "MAT.U.2.4.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1642",
+        "sha256": "94ebc890752da1d5c9052eb5734e6588369b1fb39e90d721afad22f394730705"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1642"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "matematik-uygulamalari-dersi",
+      "unitId": "1644",
+      "officialCode": "MAT.U.2.5.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1644",
+        "sha256": "e2fcb705fe5899fe4fa5b9d80991ee915283f4f7c9c6d037fe1e742840e2f701"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1644"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "matematik-uygulamalari-dersi",
+      "unitId": "1644",
+      "officialCode": "MAT.U.2.5.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1644",
+        "sha256": "e2fcb705fe5899fe4fa5b9d80991ee915283f4f7c9c6d037fe1e742840e2f701"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1644"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "matematik-uygulamalari-dersi",
+      "unitId": "1644",
+      "officialCode": "MAT.U.2.5.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1644",
+        "sha256": "e2fcb705fe5899fe4fa5b9d80991ee915283f4f7c9c6d037fe1e742840e2f701"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1644"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "matematik-uygulamalari-dersi",
+      "unitId": "1644",
+      "officialCode": "MAT.U.2.5.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1644",
+        "sha256": "e2fcb705fe5899fe4fa5b9d80991ee915283f4f7c9c6d037fe1e742840e2f701"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1644"
+        ]
+      },
+      "legacyCandidates": []
+    }
+  ]
+}

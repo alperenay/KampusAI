@@ -25,6 +25,26 @@ interface Window { SpeechRecognition?: any; webkitSpeechRecognition?: any; Kampu
 
 interface Window { fflate?: any; }
 
+interface AppearanceOptions {
+  palette: string; atmosphere: string; style: string; font: string;
+  readingFont: string; readingSize: string; lineHeight: string;
+  readingWidth: string; tracking: string; corners: string; density: string;
+  motion: string; blur: string; background: string;
+  shadows: boolean; ambientMotion: boolean; touchFeedback: boolean; intro: boolean;
+}
+interface Window {
+  KampusAppearanceConfig: {
+    palettes: {id: string; tr: string; en: string; dark: string[]; light: string[]; swatch: string[]}[];
+    atmospheres: {id: string; tr: string; en: string; a: string; b: string}[];
+    fonts: Record<string, string>;
+    choices: Record<string, string[]>;
+    defaults: AppearanceOptions;
+    normalize(value: unknown): AppearanceOptions;
+    read(get: (key: string, fallback: unknown) => unknown): AppearanceOptions;
+    apply(root: HTMLElement, value: Partial<AppearanceOptions>, mode: string): void;
+  };
+}
+
 // Early branded splash is declared by the inline index.html bootstrap before modules load.
 interface Window {
   __startupFallback?: ReturnType<typeof setTimeout>;

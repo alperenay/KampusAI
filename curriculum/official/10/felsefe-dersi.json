@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "grade": 10,
+  "apiGradeId": 12,
+  "courseId": 23,
+  "slug": "felsefe-dersi",
+  "name": "Felsefe Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/felsefe-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "30",
+      "title": "1. Ünite: Felsefenin Doğası",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/30",
+      "retrievedAt": "2026-10-30T16:27:20.467941+00:00",
+      "sourceSha256": "83700fcb3ba2a615a9927118d26fe938690912cd2d04d0e2cd7fdf4b740ce455",
+      "status": "codes-indexed",
+      "codes": [
+        "FEL.10.1.1"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "32",
+      "title": "2. Ünite: Felsefe, Mantık Ve Argümantasyon",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/32",
+      "retrievedAt": "2026-10-30T16:27:21.859132+00:00",
+      "sourceSha256": "2ccd8d15adb2b62d129bf49a4c010bfe9bd7b405b548862cda65ed8de7b71034",
+      "status": "codes-indexed",
+      "codes": [
+        "FEL.10.2.1",
+        "FEL.10.2.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "35",
+      "title": "3. Ünite: Varlık Felsefesi",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/35",
+      "retrievedAt": "2026-10-30T16:27:22.626265+00:00",
+      "sourceSha256": "cf71f612a498bc328b62d662e22bf5d4e629f0122dffef14974251a5f20346f2",
+      "status": "codes-indexed",
+      "codes": [
+        "FEL.10.3.1"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "38",
+      "title": "4. Ünite: Bilgi Felsefesi",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/38",
+      "retrievedAt": "2026-10-30T16:27:23.243699+00:00",
+      "sourceSha256": "87b1838f6bbf13b7fd2238c918d87b6be4e7b023950c808ce45bb55cf91e206b",
+      "status": "codes-indexed",
+      "codes": [
+        "FEL.10.4.1"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "41",
+      "title": "5. Ünite: Ahlak Felsefesi",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/41",
+      "retrievedAt": "2026-10-30T16:27:23.701057+00:00",
+      "sourceSha256": "d807bed178ef6188d49fa423c91566ab45e51be093b0a5353d487216b757cb31",
+      "status": "codes-indexed",
+      "codes": [
+        "FEL.10.5.1"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "46",
+      "title": "6. Ünite: Estetik Ve Sanat Felsefesi",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/46",
+      "retrievedAt": "2026-10-30T16:27:24.502743+00:00",
+      "sourceSha256": "e83dc0f006e11422ac5e8fd4cee83094890c686daf3233a26c1b772f72f2cc5a",
+      "status": "codes-indexed",
+      "codes": [
+        "FEL.10.6.1"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "51",
+      "title": "7. Ünite: Siyaset Felsefesi",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/51",
+      "retrievedAt": "2026-10-30T16:27:25.505807+00:00",
+      "sourceSha256": "f8cbf1e4a88662d4ea3fecd5303e66bfec4e8f6beafc88c529e201a0f711bebc",
+      "status": "codes-indexed",
+      "codes": [
+        "FEL.10.7.1"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "60",
+      "title": "8. Ünite: Din Felsefesi",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/60",
+      "retrievedAt": "2026-10-30T16:27:26.258178+00:00",
+      "sourceSha256": "b4579f59c4dc93566ae4430cf7805934d479b9e46a625b10415bcb87d0c29002",
+      "status": "codes-indexed",
+      "codes": [
+        "FEL.10.8.1"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "62",
+      "title": "9. Ünite: Bilim Felsefesi",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/62",
+      "retrievedAt": "2026-10-30T16:27:27.127274+00:00",
+      "sourceSha256": "09713ce1cecf5234c094fb82edc9966a27f461fab40bd73cd050ea2f25d0b672",
+      "status": "codes-indexed",
+      "codes": [
+        "FEL.10.9.1"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

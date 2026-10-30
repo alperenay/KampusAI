@@ -33,6 +33,16 @@
 
   /* Kaynakça (APA biçimine yakın), konu başlıklarına göre gruplu: [grup, [[metin, adres], …]] */
   const KAYNAKCA = () => [
+    [T("Yeni harita, tarih ve bilim modülleri", "New map, history and science modules"), [
+      ["NASA. Blue Marble (2002), Reto Stöckli / Robert Simmon. 4K WebP doku özgün 8K görüntüden küçültüldü; mobil 2K yedek. Canlı uydu verisi değildir.", "https://science.nasa.gov/earth/earth-observatory/the-blue-marble-true-color-global-imagery-at-1km-resolution/"],
+      ["NASA. 60 Moments in NASA History. Yeni uzay tarihi olaylarının kurumsal kronolojisi; açıklamalar özgün özetlerdir.", "https://www.nasa.gov/specials/timeline/index.html"],
+      ["CERN. The birth of the Web. 1989 önerisi, ilk tarayıcı ve 1993 kamuya açılma süreci.", "https://home.cern/science/computing/the-birth-of-the-web"],
+      ["United Nations. History of the Declaration. İnsan Hakları Evrensel Bildirgesi'nin hazırlanışı ve 1948 kabulü.", "https://www.un.org/en/about-us/udhr/history-of-the-declaration"],
+      ["Nobel Prize. Marie Curie. 1903 ve 1911 ödülleri.", "https://www.nobelprize.org/womenwhochangedscience/stories/marie-curie."],
+      ["Akyıldız, A. (2011). Tanzimat. TDV İslâm Ansiklopedisi. Yaşayan Tarih Haritası 1839 kesiti.", "https://islamansiklopedisi.org.tr/tanzimat"],
+      ["Proje ekibi. Alveol, nefron, NaCl ve kondansatör modelleri özgün prosedürel öğretim çizimleridir. Ölçekli anatomik rekonstrüksiyon değildir. RC, soğuma, yarı ömür ve polarizasyon modelleri açık formül/varsayımlarla sunulur.", ""],
+      ["Müfredat JSON/şablon paketi: açık erişim telifsiz lisans anlamına gelmez. Kapsam raporu, tam doğrulanmış içerikle düzenleme taslağını ayırır; tüm MEB içeriklerinin tamamlandığı iddia edilmez.", "https://tymm.meb.gov.tr"]
+    ]],
     [T("Müfredat ve sınav", "Curriculum and exam"), [
       ["Millî Eğitim Bakanlığı. (2018). Ortaöğretim dersleri öğretim programları (9–12. sınıf). Talim ve Terbiye Kurulu Başkanlığı.", "https://mufredat.meb.gov.tr"],
       ["Millî Eğitim Bakanlığı. (2018). Ortaöğretim İngilizce dersi (9–12. sınıflar) öğretim programı.", "https://mufredat.meb.gov.tr"],
@@ -150,7 +160,8 @@
 
   /* Son sürümler (yeniden eskiye) */
   const SURUMLER = () => [
-    ["1.59.0", T("Akıllı menü, yenilenmiş Ayarlar, özelleştirilebilir ana ekran, 5 tema, AI model yönlendirme ve aşamalar, PDF/ODF çalışma paketi, öğrenci portfolyosu, sunum hazırlama ve davet kodlu ortak not odaları.", "Smart navigation, settings redesign, customizable dashboard, five themes, AI routing, PDF/ODF study pack, student portfolio, presentations and invite-only shared notes.")],
+    [T("Hazırlanan güncelleme", "Prepared update"), T("Şeffaf üst çubuk; 12 palet ve ayrıntılı görünüm ayarları; tek Dokümanlar alanı; birleşik Bilim ve Sensör Laboratuvarı ve dört yeni deney; 4K küre, 14 ders modeli, zengin tarih haritası ve 184 olaylı kaynak bağlantılı zaman çizelgesi. Sunum oluşturma kaldırıldı. Müfredat JSON/şablon paketi ayrı kapsam raporuyla hazırlanmıştır.", "Transparent header; 12 palettes and appearance controls; unified Documents and Science Lab; four new experiments; 4K globe, 14 models, enhanced map and 184-event timeline with source-linked dossiers. Presentation generation removed. Curriculum JSON/templates have a separate coverage report.")],
+    ["1.59.0", T("Akıllı menü, yenilenmiş Ayarlar, özelleştirilebilir ana ekran, 5 tema, AI model yönlendirme ve aşamalar, PDF/ODF çalışma paketi, öğrenci portfolyosu, davet kodlu ortak not odaları.", "Smart navigation, settings redesign, customizable dashboard, five themes, AI routing, PDF/ODF study pack, student portfolio, invite-only shared notes.")],
     ["1.58.0", T("Mobil açılışta boş ekran düzeltildi, markalı ilk çizim ve hafif nöral animasyon eklendi. Yapay zekâ yanıt bekleme animasyonu yenilendi; akış çizimi ve mobil sesli öğretmen performansı iyileştirildi.", "Fixed blank mobile startup with an instant branded first paint and lightweight neural entrance; added a new AI waiting animation and reduced mobile rendering overhead.")],
     ["1.51.0", T("İngilizce ve Almanca aynı pratik ekranında: kelime testi, rol oyunu ve dinle-yaz. Daha doğal seslendirme ve ses seçimi. Yapay zekâ soruları paralel üretim ve kalıcı önbellekle çok daha hızlı; zor sorular çok adımlı. Yeni aktarım aileleri ve kavram yanılgısı analizleri. Üç yeni oyun. Sesli grafikte duraklat/durdur, sensörde yeni kanallar ve metrikler, pH metre kadranı ve kalibrasyonu, ekosistemde kartal ve mevsimler, keşif atölyelerine adım adım rehber. Windows'ta açılışta yanıp sönen cmd pencereleri giderildi.",
       "English and German share one practice screen with word quizzes, role-plays and dictation; more natural speech and voice choice; much faster AI questions with parallel generation and a persistent cache; new transfer families and misconception analyses; three new games; pause/stop for audio graphs, new sensor channels and metrics, a pH meter gauge with calibration, eagles and seasons in the ecosystem jar and step-by-step guides; no more flashing cmd windows on Windows.")],
@@ -201,29 +212,30 @@
   ];
 
   const OZELLIKLER = () => [
-    ["book", "konular", T("Konu anlatımları", "Lessons"), T("9–12. sınıf, 11 ders, 725 kazanım; internetsiz", "Grades 9–12, 11 subjects, 725 outcomes; offline")],
+    ["note", "dokumanlar", T("Dokümanlar", "Documents"), T("Tek belge düzenleyici: notlar, dosyadan çalışma, deney raporu ve ortak belge", "Unified editor, notes, study packs, experiment reports and shared documents")],
+    ["book", "konular", T("Konu anlatımları", "Lessons"), T("9–12. sınıf konu anlatımları ve yerel ders içeriği", "Grades 9–12 lessons and locally available content")],
     ["map", "harita", T("Öğrenme haritası", "Learning map"), T("Kazanımların renkli durumu ve günlük görev", "Mastery of every outcome and a daily plan")],
     ["chart", "denemeler", T("Deneme takibi", "Exam tracking"), T("TYT–AYT netleri; sonuç belgesini fotoğraftan oku", "TYT–AYT nets; read result sheets from a photo")],
     ["target", "puan", T("Puan ve hedef", "Score & target"), T("Tahmini puan ve bölüm önerileri", "Estimated score and suggestions")],
     ["bookmark", "yanlislar", T("Yanlış defteri", "Mistake notebook"), T("Aralıklı tekrar ve hata analizi", "Spaced review and error analysis")],
     ["mic", "sesli", T("Sesli öğretmen", "Voice teacher"), T("Konuşarak sor, sesli cevap al; istersen hologram öğretmenle", "Ask by voice, hear the answer; optional hologram teacher")],
-    ["volume", "podcast", T("Konu podcast'i", "Topic podcast"), T("725 konu iki sesli sohbet; arada sorular", "725 topics as two-voice chats with quizzes")],
+    ["volume", "podcast", T("Konu podcast'i", "Topic podcast"), T("Konu anlatımlarından iki sesli sohbet; arada sorular", "Two-voice lesson chats with quizzes")],
     ["sparkle", "", T("Yapay zekâ asistanı", "AI assistant"), T("Fotoğraftan soru çözer, notlarına bakar", "Solves photos, uses your notes")],
     ["timer", "odak", T("Odak sayacı", "Focus timer"), T("Pomodoro ve süre istatistiği", "Pomodoro and time stats")],
     ["quiz", "simulasyon", T("Deneme simülasyonu", "Exam simulation"), T("Zayıf konulardan süreli mini deneme", "Timed mini exam from weak topics")],
     ["note", "rapor", T("Haftalık rapor", "Weekly report"), T("Gelişim özeti, yazdır ya da paylaş", "Progress summary to print or share")],
-    ["lightbulb", "lab", T("Deney laboratuvarı", "Interactive lab"), T((App.labs ? Object.keys(App.labs.LABS).length : 82) + " deney; 2B, 3B, AR, hologram ve el ile kontrol", (App.labs ? Object.keys(App.labs.LABS).length : 82) + " labs; 2D, 3D, AR, hologram and hand control")],
+    ["lightbulb", "bilim-lab", T("Bilim ve Sensör Laboratuvarı", "Science & Sensor Lab"), T((App.labs ? Object.keys(App.labs.LABS).length : 82) + " deney; 2B, 3B, AR, hologram ve el ile kontrol", (App.labs ? Object.keys(App.labs.LABS).length : 82) + " labs; 2D, 3D, AR, hologram and hand control")],
     ["pen", "yazili", T("Yazılı Sınavlar", "Written Exams"), T("Maarif Modeli açık uçlu yazılılar: 9–12, 7 ders, 56 sınav, cevap anahtarı ve puanlama ölçütü", "Open-ended written exams with keys and rubrics")],
     ["globe", "kure", T("3B Dünya Küresi", "3D Globe"), T("Ülkeler, levhalar, depremler, iklim, saat dilimleri, gündüz-gece", "Countries, plates, quakes, climate, time zones, day-night")],
-    ["cube", "modeller", T("3B modeller", "3D models"), T("10 model ve elle molekül kurma; parçalarına ayır", "10 models and molecule building")],
+    ["cube", "modeller", T("3B modeller", "3D models"), T("14 model ve elle molekül kurma; parçalarına ayır", "14 models and molecule building")],
     ["play", "video", T("Videodan çalış", "Study from video"), T("YouTube dersinden özet, bölümler, kart ve test", "Summary, chapters, cards and quiz from a YouTube lesson")],
     ["compass", "kariyer", T("Kariyer keşfi", "Career explorer"), T("RIASEC ilgi envanteri, 52 meslek ve bölümleri", "RIASEC inventory, 52 careers and programmes")],
     ["star", "yolculuk", T("YKS yolculuğu", "YKS journey"), T("Macera haritası, XP, seviye ve günlük görevler", "Adventure map, XP, levels and daily quests")],
     ["timer", "paragraf", T("Paragraf antrenmanı", "Paragraph training"), T("Okuma hızı ve soru başına süre takibi", "Reading speed and time per question")],
-    ["game", "oyunlar", T("Oyunlar", "Games"), T("Derslere göre 9 kısa oyun", "Nine short subject games")],
+    ["game", "oyunlar", T("Oyunlar", "Games"), T("Derslere göre etkileşimli kısa oyunlar", "Interactive subject games")],
     ["globe", "atlas", T("Etkileşimli harita", "Interactive map"), T("81 il kartı, dünya ülkeleri ve başkentler; keşfet ve sına", "81 province cards, countries and capitals; explore and quiz")],
     ["grad", "tercih", T("Tercih robotu", "Programme finder"), T("Yerleşebileceğin bölümler, 2025 taban puan ve sıralamalar", "Programmes you could get into, 2025 cut-offs")],
-    ["clock", "zaman", T("Tarih zaman çizelgesi", "History timeline"), T("160 olay, harita ve \"Hangisi önce?\" sınavı", "160 events, map and a quiz")],
+    ["clock", "zaman", T("Tarih zaman çizelgesi", "History timeline"), T("184 olay, kaynaklı dosyalar ve kronoloji sınavı", "184 events, sourced dossiers and chronology quiz")],
     ["widget", "araclar", T("Tüm araçlar", "All tools"), T("Ara, sabitle, son kullanılanlar", "Search, pin, recently used")],
     ["sLang", "konusma", T("İngilizce konuşma", "English speaking"), T("Hologram öğretmenle sesli pratik; dilbilgisi ve telaffuz geri bildirimi", "Speak with the hologram teacher; grammar and pronunciation feedback")],
     ["sMath", "formuller", T("Formül defteri", "Formula book"), T("162 formül; ne zaman kullanılır, hızlı tekrar", "162 formulas with when-to-use and quick review")],

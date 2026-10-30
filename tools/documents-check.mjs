@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+const aliases={},handlers={},prefs={pinnedTools:['sunum','notlar','belge-paketi','konular'],recentTools:['belgeden','calisma-odasi'],homeWidgets:['deney-raporu','sunum']};
+const App={i18n:{lang:'tr'},utils:{esc:String},prefs:{get:(k,f)=>prefs[k]??f,set:(k,v)=>prefs[k]=v},router:{alias:(a,b)=>aliases[a]=b,register:(a,b)=>handlers[a]=b,resolve:r=>{const p=r.split('/');return aliases[p[0]]?[aliases[p[0]],...p.slice(1)].join('/'):r;}}};
+vm.runInNewContext(fs.readFileSync('js/modules/documents.js','utf8'),{App});
+assert.equal(aliases.notlar,'dokumanlar/notlar');assert.equal(App.documents.pathFor('notlar/9/matematik/t1/k1'),'dokumanlar/notlar/9/matematik/t1/k1');
+assert.deepEqual([...prefs.pinnedTools],['dokumanlar','konular']);assert.deepEqual([...prefs.recentTools],['dokumanlar']);
+assert.deepEqual([...prefs.homeWidgets],['dokumanlar']);assert.equal(typeof handlers.dokumanlar,'function');assert.equal(handlers.sunum,undefined);
+const studio=fs.readFileSync('js/modules/v159-studio.js','utf8'),core=fs.readFileSync('js/modules/v159-core.js','utf8');
+for(const pattern of [/function presentation\(/,/slideGenerate/,/slideTopic/,/slidesOutput/,/register\("sunum"/])assert.ok(!pattern.test(studio));
+assert.ok(!core.includes('["sunum",'));assert.ok(!fs.readFileSync('css/v159.css','utf8').includes('.v159-slide'));
+const runtime={App:{},window:{},location:{hash:'#/toString'}};
+vm.runInNewContext(fs.readFileSync('js/core/router.js','utf8'),runtime);
+assert.equal(runtime.App.router.resolve('toString'),'toString');assert.equal(runtime.App.router.resolve('__proto__/x'),'__proto__/x');
+runtime.App.router.alias('notlar','dokumanlar/notlar');assert.equal(runtime.App.router.resolve('notlar/9/a'),'dokumanlar/notlar/9/a');
+const hub=fs.readFileSync('js/modules/hub.js','utf8');assert.ok(hub.includes('["dokumanlar",'));assert.ok(!hub.includes('["notlar",'));assert.ok(!hub.includes('["belge-paketi",'));
+console.log('Documents: canonical routes, old-key migration/deduplication, one catalogue tool and removal of presentation generation/styles passed.');

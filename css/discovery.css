@@ -226,3 +226,18 @@
     background: white;
   }
 }
+
+.history-toolbar { flex-wrap:wrap; gap:10px; margin:12px 0; }
+.history-toolbar select { max-width:100%; }
+.history-toolbar label { min-width:0; }
+.hm-city { cursor:pointer; }
+.hm-city:focus circle { fill:#fff; stroke:#ffdc89; stroke-width:4; }
+#hmMap { border:1px solid var(--border); border-radius:18px; touch-action:pan-y; }
+#hmDossier { padding:16px; border-inline-start:3px solid var(--accent); margin-top:12px; background:var(--surface); }
+
+.zc-dossier {display:grid;gap:12px;margin-top:18px;min-width:0;}
+.zc-dossier-section {padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);overflow-wrap:anywhere;}
+.zc-dossier-section h3 {font-size:1rem;margin:0 0 8px;}
+.zc-dossier-section p {line-height:1.75;margin:0;}
+.zc-dossier-section .btn {white-space:normal;margin:4px;text-align:left;}
+.zc-card__main {min-width:0;}

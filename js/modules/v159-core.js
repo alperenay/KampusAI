@@ -4,15 +4,13 @@
   const tools=[
     ["panel","widget",["Ana Panelim","My Dashboard"],["Kişisel ana ekran ve kart yerleşimi","Personalize widgets and shortcuts"],"track","ana ekran kişiselleştir widget"],
     ["portfolyo","grad",["Öğrenci Portfolyosu","Student Portfolio"],["Projelerini ve başarılarını yerel olarak sakla","Save projects and achievements privately"],"track","portfolyo proje başarı"],
-    ["sunum","layers",["AI Sunum Hazırlama","AI Presentation Maker"],["Konudan slayt taslağı oluştur ve dışa aktar","Generate and export slide decks"],"ai","sunum yapay zeka slayt"],
-    ["calisma-odasi","chat",["Ortak Çalışma Odası","Shared Study Room"],["Davet koduyla ortak notlar","Collaborative notes with invite codes"],"classroom","arkadaş ortak çalışma oda eşli"]
   ];
   for(const item of tools){
     App.toolCategories.groups.find(g=>g.id===item[4])?.routes.push(item[0]);
     App.hub.TOOLS.push(item);
   }
   const isMobile=()=>matchMedia("(max-width:860px),(pointer:coarse)").matches;
-  const defaults=["bugun","konular","program","tekrar","portfolyo","belgeden","sunum","calisma-odasi"];
+  const defaults=["bugun","konular","program","tekrar","portfolyo","dokumanlar"];
   const title=(r)=>{
     const tool=App.hub.TOOLS.find(x=>x[0]===r);
     return !tool?r:Array.isArray(tool[2])?T(...tool[2]):App.t(tool[2]);
@@ -24,10 +22,8 @@
     ["konular","book",["Dersler","Lessons"],["Konu anlatımlarına devam et","Continue lesson topics"]],
     ["tekrar","refresh",["Tekrarlar","Reviews"],["Bilgilerini pekiştir","Strengthen what you learned"]],
     ["program","calendar",["Ders Programı","Schedule"],["Haftalık hedef ve dersler","Weekly goals and lessons"]],
+    ["dokumanlar","note",["Dokümanlar","Documents"],["Metin, notlar, kaynaklar ve raporlar","Text, notes, sources and reports"]],
     ["portfolyo","grad",["Portfolyom","My Portfolio"],["Projeler ve başarılar","Projects and achievements"]],
-    ["belgeden","note",["Belge Çalış","Study Documents"],["PDF/ODF'den çalışma paketi","Build a study pack from PDF/ODF"]],
-    ["sunum","layers",["Sunum","Presentations"],["AI ile slayt hazırlama","Create slides with AI"]],
-    ["calisma-odasi","chat",["Çalışma Odası","Study Room"],["Arkadaşlarla ortak notlar","Shared notes with friends"]]
   ];
   const allowed=new Set(widgets.map(x=>x[0]));
   const order=()=>{
@@ -84,23 +80,12 @@
   App.smartHome={html:homeHtml,order,render:panel};
   App.router.register("panel",panel);
 
-  // Theme variants are accent/atmosphere presets layered over existing light/dark accessibility mode.
-  const themes=[
-    ["cosmic","Cosmic","Kozmik",["#8b7bff","#49e0ff"]],
-    ["frost","Frost","Buz",["#6fa8db","#a5c8ec"]],
-    ["forest","Forest","Orman",["#27b398","#67ddbd"]],
-    ["sunset","Sunset","Gün Batımı",["#e69b55","#f3be84"]],
-    ["rose","Rose","Gül",["#d77ab9","#f2b6d7"]]
-  ];
-  function theme(){const v=App.prefs.get("v159Theme","cosmic");return themes.some(x=>x[0]===v)?v:"cosmic";}
-  function applyTheme(){document.documentElement.dataset.uiTheme=theme();}
-  function chooseTheme(){
-    const modal=App.ui.modal({title:T("Arayüz Temaları","Interface Themes"),
-      body:'<p class="hint">'+esc(T("Açık/koyu modunu değiştirmeden renk stilini seç.","Choose a visual style without changing light/dark mode."))+'</p>'+
-      '<div class="v159-theme-grid">'+themes.map(x=>'<button class="v159-theme" data-ui-choice="'+x[0]+'" aria-pressed="'+(theme()===x[0])+'" type="button"><span class="v159-theme__swatch" style="--sw-a:'+x[3][0]+';--sw-b:'+x[3][1]+'"></span><strong>'+esc(T(x[2],x[1]))+'</strong></button>').join("")+'</div>'});
-    modal.el.addEventListener("click",e=>{const b=e.target.closest("[data-ui-choice]");if(!b)return;App.prefs.set("v159Theme",b.dataset.uiChoice);applyTheme();modal.el.querySelectorAll("[data-ui-choice]").forEach(q=>q.setAttribute("aria-pressed",String(q===b)));});
-  }
-  App.visualThemes={themes,theme,chooseTheme,applyTheme};applyTheme();
+  // Compatibility bridge: older entry points use the shared appearance state.
+  const themes=window.KampusAppearanceConfig.palettes.map(p=>[p.id,p.en,p.tr,p.swatch]);
+  const theme=()=>App.appearance.options().palette;
+  const applyTheme=()=>App.appearance.reload();
+  const chooseTheme=()=>App.appearance.open('colours');
+  App.visualThemes={themes,theme,chooseTheme,applyTheme};
 
   // Keep the established navigation intact, add a tiny smart/favourites row on mobile.
   function smartMenu(){
@@ -123,10 +108,10 @@
   App.smartMenu={init:smartMenu};
 
   // Dynamic code loading applies to NEW resource-intensive modules; existing lesson content is already lazy.
-  const lazyRoutes=new Set(["portfolyo","belgeden","sunum","calisma-odasi"]);
+  const lazyRoutes=new Set(["portfolyo"]);
   let promise=null;
   App.router.need(async r=>{
-    if(!lazyRoutes.has(r.name))return;
+    if(!lazyRoutes.has(r.name)&&!(r.name==="dokumanlar"&&r.params[0]==="ortak"))return;
     if(App.v159Studio)return;
     if(!promise)promise=new Promise((resolve,reject)=>{
       const script=document.createElement("script");script.src="js/modules/v159-studio.js";

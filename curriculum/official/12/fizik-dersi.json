@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "grade": 12,
+  "apiGradeId": 14,
+  "courseId": 19,
+  "slug": "fizik-dersi",
+  "name": "Fizik Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/fizik-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "266",
+      "title": "1. Ünite: Kuvvet Ve Hareket",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/266",
+      "retrievedAt": "2026-10-30T16:27:34.806910+00:00",
+      "sourceSha256": "068aee450b879c4ead43198d1d049e76c02054e78591832df915ba5a2a2621d0",
+      "status": "codes-indexed",
+      "codes": [
+        "FİZ.12.1.1",
+        "FİZ.12.1.2",
+        "FİZ.12.1.3",
+        "FİZ.12.1.4",
+        "FİZ.12.1.5",
+        "FİZ.12.1.6"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "05.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "268",
+      "title": "2. Ünite: Enerji",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/268",
+      "retrievedAt": "2026-10-30T16:27:36.271295+00:00",
+      "sourceSha256": "fb81e9c13c2028812ba33a568402fc2f5d6f1ceea6f661c9b707d0147c768fa0",
+      "status": "codes-indexed",
+      "codes": [
+        "FİZ.12.2.1",
+        "FİZ.12.2.2",
+        "FİZ.12.2.3",
+        "FİZ.12.2.4",
+        "FİZ.12.2.5",
+        "FİZ.12.2.6"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "05.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "273",
+      "title": "3. Ünite: Dalgalar",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/273",
+      "retrievedAt": "2026-10-30T16:27:37.494882+00:00",
+      "sourceSha256": "c8736d4a78621eb13da1ccef75978732bc173dbb885625848f75526c2941b5c7",
+      "status": "codes-indexed",
+      "codes": [
+        "FİZ.12.3.1",
+        "FİZ.12.3.2",
+        "FİZ.12.3.3",
+        "FİZ.12.3.4",
+        "FİZ.12.3.5",
+        "FİZ.12.3.6",
+        "FİZ.12.3.7"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "05.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "279",
+      "title": "4. Ünite: Madde Ve Doğası",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/279",
+      "retrievedAt": "2026-10-30T16:27:39.130156+00:00",
+      "sourceSha256": "998f0a22cce9842c529b22b9232ceb40f21b2da561e23eba4cd08796558b72c0",
+      "status": "codes-indexed",
+      "codes": [
+        "FİZ.12.4.1",
+        "FİZ.12.4.2",
+        "FİZ.12.4.3",
+        "FİZ.12.4.4",
+        "FİZ.12.4.5",
+        "FİZ.12.4.6",
+        "FİZ.12.4.7",
+        "FİZ.12.4.8"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "05.08.2026",
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

@@ -306,7 +306,7 @@
         unit: "m/s²",
         samples: samples.slice(-4000),
       });
-      App.router.go("deney-raporu");
+      App.router.go("dokumanlar/rapor");
     });
     $("ppQR").onclick = u.protect(root, async () => {
       const p = impulses[impulses.length - 1];
@@ -356,6 +356,6 @@
     });
     return () => life.close();
   }
-  App.phonePhysics = { pairing };
-  App.router.register("telefon-fizik", render);
+  App.phonePhysics = { pairing, render };
+
 })();

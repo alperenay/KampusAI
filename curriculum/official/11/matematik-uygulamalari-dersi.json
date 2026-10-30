@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "grade": 11,
+  "apiGradeId": 13,
+  "courseId": 111,
+  "slug": "matematik-uygulamalari-dersi",
+  "name": "Matematik Uygulamaları Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/matematik-uygulamalari-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "1630",
+      "title": "1. Tema: Strateji Ve Zekâ Oyunlarının Matematiği",
+      "level": "Matematik Uygulamaları I",
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1630",
+      "retrievedAt": "2026-10-30T16:28:50.312911+00:00",
+      "sourceSha256": "76aa97788f935e1ba4e9f5d98ae5353097381b021077a653abe9b7511105c9c2",
+      "status": "codes-indexed",
+      "codes": [
+        "MAT.U.1.1.1",
+        "MAT.U.1.1.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "02.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1631",
+      "title": "2. Tema: Bilişimin Matematiği",
+      "level": "Matematik Uygulamaları I",
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1631",
+      "retrievedAt": "2026-10-30T16:28:50.758959+00:00",
+      "sourceSha256": "beacbdbcf9ed90af967dd203df55845d1a26b78232fe34eaf7d7ffb74211374a",
+      "status": "codes-indexed",
+      "codes": [
+        "MAT.U.1.2.1",
+        "MAT.U.1.2.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "01.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1632",
+      "title": "3. Tema: Uzayın Matematiği",
+      "level": "Matematik Uygulamaları I",
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1632",
+      "retrievedAt": "2026-10-30T16:28:51.196957+00:00",
+      "sourceSha256": "b196566ce3c2cb619c067dd65fb2518cd87d63d2ae90b1dc9d846c1c724e2049",
+      "status": "codes-indexed",
+      "codes": [
+        "MAT.U.1.3.1",
+        "MAT.U.1.3.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "02.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1634",
+      "title": "4. Tema: Finansın Matematiği",
+      "level": "Matematik Uygulamaları I",
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1634",
+      "retrievedAt": "2026-10-30T16:28:51.838889+00:00",
+      "sourceSha256": "ff09622125f5bec443a07dabfc9dfd02c414da74d026b313959eaab943d01e59",
+      "status": "codes-indexed",
+      "codes": [
+        "MAT.U.1.4.1",
+        "MAT.U.1.4.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "02.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1635",
+      "title": "5. Tema: Sanatın Matematiği",
+      "level": "Matematik Uygulamaları I",
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1635",
+      "retrievedAt": "2026-10-30T16:28:53.081505+00:00",
+      "sourceSha256": "9b406ad7e5227f54d366471c2c952826c3be21c857f47e228e3b9c8d5a5cbd2d",
+      "status": "codes-indexed",
+      "codes": [
+        "MAT.U.1.5.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "02.09.2026",
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

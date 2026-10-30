@@ -9,6 +9,9 @@ try {
     "keyboard",
     "tap",
     "during-reduce",
+    "personal-off",
+    "personal-gentle",
+    "personal-intro-off",
   ]) {
     const c = await h.browser.newContext({
       serviceWorkers: "block",
@@ -23,6 +26,11 @@ try {
       localStorage.setItem("da:pref:tourDone", "true");
       if (mode === "saved-reduce")
         localStorage.setItem("da:pref:a11yMotion", "true");
+      if (mode.startsWith("personal-"))
+        localStorage.setItem("da:pref:appearanceOptions", JSON.stringify({
+          motion: mode === "personal-off" ? "off" : mode === "personal-gentle" ? "gentle" : "full",
+          intro: mode !== "personal-intro-off"
+        }));
       window.__startupTrace = [];
       window.__startupMetrics = null;
       new MutationObserver((rows) => {
@@ -62,10 +70,10 @@ try {
     const metrics = await p.evaluate(() => window.__startupMetrics);
     if (metrics) {
       assert.ok(
-        metrics.duration >= 1.2 && metrics.duration <= 1.8,
+        mode === "personal-gentle" ? metrics.duration === .4 : metrics.duration >= 1.2 && metrics.duration <= 1.8,
         "Bounded first-entrance CSS timing (not the shorter exit)",
       );
-      assert.equal(metrics.glow, "hud-glow");
+      assert.equal(metrics.glow, mode === "personal-gentle" ? "none" : "hud-glow");
     }
     assert.equal(
       await p.evaluate(() => {
@@ -81,7 +89,7 @@ try {
     );
     assert.deepEqual(
       trace,
-      ["system-reduce", "saved-reduce"].includes(mode)
+      ["system-reduce", "saved-reduce", "personal-off", "personal-intro-off"].includes(mode)
         ? []
         : ["added", "removed"],
     );

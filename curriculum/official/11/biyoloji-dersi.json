@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "grade": 11,
+  "apiGradeId": 13,
+  "courseId": 21,
+  "slug": "biyoloji-dersi",
+  "name": "Biyoloji Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/biyoloji-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "13",
+      "title": "1. Tema: Tepki",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/13",
+      "retrievedAt": "2026-10-30T16:27:04.863587+00:00",
+      "sourceSha256": "5c45e1b482a079d064bf83f51f9cd7ad9d9a8d35a0584b63420f58e47d6e5b23",
+      "status": "codes-indexed",
+      "codes": [
+        "BİY.11.1.1",
+        "BİY.11.1.2",
+        "BİY.11.1.3",
+        "BİY.11.1.4",
+        "BİY.11.1.5",
+        "BİY.11.1.6",
+        "BİY.11.1.7",
+        "BİY.11.1.8",
+        "BİY.11.1.9",
+        "BİY.11.1.10",
+        "BİY.11.1.11",
+        "BİY.11.1.12"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "30.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "16",
+      "title": "2. Tema: Homeostazi",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/16",
+      "retrievedAt": "2026-10-30T16:27:05.905877+00:00",
+      "sourceSha256": "22e77c858e5c54535dbe25c88fe5f15f042ef02a8aff72c1cec83f3ec2a60149",
+      "status": "codes-indexed",
+      "codes": [
+        "BİY.11.2.1",
+        "BİY.11.2.2",
+        "BİY.11.2.3",
+        "BİY.11.2.4",
+        "BİY.11.2.5",
+        "BİY.11.2.6",
+        "BİY.11.2.7",
+        "BİY.11.2.8",
+        "BİY.11.2.9",
+        "BİY.11.2.10"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "30.09.2026",
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "grade": 10,
+  "apiGradeId": 12,
+  "courseId": 29,
+  "slug": "muzik-dersi",
+  "name": "Müzik Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/muzik-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "589",
+      "title": "1. Tema: Müzik Dili",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/muzik-dersi/unite/589",
+      "retrievedAt": "2026-10-30T16:28:59.376738+00:00",
+      "sourceSha256": "1c98252f90e7bbd663d0e6a9e5a6a595f7ad5eaca7b5cf77a1ac7c1a1aa90b58",
+      "status": "codes-indexed",
+      "codes": [
+        "MÜZ.10.1.1",
+        "MÜZ.10.1.2",
+        "MÜZ.10.1.3",
+        "MÜZ.10.1.4"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": null,
+      "normalizations": []
+    },
+    {
+      "id": "590",
+      "title": "2. Tema: Müzik Kültürü",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/muzik-dersi/unite/590",
+      "retrievedAt": "2026-10-30T16:28:59.925167+00:00",
+      "sourceSha256": "dfef8f79918413c923048d08e6150de7af4236a161edd264186d05cfff202a78",
+      "status": "codes-indexed",
+      "codes": [
+        "MÜZ.10.2.1",
+        "MÜZ.10.2.2",
+        "MÜZ.10.2.3",
+        "MÜZ.10.2.4",
+        "MÜZ.10.2.5"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": null,
+      "normalizations": []
+    },
+    {
+      "id": "591",
+      "title": "3. Tema: Müziksel Tasarım",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/muzik-dersi/unite/591",
+      "retrievedAt": "2026-10-30T16:29:00.757136+00:00",
+      "sourceSha256": "fbc2c657b4518c530dcd3404223cf15c08296e9c31f63304e6629356d1d61c0f",
+      "status": "codes-indexed",
+      "codes": [
+        "MÜZ.10.3.1",
+        "MÜZ.10.3.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": null,
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

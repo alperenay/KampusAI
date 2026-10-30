@@ -4,7 +4,7 @@ Ortak `css/glass.css` katmanı Web/PWA, Android WebView ve Electron Windows/Linu
 
 - Açık/koyu tema: yarı saydam yüzey, yumuşak kenar ışığı, ince kenarlık ve statik arka plan ışıkları.
 - Mevcut atmosfer renkleri korunur. Sade atmosfer seçimi arka plan ışıklarını azaltır.
-- Gezinme ve pencerelerde masaüstünde 16px, mobilde 8px bulanıklık. Mobil üst çubukta ve kartlarda tekrar eden blur yoktur.
+- Yan menü, alt gezinme ve pencerelerde masaüstünde 16px, mobilde 8px bulanıklık. Üst çubuk her ekran boyutunda şeffaftır; ayrı panel dolgusu, gölgesi, kenarlığı veya blur katmanı içermez. Kartlarda tekrar eden blur yoktur.
 - Ders metinleri, formlar ve grafikler sabit okunabilirlik yüzeylerini korur. Yeni animasyon veya sürekli gölge/filtre animasyonu eklenmez.
 - Düşük GPU modu, yüksek karşıtlık, sistemin azaltılmış saydamlık tercihi ve backdrop-filter desteklemeyen tarayıcılar için sade görünüm vardır. Yazdırmada efektler kaldırılır.
 - Safe-area, klavye açılması, menü yüksekliği ve gezinme davranışlarına müdahale edilmez.

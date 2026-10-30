@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "grade": null,
+  "apiGradeId": 17,
+  "courseId": 110,
+  "slug": "turk-kultur-ve-medeniyet-tarihi-dersi",
+  "name": "Türk Kültür ve Medeniyet Tarihi Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/turk-kultur-ve-medeniyet-tarihi-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "1657",
+      "title": "1. Ünite: Türkistan’dan Türkiye’ye Türklerde Devlet Yönetimi Ve Hukuk",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/turk-kultur-ve-medeniyet-tarihi-dersi/unite/1657",
+      "retrievedAt": "2026-10-30T16:29:28.813086+00:00",
+      "sourceSha256": "30b52e0c2e777adcc1876294d5f267f0a4571d6397020b317668d302cdf44b26",
+      "status": "codes-indexed",
+      "codes": [
+        "TKMT 1.1",
+        "TKMT 1.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "03.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1658",
+      "title": "2. Ünite: Türkistan’dan Türkiye’ye Türklerde Toplumsal Ve Ekonomik Hayat",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/turk-kultur-ve-medeniyet-tarihi-dersi/unite/1658",
+      "retrievedAt": "2026-10-30T16:29:29.579024+00:00",
+      "sourceSha256": "7ff872031c706387857340cf6cf02f264b141d0ddcd45c5672088359361a7955",
+      "status": "codes-indexed",
+      "codes": [
+        "TKMT 2.1",
+        "TKMT 2.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "03.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1688",
+      "title": "3. Ünite: Türkistan’dan Türkiye’ye Türklerde Eğitim, Bilim, Sanat Ve Spor",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/turk-kultur-ve-medeniyet-tarihi-dersi/unite/1688",
+      "retrievedAt": "2026-10-30T16:29:30.198204+00:00",
+      "sourceSha256": "b6b33ad18bcac8fd764c31a85360dbc9a56b9155bcd170be4997b7bec1d8e46f",
+      "status": "codes-indexed",
+      "codes": [
+        "TKMT 3.1",
+        "TKMT 3.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "04.09.2026",
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

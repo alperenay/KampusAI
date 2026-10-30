@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "grade": 10,
+  "apiGradeId": 12,
+  "courseId": 24,
+  "slug": "tarih-dersi",
+  "name": "Tarih Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/tarih-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "36",
+      "title": "1. Ünite : Türkistan’dan Türkiye’ye (1040-1299)",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/36",
+      "retrievedAt": "2026-10-30T16:29:16.615285+00:00",
+      "sourceSha256": "88225c10f55e869461a8a922a9e095b81b20271e81f77f4210356e7720fa92a8",
+      "status": "codes-indexed",
+      "codes": [
+        "TAR.10.1.1",
+        "TAR.10.1.2",
+        "TAR.10.1.3",
+        "TAR.10.1.4"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "39",
+      "title": "2. Ünite : Beylikten Devlete Osmanlı (1299-1453)",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/39",
+      "retrievedAt": "2026-10-30T16:29:17.488260+00:00",
+      "sourceSha256": "62e193c21708bad2290b3cf37c23e0057adb80152805cbdbe95df4669a34adda",
+      "status": "codes-indexed",
+      "codes": [
+        "TAR.10.2.1",
+        "TAR.10.2.2",
+        "TAR.10.2.3",
+        "TAR.10.2.4",
+        "TAR.10.2.5"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "48",
+      "title": "3. Ünite : Cihan Devleti Osmanlı (1453-1683)",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/48",
+      "retrievedAt": "2026-10-30T16:29:18.061564+00:00",
+      "sourceSha256": "0926e5d9f511fd311cbc61213a2e6e140587ba7dbc430916851c0d602be5ca25",
+      "status": "codes-indexed",
+      "codes": [
+        "TAR.10.3.1",
+        "TAR.10.3.2",
+        "TAR.10.3.3",
+        "TAR.10.3.4",
+        "TAR.10.3.5"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

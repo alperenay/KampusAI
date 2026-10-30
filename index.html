@@ -15,19 +15,23 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="KampüsAI">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <script src="js/core/appearance-config.js"></script>
   <script>
     /* Kayıtlı temayı sayfa çizilmeden uygula (açılışta yanıp sönmeyi önler) */
     try {
-      var th = JSON.parse(localStorage.getItem("da:pref:theme"));
+      var a = function (k) { try { return JSON.parse(localStorage.getItem("da:pref:" + k)); } catch (e) { return null; } };
+      var th = a("theme");
       if (th === "light" || th === "dark") document.documentElement.setAttribute("data-theme", th);
       /* Erişilebilirlik tercihleri (yazı boyutu, disleksi yazı tipi…) da çizimden önce */
-      var a = function (k) { try { return JSON.parse(localStorage.getItem("da:pref:" + k)); } catch (e) { return null; } };
       var h = document.documentElement, ts = a("a11yText");
       if (ts === "lg" || ts === "xl") h.setAttribute("data-a11y-text", ts);
       if (a("a11yDys")) h.setAttribute("data-a11y-dys", "");
       if (a("a11ySpacing")) h.setAttribute("data-a11y-spacing", "");
       if (a("a11yContrast")) h.setAttribute("data-a11y-contrast", "");
       if (a("a11yMotion")) h.setAttribute("data-a11y-motion", "");
+      KampusAppearanceConfig.apply(h, KampusAppearanceConfig.read(function(k, fallback) {
+        var v = a(k); return v == null ? fallback : v;
+      }), h.getAttribute("data-theme"));
     } catch (e) {}
   </script>
   <!-- First paint must not wait for large CSS/JS bundles (Android WebView). -->
@@ -82,6 +86,9 @@
   <link rel="stylesheet" href="css/v159.css">
   <link rel="stylesheet" href="css/study-workspace.css">
   <link rel="stylesheet" href="css/glass.css">
+  <link rel="stylesheet" href="css/customization.css">
+  <link rel="stylesheet" href="css/documents.css">
+  <link rel="stylesheet" href="css/science-lab.css">
 </head>
 <body>
   <!-- Visible before any blocking scripts: prevents a blank Android launch. -->
@@ -144,7 +151,6 @@
             <div class="nav-group__body" id="ng-explore">
           <a class="nav__item" href="#/evren" data-route="evren"><span data-icon="globe"></span><span class="sidebar__label" data-nav-label="cosmos">Bilgi Evreni</span></a>
           <a class="nav__item" href="#/duello" data-route="duello"><span data-icon="star"></span><span class="sidebar__label" data-nav-label="duel">Arkadaş Düellosu</span></a>
-          <a class="nav__item" href="#/sensor" data-route="sensor"><span data-icon="mic"></span><span class="sidebar__label" data-nav-label="sensor">Sensör Laboratuvarı</span></a>
           <a class="nav__item" href="#/vatandas" data-route="vatandas" data-more><span data-icon="map"></span><span class="sidebar__label" data-nav-label="citizen">Vatandaş Bilimi Ağı</span></a>
           <a class="nav__item" href="#/ph" data-route="ph" data-more><span data-icon="sChem"></span><span class="sidebar__label" data-nav-label="ph">pH Ölçer</span></a>
           <a class="nav__item" href="#/ekosistem" data-route="ekosistem" data-more><span data-icon="sBio"></span><span class="sidebar__label" data-nav-label="eco">Ekosistem Kavanozu</span></a>
@@ -197,10 +203,8 @@
             <button class="nav-group__head" type="button" aria-expanded="true" aria-controls="ng-discovery"><span class="sidebar__label">Keşif Atölyeleri</span><span data-icon="chevronD"></span></button>
             <div class="nav-group__body" id="ng-discovery">
               <a class="nav__item" href="#/bana-ogret" data-route="bana-ogret"><span data-icon="grad"></span><span class="sidebar__label">Bana Öğret</span></a>
-              <a class="nav__item" href="#/telefon-fizik" data-route="telefon-fizik"><span data-icon="mic"></span><span class="sidebar__label">Telefon Fizik Atölyesi</span></a>
               <a class="nav__item" href="#/dokunsal-grafik" data-route="dokunsal-grafik"><span data-icon="chart"></span><span class="sidebar__label">Titreşimli Grafik</span></a>
               <a class="nav__item" href="#/deney-raporu" data-route="deney-raporu"><span data-icon="note"></span><span class="sidebar__label">Bilimsel Deney Raporu</span></a>
-              <a class="nav__item" href="#/sismograf" data-route="sismograf"><span data-icon="layers"></span><span class="sidebar__label">Sismograf Atölyesi</span></a>
               <a class="nav__item" href="#/gokyuzu" data-route="gokyuzu"><span data-icon="star"></span><span class="sidebar__label">Gökyüzü Modu</span></a>
               <a class="nav__item" href="#/ciz-calissin" data-route="ciz-calissin"><span data-icon="pen"></span><span class="sidebar__label">Çiz, Çalışsın</span></a>
               <a class="nav__item" href="#/canlanan-kitap" data-route="canlanan-kitap"><span data-icon="camera"></span><span class="sidebar__label">Canlanan Ders Kitabı</span></a>
@@ -210,11 +214,11 @@
           <div class="nav-group" data-group="practice">
             <button class="nav-group__head" type="button" aria-expanded="true" aria-controls="ng-practice"><span class="sidebar__label" data-i18n="nav.group.practice">Pratik</span><span data-icon="chevronD"></span></button>
             <div class="nav-group__body" id="ng-practice">
-          <a class="nav__item" href="#/kesif" data-route="kesif" data-route-also="bana-ogret,telefon-fizik,dokunsal-grafik,deney-raporu,sismograf,gokyuzu,ciz-calissin,canlanan-kitap,tarih-haritasi"><span data-icon="compass"></span><span class="sidebar__label">Keşif Atölyeleri · 9 araç</span></a>
+          <a class="nav__item" href="#/kesif" data-route="kesif" data-route-also="bana-ogret,dokunsal-grafik,gokyuzu,ciz-calissin,canlanan-kitap,tarih-haritasi"><span data-icon="compass"></span><span class="sidebar__label">Keşif Atölyeleri</span></a>
           <a class="nav__item" href="#/aktarim" data-route="aktarim"><span data-icon="layers"></span><span class="sidebar__label" data-i18n="nav.transfer">Bilgiyi Başka Yerde Kullan</span></a>
           <a class="nav__item" href="#/hata-avcisi" data-route="hata-avcisi"><span data-icon="scan"></span><span class="sidebar__label" data-i18n="nav.errorHunt">Çözümdeki Hatayı Bul</span></a>
-          <a class="nav__item" href="#/lab" data-route="lab">
-            <span data-icon="lightbulb"></span><span class="sidebar__label" data-i18n="nav.lab">Deney Laboratuvarı</span>
+          <a class="nav__item" href="#/bilim-lab" data-route="bilim-lab">
+            <span data-icon="lightbulb"></span><span class="sidebar__label" data-nav-label="scienceLab">Bilim ve Sensör Laboratuvarı</span>
           </a>
           <a class="nav__item" href="#/modeller" data-route="modeller">
             <span data-icon="cube"></span><span class="sidebar__label" data-i18n="nav.models">3B Modeller</span>
@@ -318,6 +322,7 @@
 
     <!-- ============ ANA ALAN ============ -->
     <main class="main" id="main">
+      <!-- Transparent app toolbar; native safe-area spacing belongs to .app. -->
       <header class="topbar">
         <button class="icon-btn topbar__menu" id="menuBtn" type="button" data-i18n-title="nav.openMenu" data-icon="menu"></button>
         <div class="topbar__title" id="topbarTitle"></div>
@@ -494,6 +499,7 @@
   <script src="js/modules/tour.js"></script>
   <script src="js/modules/tercih.js"></script>
   <script src="js/data/tarih-olaylar.js"></script>
+  <script src="js/data/tarih-ek.js"></script>
   <script src="js/modules/zaman.js"></script>
   <script src="js/modules/video.js"></script>
   <script src="js/data/kariyer.js"></script>
@@ -520,6 +526,9 @@
   <script src="js/modules/study-workspace-model.js"></script>
   <script src="js/modules/document-import.js"></script>
   <script src="js/modules/study-workspace.js"></script>
+  <script src="js/modules/documents.js"></script>
+  <script src="js/modules/science-lab-model.js"></script>
+  <script src="js/modules/science-lab.js"></script>
   <script src="js/modules/hub.js"></script>
   <script src="js/modules/v159-core.js"></script>
   <script src="js/modules/navigation-layout.js"></script>

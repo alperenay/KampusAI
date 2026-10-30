@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "grade": 12,
+  "apiGradeId": 14,
+  "courseId": 29,
+  "slug": "muzik-dersi",
+  "name": "Müzik Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/muzik-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "595",
+      "title": "1. Tema: Müzik Dili",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/muzik-dersi/unite/595",
+      "retrievedAt": "2026-10-30T16:29:02.160970+00:00",
+      "sourceSha256": "5162cd309534fe44a7c16ef837a6b538f9a4c3fe080c3481f28dba4eb52f1eb6",
+      "status": "codes-indexed",
+      "codes": [
+        "MÜZ.12.1.1"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": null,
+      "normalizations": []
+    },
+    {
+      "id": "596",
+      "title": "2. Tema: Müzik Kültürü",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/muzik-dersi/unite/596",
+      "retrievedAt": "2026-10-30T16:29:03.039776+00:00",
+      "sourceSha256": "9c9e372536f3642c72ad7600aab4bba9821bc7000550cb4cf36389ad4180a68d",
+      "status": "codes-indexed",
+      "codes": [
+        "MÜZ.12.2.1",
+        "MÜZ.12.2.2",
+        "MÜZ.12.2.3",
+        "MÜZ.12.2.4",
+        "MÜZ.12.2.5",
+        "MÜZ.12.2.6"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": null,
+      "normalizations": []
+    },
+    {
+      "id": "597",
+      "title": "3. Tema: Müziksel Tasarım",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/muzik-dersi/unite/597",
+      "retrievedAt": "2026-10-30T16:29:03.718152+00:00",
+      "sourceSha256": "88103ba7a2e757f998eec09bf77f6ab44d969c2419383f11bd849867644e786b",
+      "status": "codes-indexed",
+      "codes": [
+        "MÜZ.12.3.1"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": null,
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

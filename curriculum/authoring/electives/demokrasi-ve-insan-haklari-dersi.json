@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "grade": null,
+  "program": "demokrasi-ve-insan-haklari-dersi",
+  "lessons": [
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "demokrasi-ve-insan-haklari-dersi",
+      "unitId": "1651",
+      "officialCode": "DİH1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/demokrasi-ve-insan-haklari-dersi/unite/1651",
+        "sha256": "0e8bf9a5d6892e5a5b6a9a83d8ac41b81b2cdfd48a523bd2e0906466e57c7ef0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/demokrasi-ve-insan-haklari-dersi/unite/1651"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "demokrasi-ve-insan-haklari-dersi",
+      "unitId": "1651",
+      "officialCode": "DİH1.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/demokrasi-ve-insan-haklari-dersi/unite/1651",
+        "sha256": "0e8bf9a5d6892e5a5b6a9a83d8ac41b81b2cdfd48a523bd2e0906466e57c7ef0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/demokrasi-ve-insan-haklari-dersi/unite/1651"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "demokrasi-ve-insan-haklari-dersi",
+      "unitId": "1651",
+      "officialCode": "DİH1.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/demokrasi-ve-insan-haklari-dersi/unite/1651",
+        "sha256": "0e8bf9a5d6892e5a5b6a9a83d8ac41b81b2cdfd48a523bd2e0906466e57c7ef0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/demokrasi-ve-insan-haklari-dersi/unite/1651"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "demokrasi-ve-insan-haklari-dersi",
+      "unitId": "1654",
+      "officialCode": "DİH2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/demokrasi-ve-insan-haklari-dersi/unite/1654",
+        "sha256": "e10cede04552c20c0cf8a4f88e00cac577b5e9e2b0c96c20786f6369d76b6ddc"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/demokrasi-ve-insan-haklari-dersi/unite/1654"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "demokrasi-ve-insan-haklari-dersi",
+      "unitId": "1654",
+      "officialCode": "DİH2.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/demokrasi-ve-insan-haklari-dersi/unite/1654",
+        "sha256": "e10cede04552c20c0cf8a4f88e00cac577b5e9e2b0c96c20786f6369d76b6ddc"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/demokrasi-ve-insan-haklari-dersi/unite/1654"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "demokrasi-ve-insan-haklari-dersi",
+      "unitId": "1654",
+      "officialCode": "DİH2.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/demokrasi-ve-insan-haklari-dersi/unite/1654",
+        "sha256": "e10cede04552c20c0cf8a4f88e00cac577b5e9e2b0c96c20786f6369d76b6ddc"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/demokrasi-ve-insan-haklari-dersi/unite/1654"
+        ]
+      },
+      "legacyCandidates": []
+    }
+  ]
+}

@@ -386,11 +386,13 @@
     if (id === "isik") { $("#slClear").onclick = () => { pts.length = 0; App.prefs.set("sl:isik:pts", []); paintLight(null); }; paintLight(null); }
 
     $("#slGo").onclick = id === "ses" ? soundRun : id === "isik" ? lightRun : motionRun;
-    return cleanup;
+    const hidden = () => { if (document.hidden) { cleanup(); $("#slGo").disabled = false; status.textContent = T("Arka planda ölçüm durduruldu.", "Measurement stopped in the background."); } };
+    document.addEventListener("visibilitychange", hidden);
+    return () => { document.removeEventListener("visibilitychange", hidden); cleanup(); };
   }
 
   function render(view, p) { return p[0] === "olcum" ? App.sensorWorkbench.page(view) : p[0] ? renderExp(view, p[0]) : renderHome(view); }
 
-  App.router.register("sensor", render);
-  App.sensorLab = { chart, lowPass, periodByCrossings, autocorrPitch, spectrumPeak, dopplerSpeed, fitInverseSquare, relErr, pendulumT, freeFallTime, mean, variance, EXP };
+
+  App.sensorLab = { render, chart, lowPass, periodByCrossings, autocorrPitch, spectrumPeak, dopplerSpeed, fitInverseSquare, relErr, pendulumT, freeFallTime, mean, variance, EXP };
 })();

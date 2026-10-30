@@ -1,0 +1,639 @@
+{
+  "schemaVersion": 1,
+  "grade": 9,
+  "program": "cografya-dersi",
+  "lessons": [
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "cografya-dersi",
+      "unitId": "28",
+      "officialCode": "COĞ.9.1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/28",
+        "sha256": "4ff7a829550ae0140b3709061c90fd83984f353062bca24f4f413f9bd897f967"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/cografya-dersi/unite/28"
+        ]
+      },
+      "legacyCandidates": [
+        "9/cografya/u1/k1"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "cografya-dersi",
+      "unitId": "28",
+      "officialCode": "COĞ.9.1.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/28",
+        "sha256": "4ff7a829550ae0140b3709061c90fd83984f353062bca24f4f413f9bd897f967"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/cografya-dersi/unite/28"
+        ]
+      },
+      "legacyCandidates": [
+        "9/cografya/u1/k2"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "cografya-dersi",
+      "unitId": "28",
+      "officialCode": "COĞ.9.1.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/28",
+        "sha256": "4ff7a829550ae0140b3709061c90fd83984f353062bca24f4f413f9bd897f967"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/cografya-dersi/unite/28"
+        ]
+      },
+      "legacyCandidates": [
+        "9/cografya/u1/k3"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "cografya-dersi",
+      "unitId": "31",
+      "officialCode": "COĞ.9.2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/31",
+        "sha256": "005821613e071179d61cbc4fb6de4d1bd00a130a79536485b793f8f19a1a97bb"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/cografya-dersi/unite/31"
+        ]
+      },
+      "legacyCandidates": [
+        "9/cografya/u2/k1",
+        "9/cografya/u2/k2",
+        "9/cografya/u2/k3"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "cografya-dersi",
+      "unitId": "31",
+      "officialCode": "COĞ.9.2.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/31",
+        "sha256": "005821613e071179d61cbc4fb6de4d1bd00a130a79536485b793f8f19a1a97bb"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/cografya-dersi/unite/31"
+        ]
+      },
+      "legacyCandidates": [
+        "9/cografya/u2/k4"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "cografya-dersi",
+      "unitId": "31",
+      "officialCode": "COĞ.9.2.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/31",
+        "sha256": "005821613e071179d61cbc4fb6de4d1bd00a130a79536485b793f8f19a1a97bb"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/cografya-dersi/unite/31"
+        ]
+      },
+      "legacyCandidates": [
+        "9/cografya/u2/k5"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "cografya-dersi",
+      "unitId": "34",
+      "officialCode": "COĞ.9.3.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/34",
+        "sha256": "df81dc41b916cbba968cbf567b810b31f343d577cf6fcee93ce468bebabf89c9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/cografya-dersi/unite/34"
+        ]
+      },
+      "legacyCandidates": [
+        "9/cografya/u3/k1"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "cografya-dersi",
+      "unitId": "34",
+      "officialCode": "COĞ.9.3.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/34",
+        "sha256": "df81dc41b916cbba968cbf567b810b31f343d577cf6fcee93ce468bebabf89c9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/cografya-dersi/unite/34"
+        ]
+      },
+      "legacyCandidates": [
+        "9/cografya/u3/k2"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "cografya-dersi",
+      "unitId": "34",
+      "officialCode": "COĞ.9.3.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/34",
+        "sha256": "df81dc41b916cbba968cbf567b810b31f343d577cf6fcee93ce468bebabf89c9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/cografya-dersi/unite/34"
+        ]
+      },
+      "legacyCandidates": [
+        "9/cografya/u3/k3"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "cografya-dersi",
+      "unitId": "34",
+      "officialCode": "COĞ.9.3.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/34",
+        "sha256": "df81dc41b916cbba968cbf567b810b31f343d577cf6fcee93ce468bebabf89c9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/cografya-dersi/unite/34"
+        ]
+      },
+      "legacyCandidates": [
+        "9/cografya/u3/k4"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "cografya-dersi",
+      "unitId": "37",
+      "officialCode": "COĞ.9.4.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/37",
+        "sha256": "fa647fb4ea955a29f683d023a22a6e1fddf82cefe51742225f2c7ae96e4a31b9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/cografya-dersi/unite/37"
+        ]
+      },
+      "legacyCandidates": [
+        "9/cografya/u4/k1"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "cografya-dersi",
+      "unitId": "37",
+      "officialCode": "COĞ.9.4.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/37",
+        "sha256": "fa647fb4ea955a29f683d023a22a6e1fddf82cefe51742225f2c7ae96e4a31b9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/cografya-dersi/unite/37"
+        ]
+      },
+      "legacyCandidates": [
+        "9/cografya/u4/k2"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "cografya-dersi",
+      "unitId": "37",
+      "officialCode": "COĞ.9.4.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/37",
+        "sha256": "fa647fb4ea955a29f683d023a22a6e1fddf82cefe51742225f2c7ae96e4a31b9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/cografya-dersi/unite/37"
+        ]
+      },
+      "legacyCandidates": [
+        "9/cografya/u4/k3"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "cografya-dersi",
+      "unitId": "37",
+      "officialCode": "COĞ.9.4.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/37",
+        "sha256": "fa647fb4ea955a29f683d023a22a6e1fddf82cefe51742225f2c7ae96e4a31b9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/cografya-dersi/unite/37"
+        ]
+      },
+      "legacyCandidates": [
+        "9/cografya/u4/k4"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "cografya-dersi",
+      "unitId": "40",
+      "officialCode": "COĞ.9.5.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/40",
+        "sha256": "787cf01ffa2622f025e78ca3cef357462450b512c1b4493def51c6f5f7037af8"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/cografya-dersi/unite/40"
+        ]
+      },
+      "legacyCandidates": [
+        "9/cografya/u5/k1",
+        "9/cografya/u5/k2"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "cografya-dersi",
+      "unitId": "42",
+      "officialCode": "COĞ.9.6.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/42",
+        "sha256": "9b732f38d1edc24967edf8d3f075b263b107819a5d2fcbcf807a584c724041f7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/cografya-dersi/unite/42"
+        ]
+      },
+      "legacyCandidates": [
+        "9/cografya/u6/k1"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "cografya-dersi",
+      "unitId": "42",
+      "officialCode": "COĞ.9.6.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/42",
+        "sha256": "9b732f38d1edc24967edf8d3f075b263b107819a5d2fcbcf807a584c724041f7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/cografya-dersi/unite/42"
+        ]
+      },
+      "legacyCandidates": [
+        "9/cografya/u6/k2"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "cografya-dersi",
+      "unitId": "42",
+      "officialCode": "COĞ.9.6.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/42",
+        "sha256": "9b732f38d1edc24967edf8d3f075b263b107819a5d2fcbcf807a584c724041f7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/cografya-dersi/unite/42"
+        ]
+      },
+      "legacyCandidates": [
+        "9/cografya/u6/k3"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "cografya-dersi",
+      "unitId": "47",
+      "officialCode": "COĞ.9.7.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/47",
+        "sha256": "bd22a519dbc432ca282e95cab7ca1f7d2de46719f5ea543d474498f93b3440d0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/cografya-dersi/unite/47"
+        ]
+      },
+      "legacyCandidates": [
+        "9/cografya/u7/k1",
+        "9/cografya/u7/k2",
+        "9/cografya/u7/k3"
+      ]
+    }
+  ]
+}

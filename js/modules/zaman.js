@@ -39,10 +39,11 @@
   function render(view, params) {
     App.setTitle(T("Tarih Zaman Çizelgesi", "History Timeline"));
     const st = { zoom: +App.prefs.get("tlZoom", 1) || 1, types: new Set(Object.keys(TUR())), q: "", sel: null, mode: params[0] === "liste" ? "list" : params[0] === "sinav" ? "quiz" : "line" };
-    const list = () => EV().map((e, i) => ({ i, y: e[0], t: e[1], era: e[2], ty: e[3], d: e[4], loc: e[5] })).sort((a, b) => a.y - b.y);
+    const list = () => EV().map((e, i) => ({ i, y: e[0], t: e[1], era: e[2], ty: e[3], d: e[4], loc: e[5], detail: e[6] })).sort((a, b) => a.y - b.y);
     const all = list();
+    let alive = true, quizTimer = null, searchTimer = null;
     const visible = () => { const w = (App.nav && App.nav.norm ? App.nav.norm(st.q) : st.q.toLowerCase()).split(" ").filter(Boolean); return all.filter((e) => st.types.has(e.ty) && (!w.length || w.every((x) => normEv(e).indexOf(x) >= 0))); };
-    const normEv = (e) => e._n || (e._n = (App.nav && App.nav.norm ? App.nav.norm : (s) => s.toLowerCase())(e.t + " " + e.d + " " + yearTxt(e.y) + " " + eraOf(e.era)[1]));
+    const normEv = (e) => e._n || (e._n = (App.nav && App.nav.norm ? App.nav.norm : (s) => s.toLowerCase())(e.t + " " + e.d + " " + (e.detail ? Object.values(e.detail).filter(x=>typeof x === "string").join(" ") : "") + " " + yearTxt(e.y) + " " + eraOf(e.era)[1]));
 
     view.innerHTML = '<div class="page zc">' +
       '<div class="page-head"><div><h1>' + esc(T("Tarih Zaman Çizelgesi", "History Timeline")) + "</h1><p>" +
@@ -136,6 +137,7 @@
 
     /* --- Olay kartı --- */
     async function select(i, noScroll) {
+      if (!alive) return;
       st.sel = i;
       body.querySelectorAll(".is-sel").forEach((x) => x.classList.remove("is-sel"));
       body.querySelectorAll('[data-ev="' + i + '"]').forEach((x) => x.classList.add("is-sel"));
@@ -148,6 +150,19 @@
         '<div class="zc-card__act"><button type="button" class="btn btn--sm" data-nav="-1"' + (k <= 0 ? " disabled" : "") + ">" + App.icon("chevronL") + esc(T("Önceki", "Previous")) + '</button><button type="button" class="btn btn--sm" data-nav="1"' + (k < 0 || k >= vis.length - 1 ? " disabled" : "") + ">" + esc(T("Sonraki", "Next")) + App.icon("chevron") + "</button>" +
           '<button type="button" class="btn btn--sm btn--ai" data-ask>' + App.icon("sparkle") + esc(T("Asistana sor", "Ask the assistant")) + "</button></div></div>" +
         (e.loc ? '<div class="zc-map" id="tlMap" aria-label="' + esc(T("Konum", "Location")) + '"></div>' : "") + "</article>";
+      const detail=e.detail, section=(heading,text)=>'<section class="zc-dossier-section"><h3>'+esc(heading)+'</h3><p>'+esc(text)+'</p></section>';
+      const chronological=all.slice().sort((a,b)=>a.y-b.y), position=chronological.findIndex(x=>x.i===e.i);
+      const neighbours=chronological.slice(Math.max(0,position-1),position+2).filter(x=>x.i!==e.i);
+      const panel=document.createElement('div');panel.className='zc-dossier';
+      panel.innerHTML=(detail ? section(T('Tarihsel bağlam','Historical context'),detail.background)+section(T('Gelişme ve aktörler','Development and actors'),detail.development)+section(T('Sonuçlar ve yorum sınırı','Consequences and interpretation'),detail.consequences) : section(T('Dönem bağlamı','Period context'),er[1]+' · '+yearTxt(er[2])+'–'+yearTxt(er[3])))+
+        section(T('Kaynakla düşün','Think with sources'),detail?.question || T('Özetteki neden, gelişme ve sonuç iddialarını ayır. Birincil belge ile sonraki tarihçi yorumunu karşılaştır; yalnız tarih sıralamasından neden-sonuç çıkarma.','Separate cause, development and consequence claims. Compare primary evidence with later interpretations; sequence alone does not establish causation.'))+
+        '<section class="zc-dossier-section"><h3>'+esc(T('Yakın kronoloji','Nearby chronology'))+'</h3>'+neighbours.map(n=>'<button class="btn" type="button" data-related-event="'+n.i+'">'+esc(yearTxt(n.y)+' · '+n.t)+'</button>').join('')+'</section>'+
+        '<section class="zc-dossier-section"><h3>'+esc(T('Kaynak ve tarih notu','Sources and dating'))+'</h3><p>'+esc(detail?.dateNote || T('Eski veri setindeki özet; olay özelinde ayrıntılı kaynak doğrulaması işaretlenmemiştir. Tarihler yıl düzeyindedir; yaklaşık tarihler kesin gün olarak okunmamalıdır.','Legacy summary without event-level source verification. Years and approximate dates must not be read as exact dates.'))+'</p>'+(detail?.sources || [{title:T('MEB tarih programları · genel başvuru','MEB history programmes · general reference'),url:'https://mufredat.meb.gov.tr'}]).filter(s=>/^https:\/\//.test(s.url)).map(s=>'<a target="_blank" rel="noopener noreferrer" href="'+esc(s.url)+'">'+esc(s.title)+'</a>').join('<br>')+'</section>';
+      cardEl.querySelector('.zc-card__main').append(panel);
+      panel.querySelectorAll('[data-related-event]').forEach(b=>b.onclick=()=>select(Number(b.dataset.relatedEvent)));
+      const focus=document.createElement('button');focus.className='btn btn--sm';focus.type='button';focus.dataset.timelineFocus='';focus.textContent=T('Ayrıntılı okuma','Detailed reading');
+      focus.onclick=()=>{const copy=panel.cloneNode(true);copy.querySelectorAll('[data-related-event]').forEach(b=>{const p=document.createElement('p');p.textContent=b.textContent;b.replaceWith(p);});App.ui.modal({title:e.t,body:copy.outerHTML});};
+      cardEl.querySelector('.zc-card__act').append(focus);
       App.hydrateIcons(cardEl);
       cardEl.querySelectorAll("[data-nav]").forEach((b) => b.addEventListener("click", () => {
         const n = vis[k + +b.dataset.nav]; if (!n) return; select(n.i);
@@ -183,7 +198,9 @@
         if (Math.floor(a.y) !== Math.floor(b.y) && Math.abs(a.y - b.y) < 400) qs.push([a, b]);
       }
       let i = 0, score = 0;
+      clearTimeout(quizTimer);
       const ask = () => {
+        if (!alive) return;
         if (i >= N) {
           const nb = score > best; if (nb) App.prefs.set("timelineBest", score);
           body.innerHTML = '<div class="card zc-quiz"><h2>' + esc(T("Sonuç: ", "Result: ")) + score + " / " + N + "</h2><p>" + esc(nb ? T("Yeni rekor!", "New record!") : T("Rekorun: ", "Best: ") + Math.max(best, score)) + '</p><button type="button" class="btn btn--primary" id="tlAgain">' + esc(T("Yeniden", "Again")) + "</button></div>";
@@ -198,7 +215,7 @@
           if (ok) score++;
           body.querySelectorAll("[data-o]").forEach((x) => { x.disabled = true; x.querySelector(".zc-opt__y").hidden = false; x.classList.add(+x.dataset.o === first.i ? "is-right" : "is-wrong"); });
           select(first.i, true);
-          setTimeout(() => { i++; ask(); }, ok ? 1300 : 2400);
+          quizTimer = setTimeout(() => { if (alive) { i++; ask(); } }, ok ? 1300 : 2400);
         }));
       };
       ask();
@@ -213,7 +230,7 @@
     view.querySelectorAll(".zc-eras [data-era]").forEach((b) => b.addEventListener("click", () => jumpEra(b.dataset.era)));
     const q = view.querySelector("#tlQ");
     if (q) {
-      q.addEventListener("input", App.utils.debounce(() => { st.q = q.value; paint(); const v = visible(); if (st.q && v.length) { select(v[0].i, true); if (st.mode === "line") { const el = body.querySelector('[data-ev="' + v[0].i + '"]'), sEl = body.querySelector("#tlScroll"); if (el && sEl) sEl.scrollTo({ left: el.offsetLeft - 40, behavior: "smooth" }); } } }, 250));
+      q.addEventListener("input", () => { clearTimeout(searchTimer); searchTimer=setTimeout(() => { if (!alive) return; st.q = q.value; paint(); const v = visible(); if (st.q && v.length) { select(v[0].i, true); if (st.mode === "line") { const el = body.querySelector('[data-ev="' + v[0].i + '"]'), sEl = body.querySelector("#tlScroll"); if (el && sEl) sEl.scrollTo({ left: el.offsetLeft - 40, behavior: "smooth" }); } } }, 250); });
     }
     paint();
     if (st.mode !== "quiz") {
@@ -222,7 +239,9 @@
       select(start.i, true);
       if (st.mode === "line") { const el = body.querySelector('[data-ev="' + start.i + '"]'), sEl = body.querySelector("#tlScroll"); if (el && sEl) sEl.scrollLeft = el.offsetLeft - sEl.clientWidth / 2; }
     }
-    App.zaman._last = { st, visible, select };
+    const last = { st, visible, select };
+    App.zaman._last = last;
+    return () => { alive = false; clearTimeout(quizTimer); clearTimeout(searchTimer); if (App.zaman._last === last) App.zaman._last = null; };
   }
 
   App.router.register("zaman", render);

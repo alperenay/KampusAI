@@ -27,6 +27,7 @@
           // Yedekte farklı bir dil kayıtlıysa onu uygula
           App.i18n.setLang(App.prefs.get("lang", App.i18n.lang));
           App.theme.set(App.prefs.get("theme", App.theme.current));
+          App.appearance.reload();
           App.applyProfile();
           App.ui.toast(t("set.imported"));
           App.router.refresh();
@@ -80,8 +81,8 @@
                 '<select class="select" id="setTheme">' + themeOptions + '</select></label>' +
             '</div>' +
             '<div class="settings-options">' +
-              row("setAppearance", "sun", T("Görünümü özelleştir", "Customize appearance"), T("Arka plan ve hareketler", "Backgrounds and motion")) +
-              row("setVisualTheme", "sparkle", T("Beş arayüz teması", "Five interface themes"), T("Kozmik, Buz, Orman, Gün Batımı, Gül", "Cosmic, Frost, Forest, Sunset, Rose")) +
+              row("setAppearance", "sun", T("Görünümü özelleştir", "Customize appearance"), T("Stiller, tipografi, okuma ve efekt ayarları", "Styles, typography, reading and effects")) +
+              row("setVisualTheme", "sparkle", T("12 renk paleti", "12 colour palettes"), T("Açık ve koyu temaya uyarlanan vurgu renkleri", "Accent colours adapted to light and dark mode")) +
             '</div>' +
           '</section>' +
 

@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.61.0
+  APP_VERSION: 1.62.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -118,6 +118,11 @@ jobs:
           npm run test:voice-ui
           npm run test:workspace-ui
           npm run test:glass-ui
+          npm run test:customization-ui
+          npm run test:documents-ui
+          npm run test:science-lab-ui
+          npm run test:maps-models-ui
+          npm run test:timeline-ui
           node tools/storage-ui-check.mjs
           node tools/lifecycle-ui-check.mjs
           node tools/lab-interactions-ui-check.mjs
@@ -572,9 +577,11 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          Glassmorphism tasarımı: gezinme ve pencerelerde buzlu cam, kartlarda hafif saydam yüzeyler, ince kenarlıklar ve yumuşak arka plan ışıkları.
-          Açık/koyu tema ve mevcut renk seçimleri korunur. Mobilde sınırlı bulanıklık, düşük GPU/yüksek karşıtlık için düz yüzeyler; ders okuma ve güvenli alan yerleşimleri korunmuştur.
-          [Tasarım sistemi ve test kapsamı](https://github.com/$OWNER/$REPO/blob/main/docs/GLASSMORPHISM.md).
+          Daha sade gezinme: şeffaf üst çubuk, 12 palet, yazı tipi ve efekt ayarları; tek Dokümanlar alanı. Sunum oluşturma kaldırıldı.
+          Birleşik Bilim ve Sensör Laboratuvarı: mevcut deneyler, 7 sensör kanalı, fizik ve sismograf; dört yeni kuramsal deney ve rapor aktarımı.
+          NASA kaynaklı 4K küre, 14 ders modeli, zenginleştirilmiş tarih haritası ve 184 olaylı zaman çizelgesi. 24 yeni olayda kaynaklı ayrıntılı dosyalar; önceki özetlerde doğrulama sınırı açıkça belirtilir.
+          [Sürüm ve doğrulama notları](https://github.com/$OWNER/$REPO/blob/main/docs/ON-YAYIN-1.62.md) · [Kaynaklar ve tarih içerikleri](https://github.com/$OWNER/$REPO/blob/main/docs/ZAMAN-CIZELGESI.md).
+          Müfredat JSON/şablon paketi kapsam raporuyla sunulur; tüm MEB ders notlarının eksiksiz olduğu iddia edilmez. Sensör ve AR desteği cihaz/izinlere bağlıdır.
 
           | Platform | Dosya |
           |---|---|

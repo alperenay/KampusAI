@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "programmeId": 333,
+  "subjectId": "almanca",
+  "edition": "legacy",
+  "name": "ALMANCA",
+  "sourceUrl": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=333",
+  "applicability": "confirm-school-year-and-school-type",
+  "status": "machine-extracted-candidates-require-review",
+  "licenceVerified": false,
+  "pdfUrl": "https://mufredat.meb.gov.tr/Dosyalar/2018120203443473-almanca dOp.pdf",
+  "pdfSha256": "1c4a11a30178a969d9556f4d1956d9a2dbfa19d657a754845259e9f3b08c6609",
+  "pageCount": 86,
+  "codeCandidates": [
+    {
+      "code": "A1.2",
+      "gradeCandidate": null,
+      "pages": [
+        23,
+        24,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        85
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "A2.1",
+      "gradeCandidate": null,
+      "pages": [
+        23,
+        24,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        85
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "A1.1",
+      "gradeCandidate": null,
+      "pages": [
+        23,
+        24,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        85
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "A2.2",
+      "gradeCandidate": null,
+      "pages": [
+        24,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        85
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "B1.1",
+      "gradeCandidate": null,
+      "pages": [
+        24,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        85
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "B1.2",
+      "gradeCandidate": null,
+      "pages": [
+        24,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        85
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "B2.1",
+      "gradeCandidate": null,
+      "pages": [
+        24,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        85
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "B2.2",
+      "gradeCandidate": null,
+      "pages": [
+        24,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85
+      ],
+      "status": "candidate-requires-review"
+    }
+  ],
+  "indexedAt": "2026-10-30T16:36:02.424456+00:00",
+  "fullTextRedistributed": false
+}

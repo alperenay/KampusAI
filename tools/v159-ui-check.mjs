@@ -10,7 +10,7 @@ try {
   assert.equal(await page.locator("#sidebar #settingsBtn, #sidebarSettingsTop").count(),0);
   await page.evaluate(()=>App.router.go("panel"));
   await page.waitForSelector(".v159-manage__item");
-  assert.ok(await page.locator(".v159-manage__item").count()>=7);
+  assert.ok(await page.locator(".v159-manage__item").count()>=6);
   const before=await page.evaluate(()=>App.smartHome.order());
   await page.locator('[data-widget="konular"] [data-action="toggle"]').click();
   const after=await page.evaluate(()=>App.smartHome.order());
@@ -47,19 +47,11 @@ try {
   await page.waitForSelector("#swGrade");
   assert.match(await page.locator("#swResult").innerText(),/Fotosentez nedir/);
 
-  await page.evaluate(()=>App.router.go("sunum"));
-  await page.waitForSelector("#slideTopic");
-  await page.fill("#slideTopic","Işık");
-  // Mock structured slide response, do not contact outside AI providers.
-  await page.evaluate(()=>{
-    App.ai.generate=async()=>({data:{title:"Işık",slides:[{title:"Işığın Özellikleri",bullets:["Yayılır","Yansır"],speakerNotes:"Örnek"}]}});
-  });
-  await page.click("#slideGenerate");
-  await page.waitForSelector(".v159-slide");
-  assert.equal(await page.locator(".v159-slide").count(),1);
   await page.evaluate(()=>{App.ai.generate=window.__origGenerate;});
+  assert.equal(await page.evaluate(()=>typeof App.v159Studio.presentation),'undefined');
+  assert.equal(await page.locator('a[href="#/sunum"]').count(),0);
   const over=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);
   assert.ok(over<=2,"Mobile overflow: "+over);
   assert.deepEqual(h.errors,[]);
-  console.log("v1.59 UI: profile, themes, dashboard, portfolio, documents and slides passed");
+  console.log("v1.59 UI: profile, themes, dashboard, portfolio, documents and retired presentation removal passed");
 } finally {await h.close();}

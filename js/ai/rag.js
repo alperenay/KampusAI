@@ -133,7 +133,7 @@
     data.notes.forEach((n) => {
       const info = outcomeInfo(n.id);
       if (!n.text || !n.text.trim()) return;
-      add("note:" + n.id, "note", (info ? info.label : n.title || n.id), info ? info.link : "#/notlar",
+      add("note:" + n.id, "note", (info ? info.label : n.title || n.id), info ? info.link : "#/dokumanlar/notlar",
         "Öğrencinin notu — " + (info ? info.pathTR : n.title || n.id) + ":\n" + n.text.trim());
     });
 

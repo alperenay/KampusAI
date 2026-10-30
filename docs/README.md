@@ -6,6 +6,11 @@
 
 | Kılavuz | Ne için? |
 |---|---|
+| [Dokümanlar](DOKUMANLAR.md) | Birleşik belge ve not çalışma alanı |
+| [Bilim ve Sensör Laboratuvarı](BILIM-SENSOR-LABORATUVARI.md) | Ölçüm, deney, modeller ve rapor akışı |
+| [Görünüm özelleştirme](GORUNUM-OZELLESTIRME.md) | Palet, yazı tipi ve efektler |
+| [Harita ve modeller](HARITA-VE-MODELLER.md) | Küre, 3B ve tarih haritası |
+| [Zaman çizelgesi](ZAMAN-CIZELGESI.md) | Olay dosyaları, kaynaklar ve tarih sınırları |
 | [Belge, ödev, not ve sözlü prova](CALISMA-ALANI.md) | Dört yeni çalışma aracının adımları ve sınırları |
 | [Kullanım](KULLANIM.md) | İlk başlangıç, görünüm, okuma modu, yedek ve temel kullanım |
 | [Yeni araçlar](YENI-ARACLAR.md) | Dil, sensör, 3B ve yeni modüller |

@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "grade": 10,
+  "apiGradeId": 12,
+  "courseId": 19,
+  "slug": "fizik-dersi",
+  "name": "Fizik Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/fizik-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "100",
+      "title": "1. Ünite: Kuvvet Ve Hareket",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/100",
+      "retrievedAt": "2026-10-30T16:27:28.464968+00:00",
+      "sourceSha256": "4c3c3731bba2751c0fbeef4eea75a8e6e84f0d3fbb008adc13d8afad2fa7e62c",
+      "status": "codes-indexed",
+      "codes": [
+        "FİZ.10.1.1",
+        "FİZ.10.1.2",
+        "FİZ.10.1.3"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "04.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "108",
+      "title": "2. Ünite: Enerji",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/108",
+      "retrievedAt": "2026-10-30T16:27:29.607151+00:00",
+      "sourceSha256": "af1bb8ec8999e6433b3c47b281415e80cc2da596437c9f56465beb683ce1040a",
+      "status": "codes-indexed",
+      "codes": [
+        "FİZ.10.2.1",
+        "FİZ.10.2.2",
+        "FİZ.10.2.3",
+        "FİZ.10.2.4",
+        "FİZ.10.2.5"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "04.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "111",
+      "title": "3. Ünite: Elektrik",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/111",
+      "retrievedAt": "2026-10-30T16:27:31.596278+00:00",
+      "sourceSha256": "37348dd4b9db408d96821120efe7bc96118a0a06c0a8aba548868996855517e0",
+      "status": "codes-indexed",
+      "codes": [
+        "FİZ.10.3.1",
+        "FİZ.10.3.2",
+        "FİZ.10.3.3",
+        "FİZ.10.3.4",
+        "FİZ.10.3.5",
+        "FİZ.10.3.6",
+        "FİZ.10.3.7"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "04.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "122",
+      "title": "4. Ünite: Dalgalar",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/122",
+      "retrievedAt": "2026-10-30T16:27:32.540010+00:00",
+      "sourceSha256": "1fb4b1c94e285124faec130ca4228febc0da3b9bc616270b934f4d0b0df7abfe",
+      "status": "codes-indexed",
+      "codes": [
+        "FİZ.10.4.1",
+        "FİZ.10.4.2",
+        "FİZ.10.4.3",
+        "FİZ.10.4.4",
+        "FİZ.10.4.5",
+        "FİZ.10.4.6",
+        "FİZ.10.4.7"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "04.08.2026",
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

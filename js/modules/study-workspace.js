@@ -688,20 +688,23 @@
     list().catch((e) => status(String(e.message || e)));
     return () => l.cleanup();
   }
+  let noteDraft = App.prefs.get("documentsNoteDraft", null);
   function notesView(view, params) {
     const topics = App.learnmap.allOutcomes();
     const l = shell(
       view,
-      T("Notlarım · Defterden Aktar", "My Notes · Notebook Import"),
+      T("Belge Düzenleyici", "Document Editor"),
       T(
-        "Defter fotoğrafını metne çevir, düzelt ve genel notlarına veya bir konuya ekle.",
-        "Transcribe notebook photos, correct the text and save a general or topic note.",
+        "Yeni belge yaz, dosya veya defter fotoğrafından metin aktar; genel belge veya konu notu olarak kaydet.",
+        "Write a document, import file or notebook text, and save a general document or topic note.",
       ),
       '<section class="card sw-stack">' +
+        field("ntFile", T("Metin aktar · PDF / DOCX / ODF / TXT / MD", "Import text · PDF / DOCX / ODF / TXT / MD"), '<input id="ntFile" type="file" accept=".pdf,.docx,.odt,.odp,.ods,.txt,.md">') +
+        button("ntImport", T("Dosyadan metin ekle", "Append text from file")) +
         photoInput("ntPhoto") +
         privacy() +
         button("ntRead", T("El yazısını oku", "Read handwriting")) +
-        field("ntTitle", T("Not başlığı", "Note title"), input("ntTitle")) +
+        field("ntTitle", T("Belge / not başlığı", "Document / note title"), input("ntTitle")) +
         field(
           "ntTarget",
           T("Nereye kaydedilsin?", "Save destination"),
@@ -739,31 +742,62 @@
           area("ntText"),
         ) +
         '<div class="sw-actions">' +
-        button("ntSave", T("Notlara ekle", "Save to notes"), true) +
-        button("ntNew", T("Yeni not", "New note")) +
-        '</div></section><section class="card"><h2>' +
-        T("Kayıtlı notlarım", "Saved notes") +
-        '</h2><div id="ntList"></div></section>',
+        button("ntSave", T("Belgeyi kaydet", "Save document"), true) +
+        button("ntNew", T("Yeni belge", "New document")) +
+        button("ntExportMd", T("Markdown indir", "Download Markdown")) +
+        button("ntExportTxt", T("Metin indir", "Download text")) +
+        '</div><details id="ntPreviewPane"><summary>'+T("Önizleme · Markdown ve formüller", "Preview · Markdown and formulae")+'</summary><div class="md" id="ntPreview"></div></details></section><section class="card"><h2>' +
+        T("Belgelerim ve notlarım", "My documents and notes") +
+        '</h2>' + field("ntSearch", T("Kayıtlarda ara", "Search saved documents"), '<input id="ntSearch" class="input" type="search">') + '<div id="ntList"></div></section>',
     );
     const { get, status } = l;
-    let editing = "";
+    let editing = "", draftTimer = 0, listSequence = 0, firstList = true;
     get("#ntRead").dataset.swAi = "";
     const target = (params || []).join("/");
     if (topics.some((t) => t.key === target)) get("#ntTarget").value = target;
+    function preview() { get("#ntPreview").innerHTML = App.markdown.render(get("#ntText").value); }
+    function remember() {
+      clearTimeout(draftTimer);
+      noteDraft = {context:target, editing, title:get("#ntTitle").value, text:get("#ntText").value, target:get("#ntTarget").value};
+      if(noteDraft.text || noteDraft.title)App.prefs.set("documentsNoteDraft", noteDraft);
+      else {noteDraft=null;App.prefs.remove("documentsNoteDraft");}
+    }
+    const inputDraft = () => { clearTimeout(draftTimer); draftTimer = setTimeout(remember, 250); };
+    view.addEventListener('input', inputDraft);
+    view.addEventListener('change', inputDraft);
+    window.addEventListener('pagehide', remember);
+    get("#ntPreviewPane").addEventListener('toggle', () => {if(get("#ntPreviewPane").open)preview();});
+    if(noteDraft?.context===target && typeof noteDraft.text==='string' && noteDraft.text.length<=60000){
+      editing=typeof noteDraft.editing==='string'?noteDraft.editing:'';
+      get("#ntTitle").value=String(noteDraft.title||'').slice(0,160);
+      get("#ntText").value=noteDraft.text;
+      if(topics.some(t=>t.key===noteDraft.target))get("#ntTarget").value=noteDraft.target;
+      get("#ntTarget").disabled=!!editing;
+      status(T("Kaydedilmemiş yerel taslak geri açıldı.", "Unsaved local draft restored."));
+    }
     const reset = () => {
       editing = "";
       get("#ntTitle").value = "";
       get("#ntText").value = "";
       get("#ntTarget").value = "";
       get("#ntTarget").disabled = false;
+      get("#ntPreview").textContent="";remember();
     };
     async function list() {
+      const sequence = ++listSequence;
       const all = (await App.db.getAll("notes")).sort((a, b) =>
         String(b.updatedAt || "").localeCompare(String(a.updatedAt || "")),
       );
-      if (!l.alive) return;
+      if (!l.alive || sequence !== listSequence) return;
+      if(firstList){
+        firstList=false;
+        const linked=all.find(x=>x.id===target);
+        if(linked && !get("#ntText").value){editing=linked.id;get("#ntTitle").value=linked.title||'';get("#ntText").value=linked.text||'';get("#ntTarget").disabled=true;}
+        if(editing&&!all.some(x=>x.id===editing)){editing='';get("#ntTarget").disabled=false;}
+      }
+      const query=get("#ntSearch").value.toLocaleLowerCase();
       get("#ntList").innerHTML =
-        all
+        all.filter(x=>(String(x.title||'')+' '+String(x.text||'')).toLocaleLowerCase().includes(query))
           .map(
             (x) =>
               '<article class="sw-task"><h3>' +
@@ -798,7 +832,7 @@
                 ? x.id
                 : "";
               get("#ntTarget").disabled = true;
-              get("#ntText").focus();
+              get("#ntText").focus();remember();
               status(
                 T(
                   "Düzenleme mevcut notu günceller.",
@@ -834,8 +868,9 @@
             T("Okunabilir metin dönmedi.", "No readable text returned."),
           );
         if (active()) {
-          get("#ntText").value +=
-            (get("#ntText").value.trim() ? "\n\n" : "") + d.text;
+          const combined=get("#ntText").value+(get("#ntText").value.trim()?"\n\n":"")+d.text;
+          if(combined.length>60000)throw new Error(T("Birleşen belge 60.000 karakteri aşıyor.","Combined document exceeds 60,000 characters."));
+          get("#ntText").value=combined;remember();
           status(
             T(
               "Okunan metin eklendi; kaydetmeden önce düzelt.",
@@ -855,8 +890,8 @@
             ),
           );
         const id = editing || get("#ntTarget").value || "not:" + uid(),
-          prev = !editing ? await App.db.get("notes", id) : null;
-        const combined = prev?.text ? prev.text + "\n\n" + text : text;
+          prev = await App.db.get("notes", id);
+        const combined = !editing && prev?.text ? prev.text + "\n\n" + text : text;
         if (combined.length > 60000)
           throw new Error(
             T(
@@ -865,6 +900,7 @@
             ),
           );
         await App.db.put("notes", {
+          ...prev,
           id,
           text: combined,
           title: get("#ntTitle").value.trim().slice(0, 160),
@@ -882,8 +918,22 @@
         }
       });
     get("#ntNew").onclick = reset;
+    get("#ntSearch").oninput = () => list().catch(e=>status(String(e.message||e)));
+    get("#ntImport").onclick = () => l.work(async(signal,active)=>{
+      const text=await App.documentImport.read(get("#ntFile").files[0],signal);
+      if(!active())return;
+      const combined=[get("#ntText").value.trim(),text].filter(Boolean).join('\n\n');
+      if(combined.length>60000)throw new Error(T("Birleşen belge 60.000 karakteri aşıyor.","Combined document exceeds 60,000 characters."));
+      get("#ntText").value=combined;remember();status(T("Metin eklendi; gözden geçirip kaydet.","Text appended; review and save."));
+    });
+    for(const extension of ['Md','Txt'])get('#ntExport'+extension).onclick=()=>{
+      const text=get("#ntText").value;
+      if(!text.trim()){status(T("Önce belgeye metin ekle.","Add document text first."));return;}
+      const title=get("#ntTitle").value.trim(),name=(title||'KampusAI-belge').replace(/[<>:"/\\|?*\x00-\x1f]/g,'-').slice(0,80);
+      App.utils.downloadText(name+(extension==='Md'?'.md':'.txt'),(title?(extension==='Md'?'# ':'')+title+'\n\n':'')+text);
+    };
     list().catch((e) => status(String(e.message || e)));
-    return () => l.cleanup();
+    return () => {remember();view.removeEventListener('input',inputDraft);view.removeEventListener('change',inputDraft);window.removeEventListener('pagehide',remember);l.cleanup();};
   }
   function oralView(view) {
     const l = shell(
@@ -1204,14 +1254,12 @@
     history().catch((e) => status(String(e.message || e)));
     return () => l.cleanup();
   }
-  App.studyWorkspace = { warning, renderPack: packView };
+  App.studyWorkspace = { warning, renderPack: packView, renderNotes: notesView };
   for (const key of ['pinnedTools', 'recentTools']) {
     const stored = App.prefs.get(key, null);
     if (Array.isArray(stored)) App.prefs.set(key, [...new Set(stored.map(r => r === 'belgeden' ? 'belge-paketi' : r).filter(r => r !== 'canli' && r !== 'cevre'))]);
   }
-  App.router.register("belge-paketi", packView);
   App.router.register("odevler", homeworkView);
-  App.router.register("notlar", notesView);
   App.router.register("sozlu-prova", oralView);
   for (const retired of ["canli", "cevre"])
     App.router.register(retired, () => {

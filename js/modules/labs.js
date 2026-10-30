@@ -520,6 +520,7 @@
     const lab = LABS[id];
     if (!lab) return null;
     const st = { t: 0, playing: !!lab.animated && lab.play !== false && !lab.custom, last: null, raf: 0, vis: true, s: {} };
+    let destroyed = false, offSon = null;
     let params = [];
     if (lab.custom) {
       const fams = lab.families();
@@ -567,7 +568,7 @@
           live.textContent = st === "playing" ? T("Grafik çalıyor", "Playing graph") : st === "paused" ? T("Duraklatıldı", "Paused") : "";
           App.hydrateIcons(son);
         };
-        const off = App.sonify.onState(paintSon);
+        const off = App.sonify.onState(paintSon); offSon = off;
         paintSon(App.sonify.state());
       }
       App.sonify.attachScrub(cv, curves);
@@ -644,7 +645,7 @@
       st.W = w; st.H = h;
     }
     function draw() {
-      if (!host.isConnected) return destroy();
+      if (destroyed || !host.isConnected) return destroy();
       const ctx = cv.getContext("2d"), c = colors();
       ctx.clearRect(0, 0, st.W, st.H);
       cv.__curves = [];
@@ -660,12 +661,13 @@
     const modeBox = host.querySelector(".lab__mode");
     function paintMode() { if (st.W) size(); if (!modeBox) return; modeBox.querySelectorAll("[data-mode]").forEach((b) => b.setAttribute("aria-checked", String(b.dataset.mode === mode))); host.classList.toggle("is-3d", mode === "3d"); }
     async function setMode(m, remember) {
+      if (destroyed) return;
       mode = m; if (remember) App.lab3d.setMode(m); paintMode();
       if (m === "2d" && S3 && S3.handOn && S3.handOn()) S3.handStop();      // 2B'de el kontrolü (ve kamera) kapanır
       if (m === "3d" && !S3 && !s3busy) {
         s3busy = true; host.classList.add("is-loading3d");
-        try { await App.lab3d.load(); if (host.isConnected && mode === "3d") { S3 = App.lab3d.mount(host.querySelector(".lab__stage"), id, lab.ratio); host.querySelector(".lab__stage").insertBefore(S3.el, cv); if (S3.bindLab) S3.bindLab({ ctrls, play: host.querySelector(".lab__play") }); size(); } }
-        catch (e) { mode = "2d"; paintMode(); App.ui.toast(T("3B görünüm açılamadı; 2B gösteriliyor.", "3D view unavailable; showing 2D.")); }
+        try { await App.lab3d.load(); if (!destroyed && host.isConnected && mode === "3d") { S3 = App.lab3d.mount(host.querySelector(".lab__stage"), id, lab.ratio); host.querySelector(".lab__stage").insertBefore(S3.el, cv); if (S3.bindLab) S3.bindLab({ ctrls, play: host.querySelector(".lab__play") }); size(); } }
+        catch (e) { if (destroyed) return; mode = "2d"; paintMode(); App.ui.toast(T("3B görünüm açılamadı; 2B gösteriliyor.", "3D view unavailable; showing 2D.")); }
         s3busy = false; host.classList.remove("is-loading3d");
       }
       draw();
@@ -691,9 +693,9 @@
     });
     function loop() {
       cancelAnimationFrame(st.raf);
-      if (!st.playing || !st.vis) return;
+      if (destroyed || !st.playing || !st.vis) return;
       st.raf = requestAnimationFrame((ts) => {
-        if (!host.isConnected) return destroy();
+        if (destroyed || !host.isConnected) return destroy();
         const dt = st.last == null ? 0 : Math.min(0.05, (ts - st.last) / 1000);
         st.last = ts; st.t += dt;
         if (lab.step) lab.step(st.s, p, dt);
@@ -701,11 +703,11 @@
       });
     }
     let resizeRaf=0;
-    const ro = new ResizeObserver(() => { cancelAnimationFrame(resizeRaf); resizeRaf=requestAnimationFrame(()=>{if(host.isConnected){size();draw();}}); });
+    const ro = new ResizeObserver(() => { cancelAnimationFrame(resizeRaf); resizeRaf=requestAnimationFrame(()=>{if(!destroyed && host.isConnected){size();draw();}}); });
     ro.observe(cv.parentElement);
     const io = "IntersectionObserver" in window ? new IntersectionObserver((en) => { st.vis = en[en.length - 1].isIntersecting; st.last = null; loop(); }) : null;
     if (io) io.observe(host);
-    function destroy() { cancelAnimationFrame(st.raf); cancelAnimationFrame(resizeRaf); ro.disconnect(); if (io) io.disconnect(); if (S3) { S3.dispose(); S3 = null; } }
+    function destroy() { if (destroyed) return; destroyed = true; if (offSon) offSon(); cancelAnimationFrame(st.raf); cancelAnimationFrame(resizeRaf); ro.disconnect(); if (io) io.disconnect(); if (S3) { S3.dispose(); S3 = null; } }
     size(); draw(); loop();
     paintMode(); if (mode === "3d") setMode("3d", false);
     return { destroy };
@@ -877,28 +879,30 @@
         (next ? '<a class="btn" href="#/lab/' + next.id + '">' + esc(next.lab.title()) + App.icon("chevron") + "</a>" : "") + "</nav>" +
       "</div>";
     App.hydrateIcons(view);
-    mount(view.querySelector("#labHost"), id, {});
+    const instance = mount(view.querySelector("#labHost"), id, {});
     view.querySelector("#labFav").addEventListener("click", (e) => { const on = toggleFav(id); e.currentTarget.classList.toggle("is-on", on); e.currentTarget.setAttribute("aria-pressed", String(on)); App.ui.toast(on ? T("Favorilere eklendi.", "Added to favourites.") : T("Favorilerden çıkarıldı.", "Removed from favourites.")); });
     view.querySelectorAll("[data-task]").forEach((cb) => cb.addEventListener("change", () => {
       const all = App.prefs.get("labTasks", {}); const set = new Set(all[id] || []);
       if (cb.checked) set.add(Number(cb.dataset.task)); else set.delete(Number(cb.dataset.task));
       all[id] = Array.from(set); App.prefs.set("labTasks", all);
     }));
+    return () => instance.destroy();
   }
 
-  function render(view, prm) {
-    if (prm[0] && LABS[prm[0]]) {
-      renderLab(view, prm[0]);
+  function render(view, prm = []) {
+    if (prm[0] && Object.hasOwn(LABS, prm[0])) {
+      const cleanup = renderLab(view, prm[0]);
       // #/lab/<id>/holo: deney doğrudan hologramda açılır (ör. hologram öğretmenden)
-      if (prm[1] === "holo") { let n = 0; const t = setInterval(() => { const b = view.querySelector("#labHost [data-holo-start]"); if (b || ++n > 30) { clearInterval(t); if (b && location.hash.indexOf("#/lab/" + prm[0]) === 0) b.click(); } }, 100); }
-      return;
+      let timer = null;
+      if (prm[1] === "holo") { let n = 0; timer = setInterval(() => { const b = view.querySelector("#labHost [data-holo-start]"); if (b || ++n > 30) { clearInterval(timer); if (b && view.isConnected) b.click(); } }, 100); }
+      return () => { clearInterval(timer); if (cleanup) cleanup(); };
     }
     return renderLibrary(view);
   }
 
-  App.router.register("lab", render);
+
   /** Fonksiyon deneyinin o anki fonksiyonu (3B görünüm kullanır) */
   function funcOf(st) { const fam = LABS.fonksiyon.families()[st.fam]; return fam ? (x) => fam.f(x, st.q || {}, st.base) : () => NaN; }
-  App.labs = { LABS, LINKS, mount, sectionHtml, mountIn, add, link, meta, funcOf, BASE,
+  App.labs = { render, LABS, LINKS, mount, sectionHtml, mountIn, add, link, meta, funcOf, BASE,
     util: { T, fmt, DEG, colors, arrow, label, frame, axes, plot, dot, row, niceStep, hexRgb, esc } };
 })();

@@ -1,0 +1,470 @@
+{
+  "schemaVersion": 1,
+  "grade": 9,
+  "program": "biyoloji-dersi",
+  "lessons": [
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "biyoloji-dersi",
+      "unitId": "2",
+      "officialCode": "BİY.9.1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2",
+        "sha256": "bc3da491446a0b2d3012d56ad8a6ea37fe35464234181c6e65d023428c3a08d9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2"
+        ]
+      },
+      "legacyCandidates": [
+        "9/biyoloji/u1/k1"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "biyoloji-dersi",
+      "unitId": "2",
+      "officialCode": "BİY.9.1.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2",
+        "sha256": "bc3da491446a0b2d3012d56ad8a6ea37fe35464234181c6e65d023428c3a08d9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2"
+        ]
+      },
+      "legacyCandidates": [
+        "9/biyoloji/u1/k2"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "biyoloji-dersi",
+      "unitId": "2",
+      "officialCode": "BİY.9.1.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2",
+        "sha256": "bc3da491446a0b2d3012d56ad8a6ea37fe35464234181c6e65d023428c3a08d9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2"
+        ]
+      },
+      "legacyCandidates": [
+        "9/biyoloji/u1/k3"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "biyoloji-dersi",
+      "unitId": "2",
+      "officialCode": "BİY.9.1.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2",
+        "sha256": "bc3da491446a0b2d3012d56ad8a6ea37fe35464234181c6e65d023428c3a08d9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2"
+        ]
+      },
+      "legacyCandidates": [
+        "9/biyoloji/u1/k4"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "biyoloji-dersi",
+      "unitId": "2",
+      "officialCode": "BİY.9.1.5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2",
+        "sha256": "bc3da491446a0b2d3012d56ad8a6ea37fe35464234181c6e65d023428c3a08d9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2"
+        ]
+      },
+      "legacyCandidates": [
+        "9/biyoloji/u2/k3"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "biyoloji-dersi",
+      "unitId": "2",
+      "officialCode": "BİY.9.1.6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2",
+        "sha256": "bc3da491446a0b2d3012d56ad8a6ea37fe35464234181c6e65d023428c3a08d9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2"
+        ]
+      },
+      "legacyCandidates": [
+        "9/biyoloji/u2/k4"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "biyoloji-dersi",
+      "unitId": "2",
+      "officialCode": "BİY.9.1.7",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2",
+        "sha256": "bc3da491446a0b2d3012d56ad8a6ea37fe35464234181c6e65d023428c3a08d9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2"
+        ]
+      },
+      "legacyCandidates": [
+        "9/biyoloji/u2/k5"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "biyoloji-dersi",
+      "unitId": "2",
+      "officialCode": "BİY.9.1.8",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2",
+        "sha256": "bc3da491446a0b2d3012d56ad8a6ea37fe35464234181c6e65d023428c3a08d9"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "biyoloji-dersi",
+      "unitId": "3",
+      "officialCode": "BİY.9.2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3",
+        "sha256": "d31b03037c4b0a652f9b12eff440b0600a6aee64cc362ef98d641b274fbcb64f"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3"
+        ]
+      },
+      "legacyCandidates": [
+        "9/biyoloji/u1/k5"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "biyoloji-dersi",
+      "unitId": "3",
+      "officialCode": "BİY.9.2.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3",
+        "sha256": "d31b03037c4b0a652f9b12eff440b0600a6aee64cc362ef98d641b274fbcb64f"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3"
+        ]
+      },
+      "legacyCandidates": [
+        "9/biyoloji/u1/k6",
+        "9/biyoloji/u1/k7",
+        "9/biyoloji/u1/k8",
+        "9/biyoloji/u1/k10"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "biyoloji-dersi",
+      "unitId": "3",
+      "officialCode": "BİY.9.2.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3",
+        "sha256": "d31b03037c4b0a652f9b12eff440b0600a6aee64cc362ef98d641b274fbcb64f"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3"
+        ]
+      },
+      "legacyCandidates": [
+        "9/biyoloji/u1/k11"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "biyoloji-dersi",
+      "unitId": "3",
+      "officialCode": "BİY.9.2.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3",
+        "sha256": "d31b03037c4b0a652f9b12eff440b0600a6aee64cc362ef98d641b274fbcb64f"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3"
+        ]
+      },
+      "legacyCandidates": [
+        "9/biyoloji/u1/k9"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "biyoloji-dersi",
+      "unitId": "3",
+      "officialCode": "BİY.9.2.5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3",
+        "sha256": "d31b03037c4b0a652f9b12eff440b0600a6aee64cc362ef98d641b274fbcb64f"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3"
+        ]
+      },
+      "legacyCandidates": [
+        "9/biyoloji/u2/k1"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "biyoloji-dersi",
+      "unitId": "3",
+      "officialCode": "BİY.9.2.6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3",
+        "sha256": "d31b03037c4b0a652f9b12eff440b0600a6aee64cc362ef98d641b274fbcb64f"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3"
+        ]
+      },
+      "legacyCandidates": [
+        "9/biyoloji/u2/k2"
+      ]
+    }
+  ]
+}

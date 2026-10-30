@@ -1,0 +1,974 @@
+{
+  "schemaVersion": 1,
+  "grade": 12,
+  "subjectId": "ingilizce",
+  "name": {
+    "tr": "İngilizce",
+    "en": "English"
+  },
+  "programEdition": "legacy-project-unverified",
+  "source": {
+    "file": "js/data/content/ing-12.js",
+    "sha256": "8c7f4fd250fb54ee10d72958bd613f25cfed8bd9b9beea28bf93345d2921c746",
+    "additionalReferences": [],
+    "pdfReferenceCandidates": [
+      {
+        "file": "pdf-index/342.json",
+        "url": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=342",
+        "edition": "legacy",
+        "status": "programme-and-grade-review-required"
+      }
+    ]
+  },
+  "officialProgramCandidates": [
+    {
+      "slug": "ingilizce-dersi-9-12",
+      "url": "https://tymm.meb.gov.tr/ogretim-programlari/ders/ingilizce-dersi-9-12"
+    },
+    {
+      "slug": "ingilizce-dersi-hazirlik-12",
+      "url": "https://tymm.meb.gov.tr/ogretim-programlari/ders/ingilizce-dersi-hazirlik-12"
+    }
+  ],
+  "units": [
+    {
+      "id": "t1",
+      "name": {
+        "tr": "Theme 1: Music",
+        "en": "Theme 1: Music"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "12/ingilizce/t1/k1",
+          "localCode": "E12.1",
+          "title": {
+            "tr": "Music: görüş bildirme, katılma–katılmama",
+            "en": "Music: expressing opinions, agreeing and disagreeing"
+          },
+          "content": {
+            "anlatim": "# Theme 1 — Music: Functions\n\n1. **Expressing opinion** (agreeing, disagreeing)\n2. **Expressing preferences**\n\n| Skill | Learning outcome (E12.1) |\n|---|---|\n| Listening | Detect the embedded information in songs / media (L1) |\n| Pronunciation | Practise **intonation**: *Is this your camera?* ↗ (yes/no question rises) |\n| Speaking | Exchange ideas about music preferences (S1); agree or disagree by giving opinions (S2) |\n| Reading | Infer people's music preferences (R1); analyse surveys / interviews (R2) |\n| Writing | Write a **survey report** on friends'/teachers' music preferences (W1) |\n\n# Giving an Opinion\n\n*In my opinion, … · Personally, I think … · From my point of view, … · As far as I'm concerned, … · I believe / suppose … · According to the survey, …*\n\n**Asking for opinions:** *What do you think about …? · How do you feel about …? · Don't you think …? · Why do you think that …?*\n\n# Agreeing and Disagreeing\n\n| Strong agreement | Partial agreement | Polite disagreement | Strong disagreement |\n|---|---|---|---|\n| *I couldn't agree more.* | *I agree up to a point.* | *I'm not so sure about that.* | *I totally disagree.* |\n| *You're absolutely right.* | *I tend to agree with you.* | *I'm afraid I disagree.* | *I'd say the exact opposite.* |\n| *No doubt about it.* | *That's partly true, but …* | *That's not always true.* | *That's out of the question.* |\n\n> **I couldn't agree more** = tamamen katılıyorum (olumsuz biçim ama anlamı güçlü katılma!).\n\n# Writing a Survey Report\n\n**Title → Introduction** (aim, who was asked) → **Findings** (*The majority of …, Half of the students …, Only a few …, A minority …*) → **Conclusion**.\n*Example:* \"Twenty students were asked about their favourite genres. **The majority** (60 %) prefer pop, **a quarter** listen to rock, and **only two** like opera. **To conclude**, pop is the most popular genre in our class.\"\n\n# Vocabulary\n\n| Word | Meaning | Word | Meaning |\n|---|---|---|---|\n| genre | tür | earworm | dilinize dolanan şarkı |\n| appeal / attract | cezbetmek / ilgi çekmek | soothing | yatıştırıcı |\n| raucous / deafening | gürültülü / sağır edici | shrill | tiz, cırtlak |\n| eerie | ürkütücü | upbeat | hareketli, neşeli |\n| mesmerizing | büyüleyici | sentimental | duygusal |\n| sorrow | keder | inspiration | ilham |\n| majority / minority | çoğunluk / azınlık | interviewee | röportaj yapılan kişi |\n| hum | mırıldanmak | distract / disturb | dikkat dağıtmak / rahatsız etmek |\n\n**Instruments:** *strings* (telli), *woodwind* (tahta üflemeli), *brass* (bakır üflemeli), *percussion* (vurmalı).\n**Genres:** classical, country, folk, hip hop, jazz, opera, pop, rap, reggae, rock.\n**Idiom:** *One man's meat is another man's poison.* — Birine yarayan diğerine zarar verebilir (zevkler farklıdır).",
+            "ornekler": [
+              {
+                "soru": "Complete with a suitable expression: A: \"Classical music helps me concentrate.\" B: \"___. I always listen to Mozart when I study.\"",
+                "cozum": "**I couldn't agree more / You're absolutely right** — B agrees strongly and gives a reason."
+              },
+              {
+                "soru": "Which sentence shows *partial* agreement? a) No doubt about it. b) I agree up to a point. c) I totally disagree.",
+                "cozum": "**b)** *I agree up to a point* = kısmen katılıyorum."
+              }
+            ],
+            "ozet": [
+              "Opinion: In my opinion / Personally / From my point of view.",
+              "Agree: I couldn't agree more; disagree politely: I'm afraid I disagree.",
+              "Survey report: The majority / A minority / Only a few …"
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "12/ingilizce/t1/k2",
+          "localCode": "G12.1",
+          "title": {
+            "tr": "Tercih bildirme: prefer, would rather, would prefer",
+            "en": "Expressing preferences: prefer, would rather, would prefer"
+          },
+          "content": {
+            "anlatim": "# 1. PREFER (genel tercihler)\n\n| Pattern | Example |\n|---|---|\n| prefer **noun** to **noun** | I prefer **tea to coffee**. |\n| prefer **V-ing** to **V-ing** | She prefers **reading to watching** TV. |\n| prefer **to V1** rather than **(V1)** | I prefer **to walk rather than take** the bus. |\n\n# 2. WOULD RATHER ('d rather) — o anki / belirli tercih\n\n| Pattern | Example |\n|---|---|\n| would rather **V1** | I'd rather **stay** at home tonight. |\n| would rather **V1** than **V1** | I'd rather **listen** to jazz **than** (listen to) rap. |\n| would rather **not V1** | I'd rather **not go** out — I'm tired. |\n| would rather **+ subject + V2** (başkası için) | I'd rather **you didn't** smoke here. |\n\n> ✘ *I'd rather ~~to go~~* → ✔ *I'd rather **go*** (would rather'dan sonra **yalın fiil**).\n\n# 3. WOULD PREFER ('d prefer) — belirli durum, kibar\n\n| Pattern | Example |\n|---|---|\n| would prefer **noun** | Would you prefer **coffee or tea**? — I'd prefer tea. |\n| would prefer **to V1** (rather than V1) | I'd prefer **to cook** at home **rather than eat** out. |\n\n# Summary Table\n\n| | after it | comparison word |\n|---|---|---|\n| prefer | noun / V-ing / to V1 | **to** (noun, V-ing) · **rather than** (to V1) |\n| would rather | **V1** | **than** |\n| would prefer | noun / **to V1** | **rather than** |\n\n**Practice (answers in bold):**\n1. They prefer **living** in a village to **living** in a city.\n2. I would rather **watch** a film than **go** to the concert.\n3. We'd prefer **to travel** by train rather than **fly**.\n4. He prefers rock music **to** hip hop.",
+            "ornekler": [
+              {
+                "soru": "Correct the mistake: \"I'd rather to listen to the radio than watch TV.\"",
+                "cozum": "**I'd rather listen** — *would rather* is followed by the bare infinitive (V1)."
+              },
+              {
+                "soru": "Rewrite with *prefer*: \"I like swimming more than running.\"",
+                "cozum": "**I prefer swimming to running.** (prefer V-ing **to** V-ing)"
+              }
+            ],
+            "ozet": [
+              "prefer A to B (noun / V-ing).",
+              "would rather V1 than V1 (yalın fiil).",
+              "would prefer to V1 rather than V1."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "t2",
+      "name": {
+        "tr": "Theme 2: Friendship",
+        "en": "Theme 2: Friendship"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "12/ingilizce/t2/k1",
+          "localCode": "E12.2",
+          "title": {
+            "tr": "Friendship: kişisel özellikleri betimleme ve sebep belirtme",
+            "en": "Friendship: describing personal features and stating reasons"
+          },
+          "content": {
+            "anlatim": "# Theme 2 — Friendship: Functions\n\n1. **Describing personal features** (appearance and personality)\n2. **Making conclusions**\n3. **Stating reasons**\n\n| Skill | Learning outcome (E12.2) |\n|---|---|\n| Listening | Extract specific information from a conversation (L1); infer the qualities of a good friend (L2) |\n| Pronunciation | **Syllable / word stress** (*reLIable, supPORTive, GEnerous*) |\n| Speaking | Ask and answer about personal features (S1); describe appearance giving reasons (S2); interpret graphs (S3) |\n| Reading | Find irrelevant content (R1); identify main conclusions in argumentative texts (R2) |\n| Writing | Write an **opinion essay** about the qualities of a good friend with reasons (W1) |\n\n# Describing People\n\n| Question | Asks about | Example answer |\n|---|---|---|\n| **What does she look like?** | appearance | She's tall and slim with curly blonde hair and freckles. |\n| **What is he like?** / What kind of person is he? | personality | He's easy-going, honest and a bit stubborn. |\n| **What does she like?** | likes / hobbies | She likes hiking. |\n\n**Appearance:** *plump, chubby, muscular, slim; bald, receding hairline; straight / curly / wavy hair; fair-skinned; beard, moustache, scar, freckles, dimples.*\n**Age:** *in his early/mid/late 30s; He can't be in his 60s — he looks much younger.*\n\n# Comparing People\n\n- *Kyle and Randy are **similar because** they are both generous.*\n- *Claire and Vivian are **similar in that** they love animals.*\n- *The twins **differ in** their attitude towards animals.*\n- *She's **as** helpful **as** her sister.* / *One **similarity between** Ali and Can **is** …*\n\n# Making Conclusions (modals of deduction)\n\n- *She writes to him every day. She **must** be his best friend.* (%95 eminim — evet)\n- *He **can't** be at school; I've just seen him at the café.* (%95 eminim — hayır)\n- *They **might / may / could** be cousins.* (olasılık)\n\n# Stating Reasons\n\n*because + clause · because of / due to + noun · since / as + clause · That's why … · The reason why … is that …*\n*A good friend is supportive **because** they stand by you in difficult times.*\n\n# Vocabulary\n\n| Personality (+) | Personality (−) | Other |\n|---|---|---|\n| honest, loyal, faithful, reliable | stubborn, jealous, mean (cimri) | rely on (güvenmek) |\n| generous, thoughtful, considerate | bad-tempered, strict | look up to (hayranlık duymak) |\n| supportive, patient, sincere | apathetic (duyarsız), proud | resemble / look like (benzemek) |\n| easy-going, mature, sensible | violent, distracted | mutual (ortak), commonality |\n| extroverted / introverted | humorous (esprili) | loyalty, fidelity (sadakat) |\n\n**Sayings:** *A friend in need is a friend indeed.* (Dost kara günde belli olur.) · *No road is long with good company.*",
+            "ornekler": [
+              {
+                "soru": "Choose the right question: \"___?\" — \"She's quite shy but very kind.\" a) What does she look like? b) What is she like?",
+                "cozum": "**b) What is she like?** — the answer describes **personality**, not appearance."
+              },
+              {
+                "soru": "Make a conclusion with a modal: \"His eyes are red and he keeps yawning.\"",
+                "cozum": "**He must be tired / He must have stayed up late.** — strong deduction from evidence."
+              }
+            ],
+            "ozet": [
+              "look like = appearance; be like = personality.",
+              "must / can't = strong deduction; may/might = possibility.",
+              "Reasons: because, since, due to, that's why."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "12/ingilizce/t2/k2",
+          "localCode": "G12.2",
+          "title": {
+            "tr": "Opinion essay: iyi bir arkadaşın nitelikleri",
+            "en": "Opinion essay: qualities of a good friend"
+          },
+          "content": {
+            "anlatim": "# Opinion Essay Plan\n\n| Part | Content | Useful language |\n|---|---|---|\n| **Introduction** | Topic + your **thesis** (opinion) | *In my opinion, the most important quality of a friend is …* |\n| **Body 1** | Reason 1 + example | *Firstly, … because … For example, …* |\n| **Body 2** | Reason 2 + example | *Secondly / Moreover / In addition, …* |\n| **(Body 3)** | Opposing view + your answer | *Some people believe … However, …* |\n| **Conclusion** | Restate opinion, summarise | *To sum up / In conclusion, …* |\n\n# Model Paragraph\n\n*In my view, **loyalty** is the most important quality of a good friend. **Firstly**, a loyal friend keeps your secrets, so you can rely on them completely. **Secondly**, loyal friends stand by you in difficult times; **for example**, when I failed an exam, my best friend studied with me every evening. **Some people claim** that being fun is more important. **However**, fun alone doesn't make a friendship last. **To sum up**, …*\n\n# Reading Skill: Finding Irrelevant Sentences\n\nIn paragraph-completion and \"irrelevant sentence\" questions (YDT style), check that each sentence supports the **main idea**. A sentence that introduces a **new topic** or a detail about something else is irrelevant.\n\n*Paragraph topic: Why friendships fade after school.* — \"Many people move to different cities for work. **The Eiffel Tower is a popular destination.** Busy schedules also leave little time to meet.\" → The second sentence is irrelevant.\n\n# Main Conclusion in Argumentative Texts\n\nLook for signal words: *therefore, thus, consequently, as a result, so, this shows that, it is clear that* — the main conclusion often follows them.",
+            "ornekler": [
+              {
+                "soru": "Which linker introduces an opposing view? a) Moreover b) However c) For example",
+                "cozum": "**b) However** — contrast. *Moreover* adds; *for example* illustrates."
+              },
+              {
+                "soru": "Write a thesis sentence for an essay on 'Can social media friends be real friends?'",
+                "cozum": "Sample: **\"In my opinion, social media can help friendships begin, but real friendship needs face-to-face trust.\"** — clear position + preview of reasons."
+              }
+            ],
+            "ozet": [
+              "Essay: thesis → reasons + examples → counter-argument → conclusion.",
+              "Irrelevant sentence = off the main idea.",
+              "Conclusion signals: therefore, thus, as a result."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "t4",
+      "name": {
+        "tr": "Theme 4: Coming Soon",
+        "en": "Theme 4: Coming Soon"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "12/ingilizce/t4/k1",
+          "localCode": "E12.4",
+          "title": {
+            "tr": "Coming Soon: gelecek tahminleri, siber dünya ve siber suçlar",
+            "en": "Coming Soon: predictions, the cyber world and cyber crime"
+          },
+          "content": {
+            "anlatim": "# Theme 4 — Coming Soon\n\nThe theme deals with **future predictions** (technology, environment, life in the future) and the **cyber world**: its benefits, dangers and safety measures.\n\n# Cyber Crime Vocabulary\n\n| Term | Meaning |\n|---|---|\n| **phishing** | e-dolandırıcılık: sahte e-posta/siteyle şifre ve kart bilgisi çalma |\n| **identity theft** | kimlik hırsızlığı |\n| **online harassment / cyber bullying** | çevrim içi taciz / sanal zorbalık |\n| **invasion of privacy** | mahremiyetin ihlali |\n| **malware** | kötü amaçlı yazılım (virus, worm, spyware) |\n| **ransomware** | fidye yazılımı: dosyaları kilitleyip **ransom** (fidye) ister |\n| **hacker, cybercrook, phisher** | siber suçlular |\n| **scam / tricking** | dolandırıcılık / kandırma |\n| **anti-spyware, filter, backup** | önlemler: casus yazılım engelleyici, filtre, yedek |\n\n**Other useful words:** *accessible (ulaşılabilir), addiction (bağımlılık), beneficial / harmful, crucial (çok önemli), culprit (suçlu), embedded (gömülü), emission, extinct, futurist, gain access, immediately, innocuous (zararsız), insecurely, legitimate (meşru), log in, malicious (kötü niyetli), precaution / safety measure, predictable, prediction, preventable, suspicious, undermine (zayıflatmak, baltalamak), undergo (geçirmek, maruz kalmak), virtual reality, witness.*\n\n# Staying Safe Online\n\n- Use **strong, different passwords**; never share your *banking password* or *citizenship number*.\n- Don't click **suspicious** links; check the sender (anti-phishing).\n- Keep software and **anti-virus / anti-spyware** updated; make regular **backups**.\n- Think before you post: personal information stays online.\n- Report **cyber bullying**; don't respond to harassers.\n\n# Talking About the Future\n\n*I predict that … · In the next decade, … · By 2050, … · There's a good chance that … · It's likely / unlikely that … · I doubt that …*\n\n**Proverb:** *There's no rose without a thorn.* — Gülü seven dikenine katlanır (teknolojinin yararları ve zararları birlikte gelir).",
+            "ornekler": [
+              {
+                "soru": "Match: 'a copy of a file made in case the original is lost' → ?",
+                "cozum": "**backup** (yedek)."
+              },
+              {
+                "soru": "Which word means 'to weaken or lessen the effectiveness of something'? a) undergo b) undermine c) trick",
+                "cozum": "**b) undermine** — *undergo* = experience/be subjected to; *trick* = deceive."
+              }
+            ],
+            "ozet": [
+              "Cyber crimes: phishing, identity theft, harassment, invasion of privacy.",
+              "Malware / ransomware; precautions: passwords, backup, anti-spyware.",
+              "Prediction language: likely, I predict, by 2050."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "12/ingilizce/t4/k2",
+          "localCode": "G12.4",
+          "title": {
+            "tr": "Gelecek zaman: will ve be going to",
+            "en": "Future tenses: will vs be going to"
+          },
+          "content": {
+            "anlatim": "# BE GOING TO\n\n| Use | Example |\n|---|---|\n| **Plans / intentions** decided before speaking | I'**m going to** visit my grandparents this weekend. |\n| **Predictions based on present evidence** | Look at those clouds — it'**s going to** rain. / Watch out! The vase **is going to** fall. |\n\n# WILL\n\n| Use | Example |\n|---|---|\n| **Instant decisions** (at the moment of speaking) | The phone is ringing. — I'**ll** answer it. |\n| **Predictions / opinions** (often with *think, believe, hope, expect, suppose, be sure, be afraid, probably*) | I **think** robots **will** teach some lessons in the future. |\n| **Offers** | Your bag looks heavy. I'**ll** help you. |\n| **Promises** | I promise I **won't** tell anyone. |\n| **Requests** | **Will** you pass me the salt, please? |\n| **Facts about the future** | I **will be** 18 next month. |\n| **Threats / warnings** | Stop it, or I'**ll** call the teacher! |\n\n# will vs going to — Key Contrast\n\n| Situation | Correct |\n|---|---|\n| \"Why are you filling the bucket?\" | I'**m going to** wash the car. (plan already made) |\n| \"I've forgotten my wallet!\" | Don't worry, I'**ll** lend you some money. (instant offer) |\n| \"She looks very pale.\" | She'**s going to** faint. (evidence) |\n| \"Who do you think will win?\" | I think Türkiye **will** win. (opinion) |\n\n# Conditionals and time clauses\n\n*If my parents give me some money, I **will** buy a new pair of shoes.* (First conditional)\nAfter **when, as soon as, before, after, until** → present tense: *I'll call you **when** I **arrive**.*\n\n**Practice (answers in bold):**\n1. A: Have you done your homework? B: Not yet. I **am going to do** it tonight.\n2. Jim is ill. He **won't go** to school tomorrow.\n3. Hurry up! The bus is at the stop — we **are going to miss** it.\n4. I don't think she **will pass** the exam; she hasn't studied at all.",
+            "ornekler": [
+              {
+                "soru": "Choose: \"Oh no, I've left the window open!\" — \"Don't worry, I ___ close it.\" (will / am going to)",
+                "cozum": "**will** — an **instant decision / offer** made at the moment of speaking."
+              },
+              {
+                "soru": "Choose: \"We ___ spend two weeks in Bodrum; we booked the hotel last month.\"",
+                "cozum": "**are going to** — a **plan** decided before speaking."
+              }
+            ],
+            "ozet": [
+              "going to: plans, evidence-based predictions.",
+              "will: instant decisions, opinions, offers, promises, requests.",
+              "Time clauses (when, as soon as) take present tense."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "t5",
+      "name": {
+        "tr": "Theme 5: Psychology",
+        "en": "Theme 5: Psychology"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "12/ingilizce/t5/k1",
+          "localCode": "E12.5",
+          "title": {
+            "tr": "Psychology: ruh hâlini anlatma, öneri ve talimat",
+            "en": "Psychology: describing mood, suggestions and instructions"
+          },
+          "content": {
+            "anlatim": "# Theme 5 — Psychology: Functions\n\n1. **Describing mood**\n2. **Making suggestions** to change a negative mood\n3. **Following and giving instructions**\n\n| Skill | Learning outcome (E12.5) |\n|---|---|\n| Listening | List suggestions given by a psychologist/friend (L1); identify the speaker's mood and tone (L2) |\n| Pronunciation | Sentence **intonation and stress** |\n| Speaking | Role-play a counsellor and a client (S1); comment on moods from flashcards (S2); give instructions with different voice levels (S3) |\n| Reading | Read a poem aloud reflecting its tone (R1); identify specific information in a real-life text (R2) |\n| Writing | Describe a mood (yours or in a song/painting/photo) through **creative writing** (W1) |\n\n# Mood Vocabulary\n\n| Positive | Negative |\n|---|---|\n| cheerful, delighted, relaxed, calm | exhausted, stressed, anxious, nervous |\n| optimistic, content, thrilled | depressed, gloomy, frustrated, irritated |\n| energetic, confident | bored, lonely, upset, overwhelmed |\n\n*I feel **exhausted** and I can't concentrate. · She's been **in a bad mood** all day. · He's **on cloud nine** (çok mutlu). · I'm **feeling down** (moralim bozuk).*\n\n# Giving Instructions (imperatives)\n\n**Relaxation exercise:** *Sit comfortably. **Close** your eyes. **Breathe** in deeply through your nose … hold it … and **breathe out** slowly. **Don't** think about your worries. **Relax** your shoulders.*\n- Instructions use the **imperative** (V1 / Don't + V1).\n- Sequencers: *first, then, next, after that, finally.*\n- A calm instruction uses a **low, slow** voice; an urgent one is **loud and quick**.\n\n# Counsellor–Client Role-Play\n\nClient: *I've been feeling really stressed about the exams.*\nCounsellor: *I understand. **Why don't you** make a realistic study plan? **I suggest** taking short breaks every hour. **How about** going for a walk after dinner?*\nClient: *That sounds like a good idea. I'll try it.*\n\n**Responding to suggestions:** *That's a good idea. · Sounds great! · Why not? · I'd rather not, … · I'm not sure that would help.*",
+            "ornekler": [
+              {
+                "soru": "Which reply is an *instruction*? a) Why don't you rest? b) Breathe deeply and relax. c) I'd rather stay home.",
+                "cozum": "**b)** — an **imperative** (instruction). (a) is a suggestion; (c) a preference."
+              },
+              {
+                "soru": "A friend says: \"I feel so lonely since I moved here.\" Give a suggestion.",
+                "cozum": "Sample: **\"Why don't you join a club at school? You'll meet new people.\"** / **\"How about inviting your classmates to a picnic?\"**"
+              }
+            ],
+            "ozet": [
+              "Mood adjectives: exhausted, anxious, cheerful, content.",
+              "Instructions = imperative + sequencers.",
+              "Respond: That's a good idea / I'd rather not."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "12/ingilizce/t5/k2",
+          "localCode": "G12.5",
+          "title": {
+            "tr": "Öneride bulunma kalıpları (suggestions)",
+            "en": "Making suggestions"
+          },
+          "content": {
+            "anlatim": "# Suggestion Structures\n\n| Structure | Form | Example |\n|---|---|---|\n| **Let's** | Let's + V1 / Let's not + V1 | **Let's take** a break. / **Let's not study** tonight. |\n| **Shall we / I** | Shall we/I + V1? | **Shall we go** on a picnic? / **Shall I help** you? |\n| **Why don't** | Why don't you/we + V1? | **Why don't you go** to bed early? |\n| **Why doesn't** | Why doesn't he/she + V1? | Brian has a toothache. **Why doesn't he see** a dentist? |\n| **Would you like** | Would you like **to V1**? | **Would you like to go** to the cinema? |\n| **Do you fancy** | Do you fancy **V-ing**? | **Do you fancy going** swimming? |\n| **What / How about** | What about / How about **V-ing / noun**? | **How about going** for a walk? **What about** a pizza? |\n| **I suggest** | I suggest **V-ing** | **I suggest visiting** your grandparents. |\n| **I suggest (that)** | I suggest (that) + subject + **V1** (no -s!) | **I suggest (that) Ali go** abroad to learn a language. |\n| **You'd better / should** | had better / should + V1 | You'd **better** rest. You **should** talk to a counsellor. |\n| **If I were you** | If I were you, I would + V1 | **If I were you, I would** take a nap. |\n\n> **Dikkat:** *suggest* fiilinden sonra **to V1 gelmez**: ✘ *I suggest you to go* → ✔ *I suggest **you go*** / *I suggest **going***.\n> *How about / What about / Do you fancy* → **V-ing**; *Why don't you / Let's / Shall we* → **V1**.\n\n**Practice (answers in bold):**\n1. Do you fancy **going** (go) to the concert tonight?\n2. Why **don't** you join a music club?\n3. I suggest **taking** a short nap.\n4. How about **watching** a comedy to cheer up?\n5. **Shall** we meet at 7?",
+            "ornekler": [
+              {
+                "soru": "Correct the mistake: \"I suggest you to talk to your teacher.\"",
+                "cozum": "**I suggest (that) you talk** to your teacher / **I suggest talking** to your teacher. *Suggest* doesn't take *object + to V1*."
+              },
+              {
+                "soru": "Fill in: \"What about ___ (play) chess this evening?\"",
+                "cozum": "**playing** — *what/how about* is followed by **V-ing**."
+              }
+            ],
+            "ozet": [
+              "V1: Let's, Shall we, Why don't you.",
+              "V-ing: How/What about, Do you fancy, I suggest V-ing.",
+              "I suggest (that) + subject + V1 (no -s)."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "t6",
+      "name": {
+        "tr": "Theme 6: Favors",
+        "en": "Theme 6: Favors"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "12/ingilizce/t6/k1",
+          "localCode": "E12.6",
+          "title": {
+            "tr": "Favors: rica etme, kabul ve ret, yardım isteme",
+            "en": "Favors: making requests, accepting and declining"
+          },
+          "content": {
+            "anlatim": "# Theme 6 — Favors: Functions\n\n1. **Making requests**\n2. **Accepting and declining requests**\n3. **Asking for and responding to favours**\n\n| Skill | Learning outcome (E12.6) |\n|---|---|\n| Listening | Identify request phrases and high-frequency vocabulary (L1); complete a conversation about favours (L2) |\n| Pronunciation | **Yod coalescence:** *would you* /wʊdʒu/, *could you* /kʊdʒu/ |\n| Speaking | Distinguish **formal / informal** language when accepting and declining (S1); act out a dialogue (S2) |\n| Reading | Scan a text about a **charity** organisation (R1) |\n| Writing | Write an **announcement** inviting people to a charity event (W1); write a **scholarship application letter** (W2) |\n\n# Formality Scale of Requests\n\n| Informal → | Neutral | → Very formal |\n|---|---|---|\n| *Can I borrow your pen?* | *Could you open the window, please?* | *I was wondering if you could help me with my application.* |\n| *Is it OK if I sit here?* | *Do you think I could use your phone?* | *Would it be possible to change my appointment?* |\n| *Pass me the salt, will you?* | *Would you mind closing the door?* | *I'd be grateful if you could send me the form.* |\n\n# Accepting and Declining\n\n| Accepting | Declining (polite) |\n|---|---|\n| *Sure! / Of course. / No problem.* | *I'm sorry, but I can't.* |\n| *I'd be happy / glad to.* | *I'm afraid I can't — I need it myself.* |\n| *My pleasure. / Help yourself!* | *I'd love to, but …* |\n| *Go ahead.* (permission) | *I'd rather you didn't, if you don't mind.* |\n\n# Writing: Charity Announcement\n\n**Headline** (*Help Us Help Them!*) → **what** (event) → **when / where** → **why** (cause) → **how to join** (contact) → call to action (*Every donation counts!*).\n\n# Writing: Scholarship Application Letter\n\n*Dear Sir/Madam,* → reason for writing (*I am writing to apply for …*) → your achievements and needs → how the scholarship will help → *I would be grateful if you could consider my application.* → *I look forward to hearing from you. Yours faithfully,*\n\n# Vocabulary\n\n*borrow (ödünç almak) ≠ lend (ödünç vermek), charity (hayır kurumu), donate / donation, volunteer, foundation (vakıf), scholarship (burs), favour (iyilik), do sb a favour, owe sb (borçlu olmak), grateful, generous, spare (ayırmak: Can you spare a minute?).*",
+            "ornekler": [
+              {
+                "soru": "Which request is the most formal? a) Can I use your laptop? b) I was wondering if I could use your laptop. c) Give me your laptop.",
+                "cozum": "**b)** — *I was wondering if …* is very polite/formal."
+              },
+              {
+                "soru": "Respond to \"Would you mind lending me your bike?\" by accepting.",
+                "cozum": "**\"Not at all. Here you are.\"** — with *Would you mind…?*, \"No / Not at all\" means **yes, I'll do it**."
+              }
+            ],
+            "ozet": [
+              "Requests: Can I…? → Could you…? → I was wondering if…",
+              "Accept: Sure, I'd be glad to; decline: I'm afraid I can't.",
+              "borrow ≠ lend; charity announcement & scholarship letter."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "12/ingilizce/t6/k2",
+          "localCode": "G12.6",
+          "title": {
+            "tr": "Rica kalıplarının dil bilgisi: would you mind, do you mind if",
+            "en": "Grammar of requests: would you mind, do you mind if"
+          },
+          "content": {
+            "anlatim": "# Request Structures and Their Forms\n\n| Structure | Followed by | Example |\n|---|---|---|\n| Can / Could / Will / Would **you** … ? | **V1** | **Could you** possibly **help** me? |\n| Can / Could / May **I** … ? | **V1** | **May I** leave early? |\n| **Would you mind** … ? | **V-ing** | **Would you mind turning** down the music? |\n| **Would you mind if I** … ? | **V2** (past) | **Would you mind if I opened** the window? |\n| **Do you mind if I** … ? | **V1** (present) | **Do you mind if I sit** here? |\n| **Is it OK / all right if I** … ? | **V1** | **Is it all right if I park** here? |\n| **Do you think I could** … ? | **V1** | **Do you think I could borrow** your car? |\n| **Would it be possible to** … ? | **V1** | **Would it be possible to move** that table? |\n| **I was wondering if you could** … | **V1** | **I was wondering if you could** check my essay. |\n| **Do you happen to have** … ? | noun | **Do you happen to have** change for 50 liras? |\n\n# Answering \"mind\" Questions ⚠\n\n*Mind* = rahatsız olmak, sakıncası olmak. So:\n- **\"No, not at all / Of course not / Go ahead.\"** → İzin veriyorum, sorun yok ✔\n- **\"Yes, I do mind / I'd rather you didn't.\"** → Sakıncası var ✘\n\n*Jack: Does anyone mind if I open the window? — Susan: Well, **I'd rather you didn't**. I'm a bit cold.* (ret)\n\n# Pronunciation — Yod Coalescence\n\n*would you* → /wʊdʒu/, *could you* → /kʊdʒu/, *did you* → /dɪdʒu/: the /d/ + /j/ sounds merge into /dʒ/ in fast speech.",
+            "ornekler": [
+              {
+                "soru": "Fill in: \"Would you mind ___ (wait) a few minutes?\"",
+                "cozum": "**waiting** — *Would you mind* + **V-ing**."
+              },
+              {
+                "soru": "Fill in: \"Would you mind if I ___ (use) your phone?\"",
+                "cozum": "**used** — *Would you mind if I* + **V2**. (*Do you mind if I **use**…* with present.)"
+              }
+            ],
+            "ozet": [
+              "Would you mind + V-ing.",
+              "Would you mind if I + V2; Do you mind if I + V1.",
+              "'No, not at all' = permission granted."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "t7",
+      "name": {
+        "tr": "Theme 7: News Stories",
+        "en": "Theme 7: News Stories"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "12/ingilizce/t7/k1",
+          "localCode": "E12.7",
+          "title": {
+            "tr": "News Stories: geçmiş olayları anlatma ve sıralama",
+            "en": "News Stories: narrating past events and sequencing"
+          },
+          "content": {
+            "anlatim": "# Theme 7 — News Stories: Functions\n\n1. **Narrating a past event / experience**\n2. **Talking about sequential actions**\n\n| Skill | Learning outcome (E12.7) |\n|---|---|\n| Listening | List the sequence of past events (L1); complete a text using **cohesive devices** (L2) |\n| Pronunciation | **Sentence stress** (*I MISSED the LAST EPisode.*) |\n| Speaking | Narrate past events (S1); present unusual / odd news stories (S2) |\n| Reading | List vocabulary for narrating events (R1); **reorder** the events of a news story (R2) |\n| Writing | **Paraphrase** news / stories (W1); write a news story, past experience or imaginary story (W2) |\n\n# Structure of a News Story\n\n| Part | Answers | Example |\n|---|---|---|\n| **Headline** | short, present tense, no articles | *Farmer Survives Three Days in Snow* |\n| **Lead** (1st paragraph) | **Who? What? Where? When?** | *A 60-year-old farmer was rescued on Monday after …* |\n| **Body** | **Why? How?** details, quotes | *\"I never lost hope,\" he told reporters.* |\n| **Ending** | result / current situation | *He is now recovering in hospital.* |\n\n# Sequencing and Cohesive Devices\n\n*First / At first · Then / Next · After that / Afterwards · Meanwhile (bu arada) · Following this event … · Eventually / Finally / In the end · Suddenly · Fortunately / Unfortunately · As soon as · By the time*\n\n# Reading Strategy — Reordering Events\n\n1. Find the **trigger** (the first event) — often in the past perfect in the text.\n2. Look for time expressions (*a couple of days later, just as, from that moment on*).\n3. Remember: *When the ambulance arrived, he **had** already **called** for help* → calling came **first**.\n\n**Example order:** She fell in the garden → her husband found her and called the emergency services → the ambulance arrived → neighbours gathered in the square → doctors gave little hope → just as the machine was unplugged she moved her eyelids → she recovered.\n\n# Vocabulary\n\n*incident, witness, survive (hayatta kalmak), injure / injured, rescue, collapse, recover / recovery, miraculous, intensive care, emergency, struck (çarpılmak), without a scratch (burnu bile kanamadan), headline, reporter, episode (bölüm), odd / unusual.*\n*Responding to news:* *You're kidding! · That's incredible! · What a relief! · That reminds me of …*",
+            "ornekler": [
+              {
+                "soru": "Which part of a news story answers who, what, where and when?",
+                "cozum": "**The lead** (first paragraph). The body gives *why* and *how*."
+              },
+              {
+                "soru": "Order: (a) The thief ran away. (b) The police arrived. — sentence: 'By the time the police arrived, the thief had run away.'",
+                "cozum": "**a → b** — the **past perfect** (*had run away*) shows the earlier action."
+              }
+            ],
+            "ozet": [
+              "News story: headline → lead (5W) → body → ending.",
+              "Sequencers: first, then, meanwhile, eventually.",
+              "Past perfect = the earlier event."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "12/ingilizce/t7/k2",
+          "localCode": "G12.7",
+          "title": {
+            "tr": "Past simple, past continuous ve past perfect birlikte kullanımı",
+            "en": "Past simple, past continuous and past perfect together"
+          },
+          "content": {
+            "anlatim": "# Past Continuous + Past Simple\n\n- **Longer, background action** → *past continuous*; **short, interrupting action** → *past simple*.\n- **while / as** + past continuous; **when** + past simple (usually).\n\n| Pattern | Example |\n|---|---|\n| **While/As** + past cont., past simple | **While** I **was cooking**, the doorbell **rang**. |\n| Past simple **while** past cont. | Someone **knocked** **while** the teacher **was checking** our papers. |\n| **When** + past simple, past cont. | **When** I **saw** Sue, she **was waiting** for the bus. |\n| Two actions in progress at the same time | My mother **was chopping** the onions **while** I **was peeling** the potatoes. |\n| One action **after** another | **When** my father **arrived**, we **had** dinner. (önce geldi, sonra yedik) |\n\n> **Stative verbs** (know, want, love, believe, belong, own) are **not** used in the continuous: ✘ *They were knowing* → ✔ *They **knew** each other well.*\n\n# Past Perfect + Past Simple\n\n**Past perfect (had + V3)** = the **earlier** of two past actions.\n\n| Conjunction | Pattern | Example |\n|---|---|---|\n| **when** | past simple, **past perfect** | **When** our guests **came**, my mother **had** already **laid** the table. |\n| **because** | past simple, because **past perfect** | I went to bed early **because** I **had worked** all day. |\n| **after** | **after** + past perfect, past simple | **After** she **had had** breakfast, she **left** for school. |\n| **before** | **before** + past simple, past perfect | **Before** the police **arrived**, the thief **had run** away. |\n| **as soon as** | as soon as + past perfect, past simple | **As soon as** he **had opened** the door, he **ran** to the kitchen. |\n| **by the time** | by the time + past simple, **past perfect** | **By the time** the firefighters **arrived**, the building **had burnt** down. |\n\n**Compare:** *When I arrived, the film **started**.* (geldim, sonra başladı) vs. *When I arrived, the film **had started**.* (ben gelmeden başlamıştı).\n\n**Practice (answers in bold):**\n1. While I **was working** (work), Ethan **came** (come).\n2. When the electricity **went off** (go off), I **was reading** (read).\n3. By the time she **turned** twenty, she **had visited** most European capitals.\n4. After Martin **had taken off** his jacket, he **phoned** his friend.",
+            "ornekler": [
+              {
+                "soru": "Fill in: \"While they ___ (walk) by the lake, they ___ (see) a swan.\"",
+                "cozum": "**were walking / saw** — background action (past continuous) interrupted by a short action (past simple)."
+              },
+              {
+                "soru": "Fill in: \"When she arrived, the match ___ (already / start).\"",
+                "cozum": "**had already started** — the match began **before** she arrived (past perfect)."
+              }
+            ],
+            "ozet": [
+              "While/as + past continuous; short action = past simple.",
+              "Past perfect = earlier action (after, before, by the time).",
+              "No continuous with stative verbs."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "t8",
+      "name": {
+        "tr": "Theme 8: Alternative Energy",
+        "en": "Theme 8: Alternative Energy"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "12/ingilizce/t8/k1",
+          "localCode": "E12.8",
+          "title": {
+            "tr": "Alternative Energy: sorunları anlatma, şikâyet ve çözüm önerisi",
+            "en": "Alternative Energy: describing problems, complaining, offering solutions"
+          },
+          "content": {
+            "anlatim": "# Theme 8 — Alternative Energy: Functions\n\n1. **Describing problems**\n2. **Making complaints**\n3. **Offering solutions**\n\n| Skill | Learning outcome (E12.8) |\n|---|---|\n| Listening | Note down solutions to excessive energy consumption (L1) |\n| Pronunciation | Use **intonation** appropriately |\n| Speaking | Make complaints and offer solutions to environmental/energy problems (S1); take part in an informal **debate** on alternative energy (S2) |\n| Reading | **Summarise** a text about alternative energy (R1); find solutions to environmental problems in a text (R2) |\n| Writing | Write a **letter / e-mail of complaint** to a local authority suggesting solutions (W1); write opinions on using alternative energy (W2) |\n\n# Energy Sources\n\n| Renewable (yenilenebilir) | Non-renewable |\n|---|---|\n| **solar** (güneş), **wind** (rüzgâr), **hydroelectric** (dam = baraj), **geothermal** (jeotermal), **biomass / biofuel**, **wave & tidal** (dalga, gelgit) | coal, oil, natural gas (fossil fuels), nuclear (uranium) |\n\n**Problems:** *global warming, emissions, air/water pollution, deforestation (ormansızlaşma), erosion, overpopulation, waste disposal (atık bertarafı), excessive consumption, energy leakage (enerji kaçağı), pesticides.*\n**Solutions:** *conservation (koruma), recycling, insulation (yalıtım), switching to renewables, reducing consumption, raising awareness (farkındalık), banning, curbing (kontrol altına almak).*\n\n# Useful Language\n\n| Describing / complaining | Offering solutions |\n|---|---|\n| *Sorry to bother you, but there's a problem that requires an urgent solution.* | *The solution to this problem is …* |\n| *I'm sorry to have to say this, but …* | *In order to solve this problem, we must first …* |\n| *There seems to be a mistake on my bill.* | *I think we should …* / *We'd like you to …* |\n| *I think you may have forgotten to …* | *Another way of looking at this problem is …* |\n| *This is unacceptable / It's unfair that …* | *Don't get me wrong, but I think we should …* |\n\n# Vocabulary\n\n| Word | Meaning | Word | Meaning |\n|---|---|---|---|\n| waste of energy | enerji israfı | affordable | uygun fiyatlı |\n| drain | tüketmek, sömürmek | renewable | yenilenebilir |\n| trap | tutmak, hapsetmek | reside | ikamet etmek |\n| switch | değiştirmek, geçmek | deal with | üstesinden gelmek |\n| contribution | katkı | inhale | solumak |\n| prompt | acil, hızlı | vital | hayati |\n| average | ortalama | awareness | farkındalık |\n| dedicate | adamak | futile | boş, faydasız |\n| refund | para iadesi | complaint | şikâyet |\n| intermittent | kesintili | accumulate | birikmek |",
+            "ornekler": [
+              {
+                "soru": "Which is a polite way to start a complaint? a) You broke my phone! b) I'm sorry to bother you, but I think there's a problem with my phone.",
+                "cozum": "**b)** — polite, **indirect** language is more effective."
+              },
+              {
+                "soru": "Name two renewable energy sources that are common in Türkiye.",
+                "cozum": "**Solar** (especially the south and southeast) and **wind** (Aegean and Marmara coasts); also **hydroelectric** and **geothermal** (Denizli, Aydın)."
+              }
+            ],
+            "ozet": [
+              "Renewable: solar, wind, hydro, geothermal, biomass.",
+              "Complaint language is polite and indirect.",
+              "Solutions: The solution is…, We must first…, I think we should…"
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "12/ingilizce/t8/k2",
+          "localCode": "G12.8",
+          "title": {
+            "tr": "Etkili şikâyet: problem, duygu, eylem talebi",
+            "en": "How to complain effectively"
+          },
+          "content": {
+            "anlatim": "# The Three Steps of an Effective Complaint\n\n| Step | Purpose | Language |\n|---|---|---|\n| **1. Explain the problem** (politely, indirectly) | Describe what is wrong without attacking | *I think you may have …* · *I'm sorry to have to say this, but …* · *I just noticed …* · *I'm sorry to bother you, but …* · *There seems to be a mistake …* |\n| **2. State your feelings** (only if needed — serious or continuing problems) | Show how serious it is | *This is unacceptable.* · *It's very disappointing that …* · *This has been going on for three months.* |\n| **3. Ask for action** | Request a solution | *Could I speak to the manager?* · *Would it be possible to reimburse me / give me a refund?* · *Is there any chance you could …?* · *I'd like it replaced.* |\n\n> Direct: *\"You didn't bring my drink.\"* ✘ (sounds critical)\n> Indirect: *\"I think you may have forgotten my drink.\"* ✔\n\n# Model Dialogue\n\n**Customer:** *Excuse me, I'm sorry to bother you, but I just noticed a hole in the shirt you cleaned.* (step 1)\n**Assistant:** *Oh, I'm terribly sorry about that.*\n**Customer:** *It's brand new and I've only worn it once, so I'm quite upset.* (step 2)\n**Customer:** *Is there any chance you could replace it or refund me?* (step 3)\n**Assistant:** *Of course. **Allow me** to check with the manager. **We can offer** you a full refund.*\n\n# Typical Complaints and Responses\n\n| Complaint | Solution offered |\n|---|---|\n| The hamburger is cold. | *I'll bring you a hot one right away.* |\n| You overcharged me for this bag. | *I'm sorry — let me give you a refund.* |\n| There's no hot water in our room. | *We'll move you to another room.* |\n| The Internet isn't working. | *We'll credit you for the lost hours.* |\n\n# Letter of Complaint to a Local Authority\n\n*Dear Sir/Madam, I am writing to complain about the waste that the factory near our neighbourhood dumps into the stream. **This has caused** a terrible smell and dead fish. **It is unacceptable that** no action has been taken. **I would suggest** regular inspections and fines. **I look forward to** your prompt reply. Yours faithfully, …*",
+            "ornekler": [
+              {
+                "soru": "Put in order (1–3): (a) Could I have a refund? (b) I'm sorry to bother you, but this kettle doesn't work. (c) I'm really disappointed because it's brand new.",
+                "cozum": "**b → c → a** — explain the problem, state feelings, ask for action."
+              },
+              {
+                "soru": "Make this complaint indirect: \"You charged me twice!\"",
+                "cozum": "**\"I think there may be a mistake on my bill — I seem to have been charged twice.\"**"
+              }
+            ],
+            "ozet": [
+              "Complain in 3 steps: problem → feelings → action.",
+              "Use indirect language: I think you may have…",
+              "Ask: Would it be possible to…? Is there any chance…?"
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "t9",
+      "name": {
+        "tr": "Theme 9: Technology",
+        "en": "Theme 9: Technology"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "12/ingilizce/t9/k1",
+          "localCode": "E12.9",
+          "title": {
+            "tr": "Technology: yapılması gerekenler, röportaj ve teknoloji terimleri",
+            "en": "Technology: things to be done, interviews and tech vocabulary"
+          },
+          "content": {
+            "anlatim": "# Theme 9 — Technology: Functions\n\n1. **Talking about things needed to be done**\n2. **Asking and answering questions in interviews**\n\n| Skill | Learning outcome (E12.9) |\n|---|---|\n| Listening | List the things to be done (L1); find the main idea of a video on technology (L2) |\n| Pronunciation | **Word stress** (*TECHnology → techNOlogy, COMputer, deVElop*) |\n| Speaking | Express surprise, happiness, interest, indifference about devices (S1); interview a friend on technology and social life (S2) |\n| Reading | Identify web-page lexis and jargon (R1); categorise information in websites, brochures, magazines (R2) |\n| Writing | Write a note asking someone to **have something done** (W1); write a **for and against essay** (W2); describe a hi-tech product with linking words (W3) |\n\n# Web-Page Vocabulary\n\n| Term | Meaning |\n|---|---|\n| browser | tarayıcı |\n| search box | arama kutusu |\n| navigation bar | gezinme çubuğu |\n| breadcrumb | sayfa işaretleri yolu (Ana sayfa > Ürünler > …) |\n| footer / header | alt bilgi / üst bilgi |\n| advertisement banner | reklam afişi |\n| social sharing links | sosyal paylaşım bağlantıları |\n\n# Computer Parts\n\n| Input | Output | Processing | Storage |\n|---|---|---|---|\n| keyboard, mouse, microphone, scanner, motion sensor | monitor, speakers, printer, projector | **CPU**, control unit, logic unit, sound/graphics card, RAM | hard disk, SSD, cache, ROM, USB drive |\n\n- **CPU:** interprets and executes most commands. **Control unit:** tells the logic unit, memory and I/O devices how to respond. **Logic unit (ALU):** arithmetic and bitwise operations. **Cache:** a small high-speed memory area.\n\n# For and Against Essay\n\n**Introduction** (topic, neutral) → **Arguments for** (*One advantage is …, Moreover …*) → **Arguments against** (*On the other hand, … A major drawback is …*) → **Conclusion** (balanced opinion: *All things considered, …*).\n\n# Other Vocabulary\n\n*accessible, out of order (bozuk), malfunction (arıza), repair / replace, maintenance (bakım), portable (taşınabilir), cordless, infrared, emit (yaymak), storage, overuse (aşırı kullanım), expenditure (gider), warranty (garanti), skim (göz gezdirmek), exaggerate (abartmak), contrast, delivery (teslimat), faucet (musluk), drawer (çekmece).*\n\n**Reacting:** *Wow, that's amazing! (surprise) · I'm really into it. (interest) · I'm not bothered either way. (indifference)*",
+            "ornekler": [
+              {
+                "soru": "Classify: CPU, printer, keyboard, hard disk.",
+                "cozum": "**CPU** → processing; **printer** → output; **keyboard** → input; **hard disk** → storage."
+              },
+              {
+                "soru": "Which part of a web page shows 'Home > Phones > Accessories'?",
+                "cozum": "The **breadcrumb** (sayfa işaretleri yolu)."
+              }
+            ],
+            "ozet": [
+              "Input / output / processing / storage devices.",
+              "Web lexis: browser, navigation bar, breadcrumb, footer.",
+              "For & against essay: both sides + balanced conclusion."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "12/ingilizce/t9/k2",
+          "localCode": "G12.9",
+          "title": {
+            "tr": "Ettirgen yapı (causative): have/get sth done, make/have/get sb do",
+            "en": "Causatives: have/get something done; make/have/get someone do"
+          },
+          "content": {
+            "anlatim": "# What Is a Causative?\n\nBir işi **kendimiz yapmadığımızda, başkasına yaptırdığımızda** kullanılır (ettirgen çatı): *saçımı kestirdim, arabamı tamir ettirdim.*\n\n# Causative 1 — The doer is not important\n\n| Form | Example |\n|---|---|\n| **have + object + V3** | Mary **had her hair cut**. |\n| **get + object + V3** (more informal) | We're **getting our house painted**. |\n\nAll tenses are possible by changing *have/get*:\n*I **have** my car serviced every year. · I **am having** my car serviced. · I **had** it serviced last week. · I **will have** it serviced. · I need to **have** it serviced. · You should **have** your eyes tested.*\n\nAlso for unpleasant events: *He **had his phone stolen** on the bus.*\n\n# Causative 2 — The doer is mentioned\n\n| Form | Meaning | Example |\n|---|---|---|\n| **have + person + V1** | arrange / ask | I **had the dentist clean** my teeth. |\n| **get + person + to V1** | persuade | I **got the waiter to bring** some water. |\n| **make + person + V1** | force (zorla) | She **made her kids tidy** their rooms. Don't **make** your sister **cry**! |\n| **let + person + V1** | allow (izin) | The teacher doesn't **let** us **use** phones in class. |\n\n> **get** sb **to V1** — diğerleri yalın fiil (**V1**). Passive *make*: *We **were made to wait** for an hour.*\n\n**Practice (answers in bold):**\n1. Your coat is dirty. You must **have it dry-cleaned**.\n2. This jacket is too long. You should **have it shortened**.\n3. The roof is leaking. We must **get it repaired**.\n4. The mechanic fixed my brakes. → I **had the mechanic fix** my brakes.\n5. The shop assistant gave me a discount. → I **got the shop assistant to give** me a discount.\n6. I'm going to order food online and **have it delivered** to my house.",
+            "ornekler": [
+              {
+                "soru": "Rewrite as a causative: \"A designer in Italy is making Linda's wedding dress.\"",
+                "cozum": "**Linda is having her wedding dress made** by a designer in Italy."
+              },
+              {
+                "soru": "Choose: \"My mum made me ___ (clean / to clean / cleaned) my room.\"",
+                "cozum": "**clean** — *make + person + V1* (bare infinitive)."
+              }
+            ],
+            "ozet": [
+              "have/get + object + V3 (doer not important).",
+              "have sb V1 · get sb to V1 · make sb V1 · let sb V1.",
+              "Tense is carried by have/get."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u1",
+      "name": {
+        "tr": "Dil Bilgisi Tekrarı 1: Tenses Review",
+        "en": "Grammar Review 1: Tenses Review"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "12/ingilizce/u1/k1",
+          "localCode": "G1.1",
+          "title": {
+            "tr": "Present ve past zamanlar (tüm görünümler)",
+            "en": "Present and past tenses (all aspects)"
+          },
+          "content": {
+            "anlatim": "# Present Tenses\n\n| Tense | Form | Use | Example |\n|---|---|---|---|\n| **Simple Present** | V1 / V1-s | Habits, facts, timetables | Water **boils** at 100 °C. |\n| **Present Continuous** | am/is/are + V-ing | Now, temporary, fixed future plans | I **am meeting** Ayşe tomorrow. |\n| **Present Perfect** | have/has + V3 | Experience, result now, unfinished time | She **has** already **finished** her project. |\n| **Present Perfect Continuous** | have/has been + V-ing | Duration up to now | They **have been waiting** for two hours. |\n\n# Past Tenses\n\n| Tense | Form | Use | Example |\n|---|---|---|---|\n| **Simple Past** | V2 | Finished action at a definite time | We **visited** Efes last summer. |\n| **Past Continuous** | was/were + V-ing | In progress at a past moment; background | It **was raining** when I **left**. |\n| **Past Perfect** | had + V3 | Earlier of two past actions | The film **had started** before we **arrived**. |\n| **Past Perfect Continuous** | had been + V-ing | Duration before a past point | He was tired because he **had been running**. |\n| **used to / would** | used to + V1 | Past habits/states (would: only actions) | I **used to** live in Konya. |\n\n**Signal words:** *already, yet, just, ever, never, since, for* (Present Perfect) · *ago, last, in 2019, yesterday* (Simple Past) · *by the time, before, after, when* (Past Perfect).",
+            "ornekler": [
+              {
+                "soru": "Choose: \"I (have lived / lived) in İzmir since 2018.\"",
+                "cozum": "**have lived** — *since* shows an action continuing up to now (Present Perfect)."
+              },
+              {
+                "soru": "Fill in: \"When I got to the station, the train ___ (already / leave).\"",
+                "cozum": "**had already left** — the earlier past action (Past Perfect)."
+              }
+            ],
+            "ozet": [
+              "Present Perfect: past action, present relevance; since/for.",
+              "Past Perfect: the earlier of two past actions.",
+              "used to: past habits no longer true."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "12/ingilizce/u1/k2",
+          "localCode": "G1.2",
+          "title": {
+            "tr": "Future forms",
+            "en": "Future forms"
+          },
+          "content": {
+            "anlatim": "# Future Forms\n\n| Form | Use | Example |\n|---|---|---|\n| **will + V1** | Predictions (opinion), instant decisions, promises, offers | I think robots **will** do most jobs. / I'**ll** help you. |\n| **be going to + V1** | Plans/intentions; predictions with present evidence | I'**m going to** study medicine. / Look at the sky — it'**s going to** rain. |\n| **Present Continuous** | Fixed arrangements | We'**re flying** to Baku on Monday. |\n| **Simple Present** | Timetables | The exam **starts** at 9:30. |\n| **Future Continuous** (will be + V-ing) | In progress at a future time | This time tomorrow I'**ll be taking** the exam. |\n| **Future Perfect** (will have + V3) | Completed before a future time | By 2030, scientists **will have found** a cure. |\n\n**Time clauses:** After *when, as soon as, before, after, until, by the time* we use a **present** tense, not *will*:\n*I'll call you **when** I **arrive**.* (✘ when I will arrive)",
+            "ornekler": [
+              {
+                "soru": "Complete: \"By the end of June, we ___ (finish) all the units.\"",
+                "cozum": "**will have finished** — completed before a future time (Future Perfect)."
+              }
+            ],
+            "ozet": [
+              "will: prediction, decision, promise.",
+              "going to: plan, evidence-based prediction.",
+              "Future Perfect: will have + V3 (by…)."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "name": {
+        "tr": "Dil Bilgisi Tekrarı 2: Modals",
+        "en": "Grammar Review 2: Modals"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "12/ingilizce/u2/k1",
+          "localCode": "G2.1",
+          "title": {
+            "tr": "Modals and semi-modals: obligation, ability, possibility, advice, deduction",
+            "en": "Modals and semi-modals"
+          },
+          "content": {
+            "anlatim": "# Functions of Modals\n\n| Function | Present / future | Past |\n|---|---|---|\n| **Obligation** | must, have to, need to | had to |\n| **No obligation** | don't have to, needn't | didn't have to / **needn't have + V3** (did it unnecessarily) |\n| **Prohibition** | mustn't, can't | couldn't, wasn't allowed to |\n| **Ability** | can, be able to | could, was able to (a specific success) |\n| **Advice** | should, ought to, had better | **should have + V3** (criticism / regret) |\n| **Possibility** | may, might, could | **may/might/could have + V3** |\n| **Certainty (deduction)** | **must** (sure: yes), **can't** (sure: no) | **must have + V3**, **can't/couldn't have + V3** |\n| **Permission / request** | can, could, may | — |\n\n# Perfect Modals (past deductions and regrets)\n\n- *The ground is wet. It **must have rained** last night.* (strong positive deduction)\n- *She **can't have seen** us; she was in Ankara.* (impossible)\n- *You **should have studied** harder.* (criticism — you didn't)\n- *I **needn't have taken** an umbrella; it didn't rain.* (did it, but unnecessary)\n- *He **might have missed** the bus.* (possibility)",
+            "ornekler": [
+              {
+                "soru": "Rewrite with a perfect modal: \"I'm sure he forgot the meeting.\"",
+                "cozum": "He **must have forgotten** the meeting."
+              },
+              {
+                "soru": "What's the difference? \"You didn't need to buy bread.\" vs \"You needn't have bought bread.\"",
+                "cozum": "**didn't need to**: it wasn't necessary (we don't know if you bought it). **needn't have bought**: you **did buy** it, but it was unnecessary."
+              }
+            ],
+            "ozet": [
+              "must/can't for present deduction; must have/can't have for past.",
+              "should have + V3 = criticism of the past.",
+              "needn't have + V3 = did something unnecessary."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u3",
+      "name": {
+        "tr": "Dil Bilgisi Tekrarı 3: Conditionals and Wishes",
+        "en": "Grammar Review 3: Conditionals and Wishes"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "12/ingilizce/u3/k1",
+          "localCode": "G3.1",
+          "title": {
+            "tr": "Zero, first, second, third and mixed conditionals; wish / if only",
+            "en": "Conditionals; wish clauses"
+          },
+          "content": {
+            "anlatim": "# Conditionals\n\n| Type | If-clause | Main clause | Use | Example |\n|---|---|---|---|---|\n| **Zero** | Present | Present | General truths | If you **heat** ice, it **melts**. |\n| **First** | Present | will + V1 | Real/likely future | If it **rains**, we **will stay** in. |\n| **Second** | Past (were) | would + V1 | Unreal present / unlikely future | If I **were** you, I **would apologise**. |\n| **Third** | Past Perfect | would have + V3 | Unreal past (regret) | If she **had studied**, she **would have passed**. |\n| **Mixed** | Past Perfect | would + V1 | Past cause → present result | If I **had taken** the job, I **would be** rich now. |\n\n**Alternatives to *if*:** *unless* (= if not), *provided/providing that, as long as, in case, otherwise, suppose*.\n**Inversion (formal):** *Had I known* = If I had known · *Were I you* = If I were you · *Should you need help* = If you need help.\n\n# Wish / If only\n\n| Wish about | Form | Example |\n|---|---|---|\n| **Present** (unreal) | wish + **Past Simple** | I **wish** I **had** more free time. |\n| **Past** (regret) | wish + **Past Perfect** | I **wish** I **had listened** to my teacher. |\n| **Annoying behaviour / future change** | wish + **would** | I **wish** you **would stop** talking. |\n| **Ability** | wish + **could** | I **wish** I **could** speak Japanese. |\n\n*If only* is a stronger form of *wish*: *If only I hadn't lost my phone!*",
+            "ornekler": [
+              {
+                "soru": "Combine using a third conditional: \"He didn't set an alarm. He missed the exam.\"",
+                "cozum": "If he **had set** an alarm, he **wouldn't have missed** the exam."
+              },
+              {
+                "soru": "Express regret: \"I didn't save any money last year.\"",
+                "cozum": "I **wish I had saved** some money last year."
+              }
+            ],
+            "ozet": [
+              "0: facts; 1: real future; 2: unreal present; 3: unreal past.",
+              "Mixed: past condition → present result.",
+              "wish + past (present), + past perfect (past), + would (annoyance)."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u4",
+      "name": {
+        "tr": "Dil Bilgisi Tekrarı 4: Relative Clauses, Passive and Causative",
+        "en": "Grammar Review 4: Relative Clauses, Passive and Causative"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "12/ingilizce/u4/k1",
+          "localCode": "G4.1",
+          "title": {
+            "tr": "Defining and non-defining relative clauses",
+            "en": "Defining and non-defining relative clauses"
+          },
+          "content": {
+            "anlatim": "# Relative Pronouns\n\n| Pronoun | For | Example |\n|---|---|---|\n| **who** | people (subject/object) | The scientist **who** discovered penicillin was Fleming. |\n| **which** | things, animals | The book **which** I borrowed is great. |\n| **that** | people/things (**defining only**) | The phone **that** I bought is broken. |\n| **whose** | possession | The girl **whose** bike was stolen called the police. |\n| **whom** | people (object, formal) | The man **to whom** I spoke was polite. |\n| **where / when / why** | place / time / reason | The town **where** I was born… |\n\n# Defining vs Non-defining\n\n| Defining | Non-defining |\n|---|---|\n| Essential information | **Extra** information |\n| **No commas** | **Commas** |\n| *that* can be used; object pronoun can be omitted | **No *that***; pronoun **cannot** be omitted |\n| *Students **who** study regularly succeed.* | *My brother, **who** lives in Bursa, is a doctor.* |\n\n**Reduced relative clauses:** *The man **sitting** next to me* (= who was sitting) · *The bridge **built** in 1973* (= which was built).\n**Which** referring to a whole clause: *He passed the exam, **which** surprised everyone.*",
+            "ornekler": [
+              {
+                "soru": "Combine with a non-defining clause: \"Göbeklitepe is about 12,000 years old. It is in Şanlıurfa.\"",
+                "cozum": "Göbeklitepe, **which** is in Şanlıurfa, is about 12,000 years old."
+              }
+            ],
+            "ozet": [
+              "who/which/that/whose/where.",
+              "Non-defining: commas, no *that*.",
+              "Reduced clauses: V-ing (active), V3 (passive)."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "12/ingilizce/u4/k2",
+          "localCode": "G4.2",
+          "title": {
+            "tr": "Passive voice (all tenses) and causatives",
+            "en": "Passive voice and causatives"
+          },
+          "content": {
+            "anlatim": "# Passive Voice: be + V3\n\n| Tense | Active | Passive |\n|---|---|---|\n| Simple Present | They **build** houses. | Houses **are built**. |\n| Present Continuous | They **are building** a bridge. | A bridge **is being built**. |\n| Present Perfect | They **have built** a school. | A school **has been built**. |\n| Simple Past | They **built** the mosque in 1575. | The mosque **was built** in 1575. |\n| Past Continuous | They **were repairing** the road. | The road **was being repaired**. |\n| Past Perfect | They **had sold** the tickets. | The tickets **had been sold**. |\n| Future | They **will open** the museum. | The museum **will be opened**. |\n| Modals | You **must wear** a mask. | A mask **must be worn**. |\n\n- Use passive when the **action** is more important than the doer, or the doer is unknown: *My wallet **was stolen**.*\n- Agent with **by**: *Hamlet **was written by** Shakespeare.*\n- **Impersonal passive:** *It **is said** that… / He **is believed to** be…*\n\n# Causatives (have / get something done)\n\n| Structure | Meaning | Example |\n|---|---|---|\n| **have + object + V3** | Someone does it for you | I **had my hair cut**. |\n| **get + object + V3** | Same (more informal) | She **got her car repaired**. |\n| **have + person + V1** | Ask someone to do | I **had the mechanic check** the brakes. |\n| **get + person + to V1** | Persuade someone | I **got my brother to help** me. |\n| **make + person + V1** | Force | The teacher **made us rewrite** the essay. |\n| **let + person + V1** | Allow | My parents **let me go** to the concert. |",
+            "ornekler": [
+              {
+                "soru": "Make passive: \"Engineers are testing the new metro line.\"",
+                "cozum": "The new metro line **is being tested** (by engineers)."
+              },
+              {
+                "soru": "Causative: \"A technician repaired my laptop.\" (I…)",
+                "cozum": "I **had/got my laptop repaired** (by a technician)."
+              }
+            ],
+            "ozet": [
+              "Passive: be + V3 in every tense.",
+              "It is said that… / He is believed to…",
+              "Causative: have/get something done; make/let + V1."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u5",
+      "name": {
+        "tr": "Dil Bilgisi Tekrarı 5: Reported Speech, Gerunds & Infinitives, Inversion",
+        "en": "Grammar Review 5: Reported Speech, Gerunds & Infinitives, Inversion"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "12/ingilizce/u5/k1",
+          "localCode": "G5.1",
+          "title": {
+            "tr": "Reported speech: statements, questions, commands",
+            "en": "Reported speech"
+          },
+          "content": {
+            "anlatim": "# Tense Backshift (when the reporting verb is past)\n\n| Direct | Reported |\n|---|---|\n| Present Simple | Past Simple |\n| Present Continuous | Past Continuous |\n| Present Perfect / Past Simple | **Past Perfect** |\n| will | would |\n| can / may / must | could / might / had to |\n\n**Time & place changes:** now → then · today → that day · tomorrow → the next day · yesterday → the day before · here → there · this → that · ago → before.\n\n# Statements\n\n*\"I **am** tired,\" she said.* → She said (that) she **was** tired.\n\n# Questions (no question word order!)\n\n- Yes/No: *\"Do you like jazz?\"* → He asked **if/whether** I **liked** jazz.\n- Wh-: *\"Where **do you live**?\"* → She asked me where **I lived**.\n\n# Commands & Requests\n\n*\"Close the door.\"* → He **told me to close** the door. · *\"Don't be late.\"* → She **told us not to be** late.\n\n# Reporting Verbs\n\n*advise, suggest, warn, promise, refuse, admit, deny, apologise, offer, remind, insist*\n- *suggest + V-ing / that…should*: He **suggested going** to the museum.\n- *deny + V-ing*: She **denied breaking** the vase.\n- *promise / refuse / offer + to V1*: He **promised to call**.",
+            "ornekler": [
+              {
+                "soru": "Report: \"Have you finished your homework?\" the teacher asked me.",
+                "cozum": "The teacher asked me **if/whether I had finished** my homework."
+              },
+              {
+                "soru": "Report: \"Don't touch the painting,\" the guide said to us.",
+                "cozum": "The guide **told us not to touch** the painting."
+              }
+            ],
+            "ozet": [
+              "Backshift tenses; change time words.",
+              "Questions: if/whether, statement word order.",
+              "Commands: tell/ask + (not) to V1; reporting verbs."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "12/ingilizce/u5/k2",
+          "localCode": "G5.2",
+          "title": {
+            "tr": "Gerunds and infinitives; inversion and emphasis",
+            "en": "Gerunds, infinitives and inversion"
+          },
+          "content": {
+            "anlatim": "# Gerund (V-ing)\n\n- As **subject**: ***Swimming** is good for your health.*\n- After **prepositions**: *She is good **at drawing**. I'm interested **in learning** Korean.*\n- After verbs: *enjoy, avoid, mind, finish, keep, consider, suggest, deny, admit, miss, practise, can't stand, look forward to, be used to*.\n\n# Infinitive (to + V1)\n\n- **Purpose**: *I went to the library **to study**.*\n- After verbs: *want, decide, hope, plan, refuse, promise, agree, manage, afford, learn, offer, seem, would like*.\n- After adjectives: *It's difficult **to understand**.* · *too/enough*: *He's too young **to drive**.*\n\n# Bare Infinitive (V1)\n\nAfter modals, *make, let*, *had better, would rather*: *You'd better **leave** now.*\n\n# Meaning Changes\n\n| Verb | + V-ing | + to V1 |\n|---|---|---|\n| **remember / forget** | memory of a past action | not forget a duty |\n| **stop** | quit the action | stop in order to do something else |\n| **try** | experiment | make an effort |\n| **regret** | sorry about the past | sorry to announce |\n\n*I **stopped smoking**.* (quit) vs *I **stopped to smoke**.* (paused in order to smoke)\n\n# Inversion for Emphasis (formal)\n\nAfter negative/limiting adverbials, use **question word order**:\n- ***Never have I seen** such a beautiful view.*\n- ***Not only did** she win, **but** she **also** broke the record.*\n- ***Hardly had** I arrived **when** it started raining.* / ***No sooner had** … **than** …*\n- ***Only after** the exam **did** I relax.* · ***Little did** he know…*",
+            "ornekler": [
+              {
+                "soru": "Choose: \"Please remember (to lock / locking) the door when you leave.\"",
+                "cozum": "**to lock** — a duty to do in the future."
+              },
+              {
+                "soru": "Rewrite with inversion: \"I had never heard such a strange story.\"",
+                "cozum": "**Never had I heard** such a strange story."
+              }
+            ],
+            "ozet": [
+              "Gerund after prepositions and enjoy/avoid/mind…",
+              "Infinitive for purpose and after want/decide/hope…",
+              "remember/stop/try change meaning; inversion after negative adverbs."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u6",
+      "name": {
+        "tr": "Dil Bilgisi Tekrarı 6: Skills Strategies",
+        "en": "Grammar Review 6: Skills Strategies"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "12/ingilizce/u6/k1",
+          "localCode": "S6.1",
+          "title": {
+            "tr": "Reading, listening, writing and speaking strategies",
+            "en": "Reading, listening, writing and speaking strategies"
+          },
+          "content": {
+            "anlatim": "# Reading\n\n| Strategy | How |\n|---|---|\n| **Skimming** | Read quickly for the **main idea** (title, first/last sentences of paragraphs) |\n| **Scanning** | Search for **specific information** (names, numbers, dates) |\n| **Inference** | Understand what is **implied**, not stated |\n| **Main idea vs supporting details** | Topic sentence → examples, reasons, facts |\n| **Guessing meaning from context** | Use surrounding words, prefixes/suffixes |\n\n# Listening\n\n**Gist** (general idea) → **specific information** → **note-taking** (key words, abbreviations, symbols). Predict content from the task before listening.\n\n# Writing\n\n| Text type | Key features |\n|---|---|\n| **Opinion paragraph / essay** | Clear thesis → reasons with examples → conclusion. Linkers: *firstly, moreover, however, on the other hand, in conclusion* |\n| **Formal letter / e-mail** | *Dear Sir/Madam* … *Yours faithfully*; formal language, no contractions |\n| **Informal letter / e-mail** | *Hi …* … *Best wishes*; contractions, friendly tone |\n| **Report** | Headings, factual, passive voice, recommendations |\n| **Story** | Past tenses, time linkers (*suddenly, eventually*), descriptive adjectives |\n\n**Process:** plan → draft → revise (content, organisation) → edit (grammar, spelling).\n\n# Speaking\n\n- **Discussion & debate:** *In my opinion…, I see your point, but…, I couldn't agree more, That's not entirely true…*\n- **Presentation:** introduction (*Today I'm going to talk about…*), signposting (*Firstly…, Moving on to…*), conclusion (*To sum up…*).\n- **Role-play:** functions — asking for/giving advice, complaining, making suggestions, agreeing/disagreeing.\n\n# Study Tips\n\n1. Keep a **vocabulary notebook** (word families, collocations, example sentences).\n2. Practise each grammar box with **your own sentences**.\n3. Read with a strategy; write–check–rewrite.\n4. Prepare speaking notes; record yourself.\n5. Reinforce with workbook exercises and practice tests.",
+            "ornekler": [
+              {
+                "soru": "Which reading strategy would you use to find the year a museum opened in a long article?",
+                "cozum": "**Scanning** — searching quickly for specific information (a date) without reading every sentence."
+              }
+            ],
+            "ozet": [
+              "Skimming = main idea; scanning = specific info; inference = implied meaning.",
+              "Essay: thesis → reasons → conclusion with linkers.",
+              "Formal vs informal letters; presentation signposting."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    }
+  ]
+}

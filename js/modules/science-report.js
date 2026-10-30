@@ -284,6 +284,5 @@
     });
     return () => life.close();
   }
-  App.scienceReport = { parsePacket };
-  App.router.register("deney-raporu", render);
+  App.scienceReport = { parsePacket, render };
 })();

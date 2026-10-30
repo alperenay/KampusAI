@@ -260,12 +260,13 @@
     page(
       view,
       "",
-      '<div class="discovery-grid">' +
+      '<a class="card discovery-tile science-lab-shortcut" href="#/bilim-lab"><h2>Bilim ve Sensör Laboratuvarı</h2><p>Fizik ölçümleri, sensörler ve sismograf artık tek laboratuvarda.</p></a><div class="discovery-grid">' +
         App.data.discovery.modules
+          .filter(m => !["telefon-fizik", "sismograf"].includes(m[0]))
           .map(
             (m) =>
               '<a class="card discovery-tile" href="#/' +
-              m[0] +
+              (App.documents ? App.documents.pathFor(m[0]) : m[0]) +
               '"><span data-icon="' +
               m[3] +
               '"></span><h2>' +

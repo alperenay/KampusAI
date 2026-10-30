@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "grade": 11,
+  "apiGradeId": 13,
+  "courseId": 22,
+  "slug": "cografya-dersi",
+  "name": "Coğrafya Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/cografya-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "107",
+      "title": "1. Ünite: Coğrafyanın Doğası",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/107",
+      "retrievedAt": "2026-10-30T16:27:13.109409+00:00",
+      "sourceSha256": "15bdc97c1b7aa06efbc6328362ba02d0074c7e7be791480dce8041f01c12eaee",
+      "status": "codes-indexed",
+      "codes": [
+        "COĞ.11.1.1"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "17.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "110",
+      "title": "2. Ünite: Mekânsal Bilgi Teknolojileri",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/110",
+      "retrievedAt": "2026-10-30T16:27:13.732070+00:00",
+      "sourceSha256": "dee20d13314d142edc9c94b95fff56bb590183a230e70c71ccca8f0285a01115",
+      "status": "codes-indexed",
+      "codes": [
+        "COĞ.11.2.1"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "17.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "114",
+      "title": "3. Ünite: Doğal Sistemler Ve Süreçler",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/114",
+      "retrievedAt": "2026-10-30T16:27:14.477513+00:00",
+      "sourceSha256": "a289656f1a3bfefb818d15b1d61ce7940706c64aab392015a3651a2b10b61275",
+      "status": "codes-indexed",
+      "codes": [
+        "COĞ.11.3.1",
+        "COĞ.11.3.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "17.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "123",
+      "title": "4. Ünite: Beşerî Sistemler Ve Süreçler",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/123",
+      "retrievedAt": "2026-10-30T16:27:14.823070+00:00",
+      "sourceSha256": "01d199243c4fa55da26af4e2a1620ebaa8459307058c9c52359bdfbeabbfbe8e",
+      "status": "codes-indexed",
+      "codes": [
+        "COĞ.11.4.1",
+        "COĞ.11.4.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "17.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "253",
+      "title": "5. Ünite: Ekonomik Faaliyetler Ve Etkileri",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/253",
+      "retrievedAt": "2026-10-30T16:27:15.599067+00:00",
+      "sourceSha256": "70d011d8d42fd06af9eb01b290efd1a7fd73b39d2cf134d5b2287d6d62b06076",
+      "status": "codes-indexed",
+      "codes": [
+        "COĞ.11.5.1",
+        "COĞ.11.5.2",
+        "COĞ.11.5.3",
+        "COĞ.11.5.4",
+        "COĞ.11.5.5"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "17.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "255",
+      "title": "6. Ünite: Afetler Ve Sürdürülebilir Çevre",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/255",
+      "retrievedAt": "2026-10-30T16:27:16.242605+00:00",
+      "sourceSha256": "a1ad6d2c8194498fab946632076f50307cae63c9a60036e76a0fd0532f71733d",
+      "status": "codes-indexed",
+      "codes": [
+        "COĞ.11.6.1",
+        "COĞ.11.6.2",
+        "COĞ.11.6.3"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "17.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "257",
+      "title": "7. Ünite: Bölgeler, Ülkeler Ve Küresel Bağlantılar",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/257",
+      "retrievedAt": "2026-10-30T16:27:17.130876+00:00",
+      "sourceSha256": "b5dd1fc4b5495ea82f7630e970aabe39f0ad770eb8ae4a7950cbde09d1243978",
+      "status": "codes-indexed",
+      "codes": [
+        "COĞ.11.7.1",
+        "COĞ.11.7.2",
+        "COĞ.11.7.3",
+        "COĞ.11.7.4",
+        "COĞ.11.7.5"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "17.08.2026",
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

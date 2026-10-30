@@ -112,4 +112,9 @@ Sesli öğretmen cevabın ilk cümlesi gelir gelmez konuşmaya başlar. Küre di
 
 ## Belge, ödev, defter notları ve sözlü prova
 
-Yeni araçlar yan menüde kategorilerine yerleştirilmiştir. [Adım adım kullanım ve veri sınırları](CALISMA-ALANI.md). Defter fotoğraflarını okuyup düzelttikten sonra genel veya konu notlarına ekleyebilirsin.
+Belge ve not araçları **Dersler ve kaynaklar → Dokümanlar** bölümünde birleştirilmiştir. [Dokümanlar kullanım kılavuzu](DOKUMANLAR.md). [Adım adım kullanım ve veri sınırları](CALISMA-ALANI.md). Defter fotoğraflarını okuyup düzelttikten sonra genel veya konu notlarına ekleyebilirsin.
+
+
+## Birleşik bilim laboratuvarı (5. adım)
+
+Fizik, sensör, sismograf ve deney kataloğu tek **Bilim ve Sensör Laboratuvarı** girişindedir. Eski bağlantılar yönlenir. RC, soğuma, yarı ömür ve polarizasyon için dört yeni çevrimdışı model vardır. Kullanım, platform sınırları ve test komutları: [Bilim ve Sensör Laboratuvarı](BILIM-SENSOR-LABORATUVARI.md).

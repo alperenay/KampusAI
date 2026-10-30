@@ -268,6 +268,34 @@
     const uc = P("uc", [1, 0, 0], 1.4); uc.position.x = 3.6; for (let i = 0; i < 5; i++) { const a = -0.8 + i * 0.4; S.tube([[0, 0, 0], [Math.cos(a) * 0.9, Math.sin(a) * 0.9, 0]], 0.05, 0xd9a0d0, uc); const b = sph(S, 0.14, 0xffd166, uc, null, 10); b.position.set(Math.cos(a) * 0.95, Math.sin(a) * 0.95, 0); }
   });
 
+  // Additional original teaching meshes; geometry is schematic, not anatomical scale.
+  const extras = [
+    {id:'alveol',icon:'🫁',subject:'biyoloji',name:['Alveol ve gaz alışverişi','Alveolus and gas exchange'],keys:['solunum','alveol'],desc:['Hava kesesi ve çevresindeki kılcal damar; ölçekli anatomi değildir.','Air sac and surrounding capillary; not anatomical scale.'],parts:[['kese',['Alveol','Alveolus'],['İnce yüzeyde oksijen ve karbondioksit difüzyonla taşınır.','Oxygen and carbon dioxide diffuse across the thin surface.']],['damar',['Kılcal damar','Capillary'],['Damar ağı gaz alışveriş yüzeyini çevreler.','Capillaries surround the exchange surface.']]]},
+    {id:'nefron',icon:'🫘',subject:'biyoloji',name:['Nefron','Nephron'],keys:['boşaltım','böbrek','nefron'],desc:['Süzülme ve geri emilim bölgelerinin şematik modeli.','Schematic filtration and reabsorption regions.'],parts:[['glomerul',['Glomerül','Glomerulus'],['Kılcal damar yumağında kan plazmasının bir bölümü süzülür.','A fraction of plasma is filtered from the capillary tuft.']],['tup',['Böbrek tüpü','Renal tubule'],['Geri emilim ve salgılama süzüntünün bileşimini değiştirir.','Reabsorption and secretion alter filtrate composition.']]]},
+    {id:'iyon-kristal',icon:'🧂',subject:'kimya',name:['NaCl iyon kristali','NaCl ionic crystal'],keys:['iyon','kristal','iyonik'],desc:['Zıt yüklü iyonların kübik örgüde yerleşimi; renkler temsilidir.','Cubic arrangement of opposite ions; colours are symbolic.'],parts:[['na',['Na⁺','Na⁺'],['Sodyum katyonu; iç örgüde altı klorür komşusu vardır.','Sodium cation; six chloride neighbours in the bulk lattice.']],['cl',['Cl⁻','Cl⁻'],['Klorür anyonu; çizim tek bir NaCl molekülü değildir.','Chloride anion; the lattice is not a single NaCl molecule.']]]},
+    {id:'kondansator',icon:'⚡',subject:'fizik',name:['Paralel levhalı kondansatör','Parallel-plate capacitor'],keys:['kondansatör','elektrik alan','sığa'],desc:['İki levha, dielektrik ve kenarlardan uzaktaki yaklaşık düzgün alan.','Two plates, dielectric and approximately uniform interior field.'],parts:[['arti',['Pozitif levha','Positive plate'],['Alan yönü pozitif levhadan negatif levhaya doğrudur.','Field direction is from positive to negative plate.']],['eksi',['Negatif levha','Negative plate'],['Eşit büyüklükte zıt yük; ideal modelde C=εA/d.','Equal opposite charge; ideal capacitance C=εA/d.']],['alan',['Alan çizgileri','Field lines'],['İç bölgede düzgün alan yaklaşımı; kenar etkileri gösterilmez.','Uniform interior approximation; fringing omitted.']]]}
+  ];
+  extras.forEach(md=>{
+    MODELS.push(md);
+    makeModelDef(md,(S,P,THREE)=>{
+      if(md.id==='alveol'){
+        const sac=P('kese',[0,1,0],1.4);sph(S,1.7,0xf4a6b8,sac,.55,40);
+        const cap=P('damar',[1,0,0],1.4);
+        for(let i=0;i<4;i++){const m=new THREE.Mesh(new THREE.TorusGeometry(1.85,.09,8,48),S.M(i%2?0xe05060:0x568ee8));m.rotation.set(i*.55,.7,i*.8);cap.add(m);}
+      }else if(md.id==='nefron'){
+        const gl=P('glomerul',[-1,1,0],1);gl.position.set(-1.5,1,0);for(let i=0;i<5;i++){const m=new THREE.Mesh(new THREE.TorusGeometry(.5,.07,8,32),S.M(0xe86688));m.rotation.set(i*.7,i*.4,0);gl.add(m);}
+        const tube=P('tup',[1,-1,0],1.5);S.tube([[-1,1,0],[0,.7,0],[.5,-1.8,0],[1,-2,0],[1.5,-1.8,0],[1.8,1,0],[2.8,.8,0]],.16,0xe4c18c,tube);
+      }else if(md.id==='iyon-kristal'){
+        const a=P('na',[-1,0,0],1),b=P('cl',[1,0,0],1);
+        for(let x=-1;x<=1;x++)for(let y=-1;y<=1;y++)for(let z=-1;z<=1;z++){const even=(x+y+z+3)%2===0;const m=sph(S,even?.28:.42,even?0x9a82ed:0x6cc996,even?a:b);m.position.set(x*1.25,y*1.25,z*1.25);}
+      }else{
+        const a=P('arti',[-1,0,0],1),b=P('eksi',[1,0,0],1),f=P('alan',[0,1,0],1);
+        S.box(.15,3,3,0xe96e78,a).position.x=-1.5;S.box(.15,3,3,0x639ce8,b).position.x=1.5;
+        for(let y=-1;y<=1;y++)for(let z=-1;z<=1;z++)f.add(new THREE.ArrowHelper(new THREE.Vector3(1,0,0),new THREE.Vector3(-1.35,y,z),2.7,0xf6d67d,.3,.15));
+      }
+    });
+  });
+
   /* =========================================================
      Elle molekül kurma
      ========================================================= */

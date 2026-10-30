@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "grade": 9,
+  "apiGradeId": 11,
+  "courseId": 20,
+  "slug": "kimya-dersi",
+  "name": "Kimya Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/kimya-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "92",
+      "title": "1. Tema: Etkileşim",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/92",
+      "retrievedAt": "2026-10-30T16:28:27.240214+00:00",
+      "sourceSha256": "bf1ba94462777645d720e1dce4a052aa4d39a9594453e278df9ec86fb2654149",
+      "status": "codes-indexed",
+      "codes": [
+        "KİM.9.1.1",
+        "KİM.9.1.2",
+        "KİM.9.1.3",
+        "KİM.9.1.4",
+        "KİM.9.1.5",
+        "KİM.9.1.6",
+        "KİM.9.1.7",
+        "KİM.9.1.8"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "09.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "121",
+      "title": "2. Tema: Çeşitlilik",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/121",
+      "retrievedAt": "2026-10-30T16:28:28.501102+00:00",
+      "sourceSha256": "5b2835168b8e67337b3d6fda18c48110a761226137701333eb8482fd3dab23c9",
+      "status": "codes-indexed",
+      "codes": [
+        "KİM.9.2.1",
+        "KİM.9.2.2",
+        "KİM.9.2.3",
+        "KİM.9.2.4",
+        "KİM.9.2.5",
+        "KİM.9.2.6",
+        "KİM.9.2.7",
+        "KİM.9.2.8",
+        "KİM.9.2.9",
+        "KİM.9.2.10",
+        "KİM.9.2.11",
+        "KİM.9.2.12",
+        "KİM.9.2.13"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "137",
+      "title": "3. Tema: Sürdürülebilirlik",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/137",
+      "retrievedAt": "2026-10-30T16:28:29.867840+00:00",
+      "sourceSha256": "daa23cdd075c03e1d91065c9c59458ab32e0cf3349b34d8acd799c8f71ad1cc3",
+      "status": "codes-indexed",
+      "codes": [
+        "KİM.9.3.1",
+        "KİM.9.3.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "09.08.2026",
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

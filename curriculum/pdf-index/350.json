@@ -1,0 +1,1652 @@
+{
+  "schemaVersion": 1,
+  "programmeId": 350,
+  "subjectId": "kimya",
+  "edition": "legacy",
+  "name": "KİMYA",
+  "sourceUrl": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=350",
+  "applicability": "confirm-school-year-and-school-type",
+  "status": "machine-extracted-candidates-require-review",
+  "licenceVerified": false,
+  "pdfUrl": "https://mufredat.meb.gov.tr/Dosyalar/201812102955190-19.01.2018 Kimya Dersi Öğretim Programı.pdf",
+  "pdfSha256": "fb17e88c798f42670c047e7023bbbde8525a8ce253370b05f67dc89364149fc4",
+  "pageCount": 40,
+  "codeCandidates": [
+    {
+      "code": "9.1.1",
+      "gradeCandidate": 9,
+      "pages": [
+        14,
+        15
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.1.1.1",
+      "gradeCandidate": 9,
+      "pages": [
+        14,
+        15
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.1.2",
+      "gradeCandidate": 9,
+      "pages": [
+        15
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.1.2.1",
+      "gradeCandidate": 9,
+      "pages": [
+        15
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.1.3",
+      "gradeCandidate": 9,
+      "pages": [
+        15
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.1.3.1",
+      "gradeCandidate": 9,
+      "pages": [
+        15
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.1.3.2",
+      "gradeCandidate": 9,
+      "pages": [
+        15
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.1.4",
+      "gradeCandidate": 9,
+      "pages": [
+        16
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.1.4.1",
+      "gradeCandidate": 9,
+      "pages": [
+        16
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.1.4.2",
+      "gradeCandidate": 9,
+      "pages": [
+        16
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.1.4.3",
+      "gradeCandidate": 9,
+      "pages": [
+        16
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.2.1",
+      "gradeCandidate": 9,
+      "pages": [
+        16
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.2.1.1",
+      "gradeCandidate": 9,
+      "pages": [
+        16
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.2.2",
+      "gradeCandidate": 9,
+      "pages": [
+        16
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.2.2.1",
+      "gradeCandidate": 9,
+      "pages": [
+        16
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.2.3",
+      "gradeCandidate": 9,
+      "pages": [
+        17
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.2.3.1",
+      "gradeCandidate": 9,
+      "pages": [
+        17
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.2.3.2",
+      "gradeCandidate": 9,
+      "pages": [
+        17
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.2.3.3",
+      "gradeCandidate": 9,
+      "pages": [
+        17
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.3.1",
+      "gradeCandidate": 9,
+      "pages": [
+        17
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.3.1.1",
+      "gradeCandidate": 9,
+      "pages": [
+        17
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.3.2",
+      "gradeCandidate": 9,
+      "pages": [
+        17
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.3.2.1",
+      "gradeCandidate": 9,
+      "pages": [
+        17
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.3.3",
+      "gradeCandidate": 9,
+      "pages": [
+        17
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.3.3.1",
+      "gradeCandidate": 9,
+      "pages": [
+        17
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.3.3.2",
+      "gradeCandidate": 9,
+      "pages": [
+        18
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.3.3.3",
+      "gradeCandidate": 9,
+      "pages": [
+        18
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.3.3.4",
+      "gradeCandidate": 9,
+      "pages": [
+        18
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.3.3.5",
+      "gradeCandidate": 9,
+      "pages": [
+        18
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.3.4",
+      "gradeCandidate": 9,
+      "pages": [
+        18
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.3.4.1",
+      "gradeCandidate": 9,
+      "pages": [
+        18
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.3.4.2",
+      "gradeCandidate": 9,
+      "pages": [
+        18
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.3.4.3",
+      "gradeCandidate": 9,
+      "pages": [
+        18
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.3.5",
+      "gradeCandidate": 9,
+      "pages": [
+        19
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.3.5.1",
+      "gradeCandidate": 9,
+      "pages": [
+        19
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.4.1",
+      "gradeCandidate": 9,
+      "pages": [
+        19
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.4.1.1",
+      "gradeCandidate": 9,
+      "pages": [
+        19
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.4.2",
+      "gradeCandidate": 9,
+      "pages": [
+        19
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.4.2.1",
+      "gradeCandidate": 9,
+      "pages": [
+        19
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.4.3",
+      "gradeCandidate": 9,
+      "pages": [
+        19
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.4.3.1",
+      "gradeCandidate": 9,
+      "pages": [
+        19
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.4.3.2",
+      "gradeCandidate": 9,
+      "pages": [
+        19
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.4.3.3",
+      "gradeCandidate": 9,
+      "pages": [
+        19
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.4.3.4",
+      "gradeCandidate": 9,
+      "pages": [
+        20
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.4.4",
+      "gradeCandidate": 9,
+      "pages": [
+        20
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.4.4.1",
+      "gradeCandidate": 9,
+      "pages": [
+        20
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.4.4.2",
+      "gradeCandidate": 9,
+      "pages": [
+        20
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.4.4.3",
+      "gradeCandidate": 9,
+      "pages": [
+        20
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.4.5",
+      "gradeCandidate": 9,
+      "pages": [
+        20
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.4.5.1",
+      "gradeCandidate": 9,
+      "pages": [
+        20
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.5.1",
+      "gradeCandidate": 9,
+      "pages": [
+        20
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.5.1.1",
+      "gradeCandidate": 9,
+      "pages": [
+        20
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.5.1.2",
+      "gradeCandidate": 9,
+      "pages": [
+        20
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.5.1.3",
+      "gradeCandidate": 9,
+      "pages": [
+        20
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.5.2",
+      "gradeCandidate": 9,
+      "pages": [
+        21
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.5.2.1",
+      "gradeCandidate": 9,
+      "pages": [
+        21
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "9.5.2.2",
+      "gradeCandidate": 9,
+      "pages": [
+        21
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.1.1",
+      "gradeCandidate": 10,
+      "pages": [
+        22
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.1.1.1",
+      "gradeCandidate": 10,
+      "pages": [
+        22
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.1.2",
+      "gradeCandidate": 10,
+      "pages": [
+        22
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.1.2.1",
+      "gradeCandidate": 10,
+      "pages": [
+        22
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.1.3",
+      "gradeCandidate": 10,
+      "pages": [
+        22
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.1.3.1",
+      "gradeCandidate": 10,
+      "pages": [
+        22
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.1.4",
+      "gradeCandidate": 10,
+      "pages": [
+        22
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.1.4.1",
+      "gradeCandidate": 10,
+      "pages": [
+        22
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.2.1",
+      "gradeCandidate": 10,
+      "pages": [
+        23
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.2.1.1",
+      "gradeCandidate": 10,
+      "pages": [
+        23
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.2.1.2",
+      "gradeCandidate": 10,
+      "pages": [
+        23
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.2.1.3",
+      "gradeCandidate": 10,
+      "pages": [
+        23
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.2.1.4",
+      "gradeCandidate": 10,
+      "pages": [
+        23
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.2.2",
+      "gradeCandidate": 10,
+      "pages": [
+        24
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.2.2.1",
+      "gradeCandidate": 10,
+      "pages": [
+        24
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.3.1",
+      "gradeCandidate": 10,
+      "pages": [
+        24
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.3.1.1",
+      "gradeCandidate": 10,
+      "pages": [
+        24
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.3.1.2",
+      "gradeCandidate": 10,
+      "pages": [
+        24
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.3.2",
+      "gradeCandidate": 10,
+      "pages": [
+        24
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.3.2.1",
+      "gradeCandidate": 10,
+      "pages": [
+        24
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.3.2.2",
+      "gradeCandidate": 10,
+      "pages": [
+        25
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.3.3",
+      "gradeCandidate": 10,
+      "pages": [
+        25
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.3.3.1",
+      "gradeCandidate": 10,
+      "pages": [
+        25
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.3.3.2",
+      "gradeCandidate": 10,
+      "pages": [
+        25
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.3.4",
+      "gradeCandidate": 10,
+      "pages": [
+        25
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.3.4.1",
+      "gradeCandidate": 10,
+      "pages": [
+        25
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.4.1",
+      "gradeCandidate": 10,
+      "pages": [
+        25
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.4.1.1",
+      "gradeCandidate": 10,
+      "pages": [
+        25
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.4.1.2",
+      "gradeCandidate": 10,
+      "pages": [
+        26
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.4.1.3",
+      "gradeCandidate": 10,
+      "pages": [
+        26
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.4.1.4",
+      "gradeCandidate": 10,
+      "pages": [
+        26
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.4.1.5",
+      "gradeCandidate": 10,
+      "pages": [
+        26
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.4.2",
+      "gradeCandidate": 10,
+      "pages": [
+        26
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.4.2.1",
+      "gradeCandidate": 10,
+      "pages": [
+        26
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "10.4.2.2",
+      "gradeCandidate": 10,
+      "pages": [
+        26
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.1.1",
+      "gradeCandidate": 11,
+      "pages": [
+        27
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.1.1.1",
+      "gradeCandidate": 11,
+      "pages": [
+        27
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.1.2",
+      "gradeCandidate": 11,
+      "pages": [
+        27
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.1.2.1",
+      "gradeCandidate": 11,
+      "pages": [
+        27
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.1.3",
+      "gradeCandidate": 11,
+      "pages": [
+        27
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.1.3.1",
+      "gradeCandidate": 11,
+      "pages": [
+        27
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.1.4",
+      "gradeCandidate": 11,
+      "pages": [
+        28
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.1.4.1",
+      "gradeCandidate": 11,
+      "pages": [
+        28
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.1.5",
+      "gradeCandidate": 11,
+      "pages": [
+        28
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.1.5.1",
+      "gradeCandidate": 11,
+      "pages": [
+        28
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.2.1",
+      "gradeCandidate": 11,
+      "pages": [
+        28
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.2.1.1",
+      "gradeCandidate": 11,
+      "pages": [
+        28
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.2.1.2",
+      "gradeCandidate": 11,
+      "pages": [
+        28
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.2.2",
+      "gradeCandidate": 11,
+      "pages": [
+        28
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.2.2.1",
+      "gradeCandidate": 11,
+      "pages": [
+        28
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.2.3",
+      "gradeCandidate": 11,
+      "pages": [
+        29
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.2.3.1",
+      "gradeCandidate": 11,
+      "pages": [
+        29
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.2.4",
+      "gradeCandidate": 11,
+      "pages": [
+        29
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.2.4.1",
+      "gradeCandidate": 11,
+      "pages": [
+        29
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.2.5",
+      "gradeCandidate": 11,
+      "pages": [
+        29
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.2.5.1",
+      "gradeCandidate": 11,
+      "pages": [
+        29
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.3.1",
+      "gradeCandidate": 11,
+      "pages": [
+        29
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.3.1.1",
+      "gradeCandidate": 11,
+      "pages": [
+        29
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.3.2",
+      "gradeCandidate": 11,
+      "pages": [
+        29
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.3.2.1",
+      "gradeCandidate": 11,
+      "pages": [
+        29
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.3.2.2",
+      "gradeCandidate": 11,
+      "pages": [
+        30
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.3.3",
+      "gradeCandidate": 11,
+      "pages": [
+        30
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.3.3.1",
+      "gradeCandidate": 11,
+      "pages": [
+        30
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.3.4",
+      "gradeCandidate": 11,
+      "pages": [
+        30
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.3.4.1",
+      "gradeCandidate": 11,
+      "pages": [
+        30
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.3.5",
+      "gradeCandidate": 11,
+      "pages": [
+        30
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.3.5.1",
+      "gradeCandidate": 11,
+      "pages": [
+        30
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.4.1",
+      "gradeCandidate": 11,
+      "pages": [
+        31
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.4.1.1",
+      "gradeCandidate": 11,
+      "pages": [
+        31
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.4.2",
+      "gradeCandidate": 11,
+      "pages": [
+        31
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.4.2.1",
+      "gradeCandidate": 11,
+      "pages": [
+        31
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.4.3",
+      "gradeCandidate": 11,
+      "pages": [
+        31
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.4.3.1",
+      "gradeCandidate": 11,
+      "pages": [
+        31
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.4.4",
+      "gradeCandidate": 11,
+      "pages": [
+        31
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.4.4.1",
+      "gradeCandidate": 11,
+      "pages": [
+        31
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.5.1",
+      "gradeCandidate": 11,
+      "pages": [
+        31
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.5.1.1",
+      "gradeCandidate": 11,
+      "pages": [
+        31
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.5.1.2",
+      "gradeCandidate": 11,
+      "pages": [
+        31
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.5.2",
+      "gradeCandidate": 11,
+      "pages": [
+        32
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.5.2.1",
+      "gradeCandidate": 11,
+      "pages": [
+        32
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.6.1",
+      "gradeCandidate": 11,
+      "pages": [
+        32
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.6.1.1",
+      "gradeCandidate": 11,
+      "pages": [
+        32
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.6.2",
+      "gradeCandidate": 11,
+      "pages": [
+        32
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.6.2.1",
+      "gradeCandidate": 11,
+      "pages": [
+        32
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.6.3",
+      "gradeCandidate": 11,
+      "pages": [
+        32
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.6.3.1",
+      "gradeCandidate": 11,
+      "pages": [
+        32
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.6.3.2",
+      "gradeCandidate": 11,
+      "pages": [
+        32
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.6.3.3",
+      "gradeCandidate": 11,
+      "pages": [
+        33
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.6.3.4",
+      "gradeCandidate": 11,
+      "pages": [
+        33
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.6.3.5",
+      "gradeCandidate": 11,
+      "pages": [
+        33
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.6.3.6",
+      "gradeCandidate": 11,
+      "pages": [
+        33
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.6.3.7",
+      "gradeCandidate": 11,
+      "pages": [
+        33
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.6.3.8",
+      "gradeCandidate": 11,
+      "pages": [
+        33
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "11.6.3.9",
+      "gradeCandidate": 11,
+      "pages": [
+        33
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.1.1",
+      "gradeCandidate": 12,
+      "pages": [
+        34
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.1.1.1",
+      "gradeCandidate": 12,
+      "pages": [
+        34
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.1.1.2",
+      "gradeCandidate": 12,
+      "pages": [
+        34
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.1.2",
+      "gradeCandidate": 12,
+      "pages": [
+        34
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.1.2.1",
+      "gradeCandidate": 12,
+      "pages": [
+        34
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.1.3",
+      "gradeCandidate": 12,
+      "pages": [
+        34
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.1.3.1",
+      "gradeCandidate": 12,
+      "pages": [
+        34
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.1.4",
+      "gradeCandidate": 12,
+      "pages": [
+        35
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.1.4.1",
+      "gradeCandidate": 12,
+      "pages": [
+        35
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.1.4.2",
+      "gradeCandidate": 12,
+      "pages": [
+        35
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.1.5",
+      "gradeCandidate": 12,
+      "pages": [
+        35
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.1.5.1",
+      "gradeCandidate": 12,
+      "pages": [
+        35
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.1.5.2",
+      "gradeCandidate": 12,
+      "pages": [
+        35
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.1.6",
+      "gradeCandidate": 12,
+      "pages": [
+        35
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.1.6.1",
+      "gradeCandidate": 12,
+      "pages": [
+        35
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.2.1",
+      "gradeCandidate": 12,
+      "pages": [
+        35
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.2.1.1",
+      "gradeCandidate": 12,
+      "pages": [
+        35
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.2.2",
+      "gradeCandidate": 12,
+      "pages": [
+        36
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.2.2.1",
+      "gradeCandidate": 12,
+      "pages": [
+        36
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.2.3",
+      "gradeCandidate": 12,
+      "pages": [
+        36
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.2.3.1",
+      "gradeCandidate": 12,
+      "pages": [
+        36
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.2.4",
+      "gradeCandidate": 12,
+      "pages": [
+        36
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.2.4.1",
+      "gradeCandidate": 12,
+      "pages": [
+        36
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.2.5",
+      "gradeCandidate": 12,
+      "pages": [
+        36
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.2.5.1",
+      "gradeCandidate": 12,
+      "pages": [
+        36
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.2.5.2",
+      "gradeCandidate": 12,
+      "pages": [
+        36
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.3.1",
+      "gradeCandidate": 12,
+      "pages": [
+        36
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.3.1.1",
+      "gradeCandidate": 12,
+      "pages": [
+        36
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.3.1.2",
+      "gradeCandidate": 12,
+      "pages": [
+        36
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.3.1.3",
+      "gradeCandidate": 12,
+      "pages": [
+        37
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.3.1.4",
+      "gradeCandidate": 12,
+      "pages": [
+        37
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.3.1.5",
+      "gradeCandidate": 12,
+      "pages": [
+        37
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.3.2",
+      "gradeCandidate": 12,
+      "pages": [
+        37
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.3.2.1",
+      "gradeCandidate": 12,
+      "pages": [
+        37
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.3.3",
+      "gradeCandidate": 12,
+      "pages": [
+        37
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.3.3.1",
+      "gradeCandidate": 12,
+      "pages": [
+        37
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.3.4",
+      "gradeCandidate": 12,
+      "pages": [
+        37
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.3.4.1",
+      "gradeCandidate": 12,
+      "pages": [
+        37
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.3.5",
+      "gradeCandidate": 12,
+      "pages": [
+        38
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.3.5.1",
+      "gradeCandidate": 12,
+      "pages": [
+        38
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.3.6",
+      "gradeCandidate": 12,
+      "pages": [
+        38
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.3.6.1",
+      "gradeCandidate": 12,
+      "pages": [
+        38
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.3.7",
+      "gradeCandidate": 12,
+      "pages": [
+        38
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.3.7.1",
+      "gradeCandidate": 12,
+      "pages": [
+        38
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.4.1",
+      "gradeCandidate": 12,
+      "pages": [
+        38
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.4.1.1",
+      "gradeCandidate": 12,
+      "pages": [
+        38
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.4.2",
+      "gradeCandidate": 12,
+      "pages": [
+        39
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.4.2.1",
+      "gradeCandidate": 12,
+      "pages": [
+        39
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.4.2.2",
+      "gradeCandidate": 12,
+      "pages": [
+        39
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.4.3",
+      "gradeCandidate": 12,
+      "pages": [
+        39
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.4.3.1",
+      "gradeCandidate": 12,
+      "pages": [
+        39
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.4.4",
+      "gradeCandidate": 12,
+      "pages": [
+        39
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "12.4.4.1",
+      "gradeCandidate": 12,
+      "pages": [
+        39
+      ],
+      "status": "candidate-requires-review"
+    }
+  ],
+  "indexedAt": "2026-10-30T16:35:47.786334+00:00",
+  "fullTextRedistributed": false
+}

@@ -187,7 +187,7 @@
       T("Başlat", "Start") +
       '</button><button class="btn" id="swStop" disabled>' +
       T("Durdur", "Stop") +
-      '</button><button class="btn" id="swCSV" disabled>CSV</button><button class="btn" id="swJSON" disabled>JSON</button></div></section><section class="card"><p id="swStatus" role="status"></p><p class="hint" id="swUnit"></p><canvas id="swChart" class="sl-cv" height="240" aria-label="' +
+      '</button><button class="btn" id="swCSV" disabled>CSV</button><button class="btn" id="swJSON" disabled>JSON</button><button class="btn" id="swReport" disabled>' + T("x eksenini raporla", "Report x axis") + '</button></div></section><section class="card"><p id="swStatus" role="status"></p><p class="hint" id="swUnit"></p><canvas id="swChart" class="sl-cv" height="240" aria-label="' +
       T("Sensör zaman grafiği", "Sensor time chart") +
       '"></canvas><p id="swValue" aria-live="off"></p><dl id="swStats" class="sw-stats" aria-label="' + T("Ölçüm metrikleri", "Measurement metrics") + '"></dl><p id="swAlert" role="status"></p></section><p class="hint">' +
       T(
@@ -262,6 +262,7 @@
       if (rows.length % 4 === 0) paintStats();
       $("#swCSV").disabled = false;
       $("#swJSON").disabled = false;
+      $("#swReport").disabled = rows.length < 2;
     }
     function draw() {
       if (!session) return;
@@ -330,6 +331,7 @@
       lastSample = -Infinity;
       $("#swCSV").disabled = true;
       $("#swJSON").disabled = true;
+      $("#swReport").disabled = true;
       session = { sensor, source, at: new Date().toISOString() };
       $("#swValue").textContent = "";
       $("#swAlert").textContent = "";
@@ -526,8 +528,18 @@
           2,
         ),
       );
+    $("#swReport").onclick = () => {
+      if (!session || rows.length < 2) return;
+      stop();
+      const c = CHANNELS[session.sensor];
+      App.prefs.set("discovery:labData", {name: T(c.label,c.en) + " · x", source:session.source, unit:c.unit, samples:rows.map(s=>({t:s.t,y:s.x}))});
+      App.router.go("dokumanlar/rapor");
+    };
+    function hidden() { if (document.hidden && (running || pending)) { stop(); paintStats(); status.textContent = T("Arka planda ölçüm durduruldu. Yeniden başlatabilirsin.", "Measurement stopped in the background. You can restart."); } }
+    document.addEventListener("visibilitychange", hidden);
     label();
     return () => {
+      document.removeEventListener("visibilitychange", hidden);
       alive = false;
       stop();
     };

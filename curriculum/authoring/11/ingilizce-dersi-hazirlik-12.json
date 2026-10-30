@@ -1,0 +1,5959 @@
+{
+  "schemaVersion": 1,
+  "grade": 11,
+  "program": "ingilizce-dersi-hazirlik-12",
+  "lessons": [
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.L1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.L2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.L3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.L4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.P1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.R1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.R2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.R3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.R4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.V1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.G1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.W1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.W2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.W3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.W4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.W5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.W6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.W7",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.S1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.S2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.S3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.S4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.S5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "517",
+      "officialCode": "ENG.11.1.S6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+        "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.L1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.L2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.L3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.L4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.P1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.R1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.R2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.R3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.R4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.V1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.G1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.W1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.W2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.W3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.W4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.W5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.W6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.W7",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.S1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.S2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.S3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.S4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.S5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "518",
+      "officialCode": "ENG.11.2.S6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+        "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.L1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.L2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.L3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.L4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.P1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.R1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.R2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.R3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.R4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.V1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.G1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.W1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.W2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.W3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.W4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.W5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.W6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.W7",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.S1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.S2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.S3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.S4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.S5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "519",
+      "officialCode": "ENG.11.3.S6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+        "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.L1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.L2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.L3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.L4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.P1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.R1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.R2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.R3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.R4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.V1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.G1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.W1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.W2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.W3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.W4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.W5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.W6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.W7",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.S1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.S2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.S3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.S4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.S5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "520",
+      "officialCode": "ENG.11.4.S6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+        "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.L1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.L2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.L3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.L4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.P1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.R1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.R2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.R3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.R4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.V1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.G1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.W1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.W2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.W3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.W4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.W5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.W6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.W7",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.S1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.S2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.S3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.S4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.S5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "521",
+      "officialCode": "ENG.11.5.S6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+        "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.L1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.L2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.L3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.L4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.P1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.R1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.R2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.R3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.R4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.V1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.G1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.W1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.W2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.W3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.W4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.W5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.W6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.W7",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.S1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.S2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.S3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.S4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.S5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "522",
+      "officialCode": "ENG.11.6.S6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+        "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.L1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.L2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.L3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.L4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.P1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.R1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.R2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.R3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.R4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.V1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.G1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.W1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.W2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.W3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.W4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.W5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.W6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.W7",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.S1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.S2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.S3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.S4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.S5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "523",
+      "officialCode": "ENG.11.7.S6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+        "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.L1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.L2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.L3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.L4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.P1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.R1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.R2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.R3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.R4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.V1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.G1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.W1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.W2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.W3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.W4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.W5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.W6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.W7",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.S1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.S2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.S3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.S4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.S5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 11,
+      "program": "ingilizce-dersi-hazirlik-12",
+      "unitId": "524",
+      "officialCode": "ENG.11.8.S6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+        "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524"
+        ]
+      },
+      "legacyCandidates": []
+    }
+  ]
+}

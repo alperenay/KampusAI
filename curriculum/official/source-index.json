@@ -1,0 +1,1910 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "url": "https://mufredat.meb.gov.tr/Programlar.aspx",
+      "retrievedAt": "2026-10-30T16:29:31.236974+00:00",
+      "sha256": "8ffbf2e530e0356c671362c8d5ef8992c94d8b77eeb3d916e3953445e28a9ab5"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Ders/GetDerslerBySinif?sinifId=11&kademe=3&programListedOnly=true",
+      "retrievedAt": "2026-10-30T16:26:47.197837+00:00",
+      "sha256": "e1f61c6934625aed0cec6d582dfaccebc1a2882dc9936529cc66cdb64efd9b9e"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Ders/GetDerslerBySinif?sinifId=12&kademe=3&programListedOnly=true",
+      "retrievedAt": "2026-10-30T16:26:48.004891+00:00",
+      "sha256": "a30bd2ec42174f724f21711d7437b206ede4a756a0f290079918a1db7f868887"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Ders/GetDerslerBySinif?sinifId=13&kademe=3&programListedOnly=true",
+      "retrievedAt": "2026-10-30T16:26:49.610899+00:00",
+      "sha256": "82f895228107b00a13f3cd2d52157cf0a25edbc976fb8433b6d332c33c38db88"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Ders/GetDerslerBySinif?sinifId=14&kademe=3&programListedOnly=true",
+      "retrievedAt": "2026-10-30T16:26:50.713220+00:00",
+      "sha256": "9284dc7dc8623b593b4667b6cc08bd8da7114053c4233f036821ad5228f30243"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Ders/GetDerslerBySinif?sinifId=17&kademe=3&programListedOnly=true",
+      "retrievedAt": "2026-10-30T16:26:51.437866+00:00",
+      "sha256": "c59f1047c60d08a12ad822befa29af792c3e9f5103db8b7012014905a191bed4"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Ders/GetProgramList?kademe=ortaogretim&page=1",
+      "retrievedAt": "2026-10-30T16:26:45.479248+00:00",
+      "sha256": "a6558e99bb49649a700f64f22754dbee9b61b9888cb419d15a9bab12faf0a8ad"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Ders/GetProgramList?kademe=ortaogretim&page=2",
+      "retrievedAt": "2026-10-30T16:26:46.227095+00:00",
+      "sha256": "d9f36477ab6a82bdfe373a1e2f457969214babf4d2b932bbd85d82e7931f09d1"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=101&sinifId=17",
+      "retrievedAt": "2026-10-30T16:26:52.318877+00:00",
+      "sha256": "0c8b8e49ba6085d11f3ef60314ca4990c604e3e5e6bb01723c09d00fb8acd886"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=102&sinifId=17",
+      "retrievedAt": "2026-10-30T16:27:17.746659+00:00",
+      "sha256": "cd967adccc4c23cd8453f32092e47db1861527317350ca27a8e8de80deae6382"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=103&sinifId=17",
+      "retrievedAt": "2026-10-30T16:27:45.508534+00:00",
+      "sha256": "7389d3262096fecb921a7ef176df603837cbcb26db78348af7fbcfb15e1d095d"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=104&sinifId=17",
+      "retrievedAt": "2026-10-30T16:28:35.568163+00:00",
+      "sha256": "59f1bc07c79cc86d19ab0240a5bbafbe449519ed7fa56795ed6a5c85aca1711f"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=105&sinifId=17",
+      "retrievedAt": "2026-10-30T16:29:04.336800+00:00",
+      "sha256": "a8cf0a6b4633d8384debf98321fc6906d8e74aa7ca840e50d631c5365f1c77aa"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=106&sinifId=17",
+      "retrievedAt": "2026-10-30T16:29:04.807774+00:00",
+      "sha256": "531b84224990968daaaf1faa5d0445d319d033041d531881f95e09188d08eaa0"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=107&sinifId=17",
+      "retrievedAt": "2026-10-30T16:29:07.633067+00:00",
+      "sha256": "6dbb4e71ba8089deefccdd8fd3bd9246414db066e4bec938e46775f86380aada"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=108&sinifId=17",
+      "retrievedAt": "2026-10-30T16:28:25.097988+00:00",
+      "sha256": "7abc12bbfd2d556126a70996fcd1986f32a10dfc8b7cded373c24b80b1171e9c"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=109&sinifId=17",
+      "retrievedAt": "2026-10-30T16:27:06.486458+00:00",
+      "sha256": "da3a92f5cb5a5e56be3df8ba85f6fa6e82436663f71b0fb95e642aff8b8e42d1"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=110&sinifId=17",
+      "retrievedAt": "2026-10-30T16:29:28.143458+00:00",
+      "sha256": "6021f3ba3bb6f274893da482cd525095a4173097ffc6144f75b4ec0166f1848f"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=111&sinifId=13",
+      "retrievedAt": "2026-10-30T16:28:49.554748+00:00",
+      "sha256": "f40d4b39f457041d3da9702f1d4f66dbf71d2c8d680d8808d63cf3207f6ab820"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=111&sinifId=14",
+      "retrievedAt": "2026-10-30T16:28:54.840938+00:00",
+      "sha256": "4cc58fa6128694ef5eb63c8ba154b319cea69ef10f35cc46c6d52620835d6503"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=112&sinifId=13",
+      "retrievedAt": "2026-10-30T16:29:19.034290+00:00",
+      "sha256": "ebe672aa57dcf08cb62234907588b516572f53f643312e2bf6083e62da4d5eea"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=112&sinifId=14",
+      "retrievedAt": "2026-10-30T16:29:20.381264+00:00",
+      "sha256": "d248ae1303934b69ac6bceae76ca2add7813581cf0510bd8634b94c739639132"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=113&sinifId=17",
+      "retrievedAt": "2026-10-30T16:29:04.384982+00:00",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=17&sinifId=11",
+      "retrievedAt": "2026-10-30T16:29:21.922364+00:00",
+      "sha256": "84cb32fcfbfae71355b8aa571b4f89751209e54436745704421cd24c19c86b6f"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=17&sinifId=12",
+      "retrievedAt": "2026-10-30T16:29:23.125057+00:00",
+      "sha256": "858399a12544ac4e3c92bc664760f737476fbb7c0886bc9d87901a898574b8ec"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=17&sinifId=13",
+      "retrievedAt": "2026-10-30T16:29:25.578930+00:00",
+      "sha256": "5c33f5f22a9e9fdc1b2748299df18d83a9b1a1540e4e2ac3c447f2e4c8704522"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=17&sinifId=14",
+      "retrievedAt": "2026-10-30T16:29:26.769505+00:00",
+      "sha256": "b8929309347ba1d90d8837c9003b4fc11f5b3ab6478bfd9d0c759dc3564d3d29"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=18&sinifId=11",
+      "retrievedAt": "2026-10-30T16:28:37.145200+00:00",
+      "sha256": "2f1f5aea645c51832cfec994d707bda6783def23676d641fe45bcf7e11c7276f"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=18&sinifId=12",
+      "retrievedAt": "2026-10-30T16:28:40.202054+00:00",
+      "sha256": "9fb45248fe2b15fdb0eb1c8ba4ae862f8ba2a254f8c57126f624eec8bf36e395"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=18&sinifId=13",
+      "retrievedAt": "2026-10-30T16:28:45.056178+00:00",
+      "sha256": "e2fe3055a5224923550e80ff070bf7184ae87a96fa218c6fe4b905b1659cf803"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=18&sinifId=14",
+      "retrievedAt": "2026-10-30T16:28:48.028087+00:00",
+      "sha256": "93466e7be75562558c44b4eb0f1f2624d8127dc17f5f32dca79d34843c5375be"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=19&sinifId=11",
+      "retrievedAt": "2026-10-30T16:27:25.512919+00:00",
+      "sha256": "da4be3a7312247beaba10e8529084342b584cd7e7bfd2674176169121763dc81"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=19&sinifId=12",
+      "retrievedAt": "2026-10-30T16:27:27.734146+00:00",
+      "sha256": "00ae45cc89705cc4327e8c58d87c79c64f5f80018e2299174ea2d72f27db61fb"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=19&sinifId=13",
+      "retrievedAt": "2026-10-30T16:27:31.173759+00:00",
+      "sha256": "507d27e53ffee272e2308a7d603823da730dcff7a7ffd24685f1c25951b673f5"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=19&sinifId=14",
+      "retrievedAt": "2026-10-30T16:27:33.813115+00:00",
+      "sha256": "1dab331796109405773304fe3ce3c444838bc8d1cbfe0d2606ea8f4dd8336c20"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=20&sinifId=11",
+      "retrievedAt": "2026-10-30T16:28:25.655799+00:00",
+      "sha256": "83e3106ce2befc53cb9962ad860929e8136f390aaba93990f6431cc10a6afac7"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=20&sinifId=12",
+      "retrievedAt": "2026-10-30T16:28:30.556096+00:00",
+      "sha256": "c2de4d491e0a277db6137af0125a4f6dcc72d8fb033369052c819995ca21b184"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=20&sinifId=13",
+      "retrievedAt": "2026-10-30T16:28:31.859585+00:00",
+      "sha256": "e7669645c5847f41836a05b15af700ab00b91411b6104166c998c9cad2b78f3e"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=20&sinifId=14",
+      "retrievedAt": "2026-10-30T16:28:33.534302+00:00",
+      "sha256": "17afd3de0e9efa6a77e5f13da4a9138b256d5f92da877b4d21d2855d8f02bcc9"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=21&sinifId=11",
+      "retrievedAt": "2026-10-30T16:26:59.656988+00:00",
+      "sha256": "595bd8233ed546416f3a8a164a95a108c2bb8321d39b2196b657cd5764677588"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=21&sinifId=12",
+      "retrievedAt": "2026-10-30T16:27:00.924142+00:00",
+      "sha256": "3b5cadcf1de315cc7e278cf5099c9346f1d784daf00e134d168cade20ca902c2"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=21&sinifId=13",
+      "retrievedAt": "2026-10-30T16:27:04.323640+00:00",
+      "sha256": "4f2d1afe7644fef632e05c2537f3c6681a37ba8c56535b63fa13e264dcf65efd"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=21&sinifId=14",
+      "retrievedAt": "2026-10-30T16:27:04.532071+00:00",
+      "sha256": "bc8a675ee356f6b0c104b682b41357b8a16496af22102241a8351d09e2618a8d"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=22&sinifId=11",
+      "retrievedAt": "2026-10-30T16:27:07.029099+00:00",
+      "sha256": "fcf61bf4f127eb25e5f50ae8882dfc63e2feadb6340bfd7f64a8524ac048c431"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=22&sinifId=12",
+      "retrievedAt": "2026-10-30T16:27:08.913147+00:00",
+      "sha256": "8c4b0c4fbef2989aa7b9ae64c9e67a466daf45e7d8c14d42649f852db2badb1e"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=22&sinifId=13",
+      "retrievedAt": "2026-10-30T16:27:12.549318+00:00",
+      "sha256": "24dceeb15a4f86ee284c9c4db7dba8912481d913eeffb45c7e8b49c8c06660ae"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=22&sinifId=14",
+      "retrievedAt": "2026-10-30T16:27:14.499140+00:00",
+      "sha256": "b65159dd5558b737b6b964a948a0340e3584ecd22ccb4374bd5051b9531d3b20"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=23&sinifId=12",
+      "retrievedAt": "2026-10-30T16:27:19.400918+00:00",
+      "sha256": "78249abd88d869ea45beb21f8e54bfada0c90067030c55ec3100e3f2aedc1742"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=23&sinifId=13",
+      "retrievedAt": "2026-10-30T16:27:19.949952+00:00",
+      "sha256": "baee373ec7fc029e0e989e100fe359a9b3b664abe85a13badd96730d51a90d9e"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=24&sinifId=11",
+      "retrievedAt": "2026-10-30T16:29:14.388378+00:00",
+      "sha256": "96444015db0c9856099e19165d3efb7f2273378bf46c399e0497aee6c05556e3"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=24&sinifId=12",
+      "retrievedAt": "2026-10-30T16:29:15.928942+00:00",
+      "sha256": "13cd4a71fc854838b8e88496934c589a5c13120103a756d1c115a820008ef35f"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=24&sinifId=13",
+      "retrievedAt": "2026-10-30T16:29:17.379636+00:00",
+      "sha256": "c7f6016e829b096b6ec9a870c8124451a3cfe33a1418996321d3da55ace8447a"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=25&sinifId=14",
+      "retrievedAt": "2026-10-30T16:29:12.636176+00:00",
+      "sha256": "6d1330e43e068c90dab57b42317413c9760fd0bb98f919e049f26ed1e7ca8fa8"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=27&sinifId=11",
+      "retrievedAt": "2026-10-30T16:28:04.106376+00:00",
+      "sha256": "e3afff022c5f050fc6d6ba78fa3d03457de6fe7ad2decc33434ee4671d37a279"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=27&sinifId=12",
+      "retrievedAt": "2026-10-30T16:28:04.629274+00:00",
+      "sha256": "2a15fa706f7d8d4c2b4b248634bad46b453fa2066afdf77b1bc35df47c32af9b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=27&sinifId=13",
+      "retrievedAt": "2026-10-30T16:28:12.212013+00:00",
+      "sha256": "4d718e571e2fc093360ac475ea554b3f897e7210630fffa141f359cda642219a"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=27&sinifId=14",
+      "retrievedAt": "2026-10-30T16:28:13.272374+00:00",
+      "sha256": "ee0b739be574f5778d677d127859e48269b5bd65255947ab383b53c2aadb6cb8"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=28&sinifId=11",
+      "retrievedAt": "2026-10-30T16:27:35.755273+00:00",
+      "sha256": "bd080df20cc9469d3316bd57ac6c9e6d36d1cad5d1b499c01ea51e30a5032e56"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=28&sinifId=12",
+      "retrievedAt": "2026-10-30T16:27:39.884138+00:00",
+      "sha256": "b1770538d5c99bc7802f459eac41fe58633628ba72fb918f519963c7c1a40901"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=28&sinifId=13",
+      "retrievedAt": "2026-10-30T16:27:40.907122+00:00",
+      "sha256": "054b8616ff36e01fed11f7c712c11ab428d478bd8ccfdb73fc833cd74a300da3"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=28&sinifId=14",
+      "retrievedAt": "2026-10-30T16:27:44.846318+00:00",
+      "sha256": "0a1e6847ccc5477b7798c7a9f13cbc10879c162310c50161f17b0d44955c7f23"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=29&sinifId=11",
+      "retrievedAt": "2026-10-30T16:28:55.148211+00:00",
+      "sha256": "6199fb6f7ce03d4afc280fbc1e391b70679bf940bc2b5776fce5efae09f6a3e3"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=29&sinifId=12",
+      "retrievedAt": "2026-10-30T16:28:59.068894+00:00",
+      "sha256": "00b0a26ae1ce5ab514e903fe15c9a618eefe3bc7b526f8d61686ae0d7f49013c"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=29&sinifId=13",
+      "retrievedAt": "2026-10-30T16:29:01.178565+00:00",
+      "sha256": "6d4266ddf769b4e094c317efdcf0bb6a3cecef8a47486d8b5f4af2921d0454d1"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=29&sinifId=14",
+      "retrievedAt": "2026-10-30T16:29:01.397418+00:00",
+      "sha256": "e6032a8bb91510830cc23cf27916ac0dd16d5fd888294bf0a00c24bf0b834d1d"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=30&sinifId=11",
+      "retrievedAt": "2026-10-30T16:26:52.309368+00:00",
+      "sha256": "c3f331f941d55346beada993d0ffd34965c8df342c6bce324ec0c916f461f1ce"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=30&sinifId=12",
+      "retrievedAt": "2026-10-30T16:26:56.059831+00:00",
+      "sha256": "47b5c3487725a2861303dc2791e9cc0f531a16ac42893b9d71cf81542f1df671"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=30&sinifId=13",
+      "retrievedAt": "2026-10-30T16:26:57.517311+00:00",
+      "sha256": "7c9b1bafc88bb00f0f8ae00074daafa268a43556afd7d9c6b7455a9698ae552f"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=30&sinifId=14",
+      "retrievedAt": "2026-10-30T16:26:58.170994+00:00",
+      "sha256": "aaf0621f37feb83dd4256ac6d5372c2aa489b0ea253e737ecc92ab5e82b93782"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=39&sinifId=11",
+      "retrievedAt": "2026-10-30T16:27:49.441191+00:00",
+      "sha256": "a852b8a7fba5902e7fce6426d2f5e7c5ffe1dabdf538ac1608bd82331a8ec37d"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=39&sinifId=12",
+      "retrievedAt": "2026-10-30T16:27:50.955726+00:00",
+      "sha256": "e7ac845868aa2416b41796a1ed7ade7f2bab60bfd120ec94122733cb529fc36d"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=39&sinifId=13",
+      "retrievedAt": "2026-10-30T16:27:57.929344+00:00",
+      "sha256": "4c15b952008045627714b0243d47cad6a47d03e7ba5f19ec8ac0acb5abd7710b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/Unite/GetUnitelerByDersId?dersId=39&sinifId=14",
+      "retrievedAt": "2026-10-30T16:27:58.662577+00:00",
+      "sha256": "d8c3ac7affafd5050c55301d0938892425ee5ffc937522d59189ad446297c010"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/astronomi-ve-uzay-bilimleri-dersi/unite/1626",
+      "retrievedAt": "2026-10-30T16:26:53.220894+00:00",
+      "sha256": "a93a54d4f9248a14c9656d20277dd6ed28b2e422d6fe10847ac57862b6bff5d5"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/astronomi-ve-uzay-bilimleri-dersi/unite/1627",
+      "retrievedAt": "2026-10-30T16:26:53.979422+00:00",
+      "sha256": "efe5f5cfcef27516c52a0e19154c5b7fefad031b66fcc4135533b0f496b3c9a3"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/astronomi-ve-uzay-bilimleri-dersi/unite/1628",
+      "retrievedAt": "2026-10-30T16:26:54.869873+00:00",
+      "sha256": "deb75ce4ba33542137fa315dab523fc571d6b848d46718da77113256676e8402"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/astronomi-ve-uzay-bilimleri-dersi/unite/1629",
+      "retrievedAt": "2026-10-30T16:26:56.457238+00:00",
+      "sha256": "51aa71619d0b9f433ce04e60dd1ad2fa42f3ea7f884550b9098467a7b2801337"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/astronomi-ve-uzay-bilimleri-dersi/unite/1633",
+      "retrievedAt": "2026-10-30T16:26:57.053165+00:00",
+      "sha256": "adace95c40cecc7061c87b69d45af92db6ee993ab13b47091cdf755210826f9d"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/601",
+      "retrievedAt": "2026-10-30T16:26:53.189660+00:00",
+      "sha256": "753962d1bdec52992aacd31fc780e4ff913de7c7301a1a448ffda4d334904edf"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/602",
+      "retrievedAt": "2026-10-30T16:26:53.943144+00:00",
+      "sha256": "f31c7f6642d949fcf1befb43ec5de5e748cd44ad46cc37c564b6a0d571bcabc7"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/603",
+      "retrievedAt": "2026-10-30T16:26:54.873227+00:00",
+      "sha256": "fc91aa67cf42b80ea4c9c420d641c328d8672f11d29a68fdbb4f875a4ba7b4a7"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/604",
+      "retrievedAt": "2026-10-30T16:26:56.813276+00:00",
+      "sha256": "016733bba106f0c5aa45ca2df6cf66a5b02a81a463d267f5a4eec65dfffa153b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/605",
+      "retrievedAt": "2026-10-30T16:26:57.464614+00:00",
+      "sha256": "a8ed95b286adb59acf541c12376beb613159b513277484cefe14de4334640208"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/606",
+      "retrievedAt": "2026-10-30T16:26:57.740280+00:00",
+      "sha256": "72de7e6a8fbdeb34db2c3deabbacce637f70acf7ad3f07b36a138619a2e853b5"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/607",
+      "retrievedAt": "2026-10-30T16:26:57.879266+00:00",
+      "sha256": "ca2592e35e6b3a29b7c590950a4d5260cbeb17dcbc5cad56896a3de96f70aaa3"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/608",
+      "retrievedAt": "2026-10-30T16:26:58.260849+00:00",
+      "sha256": "299c5a9be94975ee5d0dbcac55dac8b0cf2a839e1145fb005c693e1349ae6ef9"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/609",
+      "retrievedAt": "2026-10-30T16:26:58.989882+00:00",
+      "sha256": "091f032e35d00be61ca1457231ffe04b4cc7d08d01d3be420577cd38a7fbec1d"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/610",
+      "retrievedAt": "2026-10-30T16:26:58.593018+00:00",
+      "sha256": "28250c9deb8ffd30fe25c3a240b105e91788b06d039e1a32984a7cc3d0b04834"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/611",
+      "retrievedAt": "2026-10-30T16:26:59.789466+00:00",
+      "sha256": "600c6e2c282f8c0c1924fba36402a30b4b1963348ef48caa5f288a52d6d5af36"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/612",
+      "retrievedAt": "2026-10-30T16:27:00.636674+00:00",
+      "sha256": "77f789b7709e67c4d25c39700cd2c64144a251643070455b66b0a0cbcd905f8f"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/10",
+      "retrievedAt": "2026-10-30T16:27:03.941378+00:00",
+      "sha256": "2417f8f57d33f3384be4802abcfba8398a2353b780b11f3656e4ac1878216602"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/13",
+      "retrievedAt": "2026-10-30T16:27:04.863587+00:00",
+      "sha256": "5c45e1b482a079d064bf83f51f9cd7ad9d9a8d35a0584b63420f58e47d6e5b23"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/16",
+      "retrievedAt": "2026-10-30T16:27:05.905877+00:00",
+      "sha256": "22e77c858e5c54535dbe25c88fe5f15f042ef02a8aff72c1cec83f3ec2a60149"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/19",
+      "retrievedAt": "2026-10-30T16:27:05.576195+00:00",
+      "sha256": "5d0d16c5bd08b46fa71ab9a4b00ba1f3e6776451c530480951d0f915ad409d61"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2",
+      "retrievedAt": "2026-10-30T16:27:01.676335+00:00",
+      "sha256": "bc3da491446a0b2d3012d56ad8a6ea37fe35464234181c6e65d023428c3a08d9"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/22",
+      "retrievedAt": "2026-10-30T16:27:06.425833+00:00",
+      "sha256": "3df2fd26d31b3c8f09e27bce1273f4bd0755f202e5fe5ef1d1194aadef1ddc04"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3",
+      "retrievedAt": "2026-10-30T16:27:03.802512+00:00",
+      "sha256": "d31b03037c4b0a652f9b12eff440b0600a6aee64cc362ef98d641b274fbcb64f"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/8",
+      "retrievedAt": "2026-10-30T16:27:01.669815+00:00",
+      "sha256": "ad32a4428174d39f99c1d57af5c8f62a9ff6470975aceb1291fa7600efe7979e"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cagdas-turk-ve-dunya-tarihi-dersi/unite/1676",
+      "retrievedAt": "2026-10-30T16:27:07.083175+00:00",
+      "sha256": "44d3d40fc50dae1fb5265a18faee2f7608a2654fbc568ab9dcb304473a6672e7"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cagdas-turk-ve-dunya-tarihi-dersi/unite/1684",
+      "retrievedAt": "2026-10-30T16:27:07.839227+00:00",
+      "sha256": "40467f3cb53fd2b3f55c6fcd901270e347aa4600db7f4a4c60bd4048d828dc20"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cagdas-turk-ve-dunya-tarihi-dersi/unite/1686",
+      "retrievedAt": "2026-10-30T16:27:08.353532+00:00",
+      "sha256": "d18a133ac00da91cbfb66efc12c968d0aefc3560c988e436d4065991f2bd76b9"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/107",
+      "retrievedAt": "2026-10-30T16:27:13.109409+00:00",
+      "sha256": "15bdc97c1b7aa06efbc6328362ba02d0074c7e7be791480dce8041f01c12eaee"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/110",
+      "retrievedAt": "2026-10-30T16:27:13.732070+00:00",
+      "sha256": "dee20d13314d142edc9c94b95fff56bb590183a230e70c71ccca8f0285a01115"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/114",
+      "retrievedAt": "2026-10-30T16:27:14.477513+00:00",
+      "sha256": "a289656f1a3bfefb818d15b1d61ce7940706c64aab392015a3651a2b10b61275"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/123",
+      "retrievedAt": "2026-10-30T16:27:14.823070+00:00",
+      "sha256": "01d199243c4fa55da26af4e2a1620ebaa8459307058c9c52359bdfbeabbfbe8e"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/253",
+      "retrievedAt": "2026-10-30T16:27:15.599067+00:00",
+      "sha256": "70d011d8d42fd06af9eb01b290efd1a7fd73b39d2cf134d5b2287d6d62b06076"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/255",
+      "retrievedAt": "2026-10-30T16:27:16.242605+00:00",
+      "sha256": "a1ad6d2c8194498fab946632076f50307cae63c9a60036e76a0fd0532f71733d"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/257",
+      "retrievedAt": "2026-10-30T16:27:17.130876+00:00",
+      "sha256": "b5dd1fc4b5495ea82f7630e970aabe39f0ad770eb8ae4a7950cbde09d1243978"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/258",
+      "retrievedAt": "2026-10-30T16:27:14.823070+00:00",
+      "sha256": "98f64315dc06c5fe4776a34efaad226ff3811991f7d1732e094e43920108ec58"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/262",
+      "retrievedAt": "2026-10-30T16:27:15.452279+00:00",
+      "sha256": "939e73e9828c18049943b93e582a065ec2f1ea0ddefbcf96422e5d99e5d447bb"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/272",
+      "retrievedAt": "2026-10-30T16:27:16.034731+00:00",
+      "sha256": "d3ba8d893977c5180aa37b8e03191f250f832f22b1f375a925d8d15f02e64c05"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/277",
+      "retrievedAt": "2026-10-30T16:27:16.925449+00:00",
+      "sha256": "1edee41ebb4eef34dfb38a2aacfc866b694e0dbd2d279a27fedd3ee1012499ba"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/28",
+      "retrievedAt": "2026-10-30T16:27:07.678396+00:00",
+      "sha256": "4ff7a829550ae0140b3709061c90fd83984f353062bca24f4f413f9bd897f967"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/280",
+      "retrievedAt": "2026-10-30T16:27:17.439554+00:00",
+      "sha256": "567491a18c27b45732ec32788ae4d0fb81a532f58eb4fbcc5a34900941c3a937"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/283",
+      "retrievedAt": "2026-10-30T16:27:18.163400+00:00",
+      "sha256": "63a7f70beb9dce603ad372eea6e0cc4e05c88518c624fd411f9d7e42b7c429af"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/285",
+      "retrievedAt": "2026-10-30T16:27:18.667230+00:00",
+      "sha256": "b68b81d4f861feeed9ac4488cd4e5d8a82a8a38bb1d95e5e461cc81c7afcb964"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/31",
+      "retrievedAt": "2026-10-30T16:27:08.297917+00:00",
+      "sha256": "005821613e071179d61cbc4fb6de4d1bd00a130a79536485b793f8f19a1a97bb"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/34",
+      "retrievedAt": "2026-10-30T16:27:09.014817+00:00",
+      "sha256": "df81dc41b916cbba968cbf567b810b31f343d577cf6fcee93ce468bebabf89c9"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/37",
+      "retrievedAt": "2026-10-30T16:27:09.847912+00:00",
+      "sha256": "fa647fb4ea955a29f683d023a22a6e1fddf82cefe51742225f2c7ae96e4a31b9"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/40",
+      "retrievedAt": "2026-10-30T16:27:10.289520+00:00",
+      "sha256": "787cf01ffa2622f025e78ca3cef357462450b512c1b4493def51c6f5f7037af8"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/42",
+      "retrievedAt": "2026-10-30T16:27:11.028265+00:00",
+      "sha256": "9b732f38d1edc24967edf8d3f075b263b107819a5d2fcbcf807a584c724041f7"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/47",
+      "retrievedAt": "2026-10-30T16:27:12.065982+00:00",
+      "sha256": "bd22a519dbc432ca282e95cab7ca1f7d2de46719f5ea543d474498f93b3440d0"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/56",
+      "retrievedAt": "2026-10-30T16:27:09.564286+00:00",
+      "sha256": "53710d2f1a1d91d06d560389c341713a597a0a5347041c41c354e6e8b354f3c1"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/58",
+      "retrievedAt": "2026-10-30T16:27:10.135232+00:00",
+      "sha256": "bff15f4189a5a0562d5964af67f3f722983d8305bc34aed023cc499b49d5ec3c"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/63",
+      "retrievedAt": "2026-10-30T16:27:11.025267+00:00",
+      "sha256": "468f25d87a4fa1e4efb7ff9fe230c32ffa6264c8cfa57f1820f2e6ea96ed2eb2"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/81",
+      "retrievedAt": "2026-10-30T16:27:12.065982+00:00",
+      "sha256": "d914ae83c9fd819d6da755f6b06e5f3b4158a99deddf5bd1c5bdf44fd14a00d4"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/89",
+      "retrievedAt": "2026-10-30T16:27:12.580895+00:00",
+      "sha256": "3499caa7636873087a0833d139a63dc912c2997cf1b9858bb5f4683842ebfb09"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/94",
+      "retrievedAt": "2026-10-30T16:27:13.370856+00:00",
+      "sha256": "635fc6c9f3011f7846b9d438425ac3a8674667b8f6394c4405117b4f5a913def"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/cografya-dersi/unite/98",
+      "retrievedAt": "2026-10-30T16:27:13.855221+00:00",
+      "sha256": "0b788747664718cfc3c360e39cbd3528d1d6c69e457baf2b2cdcce50d51e5f4d"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/demokrasi-ve-insan-haklari-dersi/unite/1651",
+      "retrievedAt": "2026-10-30T16:27:18.488945+00:00",
+      "sha256": "0e8bf9a5d6892e5a5b6a9a83d8ac41b81b2cdfd48a523bd2e0906466e57c7ef0"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/demokrasi-ve-insan-haklari-dersi/unite/1654",
+      "retrievedAt": "2026-10-30T16:27:18.919936+00:00",
+      "sha256": "e10cede04552c20c0cf8a4f88e00cac577b5e9e2b0c96c20786f6369d76b6ddc"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/103",
+      "retrievedAt": "2026-10-30T16:27:24.624211+00:00",
+      "sha256": "e96a485205e423056ae4039b8ccaa1ea0a9b3bafa1d735cc803d652d67cc9343"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/30",
+      "retrievedAt": "2026-10-30T16:27:20.467941+00:00",
+      "sha256": "83700fcb3ba2a615a9927118d26fe938690912cd2d04d0e2cd7fdf4b740ce455"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/32",
+      "retrievedAt": "2026-10-30T16:27:21.859132+00:00",
+      "sha256": "2ccd8d15adb2b62d129bf49a4c010bfe9bd7b405b548862cda65ed8de7b71034"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/35",
+      "retrievedAt": "2026-10-30T16:27:22.626265+00:00",
+      "sha256": "cf71f612a498bc328b62d662e22bf5d4e629f0122dffef14974251a5f20346f2"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/38",
+      "retrievedAt": "2026-10-30T16:27:23.243699+00:00",
+      "sha256": "87b1838f6bbf13b7fd2238c918d87b6be4e7b023950c808ce45bb55cf91e206b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/41",
+      "retrievedAt": "2026-10-30T16:27:23.701057+00:00",
+      "sha256": "d807bed178ef6188d49fa423c91566ab45e51be093b0a5353d487216b757cb31"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/46",
+      "retrievedAt": "2026-10-30T16:27:24.502743+00:00",
+      "sha256": "e83dc0f006e11422ac5e8fd4cee83094890c686daf3233a26c1b772f72f2cc5a"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/51",
+      "retrievedAt": "2026-10-30T16:27:25.505807+00:00",
+      "sha256": "f8cbf1e4a88662d4ea3fecd5303e66bfec4e8f6beafc88c529e201a0f711bebc"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/60",
+      "retrievedAt": "2026-10-30T16:27:26.258178+00:00",
+      "sha256": "b4579f59c4dc93566ae4430cf7805934d479b9e46a625b10415bcb87d0c29002"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/62",
+      "retrievedAt": "2026-10-30T16:27:27.127274+00:00",
+      "sha256": "09713ce1cecf5234c094fb82edc9966a27f461fab40bd73cd050ea2f25d0b672"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/66",
+      "retrievedAt": "2026-10-30T16:27:20.772278+00:00",
+      "sha256": "d19b3172d87c85a2996b43e523519070a035286d0313461e65caa5afe2e56762"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/69",
+      "retrievedAt": "2026-10-30T16:27:21.909820+00:00",
+      "sha256": "1d8d42697751fadcb6c42f8aa96663e6a665c9ba9174724ea67f80eb7f430bad"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/77",
+      "retrievedAt": "2026-10-30T16:27:22.642290+00:00",
+      "sha256": "3b6395af889138185603215ca514a552cd7469955c41eb77f4dedebab22a98af"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/85",
+      "retrievedAt": "2026-10-30T16:27:23.243699+00:00",
+      "sha256": "28bf112a43edfc97037a2c4d13e2323e892027c37b1188824a380d7c0d0bb4a9"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/93",
+      "retrievedAt": "2026-10-30T16:27:23.705274+00:00",
+      "sha256": "945ae66ce902149255ff802ae0599ec485dad938eeadb07cd83e6b7dea8bb23f"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/100",
+      "retrievedAt": "2026-10-30T16:27:28.464968+00:00",
+      "sha256": "4c3c3731bba2751c0fbeef4eea75a8e6e84f0d3fbb008adc13d8afad2fa7e62c"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/108",
+      "retrievedAt": "2026-10-30T16:27:29.607151+00:00",
+      "sha256": "af1bb8ec8999e6433b3c47b281415e80cc2da596437c9f56465beb683ce1040a"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/111",
+      "retrievedAt": "2026-10-30T16:27:31.596278+00:00",
+      "sha256": "37348dd4b9db408d96821120efe7bc96118a0a06c0a8aba548868996855517e0"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/122",
+      "retrievedAt": "2026-10-30T16:27:32.540010+00:00",
+      "sha256": "1fb4b1c94e285124faec130ca4228febc0da3b9bc616270b934f4d0b0df7abfe"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/243",
+      "retrievedAt": "2026-10-30T16:27:32.550108+00:00",
+      "sha256": "40de7a26abeb5f68b95812b6c7b6323f6b23f5f3466b15c47eceeefd0e982be0"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/248",
+      "retrievedAt": "2026-10-30T16:27:33.886676+00:00",
+      "sha256": "b6f1384c9a40637dce3cbaddcf1e0042a4421f89677ae65f8851fbcf2c95c593"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/259",
+      "retrievedAt": "2026-10-30T16:27:34.639778+00:00",
+      "sha256": "27d8b8ade2562a60fe37844f2415c1eecbaf842d9ed92a04f4b4b6459a050a0e"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/266",
+      "retrievedAt": "2026-10-30T16:27:34.806910+00:00",
+      "sha256": "068aee450b879c4ead43198d1d049e76c02054e78591832df915ba5a2a2621d0"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/268",
+      "retrievedAt": "2026-10-30T16:27:36.271295+00:00",
+      "sha256": "fb81e9c13c2028812ba33a568402fc2f5d6f1ceea6f661c9b707d0147c768fa0"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/273",
+      "retrievedAt": "2026-10-30T16:27:37.494882+00:00",
+      "sha256": "c8736d4a78621eb13da1ccef75978732bc173dbb885625848f75526c2941b5c7"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/279",
+      "retrievedAt": "2026-10-30T16:27:39.130156+00:00",
+      "sha256": "998f0a22cce9842c529b22b9232ceb40f21b2da561e23eba4cd08796558b72c0"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/43",
+      "retrievedAt": "2026-10-30T16:27:26.492860+00:00",
+      "sha256": "9fcb30af58c5747193a7e3e61d39ad4ada0564d4962b2b8dee6f99d8a75dab4b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/57",
+      "retrievedAt": "2026-10-30T16:27:27.492967+00:00",
+      "sha256": "359278797a3c1675f06eaeb5dd286c4baae12057efd6da0e6f042d4664d549d1"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/65",
+      "retrievedAt": "2026-10-30T16:27:28.228608+00:00",
+      "sha256": "58e85bc934e2f64e82126298f825696edd876e008a237e7317e1f8d7b78ab614"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/82",
+      "retrievedAt": "2026-10-30T16:27:29.573917+00:00",
+      "sha256": "03294685ba822aa6d4e6069c17064b1b003d21dbdee6b2a175988eee29ac5461"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/567",
+      "retrievedAt": "2026-10-30T16:27:36.743242+00:00",
+      "sha256": "0402672355c4bd53fa7bb7c011a0076fd811ac64fd84c63c1632116046c0f0ef"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/568",
+      "retrievedAt": "2026-10-30T16:27:38.256096+00:00",
+      "sha256": "fd76dd57a54c9b23a9e50db02001b34ef37e45e24f371e0a6e9c1422ad07df9a"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/569",
+      "retrievedAt": "2026-10-30T16:27:39.130156+00:00",
+      "sha256": "a081c70d7a923582b49fadfffdaa0810039511615079c8b8b6e55d67970c98b8"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/570",
+      "retrievedAt": "2026-10-30T16:27:40.189600+00:00",
+      "sha256": "14377a2032f97b8564b20f035482178f8225a71948e7badafae4de5bb8454af7"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/571",
+      "retrievedAt": "2026-10-30T16:27:40.939497+00:00",
+      "sha256": "cf0120344a3710e04df34c7d0f4fb2fb6701d5e32c8d242fc95056a2fbf729ac"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/572",
+      "retrievedAt": "2026-10-30T16:27:42.427035+00:00",
+      "sha256": "095a4bec31276f2bca815c101188e115fb8eaddafd5868371bb1d4e9e92a7a3c"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/573",
+      "retrievedAt": "2026-10-30T16:27:43.140278+00:00",
+      "sha256": "e8c5b15078537e69017515feb2fc9b8c8e15983d3d24d2a2f4ce1de517d0bed0"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/574",
+      "retrievedAt": "2026-10-30T16:27:43.972113+00:00",
+      "sha256": "f01e33fda93a07a47e57602c4114d5ecc197bf237f488cead7c04f12fce90207"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/575",
+      "retrievedAt": "2026-10-30T16:27:42.406139+00:00",
+      "sha256": "416ec6c6cef0256be936a177e7329ff9fce6162038fd00302f1a9da6b5a9503c"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/576",
+      "retrievedAt": "2026-10-30T16:27:43.140278+00:00",
+      "sha256": "716163f70ca43f55a4d60bfc0aedd2e0e1ade3523371d0892f67ed5204fe1bd9"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/577",
+      "retrievedAt": "2026-10-30T16:27:43.964991+00:00",
+      "sha256": "9b4070552cab3323ca821c6b3faab1ce56a8ebfea981e9e7c0644c0866d53873"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/578",
+      "retrievedAt": "2026-10-30T16:27:44.953797+00:00",
+      "sha256": "2a76c42267aae90f30d15635903eb468e5e09c0b31b5b6602bc6c11ee938631e"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/579",
+      "retrievedAt": "2026-10-30T16:27:45.558484+00:00",
+      "sha256": "e6eb3fc6e2971b2e95e66c6965ba4f25558a434210ec8bd6271e830342270e7e"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/580",
+      "retrievedAt": "2026-10-30T16:27:47.040144+00:00",
+      "sha256": "1b7d1efc9b5764f06673d42587b4836d7e106596396b0e0d926b3b57a80c79cb"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/581",
+      "retrievedAt": "2026-10-30T16:27:47.811217+00:00",
+      "sha256": "b7a4576b9d5edd0c685c3f6d9cd9f25126c2ece46c78553d2d738810f2a60c95"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/582",
+      "retrievedAt": "2026-10-30T16:27:48.622209+00:00",
+      "sha256": "234162a3e065b1c108b3481990921c3ba62ba0d2f1e36df78e4fc990c92c6f6a"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1646",
+      "retrievedAt": "2026-10-30T16:27:46.515275+00:00",
+      "sha256": "0d4b394ac0422c1d28979fcd474a96fbb29337d3e2bc679cb718537ad17dc28f"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1647",
+      "retrievedAt": "2026-10-30T16:27:47.303549+00:00",
+      "sha256": "80545ecb853075a1523b6424059184c7102f6234054e2fa9782b5d0377d05bf7"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1648",
+      "retrievedAt": "2026-10-30T16:27:48.144588+00:00",
+      "sha256": "28a7751ac538164c567c24a4dad14ffe152b37ff07226086f21fdc765b51b909"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1649",
+      "retrievedAt": "2026-10-30T16:27:48.976215+00:00",
+      "sha256": "aae0c2105f541ecf7d8dafb079ce8d6d82d6f84a28a4fc4241dde6aa79802047"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1650",
+      "retrievedAt": "2026-10-30T16:27:50.201025+00:00",
+      "sha256": "18bc60c2185afcd760543dbcb7452eb3ec403ec67888bf578a28d5c8d2f21f90"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/533",
+      "retrievedAt": "2026-10-30T16:27:50.543135+00:00",
+      "sha256": "1614485cbf283381fdfbf54978cc5a15b0c183d01d9e55a87ee30b01d8c76880"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/534",
+      "retrievedAt": "2026-10-30T16:27:51.576446+00:00",
+      "sha256": "f151fa1a5dedd79beabff402889726bc91114983cd6ec8887d4cd37def994fd9"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/535",
+      "retrievedAt": "2026-10-30T16:27:52.755919+00:00",
+      "sha256": "55671c50f466a29cc958446a75675e7a1a33a5283af12f25624fe7d45ab33b0b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/536",
+      "retrievedAt": "2026-10-30T16:27:53.859952+00:00",
+      "sha256": "1fe75f7ba638cb60bfd74556b3ce3103dfe1b7e5a8be9321b5059731746b8cd4"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/537",
+      "retrievedAt": "2026-10-30T16:27:55.024299+00:00",
+      "sha256": "da20e8c4b2385ab01a6110f661fdef23f4b1c6aeec50a83802e32dce426fc7e5"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/538",
+      "retrievedAt": "2026-10-30T16:27:56.118454+00:00",
+      "sha256": "ac3d5fbabe979d99019dafeb642aea44f3f4800447020162d84596990f03ba74"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/539",
+      "retrievedAt": "2026-10-30T16:27:56.849365+00:00",
+      "sha256": "0822933e489fafbebffc190f0029be600369dbedeb56d5b7a2e0a7fdcbc1288b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/540",
+      "retrievedAt": "2026-10-30T16:27:57.584066+00:00",
+      "sha256": "50adf682df886ba330aac86b2e17e2989b7b82fc8790491c0c6dc47f82b7085b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/541",
+      "retrievedAt": "2026-10-30T16:27:52.073917+00:00",
+      "sha256": "c8f897542e8d478e26ea202a3b1664a92632292aa49b3d2c9cebe11c14545e63"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/542",
+      "retrievedAt": "2026-10-30T16:27:52.893250+00:00",
+      "sha256": "464986562ac885acc50ae922c53f9e1a9f982d502a0af569557a2d0b0d532aba"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/543",
+      "retrievedAt": "2026-10-30T16:27:53.859952+00:00",
+      "sha256": "b67e1b1273440d54f12b77b4085d26fe3a45ab28b69e3f4ade7ec4494575315e"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/544",
+      "retrievedAt": "2026-10-30T16:27:55.025300+00:00",
+      "sha256": "d5ad8f468c225217b3be7ad8b6e1b4c1d720e06fddc5d27f64d62fd3d77a3c9b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/545",
+      "retrievedAt": "2026-10-30T16:27:56.118454+00:00",
+      "sha256": "6a7e0a291d5f01562a980625248def2e6e8d4de78906c05ce142185cb3ab2b57"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/546",
+      "retrievedAt": "2026-10-30T16:27:56.848373+00:00",
+      "sha256": "efc1d4319919e405ba2762456b8fcefd1fc51c0185db845e05ccba9d59bb58b0"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/547",
+      "retrievedAt": "2026-10-30T16:27:57.596085+00:00",
+      "sha256": "4b82c26f61694d2a19592553ce6ab6683e8c4b781911ed98bc8ad413d4087580"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/548",
+      "retrievedAt": "2026-10-30T16:27:58.276463+00:00",
+      "sha256": "9d7f60bc1ae59af85a2bd244309cd3c48965d74c56a3c61618d8eb66e955e7da"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/549",
+      "retrievedAt": "2026-10-30T16:27:58.751541+00:00",
+      "sha256": "d1148fc2d02fe7ebd1ec0b40672a0e96b96c70de4838e9587d4ad36a0c601d98"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/550",
+      "retrievedAt": "2026-10-30T16:27:59.679784+00:00",
+      "sha256": "6588d01fae63211d10a0574addc476aabc45f7a0c80e97c484c8e6a9509438b9"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/551",
+      "retrievedAt": "2026-10-30T16:28:00.343860+00:00",
+      "sha256": "19bf684a8b7db8fd7aa6c3e4d6cebd874169511d02e37fdb4e1ca6c6b9ecada0"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/552",
+      "retrievedAt": "2026-10-30T16:28:01.354190+00:00",
+      "sha256": "c8a7e3d3b951c31ce2732f35efba04d0a12a952a15968a4e4f0213e35ec5e986"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/553",
+      "retrievedAt": "2026-10-30T16:28:02.615230+00:00",
+      "sha256": "25dcfaaa1f1875318b6b9d8be0f30ade6d594cf041f27017658b25edb580fe94"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/554",
+      "retrievedAt": "2026-10-30T16:28:03.118844+00:00",
+      "sha256": "2a7daf9863dbdfc614513cb72ccac5e19f6dbbb7876ef076063ff2d3a500311e"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/555",
+      "retrievedAt": "2026-10-30T16:28:03.658746+00:00",
+      "sha256": "8380e08709ce1df84b301fd5255517c534432117f89a92a067cd3a747a17fc92"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/556",
+      "retrievedAt": "2026-10-30T16:28:04.200089+00:00",
+      "sha256": "26b816b3beb303ee53e79a898ff30405013017e5adef9692eae46798df16f227"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/557",
+      "retrievedAt": "2026-10-30T16:27:59.667277+00:00",
+      "sha256": "ccbc4cc0843d8b0bffb96f944a7a84c2e5cd04ca835875e0e202364a3e162c90"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/558",
+      "retrievedAt": "2026-10-30T16:28:00.304559+00:00",
+      "sha256": "327131f604c7930700d918c90c826e6590ce18a7694396df48bc95041735b45c"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/559",
+      "retrievedAt": "2026-10-30T16:28:01.302649+00:00",
+      "sha256": "7c56f368fd6cb657618270bac67eb0e98d70b8b347abdffb4bfa411b730e0205"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/560",
+      "retrievedAt": "2026-10-30T16:28:02.611203+00:00",
+      "sha256": "3c4493f11dafd55720dbd095a0073a3e46e6bb689335b14456e6b9db99d91f73"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/561",
+      "retrievedAt": "2026-10-30T16:28:03.099044+00:00",
+      "sha256": "e621a37af550f9232e41a345e47cee6f845711fc52ba3ac7a83de1aa92c6f4c8"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-9-12/unite/562",
+      "retrievedAt": "2026-10-30T16:28:03.658746+00:00",
+      "sha256": "e5da21d6870c9524fb260547fdbfca6f1c1a149d207be2e81d37a9adfca17128"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/501",
+      "retrievedAt": "2026-10-30T16:28:04.681903+00:00",
+      "sha256": "ebdb90e55a8f8b4d23360180152fec9a71bb43cb6f0ac33d4e42ac819af51e7f"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/502",
+      "retrievedAt": "2026-10-30T16:28:05.048212+00:00",
+      "sha256": "89fb2dab5190ed7bcd38784d43ac0b6ca74601ed2f570112007455bf75c87f39"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/503",
+      "retrievedAt": "2026-10-30T16:28:05.704045+00:00",
+      "sha256": "b2a2bad62d5c4828c316766975f6b12db0cb3a8811055aa085ac29c32853a4fe"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/504",
+      "retrievedAt": "2026-10-30T16:28:06.124322+00:00",
+      "sha256": "8e04515c589b97572096aacffdd6fade07ef93e031973eb68820239ae294939e"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/505",
+      "retrievedAt": "2026-10-30T16:28:06.717900+00:00",
+      "sha256": "b4e0e4a58ebb45d61476e3e9f50189b31f632d31c8e3d57116208326c5fa7ce9"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/506",
+      "retrievedAt": "2026-10-30T16:28:08.991445+00:00",
+      "sha256": "8f75799ade2c8db36d27ef094c1c457515f44e227b17941a5e63b6bb48cfd95b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/507",
+      "retrievedAt": "2026-10-30T16:28:10.591870+00:00",
+      "sha256": "aa71c7f58b994bc66661c73737fb25ceeb4c755ef58bdef031b4e363cb2a691b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/508",
+      "retrievedAt": "2026-10-30T16:28:11.653669+00:00",
+      "sha256": "9fed1ea2f2ac4eddbd180d75e551ea0e2dfdc231a36efc617dea662c77d875a2"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/509",
+      "retrievedAt": "2026-10-30T16:28:05.011115+00:00",
+      "sha256": "71a4e2eba45dbdd15f0d035dda612217e2c7783825b32bb8dc2257a516a91f84"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/510",
+      "retrievedAt": "2026-10-30T16:28:05.671952+00:00",
+      "sha256": "523691ec1be9e06726fb0178d863e2925f2159e8620b6669bd2f1bb4f57f3c56"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/511",
+      "retrievedAt": "2026-10-30T16:28:06.127324+00:00",
+      "sha256": "b8a40c5630c7de8b3dc509d2f7d51def6dfc5c1438468c07ce48350fcf59f57b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/512",
+      "retrievedAt": "2026-10-30T16:28:06.720902+00:00",
+      "sha256": "526763fbadfd99ed660fe3311ffe06a3c2af9a1ef44f6828cadd46ab209c5044"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/513",
+      "retrievedAt": "2026-10-30T16:28:08.995452+00:00",
+      "sha256": "2a20be9cef376d8cad517e002fe8df6760928af20597f107e238ad871875f51d"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/514",
+      "retrievedAt": "2026-10-30T16:28:10.606424+00:00",
+      "sha256": "5e427209cb99f02c6540178ce5ce36a95bd64dff670ebd2c32ceca490d9ea648"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/515",
+      "retrievedAt": "2026-10-30T16:28:11.653669+00:00",
+      "sha256": "c605f756a3b8da1a69f63a72fb523b599138379eb35c5614fb355f49c9e5a0b1"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/516",
+      "retrievedAt": "2026-10-30T16:28:12.806487+00:00",
+      "sha256": "3afc98a4a927bd09487ab1d61518f91142f8d6f2bc59da9a41431a810742ef1e"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/517",
+      "retrievedAt": "2026-10-30T16:28:13.219765+00:00",
+      "sha256": "f399da7b73a3d81a2c2686705d5c468aa2de7d7cc31c1fab7f902c184c5464d1"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/518",
+      "retrievedAt": "2026-10-30T16:28:14.215998+00:00",
+      "sha256": "7ac1c7c16cebb4dd2ecd59a20355f9ffdd48c0bb0111fdd1e40744a42d1d6e28"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/519",
+      "retrievedAt": "2026-10-30T16:28:15.211118+00:00",
+      "sha256": "c84763798e289fa4ecbb39899a4c7f46deb29a8df8d5328a2f649571507de8db"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/520",
+      "retrievedAt": "2026-10-30T16:28:16.229940+00:00",
+      "sha256": "8a1c1a8cc2a73bd0b369ad8e4aed19b78419248b57cae6388e4ecb5598bd73a3"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/521",
+      "retrievedAt": "2026-10-30T16:28:17.141946+00:00",
+      "sha256": "8ead98eb89097aad2e67f8fb71e1dab959e0074a953a5fe099c2c9b1640b92dd"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/522",
+      "retrievedAt": "2026-10-30T16:28:18.288330+00:00",
+      "sha256": "bfa010c888be21c9e2f20516996aec706d39e93c223c58689b140bce94d0d2b1"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/523",
+      "retrievedAt": "2026-10-30T16:28:22.643954+00:00",
+      "sha256": "0d97d182aa5074d19e00c8ae37cedd4dde2c3b2ee38f1fd4d96a3959818c67db"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/524",
+      "retrievedAt": "2026-10-30T16:28:24.006194+00:00",
+      "sha256": "2dc267f20b707da76110eda7726a25130b6d54050d8c6bc27010af59a1dcf4f1"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/525",
+      "retrievedAt": "2026-10-30T16:28:14.219516+00:00",
+      "sha256": "e73824f53741dd007f08fa319c24c12ba12bc8b0314726df867deb2a2e12c373"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/526",
+      "retrievedAt": "2026-10-30T16:28:15.221033+00:00",
+      "sha256": "d80d72b49179815db20e0a84872d9abb9ab1313f27fdbedd8111222d2785472a"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/527",
+      "retrievedAt": "2026-10-30T16:28:16.229940+00:00",
+      "sha256": "58569301a1270979b44513671ad371bedc85ada4daa3b581d0be9372d30164ee"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/528",
+      "retrievedAt": "2026-10-30T16:28:17.158566+00:00",
+      "sha256": "2a58b3123790484d4ae9b515548e6a5a55210c8833ba025aa864503b04f16eb7"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/529",
+      "retrievedAt": "2026-10-30T16:28:18.296998+00:00",
+      "sha256": "0985943cc6115d8588f859f758d437aafb13b4cc072ddd1335aa5832d617dac1"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/530",
+      "retrievedAt": "2026-10-30T16:28:20.176103+00:00",
+      "sha256": "f8ea8a823964b63a10c4a4cd282a725639cbf180b5b1e0ebed582b0325715238"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/531",
+      "retrievedAt": "2026-10-30T16:28:22.928729+00:00",
+      "sha256": "138c4c2f64237783c7fecde8e39a1a0a2f31d75c54cfbd2b177e2268b25e92e9"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/ingilizce-dersi-hazirlik-12/unite/532",
+      "retrievedAt": "2026-10-30T16:28:24.445860+00:00",
+      "sha256": "d5f154621693dfb1dd0b67f839bc3cb849740117e8aaab753bee7ea0067b59ec"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/islam-bilim-tarihi-dersi/unite/1662",
+      "retrievedAt": "2026-10-30T16:28:26.326780+00:00",
+      "sha256": "c5a80d7530eadcd47a5c09d995f97b225a6086f8d6e983fddd9394cb0600d3ea"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/islam-bilim-tarihi-dersi/unite/1664",
+      "retrievedAt": "2026-10-30T16:28:27.420123+00:00",
+      "sha256": "7e1131c761e76efb4abe6deada852fc7a773864a9d71e84a0904c19352f9e411"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/islam-bilim-tarihi-dersi/unite/1669",
+      "retrievedAt": "2026-10-30T16:28:28.501102+00:00",
+      "sha256": "f38c745e6b75a5fe732de1d6585c07896422bc6247ef5020462f0364eff2e695"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/islam-bilim-tarihi-dersi/unite/1670",
+      "retrievedAt": "2026-10-30T16:28:29.833215+00:00",
+      "sha256": "fb5821a33464e216e6408e019a020556dffbb43a46c7c5e25d72b9b0f009303e"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/islam-bilim-tarihi-dersi/unite/1672",
+      "retrievedAt": "2026-10-30T16:28:30.829028+00:00",
+      "sha256": "190a6e94377fb51cdb8dd85c54000d64ee13d22e9e093956654b433ff86ab082"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/islam-bilim-tarihi-dersi/unite/1673",
+      "retrievedAt": "2026-10-30T16:28:31.163057+00:00",
+      "sha256": "cbb618210e6eb111234a5c951696e9dba393b1e5e52669998eae492c2ed9c65d"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/121",
+      "retrievedAt": "2026-10-30T16:28:28.501102+00:00",
+      "sha256": "5b2835168b8e67337b3d6fda18c48110a761226137701333eb8482fd3dab23c9"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/137",
+      "retrievedAt": "2026-10-30T16:28:29.867840+00:00",
+      "sha256": "daa23cdd075c03e1d91065c9c59458ab32e0cf3349b34d8acd799c8f71ad1cc3"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/138",
+      "retrievedAt": "2026-10-30T16:28:31.237273+00:00",
+      "sha256": "a39712a3985df43755f6268225e551edc87cd97f35ede9bdc60f36b84e83c9ee"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/159",
+      "retrievedAt": "2026-10-30T16:28:32.047578+00:00",
+      "sha256": "63a81834d2795b4f83fc636ddf0743740325af94aaaedc9ef21d2245348d60aa"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/160",
+      "retrievedAt": "2026-10-30T16:28:32.819957+00:00",
+      "sha256": "b5837f6f9daaea000de19c9166f663dc25210b9a7f061a5a5c13f5345e092e9b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/161",
+      "retrievedAt": "2026-10-30T16:28:32.819957+00:00",
+      "sha256": "414cc04d0b2009debd5e07a525b5cc075aaee3fc760ff9fed5f486be81eb7401"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/162",
+      "retrievedAt": "2026-10-30T16:28:33.894929+00:00",
+      "sha256": "ca8dcd92efd8608ac7f960c137a887be209924551d77303b7d64ba3d0e31377a"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/163",
+      "retrievedAt": "2026-10-30T16:28:34.836967+00:00",
+      "sha256": "f86f05f25e559564f1d791eacfacaf088fbb344d19b5005d8ad3a79dcb1ac4f3"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/167",
+      "retrievedAt": "2026-10-30T16:28:34.470864+00:00",
+      "sha256": "61fa34ec619eb1716362d28c4de233c7ef6f2bf927f54020767e3afe3a67fa1b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/168",
+      "retrievedAt": "2026-10-30T16:28:35.370236+00:00",
+      "sha256": "79422a7106ab65297c6f1a4bceb7e1c64c38a03e336a08a41e9184d20f9fd697"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/169",
+      "retrievedAt": "2026-10-30T16:28:36.337821+00:00",
+      "sha256": "b7bd0013277d61ff87b97c9594e8a75ba10df01bd8710554146685e6c53112ea"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/92",
+      "retrievedAt": "2026-10-30T16:28:27.240214+00:00",
+      "sha256": "bf1ba94462777645d720e1dce4a052aa4d39a9594453e278df9ec86fb2654149"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/mantik-dersi/unite/1637",
+      "retrievedAt": "2026-10-30T16:28:36.284054+00:00",
+      "sha256": "174ad7cf1f21cd9b5f4c36f367091ba46134c8e36d1a0edab5265f92df8143ff"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/mantik-dersi/unite/1638",
+      "retrievedAt": "2026-10-30T16:28:37.327004+00:00",
+      "sha256": "26fb640280abcf38949ff0e5d88a82ecc4bf04cd5363dda33853f83940f240c7"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/mantik-dersi/unite/1640",
+      "retrievedAt": "2026-10-30T16:28:38.065277+00:00",
+      "sha256": "5a567b2c09b3302676459056c9753aef8d2481dde749706a02018fea29099259"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/mantik-dersi/unite/1643",
+      "retrievedAt": "2026-10-30T16:28:39.528680+00:00",
+      "sha256": "b0c65eb6a14dbe364a008e76ee5b458449e2e85117e6ba7ea18e004d659c90c7"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/21",
+      "retrievedAt": "2026-10-30T16:28:38.114967+00:00",
+      "sha256": "b6162f5d32ba63b005eb141ab0799f72998928684b22655acc4d732173124e41"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/23",
+      "retrievedAt": "2026-10-30T16:28:39.525675+00:00",
+      "sha256": "5e98915ac4d4cd0a58a56f3ae98bf3be7172c646efd230e68c09f61eeca189ee"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/24",
+      "retrievedAt": "2026-10-30T16:28:42.532733+00:00",
+      "sha256": "c065c78b5e5c9e817e91674bcd23d4c5a67628b1f615a867cc7cda52d9bf3467"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/244",
+      "retrievedAt": "2026-10-30T16:28:43.533507+00:00",
+      "sha256": "3862f4a85a05208ebca1c8397d75f0c2909914ef24ba147755c3f96de7db430d"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/25",
+      "retrievedAt": "2026-10-30T16:28:40.503662+00:00",
+      "sha256": "1cb5b96ed6516c7980e44908bf8536c2fab4c879cae1e1bd2e164983cb63fa3e"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/250",
+      "retrievedAt": "2026-10-30T16:28:44.274562+00:00",
+      "sha256": "a511d9fcdeccb12a064da21f1f8e23c245b6335894139e49ddc8fb5860179cbd"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/251",
+      "retrievedAt": "2026-10-30T16:28:45.127097+00:00",
+      "sha256": "4057e664399b241ef1b49d158eeabc85376c5025d65578826257c308dd20603a"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/260",
+      "retrievedAt": "2026-10-30T16:28:41.218380+00:00",
+      "sha256": "e36aa4a394e44f2ef93e9f561dd8a03c9203ed39206865bd56bbd19e5af1d748"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/263",
+      "retrievedAt": "2026-10-30T16:28:46.178072+00:00",
+      "sha256": "6d76ca9ed165cf9a1a2fa8ac32209f12b0dc634769bebe4b913395c5d56c1c68"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/271",
+      "retrievedAt": "2026-10-30T16:28:42.537737+00:00",
+      "sha256": "bb5df8cf1f6b4f85b34e7111becd30babe45d3bd841e68845f512cb3dd32ece6"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/274",
+      "retrievedAt": "2026-10-30T16:28:47.141134+00:00",
+      "sha256": "f641447cad182d4a7edf66fc24db85442239b36fca91b8cd626f1083ef91bee1"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/281",
+      "retrievedAt": "2026-10-30T16:28:48.079772+00:00",
+      "sha256": "fe5889c2cf29a116804c7ced3d3a87d270ef74ca734d49afd32d28448f06961b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/295",
+      "retrievedAt": "2026-10-30T16:28:48.527987+00:00",
+      "sha256": "6bca948f5043c7b1e8d927c677587fdc7f06382ebc4f585411f7cb85947eb2c8"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/296",
+      "retrievedAt": "2026-10-30T16:28:49.120937+00:00",
+      "sha256": "998b8146ac68c55e9303435f109ce7a4dd1963f0cafe9ccece69b5e6db97cb23"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/297",
+      "retrievedAt": "2026-10-30T16:28:47.141134+00:00",
+      "sha256": "9e08c0f377f86b76eac1f878780d7e5f1f92f138a57083a11829dba53ef964a2"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/298",
+      "retrievedAt": "2026-10-30T16:28:46.309556+00:00",
+      "sha256": "dd39f10d9de976f331e0c75d3b4ed928309377ff8dbd6421c3af9f0d1ec7e77a"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/305",
+      "retrievedAt": "2026-10-30T16:28:48.527987+00:00",
+      "sha256": "25a0ac97b26e2d95b322254536f09c6b869ae4a07389fa878956481e5c37614e"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/306",
+      "retrievedAt": "2026-10-30T16:28:49.096052+00:00",
+      "sha256": "274c8b5aa926c8650dd3dde022d677e8078229a82733a3d49742d4ab8bf8e438"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/307",
+      "retrievedAt": "2026-10-30T16:28:50.786539+00:00",
+      "sha256": "900b5977a340ce46712a85986d0f1829aec8b089cb335f2567945653fbc36fbe"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/318",
+      "retrievedAt": "2026-10-30T16:28:51.247019+00:00",
+      "sha256": "03909357287755bae4f4dd3d9b0ee399c42c0cf0d66c1b73d85201234164c960"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/321",
+      "retrievedAt": "2026-10-30T16:28:51.852227+00:00",
+      "sha256": "12f0a11d94862734ec32b18b7c93a25c27314e42afd831969578b3f93f5086d8"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/325",
+      "retrievedAt": "2026-10-30T16:28:49.603085+00:00",
+      "sha256": "1d2f6633974deb067b8c6f8567cbd24566b75f8ace17739b7e23a09f69972d91"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/329",
+      "retrievedAt": "2026-10-30T16:28:50.440136+00:00",
+      "sha256": "380520006ce7de3e344d7de236f869d6418a3bf8295729619349fafa8c78b285"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/333",
+      "retrievedAt": "2026-10-30T16:28:53.525714+00:00",
+      "sha256": "44b3fd06970be6af3ea6fc0aeb715dd73c3d926a808b1f9f3deb3079a3483c16"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/83",
+      "retrievedAt": "2026-10-30T16:28:41.218380+00:00",
+      "sha256": "17ecfd97efac75ed07e58494263b56d998fc0caae9d1d8dbc5da6d9867e1280f"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/91",
+      "retrievedAt": "2026-10-30T16:28:43.507912+00:00",
+      "sha256": "1a9637c91425ad3bec5edc3d29e0c9c6bce7f296495864854944f323b92935c6"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/97",
+      "retrievedAt": "2026-10-30T16:28:44.274562+00:00",
+      "sha256": "f6c27aa3765378fae9375c5553246be8aa77fcb8174bae0ec6675db23d70baea"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1630",
+      "retrievedAt": "2026-10-30T16:28:50.312911+00:00",
+      "sha256": "76aa97788f935e1ba4e9f5d98ae5353097381b021077a653abe9b7511105c9c2"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1631",
+      "retrievedAt": "2026-10-30T16:28:50.758959+00:00",
+      "sha256": "beacbdbcf9ed90af967dd203df55845d1a26b78232fe34eaf7d7ffb74211374a"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1632",
+      "retrievedAt": "2026-10-30T16:28:51.196957+00:00",
+      "sha256": "b196566ce3c2cb619c067dd65fb2518cd87d63d2ae90b1dc9d846c1c724e2049"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1634",
+      "retrievedAt": "2026-10-30T16:28:51.838889+00:00",
+      "sha256": "ff09622125f5bec443a07dabfc9dfd02c414da74d026b313959eaab943d01e59"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1635",
+      "retrievedAt": "2026-10-30T16:28:53.081505+00:00",
+      "sha256": "9b406ad7e5227f54d366471c2c952826c3be21c857f47e228e3b9c8d5a5cbd2d"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1636",
+      "retrievedAt": "2026-10-30T16:28:55.704372+00:00",
+      "sha256": "d6ac59ea247c2b777bcda23f72981e184a3bf42ebc8b4cf5d99a1766fb12204d"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1639",
+      "retrievedAt": "2026-10-30T16:28:56.914014+00:00",
+      "sha256": "17b973bfe3c1da8d0e261ae543de6e37e904fca4c40fb9fbb4dd96e88f7ac594"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1641",
+      "retrievedAt": "2026-10-30T16:28:59.285140+00:00",
+      "sha256": "aa78fbc5a765e03daaa348b5195e16baaf8f461e8884280d836f91c82c858aa8"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1642",
+      "retrievedAt": "2026-10-30T16:28:59.823618+00:00",
+      "sha256": "94ebc890752da1d5c9052eb5734e6588369b1fb39e90d721afad22f394730705"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1644",
+      "retrievedAt": "2026-10-30T16:29:00.698976+00:00",
+      "sha256": "e2fcb705fe5899fe4fa5b9d80991ee915283f4f7c9c6d037fe1e742840e2f701"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/muzik-dersi/unite/586",
+      "retrievedAt": "2026-10-30T16:28:56.142948+00:00",
+      "sha256": "139513e460f72b711363404f84de73d54f9886c7d005dd5a4bed29d3ad859bb2"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/muzik-dersi/unite/587",
+      "retrievedAt": "2026-10-30T16:28:56.970894+00:00",
+      "sha256": "6b7b24b0809d6a4f9b5af8be680a141efbcc5bc782d5d6f88329f2883fd7241b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/muzik-dersi/unite/588",
+      "retrievedAt": "2026-10-30T16:28:57.805139+00:00",
+      "sha256": "97df745e6fc6dc85dcef95e2eaa009333acbde92d2e4e12e10793dd4439994ff"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/muzik-dersi/unite/589",
+      "retrievedAt": "2026-10-30T16:28:59.376738+00:00",
+      "sha256": "1c98252f90e7bbd663d0e6a9e5a6a595f7ad5eaca7b5cf77a1ac7c1a1aa90b58"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/muzik-dersi/unite/590",
+      "retrievedAt": "2026-10-30T16:28:59.925167+00:00",
+      "sha256": "dfef8f79918413c923048d08e6150de7af4236a161edd264186d05cfff202a78"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/muzik-dersi/unite/591",
+      "retrievedAt": "2026-10-30T16:29:00.757136+00:00",
+      "sha256": "fbc2c657b4518c530dcd3404223cf15c08296e9c31f63304e6629356d1d61c0f"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/muzik-dersi/unite/592",
+      "retrievedAt": "2026-10-30T16:29:02.169557+00:00",
+      "sha256": "2a8e35c699f8f9f9578963a37c724b9afb9fbbf02ebee74abf89cd90a2d066c4"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/muzik-dersi/unite/593",
+      "retrievedAt": "2026-10-30T16:29:03.039776+00:00",
+      "sha256": "10d17ee549fd83c214a81cd6a4e14a86d50be90d4a5e59ee6a257daa91eea97b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/muzik-dersi/unite/594",
+      "retrievedAt": "2026-10-30T16:29:03.888253+00:00",
+      "sha256": "28970f6759969cee499fe950d503e15c80edc2f81da4babfd80f64c95c1b43be"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/muzik-dersi/unite/595",
+      "retrievedAt": "2026-10-30T16:29:02.160970+00:00",
+      "sha256": "5162cd309534fe44a7c16ef837a6b538f9a4c3fe080c3481f28dba4eb52f1eb6"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/muzik-dersi/unite/596",
+      "retrievedAt": "2026-10-30T16:29:03.039776+00:00",
+      "sha256": "9c9e372536f3642c72ad7600aab4bba9821bc7000550cb4cf36389ad4180a68d"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/muzik-dersi/unite/597",
+      "retrievedAt": "2026-10-30T16:29:03.718152+00:00",
+      "sha256": "88103ba7a2e757f998eec09bf77f6ab44d969c2419383f11bd849867644e786b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1652",
+      "retrievedAt": "2026-10-30T16:29:04.881120+00:00",
+      "sha256": "26841751f3ef297f5262288218ba51b35cf420cd79bb3e8c734331da86a0d5c5"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1653",
+      "retrievedAt": "2026-10-30T16:29:05.432196+00:00",
+      "sha256": "41386e3d70f5e03406879194da86d8510606a7de099125440a0df27865119eda"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1656",
+      "retrievedAt": "2026-10-30T16:29:06.224921+00:00",
+      "sha256": "3c79c80862950bfd9dcd6b1966ed600a2a796697790d7b0cfc5804a83ba524dc"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1660",
+      "retrievedAt": "2026-10-30T16:29:07.333998+00:00",
+      "sha256": "6978dc17fb46ce65e1a27f6d9fff45f667189f5ff33e7437f2ac57e2a24b2aca"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1679",
+      "retrievedAt": "2026-10-30T16:29:05.432196+00:00",
+      "sha256": "b58388f0c6d45f26b40ab448f75e82aceddb362eb6611f1b86769365a49ce380"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1680",
+      "retrievedAt": "2026-10-30T16:29:06.316675+00:00",
+      "sha256": "94247c765058d579797476d05001a45ddd79eea71ed44070c3f36e544de5b52a"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1681",
+      "retrievedAt": "2026-10-30T16:29:07.203511+00:00",
+      "sha256": "39f7a54a2e967f9ebd5b2c0f4433aa8632f2f08e69a85094eb7b2ef12a3b4068"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1682",
+      "retrievedAt": "2026-10-30T16:29:07.658224+00:00",
+      "sha256": "f0fae3244c4df45ef350f844d27a3835c65802d76c97a4b9ef73ac8582aa604d"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1683",
+      "retrievedAt": "2026-10-30T16:29:08.574499+00:00",
+      "sha256": "a618ed5584fb3eb17d55092c1bf004d3651ac2f7fcd107b55a10ed85f9d919db"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1685",
+      "retrievedAt": "2026-10-30T16:29:09.326373+00:00",
+      "sha256": "b9af3f0c1301067c81bdde34be153b9ffc5259c31dc191ff8dc6d88cf4fd36c2"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1687",
+      "retrievedAt": "2026-10-30T16:29:09.935483+00:00",
+      "sha256": "889c7a96edcec4ff64ade0a532994492b49f9e6e0c73e2b96998fe22e62b7560"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1689",
+      "retrievedAt": "2026-10-30T16:29:10.434265+00:00",
+      "sha256": "94ac4e902fe06b333ba757489bc0471a412cfbdd78b90ad70c223a46cfcc8aa3"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1690",
+      "retrievedAt": "2026-10-30T16:29:11.044103+00:00",
+      "sha256": "a1ab653bed9ed316881187a8cc33e0e53472fcd97b20a40592378b016bbd54aa"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1692",
+      "retrievedAt": "2026-10-30T16:29:11.594959+00:00",
+      "sha256": "624043828f7fe49dcd3844da257edc2272cd4db3204883b54072632708b58ea0"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1693",
+      "retrievedAt": "2026-10-30T16:29:12.348724+00:00",
+      "sha256": "29826a035f5e81c7eb31e51405e75f2dd7c76a6a286e5f0fd1991d6cbd71cc78"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1694",
+      "retrievedAt": "2026-10-30T16:29:12.759681+00:00",
+      "sha256": "fbff836795c81340c28f2be1846d9ec755cb99edfeabb818e07f574b68ef19f5"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1695",
+      "retrievedAt": "2026-10-30T16:29:13.043889+00:00",
+      "sha256": "6b5507b6fccd04bbc3a7c58d5e5edf81d787e944ce29c1a583f17cd9037c273f"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1696",
+      "retrievedAt": "2026-10-30T16:29:13.473115+00:00",
+      "sha256": "3d1c397fc9c39b81d68aeb02dea360d761df94c19e6f94e28921da6797720318"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1697",
+      "retrievedAt": "2026-10-30T16:29:13.812451+00:00",
+      "sha256": "c7598325e286031f4e0a3ccfe83e5bd5623481227f1b3f8df5bb0f915f50185b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1698",
+      "retrievedAt": "2026-10-30T16:29:14.176348+00:00",
+      "sha256": "941aa650792498562ad54859b10ad5546b819b844c09487f0b0fe3de4258081f"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1699",
+      "retrievedAt": "2026-10-30T16:29:14.547570+00:00",
+      "sha256": "c59631d6fb49519f100ec691e0550f26f6c693575558b17a28ed738aa6fa79d6"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1700",
+      "retrievedAt": "2026-10-30T16:29:15.046737+00:00",
+      "sha256": "d03176384bdf00d04f7e22fb9cc1a5ce8b03b4794f073d3b2d197653d0be46e6"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyoloji-dersi/unite/1661",
+      "retrievedAt": "2026-10-30T16:29:08.662826+00:00",
+      "sha256": "939c2c66bc5ae3dbc7902c835c6acfc95c8c50696691161e5728f7cd3b8bc1c1"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyoloji-dersi/unite/1663",
+      "retrievedAt": "2026-10-30T16:29:09.354379+00:00",
+      "sha256": "842eb07ce5d259e8ded1eaec2939ceb551e122ce779d1358302089c08f18bafb"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyoloji-dersi/unite/1665",
+      "retrievedAt": "2026-10-30T16:29:09.919300+00:00",
+      "sha256": "9b773042bd5571454348ce6d9fadaa0ae85c2af756e28acb8a8a84fcad677da6"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyoloji-dersi/unite/1666",
+      "retrievedAt": "2026-10-30T16:29:10.612960+00:00",
+      "sha256": "b0cad85b19309ebf229d64293b15aa8b987d7d62afafd4628abc2dd72c3b9d37"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyoloji-dersi/unite/1674",
+      "retrievedAt": "2026-10-30T16:29:11.155248+00:00",
+      "sha256": "b35f295625caef4bcc8ec9a7c64849a6695870bee1dca3a21293e0e89ada1e6e"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyoloji-dersi/unite/1677",
+      "retrievedAt": "2026-10-30T16:29:11.621665+00:00",
+      "sha256": "cfc52e77242a56d5cf4bd2101dd0c4066b18049090823fab3f2ce2136063eebe"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/sosyoloji-dersi/unite/1678",
+      "retrievedAt": "2026-10-30T16:29:12.370128+00:00",
+      "sha256": "97f0aa56173e11d69020b441cca6a6fd0cb051fab45d5eefa99a1f6fd20797ac"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/26",
+      "retrievedAt": "2026-10-30T16:29:14.724569+00:00",
+      "sha256": "c0de22a65b24ab24a98ad4420f76ab9ea7d1f734fdd55ea074daaeea12ed7188"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/27",
+      "retrievedAt": "2026-10-30T16:29:16.001249+00:00",
+      "sha256": "5677d3d92f4a29a7affb7b660dc793b5fcc24fe3472e089b4a9f3035fefaa772"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/29",
+      "retrievedAt": "2026-10-30T16:29:16.615285+00:00",
+      "sha256": "66b1d2f9c1007322f3e64d64ba63e6bf957b0168cd3e3625886569f85df26f87"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/36",
+      "retrievedAt": "2026-10-30T16:29:16.615285+00:00",
+      "sha256": "88225c10f55e869461a8a922a9e095b81b20271e81f77f4210356e7720fa92a8"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/39",
+      "retrievedAt": "2026-10-30T16:29:17.488260+00:00",
+      "sha256": "62e193c21708bad2290b3cf37c23e0057adb80152805cbdbe95df4669a34adda"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/48",
+      "retrievedAt": "2026-10-30T16:29:18.061564+00:00",
+      "sha256": "0926e5d9f511fd311cbc61213a2e6e140587ba7dbc430916851c0d602be5ca25"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/68",
+      "retrievedAt": "2026-10-30T16:29:18.034275+00:00",
+      "sha256": "13e57590748993cd50487a0704b67af11f06457872c4cf9e1c88043d183ab4a3"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/72",
+      "retrievedAt": "2026-10-30T16:29:19.127481+00:00",
+      "sha256": "b8fcb2b0b1cb6f8fcc8424a770b8c4f4e0639639b5e41f0743e993a3949d3530"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/tarih-dersi/unite/80",
+      "retrievedAt": "2026-10-30T16:29:19.545187+00:00",
+      "sha256": "72144f2dcad5166e98fc1cfce94e0b8c3a85bdde990f52e7b449af52f234ae9f"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/tc-inkilap-tarihi-ve-ataturkculuk-dersi-2/unite/11",
+      "retrievedAt": "2026-10-30T16:29:13.540921+00:00",
+      "sha256": "e0bcc83fb2136f497ecea441b4805c9bbd00f782c165b0c6512cca25b2128bfe"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/tc-inkilap-tarihi-ve-ataturkculuk-dersi-2/unite/12",
+      "retrievedAt": "2026-10-30T16:29:13.886049+00:00",
+      "sha256": "c85ad36f942891431cda267e3af8d686afe719eba363219881450fa0b7b24e21"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/tc-inkilap-tarihi-ve-ataturkculuk-dersi-2/unite/9",
+      "retrievedAt": "2026-10-30T16:29:13.011723+00:00",
+      "sha256": "c4990882a7096283da493f8b77e3d92520e28c8d10ff6de7842a09da9a42b06d"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/temel-matematik-dersi/unite/1645",
+      "retrievedAt": "2026-10-30T16:29:19.545187+00:00",
+      "sha256": "5e0c06967af7bf4567097b0952b54e1e08b5c16bb27630659a437beed557c580"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/temel-matematik-dersi/unite/1655",
+      "retrievedAt": "2026-10-30T16:29:20.518001+00:00",
+      "sha256": "4aaab434d807196a11bde7b52f7cb9f39979c7160405d40314cff74c31897527"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/temel-matematik-dersi/unite/1659",
+      "retrievedAt": "2026-10-30T16:29:21.283887+00:00",
+      "sha256": "e4e60f3672e392ff7cd5a62a415448a66dd87559b47f7112c9811dd39189b754"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/temel-matematik-dersi/unite/1667",
+      "retrievedAt": "2026-10-30T16:29:20.910228+00:00",
+      "sha256": "0b0bf88b8ea49888df6fdae7c0f4be4e72b5632998005b7c96b5f59f3eeedbfe"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/temel-matematik-dersi/unite/1668",
+      "retrievedAt": "2026-10-30T16:29:21.780133+00:00",
+      "sha256": "44c59d04b24c1d3dc7c4170dd7d0215c4c63a32117688cca41fd19b30d1c2a9b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/temel-matematik-dersi/unite/1671",
+      "retrievedAt": "2026-10-30T16:29:22.516099+00:00",
+      "sha256": "1572b64d9fa46c211d5e88c80d90f3e106ee5e0fe64fee77ca834a4a8473dd4c"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/101",
+      "retrievedAt": "2026-10-30T16:29:23.215292+00:00",
+      "sha256": "40654acad7a82bd0ec6826497e0a99678d818db55c1ec8336926494a2310352e"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/106",
+      "retrievedAt": "2026-10-30T16:29:24.038164+00:00",
+      "sha256": "e28cbf1a9d763628965cb8590264e2a729cea68b5710763238f1019dac23bb0b"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/112",
+      "retrievedAt": "2026-10-30T16:29:25.142706+00:00",
+      "sha256": "1deff0c4a8020588fdf30e940e914bccd7f516e52b6a585ea0d0f231949d34bc"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/242",
+      "retrievedAt": "2026-10-30T16:29:24.028655+00:00",
+      "sha256": "9335abcdafd51420a62b3fa02e19a29cabc74d80832ed9200d6f69629506730f"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/247",
+      "retrievedAt": "2026-10-30T16:29:25.142706+00:00",
+      "sha256": "88f6ce4a3883550f2532c1799a3ebdcd7ef137b95cf3fe53ac68eb49951a5237"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/256",
+      "retrievedAt": "2026-10-30T16:29:25.826224+00:00",
+      "sha256": "ee52d6f796ba4ad9d0e638bd64e5b983c10aa7029c25d4b43476dfb7c9d0bebd"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/261",
+      "retrievedAt": "2026-10-30T16:29:26.326866+00:00",
+      "sha256": "8fe9b2f0874dd645cf077582c6d20ebe3276a612f7546892a49ba7024d6e10b4"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/267",
+      "retrievedAt": "2026-10-30T16:29:26.120086+00:00",
+      "sha256": "1797e982034f002856db0c3007aa5d67ed27e793718281c542cb50d477b04d79"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/276",
+      "retrievedAt": "2026-10-30T16:29:26.614259+00:00",
+      "sha256": "fbfed330b6add2197efdd035a9db42fee47284a5c5c59773454339ab1a3e2499"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/322",
+      "retrievedAt": "2026-10-30T16:29:27.092158+00:00",
+      "sha256": "d9feefa867584d0ca132cc99f4da80d19f6702ad64cc609dd3b8cb66c89a1a3a"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/332",
+      "retrievedAt": "2026-10-30T16:29:27.698759+00:00",
+      "sha256": "1c689af32c25202f774ffe74df4dcdba48badbff9fcd7f0075ced31f6a3eea52"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/335",
+      "retrievedAt": "2026-10-30T16:29:27.319239+00:00",
+      "sha256": "d02c01a4cee47f779cc2e77b961bed37732a36bcf53ef6ddbaa460e5b7192264"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/340",
+      "retrievedAt": "2026-10-30T16:29:27.909690+00:00",
+      "sha256": "289e368b0032763e2d42d5fa6f60718a343973ff120f2db1eccaae29ef655964"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/348",
+      "retrievedAt": "2026-10-30T16:29:28.475549+00:00",
+      "sha256": "470a0b0f0e248bf848377d96d84f290ab5ab856e927e6c5764f55940aa0af5f8"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/351",
+      "retrievedAt": "2026-10-30T16:29:29.443994+00:00",
+      "sha256": "346ee0da31b3bcfce691e72df6bf6d814bfbfbcb06314d65335265055be96ae8"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/turk-dili-ve-edebiyati-dersi/unite/76",
+      "retrievedAt": "2026-10-30T16:29:22.517099+00:00",
+      "sha256": "8dd929384870e349f02b40ee3bcd34225c9d1f110bf0987845a7f0a9fe3044b1"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/turk-kultur-ve-medeniyet-tarihi-dersi/unite/1657",
+      "retrievedAt": "2026-10-30T16:29:28.813086+00:00",
+      "sha256": "30b52e0c2e777adcc1876294d5f267f0a4571d6397020b317668d302cdf44b26"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/turk-kultur-ve-medeniyet-tarihi-dersi/unite/1658",
+      "retrievedAt": "2026-10-30T16:29:29.579024+00:00",
+      "sha256": "7ff872031c706387857340cf6cf02f264b141d0ddcd45c5672088359361a7955"
+    },
+    {
+      "url": "https://tymm.meb.gov.tr/turk-kultur-ve-medeniyet-tarihi-dersi/unite/1688",
+      "retrievedAt": "2026-10-30T16:29:30.198204+00:00",
+      "sha256": "b6b33ad18bcac8fd764c31a85360dbc9a56b9155bcd170be4997b7bec1d8e46f"
+    }
+  ]
+}

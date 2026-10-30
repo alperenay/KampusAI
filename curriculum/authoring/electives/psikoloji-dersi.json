@@ -1,0 +1,410 @@
+{
+  "schemaVersion": 1,
+  "grade": null,
+  "program": "psikoloji-dersi",
+  "lessons": [
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "psikoloji-dersi",
+      "unitId": "1652",
+      "officialCode": "PSK.1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1652",
+        "sha256": "26841751f3ef297f5262288218ba51b35cf420cd79bb3e8c734331da86a0d5c5"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1652"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "psikoloji-dersi",
+      "unitId": "1653",
+      "officialCode": "PSK.2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1653",
+        "sha256": "41386e3d70f5e03406879194da86d8510606a7de099125440a0df27865119eda"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1653"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "psikoloji-dersi",
+      "unitId": "1653",
+      "officialCode": "PSK.2.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1653",
+        "sha256": "41386e3d70f5e03406879194da86d8510606a7de099125440a0df27865119eda"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1653"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "psikoloji-dersi",
+      "unitId": "1653",
+      "officialCode": "PSK.2.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1653",
+        "sha256": "41386e3d70f5e03406879194da86d8510606a7de099125440a0df27865119eda"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1653"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "psikoloji-dersi",
+      "unitId": "1653",
+      "officialCode": "PSK.2.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1653",
+        "sha256": "41386e3d70f5e03406879194da86d8510606a7de099125440a0df27865119eda"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1653"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "psikoloji-dersi",
+      "unitId": "1656",
+      "officialCode": "PSK.3.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1656",
+        "sha256": "3c79c80862950bfd9dcd6b1966ed600a2a796697790d7b0cfc5804a83ba524dc"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1656"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "psikoloji-dersi",
+      "unitId": "1656",
+      "officialCode": "PSK.3.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1656",
+        "sha256": "3c79c80862950bfd9dcd6b1966ed600a2a796697790d7b0cfc5804a83ba524dc"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1656"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "psikoloji-dersi",
+      "unitId": "1656",
+      "officialCode": "PSK.3.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1656",
+        "sha256": "3c79c80862950bfd9dcd6b1966ed600a2a796697790d7b0cfc5804a83ba524dc"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1656"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "psikoloji-dersi",
+      "unitId": "1656",
+      "officialCode": "PSK.3.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1656",
+        "sha256": "3c79c80862950bfd9dcd6b1966ed600a2a796697790d7b0cfc5804a83ba524dc"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1656"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "psikoloji-dersi",
+      "unitId": "1660",
+      "officialCode": "PSK.4.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1660",
+        "sha256": "6978dc17fb46ce65e1a27f6d9fff45f667189f5ff33e7437f2ac57e2a24b2aca"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1660"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "psikoloji-dersi",
+      "unitId": "1660",
+      "officialCode": "PSK.4.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1660",
+        "sha256": "6978dc17fb46ce65e1a27f6d9fff45f667189f5ff33e7437f2ac57e2a24b2aca"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1660"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "psikoloji-dersi",
+      "unitId": "1660",
+      "officialCode": "PSK.4.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1660",
+        "sha256": "6978dc17fb46ce65e1a27f6d9fff45f667189f5ff33e7437f2ac57e2a24b2aca"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1660"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "psikoloji-dersi",
+      "unitId": "1660",
+      "officialCode": "PSK.4.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1660",
+        "sha256": "6978dc17fb46ce65e1a27f6d9fff45f667189f5ff33e7437f2ac57e2a24b2aca"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1660"
+        ]
+      },
+      "legacyCandidates": []
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "grade": null,
+  "apiGradeId": 17,
+  "courseId": 103,
+  "slug": "iklim-cevre-ve-yenilikci-cozumler-dersi",
+  "name": "İklim, Çevre ve Yenilikçi Çözümler Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/iklim-cevre-ve-yenilikci-cozumler-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "1646",
+      "title": "1. Ünite: İklim Değişikliği",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1646",
+      "retrievedAt": "2026-10-30T16:27:46.515275+00:00",
+      "sourceSha256": "0d4b394ac0422c1d28979fcd474a96fbb29337d3e2bc679cb718537ad17dc28f",
+      "status": "codes-indexed",
+      "codes": [
+        "İÇYÇ.1.1"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "02.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1647",
+      "title": "2. Ünite: Çevre Ve İnsan",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1647",
+      "retrievedAt": "2026-10-30T16:27:47.303549+00:00",
+      "sourceSha256": "80545ecb853075a1523b6424059184c7102f6234054e2fa9782b5d0377d05bf7",
+      "status": "codes-indexed",
+      "codes": [
+        "İÇYÇ.2.1",
+        "İÇYÇ.2.2",
+        "İÇYÇ.2.3",
+        "İÇYÇ.2.4"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "02.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1648",
+      "title": "3. Ünite: Çevre Sorunları",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1648",
+      "retrievedAt": "2026-10-30T16:27:48.144588+00:00",
+      "sourceSha256": "28a7751ac538164c567c24a4dad14ffe152b37ff07226086f21fdc765b51b909",
+      "status": "codes-indexed",
+      "codes": [
+        "İÇYÇ.3.1",
+        "İÇYÇ.3.2",
+        "İÇYÇ.3.3",
+        "İÇYÇ.3.4",
+        "İÇYÇ.3.5"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "02.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1649",
+      "title": "4. Ünite: Çevre Sorunlarına Yenilikçi Çözümlerin Temelleri",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1649",
+      "retrievedAt": "2026-10-30T16:27:48.976215+00:00",
+      "sourceSha256": "aae0c2105f541ecf7d8dafb079ce8d6d82d6f84a28a4fc4241dde6aa79802047",
+      "status": "codes-indexed",
+      "codes": [
+        "İÇYÇ.4.1",
+        "İÇYÇ.4.2",
+        "İÇYÇ.4.3",
+        "İÇYÇ.4.4"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "02.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1650",
+      "title": "5. Ünite: Çevre Sorunlarına Yenilikçi Çözümler Geliştirme",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/iklim-cevre-ve-yenilikci-cozumler-dersi/unite/1650",
+      "retrievedAt": "2026-10-30T16:27:50.201025+00:00",
+      "sourceSha256": "18bc60c2185afcd760543dbcb7452eb3ec403ec67888bf578a28d5c8d2f21f90",
+      "status": "codes-indexed",
+      "codes": [
+        "İÇYÇ.5.1",
+        "İÇYÇ.5.2",
+        "İÇYÇ.5.3",
+        "İÇYÇ.5.4"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "02.09.2026",
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

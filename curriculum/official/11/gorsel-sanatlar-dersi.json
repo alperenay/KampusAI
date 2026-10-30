@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "grade": 11,
+  "apiGradeId": 13,
+  "courseId": 28,
+  "slug": "gorsel-sanatlar-dersi",
+  "name": "Görsel Sanatlar Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/gorsel-sanatlar-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "575",
+      "title": "1. Tema: Sanata Bakış",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/575",
+      "retrievedAt": "2026-10-30T16:27:42.406139+00:00",
+      "sourceSha256": "416ec6c6cef0256be936a177e7329ff9fce6162038fd00302f1a9da6b5a9503c",
+      "status": "codes-indexed",
+      "codes": [
+        "GS.11.1.1",
+        "GS.11.1.2",
+        "GS.11.1.3"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": null,
+      "normalizations": []
+    },
+    {
+      "id": "576",
+      "title": "2. Tema : Çizgiden Boyuta",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/576",
+      "retrievedAt": "2026-10-30T16:27:43.140278+00:00",
+      "sourceSha256": "716163f70ca43f55a4d60bfc0aedd2e0e1ade3523371d0892f67ed5204fe1bd9",
+      "status": "codes-indexed",
+      "codes": [
+        "GS.11.2.1",
+        "GS.11.2.2",
+        "GS.11.2.3",
+        "GS.11.2.4",
+        "GS.11.2.5",
+        "GS.11.2.6"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": null,
+      "normalizations": []
+    },
+    {
+      "id": "577",
+      "title": "3. Tema: Zamanın İzinde Sanat",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/577",
+      "retrievedAt": "2026-10-30T16:27:43.964991+00:00",
+      "sourceSha256": "9b4070552cab3323ca821c6b3faab1ce56a8ebfea981e9e7c0644c0866d53873",
+      "status": "codes-indexed",
+      "codes": [
+        "GS.11.3.1",
+        "GS.11.3.2",
+        "GS.11.3.3",
+        "GS.11.3.4",
+        "GS.11.3.5",
+        "GS.11.3.6",
+        "GS.11.3.7",
+        "GS.11.3.8",
+        "GS.11.3.9"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": null,
+      "normalizations": []
+    },
+    {
+      "id": "578",
+      "title": "4. Tema: Sanat Ve Teknoloji Evreni",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/578",
+      "retrievedAt": "2026-10-30T16:27:44.953797+00:00",
+      "sourceSha256": "2a76c42267aae90f30d15635903eb468e5e09c0b31b5b6602bc6c11ee938631e",
+      "status": "codes-indexed",
+      "codes": [
+        "GS.11.4.1",
+        "GS.11.4.2",
+        "GS.11.4.3",
+        "GS.11.4.4",
+        "GS.11.4.5",
+        "GS.11.4.6",
+        "GS.11.4.7"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": null,
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "grade": 12,
+  "apiGradeId": 14,
+  "courseId": 111,
+  "slug": "matematik-uygulamalari-dersi",
+  "name": "Matematik Uygulamaları Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/matematik-uygulamalari-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "1636",
+      "title": "1. Tema: Sağlıklı Yaşamın Matematiği",
+      "level": "Matematik Uygulamaları II",
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1636",
+      "retrievedAt": "2026-10-30T16:28:55.704372+00:00",
+      "sourceSha256": "d6ac59ea247c2b777bcda23f72981e184a3bf42ebc8b4cf5d99a1766fb12204d",
+      "status": "codes-indexed",
+      "codes": [
+        "MAT.U.2.1.1",
+        "MAT.U.2.1.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "02.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1639",
+      "title": "2. Tema: Bilişimin Matematiği",
+      "level": "Matematik Uygulamaları II",
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1639",
+      "retrievedAt": "2026-10-30T16:28:56.914014+00:00",
+      "sourceSha256": "17b973bfe3c1da8d0e261ae543de6e37e904fca4c40fb9fbb4dd96e88f7ac594",
+      "status": "codes-indexed",
+      "codes": [
+        "MAT.U.2.2.1"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "02.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1641",
+      "title": "3. Tema: Rota Belirlemenin Matematiği",
+      "level": "Matematik Uygulamaları II",
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1641",
+      "retrievedAt": "2026-10-30T16:28:59.285140+00:00",
+      "sourceSha256": "aa78fbc5a765e03daaa348b5195e16baaf8f461e8884280d836f91c82c858aa8",
+      "status": "codes-indexed",
+      "codes": [
+        "MAT.U.2.3.1",
+        "MAT.U.2.3.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "02.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1642",
+      "title": "4. Tema: Finansın Matematiği",
+      "level": "Matematik Uygulamaları II",
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1642",
+      "retrievedAt": "2026-10-30T16:28:59.823618+00:00",
+      "sourceSha256": "94ebc890752da1d5c9052eb5734e6588369b1fb39e90d721afad22f394730705",
+      "status": "codes-indexed",
+      "codes": [
+        "MAT.U.2.4.1",
+        "MAT.U.2.4.2",
+        "MAT.U.2.4.3"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "02.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1644",
+      "title": "5. Tema: Sanatın Matematiği",
+      "level": "Matematik Uygulamaları II",
+      "url": "https://tymm.meb.gov.tr/matematik-uygulamalari-dersi/unite/1644",
+      "retrievedAt": "2026-10-30T16:29:00.698976+00:00",
+      "sourceSha256": "e2fcb705fe5899fe4fa5b9d80991ee915283f4f7c9c6d037fe1e742840e2f701",
+      "status": "codes-indexed",
+      "codes": [
+        "MAT.U.2.5.1",
+        "MAT.U.2.5.2",
+        "MAT.U.2.5.3",
+        "MAT.U.2.5.4"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "02.09.2026",
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

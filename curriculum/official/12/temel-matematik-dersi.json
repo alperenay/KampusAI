@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "grade": 12,
+  "apiGradeId": 14,
+  "courseId": 112,
+  "slug": "temel-matematik-dersi",
+  "name": "Temel Matematik Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/temel-matematik-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "1667",
+      "title": "1. Tema: Nicelikler Ve Değişimler",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/temel-matematik-dersi/unite/1667",
+      "retrievedAt": "2026-10-30T16:29:20.910228+00:00",
+      "sourceSha256": "0b0bf88b8ea49888df6fdae7c0f4be4e72b5632998005b7c96b5f59f3eeedbfe",
+      "status": "codes-indexed",
+      "codes": [
+        "MAT.T.12.1.1",
+        "MAT.T.12.1.2",
+        "MAT.T.12.1.3"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "03.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1668",
+      "title": "2. Tema: Geometrik Şekiller",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/temel-matematik-dersi/unite/1668",
+      "retrievedAt": "2026-10-30T16:29:21.780133+00:00",
+      "sourceSha256": "44c59d04b24c1d3dc7c4170dd7d0215c4c63a32117688cca41fd19b30d1c2a9b",
+      "status": "codes-indexed",
+      "codes": [
+        "MAT.T.12.2.1",
+        "MAT.T.12.2.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "03.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1671",
+      "title": "3. Tema: İstatistiksel Araştırma Süreci",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/temel-matematik-dersi/unite/1671",
+      "retrievedAt": "2026-10-30T16:29:22.516099+00:00",
+      "sourceSha256": "1572b64d9fa46c211d5e88c80d90f3e106ee5e0fe64fee77ca834a4a8473dd4c",
+      "status": "codes-indexed",
+      "codes": [
+        "MAT.T.12.3.1"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "03.09.2026",
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "grade": 9,
+  "subjectId": "muzik",
+  "name": {
+    "tr": "Müzik",
+    "en": "Music"
+  },
+  "programEdition": "legacy-project-unverified",
+  "source": {
+    "file": "js/data/content/muzik-9.js",
+    "sha256": "29f7fe9efd44c26f8cdb2028e4153bf25b44662745ab357268455fc3b1f9d233",
+    "additionalReferences": [],
+    "pdfReferenceCandidates": []
+  },
+  "officialProgramCandidates": [
+    {
+      "slug": "muzik-dersi",
+      "url": "https://tymm.meb.gov.tr/ogretim-programlari/ders/muzik-dersi"
+    }
+  ],
+  "units": [
+    {
+      "id": "u1",
+      "name": {
+        "tr": "1. Ünite: Müziğin Temelleri",
+        "en": "Unit 1: Fundamentals of Music"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "9/muzik/u1/k1",
+          "localCode": "MÜZ.E1",
+          "title": {
+            "tr": "Ses, nota, ritim ve ölçü",
+            "en": "Sound, notation, rhythm and metre"
+          },
+          "content": {
+            "anlatim": "# Müzikal Sesin Özellikleri\n\n- **Yükseklik (perde):** Frekansla ilgilidir; ince–kalın ses.\n- **Süre:** Sesin ne kadar devam ettiği.\n- **Gürlük:** Genlikle ilgilidir; *p* (piyano, hafif), *f* (forte, kuvvetli), *crescendo* (giderek güçlenen).\n- **Tını:** Aynı notayı farklı çalgıların farklı duyurmasını sağlayan renk.\n\n# Nota ve Porte\n\nNotalar **porte** üzerindeki beş çizgi ve dört araya yazılır. Sol anahtarında do'dan si'ye: **do, re, mi, fa, sol, la, si**.\n| Nota | Süre (dört dörtlükte vuruş) |\n|---|---|\n| Birlik | 4 |\n| İkilik | 2 |\n| Dörtlük | 1 |\n| Sekizlik | 1/2 |\n| Onaltılık | 1/4 |\n- Notanın yanındaki **nokta** süresini yarısı kadar uzatır. Her notanın aynı süreli **susu** işareti vardır.\n- **Diyez (♯)** sesi yarım ses inceltir, **bemol (♭)** yarım ses kalınlaştırır, **natürel (♮)** etkiyi kaldırır.\n\n# Ölçü ve Ritim\n\n**Ölçü sayısı** (ör. 4/4) bir ölçüde kaç vuruş olduğunu ve hangi notanın bir vuruş sayıldığını gösterir. **Tempo** hızdır (*adagio* yavaş, *allegro* hızlı). Türk müziğinde ritim kalıplarına **usul** denir (ör. sofyan 4/4, aksak 9/8).",
+            "ornekler": [
+              {
+                "soru": "4/4'lük ölçüde bir ölçüyü tamamlamak için kaç tane sekizlik nota gerekir?",
+                "cozum": "Bir sekizlik yarım vuruştur; 4 vuruş için **8 sekizlik** gerekir."
+              },
+              {
+                "soru": "Noktalı ikilik nota kaç vuruş sürer?",
+                "cozum": "İkilik 2 vuruş + nokta (yarısı, 1 vuruş) = **3 vuruş**."
+              }
+            ],
+            "ozet": [
+              "Sesin özellikleri: yükseklik, süre, gürlük, tını.",
+              "Birlik 4, ikilik 2, dörtlük 1, sekizlik ½ vuruş; nokta süreyi yarısı kadar uzatır.",
+              "Diyez inceltir, bemol kalınlaştırır.",
+              "Türk müziğinde ritim kalıplarına usul denir; aksak 9/8 yaygındır."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "9/muzik/u1/k2",
+          "localCode": "MÜZ.E2",
+          "title": {
+            "tr": "Türk müziği türleri, çalgılar ve önemli besteciler",
+            "en": "Genres of Turkish music, instruments and composers"
+          },
+          "content": {
+            "anlatim": "# Türk Müziğinin Türleri\n\n- **Türk halk müziği:** Anonim ve âşık geleneği; **türkü**, **uzun hava** (bozlak, gurbet havası — serbest ritimli), **kırık hava** (belirli ritimli, oyun havaları: zeybek, horon, halay). Çalgılar: **bağlama (saz)**, kaval, zurna, davul, kemençe (Karadeniz).\n- **Türk sanat (klasik) müziği:** **Makam** (ses dizisi ve seyir kuralları: rast, hicaz, uşşak…) ve **usul** sistemine dayanır. Çalgılar: **ud, ney, kanun, tanbur, klasik kemençe**. Besteciler: **Itrî**, **Dede Efendi**, **Hacı Arif Bey**.\n- **Mehter müziği:** Osmanlı askerî müziği; davul, zurna, kös, zil. Dünyanın bilinen en eski askerî bandolarından biridir ve Batı'da \"alla turca\" etkisini doğurmuştur (Mozart'ın Türk Marşı).\n- **Çok sesli Türk müziği:** Cumhuriyet döneminde gelişti. **Türk Beşleri:** Cemal Reşit Rey, Ulvi Cemal Erkin, Ahmet Adnan Saygun (Yunus Emre Oratoryosu), Hasan Ferit Alnar, Necil Kâzım Akses.\n\n# Batı Müziği Dönemleri (Özet)\n\nBarok (Bach, Vivaldi), Klasik (Mozart, Haydn, erken Beethoven), Romantik (Chopin, Çaykovski). Çalgı aileleri: **yaylı**, **nefesli** (tahta ve bakır), **vurmalı**, **tuşlu**.\n\n# İstiklâl Marşı\n\nSözleri **Mehmet Âkif Ersoy**'a (12 Mart 1921'de TBMM'de kabul), bugünkü bestesi **Osman Zeki Üngör**'e aittir.",
+            "ornekler": [
+              {
+                "soru": "Bozlak hangi tür halk müziği ezgisidir?",
+                "cozum": "Serbest ritimli **uzun hava** türüdür; Orta ve Güney Anadolu'da yaygındır."
+              },
+              {
+                "soru": "Türk Beşleri kimlerdir ve hangi müzik türünde eser vermişlerdir?",
+                "cozum": "Cemal Reşit Rey, Ulvi Cemal Erkin, Ahmet Adnan Saygun, Hasan Ferit Alnar, Necil Kâzım Akses; **çok sesli (Batı tekniğiyle) Türk müziği**."
+              }
+            ],
+            "ozet": [
+              "Halk müziği: türkü, uzun hava (serbest ritim), kırık hava (belirli ritim); bağlama.",
+              "Sanat müziği makam ve usule dayanır; ud, ney, kanun, tanbur.",
+              "Mehter Osmanlı askerî müziğidir.",
+              "İstiklâl Marşı: söz Mehmet Âkif Ersoy, beste Osman Zeki Üngör."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    }
+  ]
+}

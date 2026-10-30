@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "grade": null,
+  "apiGradeId": 17,
+  "courseId": 105,
+  "slug": "psikoloji-dersi",
+  "name": "Psikoloji Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/psikoloji-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "1652",
+      "title": "1. Ünite: Psikoloji İle Tanışma",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1652",
+      "retrievedAt": "2026-10-30T16:29:04.881120+00:00",
+      "sourceSha256": "26841751f3ef297f5262288218ba51b35cf420cd79bb3e8c734331da86a0d5c5",
+      "status": "codes-indexed",
+      "codes": [
+        "PSK.1.1"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "03.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1653",
+      "title": "2. Ünite: Gelişimi Anlamak",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1653",
+      "retrievedAt": "2026-10-30T16:29:05.432196+00:00",
+      "sourceSha256": "41386e3d70f5e03406879194da86d8510606a7de099125440a0df27865119eda",
+      "status": "codes-indexed",
+      "codes": [
+        "PSK.2.1",
+        "PSK.2.2",
+        "PSK.2.3",
+        "PSK.2.4"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "03.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1656",
+      "title": "3. Ünite: Nasıl Öğreniriz?",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1656",
+      "retrievedAt": "2026-10-30T16:29:06.224921+00:00",
+      "sourceSha256": "3c79c80862950bfd9dcd6b1966ed600a2a796697790d7b0cfc5804a83ba524dc",
+      "status": "codes-indexed",
+      "codes": [
+        "PSK.3.1",
+        "PSK.3.2",
+        "PSK.3.3",
+        "PSK.3.4"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "03.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1660",
+      "title": "4. Ünite: Bireysel Ve Sosyal Uyum",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/psikoloji-dersi/unite/1660",
+      "retrievedAt": "2026-10-30T16:29:07.333998+00:00",
+      "sourceSha256": "6978dc17fb46ce65e1a27f6d9fff45f667189f5ff33e7437f2ac57e2a24b2aca",
+      "status": "codes-indexed",
+      "codes": [
+        "PSK.4.1",
+        "PSK.4.2",
+        "PSK.4.3",
+        "PSK.4.4"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "03.09.2026",
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

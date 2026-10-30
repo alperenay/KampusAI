@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "grade": 11,
+  "apiGradeId": 13,
+  "courseId": 23,
+  "slug": "felsefe-dersi",
+  "name": "Felsefe Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/felsefe-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "66",
+      "title": "1. Ünite: Çevre Sorunları Ve Felsefe",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/66",
+      "retrievedAt": "2026-10-30T16:27:20.772278+00:00",
+      "sourceSha256": "d19b3172d87c85a2996b43e523519070a035286d0313461e65caa5afe2e56762",
+      "status": "codes-indexed",
+      "codes": [
+        "FEL.11.1.1",
+        "FEL.11.1.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "69",
+      "title": "2. Ünite: Teknoloji Ve Hayat",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/69",
+      "retrievedAt": "2026-10-30T16:27:21.909820+00:00",
+      "sourceSha256": "1d8d42697751fadcb6c42f8aa96663e6a665c9ba9174724ea67f80eb7f430bad",
+      "status": "codes-indexed",
+      "codes": [
+        "FEL.11.2.1",
+        "FEL.11.2.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "77",
+      "title": "3. Ünite: Akıl Ve İnanç",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/77",
+      "retrievedAt": "2026-10-30T16:27:22.642290+00:00",
+      "sourceSha256": "3b6395af889138185603215ca514a552cd7469955c41eb77f4dedebab22a98af",
+      "status": "codes-indexed",
+      "codes": [
+        "FEL.11.3.1",
+        "FEL.11.3.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "85",
+      "title": "4. Ünite: Edebiyat Ve Felsefe",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/85",
+      "retrievedAt": "2026-10-30T16:27:23.243699+00:00",
+      "sourceSha256": "28bf112a43edfc97037a2c4d13e2323e892027c37b1188824a380d7c0d0bb4a9",
+      "status": "codes-indexed",
+      "codes": [
+        "FEL.11.4.1",
+        "FEL.11.4.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "93",
+      "title": "5. Ünite: Hayatın Anlamı",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/93",
+      "retrievedAt": "2026-10-30T16:27:23.705274+00:00",
+      "sourceSha256": "945ae66ce902149255ff802ae0599ec485dad938eeadb07cd83e6b7dea8bb23f",
+      "status": "codes-indexed",
+      "codes": [
+        "FEL.11.5.1",
+        "FEL.11.5.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "103",
+      "title": "6. Ünite: Hukuk Ve Felsefe",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/felsefe-dersi/unite/103",
+      "retrievedAt": "2026-10-30T16:27:24.624211+00:00",
+      "sourceSha256": "e96a485205e423056ae4039b8ccaa1ea0a9b3bafa1d735cc803d652d67cc9343",
+      "status": "codes-indexed",
+      "codes": [
+        "FEL.11.6.1",
+        "FEL.11.6.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

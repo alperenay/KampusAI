@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "grade": 11,
+  "apiGradeId": 13,
+  "courseId": 18,
+  "slug": "matematik-dersi",
+  "name": "Matematik Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/matematik-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "298",
+      "title": "1. Tema: İstatistiksel Araştırma Süreci",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/298",
+      "retrievedAt": "2026-10-30T16:28:46.309556+00:00",
+      "sourceSha256": "dd39f10d9de976f331e0c75d3b4ed928309377ff8dbd6421c3af9f0d1ec7e77a",
+      "status": "codes-indexed",
+      "codes": [
+        "MAT.11.1.1",
+        "MAT.11.1.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "07.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "297",
+      "title": "2. Tema: Geometrik Şekiller",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/297",
+      "retrievedAt": "2026-10-30T16:28:47.141134+00:00",
+      "sourceSha256": "9e08c0f377f86b76eac1f878780d7e5f1f92f138a57083a11829dba53ef964a2",
+      "status": "codes-indexed",
+      "codes": [
+        "MAT.11.2.1",
+        "MAT.11.2.2",
+        "MAT.11.2.3",
+        "MAT.11.2.4",
+        "MAT.11.2.5"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "07.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "281",
+      "title": "3. Tema: Nicelikler Ve Değişimler (1)",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/281",
+      "retrievedAt": "2026-10-30T16:28:48.079772+00:00",
+      "sourceSha256": "fe5889c2cf29a116804c7ced3d3a87d270ef74ca734d49afd32d28448f06961b",
+      "status": "codes-indexed",
+      "codes": [
+        "MAT.11.3.1",
+        "MAT.11.3.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "07.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "295",
+      "title": "3. Tema: Nicelikler Ve Değişimler (2)",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/295",
+      "retrievedAt": "2026-10-30T16:28:48.527987+00:00",
+      "sourceSha256": "6bca948f5043c7b1e8d927c677587fdc7f06382ebc4f585411f7cb85947eb2c8",
+      "status": "codes-indexed",
+      "codes": [
+        "MAT.11.3.3",
+        "MAT.11.3.4",
+        "MAT.11.3.5",
+        "MAT.11.3.6"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "07.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "296",
+      "title": "3. Tema: Nicelikler Ve Değişimler (3)",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/296",
+      "retrievedAt": "2026-10-30T16:28:49.120937+00:00",
+      "sourceSha256": "998b8146ac68c55e9303435f109ce7a4dd1963f0cafe9ccece69b5e6db97cb23",
+      "status": "codes-indexed",
+      "codes": [
+        "MAT.11.3.7",
+        "MAT.11.3.8"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "07.08.2026",
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

@@ -90,7 +90,7 @@ const html = fs.readFileSync("index.html", "utf8");
 for (const name of ["canli", "cevre", "cevre-model"])
   assert.ok(!html.includes("js/modules/" + name + ".js"));
 assert.ok(
-  fs.readFileSync("js/modules/hub.js", "utf8").includes("belge-paketi"),
+  fs.readFileSync("js/modules/hub.js", "utf8").includes("dokumanlar"),
 );
 console.log(
   "Workspace: source limits/references, strict quiz keys, date validity, task steps, oral rubrics, retired feature entry points passed.",

@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "grade": null,
+  "apiGradeId": 17,
+  "courseId": 108,
+  "slug": "islam-bilim-tarihi-dersi",
+  "name": "İslam Bilim Tarihi Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/islam-bilim-tarihi-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "1662",
+      "title": "1. Ünite: Yeni Bir Medeniyetin Doğuşu",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/islam-bilim-tarihi-dersi/unite/1662",
+      "retrievedAt": "2026-10-30T16:28:26.326780+00:00",
+      "sourceSha256": "c5a80d7530eadcd47a5c09d995f97b225a6086f8d6e983fddd9394cb0600d3ea",
+      "status": "codes-indexed",
+      "codes": [
+        "İBT.1.1",
+        "İBT.1.2",
+        "İBT.1.3",
+        "İBT.1.4",
+        "İBT.1.5",
+        "İBT.1.6",
+        "İBT.1.7",
+        "İBT.1.8"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "03.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1664",
+      "title": "2. Ünite: İslam Biliminde Kurumsallaşma Ve İhtisaslaşma",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/islam-bilim-tarihi-dersi/unite/1664",
+      "retrievedAt": "2026-10-30T16:28:27.420123+00:00",
+      "sourceSha256": "7e1131c761e76efb4abe6deada852fc7a773864a9d71e84a0904c19352f9e411",
+      "status": "codes-indexed",
+      "codes": [
+        "İBT.2.1",
+        "İBT.2.2",
+        "İBT.2.3",
+        "İBT.2.4",
+        "İBT.2.5"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "03.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1669",
+      "title": "3. Ünite: Endülüs’te İslam Biliminin Gelişimi",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/islam-bilim-tarihi-dersi/unite/1669",
+      "retrievedAt": "2026-10-30T16:28:28.501102+00:00",
+      "sourceSha256": "f38c745e6b75a5fe732de1d6585c07896422bc6247ef5020462f0364eff2e695",
+      "status": "codes-indexed",
+      "codes": [
+        "İBT.3.1",
+        "İBT.3.2",
+        "İBT.3.3"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "03.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1670",
+      "title": "4. Ünite: Değişen Dünyada İslam Bilimi",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/islam-bilim-tarihi-dersi/unite/1670",
+      "retrievedAt": "2026-10-30T16:28:29.833215+00:00",
+      "sourceSha256": "fb5821a33464e216e6408e019a020556dffbb43a46c7c5e25d72b9b0f009303e",
+      "status": "codes-indexed",
+      "codes": [
+        "İBT.4.1",
+        "İBT.4.2",
+        "İBT.4.3"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "03.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1672",
+      "title": "5. Ünite: Osmanlılarda Bilimsel Çalışmalar",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/islam-bilim-tarihi-dersi/unite/1672",
+      "retrievedAt": "2026-10-30T16:28:30.829028+00:00",
+      "sourceSha256": "190a6e94377fb51cdb8dd85c54000d64ee13d22e9e093956654b433ff86ab082",
+      "status": "codes-indexed",
+      "codes": [
+        "İBT.5.1",
+        "İBT.5.2",
+        "İBT.5.3",
+        "İBT.5.4",
+        "İBT.5.5",
+        "İBT.5.6",
+        "İBT.5.7"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "03.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1673",
+      "title": "6. Ünite: Cumhuriyet Dönemi Bilimsel Çalışmaları",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/islam-bilim-tarihi-dersi/unite/1673",
+      "retrievedAt": "2026-10-30T16:28:31.163057+00:00",
+      "sourceSha256": "cbb618210e6eb111234a5c951696e9dba393b1e5e52669998eae492c2ed9c65d",
+      "status": "codes-indexed",
+      "codes": [
+        "İBT.6.1",
+        "İBT.6.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "04.09.2026",
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

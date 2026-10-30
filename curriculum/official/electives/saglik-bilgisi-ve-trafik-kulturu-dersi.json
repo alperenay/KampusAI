@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "grade": null,
+  "apiGradeId": 17,
+  "courseId": 113,
+  "slug": "saglik-bilgisi-ve-trafik-kulturu-dersi",
+  "name": "Sağlık Bilgisi ve Trafik Kültürü Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/saglik-bilgisi-ve-trafik-kulturu-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [],
+  "status": "no-html-units-pdf-review-required"
+}

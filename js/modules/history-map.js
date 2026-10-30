@@ -18,13 +18,25 @@
     const $ = (id) => root.querySelector("#" + id),
       X = (x) => ((x - 5) / 110) * 1000,
       Y = (y) => 480 - ((y - 0) / 55) * 480;
-    let current;
+    let current, zoom = 1;
+    const cities = [[29,41,'İstanbul'],[32.85,39.93,'Ankara'],[29.06,40.19,'Bursa'],[32.49,37.87,'Konya'],[42.54,39.15,'Malazgirt'],[16.37,48.21,'Viyana'],[30.52,50.45,'Kiev']];
+    const toolbar=document.createElement('div');toolbar.className='history-toolbar controls';
+    toolbar.innerHTML='<label>Döneme git<select id="hmPeriod">'+data.history.map(s=>'<option value="'+s.year+'">'+s.year+' · '+esc(s.title)+'</option>').join('')+'</select></label><button class="btn" id="hmZoomIn" aria-label="Haritayı yakınlaştır">+</button><button class="btn" id="hmZoomOut" aria-label="Haritayı uzaklaştır">−</button><button class="btn" id="hmReset">Görünümü sıfırla</button><label><input type="checkbox" id="hmCities" checked> Şehirler</label>';
+    $('hmMap').before(toolbar);
+    const cityInfo=document.createElement('p');cityInfo.id='hmCityInfo';cityInfo.setAttribute('role','status');$('hmMap').after(cityInfo);
+    const zoomMap=()=>{const w=1000/zoom,h=480/zoom;$('hmMap').setAttribute('viewBox',[(1000-w)/2,(480-h)/2,w,h].join(' '));};
+    $('hmZoomIn').onclick=()=>{zoom=Math.min(4,zoom*1.4);zoomMap();};
+    $('hmZoomOut').onclick=()=>{zoom=Math.max(1,zoom/1.4);zoomMap();};
+    $('hmReset').onclick=()=>{zoom=1;zoomMap();};
+    $('hmPeriod').onchange=()=>{$('hmTime').value=$('hmPeriod').value;paint();};
+    $('hmCities').onchange=()=>paint();
     const path = (pts) =>
       pts.map((p) => X(p[0]).toFixed(1) + "," + Y(p[1]).toFixed(1)).join(" ");
     function paint() {
       const year = Number($("hmTime").value),
         s = snapshot(year);
       current = s;
+      $("hmPeriod").value=String(s.year);
       $("hmYear").textContent = year;
       const routes = data.routes.filter((r) =>
         r.type === "trade"
@@ -32,7 +44,7 @@
           : $("hmCampaign").checked && r.year === s.year,
       );
       $("hmMap").innerHTML =
-        '<rect width="1000" height="480" fill="#101727"/><text x="18" y="27" fill="#ccd8ed">Şematik bağlantı haritası • ızgara: boylam / enlem</text>' +
+        '<defs><radialGradient id="hmSea"><stop stop-color="#204b67"/><stop offset="1" stop-color="#111d35"/></radialGradient><clipPath id="hmClip"><rect width="1000" height="480"/></clipPath></defs><rect width="1000" height="480" fill="url(#hmSea)"/>'+ (App.data.globe ? '<g clip-path="url(#hmClip)">'+App.data.globe.countries.map(c=>c.r.filter(r=>r.every((p,i)=>!i||Math.abs(p[0]-r[i-1][0])<180)).map(r=>'<polygon points="'+path(r)+'" fill="#546e68" stroke="#b0c6a7" stroke-width=".5"/>').join('')).join('')+'</g>' : '') + '<text x="18" y="27" fill="#ccd8ed">Şematik bağlantı haritası • ızgara: boylam / enlem</text>' +
         [20, 40, 60, 80, 100]
           .map(
             (x) =>
@@ -76,6 +88,9 @@
               "</text>",
           )
           .join("");
+      if ($('hmCities').checked) $('hmMap').insertAdjacentHTML('beforeend',cities.map(([lo,la,name],i)=>'<g class="hm-city" tabindex="0" role="button" aria-label="'+esc(name)+' konumunu göster" data-city="'+i+'"><circle cx="'+X(lo)+'" cy="'+Y(la)+'" r="5" fill="#ffdc89" stroke="#18283b" stroke-width="2"/><text x="'+(X(lo)+8)+'" y="'+(Y(la)-8)+'" fill="#fff" font-size="13">'+esc(name)+'</text></g>').join(''));
+      root.querySelectorAll('[data-city]').forEach(el=>{const show=()=>{const c=cities[Number(el.dataset.city)];$('hmCityInfo').textContent=c[2]+' · '+c[1]+'°K, '+c[0]+'°D. Günümüz koordinatıyla referans noktası; o yılın başkenti olduğu anlamına gelmez.';};el.onclick=show;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show();}};});
+      zoomMap();
       $("hmDossier").innerHTML =
         "<h2>" +
         s.year +
@@ -136,6 +151,9 @@
       paint();
     };
     paint();
+    let alive=true;
+    if(App.kure) App.kure.loadData().then(()=>{if(alive&&root.isConnected)paint();}).catch(()=>{if(alive&&root.isConnected)$('hmCityInfo').textContent='Coğrafi altlık yüklenemedi; şematik harita kullanılabilir.';});
+    return ()=>{alive=false;};
   }
   App.historyMap = { snapshot };
   App.router.register("tarih-haritasi", render);

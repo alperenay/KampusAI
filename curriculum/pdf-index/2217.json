@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 1,
+  "programmeId": 2217,
+  "subjectId": "saglik",
+  "edition": "tymm-2026",
+  "name": "[TYMM] ORTAÖĞRETİM SAĞLIK BİLGİSİ VE TRAFİK KÜLTÜRÜ DERSİ (2026)",
+  "sourceUrl": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=2217",
+  "applicability": "confirm-school-year-and-school-type",
+  "status": "machine-extracted-candidates-require-review",
+  "licenceVerified": false,
+  "pdfUrl": "https://mufredat.meb.gov.tr/Dosyalar/20265139507417-Saglıkbiltrafik.pdf",
+  "pdfSha256": "9d23487d9d414a91837f1e85e4dbca257c05567c95ca58a0b9e094dad0ca6618",
+  "pageCount": 36,
+  "codeCandidates": [
+    {
+      "code": "T.C",
+      "gradeCandidate": null,
+      "pages": [
+        6
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.1.1",
+      "gradeCandidate": null,
+      "pages": [
+        11,
+        13,
+        14
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.1.2",
+      "gradeCandidate": null,
+      "pages": [
+        13,
+        14
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.1.3",
+      "gradeCandidate": null,
+      "pages": [
+        13,
+        15
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.1.4",
+      "gradeCandidate": null,
+      "pages": [
+        13,
+        15
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.1.5",
+      "gradeCandidate": null,
+      "pages": [
+        13,
+        16
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.1.6",
+      "gradeCandidate": null,
+      "pages": [
+        13,
+        16
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "D18.1",
+      "gradeCandidate": null,
+      "pages": [
+        15
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "D16.3",
+      "gradeCandidate": null,
+      "pages": [
+        15,
+        16,
+        19,
+        20,
+        32,
+        33
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "D13.4",
+      "gradeCandidate": null,
+      "pages": [
+        16,
+        28
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "D14.3",
+      "gradeCandidate": null,
+      "pages": [
+        16
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.2.1",
+      "gradeCandidate": null,
+      "pages": [
+        18,
+        19
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.2.2",
+      "gradeCandidate": null,
+      "pages": [
+        18,
+        20
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.2.3",
+      "gradeCandidate": null,
+      "pages": [
+        18,
+        20
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.2.4",
+      "gradeCandidate": null,
+      "pages": [
+        18,
+        20
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "D13.2",
+      "gradeCandidate": null,
+      "pages": [
+        19
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "D13.1",
+      "gradeCandidate": null,
+      "pages": [
+        20,
+        21
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.3.1",
+      "gradeCandidate": null,
+      "pages": [
+        23,
+        24
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.3.2",
+      "gradeCandidate": null,
+      "pages": [
+        23,
+        24
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.3.3",
+      "gradeCandidate": null,
+      "pages": [
+        23,
+        25
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "D14.1",
+      "gradeCandidate": null,
+      "pages": [
+        24,
+        31
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "D13.3",
+      "gradeCandidate": null,
+      "pages": [
+        25
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.4.1",
+      "gradeCandidate": null,
+      "pages": [
+        27
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "D20.4",
+      "gradeCandidate": null,
+      "pages": [
+        28
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.4.2",
+      "gradeCandidate": null,
+      "pages": [
+        28
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.5.1",
+      "gradeCandidate": null,
+      "pages": [
+        30,
+        31
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.5.2",
+      "gradeCandidate": null,
+      "pages": [
+        30,
+        32
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.5.3",
+      "gradeCandidate": null,
+      "pages": [
+        30,
+        32
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.5.4",
+      "gradeCandidate": null,
+      "pages": [
+        30,
+        32
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.5.5",
+      "gradeCandidate": null,
+      "pages": [
+        30,
+        33
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "SBTK.5.6",
+      "gradeCandidate": null,
+      "pages": [
+        30,
+        33
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "D16.2",
+      "gradeCandidate": null,
+      "pages": [
+        31
+      ],
+      "status": "candidate-requires-review"
+    },
+    {
+      "code": "D18.3",
+      "gradeCandidate": null,
+      "pages": [
+        33
+      ],
+      "status": "candidate-requires-review"
+    }
+  ],
+  "indexedAt": "2026-10-30T16:36:02.481647+00:00",
+  "fullTextRedistributed": false
+}

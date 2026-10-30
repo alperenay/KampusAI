@@ -1,0 +1,774 @@
+{
+  "schemaVersion": 1,
+  "grade": 11,
+  "subjectId": "matematik",
+  "name": {
+    "tr": "Matematik",
+    "en": "Mathematics"
+  },
+  "programEdition": "legacy-project-unverified",
+  "source": {
+    "file": "js/data/content/mat-11.js",
+    "sha256": "522863b64c8f705db87080d7479abafabaeebab898c4be3945deb61c91e6ad3d",
+    "additionalReferences": [],
+    "pdfReferenceCandidates": [
+      {
+        "file": "pdf-index/343.json",
+        "url": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=343",
+        "edition": "legacy",
+        "status": "programme-and-grade-review-required"
+      }
+    ]
+  },
+  "officialProgramCandidates": [
+    {
+      "slug": "matematik-dersi",
+      "url": "https://tymm.meb.gov.tr/ogretim-programlari/ders/matematik-dersi"
+    }
+  ],
+  "units": [
+    {
+      "id": "u1",
+      "name": {
+        "tr": "1. Tema: Nicelikler ve Değişimler",
+        "en": "Theme 1: Quantities and Change"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/matematik/u1/k1",
+          "localCode": "1.1",
+          "title": {
+            "tr": "Doğru orantılı değişimler ve doğrusal fonksiyonlar",
+            "en": "Direct proportion and linear functions"
+          },
+          "content": {
+            "anlatim": "# Doğru Orantı\n\nİki nicelik **doğru orantılı** ise biri kaç katına çıkarsa diğeri de o kadar katına çıkar; oranları sabittir:\n$$\\frac{y}{x} = a \\quad\\Rightarrow\\quad y = ax$$\nGrafik **orijinden geçen** bir doğrudur. Örnek: yol $=$ hız $\\times$ zaman (sabit hızda), toplam fiyat $=$ birim fiyat $\\times$ miktar.\n\n# Doğrusal Fonksiyon\n\n$$f(x) = ax + b$$\n- $a$: **eğim** (değişim oranı) $= \\dfrac{\\Delta y}{\\Delta x} = \\dfrac{y_2 - y_1}{x_2 - x_1}$\n- $b$: **y-eksenini kestiği nokta** (başlangıç değeri)\n- $a > 0$ → **artan**, $a < 0$ → **azalan**, $a = 0$ → **sabit** fonksiyon.\n- $b \\neq 0$ ise ilişki doğrusal ama **doğru orantı değildir**.\n\n# İki Noktası Bilinen Doğru\n\n$(x_1, y_1)$ ve $(x_2, y_2)$'den geçen doğru: önce eğim $a$ bulunur, sonra $y - y_1 = a(x - x_1)$.\n\n**Modelleme:** Bir taksi açılışta $30$ TL, kilometre başına $15$ TL alıyorsa ücret $f(x) = 15x + 30$.",
+            "ornekler": [
+              {
+                "soru": "Bir su deposunda $200$ L su var ve her dakika $8$ L su boşaltılıyor. Kalan suyu veren fonksiyonu yazınız; depo kaç dakikada boşalır?",
+                "cozum": "$f(t) = 200 - 8t$ (eğim $-8$, azalan). $200 - 8t = 0 \\Rightarrow t = 25$ dakika."
+              },
+              {
+                "soru": "$(2, 7)$ ve $(5, 16)$ noktalarından geçen doğrusal fonksiyonu bulunuz.",
+                "cozum": "$a = \\frac{16-7}{5-2} = 3$. $y - 7 = 3(x - 2) \\Rightarrow f(x) = 3x + 1$."
+              }
+            ],
+            "ozet": [
+              "Doğru orantı: $y=ax$, grafik orijinden geçer.",
+              "Doğrusal fonksiyon $f(x)=ax+b$; $a$ eğim, $b$ başlangıç değeri.",
+              "Eğim $=\\Delta y/\\Delta x$."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/matematik/u1/k2",
+          "localCode": "1.2",
+          "title": {
+            "tr": "Ters orantılı değişimler ve rasyonel fonksiyonlar",
+            "en": "Inverse proportion and rational functions"
+          },
+          "content": {
+            "anlatim": "# Ters Orantı\n\nBiri kaç katına çıkarsa diğeri o kadar katına **iner**; **çarpımları sabittir**:\n$$x \\cdot y = k \\quad\\Rightarrow\\quad y = \\frac{k}{x} \\quad (k \\neq 0)$$\n\n**Örnekler:**\n- Sabit yolda **hız ve zaman** ($v \\cdot t = \\text{yol}$)\n- Bir işi bitiren **işçi sayısı ve süre**\n- Sabit sıcaklıkta gazın **basıncı ve hacmi** (Boyle yasası: $P\\cdot V = k$)\n- Sabit bütçede **birim fiyat ve alınan miktar**\n\n# $f(x) = \\dfrac{k}{x}$ Fonksiyonunun Özellikleri\n\n- $x = 0$'da **tanımsızdır**; tanım kümesi $\\mathbb{R}\\setminus\\{0\\}$.\n- Grafik **hiperboldür**; eksenlere yaklaşır ama onları kesmez (eksenler **asimptot**).\n- $k > 0$ ise kollar **I. ve III. bölgede**, $k < 0$ ise **II. ve IV. bölgede**.\n- $k > 0$ iken pozitif $x$ değerlerinde fonksiyon **azalandır**.\n\n**Genel rasyonel fonksiyon:** $f(x) = \\dfrac{p(x)}{q(x)}$; paydayı sıfır yapan değerlerde tanımsızdır.",
+            "ornekler": [
+              {
+                "soru": "6 işçi bir işi 10 günde bitiriyor. Aynı hızda çalışan 15 işçi işi kaç günde bitirir?",
+                "cozum": "İşçi sayısı ve süre ters orantılı: $6\\cdot10 = 15\\cdot t \\Rightarrow t = 4$ gün."
+              },
+              {
+                "soru": "$f(x) = \\frac{12}{x}$ için $f(3)$ ve $f(-4)$ değerlerini bulunuz; grafik hangi bölgelerdedir?",
+                "cozum": "$f(3) = 4$, $f(-4) = -3$. $k = 12 > 0$ olduğundan grafik **I. ve III.** bölgelerdedir."
+              }
+            ],
+            "ozet": [
+              "Ters orantı: $xy=k$, $y=k/x$.",
+              "Grafik hiperbol; $x=0$'da tanımsız.",
+              "Örnekler: hız–zaman, işçi–gün, Boyle yasası."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k3",
+          "key": "11/matematik/u1/k3",
+          "localCode": "1.3",
+          "title": {
+            "tr": "Doğrusal ve rasyonel denklem–eşitsizlik problemleri",
+            "en": "Problems with linear and rational equations and inequalities"
+          },
+          "content": {
+            "anlatim": "# Modelleme Adımları\n\n1. **Bilinmeyeni** belirle ve harfle göster.\n2. Verilenleri kullanarak **denklem ya da eşitsizlik** kur.\n3. **Çöz.**\n4. Sonucu **gerçek duruma uygunluk** açısından kontrol et (negatif süre, kesirli kişi sayısı olamaz).\n\n# Problem Türleri\n\n| Tür | Temel ilişki |\n|---|---|\n| **Maliyet–kâr** | Gelir $=$ fiyat $\\times$ adet; kâr $=$ gelir $-$ maliyet |\n| **Hareket** | yol $=$ hız $\\times$ zaman |\n| **İş** | Bir işi $a$ günde bitiren kişi 1 günde işin $\\frac1a$'ini yapar; birlikte: $\\frac1a + \\frac1b = \\frac1t$ |\n| **Karışım** | Saf madde $=$ yüzde $\\times$ toplam miktar |\n\n# Doğrusal Eşitsizlikler\n\nÇözümde negatif bir sayıyla çarpar ya da bölersen **eşitsizlik yön değiştirir**.\n\n**Örnek:** Bir firma ürün başına $40$ TL maliyetle üretip $65$ TL'ye satıyor; sabit gideri $5000$ TL. Kâr etmek için en az kaç ürün satılmalı?\n$$65x - (40x + 5000) > 0 \\Rightarrow 25x > 5000 \\Rightarrow x > 200$$\nEn az **201** ürün.",
+            "ornekler": [
+              {
+                "soru": "Bir musluk havuzu 6 saatte, ikinci musluk 3 saatte dolduruyor. İkisi birlikte kaç saatte doldurur?",
+                "cozum": "$\\frac16 + \\frac13 = \\frac16 + \\frac26 = \\frac36 = \\frac12$ → birlikte **2 saatte** doldururlar."
+              },
+              {
+                "soru": "$\\frac{x+2}{x-1} = 3$ denklemini çözünüz.",
+                "cozum": "$x \\neq 1$. $x + 2 = 3x - 3 \\Rightarrow 2x = 5 \\Rightarrow x = \\frac52$."
+              }
+            ],
+            "ozet": [
+              "Bilinmeyen → denklem → çözüm → gerçekliğe uygunluk.",
+              "İş problemi: $\\frac1a+\\frac1b=\\frac1t$.",
+              "Negatifle çarpınca eşitsizlik yön değiştirir."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k4",
+          "key": "11/matematik/u1/k4",
+          "localCode": "1.4",
+          "title": {
+            "tr": "Doğrunun analitik incelemesi",
+            "en": "Analytic study of the line"
+          },
+          "content": {
+            "anlatim": "# Eğim ve Doğru Denklemi\n\n- İki nokta arası eğim: $m = \\dfrac{y_2 - y_1}{x_2 - x_1}$ · Eğim açısı $\\alpha$ ise $m = \\tan\\alpha$.\n- **Eğimi m, $(x_1, y_1)$'den geçen doğru:** $y - y_1 = m(x - x_1)$\n- **Genel denklem:** $ax + by + c = 0$ → eğim $m = -\\dfrac{a}{b}$\n- **Eksenleri kestiği noktalar** $(p, 0)$ ve $(0, q)$ ise: $\\dfrac{x}{p} + \\dfrac{y}{q} = 1$\n\n# İki Doğrunun Durumu\n\n| Durum | Koşul |\n|---|---|\n| **Paralel** | Eğimler eşit: $m_1 = m_2$ |\n| **Dik** | $m_1 \\cdot m_2 = -1$ |\n| **Çakışık** | Denklemler orantılı: $\\dfrac{a_1}{a_2} = \\dfrac{b_1}{b_2} = \\dfrac{c_1}{c_2}$ |\n| **Kesişen** | $m_1 \\neq m_2$ (ortak çözüm kesişim noktasıdır) |\n\n# Uzaklıklar\n\n- İki nokta arası: $|AB| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$\n- Orta nokta: $\\left(\\dfrac{x_1 + x_2}{2}, \\dfrac{y_1 + y_2}{2}\\right)$\n- **Noktanın doğruya uzaklığı:** $d = \\dfrac{|ax_0 + by_0 + c|}{\\sqrt{a^2 + b^2}}$\n- Paralel iki doğru arası: $d = \\dfrac{|c_1 - c_2|}{\\sqrt{a^2 + b^2}}$",
+            "ornekler": [
+              {
+                "soru": "$A(1, 2)$ noktasından geçen ve $2x - y + 5 = 0$ doğrusuna dik olan doğrunun denklemini bulunuz.",
+                "cozum": "Verilen doğrunun eğimi $2$; dik doğrunun eğimi $-\\frac12$. $y - 2 = -\\frac12(x - 1) \\Rightarrow x + 2y - 5 = 0$."
+              },
+              {
+                "soru": "$(3, 4)$ noktasının $3x + 4y - 5 = 0$ doğrusuna uzaklığı kaçtır?",
+                "cozum": "$d = \\frac{|9 + 16 - 5|}{\\sqrt{9 + 16}} = \\frac{20}{5} = 4$."
+              }
+            ],
+            "ozet": [
+              "Eğim $m = \\Delta y/\\Delta x = \\tan\\alpha$.",
+              "Paralel: $m_1 = m_2$; dik: $m_1m_2 = -1$.",
+              "Nokta–doğru uzaklığı $|ax_0+by_0+c|/\\sqrt{a^2+b^2}$."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "name": {
+        "tr": "2. Tema: Geometrik Şekiller — Dörtgenler",
+        "en": "Theme 2: Geometric Shapes — Quadrilaterals"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/matematik/u2/k1",
+          "localCode": "2.1",
+          "title": {
+            "tr": "Dörtgenler ve özel dörtgenlerin özellikleri",
+            "en": "Quadrilaterals and their properties"
+          },
+          "content": {
+            "anlatim": "# Dörtgen\n\nDört kenarlı çokgen. **İç açıları toplamı $360°$**, dış açıları toplamı $360°$. Bir dörtgenin **2 köşegeni** vardır.\n\n| Dörtgen | Kenarlar | Açılar | Köşegenler | Alan |\n|---|---|---|---|---|\n| **Yamuk** | **Yalnız bir çift** kenar paralel | Paralel kenarlara komşu açılar toplamı $180°$ | — | $\\dfrac{(a+c)}{2}\\cdot h$ |\n| **İkizkenar yamuk** | Paralel olmayan kenarlar eşit | Taban açıları eşit | **Eşit** | $\\dfrac{(a+c)}{2}\\cdot h$ |\n| **Paralelkenar** | Karşılıklı kenarlar **paralel ve eşit** | Karşılıklı açılar eşit, komşu açılar toplamı $180°$ | Birbirini **ortalar** | taban $\\times$ yükseklik |\n| **Dikdörtgen** | Karşılıklı kenarlar eşit | Hepsi $90°$ | **Eşit** ve birbirini ortalar | $a \\cdot b$ |\n| **Eşkenar dörtgen** | **Tüm kenarlar eşit** | Karşılıklı açılar eşit | Birbirini **dik** ortalar, açıortaydır | $\\dfrac{e \\cdot f}{2}$ |\n| **Kare** | Tüm kenarlar eşit | Hepsi $90°$ | Eşit, dik, birbirini ortalar | $a^2 = \\dfrac{e^2}{2}$ |\n| **Deltoid** | İki çift **komşu** kenar eşit | Eşit kenarlar arasındaki açılar dışındaki açılar eşit | **Dik**; biri diğerini ortalar | $\\dfrac{e \\cdot f}{2}$ |\n\n> Hiyerarşi: Kare hem dikdörtgen hem eşkenar dörtgendir; dikdörtgen ve eşkenar dörtgen birer paralelkenardır.\n\n**Yamukta orta taban:** $\\dfrac{a + c}{2}$. **Dikdörtgende köşegen:** $\\sqrt{a^2 + b^2}$.",
+            "ornekler": [
+              {
+                "soru": "Köşegen uzunlukları $10$ cm ve $24$ cm olan eşkenar dörtgenin alanı ve bir kenar uzunluğu nedir?",
+                "cozum": "Alan $= \\frac{10\\cdot24}{2} = 120$ cm². Köşegenler birbirini dik ortaladığından kenar $= \\sqrt{5^2 + 12^2} = 13$ cm."
+              },
+              {
+                "soru": "Tabanları $8$ ve $14$ cm, yüksekliği $5$ cm olan yamuğun alanı nedir?",
+                "cozum": "$A = \\frac{8+14}{2}\\cdot5 = 55$ cm²."
+              }
+            ],
+            "ozet": [
+              "Dörtgende iç açılar toplamı $360°$.",
+              "Paralelkenarda köşegenler ortalar; dikdörtgende eşit; eşkenar dörtgende dik.",
+              "Alanlar: yamuk $\\frac{a+c}2h$, eşkenar dörtgen $\\frac{ef}2$."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/matematik/u2/k2",
+          "localCode": "2.2",
+          "title": {
+            "tr": "Çokgenler: açılar, köşegenler ve alanlar",
+            "en": "Polygons: angles, diagonals and areas"
+          },
+          "content": {
+            "anlatim": "# Çokgenlerde Açılar ($n$ kenarlı dışbükey çokgen)\n\n- **İç açılar toplamı:** $(n - 2)\\cdot180^\\circ$\n- **Dış açılar toplamı:** her zaman $360^\\circ$\n- **Düzgün çokgende** bir iç açı: $\\dfrac{(n-2)\\cdot180^\\circ}{n}$, bir dış açı: $\\dfrac{360^\\circ}{n}$\n- **Köşegen sayısı:** $\\dfrac{n(n-3)}{2}$; bir köşeden çizilen köşegen sayısı $n - 3$\n\n| Çokgen | $n$ | İç açılar toplamı | Düzgünse bir iç açı |\n|---|---|---|---|\n| Üçgen | 3 | $180^\\circ$ | $60^\\circ$ |\n| Dörtgen | 4 | $360^\\circ$ | $90^\\circ$ |\n| Beşgen | 5 | $540^\\circ$ | $108^\\circ$ |\n| Altıgen | 6 | $720^\\circ$ | $120^\\circ$ |\n| Sekizgen | 8 | $1080^\\circ$ | $135^\\circ$ |\n\n# Alanlar\n\n- **Düzgün altıgen** (kenar $a$): 6 eşkenar üçgen → $A = 6\\cdot\\dfrac{a^2\\sqrt3}{4} = \\dfrac{3a^2\\sqrt3}{2}$\n- **Yamuk:** $A = \\dfrac{(a + c)\\cdot h}{2}$ · **Paralelkenar:** $A = a\\cdot h$\n- **Eşkenar dörtgen / deltoid:** $A = \\dfrac{e \\cdot f}{2}$ (köşegenler dik)\n- Herhangi bir dörtgen (köşegenler $e, f$, aradaki açı $\\theta$): $A = \\dfrac{e f \\sin\\theta}{2}$",
+            "ornekler": [
+              {
+                "soru": "Bir iç açısı $140^\\circ$ olan düzgün çokgen kaç kenarlıdır?",
+                "cozum": "Bir dış açı $180^\\circ - 140^\\circ = 40^\\circ$; $n = 360/40 = 9$ kenar."
+              },
+              {
+                "soru": "Kenarı $4$ cm olan düzgün altıgenin alanı kaç cm²'dir?",
+                "cozum": "$A = \\frac{3\\cdot16\\sqrt3}{2} = 24\\sqrt3$ cm²."
+              }
+            ],
+            "ozet": [
+              "İç açılar toplamı $(n-2)180^\\circ$; dış açılar toplamı $360^\\circ$.",
+              "Köşegen sayısı $n(n-3)/2$.",
+              "Düzgün altıgen = 6 eşkenar üçgen."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u3",
+      "name": {
+        "tr": "3. Tema: Üçgenler ve Benzerlik",
+        "en": "Theme 3: Triangles and Similarity"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/matematik/u3/k1",
+          "localCode": "3.1",
+          "title": {
+            "tr": "Üçgen eşitsizliği, açı–kenar ilişkisi ve Pisagor",
+            "en": "Triangle inequality, angle–side relation, Pythagoras"
+          },
+          "content": {
+            "anlatim": "# Üçgen Eşitsizliği\n\nKenarları $a, b, c$ olan bir üçgen için:\n$$|b - c| < a < b + c$$\nBir kenar, diğer ikisinin **farkından büyük, toplamından küçük** olmalıdır.\n\n# Açı–Kenar İlişkisi\n\nBüyük açı karşısında **büyük kenar**, küçük açı karşısında **küçük kenar** bulunur. İç açıların toplamı $180°$; bir dış açı kendisine komşu olmayan iki iç açının toplamına eşittir.\n\n# Pisagor Bağıntısı\n\nDik üçgende:\n$$a^2 + b^2 = c^2 \\quad (c: \\text{hipotenüs})$$\n**Pisagor üçlüleri:** $(3,4,5)$, $(5,12,13)$, $(8,15,17)$, $(7,24,25)$ ve katları.\n\n**Özel dik üçgenler:**\n- $30°$–$60°$–$90°$: kenarlar $1 : \\sqrt3 : 2$\n- $45°$–$45°$–$90°$: kenarlar $1 : 1 : \\sqrt2$",
+            "ornekler": [
+              {
+                "soru": "Kenarları $5$ ve $9$ cm olan bir üçgenin üçüncü kenarı tam sayı ise kaç farklı değer alabilir?",
+                "cozum": "$9 - 5 < x < 9 + 5 \\Rightarrow 4 < x < 14$ → $x \\in \\{5, 6, \\ldots, 13\\}$: **9** değer."
+              }
+            ],
+            "ozet": [
+              "$|b-c|<a<b+c$.",
+              "Büyük açı karşısında büyük kenar.",
+              "Pisagor $a^2+b^2=c^2$; 3-4-5, 5-12-13."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/matematik/u3/k2",
+          "localCode": "3.2",
+          "title": {
+            "tr": "Benzer üçgenler ve Thales teoremi",
+            "en": "Similar triangles and Thales' theorem"
+          },
+          "content": {
+            "anlatim": "# Benzerlik\n\nKarşılıklı açıları eşit, karşılıklı kenarları **orantılı** üçgenler benzerdir. Benzerlik oranı $k$:\n$$\\frac{a'}{a} = \\frac{b'}{b} = \\frac{c'}{c} = k$$\n\n**Benzerlik kuralları:**\n- **AA:** İki açı eşit\n- **KAK (SAS):** İki kenar orantılı ve aralarındaki açı eşit\n- **KKK (SSS):** Üç kenar orantılı\n\n**Oranlar:** Çevreler oranı $= k$, **alanlar oranı $= k^2$**, (hacimler oranı $= k^3$). Yükseklik, kenarortay ve açıortay uzunlukları da $k$ oranındadır.\n\n# Thales (Temel Orantı) Teoremi\n\nBir üçgende bir kenara **paralel** çizilen doğru, diğer iki kenarı **orantılı** parçalara ayırır:\n$$DE \\parallel BC \\Rightarrow \\frac{AD}{DB} = \\frac{AE}{EC} \\quad\\text{ve}\\quad \\frac{AD}{AB} = \\frac{AE}{AC} = \\frac{DE}{BC}$$\n\n**Uygulama:** Bir ağacın gölgesi $12$ m, aynı anda $1{,}5$ m'lik çubuğun gölgesi $2$ m ise ağacın boyu: $\\dfrac{h}{12} = \\dfrac{1{,}5}{2} \\Rightarrow h = 9$ m.",
+            "ornekler": [
+              {
+                "soru": "Benzerlik oranı $\\frac{2}{3}$ olan iki üçgenden küçüğünün alanı $20$ cm² ise büyüğünün alanı nedir?",
+                "cozum": "Alanlar oranı $k^2 = \\frac{4}{9}$. $\\frac{20}{A} = \\frac{4}{9} \\Rightarrow A = 45$ cm²."
+              }
+            ],
+            "ozet": [
+              "Benzerlik: AA, KAK, KKK.",
+              "Alan oranı $k^2$.",
+              "Thales: paralel doğru kenarları orantılı böler."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k3",
+          "key": "11/matematik/u3/k3",
+          "localCode": "3.3",
+          "title": {
+            "tr": "Üçgende açıortay, kenarortay ve alan oranları",
+            "en": "Angle bisectors, medians and area ratios in a triangle"
+          },
+          "content": {
+            "anlatim": "# Açıortay Teoremi\n\n$A$ açısının iç açıortayı $[BC]$'yi $D$'de kesiyorsa:\n$$\\frac{|BD|}{|DC|} = \\frac{|AB|}{|AC|}$$\n- İç açıortaylar **iç teğet çemberin merkezinde** kesişir (kenarlara eşit uzaklık).\n\n# Kenarortay\n\n- Kenarortaylar **ağırlık merkezinde (G)** kesişir; $G$ her kenarortayı köşeden itibaren **2 : 1** oranında böler.\n- **Kenarortay uzunluğu:** $V_a^2 = \\dfrac{2(b^2 + c^2) - a^2}{4}$\n- Dik üçgende **hipotenüse ait kenarortay** hipotenüsün yarısıdır.\n- Üç kenarortay üçgeni **alanları eşit 6** üçgene böler.\n\n# Alan Oranları\n\n- **Yükseklikleri ortak** üçgenlerin alanları **tabanlarıyla** orantılıdır.\n- Kenarortay üçgeni **iki eşit alanlı** üçgene böler.\n- **Benzer** üçgenlerde benzerlik oranı $k$ ise alanlar oranı $k^2$'dir.\n- **Sinüslü alan:** $A = \\dfrac12\\, b\\, c \\sin A$",
+            "ornekler": [
+              {
+                "soru": "$ABC$ üçgeninde $|AB| = 6$, $|AC| = 9$, $|BC| = 10$. $A$'nın açıortayı $[BC]$'yi $D$'de kesiyor. $|BD|$ kaçtır?",
+                "cozum": "$\\frac{|BD|}{|DC|} = \\frac{6}{9} = \\frac23$; $|BD| = 10\\cdot\\frac25 = 4$."
+              },
+              {
+                "soru": "Alanı $60$ cm² olan üçgende ağırlık merkezi $G$'dir. $GBC$ üçgeninin alanı nedir?",
+                "cozum": "Kenarortaylar üçgeni 6 eşit parçaya böler; $GBC$ bunlardan **2** tanesidir: $60\\cdot\\frac{2}{6} = 20$ cm²."
+              }
+            ],
+            "ozet": [
+              "Açıortay karşı kenarı komşu kenarlar oranında böler.",
+              "Ağırlık merkezi kenarortayı 2:1 böler; 6 eşit alan.",
+              "Benzerlik oranı $k$ → alan oranı $k^2$."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u4",
+      "name": {
+        "tr": "4. Tema: Veri, Sayma ve Olasılık",
+        "en": "Theme 4: Data, Counting and Probability"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/matematik/u4/k1",
+          "localCode": "4.1",
+          "title": {
+            "tr": "Sayma: temel ilke, permütasyon, kombinasyon",
+            "en": "Counting: fundamental principle, permutations, combinations"
+          },
+          "content": {
+            "anlatim": "# Toplama ve Çarpma İlkesi\n\n- **Toplama ilkesi:** Ayrık seçenekler (\"ya … ya …\") → sayılar **toplanır**.\n- **Çarpma ilkesi:** Art arda yapılan seçimler (\"… ve …\") → sayılar **çarpılır**.\n\n# Faktöriyel\n\n$$n! = n\\cdot(n-1)\\cdots2\\cdot1 \\qquad 0! = 1$$\n\n# Permütasyon (Sıralama — sıra önemli)\n\n$$P(n, r) = \\frac{n!}{(n-r)!}$$\n$n$ farklı nesnenin tümünün dizilişi: $n!$. Tekrarlı nesneler: $\\dfrac{n!}{n_1!\\,n_2!\\cdots}$.\n\n# Kombinasyon (Seçme — sıra önemsiz)\n\n$$C(n, r) = \\binom{n}{r} = \\frac{n!}{r!\\,(n-r)!}$$\nÖzellikler: $\\binom{n}{0} = \\binom{n}{n} = 1$, $\\binom{n}{r} = \\binom{n}{n-r}$.\n\n> **Sıra önemli mi?** Başkan–yardımcı seçmek → permütasyon; 3 kişilik komisyon seçmek → kombinasyon.",
+            "ornekler": [
+              {
+                "soru": "8 kişilik bir sınıftan bir başkan ve bir başkan yardımcısı kaç farklı şekilde seçilir? 3 kişilik bir ekip kaç farklı şekilde seçilir?",
+                "cozum": "Başkan–yardımcı (sıra önemli): $P(8,2) = 8\\cdot7 = 56$. Ekip (sıra önemsiz): $\\binom83 = \\frac{8\\cdot7\\cdot6}{3\\cdot2\\cdot1} = 56$."
+              },
+              {
+                "soru": "KALEM kelimesinin harfleriyle anlamlı ya da anlamsız kaç farklı 5 harfli kelime yazılır? ANANAS için?",
+                "cozum": "KALEM: 5 farklı harf → $5! = 120$. ANANAS: A üç, N iki tekrar → $\\frac{6!}{3!\\,2!} = 60$."
+              }
+            ],
+            "ozet": [
+              "Ya-ya → topla; ve → çarp.",
+              "Permütasyon $\\frac{n!}{(n-r)!}$ sıra önemli.",
+              "Kombinasyon $\\frac{n!}{r!(n-r)!}$ sıra önemsiz."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/matematik/u4/k2",
+          "localCode": "4.2",
+          "title": {
+            "tr": "Olasılık ve veri analizi",
+            "en": "Probability and data analysis"
+          },
+          "content": {
+            "anlatim": "# Olasılık\n\n**Örnek uzay** $E$: Tüm olası sonuçlar. **Olay** $A$: Örnek uzayın alt kümesi.\n$$P(A) = \\frac{s(A)}{s(E)} \\qquad 0 \\le P(A) \\le 1$$\n- $P(E) = 1$ (kesin olay), $P(\\varnothing) = 0$ (imkânsız olay).\n- **Tümleyen:** $P(A') = 1 - P(A)$.\n- **Birleşim:** $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$; **ayrık** olaylarda $P(A\\cap B) = 0$.\n- **Bağımsız** olaylar: $P(A \\cap B) = P(A)\\cdot P(B)$.\n\n# Veri Analizi\n\n| Ölçü | Tanım |\n|---|---|\n| **Aritmetik ortalama** | Değerler toplamı ÷ değer sayısı |\n| **Medyan (ortanca)** | Sıralı verinin ortasındaki değer (çift sayıda veride ortadaki iki değerin ortalaması) |\n| **Mod (tepe değer)** | En sık tekrar eden değer |\n| **Açıklık** | En büyük − en küçük |\n| **Standart sapma** | Verilerin ortalamaya göre yayılımı; küçükse veriler **ortalamaya yakın** |\n\n$$s = \\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n - 1}}$$\n\n> **Uç değerler** ortalamayı çok etkiler, medyanı az etkiler.",
+            "ornekler": [
+              {
+                "soru": "İki zar atılıyor. Toplamın 7 olma olasılığı nedir?",
+                "cozum": "Örnek uzay $36$. Toplamı 7 olanlar: (1,6),(2,5),(3,4),(4,3),(5,2),(6,1) → $6$. $P = \\frac{6}{36} = \\frac16$."
+              },
+              {
+                "soru": "$3, 5, 5, 7, 20$ verisinin ortalaması, medyanı ve modu nedir?",
+                "cozum": "Ortalama $\\frac{40}{5} = 8$; medyan $5$; mod $5$. Uç değer $20$ ortalamayı yukarı çekmiştir."
+              }
+            ],
+            "ozet": [
+              "$P(A)=s(A)/s(E)$; $P(A')=1-P(A)$.",
+              "Bağımsız olaylarda $P(A\\cap B)=P(A)P(B)$.",
+              "Ortalama, medyan, mod; standart sapma yayılımı ölçer."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k3",
+          "key": "11/matematik/u4/k3",
+          "localCode": "4.3",
+          "title": {
+            "tr": "Koşullu olasılık ve bağımsız olaylar",
+            "en": "Conditional probability and independent events"
+          },
+          "content": {
+            "anlatim": "# Koşullu Olasılık\n\n$B$ olayının gerçekleştiği bilindiğinde $A$'nın olasılığı:\n$$P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)}, \\quad P(B) > 0$$\n**Çarpma kuralı:** $P(A \\cap B) = P(B)\\cdot P(A \\mid B)$\n\n# Bağımsız Olaylar\n\n$A$'nın gerçekleşmesi $B$'yi etkilemiyorsa:\n$$P(A \\cap B) = P(A)\\cdot P(B) \\quad\\Leftrightarrow\\quad P(A \\mid B) = P(A)$$\n- İadeli çekiliş, zar ve para atışları **bağımsızdır**.\n- İadesiz çekilişte olaylar **bağımlıdır**.\n- **Ayrık** olaylar ($A \\cap B = \\emptyset$) olasılıkları pozitifse bağımsız **olamaz**.\n\n# İki Yönlü Tablo\n\n| | Gözlüklü | Gözlüksüz | Toplam |\n|---|---|---|---|\n| Kız | 6 | 14 | 20 |\n| Erkek | 4 | 16 | 20 |\n| Toplam | 10 | 30 | 40 |\n\n$P(\\text{Gözlüklü} \\mid \\text{Kız}) = \\dfrac{6}{20} = 0{,}3$ — koşul, örnek uzayı **satır/sütuna daraltır**.\n\n# Tümleyen\n\n$P(A') = 1 - P(A)$ · \"En az bir\" sorularında tümleyen kullanılır: $P(\\text{en az bir}) = 1 - P(\\text{hiç})$.",
+            "ornekler": [
+              {
+                "soru": "Bir torbada $4$ kırmızı, $6$ mavi top var. **İadesiz** iki top çekiliyor. İkisinin de kırmızı olma olasılığı nedir?",
+                "cozum": "$\\frac{4}{10}\\cdot\\frac{3}{9} = \\frac{12}{90} = \\frac{2}{15}$."
+              },
+              {
+                "soru": "Bir zar 3 kez atılıyor. En az bir kez 6 gelme olasılığı nedir?",
+                "cozum": "$1 - \\left(\\frac56\\right)^3 = 1 - \\frac{125}{216} = \\frac{91}{216}$."
+              }
+            ],
+            "ozet": [
+              "$P(A\\mid B) = P(A\\cap B)/P(B)$.",
+              "Bağımsız: $P(A\\cap B) = P(A)P(B)$.",
+              "En az bir: $1 - P(\\text{hiç})$."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k4",
+          "key": "11/matematik/u4/k4",
+          "localCode": "4.4",
+          "title": {
+            "tr": "Binom açılımı ve Pascal üçgeni",
+            "en": "Binomial expansion and Pascal's triangle"
+          },
+          "content": {
+            "anlatim": "# Binom Açılımı\n\n$$(a + b)^n = \\sum_{r=0}^{n} \\binom{n}{r} a^{n-r} b^{r}$$\n- Açılımda **$n + 1$ terim** vardır.\n- Her terimde üsler toplamı $n$'dir.\n- **Genel terim** (baştan $r+1$'inci): $T_{r+1} = \\dbinom{n}{r} a^{n-r} b^{r}$\n- **Katsayılar toplamı:** değişkenlere $1$ yazılır → $(1+1)^n = 2^n$\n- **Sabit terim:** değişkenin üssünü sıfır yapan terim.\n\n# Pascal Üçgeni\n\n| $n$ | Katsayılar |\n|---|---|\n| 0 | 1 |\n| 1 | 1 1 |\n| 2 | 1 2 1 |\n| 3 | 1 3 3 1 |\n| 4 | 1 4 6 4 1 |\n| 5 | 1 5 10 10 5 1 |\nHer sayı üstündeki iki sayının toplamıdır: $\\dbinom{n}{r} = \\dbinom{n-1}{r-1} + \\dbinom{n-1}{r}$\n\n# Sık Kullanılanlar\n\n- $(a + b)^2 = a^2 + 2ab + b^2$ · $(a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3$\n- $\\dbinom{n}{r} = \\dbinom{n}{n-r}$",
+            "ornekler": [
+              {
+                "soru": "$(2x - 1)^5$ açılımında $x^3$'lü terimin katsayısı kaçtır?",
+                "cozum": "$T = \\binom{5}{r}(2x)^{5-r}(-1)^r$; $5 - r = 3 \\Rightarrow r = 2$: $\\binom52\\cdot2^3\\cdot(-1)^2 = 10\\cdot8 = 80$."
+              },
+              {
+                "soru": "$\\left(x^2 + \\dfrac{1}{x}\\right)^6$ açılımında sabit terim kaçtır?",
+                "cozum": "$T = \\binom6r x^{2(6-r)}x^{-r} = \\binom6r x^{12-3r}$; $12 - 3r = 0 \\Rightarrow r = 4$: $\\binom64 = 15$."
+              }
+            ],
+            "ozet": [
+              "$(a+b)^n$ açılımında $n+1$ terim.",
+              "Genel terim $\\binom nr a^{n-r}b^r$.",
+              "Katsayılar toplamı: değişkenlere 1 yaz."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u5",
+      "name": {
+        "tr": "5. Tema: Fonksiyonlar ve Grafikler",
+        "en": "Theme 5: Functions and Graphs"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/matematik/u5/k1",
+          "localCode": "5.1",
+          "title": {
+            "tr": "Fonksiyon kavramı, ikinci dereceden fonksiyonlar ve grafik yorumu",
+            "en": "Functions, quadratic functions and graph interpretation"
+          },
+          "content": {
+            "anlatim": "# Fonksiyon\n\n$A$ kümesinin **her elemanını** $B$ kümesinin **yalnız bir** elemanına eşleyen bağıntı: $f: A \\to B$.\n- **Tanım kümesi** $A$, **değer kümesi** $B$, **görüntü kümesi** $f(A) \\subseteq B$.\n- **Düşey doğru testi:** Grafiği her düşey doğru en fazla bir noktada kesiyorsa fonksiyondur.\n\n# Fonksiyon Türlerinin Karşılaştırılması\n\n| Tür | Genel biçim | Grafik |\n|---|---|---|\n| Doğrusal | $f(x) = ax + b$ | Doğru |\n| İkinci dereceden | $f(x) = ax^2 + bx + c$ | **Parabol** |\n| Rasyonel (ters orantı) | $f(x) = \\dfrac{k}{x}$ | Hiperbol |\n\n# Parabol $f(x) = ax^2 + bx + c$\n\n- $a > 0$ → kollar **yukarı**, tepe noktası **minimum**; $a < 0$ → kollar **aşağı**, tepe **maksimum**.\n- **Tepe noktası:** $r = -\\dfrac{b}{2a}$, $k = f(r)$. Simetri ekseni $x = r$.\n- **y-kesişimi:** $(0, c)$.\n- **x-kesişimleri (kökler):** $\\Delta = b^2 - 4ac$; $\\Delta > 0$ iki kök, $\\Delta = 0$ tek (çakışık) kök, $\\Delta < 0$ kesişim yok.\n\n# Artanlık–Azalanlık ve Ekstremum\n\n- Bir aralıkta $x$ artarken $f(x)$ artıyorsa **artan**, azalıyorsa **azalan**.\n- Parabolde $a > 0$ ise $x < r$ için azalan, $x > r$ için artan.\n- **Maksimum/minimum problemleri:** Ör. çevresi sabit dikdörtgenin en büyük alanı.",
+            "ornekler": [
+              {
+                "soru": "$f(x) = x^2 - 6x + 5$ parabolünün tepe noktasını, köklerini ve en küçük değerini bulunuz.",
+                "cozum": "$r = \\frac{6}{2} = 3$, $f(3) = 9 - 18 + 5 = -4$ → tepe $(3, -4)$, en küçük değer $-4$. Kökler: $x^2 - 6x + 5 = (x-1)(x-5) = 0 \\Rightarrow x = 1, 5$."
+              },
+              {
+                "soru": "Çevresi $40$ m olan dikdörtgen bir bahçenin alanı en fazla kaç m² olur?",
+                "cozum": "Kenarlar $x$ ve $20 - x$: $A(x) = x(20-x) = -x^2 + 20x$. Tepe $x = 10$ → $A = 100$ m² (kare)."
+              }
+            ],
+            "ozet": [
+              "Fonksiyon: her elemanın tek görüntüsü; düşey doğru testi.",
+              "Parabol: $a>0$ yukarı, tepe $r=-b/2a$.",
+              "$\\Delta=b^2-4ac$ kök sayısını belirler."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/matematik/u5/k2",
+          "localCode": "5.2",
+          "title": {
+            "tr": "Polinomlar: işlemler ve bölme",
+            "en": "Polynomials: operations and division"
+          },
+          "content": {
+            "anlatim": "# Tanım\n\n$P(x) = a_nx^n + a_{n-1}x^{n-1} + \\dots + a_1x + a_0$ — üsler **doğal sayı**, katsayılar gerçek sayıdır.\n- **Derece:** en büyük üs ($a_n \\neq 0$) · **Baş katsayı:** $a_n$ · **Sabit terim:** $a_0 = P(0)$\n- **Katsayılar toplamı:** $P(1)$\n- $\\sqrt x$, $\\dfrac1x$, $2^x$ içeren ifadeler polinom **değildir**.\n\n# İşlemler\n\n- Toplama/çıkarma: **benzer terimler** birleştirilir.\n- Çarpma: $\\text{der}(P\\cdot Q) = \\text{der}P + \\text{der}Q$\n- $\\text{der}(P(x)^k) = k\\cdot\\text{der}P$, $\\ \\text{der}(P(Q(x))) = \\text{der}P \\cdot \\text{der}Q$\n\n# Bölme ve Kalan Teoremi\n\n$$P(x) = B(x)\\cdot Q(x) + K(x), \\quad \\text{der}K < \\text{der}B$$\n- **Kalan teoremi:** $P(x)$'in $(x - a)$ ile bölümünden kalan $P(a)$'dır.\n- $(ax + b)$ ile bölümünden kalan $P\\!\\left(-\\dfrac ba\\right)$.\n- **Çarpan teoremi:** $P(a) = 0 \\iff (x - a)$, $P(x)$'in çarpanıdır.\n- **Horner (sentetik bölme)** ile hızlı bölme yapılır.",
+            "ornekler": [
+              {
+                "soru": "$P(x) = x^3 - 2x^2 + kx + 4$ polinomu $(x - 2)$ ile tam bölünüyorsa $k$ kaçtır?",
+                "cozum": "$P(2) = 8 - 8 + 2k + 4 = 0 \\Rightarrow k = -2$."
+              },
+              {
+                "soru": "$P(x+1) = x^2 + 3x + 5$ ise $P(x)$'in katsayılar toplamı kaçtır?",
+                "cozum": "Katsayılar toplamı $P(1)$; $x + 1 = 1 \\Rightarrow x = 0$: $P(1) = 5$."
+              }
+            ],
+            "ozet": [
+              "Kalan teoremi: $(x-a)$'ya bölümden kalan $P(a)$.",
+              "$P(1)$ katsayılar toplamı, $P(0)$ sabit terim.",
+              "Çarpımda dereceler toplanır."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k3",
+          "key": "11/matematik/u5/k3",
+          "localCode": "5.3",
+          "title": {
+            "tr": "Fonksiyon grafiklerinde dönüşümler",
+            "en": "Transformations of function graphs"
+          },
+          "content": {
+            "anlatim": "# Öteleme\n\n| İfade | Grafikteki değişim |\n|---|---|\n| $y = f(x) + k$ | $k$ birim **yukarı** ($k < 0$ ise aşağı) |\n| $y = f(x - h)$ | $h$ birim **sağa** ($h < 0$ ise sola) |\n| $y = f(x + h)$ | $h$ birim **sola** |\n\n> Parantez içindeki değişim **ters yönde** çalışır: $f(x - 3)$ sağa öteler.\n\n# Yansıma\n\n- $y = -f(x)$: **x eksenine** göre yansıma.\n- $y = f(-x)$: **y eksenine** göre yansıma.\n- $y = -f(-x)$: **orijine** göre yansıma.\n\n# Ölçekleme (Germe–Sıkıştırma)\n\n- $y = a\\cdot f(x)$, $a > 1$: düşey **germe**; $0 < a < 1$: düşey **sıkıştırma**.\n- $y = f(bx)$, $b > 1$: yatay **sıkıştırma** (grafik $\\frac1b$ katına daralır).\n\n# Örnek\n\n$y = x^2$ parabolünden $y = (x - 2)^2 + 3$: **2 birim sağa, 3 birim yukarı**; tepe noktası $(2, 3)$.\n\n# Mutlak Değer\n\n$y = |f(x)|$: grafiğin **x ekseninin altında kalan kısmı yukarı** yansıtılır.",
+            "ornekler": [
+              {
+                "soru": "$f(x) = x^2$ grafiği 3 birim sola ve 4 birim aşağı ötelenirse yeni fonksiyon nedir?",
+                "cozum": "$g(x) = (x + 3)^2 - 4$; tepe noktası $(-3, -4)$."
+              },
+              {
+                "soru": "$y = f(x)$ grafiği $(2, 5)$ noktasından geçiyorsa $y = -f(x - 1)$ grafiği hangi noktadan geçer?",
+                "cozum": "Önce 1 birim sağa: $(3, 5)$; sonra x eksenine göre yansıma: $(3, -5)$."
+              }
+            ],
+            "ozet": [
+              "$f(x) + k$ düşey, $f(x - h)$ yatay öteleme (sağa).",
+              "$-f(x)$ x eksenine, $f(-x)$ y eksenine göre yansıma.",
+              "$|f(x)|$: negatif kısım yukarı katlanır."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k4",
+          "key": "11/matematik/u5/k4",
+          "localCode": "5.4",
+          "title": {
+            "tr": "İkinci dereceden eşitsizlikler ve parabol–doğru ilişkisi",
+            "en": "Quadratic inequalities and parabola–line relations"
+          },
+          "content": {
+            "anlatim": "# İşaret Tablosu\n\n$f(x) = ax^2 + bx + c$'nin kökleri $x_1 < x_2$ ise:\n- Köklerin **dışında** $a$ ile **aynı** işaret, **arasında** **ters** işaret.\n\n| $x$ | $-\\infty$ … $x_1$ | $x_1$ … $x_2$ | $x_2$ … $+\\infty$ |\n|---|---|---|---|\n| $a > 0$ | $+$ | $-$ | $+$ |\n\n- $\\Delta < 0$ ise $f(x)$ her yerde $a$'nın işaretindedir: $x^2 + x + 1 > 0$ **her $x$ için** doğrudur.\n- **Her $x$ için $ax^2 + bx + c > 0$** olması: $a > 0$ ve $\\Delta < 0$.\n\n# Parabol ile Doğrunun Durumu\n\n$y = ax^2 + bx + c$ ve $y = mx + n$ eşitlenir → $ax^2 + (b - m)x + (c - n) = 0$\n| $\\Delta$ | Durum |\n|---|---|\n| $> 0$ | İki noktada **keser** |\n| $= 0$ | **Teğet** (bir ortak nokta) |\n| $< 0$ | **Kesişmez** |\n\n# Eşitsizlik Sistemleri\n\nHer eşitsizlik ayrı çözülür, çözüm kümelerinin **kesişimi** alınır. Rasyonel eşitsizliklerde paydanın kökleri **çözüme dahil edilmez**.",
+            "ornekler": [
+              {
+                "soru": "$x^2 - x - 6 \\le 0$ eşitsizliğinin çözüm kümesini bulunuz.",
+                "cozum": "Kökler $-2$ ve $3$; $a > 0$ olduğundan kökler arası negatif: $[-2, 3]$."
+              },
+              {
+                "soru": "$y = x^2 + 4$ parabolü ile $y = mx$ doğrusu teğet ise $m$ nedir?",
+                "cozum": "$x^2 - mx + 4 = 0$, $\\Delta = m^2 - 16 = 0 \\Rightarrow m = \\pm4$."
+              }
+            ],
+            "ozet": [
+              "Kökler arası a'nın tersi, dışı a ile aynı işaret.",
+              "Her x için pozitif: $a > 0$, $\\Delta < 0$.",
+              "Parabol–doğru: $\\Delta$ ile kesme/teğet/ayrık."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u6",
+      "name": {
+        "tr": "6. Tema (Ek): Çember, Daire ve Katı Cisimler",
+        "en": "Theme 6 (Extra): Circle, Disc and Solids"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/matematik/u6/k1",
+          "localCode": "MAT.11.E1",
+          "title": {
+            "tr": "Çemberde teğet, daire alanı, yay uzunluğu ve daire dilimi",
+            "en": "Tangents, area of a disc, arc length and sectors"
+          },
+          "content": {
+            "anlatim": "# Temel Tanımlar\n\n- **Çember:** Bir merkeze eşit uzaklıktaki noktaların kümesi (yalnızca sınır çizgisi). **Daire:** Çember ile iç bölgesinin birleşimi.\n- **Yarıçap** $r$, **çap** $2r$; çapı gören çevre açı $90°$'dir.\n\n# Çemberde Teğet\n\n- Teğet, değme noktasındaki **yarıçapa diktir**.\n- Dışarıdaki bir noktadan çembere çizilen iki teğet parçasının uzunlukları **eşittir**.\n- Merkezi $O$, dış nokta $P$ ve teğet uzunluğu $t$ ise: $t^2 = |PO|^2 - r^2$ (Pisagor).\n\n# Uzunluk ve Alan\n\n$$\\text{Çevre} = 2\\pi r, \\qquad \\text{Daire alanı} = \\pi r^2$$\nMerkez açısı $\\alpha$ (derece) olan:\n$$\\text{Yay uzunluğu} = 2\\pi r\\cdot\\frac{\\alpha}{360°}, \\qquad \\text{Daire dilimi alanı} = \\pi r^2\\cdot\\frac{\\alpha}{360°} = \\frac{\\text{yay}\\cdot r}{2}$$\n- **Daire halkası** (yarıçaplar $R > r$): $\\pi(R^2 - r^2)$\n- **Daire parçası** (kiriş ile yay arası) = dilim alanı − üçgen alanı\n\n# Çemberin Kuvveti (kesişen kirişler)\n\nİki kiriş bir iç noktada kesişirse parçaların çarpımları eşittir: $|AP|\\cdot|PB| = |CP|\\cdot|PD|$.",
+            "ornekler": [
+              {
+                "soru": "Yarıçapı 6 cm olan bir dairede $120°$'lik daire diliminin alanını ve yay uzunluğunu bulunuz ($\\pi$ cinsinden).",
+                "cozum": "Alan $= \\pi\\cdot36\\cdot\\frac{120}{360} = $ **$12\\pi$ cm²**. Yay $= 2\\pi\\cdot6\\cdot\\frac13 = $ **$4\\pi$ cm**. Kontrol: $\\frac{4\\pi\\cdot6}{2} = 12\\pi$ ✓"
+              },
+              {
+                "soru": "Merkezi $O$ ve yarıçapı 5 olan çembere, $|PO| = 13$ olan $P$ noktasından çizilen teğet parçasının uzunluğu kaçtır?",
+                "cozum": "$t^2 = 13^2 - 5^2 = 144$ → $t = $ **12**."
+              }
+            ],
+            "ozet": [
+              "Teğet, değme noktasındaki yarıçapa diktir; dış noktadan çizilen iki teğet eşit uzunluktadır.",
+              "Çevre $2\\pi r$, alan $\\pi r^2$.",
+              "Yay ve dilim: tam çemberin $\\alpha/360$'ı kadarı.",
+              "Dilim alanı $= \\frac{\\text{yay}\\cdot r}{2}$."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/matematik/u6/k2",
+          "localCode": "MAT.11.E2",
+          "title": {
+            "tr": "Prizmalar ve küp: hacim ve yüzey alanı",
+            "en": "Prisms and cubes: volume and surface area"
+          },
+          "content": {
+            "anlatim": "# Prizma\n\nİki **eş ve paralel** tabanı olan, yan yüzleri paralelkenar (dik prizmada dikdörtgen) olan cisimdir. Adını tabanından alır: üçgen prizma, kare prizma, altıgen prizma…\n$$V = \\text{Taban alanı}\\times h, \\qquad A = 2\\cdot\\text{Taban alanı} + \\text{Taban çevresi}\\times h$$\n($h$: iki taban arasındaki dik uzaklık; yanal alan dik prizmada **taban çevresi × yükseklik**tir.)\n\n# Dikdörtgenler Prizması ve Küp\n\nAyrıtları $a, b, c$ olan dikdörtgenler prizması:\n- $V = abc$, $A = 2(ab + ac + bc)$\n- Cisim köşegeni: $\\sqrt{a^2 + b^2 + c^2}$\n\nAyrıtı $a$ olan küp:\n- $V = a^3$, $A = 6a^2$, yüz köşegeni $a\\sqrt2$, cisim köşegeni $a\\sqrt3$.\n\n# Ölçek Etkisi\n\nBir cismin bütün uzunlukları $k$ katına çıkarsa **alanları $k^2$**, **hacmi $k^3$** katına çıkar.",
+            "ornekler": [
+              {
+                "soru": "Ayrıtları 3, 4 ve 12 cm olan dikdörtgenler prizmasının hacmini, yüzey alanını ve cisim köşegenini bulunuz.",
+                "cozum": "$V = 3\\cdot4\\cdot12 = $ **144 cm³**. $A = 2(12 + 36 + 48) = $ **192 cm²**. Köşegen $= \\sqrt{9 + 16 + 144} = \\sqrt{169} = $ **13 cm**."
+              },
+              {
+                "soru": "Bir küpün ayrıtı 2 katına çıkarılırsa yüzey alanı ve hacmi kaç katına çıkar?",
+                "cozum": "Alan $2^2 = $ **4** katına, hacim $2^3 = $ **8** katına çıkar."
+              }
+            ],
+            "ozet": [
+              "Prizma: $V = $ taban alanı × yükseklik.",
+              "Dikdörtgenler prizması: $V = abc$, $A = 2(ab+ac+bc)$, köşegen $\\sqrt{a^2+b^2+c^2}$.",
+              "Küp: $V = a^3$, $A = 6a^2$, cisim köşegeni $a\\sqrt3$.",
+              "Uzunluk $k$ katı → alan $k^2$, hacim $k^3$ katı."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k3",
+          "key": "11/matematik/u6/k3",
+          "localCode": "MAT.11.E3",
+          "title": {
+            "tr": "Piramitler: hacim, yüzey alanı ve yan yüz yüksekliği",
+            "en": "Pyramids: volume, surface area and slant height"
+          },
+          "content": {
+            "anlatim": "# Piramit\n\nBir çokgen taban ile tabanın dışındaki bir **tepe noktasının** taban köşelerine birleştirilmesiyle oluşan cisimdir. Yan yüzleri üçgendir.\n$$V = \\frac{\\text{Taban alanı}\\times h}{3}$$\nAynı taban ve yükseklikteki prizmanın hacminin **üçte biri** kadardır.\n\n# Düzgün Piramit\n\nTabanı düzgün çokgen ve tepe noktası tabanın merkezinin tam üstünde olan piramittir. Yan yüzler eş ikizkenar üçgenlerdir.\n- **Yan yüz yüksekliği (apotem) $h'$:** Tepeden taban kenarına inen dikme. Kare tabanlı (kenar $a$) düzgün piramitte:\n$$h'^2 = h^2 + \\left(\\frac a2\\right)^2$$\n- Yanal alan $= \\frac{\\text{Taban çevresi}\\times h'}{2}$, Yüzey alanı = taban alanı + yanal alan.\n\n# Düzgün Dörtyüzlü\n\nBütün yüzleri eşkenar üçgen olan piramittir (ayrıt $a$): $A = a^2\\sqrt3$, $V = \\dfrac{a^3\\sqrt2}{12}$.",
+            "ornekler": [
+              {
+                "soru": "Taban kenarı 6 cm, yüksekliği 4 cm olan kare dik piramidin hacmini ve yüzey alanını bulunuz.",
+                "cozum": "$V = \\frac{36\\cdot4}{3} = $ **48 cm³**. Yan yüz yüksekliği $h' = \\sqrt{4^2 + 3^2} = 5$. Yanal alan $= \\frac{24\\cdot5}{2} = 60$; yüzey alanı $= 36 + 60 = $ **96 cm²**."
+              },
+              {
+                "soru": "Bir prizma ile aynı taban ve yükseklikteki piramidin hacimleri oranı nedir?",
+                "cozum": "$V_{piramit} : V_{prizma} = \\frac13 : 1 = $ **1 : 3**."
+              }
+            ],
+            "ozet": [
+              "Piramit hacmi: $\\frac13\\cdot$ taban alanı · yükseklik.",
+              "Yan yüz yüksekliği: $h'^2 = h^2 + (a/2)^2$ (kare tabanlı).",
+              "Yanal alan = taban çevresi · $h'$ / 2.",
+              "Düzgün dörtyüzlü: $V = a^3\\sqrt2/12$."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k4",
+          "key": "11/matematik/u6/k4",
+          "localCode": "MAT.11.E4",
+          "title": {
+            "tr": "Silindir, koni ve küre",
+            "en": "Cylinder, cone and sphere"
+          },
+          "content": {
+            "anlatim": "# Silindir (dik dairesel)\n\n$$V = \\pi r^2 h, \\qquad A = 2\\pi r^2 + 2\\pi r h$$\nYanal yüzey açıldığında kenarları $2\\pi r$ ve $h$ olan bir **dikdörtgen** elde edilir.\n\n# Koni (dik dairesel)\n\nAna doğru (yan yüz uzunluğu) $l$: $l^2 = r^2 + h^2$\n$$V = \\frac{\\pi r^2 h}{3}, \\qquad A = \\pi r^2 + \\pi r l$$\nYanal yüzey açıldığında yarıçapı $l$ olan bir **daire dilimi** oluşur; dilimin merkez açısı $\\alpha = 360°\\cdot\\dfrac{r}{l}$.\n\n# Küre\n\n$$V = \\frac43\\pi r^3, \\qquad A = 4\\pi r^2$$\n- Küreyi tam içine alan silindirin (yarıçap $r$, yükseklik $2r$) hacmi $2\\pi r^3$'tür; küre bunun **üçte ikisi**dir (Arşimet'in mezar taşına kazıttığı sonuç).\n- Küre bir düzlemle kesilirse kesit **daire** olur; merkezden $d$ uzaklıktaki kesitin yarıçapı $\\sqrt{r^2 - d^2}$.\n\n# Dönel Cisimler\n\nBir dikdörtgen kenarı etrafında döndürülürse **silindir**, dik üçgen bir dik kenarı etrafında döndürülürse **koni**, yarım daire çapı etrafında döndürülürse **küre** oluşur.",
+            "ornekler": [
+              {
+                "soru": "Yarıçapı 3 cm, yüksekliği 4 cm olan dik koninin hacmini ve yüzey alanını bulunuz.",
+                "cozum": "$l = \\sqrt{9 + 16} = 5$. $V = \\frac{\\pi\\cdot9\\cdot4}{3} = $ **$12\\pi$ cm³**. $A = 9\\pi + \\pi\\cdot3\\cdot5 = $ **$24\\pi$ cm²**."
+              },
+              {
+                "soru": "Yarıçapı 6 cm olan metal bir küre eritilerek yarıçapı 2 cm olan kürecikler yapılıyor. Kaç kürecik elde edilir?",
+                "cozum": "Hacimler oranı $\\left(\\frac62\\right)^3 = 27$ → **27** kürecik."
+              }
+            ],
+            "ozet": [
+              "Silindir: $V = \\pi r^2h$, $A = 2\\pi r^2 + 2\\pi rh$.",
+              "Koni: $V = \\frac13\\pi r^2h$, $A = \\pi r^2 + \\pi rl$, $l^2 = r^2 + h^2$.",
+              "Küre: $V = \\frac43\\pi r^3$, $A = 4\\pi r^2$.",
+              "Koni hacmi aynı taban/yükseklikteki silindirin $\\frac13$'ü; küre çevreleyen silindirin $\\frac23$'ü."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    }
+  ]
+}

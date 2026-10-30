@@ -86,6 +86,11 @@ Android açılış testi tüm sistem günlüğünü `shots/android-logcat.txt` i
 
 `node tools/study-workspace-check.mjs`: kaynak bölüm/uzunluk sınırları, var olmayan kaynak numarası reddi, yinelenen şık/bozuk anahtar reddi, artık gün/tarih denetimi, ödev adımları, sözlü rubrik puan aralıkları.
 
-`npm run test:workspace-ui`: gerçek yerel TXT/DOCX/ODF/PDF metni okuma; özet/kart/test, ödev CRUD/adım/tamamlanma ve fotoğraf taslağı, defter metnini genel nota/var olan konu notuna ekleme, sesli/yazılı prova ve kesilen üretimin kayıtları kirletmemesi. AI, OCR ve ses tanıma kontrollü örneklerdir; gerçek el yazısı/model doğruluğu ölçülmüş sayılmaz. Üç motor, iki tema ve 320/768/1440px kontrolleri; eski `belgeden` bağlantısı ve 1.59 panel/portfolyo/sunum akışları da sınanır.
+`npm run test:workspace-ui`: gerçek yerel TXT/DOCX/ODF/PDF metni okuma; özet/kart/test, ödev CRUD/adım/tamamlanma ve fotoğraf taslağı, defter metnini genel nota/var olan konu notuna ekleme, sesli/yazılı prova ve kesilen üretimin kayıtları kirletmemesi. AI, OCR ve ses tanıma kontrollü örneklerdir; gerçek el yazısı/model doğruluğu ölçülmüş sayılmaz. Üç motor, iki tema ve 320/768/1440px kontrolleri; eski `belgeden` bağlantısı ve panel/portfolyo ve birleştirilmiş Dokümanlar akışları da sınanır.
 
 Bütün araç açılışları ve etkileşim grupları `node tools/audit-web.mjs --full` içinde listelenir. Bunlar sonlu otomatik senaryolardır; her fiziksel Android/iOS/Windows/Linux aygıtının veya olası her kullanıcı girdisinin eksiksiz sınandığı iddia edilmez. Android emülatörü, Windows ve Debian kurulum/açılış kapıları GitHub Actions üzerinde ayrıca çalışır. iOS için dağıtım Safari/PWA'dır, yerel IPA değildir.
+
+
+## Birleşik bilim laboratuvarı (5. adım)
+
+Fizik, sensör, sismograf ve deney kataloğu tek **Bilim ve Sensör Laboratuvarı** girişindedir. Eski bağlantılar yönlenir. RC, soğuma, yarı ömür ve polarizasyon için dört yeni çevrimdışı model vardır. Kullanım, platform sınırları ve test komutları: [Bilim ve Sensör Laboratuvarı](BILIM-SENSOR-LABORATUVARI.md).

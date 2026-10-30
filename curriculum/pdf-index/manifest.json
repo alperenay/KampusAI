@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "modules": [
+    {
+      "file": "343.json",
+      "subjectId": "matematik",
+      "edition": "legacy",
+      "status": "machine-extracted-candidates-require-review",
+      "codeCandidates": 231
+    },
+    {
+      "file": "351.json",
+      "subjectId": "fizik",
+      "edition": "legacy",
+      "status": "machine-extracted-candidates-require-review",
+      "codeCandidates": 292
+    },
+    {
+      "file": "350.json",
+      "subjectId": "kimya",
+      "edition": "legacy",
+      "status": "machine-extracted-candidates-require-review",
+      "codeCandidates": 204
+    },
+    {
+      "file": "361.json",
+      "subjectId": "biyoloji",
+      "edition": "legacy",
+      "status": "machine-extracted-candidates-require-review",
+      "codeCandidates": 121
+    },
+    {
+      "file": "336.json",
+      "subjectId": "cografya",
+      "edition": "legacy",
+      "status": "machine-extracted-candidates-require-review",
+      "codeCandidates": 130
+    },
+    {
+      "file": "353.json",
+      "subjectId": "edebiyat",
+      "edition": "legacy",
+      "status": "machine-extracted-candidates-require-review",
+      "codeCandidates": 20
+    },
+    {
+      "file": "342.json",
+      "subjectId": "ingilizce",
+      "edition": "legacy",
+      "status": "machine-extracted-candidates-require-review",
+      "codeCandidates": 302
+    },
+    {
+      "file": "355.json",
+      "subjectId": "inkilap",
+      "edition": "legacy",
+      "status": "machine-extracted-candidates-require-review",
+      "codeCandidates": 40
+    },
+    {
+      "file": "338.json",
+      "subjectId": "felsefe",
+      "edition": "legacy",
+      "status": "machine-extracted-candidates-require-review",
+      "codeCandidates": 39
+    },
+    {
+      "file": "319.json",
+      "subjectId": "din",
+      "edition": "legacy",
+      "status": "machine-extracted-candidates-require-review",
+      "codeCandidates": 79
+    },
+    {
+      "file": "2153.json",
+      "subjectId": "din",
+      "edition": "tymm-2026",
+      "status": "machine-extracted-candidates-require-review",
+      "codeCandidates": 103
+    },
+    {
+      "file": "333.json",
+      "subjectId": "almanca",
+      "edition": "legacy",
+      "status": "machine-extracted-candidates-require-review",
+      "codeCandidates": 8
+    },
+    {
+      "file": "2217.json",
+      "subjectId": "saglik",
+      "edition": "tymm-2026",
+      "status": "machine-extracted-candidates-require-review",
+      "codeCandidates": 33
+    }
+  ],
+  "purpose": "PDF-only and legacy source references; machine candidates, not verified lesson coverage",
+  "allMebLessonsComplete": false
+}

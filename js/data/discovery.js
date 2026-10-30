@@ -173,6 +173,12 @@
         source: "https://islamansiklopedisi.org.tr/viyana",
       },
       {
+        year: 1839, title: "Tanzimat ve idari dönüşüm",
+        text: "3 Kasım 1839’da ilan edilen Gülhane Hatt-ı Hümâyunu, Tanzimat reformlarının temel dönüm noktalarındandır. Gösterilen şekil İstanbul merkezli bağlam alanıdır; imparatorluk sınırı değildir.",
+        polygon: [[27,42],[31,42],[31,39],[27,39]],
+        source: "https://islamansiklopedisi.org.tr/tanzimat"
+      },
+      {
         year: 1923,
         title: "Cumhuriyet ve Lozan",
         text: "1923: Lozan Antlaşması ve Cumhuriyet’in ilanı. Hatay 1939’da katıldı; bu 1923 şeması günümüzün kesin sınır haritası değildir.",

@@ -48,7 +48,7 @@
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }
-:root:not([data-a11y-contrast]) :is(.sidebar, .topbar, .tabbar, .lesson-dock, .modal, .quick-pop) {
+:root:not([data-a11y-contrast]) :is(.sidebar, .tabbar, .lesson-dock, .modal, .quick-pop) {
   background: var(--glass-panel);
   border-color: var(--glass-edge);
   box-shadow: var(--glass-shadow);
@@ -56,7 +56,6 @@
   backdrop-filter: var(--glass-frame-blur);
 }
 :root:not([data-a11y-contrast]) #sidebar { background: var(--bg-sidebar); -webkit-backdrop-filter: var(--glass-frame-blur); backdrop-filter: var(--glass-frame-blur); border-right: 1px solid var(--glass-edge); }
-:root:not([data-a11y-contrast]) .topbar { border-bottom: 1px solid var(--glass-edge); }
 :root:not([data-a11y-contrast]) .modal { background: var(--glass-panel); border: 1px solid var(--glass-edge); }
 :root:not([data-a11y-contrast]) .modal-backdrop { background: rgba(4, 8, 20, .56); }
 :root[data-theme="light"]:not([data-a11y-contrast]) .modal-backdrop { background: rgba(30, 42, 66, .32); }
@@ -87,7 +86,6 @@
 @media (max-width: 860px), (pointer: coarse) {
   :root:not([data-a11y-contrast]) { --glass-frame-blur: blur(8px); }
   :root:not([data-a11y-contrast]) #sidebar { background: var(--bg-drawer); }
-  :root:not([data-a11y-contrast]) .topbar { -webkit-backdrop-filter: none; backdrop-filter: none; }
   :root:not([data-a11y-contrast]) :is(.card, .hub-tile, .tday-stat, .discovery-tile, .v159-widget) {
     box-shadow: var(--glass-inset), 0 4px 14px rgba(4, 8, 22, .09);
   }

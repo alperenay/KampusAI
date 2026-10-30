@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "grade": 10,
+  "apiGradeId": 12,
+  "courseId": 20,
+  "slug": "kimya-dersi",
+  "name": "Kimya Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/kimya-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "138",
+      "title": "1. Tema: Etkileşim",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/138",
+      "retrievedAt": "2026-10-30T16:28:31.237273+00:00",
+      "sourceSha256": "a39712a3985df43755f6268225e551edc87cd97f35ede9bdc60f36b84e83c9ee",
+      "status": "codes-indexed",
+      "codes": [
+        "KİM.10.1.1",
+        "KİM.10.1.2",
+        "KİM.10.1.3",
+        "KİM.10.1.4",
+        "KİM.10.1.5",
+        "KİM.10.1.6",
+        "KİM.10.1.7",
+        "KİM.10.1.8",
+        "KİM.10.1.9",
+        "KİM.10.1.10",
+        "KİM.10.1.11"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "159",
+      "title": "2. Tema: Çeşitlilik",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/159",
+      "retrievedAt": "2026-10-30T16:28:32.047578+00:00",
+      "sourceSha256": "63a81834d2795b4f83fc636ddf0743740325af94aaaedc9ef21d2245348d60aa",
+      "status": "codes-indexed",
+      "codes": [
+        "KİM.10.2.1",
+        "KİM.10.2.2",
+        "KİM.10.2.3",
+        "KİM.10.2.4",
+        "KİM.10.2.5",
+        "KİM.10.2.6",
+        "KİM.10.2.7",
+        "KİM.10.2.8"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "09.08.2026",
+      "normalizations": []
+    },
+    {
+      "id": "160",
+      "title": "3. Tema: Sürdürülebilirlik",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/160",
+      "retrievedAt": "2026-10-30T16:28:32.819957+00:00",
+      "sourceSha256": "b5837f6f9daaea000de19c9166f663dc25210b9a7f061a5a5c13f5345e092e9b",
+      "status": "codes-indexed",
+      "codes": [
+        "KİM.10.3.1",
+        "KİM.10.3.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "25.08.2026",
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "grade": 12,
+  "apiGradeId": 14,
+  "courseId": 30,
+  "slug": "beden-egitimi-ve-spor-dersi",
+  "name": "Beden Eğitimi ve Spor Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/beden-egitimi-ve-spor-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "610",
+      "title": "1. Tema: Zindelik Ve Fiziksel Aktivite",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/610",
+      "retrievedAt": "2026-10-30T16:26:58.593018+00:00",
+      "sourceSha256": "28250c9deb8ffd30fe25c3a240b105e91788b06d039e1a32984a7cc3d0b04834",
+      "status": "codes-indexed",
+      "codes": [
+        "BES.12.1.1",
+        "BES.12.1.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": null,
+      "normalizations": []
+    },
+    {
+      "id": "611",
+      "title": "2. Tema: Spor Eğitimi",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/611",
+      "retrievedAt": "2026-10-30T16:26:59.789466+00:00",
+      "sourceSha256": "600c6e2c282f8c0c1924fba36402a30b4b1963348ef48caa5f288a52d6d5af36",
+      "status": "codes-indexed",
+      "codes": [
+        "BES.12.2.1",
+        "BES.12.2.2",
+        "BES.12.2.3",
+        "BES.12.2.4"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": null,
+      "normalizations": []
+    },
+    {
+      "id": "612",
+      "title": "3. Tema: Spor Kültürü",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/612",
+      "retrievedAt": "2026-10-30T16:27:00.636674+00:00",
+      "sourceSha256": "77f789b7709e67c4d25c39700cd2c64144a251643070455b66b0a0cbcd905f8f",
+      "status": "codes-indexed",
+      "codes": [
+        "BES.12.3.1",
+        "BES.12.3.2"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": null,
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}

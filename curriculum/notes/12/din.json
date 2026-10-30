@@ -1,0 +1,500 @@
+{
+  "schemaVersion": 1,
+  "grade": 12,
+  "subjectId": "din",
+  "name": {
+    "tr": "Din Kültürü ve Ahlak Bilgisi",
+    "en": "Religious Culture and Ethics"
+  },
+  "programEdition": "legacy-project-unverified",
+  "source": {
+    "file": "js/data/content/din-12.js",
+    "sha256": "efcf6d63c68142ca0538840ac6af4724fec143638946d31447184648a92e3ad6",
+    "additionalReferences": [
+      {
+        "name": "[TYMM] DİN KÜLTÜRÜ VE AHLAK BİLGİSİ DERSİ (9-12) (2026)",
+        "url": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=2153"
+      },
+      {
+        "name": "DİN KÜLTÜRÜ VE AHLAK BİLGİSİ (9-12)",
+        "url": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=319"
+      }
+    ],
+    "pdfReferenceCandidates": [
+      {
+        "file": "pdf-index/319.json",
+        "url": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=319",
+        "edition": "legacy",
+        "status": "programme-and-grade-review-required"
+      },
+      {
+        "file": "pdf-index/2153.json",
+        "url": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=2153",
+        "edition": "tymm-2026",
+        "status": "programme-and-grade-review-required"
+      }
+    ]
+  },
+  "officialProgramCandidates": [],
+  "units": [
+    {
+      "id": "u1",
+      "name": {
+        "tr": "1. Ünite: İslam ve Bilim",
+        "en": "Unit 1: Islam and Science"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "12/din/u1/k1",
+          "localCode": "1.1",
+          "title": {
+            "tr": "Din–bilim ilişkisi",
+            "en": "The relationship between religion and science"
+          },
+          "content": {
+            "anlatim": "# Din ve Sünnetullah\n\n**Din:** Allah tarafından peygamberler aracılığıyla bildirilen ilahi kurallar bütünü. Allah kâinatta kusursuz bir düzen kurmuştur: **âdetullah / sünnetullah**. \"Allah'ın kanununda asla bir değişiklik bulamazsın.\" (Fetih, 23)\n\nKur'an insanları göklerin ve yerin yaratılışı üzerinde **düşünmeye** çağırır (A'râf, 185) → bilimsel araştırmanın motivasyonu.\n\n# İlim ve Bilim\n\n- **İlim:** İslam kültüründe özellikle dinî konuları araştıran disiplinler için kullanılır.\n- **Bilim:** Kâinattaki düzeni **akıl, gözlem ve deneyle** araştıran disiplin.\n- Bilimsel bilgi **değişebilir ve gelişir** (ör. Plüton'un 2006'da cüce gezegen sayılması); bu bilimin doğasıdır.\n- Kur'an'ın akılla ve bilimin doğru verileriyle çelişmesi düşünülemez; ikisi farklı sorulara (nasıl? / niçin?) cevap arar.\n\n# İlmin Değeri\n\n- Kur'an **akletme, tefekkür, tezekkür, ibret alma** ister. \"Hiç bilenlerle bilmeyenler bir olur mu?\" (Zümer, 9)\n- Hz. Peygamber: \"Kim ilim için yola çıkarsa Allah ona cennet yolunu kolaylaştırır.\" Âlimler \"peygamberlerin varisleri\"dir. **Faydasız ilimden** Allah'a sığınmıştır.\n\n> **İlke:** Bilim insanı Allah'a yaklaştırmalı ve **insanlığa fayda** sağlamalıdır; insanlığa zarar veren, toplu yok edici çalışmalar İslam'ın onaylamadığı faaliyetlerdir.",
+            "ornekler": [
+              {
+                "soru": "Bilimsel bilginin değişebilir olması din–bilim ilişkisi açısından neden önemlidir?",
+                "cozum": "Bilimsel bilgi **gözlem ve deneyle sürekli düzeltilir**; bu yüzden dinî metinleri her dönemin bilimsel teorilerine birebir bağlamak yanlıştır. Din anlam ve değerlere, bilim ise doğal yasaların işleyişine odaklanır; ikisi birbirini tamamlar."
+              }
+            ],
+            "ozet": [
+              "Sünnetullah: değişmez ilahi düzen.",
+              "İlim dinî, bilim akıl-gözlem-deneyle evreni araştırır.",
+              "Bilim insanlığa fayda sağlamalı."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "12/din/u1/k2",
+          "localCode": "1.2",
+          "title": {
+            "tr": "İslam medeniyetinde bilimin gelişimi ve eğitim kurumları",
+            "en": "The development of science and educational institutions in Islamic civilization"
+          },
+          "content": {
+            "anlatim": "# Gelişim Süreci\n\n- **Medeniyet:** Nesilden nesile aktarılan siyasal, sosyal, ekonomik faaliyet, kurum ve değerler bütünü. İslam medeniyetinin merkezinde **ilim** vardır.\n- 610'da vahiyle başlayan İslam, Dört Halife, Emevîler ve Abbasîler döneminde **Çin'den Atlas Okyanusu'na** yayıldı.\n- Önce **dinî ilimler** (tefsir, hadis, fıkıh, kelam), ardından fen ve sosyal bilimler gelişti.\n- **Tercüme hareketi** Emevîlerde başladı, Abbasîlerde Halife **Me'mûn** döneminde **Beytülhikme** ile zirveye ulaştı (Yunanca, Süryanice, Sanskritçe, Farsça eserler).\n- **İlimlerin sınıflandırılması:** Farabi (*İhsâü'l-Ulûm*), Gazali, Taşköprizâde, Kâtip Çelebi (*Keşfü'z-Zunûn*).\n- **7–13. yüzyıllar** İslam dünyasının bilimde **altın çağıdır**; Endülüs (Kurtuba, Toledo) üzerinden aktarılan birikim Avrupa **Rönesans**ına katkı sağladı.\n\n# Eğitim ve Bilim Kurumları\n\n| Kurum | Özellik |\n|---|---|\n| **Mescit–cami** | İlk eğitim yeri; **Suffe**, ders halkaları; Osmanlı'da külliyenin merkezi |\n| **Mektep (sıbyan mektebi)** | Okuma-yazma ve Kur'an; Bedir esirlerinin fidye karşılığı okuma-yazma öğretmesi |\n| **Medrese** | Yükseköğretim: **Nizamiye** (1067, Bağdat), Karatay ve Gök Medrese (Selçuklu), **Sahn-ı Semân**, **Süleymaniye** (Osmanlı) |\n| **Darülkurra** | Kıraat ve hafızlık |\n| **Darülhadis** | Hadis eğitimi; ilki Şam'da **Nureddin Zengî** |\n| **Beytülhikme** | Bağdat'ta tercüme-araştırma merkezi ve kütüphane; 1258'de Moğollarca yıkıldı |\n| **Kütüphane** | Kurtuba'da onlarca kütüphane; Osmanlı'da cami ve medrese kütüphaneleri |\n| **Rasathane** | Meraga, Semerkant (**Uluğ Bey**), İstanbul (**Takiyüddin**) |\n| **Darüşşifa** | Tıp eğitimi ve tedavi: **Gevher Nesibe** (Kayseri, 1206), Divriği, Edirne II. Bayezid (müzikle tedavi) |",
+            "ornekler": [
+              {
+                "soru": "Beytülhikme'nin İslam ve dünya bilimine katkısı nedir?",
+                "cozum": "Antik Yunan, Hint ve Fars eserleri burada **Arapçaya çevrilerek korundu**, yorumlandı ve geliştirildi; bu birikim daha sonra Endülüs ve Sicilya üzerinden **Avrupa'ya aktarılarak** Rönesans'a katkı sağladı."
+              }
+            ],
+            "ozet": [
+              "Tercüme hareketi: Emevî başlangıç, Abbasî Me'mûn döneminde zirve.",
+              "Kurumlar: mektep, medrese (Nizamiye 1067), darülhadis, rasathane, darüşşifa.",
+              "7–13. yy altın çağ; Endülüs yoluyla Avrupa'ya aktarım."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k3",
+          "key": "12/din/u1/k3",
+          "localCode": "1.3",
+          "title": {
+            "tr": "Müslümanların özgün bilimsel çalışmaları; Fâtır 27–28",
+            "en": "Original scientific works of Muslims; Fatir 27–28"
+          },
+          "content": {
+            "anlatim": "# Dinî İlimler\n\n| Alan | Önemli isimler / eserler |\n|---|---|\n| **Tefsir** | Taberî, Mâtürîdî, Zemahşerî, Fahreddin Râzî, İbn Kesîr, **Elmalılı Hamdi Yazır** (*Hak Dini Kur'an Dili*) |\n| **Hadis** | **Kütüb-i Sitte**: Buhârî, Müslim, Ebû Dâvûd, Tirmizî, Nesâî, İbn Mâce |\n| **Kelam** | İnancı akli ve nakli delillerle savunan disiplin (Mâtürîdî, Eş'arî) |\n| **Fıkıh** | Ebû Hanîfe, İmam Şâfiî, İmam Mâlik, Ahmed b. Hanbel |\n\n# Pozitif Bilimler\n\n| Alan | Bilgin | Katkı |\n|---|---|---|\n| **Matematik** | **Harezmî** | **Cebirin** kurucusu; \"algoritma\" kelimesi adından gelir |\n| | Ömer Hayyâm | Üçüncü dereceden denklemler, takvim |\n| **Astronomi** | Battânî, **Bîrûnî**, **Uluğ Bey** | Gezegen tabloları; Bîrûnî Dünya'nın çevresini hesapladı |\n| **Tıp** | **İbn Sînâ** (*el-Kânûn fi't-Tıb*), **Ebû Bekir Râzî** (çiçek ve kızamığı ayırt etti), **Zehrâvî** (cerrahi aletler) | |\n| | **İbnü'n-Nefîs** | Küçük kan dolaşımı |\n| **Optik** | **İbnü'l-Heysem** | Görmenin ışığın gözden değil cisimden gelmesiyle olduğunu gösterdi; deneysel yöntem |\n| **Mekanik** | **Cezerî** | Otomatlar, su saatleri; sibernetiğin öncüsü |\n| **Coğrafya** | İdrîsî, **Piri Reis** | Dünya haritaları |\n| **Kimya** | Câbir b. Hayyân | Damıtma, kristalleştirme |\n\n**Prof. Dr. Fuat Sezgin**'in İstanbul'daki **İslam Bilim ve Teknoloji Tarihi Müzesi** bu birikimin örneklerini sergiler.\n\n# Fâtır Suresi 27–28\n\n> \"Görmedin mi, Allah gökten su indirdi; onunla renkleri farklı ürünler çıkardık. Dağlarda da beyaz, kırmızı, renkleri farklı ve simsiyah yollar vardır. İnsanlardan, hayvanlardan ve davarlardan da böyle renkleri farklı olanlar vardır. **Allah'tan, kulları arasında ancak âlimler (hakkıyla) korkar.** Şüphesiz Allah mutlak güç sahibidir, çok bağışlayandır.\"\n\n**Mesajlar:** Evrendeki **çeşitlilik ve renkler** Allah'ın kudretinin delilidir; bunları inceleyen **ilim sahipleri** Allah'ın büyüklüğünü daha iyi kavrar ve O'na **derin saygı** duyar.",
+            "ornekler": [
+              {
+                "soru": "Fâtır 28. ayetinde 'âlimler' kavramının yalnızca din bilginlerini değil, doğayı inceleyenleri de kapsadığı nasıl söylenebilir?",
+                "cozum": "Ayet hemen öncesinde **yağmur, bitkiler, dağlardaki renkli katmanlar, insanlar ve hayvanlardaki çeşitlilikten** söz eder; bu doğa olaylarını inceleyip Allah'ın kudretini kavrayanlar da ayetteki âlimler kapsamındadır."
+              }
+            ],
+            "ozet": [
+              "Harezmî cebir, İbn Sina tıp, İbnü'l-Heysem optik, Cezerî mekanik.",
+              "Kütüb-i Sitte; Elmalılı tefsiri.",
+              "Fâtır 28: Allah'tan hakkıyla ancak âlimler korkar."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k4",
+          "key": "12/din/u1/k4",
+          "localCode": "1.4",
+          "title": {
+            "tr": "İslam düşüncesinde akıl ve vahiy ilişkisi",
+            "en": "Reason and revelation in Islamic thought"
+          },
+          "content": {
+            "anlatim": "# Akıl ve Vahiy\n\n- **Akıl:** İnsanı doğruyu yanlıştan ayırmaya yönelten yetenek; dinî sorumluluğun (**teklif**) şartı. Aklı olmayan dinen sorumlu tutulmaz.\n- **Vahiy:** Allah'ın peygamberlerine bildirdiği ilahî mesaj.\n- Kur'an pek çok ayette insanları **düşünmeye, akletmeye, ibret almaya** çağırır: *\"Akıl etmez misiniz?\"*, *\"Düşünmez misiniz?\"*\n\n# İslam Düşünce Ekollerinin Yaklaşımı\n\n| Ekol | Akıl–vahiy ilişkisine bakış |\n|---|---|\n| **Mu'tezile** | Akla geniş yer verir; iyi ve kötü **akılla bilinebilir** |\n| **Mâtürîdîlik** | Akıl, iyi ve kötünün bir kısmını bilebilir; vahiy aklı **tamamlar** — Ebû Mansûr el-Mâtürîdî |\n| **Eş'arîlik** | İyi ve kötüyü belirleyen **vahiydir**; akıl vahyi anlamada araçtır — Ebü'l-Hasen el-Eş'arî |\n| **İslam filozofları** | Akıl ile vahiy **çelişmez**; ikisi de aynı hakikate götürür — Fârâbî, İbn Sînâ, **İbn Rüşd** (*Faslu'l-Makâl*) |\n\n# Temel Sonuç\n\nİslam düşüncesinde akıl ve vahiy **birbirine rakip değil**, birbirini **destekleyen** iki bilgi kaynağıdır. Vahiy aklın tek başına ulaşamayacağı konularda (ahiret, ibadetlerin şekli) yol gösterir; akıl vahyi **anlamanın ve yorumlamanın** aracıdır. **Gazzâlî** de aklı önemsemiş ancak aklın sınırlarına dikkat çekmiştir.",
+            "ornekler": [
+              {
+                "soru": "Mâtürîdîlik ile Eş'arîlik, iyi ve kötünün bilinmesi konusunda nasıl ayrılır?",
+                "cozum": "**Mâtürîdîlik**'e göre akıl iyi ve kötünün bir kısmını vahiy gelmeden de bilebilir; **Eş'arîlik**'e göre ise iyi ve kötüyü belirleyen vahiydir, akıl bunu tek başına belirleyemez."
+              },
+              {
+                "soru": "İbn Rüşd'ün akıl ve din ilişkisine bakışı nedir?",
+                "cozum": "Akıl ile din (vahiy) **aynı hakikati** dile getirir, birbiriyle **çelişmez**; çelişki görünürse dinî metin akla uygun biçimde **yorumlanmalıdır** (*Faslu'l-Makâl*)."
+              }
+            ],
+            "ozet": [
+              "Akıl dinî sorumluluğun şartıdır.",
+              "Mâtürîdîlik akla Eş'arîlikten daha geniş yer verir.",
+              "İslam düşüncesinde akıl ve vahiy birbirini destekler (İbn Rüşd)."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "name": {
+        "tr": "2. Ünite: Anadolu'da İslam",
+        "en": "Unit 2: Islam in Anatolia"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "12/din/u2/k1",
+          "localCode": "2.1",
+          "title": {
+            "tr": "Türklerin Müslüman oluşu ve Anadolu'nun İslamlaşması",
+            "en": "The conversion of Turks and Islamization of Anatolia"
+          },
+          "content": {
+            "anlatim": "# Süreç\n\n- Türklerle Müslümanlar arasındaki ilk yoğun ilişkiler Emevîler döneminde; **Talas Savaşı (751)** sonrası yakınlaşma hızlandı.\n- Türkler **8–10. yüzyıllarda** kitleler hâlinde Müslüman oldu.\n- **Karahanlılar** (Satuk Buğra Han) → ilk Müslüman Türk devleti.\n- **Gazneliler** ve **Büyük Selçuklular** İslam'ı geniş alanlara yaydı; **1071 Malazgirt** zaferiyle Anadolu'nun kapıları açıldı.\n\n**Etkili olan unsurlar:**\n- Ticaret yolları (İpek Yolu) ve **Müslüman tüccarlar**\n- İslam'ın **tevhit** inancının Türklerin Gök Tanrı inancına yakınlığı; **cihat** anlayışının Türk savaşçı ruhuyla örtüşmesi\n- **Sufi dervişler** ve **Horasan erenleri** (Ahmed Yesevî'nin müritleri)\n- Ahilik teşkilatı\n\n# Kavramlar\n\n- **Ribat:** Sınır boylarında hem askerî hem dinî eğitim verilen yapılar.\n- **Fütüvvet:** Yiğitlik, cömertlik, ahlak ve dayanışma anlayışı.\n- **Ahilik:** Esnaf ve zanaatkârları **ahlaki ve mesleki** eğitimle örgütleyen teşkilat; kurucusu **Ahi Evran**. İlkeleri: dürüstlük, kaliteli üretim, yardımlaşma (\"Eline, beline, diline sahip ol\").",
+            "ornekler": [
+              {
+                "soru": "Ahilik teşkilatının Anadolu'nun İslamlaşmasına ve toplum düzenine katkısı nedir?",
+                "cozum": "Esnafı **dürüstlük ve meslek ahlakıyla** eğitti, kaliteli üretim ve adil ticareti sağladı; yardımlaşmayla toplumsal dayanışmayı güçlendirdi ve İslam ahlakını **günlük hayata ve çalışma hayatına** yaydı."
+              }
+            ],
+            "ozet": [
+              "Karahanlılar ilk Müslüman Türk devleti; Talas 751.",
+              "Etkenler: ticaret, dervişler, tevhit–Gök Tanrı yakınlığı.",
+              "Ribat, fütüvvet, Ahilik (Ahi Evran)."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "12/din/u2/k2",
+          "localCode": "2.2",
+          "title": {
+            "tr": "Dinî anlayış ve kültürümüzü şekillendiren şahsiyetler; Nisâ 69",
+            "en": "Figures shaping our religious understanding; Nisa 69"
+          },
+          "content": {
+            "anlatim": "# Anadolu İslam Anlayışı\n\n**Mâtürîdî** kelamı, **Hanefî** fıkhı ve **tasavvufi** yorum temelinde şekillendi; hoşgörü, ahlak, çalışkanlık ve dayanışma öne çıkar.\n\n| Şahsiyet | Katkısı |\n|---|---|\n| **İmam Mâtürîdî** | Türk dünyasında yaygın itikadi mezhebin kurucusu; akla önem |\n| **Ebû Hanîfe** | Hanefî fıkhının kurucusu |\n| **Ahmed Yesevî** | \"Pîr-i Türkistan\"; *Divan-ı Hikmet*; Türkçe hikmetlerle tasavvufu Türk dünyasına yaydı |\n| **Mevlânâ Celâleddîn-i Rûmî** | *Mesnevî*, *Divan-ı Kebîr*; sevgi ve hoşgörü; \"Gel, ne olursan ol yine gel\" anlayışı |\n| **Yunus Emre** | Halk diliyle tasavvufi şiir; \"Yaratılanı severiz Yaratandan ötürü\" |\n| **Hacı Bektaş Velî** | *Makâlât*; insan-ı kâmil, hoşgörü; Bektaşiliğin adını aldığı şahsiyet (tarikatın kurumsallaşması Balım Sultan dönemi) |\n| **Ahi Evran** | Ahilik teşkilatı |\n| **Hacı Bayram Velî** | Bayramiyye; çalışma ve dayanışma |\n| **Akşemseddin** | İstanbul'un fethinde manevi önder; tıp çalışmaları |\n\n# Nisâ Suresi 69. Ayet\n\n> \"Kim Allah'a ve Peygamber'e itaat ederse, işte onlar Allah'ın kendilerine nimet verdiği **peygamberler, sıddıklar, şehitler ve salihlerle** beraberdir. Onlar ne güzel arkadaştır!\"\n\n**Mesajlar:** İdeal mümin modeli; müminin örnek alacağı dört grup:\n- **Peygamberler:** Allah'ın elçileri\n- **Sıddıklar:** Sözü ve özü doğru, sadakatli olanlar\n- **Şehitler:** Allah yolunda canını feda edenler\n- **Salihler:** İyi ve erdemli davrananlar",
+            "ornekler": [
+              {
+                "soru": "Mevlânâ ve Yunus Emre'nin düşüncelerindeki ortak tema nedir?",
+                "cozum": "**İlahi aşk ve insan sevgisi**, **hoşgörü**: yaratılmış her varlığa Yaratan'dan ötürü saygı ve sevgi göstermek."
+              }
+            ],
+            "ozet": [
+              "Anadolu: Mâtürîdî kelam, Hanefî fıkıh, tasavvuf.",
+              "Yesevî, Mevlânâ, Yunus, Hacı Bektaş, Ahi Evran.",
+              "Nisâ 69: peygamberler, sıddıklar, şehitler, salihler."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u3",
+      "name": {
+        "tr": "3. Ünite: İslam Düşüncesinde Tasavvufi Yorumlar",
+        "en": "Unit 3: Sufi Interpretations in Islamic Thought"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "12/din/u3/k1",
+          "localCode": "3.1",
+          "title": {
+            "tr": "Tasavvufi düşüncenin oluşumu ve ahlaki boyutu",
+            "en": "Formation and moral dimension of Sufism"
+          },
+          "content": {
+            "anlatim": "# Tasavvuf\n\nİslam'ın **içsel, manevi ve ahlaki** boyutu. Kaynağı **Kur'an ve sünnet**tir.\n\n**Gelişim:**\n1. **Zühd dönemi** (7–8. yy): Dünyaya aşırı bağlanmama, takva, ibadet (Hasan-ı Basrî, Râbia el-Adeviyye).\n2. **Tasavvuf dönemi** (9–11. yy): Kavramlar ve sistemleşme (Cüneyd-i Bağdâdî, Kuşeyrî).\n3. **Tarikatlar dönemi** (12. yy'dan itibaren): Kurumsal yapılar, tekke ve dergâhlar.\n\n**Temel kavramlar:**\n- **Zühd:** Dünyaya gönül bağlamama.\n- **Takva**, **ihlas** (samimiyet), **tevekkül**.\n- **Nefs tezkiyesi:** Nefsi kötü huylardan arındırma.\n- **Mürşit–mürit:** Rehber–yol talibi ilişkisi; **sohbet**, **zikir**, **seyr ü sülûk** (manevi yolculuk).\n- **İnsan-ı kâmil:** Ahlaki ve manevi olgunluğa ulaşmış insan — tasavvufun hedefi.\n\n# Tasavvufun Ahlaki Boyutu\n\n\"**Tasavvuf baştan sona edeptir.**\" Özü **güzel ahlak**tır.\n- Temel erdemler: **edep, tevazu, sabır, şükür, ihlas, merhamet, cömertlik, kanaat**.\n- Kötü huylardan (kibir, haset, cimrilik, öfke) arınma.\n- İnsanlara hizmet: \"Halka hizmet Hakk'a hizmettir.\"\n\n> Tasavvuf, dinî hükümleri (şeriat) yerine getirmenin yanında bunların **iç anlamını ve samimiyetini** öne çıkarır.",
+            "ornekler": [
+              {
+                "soru": "Tasavvufta 'insan-ı kâmil' kavramı ne anlama gelir?",
+                "cozum": "Nefsini terbiye ederek **güzel ahlakı** kazanmış, Allah'a ve insanlara karşı sorumluluklarını samimiyetle yerine getiren **olgun insan**dır; tasavvuf eğitiminin amacıdır."
+              }
+            ],
+            "ozet": [
+              "Tasavvuf: İslam'ın manevi-ahlaki boyutu; kaynak Kur'an ve sünnet.",
+              "Zühd → tasavvuf → tarikat dönemleri.",
+              "Özü edep ve güzel ahlak; hedef insan-ı kâmil."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "12/din/u3/k2",
+          "localCode": "3.2",
+          "title": {
+            "tr": "Kültürümüzdeki tasavvufi yorumlar, Alevilik-Bektaşilik; Hucurât 10",
+            "en": "Sufi orders in our culture, Alevism-Bektashism; Hujurat 10"
+          },
+          "content": {
+            "anlatim": "# Kültürümüzde Etkili Tasavvufi Yorumlar\n\n| Yol | Şahsiyet | Özellik |\n|---|---|---|\n| **Yesevîlik** | Ahmed Yesevî | Türkçe hikmetler; Türk dünyasında ilk tarikat |\n| **Mevlevîlik** | Mevlânâ (kurumsallaştıran oğlu **Sultan Veled**) | **Sema**, *Mesnevî*, musiki, sevgi ve hoşgörü |\n| **Bektaşîlik** | Hacı Bektaş Velî | Cem, semah, Ehl-i Beyt sevgisi |\n| **Nakşibendîlik** | Bahâeddin Nakşibend | **Sessiz (hafî) zikir**, \"halvet der encümen\" — toplum içinde manevi uyanıklık |\n| **Kadirîlik** | Abdülkadir Geylânî | En eski tarikatlardan |\n| **Halvetîlik** | Ömer el-Halvetî | Halvet (inziva), Osmanlı'da yaygın |\n| **Rifâîlik** | Ahmed er-Rifâî | Sesli zikir |\n\n# Alevilik-Bektaşilikte Temel Kavram ve Erkânlar\n\nAnadolu'da yaygın, Hz. Ali ve **Ehl-i Beyt** sevgisini merkeze alan inanç ve kültür geleneği.\n| Kavram | Anlamı |\n|---|---|\n| **Ehl-i Beyt ve On İki İmam** sevgisi | Hz. Peygamber'in ailesine bağlılık |\n| **Cem** | Toplu ibadet ve sohbet meclisi; **cemevi**nde yapılır |\n| **Semah** | Cem içinde müzik eşliğinde dönerek yapılan ritüel |\n| **Musahiplik** | İki ailenin ömür boyu süren **kardeşlik** bağı |\n| **Dede / mürşit** | Manevi rehber |\n| **Gülbank** | Dua ve dilekler |\n| **Görgü cemi** | Topluluğun kendini ahlaki açıdan sorgulaması |\n| **Dört kapı kırk makam** | Şeriat, tarikat, marifet, hakikat basamakları |\n\nTemel ahlak ilkesi: \"**Eline, beline, diline sahip ol.**\" (Hırsızlık, zina ve yalan-gıybetten uzak dur.)\n\n# Hucurât Suresi 10. Ayet\n\n> \"Müminler ancak **kardeştir**. Öyleyse kardeşlerinizin **arasını düzeltin** ve Allah'a karşı gelmekten sakının ki size merhamet edilsin.\"\n\n**Mesajlar:** Farklı yorum ve geleneklere sahip olsalar da müminler **kardeştir**; aralarında barışı sağlamak bir sorumluluktur; **birlik ve beraberlik** toplumsal huzurun temelidir.",
+            "ornekler": [
+              {
+                "soru": "Alevilik-Bektaşilikteki 'eline, beline, diline sahip ol' ilkesi ne anlama gelir?",
+                "cozum": "**Eline:** Başkasının hakkına el uzatmamak (hırsızlık yapmamak). **Beline:** İffetli olmak. **Diline:** Yalan söylememek, gıybet etmemek, kimseyi incitmemek. Bu ilke ahlaki olgunluğun özetidir."
+              }
+            ],
+            "ozet": [
+              "Tarikatlar: Yesevî, Mevlevî, Bektaşî, Nakşî, Kadirî, Halvetî.",
+              "Alevilik-Bektaşilik: cem, semah, musahiplik, dede, dört kapı kırk makam.",
+              "Hucurât 10: müminler kardeştir, arayı düzeltin."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u4",
+      "name": {
+        "tr": "4. Ünite: Güncel Dinî Meseleler",
+        "en": "Unit 4: Contemporary Religious Issues"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "12/din/u4/k1",
+          "localCode": "4.1",
+          "title": {
+            "tr": "Dinî meselelerin çözümünde ilke ve yöntemler",
+            "en": "Principles and methods for resolving religious issues"
+          },
+          "content": {
+            "anlatim": "# Dinî Hükümlerin Kaynakları (Edille-i Şer'iyye)\n\n1. **Kur'an** — temel kaynak\n2. **Sünnet** — Hz. Peygamber'in söz, fiil ve onayları\n3. **İcma** — Bir dönemdeki müçtehitlerin bir konuda görüş birliği\n4. **Kıyas** — Hakkında açık hüküm bulunmayan konuyu, ortak gerekçe (**illet**) bakımından benzer bir konuya göre hükme bağlama (ör. uyuşturucunun, aklı gidermesi yönüyle içkiye kıyas edilerek haram sayılması)\n\n**Yardımcı ilkeler:** **Maslahat** (kamu yararı), **zaruret** (\"Zaruretler yasakları mubah kılar\"), **örf** (hükümlere aykırı olmayan gelenekler), **kolaylık** ilkesi.\n\n**İçtihat:** Uzman âlimin kaynaklardan hüküm çıkarmak için gösterdiği çaba. **Fetva:** Bir soruya verilen dinî cevap. Türkiye'de **Diyanet İşleri Başkanlığı Din İşleri Yüksek Kurulu** güncel meselelerde görüş bildirir.\n\n# Hüküm Kategorileri\n\n| Hüküm | Anlam | Örnek |\n|---|---|---|\n| **Farz** | Kesin emir | Beş vakit namaz |\n| **Vacip** | Farza yakın kuvvetle emir (Hanefî) | Vitir namazı, kurban |\n| **Sünnet / mendup** | Yapılması sevap, terki günah değil | Sabah namazının sünneti |\n| **Mübah** | Serbest | Yemek-içmek (helal olanlar) |\n| **Mekruh** | Yapılmaması tercih edilen | İsraf derecesinde olmayan bazı davranışlar |\n| **Haram** | Kesin yasak | Faiz, içki, kumar, yalan |",
+            "ornekler": [
+              {
+                "soru": "Kıyas yöntemine bir örnek veriniz.",
+                "cozum": "Kur'an'da **şarap** sarhoş edip aklı giderdiği için haram kılınmıştır. Aynı **illet** (aklı gidermek) uyuşturucu maddelerde de bulunduğundan, **kıyas** yoluyla uyuşturucunun da haram olduğu hükmüne varılır."
+              }
+            ],
+            "ozet": [
+              "Kaynaklar: Kur'an, sünnet, icma, kıyas.",
+              "Maslahat, zaruret, örf, kolaylık ilkeleri.",
+              "Hükümler: farz, vacip, sünnet, mübah, mekruh, haram."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "12/din/u4/k2",
+          "localCode": "4.2",
+          "title": {
+            "tr": "İktisadi hayat, gıda ve bağımlılık",
+            "en": "Economic life, food and addiction"
+          },
+          "content": {
+            "anlatim": "# İktisadi Hayatla İlgili İlkeler\n\n- **Çalışmak** ibadet hükmündedir; dilencilik ve tembellik yerilir. \"İnsan için ancak çalıştığının karşılığı vardır.\" (Necm, 39)\n- **Helal ve meşru kazanç** esastır.\n- **Faiz (ribâ)** haramdır (Bakara, 275).\n- **Hile, aldatma, eksik ölçü-tartı, karaborsa, istifçilik (ihtikâr), rüşvet** yasaktır.\n- **İsraf ve cimrilik** yasak; **orta yol** esastır.\n- **Zekât, sadaka, infak** servetin adil dağılımını sağlar; **karz-ı hasen** (faizsiz borç) teşvik edilir.\n- Sözleşmelere ve **verilen söze** bağlılık; işçinin hakkını \"alnının teri kurumadan\" vermek.\n\n# Gıda Maddeleri\n\n- **Helal ve temiz (tayyib)** gıda esastır.\n- **Haram olanlar:** **domuz eti**, akmış **kan**, **leş** (kendiliğinden ölmüş hayvan), Allah'tan başkası adına kesilen hayvan, **alkollü içkiler**.\n- Günümüzde **katkı maddeleri, jelatin, emülgatör** kaynakları ve GDO'lu ürünler dikkatle incelenmelidir; **helal sertifikası** uygulamaları.\n- Zaruret hâlinde (açlıktan ölme tehlikesi) ölümü önleyecek kadarı mubahtır.\n\n# Bağımlılık\n\n**Alkol, uyuşturucu, sigara, kumar, şans oyunları, aşırı dijital/oyun bağımlılığı** bireye, aileye ve topluma zarar verir.\n- İslam'ın korunması gereken temel değerleri (**zarûriyyât**): **din, can, akıl, nesil, mal**. Bağımlılık özellikle **aklı** ve **canı** tehdit eder.\n- \"Kendi ellerinizle kendinizi tehlikeye atmayın.\" (Bakara, 195)\n- Bağımlılıktan korunma: bilinçlenme, sağlıklı sosyal çevre, spor ve sanat, aile desteği, gerektiğinde **uzman yardımı** (Yeşilay, AMATEM).",
+            "ornekler": [
+              {
+                "soru": "İstifçiliğin (ihtikâr) İslam ahlakına göre neden yasak olduğunu açıklayınız.",
+                "cozum": "İhtiyaç maddelerini fiyatı yükselsin diye **piyasadan çekip stoklamak** halkı zor durumda bırakır, **haksız kazanç** sağlar ve toplumsal dayanışmayı bozar; bu nedenle yasaklanmıştır."
+              }
+            ],
+            "ozet": [
+              "Faiz, hile, istifçilik, rüşvet haram; çalışmak ibadet.",
+              "Haram gıdalar: domuz eti, kan, leş, içki.",
+              "Temel değerler: din, can, akıl, nesil, mal; bağımlılık aklı ve canı tehdit eder."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k3",
+          "key": "12/din/u4/k3",
+          "localCode": "4.3",
+          "title": {
+            "tr": "Sağlık ve tıpla ilgili meseleler; En'âm 151–152",
+            "en": "Health and medical issues; An'am 151–152"
+          },
+          "content": {
+            "anlatim": "# Sağlık ve Tıp\n\n- İslam'da **hayat kutsaldır**; sağlığı korumak bir sorumluluktur. Hz. Peygamber: \"**Tedavi olunuz**; Allah ölüm dışında her hastalığın şifasını yaratmıştır.\"\n- **Koruyucu hekimlik ve temizlik:** Taharet, abdest, ölçülü beslenme; salgında karantina (\"Bir yerde veba olduğunu duyarsanız oraya girmeyin; bulunduğunuz yerde çıkarsa oradan çıkmayın.\").\n- **Organ nakli ve bağışı:** Diyanet'in görüşüne göre hayat kurtarmak amacıyla, belirli şartlarla (bağışçının ya da ailesinin rızası, ticari amaç olmaması, tıbbi zorunluluk) **caizdir**.\n- **Kan bağışı** teşvik edilir.\n- **Ötenazi** (aktif olarak hayata son verme) **caiz değildir**.\n- **Kürtaj:** Annenin hayatı tehlikede olmadıkça **caiz görülmez**.\n- **Tüp bebek:** Yalnızca **evli eşlerin** kendi üreme hücreleriyle caiz kabul edilir.\n- **Genetik müdahaleler, klonlama:** Tedavi amaçlı uygulamalar etik sınırlar içinde değerlendirilir; insan onurunu zedeleyen uygulamalar kabul görmez.\n\n# En'âm Suresi 151–152. Ayetler (On Temel Emir)\n\n1. Allah'a hiçbir şeyi **ortak koşmamak**\n2. **Anne-babaya iyilik** etmek\n3. Fakirlik korkusuyla **çocukları öldürmemek**\n4. Açık ve gizli **hayâsızlıklara** yaklaşmamak\n5. Allah'ın haram kıldığı **cana haksız yere kıymamak**\n6. **Yetim malına** (en güzel şekil dışında) yaklaşmamak\n7. **Ölçü ve tartıyı** adaletle yapmak\n8. Konuşunca, yakın da olsa **adaletli** olmak\n9. Allah'a verilen **sözü (ahdi)** yerine getirmek\n10. (153. ayetle) Allah'ın **dosdoğru yolunu** izlemek\n\n**Mesaj:** Bireysel ve toplumsal ahlakın temel ilkeleri — **tevhit, aile, can güvenliği, iffet, sosyal adalet, ticaret ahlakı, sözünde durmak**.",
+            "ornekler": [
+              {
+                "soru": "En'âm 151–152. ayetlerdeki emirlerden üçünü toplumsal hayatla ilişkilendiriniz.",
+                "cozum": "**Ölçü ve tartıda adalet** → dürüst ticaret ve tüketici hakları; **yetim malını korumak** → toplumun korunmasız kesimlerine sahip çıkmak; **haksız yere cana kıymamak** → yaşam hakkı ve toplumsal güven."
+              }
+            ],
+            "ozet": [
+              "Tedavi olmak teşvik edilir; koruyucu hekimlik ve temizlik.",
+              "Organ bağışı şartlı caiz; ötenazi ve (zaruret dışında) kürtaj caiz değil.",
+              "En'âm 151–152: tevhit, anne-baba, can, iffet, yetim, ölçü, adalet, söz."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k4",
+          "key": "12/din/u4/k4",
+          "localCode": "4.4",
+          "title": {
+            "tr": "Çevre, teknoloji ve sosyal medya ile ilgili dinî ve ahlaki meseleler",
+            "en": "Religious and ethical issues concerning environment, technology and social media"
+          },
+          "content": {
+            "anlatim": "# Çevre\n\n- İnsan yeryüzünde **halife (emanetçi)**dir; doğa Allah'ın insana **emanetidir**.\n- **İsrafın yasaklanması:** *\"Yiyiniz, içiniz fakat israf etmeyiniz.\"* (A'râf, 31) — su, gıda ve enerji tasarrufu.\n- Hz. Peygamber: *\"Kıyamet koparken elinizde bir fidan varsa onu dikin.\"* — ağaç dikmek **sadaka-i cariyedir**.\n- Hayvanlara eziyetin yasak oluşu; **kuş evleri** ve vakıf geleneği.\n\n# Teknoloji ve Bilim\n\n- Bilim ve teknoloji **insanlığın yararına** kullanıldığında övülür; zarar vermek amacıyla kullanımı yasaktır (**\"Zarar vermek de zarara zararla karşılık vermek de yoktur\"** — hadis).\n- **Organ bağışı, tüp bebek (eşler arasında), aşı** gibi konularda Diyanet İşleri Başkanlığı Din İşleri Yüksek Kurulu görüşlerine başvurulur: hayat kurtarmak ve sağlığı korumak İslam'ın temel amaçlarındandır (**canın korunması**).\n\n# Sosyal Medya Ahlakı\n\n| İlke | Dayanak |\n|---|---|\n| Doğrulamadan paylaşmamak | *\"Size bir haber getirdiğinde onun doğruluğunu araştırın.\"* (Hucurât, 6) |\n| **Gıybet, iftira, alay** etmemek | Hucurât, 11–12 |\n| **Mahremiyete** saygı, başkasının fotoğrafını izinsiz paylaşmamak | Tecessüsün (gizli şeyleri araştırmanın) yasaklanması |\n| Zamanı verimli kullanmak, **bağımlılıktan** sakınmak | Zaman bir nimettir |\n| **Siber zorbalık**tan uzak durmak | Dil ve elden zarar vermeme (hadis) |",
+            "ornekler": [
+              {
+                "soru": "Sosyal medyada doğruluğu bilinmeyen bir haberi paylaşmak İslam ahlakı açısından neden sorunludur?",
+                "cozum": "Hucurât Suresi 6. ayet, gelen haberin **doğruluğunun araştırılmasını** emreder; doğrulanmamış haber yalan, iftira ve toplumsal zarara yol açabilir."
+              },
+              {
+                "soru": "İslam'ın çevreye bakışını “emanet” kavramıyla açıklayınız.",
+                "cozum": "Doğa insanın **mülkü değil**, Allah'ın insana **emanetidir**; insan onu korumakla, israf etmemekle ve gelecek nesillere bozmadan aktarmakla sorumludur."
+              }
+            ],
+            "ozet": [
+              "İnsan yeryüzünde emanetçidir; israf yasaktır.",
+              "Teknoloji insanlığın yararına kullanılmalı; can ve sağlığın korunması temel amaçtır.",
+              "Sosyal medyada doğrulama, gıybet ve mahremiyet ilkeleri (Hucurât 6, 11–12)."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u5",
+      "name": {
+        "tr": "5. Ünite: Hint ve Çin Dinleri",
+        "en": "Unit 5: Indian and Chinese Religions"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "12/din/u5/k1",
+          "localCode": "5.1",
+          "title": {
+            "tr": "Hinduizm ve Budizm",
+            "en": "Hinduism and Buddhism"
+          },
+          "content": {
+            "anlatim": "# Hinduizm\n\n- **Hindistan**'da doğmuş, dünyanın en eski dinlerinden; **tek bir kurucusu yoktur**.\n- **Kutsal metinler:** **Vedalar**, Upanişadlar, Bhagavad Gita, Ramayana ve Mahabharata destanları.\n- **Çok tanrılı** görünümlü yapı; **Trimurti**: **Brahma** (yaratıcı), **Vişnu** (koruyucu), **Şiva** (yok edici). Hepsini **Brahman** (mutlak varlık) ilkesinin görünümleri sayan yorumlar da vardır.\n\n| Kavram | Anlam |\n|---|---|\n| **Karma** | Her eylemin sonucunu doğurması |\n| **Samsara / tenasüh (reenkarnasyon)** | Doğum–ölüm–yeniden doğum döngüsü |\n| **Mokşa** | Döngüden kurtuluş |\n| **Dharma** | Kişinin ödevi, ahlak düzeni |\n| **Kast sistemi** | **Brahman** (din adamı), **Kşatriya** (asker-yönetici), **Vaişya** (tüccar-çiftçi), **Şudra** (işçi); sistem dışında \"dokunulmazlar\" (Dalitler) |\n| **Ahimsa** | Hiçbir canlıya zarar vermeme |\n\nİnek kutsal kabul edilir; **Ganj** nehri kutsaldır; Diwali ve Holi bayramları.\n\n# Budizm\n\n- **MÖ 6. yüzyılda** Hindistan'da **Siddhartha Gautama** (**Buda** — \"aydınlanmış\") tarafından kuruldu.\n- **Kast sistemine** ve Brahmanların otoritesine karşı çıktı; hedef **acıdan kurtuluş**.\n- **Dört Yüce Gerçek:**\n  1. Hayat **acıdır** (dukkha).\n  2. Acının sebebi **arzu ve bağlanmadır**.\n  3. Arzu yok edilirse acı **sona erer**.\n  4. Acıyı bitirmenin yolu **Sekiz Aşamalı Yol**dur.\n- **Sekiz Aşamalı (Asil) Yol:** doğru görüş, doğru niyet, doğru söz, doğru eylem, doğru geçim, doğru çaba, doğru farkındalık, doğru konsantrasyon.\n- **Nirvana:** Arzuların söndüğü, yeniden doğuştan kurtuluş hâli.\n- Karma ve yeniden doğuş inancı vardır; yaratıcı bir Tanrı anlayışı ön planda değildir.\n- **Mezhepler:** **Theravada** (Sri Lanka, Tayland), **Mahayana** (Çin, Japonya, Kore), **Vajrayana** (Tibet; Dalai Lama).\n- **Üç Mücevher:** Buda, Dharma (öğreti), Sangha (keşiş topluluğu).",
+            "ornekler": [
+              {
+                "soru": "Budizmin Hinduizme karşı bir tepki olarak doğduğu nasıl söylenebilir?",
+                "cozum": "Buda **kast sistemini** ve **Brahman rahiplerin** dinî tekelini reddetmiş, kurtuluşun doğuştan sınıfa değil kişinin **ahlaki çabasına** (Sekiz Aşamalı Yol) bağlı olduğunu öğretmiştir. Bununla birlikte karma ve yeniden doğuş gibi kavramları korumuştur."
+              }
+            ],
+            "ozet": [
+              "Hinduizm: kurucusu yok, Vedalar, Trimurti, karma, samsara, mokşa, kast.",
+              "Budizm: Siddhartha Gautama, Dört Yüce Gerçek, Sekiz Aşamalı Yol, nirvana.",
+              "Theravada, Mahayana, Vajrayana."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "12/din/u5/k2",
+          "localCode": "5.2",
+          "title": {
+            "tr": "Konfüçyanizm ve Taoizm",
+            "en": "Confucianism and Taoism"
+          },
+          "content": {
+            "anlatim": "# Konfüçyanizm\n\n- **MÖ 6–5. yüzyıllarda** Çin'de **Konfüçyüs** (Kong Fuzi) tarafından sistemleştirildi.\n- Daha çok **ahlaki, toplumsal ve siyasi** bir öğreti; klasik anlamda din olmaktan çok **yaşam felsefesi**.\n- **Kutsal metinler:** *Analektler* (Konuşmalar), Beş Klasik ve Dört Kitap.\n\n| Kavram | Anlam |\n|---|---|\n| **Ren (Jen)** | İnsancıllık, merhamet, iyilik |\n| **Li** | Edep, töre, doğru davranış kuralları |\n| **Xiao** | Anne-babaya ve atalara saygı (**ata kültü**) |\n| **Yi** | Doğruluk, adalet |\n| **Junzi** | Erdemli, olgun insan |\n\n- **Beş temel ilişki:** hükümdar–tebaa, baba–oğul, karı–koca, ağabey–kardeş, arkadaş–arkadaş.\n- Aile, toplumsal hiyerarşi, **eğitim** ve devlet memurluğu sınavları Çin kültürünü derinden etkiledi.\n- Altın kural: \"Kendine yapılmasını istemediğini başkasına yapma.\"\n\n# Taoizm\n\n- **MÖ 6. yüzyılda** yaşadığı kabul edilen **Lao Tzu**'ya (Laozi) atfedilen ***Tao Te Ching*** etrafında oluştu; Zhuangzi önemli temsilcisi.\n- **Tao:** \"Yol\"; evrenin doğal düzeni ve temel ilkesi.\n\n| Kavram | Anlam |\n|---|---|\n| **Tao** | Evrenin isimlendirilemeyen ilk ilkesi ve doğal akışı |\n| **Wu-wei** | Zorlamadan, doğal akışa uyarak hareket etme (\"eylemsiz eylem\") |\n| **Yin–Yang** | Zıtların (karanlık–aydınlık, dişil–eril) **dengesi ve tamamlayıcılığı** |\n| **De (Te)** | Tao'dan gelen erdem, güç |\n\n- **Sadelik, doğayla uyum**, aşırı arzudan ve hırstan uzak durma öğütlenir.\n- **Felsefi** ve **dinî** (tapınaklar, ölümsüzlük arayışı, simya) boyutları vardır; Çin halk inançlarıyla harmanlanmıştır.\n\n# Karşılaştırma\n\n| | Konfüçyanizm | Taoizm |\n|---|---|---|\n| Odak | **Toplum**, aile, düzen, görev | **Doğa**, birey, kendiliğindenlik |\n| İdeal | Erdemli devlet adamı (junzi) | Doğayla uyumlu bilge |\n| Kurallar | Ritüel ve töre (li) önemli | Kurallar ve yapaylık eleştirilir |",
+            "ornekler": [
+              {
+                "soru": "Konfüçyanizm ile Taoizm'in ideal insan anlayışlarını karşılaştırınız.",
+                "cozum": "Konfüçyanizm, aile ve topluma karşı **görevlerini** yerine getiren, töreye (li) uyan **erdemli insanı (junzi)** öne çıkarır. Taoizm ise toplumsal kuralların yapaylığından uzaklaşıp **doğanın akışına (Tao)** uyan, sade yaşayan bilgeyi ideal sayar."
+              }
+            ],
+            "ozet": [
+              "Konfüçyüs: ren, li, xiao; beş temel ilişki; aile ve eğitim.",
+              "Taoizm: Lao Tzu, Tao Te Ching, Tao, wu-wei, yin–yang.",
+              "Konfüçyanizm toplum odaklı, Taoizm doğa odaklı."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    }
+  ]
+}

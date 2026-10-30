@@ -290,15 +290,15 @@ try {
   await page.evaluate((topic) => App.router.go("konular/" + topic), topic);
   await page.waitForSelector("#myNote");
   assert.match(
-    await page.locator("#myNote").inputValue(),
+    await page.locator("#myNote").textContent(),
     /Appended handwritten/,
   );
-  // A pending lesson autosave must flush before a fast notebook append reads the same record.
-  await page.fill('#myNote', 'Draft before notebook transfer');
+  // Lesson notes now use the single document editor; the lesson only previews them.
+  assert.equal(await page.locator('#myNote').evaluate(el=>el.tagName),'DIV');
   await navigate(page, 'notlar/' + topic);
-  await page.fill('#ntText', 'Fast notebook appendix');await page.click('#ntSave');
+  await page.waitForFunction(()=>document.querySelector('#ntText').value.includes('Appended handwritten'));
+  await page.fill('#ntText', 'Draft before notebook transfer\n\nFast notebook appendix');await page.click('#ntSave');
   await page.waitForFunction(async key => (await App.db.get('notes', key)).text.includes('Fast notebook appendix'), topic);
-  await page.waitForTimeout(750);
   assert.equal(await page.evaluate(async key => (await App.db.get('notes', key)).text, topic), 'Draft before notebook transfer\n\nFast notebook appendix');
   await go("sozlu-prova");
   await page.fill("#orSource", source);
@@ -399,8 +399,8 @@ try {
   await go('odevler');await page.waitForFunction(()=>document.querySelector('#hwList').textContent.includes('Edited homework'));assert.equal(await page.locator('[data-hw-edit]').count(),2);
   await go('sozlu-prova');await page.waitForFunction(()=>document.querySelector('#orHistory').textContent.includes('3/6') || document.querySelector('#orHistory').textContent.includes('Add an example'));
   assert.equal(await page.evaluate(async()=>!!(await App.db.get('meta','oralPractice:corrupt'))),true,'Invalid record preserved');
-  await page.evaluate(()=>App.i18n.setLang('en'));await go('notlar');assert.match(await page.locator('.sw-page h1').textContent(),/My Notes/);
-  assert.match(await page.locator('#sidebar a[data-route="notlar"] .sidebar__label').textContent(), /My Notes/);
+  await page.evaluate(()=>App.i18n.setLang('en'));await go('notlar');assert.match(await page.locator('.sw-page .documents-section-title').textContent(),/Document Editor/);
+  assert.match(await page.locator('#sidebar a[data-route="dokumanlar"] .sidebar__label').textContent(), /Documents/);
   assert.deepEqual(h.errors, []);
   await go("notlar");
   await page.waitForTimeout(650);await page.screenshot({ path: path.join(h.qa, "workspace-notes.png") });

@@ -1,0 +1,760 @@
+{
+  "schemaVersion": 1,
+  "grade": 9,
+  "subjectId": "biyoloji",
+  "name": {
+    "tr": "Biyoloji",
+    "en": "Biology"
+  },
+  "programEdition": "legacy-project-unverified",
+  "source": {
+    "file": "js/data/content/biy-9.js",
+    "sha256": "651c612c0c3418d61674cea7f5d1efc80d7b33a62bbbbf27eabe602ce8fdaa6c",
+    "additionalReferences": [],
+    "pdfReferenceCandidates": [
+      {
+        "file": "pdf-index/361.json",
+        "url": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=361",
+        "edition": "legacy",
+        "status": "programme-and-grade-review-required"
+      }
+    ]
+  },
+  "officialProgramCandidates": [
+    {
+      "slug": "biyoloji-dersi",
+      "url": "https://tymm.meb.gov.tr/ogretim-programlari/ders/biyoloji-dersi"
+    }
+  ],
+  "units": [
+    {
+      "id": "u1",
+      "name": {
+        "tr": "1. Tema: Yaşam",
+        "en": "Theme 1: Life"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "9/biyoloji/u1/k1",
+          "localCode": "BİY.9.1.1",
+          "title": {
+            "tr": "Biyolojideki gelişmelerin insan hayatına katkılarını sorgular ve biyoloji biliminin tarihsel gelişimindeki dönüm noktalarını analiz eder.",
+            "en": "Questions how advances in biology contribute to human life and analyses turning points in its history."
+          },
+          "content": {
+            "anlatim": "# Biyolojinin Önemi ve Dönüm Noktaları\n\n**Biyoloji:** Canlıların yapılarını, işlevlerini, birbirleriyle ve çevreleriyle etkileşimlerini inceleyen doğa bilimidir. **Sağlık, tarım, çevre ve ekonomi** alanlarının temelini oluşturur.\n\n### Tarihsel Dönüm Noktaları\n\n| Yıl | Kişi / gelişme | Katkı |\n|---|---|---|\n| 1389–1459 | **Akşemseddin** | Hastalık etmenlerinin bulaşma yollarını (mikrop düşüncesi) öne sürdü. |\n| 1665 | **Robert Hooke** | Mikroskobun öncülünü geliştirdi; *Micrographia*'da ilk hücre gözlemini yayımladı. |\n| 1838 | **Hücre teorisi** (Schleiden & Schwann) | Organizmaların hücrelerden oluştuğunu ortaya koydu. |\n| 1865 | **Gregor Mendel** | Kalıtım kurallarını bezelyelerle belirledi. |\n| 1928 | **Alexander Fleming** | Penisilini (ilk antibiyotik) keşfetti. |\n| 1953 | **DNA çift sarmalı** (Watson, Crick, Franklin) | Genetik materyalin saklanma biçimi çözüldü. |\n| 2012 / 2021 | **CRISPR-Cas** ve **mRNA aşıları** | Gen düzenleme ve yeni nesil aşı teknolojileri. |",
+            "ornekler": [
+              {
+                "soru": "Penisilinin keşfi insan hayatını nasıl etkilemiştir? Bu keşif biyolojinin hangi alanlarla ilişkisine örnektir?",
+                "cozum": "Bakteriyel enfeksiyonlardan ölümleri büyük ölçüde azaltmış, cerrahi işlemleri güvenli hâle getirmiştir. **Biyoloji–tıp–kimya–eczacılık** iş birliğine örnektir; ilacın üretimi kimya ve teknolojiyi de gerektirmiştir."
+              },
+              {
+                "soru": "mRNA aşılarının hızla geliştirilebilmesi hangi bilimsel birikime dayanır?",
+                "cozum": "DNA yapısının (1953) ve genetik şifrenin çözülmesi, protein sentezinde **mRNA'nın** görevinin anlaşılması ve gen teknolojilerinin gelişmesi. Bilimsel bilgi **birikimli** ilerler; yeni teknolojiler önceki dönüm noktalarının üzerine kurulur."
+              }
+            ],
+            "ozet": [
+              "Biyoloji: sağlık, tarım, çevre ve ekonominin temeli.",
+              "Akşemseddin → **mikrop** düşüncesi · Hooke → ilk **hücre** gözlemi · Fleming → **penisilin**.",
+              "Hücre teorisi **1838** (Schleiden & Schwann); DNA çift sarmalı **1953**."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": [
+            {
+              "program": "biyoloji-dersi",
+              "unitId": "2",
+              "code": "BİY.9.1.1",
+              "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2"
+            }
+          ]
+        },
+        {
+          "id": "k2",
+          "key": "9/biyoloji/u1/k2",
+          "localCode": "BİY.9.1.2",
+          "title": {
+            "tr": "Bilimsel araştırma süreçlerinde bilimin doğasını yorumlar ve bilimsel yöntem basamaklarını uygular.",
+            "en": "Interprets the nature of science in research and applies the steps of the scientific method."
+          },
+          "content": {
+            "anlatim": "# Bilimin Doğası ve Bilimsel Yöntem\n\n### Bilimin Doğasının Temel Özellikleri\n\n- Bilimsel bilgiler **kesin, mutlak ve değişmez değildir**; yeni kanıtlarla değişebilir.\n- Bilim **kültürel ve sosyal yapıdan bağımsız** düşünülemez.\n- **Öznellik** barındırabilir; bilim insanlarının bakış açıları süreci etkileyebilir.\n- **Teoriler** (neden açıklar) ve **kanunlar** (nasıl gerçekleştiğini söyler) farklı yapılardır; aralarında **hiyerarşik bir dönüşüm yoktur** (teori kanuna dönüşmez).\n\n### Bilimsel Yöntem Basamakları\n\n1. **Gözlem yapma:** Duyu organları ve araçlarla **nitel** veya **nicel** veri toplama.\n2. **Problemi belirleme:** \"Neden?\", \"Nasıl?\" sorularıyla durumun netleştirilmesi.\n3. **Veri toplama:** Güvenilir kaynaklardan bilgi derlenmesi.\n4. **Hipotez oluşturma:** Gözlemlere dayalı, **test edilebilir geçici çözüm**.\n5. **Tahminde bulunma:** Hipotezden çıkarılan sonuç (\"Eğer … ise …\").\n6. **Deney tasarlama:** Kontrollü deneyle **bağımsız değişkenin bağımlı değişken** üzerindeki etkisi test edilir.\n7. **Analiz ve sonuç:** Bulgular hipotezi destekliyorsa raporlanır; desteklemiyorsa hipotez değiştirilir.",
+            "ornekler": [
+              {
+                "soru": "Bir öğrenci farklı sıcaklıklardaki suda tohumların çimlenme süresini ölçüyor. Bu deneyde bağımsız ve bağımlı değişken nedir?",
+                "cozum": "**Bağımsız değişken:** suyun sıcaklığı (deneyi yapanın değiştirdiği). **Bağımlı değişken:** çimlenme süresi (ölçülen sonuç)."
+              },
+              {
+                "soru": "Bir öğrenci “Gübre bitki büyümesini artırır.” hipotezini sınıyor. Kontrol grubunu nasıl oluşturmalıdır?",
+                "cozum": "Aynı tür, aynı boyda bitkiler, aynı toprak, ışık ve su ile iki gruba ayrılır. **Deney grubuna gübre** verilir, **kontrol grubuna verilmez**. Tek fark gübre olduğu için büyüme farkı gübreye bağlanabilir."
+              }
+            ],
+            "ozet": [
+              "Bilimsel bilgi **değişebilir**; teori ve kanun farklıdır, teori kanuna dönüşmez.",
+              "Hipotez = **test edilebilir** geçici çözüm.",
+              "Kontrollü deney: **bağımsız** değişkenin **bağımlı** değişkene etkisi."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": [
+            {
+              "program": "biyoloji-dersi",
+              "unitId": "2",
+              "code": "BİY.9.1.2",
+              "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2"
+            }
+          ]
+        },
+        {
+          "id": "k3",
+          "key": "9/biyoloji/u1/k3",
+          "localCode": "BİY.9.1.3",
+          "title": {
+            "tr": "Bilimsel araştırmaların bilim etiğine uygunluğu hakkında bilgi toplar ve etik dışı davranışları yorumlar.",
+            "en": "Gathers information on research ethics and interprets unethical behaviour."
+          },
+          "content": {
+            "anlatim": "# Bilim Etiği\n\nAraştırmalarda uyulması gereken etik ilkeler:\n\n- **Gönüllü onam:** Katılımcıların bilgilendirilerek onaylarının alınması.\n- **Gizlilik:** Katılımcı bilgilerinin korunması.\n- **Hayvan haklarına saygı.**\n- **Veri uydurmama (fabrikasyon).**\n- **Sonuçları değiştirmeme (falsifikasyon).**\n- **Başkasının fikrini izinsiz kullanmama (intihal).**\n- **Kaynak göstermek zorunludur.**\n\n# Etik Dışı Davranışlar ve Örnek Olaylar\n\n| Davranış | Anlamı | Örnek |\n|---|---|---|\n| **Fabrikasyon** | Hiç yapılmamış deneyin verisini uydurmak | Ölçülmemiş bitki boylarını tabloya yazmak |\n| **Falsifikasyon** | Verileri ya da sonuçları çarpıtmak | Hipotezi desteklemeyen ölçümleri raporlamamak |\n| **İntihal** | Başkasının fikir, metin ya da görselini kaynak göstermeden kullanmak | İnternetteki bir projeyi kendi çalışması gibi sunmak |\n| **Çıkar çatışması** | Sonucu etkileyebilecek ilişkiyi gizlemek | İlacı üreten firmanın desteğiyle yapılan çalışmada bunu belirtmemek |\n\n- **Etik kurullar:** İnsan ve hayvan üzerinde yapılacak araştırmalar önce etik kurulun onayından geçer.\n- **Hayvan deneylerinde 3R ilkesi:** **Replacement** (yerine başka yöntem kullan), **Reduction** (hayvan sayısını azalt), **Refinement** (acıyı en aza indir).\n- **Bilgiyi doğrulama:** Bilgi hakemli dergi, resmî kurum ya da üniversite kaynaklarından doğrulanır; tarih, yazar ve kaynak kaydedilir.",
+            "ornekler": [
+              {
+                "soru": "Bir öğrenci deneyinde ölçmediği iki bitkinin boyunu, “diğerlerine benzer olur” diye tahminle tabloya yazıyor. Bu hangi etik ihlaldir?",
+                "cozum": "**Fabrikasyon** (veri uydurma). Ölçülmeyen veri kaydedilemez; eksik veri olduğu açıkça belirtilmelidir."
+              },
+              {
+                "soru": "Yeni bir ilacın insanlarda denenmesinden önce hangi etik ilkeler sağlanmalıdır?",
+                "cozum": "Araştırma **etik kurul onayı** almalı; katılımcılar riskler hakkında bilgilendirilip **gönüllü onam** vermeli; kimlik bilgileri **gizli** tutulmalı; katılımcı istediği an çalışmadan çekilebilmelidir."
+              }
+            ],
+            "ozet": [
+              "Fabrikasyon = veri **uydurma**; falsifikasyon = sonuçları **değiştirme**; intihal = **izinsiz alıntı**.",
+              "Gönüllü onam, gizlilik ve kaynak gösterme zorunludur.",
+              "Hayvan deneylerinde 3R: yerine koy, azalt, iyileştir; araştırmalar etik kurul onayı gerektirir."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": [
+            {
+              "program": "biyoloji-dersi",
+              "unitId": "2",
+              "code": "BİY.9.1.3",
+              "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2"
+            }
+          ]
+        },
+        {
+          "id": "k4",
+          "key": "9/biyoloji/u1/k4",
+          "localCode": "BİY.9.1.4",
+          "title": {
+            "tr": "Çevrenizdeki canlıların özelliklerini bilimsel olarak gözlemler ve ortak özellikleri sınıflandırır.",
+            "en": "Observes living things scientifically and classifies their common characteristics."
+          },
+          "content": {
+            "anlatim": "# Canlıların Ortak Özellikleri\n\n1. **Hücresel yapı:** Tüm canlılar hücre ya da hücrelerden oluşur.\n   - **Prokaryot hücre:** Çekirdek ve zarlı organel **yoktur** (bakteriler, arkeler).\n   - **Ökaryot hücre:** Belirgin çekirdek ve zarlı organeller **vardır** (amip, öglena, bitki, hayvan, mantar).\n2. **Organizasyon:** Atom → Molekül → Organel → Hücre → Doku → Organ → Sistem → Organizma.\n3. **Beslenme:**\n   - **Ototrof (üretici):** Besinini kendi üretir (fotosentez/kemosentez; bitkiler).\n   - **Heterotrof (tüketici):** Besinini hazır alır (hayvanlar, mantarlar).\n   - **Hem ototrof hem heterotrof:** Işıkta fotosentez yapar, karanlıkta hazır beslenir (öglena).\n4. **Enerji üretimi ve metabolizma:** Enerji **ATP**'den karşılanır (hücresel solunum). Metabolizma = yapım + yıkım tepkimelerinin tümü.\n   - **Anabolizma (yapım):** Küçük moleküllerden büyük molekül sentezi (protein sentezi, fotosentez). ATP harcanır, **su açığa çıkar**.\n   - **Katabolizma (yıkım):** Büyük moleküllerin hidrolizle parçalanması (sindirim, solunum). **Su kullanılır**.\n5. **Boşaltım:** Metabolik atıkların, fazla su ve tuzların uzaklaştırılarak iç dengenin korunması.\n6. **Büyüme ve gelişme:** Tek hücrelilerde hacim/kütle artışı; çok hücrelilerde hücre bölünmesiyle hücre sayısı ve hacim artışı (büyüme). Yapıların olgunlaşması **gelişmedir**.\n7. **Üreme:** Neslin devamı için birey oluşturma (eşeyli/eşeysiz). **Bireyin yaşamı için zorunlu değildir.**\n8. **Uyarılara tepki:** Çevresel değişikliklere yanıt (ayçiçeğinin güneşe yönelmesi).\n9. **Homeostazi:** İç dengenin (sıcaklık, su, pH) kararlı tutulması.\n10. **Varyasyon ve adaptasyon:** Varyasyon tür içi genetik çeşitlilik; adaptasyon hayatta kalma avantajı sağlayan kalıtsal uyum.\n\n### Virüslerin Durumu\n\nVirüsler **hücresel yapıya sahip değildir**, metabolizmaları yoktur, dış ortamda **kristalleşirler** ve kendi başlarına enzim sentezleyemezler. Yalnızca canlı hücre içinde çoğalabildikleri için **canlı ile cansız arasında geçiş formu** kabul edilirler.",
+            "ornekler": [
+              {
+                "soru": "Öglena hangi beslenme şekline sahiptir? Bu özellik onu hangi canlılarla benzer kılar?",
+                "cozum": "Işıkta kloroplastıyla **fotosentez** yapar (ototrof), karanlıkta besinini hazır alır (heterotrof). Fotosentez yönüyle bitkilere, hazır beslenme yönüyle hayvanlara benzer."
+              },
+              {
+                "soru": "Virüsler neden canlı ile cansız arasında kabul edilir?",
+                "cozum": "Hücresel yapıları ve kendi metabolizmaları **yoktur**, dışarıda kristalleşebilirler (cansız özelliği). Ancak **kalıtım materyali** taşırlar ve **canlı hücre içinde çoğalabilirler** (canlı özelliği)."
+              }
+            ],
+            "ozet": [
+              "Prokaryot: çekirdek ve zarlı organel **yok**; ökaryot: **var**.",
+              "Anabolizma: yapım, ATP harcanır, **su açığa çıkar**; katabolizma: yıkım, **su kullanılır**.",
+              "Üreme, birey için zorunlu değil **tür** için zorunludur.",
+              "Virüs: hücresel yapı ve metabolizma yok → **canlı-cansız arası**."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": [
+            {
+              "program": "biyoloji-dersi",
+              "unitId": "2",
+              "code": "BİY.9.1.4",
+              "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2"
+            }
+          ]
+        },
+        {
+          "id": "k5",
+          "key": "9/biyoloji/u1/k5",
+          "localCode": "BİY.9.2.1",
+          "title": {
+            "tr": "İnorganik moleküllerin (su ve mineraller) canlı yaşamı üzerindeki önemi hakkında bilimsel çıkarım yapar.",
+            "en": "Makes scientific inferences about the importance of inorganic molecules (water and minerals) for life."
+          },
+          "content": {
+            "anlatim": "# İnorganik Moleküller\n\nGenellikle **karbon (C) içermeyen**, hücre zarından doğrudan geçebilen, **sindirime uğramayan**, **enerji vermeyen** ve hücrelerin yapısına katılan moleküllerdir.\n\n### Suyun Yapısı ve Önemi\n\nSu molekülü iki hidrojen ve bir oksijenin **kovalent** bağlanmasıyla oluşur. Oksijenin elektronegatifliği yüksek olduğundan **polar** yapıdadır.\n\n- **İyi çözücüdür:** Madde taşınmasını ve metabolik tepkimeleri sağlar.\n- **Kohezyon ve adezyon:** Su moleküllerinin birbirini çekmesi **kohezyon** (yüzey gerilimi oluşturur), farklı maddelere tutunması **adezyondur**. Bitkilerde suyun yukarı taşınmasında etkilidir.\n- **Yüksek ısı kapasitesi:** Ani sıcaklık değişimlerini engeller, vücut sıcaklığını dengeler.\n- **Buzun yoğunluğu:** Su donduğunda hacmi genişler, yoğunluğu azalır; buz suyun üstünde yüzer ve **su altındaki yaşamı korur**.\n\n### Mineraller\n\nCanlılar tarafından **sentezlenemeyen**, su ve besinlerle dışarıdan alınan inorganik maddelerdir.\n\n| Mineral | Görevi | Eksikliğinde |\n|---|---|---|\n| **Demir (Fe)** | Hemoglobin yapısına katılır, oksijen taşır | **Anemi** (kansızlık) |\n| **Kalsiyum (Ca)** | Kemik ve diş yapısı, kas kasılması, kan pıhtılaşması | — |\n| **İyot (I)** | Tiroksin hormonu üretimi | **Guatr** |\n| **Sodyum (Na) ve Potasyum (K)** | Sinirsel iletim, su-elektrolit dengesi | — |\n| **Fosfor (P)** | ATP, DNA, RNA ve kemik yapısı | — |\n| **Magnezyum (Mg)** | Klorofilin yapısı, enzimlerin çalışması | — |\n| **Flor (F)** | Diş sağlığı | — |",
+            "ornekler": [
+              {
+                "soru": "Göllerin kışın yüzeyden donması, içindeki canlılar için neden önemlidir?",
+                "cozum": "Buzun yoğunluğu sudan küçüktür, **yüzeyde kalır** ve alttaki suyu yalıtır. Göl tabandan donmaz; su canlıları 4 °C civarındaki alt katmanlarda yaşamını sürdürür."
+              },
+              {
+                "soru": "Kansızlık şikâyeti olan bir kişiye hangi minerali içeren besinler önerilir? Neden?",
+                "cozum": "**Demir** (kırmızı et, baklagiller, yeşil yapraklı sebzeler). Demir **hemoglobinin** yapısına katılır; eksikliğinde kan yeterli oksijen taşıyamaz (**anemi**)."
+              }
+            ],
+            "ozet": [
+              "İnorganik moleküller: **sindirilmez, enerji vermez**, zardan doğrudan geçer.",
+              "Su polardır; yüksek ısı kapasitesi vücut sıcaklığını dengeler.",
+              "Buz suda yüzer → su altındaki yaşam korunur.",
+              "Fe eksikliği → **anemi**; I eksikliği → **guatr**; Mg → **klorofil**."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": [
+            {
+              "program": "biyoloji-dersi",
+              "unitId": "3",
+              "code": "BİY.9.2.1",
+              "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3"
+            }
+          ]
+        },
+        {
+          "id": "k6",
+          "key": "9/biyoloji/u1/k6",
+          "localCode": "BİY.9.2.2",
+          "title": {
+            "tr": "Karbohidratların yapısını ve çeşitlerini sınıflandırır.",
+            "en": "Classifies the structure and types of carbohydrates."
+          },
+          "content": {
+            "anlatim": "# Organik Moleküller ve Karbohidratlar\n\n**Organik moleküller** yapılarında C, H, O bulunduran bileşiklerdir. Büyük yapılı olanlar (**polimerler**), küçük birimlerin (**monomerlerin**) **dehidrasyon** sentezi ile üretilir; sindirimleri **hidroliz** ile gerçekleşir.\n\n**Karbohidratlar** C, H ve O'dan oluşur; **ilk sırada kullanılan enerji kaynağıdır** ve yapıya katılır.\n\n### 1. Monosakkaritler (Tek Şekerler) — sindirime uğramaz\n\n- **5 karbonlu (pentoz):** Riboz (RNA ve ATP yapısında), deoksiriboz (DNA yapısında). Enerji vermezler.\n- **6 karbonlu (heksoz):** Glikoz (kan şekeri, temel yakıt), fruktoz (meyve şekeri), galaktoz (süt şekeri). Kapalı formülleri aynıdır (C₆H₁₂O₆); **yapısal izomerdirler**.\n\n### 2. Disakkaritler (İkili Şekerler)\n\nİki monosakkaritin dehidrasyonuyla (**glikozit bağı** kurularak, **su açığa çıkarak**) oluşur. Hücre zarından doğrudan geçemezler.\n- Glikoz + Glikoz → **Maltoz** (arpa şekeri) + H₂O\n- Glikoz + Fruktoz → **Sükroz/Sakkaroz** (çay şekeri) + H₂O\n- Glikoz + Galaktoz → **Laktoz** (süt şekeri) + H₂O\n\n### 3. Polisakkaritler (Çoklu Şekerler)\n\nÇok sayıda glikozun glikozit bağlarıyla bağlanmasıyla oluşur.\n- **Depo:** **Nişasta** (bitkiler), **glikojen** (hayvan, mantar, bakteri).\n- **Yapısal:** **Selüloz** (bitki hücre duvarı; insan sindiremez ama lifli gıda olarak bağırsak sağlığı için önemlidir), **kitin** (eklembacaklıların dış iskeleti ve mantar çeperi; azot içerir, eriyen cerrahi ipliklerde kullanılır).",
+            "ornekler": [
+              {
+                "soru": "Laktoz sindirildiğinde hangi monosakkaritler oluşur? Bu sırada su harcanır mı, açığa mı çıkar?",
+                "cozum": "Laktoz hidrolizle **glikoz ve galaktoza** ayrılır. Hidroliz olduğu için **1 su harcanır**."
+              },
+              {
+                "soru": "Ekmek uzun süre çiğnendiğinde ağızda tatlı bir tat hissedilir. Neden?",
+                "cozum": "Ekmekteki **nişasta**, tükürükteki amilaz enzimiyle hidroliz edilerek **maltoza** (ve glikoza) parçalanır; disakkarit ve monosakkaritler tatlıdır."
+              }
+            ],
+            "ozet": [
+              "Polimer **dehidrasyonla** oluşur (su açığa çıkar), **hidrolizle** sindirilir (su harcanır).",
+              "Maltoz = G + G · Sükroz = G + **fruktoz** · Laktoz = G + **galaktoz**.",
+              "Nişasta bitkide, **glikojen** hayvan ve mantarda depo; selüloz ve **kitin** yapısal."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": [
+            {
+              "program": "biyoloji-dersi",
+              "unitId": "3",
+              "code": "BİY.9.2.2",
+              "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3"
+            }
+          ]
+        },
+        {
+          "id": "k7",
+          "key": "9/biyoloji/u1/k7",
+          "localCode": "BİY.9.2.2",
+          "title": {
+            "tr": "Lipitlerin yapısını ve çeşitlerini sınıflandırır.",
+            "en": "Classifies the structure and types of lipids."
+          },
+          "content": {
+            "anlatim": "# Lipitler (Yağlar)\n\nC, H ve O içerirler; bazılarında N ve P de bulunabilir. **Suda çözünmezler**, apolar (hidrofobik) özelliktedirler. **Polimer değildirler.**\n\n- **Yağ asitleri:**\n  - **Doymuş:** C atomları arasında **tek bağ**; genellikle hayvansal, oda sıcaklığında **katı** (tereyağı).\n  - **Doymamış:** **Çift bağ** içerir; genellikle bitkisel, **sıvı** (zeytinyağı).\n  - Sıvı bitkisel yağların hidrojenle doyurulmasıyla **margarin** elde edilir.\n- **Trigliseritler (nötral yağlar):** **1 gliserol + 3 yağ asidinin** ester bağlarıyla birleşmesi (dehidrasyon). **3 su açığa çıkar.** Enerji deposudur; ısı yalıtımı ve mekanik koruma sağlar.\n- **Fosfolipitler:** Hücre zarlarının temel bileşeni. **1 gliserol + 2 yağ asidi + 1 fosfat grubu.** Baş kısmı **hidrofilik**, kuyruk kısmı **hidrofobiktir**.\n- **Steroitler:** Halkasal yapılı lipitler. **Kolesterol** zar akışkanlığını düzenler; cinsiyet hormonları ve **D vitamininin** öncülüdür.",
+            "ornekler": [
+              {
+                "soru": "Kış uykusuna yatan hayvanlar ve kutup hayvanları için yağ dokusu neden önemlidir?",
+                "cozum": "Yağlar (trigliseritler) birim kütlede karbohidratlardan **daha fazla enerji** depolar; ayrıca deri altında **ısı yalıtımı** sağlar. Hayvan beslenmediği dönemde bu enerjiyi kullanır."
+              },
+              {
+                "soru": "Fosfolipitler neden hücre zarında çift katman oluşturur?",
+                "cozum": "Fosfolipitin **hidrofilik başı** suya, **hidrofobik kuyruğu** sudan kaçar. Hücrenin içi ve dışı sulu olduğundan başlar dışa (iki yüze), kuyruklar içe dönük dizilir ve **çift katman** oluşur."
+              }
+            ],
+            "ozet": [
+              "Lipitler suda çözünmez ve **polimer değildir**.",
+              "Doymuş: tek bağ, katı, hayvansal · Doymamış: çift bağ, sıvı, bitkisel.",
+              "Trigliserit = 1 gliserol + **3** yağ asidi → **3 su** açığa çıkar.",
+              "Fosfolipit: hidrofilik baş, hidrofobik kuyruk → **hücre zarı**."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": [
+            {
+              "program": "biyoloji-dersi",
+              "unitId": "3",
+              "code": "BİY.9.2.2",
+              "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3"
+            }
+          ]
+        },
+        {
+          "id": "k8",
+          "key": "9/biyoloji/u1/k8",
+          "localCode": "BİY.9.2.2",
+          "title": {
+            "tr": "Proteinlerin yapısını ve görevlerini açıklar.",
+            "en": "Explains the structure and functions of proteins."
+          },
+          "content": {
+            "anlatim": "# Proteinler\n\nYapılarında **C, H, O, N** ve sıklıkla **S (kükürt)** bulunur. DNA'daki genetik şifreye göre **ribozomda** sentezlenirler.\n\n### Yapı Taşı: Amino Asit\n\nMerkezi karbona bağlı **amino grubu (–NH₂)**, **karboksil grubu (–COOH)**, bir hidrojen ve değişken **radikal grup (–R)** içerir.\n- Doğada **20 çeşit** amino asit vardır.\n- Vücutta üretilemeyip besinle alınması gerekenlere **esansiyel (zorunlu) amino asit** denir.\n\n### Peptit Bağı\n\nİki amino asit arasında **su açığa çıkarak** kurulan bağdır. **n** amino asit birleşirse **n − 1** peptit bağı kurulur ve **n − 1** su açığa çıkar.\n\n### Görevleri\n\nHücrede yapı ve onarım, **enzim** ve **hormon** yapısına katılım, bağışıklık (**antikor**), oksijen taşınması (**hemoglobin**).\n\n**Denatürasyon:** Yüksek sıcaklık, pH ve basınç gibi etkenlerle proteinin **üç boyutlu yapısının bozulmasıdır**.",
+            "ornekler": [
+              {
+                "soru": "50 amino asitten oluşan bir polipeptit sentezlenirken kaç peptit bağı kurulur ve kaç su açığa çıkar?",
+                "cozum": "n − 1 = 50 − 1 = **49 peptit bağı** kurulur ve **49 su** açığa çıkar."
+              },
+              {
+                "soru": "Yumurta pişirildiğinde neden çiğ hâline geri dönmez?",
+                "cozum": "Yüksek sıcaklık yumurta akındaki proteinlerin **üç boyutlu yapısını bozar** (denatürasyon). Bu değişim kalıcıdır; protein eski şeklini ve özelliklerini geri kazanamaz."
+              }
+            ],
+            "ozet": [
+              "Amino asit: **–NH₂ + –COOH + H + R**; 20 çeşit.",
+              "n amino asit → **n − 1** peptit bağı, **n − 1** su.",
+              "Denatürasyon: sıcaklık/pH ile **üç boyutlu yapının bozulması**."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": [
+            {
+              "program": "biyoloji-dersi",
+              "unitId": "3",
+              "code": "BİY.9.2.2",
+              "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3"
+            }
+          ]
+        },
+        {
+          "id": "k9",
+          "key": "9/biyoloji/u1/k9",
+          "localCode": "BİY.9.2.4",
+          "title": {
+            "tr": "pH ve sıcaklığın enzim aktivitesine etkisini açıklar ve deney analizini yapar.",
+            "en": "Explains the effect of pH and temperature on enzyme activity and analyses experiments."
+          },
+          "content": {
+            "anlatim": "# Enzimler\n\n**Biyolojik katalizörlerdir.** Tepkimelerin **aktivasyon enerjisini düşürerek** hızlandırırlar; tepkime sonunda **harcanmazlar** ve tekrar kullanılabilirler.\n\n### Yapısı\n\n- Yalnızca proteinden oluşanlar: **basit enzim**.\n- Protein kısım (**apoenzim**) + yardımcı kısım içerenler: **bileşik enzim (holoenzim)**.\n  - Yardımcı kısım **mineralse kofaktör**, **vitaminse koenzim** adını alır.\n\n### Özellikleri\n\n- **Substrata özgüdürler.** Aktif bölgeye **anahtar-kilit** veya **indüklenmiş uyum** modeliyle bağlanırlar.\n- Takım hâlinde çalışabilirler.\n\n### Çalışmalarını Etkileyen Faktörler\n\n- **Sıcaklık:** **Optimum** sıcaklıkta hız en yüksektir; çok yüksek sıcaklıkta protein yapısı bozulur (**denatüre olur**) ve enzim çalışmaz.\n- **pH:** Her enzimin uygun pH aralığı vardır. **Pepsin** midede asidik ortamda (**pH 2**), **tripsin** bağırsakta bazik ortamda (**pH 8**) çalışır.\n- **Enzim ve substrat miktarı:** Artış, belli bir **doygunluk** noktasına kadar tepkimeyi hızlandırır.\n- **Su miktarı:** Ortamdaki su oranı **%15'in altına** düşerse enzimler çalışmaz.",
+            "ornekler": [
+              {
+                "soru": "Tükürük amilazı mideye geçince neden çalışmaz?",
+                "cozum": "Amilaz **nötr–hafif bazik** pH'ta çalışır. Midenin **pH'ı 2** civarında (çok asidik) olduğu için enzimin yapısı bozulur ve aktivitesi durur."
+              },
+              {
+                "soru": "Bir enzimin farklı sıcaklıklardaki tepkime hızı ölçülüyor: 20 °C'de düşük, 37 °C'de en yüksek, 60 °C'de sıfır. Bu grafiği yorumlayınız.",
+                "cozum": "37 °C enzimin **optimum sıcaklığıdır**. Sıcaklık artarken taneciklerin çarpışması arttığından hız yükselir; optimumun üstünde enzim **denatüre** olur ve 60 °C'de tamamen çalışmaz. Düşük sıcaklıkta enzim bozulmaz, yalnızca yavaşlar."
+              }
+            ],
+            "ozet": [
+              "Enzim: aktivasyon enerjisini **düşürür**, tepkimede **harcanmaz**.",
+              "Kofaktör = **mineral**; koenzim = **vitamin**.",
+              "Pepsin **pH 2**, tripsin **pH 8**; aşırı sıcaklık → denatürasyon.",
+              "Su %15'in altında → enzim çalışmaz."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": [
+            {
+              "program": "biyoloji-dersi",
+              "unitId": "3",
+              "code": "BİY.9.2.4",
+              "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3"
+            }
+          ]
+        },
+        {
+          "id": "k10",
+          "key": "9/biyoloji/u1/k10",
+          "localCode": "BİY.9.2.2",
+          "title": {
+            "tr": "Nükleik asitlerin ve vitaminlerin yapısını ve görevlerini açıklar.",
+            "en": "Explains the structure and roles of nucleic acids and vitamins."
+          },
+          "content": {
+            "anlatim": "# Nükleik Asitler\n\nGenetik bilgiyi **depolayan ve aktaran** makromoleküllerdir. Yapı taşları **nükleotittir**.\n\n**Bir nükleotit = 1 fosfat + 5 karbonlu şeker (pentoz) + azotlu organik baz**\n\n| | **DNA** | **RNA** |\n|---|---|---|\n| Zincir | **Çift sarmal** | **Tek iplik** |\n| Şeker | **Deoksiriboz** | **Riboz** |\n| Bazlar | A, **T**, G, C | A, **U**, G, C |\n| Eşleşme | A = T, G ≡ C | — |\n| Görev | Hücrenin **yönetici** molekülü | **Protein sentezi** (mRNA, tRNA, rRNA) |\n\n# Vitaminler\n\n**Düzenleyici** organik moleküllerdir. **Sindirime uğramazlar** ve **enerji vermezler**. Enzimlerin **koenzimi** olarak görev yaparlar.\n\n- **Yağda çözünenler (A, D, E, K):** Karaciğerde **depolanabilir**; eksiklikleri **geç** ortaya çıkar.\n- **Suda çözünenler (B grubu ve C):** **Depolanmaz**, fazlası idrarla atılır; **günlük alınmalıdır**.",
+            "ornekler": [
+              {
+                "soru": "Bir DNA molekülünde adenin bazlarının oranı %30 ise sitozin oranı yüzde kaçtır?",
+                "cozum": "DNA'da A = T olduğundan T de %30'dur; A + T = %60. Kalan %40, G ve C'ye eşit bölünür (G ≡ C): **sitozin %20**."
+              },
+              {
+                "soru": "Uzun süre sebze ve meyve yemeyen gemicilerde görülen skorbüt hastalığı hangi vitaminin eksikliğinden olur? Bu vitamin neden her gün alınmalıdır?",
+                "cozum": "**C vitamini** eksikliği. C vitamini **suda çözünür**, vücutta depolanmaz ve fazlası idrarla atılır; bu yüzden düzenli alınmalıdır."
+              }
+            ],
+            "ozet": [
+              "Nükleotit = **fosfat + pentoz + azotlu baz**.",
+              "DNA: çift sarmal, deoksiriboz, **timin**; RNA: tek iplik, riboz, **urasil**.",
+              "Vitaminler sindirilmez, enerji vermez; **A, D, E, K** yağda, **B ve C** suda çözünür."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": [
+            {
+              "program": "biyoloji-dersi",
+              "unitId": "3",
+              "code": "BİY.9.2.2",
+              "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3"
+            }
+          ]
+        },
+        {
+          "id": "k11",
+          "key": "9/biyoloji/u1/k11",
+          "localCode": "BİY.9.2.3",
+          "title": {
+            "tr": "Organik bileşiklerin ayıraçlarla tayinini ve sıcaklık/pH'nin katalaz aktivitesine etkisini inceler.",
+            "en": "Identifies organic compounds with reagents and investigates how temperature/pH affect catalase."
+          },
+          "content": {
+            "anlatim": "# Besinlerin Belirlenmesi\n\n| Besin | Ayıraç | Sonuç (renk) |\n|---|---|---|\n| **Nişasta** | İyot / Lugol çözeltisi | **Mavi-mor** |\n| **Glikoz** (indirgen şeker) | Benedict veya Fehling (ısıtılarak) | **Kiremit kırmızısı** |\n| **Protein** | Biüret ayıracı | **Mor** |\n| **Yağ** | Sudan III / Sudan kırmızısı | **Kırmızı-turuncu** |\n\n# Katalaz Enzimi Deneyleri\n\n**Katalaz**, zehirli **hidrojen peroksiti (H₂O₂)** **su ve oksijene** (O₂ gazı kabarcıkları) dönüştürür.\n\n- Uygun sıcaklık (yaklaşık **37 °C**) ve optimum pH koşullarında kabarcık çıkışı **en fazladır**.\n- **Aşırı ısı** enzimi bozar; kabarcık çıkışı durur.\n\n# Deney Tasarımı: Besin Tayini ve Katalaz\n\n**Besin tayini için kontrollü deney:**\n1. Deney tüplerine aynı miktarda farklı besin örneği (ekmek, süt, yumurta akı, yağ) konur.\n2. Her besin için **kontrol tüpü** olarak saf su kullanılır (ayıracın kendi rengini görmek için).\n3. Ayıraçlar eşit damla sayısında eklenir; Benedict tüpleri sıcak su banyosunda ısıtılır.\n4. Renkler tabloya kaydedilir ve kontrol tüpüyle karşılaştırılır.\n\n**Katalaz deneyi (patates/karaciğer + H₂O₂):**\n- Bağımsız değişken: sıcaklık (ör. 0 °C, 37 °C, 100 °C'de bekletilmiş karaciğer) ya da pH.\n- Bağımlı değişken: köpük yüksekliği / kabarcık sayısı.\n- Kontrol değişkenleri: H₂O₂ hacmi ve derişimi, doku miktarı, süre.\n- **Beklenen sonuç:** 37 °C'de en çok köpük; haşlanmış (100 °C) dokuda köpük oluşmaz çünkü enzim **denatüre** olmuştur.",
+            "ornekler": [
+              {
+                "soru": "Bir besine Benedict çözeltisi eklenip ısıtıldığında kiremit kırmızısı renk oluşuyor, Biüret ile renk değişmiyor. Besin hakkında ne söylenebilir?",
+                "cozum": "Kiremit kırmızısı → **indirgen şeker (glikoz)** vardır. Biüret ile mor renk oluşmadığı için **protein yoktur**."
+              },
+              {
+                "soru": "Haşlanmış ve çiğ patates dilimlerine hidrojen peroksit damlatılıyor. Hangisinde köpürme gözlenir? Neden?",
+                "cozum": "**Çiğ patateste** köpürme (O₂ kabarcığı) gözlenir. Haşlama sırasında yüksek sıcaklık **katalaz enzimini denatüre** ettiği için haşlanmış patateste tepkime gerçekleşmez."
+              }
+            ],
+            "ozet": [
+              "Nişasta + iyot → **mavi-mor**; glikoz + Benedict → **kiremit kırmızısı**.",
+              "Protein + Biüret → **mor**; yağ + Sudan III → **kırmızı-turuncu**.",
+              "Katalaz: **H₂O₂ → su + O₂**; 37 °C'de en hızlı."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": [
+            {
+              "program": "biyoloji-dersi",
+              "unitId": "3",
+              "code": "BİY.9.2.3",
+              "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "name": {
+        "tr": "2. Tema: Organizasyon",
+        "en": "Theme 2: Organisation"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "9/biyoloji/u2/k1",
+          "localCode": "BİY.9.2.5",
+          "title": {
+            "tr": "Hücre alt birimlerini ve bu birimlerin işlevleri arasındaki ilişkiyi çözümleyerek açıklar.",
+            "en": "Analyses and explains cell components and how their functions are related."
+          },
+          "content": {
+            "anlatim": "# Hücre ve Alt Birimleri\n\n| Yapı | Görevi |\n|---|---|\n| **Hücre zarı** | **Akıcı-mozaik** zar modeli; fosfolipit çift katman, kolesterol ve taşıma proteinleri. **Seçici geçirgendir.** |\n| **Sitoplazma** | Hücre içi tepkimelerin gerçekleştiği, organelleri barındıran yarı akışkan sıvı. |\n| **Çekirdek** | Kalıtsal materyali (**DNA**) barındırır; **nükleer porlarla** madde alışverişi. **Çekirdekçik** ribozom alt birimlerini üretir. |\n| **Endoplazmik retikulum (ER)** | Madde taşınması. **Granüllü ER** ribozom taşır, **protein** sentezler; **düz ER** **lipit** sentezi ve zehirli maddelerin etkisizleştirilmesi. |\n| **Golgi aygıtı** | **Paketleme ve salgılama** merkezi; glikoprotein, lipoprotein üretir, salgı kofulları oluşturur. |\n| **Lizozom** | **Hücre içi sindirim**; hidrolitik enzimler içerir. Gelişmiş bitkilerde **yoktur**. |\n| **Kofullar** | Besin, depo, salgı ve **kontraktil** (fazla suyu dışarı atan) kofullar. |\n| **Mitokondri** | **Oksijenli solunumla ATP** üretir. Kendi **DNA, RNA ve ribozomu** vardır, bölünebilir. |\n| **Kloroplast** | **Fotosentez** yapar; stroma, grana ve klorofil içerir. Kendi DNA'sı vardır. Diğer plastitler: **kromoplast** (renkli), **lökoplast** (renksiz, depo). |\n| **Ribozom** | **Zarsızdır**, protein sentezler. |\n| **Sentrozom** | Hayvan hücrelerinde **iğ ipliklerini** oluşturur. |",
+            "ornekler": [
+              {
+                "soru": "Pankreas hücrelerinde (sindirim enzimi salgılar) hangi organeller daha çok bulunur? Neden?",
+                "cozum": "Protein yapılı enzimleri üretmek için **ribozom ve granüllü ER**, salgılamak için **Golgi aygıtı**, gereken enerji için **mitokondri** sayısı fazladır."
+              },
+              {
+                "soru": "Kas hücrelerinde mitokondri sayısının deri hücrelerinden fazla olmasının nedeni nedir?",
+                "cozum": "Kas hücreleri kasılmak için çok **ATP** harcar. Mitokondri oksijenli solunumla ATP ürettiğinden enerji ihtiyacı fazla olan hücrelerde sayısı daha fazladır."
+              }
+            ],
+            "ozet": [
+              "Hücre zarı: **akıcı-mozaik**, seçici geçirgen.",
+              "Granüllü ER → **protein**; düz ER → **lipit**; Golgi → **paketleme-salgı**.",
+              "Mitokondri ve kloroplast: **kendi DNA'sı** var, bölünebilir.",
+              "Lizozom gelişmiş bitkilerde yok; sentrozom hayvan hücresinde."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": [
+            {
+              "program": "biyoloji-dersi",
+              "unitId": "3",
+              "code": "BİY.9.2.5",
+              "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3"
+            }
+          ]
+        },
+        {
+          "id": "k2",
+          "key": "9/biyoloji/u2/k2",
+          "localCode": "BİY.9.2.6",
+          "title": {
+            "tr": "Hücre zarından madde geçişlerini sınıflandırır ve pasif geçiş deneylerini yorumlar.",
+            "en": "Classifies transport across the cell membrane and interprets passive transport experiments."
+          },
+          "content": {
+            "anlatim": "# Hücre Zarından Madde Geçişleri\n\n| | **Pasif taşıma** | **Aktif taşıma** |\n|---|---|---|\n| Enerji | Harcanmaz | **ATP harcanır** |\n| Yön | **Çoktan aza** | **Azdan çoğa** |\n\n### Pasif Taşıma Çeşitleri\n\n- **Basit difüzyon:** Küçük, gaz ve yağda çözünen moleküllerin fosfolipit tabakasından doğrudan geçişi.\n- **Kolaylaştırılmış difüzyon:** Büyük veya polar moleküllerin (glikoz, amino asit) **taşıyıcı ve kanal proteinleri** yardımıyla çoktan aza geçişi (ATP harcanmaz).\n- **Ozmoz:** **Suyun** seçici geçirgen zardan **çözünen madde yoğunluğunun fazla olduğu** (suyun az olduğu) tarafa doğru geçişi.\n\n### Ortam Çeşitleri\n\n- **İzotonik:** Hücreyle aynı yoğunlukta; **net su geçişi olmaz**.\n- **Hipertonik:** Hücreden daha yoğun; hücre su kaybederek büzüşür (**plazmoliz**).\n- **Hipotonik:** Hücreden az yoğun; hücre su alarak şişer (bitki hücresi **turgor** olur, hayvan hücresi patlayabilir — **hemoliz**).\n\n### Aktif Taşıma ve Kütlesel Geçişler\n\n- Küçük moleküllerin **azdan çoğa** taşınması (ATP ve taşıyıcı protein şart).\n- Büyük moleküllerin hücre içine alınması **endositoz** (fagositoz ve pinositoz), dışarı atılması **ekzositoz**.",
+            "ornekler": [
+              {
+                "soru": "Bir bitki hücresi tuzlu suya konulursa ne gözlenir?",
+                "cozum": "Tuzlu su **hipertonik** ortamdır. Hücre ozmozla su kaybeder ve sitoplazması büzüşür → **plazmoliz**."
+              },
+              {
+                "soru": "Kırmızı kan hücresi saf suya konursa ne olur? Bitki hücresinde aynı durum neden görülmez?",
+                "cozum": "Saf su **hipotonik** ortamdır; kan hücresi ozmozla su alır, şişer ve **patlar (hemoliz)**. Bitki hücresinin **hücre duvarı** aşırı şişmeyi önler; hücre patlamaz, **turgor** hâline gelir."
+              }
+            ],
+            "ozet": [
+              "Pasif: enerji yok, **çoktan aza**; aktif: **ATP**, **azdan çoğa**.",
+              "Hipertonik → **plazmoliz**; hipotonik → **turgor** (hayvan hücresinde hemoliz).",
+              "Büyük molekül içeri **endositoz**, dışarı **ekzositoz**."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": [
+            {
+              "program": "biyoloji-dersi",
+              "unitId": "3",
+              "code": "BİY.9.2.6",
+              "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3"
+            }
+          ]
+        },
+        {
+          "id": "k3",
+          "key": "9/biyoloji/u2/k3",
+          "localCode": "BİY.9.1.5",
+          "title": {
+            "tr": "Canlıları sınıflandırma ölçütlerine göre sınıflandırır ve ikili adlandırma kuralını uygular.",
+            "en": "Classifies organisms using classification criteria and applies binomial nomenclature."
+          },
+          "content": {
+            "anlatim": "# Sınıflandırma ve İkili Adlandırma\n\nSınıflandırma bilimine **taksonomi** denir. Günümüzde akrabalık ilişkilerini esas alan **doğal (filogenetik) sınıflandırma** kullanılır.\n\n### İkili Adlandırma (Binominal Nomenklatür)\n\nTür adları **iki kelimeden** oluşur ve **italik** yazılır. Örnek: *Pinus nigra* (karaçam).\n- **Birinci kelime cins adıdır**, ilk harfi **büyük** yazılır.\n- **İkinci kelime tamamlayıcı addır**, **küçük** harfle yazılır. İkisi birlikte tür adını belirtir.\n\n### Taksonomik Basamaklar (Genelden Özele)\n\n**Âlem → Şube → Sınıf → Takım → Aile (Familya) → Cins → Tür**\n\n- Âlemden türe gidildikçe **birey sayısı azalır**, **ortak özellik ve gen benzerliği artar**.\n\n# Sınıflandırma Ölçütleri Nasıl Seçilir?\n\n- **Yapay sınıflandırma:** Göze çarpan dış özelliklere göre yapılır (yarasa ve kuşu “uçanlar” grubuna koymak). Akrabalığı yansıtmaz.\n- **Doğal sınıflandırma:** Hücre yapısı, embriyonik gelişim, **DNA ve protein benzerliği** gibi akrabalık gösteren ölçütler kullanılır (yarasa memelidir).\n- **Homolog organlar:** Kökeni aynı, görevi farklı olabilir (insan kolu, yarasa kanadı) → akrabalık kanıtı. **Analog organlar:** Görevi aynı, kökeni farklı (kuş kanadı–kelebek kanadı) → akrabalık göstermez.\n- **Tür:** Ortak atadan gelen, yapı ve görev bakımından benzeyen, **çiftleştiğinde verimli döller** oluşturabilen bireyler topluluğu. At ile eşeğin yavrusu katır **kısırdır** → at ve eşek ayrı türdür.",
+            "ornekler": [
+              {
+                "soru": "*Felis catus* (kedi) ve *Felis silvestris* (yaban kedisi) hakkında ne söylenebilir?",
+                "cozum": "İkisinin cins adı aynıdır (*Felis*) → **aynı cinste** yer alırlar; tamamlayıcı adları farklı olduğu için **farklı türlerdir**."
+              },
+              {
+                "soru": "*Quercus robur*, *Quercus cerris* ve *Fagus orientalis* türlerinden hangileri birbirine daha yakın akrabadır?",
+                "cozum": "İlk iki türün cins adı aynıdır (*Quercus*, meşe) → **aynı cinste**, daha yakın akrabadırlar. *Fagus* (kayın) farklı cinstedir."
+              }
+            ],
+            "ozet": [
+              "Tür adı: **Cins** (büyük harf) + **tamamlayıcı ad** (küçük harf), italik.",
+              "Âlem → Şube → Sınıf → Takım → Aile → Cins → **Tür**.",
+              "Türe doğru: birey sayısı **azalır**, benzerlik **artar**."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": [
+            {
+              "program": "biyoloji-dersi",
+              "unitId": "2",
+              "code": "BİY.9.1.5",
+              "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2"
+            }
+          ]
+        },
+        {
+          "id": "k4",
+          "key": "9/biyoloji/u2/k4",
+          "localCode": "BİY.9.1.6",
+          "title": {
+            "tr": "Canlıların üst âlemlerde gruplandırılmasına neden olan özellikleri ile ilgili çıkarım yapar.",
+            "en": "Makes inferences about the features used to group organisms into domains."
+          },
+          "content": {
+            "anlatim": "# Üç Üst Âlem (Domain) Sistemi\n\nCanlılar hücresel yapı ve moleküler verilere göre **üç domainde** incelenir: **Bakteriler, Arkeler ve Ökaryotlar**.\n\n- **Bakteriler ve arkeler prokaryottur.**\n  - Bakterilerin hücre duvarı **peptidoglikan** içerir.\n  - **Arkeler** sıcak su kaynakları, tuzlalar gibi **ekstrem** koşullarda yaşayabilir; genetik olarak ökaryotlara yakın özellikleri vardır.\n\n### Ökaryotlar Âlemleri\n\n| Âlem | Özellikler | Örnekler |\n|---|---|---|\n| **Protista** | Tek veya çok hücreli ökaryotlar | Amip, öglena, paramesyum, algler |\n| **Mantarlar** | **Kitin** hücre duvarı, heterotrof (**çürükçül**) | Şapkalı mantar, maya mantarı |\n| **Bitkiler** | **Selüloz** hücre duvarı, kloroplast, fotosentez | Damarlı/damarsız, tohumlu/tohumsuz |\n| **Hayvanlar** | Hücre duvarı **yok**, holozoik beslenme | Omurgasızlar; omurgalılar (balık, amfibi, sürüngen, kuş, memeli) |",
+            "ornekler": [
+              {
+                "soru": "Bir mikroorganizmanın hücresinde çekirdek zarı yok, hücre duvarında peptidoglikan bulunmuyor ve 80 °C'lik kaplıca suyunda yaşıyor. Bu canlı hangi üst âleme aittir?",
+                "cozum": "Çekirdek zarı yok → **prokaryot**; peptidoglikan yok ve ekstrem ortamda yaşıyor → **Arkeler**."
+              },
+              {
+                "soru": "Mantarların bitkilerden ayrı bir âlemde sınıflandırılmasının nedenleri nelerdir?",
+                "cozum": "Mantarlar **fotosentez yapmaz**, heterotroftur (çürükçül); hücre duvarı selüloz değil **kitindir**; depo karbohidratı nişasta değil **glikojendir**."
+              }
+            ],
+            "ozet": [
+              "Üç domain: **Bakteriler, Arkeler, Ökaryotlar**.",
+              "Bakteri duvarı **peptidoglikan**; arkeler **ekstrem** ortamlarda.",
+              "Mantar duvarı **kitin**, bitki duvarı **selüloz**, hayvanda hücre duvarı yok."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": [
+            {
+              "program": "biyoloji-dersi",
+              "unitId": "2",
+              "code": "BİY.9.1.6",
+              "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2"
+            }
+          ]
+        },
+        {
+          "id": "k5",
+          "key": "9/biyoloji/u2/k5",
+          "localCode": "BİY.9.1.7",
+          "title": {
+            "tr": "Biyoçeşitliliği oluşturan unsurlar hakkında bilimsel çıkarım yapar ve Türkiye'nin biyoçeşitliliğini yorumlar.",
+            "en": "Makes inferences about the components of biodiversity and interprets Türkiye's biodiversity."
+          },
+          "content": {
+            "anlatim": "# Biyoçeşitlilik\n\nBiyoçeşitlilik üç düzeyde incelenir: **genetik çeşitlilik, tür çeşitliliği ve ekosistem çeşitliliği**.\n\n- **Endemik tür:** Dünyada **yalnızca belirli bir bölgede** yaşayan/yetişen yerli türlerdir (Ankara çiğdemi, Van ters lalesi, Akdeniz foku).\n- **Türkiye'nin önemi:** Anadolu **üç farklı bitki coğrafyasının** kesişim noktasındadır. İklim çeşitliliği, yer şekilleri ve kıtalar arası köprü konumu nedeniyle bitki ve hayvan türleri bakımından çok zengindir.\n- **Nuh'un Gemisi Ulusal Biyolojik Çeşitlilik Veri Tabanı:** Ülkemizdeki bitki ve hayvan envanterinin kayıt altına alındığı ve izlendiği ulusal sistemdir.\n\n# Biyoçeşitliliği Tehdit Eden Etkenler ve Koruma\n\n| Tehdit | Örnek |\n|---|---|\n| Habitat kaybı | Sulak alanların kurutulması, orman yangınları, plansız kentleşme |\n| Aşırı avlanma | Balıkların üreme döneminde avlanması |\n| İstilacı yabancı türler | Balast suyuyla taşınan canlılar, Akdeniz'e Süveyş Kanalı'ndan gelen balon balığı |\n| Kirlilik ve iklim değişikliği | Tarım ilaçları, sıcaklık artışı |\n\n**Koruma yolları:** Milli parklar ve koruma alanları, **tohum ve gen bankaları**, avlanma yasakları, ekolojik koridorlar, bilinçli tüketim.\n- Türkiye'deki bitki türlerinin yaklaşık **üçte biri endemiktir**; bu oran Avrupa ülkelerinin çoğundan yüksektir.",
+            "ornekler": [
+              {
+                "soru": "Bir ekosistemde tür sayısının fazla olması o ekosistemi nasıl etkiler?",
+                "cozum": "Besin ağı daha **karmaşık ve dayanıklı** olur. Bir tür azaldığında başka türler onun yerini doldurabilir; ekosistem bozulmalara karşı daha **kararlıdır**."
+              },
+              {
+                "soru": "Ankara çiğdemi ve Van ters lalesi için “endemik” ifadesi ne anlama gelir? Bu türlerin korunması neden ayrıca önemlidir?",
+                "cozum": "Dünyada **yalnızca Türkiye'nin o bölgesinde** doğal olarak yetişirler. Yaşam alanları yok olursa türün **tamamen yok olma** riski vardır; başka yerde doğal populasyonu bulunmaz."
+              }
+            ],
+            "ozet": [
+              "Biyoçeşitlilik: **genetik, tür, ekosistem** çeşitliliği.",
+              "Endemik = yalnızca o bölgeye özgü (Ankara çiğdemi, Van ters lalesi).",
+              "Türkiye **üç bitki coğrafyasının** kesişiminde; veri tabanı: **Nuh'un Gemisi**."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": [
+            {
+              "program": "biyoloji-dersi",
+              "unitId": "2",
+              "code": "BİY.9.1.7",
+              "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/2"
+            }
+          ]
+        },
+        {
+          "id": "k6",
+          "key": "9/biyoloji/u2/k6",
+          "localCode": "BİY.9.2.7",
+          "title": {
+            "tr": "Küçük moleküllerin pasif taşınmasına (difüzyon ve ozmoz) yönelik deney tasarlayabilme",
+            "en": "Designs experiments on the passive transport of small molecules (diffusion and osmosis)"
+          },
+          "content": {
+            "anlatim": "# Difüzyon ve Ozmoz Deneyleri\n\n## Deney 1: Difüzyon Hızı ve Sıcaklık\n\n- **Soru:** Sıcaklık difüzyon hızını etkiler mi?\n- **Düzenek:** Aynı hacimde soğuk (10 °C) ve sıcak (60 °C) suya birer damla mürekkep damlatılır.\n- **Değişkenler:** bağımsız — su sıcaklığı · bağımlı — rengin homojen yayılma süresi · kontrol — su hacmi, mürekkep miktarı, kap.\n- **Sonuç:** Sıcak suda renk daha hızlı yayılır; sıcaklık arttıkça taneciklerin **kinetik enerjisi** artar, difüzyon hızlanır.\n\n**Difüzyon hızını artıran etkenler:** sıcaklık, derişim farkı, yüzey alanı; taneciklerin küçük olması.\n\n## Deney 2: Patates Silindirlerinde Ozmoz\n\n1. Eşit boy ve kütlede patates silindirleri kesilir, ilk kütleleri tartılır.\n2. Farklı derişimde tuzlu su çözeltilerine (%0, %1, %3, %5) konur, 30 dakika bekletilir.\n3. Silindirler kurulanıp yeniden tartılır, **kütle değişimi yüzdesi** hesaplanır.\n\n| Çözelti | Kütle değişimi (örnek veri) | Ortam |\n|---|---|---|\n| Saf su (%0) | +%8 | Hipotonik → hücre su alır |\n| %1 tuz | +%1 | Yaklaşık izotonik |\n| %3 tuz | −%6 | Hipertonik → su kaybı |\n| %5 tuz | −%12 | Daha hipertonik → daha çok su kaybı |\n\n- Kütlenin değişmediği derişim, patates hücrelerinin iç ortamıyla **izotonik** olan derişimi gösterir.\n- **Yumurta zarı deneyi:** Kabuğu sirkeyle eritilmiş yumurta saf suda şişer, derişik şurupta büzüşür.\n\n> Deneylerde **tek bir değişken** değiştirilir; ölçümler en az üç kez tekrarlanıp ortalaması alınır.",
+            "ornekler": [
+              {
+                "soru": "Patates silindirleri %5'lik tuzlu suda 10 g'dan 8,8 g'a iniyor. Kütle değişimi yüzde kaçtır? Bu sırada hücrelerde ne olmuştur?",
+                "cozum": "Değişim $= \\dfrac{8{,}8 - 10}{10} \\cdot 100 = -\\%12$. Ortam **hipertoniktir**; hücreler **ozmozla su kaybetmiş**, sitoplazma büzüşmüştür (**plazmoliz**)."
+              },
+              {
+                "soru": "Salatanın üzerine tuz ve limon sosu erkenden dökülürse marul neden pörsür?",
+                "cozum": "Sos marul hücrelerine göre **hipertonik** bir ortam oluşturur. Hücreler ozmozla **su kaybeder**, turgor basıncı azalır ve yapraklar pörsür."
+              }
+            ],
+            "ozet": [
+              "Sıcaklık, derişim farkı ve yüzey alanı arttıkça difüzyon hızlanır.",
+              "Ozmoz deneyi: kütle artışı → hipotonik, azalış → hipertonik, değişmeme → izotonik ortam.",
+              "Deneyde tek değişken değiştirilir, ölçümler tekrarlanır."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k7",
+          "key": "9/biyoloji/u2/k7",
+          "localCode": "BİY.9.2.8",
+          "title": {
+            "tr": "Hücrelerin doku, organ ve sistemleri oluşturmasındaki örüntülere ilişkin tümevarımsal akıl yürütebilme",
+            "en": "Uses inductive reasoning about how cells organize into tissues, organs and systems"
+          },
+          "content": {
+            "anlatim": "# Hücreden Organizmaya Organizasyon\n\nÇok hücreli canlılarda hücreler **farklılaşarak** (özelleşerek) belirli görevleri üstlenir ve birlikte çalışır:\n\n$$\\text{Hücre} \\rightarrow \\text{Doku} \\rightarrow \\text{Organ} \\rightarrow \\text{Sistem} \\rightarrow \\text{Organizma}$$\n\n| Düzey | Tanım | Hayvan örneği | Bitki örneği |\n|---|---|---|---|\n| **Hücre** | Canlılığın en küçük birimi | Kas hücresi | Yaprak hücresi |\n| **Doku** | Aynı kökenli ve aynı görevi yapan hücreler | Kas dokusu | İletim dokusu (odun–soymuk) |\n| **Organ** | Farklı dokuların bir görev için birleşmesi | Kalp | Yaprak, kök |\n| **Sistem** | Ortak görevi olan organlar | Dolaşım sistemi | Sürgün sistemi |\n| **Organizma** | Sistemlerin uyumlu çalışmasıyla bağımsız yaşayan birey | İnsan | Çınar ağacı |\n\n## Hayvanlarda Temel Doku Tipleri\n\n- **Epitel doku:** Vücut yüzeyini ve organ içlerini örter, salgı yapar (deri, bezler).\n- **Bağ doku:** Destek ve bağlantı sağlar (kemik, kıkırdak, kan, yağ dokusu).\n- **Kas doku:** Hareket sağlar (iskelet, düz, kalp kası).\n- **Sinir doku:** Uyarıları iletir ve yorumlar (beyin, sinirler).\n\n## Örüntüden Genellemeye\n\n- Görevi farklı hücrelerin **şekli de farklıdır**: sinir hücresi uzun uzantılı (iletim), kırmızı kan hücresi çekirdeksiz ve iki yanı çukur (gaz taşıma için geniş yüzey), kas hücresi uzun ve iğ biçimli (kasılma).\n- **Genelleme:** Hücrenin yapısı görevine uygundur; organizasyon düzeyi yükseldikçe yeni özellikler ortaya çıkar (tek bir kalp kası hücresi kan pompalayamaz, kalp organı pompalar).\n- Tek hücrelilerde (amip, bakteri) tüm yaşamsal işlevleri **tek hücre** üstlenir; organizasyon hücre düzeyindedir.",
+            "ornekler": [
+              {
+                "soru": "Mide hangi organizasyon düzeyindedir? Hangi dokulardan oluşur?",
+                "cozum": "Mide bir **organdır**. İç yüzeyini örten ve salgı yapan **epitel doku**, karıştırma hareketini sağlayan **düz kas dokusu**, destek veren **bağ doku** ve çalışmasını düzenleyen **sinir dokusundan** oluşur. Sindirim sisteminin bir parçasıdır."
+              },
+              {
+                "soru": "Sinir hücresi, kırmızı kan hücresi ve kas hücresinin şekilleri incelenince hangi genellemeye ulaşılır?",
+                "cozum": "Her hücrenin **şekli görevine uygundur**: uzun uzantılı sinir hücresi uyarıyı uzak mesafeye iletir, çekirdeksiz ve çukur yüzlü kan hücresi daha çok oksijen taşır, uzun kas hücresi kasılarak hareket sağlar. **Yapı–görev uyumu** organizasyonun temel örüntüsüdür."
+              }
+            ],
+            "ozet": [
+              "Hücre → doku → organ → sistem → organizma.",
+              "Hayvanlarda dört temel doku: epitel, bağ, kas, sinir.",
+              "Hücrenin yapısı görevine uygundur; üst düzeyde yeni özellikler ortaya çıkar."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    }
+  ]
+}

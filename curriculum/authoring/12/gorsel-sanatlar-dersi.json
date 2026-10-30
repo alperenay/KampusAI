@@ -1,0 +1,627 @@
+{
+  "schemaVersion": 1,
+  "grade": 12,
+  "program": "gorsel-sanatlar-dersi",
+  "lessons": [
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "579",
+      "officialCode": "GS.12.1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/579",
+        "sha256": "e6eb3fc6e2971b2e95e66c6965ba4f25558a434210ec8bd6271e830342270e7e"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/579"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "579",
+      "officialCode": "GS.12.1.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/579",
+        "sha256": "e6eb3fc6e2971b2e95e66c6965ba4f25558a434210ec8bd6271e830342270e7e"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/579"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "580",
+      "officialCode": "GS.12.2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/580",
+        "sha256": "1b7d1efc9b5764f06673d42587b4836d7e106596396b0e0d926b3b57a80c79cb"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/580"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "580",
+      "officialCode": "GS.12.2.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/580",
+        "sha256": "1b7d1efc9b5764f06673d42587b4836d7e106596396b0e0d926b3b57a80c79cb"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/580"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "580",
+      "officialCode": "GS.12.2.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/580",
+        "sha256": "1b7d1efc9b5764f06673d42587b4836d7e106596396b0e0d926b3b57a80c79cb"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/580"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "581",
+      "officialCode": "GS.12.3.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/581",
+        "sha256": "b7a4576b9d5edd0c685c3f6d9cd9f25126c2ece46c78553d2d738810f2a60c95"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/581"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "581",
+      "officialCode": "GS.12.3.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/581",
+        "sha256": "b7a4576b9d5edd0c685c3f6d9cd9f25126c2ece46c78553d2d738810f2a60c95"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/581"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "581",
+      "officialCode": "GS.12.3.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/581",
+        "sha256": "b7a4576b9d5edd0c685c3f6d9cd9f25126c2ece46c78553d2d738810f2a60c95"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/581"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "581",
+      "officialCode": "GS.12.3.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/581",
+        "sha256": "b7a4576b9d5edd0c685c3f6d9cd9f25126c2ece46c78553d2d738810f2a60c95"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/581"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "581",
+      "officialCode": "GS.12.3.5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/581",
+        "sha256": "b7a4576b9d5edd0c685c3f6d9cd9f25126c2ece46c78553d2d738810f2a60c95"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/581"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "581",
+      "officialCode": "GS.12.3.6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/581",
+        "sha256": "b7a4576b9d5edd0c685c3f6d9cd9f25126c2ece46c78553d2d738810f2a60c95"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/581"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "581",
+      "officialCode": "GS.12.3.7",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/581",
+        "sha256": "b7a4576b9d5edd0c685c3f6d9cd9f25126c2ece46c78553d2d738810f2a60c95"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/581"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "581",
+      "officialCode": "GS.12.3.8",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/581",
+        "sha256": "b7a4576b9d5edd0c685c3f6d9cd9f25126c2ece46c78553d2d738810f2a60c95"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/581"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "581",
+      "officialCode": "GS.12.3.9",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/581",
+        "sha256": "b7a4576b9d5edd0c685c3f6d9cd9f25126c2ece46c78553d2d738810f2a60c95"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/581"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "582",
+      "officialCode": "GS.12.4.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/582",
+        "sha256": "234162a3e065b1c108b3481990921c3ba62ba0d2f1e36df78e4fc990c92c6f6a"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/582"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "582",
+      "officialCode": "GS.12.4.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/582",
+        "sha256": "234162a3e065b1c108b3481990921c3ba62ba0d2f1e36df78e4fc990c92c6f6a"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/582"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "582",
+      "officialCode": "GS.12.4.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/582",
+        "sha256": "234162a3e065b1c108b3481990921c3ba62ba0d2f1e36df78e4fc990c92c6f6a"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/582"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "582",
+      "officialCode": "GS.12.4.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/582",
+        "sha256": "234162a3e065b1c108b3481990921c3ba62ba0d2f1e36df78e4fc990c92c6f6a"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/582"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "582",
+      "officialCode": "GS.12.4.5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/582",
+        "sha256": "234162a3e065b1c108b3481990921c3ba62ba0d2f1e36df78e4fc990c92c6f6a"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/582"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 12,
+      "program": "gorsel-sanatlar-dersi",
+      "unitId": "582",
+      "officialCode": "GS.12.4.6",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/582",
+        "sha256": "234162a3e065b1c108b3481990921c3ba62ba0d2f1e36df78e4fc990c92c6f6a"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/gorsel-sanatlar-dersi/unite/582"
+        ]
+      },
+      "legacyCandidates": []
+    }
+  ]
+}

@@ -1,0 +1,785 @@
+{
+  "schemaVersion": 1,
+  "grade": 11,
+  "subjectId": "ingilizce",
+  "name": {
+    "tr": "İngilizce",
+    "en": "English"
+  },
+  "programEdition": "legacy-project-unverified",
+  "source": {
+    "file": "js/data/content/ing-11.js",
+    "sha256": "0ca33b94fbf54c9ee277ada736e66d7cf85dc90cc0c33ca64806632ca53a5f2d",
+    "additionalReferences": [],
+    "pdfReferenceCandidates": [
+      {
+        "file": "pdf-index/342.json",
+        "url": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=342",
+        "edition": "legacy",
+        "status": "programme-and-grade-review-required"
+      }
+    ]
+  },
+  "officialProgramCandidates": [
+    {
+      "slug": "ingilizce-dersi-9-12",
+      "url": "https://tymm.meb.gov.tr/ogretim-programlari/ders/ingilizce-dersi-9-12"
+    },
+    {
+      "slug": "ingilizce-dersi-hazirlik-12",
+      "url": "https://tymm.meb.gov.tr/ogretim-programlari/ders/ingilizce-dersi-hazirlik-12"
+    }
+  ],
+  "units": [
+    {
+      "id": "u1",
+      "name": {
+        "tr": "Unit 1: Future Jobs",
+        "en": "Unit 1: Future Jobs"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/ingilizce/u1/k1",
+          "localCode": "U1.1",
+          "title": {
+            "tr": "Meslekler ve iş tanımları; gerekli nitelikler",
+            "en": "Jobs, job descriptions and required qualities"
+          },
+          "content": {
+            "anlatim": "# Vocabulary — Jobs and Workplaces\n\n| English | Türkçe | English | Türkçe |\n|---|---|---|---|\n| software developer | yazılım geliştirici | applicant | başvuran, aday |\n| civil engineer | inşaat mühendisi | requirement | gereklilik |\n| pharmacist | eczacı | qualification | yeterlilik, diploma |\n| flight attendant | kabin memuru | salary / wage | maaş / ücret |\n| architect | mimar | full-time / part-time | tam / yarı zamanlı |\n| vet (veterinarian) | veteriner | shift | vardiya |\n\n# Bir İşi Tanımlamak\n\n- **Görev:** *A pharmacist **prepares** medicine and **gives advice** to patients.* (genel doğru → **Simple Present**)\n- **Gereklilik:** *You **need to / have to** have a university degree.* · *You **must** be patient.*\n- **Gerekli olmayan:** *You **don't have to** work at weekends.* (zorunlu değil) ≠ *You **mustn't** be late.* (yasak)\n- **Nitelik sıfatları:** *hard-working, punctual, creative, reliable, sociable, well-organised, good at maths, fluent in English*\n\n# Yetenek ve Uygunluk Kalıpları\n\n| Kalıp | Örnek |\n|---|---|\n| **be good at + V-ing / isim** | She **is good at solving** problems. |\n| **be capable of + V-ing** | He **is capable of working** under pressure. |\n| **be suitable for** | This job **is suitable for** people who love travelling. |\n| **be interested in + V-ing** | I'**m interested in designing** buildings. |",
+            "ornekler": [
+              {
+                "soru": "Choose the correct option: \"Doctors ___ work at night sometimes, but office workers usually ___.\" (a) must / don't have to (b) mustn't / have to (c) don't have to / must",
+                "cozum": "**(a)**: Doktorların bazen gece çalışması **gerekir** (*must/have to*); ofis çalışanlarının ise **gerekmez** (*don't have to*). *mustn't* \"yasak\" anlamı verdiği için uygun değildir."
+              },
+              {
+                "soru": "Complete: \"An architect should be good ___ drawing and capable ___ working in a team.\"",
+                "cozum": "**at** / **of** → *good at drawing*, *capable of working*. İki kalıpta da edattan sonra fiil **-ing** alır."
+              }
+            ],
+            "ozet": [
+              "Görev tanımı Simple Present ile yapılır.",
+              "must/have to: gerekli · don't have to: gerekmez · mustn't: yasak.",
+              "be good at / capable of / interested in + V-ing."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/ingilizce/u1/k2",
+          "localCode": "U1.2",
+          "title": {
+            "tr": "Gelecek planları ve tercihler: would like, would rather, prefer",
+            "en": "Future plans and preferences: would like, would rather, prefer"
+          },
+          "content": {
+            "anlatim": "# Gelecek Planları\n\n| Yapı | Kullanım | Örnek |\n|---|---|---|\n| **be going to** | Önceden verilmiş karar / plan | I**'m going to** study medicine. |\n| **Present Continuous** | Ayarlanmış (takvime bağlanmış) plan | I**'m starting** my internship next Monday. |\n| **will** | Anlık karar, tahmin | Robots **will** do many jobs in the future. |\n| **plan / hope / intend + to V** | Niyet | I **hope to** become a pilot. |\n\n# Tercih Bildirmek\n\n- **would like to + V:** *I**'d like to** work abroad.* (kibar istek)\n- **would rather + V (yalın) + than + V:** *I**'d rather** work outdoors **than** sit in an office.*\n- **would rather not + V:** *I**'d rather not** work at night.*\n- **prefer + V-ing / isim + to + V-ing / isim:** *I **prefer** teach**ing** **to** sell**ing**.*\n- **would prefer to + V + rather than + V:** *I**'d prefer to** be a vet **rather than** a doctor.*\n\n> **Dikkat:** *would rather*'dan sonra **to gelmez** ve fiil **yalın** hâldedir: ~~I'd rather to work~~ → I'd rather work.",
+            "ornekler": [
+              {
+                "soru": "Choose: \"I'd rather ___ a job with flexible hours.\" (a) to have (b) having (c) have",
+                "cozum": "**(c) have** — *would rather* yalın fiil alır."
+              },
+              {
+                "soru": "Rewrite with *prefer*: \"I like designing websites more than repairing computers.\"",
+                "cozum": "*I **prefer designing** websites **to repairing** computers.* — *prefer A to B* yapısında iki fiil de **-ing** alır."
+              }
+            ],
+            "ozet": [
+              "Plan: be going to; ayarlanmış plan: Present Continuous; tahmin: will.",
+              "would rather + yalın fiil (+ than + yalın fiil).",
+              "prefer V-ing to V-ing; would prefer to V rather than V."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "name": {
+        "tr": "Unit 2: Hobbies and Skills",
+        "en": "Unit 2: Hobbies and Skills"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/ingilizce/u2/k1",
+          "localCode": "U2.1",
+          "title": {
+            "tr": "Beğeni bildirme: gerund ve infinitive",
+            "en": "Expressing likes: gerunds and infinitives"
+          },
+          "content": {
+            "anlatim": "# Gerund (V-ing) mi, Infinitive (to V) mu?\n\n| Sonrasında **V-ing** alanlar | Sonrasında **to V** alanlar | İkisini de alanlar |\n|---|---|---|\n| enjoy, mind, avoid, finish, keep, give up, can't stand, practise, suggest | want, decide, hope, plan, learn, agree, refuse, promise, would like | like, love, hate, prefer, start, begin, continue |\n\n- *I **enjoy painting** landscapes.* · *She **decided to join** the chess club.*\n- **Edattan sonra her zaman V-ing:** *I'm keen **on** collect**ing** stamps.* · *He's fond **of** cook**ing**.*\n- **Özne olarak gerund:** ***Reading*** *improves your vocabulary.*\n\n# Anlamı Değişen Fiiller\n\n| Fiil | + to V | + V-ing |\n|---|---|---|\n| **stop** | bir şey yapmak için durmak: *He stopped **to take** a photo.* | bir eylemi bırakmak: *He stopped **taking** photos.* |\n| **remember** | yapmayı hatırlamak (sonra): *Remember **to feed** the cat.* | yaptığını hatırlamak (önce): *I remember **feeding** it.* |\n| **try** | çabalamak: *I tried **to lift** it.* | denemek: *Try **adding** some salt.* |\n\n# Hobi Kelimeleri\n\n*knitting, origami, rock climbing, bird watching, pottery (çömlekçilik), calligraphy, coding, baking, chess, playing an instrument*",
+            "ornekler": [
+              {
+                "soru": "Choose: \"My brother gave up ___ video games and decided ___ the guitar.\" (a) to play / learning (b) playing / to learn (c) playing / learning",
+                "cozum": "**(b)**: *give up* ardından **V-ing**, *decide* ardından **to V** gelir."
+              },
+              {
+                "soru": "What is the difference? \"I stopped to talk to her.\" / \"I stopped talking to her.\"",
+                "cozum": "İlki: **onunla konuşmak için durdum** (amaç). İkincisi: **onunla konuşmayı bıraktım**."
+              }
+            ],
+            "ozet": [
+              "enjoy/avoid/mind/finish + V-ing; want/decide/hope + to V.",
+              "Edattan sonra V-ing (keen on, fond of, interested in).",
+              "stop/remember/try: to V ve V-ing farklı anlam."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/ingilizce/u2/k2",
+          "localCode": "U2.2",
+          "title": {
+            "tr": "Yetenek: can, could, be able to, manage to",
+            "en": "Ability: can, could, be able to, manage to"
+          },
+          "content": {
+            "anlatim": "# Yetenek Kalıpları\n\n| Zaman | Yapı | Örnek |\n|---|---|---|\n| Şimdi | **can / be able to** | I **can** juggle three balls. |\n| Geçmişte genel yetenek | **could** | I **could** swim when I was five. |\n| Geçmişte **tek seferlik başarı** | **was/were able to, managed to** | The fire spread fast but everyone **was able to / managed to** escape. ~~could escape~~ |\n| Gelecek | **will be able to** | You **will be able to** speak fluently after the course. |\n| Present Perfect | **have been able to** | I **haven't been able to** finish my model yet. |\n\n- **Olumsuz tek seferlik durumda *couldn't* kullanılabilir:** *I **couldn't** open the jar.*\n- **be good at / be skilled at / be talented at + V-ing** de yetenek bildirir.\n- **know how to + V:** *Do you **know how to** knit?*\n\n# Yetenek Sorup Cevaplamak\n\n- *Can you play any instruments?* — *Yes, I can play the bağlama, but I can't read notes.*\n- *How well can you ...?* — *Not very well / Quite well / Like a professional!*",
+            "ornekler": [
+              {
+                "soru": "Choose: \"The exam was really hard, but I ___ answer all the questions.\" (a) could (b) managed to (c) can",
+                "cozum": "**(b) managed to** — geçmişte **zorluğa rağmen tek seferlik başarı** için *could* değil *managed to / was able to* kullanılır."
+              },
+              {
+                "soru": "Complete with *be able to* in the correct form: \"I've practised a lot, so next year I ___ (play) in the school orchestra.\"",
+                "cozum": "*I **will be able to play*** — *can*'in gelecek zaman karşılığı *will be able to*'dur."
+              }
+            ],
+            "ozet": [
+              "Genel geçmiş yetenek: could.",
+              "Tek seferlik geçmiş başarı: was able to / managed to.",
+              "Gelecek: will be able to; Present Perfect: have been able to."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u3",
+      "name": {
+        "tr": "Unit 3: Hard Times",
+        "en": "Unit 3: Hard Times"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/ingilizce/u3/k1",
+          "localCode": "U3.1",
+          "title": {
+            "tr": "Past Perfect ve geçmişte olayları sıralamak",
+            "en": "Past Perfect and sequencing past events"
+          },
+          "content": {
+            "anlatim": "# Past Perfect (had + V3)\n\nGeçmişteki bir olaydan **daha önce** tamamlanmış eylemi anlatır.\n$$\\text{Özne} + had + V_3$$\n- *When the firefighters arrived, the fire **had** already **destroyed** the house.*\n- *By the time she called, I **had left**.*\n- Olumsuz: *I **hadn't seen** such a storm before.* · Soru: ***Had** they **evacuated** the village?*\n\n# Zaman Bağlaçları\n\n| Bağlaç | Örnek |\n|---|---|\n| **before** | *Before the earthquake hit, they had prepared an emergency kit.* |\n| **after** | *After the flood had gone down, people returned home.* |\n| **by the time** | *By the time help came, the survivors had waited for two days.* |\n| **when** | *When I got to the station, the train had left.* (önce tren gitti) |\n| **as soon as** | *As soon as they had heard the alarm, they ran out.* |\n\n> *When I got there, the train **left**.* → ben vardığım an tren kalktı. *…the train **had left**.* → ben varmadan önce tren gitmişti.\n\n# Zor Zamanlar Kelimeleri\n\n*disaster, earthquake, flood, drought, famine (kıtlık), refugee, rescue, survivor, shelter, epidemic, poverty, injured, homeless*",
+            "ornekler": [
+              {
+                "soru": "Put the verbs in the correct form: \"When the rescue team ___ (find) the climbers, they ___ (be) in the snow for 18 hours.\"",
+                "cozum": "*found* / *had been* — bulma olayı geçmişte; karda bekleme ondan **önce** başlayıp sürdü → Past Perfect."
+              },
+              {
+                "soru": "Which sentence means the guests arrived before the dinner was ready? (a) When the guests arrived, we had cooked dinner. (b) When the guests arrived, we cooked dinner.",
+                "cozum": "**(b)**: misafirler geldi, **sonra** yemeği pişirdik. (a)'da yemek misafirler gelmeden önce hazırdı."
+              }
+            ],
+            "ozet": [
+              "Past Perfect: had + V3, geçmişteki olaydan önceki olay.",
+              "by the time / before / after / when ile sıralama.",
+              "Afet kelimeleri: survivor, shelter, refugee, famine."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/ingilizce/u3/k2",
+          "localCode": "U3.2",
+          "title": {
+            "tr": "Duygu ve sempati ifade etmek; yardım teklif etmek",
+            "en": "Expressing feelings and sympathy; offering help"
+          },
+          "content": {
+            "anlatim": "# Sempati ve Teselli\n\n| Durum | Kalıp |\n|---|---|\n| Kötü haber duyunca | *I'm so sorry to hear that.* · *That's terrible!* · *What a shame!* |\n| Teselli | *Don't worry, everything will be all right.* · *Cheer up!* · *I know how you feel.* |\n| Destek | *If there's anything I can do, just let me know.* |\n\n# Yardım Teklif Etmek ve Cevaplamak\n\n- *Shall I help you carry these boxes?* — *That's very kind of you.*\n- *Would you like me to call someone?* — *No, thanks. I can manage.*\n- *Let me give you a hand.* / *Can I do anything for you?*\n\n# Duygu Sıfatları: -ed ve -ing\n\n| -ed (hisseden kişi) | -ing (hissettiren şey) |\n|---|---|\n| *I was **shocked** by the news.* | *The news was **shocking**.* |\n| *The refugees were **exhausted**.* | *It was an **exhausting** journey.* |\n| *frightened, depressed, relieved, worried* | *frightening, depressing, relieving, worrying* |\n\n**Not:** *worried* sıfatı -ing ile de kullanılır: *worrying news*.",
+            "ornekler": [
+              {
+                "soru": "Choose: \"After the long journey, the children were ___.\" (a) exhausting (b) exhausted",
+                "cozum": "**(b) exhausted** — çocuklar yorgunluğu **hissedenler** (-ed)."
+              },
+              {
+                "soru": "Your friend says: \"I failed my driving test again.\" Give an appropriate response.",
+                "cozum": "*Oh, I'm sorry to hear that. Don't give up — you'll pass next time. Shall I help you practise?* (sempati + teselli + yardım teklifi)"
+              }
+            ],
+            "ozet": [
+              "Sempati: I'm sorry to hear that / What a shame.",
+              "Yardım: Shall I…? Would you like me to…?",
+              "-ed hisseden, -ing hissettiren."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u4",
+      "name": {
+        "tr": "Unit 4: What a Life",
+        "en": "Unit 4: What a Life"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/ingilizce/u4/k1",
+          "localCode": "U4.1",
+          "title": {
+            "tr": "Biyografi okuma ve yazma; Simple Past ve Past Continuous",
+            "en": "Reading and writing biographies; Simple Past and Past Continuous"
+          },
+          "content": {
+            "anlatim": "# Biyografinin Yapısı\n\n1. **Doğum ve aile:** *Aziz Sancar **was born** in Savur, Mardin, **in** 1946.*\n2. **Eğitim:** *He **graduated from** Istanbul University Faculty of Medicine.*\n3. **Kariyer ve başarılar:** *He **was awarded** the Nobel Prize in Chemistry **in** 2015.*\n4. **Kişisel hayat ve miras:** *He **donated** his Nobel medal to Atatürk's Mausoleum (Anıtkabir).*\n\n# Simple Past × Past Continuous\n\n| Simple Past | Past Continuous |\n|---|---|\n| Tamamlanmış eylem: *She **wrote** her first novel at 20.* | Geçmişte belli anda süren eylem: *At 8 p.m. he **was working** in the lab.* |\n| Arka arkaya olaylar: *He **opened** the door and **saw** the letter.* | Yarıda kesilen eylem: *While she **was studying**, the phone **rang**.* |\n\n- **when** + kısa eylem (Simple Past), **while** + uzun eylem (Past Continuous).\n- *While I was walking home, I **met** an old friend.*\n\n# Biyografi Kelimeleri\n\n*be born, grow up, raise, move to, graduate from, get married, retire, pass away, achieve, invent, discover, be awarded, inspire*",
+            "ornekler": [
+              {
+                "soru": "Complete: \"While Marie Curie ___ (work) with radioactive materials, she ___ (discover) polonium.\"",
+                "cozum": "*was working* / *discovered* — uzun süren arka plan eylemi (Past Continuous) ve o sırada gerçekleşen tek olay (Simple Past)."
+              },
+              {
+                "soru": "Order the biography parts: (A) She won a gold medal in 2020. (B) She was born in Ankara in 2000. (C) She started archery at the age of 12.",
+                "cozum": "**B → C → A** — doğum, başlangıç/eğitim, başarı (kronolojik sıra)."
+              }
+            ],
+            "ozet": [
+              "Biyografi: doğum → eğitim → kariyer → miras.",
+              "while + Past Continuous, when + Simple Past.",
+              "be born / grow up / graduate from / be awarded."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/ingilizce/u4/k2",
+          "localCode": "U4.2",
+          "title": {
+            "tr": "Geçmişte hayal kurmak ve pişmanlık: should have, could have",
+            "en": "Regrets and alternatives in the past: should have, could have"
+          },
+          "content": {
+            "anlatim": "# Geçmişe Yönelik Modallar (modal + have + V3)\n\n| Yapı | Anlam | Örnek |\n|---|---|---|\n| **should have + V3** | Yapmalıydı (ama yapmadı) — pişmanlık/eleştiri | *I **should have studied** harder.* |\n| **shouldn't have + V3** | Yapmamalıydı (ama yaptı) | *You **shouldn't have shouted** at him.* |\n| **could have + V3** | Yapabilirdi (fırsat vardı, yapmadı) | *She **could have become** a doctor, but she chose music.* |\n| **must have + V3** | Kesin çıkarım (yapmış olmalı) | *He **must have left** early; his car isn't here.* |\n| **can't have + V3** | Kesin olumsuz çıkarım | *She **can't have finished** already!* |\n| **might/may have + V3** | Olasılık (yapmış olabilir) | *They **might have missed** the bus.* |\n\n# Kullanım İpuçları\n\n- Pişmanlık dilerken: *I wish I had…* = *I should have…*: *I wish I **had listened** to my teacher.*\n- Ünlülerin hayatlarını yorumlarken: *If he hadn't failed at first, he **might not have** tried so hard.*",
+            "ornekler": [
+              {
+                "soru": "Choose: \"The lights are off. They ___ to bed.\" (a) should have gone (b) must have gone (c) can't have gone",
+                "cozum": "**(b) must have gone** — ışıkların kapalı olmasından **güçlü çıkarım**."
+              },
+              {
+                "soru": "Express regret: \"I didn't take an umbrella and got wet.\"",
+                "cozum": "*I **should have taken** an umbrella.* (ya da *I wish I had taken an umbrella.*)"
+              }
+            ],
+            "ozet": [
+              "should have V3: pişmanlık/eleştiri.",
+              "could have V3: değerlendirilmemiş fırsat.",
+              "must have V3 kesin, might have V3 olası, can't have V3 imkânsız."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u5",
+      "name": {
+        "tr": "Unit 5: Back to the Past",
+        "en": "Unit 5: Back to the Past"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/ingilizce/u5/k1",
+          "localCode": "U5.1",
+          "title": {
+            "tr": "Geçmiş alışkanlıklar: used to, would, be/get used to",
+            "en": "Past habits: used to, would, be/get used to"
+          },
+          "content": {
+            "anlatim": "# used to + V\n\nGeçmişte olup **artık olmayan** alışkanlık ya da durum.\n- *People **used to** write letters; now they send messages.*\n- Olumsuz: *I **didn't use to** like vegetables.* · Soru: ***Did** you **use to** play marbles?*\n\n# would + V (geçmiş alışkanlık)\n\nYalnızca **tekrarlanan eylemler** için; durum fiilleriyle (be, have, know, like) **kullanılmaz**.\n- *Every summer we **would** visit our grandparents in the village.* ✔\n- ~~*I would have a bicycle.*~~ → *I **used to** have a bicycle.* (sahiplik = durum)\n\n# be used to / get used to + V-ing / isim\n\n| Yapı | Anlam | Örnek |\n|---|---|---|\n| **be used to + V-ing** | Alışkın olmak | *I'**m used to getting** up early.* |\n| **get used to + V-ing** | Alışmak (süreç) | *She is **getting used to living** in a big city.* |\n| **used to + V** | Eskiden yapardı | *I **used to get** up late.* |\n\n# Geçmişi Anlatan Kelimeler\n\n*cassette player, black-and-white TV, telegram, typewriter, marbles (bilye), hopscotch (seksek), street vendor, nostalgia*",
+            "ornekler": [
+              {
+                "soru": "Choose: \"When I was a child, I ___ have long hair.\" (a) would (b) used to (c) am used to",
+                "cozum": "**(b) used to** — *have* (sahiplik) bir **durum** fiilidir; *would* durum fiilleriyle kullanılmaz."
+              },
+              {
+                "soru": "Explain: \"I used to drive on the left.\" vs \"I'm used to driving on the left.\"",
+                "cozum": "İlki: **eskiden** solda araba sürerdim (artık değil). İkincisi: solda araba sürmeye **alışkınım**."
+              }
+            ],
+            "ozet": [
+              "used to + V: eskiden (artık değil).",
+              "would + V: yalnızca tekrarlanan eylem; durum fiiliyle olmaz.",
+              "be/get used to + V-ing: alışkın olmak / alışmak."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/ingilizce/u5/k2",
+          "localCode": "U5.2",
+          "title": {
+            "tr": "Dilek kipleri: I wish / If only",
+            "en": "Wishes: I wish / If only"
+          },
+          "content": {
+            "anlatim": "# Şimdiye Yönelik Dilek (gerçek dışı)\n\n$$\\text{I wish / If only} + \\text{Simple Past}$$\n- *I **wish** I **had** a time machine.* (yok)\n- *I **wish** I **were** taller.* (resmî dilde *were* tüm öznelerle)\n- *I wish I **could** speak Japanese.*\n\n# Geçmişe Yönelik Dilek (pişmanlık)\n\n$$\\text{I wish / If only} + \\text{Past Perfect}$$\n- *I **wish** I **had visited** my grandfather more often.* (ziyaret etmedim)\n- *If only we **hadn't sold** the old house!*\n\n# Başkasının Davranışından Şikâyet\n\n$$\\text{I wish} + \\text{özne} + would + V$$\n- *I **wish** you **would stop** interrupting me.*\n- Kendimiz için *would* kullanılmaz: ~~I wish I would~~ → *I wish I could…*\n\n| Dilek | Gerçek durum |\n|---|---|\n| I wish I knew the answer. | I don't know the answer. |\n| I wish I had known the answer. | I didn't know the answer. |",
+            "ornekler": [
+              {
+                "soru": "Make a wish: \"I can't remember my childhood friend's address.\"",
+                "cozum": "*I wish I **could remember** my childhood friend's address.*"
+              },
+              {
+                "soru": "Choose: \"I failed the exam. I wish I ___ more.\" (a) studied (b) had studied (c) would study",
+                "cozum": "**(b) had studied** — geçmişte olmuş bir duruma pişmanlık → Past Perfect."
+              }
+            ],
+            "ozet": [
+              "wish + Simple Past: şimdiki gerçek dışı durum.",
+              "wish + Past Perfect: geçmiş pişmanlık.",
+              "wish + someone + would: başkasından şikâyet."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u6",
+      "name": {
+        "tr": "Unit 6: Open Your Heart",
+        "en": "Unit 6: Open Your Heart"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/ingilizce/u6/k1",
+          "localCode": "U6.1",
+          "title": {
+            "tr": "Özür dileme, mazeret bildirme ve kabul etme",
+            "en": "Apologising, making excuses and accepting apologies"
+          },
+          "content": {
+            "anlatim": "# Özür Dilemek\n\n| Resmiyet | Kalıp |\n|---|---|\n| Gündelik | *Sorry!* · *My bad.* · *Oops, sorry about that.* |\n| Nötr | *I'm really sorry for being late.* · *I apologise for the noise.* |\n| Resmî | *Please accept my apologies.* · *I'd like to apologise for the inconvenience.* |\n\n- **apologise (to someone) for + V-ing / isim:** *I apologise **to** you **for** forgetting your birthday.*\n- **be sorry for/about + V-ing:** *I'm sorry **for** breaking your mug.*\n\n# Mazeret Bildirmek\n\n- *I'm sorry I'm late. **The traffic was terrible.***\n- *I didn't mean to hurt you.* · *It was an accident.* · *I had no choice.*\n- *I'll make it up to you.* (Telafi edeceğim.)\n\n# Özrü Kabul Etmek / Reddetmek\n\n| Kabul | Reddetme |\n|---|---|\n| *That's all right.* · *Never mind.* · *No problem.* · *Don't worry about it.* · *Apology accepted.* | *That's not good enough.* · *You should have told me earlier.* |\n\n# Duygu Kelimeleri\n\n*grateful, upset, offended, embarrassed, forgive, regret, misunderstanding, trust, honest, sincere*",
+            "ornekler": [
+              {
+                "soru": "Complete: \"I apologise ___ the delay ___ your order.\"",
+                "cozum": "*for* / *in* (ya da *with*) → *I apologise **for** the delay **in** your order.* — *apologise for + isim*."
+              },
+              {
+                "soru": "Your friend apologises for losing your book. Respond politely and accept the apology.",
+                "cozum": "*Never mind, it's not a big deal. Don't worry about it — I can buy another one.*"
+              }
+            ],
+            "ozet": [
+              "apologise (to sb) for + V-ing.",
+              "Mazeret: I didn't mean to… / It was an accident.",
+              "Kabul: Never mind / That's all right."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/ingilizce/u6/k2",
+          "localCode": "U6.2",
+          "title": {
+            "tr": "Duyguları ifade etme ve tavsiye: should, ought to, had better",
+            "en": "Expressing feelings and giving advice: should, ought to, had better"
+          },
+          "content": {
+            "anlatim": "# Tavsiye Kalıpları\n\n| Yapı | Güç | Örnek |\n|---|---|---|\n| **should / ought to + V** | Genel tavsiye | *You **should** talk to her.* · *You **ought to** apologise.* |\n| **had better + V** | Güçlü tavsiye/uyarı (yapmazsan kötü sonuç) | *You'**d better** tell the truth, or she'll be angry.* |\n| **If I were you, I would…** | Kendini onun yerine koyma | ***If I were you, I'd** call him.* |\n| **Why don't you…? / How about + V-ing?** | Öneri | ***Why don't you** write her a letter?* |\n\n- Olumsuz: *You **shouldn't** keep it to yourself.* · *You'**d better not** be late.* (~~hadn't better~~)\n- *had better* geçmiş anlam taşımaz; **şimdi/gelecek** içindir.\n\n# Duyguları Paylaşmak\n\n- *I feel **hurt / lonely / disappointed / anxious** because…*\n- *It makes me **feel** + sıfat*: *It makes me feel nervous when people stare at me.*\n- *I can't help + V-ing:* *I **can't help thinking** about it.* (elimde değil)",
+            "ornekler": [
+              {
+                "soru": "Choose: \"It's going to rain. You ___ take an umbrella.\" (a) had better (b) had better not (c) ought",
+                "cozum": "**(a) had better** — yağmur yaklaşırken güçlü tavsiye. *ought* tek başına değil *ought to* olarak kullanılır."
+              },
+              {
+                "soru": "Give advice to a friend who feels lonely at a new school using *If I were you*.",
+                "cozum": "*If I were you, I would join a club so that I could meet new people.*"
+              }
+            ],
+            "ozet": [
+              "should / ought to: tavsiye; had better: güçlü uyarı.",
+              "Olumsuz: had better not + V.",
+              "If I were you, I'd… / Why don't you…?"
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u7",
+      "name": {
+        "tr": "Unit 7: Facts about Turkey",
+        "en": "Unit 7: Facts about Turkey"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/ingilizce/u7/k1",
+          "localCode": "U7.1",
+          "title": {
+            "tr": "Edilgen yapı (Passive Voice): geniş ve geçmiş zaman",
+            "en": "The passive voice: present and past"
+          },
+          "content": {
+            "anlatim": "# Edilgen Yapı\n\nEylemi **kimin yaptığı** önemli değilse ya da bilinmiyorsa, **eylemin kendisi / etkilenen** öne alınır.\n$$\\text{Nesne} + be + V_3 \\;(+\\; by \\;\\text{yapan})$$\n\n| Zaman | Etken | Edilgen |\n|---|---|---|\n| Simple Present | They **grow** hazelnuts in Giresun. | Hazelnuts **are grown** in Giresun. |\n| Simple Past | Mimar Sinan **built** the Selimiye Mosque. | The Selimiye Mosque **was built** by Mimar Sinan. |\n| Present Perfect | They **have restored** the bridge. | The bridge **has been restored**. |\n| Modal | You **can see** Mount Ağrı from here. | Mount Ağrı **can be seen** from here. |\n\n- **by** yalnızca yapan önemliyse eklenir: *Göbeklitepe **was discovered** in 1963 / **was excavated by** Klaus Schmidt.*\n- Durum fiilleri ve nesnesiz fiiller (arrive, happen) edilgen yapılmaz.\n\n# Türkiye Kelimeleri\n\n*heritage site (miras alanı), landmark, cuisine, festival, carpet weaving, ancient city, ruins, fairy chimneys (peri bacaları), thermal springs, export*",
+            "ornekler": [
+              {
+                "soru": "Make passive: \"People visit Cappadocia by hot-air balloon.\"",
+                "cozum": "*Cappadocia **is visited** by hot-air balloon.* (yapan \"people\" önemsiz olduğu için *by people* atılır)"
+              },
+              {
+                "soru": "Choose: \"The Hagia Sophia ___ in the 6th century.\" (a) built (b) was built (c) is built",
+                "cozum": "**(b) was built** — yapı inşa edilmiştir (edilgen), olay geçmişte."
+              }
+            ],
+            "ozet": [
+              "Edilgen: be + V3; yapan önemsizse by atılır.",
+              "is/are V3 (geniş), was/were V3 (geçmiş), has been V3, can be V3.",
+              "Nesnesiz fiiller (happen, arrive) edilgen olmaz."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/ingilizce/u7/k2",
+          "localCode": "U7.2",
+          "title": {
+            "tr": "Yer tanıtma ve bilgi verme; turist rehberi dili",
+            "en": "Describing places and giving information; tour guide language"
+          },
+          "content": {
+            "anlatim": "# Bir Yeri Tanıtmak\n\n- **Konum:** *Safranbolu **is located in** the Black Sea Region / **is situated** near Karabük.*\n- **Ünlü olduğu şey:** *It **is famous for** its Ottoman houses.* · *It **is known as** \"the city of saffron\".*\n- **Tarih:** *The town **dates back to** the 13th century.* · *It **was declared** a UNESCO World Heritage Site in 1994.*\n- **Öneri:** *You **shouldn't miss** the old bazaar.* · *It's **worth visiting** in autumn.* (**worth + V-ing**)\n\n# Sayılar ve Karşılaştırma\n\n- *Türkiye **is surrounded by** seas on three sides.*\n- *Lake Van is **the largest** lake in Türkiye.*\n- *Mount Ağrı (5,137 m) is **higher than** any other mountain in the country.*\n- *Over 50 million tourists **visit** Türkiye **every year**.*\n\n# Bilgi Sorma\n\n- *What is … famous for?* · *When was it built?* · *How far is it from …?* · *Is it worth visiting?*\n\n| Kalıp | Anlam |\n|---|---|\n| be famous for | ile ünlü olmak |\n| be home to | -e ev sahipliği yapmak |\n| be worth + V-ing | -meye değer |\n| date back to | -e uzanmak (tarih) |",
+            "ornekler": [
+              {
+                "soru": "Complete: \"Pamukkale is famous ___ its white travertines and is worth ___ (visit).\"",
+                "cozum": "*for* / *visiting* — *be famous for*, *be worth + V-ing*."
+              },
+              {
+                "soru": "Write one sentence introducing Ephesus with *date back to* and *be home to*.",
+                "cozum": "*Ephesus **dates back to** the 10th century BC and **is home to** the Library of Celsus.*"
+              }
+            ],
+            "ozet": [
+              "be located in / be famous for / be known as.",
+              "date back to, be declared, be home to.",
+              "be worth + V-ing."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u8",
+      "name": {
+        "tr": "Unit 8: Sports",
+        "en": "Unit 8: Sports"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/ingilizce/u8/k1",
+          "localCode": "U8.1",
+          "title": {
+            "tr": "Spor kuralları: zorunluluk, izin ve yasak",
+            "en": "Rules in sports: obligation, permission and prohibition"
+          },
+          "content": {
+            "anlatim": "# Kural Bildiren Yapılar\n\n| Anlam | Yapı | Örnek |\n|---|---|---|\n| Zorunluluk | **must, have to, be required to** | *Players **have to** wear shin guards.* |\n| Gereksizlik | **don't have to, needn't** | *You **don't have to** be tall to play volleyball well.* |\n| İzin | **can, be allowed to, be permitted to** | *In rugby, you **are allowed to** carry the ball.* |\n| Yasak | **can't, mustn't, be not allowed to** | *Football players **are not allowed to** touch the ball with their hands.* |\n| Beklenti | **be supposed to** | *You **are supposed to** shake hands after the match.* |\n\n# Spor Fiilleri: play / go / do\n\n| play (top ve rakip) | go (-ing ile biten) | do (bireysel, dövüş sporları) |\n|---|---|---|\n| football, chess, tennis | swimming, skiing, cycling | judo, karate, gymnastics, yoga |\n\n# Ekstrem Sporlar\n\n*paragliding, bungee jumping, rafting, rock climbing, scuba diving, skydiving* — *equipment, helmet, harness, risky, adrenaline, referee, opponent, tournament, penalty*",
+            "ornekler": [
+              {
+                "soru": "Choose: \"In basketball, you ___ run with the ball without dribbling.\" (a) are allowed to (b) aren't allowed to (c) don't have to",
+                "cozum": "**(b) aren't allowed to** — top sürmeden koşmak (*travelling*) kural gereği **yasaktır**."
+              },
+              {
+                "soru": "Complete with play, go or do: \"She ___ karate on Mondays and ___ cycling at weekends.\"",
+                "cozum": "*does* / *goes* — dövüş sporu **do**, -ing ile biten etkinlik **go**."
+              }
+            ],
+            "ozet": [
+              "must/have to zorunlu; be allowed to izin; not allowed to yasak.",
+              "be supposed to: beklenen davranış.",
+              "play top oyunları, go -ing etkinlikleri, do bireysel sporlar."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/ingilizce/u8/k2",
+          "localCode": "U8.2",
+          "title": {
+            "tr": "Dolaylı anlatım (Reported Speech): ifadeler ve sorular",
+            "en": "Reported speech: statements and questions"
+          },
+          "content": {
+            "anlatim": "# İfadeleri Aktarmak\n\nAktarma fiili geçmişse (**said, told**) zaman **bir derece geriye** kayar.\n| Doğrudan | Dolaylı |\n|---|---|\n| \"I **am** tired.\" | He said (that) he **was** tired. |\n| \"We **won** the match.\" | They said they **had won** the match. |\n| \"I **will** train harder.\" | She said she **would** train harder. |\n| \"I **can** swim.\" | He said he **could** swim. |\n\n- **say** + (that) · **tell + kişi** + (that): *He **told me** that he was tired.*\n- Zaman/yer kelimeleri: *now → then, today → that day, tomorrow → the next day, here → there, this → that*\n\n# Soruları Aktarmak\n\n- **Evet/hayır sorusu → if / whether:** \"Are you ready?\" → *The coach asked **if** we **were** ready.*\n- **Wh- sorusu → soru kelimesi + düz cümle:** \"Where **do you** train?\" → *She asked me where **I trained**.* (~~where did I train~~)\n\n# Emir ve Rica\n\n- \"Run faster!\" → *The coach **told** us **to run** faster.*\n- \"Don't give up.\" → *He told me **not to give up**.*",
+            "ornekler": [
+              {
+                "soru": "Report: The referee said, \"You can't play in this match.\"",
+                "cozum": "*The referee said (that) I **couldn't play** in **that** match.*"
+              },
+              {
+                "soru": "Report: \"When did you start running?\" she asked me.",
+                "cozum": "*She asked me **when I had started** running.* — soru sırası bozulur, Simple Past → Past Perfect."
+              }
+            ],
+            "ozet": [
+              "say (that) / tell + kişi; zaman bir derece geri.",
+              "Evet/hayır sorusu → if/whether; wh- soru → düz cümle sırası.",
+              "Emir → told sb (not) to V."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u9",
+      "name": {
+        "tr": "Unit 9: My Friends",
+        "en": "Unit 9: My Friends"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/ingilizce/u9/k1",
+          "localCode": "U9.1",
+          "title": {
+            "tr": "Kişilik sıfatları ve insanları betimlemek",
+            "en": "Personality adjectives and describing people"
+          },
+          "content": {
+            "anlatim": "# Kişilik Sıfatları\n\n| Olumlu | Olumsuz |\n|---|---|\n| reliable (güvenilir), generous (cömert), easy-going (uysal), considerate (düşünceli), loyal (sadık), outgoing (dışa dönük), sincere (içten) | selfish (bencil), bossy (otoriter), mean (cimri/kaba), arrogant (kibirli), stubborn (inatçı), moody (huysuz), jealous (kıskanç) |\n\n# Görünüş × Kişilik\n\n- **What is she like?** → kişilik: *She's kind and funny.*\n- **What does she look like?** → görünüş: *She's tall with curly hair.*\n- **What does she like?** → sevdikleri: *She likes reading.*\n\n# Betimlemeyi Güçlendirmek\n\n- **Derece zarfları:** *quite, rather, really, extremely, a bit* (olumsuzla): *He's **a bit** stubborn.*\n- **Örnekle desteklemek:** *She's very generous — she always shares her lunch with others.*\n- **Fiil kalıpları:** *get on well with* (iyi geçinmek), *fall out with* (bozuşmak), *count on* (güvenmek), *look up to* (örnek almak), *make up* (barışmak)",
+            "ornekler": [
+              {
+                "soru": "Choose the correct question for the answer \"He's tall and has a beard.\" (a) What is he like? (b) What does he look like? (c) What does he like?",
+                "cozum": "**(b)** — cevap **dış görünüşü** anlatıyor."
+              },
+              {
+                "soru": "Which phrasal verb fits? \"Ali and I had an argument, but we ___ the next day.\" (a) fell out (b) made up (c) looked up to",
+                "cozum": "**(b) made up** — tartıştıktan sonra **barıştık**."
+              }
+            ],
+            "ozet": [
+              "What is he like? kişilik · What does he look like? görünüş.",
+              "reliable, generous, loyal ↔ selfish, bossy, stubborn.",
+              "get on with, fall out with, make up, count on."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/ingilizce/u9/k2",
+          "localCode": "U9.2",
+          "title": {
+            "tr": "Sıfat cümlecikleri: who, which, that, whose, where",
+            "en": "Relative clauses: who, which, that, whose, where"
+          },
+          "content": {
+            "anlatim": "# İlgi Zamirleri\n\n| Zamir | Neyi niteler | Örnek |\n|---|---|---|\n| **who** | İnsan | *A loyal friend is someone **who** never lets you down.* |\n| **which** | Nesne/hayvan | *This is the book **which** my friend gave me.* |\n| **that** | İnsan ya da nesne (yalnızca tanımlayıcı) | *The girl **that** sits next to me is from İzmir.* |\n| **whose** | Sahiplik | *I have a friend **whose** father is a pilot.* |\n| **where** | Yer | *This is the café **where** we first met.* |\n| **when** | Zaman | *I remember the day **when** we became friends.* |\n\n# Tanımlayıcı × Tanımlayıcı Olmayan\n\n| Tanımlayıcı (defining) | Tanımlayıcı olmayan (non-defining) |\n|---|---|\n| Hangi kişi/şey olduğunu belirler; **virgül yok** | Ek bilgi verir; **virgülle ayrılır** |\n| *The friend **who lives in Paris** is visiting me.* | *My best friend, **who lives in Paris**, is visiting me.* |\n| **that** kullanılabilir | **that kullanılmaz** |\n\n- Zamir **nesne** ise tanımlayıcı cümlede atılabilir: *The film (that) we watched was great.*",
+            "ornekler": [
+              {
+                "soru": "Combine: \"I have a friend. Her mother is a famous singer.\"",
+                "cozum": "*I have a friend **whose** mother is a famous singer.* — sahiplik → **whose**."
+              },
+              {
+                "soru": "Find the mistake: \"My brother, that is a doctor, works in Ankara.\"",
+                "cozum": "Tanımlayıcı olmayan cümlede **that kullanılmaz** → *My brother, **who** is a doctor, works in Ankara.*"
+              }
+            ],
+            "ozet": [
+              "who insan, which nesne, whose sahiplik, where yer.",
+              "Virgüllü (non-defining) cümlede that kullanılmaz.",
+              "Nesne konumundaki zamir tanımlayıcı cümlede atılabilir."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u10",
+      "name": {
+        "tr": "Unit 10: Values and Norms",
+        "en": "Unit 10: Values and Norms"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/ingilizce/u10/k1",
+          "localCode": "U10.1",
+          "title": {
+            "tr": "Görüş bildirme, katılma ve katılmama",
+            "en": "Expressing opinions, agreeing and disagreeing"
+          },
+          "content": {
+            "anlatim": "# Görüş Bildirmek\n\n- *In my opinion / In my view, …* · *I think / believe / feel that …*\n- *As far as I'm concerned, …* · *It seems to me that …* · *Personally, …*\n\n# Katılmak / Katılmamak\n\n| Tam katılma | Kısmen katılma | Katılmama |\n|---|---|---|\n| *I totally agree.* · *Exactly!* · *That's a good point.* | *You may be right, but…* · *I agree up to a point.* · *That's true, however…* | *I'm afraid I disagree.* · *I don't think so.* · *I see your point, but…* |\n\n# Gerekçelendirme ve Bağlaçlar\n\n- **Neden:** *because, since, as, due to + isim*\n- **Karşıtlık:** *however, on the other hand, although + cümle, despite + isim/V-ing*\n- **Ekleme:** *moreover, furthermore, in addition, besides*\n- **Sonuç:** *therefore, so, as a result*\n\n**Örnek tartışma:** *In my opinion, respecting elders is an important value **because** it keeps families together. **However**, young people's ideas should **also** be listened to.*",
+            "ornekler": [
+              {
+                "soru": "Choose: \"___ the rain, the festival went on.\" (a) Although (b) Despite (c) However",
+                "cozum": "**(b) Despite** — ardından **isim** (*the rain*) geldiği için *despite*. *Although* cümle alır: *Although it rained, …*"
+              },
+              {
+                "soru": "Politely disagree with: \"Social media is the best way to learn about other cultures.\"",
+                "cozum": "*I see your point, but I'm afraid I disagree. Travelling and meeting people face to face teaches us much more.*"
+              }
+            ],
+            "ozet": [
+              "Görüş: In my opinion / As far as I'm concerned.",
+              "Kısmi katılma: I agree up to a point / You may be right, but…",
+              "although + cümle, despite + isim/V-ing."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/ingilizce/u10/k2",
+          "localCode": "U10.2",
+          "title": {
+            "tr": "Toplumsal normlar: be supposed to, be expected to, be allowed to",
+            "en": "Social norms: be supposed to, be expected to, be allowed to"
+          },
+          "content": {
+            "anlatim": "# Beklenti ve Kurallar\n\n| Yapı | Anlam | Örnek |\n|---|---|---|\n| **be supposed to + V** | Toplumca beklenen (çoğu zaman yapılmayan) | *You **are supposed to** take off your shoes when you enter a Turkish home.* |\n| **be expected to + V** | Beklenmek (daha resmî) | *Guests **are expected to** arrive on time.* |\n| **be allowed to / be permitted to** | İzin verilmek | *In some countries, you **are allowed to** tip waiters.* |\n| **It is considered + sıfat + to V** | … sayılır | *It **is considered rude to** point at people.* |\n| **It is customary to + V** | Gelenektir | *It **is customary to** kiss elders' hands during Bayram.* |\n\n- Geçmiş: *I **was supposed to** call him, but I forgot.* (beklenen ama yapılmayan)\n\n# Değerler Kelimeleri\n\n*respect, tolerance, hospitality (misafirperverlik), honesty, solidarity (dayanışma), generosity, custom, tradition, manners, etiquette, taboo, superstition*\n\n# Kültürler Arası Karşılaştırma\n\n*In Japan people bow, **whereas** in Türkiye people usually shake hands.* (**whereas / while**: karşılaştırma)",
+            "ornekler": [
+              {
+                "soru": "Complete: \"You ___ (supposed / be) to bring a small gift when you visit someone for the first time.\"",
+                "cozum": "*You **are supposed to** bring a small gift…* — toplumsal **beklenti**."
+              },
+              {
+                "soru": "What does this mean? \"I was supposed to meet Ali at five.\"",
+                "cozum": "Ali ile saat beşte **buluşmam gerekiyordu** (planlanmıştı) — ama büyük ihtimalle **buluşmadım**."
+              }
+            ],
+            "ozet": [
+              "be supposed to: toplumsal beklenti; was supposed to: yapılmamış plan.",
+              "It is considered rude/polite to V.",
+              "whereas/while: kültürleri karşılaştırma."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    }
+  ]
+}

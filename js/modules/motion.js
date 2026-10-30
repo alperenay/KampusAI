@@ -10,7 +10,7 @@
     feedback,
     lastTarget = null;
   const reduced = () =>
-    media.matches || document.documentElement.hasAttribute("data-a11y-motion");
+    media.matches || document.documentElement.hasAttribute("data-a11y-motion") || document.documentElement.dataset.uiMotionLevel === "off";
   function cancel() {
     running.forEach((a) => a.cancel());
     running.clear();
@@ -18,7 +18,8 @@
   }
   function play(el, frames, options) {
     if (reduced() || document.hidden || !el?.animate) return;
-    const a = el.animate(frames, options);
+    const gentle = document.documentElement.dataset.uiMotionLevel === "gentle";
+    const a = el.animate(frames, gentle ? {...options, duration: Math.min(options.duration || 160, 160), delay: 0} : options);
     running.add(a);
     a.finished.then(
       () => running.delete(a),
@@ -93,7 +94,7 @@
         continue;
       play(
         el,
-        [
+        document.documentElement.dataset.uiMotionLevel === "gentle" ? [{opacity:.75}, {opacity:1}] : [
           { opacity: 0.25, transform: "translateY(12px)" },
           { opacity: 1, transform: "translateY(0)" },
         ],
@@ -108,6 +109,7 @@
     }
   }
   function touch(e) {
+    if (document.documentElement.dataset.uiMotionLevel === "gentle" || App.appearance?.options().touchFeedback === false) return;
     if (reduced() || document.hidden || running.size > 24 || e.button > 0)
       return;
     const button = e.target.closest?.(
@@ -193,7 +195,7 @@
     else media.addListener(change);
     new MutationObserver(change).observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ["data-a11y-motion", "data-theme"],
+      attributeFilter: ["data-a11y-motion", "data-theme", "data-ui-motion-level"],
     });
     schedule();
   }

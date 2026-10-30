@@ -127,7 +127,7 @@
         unit: "m/s²",
         samples: samples.map((p) => ({ t: p.t, y: p.x })).slice(-4000),
       });
-      App.router.go("deney-raporu");
+      App.router.go("dokumanlar/rapor");
     });
     function locate() {
       const stations = [
@@ -215,5 +215,5 @@
     life.add(stop);
     return () => life.close();
   }
-  App.router.register("sismograf", render);
+  App.seismograph = { render };
 })();

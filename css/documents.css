@@ -1,0 +1,16 @@
+.documents-page { max-width: 1200px; }
+.documents-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; }
+.documents-tabs .btn { min-height: 44px; white-space: normal; text-align: center; }
+.documents-content { min-width: 0; }
+.documents-content > .page { width: 100%; max-width: none; padding: 0; }
+.documents-section-title { font-size: 22px; font-weight: 700; }
+.documents-content #ntText { min-height: 260px; font-family: var(--font); line-height: 1.7; }
+.documents-content #ntSearch { margin: 12px 0; }
+.documents-content #ntPreview { padding: 14px; border: 1px solid var(--border-strong); border-radius: var(--radius); margin-top: 12px; }
+.documents-content .sw-actions { flex-wrap: wrap; }
+.documents-note-preview { white-space: pre-wrap; overflow-wrap: anywhere; margin-top: 12px; max-height: 220px; overflow: auto; }
+@media(max-width:600px) {
+  .documents-tabs { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .documents-tabs .btn { padding: 10px; font-size: 13px; }
+  .documents-content .page-head { margin-top: 0; }
+}

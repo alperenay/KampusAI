@@ -1,0 +1,1185 @@
+{
+  "schemaVersion": 1,
+  "grade": null,
+  "program": "sosyal-bilim-calismalari-dersi",
+  "lessons": [
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1679",
+      "officialCode": "SBÇ.I.1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1679",
+        "sha256": "b58388f0c6d45f26b40ab448f75e82aceddb362eb6611f1b86769365a49ce380"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1679"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1679",
+      "officialCode": "SBÇ.I.1.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1679",
+        "sha256": "b58388f0c6d45f26b40ab448f75e82aceddb362eb6611f1b86769365a49ce380"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1679"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1679",
+      "officialCode": "SBÇ.I.1.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1679",
+        "sha256": "b58388f0c6d45f26b40ab448f75e82aceddb362eb6611f1b86769365a49ce380"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1679"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1680",
+      "officialCode": "SBÇ.I.2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1680",
+        "sha256": "94247c765058d579797476d05001a45ddd79eea71ed44070c3f36e544de5b52a"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1680"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1680",
+      "officialCode": "SBÇ.I.2.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1680",
+        "sha256": "94247c765058d579797476d05001a45ddd79eea71ed44070c3f36e544de5b52a"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1680"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1680",
+      "officialCode": "SBÇ.I.2.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1680",
+        "sha256": "94247c765058d579797476d05001a45ddd79eea71ed44070c3f36e544de5b52a"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1680"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1680",
+      "officialCode": "SBÇ.I.2.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1680",
+        "sha256": "94247c765058d579797476d05001a45ddd79eea71ed44070c3f36e544de5b52a"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1680"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1680",
+      "officialCode": "SBÇ.I.2.5",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1680",
+        "sha256": "94247c765058d579797476d05001a45ddd79eea71ed44070c3f36e544de5b52a"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1680"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1681",
+      "officialCode": "SBÇ.I.3.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1681",
+        "sha256": "39f7a54a2e967f9ebd5b2c0f4433aa8632f2f08e69a85094eb7b2ef12a3b4068"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1681"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1681",
+      "officialCode": "SBÇ.I.3.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1681",
+        "sha256": "39f7a54a2e967f9ebd5b2c0f4433aa8632f2f08e69a85094eb7b2ef12a3b4068"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1681"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1681",
+      "officialCode": "SBÇ.I.3.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1681",
+        "sha256": "39f7a54a2e967f9ebd5b2c0f4433aa8632f2f08e69a85094eb7b2ef12a3b4068"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1681"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1682",
+      "officialCode": "SBÇ.I.4.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1682",
+        "sha256": "f0fae3244c4df45ef350f844d27a3835c65802d76c97a4b9ef73ac8582aa604d"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1682"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1682",
+      "officialCode": "SBÇ.I.4.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1682",
+        "sha256": "f0fae3244c4df45ef350f844d27a3835c65802d76c97a4b9ef73ac8582aa604d"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1682"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1683",
+      "officialCode": "SBÇ.I.5.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1683",
+        "sha256": "a618ed5584fb3eb17d55092c1bf004d3651ac2f7fcd107b55a10ed85f9d919db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1683"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1683",
+      "officialCode": "SBÇ.I.5.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1683",
+        "sha256": "a618ed5584fb3eb17d55092c1bf004d3651ac2f7fcd107b55a10ed85f9d919db"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1683"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1685",
+      "officialCode": "SBÇ.I.6.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1685",
+        "sha256": "b9af3f0c1301067c81bdde34be153b9ffc5259c31dc191ff8dc6d88cf4fd36c2"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1685"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1685",
+      "officialCode": "SBÇ.I.6.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1685",
+        "sha256": "b9af3f0c1301067c81bdde34be153b9ffc5259c31dc191ff8dc6d88cf4fd36c2"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1685"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1687",
+      "officialCode": "SBÇ.II.1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1687",
+        "sha256": "889c7a96edcec4ff64ade0a532994492b49f9e6e0c73e2b96998fe22e62b7560"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1687"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1687",
+      "officialCode": "SBÇ.II.1.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1687",
+        "sha256": "889c7a96edcec4ff64ade0a532994492b49f9e6e0c73e2b96998fe22e62b7560"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1687"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1689",
+      "officialCode": "SBÇ.II.2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1689",
+        "sha256": "94ac4e902fe06b333ba757489bc0471a412cfbdd78b90ad70c223a46cfcc8aa3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1689"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1689",
+      "officialCode": "SBÇ.II.2.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1689",
+        "sha256": "94ac4e902fe06b333ba757489bc0471a412cfbdd78b90ad70c223a46cfcc8aa3"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1689"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1690",
+      "officialCode": "SBÇ.II.3.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1690",
+        "sha256": "a1ab653bed9ed316881187a8cc33e0e53472fcd97b20a40592378b016bbd54aa"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1690"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1690",
+      "officialCode": "SBÇ.II.3.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1690",
+        "sha256": "a1ab653bed9ed316881187a8cc33e0e53472fcd97b20a40592378b016bbd54aa"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1690"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1692",
+      "officialCode": "SBÇ.II.4.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1692",
+        "sha256": "624043828f7fe49dcd3844da257edc2272cd4db3204883b54072632708b58ea0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1692"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1692",
+      "officialCode": "SBÇ.II.4.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1692",
+        "sha256": "624043828f7fe49dcd3844da257edc2272cd4db3204883b54072632708b58ea0"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1692"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1693",
+      "officialCode": "SBÇ.II.5.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1693",
+        "sha256": "29826a035f5e81c7eb31e51405e75f2dd7c76a6a286e5f0fd1991d6cbd71cc78"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1693"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1693",
+      "officialCode": "SBÇ.II.5.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1693",
+        "sha256": "29826a035f5e81c7eb31e51405e75f2dd7c76a6a286e5f0fd1991d6cbd71cc78"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1693"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1694",
+      "officialCode": "SBÇ.II.6.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1694",
+        "sha256": "fbff836795c81340c28f2be1846d9ec755cb99edfeabb818e07f574b68ef19f5"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1694"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1694",
+      "officialCode": "SBÇ.II.6.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1694",
+        "sha256": "fbff836795c81340c28f2be1846d9ec755cb99edfeabb818e07f574b68ef19f5"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1694"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1695",
+      "officialCode": "SBÇ.III.1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1695",
+        "sha256": "6b5507b6fccd04bbc3a7c58d5e5edf81d787e944ce29c1a583f17cd9037c273f"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1695"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1695",
+      "officialCode": "SBÇ.III.1.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1695",
+        "sha256": "6b5507b6fccd04bbc3a7c58d5e5edf81d787e944ce29c1a583f17cd9037c273f"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1695"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1696",
+      "officialCode": "SBÇ.III.2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1696",
+        "sha256": "3d1c397fc9c39b81d68aeb02dea360d761df94c19e6f94e28921da6797720318"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1696"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1696",
+      "officialCode": "SBÇ.III.2.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1696",
+        "sha256": "3d1c397fc9c39b81d68aeb02dea360d761df94c19e6f94e28921da6797720318"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1696"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1697",
+      "officialCode": "SBÇ.III.3.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1697",
+        "sha256": "c7598325e286031f4e0a3ccfe83e5bd5623481227f1b3f8df5bb0f915f50185b"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1697"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1698",
+      "officialCode": "SBÇ.III.4.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1698",
+        "sha256": "941aa650792498562ad54859b10ad5546b819b844c09487f0b0fe3de4258081f"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1698"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1699",
+      "officialCode": "SBÇ.III.5.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1699",
+        "sha256": "c59631d6fb49519f100ec691e0550f26f6c693575558b17a28ed738aa6fa79d6"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1699"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1699",
+      "officialCode": "SBÇ.III.5.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1699",
+        "sha256": "c59631d6fb49519f100ec691e0550f26f6c693575558b17a28ed738aa6fa79d6"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1699"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": null,
+      "program": "sosyal-bilim-calismalari-dersi",
+      "unitId": "1700",
+      "officialCode": "SBÇ.III.6.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1700",
+        "sha256": "d03176384bdf00d04f7e22fb9cc1a5ce8b03b4794f073d3b2d197653d0be46e6"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/sosyal-bilim-calismalari-dersi/unite/1700"
+        ]
+      },
+      "legacyCandidates": []
+    }
+  ]
+}

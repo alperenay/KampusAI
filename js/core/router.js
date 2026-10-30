@@ -6,18 +6,26 @@
    Sunucu gerektirmez; file:// ile açıldığında da çalışır.
    ========================================================= */
 (function () {
-  const routes = {};
+  const routes = Object.create(null);
+  const aliases = Object.create(null);
   const needs = [];    // sayfa çizilmeden önce beklenecek yüklemeler (v1.42: isteğe bağlı ders içeriği)
   let current = null, seq = 0;
 
   function parse() {
     const hash = (location.hash || "#/").replace(/^#\/?/, "");
     const segs = hash.split("/").filter(Boolean).map((s) => { try { return decodeURIComponent(s); } catch (e) { return s; } });
-    return { name: segs[0] || "", params: segs.slice(1), path: segs.join("/") };
+    const raw = segs.join("/"), path = resolve(raw), parts = path.split("/").filter(Boolean);
+    return { name: parts[0] || "", params: parts.slice(1), path, aliased: path !== raw };
+  }
+  function resolve(path) {
+    let parts = String(path || "").replace(/^#?\/?/, "").split("/").filter(Boolean);
+    for (let i = 0; i < 8 && aliases[parts[0]]; i++) parts = aliases[parts[0]].split("/").concat(parts.slice(1));
+    return parts.join("/");
   }
 
   async function render() {
     const r = parse();
+    if (r.aliased) history.replaceState(null, "", location.pathname + location.search + "#/" + r.path.split("/").map(encodeURIComponent).join("/"));
     const view = document.getElementById("view");
     const main = document.getElementById("main");
 
@@ -74,6 +82,8 @@
 
   App.router = {
     register(name, handler) { routes[name] = handler; },
+    alias(name, target) { aliases[name] = target; },
+    resolve,
     /** fn(route) bir Promise döndürürse sayfa ondan sonra çizilir (ör. ders içeriğini isteğe bağlı yükleme) */
     need(fn) { needs.push(fn); },
     start() {

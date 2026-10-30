@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "grade": 9,
+  "program": "beden-egitimi-ve-spor-dersi",
+  "lessons": [
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "beden-egitimi-ve-spor-dersi",
+      "unitId": "601",
+      "officialCode": "BES.9.1.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/601",
+        "sha256": "753962d1bdec52992aacd31fc780e4ff913de7c7301a1a448ffda4d334904edf"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/601"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "beden-egitimi-ve-spor-dersi",
+      "unitId": "601",
+      "officialCode": "BES.9.1.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/601",
+        "sha256": "753962d1bdec52992aacd31fc780e4ff913de7c7301a1a448ffda4d334904edf"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/601"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "beden-egitimi-ve-spor-dersi",
+      "unitId": "602",
+      "officialCode": "BES.9.2.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/602",
+        "sha256": "f31c7f6642d949fcf1befb43ec5de5e748cd44ad46cc37c564b6a0d571bcabc7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/602"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "beden-egitimi-ve-spor-dersi",
+      "unitId": "602",
+      "officialCode": "BES.9.2.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/602",
+        "sha256": "f31c7f6642d949fcf1befb43ec5de5e748cd44ad46cc37c564b6a0d571bcabc7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/602"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "beden-egitimi-ve-spor-dersi",
+      "unitId": "602",
+      "officialCode": "BES.9.2.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/602",
+        "sha256": "f31c7f6642d949fcf1befb43ec5de5e748cd44ad46cc37c564b6a0d571bcabc7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/602"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "beden-egitimi-ve-spor-dersi",
+      "unitId": "602",
+      "officialCode": "BES.9.2.4",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/602",
+        "sha256": "f31c7f6642d949fcf1befb43ec5de5e748cd44ad46cc37c564b6a0d571bcabc7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/602"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "beden-egitimi-ve-spor-dersi",
+      "unitId": "603",
+      "officialCode": "BES.9.3.1",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/603",
+        "sha256": "fc91aa67cf42b80ea4c9c420d641c328d8672f11d29a68fdbb4f875a4ba7b4a7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/603"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "beden-egitimi-ve-spor-dersi",
+      "unitId": "603",
+      "officialCode": "BES.9.3.2",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/603",
+        "sha256": "fc91aa67cf42b80ea4c9c420d641c328d8672f11d29a68fdbb4f875a4ba7b4a7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/603"
+        ]
+      },
+      "legacyCandidates": []
+    },
+    {
+      "schemaVersion": 1,
+      "grade": 9,
+      "program": "beden-egitimi-ve-spor-dersi",
+      "unitId": "603",
+      "officialCode": "BES.9.3.3",
+      "source": {
+        "url": "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/603",
+        "sha256": "fc91aa67cf42b80ea4c9c420d641c328d8672f11d29a68fdbb4f875a4ba7b4a7"
+      },
+      "status": "draft",
+      "title": "",
+      "content": {
+        "anlatim": "",
+        "ornekler": [],
+        "ozet": []
+      },
+      "review": {
+        "alignmentApproved": false,
+        "contentApproved": false,
+        "reviewer": null
+      },
+      "rights": {
+        "status": "unverified",
+        "licence": null,
+        "sourceUrls": [
+          "https://tymm.meb.gov.tr/beden-egitimi-ve-spor-dersi/unite/603"
+        ]
+      },
+      "legacyCandidates": []
+    }
+  ]
+}

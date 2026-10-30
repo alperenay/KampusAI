@@ -1,0 +1,329 @@
+{
+  "schemaVersion": 1,
+  "grade": 11,
+  "subjectId": "psikoloji",
+  "name": {
+    "tr": "Psikoloji",
+    "en": "Psychology"
+  },
+  "programEdition": "legacy-project-unverified",
+  "source": {
+    "file": "js/data/content/psi-11.js",
+    "sha256": "b0a0f042485f2874be59f6b7e90ac4047e8f240e3a862e2cb6450c591c18477a",
+    "additionalReferences": [],
+    "pdfReferenceCandidates": []
+  },
+  "officialProgramCandidates": [],
+  "units": [
+    {
+      "id": "u1",
+      "name": {
+        "tr": "1. Ünite: Psikoloji Bilimini Tanıyalım",
+        "en": "Unit 1: Introducing Psychology"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/psikoloji/u1/k1",
+          "localCode": "PSİ.E1",
+          "title": {
+            "tr": "Psikolojinin tanımı, amaçları, alt alanları ve araştırma yöntemleri",
+            "en": "Definition, aims, fields and research methods of psychology"
+          },
+          "content": {
+            "anlatim": "# Psikoloji Nedir?\n\nPsikoloji, **davranışları ve zihinsel süreçleri** bilimsel yöntemle inceleyen bilimdir. *Davranış* gözlenebilen eylemlerdir (konuşmak, koşmak); *zihinsel süreçler* doğrudan gözlenemeyen iç yaşantılardır (düşünme, hatırlama, duygu).\n\n# Amaçları\n\n1. **Betimleme:** Davranışın ne olduğunu tanımlamak.\n2. **Açıklama:** Neden ortaya çıktığını göstermek.\n3. **Yordama:** Hangi koşulda ortaya çıkacağını önceden kestirmek.\n4. **Kontrol (yönlendirme):** İstenen davranışı artırmak, istenmeyeni azaltmak.\n\n# Başlıca Alanlar\n\n| Temel (kuramsal) alanlar | Uygulamalı alanlar |\n|---|---|\n| Gelişim, sosyal, deneysel, fizyolojik, kişilik psikolojisi | Klinik, eğitim, endüstri–örgüt, adli, spor, sağlık psikolojisi |\n- **Psikolog** ilaç yazmaz; ruhsal bozuklukları ilaçla tedavi eden **psikiyatrist** tıp doktorudur.\n\n# Araştırma Yöntemleri\n\n- **Deneysel yöntem:** Neden–sonuç ilişkisini kurabilen tek yöntemdir. **Bağımsız değişken** araştırmacının değiştirdiği, **bağımlı değişken** ölçülen sonuçtur. Deney grubu ile kontrol grubu karşılaştırılır.\n- **Betimsel yöntemler:** Doğal gözlem, vaka (örnek olay) incelemesi, anket ve görüşme.\n- **Korelasyonel (ilişkisel) yöntem:** İki değişkenin birlikte değişip değişmediğini gösterir; **neden–sonuç kanıtlamaz**.\n- **Etik:** Gönüllülük, bilgilendirilmiş onam, gizlilik, zarar vermeme ve araştırma sonrası bilgilendirme.",
+            "ornekler": [
+              {
+                "soru": "Bir araştırmacı, uyku süresinin sınav başarısına etkisini anlamak için öğrencileri rastgele iki gruba ayırıyor; birine 8, diğerine 5 saat uyku uygulatıp sınav yapıyor. Bağımsız ve bağımlı değişken nedir?",
+                "cozum": "**Bağımsız değişken:** uyku süresi (araştırmacı değiştiriyor). **Bağımlı değişken:** sınav başarısı (ölçülen sonuç). Rastgele atama yapıldığı için yöntem **deneyseldir**."
+              },
+              {
+                "soru": "“Ekran süresi uzun olan öğrencilerin notları daha düşük” bulgusu ekran süresinin notları düşürdüğünü kanıtlar mı?",
+                "cozum": "Hayır. Bu bir **korelasyondur**; iki değişken birlikte değişir ama neden–sonuç gösterilmez (üçüncü bir etken, ör. uyku düzeni, ikisini de etkileyebilir)."
+              }
+            ],
+            "ozet": [
+              "Psikoloji davranışı ve zihinsel süreçleri bilimsel yöntemle inceler.",
+              "Amaçlar: betimleme, açıklama, yordama, kontrol.",
+              "Yalnızca deneysel yöntem neden–sonuç kurar; korelasyon kurmaz.",
+              "Psikiyatrist tıp doktorudur, psikolog ilaç yazmaz."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/psikoloji/u1/k2",
+          "localCode": "PSİ.E2",
+          "title": {
+            "tr": "Psikolojide temel yaklaşımlar ve öncüler",
+            "en": "Major approaches and pioneers in psychology"
+          },
+          "content": {
+            "anlatim": "# Bilim Olarak Doğuşu\n\nPsikoloji felsefeden ayrılarak **1879**'da **Wilhelm Wundt**'un Leipzig'de kurduğu ilk deneysel psikoloji laboratuvarıyla bağımsız bir bilim olarak kabul edilir.\n\n# Yaklaşımlar\n\n| Yaklaşım | Temsilci | Odak |\n|---|---|---|\n| **Yapısalcılık** | Wundt, Titchener | Bilincin öğelerini **iç gözlemle** (introspeksiyon) çözümlemek |\n| **İşlevselcilik** | William James | Zihnin çevreye **uyum** sağlamadaki işlevi |\n| **Davranışçılık** | Watson, Skinner | Yalnızca **gözlenebilir davranış**; öğrenme ve pekiştirme |\n| **Psikanaliz** | Freud | **Bilinçdışı**, çocukluk yaşantıları, savunma mekanizmaları |\n| **Geştalt** | Wertheimer, Köhler | Bütün, parçaların toplamından fazladır; algıda örgütlenme |\n| **Hümanistik** | Maslow, Rogers | Özgür irade, **kendini gerçekleştirme** |\n| **Bilişsel** | Piaget, Neisser | Algılama, bellek, düşünme gibi **zihinsel süreçler** |\n| **Biyolojik / sinirbilim** | — | Beyin, hormonlar ve genetik |\n\n> Günümüz psikolojisi çoğunlukla **bütüncül (eklektik)** bir bakış kullanır: bir davranış biyolojik, psikolojik ve sosyal etkenlerle birlikte açıklanır.",
+            "ornekler": [
+              {
+                "soru": "“Bireyin ihtiyaçları basamak basamak karşılandıkça en üstte kendini gerçekleştirme ihtiyacı ortaya çıkar” görüşü hangi yaklaşıma aittir?",
+                "cozum": "**Hümanistik yaklaşım** (Maslow'un ihtiyaçlar hiyerarşisi)."
+              },
+              {
+                "soru": "“Zihin bir kara kutudur; yalnızca uyarıcı ve tepki incelenmelidir” diyen yaklaşım hangisidir?",
+                "cozum": "**Davranışçılık** (Watson)."
+              }
+            ],
+            "ozet": [
+              "Bilimsel psikoloji 1879, Wundt'un laboratuvarıyla başladı.",
+              "Davranışçılık gözlenebilir davranışa, psikanaliz bilinçdışına, bilişsel yaklaşım zihinsel süreçlere odaklanır.",
+              "Geştalt: bütün, parçaların toplamından fazladır.",
+              "Hümanistik yaklaşım: kendini gerçekleştirme ve özgür irade."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "name": {
+        "tr": "2. Ünite: Psikolojinin Temel Süreçleri",
+        "en": "Unit 2: Basic Processes"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/psikoloji/u2/k1",
+          "localCode": "PSİ.E3",
+          "title": {
+            "tr": "Sinir sistemi, duyum ve algı",
+            "en": "Nervous system, sensation and perception"
+          },
+          "content": {
+            "anlatim": "# Davranışın Biyolojik Temeli\n\n- **Merkezî sinir sistemi:** Beyin ve omurilik. Beynin **ön lobu** planlama ve karar verme, **şakak lobu** işitme ve dil, **art kafa lobu** görme, **çeşit lobu** dokunma ve beden duyumlarıyla ilişkilidir. **Beyincik** denge ve hareket uyumunu sağlar.\n- **Çevresel sinir sistemi:** İstemli hareketleri yöneten somatik sistem ile iç organları yöneten **otonom sistem** (sempatik: alarm/\"savaş ya da kaç\"; parasempatik: dinlenme).\n- **Endokrin sistem:** Hormonlarla yavaş ama uzun süreli düzenleme (ör. adrenalin, tiroksin).\n\n# Duyum ve Algı\n\n- **Duyum:** Duyu organlarının uyarıcıyı alıp sinir sinyaline çevirmesi.\n- **Algı:** Duyumların beyinde **örgütlenip yorumlanması**; geçmiş yaşantı, beklenti, ilgi ve kültürden etkilenir.\n- **Mutlak eşik:** Bir uyarıcının fark edilebilmesi için gereken en küçük şiddet. **Farklılık eşiği:** İki uyarıcı arasındaki fark edilebilir en küçük fark.\n- **Duyusal uyum:** Sürekli uyarıcıya duyarlılığın azalması (odadaki kokuyu bir süre sonra almamak).\n\n# Algıda Örgütleme (Geştalt İlkeleri)\n\n**Şekil–zemin**, **yakınlık**, **benzerlik**, **tamamlama**, **süreklilik**. Ayrıca **algıda değişmezlik**: uzaklaşan bir arabayı küçülmüş değil, aynı boyda algılarız.\n\n# Algıyı Etkileyen Etkenler ve Yanılsamalar\n\nDikkat, güdü, beklenti (**algıda seçicilik**) algıyı değiştirir. **Göz yanılsamaları**, algının duyuma birebir eşit olmadığını gösterir.",
+            "ornekler": [
+              {
+                "soru": "Aç bir öğrencinin yürürken yol kenarındaki fırın tabelalarını daha çok fark etmesi hangi kavramla açıklanır?",
+                "cozum": "**Algıda seçicilik**: güdüler (açlık) dikkati ve algıyı ilgili uyarıcılara yönlendirir."
+              },
+              {
+                "soru": "Parfüm kokusunun birkaç dakika sonra fark edilmemesi neyle açıklanır?",
+                "cozum": "**Duyusal uyum**: değişmeyen uyarıcıya karşı duyarlılık azalır."
+              }
+            ],
+            "ozet": [
+              "Duyum uyarıcının alınması, algı ise yorumlanmasıdır.",
+              "Sempatik sistem alarm, parasempatik sistem dinlenme durumunu yönetir.",
+              "Geştalt ilkeleri: şekil–zemin, yakınlık, benzerlik, tamamlama, süreklilik.",
+              "Algıda seçicilik güdü ve beklentiden etkilenir."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/psikoloji/u2/k2",
+          "localCode": "PSİ.E4",
+          "title": {
+            "tr": "Bilinç, uyku ve rüya",
+            "en": "Consciousness, sleep and dreams"
+          },
+          "content": {
+            "anlatim": "# Bilinç\n\nKişinin kendisinin ve çevresinin farkında olmasıdır. Düzeyleri: **bilinç** (şu an farkında olunan), **bilinç öncesi** (hemen hatırlanabilen; telefon numarası), **bilinçdışı** (Freud'a göre farkında olunmayan ama davranışı etkileyen içerikler).\n\n# Uyku\n\nBilincin doğal ve düzenli olarak değiştiği durumdur; yaklaşık 24 saatlik **biyolojik saat (sirkadiyen ritim)** tarafından düzenlenir.\n- **NREM uykusu:** Yavaş dalgalı, derinleşen evreler; bedenin dinlenmesi ve onarım.\n- **REM uykusu:** Hızlı göz hareketleri, beyin etkinliği uyanıklığa yakın, kaslar gevşek; **rüyaların** çoğu bu evrede görülür. Öğrenilenlerin pekişmesinde önemlidir.\n- Bir gecede NREM–REM döngüsü yaklaşık 90 dakikada bir tekrarlanır.\n\n# Uyku Bozuklukları ve Uyku Hijyeni\n\nUykusuzluk (insomnia), uyurgezerlik, uyku apnesi, narkolepsi. Düzenli uyku saati, yatmadan önce ekran ve kafeinden uzak durmak uyku kalitesini artırır. Ergenlerde önerilen süre gecede **8–10 saattir**.",
+            "ornekler": [
+              {
+                "soru": "Sınavdan önceki gece uykusuz kalmak öğrenmeyi neden olumsuz etkiler?",
+                "cozum": "Öğrenilen bilgilerin pekişmesi özellikle **REM** ve derin uyku sırasında olur; uykusuzluk dikkat ve belleği zayıflatır."
+              },
+              {
+                "soru": "Rüyaların çoğu hangi uyku evresinde görülür?",
+                "cozum": "**REM** uykusunda."
+              }
+            ],
+            "ozet": [
+              "Bilinç düzeyleri: bilinç, bilinç öncesi, bilinçdışı.",
+              "Uykuyu biyolojik saat (sirkadiyen ritim) düzenler.",
+              "REM: hızlı göz hareketi, rüya, bellek pekişmesi.",
+              "Ergenler için 8–10 saat uyku önerilir."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u3",
+      "name": {
+        "tr": "3. Ünite: Öğrenme, Bellek ve Düşünme",
+        "en": "Unit 3: Learning, Memory and Thinking"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/psikoloji/u3/k1",
+          "localCode": "PSİ.E5",
+          "title": {
+            "tr": "Öğrenme: klasik koşullanma, edimsel koşullanma ve gözlem yoluyla öğrenme",
+            "en": "Learning: classical and operant conditioning, observational learning"
+          },
+          "content": {
+            "anlatim": "# Öğrenme\n\nYaşantı sonucu davranışta oluşan **görece kalıcı** değişmedir. Büyüme, yorgunluk ya da ilaç etkisiyle oluşan değişimler öğrenme değildir.\n\n# Klasik Koşullanma (Pavlov)\n\nDoğal tepki doğuran bir uyarıcı ile nötr bir uyarıcının **birlikte sunulmasıyla** nötr uyarıcının da tepki doğurması.\n- Koşulsuz uyarıcı (yemek) → koşulsuz tepki (salya)\n- Nötr uyarıcı (zil) + yemek tekrarlanınca zil → **koşullu uyarıcı**, salya → **koşullu tepki**\n- **Sönme:** Zil yemeksiz sunulmaya devam ederse tepki azalır. **Genelleme:** Benzer seslere de tepki. **Ayırt etme:** Yalnızca belli sese tepki.\n- Örnek: Diş hekiminin matkap sesini duyunca kaygılanmak.\n\n# Edimsel (Operant) Koşullanma (Skinner)\n\nDavranış **sonucuna göre** öğrenilir.\n| | Bir şey eklenir | Bir şey çıkarılır |\n|---|---|---|\n| **Davranış artar (pekiştirme)** | Olumlu pekiştirme (ödül) | Olumsuz pekiştirme (hoşa gitmeyen durumun kaldırılması) |\n| **Davranış azalır (ceza)** | Olumlu ceza (hoşa gitmeyen eklenir) | Olumsuz ceza (sevilen bir şey alınır) |\n> **Olumsuz pekiştirme ceza değildir**; davranışı artırır (ör. emniyet kemeri takınca uyarı sesinin susması).\n\n# Gözlem Yoluyla (Sosyal) Öğrenme (Bandura)\n\nBaşkalarının davranışlarını ve bunların sonuçlarını **izleyerek** öğrenme (**model alma**). Süreç: dikkat → hatırda tutma → yapabilme → güdülenme. Bobo bebek deneyi bunu göstermiştir.\n\n# Diğer\n\n**Kavrayış (içgörü) yoluyla öğrenme** (Köhler, şempanzeler): problemin parçaları arasındaki ilişkinin birden fark edilmesi.",
+            "ornekler": [
+              {
+                "soru": "Odasını toplayan çocuğun, annesi tarafından o akşam bulaşık görevinden muaf tutulması hangi kavrama örnektir?",
+                "cozum": "Hoşa gitmeyen bir görev **kaldırılıyor** ve odayı toplama davranışı **artıyor** → **olumsuz pekiştirme**."
+              },
+              {
+                "soru": "Bir kez bozuk süt içip hastalanan kişinin sonrasında süt kokusundan bile rahatsız olması hangi öğrenme türüdür?",
+                "cozum": "**Klasik koşullanma** (koku nötr uyarıcıyken bulantıyla eşleşip koşullu uyarıcı olmuştur)."
+              }
+            ],
+            "ozet": [
+              "Öğrenme: yaşantıyla oluşan görece kalıcı davranış değişmesi.",
+              "Klasik koşullanma: uyarıcıların eşleşmesi (Pavlov).",
+              "Edimsel koşullanma: davranışın sonucu (pekiştirme artırır, ceza azaltır).",
+              "Olumsuz pekiştirme davranışı artırır; ceza değildir.",
+              "Bandura: model alarak öğrenme."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/psikoloji/u3/k2",
+          "localCode": "PSİ.E6",
+          "title": {
+            "tr": "Bellek ve unutma; düşünme, problem çözme ve dil",
+            "en": "Memory and forgetting; thinking, problem solving and language"
+          },
+          "content": {
+            "anlatim": "# Bellek Süreçleri\n\n**Kodlama** (bilginin işlenmesi) → **depolama** (saklanması) → **geri getirme** (hatırlama).\n\n# Bellek Türleri (Çok Depolu Model)\n\n| | Duyusal bellek | Kısa süreli (çalışan) bellek | Uzun süreli bellek |\n|---|---|---|---|\n| Süre | 1–3 saniye | ~ 20–30 saniye (tekrarla uzar) | Kalıcı, sınırsız kabul edilir |\n| Kapasite | Geniş | 7 ± 2 birim | Sınırsız |\n- Uzun süreli bellekte **açık (bildirimsel)** bellek (olaylar ve bilgiler) ile **örtük (işlemsel)** bellek (bisiklet sürmek gibi beceriler) vardır.\n- **Gruplama (öbekleme):** Bilgiyi anlamlı parçalar hâline getirmek kısa süreli belleğin kapasitesini artırır (telefon numarasını üçerli gruplamak).\n\n# Unutma Nedenleri\n\n- **Bozulma (kullanmama):** Kullanılmayan bilgi zayıflar. Ebbinghaus'a göre unutma ilk saatlerde **hızlıdır**, sonra yavaşlar → **aralıklı tekrar** önemlidir.\n- **Ket vurma (bozucu etki):** Önce öğrenilen yeniyi (**ileriye ket vurma**) ya da yeni öğrenilen eskiyi (**geriye ket vurma**) bozar.\n- **Güdüsel unutma (bastırma)** ve geri getirme ipucunun olmaması (\"dilimin ucunda\").\n\n# Düşünme ve Problem Çözme\n\n- **Kavram** ve **zihinsel imgeler** düşünmenin yapı taşlarıdır.\n- Problem çözme stratejileri: **deneme–yanılma**, **algoritma** (kesin sonuç veren adım dizisi), **sezgisel yöntem (kestirme)**, kavrayış.\n- Engeller: **zihin kalıbı**, **işlevsel saplantı** (bir nesneyi yalnızca bilinen işleviyle düşünmek), doğrulama yanlılığı.\n\n# Dil\n\nSembollerle iletişim sistemidir. Çocuklar dili kendiliğinden ve hızla edinir; dil ile düşünme birbirini etkiler.",
+            "ornekler": [
+              {
+                "soru": "Tarih dersinden hemen sonra çalışılan coğrafya bilgileri yüzünden tarih bilgilerini hatırlamakta güçlük çekmek hangi tür ket vurmadır?",
+                "cozum": "Sonradan öğrenilen (coğrafya) önceki öğrenmeyi (tarih) bozuyor → **geriye ket vurma**."
+              },
+              {
+                "soru": "Ebbinghaus'un unutma eğrisi çalışma planı için ne önerir?",
+                "cozum": "Unutma öğrenmeden hemen sonra hızlı olduğu için ilk tekrarı **kısa süre içinde**, sonrakileri giderek **uzayan aralıklarla** yapmak (aralıklı tekrar)."
+              }
+            ],
+            "ozet": [
+              "Bellek: kodlama → depolama → geri getirme.",
+              "Kısa süreli bellek kapasitesi 7 ± 2; gruplama kapasiteyi artırır.",
+              "Unutma: bozulma, ileriye/geriye ket vurma, bastırma, ipucu eksikliği.",
+              "İşlevsel saplantı ve zihin kalıbı problem çözmeyi engeller."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "u4",
+      "name": {
+        "tr": "4. Ünite: Ruh Sağlığının Temelleri",
+        "en": "Unit 4: Foundations of Mental Health"
+      },
+      "outcomes": [
+        {
+          "id": "k1",
+          "key": "11/psikoloji/u4/k1",
+          "localCode": "PSİ.E7",
+          "title": {
+            "tr": "Güdüler, duygular ve kişilik",
+            "en": "Motives, emotions and personality"
+          },
+          "content": {
+            "anlatim": "# Güdü (Motivasyon)\n\nDavranışı başlatan, yönlendiren ve sürdüren iç etkendir.\n- **Fizyolojik güdüler:** Açlık, susuzluk, uyku (homeostaziyi korur).\n- **Psikolojik/sosyal güdüler:** Başarı, bağlanma, saygınlık.\n- **İç (içsel) güdülenme:** İşin kendisinden zevk almak. **Dış güdülenme:** Ödül, not, övgü gibi dışsal sonuçlar.\n- **Maslow'un ihtiyaçlar hiyerarşisi:** Fizyolojik → güvenlik → ait olma ve sevgi → saygınlık → **kendini gerçekleştirme**. Alt basamaklar karşılanmadan üsttekiler genellikle öne çıkmaz.\n- **Güdü çatışmaları:** Yaklaşma–yaklaşma (iki çekici seçenek), kaçınma–kaçınma (iki istenmeyen seçenek), yaklaşma–kaçınma (aynı hedefin hem iyi hem kötü yanı).\n\n# Duygular\n\nFizyolojik uyarılma, öznel yaşantı ve dışavurumdan oluşur. Temel duyguların (mutluluk, korku, öfke, üzüntü, şaşkınlık, tiksinme) yüz ifadeleri kültürler arasında büyük ölçüde benzerdir.\n\n# Kişilik\n\nBireyi diğerlerinden ayıran, **tutarlı** düşünce, duygu ve davranış örüntüsüdür; kalıtım ve çevrenin ortak ürünüdür.\n- **Mizaç** doğuştan gelen yanıdır, **karakter** toplumsal değerlerle ilgili yanıdır.\n- Freud: id (haz), ego (gerçeklik), süperego (vicdan). Beş faktör (özellik) kuramı: dışadönüklük, uyumluluk, sorumluluk, duygusal denge, deneyime açıklık.",
+            "ornekler": [
+              {
+                "soru": "Hafta sonu hem arkadaşlarıyla sinemaya hem de çok sevdiği konsere davet edilen ama ikisine birden gidemeyen öğrencinin yaşadığı çatışma hangisidir?",
+                "cozum": "İki çekici seçenek arasında seçim → **yaklaşma–yaklaşma çatışması**."
+              },
+              {
+                "soru": "Yalnızca not almak için ders çalışan öğrencinin güdülenmesi hangi türdür?",
+                "cozum": "**Dış güdülenme** (davranış dışsal bir sonuç için yapılıyor)."
+              }
+            ],
+            "ozet": [
+              "Güdü davranışı başlatır, yönlendirir ve sürdürür.",
+              "Maslow: fizyolojik → güvenlik → ait olma → saygınlık → kendini gerçekleştirme.",
+              "Çatışmalar: yaklaşma–yaklaşma, kaçınma–kaçınma, yaklaşma–kaçınma.",
+              "Kişilik kalıtım ve çevrenin ürünüdür; mizaç doğuştan gelir."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "k2",
+          "key": "11/psikoloji/u4/k2",
+          "localCode": "PSİ.E8",
+          "title": {
+            "tr": "Stres, başa çıkma, savunma mekanizmaları ve ruh sağlığı",
+            "en": "Stress, coping, defence mechanisms and mental health"
+          },
+          "content": {
+            "anlatim": "# Stres\n\nBireyin uyum sağlamasını zorlayan durumlara karşı verdiği bedensel ve psikolojik tepkidir. Stres kaynakları: **engellenme** (amaca ulaşamama), **çatışma**, **baskı** ve büyük yaşam olayları.\n- **Genel uyum sendromu (Selye):** Alarm → direnç → tükenme. Uzun süreli stres bağışıklığı zayıflatır.\n- Az ve orta düzey stres performansı artırabilir; çok yüksek stres düşürür.\n\n# Başa Çıkma\n\n- **Problem odaklı:** Sorunun kaynağına yönelmek (plan yapmak, bilgi toplamak).\n- **Duygu odaklı:** Duyguyu düzenlemek (nefes egzersizi, konuşmak, spor).\n- Sağlıklı yollar: düzenli uyku ve beslenme, fiziksel etkinlik, sosyal destek, zaman yönetimi; gerektiğinde **uzman desteği** almak.\n\n# Savunma Mekanizmaları (Freud)\n\nKaygıyı azaltmak için çoğu zaman bilinçdışı kullanılan yollar:\n| Mekanizma | Örnek |\n|---|---|\n| **Bastırma** | Acı veren anıyı hatırlamamak |\n| **Yansıtma** | Kendi kusurunu başkasına yüklemek |\n| **Mantığa bürüme** | Başarısızlığa kabul edilebilir bahane bulmak (\"Sınav zaten haksızdı\") |\n| **Yer değiştirme** | Öğretmene duyulan öfkeyi kardeşten çıkarmak |\n| **Yüceltme** | Saldırganlığı sporla, sanatla ifade etmek |\n| **Gerileme** | Daha erken yaş davranışlarına dönmek |\n| **Karşıt tepki geliştirme** | Hoşlanmadığı kişiye aşırı iyi davranmak |\n\n# Ruh Sağlığı\n\nYalnızca hastalığın yokluğu değil; kişinin yeteneklerini fark ettiği, günlük stresle baş edebildiği, üretken olduğu ve topluma katkı sağladığı **iyi oluş** hâlidir. Kaygı bozuklukları ve depresyon tedavi edilebilir; damgalama yardım aramayı geciktirir.",
+            "ornekler": [
+              {
+                "soru": "Matematik sınavından düşük alan öğrencinin “Zaten mühendis olmak istemiyordum” demesi hangi savunma mekanizmasıdır?",
+                "cozum": "**Mantığa bürüme** (başarısızlığa kabul edilebilir bir gerekçe bulma)."
+              },
+              {
+                "soru": "Sınav kaygısı yaşayan bir öğrencinin çalışma planı hazırlaması ve konuları bölmesi hangi başa çıkma türüdür?",
+                "cozum": "**Problem odaklı** başa çıkma (stresin kaynağına yöneliyor)."
+              }
+            ],
+            "ozet": [
+              "Stres kaynakları: engellenme, çatışma, baskı, yaşam olayları.",
+              "Selye: alarm → direnç → tükenme.",
+              "Başa çıkma: problem odaklı ve duygu odaklı.",
+              "Savunma mekanizmaları kaygıyı azaltır ama sorunu çözmez; yüceltme en olumlu olanıdır.",
+              "Ruh sağlığı bir iyi oluş hâlidir; gerektiğinde uzman desteği alınmalıdır."
+            ]
+          },
+          "review": {
+            "content": "existing-project-not-independently-reviewed",
+            "alignment": "unverified",
+            "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    }
+  ]
+}

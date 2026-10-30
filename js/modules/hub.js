@@ -14,9 +14,9 @@
 
   /* [rota, simge, ad (i18n anahtarı ya da [tr,en]), açıklama [tr,en], grup, arama kelimeleri] */
   const TOOLS = [
-    ["belge-paketi", "book", ["Belgeden Çalışma Paketi", "Document Study Pack"], ["PDF/DOCX veya metinden kaynaklı özet, kavramlar, kart ve test", "Source-linked summaries, concepts, cards and quiz from PDF/DOCX or text"], "study", "belge pdf docx özet paket kaynak test kart"],
+    ["bilim-lab", "lightbulb", ["İleri Düzey Bilim ve Sensör Laboratuvarı", "Advanced Science & Sensor Laboratory"], ["Deney kataloğu, 7 sensör kanalı, fizik ölçümleri, sismograf ve yeni modeller tek yerde", "Experiment library, 7 sensor channels, physics measurements, seismograph and new models"], "science", "laboratuvar fizik atölyesi deney sensör sensor sismograf ivme jiroskop ışık manyetik ses rc soğuma yarı ömür polarizasyon simulation experiment"],
+    ["dokumanlar", "note", ["Dokümanlar", "Documents"], ["Belge düzenle, not al, dosyalardan çalış, deney raporu ve ortak belge hazırla", "Edit documents, take notes, study files, write experiment reports and collaborate"], "study", "belge doküman metin editör not defter pdf docx özet rapor ortak"],
     ["odevler", "calendar", ["Ödev ve Teslim Takibi", "Assignments & Deadlines"], ["Ödevlerini tarih ve küçük adımlarla yönet; fotoğraftan taslak çıkar", "Manage deadlines and steps; read assignment photos"], "track", "ödev teslim tarih görev takip fotoğraf"],
-    ["notlar", "note", ["Notlarım · Defterden Aktar", "My Notes · Notebook Import"], ["El yazısı fotoğrafını düzeltip genel veya konu notlarına ekle", "Correct handwriting transcription and save general or topic notes"], "study", "not defter el yazısı fotoğraf ocr kayıt"],
     ["sozlu-prova", "mic", ["Sözlü Sınav Provası", "Oral Exam Practice"], ["Kaynağından sorular, sesli/yazılı yanıt ve ölçüt bazlı geri bildirim", "Source-based questions, voice/text answers and rubric feedback"], "practice", "sözlü sınav prova ses mikrofon rubrik"],
     ["aktarim", "layers", "nav.transfer", ["Aynı kavramı denklem, grafik/tablo ve günlük yaşamda uygula", "Apply one concept to equations, visual data and everyday problems"], "practice", "aktarım transfer bağlam grafik tablo kavram offline çevrimdışı"],
     ["hata-avcisi", "scan", "nav.errorHunt", ["Kasıtlı hatalı çözümde ilk yanlış adımı ve nedenini bul", "Find the first wrong step and its reason in an intentionally flawed solution"], "practice", "hata avcısı yanlış çözüm eleştirel düşünme gerekçe offline çevrimdışı"],
@@ -42,8 +42,6 @@
     ["paragraf", "timer", "nav.para", ["Okuma hızı ve soru başına süre (TYT Türkçe)", "Reading speed and time per question"], "practice", "paragraf okuma hız türkçe"],
     ["atlas", "globe", "nav.geomap", ["Türkiye ve dünya haritası; keşfet ve sına", "Turkey and world map; explore and quiz"], "practice", "harita coğrafya il ülke başkent"],
     ["zaman", "clock", "nav.timeline", ["İlk Çağ'dan günümüze olaylar; konum, önem ve sınav", "Events from antiquity to today with map and quiz"], "practice", "tarih zaman çizelgesi olay savaş antlaşma inkılap"],
-    ["lab", "lightbulb", "nav.lab", ["82 deney; 2B, 3B, AR, hologram, el ile ve sesli grafik", "82 labs: 2D, 3D, AR, hologram, hand control, audio graphs"], "practice", "deney fizik kimya biyoloji matematik coğrafya simülasyon 3b hologram el sesli grafik"],
-    ["sensor", "mic", ["Sensör Laboratuvarı", "Sensor Lab"], ["Telefonun ivmeölçeri, mikrofonu ve kamerasıyla gerçek ölçüm", "Real measurements with your phone's sensors"], "practice", "sensör ivmeölçer sarkaç yer çekimi asansör ses frekans doppler ışık ters kare ölçüm"],
     ["duello", "star", ["Arkadaş Düellosu", "Friend Duel"], ["İnternetsiz QR ile eşleş, aynı soruları aynı anda çöz", "Pair by QR offline and race on the same questions"], "practice", "düello yarışma arkadaş oyun qr internetsiz rozet"],
     ["evren", "globe", ["Bilgi Evreni", "Knowledge Cosmos"], ["Kazanımların 3B takımyıldız haritası; AR ve hologram", "3D constellation of outcomes; AR and hologram"], "track", "bilgi evreni 3b harita kazanım ön koşul hologram ar yıldız"],
     ["kure", "globe", "nav.globe", ["Elle çevrilen küre: ülkeler, levhalar, depremler, iklim kuşakları, saat dilimleri, gündüz–gece", "Globe: countries, plates, quakes, climate belts, time zones, day–night"], "practice", "küre dünya 3b levha deprem volkan saat dilimi iklim kuşağı ekvator dönence güneş mevsim"],
@@ -68,7 +66,7 @@
     ["sinif", "grad", "nav.class", ["Öğretmen için anonim sınıf özeti", "Anonymous class overview for teachers"], "tools", "sınıf öğretmen"],
     ["hakkinda", "info", "nav.about", ["Proje, gizlilik, kaynakça ve lisanslar", "Project, privacy, references, licences"], "tools", "hakkında kaynakça lisans"]
   ];
-  App.data.discovery.modules.forEach(m => TOOLS.push([m[0],m[3],[m[1],m[1]],[m[2],m[2]],"practice",m[1]+" keşif deney fizik görsel tarih gökyüzü"]));
+  App.data.discovery.modules.filter(m => !["deney-raporu", "telefon-fizik", "sismograf"].includes(m[0])).forEach(m => TOOLS.push([m[0],m[3],[m[1],m[1]],[m[2],m[2]],"practice",m[1]+" keşif deney fizik görsel tarih gökyüzü"]));
   TOOLS.push(["kesif","compass",["Keşif Atölyeleri","Discovery Workshops"],["Dokuz yeni ölçüm, modelleme ve öğretme aracı","Nine measurement, modelling and teaching tools"],"practice","keşif deney dokuz atölye"]);
   const GROUPS = Object.fromEntries(App.toolCategories.groups.map(g=>[g.id,g.title]));
   TOOLS.forEach(t=>{t[4]=App.toolCategories.groupFor(t[0]).id;});

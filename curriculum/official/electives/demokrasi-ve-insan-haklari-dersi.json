@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "grade": null,
+  "apiGradeId": 17,
+  "courseId": 102,
+  "slug": "demokrasi-ve-insan-haklari-dersi",
+  "name": "Demokrasi ve İnsan Hakları Dersi",
+  "programFamily": "tymm-portal-snapshot",
+  "applicability": "reference-only-confirm-school-year-and-school-type",
+  "sourceUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/demokrasi-ve-insan-haklari-dersi",
+  "rights": "factual-index-only-no-textbook-or-lesson-copy",
+  "units": [
+    {
+      "id": "1651",
+      "title": "1. Ünite: Demokrasi Ve İnsan Haklarının Gelişimi",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/demokrasi-ve-insan-haklari-dersi/unite/1651",
+      "retrievedAt": "2026-10-30T16:27:18.488945+00:00",
+      "sourceSha256": "0e8bf9a5d6892e5a5b6a9a83d8ac41b81b2cdfd48a523bd2e0906466e57c7ef0",
+      "status": "codes-indexed",
+      "codes": [
+        "DİH1.1",
+        "DİH1.2",
+        "DİH1.3"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "03.09.2026",
+      "normalizations": []
+    },
+    {
+      "id": "1654",
+      "title": "2. Ünite: Demokratik Katılım",
+      "level": null,
+      "url": "https://tymm.meb.gov.tr/demokrasi-ve-insan-haklari-dersi/unite/1654",
+      "retrievedAt": "2026-10-30T16:27:18.919936+00:00",
+      "sourceSha256": "e10cede04552c20c0cf8a4f88e00cac577b5e9e2b0c96c20786f6369d76b6ddc",
+      "status": "codes-indexed",
+      "codes": [
+        "DİH2.1",
+        "DİH2.2",
+        "DİH2.3"
+      ],
+      "outcomeSectionFound": true,
+      "sourceUpdatedAt": "03.09.2026",
+      "normalizations": []
+    }
+  ],
+  "status": "indexed"
+}
