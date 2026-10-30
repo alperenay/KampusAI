@@ -18,7 +18,7 @@ export function toAppUnits(module){
       requireValue(label(o.title)&&typeof o.content?.anlatim==='string','missing lesson');
       requireValue(Array.isArray(o.content.ornekler)&&o.content.ornekler.every(e=>typeof e.soru==='string'&&typeof e.cozum==='string'),'invalid examples');
       requireValue(Array.isArray(o.content.ozet)&&o.content.ozet.every(s=>typeof s==='string'),'invalid summary');
-      return {id:o.id,code:o.localCode||'',title:structuredClone(o.title),content:structuredClone(o.content)};
+      return {id:o.id,code:o.localCode||'',title:structuredClone(o.title),content:structuredClone(o.content),...(o.provenance?{provenance:structuredClone(o.provenance)}:{})};
     })};
   });
 }

@@ -10,7 +10,7 @@ try {
       await page.waitForSelector("#view .discovery");
     };
   await page.waitForSelector(".discovery-tile");
-  assert.equal(await page.locator(".discovery-grid .discovery-tile").count(), 7);
+  assert.equal(await page.locator(".discovery-grid .discovery-tile").count(), 5);
   assert.equal(await page.locator(".science-lab-shortcut").count(), 1);
   const routes = await page.evaluate(() =>
     App.data.discovery.modules.map((x) => x[0]),
@@ -168,22 +168,13 @@ try {
   );
   await page.click("#dsRun");
   assert.match(await page.locator("#dsResult").innerText(), /5.000 V/);
-  await go("canlanan-kitap");
-  await page.fill("#eqExpression", "sin(k*x)");
-  await page.click("#eqApply");
-  await page.locator("#eqk").fill("2");
-  await page.locator("#eqk").dispatchEvent("input");
-  assert.equal(await page.locator("#eqValuek").innerText(), "2");
-  await page.selectOption("#eqKind", "ellipse");
-  await page.locator("#eqb").fill("2");
-  await page.click("#eqApply");
-  assert.match(await page.locator("[data-status]").innerText(), /onaylandı/);
   await go("tarih-haritasi");
   await page.locator("#hmTime").fill("1500");
   await page.locator("#hmTime").dispatchEvent("input");
+  await page.waitForFunction(() => document.querySelector("#hmDossier").textContent.includes("1453"));
   assert.match(await page.locator("#hmDossier").innerText(), /1453/);
   await page.click("#hmNext");
-  assert.equal(await page.locator("#hmYear").innerText(), "1683");
+  assert.equal(await page.locator("#hmYear").innerText(), "1517");
   await page.locator("#hmRegion").focus();
   await page.keyboard.press("Enter");
   await page.waitForSelector('.modal-backdrop [role="dialog"]');
@@ -289,7 +280,7 @@ try {
   assert.equal(resumed.stillAlive, true);
   assert.equal(resumed.stops, 2);
   // Translation-only tracker, fed a deterministic synthetic camera canvas.
-  await go("canlanan-kitap");
+  await go("ciz-calissin");
   const tracked = await page.evaluate(async () => {
     const board = document.createElement("canvas");
     board.width = 240;

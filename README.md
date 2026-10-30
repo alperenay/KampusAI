@@ -22,7 +22,7 @@ Windows/Android, mağaza dışından indirilen paketlerde güvenlik uyarısı g�
 | Çalışma alanı | Tek Dokümanlar alanı, belgeden çalışma, ödev takibi, defterden not aktarımı ve sözlü prova |
 | Öğrenme | Konu anlatımı, formüller, adaptif test ve açık uçlu yazılılar |
 | Tekrar | Hap Kartlar, yanlış defteri, bağlam değiştirme ve hata bulma pratikleri |
-| Yapay zekâ | Yazı/fotoğraf/sesle soru sorma, Sokratik koç ve kişisel başlangıç şablonları |
+| Yapay zekâ | Yazı/fotoğraf/sesle soru sorma, Sokratik koç, senkron çözüm tahtası ve kişisel başlangıç şablonları |
 | Keşif | 4K küre, 14 model, birleşik bilim/sensör laboratuvarı, tarih çizelgesi, bilgi evreni ve düello |
 | Gelişim | Ders programı, denemeler, hedefler ve haftalık karne |
 | Dil ve sınıf | İngilizce/Almanca alıştırmaları; çevrimdışı QR ödev ve öğretmen geri bildirimi |

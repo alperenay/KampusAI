@@ -90,6 +90,7 @@
   <link rel="stylesheet" href="css/documents.css">
   <link rel="stylesheet" href="css/science-lab.css">
   <link rel="stylesheet" href="css/desktop-workspace.css">
+  <link rel="stylesheet" href="css/v164.css">
 </head>
 <body>
   <!-- Visible before any blocking scripts: prevents a blank Android launch. -->
@@ -152,7 +153,6 @@
             <div class="nav-group__body" id="ng-explore">
           <a class="nav__item" href="#/evren" data-route="evren"><span data-icon="globe"></span><span class="sidebar__label" data-nav-label="cosmos">Bilgi Evreni</span></a>
           <a class="nav__item" href="#/duello" data-route="duello"><span data-icon="star"></span><span class="sidebar__label" data-nav-label="duel">Arkadaş Düellosu</span></a>
-          <a class="nav__item" href="#/vatandas" data-route="vatandas" data-more><span data-icon="map"></span><span class="sidebar__label" data-nav-label="citizen">Vatandaş Bilimi Ağı</span></a>
           <a class="nav__item" href="#/ph" data-route="ph" data-more><span data-icon="sChem"></span><span class="sidebar__label" data-nav-label="ph">pH Ölçer</span></a>
           <a class="nav__item" href="#/ekosistem" data-route="ekosistem" data-more><span data-icon="sBio"></span><span class="sidebar__label" data-nav-label="eco">Ekosistem Kavanozu</span></a>
           <a class="nav__item" href="#/meslek" data-route="meslek" data-more><span data-icon="compass"></span><span class="sidebar__label" data-nav-label="careerMap">Meslek Haritası</span></a>
@@ -206,19 +206,19 @@
               <a class="nav__item" href="#/bana-ogret" data-route="bana-ogret"><span data-icon="grad"></span><span class="sidebar__label">Bana Öğret</span></a>
               <a class="nav__item" href="#/dokunsal-grafik" data-route="dokunsal-grafik"><span data-icon="chart"></span><span class="sidebar__label">Titreşimli Grafik</span></a>
               <a class="nav__item" href="#/deney-raporu" data-route="deney-raporu"><span data-icon="note"></span><span class="sidebar__label">Bilimsel Deney Raporu</span></a>
-              <a class="nav__item" href="#/gokyuzu" data-route="gokyuzu"><span data-icon="star"></span><span class="sidebar__label">Gökyüzü Modu</span></a>
               <a class="nav__item" href="#/ciz-calissin" data-route="ciz-calissin"><span data-icon="pen"></span><span class="sidebar__label">Çiz, Çalışsın</span></a>
-              <a class="nav__item" href="#/canlanan-kitap" data-route="canlanan-kitap"><span data-icon="camera"></span><span class="sidebar__label">Canlanan Ders Kitabı</span></a>
               <a class="nav__item" href="#/tarih-haritasi" data-route="tarih-haritasi"><span data-icon="map"></span><span class="sidebar__label">Yaşayan Tarih Haritası</span></a>
             </div>
           </div>
           <div class="nav-group" data-group="practice">
             <button class="nav-group__head" type="button" aria-expanded="true" aria-controls="ng-practice"><span class="sidebar__label" data-i18n="nav.group.practice">Pratik</span><span data-icon="chevronD"></span></button>
             <div class="nav-group__body" id="ng-practice">
-          <a class="nav__item" href="#/kesif" data-route="kesif" data-route-also="bana-ogret,dokunsal-grafik,gokyuzu,ciz-calissin,canlanan-kitap,tarih-haritasi"><span data-icon="compass"></span><span class="sidebar__label">Keşif Atölyeleri</span></a>
+          <a class="nav__item" href="#/kesif" data-route="kesif" data-route-also="bana-ogret,dokunsal-grafik,ciz-calissin,tarih-haritasi"><span data-icon="compass"></span><span class="sidebar__label">Keşif Atölyeleri</span></a>
           <a class="nav__item" href="#/aktarim" data-route="aktarim"><span data-icon="layers"></span><span class="sidebar__label" data-i18n="nav.transfer">Bilgiyi Başka Yerde Kullan</span></a>
           <a class="nav__item" href="#/hata-avcisi" data-route="hata-avcisi"><span data-icon="scan"></span><span class="sidebar__label" data-i18n="nav.errorHunt">Çözümdeki Hatayı Bul</span></a>
           <a class="nav__item" href="#/bilim-lab" data-route="bilim-lab">
+              <a class="nav__item" href="#/bilim-lab/gokyuzu" data-route="bilim-lab/gokyuzu"><span data-icon="star"></span><span class="sidebar__label">Gökyüzü Modu</span></a>
+          <a class="nav__item" href="#/bilim-lab/vatandas" data-route="bilim-lab/vatandas"><span data-icon="map"></span><span class="sidebar__label" data-nav-label="citizen">Vatandaş Bilimi Ağı</span></a>
             <span data-icon="lightbulb"></span><span class="sidebar__label" data-nav-label="scienceLab">Bilim ve Sensör Laboratuvarı</span>
           </a>
           <a class="nav__item" href="#/modeller" data-route="modeller">
@@ -387,6 +387,8 @@
 
   <script src="js/core/ui.js"></script>
   <script src="js/core/router.js"></script>
+  <script src="js/core/sanitize.js"></script>
+  <script src="js/core/lazy.js"></script>
 
   <!-- Matematik gösterimi (KaTeX, yerel kopya — internet gerekmez) -->
   <script src="assets/vendor/katex/katex.min.js"></script>
@@ -401,7 +403,6 @@
   <script src="js/data/content-index.js"></script>
   <script src="js/data/curriculum-data.js"></script>
   <script src="js/data/elements.js"></script>
-  <script src="js/data/game-data.js"></script>
   <script src="js/data/prereq-9.js"></script>
 
   <!-- Yapay zeka: bilgisayardaki Ollama + internet servisleri (Gemini, OpenAI-uyumlu) -->
@@ -427,24 +428,21 @@
   <script src="js/modules/gorsel.js"></script>
   <script src="js/modules/curriculum.js"></script>
   <script src="js/modules/exams.js"></script>
-  <script src="js/modules/about.js"></script>
   <script src="js/modules/score.js"></script>
-  <script src="js/modules/calculator.js"></script>
   <script src="js/modules/learnmap.js"></script>
   <script src="js/modules/badges.js"></script>
   <script src="js/modules/fx.js"></script>
   <script src="js/modules/voice-fx.js"></script>
+  <script src="js/modules/voice-board.js"></script>
   <script src="js/modules/voice.js"></script>
   <script src="js/modules/demo.js"></script>
   <script src="js/modules/report.js"></script>
-  <script src="js/modules/sim.js"></script>
   <script src="js/modules/classroom.js"></script>
   <script src="js/modules/settings.js"></script>
   <script src="js/modules/goals.js"></script>
   <script src="js/modules/mistakes.js"></script>
   <script src="js/modules/metacognition.js"></script>
   <script src="js/modules/confidence.js"></script>
-  <script src="js/modules/sonify.js"></script>
   <script src="js/modules/scaffolding.js"></script>
   <script src="js/modules/adaptive.js"></script>
   <script src="js/modules/quiz.js"></script>
@@ -453,14 +451,6 @@
   <script src="js/modules/teacher-review.js"></script>
   <script src="js/modules/cards.js"></script>
   <script src="js/modules/lab3d.js"></script>
-  <script src="js/modules/labs.js"></script>
-  <script src="js/modules/labs-fizik.js"></script>
-  <script src="js/modules/labs-kimya.js"></script>
-  <script src="js/modules/labs-biyoloji.js"></script>
-  <script src="js/modules/labs-ek.js"></script>
-  <script src="js/modules/labs3d-temel.js"></script>
-  <script src="js/modules/labs3d-fizik.js"></script>
-  <script src="js/modules/kure.js"></script>
   <script src="js/modules/yazili.js"></script>
   <script src="js/modules/formuller.js"></script>
   <script src="js/modules/feedback.js"></script>
@@ -472,13 +462,6 @@
   <script src="js/modules/sensor-workbench.js"></script>
   <script src="js/modules/module-safety.js"></script>
   <script src="js/data/motivasyon.js"></script>
-  <script src="js/data/paragraflar.js"></script>
-  <script src="js/data/harita-bilgi.js"></script>
-  <script src="js/modules/harita.js"></script>
-  <script src="js/modules/paragraf.js"></script>
-  <script src="js/modules/games.js"></script>
-  <script src="js/modules/games-2.js"></script>
-  <script src="js/modules/games-3.js"></script>
   <script src="js/modules/similar.js"></script>
   <script src="js/modules/feynman.js"></script>
   <script src="js/modules/hece.js"></script>
@@ -494,48 +477,10 @@
   <script src="js/modules/study-recommender.js"></script>
   <script src="js/modules/today.js"></script>
   <script src="js/modules/review-queue.js"></script>
-  <script src="js/modules/sinif-modu.js"></script>
-  <script src="js/modules/karne.js"></script>
-  <script src="js/data/practice-bank.js"></script>
-  <script src="js/data/practice-bank-ext.js"></script>
-  <script src="js/modules/practice.js"></script>
-  <script src="js/modules/practice-ui.js"></script>
   <script src="js/modules/sensor-lab.js"></script>
-  <script src="js/modules/duello.js"></script>
-  <script src="js/modules/evren.js"></script>
-  <script src="js/modules/ph-metre.js"></script>
-  <script src="js/modules/vatandas.js"></script>
-  <script src="js/modules/ekosistem.js"></script>
   <script src="js/modules/tour.js"></script>
-  <script src="js/modules/tercih.js"></script>
-  <script src="js/data/tarih-olaylar.js"></script>
-  <script src="js/data/tarih-ek.js"></script>
-  <script src="js/modules/zaman.js"></script>
-  <script src="js/modules/video.js"></script>
-  <script src="js/data/kariyer.js"></script>
-  <script src="js/modules/kariyer.js"></script>
-  <script src="js/data/meslek-harita.js"></script>
-  <script src="js/modules/meslek.js"></script>
-  <script src="js/modules/yolculuk.js"></script>
-  <script src="js/modules/podcast.js"></script>
   <script src="js/data/discovery.js"></script>
-  <script src="js/modules/discovery-model.js"></script>
-  <script src="js/modules/discovery-core.js"></script>
-  <script src="js/modules/onboarding.js"></script>
-  <script src="js/modules/discovery-vision.js"></script>
-  <script src="js/modules/reverse-tutor.js"></script>
-  <script src="js/modules/phone-physics.js"></script>
-  <script src="js/modules/haptic-graph.js"></script>
-  <script src="js/modules/science-report.js"></script>
-  <script src="js/modules/seismograph.js"></script>
-  <script src="js/modules/planetarium.js"></script>
-  <script src="js/modules/draw-simulation.js"></script>
-  <script src="js/modules/equation-camera.js"></script>
-  <script src="js/modules/history-map.js"></script>
   <script src="js/data/tool-categories.js"></script>
-  <script src="js/modules/study-workspace-model.js"></script>
-  <script src="js/modules/document-import.js"></script>
-  <script src="js/modules/study-workspace.js"></script>
   <script src="js/modules/documents.js"></script>
   <script src="js/modules/science-lab-model.js"></script>
   <script src="js/modules/science-lab.js"></script>
@@ -551,6 +496,7 @@
   <script src="js/modules/desktop-workspace.js"></script>
   <script src="js/modules/startup.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/core/csp.js"></script>
 </body>
 </html>
 

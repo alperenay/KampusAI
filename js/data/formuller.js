@@ -203,12 +203,12 @@
   K("11", "u1/k2", "Oluşum entalpilerinden ΔH", r`\Delta H=\sum \Delta H_{\text{ürünler}}-\sum \Delta H_{\text{girenler}}`, "Standart oluşum entalpileri verilen tepkimenin entalpisini bulurken.", "Elementlerin oluşum entalpisi 0");
   K("11", "u1/k2", "Bağ enerjilerinden ΔH", r`\Delta H=\sum E_{\text{kırılan}}-\sum E_{\text{oluşan}}`, "Bağ enerjileri verilen tepkimenin entalpisini bulurken.", "");
   K("11", "u1/k2", "Hess yasası", r`\Delta H_{\text{toplam}}=\Delta H_1+\Delta H_2+\dots`, "Ara basamaklardan toplam tepkimenin entalpisini bulurken.", "Tepkime ters çevrilirse ΔH işaret değiştirir");
-  K("11", "u1/k3", "Ortalama tepkime hızı", r`r=-\frac{\Delta[A]}{\Delta t}=\frac{\Delta[C]}{\Delta t}`, "Derişimin zamanla değişiminden tepkime hızını bulurken.", "");
+  K("11", "u1/k3", "Ortalama tepkime hızı", r`v=-\frac{1}{a}\frac{\Delta[A]}{\Delta t}=\frac{1}{c}\frac{\Delta[C]}{\Delta t}`, "aA → cC tepkimesinde ortalama tepkime hızını bulurken.", "a ve c: denkleştirilmiş katsayılar");
   K("11", "u1/k4", "Hız denklemi", r`r=k\,[A]^x\,[B]^y`, "Derişim değiştiğinde hızın nasıl değişeceğini bulurken.", "x, y: deneyle bulunur (mekanizmada yavaş basamak)");
   K("11", "u2/k1", "Denge sabiti", r`K_c=\frac{[C]^c\,[D]^d}{[A]^a\,[B]^b}\qquad K_p=K_c\,(RT)^{\Delta n}`, "Denge anındaki derişimlerden denge sabitini bulurken.", "Katı ve saf sıvılar yazılmaz");
   K("11", "u2/k1", "Tepkime oranı", r`Q_c<K_c\Rightarrow \text{ileri};\quad Q_c>K_c\Rightarrow \text{geri};\quad Q_c=K_c\Rightarrow \text{denge}`, "Sistemin dengeye hangi yönde ilerleyeceğini tahmin ederken.", "");
   K("11", "u2/k3", "Suyun iyonlaşması ve pH", r`K_w=[H^+][OH^-]=10^{-14}\qquad pH=-\log[H^+]\qquad pH+pOH=14`, "Asitlik ve bazlığı hesaplarken (25 °C).", "");
-  K("11", "u2/k4", "Zayıf asit", r`[H^+]=\sqrt{K_a\cdot C}\qquad K_a\cdot K_b=K_w`, "Zayıf asit ya da bazların pH'ını bulurken.", "C: başlangıç derişimi");
+  K("11", "u2/k4", "Zayıf asit", r`[H^+]=\sqrt{K_a\cdot C}\qquad K_a\cdot K_b=K_w`, "Zayıf asit ya da bazların pH'ını bulurken.", "C başlangıç derişimi; iyonlaşma C’ye göre küçük, su otoiyonlaşması ihmal edilebilir olmalı");
   K("11", "u2/k4", "Titrasyon (eşdeğerlik noktası)", r`M_a\,V_a\,x=M_b\,V_b\,y`, "Asit–baz titrasyonunda bilinmeyen derişimi bulurken.", "x, y: asidin H⁺, bazın OH⁻ sayısı");
   K("11", "u2/k5", "Çözünürlük çarpımı", r`K_{sp}=[A^{y+}]^x\,[B^{x-}]^y\qquad AB\ \text{tipi}:\ K_{sp}=s^2`, "Az çözünen tuzların çözünürlüğünü ve çökelme olup olmayacağını bulurken.", "s: molar çözünürlük");
   // 12
@@ -216,9 +216,46 @@
   K("12", "u1/k2", "Nernst denklemi", r`E=E^\circ-\frac{0{,}0592}{n}\log Q`, "Derişimler standart değilken pil potansiyelini bulurken (25 °C).", "n: aktarılan elektron sayısı");
   K("12", "u1/k3", "Faraday yasası", r`Q=I\cdot t\qquad m=\frac{I\,t\,M_A}{n\,F}`, "Elektrolizde toplanan madde kütlesini bulurken.", "F = 96 485 C/mol e⁻");
   K("12", "u2/k1", "Hibritleşme ve bağ açısı", r`sp^3:\ 109{,}5^\circ\qquad sp^2:\ 120^\circ\qquad sp:\ 180^\circ`, "Karbonun hibrit türünden molekül geometrisini tahmin ederken.", "");
-  K("12", "u3/k1", "Hidrokarbon genel formülleri", r`\text{alkan } C_nH_{2n+2}\qquad \text{alken } C_nH_{2n}\qquad \text{alkin } C_nH_{2n-2}`, "Formülden hidrokarbonun türünü ya da karbon sayısından formülü bulurken.", "");
+  K("12", "u3/k1", "Hidrokarbon genel formülleri", r`\text{alkan } C_nH_{2n+2}\qquad \text{alken } C_nH_{2n}\qquad \text{alkin } C_nH_{2n-2}`, "Açık zincirli alkan, tek çift bağlı alken veya tek üçlü bağlı alkin için.", "Halkalı veya birden fazla çoklu bağlı yapılara doğrudan uygulanmaz");
   K("12", "u4/k1", "Hidrokarbon yanma denklemi", r`C_xH_y+\Big(x+\frac{y}{4}\Big)O_2\rightarrow x\,CO_2+\frac{y}{2}\,H_2O`, "Yakıtların yanmasında gereken oksijeni ve oluşan ürünleri bulurken.", "");
 
+  // v1.64: original compact reference cards. Conditions are part of each formula.
+  const extras = [
+    ['matematik','10','t2/k1','Ağırlıklı ortalama',r`\bar x=\frac{\sum_i w_i x_i}{\sum_i w_i}`,'Farklı büyüklükteki grupları birleştirirken.','wᵢ ≥ 0; ağırlıklar toplamı > 0'],
+    ['matematik','12','u2/k1','Sonsuz geometrik seri',r`S=\frac{a_1}{1-r}\quad (|r|<1)`,'Yakınsak geometrik serinin toplamında.','r=±1 veya |r|>1 için bu toplam kullanılmaz'],
+    ['matematik','12','u2/k1','Geometrik seri kalan terimi',r`R_n=\frac{a_1r^n}{1-r}\quad (|r|<1)`,'İlk n terimle yapılan yaklaşımın hatasında.','Mutlak hata |Rₙ|'],
+    ['matematik','11','u5/k1','Sinüs grafiğinde genlik ve periyot',r`y=A\sin(Bx+C)+D,\quad T=\frac{2\pi}{|B|},\quad x_0=-\frac{C}{B}`,'Grafik dönüşümlerinde.','Genlik |A|; B ≠ 0; açı radyan'],
+    ['matematik','12','u5/k2','Genel tabanda üstel türev',r`\frac{d}{dx}a^{u(x)}=a^{u(x)}\ln(a)\,u'(x)`,'Bileşke üstel fonksiyonların türevinde.','a>0; a≠1'],
+    ['matematik','12','u5/k2','Genel tabanda logaritmik türev',r`\frac{d}{dx}\log_a u(x)=\frac{u'(x)}{u(x)\ln a}`,'Bileşke logaritmik fonksiyonların türevinde.','a>0, a≠1, u(x)>0'],
+    ['matematik','12','u5/k2','Ters fonksiyonun türevi',r`(f^{-1})'(b)=\frac{1}{f'(a)},\quad b=f(a)`,'Yerel tersin değişim oranını bulurken.','f türevlenebilir ve bire bir; f′(a)≠0'],
+    ['matematik','12','u6/k1','Değişken değiştirme',r`u=g(x),\quad \int f(g(x))g'(x)\,dx=\int f(u)\,du`,'Bileşke yapılı integrallerde.','Belirli integralde sınırları da u değişkenine dönüştür'],
+    ['matematik','12','u6/k2','Üst sınırı değişken integralin türevi',r`\frac{d}{dx}\int_a^{g(x)}f(t)\,dt=f(g(x))g'(x)`,'Analizin temel teoremi ile bileşke sınırda.','f sürekli; g türevlenebilir'],
+    ['matematik','12','u7/k1','Noktadan doğruya uzaklık',r`d=\frac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}`,'Çember–doğru teğetliği ve uzaklıkta.','A ve B aynı anda sıfır değil'],
+    ['fizik','12','u1/k2','Dönme kinetik enerjisi',r`K_{\text{dönme}}=\frac12 I\omega^2`,'Sabit eksen çevresinde dönen rijit cisimde.','I kg·m²; ω rad/s; K joule'],
+    ['fizik','12','u1/k2','Paralel eksen teoremi',r`I=I_{\rm KM}+md^2`,'Kütle merkezine paralel başka eksene geçerken.','d: iki paralel eksen arası dik uzaklık'],
+    ['fizik','12','u1/k2','Kaymadan yuvarlanmada toplam enerji',r`K=\frac12mv^2+\frac12I_{\rm KM}\omega^2,\quad v=\omega R`,'Rijit cismin öteleme ve dönmesini birlikte hesaplarken.','Kaymama koşulu gerekir'],
+    ['fizik','12','u1/k3','Dairesel yörünge hızı',r`v=\sqrt{\frac{GM}{r}}`,'Küresel merkez cismi çevresinde ideal dairesel yörüngede.','r merkezden uzaklık; atmosfer ve diğer cisimler ihmal'],
+    ['fizik','12','u1/k4','Kaçış hızı',r`v_e=\sqrt{\frac{2GM}{r}}`,'Sonsuzda sıfır hızla ayrılma enerji eşiğinde.','Direnç ve diğer cisimler ihmal; r merkezden'],
+    ['fizik','12','u1/k4','Kütle çekim potansiyel enerjisi',r`U(r)=-\frac{GMm}{r},\quad U(\infty)=0`,'Büyük yükseklik değişiminde.','Yüzeye yakın mgh yaklaşımıyla referansı karıştırma'],
+    ['fizik','12','u2/k1','Yay hareketinin toplam enerjisi',r`E=\frac12kA^2=\frac12mv^2+\frac12kx^2`,'Kayıpsız Hooke yayıyla harmonik harekette.','A genlik; x dengeye göre konum'],
+    ['fizik','12','u3/k1','Tek yarıkta karanlık saçaklar',r`a\sin\theta=m\lambda,\quad m=\pm1,\pm2,\ldots`,'Uzak alan kırınımında minimumları bulurken.','a yarık genişliği; m=0 minimum değildir'],
+    ['fizik','12','u3/k3','Malus yasası',r`I=I_0\cos^2\theta`,'Doğrusal polarize ışık ideal analizörden geçerken.','I₀ analizöre gelen polarize ışık; polarize olmayan giriş için önce I/2'],
+    ['fizik','12','u4/k2','Etkinlik ve yarı ömür',r`\mathcal A=\lambda N,\quad \lambda=\frac{\ln2}{T_{1/2}}`,'Aynı radyoizotopun etkinliğini hesaplarken.','Etkinlik Bq; doz değildir'],
+    ['fizik','12','u5/k2','Durdurma potansiyeli',r`e|V_d|=hf-\phi`,'Fotoelektrik olayda en hızlı elektronlar için.','hf≥φ; e pozitif temel yük büyüklüğü'],
+    ['kimya','9','u1/k1','İzotopların ağırlıklı kütlesi',r`\bar m=\sum_i f_i m_i,\quad \sum_i f_i=1`,'Doğal izotop bolluklarından atom kütlesinde.','fᵢ bolluk kesri; mᵢ izotop kütlesi'],
+    ['kimya','11','u4/k1','Molalite',r`m=\frac{n_{\text{çözünen}}}{m_{\text{çözücü}}\ (\mathrm{kg})}`,'Koligatif özellik hesaplarında.','Molariteyle karıştırma; payda çözücü kütlesi'],
+    ['kimya','11','u4/k1','Donma noktası alçalması',r`\Delta T_f=iK_fm`,'İdeal seyreltik çözeltide.','i etkin tanecik katsayısı; Kf çözücüye bağlı'],
+    ['kimya','11','u4/k1','Ozmotik basınç',r`\Pi=iMRT`,'İdeal seyreltik çözeltide osmoz modelinde.','M mol/L ise R birimleriyle uyumlu; T kelvin'],
+    ['kimya','11','u2/k4','Tampon pH yaklaşımı',r`pH=pK_a+\log\frac{[A^-]}{[HA]}`,'Zayıf asit–eşlenik baz tamponunda.','Önce eklenen güçlü asit/bazı tüket; kapasite ve seyreltiklik sınırları'],
+    ['kimya','11','u2/k4','Zayıf asitte ikinci derece çözüm',r`x=\frac{-K_a+\sqrt{K_a^2+4K_aC}}{2}`,'HA için x≪C yaklaşımı yetersizken.','Su otoiyonlaşması ve aktivite etkileri ihmal; x=[H⁺]'],
+    ['kimya','11','u2/k5','AB₂ tuzunda molar çözünürlük',r`AB_2\rightleftharpoons A^{2+}+2B^-,\quad K_{sp}=4s^3`,'Saf suda ideal AB₂ çözünmesinde.','Ortak iyon ve yan tepkime yok; s mol/L'],
+    ['kimya','12','u1/k2','Pil potansiyeli ve serbest enerji',r`\Delta G^\circ=-nFE^\circ`,'Standart koşulda pil tepkimesinin termodinamik yönünde.','n elektron mol katsayısı; F C/mol; E volt; ΔG J/mol tepkime'],
+    ['kimya','12','u1/k2','Standart potansiyel ve denge sabiti',r`\ln K=\frac{nFE^\circ}{RT}`,'Elektrokimyasal tepkimenin denge sabitinde.','T kelvin; K boyutsuz aktivitelerle tanımlanır'],
+    ['kimya','12','u1/k3','Seri elektroliz hücrelerinde kütle oranı',r`\frac{m_1}{m_2}=\frac{M_1/n_1}{M_2/n_2}`,'Aynı yükten tam akım verimiyle biriken metallerde.','M molar kütle; n iyon başına elektron sayısı'],
+    ['kimya','12','u3/k1','Doymamışlık derecesi',r`DBE=\frac{2C+2+N-H-X}{2}`,'Uygun kapalı kabuklu organik formülde halka ve çoklu bağ sayısını sınırlarken.','X halojen; O/S hesaba girmez; olağan değerlikler varsayılır']
+  ];
+  const referenceFor = f => f.d==='kimya' ? 'https://openstax.org/details/books/chemistry-2e' : f.d==='fizik' ? 'https://openstax.org/details/books/university-physics-volume-'+(['u4','u5'].includes(f.k.split('/')[0])?'3':'1') : f.g==='12' && f.k.startsWith('u2/') ? 'https://openstax.org/details/books/calculus-volume-2' : f.ad==='Ağırlıklı ortalama' ? 'https://openstax.org/details/books/introductory-statistics-2e' : f.k.startsWith('u5/')||f.k.startsWith('u6/') ? 'https://openstax.org/details/books/calculus-volume-1' : 'https://openstax.org/details/books/precalculus-2e';
+  extras.forEach(([d,g,k,ad,tex,ne,v])=>{const f={d,g,k,ad,tex,ne,v,edition:'supplement-1.64',level:'Temel / AYT ek başvuru; okul kapsamını öğretmeninle kontrol et'};f.source=referenceFor(f);F.push(f);});
   App.data = App.data || {};
   App.data.formuller = F;
 })();

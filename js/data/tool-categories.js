@@ -62,9 +62,9 @@
         "ph",
         "ekosistem",
         "vatandas",
+        "gokyuzu",
         "dokunsal-grafik",
         "ciz-calissin",
-        "canlanan-kitap",
       ],
     },
     {
@@ -79,7 +79,6 @@
         "kure",
         "atlas",
         "modeller",
-        "gokyuzu",
         "zaman",
         "tarih-haritasi",
         "evren",

@@ -5,8 +5,8 @@
   "model": "grade/subject/unit/outcome",
   "summary": {
     "localModules": 47,
-    "localUnits": 244,
-    "localLessons": 808,
+    "localUnits": 246,
+    "localLessons": 855,
     "officialCourses": 27,
     "officialModules": 65,
     "officialUnits": 308,
@@ -37,8 +37,8 @@
       "subjectId": "biyoloji",
       "file": "notes/10/biyoloji.json",
       "units": 3,
-      "outcomes": 25,
-      "sha256": "c2f0e5d93bf4bbc5732d95a31ee04145c7ef867d6585260039637de840d2c460"
+      "outcomes": 26,
+      "sha256": "a0d44587ef50d3170ee97b10d231000ea7ecdad8f1436902527e5728bb8ea039"
     },
     {
       "grade": 10,
@@ -77,8 +77,8 @@
       "subjectId": "fizik",
       "file": "notes/10/fizik.json",
       "units": 5,
-      "outcomes": 26,
-      "sha256": "e4b9e6c6d22968bce7df9a4d941e745e12b19b663cd3c410a85d39adb33cf46f"
+      "outcomes": 27,
+      "sha256": "559277776ff231ae6406ea6a23ada936ec28461555321e6e3ed5ed47a06bb0e9"
     },
     {
       "grade": 10,
@@ -93,16 +93,16 @@
       "subjectId": "kimya",
       "file": "notes/10/kimya.json",
       "units": 5,
-      "outcomes": 21,
-      "sha256": "9b5f465bfcf674dd79bc8cc15e9dd2b09168ae10dc1ed6a48fea0b5000ea9690"
+      "outcomes": 22,
+      "sha256": "f7e31f975151fbe443a0d3295a4d69d6dd54c8de8cc917f9e2687232c5acb7cc"
     },
     {
       "grade": 10,
       "subjectId": "matematik",
       "file": "notes/10/matematik.json",
       "units": 7,
-      "outcomes": 26,
-      "sha256": "4208e52e33fe1bcf2c4e80968dcda7afb87ab6a85afa08d148edf5716ac5e478"
+      "outcomes": 27,
+      "sha256": "54956efa40c9881a4286c44abb2c2b9e0015641f17d9409347d4e92de0b741c2"
     },
     {
       "grade": 10,
@@ -117,8 +117,8 @@
       "subjectId": "biyoloji",
       "file": "notes/11/biyoloji.json",
       "units": 5,
-      "outcomes": 16,
-      "sha256": "8d77412bae625176bd1dbf85988c21d6379ec6ed76d299fb5d7076fabe67b1c6"
+      "outcomes": 17,
+      "sha256": "f90ac94335a25f3eb033a5dad2630d6dd861c51684e34884154479b33278f9e7"
     },
     {
       "grade": 11,
@@ -157,8 +157,8 @@
       "subjectId": "fizik",
       "file": "notes/11/fizik.json",
       "units": 5,
-      "outcomes": 19,
-      "sha256": "cb738c36bd499ff0eb4c8a6f849900ccf78d34b777e60db8d5e91875aead7c23"
+      "outcomes": 20,
+      "sha256": "bde459c4276adde3c9e01117ea3c4b5c128b438f1366820c4f2788b0247ff834"
     },
     {
       "grade": 11,
@@ -173,16 +173,16 @@
       "subjectId": "kimya",
       "file": "notes/11/kimya.json",
       "units": 4,
-      "outcomes": 15,
-      "sha256": "8af0411003e73ad0f802f5217457bb93967b992986ec45cfd67c2fb572f9462e"
+      "outcomes": 16,
+      "sha256": "e9e4e3e27dbb32db4e5e2731b54fc9d2b2490a35759a984b3961e3b8d10d06d5"
     },
     {
       "grade": 11,
       "subjectId": "matematik",
       "file": "notes/11/matematik.json",
       "units": 6,
-      "outcomes": 21,
-      "sha256": "5b361b65b29729aa3c20a9db21127836c8f365ad6fdb26e3b31067c108ac0d8c"
+      "outcomes": 22,
+      "sha256": "8563e4555c81f7e706d7a14cc69748704e04762d47513bd9e10ce816006e0a67"
     },
     {
       "grade": 11,
@@ -213,88 +213,88 @@
       "subjectId": "biyoloji",
       "file": "notes/12/biyoloji.json",
       "units": 4,
-      "outcomes": 19,
-      "sha256": "9516647cb974ed467fcd96eb905d454a05225bdecb4136a00231886c439e0fa7"
+      "outcomes": 24,
+      "sha256": "057eabfa305337b81d548edcee8900ddc1866db51701e193a0bb33cab090c41f"
     },
     {
       "grade": 12,
       "subjectId": "cagdas",
       "file": "notes/12/cagdas.json",
       "units": 4,
-      "outcomes": 5,
-      "sha256": "c21ff4b5dd4b03a87744cef77a6cb86ef82616254ed781e2431872a40b94fa85"
+      "outcomes": 6,
+      "sha256": "756b1b0d725db1400365cb3c5ba4e503549d209ed94bebc116270c8e6b1635ce"
     },
     {
       "grade": 12,
       "subjectId": "cografya",
       "file": "notes/12/cografya.json",
       "units": 4,
-      "outcomes": 22,
-      "sha256": "f26c3f0795497bd7a1ec0e81fec81c2ce25d682f29d5a498ebda2b2b0c132728"
+      "outcomes": 23,
+      "sha256": "d2ec6fd1e2e604e8c27506dbd66c995a6b9c43eaa0827572001ad10a1d718e1f"
     },
     {
       "grade": 12,
       "subjectId": "din",
       "file": "notes/12/din.json",
       "units": 5,
-      "outcomes": 14,
-      "sha256": "0fd4a5cf6758faee0d56cbd7a8752f05201c8f3da16dbf6b4f4c692999832390"
+      "outcomes": 15,
+      "sha256": "bb7d854fb442f9a551cb8662a076ade22c7f4891aadc660edef9f9666af21606"
     },
     {
       "grade": 12,
       "subjectId": "edebiyat",
       "file": "notes/12/edebiyat.json",
       "units": 7,
-      "outcomes": 13,
-      "sha256": "d23591fee5ae4d383eae929daae628491131462a307f3166a33e43611c29dcdc"
+      "outcomes": 14,
+      "sha256": "2cfb165ddb0b9a4dfba8ef564ef812031aa34d36c4995da2ec5f97bf870780bf"
     },
     {
       "grade": 12,
       "subjectId": "felsefe",
       "file": "notes/12/felsefe.json",
       "units": 4,
-      "outcomes": 12,
-      "sha256": "0514bbf671bb2c0c8802e227ad016c9b8eb609309a7cccfdf447dcc8200f909e"
+      "outcomes": 13,
+      "sha256": "be03b0cfdf7fe91647f677ae542888e2466ec4fc811809b17bcf3d2edc2febec"
     },
     {
       "grade": 12,
       "subjectId": "fizik",
       "file": "notes/12/fizik.json",
       "units": 6,
-      "outcomes": 15,
-      "sha256": "60e6b4e2c9fc7414c90d736a4b520fc9a2e7dbfb5577c118074ac25ff1392fef"
+      "outcomes": 21,
+      "sha256": "edccc1c7ec165a5b0c495c2ed7e14e2dd719f5e60479f492b0f141ac85b80d92"
     },
     {
       "grade": 12,
       "subjectId": "ingilizce",
       "file": "notes/12/ingilizce.json",
-      "units": 14,
-      "outcomes": 25,
-      "sha256": "196757c5a58e01a51c555ea4e3e2767591ea76955f9c2e9525a463325dde4c36"
+      "units": 16,
+      "outcomes": 31,
+      "sha256": "a11d54b5831fc446a377771026be68a19de7e48a9bb142851d99c574c441a512"
     },
     {
       "grade": 12,
       "subjectId": "inkilap",
       "file": "notes/12/inkilap.json",
       "units": 7,
-      "outcomes": 18,
-      "sha256": "f7cb76b3fd7bd75c6d27a0667a3b592d419c5007a2b24da2e9fbccd8c4199dc8"
+      "outcomes": 19,
+      "sha256": "afddeafe32ec845d0ada11357708b817466900a8f8dca999dedc3e99c4c63ed9"
     },
     {
       "grade": 12,
       "subjectId": "kimya",
       "file": "notes/12/kimya.json",
       "units": 4,
-      "outcomes": 13,
-      "sha256": "a9d1791a843ee2e4196f2f5ab96e9ed45458d2b64be2660f5ed882abf9c697cd"
+      "outcomes": 18,
+      "sha256": "91b36ccccba18a18ff3da9e6bbca95523348bbaf9cf7f66f88fb206935082dc3"
     },
     {
       "grade": 12,
       "subjectId": "matematik",
       "file": "notes/12/matematik.json",
       "units": 7,
-      "outcomes": 18,
-      "sha256": "6d0314e1861dabb4ac908e14739e04f4a1b5d0be680b33836e2231c197a18cc5"
+      "outcomes": 25,
+      "sha256": "e9f13836a4152393bfb703a1ee4471f068712b7ee803d039d0e03f5babb9642a"
     },
     {
       "grade": 9,
@@ -317,8 +317,8 @@
       "subjectId": "biyoloji",
       "file": "notes/9/biyoloji.json",
       "units": 2,
-      "outcomes": 18,
-      "sha256": "9245befcfc8a09e0cda55507eed7fa6e5ddcaefda74b4f2d2a5858e1c4445f5e"
+      "outcomes": 19,
+      "sha256": "0c776a257ed14e9eb82a88b7a4536c9fc50e5f6d86efc6ad443d5f7dd8ee37ba"
     },
     {
       "grade": 9,
@@ -349,8 +349,8 @@
       "subjectId": "fizik",
       "file": "notes/9/fizik.json",
       "units": 6,
-      "outcomes": 29,
-      "sha256": "9648eded4859df2478df4ecf97e8cfd8b9f36597c996c5b78853ab3aaca3eedb"
+      "outcomes": 30,
+      "sha256": "240b50521606d92dfa016aaa6e9c62affb6080a19e46cd2557509302b36b946e"
     },
     {
       "grade": 9,
@@ -373,16 +373,16 @@
       "subjectId": "kimya",
       "file": "notes/9/kimya.json",
       "units": 3,
-      "outcomes": 25,
-      "sha256": "66bc3bdaf4f32b12109fe607697cf800e40fea9eb6870543510e8093c67354ed"
+      "outcomes": 26,
+      "sha256": "e760b8f6fb0fa877fb16d978084c3a14c3737a87e7ec2ef6aab8fe36f2d7c53a"
     },
     {
       "grade": 9,
       "subjectId": "matematik",
       "file": "notes/9/matematik.json",
       "units": 8,
-      "outcomes": 26,
-      "sha256": "c978449293de90d9409c4dc95e75f5788f492b9cdfadfbc16481c5aeec9f644b"
+      "outcomes": 27,
+      "sha256": "4be980e9efc09392ecd269a4acb8b52289b107f99d193f68e0cd72db73080447"
     },
     {
       "grade": 9,

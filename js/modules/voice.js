@@ -20,8 +20,8 @@
 
   let s = null;          // aktif oturum
 
-  const VOICE_HINT_TR = "\n\n[Sesli sohbet: Cevabın sesli okunacak. Konuşur gibi, kısa ve sade cevap ver (en fazla 5–6 cümle). Tablo, madde işareti ve uzun formül kullanma; gerekirse formülü sözle anlat. Gerekiyorsa sonunda öğrenciye kısa bir soru sor.]";
-  const VOICE_HINT_EN = "\n\n[Voice chat: your answer will be read aloud. Answer briefly and conversationally (max 5–6 sentences). No tables, bullets or long formulas; say formulas in words. If useful, end with a short question for the student.]";
+  const VOICE_HINT_TR = "\n\n[Sesli sohbet: Cevabın sesli okunacak. Konuşur gibi, kısa ve sade cevap ver (en fazla 5–6 cümle). Kısa numaralı çözüm adımları kullan; her adımı ayrı satıra yaz. Gerekli formülü LaTeX ile göster. Gerekiyorsa sonunda öğrenciye kısa bir soru sor.]";
+  const VOICE_HINT_EN = "\n\n[Voice chat: your answer will be read aloud. Answer briefly and conversationally (max 5–6 sentences). Use short numbered solution steps, each on its own line. Show necessary formulas in LaTeX. If useful, end with a short question for the student.]";
 
   function toSpeech(md) {
     const div = document.createElement("div");
@@ -62,8 +62,11 @@
     pause.hidden = s.phase === "paused";
     s.el.querySelector("#vHeard").textContent = s.heard || (s.phase === "paused" ? T("Mikrofon kapalı. Hazır olunca Devam et'e dokun.", "Microphone is off. Tap Resume when ready.") : "");
     const ans = s.el.querySelector("#vAnswer");
-    ans.innerHTML = s.answer ? App.markdown.render(App.cite ? App.cite.strip(s.answer) : s.answer) : "";
-    if (s.answer) { const body = s.el.querySelector(".voice-body"); body.scrollTop = body.scrollHeight; }
+    if (s.boardText !== s.answer) {
+      s.boardText = s.answer;
+      if (s.board) { if (!s.answer) s.board.reset(); else s.board.update(s.answer); }
+      else ans.textContent = s.answer;
+    }
   }
 
   /** Ortadaki büyük düğme (ya da küreye dokunma): duruma göre doğru işi yapar */
@@ -82,6 +85,7 @@
     try { if (s.controller) s.controller.abort(); } catch (e) { /* yok */ }
     if (s.stream) { s.stream.stop(); s.stream = null; }
     App.speech.stopSaying();
+    if (s.board) s.board.finish();
   }
 
   /** Mikrofonu kapat: öğrenci düşünürken ya da ortam gürültülüyken */
@@ -139,9 +143,10 @@
       natural: true,
       transform: toSpeech,
       onStart: () => { if (s === owner && owner.phase === "thinking") { owner.phase = "speaking"; paint(); } },
+      onSegment: (seg) => { if (s === owner && owner.board) owner.board.reach(seg.src[0]); },
       onWord: () => { if (owner.holo) owner.holo.wordAt = performance.now(); },
-      onEnd: (why) => { if (why !== "stop" && s === owner && !owner.closed && owner.phase === "speaking") { owner.stream = null; listen(); } },
-      onError: () => { if (s === owner && !owner.closed && owner.phase === "speaking") { owner.stream = null; listen(); } }
+      onEnd: (why) => { if (why !== "stop" && s === owner && !owner.closed && owner.phase === "speaking") { owner.stream = null; if (owner.board) owner.board.finish(); listen(); } },
+      onError: () => { if (s === owner && !owner.closed && owner.phase === "speaking") { owner.stream = null; if (owner.board) owner.board.finish(); listen(); } }
     }) : null;
     const speaking = () => owner.phase === "thinking" || owner.phase === "speaking";
     try {
@@ -154,6 +159,7 @@
       });
       if (s!==owner || owner.closed || !speaking()) return;
       owner.answer = res.text;
+      paint();
       paintPano(text, res.text);
       owner.messages.push(userMsg, { id: uid("m"), role: "assistant", text: res.text, models: res.models, engine: res.engine, at: new Date().toISOString() });
       if (owner.stream) {
@@ -170,6 +176,7 @@
 
   function speak(md) {
     if (!s) return;
+    if (s.board) s.board.finish();
     if (!App.speech.ttsAvailable()) { listen(); return; }
     s.phase = "speaking"; paint();
     App.speech.say(toSpeech(md), {
@@ -230,7 +237,7 @@
       '<div class="voice-body">' +
         '<div class="voice-center"><div class="voice-holo" id="vHolo" hidden></div><div class="vh-pano" id="vPano" hidden></div><button class="voice-orb is-idle" type="button" id="vOrb"><canvas class="voice-orb__fx" aria-hidden="true"></canvas><span></span></button>' +
           '<p class="voice-state" id="vState" aria-live="polite"></p><p class="voice-heard" id="vHeard"></p></div>' +
-        '<div class="voice-answer md" id="vAnswer" aria-live="polite"></div>' +
+        '<div class="voice-answer voice-answer--board" id="vAnswer" aria-label="Çözüm tahtası"></div>' +
         '<p class="hint voice-tip">' + esc(T("Sorunu söyle, kısa bir sessizlikten sonra kendiliğinden gönderilir. Cevaplar sesli okunur, sonra yeniden seni dinlerim. Küreye dokunmak ortadaki düğmeyle aynı işi yapar.",
           "Say your question; it sends after a short pause. Answers are read aloud, then I listen again. Tapping the orb does the same as the middle button.")) + "</p>" +
       "</div>" +
@@ -243,6 +250,7 @@
     el.querySelector("#vMicTest").onclick=()=>{pause();App.media.openTest();};
     App.hydrateIcons(el);
     s = { el, phase: "idle", heard: "", answer: "", messages: [], startedAt: new Date().toISOString(), rec: null, controller: null, mic: 0, stream: null };
+    s.board = App.voiceBoard ? App.voiceBoard.create(el.querySelector("#vAnswer")) : null;
     const mine = s;
     s.fx = App.voiceFx ? App.voiceFx.attach(el.querySelector(".voice-orb__fx"), () => ({ phase: mine.phase, mic: mine.mic })) : null;
     s.onKey = (e) => { if(document.querySelector(".microphone-test"))return;if (e.key === "Escape") { e.preventDefault(); close(); } else if (e.key === " " && e.target === document.body) { e.preventDefault(); mainAction(); } };

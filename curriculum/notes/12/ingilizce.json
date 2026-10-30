@@ -9,7 +9,7 @@
   "programEdition": "legacy-project-unverified",
   "source": {
     "file": "js/data/content/ing-12.js",
-    "sha256": "8c7f4fd250fb54ee10d72958bd613f25cfed8bd9b9beea28bf93345d2921c746",
+    "sha256": "8aa6e1edd98f11468752d53b5623dfdc5f2a775d36a420d922eeaac38303d53b",
     "additionalReferences": [],
     "pdfReferenceCandidates": [
       {
@@ -176,6 +176,123 @@
             "content": "existing-project-not-independently-reviewed",
             "alignment": "unverified",
             "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "t3",
+      "name": {
+        "tr": "3. Tema: Human Rights",
+        "en": "3. Tema: Human Rights"
+      },
+      "outcomes": [
+        {
+          "id": "ek164-036",
+          "key": "12/ingilizce/t3/ek164-036",
+          "localCode": "EK.12.036",
+          "title": {
+            "tr": "Human Rights: hak ve sorumluluk söz varlığı",
+            "en": "Human rights vocabulary"
+          },
+          "content": {
+            "anlatim": "## Human Rights: hak ve sorumluluk söz varlığı\n\nRights hakları, responsibilities sorumlulukları anlatır. Freedom of expression düşünceyi açıklama özgürlüğüdür. Olgu (fact) ile görüşü (opinion) ayır. Eşitlik herkesin aynı gereksinime sahip olduğu anlamına gelmez. Örnekleri kapsayıcı dilde kur. Can, should ve must farklı güçte imkân, öneri ve yükümlülük bildirebilir; bağlamı ve konuşanın amacını dikkate al.\n\n### Kontrol ederek öğren\n\nComplete: Everyone ___ be treated fairly.\n\n**Çözüm yolu:** should; öneri/ilke bildirir. Hukuki yükümlülük daha kesin kurulabilir.\n\n### Dikkat noktaları\n\n- Right: hak.\n- Responsibility: sorumluluk.\n- Olgu ve görüş farklı.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=342)",
+            "ornekler": [
+              {
+                "soru": "Complete: Everyone ___ be treated fairly.",
+                "cozum": "should; öneri/ilke bildirir. Hukuki yükümlülük daha kesin kurulabilir."
+              }
+            ],
+            "ozet": [
+              "Right: hak.",
+              "Responsibility: sorumluluk.",
+              "Olgu ve görüş farklı."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=342",
+            "programmeEdition": "legacy-reference",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "ek164-037",
+          "key": "12/ingilizce/t3/ek164-037",
+          "localCode": "EK.12.037",
+          "title": {
+            "tr": "Human Rights: neden–sonuçla sav kurma",
+            "en": "Support a human rights argument"
+          },
+          "content": {
+            "anlatim": "## Human Rights: neden–sonuçla sav kurma\n\nSav paragrafı iddia, destekleyen gerekçe/örnek ve sonuçla kurulur. Because neden, therefore sonuç, although karşıtlık kurar. Bir örnek bütün toplum için genelleme kanıtı olmaz. Kaynağın üreticisini ve tarihini belirt. In my view kişisel görüşü gösterir, veri sunulduğu anlamına gelmez. Karşı görüşü adil biçimde özetlemek ve kanıtın kapsamını sınırlamak daha tutarlı metin üretir.\n\n### Kontrol ederek öğren\n\nJoin: Education matters. It creates opportunities.\n\n**Çözüm yolu:** Education matters because it creates opportunities.\n\n### Dikkat noktaları\n\n- Because neden kurar.\n- Therefore sonuç kurar.\n- Örneği evrensel kanıt sanma.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=342)",
+            "ornekler": [
+              {
+                "soru": "Join: Education matters. It creates opportunities.",
+                "cozum": "Education matters because it creates opportunities."
+              }
+            ],
+            "ozet": [
+              "Because neden kurar.",
+              "Therefore sonuç kurar.",
+              "Örneği evrensel kanıt sanma."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=342",
+            "programmeEdition": "legacy-reference",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "ek164-038",
+          "key": "12/ingilizce/t3/ek164-038",
+          "localCode": "EK.12.038",
+          "title": {
+            "tr": "Human Rights: saygılı itiraz ve yeniden ifade",
+            "en": "Respectful disagreement and paraphrase"
+          },
+          "content": {
+            "anlatim": "## Human Rights: saygılı itiraz ve yeniden ifade\n\nI see your point, but… görüşü duyduğunu gösterip itiraz açar. I disagree because… gerekçe ister. Yeniden ifadede konuşanın anlamını değiştirme; So you mean…? ile doğrula. Kişiyi değil iddiayı tartış. Alıntının bağlamını koru ve ayrımcı ifadeye eleştirel mesafeyi açıkça göster. Dil pratiği gerçek kişilerin özel bilgilerini paylaşmayı veya bütün bir gruba etiket yapıştırmayı gerektirmez.\n\n### Kontrol ederek öğren\n\nRewrite politely: You are wrong.\n\n**Çözüm yolu:** I see your point, but I disagree because the evidence suggests a different conclusion.\n\n### Dikkat noktaları\n\n- Kişiyi değil iddiayı tartış.\n- Anlamı yeniden ifadeyle doğrula.\n- İtirazına gerekçe ekle.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=342)",
+            "ornekler": [
+              {
+                "soru": "Rewrite politely: You are wrong.",
+                "cozum": "I see your point, but I disagree because the evidence suggests a different conclusion."
+              }
+            ],
+            "ozet": [
+              "Kişiyi değil iddiayı tartış.",
+              "Anlamı yeniden ifadeyle doğrula.",
+              "İtirazına gerekçe ekle."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=342",
+            "programmeEdition": "legacy-reference",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
           },
           "officialCandidates": []
         }
@@ -626,6 +743,123 @@
             "content": "existing-project-not-independently-reviewed",
             "alignment": "unverified",
             "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        }
+      ]
+    },
+    {
+      "id": "t10",
+      "name": {
+        "tr": "10. Tema: Manners",
+        "en": "10. Tema: Manners"
+      },
+      "outcomes": [
+        {
+          "id": "ek164-039",
+          "key": "12/ingilizce/t10/ek164-039",
+          "localCode": "EK.12.039",
+          "title": {
+            "tr": "Manners: nazik rica ve uygun yanıt",
+            "en": "Polite requests and responses"
+          },
+          "content": {
+            "anlatim": "## Manners: nazik rica ve uygun yanıt\n\nCould you…? ve Would you mind + -ing…? nazik rica kurar. Mind sorusu rahatsız olup olmayacağını sorar; No, not at all çoğunlukla yapabilirim anlamındadır. Ret için gerekçe ve alternatif sunulabilir. Resmiyet ilişki ve bağlamdan etkilenir; tek davranış kalıbını bütün kültürlere atama. Sözcüğü, tonu ve durumu birlikte değerlendir; bir yanıtı tek başına yes/no sözcüğünden çıkarma.\n\n### Kontrol ederek öğren\n\nComplete: Would you mind ___ the window?\n\n**Çözüm yolu:** opening. No, not at all yanıtı açmaya itiraz olmadığını söyler.\n\n### Dikkat noktaları\n\n- Mind sonrası -ing.\n- Yanıtın bağlamını düşün.\n- Nazik ret alternatif içerebilir.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=342)",
+            "ornekler": [
+              {
+                "soru": "Complete: Would you mind ___ the window?",
+                "cozum": "opening. No, not at all yanıtı açmaya itiraz olmadığını söyler."
+              }
+            ],
+            "ozet": [
+              "Mind sonrası -ing.",
+              "Yanıtın bağlamını düşün.",
+              "Nazik ret alternatif içerebilir."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=342",
+            "programmeEdition": "legacy-reference",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "ek164-040",
+          "key": "12/ingilizce/t10/ek164-040",
+          "localCode": "EK.12.040",
+          "title": {
+            "tr": "Manners: özür, açıklama ve telafi",
+            "en": "Apology and repair"
+          },
+          "content": {
+            "anlatim": "## Manners: özür, açıklama ve telafi\n\nEtkili özür hatayı kabul eder, etkisini tanır ve gerçekçi telafi sunar. I am sorry for + -ing veya I apologise for + noun kullanılabilir. Açıklama yapmak sorumluluğu başkasına atmak değildir. Gerçekleştiremeyeceğin kesin söz verme. Karşı tarafın yanıtını dinlemek ezberlenmiş kalıbı tekrar etmekten daha önemlidir; iletişim ortak bağlamda onarılır ve telafinin uygunluğu birlikte değerlendirilir.\n\n### Kontrol ederek öğren\n\nApologise for arriving late and suggest repair.\n\n**Çözüm yolu:** I am sorry for arriving late. I will read the notes and help finish the task.\n\n### Dikkat noktaları\n\n- For sonrası isim/-ing.\n- Etkiyi ve telafiyi belirt.\n- Gerçekçi söz ver.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=342)",
+            "ornekler": [
+              {
+                "soru": "Apologise for arriving late and suggest repair.",
+                "cozum": "I am sorry for arriving late. I will read the notes and help finish the task."
+              }
+            ],
+            "ozet": [
+              "For sonrası isim/-ing.",
+              "Etkiyi ve telafiyi belirt.",
+              "Gerçekçi söz ver."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=342",
+            "programmeEdition": "legacy-reference",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "ek164-041",
+          "key": "12/ingilizce/t10/ek164-041",
+          "localCode": "EK.12.041",
+          "title": {
+            "tr": "Manners: kültürler arası genellemenin sınırı",
+            "en": "Avoid cultural overgeneralisation"
+          },
+          "content": {
+            "anlatim": "## Manners: kültürler arası genellemenin sınırı\n\nDavranış beklentileri kültür, aile, ortam ve kişiye göre değişir. In some situations ve may ifadeleri kapsamı sınırlar; always/never güçlü genellemelerdir. Ortak çalışmada beklentiyi nazikçe sormak yanlış varsayımı azaltır. Farkı üstünlük hiyerarşisine dönüştürme. Dil pratiğinin amacı merak, açıklık ve karşılıklı saygıdır; sınırlı gözlemi herkes için değişmez bir kural gibi sunmaktan kaçın.\n\n### Kontrol ederek öğren\n\nMake less absolute: People always greet this way.\n\n**Çözüm yolu:** In some situations, people may greet each other this way.\n\n### Dikkat noktaları\n\n- Always/never güçlü genelleme.\n- Beklentiyi nazikçe sor.\n- Farklılık üstünlük değildir.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=342)",
+            "ornekler": [
+              {
+                "soru": "Make less absolute: People always greet this way.",
+                "cozum": "In some situations, people may greet each other this way."
+              }
+            ],
+            "ozet": [
+              "Always/never güçlü genelleme.",
+              "Beklentiyi nazikçe sor.",
+              "Farklılık üstünlük değildir."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=342",
+            "programmeEdition": "legacy-reference",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
           },
           "officialCandidates": []
         }

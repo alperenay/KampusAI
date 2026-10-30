@@ -62,13 +62,10 @@ Enlem/boylam ve **UTC** zaman gir → hesapla. Konum izni isteğe bağlıdır. A
 
 AI sembol/değer/bağlantı önerir; okunmayan alanlar null kalır ve öğrenci tarafından tamamlanır. Yerel kontur analizi tek başına sembolleri veya devre topolojisini tanıdığını iddia etmez.
 
-## 8. Canlanan Ders Kitabı
 
-Kamera/fotoğraf → OCR → önerilen denklem ve çerçeveyi düzelt → onayla. a/b/c/k kaydırıcıları fonksiyon, elips veya hiperbolü günceller. Kamera üzerinde küçük ötelemeler için **Canlı çerçeveyi takip et** seçilebilir: normalize benzerlik 0.75 altına inerse grafik gizlenir. Dönme/ölçek değişimi, nesne kaybı veya düşük kontrastta yeniden çerçeve seç. Bu sınırlı 2B şablon takibidir; dünya koordinatlarına metrik AR sabitlemesi değildir. Fotoğraf OCR’ı mevcut görsel AI sağlayıcısına bağlıdır; elle ifade çevrimdışı çalışır.
+## 8. Yaşayan Tarih Haritası
 
-## 9. Yaşayan Tarih Haritası
-
-1071–1923 sürgüsünü değiştir → en son kaynaklı dönem kesitini gör → bölgeye dokun veya Enter ile dosyayı aç. Beş özgün şematik kesit, ticaret ağı temsilleri ve iki döneme bağlı sefer yönelimi vardır. Kesitler arasında tarih dışı sınır interpolasyonu yapılmaz; her yıl için resmî tarih atlası doğruluğu iddia edilmez. Haritadaki şekiller egemenlik sınırı veya modern hak iddiası değildir.
+1071–1923 sürgüsünü değiştir → en son kaynaklı dönem kesitini gör → bölgeye dokun veya Enter ile dosyayı aç. 16 kaynaklı dönem kesiti, 18 şehir referansı, ticaret ağı temsilleri ve döneme bağlı sefer yönelimleri vardır. Olay araması, tür/yıl filtresi, karşılaştırma, yerel çalışma listesi ve JSON dışa aktarma için [1.64 kılavuzunu](SURUM-1.64.md) kullan. Kesitler arasında tarih dışı sınır interpolasyonu yapılmaz; her yıl için resmî tarih atlası doğruluğu iddia edilmez. Haritadaki şekiller egemenlik sınırı veya modern hak iddiası değildir.
 
 Bilgi kaynakları her dönem/rota kartının yanında yer alır: TDV İslâm Ansiklopedisi (Malazgirt, Osmanlılar, İstanbul’un fethi, Viyana, Lozan) ve [UNESCO İpek Yolları](https://www.unesco.org/en/silkroads). Metinler kısa özgün özetlerdir; harita görselleri veya telifli atlas geometrileri alınmadı. Mevcut ayrıntılı tarih çizelgesine bağlantı korunur.
 

@@ -39,6 +39,7 @@
       '<div class="fm-tex">' + texHtml(f.tex) + "</div>" +
       '<p class="fm-when"><b>' + esc(T("Ne zaman: ", "When: ")) + "</b>" + esc(f.ne) + "</p>" +
       (f.v ? '<p class="fm-vars">' + esc(f.v) + "</p>" : "") +
+      (f.source ? '<p class="hint">'+esc(f.level || '')+' · <a href="'+esc(f.source)+'" target="_blank" rel="noopener noreferrer">'+esc(T('İlgili açık ders kitabı','Related open textbook'))+'</a></p>' : '') +
       (opts && opts.noLink ? "" : '<a class="fm-link" href="' + topicHref(f) + '">' + App.icon("book") + esc(T("Konu anlatımı", "Lesson")) + (opts && opts.showGrade ? " · " + esc(f.g + ". " + T("sınıf", "grade")) : "") + App.icon("chevron") + "</a>") +
       "</article>";
   }

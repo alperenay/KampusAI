@@ -1,0 +1,128 @@
+/* =========================================================
+   v164.css — sesli öğretmenin senkron tahtası
+   Adımlar okundukça yazılır; okunan adım vurgulanır. Hareket yalnız transform/opacity/clip-path.
+   ========================================================= */
+.voice-answer.voice-answer--board,
+.voice-answer.voice-answer--board:not(:empty) {
+  padding: 0;
+  border: 0;
+  background: none;
+}
+.vboard {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 14px 14px 16px;
+  display: grid;
+  gap: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 16px);
+  background: var(--surface);
+  isolation: isolate;
+}
+/* Kareli defter dokusu: kenarlara doğru söner, içerikle yarışmaz */
+.vboard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image: linear-gradient(to right, var(--border) 1px, transparent 1px), linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.45;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 30%, transparent 85%);
+  mask-image: radial-gradient(ellipse at 50% 40%, #000 30%, transparent 85%);
+}
+.vboard.is-empty {
+  display: none;
+}
+.vboard__step {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  padding: 7px 10px 7px 8px;
+  border-radius: 10px;
+  transition: background-color 0.25s var(--ease, ease), opacity 0.25s var(--ease, ease);
+}
+.vboard__step[hidden] {
+  display: none;
+}
+.vboard__n {
+  width: 26px;
+  height: 26px;
+  margin-top: 1px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.vboard__t {
+  font-size: 17px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+.vboard__t > :first-child { margin-top: 0; }
+.vboard__t > :last-child { margin-bottom: 0; }
+.vboard__t .katex { font-size: 1.08em; }
+.vboard__t .katex-display { margin: 6px 0; overflow-x: auto; overflow-y: hidden; }
+/* Okunan adım: vurgu şeridi ve yumuşak zemin; okunmuşlar hafif söner */
+.vboard__step.is-now {
+  background: var(--accent-soft);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.vboard.is-live .vboard__step.is-done {
+  opacity: 0.62;
+}
+@media (max-width: 520px) {
+  .vboard { padding: 10px 8px 12px; }
+  .vboard__t { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vboard__step { transition: none; }
+}
+[data-a11y-motion] .vboard__step { transition: none; }
+
+/* A quiet, theme-aware personal workspace; touch targets stay at least 44px. */
+.ai-favs {
+  width: min(100%, 860px);
+  margin: clamp(18px, 3vw, 32px) auto;
+  padding: clamp(16px, 2.5vw, 26px);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: var(--surface);
+  text-align: start;
+  box-shadow: none;
+  font-family: var(--font, inherit);
+}
+.ai-favs h2 { font-size: clamp(18px, 2vw, 22px); line-height: 1.35; font-weight: 650; letter-spacing: -.025em; margin: 0 0 8px; }
+.ai-favs > .hint { max-width: 66ch; margin: 0 0 18px; line-height: 1.65; }
+.ai-fav-grid { gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); }
+.ai-fav { border-radius: 14px; padding: 4px; border: 1px solid var(--border); background: var(--surface-2, var(--surface)); box-shadow: none; }
+.ai-fav > .btn { min-height: 48px; padding: 10px 12px; font-size: 14px; font-weight: 550; line-height: 1.45; text-align: start; }
+.ai-fav > .icon-btn { width: 44px; min-width: 44px; height: 44px; opacity: .8; }
+.ai-favs details { border: 0; border-top: 1px solid var(--border); border-radius: 0; margin-top: 18px; padding: 12px 0 0; background: transparent; }
+.ai-favs summary { min-height: 44px; padding: 10px 0; font-weight: 600; font-size: 14px; }
+.ai-favs :is(input:not([type="checkbox"]), textarea) { border-radius: 12px; min-height: 44px; background: var(--bg); }
+.ai-fav-options { gap: 8px; }
+.ai-favs :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+[data-ui-shadows="off"] .ai-favs { box-shadow: none; }
+.hm-inquiry { margin-top: 18px; }
+.hm-filters { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; }
+.hm-filters label { display: grid; gap: 6px; font-weight: 550; }
+.hm-filters :is(input,select) { width: 100%; min-width: 0; min-height: 44px; padding: 10px; border-radius: 12px; color: var(--text); background: var(--surface); border: 1px solid var(--border); }
+.hm-event-list { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; margin-block: 16px; }
+.hm-event { display: flex; gap: 12px; align-items: start; text-align: start; white-space: normal; padding: 14px; }
+.hm-event b { color: var(--accent); font-variant-numeric: tabular-nums; }
+.hm-detail { padding: 18px; margin-block: 14px; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); line-height: 1.7; overflow-wrap: anywhere; }
+#hmMap { touch-action: none; cursor: grab; border-radius: 16px; }
+#hmMap:active { cursor: grabbing; }
+#hmMap [role="button"] { cursor: pointer; }
+#hmMap [role="button"]:focus { outline: 2px solid #fff; }
+@media(max-width:800px) { .hm-filters,.hm-event-list { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media(max-width:480px) { .hm-filters,.hm-event-list { grid-template-columns: 1fr; } .hm-detail { padding: 14px; } }

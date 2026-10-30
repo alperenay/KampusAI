@@ -129,9 +129,28 @@
     }
   }
 
+  // Coalesce high-frequency text notifications. Network reads already yield; expensive
+  // Markdown/KaTeX consumers must not run once per token. No idle polling; latest wins.
+  function streamBatch(callback, signal, interval = 80) {
+    let timer = null, args = null;
+    const flush = () => { if (timer !== null) clearTimeout(timer); timer = null; const a = args; args = null; if (a && !(signal && signal.aborted)) callback(...a); };
+    const cancel = () => { if (timer !== null) clearTimeout(timer); timer = null; args = null; };
+    const push = (...a) => { if (signal && signal.aborted) return; args = a; if (timer === null) timer = setTimeout(flush, interval); };
+    if (signal) signal.addEventListener("abort", cancel, { once: true });
+    return { push, flush, close() { cancel(); if (signal) signal.removeEventListener("abort", cancel); } };
+  }
+
   async function runWith(engine, opts) {
     const on = opts.on || {};
-    const fire = (name, ...args) => { if (on[name]) on[name](...args); };
+    const batches = {};
+    const fire = (name, ...args) => {
+      if (!on[name]) return;
+      if (name === "delta" || name === "visionDelta") {
+        if (!batches[name]) batches[name] = streamBatch(on[name], opts.signal);
+        batches[name].push(...args);
+      } else on[name](...args);
+    };
+    try {
     await engine.prepare(opts.signal);
     const cfg = engine.config();
     const result = { text: "", transcription: "", sources: null, models: [], stats: null, warnings: [], engine: engine.id, direct: !!cfg.direct };
@@ -233,6 +252,7 @@
       } catch (e) { /* /api/ps yoksa önemli değil */ }
     }
     return result;
+    } finally { Object.values(batches).forEach(b => { try { b.flush(); } finally { b.close(); } }); }
   }
 
   /* ---------------- Yapılandırılmış üretim (test soruları, haftalık plan) ----------------
@@ -326,6 +346,9 @@
         }
       }
       if (opts.onStage) opts.onStage(eng, cfg.chatModel);
+      let pendingPieces = "";
+      const updates = streamBatch((full) => { const piece = pendingPieces; pendingPieces = ""; if (opts.onDelta) opts.onDelta(piece, full); if (preview) preview(full); }, opts.signal);
+      try {
       const res = await eng.chat({
         model: cfg.chatModel,
         messages: [{ role: "system", content: opts.system }, userMsg],
@@ -334,12 +357,14 @@
         onDelta: (piece, full) => {
           if (opts.signal?.aborted) return;
           if (firstToken === null) firstToken = now() - started;
-          if (opts.onDelta) opts.onDelta(piece, full);
-          if (preview) preview(full);
+          pendingPieces += piece;
+          updates.push(full);
         }
       });
+      updates.flush();
       return { data: parseJSON(res.text), text: res.text, engine: eng.id, model: res.model || cfg.chatModel,
         stats: {scope:"successful-attempt", ttftMs: firstToken, totalMs: now() - started, provider: res.stats || null} };
+      } finally { updates.close(); }
     };
     try {
       return await once(engine);
@@ -389,5 +414,5 @@
     return String(res.text || "").replace(/^["«]|["»]$/g, "").trim();
   }
 
-  App.ai = { run, systemPrompt, generate, parseJSON, arrayPreview, fixMath, transcribe };
+  App.ai = { run, systemPrompt, generate, parseJSON, arrayPreview, fixMath, transcribe, streamBatch };
 })();

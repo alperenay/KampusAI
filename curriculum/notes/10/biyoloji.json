@@ -9,7 +9,7 @@
   "programEdition": "legacy-project-unverified",
   "source": {
     "file": "js/data/content/biy-10.js",
-    "sha256": "bf1c29de9d731a8493f20fcb4fc3411ad4f3f9c7915f77f7c5726aac437d6031",
+    "sha256": "95ea52b3ca9fe90c9e3160237703da3c5402d685a58b21a864cc9a01cf822122",
     "additionalReferences": [],
     "pdfReferenceCandidates": [
       {
@@ -994,6 +994,42 @@
             "content": "existing-project-not-independently-reviewed",
             "alignment": "unverified",
             "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "ek164-008",
+          "key": "10/biyoloji/u3/ek164-008",
+          "localCode": "EK.10.008",
+          "title": {
+            "tr": "Mayozda kromozom ve DNA miktarı",
+            "en": "Chromosomes and DNA in meiosis"
+          },
+          "content": {
+            "anlatim": "## Mayozda kromozom ve DNA miktarı\n\nKromozom sayısı sentromer sayısıyla belirlenir; DNA eşlenmesi bu sayıyı hemen iki katına çıkarmaz. Eşlenmeden sonra her kromozom iki kardeş kromatit taşır. Mayoz I homologları, mayoz II kardeş kromatitleri ayırır. Hücrenin tamamındaki miktarla bir kutuptaki miktarı karıştırma. Evreyi ve eşlenmenin tamamlanıp tamamlanmadığını belirt.\n\n### Kontrol ederek öğren\n\n2n=8 hücrede mayoz I sonunda hücre başına kromozom?\n\n**Çözüm yolu:** n=4; her kromozom hâlâ iki kromatitlidir.\n\n### Dikkat noktaları\n\n- Sayı sentromere göre.\n- Mayoz I homologları ayırır.\n- Mayoz II kardeş kromatitleri ayırır.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=361)",
+            "ornekler": [
+              {
+                "soru": "2n=8 hücrede mayoz I sonunda hücre başına kromozom?",
+                "cozum": "n=4; her kromozom hâlâ iki kromatitlidir."
+              }
+            ],
+            "ozet": [
+              "Sayı sentromere göre.",
+              "Mayoz I homologları ayırır.",
+              "Mayoz II kardeş kromatitleri ayırır."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=361",
+            "programmeEdition": "supplement-check-current-TYMM",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
           },
           "officialCandidates": []
         }

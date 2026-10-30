@@ -9,7 +9,7 @@
   "programEdition": "legacy-project-unverified",
   "source": {
     "file": "js/data/content/biy-12.js",
-    "sha256": "194125b26a72016b08c396ec8807ca79fa37d5f8f76e724dae9c4ec45d484bec",
+    "sha256": "8c1fc6d3fb76abf8deeea59e5dd9867aa30a6a2be5b967b5812182db9d9f35dd",
     "additionalReferences": [],
     "pdfReferenceCandidates": [
       {
@@ -225,6 +225,78 @@
             "content": "existing-project-not-independently-reviewed",
             "alignment": "unverified",
             "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "ek164-031",
+          "key": "12/biyoloji/u1/ek164-031",
+          "localCode": "EK.12.031",
+          "title": {
+            "tr": "Çift zincirli DNA’da bağ hesabı",
+            "en": "Count bonds in double-stranded DNA"
+          },
+          "content": {
+            "anlatim": "## Çift zincirli DNA’da bağ hesabı\n\nÇift zincirli DNA toplamında A=T ve G=C; tek zincirde bu eşitlik zorunlu değildir. Baz çifti sayısı toplam nükleotidin yarısıdır. A–T çifti iki, G–C çifti üç hidrojen bağı kurar. Fosfodiester bağları aynı zincirde komşu nükleotidleri bağlar; hidrojen bağıyla karıştırma. Doğrusal ve halkasal DNA’nın omurga bağ hesabı farklıdır; uçların varlığını belirt.\n\n### Kontrol ederek öğren\n\n100 baz çiftinde 40 G–C çifti varsa hidrojen bağı?\n\n**Çözüm yolu:** 40×3+60×2=240; toplam 200 nükleotit vardır.\n\n### Dikkat noktaları\n\n- Toplamda A=T, G=C.\n- Baz çifti toplam nükleotidin yarısı.\n- Doğrusal/halkasal farkına dikkat.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=361)",
+            "ornekler": [
+              {
+                "soru": "100 baz çiftinde 40 G–C çifti varsa hidrojen bağı?",
+                "cozum": "40×3+60×2=240; toplam 200 nükleotit vardır."
+              }
+            ],
+            "ozet": [
+              "Toplamda A=T, G=C.",
+              "Baz çifti toplam nükleotidin yarısı.",
+              "Doğrusal/halkasal farkına dikkat."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=361",
+            "programmeEdition": "legacy-reference",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "ek164-032",
+          "key": "12/biyoloji/u1/ek164-032",
+          "localCode": "EK.12.032",
+          "title": {
+            "tr": "PCR’da kontrol ve kontaminasyon",
+            "en": "PCR controls and contamination"
+          },
+          "content": {
+            "anlatim": "## PCR’da kontrol ve kontaminasyon\n\nPCR belirli DNA bölgesini primerler ve ısıya dayanıklı polimerazla çoğaltır. Zincirler ayrılır, primer bağlanır, yeni zincir uzatılır. İdeal ikiye katlanma tam verim varsayımıdır; gerçek verim farklıdır. Negatif kontrol kirlenmeyi, pozitif kontrol işlemin çalışmasını sınar. PCR sinyali tek başına canlının canlı olduğunu veya hastalık şiddetini göstermez; uzman laboratuvar yorumu gerekir.\n\n### Kontrol ederek öğren\n\n2 başlangıç molekülü ideal 3 döngü sonra kaç olur?\n\n**Çözüm yolu:** 2×2³=16; tam verim varsayımıyla.\n\n### Dikkat noktaları\n\n- Primer hedefi sınırlar.\n- Negatif kontrol kirlenmeyi sınar.\n- İdeal artış gerçek verim değildir.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=361)",
+            "ornekler": [
+              {
+                "soru": "2 başlangıç molekülü ideal 3 döngü sonra kaç olur?",
+                "cozum": "2×2³=16; tam verim varsayımıyla."
+              }
+            ],
+            "ozet": [
+              "Primer hedefi sınırlar.",
+              "Negatif kontrol kirlenmeyi sınar.",
+              "İdeal artış gerçek verim değildir."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=361",
+            "programmeEdition": "legacy-reference",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
           },
           "officialCandidates": []
         }
@@ -459,6 +531,42 @@
             "rights": "existing-project-provenance-review-required"
           },
           "officialCandidates": []
+        },
+        {
+          "id": "ek164-033",
+          "key": "12/biyoloji/u2/ek164-033",
+          "localCode": "EK.12.033",
+          "title": {
+            "tr": "Fotosentezde sınırlayıcı etmen",
+            "en": "Limiting factors in photosynthesis"
+          },
+          "content": {
+            "anlatim": "## Fotosentezde sınırlayıcı etmen\n\nFotosentezi ışık, CO₂, sıcaklık ve su birlikte etkiler. Birini artırmak başka etmen sınırlayıcı olunca hızı artırmayabilir. Doygunlukta yataylaşma durma değildir. Sıcaklık sürekli arttıkça hız sürekli artmaz; enzimler etkilenir. Kabarcık sayısı gaz hacminin yaklaşık göstergesidir; büyüklük ve solunum etkiler. Diğer koşulları sabitle, tekrarlı ölçüm yap, belirsizliği belirt.\n\n### Kontrol ederek öğren\n\nIşık artarken hız sabitleniyorsa ne çıkarılabilir?\n\n**Çözüm yolu:** Işık tek sınırlayıcı olmaktan çıkmış olabilir; diğer etmenler araştırılır.\n\n### Dikkat noktaları\n\n- Doygunluk durma değil.\n- Etmenler birlikte işler.\n- Yaklaşık ölçümün sınırını belirt.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=361)",
+            "ornekler": [
+              {
+                "soru": "Işık artarken hız sabitleniyorsa ne çıkarılabilir?",
+                "cozum": "Işık tek sınırlayıcı olmaktan çıkmış olabilir; diğer etmenler araştırılır."
+              }
+            ],
+            "ozet": [
+              "Doygunluk durma değil.",
+              "Etmenler birlikte işler.",
+              "Yaklaşık ölçümün sınırını belirt."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=361",
+            "programmeEdition": "legacy-reference",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
+          },
+          "officialCandidates": []
         }
       ]
     },
@@ -553,6 +661,42 @@
             "content": "existing-project-not-independently-reviewed",
             "alignment": "unverified",
             "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "ek164-034",
+          "key": "12/biyoloji/u3/ek164-034",
+          "localCode": "EK.12.034",
+          "title": {
+            "tr": "Ksilem, floem ve kaynak–havuz",
+            "en": "Xylem, phloem and source-sink transport"
+          },
+          "content": {
+            "anlatim": "## Ksilem, floem ve kaynak–havuz\n\nKsilem su-mineral, floem organik madde taşır. Floemde kaynak üreten/sağlayan, havuz tüketen/depolayan dokudur; organın rolü gelişime göre değişebilir. Ayrı iletim elemanlarında farklı yönler olabilir. Stoma kapanması su kaybını azaltırken CO₂ girişini de sınırlayabilir. Taşınmayı yalnız tek yönlü sabit bir şema gibi ezberleme; koşulu, doku türünü ve taşınan maddeyi birlikte değerlendir.\n\n### Kontrol ederek öğren\n\nÇimlenen tohumda depo doku kaynak mı havuz mu?\n\n**Çözüm yolu:** Besini büyüyen dokuya verdiği dönemde kaynak; büyüyen doku havuzdur.\n\n### Dikkat noktaları\n\n- Kaynak/havuz işlevsel tanım.\n- Ksilem ve floemin yükü farklı.\n- Stoma su–CO₂ dengesini etkiler.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=361)",
+            "ornekler": [
+              {
+                "soru": "Çimlenen tohumda depo doku kaynak mı havuz mu?",
+                "cozum": "Besini büyüyen dokuya verdiği dönemde kaynak; büyüyen doku havuzdur."
+              }
+            ],
+            "ozet": [
+              "Kaynak/havuz işlevsel tanım.",
+              "Ksilem ve floemin yükü farklı.",
+              "Stoma su–CO₂ dengesini etkiler."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=361",
+            "programmeEdition": "legacy-reference",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
           },
           "officialCandidates": []
         }
@@ -653,6 +797,42 @@
             "content": "existing-project-not-independently-reviewed",
             "alignment": "unverified",
             "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "ek164-035",
+          "key": "12/biyoloji/u4/ek164-035",
+          "localCode": "EK.12.035",
+          "title": {
+            "tr": "Taşıma kapasitesi ve popülasyon grafiği",
+            "en": "Carrying capacity and graphs"
+          },
+          "content": {
+            "anlatim": "## Taşıma kapasitesi ve popülasyon grafiği\n\nTaşıma kapasitesi belirli çevrede sürdürülebilen büyüklüktür; evrensel sabit değildir. Kaynak, habitat ve etkileşimler değişince kapasite değişebilir. Lojistik büyüme ideal modeldir; gerçek sistemde göç, gecikme ve mevsim etkileri vardır. Denge bütün bireylerin aynı yaşta olduğunu göstermez. Mutlak ve birey başına artışı ayır; popülasyonları yalnız eğim büyüklüğüyle karşılaştırma.\n\n### Kontrol ederek öğren\n\nKaynaklar kalıcı azalınca kapasite nasıl etkilenebilir?\n\n**Çözüm yolu:** Diğer koşullar sabitse düşebilir; dengeye geçiş gecikmeli olabilir.\n\n### Dikkat noktaları\n\n- Kapasite çevreye bağlı.\n- Lojistik model idealleştirme.\n- Mutlak/birey başı artışı ayır.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=361)",
+            "ornekler": [
+              {
+                "soru": "Kaynaklar kalıcı azalınca kapasite nasıl etkilenebilir?",
+                "cozum": "Diğer koşullar sabitse düşebilir; dengeye geçiş gecikmeli olabilir."
+              }
+            ],
+            "ozet": [
+              "Kapasite çevreye bağlı.",
+              "Lojistik model idealleştirme.",
+              "Mutlak/birey başı artışı ayır."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=361",
+            "programmeEdition": "legacy-reference",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
           },
           "officialCandidates": []
         }

@@ -8,7 +8,7 @@ import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const dest=path.join(root,'curriculum');
 const read=p=>JSON.parse(fs.readFileSync(path.join(dest,p),'utf8'));
-const write=(p,data)=>{const file=path.join(dest,p);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,JSON.stringify(data,null,2)+'\n');};
+const write=(p,data)=>{const file=path.join(dest,p);fs.mkdirSync(path.dirname(file),{recursive:true});if(fs.existsSync(file)){try{if(JSON.stringify(JSON.parse(fs.readFileSync(file,'utf8')))===JSON.stringify(data))return;}catch(e){/* regenerate invalid generated file */}}fs.writeFileSync(file,JSON.stringify(data,null,2)+'\n');};
 const sha=text=>crypto.createHash('sha256').update(text).digest('hex');
 const official=read('official/manifest.json');
 const catalogue=read('official/program-catalogue.json');
@@ -33,7 +33,8 @@ for(const [key,units] of Object.entries(ctx.App.data.content).sort()){
   const duplicateCodes=new Map();
   const rows=units.map(u=>({id:u.id,name:u.name,outcomes:u.outcomes.map(o=>{
     const item={id:o.id,key:[key,u.id,o.id].join('/'),localCode:o.code||null,title:o.title,content:o.content,
-      review:{content:'existing-project-not-independently-reviewed',alignment:'unverified',rights:'existing-project-provenance-review-required'},
+      ...(o.provenance?{provenance:o.provenance}:{}),
+      review:{content:o.provenance?'original-supplement-editorial-review-only':'existing-project-not-independently-reviewed',alignment:'unverified',rights:o.provenance?'original-app-text-programme-reference-not-copied':'existing-project-provenance-review-required'},
       officialCandidates:relevant.flatMap(m=>m.data.units.flatMap(ou=>ou.codes.includes(o.code)?[{program:m.slug,unitId:ou.id,code:o.code,url:ou.url}]:[]))};
     if(!item.content||typeof item.content.anlatim!=='string'||!Array.isArray(item.content.ornekler)||!Array.isArray(item.content.ozet))throw new Error('Invalid lesson '+item.key);
     if(o.code){const ks=duplicateCodes.get(o.code)||[];ks.push(item.key);duplicateCodes.set(o.code,ks);}

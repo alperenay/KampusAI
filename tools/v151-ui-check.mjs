@@ -100,7 +100,7 @@ try {
   await page.click("#obNext");
   assert.equal(await page.locator(".ob").count(), 0);
   assert.equal(await page.evaluate(() => App.prefs.get("onboard:telefon-fizik", false)), true);
-  for (const r of ["ciz-calissin", "canlanan-kitap"]) { await go(page, r); await page.waitForSelector(".ob-open"); }
+  for (const r of ["ciz-calissin"]) { await go(page, r); await page.waitForSelector(".ob-open"); }
   ok("tanıtım rehberi: " + n + " adım, ileri/geri, bitince bir daha kendiliğinden açılmıyor; üç atölyede de düğme var");
 
   // 6) pH metre: kadran + LCD, HOLD, kalibrasyon

@@ -1,7 +1,7 @@
 import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import {uiHarness} from './ui-harness.mjs';
 const h=await uiHarness(),results=[];
 try{
- const {page}=await h.device();const ids=await page.evaluate(()=>{App.lab3d.setMode('2d');return Object.keys(App.labs.LABS);});
+ const {page}=await h.device();const ids=await page.evaluate(async()=>{await App.lazy.load(['labs','games']);App.lab3d.setMode('2d');return Object.keys(App.labs.LABS);});
  for(const id of ids){
   await page.evaluate(id=>App.router.go('lab/'+id),id);await page.waitForSelector('#labHost .lab__cv');
   const r=await page.evaluate(()=>{

@@ -9,7 +9,7 @@
   "programEdition": "legacy-project-unverified",
   "source": {
     "file": "js/data/content/kim-9.js",
-    "sha256": "4767a75e92b6bc07e605599a3084a5acdf32af08d4d2a597a5dcf48dbfba0c8b",
+    "sha256": "21b0ea000d57974060e351e5de9861394f72200dfd806bff95d965cdaeb2421e",
     "additionalReferences": [],
     "pdfReferenceCandidates": [
       {
@@ -364,6 +364,42 @@
               "url": "https://tymm.meb.gov.tr/kimya-dersi/unite/92"
             }
           ]
+        },
+        {
+          "id": "ek164-003",
+          "key": "9/kimya/u1/ek164-003",
+          "localCode": "EK.9.003",
+          "title": {
+            "tr": "İzotop bolluğundan ortalama atom kütlesi",
+            "en": "Isotopic weighted average"
+          },
+          "content": {
+            "anlatim": "## İzotop bolluğundan ortalama atom kütlesi\n\nİzotopların proton sayısı aynı, nötron sayısı farklıdır. Atom kütlesi doğal izotopların bolluklarıyla ağırlıklandırılmış ortalamadır; tek bir atomun kesirli nötron taşıdığı anlamına gelmez. Yüzdeleri kesre çevir, toplamlarını kontrol et. Kütle numarasıyla yaklaşım ders sorularında kullanılabilir; duyarlı hesapta gerçek izotop kütleleri gerekir.\n\n### Kontrol ederek öğren\n\nYaklaşık kütleleri 10 ve 11 olan izotopların bollukları %20 ve %80. Ortalama?\n\n**Çözüm yolu:** 0,20 × 10 + 0,80 × 11 = 10,8 u.\n\n### Dikkat noktaları\n\n- Ağırlıklar toplamı 1.\n- Proton sayısı aynı.\n- Ortalama uç değerler arasında.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=350)",
+            "ornekler": [
+              {
+                "soru": "Yaklaşık kütleleri 10 ve 11 olan izotopların bollukları %20 ve %80. Ortalama?",
+                "cozum": "0,20 × 10 + 0,80 × 11 = 10,8 u."
+              }
+            ],
+            "ozet": [
+              "Ağırlıklar toplamı 1.",
+              "Proton sayısı aynı.",
+              "Ortalama uç değerler arasında."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=350",
+            "programmeEdition": "supplement-check-current-TYMM",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
+          },
+          "officialCandidates": []
         }
       ]
     },

@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.63.0
+  APP_VERSION: 1.64.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -87,6 +87,8 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Arayüz ve çevrimdışı veri akışları
         run: |
+          node tools/security-ui-check.mjs
+          npm run test:v164-ui
           npm run test:study-ui
           npm run test:research-ui
           npm run test:teacher-review-ui
@@ -578,10 +580,13 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          Yeni masaüstü çalışma alanı: Konu Anlatımları → Deney Laboratuvarı → Yapay Zekâ → 3B Dünya Küresi → Ders Programı.
-          Ortadaki yapay zekâ girişi daha belirgin; hareketli gösterge, kısa ve zıplamasız geçişler, hafif kart animasyonları. Parıltı ve gölgeler azaltıldı.
-          Renkler ve efektler mevcut görünüm ayarlarından değişir. Dar pencere ve mobil gezinme korunur; azaltılmış hareket ve animasyon API'siz ortamlarda güvenli geri dönüş vardır.
-          [Masaüstü çalışma alanı](https://github.com/$OWNER/$REPO/blob/main/docs/MASAUSTU-CALISMA-ALANI.md).
+          Sesli öğretmenin konuşmayla eşzamanlı çözüm tahtası; daha sade kişisel AI çalışma alanı.
+          Ekran modülleri ilk kullanımda yüklenir. AI metin akışı birleştirilerek yeniden çizim yükü azaltıldı; iptal ve son metin korundu.
+          Vatandaş Bilimi ve Gökyüzü tek Bilim ve Sensör Laboratuvarı altında. Canlanan Ders Kitabı kaldırıldı.
+          Yaşayan Tarih Haritası: 16 kaynaklı dönem kesiti, 18 şehir, olay filtreleri, karşılaştırma, kaydetme ve dışa aktarma.
+          47 özgün ek öğrenme hedefi (35’i 12. sınıf); 855 konu, 221 formül. Bunlar yeni resmî MEB kazanım kodları değildir; kapsam ve kaynaklar içerikte belirtilir.
+          Kayıtlı ders HTML’i için izin listeli süzgeç ve içerik güvenlik politikası eklendi.
+          [Sürüm kılavuzu](https://github.com/$OWNER/$REPO/blob/main/docs/SURUM-1.64.md).
 
           | Platform | Dosya |
           |---|---|

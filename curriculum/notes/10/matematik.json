@@ -9,7 +9,7 @@
   "programEdition": "legacy-project-unverified",
   "source": {
     "file": "js/data/content/mat-10.js",
-    "sha256": "364e28733f92a6ffe49b0297b93dfdd1da1c7b388b01817b59ef058b21f8bef3",
+    "sha256": "bfee1415f8ed18f9b49a2724dd2bc554aedc596dcb13954e583aebdf8789e838",
     "additionalReferences": [],
     "pdfReferenceCandidates": [
       {
@@ -403,6 +403,42 @@
               "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/271"
             }
           ]
+        },
+        {
+          "id": "ek164-005",
+          "key": "10/matematik/t2/ek164-005",
+          "localCode": "EK.10.005",
+          "title": {
+            "tr": "Grup ortalamalarını ağırlıklandırma",
+            "en": "Weighted group means"
+          },
+          "content": {
+            "anlatim": "## Grup ortalamalarını ağırlıklandırma\n\nGrupların büyüklükleri farklıysa ortalamalarını doğrudan toplamak yanıltır. Ortalamayı eleman sayısıyla çarp, toplam puanı toplam eleman sayısına böl. Ortalama uç değerlere duyarlıdır; ortanca ve yayılımı da incele. İki grubun birleşik ortalaması grup ortalamalarının arasında kalır; bu kontrol işlem hatalarını yakalar.\n\n### Kontrol ederek öğren\n\n10 kişinin ortalaması 60, 30 kişinin 80. Birleşik ortalama?\n\n**Çözüm yolu:** (10 × 60 + 30 × 80)/40 = 75.\n\n### Dikkat noktaları\n\n- Grup büyüklüğünü ağırlık yap.\n- Ortanca uç değerlere daha dayanıklı.\n- Sonuç iki ortalamanın arasında.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=343)",
+            "ornekler": [
+              {
+                "soru": "10 kişinin ortalaması 60, 30 kişinin 80. Birleşik ortalama?",
+                "cozum": "(10 × 60 + 30 × 80)/40 = 75."
+              }
+            ],
+            "ozet": [
+              "Grup büyüklüğünü ağırlık yap.",
+              "Ortanca uç değerlere daha dayanıklı.",
+              "Sonuç iki ortalamanın arasında."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=343",
+            "programmeEdition": "supplement-check-current-TYMM",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
+          },
+          "officialCandidates": []
         }
       ]
     },

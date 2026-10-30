@@ -69,6 +69,7 @@ try {
   const ids = await page.evaluate(async () => {
     const duel = { v: 1, t: "d", id: "duel_ui", ti: "UI düellosu", ks: ["9/matematik/t1/k1"], sec: 5, hn: "Ali", st: Date.now() + 2500,
       q: Array.from({ length: 5 }, (_, i) => ({ k: 0, q: "Soru " + (i + 1) + ": " + i + " + 1 = ?", o: [String(i), String(i + 1), String(i + 2)], a: 1, d: 1 })) };
+    await App.lazy.load("sinif");   // v1.64: Sınıf Modu isteğe bağlı yüklenir
     App.sinifModu.validate(duel);
     await App.db.put("meta", { id: "duel:duel_ui", kind: "duel", role: "guest", at: new Date().toISOString(), duel, name: "Ayşe" });
     return duel.id;

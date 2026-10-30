@@ -1,5 +1,15 @@
 # Sürüm notları
 
+## 1.64.0 — Akıcı AI ve kaynaklı keşif
+
+- Sesli öğretmene konuşmayla eşzamanlı çözüm tahtası; kişisel AI çalışma alanında daha sakin kartlar ve tipografi.
+- İsteğe bağlı ekran yükleme, ortak AI metin bildirimlerinde birleştirme, iptal/son metin koruması ve AI sırasında indeksleme yükünün ertelenmesi.
+- Canlanan Ders Kitabı kaldırıldı; Vatandaş Bilimi ve Gökyüzü birleşik laboratuvar altına taşındı.
+- Tarih haritasında 16 dönem, 18 şehir, olay filtreleri, karşılaştırma, kaydetme, JSON dışa aktarma ve klavye/sürükleme ile gezinme.
+- 47 özgün ek öğrenme hedefi (35’i 12. sınıf): toplam 855 konu. 32 yeni formülle toplam 221 kart; koşullar ve başvuru kaynaklarıyla.
+- Kayıtlı ders HTML süzgeci, CSP, yeni birim/arayüz ve regresyon kontrolleri.
+- [Kapsam, kullanım ve teknik sınırlar](docs/SURUM-1.64.md).
+
 ## 1.63.0 — Sade masaüstü çalışma alanı
 
 - Beş ana bölüm için yeni üst menü; ortada belirgin Yapay Zekâ girişi.

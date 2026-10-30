@@ -262,7 +262,7 @@
       "",
       '<a class="card discovery-tile science-lab-shortcut" href="#/bilim-lab"><h2>Bilim ve Sensör Laboratuvarı</h2><p>Fizik ölçümleri, sensörler ve sismograf artık tek laboratuvarda.</p></a><div class="discovery-grid">' +
         App.data.discovery.modules
-          .filter(m => !["telefon-fizik", "sismograf"].includes(m[0]))
+          .filter(m => !["telefon-fizik", "sismograf", "gokyuzu"].includes(m[0]))
           .map(
             (m) =>
               '<a class="card discovery-tile" href="#/' +

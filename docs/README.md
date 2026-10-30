@@ -6,6 +6,7 @@
 
 | Kılavuz | Ne için? |
 |---|---|
+| [1.64 yenilikleri](SURUM-1.64.md) | Sesli tahta, akıcı AI, yeni içerik ve tarih haritası |
 | [Dokümanlar](DOKUMANLAR.md) | Birleşik belge ve not çalışma alanı |
 | [Bilim ve Sensör Laboratuvarı](BILIM-SENSOR-LABORATUVARI.md) | Ölçüm, deney, modeller ve rapor akışı |
 | [Görünüm özelleştirme](GORUNUM-OZELLESTIRME.md) | Palet, yazı tipi ve efektler |

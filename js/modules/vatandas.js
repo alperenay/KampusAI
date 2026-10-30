@@ -321,5 +321,5 @@
     return p[0] === "harita" ? renderMap(view) : p[0] === "paylas" ? renderShare(view) : renderMeasure(view);
   }
   App.router.register("vatandas", (view,p) => App.moduleSafety.mount(view, scope => render(scope,p)));
-  App.vatandas = { dbFromRms, rms, leq, noiseLabel, sqmEstimate, bortleFromSqm, merge, toPacket, fromPacket, bbox, idwGrid, colorFor, DEFAULT_OFFSET, validReading, csvCell };
+  App.vatandas = { render: (view, p = []) => App.moduleSafety.mount(view, scope => render(scope, p)), dbFromRms, rms, leq, noiseLabel, sqmEstimate, bortleFromSqm, merge, toPacket, fromPacket, bbox, idwGrid, colorFor, DEFAULT_OFFSET, validReading, csvCell };
 })();

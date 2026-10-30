@@ -9,7 +9,7 @@
   "programEdition": "legacy-project-unverified",
   "source": {
     "file": "js/data/content/din-12.js",
-    "sha256": "efcf6d63c68142ca0538840ac6af4724fec143638946d31447184648a92e3ad6",
+    "sha256": "321fefb8664d1e3ebf2e6387ad52da2bdff417421ad38d152e8b7b72911d2b99",
     "additionalReferences": [
       {
         "name": "[TYMM] DİN KÜLTÜRÜ VE AHLAK BİLGİSİ DERSİ (9-12) (2026)",
@@ -424,6 +424,42 @@
             "content": "existing-project-not-independently-reviewed",
             "alignment": "unverified",
             "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "ek164-046",
+          "key": "12/din/u4/ek164-046",
+          "localCode": "EK.12.046",
+          "title": {
+            "tr": "Yeni meselelerde ilke, bağlam ve uzmanlık",
+            "en": "Principles, context and expertise"
+          },
+          "content": {
+            "anlatim": "## Yeni meselelerde ilke, bağlam ve uzmanlık\n\nÖnce incelenen olguyu doğru tanımla. Tıbbi uygulamanın teknik sonucu ile değer yargısı aynı bilgi türü değildir; uzman verisini ve yorumun dayandığı ilkeyi ayrı göster. Farklı yorumların gerekçelerini dikkate al. Eğitim özetini kişiye özel kesin hüküm gibi sunma. İnsan onuru, mahremiyet ve zarar vermeme gibi ilkelerin somut bağlamda nasıl gerekçelendirildiğini saygılı bir tartışmayla değerlendir.\n\n### Kontrol ederek öğren\n\nSağlık teknolojisinde neden hem teknik hem etik bilgi gerekir?\n\n**Çözüm yolu:** Teknik bilgi olası yarar/zararı açıklar; etik değerlendirme değer ve sorumluluk gerekçelerini tartışır.\n\n### Dikkat noktaları\n\n- Olguyu doğru tanımla.\n- Uzmanlık alanlarını ayır.\n- Özeti kişiye özel hüküm sayma.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=319)",
+            "ornekler": [
+              {
+                "soru": "Sağlık teknolojisinde neden hem teknik hem etik bilgi gerekir?",
+                "cozum": "Teknik bilgi olası yarar/zararı açıklar; etik değerlendirme değer ve sorumluluk gerekçelerini tartışır."
+              }
+            ],
+            "ozet": [
+              "Olguyu doğru tanımla.",
+              "Uzmanlık alanlarını ayır.",
+              "Özeti kişiye özel hüküm sayma."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=319",
+            "programmeEdition": "legacy-reference",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
           },
           "officialCandidates": []
         }

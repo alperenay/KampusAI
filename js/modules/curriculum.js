@@ -9,8 +9,9 @@
 (function () {
   const { esc } = App.utils;
 
-  /** İçerik metni: HTML ile başlıyorsa olduğu gibi, değilse Markdown + LaTeX olarak çizilir */
-  const rich = (v) => { const s = L(v); return /^\s*</.test(s) ? s : App.markdown.render(s); };
+  /** İçerik metni: HTML ile başlıyorsa izin listesinden geçirilerek (v1.64: kayıtlı/eşitlenmiş ders güvenilmez),
+      değilse Markdown + LaTeX olarak çizilir */
+  const rich = (v) => { const s = L(v); return /^\s*</.test(s) ? App.sanitize.html(s) : App.markdown.render(s); };
   /** Tek satırlık metin (liste maddesi, soru): dıştaki <p> kaldırılır */
   const richInline = (v) => rich(v).replace(/^<p>([\s\S]*)<\/p>$/, "$1");
   const C = App.data.curriculum;

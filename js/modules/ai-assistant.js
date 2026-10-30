@@ -39,7 +39,7 @@
       if (status.state === "ok" && status.engine && status.engine.kind === "cloud" && App.rag.warmup && !warmed) {
         warmed = true;
         const eng = status.engine;
-        setTimeout(() => App.rag.warmup(eng), 3000);
+        setTimeout(() => { if (!live.controller && !document.hidden) App.rag.warmup(eng); else warmed = false; }, 3000);
       }
       statusListeners.forEach((fn) => fn(status));
       paintStatus();
@@ -412,12 +412,12 @@
     }
     if (paintQueued) return;
     paintQueued = true;
-    const mobile = window.matchMedia("(max-width: 860px), (pointer: coarse)").matches;
-    const delay = mobile ? Math.max(0, 90 - (performance.now() - lastPaintAt)) : 0;
+    const delay = Math.max(0, 90 - (performance.now() - lastPaintAt));
+    const expected = live.msg;
     setTimeout(() => requestAnimationFrame(() => {
       paintQueued = false;
       lastPaintAt = performance.now();
-      if (!mounted || !live.msg || mounted.chatId !== live.chatId || document.hidden) return;
+      if (!mounted || !live.msg || live.msg !== expected || mounted.chatId !== live.chatId || document.hidden) return;
       const el = mounted.view.querySelector('.msg[data-mid="' + live.msg.id + '"]');
       if (!el) return;
       const stick = mounted.view.scrollHeight - mounted.view.scrollTop - mounted.view.clientHeight < 160;
@@ -477,7 +477,7 @@
     if (mounted && (mounted.chatId === chat.id || !mounted.chatId)) await renderChat(mounted.view, chat.id);
 
     const throttledSave = () => {
-      if (Date.now() - live.lastSave > SAVE_EVERY_MS) { live.lastSave = Date.now(); saveChat(chat); }
+      if (Date.now() - live.lastSave > SAVE_EVERY_MS) { live.lastSave = Date.now(); saveChat(chat).catch(() => {}); }
     };
 
     try {

@@ -117,7 +117,9 @@
     const dpr = Math.min(2, window.devicePixelRatio || 1), W = cv.clientWidth || 320, H = cv.clientHeight || 200;
     if (cv.width !== Math.round(W * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); }
     const ctx = cv.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
-    const U = App.labs && App.labs.util, c = U ? U.colors() : { text: "#ddd", muted: "#999", accent: "#4f7cff", warn: "#f2b33d", good: "#3fb950", grid: "#333", border: "#555" };
+    // v1.64: deneyler (App.labs) isteğe bağlı yüklendiği için renkler gerekirse doğrudan temadan okunur
+    const U = App.labs && App.labs.util, cs = getComputedStyle(document.documentElement), tv = (n, d) => (cs.getPropertyValue(n) || "").trim() || d;
+    const c = U ? U.colors() : { text: tv("--text", "#ddd"), muted: tv("--muted", "#999"), accent: tv("--accent", "#4f7cff"), warn: "#f2b33d", good: tv("--good", "#3fb950"), grid: tv("--border", "#333"), border: tv("--border-strong", "#555") };
     const all = series.flatMap((s) => s.pts || []);
     const xs = all.map((p) => p[0]), ys = all.map((p) => p[1]).filter(isFinite);
     const x0 = opts.x0 != null ? opts.x0 : xs.length ? Math.min(...xs) : 0, x1 = opts.x1 != null ? opts.x1 : xs.length ? Math.max(...xs, x0 + 1e-6) : 1;

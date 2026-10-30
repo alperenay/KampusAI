@@ -121,8 +121,8 @@ await check("Ekosistem: mevsimler yıllık dalgalanma yaratır; çeşitlilik ind
 });
 
 /* ---------------- Tanıtım rehberleri ---------------- */
-await check("Rehber: üç atölyenin adımları iki dilde ve eksiksiz", () => {
-  for (const id of ["telefon-fizik", "ciz-calissin", "canlanan-kitap"]) {
+await check("Rehber: iki atölyenin adımları iki dilde ve eksiksiz", () => {
+  for (const id of ["telefon-fizik", "ciz-calissin"]) {
     const g = OB.GUIDES[id];
     assert.ok(g && g.title.length === 2 && g.steps.length >= 4, id);
     g.steps.forEach(([icon, title, text, list]) => { assert.ok(icon && title[0] && title[1] && text[0].length > 40 && text[1].length > 20, id); if (list) assert.equal(list[0].length, list[1].length); });

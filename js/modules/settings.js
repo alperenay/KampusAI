@@ -167,7 +167,7 @@
     m.el.querySelector("#setRemind").addEventListener("click", () => { m.close(); App.reminders.openSettings(); });
     m.el.querySelector("#setTour").addEventListener("click", () => { m.close(); App.router.go("rehber"); });
     m.el.querySelector("#setA11y").addEventListener("click", () => { m.close(); App.a11y.open(); });
-    m.el.querySelector("#setAbout").addEventListener("click", () => { m.close(); App.modules.about.open(); });
+    m.el.querySelector("#setAbout").addEventListener("click", () => { m.close(); App.router.go("hakkinda"); });   // v1.64: Hakkında ilk açılışta yüklenir
     m.el.querySelector("#setDemo").addEventListener("click", () => { m.close(); App.demo.toggle(); });
     m.el.querySelector("#setExport").addEventListener("click", exportBackup);
     m.el.querySelector("#setImport").addEventListener("change", async (e) => {

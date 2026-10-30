@@ -1,11 +1,11 @@
 {
   "name": "kampusai-web",
   "private": true,
-  "version": "1.63.0",
+  "version": "1.64.0",
   "scripts": {
     "build": "node tools/build-web.mjs dist/web",
     "lint": "node tools/syntax-check.mjs && node tools/compat-check.mjs",
-    "test": "node tools/study-check.mjs && node tools/research-check.mjs && node tools/teacher-review-check.mjs && node tools/retired-model-check.mjs && node tools/ar-check.mjs && node tools/kavram-check.mjs && node tools/content-check.mjs && node tools/build-content-index.mjs --check && node tools/v142-check.mjs && node tools/practice-check.mjs && node tools/v145-check.mjs && node tools/runtime-check.mjs && node tools/v147-check.mjs && node tools/discovery-check.mjs && node tools/discovery-signal-check.mjs && node tools/v149-check.mjs && node tools/v151-check.mjs && node tools/audio-check.mjs && node tools/v150-check.mjs && node tools/inference-check.mjs && node tools/tts-check.mjs && node tools/study-workspace-check.mjs && node tools/appearance-settings-check.mjs && node tools/documents-check.mjs && node tools/science-lab-check.mjs && node tools/timeline-check.mjs",
+    "test": "node tools/study-check.mjs && node tools/research-check.mjs && node tools/teacher-review-check.mjs && node tools/retired-model-check.mjs && node tools/ar-check.mjs && node tools/kavram-check.mjs && node tools/content-check.mjs && node tools/build-content-index.mjs --check && node tools/v142-check.mjs && node tools/practice-check.mjs && node tools/v145-check.mjs && node tools/runtime-check.mjs && node tools/v147-check.mjs && node tools/discovery-check.mjs && node tools/discovery-signal-check.mjs && node tools/v149-check.mjs && node tools/v151-check.mjs && node tools/audio-check.mjs && node tools/v150-check.mjs && node tools/inference-check.mjs && node tools/tts-check.mjs && node tools/study-workspace-check.mjs && node tools/appearance-settings-check.mjs && node tools/documents-check.mjs && node tools/science-lab-check.mjs && node tools/timeline-check.mjs && node tools/lazy-check.mjs && node tools/csp-check.mjs && node tools/voice-board-check.mjs && node tools/v164-check.mjs",
     "test:study": "node tools/study-check.mjs",
     "test:study-ui": "node tools/study-ui-check.mjs",
     "test:research": "node tools/research-check.mjs",
@@ -62,6 +62,9 @@
     "test:maps-models-ui": "node tools/maps-models-ui-check.mjs",
     "test:timeline-ui": "node tools/timeline-ui-check.mjs",
     "test:timeline": "node tools/timeline-check.mjs",
-    "test:desktop-workspace-ui": "node tools/desktop-workspace-ui-check.mjs"
+    "test:desktop-workspace-ui": "node tools/desktop-workspace-ui-check.mjs",
+    "test:v164": "node tools/v164-check.mjs",
+    "test:v164-ui": "node tools/v164-ui-check.mjs",
+    "build:enrichment": "node tools/apply-enrichment.mjs && node tools/build-content-index.mjs && node tools/build-curriculum-dataset.mjs"
   }
 }

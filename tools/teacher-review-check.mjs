@@ -9,7 +9,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".."); l
 async function check(name, fn) { await fn(); count++; console.log("✓ " + name); }
 function device() {
   const records = new Map(), writes = [];
-  const ctx = vm.createContext({ console, btoa, atob, crypto: webcrypto, Uint8Array, AbortController,
+  const ctx = vm.createContext({ console, setTimeout, clearTimeout, btoa, atob, crypto: webcrypto, Uint8Array, AbortController,
     App: { data: {}, i18n: { lang: "tr" }, t: (k) => k, L: (s) => s, utils: { esc: String }, router: { register() {} }, db: {
       get: async (s, id) => structuredClone(records.get(s + ":" + id)),
       getAll: async (s) => Array.from(records).filter(([k]) => k.startsWith(s + ":")).map(([, v]) => structuredClone(v)),
@@ -91,6 +91,6 @@ await check("Ortak AI generate katmanı sağlayıcı token akışını çağıra
   d.App.engine = { resolve: async () => ({ prepare: async () => {}, config: () => ({ chatModel: "fixture", direct: true }), chat: async (options) => { options.onDelta('{"x":', '{"x":'); options.onDelta('1}', '{"x":1}'); return { text: '{"x":1}', model: "fixture" }; } }) };
   vm.runInContext(fs.readFileSync(path.join(root, "js/ai/pipeline.js"), "utf8"), d.ctx);
   const result = await d.App.ai.generate({ prompt: "p", system: "s", onDelta: (piece) => chunks.push(piece) });
-  assert.equal(result.data.x, 1); assert.equal(chunks.length, 2);
+  assert.equal(result.data.x, 1); assert.ok(chunks.length >= 1 && chunks.length <= 2); assert.equal(chunks.join(""), result.text, "batching preserves every token and flushes before return");
 });
 console.log(count + " teacher review / generation checks passed.");

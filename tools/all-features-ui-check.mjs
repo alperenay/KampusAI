@@ -7,6 +7,7 @@ import { researchBank } from "./fixtures/research-bank.mjs";
 const h = await uiHarness(), results = [];
 try {
   const { page } = await h.device();
+  await page.evaluate(() => App.lazy.load(["labs", "games"]));   // v1.64: deneyler ve oyunlar isteğe bağlı yüklenir
   const info = await page.evaluate((bank) => {
     const first = App.learnmap.allOutcomes().find((it) => it.outcome.content || it.outcome.curatedContent);
     App.ai.generate = async () => ({ model: "smoke-fixture", data: { questions: bank } });

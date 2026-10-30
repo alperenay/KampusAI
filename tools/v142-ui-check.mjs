@@ -57,6 +57,7 @@ try {
   const aid = await page.evaluate(async () => {
     const a = { v: 1, t: "a", id: "odv_ui", ti: "UI ödevi", at: new Date().toISOString(), m: 0, fb: true, ks: ["9/matematik/t1/k1"],
       q: [{ k: 0, q: "1+1?", o: ["1", "2"], a: 1, d: 1 }, { k: 0, q: "2+2?", o: ["4", "5"], a: 0, d: 2 }] };
+    await App.lazy.load("sinif");   // v1.64: Sınıf Modu isteğe bağlı yüklenir
     const frames = await App.sinifModu.pack(a);
     await App.db.put("meta", { id: "sm:a:" + a.id, kind: "sm-a", digest: App.sinifModu.frame(frames[0]).digest, data: a });
     await App.db.put("meta", { id: "sm:s:" + a.id, kind: "sm-s", at: a.at, digest: App.sinifModu.frame(frames[0]).digest, data: a });
@@ -127,7 +128,7 @@ try {
   // 8) Yeni deneyler (labs-ek.js): hepsi açılır, ölçüm tablosu dolar; olasılık deneyi gerçekten atış yapar
   await page.setViewportSize({ width: 1280, height: 900 });
   const newLabs = ["turev", "integral", "dizi", "ustel", "parabol", "olasilik", "istatistik", "ucgencoz", "donusum", "katicisim", "mevsim", "iklim", "nufus", "mitoz", "kalitim"];
-  assert.ok((await page.evaluate(() => Object.keys(App.labs.LABS).length)) >= 82);
+  assert.ok((await page.evaluate(async () => { await App.lazy.load("labs"); return Object.keys(App.labs.LABS).length; })) >= 82);
   for (const id of newLabs) {
     await page.evaluate((x) => App.router.go("lab/" + x), id);
     await page.waitForFunction(() => /\d/.test((document.querySelector(".lab__read") || {}).textContent || ""), null, { timeout: 8000 });

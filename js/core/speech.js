@@ -678,7 +678,9 @@
   }
 
   /* ---------------- Okuma kuyruğu (v1.56) ----------------
-     say() ve stream() aynı kuyruğu kullanır: Q = { segs: [{ text, at, say }], finished, onAdd, full }.
+     say() ve stream() aynı kuyruğu kullanır: Q = { segs: [{ text, at, say, src }], finished, onAdd, full }.
+     src (yalnız stream): parçanın cevap metnindeki [başlangıç, bitiş] yeri; o.onSegment(parça, süre?) parça
+     çalmaya başlayınca çağrılır (v1.64 senkron tahta). Süre yalnız bulut sesinde bilinir (saniye).
      Çağıran natural:true derse ve bir doğal bulut sesi (App.tts) kullanılabiliyorsa o çalar; yoksa cihaz sesi.
      Bulut sesi yolda hata verirse kalan parçalar cihaz sesiyle okunur, okuma yarıda kalmaz. */
   let lastWord = 0, cloudEnd = null;
@@ -697,6 +699,8 @@
     let started = false;
     const onStart = () => { if (alive() && !started) { started = true; if (o.onStart) o.onStart(); } };
     const end = (reason) => { if (!alive()) return; current = null; cloudEnd = null; if (o.onEnd) o.onEnd(reason); };
+    let lastSeg = null;
+    const segStart = (part, dur) => { if (o.onSegment && alive() && part !== lastSeg) { lastSeg = part; o.onSegment(part, dur); } };
 
     function web(from) {
       if (!ttsAvailable() || nativeHas("ttsSpeak")) return native(from);
@@ -718,11 +722,13 @@
         if (v) u.voice = v;
         u.onboundary = (e) => {
           lastWord = performance.now();
+          segStart(part);
           if (o.onWord && alive() && (!e.name || e.name === "word")) o.onWord(part.at + (e.charIndex || 0));
         };
-        u.onstart = onStart;
+        u.onstart = () => { onStart(); segStart(part); };
         u.onend = () => {
           if (!alive()) return;
+          segStart(part);   // onstart vermeyen tarayıcıda tahta geride kalmasın
           k++;
           setTimeout(speakPart, /[.!?…]\s*$/.test(part.text) ? 140 : 60);
         };
@@ -774,6 +780,7 @@
           return;
         }
         const part = Q.segs[k++];
+        segStart(part);
         speakOne(id + "-" + k, part.say || part.text, o.onWord && ((n) => o.onWord(part.at + n)), nextPart);
       };
       nextPart();
@@ -785,6 +792,7 @@
         lang: tag.slice(0, 2), nth: o.voice || 0, rate,
         onStart,
         onWord: o.onWord && ((at) => { if (alive()) o.onWord(at); }),
+        onSegment: segStart,
         onEnd: end
       }, {
         fail: (from) => { if (!alive()) return; cloudEnd = null; web(from); }
@@ -810,19 +818,36 @@
 
   /** Yapay zekâ cevabı gelirken okumaya başlar: push(şimdiye kadarki metin) tamamlanan cümleleri sıraya ekler,
       end(son metin) kalanını ekler. o.transform(parça) okunacak metni verir (ör. markdown → sözcükler).
-      Kapanmamış **, $ ve ` içindeki ya da "3." gibi sayıdan sonra gelen noktada bölünmez. */
+      Kapanmamış **, $ ve ` içindeki ya da "3." gibi sayıdan sonra gelen noktada bölünmez.
+      Her satır ayrı okunur; parçalar cevaptaki yerini (src) taşır, tahta okunan adımı buradan bulur (v1.64). */
   function stream(o) {
     o = o || {};
     const Q = newQueue(), tag = langTag(o.lang), tf = o.transform || ((x) => x);
     let used = 0, spoken = 0, id = null, closed = false;
     const count = (s, re) => (s.match(re) || []).length;
-    const balanced = (s) => s.split("**").length % 2 === 1 && count(s.replace(/\\\$/g, ""), /\$/g) % 2 === 0 && count(s, /`/g) % 2 === 0;
-    function take(piece) {
-      const said = String(tf(piece) || "").replace(/\s+/g, " ").trim();
+    // $$ … $$ ayrı sayılır: tek başına "$$" satırı açık bir blok başlatır
+    const balanced = (s) => { const d = s.replace(/\\\$/g, ""); return s.split("**").length % 2 === 1 && count(d, /\$\$/g) % 2 === 0 && count(d.replace(/\$\$/g, ""), /\$/g) % 2 === 0 && count(s, /`/g) % 2 === 0; };
+    /** piece: cevap metninin from konumundan başlayan bölümü; satırlarına ayrılır (açık blok içinde bölünmez) */
+    function take(piece, from) {
+      let a = 0;
+      piece.split("\n").forEach((line, i, all) => {
+        const b = a + line.length;
+        if (i < all.length - 1 && !balanced(piece.slice(a, b))) return;   // blok sürüyor: sonraki satırla birlikte
+        sayPart(piece.slice(a, b), from + a);
+        a = b + 1;
+      });
+      if (!id && Q.segs.length) id = play(Q, o);
+    }
+    /** Bir satırın parçaları; parçanın satırdaki yeri okunan metindeki konumuyla orantılı tahmin edilir */
+    function sayPart(raw, from) {
+      const said = String(tf(raw) || "").replace(/\s+/g, " ").trim();
       if (!said) return;
-      chunks(said, !Q.segs.length).forEach((c) => addSeg(Q, { text: c.text, at: spoken + c.at, say: o.onWord ? c.text : naturalText(c.text, tag) }));
+      const base = from + raw.length - raw.trimStart().length, len = raw.trim().length;
+      const map = (n) => base + Math.round((n / said.length) * len);
+      chunks(said, !Q.segs.length).forEach((c) => addSeg(Q, {
+        text: c.text, at: spoken + c.at, say: o.onWord ? c.text : naturalText(c.text, tag), src: [map(c.at), map(c.at + c.text.length)]
+      }));
       spoken += said.length + 1;
-      if (!id) id = play(Q, o);
     }
     return {
       push(raw) {
@@ -835,13 +860,13 @@
           const stop = m.index + m[0].length;
           if (balanced(raw.slice(0, used + stop))) cut = stop;
         }
-        if (cut > 0) { take(rest.slice(0, cut)); used += cut; }
+        if (cut > 0) { take(rest.slice(0, cut), used); used += cut; }
       },
       end(raw) {
         if (closed) return;
         closed = true;
         raw = String(raw || "");
-        if (raw.length > used) take(raw.slice(used));
+        if (raw.length > used) take(raw.slice(used), used);
         used = raw.length;
         finishQueue(Q);
         if (!id && o.onEnd) setTimeout(() => o.onEnd("done"));

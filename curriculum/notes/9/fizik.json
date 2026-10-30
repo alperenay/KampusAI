@@ -9,7 +9,7 @@
   "programEdition": "legacy-project-unverified",
   "source": {
     "file": "js/data/content/fiz-9.js",
-    "sha256": "d32fd4392f256a95f3c2ce9edb2af5765d6417931d675e3066be2f3d4568981f",
+    "sha256": "d8d8ff7af44f9ad3ac0ea0e653024570d04807ad2b562baa7f0646d484cf700d",
     "additionalReferences": [],
     "pdfReferenceCandidates": [
       {
@@ -193,6 +193,42 @@
               "url": "https://tymm.meb.gov.tr/fizik-dersi/unite/43"
             }
           ]
+        },
+        {
+          "id": "ek164-002",
+          "key": "9/fizik/u1/ek164-002",
+          "localCode": "EK.9.002",
+          "title": {
+            "tr": "Birim analiziyle yanlış modeli eleme",
+            "en": "Reject models using dimensions"
+          },
+          "content": {
+            "anlatim": "## Birim analiziyle yanlış modeli eleme\n\nBir eşitliğin iki tarafı aynı fiziksel boyutta olmalıdır. Hız uzunluk/zaman, ivme uzunluk/zamanın karesidir. Birimi doğru olan her ifade doğru model değildir; uyum yalnız gerekli koşuldur. Birim dönüşümünü niceliğe uygula. Grafik eğiminin birimi düşey eksen biriminin yatay eksen birimine bölünmesidir.\n\n### Kontrol ederek öğren\n\n36 km/h kaç m/s?\n\n**Çözüm yolu:** 36 × 1000 / 3600 = 10 m/s.\n\n### Dikkat noktaları\n\n- Birim uyumu tek başına yeterli değil.\n- Eğim: düşey/yatay birim.\n- Dönüşümde zamanı da değiştir.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=351)",
+            "ornekler": [
+              {
+                "soru": "36 km/h kaç m/s?",
+                "cozum": "36 × 1000 / 3600 = 10 m/s."
+              }
+            ],
+            "ozet": [
+              "Birim uyumu tek başına yeterli değil.",
+              "Eğim: düşey/yatay birim.",
+              "Dönüşümde zamanı da değiştir."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=351",
+            "programmeEdition": "supplement-check-current-TYMM",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
+          },
+          "officialCandidates": []
         }
       ]
     },

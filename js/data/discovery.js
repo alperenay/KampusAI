@@ -44,12 +44,6 @@
         "pen",
       ],
       [
-        "canlanan-kitap",
-        "Canlanan Ders Kitabı",
-        "Fotoğraftan denklemi oku, doğrula ve katsayılarla kamera üstündeki grafiği değiştir.",
-        "camera",
-      ],
-      [
         "tarih-haritasi",
         "Yaşayan Tarih Haritası",
         "1071–1923 dönemlerini, şematik sınırları, ticaret ve sefer rotalarını kaynaklarıyla incele.",

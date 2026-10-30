@@ -159,10 +159,17 @@
       }
     });
   }
+  // v1.64: içerik güvenlik politikası (CSP) satır içi onerror'a izin vermez; küçük resim yedeği tek dinleyiciyle
+  document.addEventListener("error", (e) => {
+    const img = e.target;
+    if (!(img instanceof HTMLImageElement) || !img.dataset.vdFallback) return;
+    if (img.dataset.vdFallback === "remove") img.remove();
+    else img.replaceWith(Object.assign(document.createElement("span"), { className: "vd-thumb vd-thumb--x" }));
+  }, true);
   const libItem = (r) => {
     const s = SUBJ[r.subject] || SUBJ.diger;
     return '<li><a class="vd-item" href="#/video/' + esc(r.id.slice(6)) + '">' +
-      (r.vid ? '<img class="vd-thumb" src="https://i.ytimg.com/vi/' + esc(r.vid) + '/mqdefault.jpg" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement(\'span\'),{className:\'vd-thumb vd-thumb--x\'}))">' : '<span class="vd-thumb vd-thumb--x"></span>') +
+      (r.vid ? '<img class="vd-thumb" src="https://i.ytimg.com/vi/' + esc(r.vid) + '/mqdefault.jpg" alt="" loading="lazy" data-vd-fallback="swap">' : '<span class="vd-thumb vd-thumb--x"></span>') +
       '<span class="vd-item__t"><b>' + esc(r.title) + "</b><small>" + esc(s[0]) + " · " + esc(App.utils.fmtDate(String(r.createdAt).slice(0, 10))) +
       (r.best != null ? " · " + esc(T("test: ", "quiz: ") + r.best + "/" + r.quiz.length) : "") + "</small></span>" + App.icon("chevron") + "</a></li>";
   };
@@ -230,7 +237,7 @@
     const quizState = r.quiz.map(() => null);
     view.innerHTML = '<div class="page page--narrow vd">' +
       '<nav class="crumbs"><a href="#/video">' + App.icon("chevronL") + esc(T("Videodan Çalış", "Study from Video")) + "</a></nav>" +
-      '<div class="vd-head">' + (r.vid ? '<a class="vd-cover" href="' + esc(ytUrl(r.vid)) + '" target="_blank" rel="noopener" aria-label="' + esc(T("Videoyu YouTube'da aç", "Open on YouTube")) + '"><img src="https://i.ytimg.com/vi/' + esc(r.vid) + '/hqdefault.jpg" alt="" onerror="this.remove()"><span class="vd-play">' + App.icon("play") + "</span></a>" : "") +
+      '<div class="vd-head">' + (r.vid ? '<a class="vd-cover" href="' + esc(ytUrl(r.vid)) + '" target="_blank" rel="noopener" aria-label="' + esc(T("Videoyu YouTube'da aç", "Open on YouTube")) + '"><img src="https://i.ytimg.com/vi/' + esc(r.vid) + '/hqdefault.jpg" alt="" data-vd-fallback="remove"><span class="vd-play">' + App.icon("play") + "</span></a>" : "") +
         '<div><span class="vd-subj">' + App.icon(s[1]) + esc(s[0]) + "</span><h1>" + esc(r.title) + "</h1>" +
         '<p class="hint">' + esc(r.source === "video" ? T("YouTube videosundan hazırlandı", "Made from a YouTube video") : T("Metinden hazırlandı", "Made from text")) + " · " + esc(App.utils.fmtDate(String(r.createdAt).slice(0, 10))) + (r.model ? " · " + esc(r.model) : "") + "</p>" +
         '<div class="vd-actions">' + (r.vid ? '<a class="btn btn--sm" href="' + esc(ytUrl(r.vid)) + '" target="_blank" rel="noopener">' + App.icon("play") + esc(T("YouTube'da izle", "Watch on YouTube")) + "</a>" : "") +

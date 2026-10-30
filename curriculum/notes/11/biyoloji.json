@@ -9,7 +9,7 @@
   "programEdition": "legacy-project-unverified",
   "source": {
     "file": "js/data/content/biy-11.js",
-    "sha256": "f2d6b68c37ce1fe11ce82f656c276219631baffe624333e8fc1a61876e580999",
+    "sha256": "594f2114b4fee4c07872574ec0e43326b338d20855f6e8b5bbba1c40241a9ee0",
     "additionalReferences": [],
     "pdfReferenceCandidates": [
       {
@@ -126,6 +126,42 @@
             "content": "existing-project-not-independently-reviewed",
             "alignment": "unverified",
             "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "ek164-012",
+          "key": "11/biyoloji/u1/ek164-012",
+          "localCode": "EK.11.012",
+          "title": {
+            "tr": "Negatif geri bildirim ve homeostaz",
+            "en": "Negative feedback and homeostasis"
+          },
+          "content": {
+            "anlatim": "## Negatif geri bildirim ve homeostaz\n\nHomeostaz değişmezlik değil belirli sınırlar içinde düzenlenmedir. Algılayıcı değişimi saptar, merkez yanıt oluşturur, efektör sapmayı azaltır. Hormonun artması tek başına pozitif geri bildirim demek değildir; döngünün toplam etkisine bak. Tek bir eğitim grafiğiyle hastalık tanısı konmaz; ölçüm koşulları ve uzman değerlendirmesi gerekir.\n\n### Kontrol ederek öğren\n\nYükselen kan şekerini insülinin düşürmesi hangi döngü?\n\n**Çözüm yolu:** Başlangıçtaki yükselmeyi azalttığı için negatif geri bildirim.\n\n### Dikkat noktaları\n\n- Düzenleme bir aralıkta olur.\n- İşaret toplam etkiye göre.\n- Eğitim modeli tanı aracı değildir.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=361)",
+            "ornekler": [
+              {
+                "soru": "Yükselen kan şekerini insülinin düşürmesi hangi döngü?",
+                "cozum": "Başlangıçtaki yükselmeyi azalttığı için negatif geri bildirim."
+              }
+            ],
+            "ozet": [
+              "Düzenleme bir aralıkta olur.",
+              "İşaret toplam etkiye göre.",
+              "Eğitim modeli tanı aracı değildir."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=361",
+            "programmeEdition": "supplement-check-current-TYMM",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
           },
           "officialCandidates": []
         }

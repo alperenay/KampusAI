@@ -432,7 +432,7 @@
     const busy = syncing && syncing.model === pre.model;
     if (pre.model && (pre.missing > QUICK || busy)) {
       // Cevabı bekletme: bu soruda kelime araması, hafıza arka planda (bulut: hemen; cihaz: cevaptan sonra)
-      if (engine.kind === "cloud" && !busy) warmup(engine);
+      // Do not start indexing while the answer is streaming. pipeline.js warms after completion.
       return { overview: overviewText(pre.data), hits: query.trim() ? lexical(query, pre.chunks) : [], embedded: 0, method: "lexical",
         indexing: { missing: pre.missing, total: pre.chunks.length } };
     }

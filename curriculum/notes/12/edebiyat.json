@@ -9,7 +9,7 @@
   "programEdition": "legacy-project-unverified",
   "source": {
     "file": "js/data/content/edb-12.js",
-    "sha256": "660920c2207be297fd0a2d78d1f318f349cd6ac86e0450bcc5d476626c452e86",
+    "sha256": "5d5bac1ab36f2e7e0c89e035f308c2f06eaf1b019c06a2ed312549d480a4d8e6",
     "additionalReferences": [],
     "pdfReferenceCandidates": [
       {
@@ -335,6 +335,42 @@
             "content": "existing-project-not-independently-reviewed",
             "alignment": "unverified",
             "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "ek164-042",
+          "key": "12/edebiyat/u4/ek164-042",
+          "localCode": "EK.12.042",
+          "title": {
+            "tr": "Romanda anlatıcıyı metin kanıtıyla değerlendirme",
+            "en": "Narrative voice and textual evidence"
+          },
+          "content": {
+            "anlatim": "## Romanda anlatıcıyı metin kanıtıyla değerlendirme\n\nÖykü zamanı olayların kronolojisi, anlatma düzeni bunların metinde sunuluş sırasıdır. Geriye dönüş olayın tarihini değiştirmez. Anlatıcının bildikleri okurun erişimini sınırlar; iddiası yazarın doğruladığı olgu olmayabilir. Çelişki ve eksiltmeleri başka kişilerin anlatımlarıyla karşılaştır. Türü tek belirtiyle kesinleştirme. Telifli metnin tamamını kopyalamak yerine gerekli kısa alıntı ve kendi açıklamanı kullan.\n\n### Kontrol ederek öğren\n\nSonucu başta veren roman kronolojik mi anlatılmıştır?\n\n**Çözüm yolu:** Olay sırası ile sunum sırası farklıdır; sonuçtan geriye giden kurgu olabilir.\n\n### Dikkat noktaları\n\n- Olay sırası ve sunum sırası farklı.\n- Anlatıcının bilgisini sınırla.\n- Yorumunu metin kanıtına bağla.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=353)",
+            "ornekler": [
+              {
+                "soru": "Sonucu başta veren roman kronolojik mi anlatılmıştır?",
+                "cozum": "Olay sırası ile sunum sırası farklıdır; sonuçtan geriye giden kurgu olabilir."
+              }
+            ],
+            "ozet": [
+              "Olay sırası ve sunum sırası farklı.",
+              "Anlatıcının bilgisini sınırla.",
+              "Yorumunu metin kanıtına bağla."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=353",
+            "programmeEdition": "legacy-reference",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
           },
           "officialCandidates": []
         }

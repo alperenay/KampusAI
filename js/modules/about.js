@@ -33,6 +33,12 @@
 
   /* Kaynakça (APA biçimine yakın), konu başlıklarına göre gruplu: [grup, [[metin, adres], …]] */
   const KAYNAKCA = () => [
+    [T("1.64 ek öğrenme hedefleri ve formüller", "1.64 supplemental objectives and formulas"), [
+      ["MEB. 2026–2027 ortaöğretim planları: TYMM 9–11. sınıflarda kademeli, 12. sınıfta mevcut program. EK kodları özgün uygulama hedefleridir; yeni resmî kazanım kodu değildir.", "https://tymm.meb.gov.tr/taslak-cerceve-planlari/ortaogretim"],
+      ["OpenStax. Calculus, Precalculus, University Physics ve Chemistry açık ders kitapları. Formüller ve kullanım koşulları için başvuru; her yeni formülün yanında ilgili kitap bağlantısı vardır.", "https://openstax.org/subjects"],
+      ["TBMM Kütüphanesi. 23 Nisan 1920’den başlayan tutanaklar. Tarih haritasında belgeyle kanıt değerlendirmesi için.", "https://www.tbmm.gov.tr/kutuphane-tutanaklara-erisim"],
+      ["TDV İslâm Ansiklopedisi. Osmanlılar: siyasal, iktisadi ve toplumsal tarih. Haritadaki yeni dönem açıklamaları kısa özgün özetlerdir; şekiller egemenlik sınırı değildir.", "https://islamansiklopedisi.org.tr/osmanlilar"]
+    ]],
     [T("Yeni harita, tarih ve bilim modülleri", "New map, history and science modules"), [
       ["NASA. Blue Marble (2002), Reto Stöckli / Robert Simmon. 4K WebP doku özgün 8K görüntüden küçültüldü; mobil 2K yedek. Canlı uydu verisi değildir.", "https://science.nasa.gov/earth/earth-observatory/the-blue-marble-true-color-global-imagery-at-1km-resolution/"],
       ["NASA. 60 Moments in NASA History. Yeni uzay tarihi olaylarının kurumsal kronolojisi; açıklamalar özgün özetlerdir.", "https://www.nasa.gov/specials/timeline/index.html"],
@@ -160,6 +166,7 @@
 
   /* Son sürümler (yeniden eskiye) */
   const SURUMLER = () => [
+    ["1.64.0", T("Senkron sesli tahta; sade AI çalışma alanı; isteğe bağlı ekran yükleme, birleştirilmiş AI metin akışı ve kayıtlı HTML koruması. Canlanan Ders Kitabı kaldırıldı; Vatandaş Bilimi ve Gökyüzü laboratuvar altında. Tarih haritasında 16 dönem, 18 şehir, olay arama, karşılaştırma ve dışa aktarma. 47 özgün ek öğrenme hedefi (35’i 12. sınıf), toplam 855 konu ve 221 formül; yeni resmî MEB kazanımı iddiası yok.", "Synchronized voice board; refined AI workspace; on-demand screens, coalesced AI rendering and stored HTML protection. Living Textbook retired; Citizen Science and Sky in the lab. History map: 16 periods, 18 cities, search, comparison and export. 47 original supplemental objectives (35 grade12), 855 topics and 221 formulas; no claim of new official curriculum outcomes.")],
     ["1.63.0", T("Beşli masaüstü menüsü: Konu Anlatımları, Deney Laboratuvarı, ortada belirgin Yapay Zekâ, 3B Dünya Küresi ve Ders Programı. Ortak renk ayarları, hafif animasyonlar ve gölgeler; mobil/dar pencere gezinmesi korunur.", "Five desktop workspaces: Lessons, Science Lab, prominent central AI, 3D Globe and Study Schedule. Shared colour controls, subtle motion and shadows; mobile/narrow navigation retained.")],
     ["1.62.0", T("Şeffaf üst çubuk; 12 palet ve ayrıntılı görünüm ayarları; tek Dokümanlar alanı; birleşik Bilim ve Sensör Laboratuvarı ve dört yeni deney; 4K küre, 14 ders modeli, zengin tarih haritası ve 184 olaylı kaynak bağlantılı zaman çizelgesi. Sunum oluşturma kaldırıldı. Müfredat JSON/şablon paketi ayrı kapsam raporuyla hazırlanmıştır.", "Transparent header; 12 palettes and appearance controls; unified Documents and Science Lab; four new experiments; 4K globe, 14 models, enhanced map and 184-event timeline with source-linked dossiers. Presentation generation removed. Curriculum JSON/templates have a separate coverage report.")],
     ["1.59.0", T("Akıllı menü, yenilenmiş Ayarlar, özelleştirilebilir ana ekran, 5 tema, AI model yönlendirme ve aşamalar, PDF/ODF çalışma paketi, öğrenci portfolyosu, davet kodlu ortak not odaları.", "Smart navigation, settings redesign, customizable dashboard, five themes, AI routing, PDF/ODF study pack, student portfolio, invite-only shared notes.")],

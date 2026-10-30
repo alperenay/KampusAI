@@ -1,0 +1,773 @@
+{
+  "schemaVersion": 1,
+  "authorship": "Original teaching text; programme links describe topic scope, not an open textbook licence. EK codes are local supplemental objectives, not official MEB codes.",
+  "schoolYear": "2026–2027",
+  "rolloutReference": "https://tymm.meb.gov.tr/taslak-cerceve-planlari/ortaogretim",
+  "catalogue": "https://tymm.meb.gov.tr/ogretim-programlari/ortaogretim",
+  "programmeIds": {
+    "matematik": 343,
+    "fizik": 351,
+    "kimya": 350,
+    "biyoloji": 361,
+    "ingilizce": 342,
+    "edebiyat": 353,
+    "inkilap": 355,
+    "cografya": 336,
+    "felsefe": 338,
+    "din": 319
+  },
+  "lessons": [
+    [
+      9,
+      "matematik",
+      "t2",
+      "Aralıkların kesişimini sayı doğrusuyla doğrulama",
+      "Verify interval intersections",
+      "Bir eşitsizlik sisteminde her koşul ayrı bir aralık verir. Ve sözcüğü kesişim, veya birleşim anlamına gelir. Açık uç eşitliği içermez. Kritik sayıları sırala ve her bölgeden bir deneme değeri seç. Sonucu başlangıçtaki bütün koşullara geri koy. Negatif sayıyla çarparken eşitsizlik yönünün değiştiğini unutma.",
+      "x > −2 ve x ≤ 3 için çözüm?",
+      "(−2,3]. −2 ilk koşulu sağlamaz; 3 iki koşulu da sağlar.",
+      [
+        "Ve: kesişim.",
+        "Açık uç eşitliği içermez.",
+        "Sonucu bütün koşullarda dene."
+      ],
+      "ek164-001"
+    ],
+    [
+      9,
+      "fizik",
+      "u1",
+      "Birim analiziyle yanlış modeli eleme",
+      "Reject models using dimensions",
+      "Bir eşitliğin iki tarafı aynı fiziksel boyutta olmalıdır. Hız uzunluk/zaman, ivme uzunluk/zamanın karesidir. Birimi doğru olan her ifade doğru model değildir; uyum yalnız gerekli koşuldur. Birim dönüşümünü niceliğe uygula. Grafik eğiminin birimi düşey eksen biriminin yatay eksen birimine bölünmesidir.",
+      "36 km/h kaç m/s?",
+      "36 × 1000 / 3600 = 10 m/s.",
+      [
+        "Birim uyumu tek başına yeterli değil.",
+        "Eğim: düşey/yatay birim.",
+        "Dönüşümde zamanı da değiştir."
+      ],
+      "ek164-002"
+    ],
+    [
+      9,
+      "kimya",
+      "u1",
+      "İzotop bolluğundan ortalama atom kütlesi",
+      "Isotopic weighted average",
+      "İzotopların proton sayısı aynı, nötron sayısı farklıdır. Atom kütlesi doğal izotopların bolluklarıyla ağırlıklandırılmış ortalamadır; tek bir atomun kesirli nötron taşıdığı anlamına gelmez. Yüzdeleri kesre çevir, toplamlarını kontrol et. Kütle numarasıyla yaklaşım ders sorularında kullanılabilir; duyarlı hesapta gerçek izotop kütleleri gerekir.",
+      "Yaklaşık kütleleri 10 ve 11 olan izotopların bollukları %20 ve %80. Ortalama?",
+      "0,20 × 10 + 0,80 × 11 = 10,8 u.",
+      [
+        "Ağırlıklar toplamı 1.",
+        "Proton sayısı aynı.",
+        "Ortalama uç değerler arasında."
+      ],
+      "ek164-003"
+    ],
+    [
+      9,
+      "biyoloji",
+      "u1",
+      "Kontrol grubu ve biyolojik tekrar",
+      "Controls and biological replication",
+      "Bağımsız değişken araştırmacının değiştirdiği, bağımlı değişken ölçülen sonuçtur. Kontrol grubu karşılaştırma sağlar; diğer koşullar aynı tutulur. Aynı örneği üç kez ölçmek teknik tekrar, üç ayrı canlı örneğini incelemek biyolojik tekrardır. Rastgele gruplama seçilim yanlılığını azaltır. Korelasyon tek başına nedensellik kanıtı değildir.",
+      "Işığın çimlenmeye etkisinde ne sabit tutulmalı?",
+      "Tohum türü, su, sıcaklık ve süre sabit; ışık değişken, çimlenme oranı sonuçtur.",
+      [
+        "Kontrol karşılaştırma sağlar.",
+        "Teknik ve biyolojik tekrar farklı.",
+        "Korelasyon nedensellik değildir."
+      ],
+      "ek164-004"
+    ],
+    [
+      10,
+      "matematik",
+      "t2",
+      "Grup ortalamalarını ağırlıklandırma",
+      "Weighted group means",
+      "Grupların büyüklükleri farklıysa ortalamalarını doğrudan toplamak yanıltır. Ortalamayı eleman sayısıyla çarp, toplam puanı toplam eleman sayısına böl. Ortalama uç değerlere duyarlıdır; ortanca ve yayılımı da incele. İki grubun birleşik ortalaması grup ortalamalarının arasında kalır; bu kontrol işlem hatalarını yakalar.",
+      "10 kişinin ortalaması 60, 30 kişinin 80. Birleşik ortalama?",
+      "(10 × 60 + 30 × 80)/40 = 75.",
+      [
+        "Grup büyüklüğünü ağırlık yap.",
+        "Ortanca uç değerlere daha dayanıklı.",
+        "Sonuç iki ortalamanın arasında."
+      ],
+      "ek164-005"
+    ],
+    [
+      10,
+      "fizik",
+      "u2",
+      "Enerji bilançosunda sistem sınırı",
+      "System boundaries in energy balances",
+      "Enerji bilançosundan önce sisteme neleri dahil ettiğini yaz. Sürtünmede mekanik enerji azalabilir; toplam enerji yok olmaz, iç enerjiye veya çevreye aktarılır. Durumları aynı referans yüksekliğiyle karşılaştır. Güç enerji aktarım hızıdır, enerji değildir. Ölçüm belirsizliği küçük bilanço farkları oluşturabilir; farkı yeni enerji üretimi diye yorumlama.",
+      "100 J sağlanan düzende 70 J yararlı çıkış varsa verim?",
+      "70/100 = 0,70, yani %70; kalan 30 J farklı biçimlere aktarılır.",
+      [
+        "Sistem sınırını belirt.",
+        "Mekanik/toplam enerjiyi ayır.",
+        "Verim boyutsuzdur."
+      ],
+      "ek164-006"
+    ],
+    [
+      10,
+      "kimya",
+      "u1",
+      "Sınırlayıcı bileşen ve kuramsal verim",
+      "Limiting reactants",
+      "Önce tepkimeyi denkleştir. Katsayılar mol oranıdır; gram oranı değildir. Başlangıç maddelerinin molünü katsayısına böl; en küçük oran sınırlayıcı bileşeni verir. Ürünü bu bileşenden hesapla. Saflık, yan tepkime ve toplama kaybı deneysel verimi etkiler. %100 üzeri verimde ıslak ürün ve ölçüm hatası olasılığını araştır.",
+      "2H₂ + O₂ → 2H₂O; 3 mol H₂ ve 2 mol O₂ ile ürün?",
+      "3/2 < 2/1; H₂ sınırlar. 3 mol su oluşur, 0,5 mol O₂ artar.",
+      [
+        "Katsayılar mol oranıdır.",
+        "Mol/katsayı en küçük olan sınırlar.",
+        "Artan maddeyi ayrıca hesapla."
+      ],
+      "ek164-007"
+    ],
+    [
+      10,
+      "biyoloji",
+      "u3",
+      "Mayozda kromozom ve DNA miktarı",
+      "Chromosomes and DNA in meiosis",
+      "Kromozom sayısı sentromer sayısıyla belirlenir; DNA eşlenmesi bu sayıyı hemen iki katına çıkarmaz. Eşlenmeden sonra her kromozom iki kardeş kromatit taşır. Mayoz I homologları, mayoz II kardeş kromatitleri ayırır. Hücrenin tamamındaki miktarla bir kutuptaki miktarı karıştırma. Evreyi ve eşlenmenin tamamlanıp tamamlanmadığını belirt.",
+      "2n=8 hücrede mayoz I sonunda hücre başına kromozom?",
+      "n=4; her kromozom hâlâ iki kromatitlidir.",
+      [
+        "Sayı sentromere göre.",
+        "Mayoz I homologları ayırır.",
+        "Mayoz II kardeş kromatitleri ayırır."
+      ],
+      "ek164-008"
+    ],
+    [
+      11,
+      "matematik",
+      "u5",
+      "Trigonometrik grafikte genlik ve periyot",
+      "Amplitude and period",
+      "y=A sin(Bx+C)+D için A düşey ölçeği, D orta çizgiyi belirler. B sıfırdan farklıysa radyanla periyot 2π/|B| olur. Kayma −C/B’dir; yalnız C’ye bakılmaz. Genlik |A| olup negatif A yansımayı da içerir. Önce orta çizgiyi, sonra temel noktaları çiz. Dereceyle çalışıyorsan 2π yerine 360° kullan; birimleri karıştırma.",
+      "y=3 sin(2x)−1 için genlik ve periyot?",
+      "Genlik 3, orta çizgi −1, periyot π radyan.",
+      [
+        "Genlik |A|.",
+        "Radyanda periyot 2π/|B|.",
+        "Kayma −C/B."
+      ],
+      "ek164-009"
+    ],
+    [
+      11,
+      "fizik",
+      "u1",
+      "Eğik atışta ortak zaman",
+      "Shared time in projectile components",
+      "Direnç yok ve yerçekimi sabitse yatay ivme sıfır, düşey ivme aşağı yönlü g’dir. Hızı bileşenlerine ayır; iki hareket ortak zamanı kullanır. Tepede yalnız düşey hız sıfırdır. Alışılmış menzil bağıntısı çıkış-varış yükseklikleri eşitse kullanılır. Farklı yükseklikte önce düşey denklemden fiziksel zamanı, sonra yatay uzaklığı bul.",
+      "Yatay hızı 12 m/s olan cisim 2 s uçarsa yatay yol?",
+      "x=vₓt=24 m; düşey hareket uçuş süresini belirler.",
+      [
+        "İki bileşenin zamanı ortak.",
+        "Tepede toplam hız genellikle sıfır değil.",
+        "Menzil formülünün koşulunu kontrol et."
+      ],
+      "ek164-010"
+    ],
+    [
+      11,
+      "kimya",
+      "u2",
+      "Tampon çözeltide oran ve kapasite",
+      "Buffer ratio and capacity",
+      "Zayıf asit ve eşlenik bazı küçük asit/baz eklemelerinde pH değişimini azaltabilir; pH tamamen sabit değildir, kapasite sonludur. Güçlü asit/bazı önce stokiyometrik olarak tüket, kalan bileşenlerle dengeyi hesapla. Henderson–Hasselbalch uygun derişimlerde bir yaklaşımdır; çok seyreltik ve kapasitesi aşılmış çözeltilerde körlemesine kullanılmaz.",
+      "Asit ve eşlenik baz eşit derişimdeyse pH ile pKa ilişkisi?",
+      "Uygun yaklaşım koşullarında oran 1 ve log1=0 olduğundan pH=pKa.",
+      [
+        "Önce stokiyometri, sonra denge.",
+        "Kapasite sonlu.",
+        "Oran 1 ise pH yaklaşık pKa."
+      ],
+      "ek164-011"
+    ],
+    [
+      11,
+      "biyoloji",
+      "u1",
+      "Negatif geri bildirim ve homeostaz",
+      "Negative feedback and homeostasis",
+      "Homeostaz değişmezlik değil belirli sınırlar içinde düzenlenmedir. Algılayıcı değişimi saptar, merkez yanıt oluşturur, efektör sapmayı azaltır. Hormonun artması tek başına pozitif geri bildirim demek değildir; döngünün toplam etkisine bak. Tek bir eğitim grafiğiyle hastalık tanısı konmaz; ölçüm koşulları ve uzman değerlendirmesi gerekir.",
+      "Yükselen kan şekerini insülinin düşürmesi hangi döngü?",
+      "Başlangıçtaki yükselmeyi azalttığı için negatif geri bildirim.",
+      [
+        "Düzenleme bir aralıkta olur.",
+        "İşaret toplam etkiye göre.",
+        "Eğitim modeli tanı aracı değildir."
+      ],
+      "ek164-012"
+    ],
+    [
+      12,
+      "matematik",
+      "u1",
+      "Logaritmik eşitsizlikte taban yönü",
+      "Base direction in log inequalities",
+      "Logaritmanın tabanı a>0, a≠1, içi pozitif olmalıdır. a>1 ise fonksiyon artan, 0<a<1 ise azalandır. Azalan fonksiyon eşitsizliğe uygulanınca yön döner. İşlemden çıkan aralığı tanım koşuluyla kesiştir; yalnız eşitsizliği çözmek yeterli değildir. Kesirli tabanda bir test noktasıyla son aralığı doğrula.",
+      "log₁/₂(x−1)>−1 çözümü?",
+      "x>1 ve x−1<2; dolayısıyla 1<x<3.",
+      [
+        "Önce tanım koşulu.",
+        "Kesirli tabanda yön döner.",
+        "Sonucu tanım kümesiyle kesiştir."
+      ],
+      "ek164-013"
+    ],
+    [
+      12,
+      "matematik",
+      "u2",
+      "Geometrik seride yakınsaklık ve kalan",
+      "Geometric convergence and remainders",
+      "Sonlu toplamda terim sayısı ve son indeks farklı olabilir; ilk terimi açık yaz. Sonsuz geometrik toplam yalnız |r|<1 için a₁/(1−r) olur. Terimin sıfıra gitmesi her serinin yakınsadığını kanıtlamaz. n terimden sonraki kalan a₁rⁿ/(1−r) ile bulunur. r=1 için sonlu toplam n·a₁ olur; sıfır paydalı formüle yerine koyma.",
+      "1+1/2+1/4+… toplamı ve ilk üç terimin hatası?",
+      "Toplam 2; ilk üç terim 1,75; kalan 0,25.",
+      [
+        "Sonsuz toplam: |r|<1.",
+        "r=1 ayrı durum.",
+        "Kalanla hata bulunur."
+      ],
+      "ek164-014"
+    ],
+    [
+      12,
+      "matematik",
+      "u5",
+      "Parçalı fonksiyonda süreklilik",
+      "Continuity of piecewise functions",
+      "İki taraflı limit için soldan ve sağdan limit aynı olmalıdır. Nokta değeri limitten bağımsız tanımlanabilir. Süreklilik için noktanın tanımlı olması ve limitin nokta değerine eşitliği de gerekir. x=a’nın hangi parçaya dahil edildiğine dikkat et. Çarpan sadeleştirme çevredeki limit hesabını kolaylaştırabilir ama başlangıçtaki tanım boşluğunu kendiliğinden doldurmaz.",
+      "x<2 için x+1, x≥2 için k ise x=2’de süreklilik?",
+      "Sol limit 3, sağ limit ve değer k; k=3 olmalıdır.",
+      [
+        "İki yan limit eşit.",
+        "Nokta değeri limite eşit.",
+        "Tanım boşluğunu kontrol et."
+      ],
+      "ek164-015"
+    ],
+    [
+      12,
+      "matematik",
+      "u5",
+      "Türevi teğet eğimiyle yorumlama",
+      "Interpret derivatives as tangent slopes",
+      "Sekantın eğimi ortalama değişim oranıdır. Noktalar yaklaşırken bu oran sonlu bir değere gidiyorsa türev teğetin eğimini verir. Birimi çıktı birimi/girdi birimidir. Tek noktadaki işaret bütün aralık davranışını kanıtlamaz. Köşede sağ ve sol eğimler farklıysa türev yoktur; fonksiyon yine sürekli olabilir. Süreklilik, türevlenebilirlik için tek başına yeterli değildir.",
+      "f(x)=x² için x=3’te teğet?",
+      "Eğim f′(3)=6; y−9=6(x−3).",
+      [
+        "Sekant ortalama, türev anlık değişim.",
+        "Türevlenebilirlik sürekliliği gerektirir.",
+        "Eğim birimini yaz."
+      ],
+      "ek164-016"
+    ],
+    [
+      12,
+      "matematik",
+      "u5",
+      "Kapalı aralıkta mutlak ekstremum",
+      "Absolute extrema on closed intervals",
+      "Sürekli fonksiyon kapalı sınırlı aralıkta en büyük ve en küçük değerini alır. İçte türevin sıfır veya tanımsız olduğu adaylarla iki uç noktayı değerlendir. Yalnız f′=0 çözmek yeterli değildir. İkinci türev testi sıfır verdiğinde sonuçsuz olabilir. Optimizasyonda fiziksel aralığı, birimleri ve uzunlukların pozitifliğini kontrol et; yalnız cebirsel kök bulmak çözümü tamamlamaz.",
+      "f(x)=x²−4x için [0,3] mutlak ekstremum?",
+      "f(0)=0, f(2)=−4, f(3)=−3. Minimum −4, maksimum 0.",
+      [
+        "Uç noktaları unutma.",
+        "Türevsiz iç nokta da aday.",
+        "Yerel ve mutlak ekstremum farklı."
+      ],
+      "ek164-017"
+    ],
+    [
+      12,
+      "matematik",
+      "u6",
+      "İşaretli integral ile geometrik alan",
+      "Signed integral and area",
+      "Belirli integral eksen üstünü pozitif, altını negatif katkıyla toplar. Geometrik alan negatif olamaz. Köklerde aralığı parçala ve parça integrallerinin mutlak değerlerini topla. İki eğri arasında üst fonksiyon değişebileceğinden kesişimleri kontrol et. Alan birimi eksen birimlerinin çarpımıdır. Sayısal yaklaşımda adım genişliğini ve verilen hatanın tahmin mi kesin sınır mı olduğunu belirt.",
+      "f(x)=x için [−1,1] integrali ve geometrik alan?",
+      "İntegral 0; iki yarım üçgenin toplam alanı 1.",
+      [
+        "İntegral işaretlidir.",
+        "Geometrik alan negatif olamaz.",
+        "Kök ve kesişimlerde parçala."
+      ],
+      "ek164-018"
+    ],
+    [
+      12,
+      "matematik",
+      "u7",
+      "Merkez–doğru uzaklığıyla teğetlik",
+      "Tangency via centre-to-line distance",
+      "Çember merkezini kareye tamamlayarak bul ve yarıçap karesinin pozitifliğini denetle. Merkezin doğruya uzaklığı yarıçaptan küçükse iki kesişim, eşitse teğetlik, büyükse kesişmeme vardır. Uzaklıkta mutlak değer ve karekök paydası gereklidir. Teğet noktasına çizilen yarıçap teğete diktir. Çift kök geometrik olarak tek temas noktasıdır.",
+      "Merkezi (0,0), yarıçapı 5 çember ile 3x+4y=25 doğrusu?",
+      "Uzaklık 25/√(9+16)=5; doğru teğettir.",
+      [
+        "Uzaklığı yarıçapla karşılaştır.",
+        "Teğet yarıçapa diktir.",
+        "Çift kök tek temas noktasıdır."
+      ],
+      "ek164-019"
+    ],
+    [
+      12,
+      "fizik",
+      "u1",
+      "Yuvarlanmada enerji paylaşımı",
+      "Energy sharing in rolling",
+      "Kaymadan yuvarlanmada kinetik enerji, kütle merkezinin öteleme ve merkez etrafındaki dönme enerjilerinin toplamıdır. Kaymama koşulu v=ωR’dir. Aynı yükseklikten bırakılan cisimlerin hızı eylemsizlik momentine bağlıdır. İdeal sabit yüzeyde statik sürtünme kaymama koşulunu sağlayabilir; kaymalı sürtünme kaybını otomatik varsayma.",
+      "İçi dolu silindirde I=mR²/2 ise dönme/öteleme enerji oranı?",
+      "(Iω²/2)/(mv²/2)=1/2; v=ωR kullanılır.",
+      [
+        "İki enerji birlikte sayılır.",
+        "Kaymama v=ωR.",
+        "Geometri eylemsizlik momentini değiştirir."
+      ],
+      "ek164-020"
+    ],
+    [
+      12,
+      "fizik",
+      "u1",
+      "Yörünge hızı ve kaçış hızı",
+      "Orbital versus escape speed",
+      "Dairesel yörüngede çekim merkezcil ivmeyi sağlar: hız √(GM/r). r yüzeyden yükseklik değil merkezden uzaklıktır. Direnç ve diğer cisimler ihmal edilirse sonsuza sıfır son hızla kaçış için √(2GM/r) gerekir. Ağırlıksızlık çekimin yokluğu değil ortak serbest düşmedir. Bu enerji eşiği gerçek roketin yakıt ve itki sürecinin tamamını açıklamaz.",
+      "Aynı r’de kaçış/yörünge hız oranı?",
+      "√2; GM/r ortak çarpandır.",
+      [
+        "r merkezden ölçülür.",
+        "Ağırlıksızlık çekimsizlik değildir.",
+        "Kaçış hızı ideal enerji eşiğidir."
+      ],
+      "ek164-021"
+    ],
+    [
+      12,
+      "fizik",
+      "u2",
+      "Harmonik harekette faz ve enerji",
+      "Phase and energy in SHM",
+      "İdeal yayda konum ile ivme ters işaretlidir. Dengede ivme sıfır, hız büyüklüğü en büyük; uçta hız sıfırdır. Konum grafiğinin eğimi hızı verir; en büyük konumu en büyük hız sanma. Enerji genliğin karesiyle orantılıdır. Hooke yasası ve kayıpsızlık koşullarını belirt. Gerçek düzende sönüm genliği azaltır, dış periyodik kuvvet rezonansa yol açabilir.",
+      "Genlik iki katına çıkarsa toplam enerji?",
+      "E=kA²/2 olduğundan dört katına çıkar.",
+      [
+        "Dengede hız en büyük.",
+        "Uçta hız sıfır.",
+        "Enerji A² ile orantılı."
+      ],
+      "ek164-022"
+    ],
+    [
+      12,
+      "fizik",
+      "u3",
+      "Girişimde yol farkı ve saçak aralığı",
+      "Path difference and fringes",
+      "Uyumlu kaynaklarda faz ilişkisi korunur. Eş fazlı iki kaynakta yol farkı tam dalga boyu katıysa yapıcı, yarım tek katıysa yıkıcı girişim olur. Young deneyinde küçük açı ve uzak ekran yaklaşımında saçak aralığı λL/d’dir. Ortam değişiminde dalga boyu değişebilir, sınırda frekans korunur. Yol farkını boyutsuz faz farkıyla aynı nicelik sanma.",
+      "Yarık aralığı iki katına çıkarsa saçak aralığı?",
+      "λ ve L sabitse yarıya iner.",
+      [
+        "Faz uyumu gerekir.",
+        "Saçak aralığı d ile ters orantılı.",
+        "Yol farkı uzunluk biriminde."
+      ],
+      "ek164-023"
+    ],
+    [
+      12,
+      "fizik",
+      "u5",
+      "Fotoelektrikte eşik ve durdurma potansiyeli",
+      "Photoelectric threshold and stopping potential",
+      "Fotonun enerjisi hf’dir. İş fonksiyonu aşıldığında kalan enerji en büyük kinetik enerjiye dönüşür. İdeal tek fotonlu modelde eşik altındaki ışığın şiddetini artırmak elektron koparmaz. Eşik üstünde şiddet uygun koşullarda akımı artırır, en büyük kinetik enerjiyi frekans belirler. Durdurma potansiyelinin büyüklüğüyle e|V|=Kmax olur; joule ve elektronvoltu ayır.",
+      "Foton 5 eV, iş fonksiyonu 2 eV ise |Vd|?",
+      "Kmax=3 eV, |Vd|=3 V.",
+      [
+        "Frekans enerjiyi belirler.",
+        "Şiddet foton akısını etkiler.",
+        "eV enerji, V potansiyel birimidir."
+      ],
+      "ek164-024"
+    ],
+    [
+      12,
+      "fizik",
+      "u4",
+      "Yarı ömürde etkinlik ve kalan çekirdek",
+      "Activity and remaining nuclei",
+      "Tek çekirdeğin bozunması rastlantısal, çok sayıda çekirdeğin davranışı istatistikseldir. Her yarı ömürde başlangıçtan sabit sayı değil kalanın yarısı bozunur. Aynı izotopta etkinlik kalan kararsız çekirdek sayısıyla orantılıdır. Etkinlik, soğurulan doz ve biyolojik etki farklı niceliklerdir; Bq doğrudan Sv’ye çevrilmez. Eğitim hesabı radyasyon güvenliği kararı vermez.",
+      "Üç yarı ömür sonra başlangıç etkinliğinin hangi kesri kalır?",
+      "(1/2)³=1/8.",
+      [
+        "Her adımda kalanın yarısı.",
+        "Bq etkinliktir, doz değildir.",
+        "Tek çekirdeğin anı öngörülemez."
+      ],
+      "ek164-025"
+    ],
+    [
+      12,
+      "kimya",
+      "u1",
+      "Pil tepkimesinde elektron ve potansiyel",
+      "Electron balance and cell potential",
+      "Anotta yükseltgenme, katotta indirgenme olur; adlar galvanik pil ve elektrolizde değişmez. Yarı tepkimeleri elektron sayıları eşit olacak şekilde çarp, atom ve yük korunmasını denetle. Standart potansiyel şiddet özelliğidir; tepkime katsayısıyla çarpılmaz. Tuz köprüsünde iyonlar, dış devrede elektronlar hareket eder. Hücre potansiyelinde iki indirgenme potansiyelini doğru sırayla çıkar.",
+      "İndirgenme potansiyelleri +0,34 V ve −0,76 V ise standart pil?",
+      "E°=0,34−(−0,76)=1,10 V.",
+      [
+        "Anot yükseltgenme.",
+        "Potansiyel katsayıyla çarpılmaz.",
+        "Tuz köprüsünde iyon hareketi."
+      ],
+      "ek164-026"
+    ],
+    [
+      12,
+      "kimya",
+      "u1",
+      "Elektrolizde seri hücre ve elektron molü",
+      "Electron moles in series cells",
+      "Seri devreden aynı sürede aynı yük geçer. Farklı iyonlardan biriken kütleler eşit olmayabilir; molar kütle ve elektron sayısı önemlidir. Önce Q=It, sonra elektron molü Q/F hesaplanır. Ürün molü elektron katsayısına bölünür. Sulu çözeltide ürün seçimi elektrot, derişim ve potansiyele bağlıdır; her metal iyonunun doğrudan birikeceğini varsayma.",
+      "1 mol elektron Ag⁺ ve Cu²⁺ hücrelerinde kaç mol metal ayırır?",
+      "Ag için 1 mol, Cu için 0,5 mol.",
+      [
+        "Seride yük aynı.",
+        "Kütle M/n ile orantılı.",
+        "Önce elektrot ürününü belirle."
+      ],
+      "ek164-027"
+    ],
+    [
+      12,
+      "kimya",
+      "u2",
+      "Yapı izomeri ve geometrik izomer",
+      "Structural versus geometric isomers",
+      "Aynı molekül formülü farklı bağlantılarla yapı izomerleri verebilir. Geometrik izomerlikte bağlantı aynı, kısıtlı dönme çevresindeki yerleşim farklıdır. Alkenin her çift bağlı karbonunda iki farklı grup bulunmasını kontrol et. Karbon sayısının artması izomerlik değildir; aynı formül gerekir. Çizimi döndürmek her zaman yeni bileşik oluşturmaz. Ana zinciri ve fonksiyonel grubu belirle.",
+      "2-büten neden geometrik izomer gösterebilirken 1-büten göstermez?",
+      "2-bütende her çift bağlı C iki farklı grup taşır; 1-bütenin uç C’sinde iki H aynıdır.",
+      [
+        "Önce formülleri karşılaştır.",
+        "Bağlantı farklıysa yapı izomeri.",
+        "Her çift bağ geometrik izomer vermez."
+      ],
+      "ek164-028"
+    ],
+    [
+      12,
+      "kimya",
+      "u3",
+      "Fonksiyonel gruptan tepkimeye",
+      "From functional group to reaction",
+      "Davranışı toplam atom sayısı kadar fonksiyonel grup belirler. Aldehitte karbonil karbonuna H, ketonda iki karbon grubu bağlıdır. Karboksilik asitte karbonil ve hidroksil aynı karbondadır. Esterleşme uygun koşullarda denge tepkimesidir; suyu uzaklaştırmak ürün yönünü destekleyebilir. Benzer isim benzer güvenlik demek değildir; eğitim sorusu evde kimyasal karıştırma yönergesi değildir.",
+      "Etanoik asit ile etanol esterleşmesinin organik ürünü?",
+      "Etil etanoat; diğer ürün su.",
+      [
+        "Karbonilin çevresine bak.",
+        "Esterleşme dengeye bağlı.",
+        "İsim benzerliği güvenlik kanıtı değil."
+      ],
+      "ek164-029"
+    ],
+    [
+      12,
+      "kimya",
+      "u4",
+      "Yakıtları yaşam döngüsüyle karşılaştırma",
+      "Fuel life-cycle comparison",
+      "Yakıtı yalnız kullanım anındaki gazla değerlendirmek yetersizdir. Üretim, taşıma, depolama, verim ve atık için sistem sınırı seç. Hidrojen kullanımda su oluştursa da üretim yolu toplam salımı değiştirir. Yenilenebilir ile sıfır çevresel etki aynı şey değildir. Eşit kütle yerine eşit yararlı enerji başına karşılaştır. Verinin yılı, birimi ve kapsadığı süreçleri belirt.",
+      "Yakıtları eşit kg yerine hangi ortak büyüklükle karşılaştırabilirsin?",
+      "Aynı yaşam döngüsü sınırlarında g CO₂-eşdeğeri/kWh yararlı enerji.",
+      [
+        "Üretimi dışlama.",
+        "Ortak hizmet/enerji birimi seç.",
+        "Yenilenebilir, etkisiz demek değil."
+      ],
+      "ek164-030"
+    ],
+    [
+      12,
+      "biyoloji",
+      "u1",
+      "Çift zincirli DNA’da bağ hesabı",
+      "Count bonds in double-stranded DNA",
+      "Çift zincirli DNA toplamında A=T ve G=C; tek zincirde bu eşitlik zorunlu değildir. Baz çifti sayısı toplam nükleotidin yarısıdır. A–T çifti iki, G–C çifti üç hidrojen bağı kurar. Fosfodiester bağları aynı zincirde komşu nükleotidleri bağlar; hidrojen bağıyla karıştırma. Doğrusal ve halkasal DNA’nın omurga bağ hesabı farklıdır; uçların varlığını belirt.",
+      "100 baz çiftinde 40 G–C çifti varsa hidrojen bağı?",
+      "40×3+60×2=240; toplam 200 nükleotit vardır.",
+      [
+        "Toplamda A=T, G=C.",
+        "Baz çifti toplam nükleotidin yarısı.",
+        "Doğrusal/halkasal farkına dikkat."
+      ],
+      "ek164-031"
+    ],
+    [
+      12,
+      "biyoloji",
+      "u1",
+      "PCR’da kontrol ve kontaminasyon",
+      "PCR controls and contamination",
+      "PCR belirli DNA bölgesini primerler ve ısıya dayanıklı polimerazla çoğaltır. Zincirler ayrılır, primer bağlanır, yeni zincir uzatılır. İdeal ikiye katlanma tam verim varsayımıdır; gerçek verim farklıdır. Negatif kontrol kirlenmeyi, pozitif kontrol işlemin çalışmasını sınar. PCR sinyali tek başına canlının canlı olduğunu veya hastalık şiddetini göstermez; uzman laboratuvar yorumu gerekir.",
+      "2 başlangıç molekülü ideal 3 döngü sonra kaç olur?",
+      "2×2³=16; tam verim varsayımıyla.",
+      [
+        "Primer hedefi sınırlar.",
+        "Negatif kontrol kirlenmeyi sınar.",
+        "İdeal artış gerçek verim değildir."
+      ],
+      "ek164-032"
+    ],
+    [
+      12,
+      "biyoloji",
+      "u2",
+      "Fotosentezde sınırlayıcı etmen",
+      "Limiting factors in photosynthesis",
+      "Fotosentezi ışık, CO₂, sıcaklık ve su birlikte etkiler. Birini artırmak başka etmen sınırlayıcı olunca hızı artırmayabilir. Doygunlukta yataylaşma durma değildir. Sıcaklık sürekli arttıkça hız sürekli artmaz; enzimler etkilenir. Kabarcık sayısı gaz hacminin yaklaşık göstergesidir; büyüklük ve solunum etkiler. Diğer koşulları sabitle, tekrarlı ölçüm yap, belirsizliği belirt.",
+      "Işık artarken hız sabitleniyorsa ne çıkarılabilir?",
+      "Işık tek sınırlayıcı olmaktan çıkmış olabilir; diğer etmenler araştırılır.",
+      [
+        "Doygunluk durma değil.",
+        "Etmenler birlikte işler.",
+        "Yaklaşık ölçümün sınırını belirt."
+      ],
+      "ek164-033"
+    ],
+    [
+      12,
+      "biyoloji",
+      "u3",
+      "Ksilem, floem ve kaynak–havuz",
+      "Xylem, phloem and source-sink transport",
+      "Ksilem su-mineral, floem organik madde taşır. Floemde kaynak üreten/sağlayan, havuz tüketen/depolayan dokudur; organın rolü gelişime göre değişebilir. Ayrı iletim elemanlarında farklı yönler olabilir. Stoma kapanması su kaybını azaltırken CO₂ girişini de sınırlayabilir. Taşınmayı yalnız tek yönlü sabit bir şema gibi ezberleme; koşulu, doku türünü ve taşınan maddeyi birlikte değerlendir.",
+      "Çimlenen tohumda depo doku kaynak mı havuz mu?",
+      "Besini büyüyen dokuya verdiği dönemde kaynak; büyüyen doku havuzdur.",
+      [
+        "Kaynak/havuz işlevsel tanım.",
+        "Ksilem ve floemin yükü farklı.",
+        "Stoma su–CO₂ dengesini etkiler."
+      ],
+      "ek164-034"
+    ],
+    [
+      12,
+      "biyoloji",
+      "u4",
+      "Taşıma kapasitesi ve popülasyon grafiği",
+      "Carrying capacity and graphs",
+      "Taşıma kapasitesi belirli çevrede sürdürülebilen büyüklüktür; evrensel sabit değildir. Kaynak, habitat ve etkileşimler değişince kapasite değişebilir. Lojistik büyüme ideal modeldir; gerçek sistemde göç, gecikme ve mevsim etkileri vardır. Denge bütün bireylerin aynı yaşta olduğunu göstermez. Mutlak ve birey başına artışı ayır; popülasyonları yalnız eğim büyüklüğüyle karşılaştırma.",
+      "Kaynaklar kalıcı azalınca kapasite nasıl etkilenebilir?",
+      "Diğer koşullar sabitse düşebilir; dengeye geçiş gecikmeli olabilir.",
+      [
+        "Kapasite çevreye bağlı.",
+        "Lojistik model idealleştirme.",
+        "Mutlak/birey başı artışı ayır."
+      ],
+      "ek164-035"
+    ],
+    [
+      12,
+      "ingilizce",
+      "t3",
+      "Human Rights: hak ve sorumluluk söz varlığı",
+      "Human rights vocabulary",
+      "Rights hakları, responsibilities sorumlulukları anlatır. Freedom of expression düşünceyi açıklama özgürlüğüdür. Olgu (fact) ile görüşü (opinion) ayır. Eşitlik herkesin aynı gereksinime sahip olduğu anlamına gelmez. Örnekleri kapsayıcı dilde kur. Can, should ve must farklı güçte imkân, öneri ve yükümlülük bildirebilir; bağlamı ve konuşanın amacını dikkate al.",
+      "Complete: Everyone ___ be treated fairly.",
+      "should; öneri/ilke bildirir. Hukuki yükümlülük daha kesin kurulabilir.",
+      [
+        "Right: hak.",
+        "Responsibility: sorumluluk.",
+        "Olgu ve görüş farklı."
+      ],
+      "ek164-036"
+    ],
+    [
+      12,
+      "ingilizce",
+      "t3",
+      "Human Rights: neden–sonuçla sav kurma",
+      "Support a human rights argument",
+      "Sav paragrafı iddia, destekleyen gerekçe/örnek ve sonuçla kurulur. Because neden, therefore sonuç, although karşıtlık kurar. Bir örnek bütün toplum için genelleme kanıtı olmaz. Kaynağın üreticisini ve tarihini belirt. In my view kişisel görüşü gösterir, veri sunulduğu anlamına gelmez. Karşı görüşü adil biçimde özetlemek ve kanıtın kapsamını sınırlamak daha tutarlı metin üretir.",
+      "Join: Education matters. It creates opportunities.",
+      "Education matters because it creates opportunities.",
+      [
+        "Because neden kurar.",
+        "Therefore sonuç kurar.",
+        "Örneği evrensel kanıt sanma."
+      ],
+      "ek164-037"
+    ],
+    [
+      12,
+      "ingilizce",
+      "t3",
+      "Human Rights: saygılı itiraz ve yeniden ifade",
+      "Respectful disagreement and paraphrase",
+      "I see your point, but… görüşü duyduğunu gösterip itiraz açar. I disagree because… gerekçe ister. Yeniden ifadede konuşanın anlamını değiştirme; So you mean…? ile doğrula. Kişiyi değil iddiayı tartış. Alıntının bağlamını koru ve ayrımcı ifadeye eleştirel mesafeyi açıkça göster. Dil pratiği gerçek kişilerin özel bilgilerini paylaşmayı veya bütün bir gruba etiket yapıştırmayı gerektirmez.",
+      "Rewrite politely: You are wrong.",
+      "I see your point, but I disagree because the evidence suggests a different conclusion.",
+      [
+        "Kişiyi değil iddiayı tartış.",
+        "Anlamı yeniden ifadeyle doğrula.",
+        "İtirazına gerekçe ekle."
+      ],
+      "ek164-038"
+    ],
+    [
+      12,
+      "ingilizce",
+      "t10",
+      "Manners: nazik rica ve uygun yanıt",
+      "Polite requests and responses",
+      "Could you…? ve Would you mind + -ing…? nazik rica kurar. Mind sorusu rahatsız olup olmayacağını sorar; No, not at all çoğunlukla yapabilirim anlamındadır. Ret için gerekçe ve alternatif sunulabilir. Resmiyet ilişki ve bağlamdan etkilenir; tek davranış kalıbını bütün kültürlere atama. Sözcüğü, tonu ve durumu birlikte değerlendir; bir yanıtı tek başına yes/no sözcüğünden çıkarma.",
+      "Complete: Would you mind ___ the window?",
+      "opening. No, not at all yanıtı açmaya itiraz olmadığını söyler.",
+      [
+        "Mind sonrası -ing.",
+        "Yanıtın bağlamını düşün.",
+        "Nazik ret alternatif içerebilir."
+      ],
+      "ek164-039"
+    ],
+    [
+      12,
+      "ingilizce",
+      "t10",
+      "Manners: özür, açıklama ve telafi",
+      "Apology and repair",
+      "Etkili özür hatayı kabul eder, etkisini tanır ve gerçekçi telafi sunar. I am sorry for + -ing veya I apologise for + noun kullanılabilir. Açıklama yapmak sorumluluğu başkasına atmak değildir. Gerçekleştiremeyeceğin kesin söz verme. Karşı tarafın yanıtını dinlemek ezberlenmiş kalıbı tekrar etmekten daha önemlidir; iletişim ortak bağlamda onarılır ve telafinin uygunluğu birlikte değerlendirilir.",
+      "Apologise for arriving late and suggest repair.",
+      "I am sorry for arriving late. I will read the notes and help finish the task.",
+      [
+        "For sonrası isim/-ing.",
+        "Etkiyi ve telafiyi belirt.",
+        "Gerçekçi söz ver."
+      ],
+      "ek164-040"
+    ],
+    [
+      12,
+      "ingilizce",
+      "t10",
+      "Manners: kültürler arası genellemenin sınırı",
+      "Avoid cultural overgeneralisation",
+      "Davranış beklentileri kültür, aile, ortam ve kişiye göre değişir. In some situations ve may ifadeleri kapsamı sınırlar; always/never güçlü genellemelerdir. Ortak çalışmada beklentiyi nazikçe sormak yanlış varsayımı azaltır. Farkı üstünlük hiyerarşisine dönüştürme. Dil pratiğinin amacı merak, açıklık ve karşılıklı saygıdır; sınırlı gözlemi herkes için değişmez bir kural gibi sunmaktan kaçın.",
+      "Make less absolute: People always greet this way.",
+      "In some situations, people may greet each other this way.",
+      [
+        "Always/never güçlü genelleme.",
+        "Beklentiyi nazikçe sor.",
+        "Farklılık üstünlük değildir."
+      ],
+      "ek164-041"
+    ],
+    [
+      12,
+      "edebiyat",
+      "u4",
+      "Romanda anlatıcıyı metin kanıtıyla değerlendirme",
+      "Narrative voice and textual evidence",
+      "Öykü zamanı olayların kronolojisi, anlatma düzeni bunların metinde sunuluş sırasıdır. Geriye dönüş olayın tarihini değiştirmez. Anlatıcının bildikleri okurun erişimini sınırlar; iddiası yazarın doğruladığı olgu olmayabilir. Çelişki ve eksiltmeleri başka kişilerin anlatımlarıyla karşılaştır. Türü tek belirtiyle kesinleştirme. Telifli metnin tamamını kopyalamak yerine gerekli kısa alıntı ve kendi açıklamanı kullan.",
+      "Sonucu başta veren roman kronolojik mi anlatılmıştır?",
+      "Olay sırası ile sunum sırası farklıdır; sonuçtan geriye giden kurgu olabilir.",
+      [
+        "Olay sırası ve sunum sırası farklı.",
+        "Anlatıcının bilgisini sınırla.",
+        "Yorumunu metin kanıtına bağla."
+      ],
+      "ek164-042"
+    ],
+    [
+      12,
+      "cografya",
+      "u1",
+      "Afet riskinde tehlike, maruziyet ve kırılganlık",
+      "Hazard, exposure and vulnerability",
+      "Tehlike olayın olasılık/şiddet özellikleri, maruziyet alandaki insan ve varlıklar, kırılganlık zarar görmeye yatkınlıktır. Aynı deprem büyüklüğü aynı kaybı doğurmaz. Basit eğitim risk çarpımları evrensel gerçek tahmin formülü değildir. Haritanın ölçeği, tarihi ve belirsizliği okunmalıdır. Telefon sensörü resmî erken uyarı veya yapı güvenliği değerlendirmesi yapmaz.",
+      "Aynı tehlikede iki yerleşimin kaybı neden farklı olabilir?",
+      "Nüfus, yapı niteliği, hazırlık, altyapı ve müdahale kapasitesi farklı olabilir.",
+      [
+        "Tehlike riskin tek bileşeni değil.",
+        "Ölçek ve tarihi kontrol et.",
+        "Eğitim modeli resmî analiz değildir."
+      ],
+      "ek164-043"
+    ],
+    [
+      12,
+      "inkilap",
+      "u7",
+      "Millî Mücadele belgelerinde kronoloji ve temsil",
+      "Chronology and representation in documents",
+      "Genelge, kongre kararı ve meclis tutanağı farklı belge türleridir. Tarih, üretici, hedef kitle ve koşulu belirle. İlan edilen kararla uygulanmasını ayır. Sonradan yazılan hatırat birinci el tanıklık taşıyabilir ama olay anındaki tutanakla aynı tür kanıt değildir. Amasya, Erzurum, Sivas ve Meclis açılışını sırala. Birden çok belgeyi karşılaştır, yorumunun dayanağını görünür yap.",
+      "Sivas Kongresi ile TBMM’nin açılışından hangisi önce?",
+      "Sivas Kongresi Eylül 1919; TBMM 23 Nisan 1920. Temsil yapıları ayrıca karşılaştırılır.",
+      [
+        "Belge türü ve tarih önemli.",
+        "İlan ve uygulama farklı.",
+        "Kronolojiyi kaynakla doğrula."
+      ],
+      "ek164-044"
+    ],
+    [
+      12,
+      "felsefe",
+      "u4",
+      "Geçerli çıkarım ile doğru öncül",
+      "Validity versus true premises",
+      "Geçerlilik öncüller doğruysa sonucun yanlış olamayacağı yapısal ilişkidir. Öncüllerin gerçekte doğruluğu ayrı araştırılır. Geçerli yapı ve doğru öncüller birlikte sağlam argümandır. P ise Q; Q; öyleyse P kalıbı sonucu onaylama hatasıdır: Q’nun başka nedeni olabilir. Karşı örnek geçersizliği göstermeye yeter; çok destekleyici örnek tek başına tümdengelimsel geçerlilik kanıtı değildir.",
+      "Yağmur varsa zemin ıslak. Zemin ıslak. Öyleyse yağmur var: geçerli mi?",
+      "Hayır; sulama da zemini ıslatabilir. Sonucu onaylama safsatasıdır.",
+      [
+        "Geçerlilik yapı özelliği.",
+        "Doğru sonuç yanlış çıkarımı kurtarmaz.",
+        "Karşı örnekle sına."
+      ],
+      "ek164-045"
+    ],
+    [
+      12,
+      "din",
+      "u4",
+      "Yeni meselelerde ilke, bağlam ve uzmanlık",
+      "Principles, context and expertise",
+      "Önce incelenen olguyu doğru tanımla. Tıbbi uygulamanın teknik sonucu ile değer yargısı aynı bilgi türü değildir; uzman verisini ve yorumun dayandığı ilkeyi ayrı göster. Farklı yorumların gerekçelerini dikkate al. Eğitim özetini kişiye özel kesin hüküm gibi sunma. İnsan onuru, mahremiyet ve zarar vermeme gibi ilkelerin somut bağlamda nasıl gerekçelendirildiğini saygılı bir tartışmayla değerlendir.",
+      "Sağlık teknolojisinde neden hem teknik hem etik bilgi gerekir?",
+      "Teknik bilgi olası yarar/zararı açıklar; etik değerlendirme değer ve sorumluluk gerekçelerini tartışır.",
+      [
+        "Olguyu doğru tanımla.",
+        "Uzmanlık alanlarını ayır.",
+        "Özeti kişiye özel hüküm sayma."
+      ],
+      "ek164-046"
+    ],
+    [
+      12,
+      "cagdas",
+      "u3",
+      "Soğuk Savaşta bloklar dışındaki aktörler",
+      "Actors beyond the two blocs",
+      "İki blok anlatısı her ülkenin aynı çıkarlara sahip olduğunu göstermez. Bağlantısızlık, sömürgesizleşme ve bölgesel hareketleri kendi koşullarında incele. Krizde küresel rekabeti, bölgesel aktörleri ve yerel toplumsal etkileri ayrı yaz. Sonraki gelişmeleri geçmiş aktörler önceden biliyormuş gibi yorumlama. Kaynakların aynı olay için neden farklı kavramlar seçtiğini üretim bağlamıyla değerlendir.",
+      "Bağlantısız ülkeler dış ilişki kurmamış mıdır?",
+      "Hayır; bağlantısızlık ilişkisizlik değil, bloklara ilişkin siyasal tutumdur.",
+      [
+        "İki blok bütün aktörleri açıklamaz.",
+        "Yerel ve küresel ölçeği ayır.",
+        "Sonraki bilgiyi geçmişe yükleme."
+      ],
+      "ek164-047"
+    ]
+  ]
+}

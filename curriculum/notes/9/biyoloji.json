@@ -9,7 +9,7 @@
   "programEdition": "legacy-project-unverified",
   "source": {
     "file": "js/data/content/biy-9.js",
-    "sha256": "651c612c0c3418d61674cea7f5d1efc80d7b33a62bbbbf27eabe602ce8fdaa6c",
+    "sha256": "64de14ec8402d5e5d4d84fab4fcfb6be4581273aab389bbf215dbeecb0359aa0",
     "additionalReferences": [],
     "pdfReferenceCandidates": [
       {
@@ -477,6 +477,42 @@
               "url": "https://tymm.meb.gov.tr/biyoloji-dersi/unite/3"
             }
           ]
+        },
+        {
+          "id": "ek164-004",
+          "key": "9/biyoloji/u1/ek164-004",
+          "localCode": "EK.9.004",
+          "title": {
+            "tr": "Kontrol grubu ve biyolojik tekrar",
+            "en": "Controls and biological replication"
+          },
+          "content": {
+            "anlatim": "## Kontrol grubu ve biyolojik tekrar\n\nBağımsız değişken araştırmacının değiştirdiği, bağımlı değişken ölçülen sonuçtur. Kontrol grubu karşılaştırma sağlar; diğer koşullar aynı tutulur. Aynı örneği üç kez ölçmek teknik tekrar, üç ayrı canlı örneğini incelemek biyolojik tekrardır. Rastgele gruplama seçilim yanlılığını azaltır. Korelasyon tek başına nedensellik kanıtı değildir.\n\n### Kontrol ederek öğren\n\nIşığın çimlenmeye etkisinde ne sabit tutulmalı?\n\n**Çözüm yolu:** Tohum türü, su, sıcaklık ve süre sabit; ışık değişken, çimlenme oranı sonuçtur.\n\n### Dikkat noktaları\n\n- Kontrol karşılaştırma sağlar.\n- Teknik ve biyolojik tekrar farklı.\n- Korelasyon nedensellik değildir.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=361)",
+            "ornekler": [
+              {
+                "soru": "Işığın çimlenmeye etkisinde ne sabit tutulmalı?",
+                "cozum": "Tohum türü, su, sıcaklık ve süre sabit; ışık değişken, çimlenme oranı sonuçtur."
+              }
+            ],
+            "ozet": [
+              "Kontrol karşılaştırma sağlar.",
+              "Teknik ve biyolojik tekrar farklı.",
+              "Korelasyon nedensellik değildir."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=361",
+            "programmeEdition": "supplement-check-current-TYMM",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
+          },
+          "officialCandidates": []
         }
       ]
     },

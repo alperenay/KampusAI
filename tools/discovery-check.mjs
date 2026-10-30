@@ -28,7 +28,8 @@ for (const f of [
   "js/modules/science-report.js",
   "js/modules/planetarium.js",
   "js/modules/draw-simulation.js",
-  "js/modules/equation-camera.js",
+  "js/data/history-map-data.js",
+  "js/modules/history-explorer.js",
   "js/modules/history-map.js",
 ])
   vm.runInContext(fs.readFileSync(f, "utf8"), c, { filename: f });
@@ -205,20 +206,11 @@ assert.throws(() =>
 );
 assert.equal(App.historyMap.snapshot(1500).year, 1453);
 assert.equal(App.historyMap.snapshot(1923).year, 1923);
-assert.equal(App.data.discovery.modules.length, 9);
+assert.equal(App.data.discovery.modules.length, 8);
 for (const h of App.data.discovery.history)
   assert.match(h.source, /^https:\/\//);
 for (const f of App.data.discovery.faults.features)
   assert.equal(f.geometry.type, "LineString");
-const eq = App.equationCamera.validate({
-  expression: "a*x^2",
-  kind: "function",
-  box: [-1, 0, 1, 1],
-});
-assert.equal(eq.box[0], 0.1);
-assert.throws(() =>
-  App.equationCamera.validate({ expression: "eval(x)", kind: "function" }),
-);
 console.log(
   "Discovery: physics, MNA, optics, orbital reference, expression grammar, calibration guards, evidence validation and report schemas passed.",
 );

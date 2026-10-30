@@ -9,7 +9,7 @@
   "programEdition": "legacy-project-unverified",
   "source": {
     "file": "js/data/content/cog-12.js",
-    "sha256": "14353532a08932b879bdb5346faa2e81fc13d0e99a2a685e9f1015695a051240",
+    "sha256": "7cece2b819c8f154c3ae334cdf74b39b6b5333e94f995308f9b16701556db6c8",
     "additionalReferences": [],
     "pdfReferenceCandidates": [
       {
@@ -155,6 +155,42 @@
             "content": "existing-project-not-independently-reviewed",
             "alignment": "unverified",
             "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "ek164-043",
+          "key": "12/cografya/u1/ek164-043",
+          "localCode": "EK.12.043",
+          "title": {
+            "tr": "Afet riskinde tehlike, maruziyet ve kırılganlık",
+            "en": "Hazard, exposure and vulnerability"
+          },
+          "content": {
+            "anlatim": "## Afet riskinde tehlike, maruziyet ve kırılganlık\n\nTehlike olayın olasılık/şiddet özellikleri, maruziyet alandaki insan ve varlıklar, kırılganlık zarar görmeye yatkınlıktır. Aynı deprem büyüklüğü aynı kaybı doğurmaz. Basit eğitim risk çarpımları evrensel gerçek tahmin formülü değildir. Haritanın ölçeği, tarihi ve belirsizliği okunmalıdır. Telefon sensörü resmî erken uyarı veya yapı güvenliği değerlendirmesi yapmaz.\n\n### Kontrol ederek öğren\n\nAynı tehlikede iki yerleşimin kaybı neden farklı olabilir?\n\n**Çözüm yolu:** Nüfus, yapı niteliği, hazırlık, altyapı ve müdahale kapasitesi farklı olabilir.\n\n### Dikkat noktaları\n\n- Tehlike riskin tek bileşeni değil.\n- Ölçek ve tarihi kontrol et.\n- Eğitim modeli resmî analiz değildir.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=336)",
+            "ornekler": [
+              {
+                "soru": "Aynı tehlikede iki yerleşimin kaybı neden farklı olabilir?",
+                "cozum": "Nüfus, yapı niteliği, hazırlık, altyapı ve müdahale kapasitesi farklı olabilir."
+              }
+            ],
+            "ozet": [
+              "Tehlike riskin tek bileşeni değil.",
+              "Ölçek ve tarihi kontrol et.",
+              "Eğitim modeli resmî analiz değildir."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=336",
+            "programmeEdition": "legacy-reference",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
           },
           "officialCandidates": []
         }

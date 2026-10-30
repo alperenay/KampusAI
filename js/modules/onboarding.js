@@ -37,16 +37,7 @@
         ["play", ["5. Onayla ve çalıştır", "5. Confirm and run"], ["\"Modeli onayla ve çalıştır\" ile akımı, kuvvetleri, ışın yollarını ya da hareketi canlı izle. Değerleri değiştirip yeniden çalıştırarak \"ne olur?\" sorularını dene; onaylı modeli indirebilirsin.", "Press \"Confirm and run\" to watch currents, forces, rays or motion. Change values and rerun to test what-if questions; download the confirmed model."]]
       ]
     },
-    "canlanan-kitap": {
-      title: ["Canlanan Ders Kitabı nasıl kullanılır?", "How to use the Living Textbook"],
-      steps: [
-        ["book", ["Amaç", "What it is for"], ["Ders kitabındaki bir denklemi kameraya gösterirsin; uygulama grafiğini kâğıdın üstünde çizer. Katsayıları değiştirdikçe grafik canlı değişir.", "Show an equation from your textbook to the camera and its graph is drawn over the page; it changes live as you edit the coefficients."]],
-        ["camera", ["1. Kamerayı aç", "1. Start the camera"], ["\"Kamerayı aç\" ile kitap sayfasına tut ya da bir görsel yükle. Işığın iyi, sayfanın düz olmasına dikkat et.", "Start the camera and aim at the page, or upload an image. Use good light and keep the page flat."]],
-        ["scan", ["2. Denklemi oku", "2. Read the equation"], ["\"Kamera karesini al\" ve \"Görselden denklemi oku\" düğmeleriyle denklemi önerir. Önerilen denklemi kutuda doğrula ve düzelt; istersen denklemi elle de yazabilirsin (internetsiz).", "Capture a frame and read the equation; verify and correct the suggestion in the box, or type it yourself (offline)."]],
-        ["chart", ["3. Grafiği keşfet", "3. Explore the graph"], ["Denklem türünü seç (y = f(x), elips, hiperbol). Katsayı kaydırıcılarını oynat: parabolün açılması, elipsin basıklığı nasıl değişiyor?", "Choose the equation type (y = f(x), ellipse, hyperbola) and move the coefficient sliders. How does the shape change?"]],
-        ["target", ["4. Takip (isteğe bağlı)", "4. Tracking (optional)"], ["\"Canlı çerçeveyi takip et\" küçük yatay/düşey kaymaları izler. Sayfa döner, yaklaşır ya da görüntü kaybolursa grafik güvenlik için gizlenir; bu bir metrik AR sabitlemesi değildir.", "\"Track live frame\" follows small shifts. If the page rotates, zooms or is lost, the graph hides; this is not metric AR anchoring."]]
-      ]
-    }
+
   };
 
   const seenKey = (id) => "onboard:" + id;

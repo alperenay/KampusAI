@@ -15,7 +15,7 @@
 
    Arayüz:
      App.tts.provider()          → "eleven" | "openai" | "gemini" | null (kullanılacak servis)
-     App.tts.consume(Q, o, cb)   → Q: { segs:[{text,at}], finished, onAdd } kuyruğunu okur
+     App.tts.consume(Q, o, cb)   → Q: { segs:[{text,at}], finished, onAdd } kuyruğunu okur; o.onSegment(parça, saniye)
           o: { lang, nth, onStart, onWord(at), onEnd(reason) }; cb.fail(fromIndex, code)
      App.tts.stop() / App.tts.level() / App.tts.active()
    ========================================================= */
@@ -246,6 +246,7 @@
       source = src;
       const seg = Q.segs[i];
       if (!started) { started = true; o.onStart && o.onStart(); }
+      if (o.onSegment) o.onSegment(seg, buf.duration);   // v1.64: senkron tahta okunan adımı yazar
       if (o.onWord) {
         // Bulut sesi kelime zamanı vermez: kelime başlangıçları süreye orantılı tahmin edilir
         const re = /\S+/g, len = Math.max(1, seg.text.length);

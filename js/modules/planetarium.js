@@ -213,6 +213,6 @@
     life.add(stop);
     return () => life.close();
   }
-  App.planetarium = { pointing };
+  App.planetarium = { pointing, render };
   App.router.register("gokyuzu", render);
 })();

@@ -42,7 +42,7 @@ Yeni müdahaleler: **+3 kartal**, **Salgın** ve **Mevsimler**. Kartal tavşan a
 
 ## Keşif atölyelerinde rehber
 
-Telefon Fizik Atölyesi, Çiz Çalışsın ve Canlanan Ders Kitabı ilk açılışta adım adım rehber gösterir. Rehberi istediğin an başlığın altındaki **Nasıl kullanılır?** düğmesiyle yeniden açabilirsin.
+Telefon Fizik Atölyesi ve Çiz Çalışsın ilk açılışta adım adım rehber gösterir. Rehberi istediğin an başlığın altındaki **Nasıl kullanılır?** düğmesiyle yeniden açabilirsin.
 
 # KampüsAI 1.49 kullanım notları (önceki sürüm)
 

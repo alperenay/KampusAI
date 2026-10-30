@@ -9,7 +9,7 @@
   "programEdition": "legacy-project-unverified",
   "source": {
     "file": "js/data/content/fiz-11.js",
-    "sha256": "0805a9515524c3147ccd32c915435999e41b46fe871c4b1f8a38f1b63e299c92",
+    "sha256": "d5f996290c23deabd4ade5f28706ad20fd6ada0cbd73dcd3365c0a90f6a094d2",
     "additionalReferences": [],
     "pdfReferenceCandidates": [
       {
@@ -254,6 +254,42 @@
             "content": "existing-project-not-independently-reviewed",
             "alignment": "unverified",
             "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "ek164-010",
+          "key": "11/fizik/u1/ek164-010",
+          "localCode": "EK.11.010",
+          "title": {
+            "tr": "Eğik atışta ortak zaman",
+            "en": "Shared time in projectile components"
+          },
+          "content": {
+            "anlatim": "## Eğik atışta ortak zaman\n\nDirenç yok ve yerçekimi sabitse yatay ivme sıfır, düşey ivme aşağı yönlü g’dir. Hızı bileşenlerine ayır; iki hareket ortak zamanı kullanır. Tepede yalnız düşey hız sıfırdır. Alışılmış menzil bağıntısı çıkış-varış yükseklikleri eşitse kullanılır. Farklı yükseklikte önce düşey denklemden fiziksel zamanı, sonra yatay uzaklığı bul.\n\n### Kontrol ederek öğren\n\nYatay hızı 12 m/s olan cisim 2 s uçarsa yatay yol?\n\n**Çözüm yolu:** x=vₓt=24 m; düşey hareket uçuş süresini belirler.\n\n### Dikkat noktaları\n\n- İki bileşenin zamanı ortak.\n- Tepede toplam hız genellikle sıfır değil.\n- Menzil formülünün koşulunu kontrol et.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=351)",
+            "ornekler": [
+              {
+                "soru": "Yatay hızı 12 m/s olan cisim 2 s uçarsa yatay yol?",
+                "cozum": "x=vₓt=24 m; düşey hareket uçuş süresini belirler."
+              }
+            ],
+            "ozet": [
+              "İki bileşenin zamanı ortak.",
+              "Tepede toplam hız genellikle sıfır değil.",
+              "Menzil formülünün koşulunu kontrol et."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=351",
+            "programmeEdition": "supplement-check-current-TYMM",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
           },
           "officialCandidates": []
         }

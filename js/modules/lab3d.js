@@ -33,7 +33,8 @@
   if (!App.holoTeacher) App.holoTeacher = {
     lazy: true,
     supported: () => supported(),
-    async attach(host, opts) { await loadHolo("ogretmen"); return App.holoTeacher.attach(host, opts); },
+    // v1.64: deneyler de isteğe bağlı yüklenir; öğretmenin panosu cevaba uyan deneyi App.labs'ta arar
+    async attach(host, opts) { await Promise.all([loadHolo("ogretmen"), App.lazy ? App.lazy.load("labs").catch(() => {}) : null]); return App.holoTeacher.attach(host, opts); },
     detach() { /* henüz hiçbir şey bağlanmadı */ },
     panoHtml: () => "",
     matchLab: () => null
@@ -73,7 +74,12 @@
 
   /** Tema renkleri (2B ile aynı) → Three renkleri */
   function themeCols() {
-    const c = App.labs.util.colors();
+    // 3D scenes (cosmos/models) can open before the on-demand experiment library.
+    const cs = getComputedStyle(document.documentElement), token = (name, fallback) => cs.getPropertyValue(name).trim() || fallback;
+    const c = App.labs?.util?.colors ? App.labs.util.colors() : {
+      text:token('--text','#e8eaed'),muted:token('--muted','#9aa0a6'),border:token('--border-strong','#555'),grid:token('--border','#444'),
+      accent:token('--accent','#4f7cff'),good:token('--good','#3fb950'),bad:token('--bad','#f85149'),warn:'#f2b33d',violet:'#b388ff'
+    };
     const light = document.documentElement.getAttribute("data-theme") === "light";
     return Object.assign({}, c, { light, bg: light ? "#e8eef8" : "#16171b", floor: light ? "#d6deea" : "#22242a", gridA: light ? "#b9c4d6" : "#34373f", gridB: light ? "#cbd4e2" : "#2a2d33" });
   }

@@ -9,7 +9,7 @@
   "programEdition": "legacy-project-unverified",
   "source": {
     "file": "js/data/content/cag-12.js",
-    "sha256": "07f64958882ec97ceddd09e8dac5f530cda88839343209b7befc33734ed73f4e",
+    "sha256": "e501982cf0cbeb304a120c5ee68c59d5d32a01e6e64c0f849bd760c1d15a663c",
     "additionalReferences": [],
     "pdfReferenceCandidates": []
   },
@@ -174,6 +174,42 @@
             "content": "existing-project-not-independently-reviewed",
             "alignment": "unverified",
             "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "ek164-047",
+          "key": "12/cagdas/u3/ek164-047",
+          "localCode": "EK.12.047",
+          "title": {
+            "tr": "Soğuk Savaşta bloklar dışındaki aktörler",
+            "en": "Actors beyond the two blocs"
+          },
+          "content": {
+            "anlatim": "## Soğuk Savaşta bloklar dışındaki aktörler\n\nİki blok anlatısı her ülkenin aynı çıkarlara sahip olduğunu göstermez. Bağlantısızlık, sömürgesizleşme ve bölgesel hareketleri kendi koşullarında incele. Krizde küresel rekabeti, bölgesel aktörleri ve yerel toplumsal etkileri ayrı yaz. Sonraki gelişmeleri geçmiş aktörler önceden biliyormuş gibi yorumlama. Kaynakların aynı olay için neden farklı kavramlar seçtiğini üretim bağlamıyla değerlendir.\n\n### Kontrol ederek öğren\n\nBağlantısız ülkeler dış ilişki kurmamış mıdır?\n\n**Çözüm yolu:** Hayır; bağlantısızlık ilişkisizlik değil, bloklara ilişkin siyasal tutumdur.\n\n### Dikkat noktaları\n\n- İki blok bütün aktörleri açıklamaz.\n- Yerel ve küresel ölçeği ayır.\n- Sonraki bilgiyi geçmişe yükleme.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://tymm.meb.gov.tr/ogretim-programlari/ortaogretim)",
+            "ornekler": [
+              {
+                "soru": "Bağlantısız ülkeler dış ilişki kurmamış mıdır?",
+                "cozum": "Hayır; bağlantısızlık ilişkisizlik değil, bloklara ilişkin siyasal tutumdur."
+              }
+            ],
+            "ozet": [
+              "İki blok bütün aktörleri açıklamaz.",
+              "Yerel ve küresel ölçeği ayır.",
+              "Sonraki bilgiyi geçmişe yükleme."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://tymm.meb.gov.tr/ogretim-programlari/ortaogretim",
+            "programmeEdition": "legacy-reference",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
           },
           "officialCandidates": []
         }

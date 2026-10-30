@@ -9,7 +9,7 @@
   "programEdition": "legacy-project-unverified",
   "source": {
     "file": "js/data/content/fel-12.js",
-    "sha256": "c29dd220a3eebeda8e572d0ebc81c41d679fc6704f9e026e24a070b7dddd539b",
+    "sha256": "ebb384aeb8c1eed9552082c048ae4000e30a40d797324312856b1faead81f8ed",
     "additionalReferences": [],
     "pdfReferenceCandidates": [
       {
@@ -445,6 +445,42 @@
             "content": "existing-project-not-independently-reviewed",
             "alignment": "unverified",
             "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "ek164-045",
+          "key": "12/felsefe/u4/ek164-045",
+          "localCode": "EK.12.045",
+          "title": {
+            "tr": "Geçerli çıkarım ile doğru öncül",
+            "en": "Validity versus true premises"
+          },
+          "content": {
+            "anlatim": "## Geçerli çıkarım ile doğru öncül\n\nGeçerlilik öncüller doğruysa sonucun yanlış olamayacağı yapısal ilişkidir. Öncüllerin gerçekte doğruluğu ayrı araştırılır. Geçerli yapı ve doğru öncüller birlikte sağlam argümandır. P ise Q; Q; öyleyse P kalıbı sonucu onaylama hatasıdır: Q’nun başka nedeni olabilir. Karşı örnek geçersizliği göstermeye yeter; çok destekleyici örnek tek başına tümdengelimsel geçerlilik kanıtı değildir.\n\n### Kontrol ederek öğren\n\nYağmur varsa zemin ıslak. Zemin ıslak. Öyleyse yağmur var: geçerli mi?\n\n**Çözüm yolu:** Hayır; sulama da zemini ıslatabilir. Sonucu onaylama safsatasıdır.\n\n### Dikkat noktaları\n\n- Geçerlilik yapı özelliği.\n- Doğru sonuç yanlış çıkarımı kurtarmaz.\n- Karşı örnekle sına.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=338)",
+            "ornekler": [
+              {
+                "soru": "Yağmur varsa zemin ıslak. Zemin ıslak. Öyleyse yağmur var: geçerli mi?",
+                "cozum": "Hayır; sulama da zemini ıslatabilir. Sonucu onaylama safsatasıdır."
+              }
+            ],
+            "ozet": [
+              "Geçerlilik yapı özelliği.",
+              "Doğru sonuç yanlış çıkarımı kurtarmaz.",
+              "Karşı örnekle sına."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=338",
+            "programmeEdition": "legacy-reference",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
           },
           "officialCandidates": []
         }

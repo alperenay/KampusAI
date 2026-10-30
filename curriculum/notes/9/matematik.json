@@ -9,7 +9,7 @@
   "programEdition": "legacy-project-unverified",
   "source": {
     "file": "js/data/content/mat-9.js",
-    "sha256": "025d895e140c54119423350abebeb1fda2df94c1c46155918cee96e5d2fa8dbc",
+    "sha256": "e22719757f54c7ed4c0c2eef291c013af88dada13f062c4e9230b6c8f4e3c828",
     "additionalReferences": [],
     "pdfReferenceCandidates": [
       {
@@ -340,6 +340,42 @@
               "url": "https://tymm.meb.gov.tr/matematik-dersi/unite/23"
             }
           ]
+        },
+        {
+          "id": "ek164-001",
+          "key": "9/matematik/t2/ek164-001",
+          "localCode": "EK.9.001",
+          "title": {
+            "tr": "Aralıkların kesişimini sayı doğrusuyla doğrulama",
+            "en": "Verify interval intersections"
+          },
+          "content": {
+            "anlatim": "## Aralıkların kesişimini sayı doğrusuyla doğrulama\n\nBir eşitsizlik sisteminde her koşul ayrı bir aralık verir. Ve sözcüğü kesişim, veya birleşim anlamına gelir. Açık uç eşitliği içermez. Kritik sayıları sırala ve her bölgeden bir deneme değeri seç. Sonucu başlangıçtaki bütün koşullara geri koy. Negatif sayıyla çarparken eşitsizlik yönünün değiştiğini unutma.\n\n### Kontrol ederek öğren\n\nx > −2 ve x ≤ 3 için çözüm?\n\n**Çözüm yolu:** (−2,3]. −2 ilk koşulu sağlamaz; 3 iki koşulu da sağlar.\n\n### Dikkat noktaları\n\n- Ve: kesişim.\n- Açık uç eşitliği içermez.\n- Sonucu bütün koşullarda dene.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=343)",
+            "ornekler": [
+              {
+                "soru": "x > −2 ve x ≤ 3 için çözüm?",
+                "cozum": "(−2,3]. −2 ilk koşulu sağlamaz; 3 iki koşulu da sağlar."
+              }
+            ],
+            "ozet": [
+              "Ve: kesişim.",
+              "Açık uç eşitliği içermez.",
+              "Sonucu bütün koşullarda dene."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=343",
+            "programmeEdition": "supplement-check-current-TYMM",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
+          },
+          "officialCandidates": []
         }
       ]
     },

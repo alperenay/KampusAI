@@ -9,7 +9,7 @@
   "programEdition": "legacy-project-unverified",
   "source": {
     "file": "js/data/content/ink-12.js",
-    "sha256": "b8d9a6c86a9402926fcc38bdf55f024b6ed718351b7995c8285767402595c8bf",
+    "sha256": "bc6f1df379af73952d41ddd7f77b0d8dc1ee27fdf57114f59d4a23163d0963e9",
     "additionalReferences": [],
     "pdfReferenceCandidates": [
       {
@@ -652,6 +652,42 @@
             "content": "existing-project-not-independently-reviewed",
             "alignment": "unverified",
             "rights": "existing-project-provenance-review-required"
+          },
+          "officialCandidates": []
+        },
+        {
+          "id": "ek164-044",
+          "key": "12/inkilap/u7/ek164-044",
+          "localCode": "EK.12.044",
+          "title": {
+            "tr": "Millî Mücadele belgelerinde kronoloji ve temsil",
+            "en": "Chronology and representation in documents"
+          },
+          "content": {
+            "anlatim": "## Millî Mücadele belgelerinde kronoloji ve temsil\n\nGenelge, kongre kararı ve meclis tutanağı farklı belge türleridir. Tarih, üretici, hedef kitle ve koşulu belirle. İlan edilen kararla uygulanmasını ayır. Sonradan yazılan hatırat birinci el tanıklık taşıyabilir ama olay anındaki tutanakla aynı tür kanıt değildir. Amasya, Erzurum, Sivas ve Meclis açılışını sırala. Birden çok belgeyi karşılaştır, yorumunun dayanağını görünür yap.\n\n### Kontrol ederek öğren\n\nSivas Kongresi ile TBMM’nin açılışından hangisi önce?\n\n**Çözüm yolu:** Sivas Kongresi Eylül 1919; TBMM 23 Nisan 1920. Temsil yapıları ayrıca karşılaştırılır.\n\n### Dikkat noktaları\n\n- Belge türü ve tarih önemli.\n- İlan ve uygulama farklı.\n- Kronolojiyi kaynakla doğrula.\n\n> Bu, resmî yeni kazanım kodu değil, KampüsAI tarafından yazılmış ek öğrenme hedefidir.\n\n[Konu kapsamı için MEB programı](https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=355)",
+            "ornekler": [
+              {
+                "soru": "Sivas Kongresi ile TBMM’nin açılışından hangisi önce?",
+                "cozum": "Sivas Kongresi Eylül 1919; TBMM 23 Nisan 1920. Temsil yapıları ayrıca karşılaştırılır."
+              }
+            ],
+            "ozet": [
+              "Belge türü ve tarih önemli.",
+              "İlan ve uygulama farklı.",
+              "Kronolojiyi kaynakla doğrula."
+            ]
+          },
+          "provenance": {
+            "authorship": "original-kampusai-supplement",
+            "officialOutcome": false,
+            "programmeReference": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=355",
+            "programmeEdition": "legacy-reference",
+            "review": "editorial-schema-math-checked-not-independent-teacher-validation"
+          },
+          "review": {
+            "content": "original-supplement-editorial-review-only",
+            "alignment": "unverified",
+            "rights": "original-app-text-programme-reference-not-copied"
           },
           "officialCandidates": []
         }
