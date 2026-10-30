@@ -82,26 +82,29 @@
         await loading.destroy();
       }
     }
-    if (/\.docx$/i.test(file.name)) {
+    if (/\.(docx|odt|odp|ods)$/i.test(file.name)) {
+      const odf = !/\.docx$/i.test(file.name);
+      const entry = odf ? 'content.xml' : 'word/document.xml';
       await App.utils.loadScript("assets/vendor/fflate/fflate.js");
       check();
       const entries = window.fflate.unzipSync(data, {
         filter: (f) => {
-          if (f.name !== "word/document.xml") return false;
+          if (f.name !== entry) return false;
           if (f.originalSize > 4 * 1024 * 1024)
             throw new Error("DOCX text limit");
           return true;
         },
       });
-      if (!entries["word/document.xml"])
+      if (!entries[entry])
         throw new Error(
           T("Geçerli bir DOCX belgesi seç.", "Choose a valid DOCX file."),
         );
-      const xml = new TextDecoder().decode(entries["word/document.xml"]);
+      const xml = new TextDecoder().decode(entries[entry]);
       if (/<!DOCTYPE|<!ENTITY/i.test(xml))
         throw new Error("Unsupported XML declarations");
       const doc = new DOMParser().parseFromString(xml, "application/xml");
       if (doc.querySelector("parsererror")) throw new Error("Invalid DOCX XML");
+      if (odf) return limit(Array.from(doc.getElementsByTagName('*')).filter(x => ['p', 'h'].includes(x.localName)).map(x => x.textContent).join('\n'));
       return limit(
         Array.from(doc.getElementsByTagNameNS("*", "p"))
           .map((p) =>
@@ -114,7 +117,7 @@
     }
     if (!/\.(txt|md)$/i.test(file.name))
       throw new Error(
-        T("PDF, DOCX, TXT veya MD seç.", "Choose PDF, DOCX, TXT or MD."),
+        T("PDF, DOCX, ODF, TXT veya MD seç.", "Choose PDF, DOCX, ODF, TXT or MD."),
       );
     return limit(new TextDecoder("utf-8", { fatal: true }).decode(data));
   }

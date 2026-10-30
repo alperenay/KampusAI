@@ -99,6 +99,7 @@ try {
         }),
       ),
     ],
+    ["notes.odt", "application/vnd.oasis.opendocument.text", Buffer.from(fflate.zipSync({ 'content.xml': fflate.strToU8('<office:document-content xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0"><office:body><text:p>' + source + '</text:p></office:body></office:document-content>') }))],
     ["notes.pdf", "application/pdf", pdf()],
   ]) {
     await page.setInputFiles("#swDoc", { name, mimeType: type, buffer });
@@ -380,15 +381,27 @@ try {
     );
   }
   assert.equal(await page.evaluate(() => typeof App.cevre), "undefined");
+  await page.evaluate(async () => {
+    const backup = await App.db.exportAll();
+    await App.db.importAll(backup);
+    if (!(await App.db.getAll('notes')).some(n => n.title === 'My notebook')) throw new Error('Notebook lost in backup');
+    if (!(await App.db.getAll('meta')).some(n => n.id.startsWith('oralPractice:'))) throw new Error('Practice lost in backup');
+    await App.db.put('meta', {id:'homework:corrupt',title:'',due:'not a date'});
+    await App.db.put('meta', {id:'oralPractice:corrupt',questions:null,results:null});
+  });
+  await go('odevler');await page.waitForFunction(()=>document.querySelector('#hwList').textContent.includes('Edited homework'));assert.equal(await page.locator('[data-hw-edit]').count(),2);
+  await go('sozlu-prova');await page.waitForFunction(()=>document.querySelector('#orHistory').textContent.includes('3/6') || document.querySelector('#orHistory').textContent.includes('Add an example'));
+  assert.equal(await page.evaluate(async()=>!!(await App.db.get('meta','oralPractice:corrupt'))),true,'Invalid record preserved');
+  await page.evaluate(()=>App.i18n.setLang('en'));await go('notlar');assert.match(await page.locator('.sw-page h1').textContent(),/My Notes/);
   assert.deepEqual(h.errors, []);
   await go("notlar");
   await page.screenshot({ path: path.join(h.qa, "workspace-notes.png") });
   fs.writeFileSync(
-    path.join(h.qa, "workspace157.json"),
+    path.join(h.qa, "workspace160.json"),
     JSON.stringify(
       {
         engine: h.engineName,
-        realParsers: ["TXT", "DOCX", "PDF"],
+        realParsers: ["TXT", "DOCX", "ODF", "PDF"],
         fixtures: ["vision", "AI", "speech"],
         flows: [
           "pack+grade+invalid refs",

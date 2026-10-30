@@ -204,8 +204,8 @@
       '<section class="card sw-stack">' +
         field(
           "swDoc",
-          "PDF / DOCX / TXT / MD · 12 MB · PDF ≤60 " + T("sayfa", "pages"),
-          '<input type="file" id="swDoc" accept=".pdf,.docx,.txt,.md">',
+          "PDF / DOCX / ODF / TXT / MD · 12 MB · PDF ≤60 " + T("sayfa", "pages"),
+          '<input type="file" id="swDoc" accept=".pdf,.docx,.odt,.odp,.ods,.txt,.md">',
         ) +
         button("swRead", T("Belgeyi cihazda oku", "Read document locally")) +
         field(
@@ -539,7 +539,8 @@
       });
     async function list() {
       items = (await App.db.getAll("meta"))
-        .filter((x) => x.id.startsWith("homework:"))
+        .filter((x) => typeof x?.id === 'string' && x.id.startsWith("homework:"))
+        .flatMap(x => { try { return [{ ...x, ...M.task(x) }]; } catch (e) { status(T('Bozuk bir ödev kaydı değiştirilmeden dışlandı; yedeğini kontrol et.', 'An invalid assignment was excluded without changing it; check your backup.'));return []; } })
         .sort(
           (a, b) =>
             Number(a.done) - Number(b.done) ||
@@ -925,7 +926,8 @@
     get("#orStart").dataset.swAi = "";
     async function history() {
       const rows = (await App.db.getAll("meta"))
-        .filter((x) => x.id.startsWith("oralPractice:"))
+        .filter((x) => typeof x?.id === 'string' && x.id.startsWith("oralPractice:"))
+        .filter(x => { try { M.oral({ questions: x.questions });if (!Number.isFinite(x.at) || !Array.isArray(x.results)) throw new Error('record');x.results.forEach(r => M.feedback(r.review));return true; } catch (e) { status(T('Bozuk bir prova kaydı değiştirilmeden dışlandı; yedeğini kontrol et.', 'An invalid practice record was excluded without changing it; check your backup.'));return false; } })
         .sort((a, b) => b.at - a.at);
       if (!l.alive) return;
       get("#orHistory").innerHTML =
@@ -1202,7 +1204,11 @@
     history().catch((e) => status(String(e.message || e)));
     return () => l.cleanup();
   }
-  App.studyWorkspace = { warning };
+  App.studyWorkspace = { warning, renderPack: packView };
+  for (const key of ['pinnedTools', 'recentTools']) {
+    const stored = App.prefs.get(key, null);
+    if (Array.isArray(stored)) App.prefs.set(key, [...new Set(stored.map(r => r === 'belgeden' ? 'belge-paketi' : r).filter(r => r !== 'canli' && r !== 'cevre'))]);
+  }
   App.router.register("belge-paketi", packView);
   App.router.register("odevler", homeworkView);
   App.router.register("notlar", notesView);

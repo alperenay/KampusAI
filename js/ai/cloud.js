@@ -256,12 +256,21 @@
       const busy = (() => { try { return JSON.parse(App.prefs.get(P + "Busy", "{}") || "{}"); } catch (e) { return {}; } })();
       const saveBusy = () => App.prefs.set(P + "Busy", JSON.stringify(busy));
       const isBusy = (n) => busy[n] && busy[n] > Date.now();
+      const intelligent = auto && opts.profile === "complex";
       const ranked = async () => {
-        if (!this._ranked) this._ranked = rankGeminiModels((await this.listModels(opts.signal)).filter((m) => m.methods.includes("generateContent")).map((m) => m.name), this.speed());
+        const speed = intelligent ? "smart" : this.speed();
+        if (!this._ranked || this._rankedSpeed !== speed) {
+          this._ranked = rankGeminiModels((await this.listModels(opts.signal)).filter((m) => m.methods.includes("generateContent")).map((m) => m.name), speed);
+          this._rankedSpeed = speed;
+        }
         return this._ranked;
       };
       const tried = [];
       let model = opts.model, lastErr = null;
+      if (intelligent) {
+        try { model = (await ranked()).find(n=>!isBusy(n)) || model; }
+        catch (e) { /* model listing unavailable: preserve original model */ }
+      }
       // Az önce yoğun olduğu görülen modeli hiç denemeden sıradakine geç (her soruda saniyeler kaybetmemek için)
       if (auto && isBusy(model)) {
         try { model = (await ranked()).find((n) => !isBusy(n)) || model; } catch (e) { /* liste yoksa aynı modelle dene */ }

@@ -1,85 +1,93 @@
-/* One short brand entrance per document (v1.56 neural core boot); never awaits or gates app initialisation. */
+/* Branded first paint for Android/Web: take over the early HTML boot layer.
+   The app never waits for this animation to finish. */
 (function () {
-  let el = null,
-    timer,
-    preferences;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const DURATION_MS = 1750;
+  let el = document.getElementById("startupPreload");
+  let timer = 0, safety = 0, observer = null, started = false;
+  let appReady = false, minElapsed = false, leaving = false;
+
   function dismiss() {
     clearTimeout(timer);
-    preferences?.disconnect();
-    if (el) {
-      el.remove();
-      el = null;
-    }
-    window.removeEventListener("keydown", key);
+    clearTimeout(safety);
+    clearTimeout(window.__startupFallback);
+    observer?.disconnect();
+    if (el) { el.remove(); el = null; }
+    window.removeEventListener("keydown", onKey);
     window.removeEventListener("pagehide", dismiss);
-    reduced.removeEventListener?.("change", change);
-    document.removeEventListener("visibilitychange", visibility);
+    document.removeEventListener("visibilitychange", onVisibility);
+    reduced.removeEventListener?.("change", onReduced);
   }
-  function key(e) {
-    if (["Escape", "Tab", "Enter", " "].includes(e.key)) {
-      if (e.key !== "Tab") {
-        e.preventDefault();
-        e.stopPropagation();
-      }
+  function onKey(e) {
+    if (["Escape", "Enter", " "].includes(e.key)) {
+      e.preventDefault();
       dismiss();
-    }
+    } else if (e.key === "Tab") dismiss();
   }
-  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
-  const DURATION_MS = 1750;
+  function onReduced() { if (reduced.matches) dismiss(); }
+  function onVisibility() {
+    // On Android document.hidden can be true while the WebView is first attached.
+    // Keep the static brand visible and animate only after the first resume.
+    if (!document.hidden && !started) run();
+    else if (document.hidden && started) dismiss();
+  }
+  function maybeLeave() {
+    if (!el || !started || leaving || !minElapsed || !appReady) return;
+    leaving = true;
+    el.classList.add("is-leaving");
+    safety = setTimeout(dismiss, 500);
+  }
   App.startup = {
     dismiss,
-    get active() {
-      return !!el;
-    },
+    ready() { appReady = true; maybeLeave(); },
+    get active() { return !!el; }
   };
-  if (reduced.matches || App.prefs.get("a11yMotion", false) || document.hidden)
+  if (reduced.matches || App.prefs.get("a11yMotion", false) || window.__startupSkip) {
+    dismiss();
     return;
-  el = document.createElement("div");
-  el.className = "startup-brand";
-  el.setAttribute("aria-hidden", "true");
-  const en = App.prefs.get("lang", App.i18n.lang) === "en";
-  // Parçacıklar: her biri kendi açısıyla dışarı fırlar (yalnız transform/opacity)
-  const burst = Array.from({ length: 18 }, (_, i) =>
-    '<i class="startup-p" style="--i:' + i + ";--a:" + Math.round((i / 18) * 360 + ((i * 37) % 13)) + "deg;--d:" + (110 + ((i * 53) % 70)) + 'px"></i>').join("");
-  el.innerHTML =
-    '<div class="startup-grid"></div><div class="startup-scanline"></div>' +
-    '<div class="startup-scene"><span class="startup-wave"></span><span class="startup-wave startup-wave--b"></span>' + burst +
-    '<span class="startup-ring startup-ring--c"></span><span class="startup-ring startup-ring--b"></span><span class="startup-ring"></span>' +
-    '<span class="startup-orb"></span><span class="startup-logo">' + App.icon("logo") + "</span></div>" +
-    '<div class="startup-word">Kampüs<span>AI</span></div><div class="startup-caption">' +
-    (en ? "A NEW PERSPECTIVE ON LEARNING" : "ÖĞRENMEYE YENİ BİR BAKIŞ") +
-    '</div><div class="startup-status"><i></i>' + (en ? "NEURAL CORE ONLINE" : "NÖRAL ÇEKİRDEK HAZIR") + "</div>" +
-    '<div class="startup-skip">' + (en ? "Tap or press Escape to skip" : "Dokunarak veya Escape ile geç") + "</div>";
+  }
 
-  el.style.setProperty("--startup-duration", DURATION_MS + "ms");
-  el.addEventListener("animationend", (e) => {
-    if (e.target === el && e.animationName === "hud-release") dismiss();
-  });
-  document.body.appendChild(el);
-  // Switching accessibility preferences during launch must also release the overlay.
-  preferences = new MutationObserver(() => {
+  function run() {
+    if (started || !el || !el.isConnected || window.__startupSkip) return;
+    started = true;
+    clearTimeout(window.__startupFallback);
+    const en = App.prefs.get("lang", App.i18n.lang) === "en";
+    const mobile = window.matchMedia("(max-width: 860px), (pointer: coarse)").matches;
+    const count = mobile ? 8 : 18;
+    const burst = Array.from({ length: count }, (_, i) =>
+      '<i class="startup-p" style="--i:' + i +
+      ";--a:" + Math.round((i / count) * 360 + ((i * 37) % 13)) +
+      "deg;--d:" + (mobile ? 80 : 110) + 'px"></i>').join("");
+    el.className = "startup-brand";
+    el.innerHTML =
+      '<div class="startup-grid"></div><div class="startup-scanline"></div>' +
+      '<div class="startup-scene"><span class="startup-wave"></span><span class="startup-wave startup-wave--b"></span>' + burst +
+      '<span class="startup-ring startup-ring--c"></span><span class="startup-ring startup-ring--b"></span><span class="startup-ring"></span>' +
+      '<span class="startup-orb"></span><span class="startup-logo">' + App.icon("logo") + "</span></div>" +
+      '<div class="startup-word">Kampüs<span>AI</span></div><div class="startup-caption">' +
+      (en ? "A NEW PERSPECTIVE ON LEARNING" : "ÖĞRENMEYE YENİ BİR BAKIŞ") +
+      '</div><div class="startup-status"><i></i>' + (en ? "NEURAL CORE ONLINE" : "NÖRAL ÇEKİRDEK HAZIR") + "</div>" +
+      '<div class="startup-skip">' + (en ? "Tap or press Escape to skip" : "Dokunarak veya Escape ile geç") + "</div>";
+
+    el.style.setProperty("--startup-duration", DURATION_MS + "ms");
+    el.addEventListener("animationend", (e) => {
+      if (e.target === el && e.animationName === "hud-leave") dismiss();
+    });
+    // Stay visible until routing is ready: do not reveal an empty application view.
+    timer = setTimeout(() => { minElapsed = true; maybeLeave(); }, DURATION_MS);
+    // Still release if initialization fails (never block the app forever).
+    safety = setTimeout(() => { appReady = true; minElapsed = true; maybeLeave(); }, 8000);
+  }
+
+  // Do not disable the entrance permanently because Android initially reports hidden.
+  document.addEventListener("visibilitychange", onVisibility);
+  window.addEventListener("keydown", onKey);
+  window.addEventListener("pagehide", dismiss);
+  reduced.addEventListener?.("change", onReduced);
+  el.addEventListener("click", dismiss, { once: true });
+  observer = new MutationObserver(() => {
     if (document.documentElement.hasAttribute("data-a11y-motion")) dismiss();
   });
-  preferences.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ["data-a11y-motion"],
-  });
-  el.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    dismiss();
-  });
-  window.addEventListener("keydown", key);
-  window.addEventListener("pagehide", dismiss);
-  function change() {
-    if (reduced.matches) dismiss();
-  }
-  if (reduced.addEventListener)
-    reduced.addEventListener("change", change, { once: true });
-  // Backgrounding, keyboard navigation or a tap ends it immediately. CSS also has a fail-safe release.
-  function visibility() {
-    if (document.hidden) dismiss();
-  }
-  document.addEventListener("visibilitychange", visibility);
-  timer = setTimeout(dismiss, DURATION_MS);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-a11y-motion"] });
+  if (!document.hidden) run();
 })();

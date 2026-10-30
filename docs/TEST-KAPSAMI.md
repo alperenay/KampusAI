@@ -80,3 +80,12 @@ Ortak tasarım katmanı `css/polish.css` içindedir. Tema değişkenleri, kart y
 Fütüristik açılış 1,45 saniyede kaldırılır. CSS, JavaScript temizliği çalışmazsa katmanı 1,45 saniyede görünmez/tıklamayı engellemez hale getirir. İşletim sistemi ve kayıtlı hareket azaltma ayarı korunur.
 
 Android açılış testi tüm sistem günlüğünü `shots/android-logcat.txt` içinde korur. `tools/check-android-log.py`, süreç başlangıcı ve `Process` kayıtlarından uygulama/bağlı WebView PID'lerini ayırır; yeniden başlatılmış süreçlerdeki çöküşler de testi durdurur. Kaynağı belirlenemeyen fatal kayıtlar veya boş günlük de başarısızdır. Kimliği doğrulanan dış emülatör/test aracı hataları ayrı `crash-summary.json` alanında raporlanır. `--self-test` uygulama, yeniden başlama, WebView, dış UiAutomation, belirsiz ve eksik günlük durumlarını kontrol eder.
+
+
+## 1.60 çalışma alanı
+
+`node tools/study-workspace-check.mjs`: kaynak bölüm/uzunluk sınırları, var olmayan kaynak numarası reddi, yinelenen şık/bozuk anahtar reddi, artık gün/tarih denetimi, ödev adımları, sözlü rubrik puan aralıkları.
+
+`npm run test:workspace-ui`: gerçek yerel TXT/DOCX/ODF/PDF metni okuma; özet/kart/test, ödev CRUD/adım/tamamlanma ve fotoğraf taslağı, defter metnini genel nota/var olan konu notuna ekleme, sesli/yazılı prova ve kesilen üretimin kayıtları kirletmemesi. AI, OCR ve ses tanıma kontrollü örneklerdir; gerçek el yazısı/model doğruluğu ölçülmüş sayılmaz. Üç motor, iki tema ve 320/768/1440px kontrolleri; eski `belgeden` bağlantısı ve 1.59 panel/portfolyo/sunum akışları da sınanır.
+
+Bütün araç açılışları ve etkileşim grupları `node tools/audit-web.mjs --full` içinde listelenir. Bunlar sonlu otomatik senaryolardır; her fiziksel Android/iOS/Windows/Linux aygıtının veya olası her kullanıcı girdisinin eksiksiz sınandığı iddia edilmez. Android emülatörü, Windows ve Debian kurulum/açılış kapıları GitHub Actions üzerinde ayrıca çalışır. iOS için dağıtım Safari/PWA'dır, yerel IPA değildir.

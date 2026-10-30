@@ -14,7 +14,7 @@
 
   /* ---------------- Durum ---------------- */
   const live = { chatId: null, chat: null, msg: null, controller: null, timer: null, lastSave: 0 };
-  let draft = { image: null, text: "" };            // yazılıp henüz gönderilmemiş mesaj
+  let draft = { image: null, text: App.prefs.get("aiDraftPrivate", "") || "" };            // yazılıp henüz gönderilmemiş mesaj
   let mounted = null;                                // { view, chatId } ekranda olan sohbet
   let useData = App.prefs.get("aiUseData", true);
   let socratic = App.prefs.get("aiSocratic", false);     // Sokratik mod: cevap yerine ipuçlarıyla yönlendir
@@ -195,20 +195,26 @@
         '<p class="ai-notice" id="aiNotice" hidden></p>' +
         '<p class="home__models" data-ai-models>' + modelsLine() + "</p>" +
         (App.aiFavorites ? App.aiFavorites.html() : "") +
+        (App.smartHome ? App.smartHome.html() : "") +
       "</div>"
     );
   }
 
-  const STAGE_ICON = { vision: "eye", memory: "search", answer: "sparkle", calc: "calc", web: "search" };
+  const STAGE_ICON = { routing: "sparkle", vision: "eye", memory: "search", answer: "sparkle", calc: "calc", web: "search" };
 
   function stageHtml(msg) {
     const secs = Math.max(0, Math.round((Date.now() - (msg.startedAt || Date.now())) / 1000));
     let label = t("ai.stage." + (msg.stage || "answer"));
     if (msg.stage === "memory" && msg.memProgress && msg.memProgress[1]) label = t("ai.stage.indexing", { i: msg.memProgress[0], n: msg.memProgress[1] });
     const model = (msg.models || []).filter((m) => m.role === msg.stage).map((m) => m.model)[0] || "";
-    return '<div class="stage"><span class="spinner" aria-hidden="true"></span>' + App.icon(STAGE_ICON[msg.stage] || "sparkle") +
-      "<span>" + esc(label) + "</span>" + (model ? '<code>' + esc(shortModel(model)) + "</code>" : "") +
-      '<span class="stage__time">' + esc(t("ai.seconds", { n: secs })) + "</span></div>";
+    const key = (msg.stage || "answer") + "|" + model + "|" + (msg.memProgress || []).join(":");
+    return '<div class="stage stage--orbit" role="status" aria-live="off" data-stage-key="' + esc(key) + '">' +
+      '<span class="stage__visual" aria-hidden="true"><i class="stage__ring stage__ring--outer"></i><i class="stage__ring stage__ring--inner"></i><i class="stage__core"></i></span>' +
+      '<span class="stage__content"><span class="stage__title">' + App.icon(STAGE_ICON[msg.stage] || "sparkle") +
+      '<span class="stage__label">' + esc(label) + '</span></span>' +
+      '<span class="stage__meta">' + (model ? '<code>' + esc(shortModel(model)) + '</code>' : '') +
+      '<span class="stage__time" data-stage-seconds>' + esc(t("ai.seconds", { n: secs })) + '</span></span>' +
+      '<span class="stage__track" aria-hidden="true"><i></i></span></span></div>';
   }
 
   function sourcesHtml(src) {
@@ -353,6 +359,19 @@
     if (status.state !== "ok" && status.state !== "partial") refreshStatus();
   }
 
+  // Code blocks stay readable on narrow screens and can be copied independently.
+  function decorateCodeBlocks(host) {
+    if (!host) return;
+    host.querySelectorAll("pre.md-code").forEach(pre => {
+      if (pre.querySelector("[data-copy-code]")) return;
+      const b=document.createElement("button");
+      b.type="button";b.className="v159-code-copy";b.dataset.copyCode="";
+      b.setAttribute("aria-label", App.i18n.lang==="en"?"Copy code":"Kodu kopyala");
+      b.textContent=App.i18n.lang==="en"?"Copy":"Kopyala";
+      pre.appendChild(b);
+    });
+  }
+
   async function renderChat(view, chatId) {
     const chat = live.chatId === chatId && live.chat ? live.chat : await App.db.get("chats", chatId);
     if (!chat) { App.ui.toast(t("ai.chatNotFound"), "error"); App.router.go(""); return; }
@@ -361,6 +380,7 @@
     App.setTitle(chat.title);
     App.router.syncNav();
     view.innerHTML = chatHtml(chat);
+    decorateCodeBlocks(view);
     App.hydrateIcons(view);
     bind(view, chat);
     paintStatus();
@@ -373,19 +393,45 @@
   }
 
   let paintQueued = false;
-  /** Yanıt akarken yalnızca son mesajı yeniden çizer */
-  function paintLive() {
+  let lastPaintAt = 0;
+  function updateStageTime(el) {
+    const counter = el?.querySelector("[data-stage-seconds]");
+    if (counter && live.msg) {
+      const secs = Math.max(0, Math.round((Date.now() - (live.msg.startedAt || Date.now())) / 1000));
+      counter.textContent = t("ai.seconds", { n: secs });
+    }
+  }
+  /* A running timer only changes text; do NOT destroy the animation every second.
+     On mobile, batch streamed Markdown updates to avoid WebView frame drops. */
+  function paintLive(changed = true) {
+    if (!changed) {
+      if (mounted?.chatId === live.chatId) {
+        updateStageTime(mounted.view.querySelector('.msg[data-mid="' + live.msg?.id + '"]'));
+      }
+      return;
+    }
     if (paintQueued) return;
     paintQueued = true;
-    requestAnimationFrame(() => {
+    const mobile = window.matchMedia("(max-width: 860px), (pointer: coarse)").matches;
+    const delay = mobile ? Math.max(0, 90 - (performance.now() - lastPaintAt)) : 0;
+    setTimeout(() => requestAnimationFrame(() => {
       paintQueued = false;
-      if (!mounted || !live.msg || mounted.chatId !== live.chatId) return;
+      lastPaintAt = performance.now();
+      if (!mounted || !live.msg || mounted.chatId !== live.chatId || document.hidden) return;
       const el = mounted.view.querySelector('.msg[data-mid="' + live.msg.id + '"]');
       if (!el) return;
       const stick = mounted.view.scrollHeight - mounted.view.scrollTop - mounted.view.clientHeight < 160;
+      const existingStage = el.querySelector(".stage--orbit");
+      if (existingStage) existingStage.remove();
       el.innerHTML = assistantHtml(live.msg);
+      decorateCodeBlocks(el);
+      const freshStage = el.querySelector(".stage--orbit");
+      if (existingStage && freshStage && existingStage.dataset.stageKey === freshStage.dataset.stageKey) {
+        freshStage.replaceWith(existingStage); // continuous animation: no restart per token
+        updateStageTime(existingStage);
+      }
       if (stick) mounted.view.scrollTop = mounted.view.scrollHeight;
-    });
+    }), delay);
   }
 
   function repaintComposerButton() {
@@ -414,10 +460,11 @@
     }
     const history_ = chat.messages.slice();
     const userMsg = { id: uid("m"), role: "user", text, image: image ? image.dataUrl : null, at: new Date().toISOString() };
-    const aiMsg = { id: uid("m"), role: "assistant", text: "", pending: true, stage: image ? "vision" : useData ? "memory" : "answer", models: [], startedAt: Date.now(), socratic };
+    const aiMsg = { id: uid("m"), role: "assistant", text: "", pending: true, stage: "routing", models: [], startedAt: Date.now(), socratic };
     chat.messages.push(userMsg, aiMsg);
     latestAiId = aiMsg.id;
     draft = { image: null, text: "" };
+    App.prefs.set("aiDraftPrivate", "");
     await start(chat, userMsg, aiMsg, history_, image);
   }
 
@@ -425,7 +472,7 @@
     live.chatId = chat.id; live.chat = chat; live.msg = aiMsg;
     live.controller = new AbortController();
     live.lastSave = 0;
-    live.timer = setInterval(paintLive, 1000);
+    live.timer = setInterval(() => paintLive(false), 1000);
     await saveChat(chat);
     if (mounted && (mounted.chatId === chat.id || !mounted.chatId)) await renderChat(mounted.view, chat.id);
 
@@ -479,7 +526,7 @@
     await saveChat(chat);
     if (mounted && mounted.chatId === chat.id) {
       const el = mounted.view.querySelector('.msg[data-mid="' + aiMsg.id + '"]');
-      if (el) { el.innerHTML = assistantHtml(aiMsg); App.hydrateIcons(el); }
+      if (el) { el.innerHTML = assistantHtml(aiMsg); decorateCodeBlocks(el); App.hydrateIcons(el); }
       repaintComposerButton();
     }
   }
@@ -526,6 +573,7 @@
       input.style.height = "auto";
       input.style.height = Math.min(input.scrollHeight, 180) + "px";
       draft.text = input.value;
+      if (draft.text.length < 12000) App.prefs.set("aiDraftPrivate", draft.text);
       const sendBtn = form.querySelector(".composer__send:not(.composer__stop)");
       if (sendBtn) sendBtn.hidden = !(input.value.trim() || draft.image);
     };
@@ -573,6 +621,14 @@
 
     // Sohbet alanındaki düğmeler (kopyala, yeniden dene, fotoğrafı büyüt)
     view.onclick = async (e) => {
+      const codeButton=e.target.closest("[data-copy-code]");
+      if(codeButton) {
+        try {
+          await navigator.clipboard.writeText(codeButton.closest("pre")?.querySelector("code")?.textContent||"");
+          App.ui.toast(App.i18n.lang==="en"?"Code copied":"Kod kopyalandı");
+        }catch(err){App.ui.toast(App.i18n.lang==="en"?"Could not copy":"Kopyalanamadı","error");}
+        return;
+      }
       const prompt = e.target.closest("[data-prompt]");
       if (prompt) {
         // Yanıt bitince yazı kutusu yeniden çiziliyor: her zaman güncel öğeleri kullan

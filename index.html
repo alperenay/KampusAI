@@ -30,6 +30,16 @@
       if (a("a11yMotion")) h.setAttribute("data-a11y-motion", "");
     } catch (e) {}
   </script>
+  <!-- First paint must not wait for large CSS/JS bundles (Android WebView). -->
+  <style id="startup-first-paint">
+    html,body{background:#070816}
+    .startup-preload{position:fixed;inset:0;z-index:2000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:radial-gradient(circle at 50% 42%,#141a3a,#070816 64%,#03040b);color:#eef1ff;font:700 30px/1.2 system-ui,sans-serif;letter-spacing:-.04em}
+    .startup-preload__core{display:grid;place-items:center;width:100px;height:100px;border:2px solid #7467dd;border-top-color:#49e0ff;border-radius:50%;color:#b6abff;font-size:44px;animation:startup-pre-spin 1.5s linear infinite}
+    .startup-preload__word span{color:#9c8cff}
+    @keyframes startup-pre-spin{to{transform:rotate(360deg)}}
+    @media(prefers-reduced-motion:reduce){.startup-preload{display:none}}
+    [data-a11y-motion] .startup-preload{display:none}
+  </style>
   <link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -68,9 +78,27 @@
   <link rel="stylesheet" href="css/startup.css">
   <link rel="stylesheet" href="css/lecture-visuals.css">
   <link rel="stylesheet" href="css/v156.css">
+  <link rel="stylesheet" href="css/v158.css">
+  <link rel="stylesheet" href="css/v159.css">
   <link rel="stylesheet" href="css/study-workspace.css">
 </head>
 <body>
+  <!-- Visible before any blocking scripts: prevents a blank Android launch. -->
+  <div id="startupPreload" class="startup-preload" aria-hidden="true">
+    <div class="startup-preload__core">✦</div>
+    <div class="startup-preload__word">Kampüs<span>AI</span></div>
+  </div>
+  <script>
+    (function(){
+      var boot = document.getElementById("startupPreload");
+      window.__startupDismissEarly = function(){
+        window.__startupSkip = true;
+        if(boot && boot.isConnected) boot.remove();
+      };
+      boot.addEventListener("click", window.__startupDismissEarly, {once:true});
+      window.__startupFallback = setTimeout(window.__startupDismissEarly, 9000);
+    })();
+  </script>
   <a class="a11y-skip" href="#view" data-i18n="a11y.skip">İçeriğe geç</a>
   <div class="app" id="app">
 
@@ -83,8 +111,15 @@
         </a>
         <button class="icon-btn sidebar__toggle" id="sidebarToggle" type="button" data-i18n-title="nav.collapse" data-icon="panel"></button>
       </div>
-
-
+      <!-- Tek profil ve ayarlar girişi; öğrenci bilgisi menünün en üstünde. -->
+      <button class="sidebar-profile" id="profileBtn" type="button" data-i18n-title="nav.profile" data-i18n-aria="nav.profile">
+        <span class="avatar sidebar-profile__avatar" id="avatar">Ö</span>
+        <span class="sidebar-profile__info sidebar__label-block">
+          <span class="sidebar-profile__name" id="profileName"></span>
+          <span class="sidebar-profile__subtitle" data-i18n="nav.profile">Profil ve ayarlar</span>
+        </span>
+        <span class="sidebar-profile__gear" data-icon="settings" aria-hidden="true"></span>
+      </button>
 
       <div class="sidebar__scroll">
         <nav class="nav" data-i18n-aria="nav.modules">
@@ -275,13 +310,7 @@
         </section>
       </div>
 
-      <div class="sidebar__foot">
-        <button class="profile" id="profileBtn" type="button" data-i18n-title="nav.profile">
-          <span class="avatar" id="avatar">Ö</span>
-          <span class="profile__name sidebar__label" id="profileName"></span>
-        </button>
-        <button class="icon-btn sidebar__label" id="settingsBtn" type="button" data-i18n-title="nav.settings" data-icon="settings"></button>
-      </div>
+
     </aside>
 
     <div class="scrim" id="scrim" hidden></div>
@@ -491,6 +520,7 @@
   <script src="js/modules/document-import.js"></script>
   <script src="js/modules/study-workspace.js"></script>
   <script src="js/modules/hub.js"></script>
+  <script src="js/modules/v159-core.js"></script>
   <script src="js/modules/navigation-layout.js"></script>
   <script src="js/modules/page-guide.js"></script>
   <script src="js/modules/nav.js"></script>

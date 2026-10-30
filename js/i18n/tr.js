@@ -572,6 +572,7 @@ App.locales.tr = {
   "ais.rebuilt": "Hafıza hazır: {n} kayıt parçası.",
   "ais.defaults": "Varsayılanlar",
   "ais.privacy": "Yerel modda sorular, fotoğraflar ve kayıtların internete gönderilmez; yalnızca Ollama'ya gider.",
+  "ai.stage.routing": "Uygun yapay zekâ seçiliyor",
   "ai.note": "Yapay zekâ yanıtları kesin doğru değildir; hata içerebilir. Önemli bilgileri ders kitabınla veya öğretmeninle kontrol et.",
   "ai.warn.fallback": "Seçilen yapay zeka yanıt vermedi; yanıt {model} ile alındı.",
   "ai.cloudNote": "{name} ile internet üzerinden çalışır",

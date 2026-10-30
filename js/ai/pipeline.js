@@ -199,6 +199,7 @@
     const res = await engine.chat({
       model: cfg.chatModel,
       messages,
+      profile: App.aiSmart ? App.aiSmart.classify(opts.text) : "default",
       options: { temperature: 0.4, num_ctx: 8192 },
       tools: tools.length ? tools : undefined,
       onTool: tools.length ? async (name, args) => {

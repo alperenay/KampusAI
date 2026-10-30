@@ -1,6 +1,6 @@
 # Sürüm notları
 
-## 1.57.0 — Belge, ödev, not ve sözlü prova
+## 1.60.0 — Belge, ödev, not ve sözlü prova
 
 - Kaynak bölümlerine bağlı belge çalışma paketi: yerel PDF/DOCX/TXT/MD okuma, özet, kavramlar, kartlar ve test.
 - Elle/fotoğraftan ödev taslağı, teslim tarihi, adımlar, tamamlanma ve düzenleme.
@@ -8,6 +8,25 @@
 - Kaynaktan sözlü prova; sesli/yazılı yanıt, üç ölçütlü geri bildirim ve geçmiş.
 - Görünür doğruluk uyarıları. Çevrendeki Fizik ve Canlı AR Çözüm kaldırıldı; ortak laboratuvar AR motoru korundu.
 - [Kullanım, gizlilik, kaynaklar ve sınırlar](docs/CALISMA-ALANI.md).
+
+## 1.59.0 — 2026-10-30
+
+- Menünün altındaki mükerrer öğrenci profili ve Ayarlar düğmesi kaldırıldı; üst profil kartı ve Ayarlar ekranı yenilendi.
+- Akıllı menü, sabitlenenler ve son kullanılan araçlar için kısayollar, kişiselleştirilebilir ana panel ve beş renk teması eklendi.
+- AI aşamalarına model seçimi eklendi. Zor sorularda, manuel seçim yapılmadıysa, daha güçlü bulut modeline yönlendirme eklendi; model yoksa mevcut seçeneklere geri dönülür.
+- Sohbet kod bloklarını kopyalama ve gönderilmemiş metni yalnızca cihazda tutan taslak kurtarma eklendi.
+- PDF/ODF/TXT belgesinden çalışma paketi, yerel öğrenci portfolyosu ve AI sunum taslağı eklendi.
+- Davet kodlu ortak not odaları (7 günlük kullanılmama süresi, eşzamanlı düzenleme çakışma denetimi); kişisel notlar ve kayıtlar odalara otomatik gönderilmez.
+- Yeni ağır belge/portfolyo/sunum/oda modülü ilk açılışta değil, ihtiyaç halinde yüklenir.
+
+
+## 1.58.0 — 2026-10-30
+
+- Android/WebView açılışında beyaz veya siyah boş ekran yerine HTML ilk çiziminden itibaren KampüsAI markalı karşılama ekranı gösterilir. Uygulama hazır olduğunda hafifletilmiş nöral çekirdek animasyonuna geçilir; WebView başlangıçta gizli görünüyorsa ilk görünür an beklenir.
+- Yapay zekâ yanıtı beklenirken yeni mor/camgöbeği yörüngeli animasyon, aşama, model adı ve süre sayacı görünür. Metin akarken animasyon korunur.
+- Mobilde yanıt akışı en fazla yaklaşık 11 kez/saniye yeniden çizilir. Süre sayacı yalnız kendi metnini günceller, bütün mesajı yeniden oluşturmaz.
+- Açılış animasyonunda pahalı süs katmanları telefonda azaltıldı, mobil sohbet kartlarında gereksiz bulanıklıklar kaldırıldı; düşük hareket tercihleri desteklenir.
+- Sesli öğretmen küresi mobilde daha düşük tuval çözünürlüğü ve yaklaşık 30 FPS çizim bütçesi kullanır. Mevcut ders/veri kayıtları ve yapay zekâ sağlayıcıları değiştirilmedi.
 
 
 ## 1.56.0 — 2026-10-29

@@ -574,6 +574,7 @@ App.locales.en = {
   "ais.rebuilt": "Memory ready: {n} record chunks.",
   "ais.defaults": "Defaults",
   "ais.privacy": "In local mode your questions, photos and records aren't sent to the internet; they only go to Ollama.",
+  "ai.stage.routing": "Selecting an available AI model",
   "ai.note": "AI answers are not guaranteed correct and may contain mistakes. Check important information against your textbook or teacher.",
   "ai.warn.fallback": "The selected AI didn't respond; the answer came from {model}.",
   "ai.cloudNote": "Runs online with {name}",
