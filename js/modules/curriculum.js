@@ -7,7 +7,7 @@
    İlerleme: "progress" deposu, kişisel notlar: "notes" deposu
    ========================================================= */
 (function () {
-  const { esc, debounce } = App.utils;
+  const { esc } = App.utils;
 
   /** İçerik metni: HTML ile başlıyorsa olduğu gibi, değilse Markdown + LaTeX olarak çizilir */
   const rich = (v) => { const s = L(v); return /^\s*</.test(s) ? s : App.markdown.render(s); };
@@ -360,13 +360,23 @@
 
     const area = view.querySelector("#myNote");
     const state = view.querySelector("#noteState");
-    const saveNote = debounce(async () => {
+    let noteTimer = null, noteDirty = false;
+    const saveNote = () => {
+      clearTimeout(noteTimer);
+      if (!noteDirty) return;
+      noteDirty = false;
       const text = area.value;
-      if (text.trim()) await App.db.put("notes", { id: key, text, updatedAt: new Date().toISOString() });
-      else await App.db.remove("notes", key);
-      state.textContent = t("cur.saved");
-    }, 600);
-    area.addEventListener("input", () => { state.textContent = t("cur.saving"); saveNote(); });
+      // Queue the write before the next route reads/appends this note. No detached timer may overwrite it.
+      const operation = text.trim()
+        ? App.db.put("notes", { ...note, id: key, text, updatedAt: new Date().toISOString() })
+        : App.db.remove("notes", key);
+      operation.then(() => { if (state.isConnected) state.textContent = t("cur.saved"); })
+        .catch(() => { if (state.isConnected) state.textContent = T2("Not kaydedilemedi; metnini kopyalayıp yeniden dene.", "Could not save. Copy your text and retry."); });
+    };
+    area.addEventListener("input", () => { noteDirty = true;state.textContent = t("cur.saving");clearTimeout(noteTimer);noteTimer = setTimeout(saveNote, 600); });
+    area.addEventListener("blur", saveNote);
+    window.addEventListener("pagehide", saveNote);
+    return () => { saveNote();window.removeEventListener("pagehide", saveNote); };
   }
 
   App.router.register("konular", async (view, p) => {

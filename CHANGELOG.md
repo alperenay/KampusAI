@@ -6,6 +6,7 @@
 - Elle/fotoğraftan ödev taslağı, teslim tarihi, adımlar, tamamlanma ve düzenleme.
 - Defter fotoğrafından düzenlenebilir metin; genel notlar ve mevcut konu notuna ekleme.
 - Kaynaktan sözlü prova; sesli/yazılı yanıt, üç ölçütlü geri bildirim ve geçmiş.
+- Konu notundan defter aktarımına hızlı geçişte gecikmeli otomatik kaydın eklenen metni ezmesi düzeltildi.
 - Görünür doğruluk uyarıları. Çevrendeki Fizik ve Canlı AR Çözüm kaldırıldı; ortak laboratuvar AR motoru korundu.
 - [Kullanım, gizlilik, kaynaklar ve sınırlar](docs/CALISMA-ALANI.md).
 

@@ -293,6 +293,13 @@ try {
     await page.locator("#myNote").inputValue(),
     /Appended handwritten/,
   );
+  // A pending lesson autosave must flush before a fast notebook append reads the same record.
+  await page.fill('#myNote', 'Draft before notebook transfer');
+  await navigate(page, 'notlar/' + topic);
+  await page.fill('#ntText', 'Fast notebook appendix');await page.click('#ntSave');
+  await page.waitForFunction(async key => (await App.db.get('notes', key)).text.includes('Fast notebook appendix'), topic);
+  await page.waitForTimeout(750);
+  assert.equal(await page.evaluate(async key => (await App.db.get('notes', key)).text, topic), 'Draft before notebook transfer\n\nFast notebook appendix');
   await go("sozlu-prova");
   await page.fill("#orSource", source);
   await page.click("#orStart");
