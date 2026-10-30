@@ -21,7 +21,7 @@ try {
     window.__motionBefore = document
       .querySelector("#view")
       .getAnimations({ subtree: true })
-      .filter((a) => a.effect.getTiming().duration === 360);
+      .filter((a) => a.effect.getTiming().duration === 260);
   });
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.waitForFunction(

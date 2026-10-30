@@ -1,5 +1,14 @@
 # Sürüm notları
 
+## 1.63.0 — Sade masaüstü çalışma alanı
+
+- Beş ana bölüm için yeni üst menü; ortada belirgin Yapay Zekâ girişi.
+- Mevcut palet, tema ve efekt ayarlarıyla uyumlu cam çerçeve.
+- Kısa, zıplamasız sekme kayması; hafif kart girişi ve azaltılmış parıltı/gölgeler.
+- Klavye gezinmesi, azaltılmış hareket ve animasyon API'siz geri dönüş.
+- 1100 px altındaki pencere ve mobilde mevcut gezinme korunur.
+- [Kullanım ve performans](docs/MASAUSTU-CALISMA-ALANI.md).
+
 ## 1.62.0 — Yayın adayı
 
 - Şeffaf üst çubuk, 12 palet ve ayrıntılı görünüm/efekt ayarları.

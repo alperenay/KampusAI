@@ -89,6 +89,7 @@
   <link rel="stylesheet" href="css/customization.css">
   <link rel="stylesheet" href="css/documents.css">
   <link rel="stylesheet" href="css/science-lab.css">
+  <link rel="stylesheet" href="css/desktop-workspace.css">
 </head>
 <body>
   <!-- Visible before any blocking scripts: prevents a blank Android launch. -->
@@ -326,7 +327,16 @@
       <header class="topbar">
         <button class="icon-btn topbar__menu" id="menuBtn" type="button" data-i18n-title="nav.openMenu" data-icon="menu"></button>
         <div class="topbar__title" id="topbarTitle"></div>
+        <nav class="desktop-nav" id="desktopNav" aria-label="Ana çalışma alanları">
+          <span class="desktop-nav__indicator" hidden aria-hidden="true"></span>
+          <a class="desktop-nav__link" href="#/konular" data-desktop-route="konular"><span data-icon="book"></span><span class="desktop-nav__label">Konu Anlatımları</span></a>
+          <a class="desktop-nav__link" href="#/bilim-lab" data-desktop-route="bilim-lab"><span data-icon="lightbulb"></span><span class="desktop-nav__label">Deney Laboratuvarı</span></a>
+          <a class="desktop-nav__link desktop-nav__link--ai" href="#/" data-desktop-route="" data-desktop-also="sohbet,sesli,kavram,bana-ogret,kontrol"><span data-icon="sparkle"></span><span class="desktop-nav__label">Yapay Zekâ</span></a>
+          <a class="desktop-nav__link" href="#/kure" data-desktop-route="kure"><span data-icon="globe"></span><span class="desktop-nav__label">3B Dünya Küresi</span></a>
+          <a class="desktop-nav__link" href="#/program" data-desktop-route="program"><span data-icon="calendar"></span><span class="desktop-nav__label">Ders Programı</span></a>
+        </nav>
         <div class="topbar__actions">
+          <button class="icon-btn" id="desktopAppearance" type="button" aria-label="Renkleri ve animasyonları özelleştir" title="Renkleri ve animasyonları özelleştir" data-icon="settings"></button>
           <button class="search-trigger" id="searchBtn" type="button" data-i18n-title="search.title" aria-keyshortcuts="Control+K">
             <span data-icon="search"></span><span class="search-trigger__text" data-i18n="search.placeholder">Konu, sayfa ya da sohbet ara</span><kbd class="search-trigger__kbd">Ctrl K</kbd>
           </button>
@@ -538,6 +548,7 @@
   <script src="js/core/viewport.js"></script>
   <script src="js/modules/motion.js"></script>
   <script src="js/modules/appearance.js"></script>
+  <script src="js/modules/desktop-workspace.js"></script>
   <script src="js/modules/startup.js"></script>
   <script src="js/app.js"></script>
 </body>

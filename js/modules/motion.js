@@ -77,7 +77,7 @@
     if (!view) return;
     const nodes = Array.from(
       view.querySelectorAll(
-        ".page-head, .home__title, .tday-stat, .hub-tile, .subj-card, .discovery-tile, .ai-fav, .study-card, .tday-now, .page > .card",
+        ".page-head, .home__title, .tday-stat, .hub-tile, .subj-card, .discovery-tile, .ai-fav, .study-card, .tday-now, .science-lab-card, .lab-tile, .hm-card, .page > .card",
       ),
     );
     const rect = view.getBoundingClientRect();
@@ -95,12 +95,12 @@
       play(
         el,
         document.documentElement.dataset.uiMotionLevel === "gentle" ? [{opacity:.75}, {opacity:1}] : [
-          { opacity: 0.25, transform: "translateY(12px)" },
+          { opacity: 0.6, transform: "translateY(6px)" },
           { opacity: 1, transform: "translateY(0)" },
         ],
         {
-          duration: 360,
-          delay: Math.min(count * 35, 210),
+          duration: 260,
+          delay: Math.min(count * 20, 100),
           fill: "backwards",
           easing: "cubic-bezier(.16,1,.3,1)",
         },

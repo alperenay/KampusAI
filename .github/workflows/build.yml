@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.62.0
+  APP_VERSION: 1.63.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -123,6 +123,7 @@ jobs:
           npm run test:science-lab-ui
           npm run test:maps-models-ui
           npm run test:timeline-ui
+          npm run test:desktop-workspace-ui
           node tools/storage-ui-check.mjs
           node tools/lifecycle-ui-check.mjs
           node tools/lab-interactions-ui-check.mjs
@@ -577,11 +578,10 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          Daha sade gezinme: şeffaf üst çubuk, 12 palet, yazı tipi ve efekt ayarları; tek Dokümanlar alanı. Sunum oluşturma kaldırıldı.
-          Birleşik Bilim ve Sensör Laboratuvarı: mevcut deneyler, 7 sensör kanalı, fizik ve sismograf; dört yeni kuramsal deney ve rapor aktarımı.
-          NASA kaynaklı 4K küre, 14 ders modeli, zenginleştirilmiş tarih haritası ve 184 olaylı zaman çizelgesi. 24 yeni olayda kaynaklı ayrıntılı dosyalar; önceki özetlerde doğrulama sınırı açıkça belirtilir.
-          [Sürüm ve doğrulama notları](https://github.com/$OWNER/$REPO/blob/main/docs/ON-YAYIN-1.62.md) · [Kaynaklar ve tarih içerikleri](https://github.com/$OWNER/$REPO/blob/main/docs/ZAMAN-CIZELGESI.md).
-          Müfredat JSON/şablon paketi kapsam raporuyla sunulur; tüm MEB ders notlarının eksiksiz olduğu iddia edilmez. Sensör ve AR desteği cihaz/izinlere bağlıdır.
+          Yeni masaüstü çalışma alanı: Konu Anlatımları → Deney Laboratuvarı → Yapay Zekâ → 3B Dünya Küresi → Ders Programı.
+          Ortadaki yapay zekâ girişi daha belirgin; hareketli gösterge, kısa ve zıplamasız geçişler, hafif kart animasyonları. Parıltı ve gölgeler azaltıldı.
+          Renkler ve efektler mevcut görünüm ayarlarından değişir. Dar pencere ve mobil gezinme korunur; azaltılmış hareket ve animasyon API'siz ortamlarda güvenli geri dönüş vardır.
+          [Masaüstü çalışma alanı](https://github.com/$OWNER/$REPO/blob/main/docs/MASAUSTU-CALISMA-ALANI.md).
 
           | Platform | Dosya |
           |---|---|

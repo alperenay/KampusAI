@@ -60,6 +60,7 @@
     "js/modules/study-workspace.js",
     "js/modules/documents.js",
     "js/modules/science-lab-model.js",
-    "js/modules/science-lab.js"
+    "js/modules/science-lab.js",
+    "js/modules/desktop-workspace.js"
   ]
 }
