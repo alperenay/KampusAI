@@ -2,11 +2,11 @@
 // sesli grafikte duraklat/devam/durdur, sensör metrikleri ve yeni kanallar, tanıtım rehberi, pH metre (kadran, HOLD,
 // kalibrasyon), ekosistem (kartal, mevsim, salgın), yeni oyunlar, aktarım/hata analizi ve duyarlı yerleşim.
 import assert from "node:assert/strict";
-import { uiHarness } from "./ui-harness.mjs";
+import { uiHarness, navigate } from "./ui-harness.mjs";
 const h = await uiHarness();
 let checks = 0;
 const ok = (n) => { checks++; console.log("✓ " + n); };
-const go = (page, r) => page.evaluate((x) => App.router.go(x), r);
+const go = navigate;
 try {
   const { page } = await h.device();
   await page.setViewportSize({ width: 1280, height: 900 });

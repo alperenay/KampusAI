@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
-import { uiHarness } from "./ui-harness.mjs";
+import { uiHarness, navigate } from "./ui-harness.mjs";
 const require = createRequire(import.meta.url),
   fflate = require("../assets/vendor/fflate/fflate.js");
 const h = await uiHarness();
@@ -180,7 +180,7 @@ try {
   );
   await page.evaluate(() => (window.__ws.pack.summary[0].refs = [1]));
   const go = async (r) => {
-    await page.evaluate((r) => App.router.go(r), r);
+    await navigate(page, r);
     await page.waitForSelector(".sw-page");
   };
   await go("odevler");
@@ -393,9 +393,10 @@ try {
   await go('sozlu-prova');await page.waitForFunction(()=>document.querySelector('#orHistory').textContent.includes('3/6') || document.querySelector('#orHistory').textContent.includes('Add an example'));
   assert.equal(await page.evaluate(async()=>!!(await App.db.get('meta','oralPractice:corrupt'))),true,'Invalid record preserved');
   await page.evaluate(()=>App.i18n.setLang('en'));await go('notlar');assert.match(await page.locator('.sw-page h1').textContent(),/My Notes/);
+  assert.match(await page.locator('#sidebar a[data-route="notlar"] .sidebar__label').textContent(), /My Notes/);
   assert.deepEqual(h.errors, []);
   await go("notlar");
-  await page.screenshot({ path: path.join(h.qa, "workspace-notes.png") });
+  await page.waitForTimeout(650);await page.screenshot({ path: path.join(h.qa, "workspace-notes.png") });
   fs.writeFileSync(
     path.join(h.qa, "workspace160.json"),
     JSON.stringify(

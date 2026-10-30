@@ -3,6 +3,13 @@ import path from "node:path";
 import http from "node:http";
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
+export async function navigate(page, path) {
+  await page.evaluate(path => new Promise((resolve, reject) => {
+    const timer = setTimeout(() => { window.removeEventListener('da:route', done);reject(new Error('Navigation did not finish: ' + path)); }, 20000);
+    function done(event) { if (event.detail.path !== path) return;clearTimeout(timer);window.removeEventListener('da:route', done);resolve(true); }
+    window.addEventListener('da:route', done);App.router.go(path);
+  }), path);
+}
 export async function uiHarness() {
   const engines = createRequire(import.meta.url)("playwright");
   const engineName = process.env.UI_ENGINE || "chromium";

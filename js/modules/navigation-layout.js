@@ -74,6 +74,10 @@
     guide.dataset.navOrientation = "";
     nav.querySelector("#navEmpty").after(guide);
     function language() {
+      for (const [route, anchor] of anchors) {
+        const tool = toolMap.get(route), label = anchor.querySelector('.sidebar__label');
+        if (tool && label) label.textContent = Array.isArray(tool[2]) ? App.toolCategories.text(tool[2]) : App.t(tool[2]);
+      }
       for (const group of App.toolCategories.groups) {
         nav
           .querySelectorAll('[data-category-title="' + group.id + '"]')
