@@ -1,5 +1,14 @@
 # Sürüm notları
 
+## 1.66.0 — AI yanıt akışı ve sanal deneyler
+
+- Selamlamada hafıza araması yok; kısa sorular için ağır modele gereksiz yönlendirme giderildi.
+- Bağlantı/ilk metin/akış süre sınırları, iptal ve kısmi yanıt koruması; bozuk LaTeX için uyarı.
+- Hazır ders programı kişisel kayıt olarak sunulmaz; kaynak eksikliğinde veri uydurulmaması istenir.
+- Boş laboratuvar menü bağlantısı ve Keşif kartı düzeltildi.
+- Kamerasız Sanal pH Deneyi ve Ekosistem Kavanozu Deneyler altında.
+- Çiz, Çalışsın kaldırıldı; hazır fizik modelleri korundu.
+
 ## 1.65.0 — Ortak çalışma alanları
 
 - İlgi, meslek, puan ve bölüm araçları Hedefim ve Geleceğim altında.

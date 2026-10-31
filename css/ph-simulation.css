@@ -1,0 +1,28 @@
+.ph-simulation { min-width: 0; }
+.ph-sim-intro { margin: 10px 0 18px; }
+.ph-sim-layout { display: grid; grid-template-columns: minmax(0,1.45fr) minmax(240px,1fr); gap: 18px; }
+.ph-sim-scene { padding: 12px; min-width: 0; }
+.ph-sim-scene svg { width: 100%; height: auto; display: block; max-height: 520px; }
+.ph-sim-scene svg text { fill: var(--text); font-family: inherit; }
+.ph-liquid { transition: y .3s ease, height .3s ease, fill .3s ease; }
+.ph-sim-readout { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-around; gap: 12px; margin-top: 8px; }
+.ph-sim-readout output { display: block; font-size: 2rem; font-weight: 700; color: var(--accent-text); }
+.ph-sim-controls { display: grid; gap: 14px; align-content: start; }
+.ph-sim-controls label { display: grid; gap: 6px; }
+.ph-sim-controls select, .ph-sim-controls input { width: 100%; min-height: 44px; }
+.ph-sim-buttons { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
+.ph-sim-buttons .btn { min-height: 46px; white-space: normal; }
+.ph-sim-hint { border-inline-start: 3px solid var(--accent); padding: 10px 14px; margin-top: 16px; }
+.ph-sim-history { overflow-x: auto; }
+.ph-sim-history table { width: 100%; }
+.science-lab-experiments { display: grid; gap: 18px; }
+.science-lab-featured { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,230px),1fr)); gap: 12px; margin: 12px 0; }
+.science-lab-featured a { display: block; min-width: 0; text-decoration: none; }
+.science-lab-featured h2 { margin: 8px 0; }
+.science-lab-picker { display: none; }
+.science-lab-shortcut { display: flex; align-items: center; gap: 16px; width: 100%; box-sizing: border-box; margin: 18px 0; }
+.science-lab-shortcut h2 { margin: 0 0 6px; }
+.science-lab-shortcut p { margin: 0; }
+@media(max-width:780px) { .ph-sim-layout { grid-template-columns: minmax(0,1fr); } }
+@media(max-width:600px) { .science-lab-tabs { display: none; } .science-lab-picker { display: grid; gap: 6px; margin: 12px 0; } .science-lab-picker select { width: 100%; min-height: 46px; } }
+@media(prefers-reduced-motion:reduce) { .ph-liquid { transition: none; } }

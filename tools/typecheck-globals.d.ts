@@ -51,3 +51,5 @@ interface Window {
   __startupSkip?: boolean;
   __startupDismissEarly?: () => void;
 }
+
+declare const katex: {renderToString(tex:string, options?:any):string};

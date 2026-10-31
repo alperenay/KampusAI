@@ -100,30 +100,15 @@ try {
   await page.click("#obNext");
   assert.equal(await page.locator(".ob").count(), 0);
   assert.equal(await page.evaluate(() => App.prefs.get("onboard:telefon-fizik", false)), true);
-  for (const r of ["ciz-calissin"]) { await go(page, r); await page.waitForSelector(".ob-open"); }
+
   ok("tanıtım rehberi: " + n + " adım, ileri/geri, bitince bir daha kendiliğinden açılmıyor; üç atölyede de düğme var");
 
-  // 6) pH metre: kadran + LCD, HOLD, kalibrasyon
-  await go(page, "ph");
-  await page.waitForSelector("#phLcd");
-  const setColor = (k) => page.evaluate((i) => { const inp = document.querySelector("#phColor"); inp.value = App.phMetre.hex(App.phMetre.SCALE[i][1]); inp.dispatchEvent(new Event("input", { bubbles: true })); }, k);
-  await setColor(6);   // pH 7
-  const lcd1 = await page.textContent("#phLcd"), rot = await page.evaluate(() => document.querySelector("#phNeedle").style.transform);
-  assert.equal(lcd1.trim(), "7,0"); assert.match(rot, /rotate\(0(\.0)?deg\)/);
-  for (let i = 0; i < 6; i++) await setColor(6);
-  assert.match(await page.textContent("#phStab"), /kararlı/);
-  await page.click("#phHold");
-  await setColor(1);
-  assert.equal((await page.textContent("#phLcd")).trim(), "7,0", "HOLD değeri sabitler");
-  await page.click("#phHold");
-  await setColor(6);
-  await page.evaluate(() => { document.querySelector(".ph-cal").open = true; });
-  await page.selectOption("#phRef", "7");
-  await page.click("#phCal");
-  assert.equal(await page.locator("#phCalTag").isVisible(), true);
-  assert.match(await page.textContent("#phCalInfo"), /1 noktalı/);
-  await page.click("#phCalReset");
-  ok("pH metre: LCD 7,0 ve ibre ortada, kararlılık lambası, HOLD sabitliyor, kalibrasyon kaydediliyor ve sıfırlanıyor");
+  // The camera meter was replaced by a deterministic virtual acid/base experiment.
+  await go(page,"ph");await page.waitForSelector('#phSimValue');
+  await page.selectOption('#phSimSolution','water');await page.click('#phSimPour');
+  assert.equal((await page.textContent('#phSimValue')).trim(),'7,00');
+  await page.click('#phSimReset');assert.equal((await page.textContent('#phSimValue')).trim(),'—');
+  ok('Virtual pH: water neutral, reset empty, no camera controls');
 
   // 7) Ekosistem: kartal, salgın, mevsim
   await go(page, "ekosistem");

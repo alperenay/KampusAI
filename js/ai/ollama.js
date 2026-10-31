@@ -199,8 +199,12 @@
   }
 
   async function chatOnce({ model, messages, options, signal, onDelta, json, think, tools }) {
+    const requestScope=App.aiRequest.scope(signal,{connectMs:30000,firstMs:60000,idleMs:30000,totalMs:180000}); signal=requestScope.signal;
+    let text="";
+    try {
     const opts = Object.assign({}, options || {});
     delete opts.json;
+    delete opts.smallTalk;
     const body = { model, messages, stream: true, keep_alive: KEEP_ALIVE, options: opts };
     if (tools && tools.length) body.tools = tools;
     /* Düşünen modeller (qwen3-vl, qwen3.5…) düşünce kısmını ayrı alanda yollar; okuma gibi işlerde
@@ -217,9 +221,10 @@
       res = await request("/api/chat", body, signal);
     }
 
+    requestScope.ready();
     const reader = res.body.getReader();
     const decoder = new TextDecoder();
-    let buffer = "", text = "", stats = null;
+    let buffer = "", stats = null;
     const toolCalls = [];
 
     const handleLine = (line) => {
@@ -230,7 +235,7 @@
       if (obj.message && Array.isArray(obj.message.tool_calls)) toolCalls.push(...obj.message.tool_calls);
       const piece = obj.message && obj.message.content;
       if (piece) {
-        text += piece;
+        requestScope.activity(); text += piece;
         if (onDelta) onDelta(piece, text);
       }
       if (obj.done) {
@@ -260,7 +265,10 @@
       if (e instanceof OllamaError) { e.partial = text; throw e; }
       throw new OllamaError("offline", e && e.message, { partial: text });
     }
+    requestScope.check(text);
+    if (!text && !toolCalls.length) throw new OllamaError("bad-response","empty",{model});
     return { text, stats, toolCalls };
+    } catch(error) { throw requestScope.failure(error,text); } finally { requestScope.close(); }
   }
 
   /** Metinleri vektöre çevirir (bge-m3). Sırayla aynı uzunlukta dizi döner. */

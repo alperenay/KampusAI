@@ -31,19 +31,19 @@
     return (tr ? [
       "Sen \"KampüsAI\"sın: lise öğrencilerine ve YKS'ye (TYT-AYT) hazırlananlara yardım eden sabırlı bir yapay zeka öğretmensin. Bugün: " + date + ".",
       "Kurallar:",
-      "- Öğrenci hangi dilde yazıyorsa o dilde yanıt ver (varsayılan Türkçe).",
+      "- Öğrenci hangi dilde yazıyorsa o dilde yanıt ver (varsayılan Türkçe). Basit sorularda kısa ve doğrudan yanıtla; ayrıntı istenmedikçe gereksiz giriş ve tekrar ekleme. Kişisel kayıtlar verilmediyse öğrenciye ait net/program/not bilgisi uydurma.",
       "- Soruları adım adım ve anlaşılır çöz; soruda istenen her şeyi eksiksiz yanıtla (ör. kökler isteniyorsa kökleri tek tek bul). Çoktan seçmeli sorularda sonunda doğru şıkkı açıkça yaz.",
       "- Matematiksel ifadeleri LaTeX ile yaz: satır içinde $...$, ayrı satırda $$...$$.",
-      "- Markdown kullan (kalın, liste, gerektiğinde tablo). Gereksiz uzatma.",
+      "- Markdown kullan (kalın, liste, gerektiğinde tablo). Gereksiz uzatma. Eksik bilgi veya kaynak uydurma; belirsizliği belirt. Sayısal sonucu işlem, işaret ve birim yönünden kontrol et. Hazır örnek programı öğrencinin kişisel planı olarak sunma.",
       "- \"ÖĞRENCİ VERİLERİ\" bölümü verilirse öğrencinin kişisel sorularında (netleri, programı, notları) bu verileri kullan; sayıları aynen aktar, veride olmayan bilgiyi uydurma, yoksa olmadığını söyle.",
       "- \"FOTOĞRAFTAN OKUNAN\" metin verilirse bu bir görme modelinin okumasıdır; anlamsız ya da eksik görünen yer varsa bunu belirt."
     ] : [
       "You are \"KampüsAI\": a patient AI tutor helping high-school students preparing for Turkey's YKS exams (TYT-AYT). Today: " + date + ".",
       "Rules:",
-      "- Reply in the language the student writes in.",
+      "- Reply in the language the student writes in. Keep simple answers short and direct; avoid introductions and repetition unless detail is requested. Never invent student scores, notes or schedules if records are not provided.",
       "- Solve questions step by step and clearly; answer everything the question asks (e.g. if it asks for the roots, find each root). For multiple choice, state the correct option at the end.",
       "- Write math in LaTeX: inline $...$, display $$...$$.",
-      "- Use Markdown (bold, lists, tables when useful). Be concise.",
+      "- Use Markdown (bold, lists, tables when useful). Be concise. Do not invent missing data or sources; state uncertainty. Check arithmetic, signs and units. Do not present a sample timetable as the student’s own plan.",
       "- If a \"STUDENT DATA\" section is given, use it for personal questions (scores, schedule, notes); quote numbers exactly, never invent data that isn't there, say so if it's missing.",
       "- If \"READ FROM PHOTO\" text is given, it comes from a vision model; point out anything that looks garbled or incomplete."
     ]).join("\n");
@@ -110,7 +110,13 @@
    * opts: { text, image, history, useData, signal, on }
    * Dönen: { text, transcription, sources, models, stats, warnings, engine }
    */
+  function isSmallTalk(text, image) {
+    if(image)return false;
+    const q=String(text||'').trim().toLocaleLowerCase('tr').replace(/[!?.…,:;]+$/g,'').trim();
+    return /^(merhaba|selam|selamlar|hello|hi|hey|günaydın|iyi akşamlar|iyi geceler|nasılsın|teşekkürler|teşekkür ederim|sağ ol|sağol)$/.test(q);
+  }
   async function run(opts) {
+    opts = {...opts, smallTalk:isSmallTalk(opts.text,opts.image)};
     const engine = await App.engine.resolve(opts.signal);
     try {
       return await runWith(engine, opts);
@@ -166,26 +172,29 @@
 
     // 2) Hafıza: öğrencinin kayıtlarında ara
     let found = null;
-    if (opts.useData) {
+    if (opts.useData && !opts.smallTalk) {
       const memModel = cfg.embedModel || "BM25";
       fire("stage", "memory", memModel);
       // Kayıt araması yalnızca öğrencinin yazdığıyla yapılır: fotoğraftaki sorunun
       // rakamları deneme kayıtlarına benzediği için alakasız eşleşmeler doğuruyordu.
       const query = opts.text || "";
+      const memoryRequest=App.aiRequest?.scope(opts.signal,{connectMs:2000,totalMs:2000});
       try {
-        found = await App.rag.retrieve(query, { engine, signal: opts.signal, onProgress: (i, n) => fire("memoryProgress", i, n) });
+        const lookup=App.rag.retrieve(query, { engine, signal: memoryRequest?.signal || opts.signal, onProgress: (i, n) => fire("memoryProgress", i, n) });
+        found = memoryRequest ? await memoryRequest.wait(lookup) : await lookup;
         result.models.push({ role: "memory", model: memModel });
       } catch (e) {
         // Bağlantı sorunlarında tüm istek başarısız olsun (otomatik modda internete geçilir)
-        if (e && ["aborted", "offline", "device", "net", "token", "file-origin", "auth", "no-key"].includes(e.code)) throw e;
+        if (opts.signal?.aborted) throw e;
         // Vektör modeli çalışmazsa (yüklü değil, kota vb.) kelime aramasına düş; yanıt yine verilir
         result.warnings.push({ code: e && e.code === "model-missing" ? "memory-missing" : "memory-failed", model: cfg.embedModel, message: e && e.message });
         fire("warning", result.warnings[result.warnings.length - 1]);
         try {
-          found = await App.rag.retrieve(query, { lexical: true });
+          if (e?.code === "timeout") found=null;
+          else found = await App.rag.retrieve(query, { lexical: true });
           result.models.push({ role: "memory", model: "BM25" });
         } catch (e2) { found = null; }
-      }
+      } finally { memoryRequest?.close(); }
       if (found) {
         result.sources = { hits: found.hits.map((h) => ({ label: h.label, link: h.link, kind: h.kind, score: h.score, snippet: App.cite ? App.cite.snippet(h.text) : "" })), overview: true, method: found.method };
         fire("sources", result.sources);
@@ -196,7 +205,7 @@
     if (opts.image && cfg.direct) result.models.push({ role: "vision", model: cfg.chatModel });
     fire("stage", "answer", cfg.chatModel);
     result.models.push({ role: "answer", model: cfg.chatModel });
-    let system = systemPrompt();
+    let system = opts.smallTalk ? (App.i18n.lang === "tr" ? "Sen KampüsAI adlı eğitim asistanısın. Selamlaşmaya 1–2 kısa cümleyle Türkçe karşılık ver. Öğrenci hakkında bilmediğin kişisel bilgi veya program uydurma." : "You are KampüsAI, an educational assistant. Reply to the greeting in 1–2 brief sentences in the user language. Do not invent personal information or schedules.") : systemPrompt();
     if (opts.socratic) system += "\n\n" + socraticRules();
     if (found) system += "\n\n" + dataSection(found);
     if (found && found.hits.length && App.cite) system += "\n\n" + App.cite.instruction();
@@ -219,7 +228,7 @@
       model: cfg.chatModel,
       messages,
       profile: App.aiSmart ? App.aiSmart.classify(opts.text) : "default",
-      options: { temperature: 0.4, num_ctx: 8192 },
+      options: { temperature: opts.smallTalk ? 0.2 : 0.4, num_ctx: 8192, smallTalk: opts.smallTalk, ...(opts.smallTalk ? {num_predict:192} : {}) },
       tools: tools.length ? tools : undefined,
       onTool: tools.length ? async (name, args) => {
         let out;
@@ -233,6 +242,10 @@
       onRetry: (alt) => { fire("delta", ""); fire("stage", "answer", alt); }
     });
     result.text = res.text;
+    if (typeof katex !== 'undefined') {
+      const formulas=String(result.text).matchAll(/\$\$([\s\S]*?)\$\$|\$([^$\n]+)\$/g);
+      for(const match of formulas)try{katex.renderToString(match[1]||match[2],{throwOnError:true,strict:'ignore'});}catch(e){const w={code:'math-format'};result.warnings.push(w);fire('warning',w);break;}
+    }
     result.stats = res.stats;
     // Kaynak kontrolü: etiketler geçerli mi, cevap bulunan kayıtlarla ne kadar örtüşüyor?
     // Hafıza bu soruda hazır değildi: cevaptan sonra arka planda hazırla (cihazdaki model cevap yazarken yavaşlamasın)
@@ -414,5 +427,5 @@
     return String(res.text || "").replace(/^["«]|["»]$/g, "").trim();
   }
 
-  App.ai = { run, systemPrompt, generate, parseJSON, arrayPreview, fixMath, transcribe, streamBatch };
+  App.ai = { run, systemPrompt, generate, parseJSON, arrayPreview, fixMath, transcribe, streamBatch, isSmallTalk };
 })();

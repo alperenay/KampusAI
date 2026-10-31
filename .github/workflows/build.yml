@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.65.0
+  APP_VERSION: 1.66.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -125,6 +125,7 @@ jobs:
           npm run test:science-lab-ui
           npm run test:maps-models-ui
           npm run test:timeline-ui
+          node tools/labs-refinement-ui-check.mjs
           node tools/navigation-consolidation-ui-check.mjs
           npm run test:desktop-workspace-ui
           node tools/storage-ui-check.mjs
@@ -581,13 +582,12 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          Hedefim ve Geleceğim: ilgi, meslek, puan ve bölüm araçları ortak akışta.
-          Gelişimim: gerçek haftalık özet, öğrenme haritası, eksik analizi ve üstbiliş karnesi.
-          Dünya ve Tarih: küre, atlas ve zaman çizelgesi arasında ortak gezinme.
-          Sayfa ve AI şablonları tek Favorilerim listesinde; eski favoriler ve kişisel şablonlar korunur.
-          Öğretmen/Araştırmacı görünümü seçilince sınıf, değerlendirme ve araştırma araçları görünür. Bu tercih kimlik doğrulama değildir.
-          Yaşayan Tarih Haritası kaldırıldı; eski adres Dünya ve Tarih girişine yönlenir. Diğer tarih ve coğrafya içerikleri korunur.
-          [Kullanım kılavuzu](https://github.com/$OWNER/$REPO/blob/main/docs/KULLANIM.md).
+          AI: selamlamada gereksiz hafıza araması kaldırıldı, kısa soruların model yönlendirmesi ve düşünme ayarı düzenlendi.
+          Takılan isteklerde bağlantı/ilk metin/akış süre sınırları; kısmi yanıt ve iptal koruması. Hazır program kişisel kayıt olarak sunulmaz.
+          Deney Laboratuvarı'nın boş menü bağlantısı düzeltildi; Sanal pH ve Ekosistem Deneyler altında.
+          Sanal pH: çözelti ekleme, seyreltme, nötrleşme, boşaltma ve etiketli deney kaydı; kamera gerekmez.
+          Çiz, Çalışsın kaldırıldı. Keşif Atölyeleri laboratuvar kartının görünümü düzeltildi.
+          [Ölçüm ve kapsam notları](https://github.com/$OWNER/$REPO/blob/main/docs/SURUM-1.66.md).
 
           | Platform | Dosya |
           |---|---|

@@ -186,13 +186,12 @@
     },
 
     async listModels(signal) {
-      const res = await send(this.base() + "/models?pageSize=1000", { headers: this.headers(), signal }, null, geminiError);
-      const data = await res.json();
-      return (data.models || []).map((m) => ({
-        name: String(m.name || "").replace(/^models\//, ""),
-        label: m.displayName || "",
-        methods: m.supportedGenerationMethods || []
-      })).filter((m) => m.name);
+      const request = App.aiRequest.scope(signal,{connectMs:8000,totalMs:10000});
+      try {
+        const res=await send(this.base()+"/models?pageSize=1000",{headers:this.headers(),signal:request.signal},null,geminiError);
+        const data=await res.json();request.check();
+        return (data.models||[]).map(m=>({name:String(m.name||"").replace(/^models\//,""),label:m.displayName||"",methods:m.supportedGenerationMethods||[]})).filter(m=>m.name);
+      } catch(e) { throw request.failure(e); } finally { request.close(); }
     },
 
     /** "fast" (Flash-Lite, varsayılan) ya da "smart" (Flash) */
@@ -265,6 +264,7 @@
         }
         return this._ranked;
       };
+      const deadline = Date.now() + (opts.options?.smallTalk ? 22000 : opts.options?.json ? 180000 : 120000);
       const tried = [];
       let model = opts.model, lastErr = null;
       if (intelligent) {
@@ -275,19 +275,20 @@
       if (auto && isBusy(model)) {
         try { model = (await ranked()).find((n) => !isBusy(n)) || model; } catch (e) { /* liste yoksa aynı modelle dene */ }
       }
-      for (let attempt = 0; attempt < 4; attempt++) {
+      if(model!==opts.model && opts.onRetry)opts.onRetry(model);
+      for (let attempt = 0; attempt < 2; attempt++) {
         tried.push(model);
         try {
-          const res = await this.chatOnce(Object.assign({}, opts, { model }));
+          const res = await this.chatOnce(Object.assign({}, opts, { model, deadline }));
           res.model = res.model || model;
           if (busy[model]) { delete busy[model]; saveBusy(); }
           return res;
         } catch (e) {
           lastErr = e;
           // Sunucu kota dolunca yedek modelleri zaten kendisi dener: 429 gelirse tekrar denemek boşa kota yer
-          const retryable = e && (e.code === "busy" || (e.code === "quota" && !o.server) || e.code === "model-missing") && !e.partial;
+          const retryable = e && (e.code === "busy" || (e.code === "quota" && !o.server) || e.code === "model-missing" || e.code === "timeout") && !e.partial;
           // Elle seçilmiş model Google'da artık yoksa (eski sürümden kalan ad) otomatik sıradaki modele geç
-          if (!retryable || (!auto && e.code !== "model-missing") || (opts.signal && opts.signal.aborted)) throw e;
+          if (!retryable || attempt === 1 || Date.now() >= deadline || (!auto && e.code !== "model-missing") || (opts.signal && opts.signal.aborted)) throw e;
           busy[model] = Date.now() + BUSY_MS; saveBusy();
           let list;
           try { list = await ranked(); } catch (e2) { throw e; }
@@ -299,7 +300,12 @@
       throw lastErr;
     },
 
-    async chatOnce({ model, messages, options, signal, onDelta }) {
+    async chatOnce({ model, messages, options, signal, onDelta, deadline, profile }) {
+      const media=messages.some(m=>m.images?.length||m.audio?.length||m.files?.length), deep=media||options?.json||profile==="complex";
+      const request = App.aiRequest.scope(signal,{connectMs:deep?30000:12000,firstMs:deep?45000:18000,totalMs:Math.max(1,(deadline||Date.now()+120000)-Date.now())}); signal = request.signal;
+      let text = "";
+      const clock = timer();
+      try {
       const { system, contents } = this.toContents(messages);
       const body = { contents, generationConfig: { temperature: options && options.temperature != null ? options.temperature : 0.4 } };
       // Çıktı bütçesi Gemini'ye verilmez: maxOutputTokens düşünme jetonlarını da sayar, JSON yarıda kesilebilir.
@@ -309,8 +315,10 @@
       if (options && options.json) body.generationConfig.responseMimeType = "application/json";
       // Video için düşük çözünürlük: saniye başına çok daha az jeton (uzun ders videoları sığsın)
       if (options && options.mediaResolution && !this._noMediaRes) body.generationConfig.mediaResolution = options.mediaResolution;
-      const thinkable = gver(model) >= 3 && /-flash/.test(model) && !/lite/.test(model) && !this._noThinking;
-      if (thinkable) body.generationConfig.thinkingConfig = { thinkingLevel: "low" };
+      const liteThinking = /^gemini-3\.(?:1|5)-flash-lite(?:$|-)/.test(model);
+      const thinkable = gver(model) >= 3 && /-flash/.test(model) && (!/lite/.test(model) || liteThinking) && !this._noThinking;
+      if (thinkable) body.generationConfig.thinkingConfig = { thinkingLevel: liteThinking ? "minimal" : "low" };
+      if (options?.smallTalk && /lite/.test(model)) body.generationConfig.maxOutputTokens = 256;
       const url = this.base() + "/models/" + encodeURIComponent(model) + ":streamGenerateContent?alt=sse";
       let res;
       try {
@@ -324,15 +332,15 @@
         res = await send(url, { method: "POST", headers: this.headers(), body: JSON.stringify(body), signal }, model, geminiError);
       }
 
-      const clock = timer();
-      let text = "", tokens = 0, blocked = "";
+      request.ready();
+      let tokens = 0, blocked = "";
       await readSSE(res, (obj) => {
         if (obj.error) throw geminiError(obj.error.code || 500, obj, "", model);
         const cand = obj.candidates && obj.candidates[0];
         const parts = (cand && cand.content && cand.content.parts) || [];
         parts.forEach((p) => {
           if (p.thought || typeof p.text !== "string" || !p.text) return;      // "düşünme" parçaları gösterilmez
-          clock.tick();
+          request.activity(); clock.tick();
           text += p.text;
           if (onDelta) onDelta(p.text, text);
         });
@@ -343,7 +351,9 @@
       if (!text && blocked) throw new AIError("blocked", blocked, { model });
       if (!text) throw new AIError("bad-response", "empty", { model });
       // Sunucu kotası dolan modelin yerine başka modelle yanıtlamış olabilir
+      request.check(text);
       return { text, stats: clock.stats(tokens), model: res.headers.get("X-KampusAI-Model") || model };
+      } catch(error) { throw request.failure(error,text); } finally { request.close(); }
     },
 
     async embed(model, inputs, signal, kind) {
@@ -484,7 +494,12 @@
       return { text: full, stats: last && last.stats, toolCalls: calls };
     },
 
-    async chatOnce({ model, messages, options, signal, onDelta, tools }) {
+    async chatOnce({ model, messages, options, signal, onDelta, tools, deadline, profile }) {
+      const media=messages.some(m=>m.images?.length||m.audio?.length||m.files?.length), deep=media||options?.json||profile==="complex";
+      const request = App.aiRequest.scope(signal,{connectMs:deep?30000:12000,firstMs:deep?45000:18000,totalMs:Math.max(1,(deadline||Date.now()+120000)-Date.now())}); signal = request.signal;
+      let text = "";
+      const clock = timer();
+      try {
       const body = {
         model,
         messages: this.toMessages(messages),
@@ -498,8 +513,8 @@
       const res = await send(this.base() + "/chat/completions",
         { method: "POST", headers: this.headers(), body: JSON.stringify(body), signal }, model, openaiError);
 
-      const clock = timer();
-      let text = "", tokens = 0;
+      request.ready();
+      let tokens = 0;
       const ctype = res.headers.get("content-type") || "";
       if (!/event-stream/.test(ctype)) {
         // Akış desteklemeyen servis: tek seferde gelen yanıt
@@ -508,7 +523,7 @@
         const msg = (data.choices && data.choices[0] && data.choices[0].message) || {};
         text = msg.content || "";
         (msg.tool_calls || []).forEach((tc) => toolCalls.push(tc));
-        if (onDelta && text) { clock.tick(); onDelta(text, text); }
+        if (onDelta && text) { request.activity(); clock.tick(); onDelta(text, text); }
         tokens = (data.usage && data.usage.completion_tokens) || 0;
       } else {
         await readSSE(res, (obj) => {
@@ -524,7 +539,7 @@
           });
           const piece = ch && ch.delta && typeof ch.delta.content === "string" ? ch.delta.content : "";
           if (piece) {
-            clock.tick();
+            request.activity(); clock.tick();
             text += piece;
             if (onDelta) onDelta(piece, text);
           }
@@ -534,7 +549,9 @@
       // Bazı akıl yürüten modeller düşünceyi <think> içinde yazar: gösterme
       text = text.replace(/^\s*<think>[\s\S]*?<\/think>\s*/i, "");
       if (!text && !toolCalls.length) throw new AIError("bad-response", "empty", { model });
+      request.check(text);
       return { text, stats: clock.stats(tokens), toolCalls: toolCalls.filter(Boolean) };
+      } catch(error) { throw request.failure(error,text); } finally { request.close(); }
     },
 
     async embed(model, inputs, signal) {

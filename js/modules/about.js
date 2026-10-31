@@ -33,6 +33,12 @@
 
   /* Kaynakça (APA biçimine yakın), konu başlıklarına göre gruplu: [grup, [[metin, adres], …]] */
   const KAYNAKCA = () => [
+    [T("Sanal pH ve AI yanıt ayarları", "Virtual pH and AI response settings"), [
+      ["OpenStax Chemistry 2e. pH, pOH, suyun otoiyonizasyonu (25 °C); sanal ideal kuvvetli asit/baz modelinin temeli.", "https://openstax.org/books/chemistry-2e/pages/14-2-ph-and-poh"],
+      ["OpenStax Chemistry 2e. Derişim ve seyreltme; ideal hacim/mol korunumu.", "https://openstax.org/books/chemistry-2e/pages/3-3-molarity"],
+      ["Google Gemini API. Model bazında düşünme düzeyi ve gecikme ayarları; desteklemeyen modele ayarsız geri dönüş.", "https://ai.google.dev/gemini-api/docs/thinking"]
+    ]],
+
     [T("1.64 ek öğrenme hedefleri ve formüller", "1.64 supplemental objectives and formulas"), [
       ["MEB. 2026–2027 ortaöğretim planları: TYMM 9–11. sınıflarda kademeli, 12. sınıfta mevcut program. EK kodları özgün uygulama hedefleridir; yeni resmî kazanım kodu değildir.", "https://tymm.meb.gov.tr/taslak-cerceve-planlari/ortaogretim"],
       ["OpenStax. Calculus, Precalculus, University Physics ve Chemistry açık ders kitapları. Formüller ve kullanım koşulları için başvuru; her yeni formülün yanında ilgili kitap bağlantısı vardır.", "https://openstax.org/subjects"]
@@ -164,6 +170,7 @@
 
   /* Son sürümler (yeniden eskiye) */
   const SURUMLER = () => [
+    ["1.66.0", T("AI selamlamalarında daha kısa yol, kısa sorularda model yönlendirmesi, istek süre sınırları ve bozuk formül uyarısı. Deney menüsünün boş bağlantısı düzeltildi. Sanal pH ve Ekosistem Deneyler altında; pH kamera kullanmaz. Çiz, Çalışsın kaldırıldı; Keşif kartı düzeltildi.", "Shorter greeting path, short-question routing, AI request deadlines and formula-format warnings. Fixed blank lab menu link. Virtual pH and Ecosystem under Experiments; pH uses no camera. Draw & Run retired and discovery card fixed.")],
     ["1.65.0", T("Hedefim ve Geleceğim, Gelişimim ve Dünya ve Tarih ortak girişleri. Sayfa ve AI şablonları tek Favorilerim listesinde; eski seçimler ve kişisel şablonlar korunur. Öğretmen/Araştırmacı menü görünümü. Yaşayan Tarih Haritası kaldırıldı; küre, atlas ve zaman çizelgesi korunur.", "Unified Goals & Future, My Progress and World & History entries. Pages and AI templates share My Favourites, preserving existing choices and custom prompts. Teacher/Researcher menu view. Living History Map removed; globe, atlas and timeline retained.")],
     ["1.64.0", T("Senkron sesli tahta; sade AI çalışma alanı; isteğe bağlı ekran yükleme, birleştirilmiş AI metin akışı ve kayıtlı HTML koruması. Canlanan Ders Kitabı kaldırıldı; Vatandaş Bilimi ve Gökyüzü laboratuvar altında. Tarih haritasında 16 dönem, 18 şehir, olay arama, karşılaştırma ve dışa aktarma. 47 özgün ek öğrenme hedefi (35’i 12. sınıf), toplam 855 konu ve 221 formül; yeni resmî MEB kazanımı iddiası yok.", "Synchronized voice board; refined AI workspace; on-demand screens, coalesced AI rendering and stored HTML protection. Living Textbook retired; Citizen Science and Sky in the lab. History map: 16 periods, 18 cities, search, comparison and export. 47 original supplemental objectives (35 grade12), 855 topics and 221 formulas; no claim of new official curriculum outcomes.")],
     ["1.63.0", T("Beşli masaüstü menüsü: Konu Anlatımları, Deney Laboratuvarı, ortada belirgin Yapay Zekâ, 3B Dünya Küresi ve Ders Programı. Ortak renk ayarları, hafif animasyonlar ve gölgeler; mobil/dar pencere gezinmesi korunur.", "Five desktop workspaces: Lessons, Science Lab, prominent central AI, 3D Globe and Study Schedule. Shared colour controls, subtle motion and shadows; mobile/narrow navigation retained.")],

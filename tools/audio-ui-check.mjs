@@ -217,45 +217,12 @@ try {
   assert.equal(await page.evaluate(() => App.router.current().path), "bugun");
   assert.equal(await page.locator("#vbMap").count(), 0);
   await page.evaluate(() => (App.db.get = window.__oldGet));
-  // Overlapping pH permission grants: the older reply cannot stop the latest camera.
-  await go("ph");
-  await page.evaluate(() => {
-    window.__camera = { requests: [], stops: [] };
-    Object.defineProperty(navigator, "mediaDevices", {
-      configurable: true,
-      value: {
-        getUserMedia: () =>
-          new Promise((resolve) => window.__camera.requests.push(resolve)),
-      },
-    });
-    Object.defineProperty(HTMLMediaElement.prototype, "srcObject", {
-      configurable: true,
-      get() {
-        return this.__mockStream || null;
-      },
-      set(value) {
-        this.__mockStream = value;
-      },
-    });
-    HTMLMediaElement.prototype.play = async () => {};
-  });
-  await page.click("#phGo");
-  await page.click("#phGo");
-  await page.evaluate(() => {
-    const make = (id) => ({
-      getTracks: () => [{ stop: () => window.__camera.stops.push(id) }],
-      getVideoTracks: () => [{ getCapabilities: () => ({}) }],
-    });
-    window.__camera.requests[0](make("old"));
-    window.__camera.requests[1](make("new"));
-  });
-  await page.waitForTimeout(70);
-  assert.deepEqual(await page.evaluate(() => window.__camera.stops), ["old"]);
-  await go("bugun");
-  assert.deepEqual(await page.evaluate(() => window.__camera.stops), [
-    "old",
-    "new",
-  ]);
+  // The pH experiment must never ask for a camera or microphone.
+  await go('ph');await page.waitForSelector('#phSimPour');
+  await page.evaluate(()=>{window.__phCaptureRequests=0;Object.defineProperty(navigator,'mediaDevices',{configurable:true,value:{getUserMedia:()=>{window.__phCaptureRequests++;throw new Error('Unexpected camera request');}}});});
+  await page.click('#phSimPour');await page.click('#phSimWater');
+  assert.equal(await page.evaluate(()=>window.__phCaptureRequests),0);
+  await go('bugun');
   const tex = await page.evaluate(() =>
     App.a11y.texToSpeech("\\sqrt[broken", "tr"),
   );

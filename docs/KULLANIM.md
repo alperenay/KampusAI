@@ -123,3 +123,13 @@ Belge ve not araçları **Dersler ve kaynaklar → Dokümanlar** bölümünde bi
 ## Birleşik bilim laboratuvarı (5. adım)
 
 Fizik, sensör, sismograf ve deney kataloğu tek **Bilim ve Sensör Laboratuvarı** girişindedir. Eski bağlantılar yönlenir. RC, soğuma, yarı ömür ve polarizasyon için dört yeni çevrimdışı model vardır. Kullanım, platform sınırları ve test komutları: [Bilim ve Sensör Laboratuvarı](BILIM-SENSOR-LABORATUVARI.md).
+
+## Deney Laboratuvarı ve sanal pH
+Menüde Deney ve ölçüm → Deney Laboratuvarı açılır. Başlangıç ve Deneyler sekmelerinin üstündeki kartlardan Sanal pH Deneyi veya Ekosistem Kavanozu'nu seç. Telefonda Laboratuvar bölümü listesini kullan.
+
+pH: çözeltiyi seç, 25–250 mL miktar gir ve Çözelti ekle'ye bas. Su ekle ile seyrelt; Boşalt homojen karışımdan seçili hacmi çıkarır. Kap 1,2 L ile sınırlıdır. Boş kapta pH yoktur. Deneyi kaydet ve JSON indir ile SIMULATION etiketli kaydı dışa aktar. Kamera gerekmez. Model 25 °C ideal seyreltik kuvvetli tek protonlu asit/baz içindir; zayıf asit, tampon ve gerçek ürün pH tahmini değildir. Önceki kamera ölçüm kayıtları değiştirilmez.
+
+Kaynaklar: [OpenStax pH ve pOH](https://openstax.org/books/chemistry-2e/pages/14-2-ph-and-poh), [derişim ve seyreltme](https://openstax.org/books/chemistry-2e/pages/3-3-molarity). Arayüz grafikleri özgün çizimlerdir; örnek görseldeki varlıklar kopyalanmadı.
+
+## AI yanıt süresi ve doğrulama
+Selamlamalar kişisel kayıt araması yapmaz. Kısa sorular yalnız anahtar sözcük nedeniyle ağır modele yükseltilmez. Yerel/bulut tercihin korunur. Ağ, ilk metin ve durmuş akış için süre sınırları vardır; zaman aşımında kısmi yanıt tamamlanmış sayılmaz. Kaynak/kayıt yoksa kişisel veri uydurulmaması istenir; hazır program örnek olarak ayrılır. Gerçek sağlayıcı yoğunluğu/kotası ve cihaz kapasitesi süreyi etkiler; her yanıtın doğruluğu garanti edilmez. Önemli sonuçları kaynağınla kontrol et.

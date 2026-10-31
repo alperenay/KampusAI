@@ -72,8 +72,8 @@
     classify(text){
       if(App.prefs.get("aiSmartRouting",true)===false)return "default";
       const value=String(text||"").toLocaleLowerCase("tr");
-      if(value.length>220||/(kanıtla|ispatla|ayrıntılı|karşılaştır|analiz|tartış|nedenleri|makale|araştırma|proof|derive|analyze|compare|step by step|denklem|integral|türev|olasılık|programla|debug)/i.test(value))return "complex";
-      if(value.length<115)return "fast";
+      if(value.length>700||/(kanıtla|ispatla|ayrıntılı|karşılaştır|analiz|tartış|nedenleri|makale|araştırma|proof|derive|analyze|compare|programla|debug)/i.test(value))return "complex";
+      if(value.length<220)return "fast";
       return "default";
     }
   };

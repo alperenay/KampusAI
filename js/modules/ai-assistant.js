@@ -259,6 +259,7 @@
       case "no-key": title = t("ai.st.nokey"); body = esc(t("ai.err.nokeyBody")); extra = settingsBtn("cloud"); break;
       case "auth": title = t("ai.err.authTitle", { name }); body = esc(t("ai.err.authBody")); extra = settingsBtn("cloud"); break;
       case "net": title = t("ai.err.netTitle"); body = esc(t("ai.err.netBody")); break;
+      case "timeout": title=t("ai.err.timeoutTitle"); body=esc(t("ai.err.timeoutBody")); break;
       case "busy": title = t("ai.err.busyTitle", { name }); body = esc(t("ai.err.busyBody")); break;
       case "quota": title = t("ai.err.quotaTitle", { name });
         // KampüsAI sunucusu kendi açıklamasını (Türkçe, ne yapılacağıyla) gönderir

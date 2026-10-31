@@ -9,7 +9,8 @@
   const mode = () => App.prefs.get('workspaceView','student') === 'educator' ? 'educator' : 'student';
   const permitted = route => mode() === 'educator' || !teacherRoutes.includes(String(route).split('/')[0]);
   function menuRoute(route) {
-    if (String(route).split('/')[0] === 'tarih-haritasi') return null;
+    if (['tarih-haritasi','ciz-calissin'].includes(String(route).split('/')[0])) return null;
+    if (['ph','ekosistem'].includes(String(route).split('/')[0])) return 'bilim-lab';
     const section = sectionFor(route);
     return section ? section.id : route;
   }

@@ -59,12 +59,9 @@
       ],
       routes: [
         "bilim-lab",
-        "ph",
-        "ekosistem",
         "vatandas",
         "gokyuzu",
         "dokunsal-grafik",
-        "ciz-calissin",
       ],
     },
     {
@@ -133,6 +130,7 @@
     },
   ];
   function groupFor(route) {
+    if (["ph","ekosistem"].includes(String(route).split("/")[0])) return groups.find(g=>g.id==="science");
     return (
       groups.find((g) => g.routes.includes(String(route).split("/")[0])) ||
       groups[groups.length - 1]

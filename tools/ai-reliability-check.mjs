@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';
+class E extends Error{constructor(code,message='',extra={}){super(message);this.code=code;Object.assign(this,extra);}}
+const prefs=new Map(),App={ollama:{OllamaError:E},prefs:{get:(k,d)=>prefs.has(k)?prefs.get(k):d,set:(k,v)=>prefs.set(k,v)},config:{serverUrl:'https://fixture.invalid'},i18n:{lang:'tr'},utils:{esc:String}};
+const ctx=vm.createContext({App,console,Date,Math,Set,Map,AbortController,setTimeout,clearTimeout,performance,TextDecoder,TextEncoder,crypto,fetch,Response,ReadableStream});
+for(const f of ['js/ai/request-scope.js','js/ai/cloud.js','js/ai/pipeline.js'])vm.runInContext(fs.readFileSync(f,'utf8'),ctx);
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+let r=App.aiRequest.scope(null,{connectMs:10,totalMs:100});await assert.rejects(r.wait(new Promise(()=>{})),e=>e.code==='timeout');r.close();
+const outer=new AbortController();r=App.aiRequest.scope(outer.signal,{connectMs:100});const pending=r.wait(new Promise(()=>{}));outer.abort();await assert.rejects(pending,e=>e.code==='aborted');r.close();
+r=App.aiRequest.scope(null,{connectMs:100,firstMs:10,idleMs:100,totalMs:200});r.ready();await sleep(20);assert.throws(()=>r.check('part'),e=>e.code==='timeout'&&e.partial==='part');r.close();
+r=App.aiRequest.scope(null,{connectMs:100,firstMs:100,idleMs:10});r.ready();r.activity();await sleep(20);assert.throws(()=>r.check('partial'),e=>e.code==='timeout'&&e.partial==='partial');r.close();
+r=App.aiRequest.scope(null,{connectMs:10});r.close();await sleep(20);assert.equal(r.signal.aborted,false);
+const calls=[];ctx.fetch=async(url,init)=>{calls.push(JSON.parse(init.body));return new Response('data: '+JSON.stringify({candidates:[{content:{parts:[{text:'Merhaba!'}]}}]})+'\n\n',{headers:{'content-type':'text/event-stream'}});};
+prefs.set('srvModel','gemini-3.5-flash-lite');let ans=await App.cloud.server.chat({model:'gemini-3.5-flash-lite',messages:[{role:'user',content:'Merhaba'}],options:{smallTalk:true}});assert.equal(ans.text,'Merhaba!');assert.equal(calls[0].generationConfig.thinkingConfig.thinkingLevel,'minimal');assert.equal(calls[0].generationConfig.maxOutputTokens,256);
+ctx.fetch=async()=>new Response('data: {"candidates":[{"content":{"parts":[{"text":"part"}]}}]}\n\n',{headers:{'content-type':'text/event-stream'}});const abort=new AbortController();await assert.rejects(App.cloud.server.chat({model:'gemini-3.5-flash-lite',messages:[{role:'user',content:'x'}],signal:abort.signal,onDelta:()=>abort.abort()}),e=>e.code==='aborted'&&e.partial==='part');
+let memory=0,system='',delta='';App.engine={resolve:async()=>({id:'test',kind:'cloud',prepare:async()=>{},config:()=>({chatModel:'fixture',direct:true}),chat:async o=>{system=o.messages[0].content;o.onDelta('Merhaba','Merhaba');return{text:'Merhaba'};}})};App.rag={retrieve:async()=>{memory++;throw new Error('Unexpected RAG');}};
+ans=await App.ai.run({text:'Merhaba!',useData:true,on:{delta:t=>delta=t}});assert.equal(memory,0);assert.equal(ans.text,'Merhaba');assert.equal(delta,'Merhaba');assert.ok(system.length<500);assert.ok(!App.ai.isSmallTalk('Merhaba, integral nedir?'));assert.ok(!App.ai.isSmallTalk('Merhaba',{}));assert.ok(App.ai.isSmallTalk('Hello!'));
+console.log('AI reliability: finite deadlines, ignored-promise timeout, explicit abort/partial preservation, timer cleanup, low-thinking greeting request, no RAG for exact greetings, structured pipeline retained. Synthetic transport tests, not model quality claims.');

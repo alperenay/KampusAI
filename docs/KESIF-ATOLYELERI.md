@@ -51,17 +51,8 @@ Enlem/boylam ve **UTC** zaman gir → hesapla. Konum izni isteğe bağlıdır. A
 
 [JPL Table 1](https://ssd.jpl.nasa.gov/planets/approx_pos.html) Kepler elemanları ve hızları 1800–2050 aralığında kullanılır. J2000 yıldız/ekliptiği, basit yıldız zamanı ve yaklaşık Ay döngüsü vardır; presesyon, atmosfer kırılması, ışık zamanı ve yüksek hassasiyetli Ay konumu yoktur. Teleskop veya navigasyon aracı değildir; VSOP87 uygulandığı iddia edilmez. Cihaz yönelim verisi mümkünse platformun pusula/jiroskop birleşimidir. Mutlak kuzey yoksa gösterge **göreli yönelim** olarak belirtilir; ayrı bir kalibre manyetometre füzyon algoritması değildir.
 
-## 7. Çiz, Çalışsın
-
-Çiz/fotoğraf yükle → yerel kenar/kontur analizi veya isteğe bağlı AI yorumlama → JSON şemasını düzenle → **Modeli onayla ve çalıştır**.
-
-- Devre: ideal gerilim kaynağı, direnç, sabit dirençli lamba ve açık/kapalı anahtar; topraklı düğüm gerilimleri MNA ile çözülür. Tekil/açıkta düğümler hata verir. Elektron hareketi nitel animasyondur; hız ölçekli yük taşıyıcı modeli değildir.
-- Serbest cisim: vektör toplamı ve `a=ΣF/m`; yüzey bilgisi verildiğinde eksik normal kuvvet için uyarı. Çizimden tüm kuvvetlerin zorunlu olarak tanınması garanti edilmez.
-- Optik: Snell, tam iç yansıma, ince mercek/küresel ayna görüntü bağıntıları ve paraksiyel ışın çizimi. Eğri yüzeylerin genel optik geometrisi tanınmaz.
-- Rampa: çizilmiş çoklu çizgi boyunca noktasal kılavuz hareketi ve potansiyel/kinetik enerji; ayrıca 1B iki cisim çarpışması. İsteğe bağlı `loopRadius` metre cinsindedir; `2.5R` eşiği rampa yüksekliğinden bağımsız yarıçapla hesaplanır. Keyfî poligonlarla genel 2B rijit cisim/yuvarlanma/döngü temas çözücüsü değildir.
-
-AI sembol/değer/bağlantı önerir; okunmayan alanlar null kalır ve öğrenci tarafından tamamlanır. Yerel kontur analizi tek başına sembolleri veya devre topolojisini tanıdığını iddia etmez.
-
+## Kaldırılan araç
+Çiz, Çalışsın kaldırılmıştır. Hazır fizik modelleri Deney Laboratuvarı içinde kullanılabilir.
 
 ## Dünya ve Tarih
 Yaşayan Tarih Haritası kaldırıldı. Dünya Küresi, Coğrafya Atlası ve Zaman Çizelgesi, Dünya ve Tarih ortak girişinden kullanılabilir.

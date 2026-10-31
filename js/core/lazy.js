@@ -23,7 +23,7 @@
     duello: [M("duello")],
     vatandas: [M("vatandas")],
     paragraf: [D("paragraflar"), M("paragraf")],
-    ph: [M("ph-metre")],
+    ph: [M("ph-model"), M("ph-metre")],
     ekosistem: [M("ekosistem")],
     karne: [M("karne")],
     sim: [M("sim")],
@@ -40,13 +40,13 @@
     podcast: [M("podcast")],
     practice: [D("practice-bank"), D("practice-bank-ext"), M("practice"), M("practice-ui")],
     discovery: [M("discovery-model"), M("discovery-core"), M("onboarding"), M("discovery-vision"), M("reverse-tutor"), M("phone-physics"),
-      M("haptic-graph"), M("science-report"), M("seismograph"), M("planetarium"), M("draw-simulation")],
+      M("haptic-graph"), M("science-report"), M("seismograph"), M("planetarium")],
     study: [M("study-workspace-model"), M("document-import"), M("study-workspace")]
   };
   const ROUTES = {
     hakkinda: ["labs", "about"],                 // deney sayısı Hakkında'da da gösterilir
     oyunlar: ["labs", "games"],                  // grafik oyunu deney çizim araçlarını kullanır
-    "bilim-lab": (r) => r.params[0] === "vatandas" ? ["labs", "discovery", "sinif", "vatandas"] : ["labs", "discovery"],          // deneyler, telefon fiziği, sismograf
+    "bilim-lab": (r) => ["labs","discovery"].concat(r.params[0]==="vatandas"?["sinif","vatandas"]:r.params[0]==="deneyler"&&r.params[1]==="ph"?["ph"]:r.params[0]==="deneyler"&&r.params[1]==="ekosistem"?["ekosistem"]:[]),          // deneyler, telefon fiziği, sismograf
     // Kazanım sayfası: deney kartları, podcast ve "Hangi meslekte?" bağlantısı
     konular: (r) => (r.params.length >= 4 ? ["labs", "podcast", "meslek"] : null),
     "sinif-modu": ["sinif"],
@@ -74,7 +74,7 @@
     "bana-ogret": ["discovery"],
     "dokunsal-grafik": ["discovery"],
     gokyuzu: ["discovery"],
-    "ciz-calissin": ["discovery"],
+
 
     odevler: ["study"],
     "sozlu-prova": ["study"],

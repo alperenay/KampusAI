@@ -9,7 +9,7 @@
     });
     const toolMap = new Map(App.hub.TOOLS.map((t) => [t[0], t]));
     for (const [route, tool] of toolMap)
-      if (!anchors.has(route)) {
+      if (!anchors.has(route) || !anchors.get(route).querySelector(".sidebar__label")) {
         const a = document.createElement("a");
         a.className = "nav__item";
         a.href = "#/" + route;
@@ -24,6 +24,8 @@
               : App.t(tool[2]),
           ) +
           "</span>";
+        const prior = anchors.get(route);
+        if (prior) prior.replaceWith(a);
         anchors.set(route, a);
       }
     nav.querySelectorAll(".nav-group:not(#navPins)").forEach((g) => g.remove());

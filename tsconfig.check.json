@@ -24,7 +24,6 @@
     "js/modules/discovery-core.js",
     "js/modules/discovery-model.js",
     "js/modules/discovery-vision.js",
-    "js/modules/draw-simulation.js",
     "js/modules/haptic-graph.js",
     "js/modules/phone-physics.js",
     "js/modules/planetarium.js",
@@ -65,6 +64,8 @@
     "js/core/sanitize.js",
     "js/core/csp.js",
     "js/core/workspace-navigation.js",
-    "js/modules/workspace-sections.js"
+    "js/modules/workspace-sections.js",
+    "js/ai/request-scope.js",
+    "js/modules/ph-model.js"
   ]
 }

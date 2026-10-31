@@ -26,17 +26,7 @@
         ["scan", ["İki cihazla ölçüm", "Two-device measurement"], ["İki telefonla ses uçuş süresi ölçerken her cihaz aynı darbeyi algılar; zaman paketini QR ile aktarırsın. QR saatleri eşitlemez: saat farkını bağımsız bir kalibrasyonla girmen gerekir.", "With two phones, each detects the same pulse and you exchange the timing by QR. QR does not sync clocks: enter an independently measured clock offset."]]
       ]
     },
-    "ciz-calissin": {
-      title: ["Çiz, Çalışsın nasıl kullanılır?", "How to use Draw & Run"],
-      steps: [
-        ["pen", ["Amaç", "What it is for"], ["Kâğıda ya da ekrana çizdiğin bir fizik düzeneğini çalışan bir simülasyona çevirir: elektrik devresi, serbest cisim diyagramı, ışık ışınları, rampa ve çarpışma.", "Turn a physics sketch into a running simulation: a circuit, a free-body diagram, light rays, a ramp or a collision."]],
-        ["list", ["1. Model türünü seç", "1. Choose the model type"], ["DC devre, Serbest cisim, Işın optiği ya da Rampa ve çarpışma. Tür, çizimin nasıl yorumlanacağını belirler.", "DC circuit, Free body, Ray optics or Ramp & collision; it decides how the drawing is interpreted."]],
-        ["camera", ["2. Çiz ya da fotoğrafla", "2. Draw or photograph"], ["Tuvale parmağınla çiz ya da kâğıttaki çizimin fotoğrafını çek/yükle. Rampa modunda yolu soldan sağa, yüksekten başlayarak tek çizgiyle çiz.", "Draw on the canvas or photograph/upload a paper sketch. For a ramp, draw one path from left to right, starting high."]],
-        ["sparkle", ["3. Modeli öner", "3. Get a model suggestion"], ["\"Yerel kenar / kontur analizi\" internetsiz çalışır. \"Görseli AI ile yorumla\" sembolleri tanır ve değerleri önerir. İstersen \"Örnek model yükle\" ile hazır bir modelden başla.", "\"Local edge / contour analysis\" works offline; \"Interpret with AI\" recognises symbols and suggests values. Or start from a sample model."]],
-        ["edit", ["4. İncele ve düzelt", "4. Review and correct"], ["Önerilen model düzenlenebilir bir metin (JSON) olarak görünür. Bağlantıları ve değerleri kontrol et: görsel tanıma hata yapabilir. Bu adım öğrenmenin parçasıdır.", "The suggested model appears as editable JSON. Check connections and values, since recognition can be wrong; this check is part of learning."]],
-        ["play", ["5. Onayla ve çalıştır", "5. Confirm and run"], ["\"Modeli onayla ve çalıştır\" ile akımı, kuvvetleri, ışın yollarını ya da hareketi canlı izle. Değerleri değiştirip yeniden çalıştırarak \"ne olur?\" sorularını dene; onaylı modeli indirebilirsin.", "Press \"Confirm and run\" to watch currents, forces, rays or motion. Change values and rerun to test what-if questions; download the confirmed model."]]
-      ]
-    },
+
 
   };
 

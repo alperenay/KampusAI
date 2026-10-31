@@ -241,5 +241,5 @@
   }
 
   App.router.register("ekosistem", render);
-  App.ekosistem = { DEFAULTS, deriv, rk4, step, simulate, equilibrium, diversity, seasonFactor, EXTINCT };
+  App.ekosistem = { render, DEFAULTS, deriv, rk4, step, simulate, equilibrium, diversity, seasonFactor, EXTINCT };
 })();

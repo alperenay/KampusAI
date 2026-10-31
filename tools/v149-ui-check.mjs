@@ -12,22 +12,12 @@ try {
   const { page } = await h.device();
   await page.setViewportSize({ width: 1280, height: 900 });
 
-  // 1) pH ölçer: skaladaki pH 3 rengi elle girilir → pH ≈ 3, kuvvetli/zayıf asit bandı, kayıt listesi
-  await go(page, "ph");
-  await page.waitForSelector("#phColor");
-  const ph = await page.evaluate(() => {
-    const inp = document.querySelector("#phColor");
-    inp.value = App.phMetre.hex(App.phMetre.SCALE[2][1]); inp.dispatchEvent(new Event("input", { bubbles: true }));
-    return { num: document.querySelector(".ph-num b").textContent, band: document.querySelector(".ph-band").textContent, mark: document.querySelector("#phMark").style.left, save: document.querySelector("#phSave").disabled };
-  });
-  assert.ok(Math.abs(parseFloat(ph.num.replace(",", ".")) - 3) < 0.6 && /asit/i.test(ph.band) && parseFloat(ph.mark) > 5 && !ph.save, JSON.stringify(ph));
-  await page.fill("#phName", "Sirke");
-  await page.click("#phSave");
-  await page.waitForSelector(".ph-log li");
-  assert.match(await page.textContent(".ph-log"), /Sirke/);
-  await page.evaluate(() => { const inp = document.querySelector("#phColor"); inp.value = "#808080"; inp.dispatchEvent(new Event("input", { bubbles: true })); });
-  assert.ok(await page.evaluate(() => document.querySelector("#phSave").disabled && /soluk|gri/i.test(document.querySelector("#phResult").textContent)));
-  ok("pH ölçer: renkten pH " + ph.num + " (" + ph.band.split("·")[0].trim() + "), kayıt listesi, gri renkte uyarı");
+  // pH is now an offline virtual experiment inside the shared lab.
+  await go(page,"ph");await page.waitForSelector('#phSimSolution');
+  await page.selectOption('#phSimSolution','acid2');await page.click('#phSimPour');
+  assert.equal((await page.textContent('#phSimValue')).trim(),'2,00');
+  await page.click('#phSimSave');assert.equal(await page.locator('#phSimHistory tbody tr').count(),1);
+  ok('Virtual pH: strong acid pH2, simulation history and lab alias');
 
   // 2) Vatandaş bilimi: iki kişinin ölçümleri, harita, QR paylaşımı ve yapıştırarak birleştirme
   await page.evaluate(async () => {

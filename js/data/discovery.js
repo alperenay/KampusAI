@@ -37,12 +37,7 @@
         "Konum ve UTC zamanına göre çevrimdışı gezegen, yıldız ve Ay evresi görünümü.",
         "star",
       ],
-      [
-        "ciz-calissin",
-        "Çiz, Çalışsın",
-        "Çizim/fotoğraftan önerilen devreyi onayla; devre, kuvvet, optik ve rampa modellerini çalıştır.",
-        "pen",
-      ],
+
 
     ],
     sources: {

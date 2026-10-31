@@ -92,6 +92,7 @@
   <link rel="stylesheet" href="css/desktop-workspace.css">
   <link rel="stylesheet" href="css/v164.css">
   <link rel="stylesheet" href="css/workspace-sections.css">
+  <link rel="stylesheet" href="css/ph-simulation.css">
 </head>
 <body>
   <!-- Visible before any blocking scripts: prevents a blank Android launch. -->
@@ -207,20 +208,17 @@
               <a class="nav__item" href="#/bana-ogret" data-route="bana-ogret"><span data-icon="grad"></span><span class="sidebar__label">Bana Öğret</span></a>
               <a class="nav__item" href="#/dokunsal-grafik" data-route="dokunsal-grafik"><span data-icon="chart"></span><span class="sidebar__label">Titreşimli Grafik</span></a>
               <a class="nav__item" href="#/deney-raporu" data-route="deney-raporu"><span data-icon="note"></span><span class="sidebar__label">Bilimsel Deney Raporu</span></a>
-              <a class="nav__item" href="#/ciz-calissin" data-route="ciz-calissin"><span data-icon="pen"></span><span class="sidebar__label">Çiz, Çalışsın</span></a>
             </div>
           </div>
           <div class="nav-group" data-group="practice">
             <button class="nav-group__head" type="button" aria-expanded="true" aria-controls="ng-practice"><span class="sidebar__label" data-i18n="nav.group.practice">Pratik</span><span data-icon="chevronD"></span></button>
             <div class="nav-group__body" id="ng-practice">
-          <a class="nav__item" href="#/kesif" data-route="kesif" data-route-also="bana-ogret,dokunsal-grafik,ciz-calissin"><span data-icon="compass"></span><span class="sidebar__label">Keşif Atölyeleri</span></a>
+          <a class="nav__item" href="#/kesif" data-route="kesif" data-route-also="bana-ogret,dokunsal-grafik"><span data-icon="compass"></span><span class="sidebar__label">Keşif Atölyeleri</span></a>
           <a class="nav__item" href="#/aktarim" data-route="aktarim"><span data-icon="layers"></span><span class="sidebar__label" data-i18n="nav.transfer">Bilgiyi Başka Yerde Kullan</span></a>
           <a class="nav__item" href="#/hata-avcisi" data-route="hata-avcisi"><span data-icon="scan"></span><span class="sidebar__label" data-i18n="nav.errorHunt">Çözümdeki Hatayı Bul</span></a>
-          <a class="nav__item" href="#/bilim-lab" data-route="bilim-lab">
-              <a class="nav__item" href="#/bilim-lab/gokyuzu" data-route="bilim-lab/gokyuzu"><span data-icon="star"></span><span class="sidebar__label">Gökyüzü Modu</span></a>
+          <a class="nav__item" href="#/bilim-lab" data-route="bilim-lab"><span data-icon="lightbulb"></span><span class="sidebar__label" data-nav-label="scienceLab">Deney Laboratuvarı</span></a>
+          <a class="nav__item" href="#/bilim-lab/gokyuzu" data-route="bilim-lab/gokyuzu"><span data-icon="star"></span><span class="sidebar__label">Gökyüzü Modu</span></a>
           <a class="nav__item" href="#/bilim-lab/vatandas" data-route="bilim-lab/vatandas"><span data-icon="map"></span><span class="sidebar__label" data-nav-label="citizen">Vatandaş Bilimi Ağı</span></a>
-            <span data-icon="lightbulb"></span><span class="sidebar__label" data-nav-label="scienceLab">Bilim ve Sensör Laboratuvarı</span>
-          </a>
           <a class="nav__item" href="#/modeller" data-route="modeller">
             <span data-icon="cube"></span><span class="sidebar__label" data-i18n="nav.models">3B Modeller</span>
           </a>
@@ -406,6 +404,7 @@
   <script src="js/data/prereq-9.js"></script>
 
   <!-- Yapay zeka: bilgisayardaki Ollama + internet servisleri (Gemini, OpenAI-uyumlu) -->
+  <script src="js/ai/request-scope.js"></script>
   <script src="js/ai/ollama.js"></script>
   <script src="js/ai/calc.js"></script>
   <script src="js/ai/web.js"></script>

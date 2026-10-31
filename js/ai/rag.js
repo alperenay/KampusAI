@@ -240,6 +240,7 @@
     const sch = scheduleSource(data.plan);
     const todays = sch.blocks.filter((b) => Number(b.day) === today).sort((a, b) => App.utils.toMinutes(a.start) - App.utils.toMinutes(b.start));
     const weekly = sch.blocks.filter((b) => b.kind !== "mola").reduce((m, b) => m + Math.max(0, mins(b.start, b.end)), 0);
+    if (!sch.mine) lines.push("Öğrencinin kaydettiği kişisel program yok. Aşağıdaki HAZIR PROGRAM yalnız bir örnektir; öğrencinin kişisel planı olarak sunma.");
     lines.push(sch.nameTR + " — bugün: " + (todays.length ? todays.map((b) => b.start + "–" + b.end + " " + TR(b.subject) + (TR(b.note) ? " (" + TR(b.note) + ")" : "")).join("; ") : "plan yok") + ".");
     lines.push("Haftalık planlanan çalışma: " + (weekly ? dur(weekly).trim() : "yok") + ".");
 

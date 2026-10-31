@@ -10,7 +10,7 @@ try {
       await page.waitForSelector("#view .discovery");
     };
   await page.waitForSelector(".discovery-tile");
-  assert.equal(await page.locator(".discovery-grid .discovery-tile").count(), 4);
+  assert.equal(await page.locator(".discovery-grid .discovery-tile").count(), 3);
   assert.equal(await page.locator(".science-lab-shortcut").count(), 1);
   assert.equal(await page.locator('.discovery-grid [href="#/tarih-haritasi"]').count(),0);
   const routes = await page.evaluate(() =>
@@ -119,56 +119,6 @@ try {
   await page.click("#skyDraw");
   assert.ok((await page.locator("#skyTable tbody tr").count()) >= 10);
   assert.match(await page.locator("#skyMoon").innerText(), /güneş saati/);
-  await go("ciz-calissin");
-  for (const kind of ["circuit", "force", "optics", "ramp"]) {
-    await page.selectOption("#dsKind", kind);
-    await page.click("#dsRun");
-    assert.match(await page.locator("[data-status]").innerText(), /onaylandı/);
-    assert.ok((await page.locator("#dsResult").innerText()).length > 40);
-    await page.click("#dsPause");
-  }
-  await page.selectOption("#dsKind", "circuit");
-  await page.fill("#dsModel", '{"nodes":2,"components":[]}');
-  await page.click("#dsRun");
-  assert.match(await page.locator("[data-status]").innerText(), /tekil/);
-  await page.click("#dsClear");
-  const box = await page.locator("#dsDraw").boundingBox();
-  await page.mouse.move(box.x + 20, box.y + 20);
-  await page.mouse.down();
-  await page.mouse.move(box.x + 150, box.y + 100, { steps: 20 });
-  await page.mouse.up();
-  await page.click("#dsEdges");
-  assert.match(
-    await page.locator("[data-status]").innerText(),
-    /kenar pikseli/,
-  );
-  // Controlled AI fixture: validates integration; does not claim live model accuracy.
-  await page.evaluate(() => {
-    App.ai.generate = async () => ({
-      data: {
-        kind: "circuit",
-        net: {
-          nodes: 2,
-          components: [
-            { type: "voltage", a: 1, b: 0, value: 5 },
-            { type: "resistor", a: 1, b: 0, value: 100 },
-          ],
-        },
-        uncertain: ["Bağlantıyı kontrol et"],
-      },
-      model: "test-fixture",
-    });
-  });
-  await page.click("#dsAI");
-  await page.waitForFunction(() =>
-    document.querySelector("#dsModel").value.includes("100"),
-  );
-  assert.doesNotMatch(
-    await page.locator("[data-status]").innerText(),
-    /çalıştırıldı/,
-  );
-  await page.click("#dsRun");
-  assert.match(await page.locator("#dsResult").innerText(), /5.000 V/);
   await go("bana-ogret");
   await page.fill("#rtSearch", "kuvvet");
   await page.click("#rtAdd");
@@ -270,7 +220,7 @@ try {
   assert.equal(resumed.stillAlive, true);
   assert.equal(resumed.stops, 2);
   // Translation-only tracker, fed a deterministic synthetic camera canvas.
-  await go("ciz-calissin");
+  await go("bana-ogret");
   const tracked = await page.evaluate(async () => {
     const board = document.createElement("canvas");
     board.width = 240;
@@ -319,7 +269,7 @@ try {
   });
   assert.deepEqual(h.errors, []);
   console.log(
-    "Discovery UI: all discovery routes at three widths; scientific models, exports, guided evidence, AI proposal confirmation, sensor fixtures, lifecycle and offline local assets passed.",
+    "Discovery UI: all discovery routes at three widths; scientific models, exports, guided evidence, sensor fixtures, lifecycle and offline local assets passed.",
   );
 } finally {
   await h.close();

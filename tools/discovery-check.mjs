@@ -27,7 +27,6 @@ for (const f of [
   "js/modules/haptic-graph.js",
   "js/modules/science-report.js",
   "js/modules/planetarium.js",
-  "js/modules/draw-simulation.js",
 ])
   vm.runInContext(fs.readFileSync(f, "utf8"), c, { filename: f });
 const M = App.discoveryModel,
@@ -82,7 +81,7 @@ assert.throws(() =>
     { t: 1, y: 3 },
   ]),
 );
-const net = App.drawSimulation.examples.circuit,
+const net = {nodes:3,components:[{type:"voltage",a:1,b:0,value:9},{type:"resistor",a:1,b:2,value:100},{type:"lamp",a:2,b:0,value:200}]},
   sol = M.circuit(net);
 close(sol.volts[1], 9);
 close(sol.volts[2], 6);
@@ -201,7 +200,7 @@ close(packet.samples[0].y, 3);
 assert.throws(() =>
   App.scienceReport.parsePacket({ source: "fake", samples: [] }),
 );
-assert.equal(App.data.discovery.modules.length, 7);
+assert.equal(App.data.discovery.modules.length, 6);
 assert.ok(!App.data.discovery.modules.some(m=>m[0]==="tarih-haritasi"));
 for (const f of App.data.discovery.faults.features)
   assert.equal(f.geometry.type, "LineString");
