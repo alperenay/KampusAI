@@ -1,0 +1,1733 @@
+{
+  "ok": true,
+  "lan": {
+    "enabled": true,
+    "error": ""
+  },
+  "cihaz": {
+    "secim": "tam",
+    "oneri": "tam",
+    "bellek": 17174360064,
+    "gomuluMotor": false
+  },
+  "app": true,
+  "version": "1.69.0",
+  "title": true,
+  "desktop": true,
+  "origin": "app://local",
+  "katex": true,
+  "idb": "indexeddb",
+  "local": true,
+  "proxyStatus": 502,
+  "proxyBody": "{\"error\":\"ollama unreachable: fetch failed\"}",
+  "lanInfo": {
+    "enabled": false,
+    "port": 8770,
+    "addresses": [],
+    "error": ""
+  },
+  "rendererAudit": [
+    {
+      "width": 374,
+      "engine": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) KampusAI/1.69.0 Chrome/140.0.7339.249 Electron/38.8.6 Safari/537.36",
+      "mode": "packaged renderer, AI fixture, no physical hardware certification",
+      "results": [
+        {
+          "route": "hesaplar",
+          "resolved": "hesaplar",
+          "ok": true
+        },
+        {
+          "route": "dinle-konus",
+          "resolved": "dinle-konus",
+          "ok": true
+        },
+        {
+          "route": "hedefim",
+          "resolved": "hedefim",
+          "ok": true
+        },
+        {
+          "route": "gelisimim",
+          "resolved": "gelisimim",
+          "ok": true
+        },
+        {
+          "route": "dunya-tarih",
+          "resolved": "dunya-tarih",
+          "ok": true
+        },
+        {
+          "route": "favorilerim",
+          "resolved": "favorilerim",
+          "ok": true
+        },
+        {
+          "route": "bilim-lab",
+          "resolved": "bilim-lab",
+          "ok": true
+        },
+        {
+          "route": "dokumanlar",
+          "resolved": "dokumanlar",
+          "ok": true
+        },
+        {
+          "route": "odevler",
+          "resolved": "odevler",
+          "ok": true
+        },
+        {
+          "route": "sozlu-prova",
+          "resolved": "sozlu-prova",
+          "ok": true
+        },
+        {
+          "route": "aktarim",
+          "resolved": "aktarim",
+          "ok": true
+        },
+        {
+          "route": "hata-avcisi",
+          "resolved": "hata-avcisi",
+          "ok": true
+        },
+        {
+          "route": "rehber",
+          "resolved": "rehber",
+          "ok": true
+        },
+        {
+          "route": "degerlendirme",
+          "resolved": "degerlendirme",
+          "ok": true
+        },
+        {
+          "route": "arastirma",
+          "resolved": "arastirma",
+          "ok": true
+        },
+        {
+          "route": "bugun",
+          "resolved": "bugun",
+          "ok": true
+        },
+        {
+          "route": "",
+          "resolved": "",
+          "ok": true
+        },
+        {
+          "route": "sesli",
+          "resolved": "",
+          "ok": true
+        },
+        {
+          "route": "konular",
+          "resolved": "konular",
+          "ok": true
+        },
+        {
+          "route": "formuller",
+          "resolved": "formuller",
+          "ok": true
+        },
+        {
+          "route": "yazili",
+          "resolved": "yazili",
+          "ok": true
+        },
+        {
+          "route": "konusma",
+          "resolved": "konusma",
+          "ok": true
+        },
+        {
+          "route": "tekrar",
+          "resolved": "tekrar",
+          "ok": true
+        },
+        {
+          "route": "kartlar",
+          "resolved": "kartlar",
+          "ok": true
+        },
+        {
+          "route": "yanlislar",
+          "resolved": "yanlislar",
+          "ok": true
+        },
+        {
+          "route": "video",
+          "resolved": "video",
+          "ok": true
+        },
+        {
+          "route": "podcast",
+          "resolved": "podcast",
+          "ok": true
+        },
+        {
+          "route": "kavram",
+          "resolved": "kavram",
+          "ok": true
+        },
+        {
+          "route": "kontrol",
+          "resolved": "kontrol",
+          "ok": true
+        },
+        {
+          "route": "program",
+          "resolved": "program",
+          "ok": true
+        },
+        {
+          "route": "yolculuk",
+          "resolved": "yolculuk",
+          "ok": true
+        },
+        {
+          "route": "paragraf",
+          "resolved": "paragraf",
+          "ok": true
+        },
+        {
+          "route": "atlas",
+          "resolved": "atlas",
+          "ok": true
+        },
+        {
+          "route": "zaman",
+          "resolved": "zaman",
+          "ok": true
+        },
+        {
+          "route": "duello",
+          "resolved": "duello",
+          "ok": true
+        },
+        {
+          "route": "evren",
+          "resolved": "evren",
+          "ok": true
+        },
+        {
+          "route": "kure",
+          "resolved": "kure",
+          "ok": true
+        },
+        {
+          "route": "modeller",
+          "resolved": "modeller",
+          "ok": true
+        },
+        {
+          "route": "ph",
+          "resolved": "bilim-lab/deneyler/ph",
+          "ok": true
+        },
+        {
+          "route": "vatandas",
+          "resolved": "bilim-lab/vatandas",
+          "ok": true
+        },
+        {
+          "route": "ekosistem",
+          "resolved": "bilim-lab/deneyler/ekosistem",
+          "ok": true
+        },
+        {
+          "route": "oyunlar",
+          "resolved": "oyunlar",
+          "ok": true
+        },
+        {
+          "route": "denemeler",
+          "resolved": "denemeler",
+          "ok": true
+        },
+        {
+          "route": "simulasyon",
+          "resolved": "simulasyon",
+          "ok": true
+        },
+        {
+          "route": "harita",
+          "resolved": "harita",
+          "ok": true
+        },
+        {
+          "route": "kok",
+          "resolved": "kok",
+          "ok": true
+        },
+        {
+          "route": "puan",
+          "resolved": "puan",
+          "ok": true
+        },
+        {
+          "route": "tercih",
+          "resolved": "tercih",
+          "ok": true
+        },
+        {
+          "route": "kariyer",
+          "resolved": "kariyer",
+          "ok": true
+        },
+        {
+          "route": "meslek",
+          "resolved": "meslek",
+          "ok": true
+        },
+        {
+          "route": "rapor",
+          "resolved": "rapor",
+          "ok": true
+        },
+        {
+          "route": "karne",
+          "resolved": "karne",
+          "ok": true
+        },
+        {
+          "route": "odak",
+          "resolved": "odak",
+          "ok": true
+        },
+        {
+          "route": "hesap",
+          "resolved": "hesap",
+          "ok": true
+        },
+        {
+          "route": "sinif-modu",
+          "resolved": "sinif-modu",
+          "ok": true
+        },
+        {
+          "route": "sinif",
+          "resolved": "sinif",
+          "ok": true
+        },
+        {
+          "route": "hakkinda",
+          "resolved": "hakkinda",
+          "ok": true
+        },
+        {
+          "route": "bana-ogret",
+          "resolved": "bana-ogret",
+          "ok": true
+        },
+        {
+          "route": "dokunsal-grafik",
+          "resolved": "bilim-lab/grafik",
+          "ok": true
+        },
+        {
+          "route": "gokyuzu",
+          "resolved": "bilim-lab/gokyuzu",
+          "ok": true
+        },
+        {
+          "route": "panel",
+          "resolved": "panel",
+          "ok": true
+        },
+        {
+          "route": "portfolyo",
+          "resolved": "portfolyo",
+          "ok": true
+        },
+        {
+          "route": "lab/atis",
+          "resolved": "bilim-lab/deneyler/atis",
+          "ok": true
+        },
+        {
+          "route": "lab/ivmeli",
+          "resolved": "bilim-lab/deneyler/ivmeli",
+          "ok": true
+        },
+        {
+          "route": "lab/sarkac",
+          "resolved": "bilim-lab/deneyler/sarkac",
+          "ok": true
+        },
+        {
+          "route": "lab/yay",
+          "resolved": "bilim-lab/deneyler/yay",
+          "ok": true
+        },
+        {
+          "route": "lab/dalga",
+          "resolved": "bilim-lab/deneyler/dalga",
+          "ok": true
+        },
+        {
+          "route": "lab/girisim",
+          "resolved": "bilim-lab/deneyler/girisim",
+          "ok": true
+        },
+        {
+          "route": "lab/mercek",
+          "resolved": "bilim-lab/deneyler/mercek",
+          "ok": true
+        },
+        {
+          "route": "lab/fonksiyon",
+          "resolved": "bilim-lab/deneyler/fonksiyon",
+          "ok": true
+        },
+        {
+          "route": "lab/cember",
+          "resolved": "bilim-lab/deneyler/cember",
+          "ok": true
+        },
+        {
+          "route": "lab/vektor",
+          "resolved": "bilim-lab/deneyler/vektor",
+          "ok": true
+        },
+        {
+          "route": "lab/basinc",
+          "resolved": "bilim-lab/deneyler/basinc",
+          "ok": true
+        },
+        {
+          "route": "lab/kaldirma",
+          "resolved": "bilim-lab/deneyler/kaldirma",
+          "ok": true
+        },
+        {
+          "route": "lab/bernoulli",
+          "resolved": "bilim-lab/deneyler/bernoulli",
+          "ok": true
+        },
+        {
+          "route": "lab/isinma",
+          "resolved": "bilim-lab/deneyler/isinma",
+          "ok": true
+        },
+        {
+          "route": "lab/isildenge",
+          "resolved": "bilim-lab/deneyler/isildenge",
+          "ok": true
+        },
+        {
+          "route": "lab/iletim",
+          "resolved": "bilim-lab/deneyler/iletim",
+          "ok": true
+        },
+        {
+          "route": "lab/karsilasma",
+          "resolved": "bilim-lab/deneyler/karsilasma",
+          "ok": true
+        },
+        {
+          "route": "lab/enerji",
+          "resolved": "bilim-lab/deneyler/enerji",
+          "ok": true
+        },
+        {
+          "route": "lab/devre",
+          "resolved": "bilim-lab/deneyler/devre",
+          "ok": true
+        },
+        {
+          "route": "lab/rezonans",
+          "resolved": "bilim-lab/deneyler/rezonans",
+          "ok": true
+        },
+        {
+          "route": "lab/kirilma",
+          "resolved": "bilim-lab/deneyler/kirilma",
+          "ok": true
+        },
+        {
+          "route": "lab/newton",
+          "resolved": "bilim-lab/deneyler/newton",
+          "ok": true
+        },
+        {
+          "route": "lab/limithiz",
+          "resolved": "bilim-lab/deneyler/limithiz",
+          "ok": true
+        },
+        {
+          "route": "lab/cembersel",
+          "resolved": "bilim-lab/deneyler/cembersel",
+          "ok": true
+        },
+        {
+          "route": "lab/carpisma",
+          "resolved": "bilim-lab/deneyler/carpisma",
+          "ok": true
+        },
+        {
+          "route": "lab/elektrikalan",
+          "resolved": "bilim-lab/deneyler/elektrikalan",
+          "ok": true
+        },
+        {
+          "route": "lab/induksiyon",
+          "resolved": "bilim-lab/deneyler/induksiyon",
+          "ok": true
+        },
+        {
+          "route": "lab/ayna",
+          "resolved": "bilim-lab/deneyler/ayna",
+          "ok": true
+        },
+        {
+          "route": "lab/doppler",
+          "resolved": "bilim-lab/deneyler/doppler",
+          "ok": true
+        },
+        {
+          "route": "lab/fotoelektrik",
+          "resolved": "bilim-lab/deneyler/fotoelektrik",
+          "ok": true
+        },
+        {
+          "route": "lab/bohr",
+          "resolved": "bilim-lab/deneyler/bohr",
+          "ok": true
+        },
+        {
+          "route": "lab/yuvarlanma",
+          "resolved": "bilim-lab/deneyler/yuvarlanma",
+          "ok": true
+        },
+        {
+          "route": "lab/kepler",
+          "resolved": "bilim-lab/deneyler/kepler",
+          "ok": true
+        },
+        {
+          "route": "lab/radyoaktif",
+          "resolved": "bilim-lab/deneyler/radyoaktif",
+          "ok": true
+        },
+        {
+          "route": "lab/gorelilik",
+          "resolved": "bilim-lab/deneyler/gorelilik",
+          "ok": true
+        },
+        {
+          "route": "lab/elektron",
+          "resolved": "bilim-lab/deneyler/elektron",
+          "ok": true
+        },
+        {
+          "route": "lab/periyodik",
+          "resolved": "bilim-lab/deneyler/periyodik",
+          "ok": true
+        },
+        {
+          "route": "lab/bag",
+          "resolved": "bilim-lab/deneyler/bag",
+          "ok": true
+        },
+        {
+          "route": "lab/vsepr",
+          "resolved": "bilim-lab/deneyler/vsepr",
+          "ok": true
+        },
+        {
+          "route": "lab/stokiyometri",
+          "resolved": "bilim-lab/deneyler/stokiyometri",
+          "ok": true
+        },
+        {
+          "route": "lab/gaz",
+          "resolved": "bilim-lab/deneyler/gaz",
+          "ok": true
+        },
+        {
+          "route": "lab/graham",
+          "resolved": "bilim-lab/deneyler/graham",
+          "ok": true
+        },
+        {
+          "route": "lab/cozunurluk",
+          "resolved": "bilim-lab/deneyler/cozunurluk",
+          "ok": true
+        },
+        {
+          "route": "lab/derisim",
+          "resolved": "bilim-lab/deneyler/derisim",
+          "ok": true
+        },
+        {
+          "route": "lab/koligatif",
+          "resolved": "bilim-lab/deneyler/koligatif",
+          "ok": true
+        },
+        {
+          "route": "lab/entalpi",
+          "resolved": "bilim-lab/deneyler/entalpi",
+          "ok": true
+        },
+        {
+          "route": "lab/tepkimehizi",
+          "resolved": "bilim-lab/deneyler/tepkimehizi",
+          "ok": true
+        },
+        {
+          "route": "lab/denge",
+          "resolved": "bilim-lab/deneyler/denge",
+          "ok": true
+        },
+        {
+          "route": "lab/ph",
+          "resolved": "bilim-lab/deneyler/ph",
+          "ok": true
+        },
+        {
+          "route": "lab/titrasyon",
+          "resolved": "bilim-lab/deneyler/titrasyon",
+          "ok": true
+        },
+        {
+          "route": "lab/ksp",
+          "resolved": "bilim-lab/deneyler/ksp",
+          "ok": true
+        },
+        {
+          "route": "lab/pil",
+          "resolved": "bilim-lab/deneyler/pil",
+          "ok": true
+        },
+        {
+          "route": "lab/elektroliz",
+          "resolved": "bilim-lab/deneyler/elektroliz",
+          "ok": true
+        },
+        {
+          "route": "lab/enzim",
+          "resolved": "bilim-lab/deneyler/enzim",
+          "ok": true
+        },
+        {
+          "route": "lab/ayirac",
+          "resolved": "bilim-lab/deneyler/ayirac",
+          "ok": true
+        },
+        {
+          "route": "lab/osmoz",
+          "resolved": "bilim-lab/deneyler/osmoz",
+          "ok": true
+        },
+        {
+          "route": "lab/fotosentez",
+          "resolved": "bilim-lab/deneyler/fotosentez",
+          "ok": true
+        },
+        {
+          "route": "lab/solunum",
+          "resolved": "bilim-lab/deneyler/solunum",
+          "ok": true
+        },
+        {
+          "route": "lab/populasyon",
+          "resolved": "bilim-lab/deneyler/populasyon",
+          "ok": true
+        },
+        {
+          "route": "lab/piramit",
+          "resolved": "bilim-lab/deneyler/piramit",
+          "ok": true
+        },
+        {
+          "route": "lab/sinir",
+          "resolved": "bilim-lab/deneyler/sinir",
+          "ok": true
+        },
+        {
+          "route": "lab/goz",
+          "resolved": "bilim-lab/deneyler/goz",
+          "ok": true
+        },
+        {
+          "route": "lab/kansekeri",
+          "resolved": "bilim-lab/deneyler/kansekeri",
+          "ok": true
+        },
+        {
+          "route": "lab/bagisiklik",
+          "resolved": "bilim-lab/deneyler/bagisiklik",
+          "ok": true
+        },
+        {
+          "route": "lab/tropizma",
+          "resolved": "bilim-lab/deneyler/tropizma",
+          "ok": true
+        },
+        {
+          "route": "lab/dna",
+          "resolved": "bilim-lab/deneyler/dna",
+          "ok": true
+        },
+        {
+          "route": "lab/terleme",
+          "resolved": "bilim-lab/deneyler/terleme",
+          "ok": true
+        },
+        {
+          "route": "lab/turev",
+          "resolved": "bilim-lab/deneyler/turev",
+          "ok": true
+        },
+        {
+          "route": "lab/integral",
+          "resolved": "bilim-lab/deneyler/integral",
+          "ok": true
+        },
+        {
+          "route": "lab/dizi",
+          "resolved": "bilim-lab/deneyler/dizi",
+          "ok": true
+        },
+        {
+          "route": "lab/ustel",
+          "resolved": "bilim-lab/deneyler/ustel",
+          "ok": true
+        },
+        {
+          "route": "lab/parabol",
+          "resolved": "bilim-lab/deneyler/parabol",
+          "ok": true
+        },
+        {
+          "route": "lab/olasilik",
+          "resolved": "bilim-lab/deneyler/olasilik",
+          "ok": true
+        },
+        {
+          "route": "lab/istatistik",
+          "resolved": "bilim-lab/deneyler/istatistik",
+          "ok": true
+        },
+        {
+          "route": "lab/ucgencoz",
+          "resolved": "bilim-lab/deneyler/ucgencoz",
+          "ok": true
+        },
+        {
+          "route": "lab/donusum",
+          "resolved": "bilim-lab/deneyler/donusum",
+          "ok": true
+        },
+        {
+          "route": "lab/katicisim",
+          "resolved": "bilim-lab/deneyler/katicisim",
+          "ok": true
+        },
+        {
+          "route": "lab/mevsim",
+          "resolved": "bilim-lab/deneyler/mevsim",
+          "ok": true
+        },
+        {
+          "route": "lab/iklim",
+          "resolved": "bilim-lab/deneyler/iklim",
+          "ok": true
+        },
+        {
+          "route": "lab/nufus",
+          "resolved": "bilim-lab/deneyler/nufus",
+          "ok": true
+        },
+        {
+          "route": "lab/mitoz",
+          "resolved": "bilim-lab/deneyler/mitoz",
+          "ok": true
+        },
+        {
+          "route": "lab/kalitim",
+          "resolved": "bilim-lab/deneyler/kalitim",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/dy",
+          "resolved": "oyunlar/dy",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/eslestir",
+          "resolved": "oyunlar/eslestir",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/islem",
+          "resolved": "oyunlar/islem",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/grafik",
+          "resolved": "oyunlar/grafik",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/hedef",
+          "resolved": "oyunlar/hedef",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/denklem",
+          "resolved": "oyunlar/denklem",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/periyodik",
+          "resolved": "oyunlar/periyodik",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/tarih",
+          "resolved": "oyunlar/tarih",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/kelime",
+          "resolved": "oyunlar/kelime",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/sayidogrusu",
+          "resolved": "oyunlar/sayidogrusu",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/birim",
+          "resolved": "oyunlar/birim",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/sirala",
+          "resolved": "oyunlar/sirala",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/oran",
+          "resolved": "oyunlar/oran",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/gosterim",
+          "resolved": "oyunlar/gosterim",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/phoyun",
+          "resolved": "oyunlar/phoyun",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/kanit",
+          "resolved": "oyunlar/kanit",
+          "ok": true
+        },
+        {
+          "route": "konusma/de",
+          "resolved": "konusma/de",
+          "ok": true
+        },
+        {
+          "route": "sensor/olcum",
+          "resolved": "bilim-lab/sensor/olcum",
+          "ok": true
+        },
+        {
+          "route": "test/9/edebiyat/u1/k1",
+          "resolved": "test/9/edebiyat/u1/k1",
+          "ok": true
+        },
+        {
+          "route": "konular/9/edebiyat/u1/k1",
+          "resolved": "konular/9/edebiyat/u1/k1",
+          "ok": true
+        },
+        {
+          "route": "aktarim/calis/oran",
+          "resolved": "aktarim/calis/oran",
+          "ok": true
+        },
+        {
+          "route": "hata-avcisi/calis/Fizik",
+          "resolved": "hata-avcisi/calis/Fizik",
+          "ok": true
+        },
+        {
+          "route": "workspace-native-integration",
+          "ok": true,
+          "parsers": [
+            "PDF",
+            "DOCX"
+          ],
+          "persistence": [
+            "notes",
+            "meta"
+          ]
+        }
+      ],
+      "errors": [],
+      "ok": true
+    },
+    {
+      "width": 1264,
+      "engine": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) KampusAI/1.69.0 Chrome/140.0.7339.249 Electron/38.8.6 Safari/537.36",
+      "mode": "packaged renderer, AI fixture, no physical hardware certification",
+      "results": [
+        {
+          "route": "hesaplar",
+          "resolved": "hesaplar",
+          "ok": true
+        },
+        {
+          "route": "dinle-konus",
+          "resolved": "dinle-konus",
+          "ok": true
+        },
+        {
+          "route": "hedefim",
+          "resolved": "hedefim",
+          "ok": true
+        },
+        {
+          "route": "gelisimim",
+          "resolved": "gelisimim",
+          "ok": true
+        },
+        {
+          "route": "dunya-tarih",
+          "resolved": "dunya-tarih",
+          "ok": true
+        },
+        {
+          "route": "favorilerim",
+          "resolved": "favorilerim",
+          "ok": true
+        },
+        {
+          "route": "bilim-lab",
+          "resolved": "bilim-lab",
+          "ok": true
+        },
+        {
+          "route": "dokumanlar",
+          "resolved": "dokumanlar",
+          "ok": true
+        },
+        {
+          "route": "odevler",
+          "resolved": "odevler",
+          "ok": true
+        },
+        {
+          "route": "sozlu-prova",
+          "resolved": "sozlu-prova",
+          "ok": true
+        },
+        {
+          "route": "aktarim",
+          "resolved": "aktarim",
+          "ok": true
+        },
+        {
+          "route": "hata-avcisi",
+          "resolved": "hata-avcisi",
+          "ok": true
+        },
+        {
+          "route": "rehber",
+          "resolved": "rehber",
+          "ok": true
+        },
+        {
+          "route": "degerlendirme",
+          "resolved": "degerlendirme",
+          "ok": true
+        },
+        {
+          "route": "arastirma",
+          "resolved": "arastirma",
+          "ok": true
+        },
+        {
+          "route": "bugun",
+          "resolved": "bugun",
+          "ok": true
+        },
+        {
+          "route": "",
+          "resolved": "",
+          "ok": true
+        },
+        {
+          "route": "sesli",
+          "resolved": "",
+          "ok": true
+        },
+        {
+          "route": "konular",
+          "resolved": "konular",
+          "ok": true
+        },
+        {
+          "route": "formuller",
+          "resolved": "formuller",
+          "ok": true
+        },
+        {
+          "route": "yazili",
+          "resolved": "yazili",
+          "ok": true
+        },
+        {
+          "route": "konusma",
+          "resolved": "konusma",
+          "ok": true
+        },
+        {
+          "route": "tekrar",
+          "resolved": "tekrar",
+          "ok": true
+        },
+        {
+          "route": "kartlar",
+          "resolved": "kartlar",
+          "ok": true
+        },
+        {
+          "route": "yanlislar",
+          "resolved": "yanlislar",
+          "ok": true
+        },
+        {
+          "route": "video",
+          "resolved": "video",
+          "ok": true
+        },
+        {
+          "route": "podcast",
+          "resolved": "podcast",
+          "ok": true
+        },
+        {
+          "route": "kavram",
+          "resolved": "kavram",
+          "ok": true
+        },
+        {
+          "route": "kontrol",
+          "resolved": "kontrol",
+          "ok": true
+        },
+        {
+          "route": "program",
+          "resolved": "program",
+          "ok": true
+        },
+        {
+          "route": "yolculuk",
+          "resolved": "yolculuk",
+          "ok": true
+        },
+        {
+          "route": "paragraf",
+          "resolved": "paragraf",
+          "ok": true
+        },
+        {
+          "route": "atlas",
+          "resolved": "atlas",
+          "ok": true
+        },
+        {
+          "route": "zaman",
+          "resolved": "zaman",
+          "ok": true
+        },
+        {
+          "route": "duello",
+          "resolved": "duello",
+          "ok": true
+        },
+        {
+          "route": "evren",
+          "resolved": "evren",
+          "ok": true
+        },
+        {
+          "route": "kure",
+          "resolved": "kure",
+          "ok": true
+        },
+        {
+          "route": "modeller",
+          "resolved": "modeller",
+          "ok": true
+        },
+        {
+          "route": "ph",
+          "resolved": "bilim-lab/deneyler/ph",
+          "ok": true
+        },
+        {
+          "route": "vatandas",
+          "resolved": "bilim-lab/vatandas",
+          "ok": true
+        },
+        {
+          "route": "ekosistem",
+          "resolved": "bilim-lab/deneyler/ekosistem",
+          "ok": true
+        },
+        {
+          "route": "oyunlar",
+          "resolved": "oyunlar",
+          "ok": true
+        },
+        {
+          "route": "denemeler",
+          "resolved": "denemeler",
+          "ok": true
+        },
+        {
+          "route": "simulasyon",
+          "resolved": "simulasyon",
+          "ok": true
+        },
+        {
+          "route": "harita",
+          "resolved": "harita",
+          "ok": true
+        },
+        {
+          "route": "kok",
+          "resolved": "kok",
+          "ok": true
+        },
+        {
+          "route": "puan",
+          "resolved": "puan",
+          "ok": true
+        },
+        {
+          "route": "tercih",
+          "resolved": "tercih",
+          "ok": true
+        },
+        {
+          "route": "kariyer",
+          "resolved": "kariyer",
+          "ok": true
+        },
+        {
+          "route": "meslek",
+          "resolved": "meslek",
+          "ok": true
+        },
+        {
+          "route": "rapor",
+          "resolved": "rapor",
+          "ok": true
+        },
+        {
+          "route": "karne",
+          "resolved": "karne",
+          "ok": true
+        },
+        {
+          "route": "odak",
+          "resolved": "odak",
+          "ok": true
+        },
+        {
+          "route": "hesap",
+          "resolved": "hesap",
+          "ok": true
+        },
+        {
+          "route": "sinif-modu",
+          "resolved": "sinif-modu",
+          "ok": true
+        },
+        {
+          "route": "sinif",
+          "resolved": "sinif",
+          "ok": true
+        },
+        {
+          "route": "hakkinda",
+          "resolved": "hakkinda",
+          "ok": true
+        },
+        {
+          "route": "bana-ogret",
+          "resolved": "bana-ogret",
+          "ok": true
+        },
+        {
+          "route": "dokunsal-grafik",
+          "resolved": "bilim-lab/grafik",
+          "ok": true
+        },
+        {
+          "route": "gokyuzu",
+          "resolved": "bilim-lab/gokyuzu",
+          "ok": true
+        },
+        {
+          "route": "panel",
+          "resolved": "panel",
+          "ok": true
+        },
+        {
+          "route": "portfolyo",
+          "resolved": "portfolyo",
+          "ok": true
+        },
+        {
+          "route": "lab/atis",
+          "resolved": "bilim-lab/deneyler/atis",
+          "ok": true
+        },
+        {
+          "route": "lab/ivmeli",
+          "resolved": "bilim-lab/deneyler/ivmeli",
+          "ok": true
+        },
+        {
+          "route": "lab/sarkac",
+          "resolved": "bilim-lab/deneyler/sarkac",
+          "ok": true
+        },
+        {
+          "route": "lab/yay",
+          "resolved": "bilim-lab/deneyler/yay",
+          "ok": true
+        },
+        {
+          "route": "lab/dalga",
+          "resolved": "bilim-lab/deneyler/dalga",
+          "ok": true
+        },
+        {
+          "route": "lab/girisim",
+          "resolved": "bilim-lab/deneyler/girisim",
+          "ok": true
+        },
+        {
+          "route": "lab/mercek",
+          "resolved": "bilim-lab/deneyler/mercek",
+          "ok": true
+        },
+        {
+          "route": "lab/fonksiyon",
+          "resolved": "bilim-lab/deneyler/fonksiyon",
+          "ok": true
+        },
+        {
+          "route": "lab/cember",
+          "resolved": "bilim-lab/deneyler/cember",
+          "ok": true
+        },
+        {
+          "route": "lab/vektor",
+          "resolved": "bilim-lab/deneyler/vektor",
+          "ok": true
+        },
+        {
+          "route": "lab/basinc",
+          "resolved": "bilim-lab/deneyler/basinc",
+          "ok": true
+        },
+        {
+          "route": "lab/kaldirma",
+          "resolved": "bilim-lab/deneyler/kaldirma",
+          "ok": true
+        },
+        {
+          "route": "lab/bernoulli",
+          "resolved": "bilim-lab/deneyler/bernoulli",
+          "ok": true
+        },
+        {
+          "route": "lab/isinma",
+          "resolved": "bilim-lab/deneyler/isinma",
+          "ok": true
+        },
+        {
+          "route": "lab/isildenge",
+          "resolved": "bilim-lab/deneyler/isildenge",
+          "ok": true
+        },
+        {
+          "route": "lab/iletim",
+          "resolved": "bilim-lab/deneyler/iletim",
+          "ok": true
+        },
+        {
+          "route": "lab/karsilasma",
+          "resolved": "bilim-lab/deneyler/karsilasma",
+          "ok": true
+        },
+        {
+          "route": "lab/enerji",
+          "resolved": "bilim-lab/deneyler/enerji",
+          "ok": true
+        },
+        {
+          "route": "lab/devre",
+          "resolved": "bilim-lab/deneyler/devre",
+          "ok": true
+        },
+        {
+          "route": "lab/rezonans",
+          "resolved": "bilim-lab/deneyler/rezonans",
+          "ok": true
+        },
+        {
+          "route": "lab/kirilma",
+          "resolved": "bilim-lab/deneyler/kirilma",
+          "ok": true
+        },
+        {
+          "route": "lab/newton",
+          "resolved": "bilim-lab/deneyler/newton",
+          "ok": true
+        },
+        {
+          "route": "lab/limithiz",
+          "resolved": "bilim-lab/deneyler/limithiz",
+          "ok": true
+        },
+        {
+          "route": "lab/cembersel",
+          "resolved": "bilim-lab/deneyler/cembersel",
+          "ok": true
+        },
+        {
+          "route": "lab/carpisma",
+          "resolved": "bilim-lab/deneyler/carpisma",
+          "ok": true
+        },
+        {
+          "route": "lab/elektrikalan",
+          "resolved": "bilim-lab/deneyler/elektrikalan",
+          "ok": true
+        },
+        {
+          "route": "lab/induksiyon",
+          "resolved": "bilim-lab/deneyler/induksiyon",
+          "ok": true
+        },
+        {
+          "route": "lab/ayna",
+          "resolved": "bilim-lab/deneyler/ayna",
+          "ok": true
+        },
+        {
+          "route": "lab/doppler",
+          "resolved": "bilim-lab/deneyler/doppler",
+          "ok": true
+        },
+        {
+          "route": "lab/fotoelektrik",
+          "resolved": "bilim-lab/deneyler/fotoelektrik",
+          "ok": true
+        },
+        {
+          "route": "lab/bohr",
+          "resolved": "bilim-lab/deneyler/bohr",
+          "ok": true
+        },
+        {
+          "route": "lab/yuvarlanma",
+          "resolved": "bilim-lab/deneyler/yuvarlanma",
+          "ok": true
+        },
+        {
+          "route": "lab/kepler",
+          "resolved": "bilim-lab/deneyler/kepler",
+          "ok": true
+        },
+        {
+          "route": "lab/radyoaktif",
+          "resolved": "bilim-lab/deneyler/radyoaktif",
+          "ok": true
+        },
+        {
+          "route": "lab/gorelilik",
+          "resolved": "bilim-lab/deneyler/gorelilik",
+          "ok": true
+        },
+        {
+          "route": "lab/elektron",
+          "resolved": "bilim-lab/deneyler/elektron",
+          "ok": true
+        },
+        {
+          "route": "lab/periyodik",
+          "resolved": "bilim-lab/deneyler/periyodik",
+          "ok": true
+        },
+        {
+          "route": "lab/bag",
+          "resolved": "bilim-lab/deneyler/bag",
+          "ok": true
+        },
+        {
+          "route": "lab/vsepr",
+          "resolved": "bilim-lab/deneyler/vsepr",
+          "ok": true
+        },
+        {
+          "route": "lab/stokiyometri",
+          "resolved": "bilim-lab/deneyler/stokiyometri",
+          "ok": true
+        },
+        {
+          "route": "lab/gaz",
+          "resolved": "bilim-lab/deneyler/gaz",
+          "ok": true
+        },
+        {
+          "route": "lab/graham",
+          "resolved": "bilim-lab/deneyler/graham",
+          "ok": true
+        },
+        {
+          "route": "lab/cozunurluk",
+          "resolved": "bilim-lab/deneyler/cozunurluk",
+          "ok": true
+        },
+        {
+          "route": "lab/derisim",
+          "resolved": "bilim-lab/deneyler/derisim",
+          "ok": true
+        },
+        {
+          "route": "lab/koligatif",
+          "resolved": "bilim-lab/deneyler/koligatif",
+          "ok": true
+        },
+        {
+          "route": "lab/entalpi",
+          "resolved": "bilim-lab/deneyler/entalpi",
+          "ok": true
+        },
+        {
+          "route": "lab/tepkimehizi",
+          "resolved": "bilim-lab/deneyler/tepkimehizi",
+          "ok": true
+        },
+        {
+          "route": "lab/denge",
+          "resolved": "bilim-lab/deneyler/denge",
+          "ok": true
+        },
+        {
+          "route": "lab/ph",
+          "resolved": "bilim-lab/deneyler/ph",
+          "ok": true
+        },
+        {
+          "route": "lab/titrasyon",
+          "resolved": "bilim-lab/deneyler/titrasyon",
+          "ok": true
+        },
+        {
+          "route": "lab/ksp",
+          "resolved": "bilim-lab/deneyler/ksp",
+          "ok": true
+        },
+        {
+          "route": "lab/pil",
+          "resolved": "bilim-lab/deneyler/pil",
+          "ok": true
+        },
+        {
+          "route": "lab/elektroliz",
+          "resolved": "bilim-lab/deneyler/elektroliz",
+          "ok": true
+        },
+        {
+          "route": "lab/enzim",
+          "resolved": "bilim-lab/deneyler/enzim",
+          "ok": true
+        },
+        {
+          "route": "lab/ayirac",
+          "resolved": "bilim-lab/deneyler/ayirac",
+          "ok": true
+        },
+        {
+          "route": "lab/osmoz",
+          "resolved": "bilim-lab/deneyler/osmoz",
+          "ok": true
+        },
+        {
+          "route": "lab/fotosentez",
+          "resolved": "bilim-lab/deneyler/fotosentez",
+          "ok": true
+        },
+        {
+          "route": "lab/solunum",
+          "resolved": "bilim-lab/deneyler/solunum",
+          "ok": true
+        },
+        {
+          "route": "lab/populasyon",
+          "resolved": "bilim-lab/deneyler/populasyon",
+          "ok": true
+        },
+        {
+          "route": "lab/piramit",
+          "resolved": "bilim-lab/deneyler/piramit",
+          "ok": true
+        },
+        {
+          "route": "lab/sinir",
+          "resolved": "bilim-lab/deneyler/sinir",
+          "ok": true
+        },
+        {
+          "route": "lab/goz",
+          "resolved": "bilim-lab/deneyler/goz",
+          "ok": true
+        },
+        {
+          "route": "lab/kansekeri",
+          "resolved": "bilim-lab/deneyler/kansekeri",
+          "ok": true
+        },
+        {
+          "route": "lab/bagisiklik",
+          "resolved": "bilim-lab/deneyler/bagisiklik",
+          "ok": true
+        },
+        {
+          "route": "lab/tropizma",
+          "resolved": "bilim-lab/deneyler/tropizma",
+          "ok": true
+        },
+        {
+          "route": "lab/dna",
+          "resolved": "bilim-lab/deneyler/dna",
+          "ok": true
+        },
+        {
+          "route": "lab/terleme",
+          "resolved": "bilim-lab/deneyler/terleme",
+          "ok": true
+        },
+        {
+          "route": "lab/turev",
+          "resolved": "bilim-lab/deneyler/turev",
+          "ok": true
+        },
+        {
+          "route": "lab/integral",
+          "resolved": "bilim-lab/deneyler/integral",
+          "ok": true
+        },
+        {
+          "route": "lab/dizi",
+          "resolved": "bilim-lab/deneyler/dizi",
+          "ok": true
+        },
+        {
+          "route": "lab/ustel",
+          "resolved": "bilim-lab/deneyler/ustel",
+          "ok": true
+        },
+        {
+          "route": "lab/parabol",
+          "resolved": "bilim-lab/deneyler/parabol",
+          "ok": true
+        },
+        {
+          "route": "lab/olasilik",
+          "resolved": "bilim-lab/deneyler/olasilik",
+          "ok": true
+        },
+        {
+          "route": "lab/istatistik",
+          "resolved": "bilim-lab/deneyler/istatistik",
+          "ok": true
+        },
+        {
+          "route": "lab/ucgencoz",
+          "resolved": "bilim-lab/deneyler/ucgencoz",
+          "ok": true
+        },
+        {
+          "route": "lab/donusum",
+          "resolved": "bilim-lab/deneyler/donusum",
+          "ok": true
+        },
+        {
+          "route": "lab/katicisim",
+          "resolved": "bilim-lab/deneyler/katicisim",
+          "ok": true
+        },
+        {
+          "route": "lab/mevsim",
+          "resolved": "bilim-lab/deneyler/mevsim",
+          "ok": true
+        },
+        {
+          "route": "lab/iklim",
+          "resolved": "bilim-lab/deneyler/iklim",
+          "ok": true
+        },
+        {
+          "route": "lab/nufus",
+          "resolved": "bilim-lab/deneyler/nufus",
+          "ok": true
+        },
+        {
+          "route": "lab/mitoz",
+          "resolved": "bilim-lab/deneyler/mitoz",
+          "ok": true
+        },
+        {
+          "route": "lab/kalitim",
+          "resolved": "bilim-lab/deneyler/kalitim",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/dy",
+          "resolved": "oyunlar/dy",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/eslestir",
+          "resolved": "oyunlar/eslestir",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/islem",
+          "resolved": "oyunlar/islem",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/grafik",
+          "resolved": "oyunlar/grafik",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/hedef",
+          "resolved": "oyunlar/hedef",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/denklem",
+          "resolved": "oyunlar/denklem",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/periyodik",
+          "resolved": "oyunlar/periyodik",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/tarih",
+          "resolved": "oyunlar/tarih",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/kelime",
+          "resolved": "oyunlar/kelime",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/sayidogrusu",
+          "resolved": "oyunlar/sayidogrusu",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/birim",
+          "resolved": "oyunlar/birim",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/sirala",
+          "resolved": "oyunlar/sirala",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/oran",
+          "resolved": "oyunlar/oran",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/gosterim",
+          "resolved": "oyunlar/gosterim",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/phoyun",
+          "resolved": "oyunlar/phoyun",
+          "ok": true
+        },
+        {
+          "route": "oyunlar/kanit",
+          "resolved": "oyunlar/kanit",
+          "ok": true
+        },
+        {
+          "route": "konusma/de",
+          "resolved": "konusma/de",
+          "ok": true
+        },
+        {
+          "route": "sensor/olcum",
+          "resolved": "bilim-lab/sensor/olcum",
+          "ok": true
+        },
+        {
+          "route": "test/9/edebiyat/u1/k1",
+          "resolved": "test/9/edebiyat/u1/k1",
+          "ok": true
+        },
+        {
+          "route": "konular/9/edebiyat/u1/k1",
+          "resolved": "konular/9/edebiyat/u1/k1",
+          "ok": true
+        },
+        {
+          "route": "aktarim/calis/oran",
+          "resolved": "aktarim/calis/oran",
+          "ok": true
+        },
+        {
+          "route": "hata-avcisi/calis/Fizik",
+          "resolved": "hata-avcisi/calis/Fizik",
+          "ok": true
+        },
+        {
+          "route": "workspace-native-integration",
+          "ok": true,
+          "parsers": [
+            "PDF",
+            "DOCX"
+          ],
+          "persistence": [
+            "notes",
+            "meta"
+          ]
+        }
+      ],
+      "errors": [],
+      "ok": true
+    }
+  ]
+}
