@@ -10,7 +10,7 @@ Mevcut bilimsel hesap makinesi korunur. Yeni ortak girişte birim dönüştürü
 - Birimler: uzunluk, alan, hacim, kütle, zaman, hız, basınç, enerji ve sıcaklık. Sıcaklık için ofsetli dönüşüm ve mutlak sıfır kontrolü; alan/hacimde üs katsayıları kullanılır.
 - Grafik: güvenli yerel ayrıştırıcı, radyan/derece seçimi, 401 nokta, değer tablosu, sayısal kök adayları. `eval` veya dinamik JS yürütme yoktur. Örnekleme bütün kökleri ve süreksizlikleri yakalayamaz; sembolik türev/integral aracı değildir.
 - Mol: kütle/mol, molarite ve seyreltme. İlk 36 elementin mevcut yuvarlatılmış kütleleriyle parantez ve hidrat formülü ayrıştırılır. Diğer elementlerde kullanıcı M değerini elle girebilir; bilinmeyen sembole kütle uydurulmaz. Yüklü iyon/izotop formülleri desteklenmez. Çözünen molünün korunduğu ideal seyreltme varsayılır.
-- Ölçüm: 2–1000 aynı birimli değer; ortalama, örneklem standart sapması, ortalamanın standart hatası ve isteğe bağlı referansa göre mutlak yüzde hata. SEM toplam cihaz/sistematik belirsizliği veya güven aralığı değildir. Referans sıfırsa yüzde hata hesaplanmaz.
+- Ölçüm: 2–1000 aynı birimli değer; ortalama, örneklem standart sapması, ortalamanın standart hatası ve isteğe bağlı referansa göre mutlak yüzde hata. Örnek raporda standart hata iki anlamlı basamağa, ortalama aynı ondalık mertebeye yuvarlanır; uç ölçeklerde sınırlı gösterim açıkça belirtilir. SEM toplam cihaz/sistematik belirsizliği veya güven aralığı değildir. Referans sıfırsa yüzde hata hesaplanmaz.
 
 ## Önceki isteklerle birleşen değişiklikler
 - 16 oyun, dört beceri grubu. Yeni Oran Mutfağı, Bilimsel Gösterim, pH Tahmini ve Kanıt Dedektifi.
