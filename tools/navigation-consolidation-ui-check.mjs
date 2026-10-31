@@ -5,6 +5,7 @@ import {uiHarness,navigate} from './ui-harness.mjs';
 const h=await uiHarness();try{
  const {page}=await h.device();
  await page.waitForSelector('[data-workspace-mode]');
+ assert.equal(await page.locator('.v159-smart-menu').count(),0);
  assert.equal(await page.inputValue('[data-workspace-mode]'),'student');
  assert.equal(await page.locator('#sidebar [data-group=classroom]').isVisible(),false);
  for(const id of ['hedefim','gelisimim','dunya-tarih'])assert.equal(await page.locator('#sidebar a[data-route="'+id+'"]').count(),1);

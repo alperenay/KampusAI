@@ -87,26 +87,6 @@
   const chooseTheme=()=>App.appearance.open('colours');
   App.visualThemes={themes,theme,chooseTheme,applyTheme};
 
-  // Keep the established navigation intact, add a tiny smart/favourites row on mobile.
-  function smartMenu(){
-    const sidebar=document.querySelector("#sidebar"),scroll=sidebar?.querySelector(".sidebar__scroll");
-    if(!scroll||scroll.querySelector(".v159-smart-menu"))return;
-    const nav=document.createElement("section");
-    nav.className="v159-smart-menu sidebar__label-block";
-    scroll.prepend(nav);
-    function paint(){
-      const available=routeList(),pins=(App.hub.pins?.()||[]).filter(x=>available.includes(x));
-      const recent=(App.hub.recents?.()||[]).filter(x=>available.includes(x));
-      const list=[...new Set([...pins,...recent,"panel"])].filter(Boolean).slice(0,4);
-      nav.innerHTML='<div class="v159-smart-menu__title">'+esc(T("Hızlı Erişim","Quick Access"))+
-        '<a href="#/araclar">'+esc(T("Düzenle","Edit"))+'</a></div><div class="v159-smart-menu__links">'+
-        list.map(x=>'<a href="#/'+x+'">'+App.icon(nameIcon(x))+'<span>'+esc(title(x))+'</span></a>').join("")+
-        '</div>';
-    }
-    window.addEventListener("da:route",paint);paint();
-  }
-  App.smartMenu={init:smartMenu};
-
   // Dynamic code loading applies to NEW resource-intensive modules; existing lesson content is already lazy.
   const lazyRoutes=new Set(["portfolyo"]);
   let promise=null;

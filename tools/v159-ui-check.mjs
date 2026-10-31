@@ -5,7 +5,7 @@ const h=await uiHarness();
 try {
   const {page}=await h.device();
   await page.setViewportSize({width:390,height:844});
-  await page.waitForFunction(()=>!!App.smartHome&&!!App.visualThemes&&!!App.smartMenu);
+  await page.waitForFunction(()=>!!App.smartHome&&!!App.visualThemes&&!!App.favorites);
   assert.equal(await page.locator("#sidebar #profileBtn").count(),1);
   assert.equal(await page.locator("#sidebar #settingsBtn, #sidebarSettingsTop").count(),0);
   await page.evaluate(()=>App.router.go("panel"));

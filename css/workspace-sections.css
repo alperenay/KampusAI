@@ -7,7 +7,7 @@
 .workspace-step { display: flex; align-items: center; gap: 12px; min-width: 0; text-decoration: none; }
 .workspace-step__number { border-radius: 50%; display: grid; place-items: center; min-width: 32px; height: 32px; background: var(--accent-soft); }
 .workspace-mode { display: grid; gap: 6px; padding: 12px; font-size: 13px; }
-.workspace-mode select { width: 100%; min-height: 44px; }
+.workspace-mode select { width: 100%; min-height: 44px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); color: var(--text); }
 .workspace-favorite { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--border); }
 .workspace-favorite > .btn { flex: 1 1 180px; justify-content: flex-start; white-space: normal; }
 .workspace-favorite > div, .workspace-tool-picker { display: flex; flex-wrap: wrap; gap: 8px; }
