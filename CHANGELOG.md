@@ -1,5 +1,12 @@
 # Sürüm notları
 
+## 1.69.0 — 2026-10-31
+
+- Laboratuvarda dört basamaklı rehberli deney; deneylere özel taslaklar, JSON dışa aktarma ve serbest kullanım.
+- Deney Laboratuvarı Dersler ve kaynaklar altında; bilim ağı, gökyüzü ve titreşimli grafik laboratuvarda.
+- Sade AI yazma alanı; Bilgi Evreni ünite etiketleri ve yıldız tozu görünümü.
+- Maskot eklenmedi. Mevcut yapay zekâ servisleri korunur.
+
 ## 1.68.0 — 2026-10-31
 
 - Hesaplar ve Araçlar: birim dönüştürücü, güvenli fonksiyon çizici, mol/çözelti ve ölçüm analizi. Uygun konu anlatımlarında cihazda çalışan açılır hesap panelleri ve tam sayfa bağlantıları. Eski hesap makinesi kayıtları ve adresi korunur.

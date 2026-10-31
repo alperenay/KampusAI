@@ -63,7 +63,7 @@ try {
     const errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(h.baseUrl + "/#/");
-    await p.waitForSelector("[data-ai-favs]");
+    await p.waitForSelector("#composer");
     await p.waitForFunction(() => !App.startup.active);
     assert.equal(await p.locator(".startup-brand").count(), 0);
     const trace = await p.evaluate(() => window.__startupTrace);

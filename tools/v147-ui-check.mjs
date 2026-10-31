@@ -9,9 +9,9 @@ try {
     await page.evaluate((r) => App.router.go(r), r);
     await page.waitForTimeout(180);
   };
-  await page.waitForSelector("[data-ai-favs]");
+  await page.waitForSelector("#composer");
   await page.fill('#composer textarea','Kendi notum: oran konusu');
-  await page.locator('[data-ai-favs] [data-favorite-open="ai:coach"]').click();
+  await page.evaluate(()=>App.favorites.open("ai:coach"));
   await page.waitForFunction(() =>
     document.querySelector("#composer textarea").value.includes("doğrudan"),
   );

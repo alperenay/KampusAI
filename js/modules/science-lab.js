@@ -67,8 +67,11 @@
     const host = view.querySelector('.science-lab-content');
     const cleanup = mode === 'grafik' ? App.router.handler('dokunsal-grafik')(host, params.slice(1)) : mode === 'vatandas' ? App.vatandas.render(host, params.slice(1)) : mode === 'gokyuzu' ? App.planetarium.render(host) : mode === 'deneyler' ? experiments(host, params.slice(1)) : mode === 'sensor' ? App.sensorLab.render(host, params.slice(1)) : mode === 'fizik' ? App.phonePhysics.render(host) : mode === 'titresim' ? App.seismograph.render(host) : mode === 'modeller' ? models(host, params[1]) : overview(host);
     host.querySelectorAll('h1').forEach(el => { const h = document.createElement('h2'); h.className = el.className; h.textContent = el.textContent; el.replaceWith(h); });
+    const isExperiment = mode !== 'genel' && (mode !== 'deneyler' || !!host.querySelector('#labHost') || ['ph','ekosistem'].includes(params[1]));
+    let guideCleanup;
+    if (isExperiment) { const panel=document.createElement('section'); panel.className='card lab-inquiry'; host.before(panel); const resolved = mode==='modeller' ? (Object.hasOwn(App.scienceLabModel.experiments, params[1] || '') ? params[1] : Object.keys(App.scienceLabModel.experiments)[0]) : params.slice(1).join('/'); guideCleanup=App.labInquiry.mount(panel,host,mode+'/'+resolved); }
     App.setTitle(title()); App.hydrateIcons(view);
-    return () => { if (typeof cleanup === 'function') cleanup(); };
+    return () => { if (guideCleanup) guideCleanup(); if (typeof cleanup === 'function') cleanup(); };
   }
   App.scienceLab = { render, migrateTools };
   App.router.register('bilim-lab', render);

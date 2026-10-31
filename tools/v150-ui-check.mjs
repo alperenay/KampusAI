@@ -4,7 +4,7 @@ import { uiHarness, navigate } from "./ui-harness.mjs";
 const h = await uiHarness();
 try {
   const { page } = await h.device();
-  await page.waitForSelector("[data-ai-favs]");
+  await page.waitForSelector("#composer");
   await navigate(page,"favorilerim");
   await page.click("[data-favorites-ai] summary");
   await page.fill(".aif-editor input[name=title]", "Kendi çalışma aracım");
@@ -38,14 +38,14 @@ try {
   );
   await navigate(page, "");
   await page.fill("#composer textarea", "Notumu koru");
-  await page.click('[data-favorite-open="ai:' + id + '"]');
+  await page.evaluate(id=>App.favorites.open("ai:"+id),id);
   assert.match(await page.inputValue("#composer textarea"), /Notumu koru/);
   assert.match(await page.inputValue("#composer textarea"), /Benim için/);
-  await page.evaluate(() => App.router.go("araclar/science"));
-  await page.waitForSelector("[data-hub-category=science]");
+  await page.evaluate(() => App.router.go("araclar/study"));
+  await page.waitForSelector("[data-hub-category=study]");
   assert.equal(
     await page
-      .locator("[data-hub-category=science]")
+      .locator("[data-hub-category=study]")
       .getAttribute("aria-pressed"),
     "true",
   );
@@ -81,7 +81,7 @@ try {
     );
   }
   await page.evaluate(() => App.router.go(""));
-  await page.waitForSelector("[data-ai-favs]");
+  await page.waitForSelector("#composer");
   await navigate(page,"favorilerim");
   await page.click("[data-favorites-ai] summary");
   for (const width of [320, 768, 1440]) {

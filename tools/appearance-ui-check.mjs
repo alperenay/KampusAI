@@ -136,7 +136,7 @@ try {
   await page.screenshot({ path: path.join(h.qa, "appearance-menu.png") });
   await page.click(".sidebar-close");
   await page.evaluate(() => App.router.go(""));
-  await page.waitForSelector("[data-ai-favs]");
+  await page.waitForSelector("#composer");
   await page.waitForTimeout(750);
   await page.screenshot({ path: path.join(h.qa, "appearance-home.png") });
   assert.deepEqual(h.errors, []);

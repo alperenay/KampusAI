@@ -30,7 +30,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.68.0
+  APP_VERSION: 1.69.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -103,6 +103,8 @@ jobs:
             exit 0
           fi
           node tools/learning-tools-ui-check.mjs
+          node tools/lab-inquiry-ui-check.mjs
+          node tools/post-report-ui-check.mjs
           node tools/learning-hubs-ui-check.mjs
           node tools/demo-about-ui-check.mjs
           node tools/security-ui-check.mjs
@@ -610,11 +612,10 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          Hesaplar ve Araçlar: birim dönüştürücü, fonksiyon çizici, mol/çözelti ve ölçüm analizi. İlgili konu anlatımlarında doğrudan hesaplama panelleri.
-          Oyunlar dört öğrenme grubunda; dört yeni oyunla toplam 16 oyun. Dinle ve Konuş ortak girişi.
-          Gelişimim'de doğruluk ve gecikmeli tekrar; XP/rozet/seri açılır motivasyon bölümünde.
-          Güncel Hakkında/kaynakça, kişisel veriyi koruyan demo yenileme ve 52 adımlı tanıtım turu.
-          [Ölçüm ve kapsam notları](https://github.com/$OWNER/$REPO/blob/main/docs/SURUM-1.68.md).
+          Rehberli deney: Tahmin et → Değişkeni değiştir → Sonucu gözle → Açıkla.
+          82 deney ve laboratuvar bölümlerinde ayrı notlar, cihazda taslak saklama, JSON indirme ve serbest kullanım.
+          Daha belirgin laboratuvar kartları, sade menü ve AI giriş alanı; geliştirilmiş Bilgi Evreni.
+          [Kullanım ve doğrulama kapsamı](https://github.com/$OWNER/$REPO/blob/main/docs/SURUM-1.69.md).
 
           | Platform | Dosya |
           |---|---|

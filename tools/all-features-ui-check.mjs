@@ -2,7 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import assert from "node:assert/strict";
-import { uiHarness } from "./ui-harness.mjs";
+import { uiHarness, navigate } from "./ui-harness.mjs";
 import { researchBank } from "./fixtures/research-bank.mjs";
 const h = await uiHarness(), results = [];
 try {
@@ -25,14 +25,12 @@ try {
     await page.setViewportSize({ width, height: 900 });
     for (const route of routes) {
       const start = Date.now();
-      const outcome = await page.evaluate((target) => new Promise((resolve) => {
-        let done = false;
-        const finish = () => { if (done) return; done = true; clearTimeout(timer); window.removeEventListener("da:route", handler); resolve({ text: document.querySelector("#view").innerText.slice(0, 600), resolved: App.router.current().path }); };
-        const handler = () => finish(), timer = setTimeout(finish, 12000);
-        window.addEventListener("da:route", handler);
-        App.router.go(target);
-      }), route);
-      const failed = !outcome.text.trim() || /TypeError:|ReferenceError:|SyntaxError:|is not a function|Cannot read properties/.test(outcome.text);
+      let outcome;
+      try {
+        await navigate(page,route);
+        outcome=await page.evaluate(()=>({text:document.querySelector('#view').innerText.slice(0,600),resolved:App.router.current().path}));
+      } catch(e) { outcome={text:'NavigationError: '+e.message,resolved:route}; }
+      const failed = !outcome.text.trim() || /NavigationError:|TypeError:|ReferenceError:|SyntaxError:|is not a function|Cannot read properties/.test(outcome.text);
       results.push({ route, width, resolved: outcome.resolved, status: failed ? "failure" : outcome.resolved !== route ? "redirect" : "opened", elapsedMs: Date.now() - start, text: outcome.text.slice(0, 180) });
       if (failed) await page.screenshot({ path: path.join(h.qa, "failure-" + route.replace(/[^a-z0-9]/gi, "_") + "-" + width + ".png") });
     }

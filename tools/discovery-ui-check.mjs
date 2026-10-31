@@ -1,17 +1,14 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
-import { uiHarness } from "./ui-harness.mjs";
+import { uiHarness, navigate } from "./ui-harness.mjs";
 const h = await uiHarness();
 try {
   const { page } = await h.device("kesif"),
-    go = async (r) => {
-      await page.evaluate((r) => App.router.go(r), r);
-      await page.waitForSelector("#view .discovery");
-    };
-  await page.waitForSelector(".discovery-tile");
-  assert.equal(await page.locator(".discovery-grid .discovery-tile").count(), 3);
-  assert.equal(await page.locator(".science-lab-shortcut").count(), 1);
+    go = r => navigate(page,r);
+  await page.waitForSelector('.science-lab-card');
+  assert.equal(await page.locator(".science-lab-card").count(), 8);
+  assert.equal(await page.locator(".science-lab-shortcut").count(), 0);
   assert.equal(await page.locator('.discovery-grid [href="#/tarih-haritasi"]').count(),0);
   const routes = await page.evaluate(() =>
     App.data.discovery.modules.map((x) => x[0]),

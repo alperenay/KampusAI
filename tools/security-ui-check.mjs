@@ -129,7 +129,7 @@ try {
       await navigate(page, r);
       await page.waitForFunction(() => document.querySelector("#view").children.length > 0, null, { timeout: 15000 });
       const state = await page.evaluate((r) => ({ groups: (App.lazy.ROUTES[r] || []).every((g) => App.lazy.loaded(g)), name: App.router.current().name, text: document.querySelector("#view").textContent.trim().length }), r);
-      const redirected = ["canli", "cevre", "vatandas", "gokyuzu", "ph", "ekosistem"].includes(r);
+      const redirected = ["canli", "cevre", "vatandas", "gokyuzu", "ph", "ekosistem", "kesif", "dokunsal-grafik"].includes(r);
       if (!state.groups || (!redirected && state.name !== r) || !state.text) failures.push(r + " " + JSON.stringify(state));
     } catch (e) { failures.push(r + " " + e.message); }
     if (h.errors.length > before) failures.push(r + " pageerror: " + h.errors.slice(before).map((e) => e.message).join(" | "));

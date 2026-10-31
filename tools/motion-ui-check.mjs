@@ -50,7 +50,7 @@ try {
     await page.locator(".motion-liquid").getAttribute("aria-hidden"),
     "true",
   );
-  await page.click("[data-hub-category=science]");
+  await page.click("[data-hub-category=study]");
   assert.equal(await page.locator(".hub-tile[data-r=bilim-lab]").isVisible(), true);
   assert.ok((await page.locator(".motion-touch").count()) <= 1);
   await page.waitForTimeout(450);

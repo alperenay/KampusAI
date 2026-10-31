@@ -45,3 +45,16 @@
 .science-lab-grid .science-lab-card p { flex:1; margin:0 0 .7rem; }
 .science-lab-open { color:var(--accent-text); font-weight:700; padding-top:.7rem; border-top:1px solid var(--border); }
 .science-lab-grid .science-lab-card:hover { box-shadow:0 0 0 2px var(--accent-soft); }
+
+.lab-inquiry { padding:1rem; margin:1rem 0; }
+.inquiry-head,.inquiry-head > div,.inquiry-actions { display:flex; flex-wrap:wrap; align-items:center; gap:.6rem; }
+.inquiry-head { justify-content:space-between; }
+.inquiry-head h2 { margin:.3rem 0; font-size:1.15rem; }
+.lab-inquiry [aria-pressed="true"] { background:var(--accent-soft); border-color:var(--accent); }
+.inquiry-steps { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.5rem; padding:0; list-style:none; margin:1rem 0; }
+.inquiry-steps li { padding:.7rem; border:1px solid var(--border); border-radius:10px; overflow-wrap:anywhere; }
+.inquiry-steps [aria-current] { background:var(--accent-soft); box-shadow:inset 0 -3px var(--accent); font-weight:700; }
+.inquiry-field { display:block; margin:.7rem 0; font-weight:600; }
+.lab-inquiry textarea { width:100%; min-height:90px; resize:vertical; }
+.lab-inquiry .btn { min-height:44px; }
+@media(max-width:600px) { .inquiry-steps { grid-template-columns:repeat(2,minmax(0,1fr)); } }

@@ -66,7 +66,7 @@ try {
       window.App &&
       App.startup &&
       !App.startup.active &&
-      document.querySelector("[data-ai-favs]"),
+      document.querySelector("#composer"),
   );
   assert.equal(await page.locator(".tour").count(), 0);
   assert.equal(

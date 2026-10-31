@@ -1,7 +1,7 @@
 {
   "name": "kampusai-web",
   "private": true,
-  "version": "1.68.0",
+  "version": "1.69.0",
   "scripts": {
     "build": "node tools/build-web.mjs dist/web",
     "lint": "node tools/syntax-check.mjs && node tools/compat-check.mjs",
@@ -71,6 +71,7 @@
     "test:demo-about-ui": "node tools/demo-about-ui-check.mjs",
     "test:learning-hubs-ui": "node tools/learning-hubs-ui-check.mjs",
     "test:learning-tools-ui": "node tools/learning-tools-ui-check.mjs",
+    "test:lab-inquiry-ui": "node tools/lab-inquiry-ui-check.mjs",
     "test:post-report-ui": "node tools/post-report-ui-check.mjs"
   }
 }

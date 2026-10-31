@@ -4,7 +4,7 @@ import { uiHarness } from "./ui-harness.mjs";
 const h = await uiHarness();
 try {
   const { page } = await h.device();
-  await page.waitForSelector("[data-ai-favs]");
+  await page.waitForSelector("#composer");
   const contrast = () =>
     page.evaluate(() => {
       const root = getComputedStyle(document.documentElement),
