@@ -713,6 +713,7 @@
     return { destroy };
   }
 
+  const routeFor=id=>id==='ph'?'bilim-lab/deneyler/katalog/ph':'lab/'+id;
   /* ---------------- Konu sayfalarıyla bağlantı ---------------- */
   const LINKS = {};
   /** Bir kazanıma deney bağla: link("10/fizik/u4/k1", "sarkac", { preset }) */
@@ -755,7 +756,7 @@
     const list = LINKS[key];
     if (!list) return "";
     return list.map(([id], i) => '<section class="card lesson__section lab-card"><h2>' + App.icon("sparkle") + esc(T("Etkileşimli deney: ", "Interactive lab: ") + LABS[id].title()) + "</h2>" +
-      '<p class="hint">' + esc(LABS[id].desc()) + ' <a href="#/lab/' + id + '">' + esc(T("Laboratuvarda aç", "Open in lab")) + "</a></p>" +
+      '<p class="hint">' + esc(LABS[id].desc()) + ' <a href="#/' + routeFor(id) + '">' + esc(T("Laboratuvarda aç", "Open in lab")) + "</a></p>" +
       '<div data-lab-mount="' + i + '"></div></section>').join("");
   }
   function mountIn(view, key) {
@@ -773,7 +774,7 @@
 
   function cardHtml(m, F) {
     const isFav = F.has(m.id);
-    return '<div class="lab-tile subj-' + m.subject + '"><a class="lab-tile__link" href="#/lab/' + m.id + '">' +
+    return '<div class="lab-tile subj-' + m.subject + '"><a class="lab-tile__link" href="#/' + routeFor(m.id) + '">' +
       '<span class="subj-ico">' + App.icon(m.lab.icon || subjIcon(m.subject)) + "</span>" +
       '<span class="lab-tile__body">' + (m.unitTxt ? '<span class="lab-tile__unit">' + esc(m.unitTxt) + "</span>" : "") + '<span class="lab-tile__title">' + esc(m.lab.title()) + "</span>" +
       '<span class="lab-tile__desc">' + esc(m.lab.desc()) + "</span>" +
@@ -875,8 +876,8 @@
         (m.keys.length ? '<section class="card lab-links"><div class="card__title">' + App.icon("book") + esc(T("İlgili konular", "Related lessons")) + '</div><ul>' + m.keys.map((k) =>
           '<li><a href="#/konular/' + esc(k.key) + '"><b>' + esc(App.data.curriculum.gradeName(k.f.grade) + " · " + App.L(k.f.subject.name)) + "</b>" + esc(App.L(k.f.outcome.title)) + "</a></li>").join("") + "</ul></section>" : "") +
       "</div>" +
-      '<nav class="lab-pn">' + (prev ? '<a class="btn" href="#/lab/' + prev.id + '">' + App.icon("chevronL") + esc(prev.lab.title()) + "</a>" : "<span></span>") +
-        (next ? '<a class="btn" href="#/lab/' + next.id + '">' + esc(next.lab.title()) + App.icon("chevron") + "</a>" : "") + "</nav>" +
+      '<nav class="lab-pn">' + (prev ? '<a class="btn" href="#/' + routeFor(prev.id) + '">' + App.icon("chevronL") + esc(prev.lab.title()) + "</a>" : "<span></span>") +
+        (next ? '<a class="btn" href="#/' + routeFor(next.id) + '">' + esc(next.lab.title()) + App.icon("chevron") + "</a>" : "") + "</nav>" +
       "</div>";
     App.hydrateIcons(view);
     const instance = mount(view.querySelector("#labHost"), id, {});
@@ -903,6 +904,6 @@
 
   /** Fonksiyon deneyinin o anki fonksiyonu (3B görünüm kullanır) */
   function funcOf(st) { const fam = LABS.fonksiyon.families()[st.fam]; return fam ? (x) => fam.f(x, st.q || {}, st.base) : () => NaN; }
-  App.labs = { render, LABS, LINKS, mount, sectionHtml, mountIn, add, link, meta, funcOf, BASE,
+  App.labs = { render, routeFor, LABS, LINKS, mount, sectionHtml, mountIn, add, link, meta, funcOf, BASE,
     util: { T, fmt, DEG, colors, arrow, label, frame, axes, plot, dot, row, niceStep, hexRgb, esc } };
 })();

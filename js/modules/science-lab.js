@@ -26,6 +26,7 @@
   }
 
   function experiments(host, params) {
+    if(params[0]==='katalog'){host.innerHTML='<div data-experiment-library></div>';return App.labs.render(host.firstElementChild,params.slice(1));}
     if(params[0]==='ph')return App.phMetre.render(host);
     if(params[0]==='ekosistem')return App.ekosistem.render(host);
     host.innerHTML='<div class="science-lab-experiments">'+featured()+'<div data-experiment-library></div></div>';

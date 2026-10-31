@@ -11,8 +11,14 @@ on:
     branches: [main]
     paths-ignore: ["**.md"]
   workflow_dispatch:
+    inputs:
+      resume_168:
+        description: '1.68: verify previous full results and retest scoped lab routing fix'
+        type: boolean
+        default: false
 
 permissions:
+  actions: read
   contents: write
   pages: write
   id-token: write
@@ -86,7 +92,16 @@ jobs:
           npm install --no-save --package-lock=false --ignore-scripts playwright@1.62.1
           npx playwright install --with-deps chromium
       - name: Arayüz ve çevrimdışı veri akışları
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          if [ '${{ inputs.resume_168 }}' = 'true' ]; then
+            bash tools/verify-168-resume.sh
+            node tools/lab-interactions-ui-check.mjs
+            node tools/learning-tools-ui-check.mjs
+            node tools/all-features-ui-check.mjs
+            exit 0
+          fi
           node tools/learning-tools-ui-check.mjs
           node tools/learning-hubs-ui-check.mjs
           node tools/demo-about-ui-check.mjs
@@ -164,7 +179,17 @@ jobs:
           npm install --no-save --package-lock=false --ignore-scripts playwright@1.62.1
           npx playwright install --with-deps ${{ matrix.engine }}
       - name: Bütün araçlar ve etkileşimler
-        run: node tools/audit-web.mjs --full
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ '${{ inputs.resume_168 }}' = 'true' ]; then
+            bash tools/verify-168-resume.sh
+            node tools/lab-interactions-ui-check.mjs
+            node tools/learning-tools-ui-check.mjs
+            node tools/all-features-ui-check.mjs
+          else
+            node tools/audit-web.mjs --full
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
