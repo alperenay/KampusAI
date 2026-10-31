@@ -10,8 +10,9 @@ try {
       await page.waitForSelector("#view .discovery");
     };
   await page.waitForSelector(".discovery-tile");
-  assert.equal(await page.locator(".discovery-grid .discovery-tile").count(), 5);
+  assert.equal(await page.locator(".discovery-grid .discovery-tile").count(), 4);
   assert.equal(await page.locator(".science-lab-shortcut").count(), 1);
+  assert.equal(await page.locator('.discovery-grid [href="#/tarih-haritasi"]').count(),0);
   const routes = await page.evaluate(() =>
     App.data.discovery.modules.map((x) => x[0]),
   );
@@ -318,7 +319,7 @@ try {
   });
   assert.deepEqual(h.errors, []);
   console.log(
-    "Discovery UI: all nine routes at three widths; scientific models, exports, guided evidence, AI proposal confirmation, sensor fixtures, lifecycle and offline local assets passed.",
+    "Discovery UI: all discovery routes at three widths; scientific models, exports, guided evidence, AI proposal confirmation, sensor fixtures, lifecycle and offline local assets passed.",
   );
 } finally {
   await h.close();
