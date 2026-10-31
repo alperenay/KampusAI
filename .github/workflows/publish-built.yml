@@ -1,0 +1,88 @@
+name: Hazır 1.66 paketlerini yayınla
+
+# Kullanıcının 31 Ekim 2026 talebi: kalan tarayıcı testlerini beklemeden yayın.
+# Normal build.yml test kapıları korunur; bu işlem yalnız sabit, üretilmiş paketi yayınlar.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: manual-publish-1.66.0
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_SHA: 68c95bfb3b8cfa5e878fa6df5c8c5b87110a20a5
+      SOURCE_RUN: '41187362355'
+      DA_SERVER_URL: https://ders-asistani.alperenayleon-67a.workers.dev
+    steps:
+      - name: Derleme kaynağını doğrula
+        env:
+          REPO: ${{ github.repository }}
+        run: |
+          gh api "repos/$REPO/actions/runs/$SOURCE_RUN" > /tmp/run.json
+          jq -e --arg sha "$SOURCE_SHA" --arg repo "$REPO" '.head_sha == $sha and .head_branch == "main" and .repository.full_name == $repo' /tmp/run.json
+          gh api "repos/$REPO/actions/runs/$SOURCE_RUN/jobs?per_page=100" > /tmp/jobs.json
+          for job in 'Android (APK)' 'Windows (kurulum)' 'Pardus / Linux (deb + AppImage)'; do
+            jq -e --arg name "$job" '[.jobs[] | select(.name == $name and .conclusion == "success")] | length == 1' /tmp/jobs.json
+          done
+      - uses: actions/checkout@v4
+        with:
+          ref: 68c95bfb3b8cfa5e878fa6df5c8c5b87110a20a5
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 41187362355
+          pattern: '{android,windows,linux}'
+          merge-multiple: true
+          path: out
+      - name: Hazır paketleri yayınla
+        run: |
+          cat > /tmp/notes.md <<'NOTES'
+          ## KampüsAI 1.66.0
+
+          - AI: selamlamada gereksiz hafıza araması kaldırıldı; kısa soru yönlendirmesi, akış ve süre sınırları iyileştirildi.
+          - Deney Laboratuvarı menüsü düzeltildi. Sanal pH ve Ekosistem Kavanozu, Deneyler altında toplandı.
+          - Sanal pH: çözelti ekleme, seyreltme, nötrleşme, boşaltma ve deney kaydı. Kamera gerekmez.
+          - Çiz, Çalışsın kaldırıldı; Keşif Atölyeleri kartının görünümü düzeltildi.
+
+          **Doğrulama:** Yerel testler, lint, tip kontrolü ve derleme geçti. Windows/Linux/Android derlemeleri ve açılış kontrolleri geçti. Kullanıcının talebiyle kalan uzak tarayıcı testleri tamamlanmadan yayınlandı; tüm cihazlarda hatasızlık iddiası yoktur.
+
+          [Ölçümler ve kapsam](https://github.com/alperenay/KampusAI/blob/v1.66.0/docs/SURUM-1.66.md) · [Web / iPhone](https://alperenay.github.io/KampusAI/)
+
+          Güncellemeden önce Ayarlar bölümünden yedek alın. AI yanıtları hata içerebilir; yanıt süresi sağlayıcı ve bağlantıya göre değişir.
+          NOTES
+          test "$(find out -maxdepth 1 -type f | wc -l)" = 4
+          if gh release view v1.66.0 >/dev/null 2>&1; then
+            gh release edit v1.66.0 --notes-file /tmp/notes.md --draft=false --latest
+          else
+            gh release create v1.66.0 --target "$SOURCE_SHA" --title 'KampüsAI 1.66.0' --notes-file /tmp/notes.md --latest
+          fi
+          gh release upload v1.66.0 out/*.apk out/*.exe out/*.deb out/*.AppImage --clobber
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Web paketini hazırla
+        run: |
+          node tools/build-web.mjs dist/web --version 1.66.0
+          touch dist/web/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/web
+  pages:
+    needs: publish
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
