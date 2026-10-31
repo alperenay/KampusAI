@@ -54,7 +54,8 @@ try {
   // All tour steps: navigation, real targets/fallbacks, keyboard, sections, escape.
   await page.evaluate(()=>App.tour.start(0)); const total=await page.evaluate(()=>App.tour.steps.length);assert.ok(total>=40);
   for(let i=0;i<total;i++) {
-    await page.waitForFunction((i)=>App.tour.current()===i&&document.querySelector('.tour__card:not(.is-moving)'),i,{timeout:12000});
+    try { await page.waitForFunction((i)=>App.tour.current()===i&&document.querySelector('.tour__card:not(.is-moving)'),i,{timeout:12000}); }
+    catch(e) { throw new Error('Tour step '+i+' did not settle: '+JSON.stringify(await page.evaluate(()=>({step:App.tour.current(),route:location.hash,active:App.tour.isActive(),card:document.querySelector('.tour__card')?.className}))),{cause:e}); }
     const text=await page.locator('.tour__body').innerText();assert.ok(text.trim().length>25&&!/tour\.\w+\.(title|text)/.test(text));report.tour.push({i,text:text.slice(0,90)});
     if(i<total-1)await page.locator('[data-tour="next"]').click();
   }

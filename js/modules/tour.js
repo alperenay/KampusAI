@@ -129,13 +129,17 @@
   function settle(target) {
     return new Promise((resolve) => {
       const start = Date.now();
-      let last = "", since = Date.now();
+      let last = "", since = Date.now(), frame = null, finished = false;
+      const done = () => { if (finished) return; finished = true; clearTimeout(deadline); if (frame !== null) cancelAnimationFrame(frame); resolve(); };
+      // rAF can pause in a hidden WebView/tab. The deadline must run independently.
+      const deadline = setTimeout(done, 1500);
       (function poll() {
+        if (finished) return;
         const r = target.getBoundingClientRect();
         const k = Math.round(r.top) + "," + Math.round(r.left);
         if (k !== last) { last = k; since = Date.now(); }
-        if (Date.now() - since > 150 || Date.now() - start > 1500) return resolve();
-        requestAnimationFrame(poll);
+        if (Date.now() - since > 150 || Date.now() - start > 1500) return done();
+        frame = requestAnimationFrame(poll);
       })();
     });
   }

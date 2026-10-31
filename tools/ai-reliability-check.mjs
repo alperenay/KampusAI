@@ -30,3 +30,13 @@ prefs.set('srvAutoAt',1);await App.cloud.server.prepare();assert.equal(listings,
 await App.cloud.server.prepare(undefined,true);assert.equal(listings,2,'explicit refresh still works');
 const cancelled=new AbortController();cancelled.abort();await assert.rejects(App.cloud.server.prepare(cancelled.signal),e=>e.code==='aborted');
 console.log('Stable model selection: one shared discovery, four question profiles, persisted model, explicit refresh and cancellation passed.');
+
+// The onboarding scroll deadline must resolve even if the browser pauses rAF.
+const tourSource=fs.readFileSync('js/modules/tour.js','utf8');
+const settleSource=tourSource.slice(tourSource.indexOf('  function settle(target) {'),tourSource.indexOf('  function build()'));
+let cancelledFrame=false;
+const settleCtx=vm.createContext({Date,setTimeout,clearTimeout,requestAnimationFrame:()=>1,cancelAnimationFrame:()=>{cancelledFrame=true;}});
+vm.runInContext(settleSource,settleCtx);
+const started=Date.now();await settleCtx.settle({getBoundingClientRect:()=>({top:0,left:0})});
+assert.ok(Date.now()-started<3000);assert.ok(cancelledFrame);
+console.log('Tour scroll settling: independent deadline and frame cleanup when rAF is paused passed.');

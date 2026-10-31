@@ -13,3 +13,5 @@ Birim testleri gerçek model kalitesiyle karıştırılmaz. Çoklu tarayıcı te
 
 ### Gerçek servis örnek ölçümü
 31 Ekim 2026, temiz yerel tarayıcı profili + yayımdaki servis: Merhaba 1179 ms; 2x+3=11 2390 ms; net kuvvet karşılaştırması 2095 ms; kişisel program sorgusu 1132 ms. Dört soruda yalnız bir model-listesi isteği görüldü; yanıt modeli gemini-3.5-flash-lite olarak kaldı. Denklem yanıtı x=4 ve net kuvvet/hız ayrımı kontrol edildi. Bunlar dört örneğin toplam süreleridir; kontrollü geniş doğruluk çalışması veya sağlayıcı gecikme garantisi değildir.
+
+Tanıtım turunun kaydırma bekleyişinde, arka plan sekmelerinde durabilen requestAnimationFrame döngüsünden bağımsız 1,5 saniyelik sonlandırma ve frame temizliği eklendi.
