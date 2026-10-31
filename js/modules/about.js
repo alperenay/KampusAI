@@ -232,6 +232,7 @@
     ["chart", "gelisimim", T("Gelişimim", "My Progress"), T("Haftalık özet, öğrenme haritası, eksik analizi ve üstbiliş karnesi", "Weekly summary, learning map, gap analysis and metacognition report")],
     ["globe", "dunya-tarih", T("Dünya ve Tarih", "World & History"), T("Küre, atlas ve zaman çizelgesine ortak giriş", "One entry for the globe, atlas and timeline")],
     ["star", "favorilerim", T("Favorilerim", "My Favourites"), T("Sayfalar ve AI başlangıç şablonlarını tek listede sırala", "Arrange pages and AI starting prompts in one list")],
+    ["volume", "dinle-konus", T("Dinle ve Konuş", "Listen & Speak"), T("Sesli öğretmen, podcast, dil pratiği ve sözlü prova", "Voice teacher, podcasts, language practice and oral rehearsal")],
     ["note", "dokumanlar", T("Dokümanlar", "Documents"), T("Tek belge düzenleyici: notlar, dosyadan çalışma, deney raporu ve ortak belge", "Unified editor, notes, study packs, experiment reports and shared documents")],
     ["book", "konular", T("Konu anlatımları", "Lessons"), T("9–12. sınıf konu anlatımları ve yerel ders içeriği", "Grades 9–12 lessons and locally available content")],
     ["map", "harita", T("Öğrenme haritası", "Learning map"), T("Kazanımların renkli durumu ve günlük görev", "Mastery of every outcome and a daily plan")],

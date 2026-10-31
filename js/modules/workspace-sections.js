@@ -3,6 +3,12 @@
   const W=App.workspaceNavigation, F=App.favorites, esc=App.utils.esc;
   const T=(tr,en)=>W.text([tr,en]);
   let observer=null;
+  const audioDescriptions={
+    sesli:['Konuşarak ders sorusu sor ve sesli yanıt al. Mikrofon ve uygun AI/ses hizmeti gerekir.','Ask subject questions aloud and hear replies. Requires microphone and suitable AI/speech service.'],
+    podcast:['Bir konuyu dinlenebilir tekrar içeriğine dönüştür. Yeni içerik üretimi için uygun sağlayıcı gerekir.','Turn a topic into audio revision. New generation requires a suitable provider.'],
+    konusma:['İngilizce konuşma ve Almanca kelime, gramer, diyalog çalış. Metinle de katılabilirsin.','Practise English conversation and German vocabulary, grammar and dialogues. Text input is available.'],
+    'sozlu-prova':['Kaynağından sorular hazırla, sözlü veya yazılı yanıtını ölçütlerle değerlendir. Puan resmî not değildir.','Prepare source-based questions and assess spoken or typed answers. Scores are not official grades.']
+  };
   function tabs(section,active) {
     return '<nav class="workspace-tabs no-print" aria-label="'+esc(W.text(section.title))+'"><a class="btn" href="#/'+section.id+'"'+(active===section.id?' aria-current="page"':'')+'>'+T('Genel görünüm','Overview')+'</a>'+section.children.map(([route,tr,en])=>'<a class="btn" href="#/'+route+'"'+(active===route?' aria-current="page"':'')+'>'+esc(T(tr,en))+'</a>').join('')+'</nav>';
   }
@@ -21,7 +27,7 @@
   function beforeRender(){observer?.disconnect();observer=null;}
   for(const section of W.sections) App.router.register(section.id,async view=>{
     App.setTitle(W.text(section.title));
-    view.innerHTML='<div class="page workspace-overview"><h1 class="no-print">'+esc(W.text(section.title))+'</h1><p class="hint">'+esc(W.text(section.description))+'</p>'+tabs(section,section.id)+'<div class="workspace-steps no-print">'+section.children.map(([r,tr,en],i)=>'<a class="card workspace-step" href="#/'+r+'"><span class="workspace-step__number">'+(i+1)+'</span><b>'+esc(T(tr,en))+'</b><span aria-hidden="true">→</span></a>').join('')+'</div><div data-workspace-summary></div></div>';
+    view.innerHTML='<div class="page workspace-overview"><h1 class="no-print">'+esc(W.text(section.title))+'</h1><p class="hint">'+esc(W.text(section.description))+'</p>'+tabs(section,section.id)+'<div class="workspace-steps no-print">'+section.children.map(([r,tr,en],i)=>'<a class="card workspace-step" href="#/'+r+'"><span class="workspace-step__number">'+(i+1)+'</span><b>'+esc(T(tr,en))+'</b>'+(section.id==='dinle-konus'?'<p>'+esc(T(...audioDescriptions[r]))+'</p>':'')+'<span aria-hidden="true">→</span></a>').join('')+'</div><div data-workspace-summary></div></div>';
     // Overview cards are the entry on goal/world pages; progress opens its real summary directly.
     if(section.id==='gelisimim') view.querySelector('.workspace-steps').remove();
     else view.querySelector('.workspace-tabs').remove();

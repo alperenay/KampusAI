@@ -25,7 +25,7 @@
         "Konu, formül, yazılı ve dil çalış",
         "Topics, formulas, exams and languages",
       ],
-      routes: ["dokumanlar", "konular", "formuller", "yazili", "konusma", "video", "podcast"],
+      routes: ["dinle-konus", "dokumanlar", "konular", "formuller", "yazili", "konusma", "video", "podcast"],
     },
     {
       id: "practice",

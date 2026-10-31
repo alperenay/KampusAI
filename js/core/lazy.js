@@ -18,7 +18,7 @@
   const GROUPS = {
     labs: [M("sonify"), M("labs"), M("labs-fizik"), M("labs-kimya"), M("labs-biyoloji"), M("labs-ek"), M("labs3d-temel"), M("labs3d-fizik")],
     about: [M("about")],
-    games: [D("game-data"), M("games"), M("games-2"), M("games-3")],
+    games: [D("game-data"), M("games"), M("games-2"), M("games-3"), M("games-learning")],
     sinif: [M("sinif-modu")],
     duello: [M("duello")],
     vatandas: [M("vatandas")],

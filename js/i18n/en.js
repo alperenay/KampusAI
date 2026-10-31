@@ -1123,7 +1123,7 @@ App.locales.en = {
   "today.flow": "Today's flow",
   "today.reviewDue": "questions due for review today",
   "today.reviewNone": "no questions waiting for review",
-  "today.focusToday": "focus today · {streak}-day streak",
+  "today.focusToday": "focus today",
   "today.daysToYks": "days left (YKS)",
   "today.target": "TYT target {n} nets",
   "today.suggest": "Look at this topic today",

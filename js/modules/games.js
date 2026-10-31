@@ -299,27 +299,32 @@
   function catName(id) { if (id === "genel") return T("Her ders", "Every subject"); const g = C().grades.find((x) => x.subjects.some((s) => s.id === id)); const s = g && g.subjects.find((x) => x.id === id); return s ? L(s.name) : id; }
   function catIcon(id) { if (id === "genel") return "sparkle"; const g = C().grades.find((x) => x.subjects.some((s) => s.id === id)); const s = g && g.subjects.find((x) => x.id === id); return (s && s.icon) || "game"; }
 
+  const GOALS=[['recall','Hatırla ve eşleştir','Recall & match'],['calculate','Hesapla ve tahmin et','Calculate & estimate'],['model','Modelleri ve ilişkileri yorumla','Interpret models & relationships'],['evidence','Sırala ve kanıtı değerlendir','Sequence & evaluate evidence']];
+  const GOAL_IDS={dy:'recall',eslestir:'recall',kelime:'recall',periyodik:'recall',islem:'calculate',birim:'calculate',sayidogrusu:'calculate',oran:'calculate',gosterim:'calculate',grafik:'model',hedef:'model',denklem:'model',phoyun:'model',tarih:'evidence',sirala:'evidence',kanit:'evidence'};
+  function goalOf(id){return GOAL_IDS[id]||'recall';}
   function renderHub(view) {
     App.setTitle(T("Oyunlar", "Games"));
     const f = App.prefs.get("gameCat", "all");
+    let goal=App.prefs.get("gameGoal","all");if(!GOALS.some(g=>g[0]===goal))goal="all";
     const cats = CATS().map((x) => x[0]).filter((k) => ORDER.some((id) => GAMES[id].subj === k));
     view.innerHTML = '<div class="page games-hub">' +
-      '<div class="page-head"><div><h1>' + esc(T("Oyunlar", "Games")) + "</h1><p>" + esc(T("Derslerle ilgili kısa oyunlar: birkaç dakikada tekrar et, rekorunu geç. Hepsi internetsiz çalışır.", "Short subject games: review in a few minutes and beat your record. All offline.")) + "</p></div></div>" +
+      '<div class="page-head"><div><h1>' + esc(T("Oyunlar", "Games")) + "</h1><p>" + esc(T("Önce öğrenme amacını seç, sonra aynı becerinin oyun modlarından birini aç. Oyun puanı öğrenmenin kesin ölçümü değildir. Hepsi internetsiz çalışır.", "Choose a learning goal, then a game mode for that skill. Game scores are not definitive learning measures. All games work offline.")) + "</p></div></div>" +
       '<div class="lab-chips games-cats">' + ["all"].concat(cats).map((k) => '<button type="button" class="chip' + (k !== "all" && k !== "genel" ? " subj-" + k : "") + (f === k ? " is-on" : "") + '" data-cat="' + k + '">' +
         (k === "all" ? esc(T("Tümü", "All")) : App.icon(catIcon(k)) + esc(catName(k))) + "</button>").join("") + "</div>" +
-      '<div id="gList"></div></div>';
+      '<label class="field">'+esc(T('Öğrenme amacı','Learning goal'))+'<select class="select" id="gameGoal"><option value="all">'+esc(T('Tüm beceriler','All skills'))+'</option>'+GOALS.map(g=>'<option value="'+g[0]+'"'+(g[0]===goal?' selected':'')+'>'+esc(T(g[1],g[2]))+'</option>').join('')+'</select></label><div id="gList"></div></div>';
     App.hydrateIcons(view);
     const paint = (cat) => {
       App.prefs.set("gameCat", cat);
       view.querySelectorAll("[data-cat]").forEach((b) => b.classList.toggle("is-on", b.dataset.cat === cat));
-      const groups = cats.filter((k) => cat === "all" || k === cat);
-      view.querySelector("#gList").innerHTML = groups.map((k) => '<section class="lab-group"><h2 class="lab-subj' + (k !== "genel" ? " subj-" + k : "") + '"><span class="subj-ico subj-ico--sm">' + App.icon(catIcon(k)) + "</span>" + esc(catName(k)) + '</h2><div class="game-grid">' +
-        ORDER.filter((id) => GAMES[id].subj === k).map((id) => { const g = GAMES[id], b = best(id);
+      const groups = GOALS.map(g=>g[0]).filter(k=>(goal==="all"||goal===k)&&ORDER.some(id=>goalOf(id)===k&&(cat==="all"||GAMES[id].subj===cat)));
+      view.querySelector("#gList").innerHTML = groups.map((k) => '<section class="lab-group"><h2 class="lab-subj' + (k !== "genel" ? " subj-" + k : "") + '"><span class="subj-ico subj-ico--sm">' + App.icon("game") + "</span>" + esc(T(...GOALS.find(g=>g[0]===k).slice(1))) + '</h2><p class="hint">'+esc(T("Aynı beceri, farklı oyun modları. Eski kayıt ve rekorların korunur.","One skill, different game modes. Existing records and best scores are preserved."))+'</p><div class="game-grid">' +
+        ORDER.filter((id) => goalOf(id) === k && (cat==="all"||GAMES[id].subj===cat)).map((id) => { const g = GAMES[id], b = best(id);
           return '<a class="game-card subj-' + g.subj + '" href="#/oyunlar/' + id + '"><span class="subj-ico">' + App.icon(g.icon) + '</span><span class="game-card__body"><b>' + esc(g.title()) + "</b><span>" + esc(g.desc()) + "</span></span>" +
             '<span class="game-card__foot">' + (b ? App.icon("star") + esc(T("Rekor ", "Best ")) + b : esc(T("Henüz oynanmadı", "Not played yet"))) + '<span class="game-card__go">' + App.icon("play") + esc(T("Oyna", "Play")) + "</span></span></a>"; }).join("") + "</div></section>").join("");
       App.hydrateIcons(view.querySelector("#gList"));
     };
     view.querySelector(".games-cats").addEventListener("click", (e) => { const b = e.target.closest("[data-cat]"); if (b) paint(b.dataset.cat); });
+    view.querySelector("#gameGoal").onchange=e=>{goal=e.target.value;App.prefs.set("gameGoal",goal);paint(App.prefs.get("gameCat","all"));};
     paint(cats.includes(f) || f === "all" ? f : "all");
   }
 
@@ -329,5 +334,5 @@
   }
   // "genel" kategorisi için renk sınıfı yok: vurgu rengini kullan
   App.router.register("oyunlar", render);
-  App.games = { add, GAMES, ORDER, util: { rnd, shuffle, pick, inline, shell, endScreen, countdown, startScreen, best, saveBest, alive, T } };
+  App.games = { add, GAMES, ORDER, GOALS, goalOf, util: { rnd, shuffle, pick, inline, shell, endScreen, countdown, startScreen, best, saveBest, alive, T } };
 })();

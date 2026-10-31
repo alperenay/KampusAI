@@ -18,6 +18,20 @@
   const fmt = (n, d) => (n == null || isNaN(n) ? "–" : Number(n).toLocaleString(App.i18n.locale, { maximumFractionDigits: d == null ? 1 : d }));
   const inRange = (iso, from, to) => { const x = Date.parse(iso); return !isNaN(x) && x >= from && x < to; };
 
+  function delayedReview(quizzes) {
+    const groups=new Map();
+    for(const q of Array.isArray(quizzes)?quizzes:[]) {
+      if(!q||typeof q.key!=='string'||!Number.isFinite(Date.parse(q.date))||!Number.isFinite(q.total)||q.total<=0||!Number.isFinite(q.correct)||q.correct<0||q.correct>q.total)continue;
+      if(!groups.has(q.key))groups.set(q.key,[]);groups.get(q.key).push(q);
+    }
+    let correct=0,total=0,topics=0;
+    for(const list of groups.values()) {
+      list.sort((a,b)=>Date.parse(a.date)-Date.parse(b.date));const last=list[list.length-1];
+      if(list.length<2||Date.parse(last.date)-Date.parse(list[0].date)<7*DAY)continue;
+      correct+=last.correct;total+=last.total;topics++;
+    }
+    return {topics,correct,total,percent:total?100*correct/total:null};
+  }
   async function collect() {
     const get = (s) => App.db.getAll(s).catch(() => []);
     const [quizzes, exams, sessions, mistakes, explains] = await Promise.all(["quizzes", "exams", "sessions", "mistakes", "explains"].map(get));
@@ -80,6 +94,7 @@
     const tyt = netTrend(D, "TYT"), ayt = netTrend(D, "AYT");
     const next = focusNext(D);
     let fading = 0, strong = 0; D.M.forEach((m) => { if (m.parts && m.parts.fading) fading++; if (m.status === "strong") strong++; });
+    const delayed=delayedReview(D.quizzes);
     const streak = D.st ? D.st.streak.current : 0;
     const rangeTxt = new Date(from).toLocaleDateString(App.i18n.locale, { day: "numeric", month: "long" }) + " – " +
       new Date(to - 1).toLocaleDateString(App.i18n.locale, { day: "numeric", month: "long", year: "numeric" });
@@ -104,12 +119,12 @@
           "</div></div>" +
         '<section class="card rep-summary"><p>' + esc(summary.join(" ")) + "</p></section>" +
         '<div class="rep-tiles">' +
+          tile("target", W.avg == null ? "–" : "%" + fmt(W.avg, 0), T("test başarısı", "quiz score"), delta(W.avg, P.avg, "", 0)) +
+          tile("refresh", delayed.percent == null ? "–" : "%"+fmt(delayed.percent,0), T("7+ gün sonra tekrar başarısı", "Review score after 7+ days"), "") +
           tile("calendar", W.studyDays + "/7", T("çalışılan gün", "study days"), delta(W.studyDays, P.studyDays, "", 0)) +
           tile("timer", fmt(W.focus / 60, 1) + T(" sa", " h"), T("odak süresi", "focus time"), delta(W.focus / 60, P.focus / 60, T(" sa", " h"), 1)) +
           tile("quiz", String(W.quizzes), T("konu testi", "quizzes"), delta(W.quizzes, P.quizzes, "", 0)) +
-          tile("target", W.avg == null ? "–" : "%" + fmt(W.avg, 0), T("test başarısı", "quiz score"), delta(W.avg, P.avg, "", 0)) +
           tile("checkCircle", String(W.strong), T("güçlenen kazanım", "outcomes strengthened"), delta(W.strong, P.strong, "", 0)) +
-          tile("flag", String(streak), T("günlük seri", "day streak"), "") +
         "</div>" +
         '<div class="rep-cols">' +
           '<section class="card"><div class="card__title">' + App.icon("chart") + esc(T("Denemeler", "Practice exams")) + "</div>" +
@@ -123,12 +138,20 @@
             esc(App.data.curriculum.gradeName(x.it.grade) + " · " + L(x.it.subject.name) + " · " + (x.m.parts && x.m.parts.fading ? T("unutulmaya başladı", "fading") : T("zayıf", "weak") + " (" + x.m.score + ")")) + "</small></li>").join("") + "</ol>"
             : '<p class="hint">' + esc(T("Zayıf ya da unutulan konu yok. Yeni konulara geçebilirsin.", "No weak or fading topics.")) + "</p>") +
         "</section>" +
+        '<p class="hint">'+esc(delayed.topics ? T(delayed.topics+' konuda en az 7 gün arayla alınan son test sonucu. Soru ve zorluk değişiklikleri sonucu etkiler; kalıcılığın kesin ölçümü değildir.', 'Latest quiz results on '+delayed.topics+' topics retested after at least 7 days. Questions and difficulty may differ; this is not a definitive retention measure.') : T('Gecikmeli tekrar göstergesi için aynı konudan en az 7 gün arayla iki test kaydı gerekir.', 'The delayed-review indicator needs two quizzes on the same topic at least 7 days apart.'))+'</p>'+
+        '<details class="card rep-motivation"><summary>'+esc(T('Motivasyon: XP, rozet ve çalışma serisi', 'Motivation: XP, badges and study streak'))+'</summary><p>'+esc(T('Bunlar katılım göstergeleridir; öğrenme başarısını veya kalıcılığı puanlamaz.', 'These indicate participation, not learning accuracy or retention.'))+'</p><p>'+esc(T('Çalışma serisi: ', 'Study streak: '))+streak+' '+esc(T('gün','days'))+'</p><p data-report-xp></p><p>'+esc(T('Kazanılan rozetler: ', 'Earned badges: '))+esc((D.st?.list||[]).filter(b=>b.earned).map(b=>b.name).join(', ')||T('Henüz yok','None yet'))+'</p><a class="btn" href="#/yolculuk">'+esc(T('YKS Yolculuğu ve XP ayrıntısı', 'YKS Journey and XP details'))+'</a></details>'+
         '<p class="hint rep-foot">' + esc(T("KampüsAI haftalık raporu · veriler yalnızca bu cihazdan", "KampüsAI weekly report · data from this device only")) + "</p>" +
       "</div>";
     App.hydrateIcons(view);
 
     const root = view.firstElementChild;
     root.querySelector("#repPrint").addEventListener("click", () => window.print());
+    const motivation=view.querySelector('.rep-motivation');let xpLoading=false;
+    motivation.addEventListener('toggle',async()=>{
+      if(!motivation.open||xpLoading)return;xpLoading=true;
+      try {await App.lazy.load('yolculuk');const data=await App.yolculuk.collect();if(motivation.isConnected)motivation.querySelector('[data-report-xp]').textContent=App.yolculuk.xpOf(data).total+' XP';}
+      catch(e){xpLoading=false;if(motivation.isConnected)motivation.querySelector('[data-report-xp]').textContent=T('XP ayrıntısı açılamadı. Yeniden açarak deneyebilirsin.','XP details could not load. Close and reopen to retry.');}
+    });
     root.querySelector("#repShare").addEventListener("click", async () => {
       const text = T("KampüsAI haftalık rapor (", "KampüsAI weekly report (") + rangeTxt + ")\n" + summary.join(" ") +
         (tyt ? "\nTYT: " + fmt(tyt.net, 2) + " net" : "") + (ayt ? "\nAYT: " + fmt(ayt.net, 2) + " net" : "") +
@@ -142,5 +165,5 @@
   }
 
   App.router.register("rapor", render);
-  App.report = { render, weekStats };
+  App.report = { render, weekStats, delayedReview };
 })();

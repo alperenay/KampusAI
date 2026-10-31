@@ -113,7 +113,7 @@
         '<div class="tday-grid">' +
           '<div class="tday-main"><div id="todayStudy"></div>' + nowCard + flow + "</div>" +
           '<div class="tday-side"><div class="tday-stats">' + review + focusStat + goalStat + "</div>" +
-            '<section class="card tday-card" id="tdayBadges" hidden></section>' + errCard + "</div>" +
+            errCard + "</div>" +
         "</div>" +
       "</div>";
 
@@ -131,7 +131,7 @@
     view.addEventListener("click", onClick);
     // Öneri ve rozetler görünüm yaşam döngüsüne bağlı yüklenir.
     const stopStudy = App.study.mount(view.querySelector("#todayStudy"));
-    if (App.badges) App.badges.cardHtml().then((h) => { const b = view.querySelector("#tdayBadges"); if (b) { b.innerHTML = '<h3>' + App.icon("flag") + esc(App.i18n.lang === "en" ? "Streak & badges" : "Seri ve rozetler") + '</h3>' + h + '<a class="btn btn--sm btn--ghost" href="#/harita">' + esc(App.i18n.lang === "en" ? "Learning map" : "Öğrenme haritası") + "</a>"; b.hidden = false; App.hydrateIcons(b); } }).catch(() => {});
+
     // Her dakika güncelle (ders başladı/bitti)
     const minute = setInterval(() => { if (location.hash === "#/bugun" && !document.querySelector(".modal-backdrop")) App.router.refresh(); }, 60000);
     return () => { clearInterval(minute); stopStudy(); view.removeEventListener("click", onClick); };

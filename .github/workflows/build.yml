@@ -87,6 +87,7 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Arayüz ve çevrimdışı veri akışları
         run: |
+          node tools/learning-hubs-ui-check.mjs
           node tools/demo-about-ui-check.mjs
           node tools/security-ui-check.mjs
           npm run test:v164-ui

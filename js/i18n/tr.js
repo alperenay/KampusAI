@@ -1121,7 +1121,7 @@ App.locales.tr = {
   "today.flow": "Bugünün akışı",
   "today.reviewDue": "soru bugün tekrar zamanında",
   "today.reviewNone": "tekrar bekleyen soru yok",
-  "today.focusToday": "bugün odak · seri {streak} gün",
+  "today.focusToday": "bugün odak",
   "today.daysToYks": "gün kaldı (YKS)",
   "today.target": "TYT hedefi {n} net",
   "today.suggest": "Bugün bu konuya bak",

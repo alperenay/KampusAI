@@ -2,6 +2,10 @@
 
 ## Yayına hazırlanan güncelleme
 
+- Oyunlar öğrenme becerisine göre dört ortak gruba ayrıldı; mevcut modların adresleri ve rekorları korundu. Oran Mutfağı, Bilimsel Gösterim, pH Tahmini ve Kanıt Dedektifi eklendi; toplam 16 oyun.
+- Sesli öğretmen, podcast, dil pratiği ve sözlü prova Dinle ve Konuş altında toplandı. Mevcut sayfalar ve kayıtlar korunur; eski favoriler ortak girişe eşlenir.
+- Gelişimim'de test doğruluğu ve en az 7 gün aralıklı konu tekrarının son başarısı öne çıkarıldı. Yeterli kayıt yoksa ölçüm üretilmez; bu gösterge kesin kalıcılık ölçümü olarak sunulmaz. XP, rozet ve seri küçük, açılır motivasyon bölümünde; Bugün ekranındaki büyük rozet kartı kaldırıldı.
+
 - Hakkında ve kaynakça güncel ortak bölümler, 17 çözeltili sanal pH, AI model sürekliliği, çevrimdışı kullanım sınırları ve kurgusal demo açıklamalarıyla yenilendi. Tarihsel sürüm notları güncel kapsamdan ayrıldı.
 - Demo: gerekçe/eminlik ve ipucu içeren örnek test, Dokümanlar notu, ödev ve sanal pH geçmişi. Yeniden yükleme örnekleri günceller; gerçek kart, günlük görev, program, not ve ilerleme kayıtlarını korur. Yalnız işaretli demo kayıtları silinir; örnek başarılar gerçek rozet bildirimleri üretmez.
 - Tanıtım turuna aynı AI modeliyle devam, sanal pH ve Ekosistem adımları eklendi; toplam 51 adım. Demo/veri koruma ve tanıtım regresyonu test hattına eklendi.

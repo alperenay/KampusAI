@@ -1,5 +1,6 @@
 (function () {
   const sections = [
+    { id:'dinle-konus', title:['Dinle ve Konuş','Listen & Speak'], icon:'volume', description:['Dinleyerek tekrar et, sesli soru sor veya dil pratiği yap. Her aracın amacı ve gereksinimi aşağıda.','Revise by listening, ask aloud or practise languages. Each tool has a clear purpose below.'],children:[['sesli','Sesli öğretmen','Voice teacher'],['podcast','Konu podcast’i','Topic podcast'],['konusma','Dil ve konuşma pratiği','Language and speaking practice'],['sozlu-prova','Sözlü sınav provası','Oral exam practice']] },
     { id: 'hedefim', title: ['Hedefim ve Geleceğim', 'My Goals & Future'], icon: 'compass', description: ['İlgini keşfet, meslekleri incele, puanını değerlendir ve bölüm hedefini belirle.', 'Explore interests, careers, scores and programme goals.'], children: [['kariyer','İlgilerim','My interests'],['meslek','Meslekler','Careers'],['puan','Puanım','My score'],['tercih','Bölümler','Programmes']] },
     { id: 'gelisimim', title: ['Gelişimim','My Progress'], icon: 'chart', description: ['Haftalık özet, öğrenme haritası, eksik analizi ve karnen aynı yerde.', 'Your weekly summary, learning map, gaps and report in one place.'], children: [['rapor','Haftalık özet','Weekly summary'],['harita','Öğrenme haritam','Learning map'],['kok','Eksik analizi','Gap analysis'],['karne','Üstbiliş karnem','Metacognition report']] },
     { id: 'dunya-tarih', title: ['Dünya ve Tarih','World & History'], icon: 'globe', description: ['Dünya küresi, coğrafya atlası ve tarih zaman çizelgesini birlikte keşfet.', 'Explore the globe, geography atlas and historical timeline.'], children: [['kure','3B Dünya Küresi','3D Globe'],['atlas','Coğrafya Atlası','Geography Atlas'],['zaman','Zaman Çizelgesi','Timeline']] }
@@ -9,6 +10,7 @@
   const mode = () => App.prefs.get('workspaceView','student') === 'educator' ? 'educator' : 'student';
   const permitted = route => mode() === 'educator' || !teacherRoutes.includes(String(route).split('/')[0]);
   function menuRoute(route) {
+    if(String(route).split('/')[0]==='yolculuk')return 'gelisimim';
     if (['tarih-haritasi','ciz-calissin'].includes(String(route).split('/')[0])) return null;
     if (['ph','ekosistem'].includes(String(route).split('/')[0])) return 'bilim-lab';
     const section = sectionFor(route);
