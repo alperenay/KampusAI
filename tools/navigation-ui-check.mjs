@@ -7,13 +7,14 @@ try {
  const {page}=await h.device();
  await page.setViewportSize({width:1280,height:900});
  assert.equal(await page.locator('.home .quick, .home .home-pins, .home .study-card, [data-home-today]').count(),0);
- const missing=await page.evaluate(()=>App.hub.TOOLS.filter(x=>!document.querySelector('#sidebar a[data-route="'+x[0]+'"]')).map(x=>x[0]));
+ const missing=await page.evaluate(()=>App.hub.TOOLS.filter(x=>App.workspaceNavigation.visible(x[0])).filter(x=>!document.querySelector('#sidebar a[data-route="'+x[0]+'"]')).map(x=>x[0]));
  assert.deepEqual(missing,[], 'Every standalone tool must have a sidebar entry');
  await page.fill('#navFilter','duello');
  assert.equal(await page.locator('#sidebar a.nav__item:visible').count(),1);
  await page.click('#sidebar a[data-route="duello"]');
  await page.waitForSelector('#duJoin');
  assert.equal(await page.inputValue('#navFilter'),'');
+ await page.evaluate(()=>App.workspaceNavigation.setMode('educator'));
  await page.fill('#navFilter','arastirma');
  await page.locator('#navFilter').press('Enter');
  await page.waitForURL('**/#/arastirma');

@@ -14,6 +14,11 @@
 
   /* [rota, simge, ad (i18n anahtarı ya da [tr,en]), açıklama [tr,en], grup, arama kelimeleri] */
   const TOOLS = [
+    ["hedefim", "compass", ["Hedefim ve Geleceğim", "My Goals & Future"], ["İlgiler, meslekler, puan ve bölüm hedefleri tek akışta", "Interests, careers, scores and programme goals together"], "track", "kariyer meslek tercih puan ilgi bölüm"],
+    ["gelisimim", "chart", ["Gelişimim", "My Progress"], ["Haftalık özet, öğrenme haritası, eksik analizi ve karne", "Weekly summary, learning map, gap analysis and report"], "track", "rapor karne kök eksik öğrenme harita"],
+    ["dunya-tarih", "globe", ["Dünya ve Tarih", "World & History"], ["Dünya küresi, coğrafya atlası ve zaman çizelgesi", "Globe, geography atlas and timeline"], "explore", "küre atlas harita tarih zaman çizelgesi"],
+    ["favorilerim", "star", ["Favorilerim", "My Favourites"], ["Sayfa ve AI şablonlarını tek listede yönet", "Manage pages and AI templates in one list"], "tools", "favori sabitle yıldız şablon"],
+
     ["bilim-lab", "lightbulb", ["İleri Düzey Bilim ve Sensör Laboratuvarı", "Advanced Science & Sensor Laboratory"], ["Deney kataloğu, 7 sensör kanalı, fizik ölçümleri, sismograf ve yeni modeller tek yerde", "Experiment library, 7 sensor channels, physics measurements, seismograph and new models"], "science", "laboratuvar fizik atölyesi deney sensör sensor sismograf ivme jiroskop ışık manyetik ses rc soğuma yarı ömür polarizasyon simulation experiment"],
     ["dokumanlar", "note", ["Dokümanlar", "Documents"], ["Belge düzenle, not al, dosyalardan çalış, deney raporu ve ortak belge hazırla", "Edit documents, take notes, study files, write experiment reports and collaborate"], "study", "belge doküman metin editör not defter pdf docx özet rapor ortak"],
     ["odevler", "calendar", ["Ödev ve Teslim Takibi", "Assignments & Deadlines"], ["Ödevlerini tarih ve küçük adımlarla yönet; fotoğraftan taslak çıkar", "Manage deadlines and steps; read assignment photos"], "track", "ödev teslim tarih görev takip fotoğraf"],
@@ -75,24 +80,22 @@
   const byRoute = (r) => TOOLS.find((x) => x[0] === r);
   const norm = (s) => (App.nav && App.nav.norm ? App.nav.norm(s) : String(s).toLowerCase());
 
-  const pins = () => (App.prefs.get("pinnedTools", []) || []).filter((r) => byRoute(r));
-  const recents = () => (App.prefs.get("recentTools", []) || []).filter((r) => byRoute(r));
+  const pins = () => App.favorites.list().filter(k=>k.startsWith("tool:")).map(k=>k.slice(5)).filter(r=>byRoute(r)&&App.workspaceNavigation.permitted(r));
+  const recents = () => { const raw=App.prefs.get("recentTools",[]);return [...new Set((Array.isArray(raw)?raw:[]).map(r=>App.workspaceNavigation.menuRoute(r)))].filter(r=>r!==null&&byRoute(r)&&App.workspaceNavigation.permitted(r)); };
   function togglePin(r) {
-    let p = pins();
-    if (p.indexOf(r) >= 0) p = p.filter((x) => x !== r);
-    else { p.push(r); if (p.length > MAX_PINS) p = p.slice(-MAX_PINS); }
-    App.prefs.set("pinnedTools", p);
-    paintSidebar();
-    return p.indexOf(r) >= 0;
+    const route=App.workspaceNavigation.menuRoute(r);
+    if (route === null) return false;
+    return App.favorites.toggle("tool:"+route);
   }
 
   /* ---------------- Sol menüdeki "Sabitlenenler" ---------------- */
   function paintSidebar() {
     const box = document.getElementById("navPins"), body = document.getElementById("ng-pins");
     if (!box || !body) return;
-    const p = pins();
+    const p = App.favorites.list().map(App.favorites.item).filter(Boolean);
     box.hidden = !p.length;
-    body.innerHTML = p.map((r) => { const x = byRoute(r); return '<a class="nav__item" href="#/' + x[0] + '" data-route="' + x[0] + '"><span data-icon="' + x[1] + '"></span><span class="sidebar__label">' + esc(title(x)) + "</span></a>"; }).join("");
+    body.innerHTML = p.map(x => '<a class="nav__item" href="'+esc(x.href)+'" data-favorite-open="'+esc(x.key)+'"><span data-icon="'+esc(x.icon)+'"></span><span class="sidebar__label">'+esc(x.title)+"</span></a>").join("");
+    body.querySelectorAll('[data-favorite-open]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();App.favorites.open(a.dataset.favoriteOpen);}));
     App.hydrateIcons(body);
     body.querySelectorAll(".nav__item").forEach((a) => { a.title = a.textContent.trim(); });
     if (App.router.syncNav) App.router.syncNav();
@@ -113,7 +116,8 @@
   window.addEventListener("da:route", (e) => {
     const r = e.detail && e.detail.name;
     if (r == null || r === "araclar" || !byRoute(r) || r === "") return;
-    const list = [r].concat(recents().filter((x) => x !== r)).slice(0, MAX_RECENT);
+    const canonical=App.workspaceNavigation.menuRoute(r);if(canonical===null)return;
+    const list = [canonical].concat(recents().filter((x) => x !== canonical)).slice(0, MAX_RECENT);
     App.prefs.set("recentTools", list);
   });
 
@@ -131,11 +135,11 @@
       '<div class="page-head"><div><h1>' + esc(T("Tüm araçlar", "All tools")) + "</h1><p>" +
         esc(T("Aradığını yaz ya da gruptan seç. Yıldızla sabitlediklerin yan menünün üstünde görünür.", "Search or pick from a group. Starred tools appear at the top of the sidebar.")) + "</p></div></div>" +
       '<div class="hub-search"><span aria-hidden="true">' + App.icon("search") + '</span><input type="search" id="hubQ" autocomplete="off" placeholder="' + esc(T("Araç ara: harita, deney, paragraf…", "Search: map, lab, reading…")) + '" aria-label="' + esc(T("Araç ara", "Search tools")) + '" aria-describedby="hubCount"><span class="hint" id="hubCount" aria-live="polite"></span></div>' +
-      '<div class="hub-categories" aria-label="'+esc(T('Kategoriler','Categories'))+'">'+[['all',T('Tümü','All')],...App.toolCategories.groups.map(g=>[g.id,App.toolCategories.text(g.title)])].map(([id,label])=>'<button class="btn" data-hub-category="'+id+'" aria-pressed="'+(category===id)+'">'+esc(label)+'</button>').join('')+'</div>' +
+      '<div class="hub-categories" aria-label="'+esc(T('Kategoriler','Categories'))+'">'+[['all',T('Tümü','All')],...App.toolCategories.groups.filter(g=>g.id!=="classroom"||App.workspaceNavigation.mode()==="educator").map(g=>[g.id,App.toolCategories.text(g.title)])].map(([id,label])=>'<button class="btn" data-hub-category="'+id+'" aria-pressed="'+(category===id)+'">'+esc(label)+'</button>').join('')+'</div>' +
       (rc.length ? '<section class="hub-sec" data-sec="recent"><h2>' + esc(T("Son kullanılanlar", "Recently used")) + '</h2><div class="hub-recent">' +
         rc.map((r) => { const x = byRoute(r); return '<a href="#/' + x[0] + '">' + App.icon(x[1]) + "<span>" + esc(title(x)) + "</span></a>"; }).join("") + "</div></section>" : "") +
       Object.keys(GROUPS).map((g) => '<section class="hub-sec" data-sec="' + g + '"><h2>' + esc(T(GROUPS[g][0], GROUPS[g][1])) + '</h2><div class="hub-grid">' +
-        TOOLS.filter((x) => x[4] === g).map((x) => tile(x, p.indexOf(x[0]) >= 0)).join("") + "</div></section>").join("") +
+        TOOLS.filter((x) => x[4] === g && App.workspaceNavigation.visible(x[0])).map((x) => tile(x, p.indexOf(x[0]) >= 0)).join("") + "</div></section>").join("") +
       '<p class="hub-none" id="hubNone" hidden>' + esc(T("Eşleşen araç yok. Ctrl+K ile konu ve sohbetlerde de arayabilirsin.", "No matching tool. Use Ctrl+K to search lessons and chats too.")) + "</p>" +
       '<section class="card hub-tips"><h2>' + App.icon("info") + esc(T("Kısayollar ve erişilebilirlik", "Shortcuts & accessibility")) + "</h2><ul>" +
         "<li><kbd>Ctrl</kbd> + <kbd>K</kbd> " + esc(T("ya da", "or")) + " <kbd>/</kbd> — " + esc(T("her şeyi ara (konular, sayfalar, sohbetler)", "search everything")) + "</li>" +
@@ -171,6 +175,7 @@
 
   App.router.register("araclar", render);
   App.hub = { TOOLS, pins, recents, togglePin, paintSidebar, homeStripHtml };
+  window.addEventListener("da:favorites",paintSidebar);
   // Menü hazır olunca sabitlenenleri çiz; dil değişince yeniden
   setTimeout(paintSidebar, 0);
   if (App.i18n && App.i18n.onChange) App.i18n.onChange(paintSidebar);

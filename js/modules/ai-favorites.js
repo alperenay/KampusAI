@@ -131,32 +131,10 @@
   }
   const all = () => tools.concat(customTools());
   function pins() {
-    const p = App.prefs.get("aiFavoriteTools", ["solve", "coach", "summary"]);
-    return Array.isArray(p)
-      ? [...new Set(p)]
-          .filter((id) => all().some((t) => t.id === id))
-          .slice(0, 12)
-      : [];
+    return App.favorites.list().filter(k=>k.startsWith("ai:")).map(k=>k.slice(3));
   }
-  function toggle(id) {
-    if (!all().some((t) => t.id === id)) return false;
-    const p = pins(),
-      on = !p.includes(id);
-    if (on && p.length >= 12) {
-      App.ui?.toast(
-        T(
-          "En fazla 12 favori ekleyebilirsin.",
-          "You can pin up to 12 favourites.",
-        ),
-      );
-      return false;
-    }
-    App.prefs.set(
-      "aiFavoriteTools",
-      on ? p.concat(id) : p.filter((x) => x !== id),
-    );
-    return on;
-  }
+  function toggle(id) { return App.favorites.toggle("ai:"+id); }
+
   function saveCustom(input) {
     if (
       !input ||
@@ -202,35 +180,30 @@
       "aiCustomTools",
       customTools().filter((x) => x.id !== id),
     );
-    App.prefs.set("aiFavoriteTools", pins());
+    App.favorites.save(App.favorites.list());
     return true;
   }
   function move(id, delta) {
-    const p = pins(),
-      i = p.indexOf(id),
-      j = i + delta;
-    if (i < 0 || j < 0 || j >= p.length || ![-1, 1].includes(delta))
-      return false;
-    [p[i], p[j]] = [p[j], p[i]];
-    App.prefs.set("aiFavoriteTools", p);
-    return true;
+    return App.favorites.move("ai:"+id,delta);
   }
+
   function html() {
     return (
       '<section class="ai-favs" aria-label="' +
       esc(T("Favori araçlar", "Favourite tools")) +
       '"><h2>' +
-      T("Kendi AI çalışma alanın", "Your AI workspace") +
+      T("Favorilerim", "My Favourites") +
       '</h2><p class="hint">' +
       T(
-        "Bir başlangıç seç, metnini düzenle ve hazır olduğunda gönder. Favorilerin ve kişisel şablonların bu cihazda saklanır.",
-        "Choose a starting prompt, edit it and send when ready. Favourites and personal templates stay on this device.",
+        "Sayfaların ve AI şablonların tek listede; açmak için bir favori seç.",
+        "Your pages and AI templates in one list. Choose a favourite to open.",
       ) +
       "</p><div data-ai-favs></div></section>"
     );
   }
-  function mount(root) {
+  function mount(root, manage = false) {
     if (!root) return;
+    if (!manage) { App.workspaceSections.shortcuts(root); return; }
     let expanded = false,
       query = "",
       editingId = null;
@@ -287,10 +260,10 @@
         T("Favorileri düzenle", "Edit favourites") +
         " · " +
         p.length +
-        '/12</summary><p class="hint">' +
+        '/32</summary><p class="hint">' +
         T(
-          "Bunlar AI başlangıç metinleridir. Yan menüdeki yıldızlar uygulama sayfalarını sabitler. Oklarla favori sırasını değiştir.",
-          "These are AI prompt templates. Sidebar stars pin application pages. Use arrows to reorder favourites.",
+          "AI başlangıç metinlerini düzenle. Tüm sayfa ve şablon favorilerin yukarıdaki ortak listede yönetilir.",
+          "Edit AI starting prompts. All page and template favourites share the ordered list above.",
         ) +
         "</p><label>" +
         T("Şablon ara", "Search templates") +
@@ -400,7 +373,7 @@
         );
         return;
       }
-      if (!pins().includes(id) && pins().length < 12) toggle(id);
+      if (!pins().includes(id) && pins().length < 32) toggle(id);
       editingId = null;
       root.querySelector("form").reset();
       paint(true);
@@ -416,7 +389,7 @@
         open = !!root.querySelector("details[open]");
       if (d.aifOpen) {
         const x = all().find((t) => t.id === d.aifOpen);
-        if (x) App.modules.assistant.prepareTool(x.prompt, x.coach);
+        if (x) App.favorites.open("ai:"+x.id);
         return;
       }
       if (d.aifPin) {
@@ -456,6 +429,7 @@
   }
   App.aiFavorites = {
     tools,
+    all,
     pins,
     toggle,
     html,

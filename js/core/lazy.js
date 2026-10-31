@@ -40,7 +40,7 @@
     podcast: [M("podcast")],
     practice: [D("practice-bank"), D("practice-bank-ext"), M("practice"), M("practice-ui")],
     discovery: [M("discovery-model"), M("discovery-core"), M("onboarding"), M("discovery-vision"), M("reverse-tutor"), M("phone-physics"),
-      M("haptic-graph"), M("science-report"), M("seismograph"), M("planetarium"), M("draw-simulation"), D("history-map-data"), M("history-explorer"), M("history-map")],
+      M("haptic-graph"), M("science-report"), M("seismograph"), M("planetarium"), M("draw-simulation")],
     study: [M("study-workspace-model"), M("document-import"), M("study-workspace")]
   };
   const ROUTES = {
@@ -75,7 +75,7 @@
     "dokunsal-grafik": ["discovery"],
     gokyuzu: ["discovery"],
     "ciz-calissin": ["discovery"],
-    "tarih-haritasi": ["kure", "discovery"],
+
     odevler: ["study"],
     "sozlu-prova": ["study"],
     canli: ["study"],                            // eski adresler: çalışma alanı Araçlar'a yönlendirir

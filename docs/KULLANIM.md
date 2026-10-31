@@ -11,7 +11,12 @@
 
 Tüm özelliklere menüdeki **Tüm araçlar** sayfasından ulaşabilirsin. Sık kullandığın araçları yıldızla sabitle.
 
-Yan menünün üstündeki **Özellik ara** alanı, kapalı gruplardaki ve **Daha fazla** altındaki araçları da bulur. Enter ilk sonucu açar, Esc aramayı temizler. **Keşfet ve yarış → Bilgi Evreni / Arkadaş Düellosu / Sensör Laboratuvarı**, **Takip → Üstbiliş Karnesi** ve **Araçlar → Sınıf Modu / Gerekçe Değerlendirme / Araştırma Modu** doğrudan menüdedir. Günlük çalışma önerisi yalnız **Bugün** ekranındadır. Ana sohbet ekranındaki öneri kartı ve araç kısayolu düğmeleri kaldırılmıştır; fotoğraf yükleme sohbet kutusundan yapılır.
+Yan menüden **Hedefim ve Geleceğim** ile ilgi → meslek → puan → bölüm akışını izle. **Gelişimim**, gerçek kayıtlarından üretilen haftalık özeti, öğrenme haritanı, eksik analizini ve üstbiliş karneni bir araya getirir. **Dünya ve Tarih**, küre, atlas ve zaman çizelgesi arasında geçiş sunar. Yaşayan Tarih Haritası kaldırılmıştır.
+
+**Favorilerim** sayfa ve AI şablonlarını tek listede yönetir: ekle, kaldır, yukarı/aşağı taşı veya kişisel AI şablonunu düzenle. Eski sayfa ve AI favorilerin ilk kullanımda birleştirilir; özel şablonların korunur. Kaldırılmış tarih haritası favorisi taşınmaz.
+
+Yan menünün üstündeki **Menü görünümü** alanından **Öğretmen / Araştırmacı** seçilince sınıf, değerlendirme ve araştırma araçları görünür. Öğrenci görünümünde bu araçlar katalogda ve aramada gizlenir. Bu tercih bir kimlik doğrulama veya erişim yetkisi değildir; mevcut QR/veri akışları değişmez. Öğretmen favorileri öğrenci görünümünde gizlenir, silinmez.
+
 
 ## Bilgi Evreni
 

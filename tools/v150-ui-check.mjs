@@ -1,11 +1,12 @@
 import assert from "node:assert/strict";
 import path from "node:path";
-import { uiHarness } from "./ui-harness.mjs";
+import { uiHarness, navigate } from "./ui-harness.mjs";
 const h = await uiHarness();
 try {
   const { page } = await h.device();
   await page.waitForSelector("[data-ai-favs]");
-  await page.click(".ai-favs summary");
+  await navigate(page,"favorilerim");
+  await page.click("[data-favorites-ai] summary");
   await page.fill(".aif-editor input[name=title]", "Kendi çalışma aracım");
   await page.fill(".aif-editor textarea", "Benim için örnek üret: ");
   await page.check(".aif-editor input[name=coach]");
@@ -30,13 +31,14 @@ try {
   );
   await page.click(".aif-editor button[type=submit]");
   await page.reload();
-  await page.waitForSelector("[data-ai-favs]");
+  await page.waitForSelector("[data-favorites-ai]");
   assert.equal(
     await page.evaluate(() => App.aiFavorites.customTools()[0].tr),
     "Düzenlenmiş araç",
   );
+  await navigate(page, "");
   await page.fill("#composer textarea", "Notumu koru");
-  await page.click('[data-aif-open="' + id + '"]');
+  await page.click('[data-favorite-open="ai:' + id + '"]');
   assert.match(await page.inputValue("#composer textarea"), /Notumu koru/);
   assert.match(await page.inputValue("#composer textarea"), /Benim için/);
   await page.evaluate(() => App.router.go("araclar/science"));
@@ -80,7 +82,8 @@ try {
   }
   await page.evaluate(() => App.router.go(""));
   await page.waitForSelector("[data-ai-favs]");
-  await page.click(".ai-favs summary");
+  await navigate(page,"favorilerim");
+  await page.click("[data-favorites-ai] summary");
   for (const width of [320, 768, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     assert.equal(

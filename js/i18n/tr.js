@@ -683,7 +683,7 @@ App.locales.tr = {
   "nav.journey": "YKS Yolculuğu",
   "nav.career": "Kariyer Keşfi",
   "nav.group.practice": "Pratik",
-  "nav.group.pins": "Sabitlenenler",
+  "nav.group.pins": "Favorilerim",
   "search.title": "Ara (Ctrl+K)",
   "search.placeholder": "Konu, sayfa ya da sohbet ara",
   "search.input": "Ne arıyorsun?",

@@ -28,9 +28,6 @@ for (const f of [
   "js/modules/science-report.js",
   "js/modules/planetarium.js",
   "js/modules/draw-simulation.js",
-  "js/data/history-map-data.js",
-  "js/modules/history-explorer.js",
-  "js/modules/history-map.js",
 ])
   vm.runInContext(fs.readFileSync(f, "utf8"), c, { filename: f });
 const M = App.discoveryModel,
@@ -204,11 +201,8 @@ close(packet.samples[0].y, 3);
 assert.throws(() =>
   App.scienceReport.parsePacket({ source: "fake", samples: [] }),
 );
-assert.equal(App.historyMap.snapshot(1500).year, 1453);
-assert.equal(App.historyMap.snapshot(1923).year, 1923);
-assert.equal(App.data.discovery.modules.length, 8);
-for (const h of App.data.discovery.history)
-  assert.match(h.source, /^https:\/\//);
+assert.equal(App.data.discovery.modules.length, 7);
+assert.ok(!App.data.discovery.modules.some(m=>m[0]==="tarih-haritasi"));
 for (const f of App.data.discovery.faults.features)
   assert.equal(f.geometry.type, "LineString");
 console.log(

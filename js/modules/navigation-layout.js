@@ -36,7 +36,7 @@
         ).map((t) => t[0]),
       ];
       const list = [...new Set(routes)].filter(
-        (r) => !top.has(r) && anchors.has(r),
+        (r) => !top.has(r) && anchors.has(r) && (!App.workspaceNavigation || App.workspaceNavigation.menuRoute(r) === r),
       );
       if (!list.length) continue;
       const el = document.createElement("div");
@@ -63,12 +63,16 @@
       const body = el.querySelector(".nav-group__body");
       list.forEach((r, i) => {
         const a = anchors.get(r);
+        const section = App.workspaceNavigation?.sectionFor(r);
+        if (section && section.id === r) a.dataset.routeAlso = section.children.map(c=>c[0]).join(",");
         a.removeAttribute("data-more");
         if (i >= 3) a.dataset.more = "";
         body.appendChild(a);
       });
       nav.appendChild(el);
     }
+    for (const [r,a] of anchors) if (App.workspaceNavigation && App.workspaceNavigation.menuRoute(r) !== r) a.remove();
+    App.workspaceSections?.installModePicker(nav);
     const guide = document.createElement("p");
     guide.className = "nav-orientation sidebar__label-block";
     guide.dataset.navOrientation = "";

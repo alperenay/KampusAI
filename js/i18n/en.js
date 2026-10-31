@@ -685,7 +685,7 @@ App.locales.en = {
   "nav.journey": "YKS Journey",
   "nav.career": "Career Explorer",
   "nav.group.practice": "Practice",
-  "nav.group.pins": "Pinned",
+  "nav.group.pins": "My Favourites",
   "search.title": "Search (Ctrl+K)",
   "search.placeholder": "Search topics, pages, chats",
   "search.input": "What are you looking for?",

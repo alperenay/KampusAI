@@ -26,7 +26,7 @@
     if (save) { const s = App.prefs.get("navOpen", {}); s[el.dataset.group || el.dataset.side] = open; App.prefs.set("navOpen", s); }
   }
   function syncGroups() {
-    const st = openState(), r = route();
+    const st = openState(), r = App.workspaceNavigation?.menuRoute(route()) || route();
     document.querySelectorAll(".nav-group").forEach((g) => {
       const hasActive = !!g.querySelector('.nav__item[data-route="' + r + '"]');
       setGroup(g, st[g.dataset.group] || hasActive, false);
@@ -45,7 +45,7 @@
       const sec = b.closest(".side-section"); setGroup(sec, sec.classList.contains("is-closed"), true);
     }));
     window.addEventListener("hashchange", () => {
-      const r = route();
+      const r = App.workspaceNavigation?.menuRoute(route()) || route();
       document.querySelectorAll(".nav-group.is-closed").forEach((g) => { if (g.querySelector('.nav__item[data-route="' + r + '"]')) setGroup(g, true, false); });
       closeQuick();
       // Telefonda menüden bir sayfa seçilince menü kapanır
@@ -114,7 +114,7 @@
         const category=App.toolCategories?.groupFor(a.dataset.route);
         const text = norm(a.textContent + " " + (tool ? tool[5] : "")+" "+(category?App.toolCategories.text(category.title):""));
         if(words.length&&a.closest("#navPins")){a.hidden=true;return;}
-        a.hidden = words.length > 0 && !words.every((w) => text.includes(w));
+        a.hidden = !App.workspaceNavigation.permitted(a.dataset.route || "") || (words.length > 0 && !words.every((w) => text.includes(w)));
         if (!a.hidden) count++;
       });
       nav.querySelectorAll(".nav-group").forEach((g) => {
@@ -140,7 +140,7 @@
   }
 
   function pages() {
-    return Array.from(document.querySelectorAll("#sidebar .nav__item")).filter((a) => !a.closest("#navPins")).map((a) => {
+    return Array.from(document.querySelectorAll("#sidebar .nav__item")).filter((a) => !a.closest("#navPins") && App.workspaceNavigation.permitted(a.dataset.route || "")).map((a) => {
       const lab = a.querySelector(".sidebar__label"), ic = a.querySelector("[data-icon]");
       const grp = a.closest(".nav-group");
       return { kind: "page", extra: App.hub?.TOOLS.find(t=>t[0]===a.dataset.route)?.[5] || "", title: lab ? lab.textContent.trim() : "", sub: grp ? grp.querySelector(".nav-group__head .sidebar__label").textContent : "", icon: ic ? ic.dataset.icon : "chevron", href: a.getAttribute("href") };

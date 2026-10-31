@@ -1,5 +1,14 @@
 # Sürüm notları
 
+## 1.65.0 — Ortak çalışma alanları
+
+- İlgi, meslek, puan ve bölüm araçları Hedefim ve Geleceğim altında.
+- Haftalık özet, öğrenme haritası, kök eksik analizi ve karne Gelişimim altında; mobil Gelişim düğmesi ortak özeti açar.
+- Dünya Küresi, Coğrafya Atlası ve Zaman Çizelgesi Dünya ve Tarih girişinden ve birbirlerine geçişlerle kullanılabilir.
+- Sayfa ve AI şablonu favorileri tek listede; eski sabitlemeler taşınır, kişisel şablonlar korunur.
+- Öğrenci menüsünde öğretmen araçları gizli; Menü görünümü seçicisinden Öğretmen/Araştırmacı açılabilir. Yetkilendirme sistemi değildir.
+- Yaşayan Tarih Haritası ve ona özel veri/kod kaldırıldı; eski adres ortak Dünya ve Tarih girişine yönlenir.
+
 ## 1.64.0 — Akıcı AI ve kaynaklı keşif
 
 - Sesli öğretmene konuşmayla eşzamanlı çözüm tahtası; kişisel AI çalışma alanında daha sakin kartlar ve tipografi.

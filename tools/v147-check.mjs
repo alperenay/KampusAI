@@ -10,11 +10,12 @@ const prefs = new Map(),
       set: (k, v) => prefs.set(k, v),
     },
   };
-const ctx = vm.createContext({ App, console, Date, Map, Set, Number, Math });
+const ctx = vm.createContext({ App, console, Date, Map, Set, Number, Math, window:{dispatchEvent(){}}, CustomEvent:class{} });
 for (const f of [
   "js/data/languages.js",
   "js/data/languages-ext.js",
   "js/modules/language-practice.js",
+  "js/core/workspace-navigation.js",
   "js/modules/ai-favorites.js",
   "js/modules/sensor-workbench.js",
   "js/modules/module-safety.js",
@@ -44,7 +45,7 @@ assert.ok(!F.pins().includes("coach"));
 F.toggle("coach");
 assert.ok(F.pins().includes("coach"));
 assert.equal(F.toggle("unknown"), false);
-prefs.set("aiFavoriteTools", "broken");
+prefs.set("favoritesV2", []);
 assert.equal(F.pins().length, 0);
 const S = App.sensorWorkbench,
   readings = [

@@ -10,8 +10,8 @@ const p = new Map(),
     },
     i18n: { lang: "tr" },
   };
-const c = vm.createContext({ App, Date, Math, Set });
-for (const f of ["js/data/tool-categories.js", "js/modules/ai-favorites.js"])
+const c = vm.createContext({ App, Date, Math, Set, window:{dispatchEvent(){}}, CustomEvent:class{} });
+for (const f of ["js/data/tool-categories.js", "js/core/workspace-navigation.js", "js/modules/ai-favorites.js"])
   vm.runInContext(fs.readFileSync(f, "utf8"), c);
 assert.equal(App.toolCategories.groups.length, 8);
 const routes = App.toolCategories.groups.flatMap((g) => g.routes);
@@ -47,14 +47,26 @@ p.set("aiCustomTools", [
   { id: "custom:ok", tr: "dupe", prompt: "b" },
 ]);
 assert.equal(F.customTools().length, 1);
-p.set(
-  "aiFavoriteTools",
-  F.tools.map((x) => x.id),
-);
-assert.equal(F.toggle("custom:ok"), false);
-assert.equal(F.pins().length, 12);
-p.set("aiFavoriteTools", "bad");
-assert.equal(F.pins().length, 0);
+p.set("favoritesV2", F.tools.map(x=>"ai:"+x.id));
+assert.equal(F.toggle("custom:ok"), true);
+assert.equal(F.pins().length,13);
+p.set("favoritesV2", [null, "ai:unknown", "ai:solve", "ai:solve"]);
+assert.deepEqual(Array.from(F.pins()),["solve"]);
+// Shared list validates all persisted keys and enforces one combined limit.
+App.hub={TOOLS:Array.from({length:40},(_,i)=>['page'+i,'note',['Page '+i,'Page '+i]])};
+p.set('favoritesV2',[]);
+for(let i=0;i<32;i++)assert.equal(App.favorites.toggle('tool:page'+i),true);
+assert.equal(App.favorites.toggle('tool:page32'),false);
+assert.equal(App.favorites.toggle('ai:solve'),false);
+assert.equal(App.favorites.list().length,32);
+assert.equal(App.favorites.toggle('tool:page0'),false);
+assert.equal(App.favorites.toggle('ai:solve'),true);
+p.set('favoritesV2',[null,{},'tool:missing','ai:solve','ai:solve']);
+assert.deepEqual(Array.from(App.favorites.list()),['ai:solve']);
+assert.equal(App.workspaceNavigation.visible('kariyer'),false);
+assert.equal(App.workspaceNavigation.visible('hedefim'),true);
+assert.equal(App.workspaceNavigation.permitted('arastirma'),false);
+App.workspaceNavigation.setMode('educator');assert.equal(App.workspaceNavigation.permitted('arastirma'),true);
 console.log(
   "v150: taxonomy, migration, personal templates, validation, limits and ordering passed.",
 );

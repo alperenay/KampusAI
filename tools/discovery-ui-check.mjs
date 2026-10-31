@@ -168,17 +168,6 @@ try {
   );
   await page.click("#dsRun");
   assert.match(await page.locator("#dsResult").innerText(), /5.000 V/);
-  await go("tarih-haritasi");
-  await page.locator("#hmTime").fill("1500");
-  await page.locator("#hmTime").dispatchEvent("input");
-  await page.waitForFunction(() => document.querySelector("#hmDossier").textContent.includes("1453"));
-  assert.match(await page.locator("#hmDossier").innerText(), /1453/);
-  await page.click("#hmNext");
-  assert.equal(await page.locator("#hmYear").innerText(), "1517");
-  await page.locator("#hmRegion").focus();
-  await page.keyboard.press("Enter");
-  await page.waitForSelector('.modal-backdrop [role="dialog"]');
-  await page.keyboard.press("Escape");
   await go("bana-ogret");
   await page.fill("#rtSearch", "kuvvet");
   await page.click("#rtAdd");

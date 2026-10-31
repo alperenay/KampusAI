@@ -22,14 +22,8 @@ await navigate(page,'bilim-lab/vatandas');await page.waitForSelector('.science-l
 await navigate(page,'bilim-lab/gokyuzu');await page.waitForSelector('#skyStop');
 assert.equal(await page.locator('#sidebar [data-route="canlanan-kitap"]').count(),0);
 await navigate(page,'gokyuzu');assert.equal(await page.evaluate(()=>App.router.current().path),'bilim-lab/gokyuzu');
-await navigate(page,'tarih-haritasi');await page.waitForSelector('#hmSearch');await page.check('#hmAll');await page.fill('#hmSearch','Lozan');assert.ok(await page.locator('#hmEvents [data-hm-event]').count()>0);await page.locator('#hmEvents [data-hm-event]').first().click();await page.click('#hmBookmark');assert.equal(await page.locator('#hmBookmark').getAttribute('aria-pressed'),'true');
-await page.selectOption('#hmCompare','1920');assert.match(await page.locator('#hmComparison').innerText(),/1920/);
-const download=page.waitForEvent('download');await page.click('#hmExport');const file=await download;const data=JSON.parse(fs.readFileSync(await file.path(),'utf8'));assert.equal(data.schemaVersion,1);assert.equal(data.comparison.year,1920);assert.ok(data.bookmarks.length);assert.ok(data.limitation);
-await page.fill('#hmSearch','hiç-olmayan-olay');assert.match(await page.locator('#hmEvents').innerText(),/Eşleşme yok/);await page.fill('#hmSearch','');
-await page.click('#hmZoomIn');const before=await page.locator('#hmMap').getAttribute('viewBox');await page.locator('#hmMap').focus();await page.keyboard.press('ArrowRight');assert.notEqual(await page.locator('#hmMap').getAttribute('viewBox'),before);
-await navigate(page,'bilim-lab');await navigate(page,'tarih-haritasi');await page.waitForSelector('#hmSearch');await page.check('#hmAll');await page.fill('#hmSearch','Lozan');await page.locator('#hmEvents [data-hm-event]').first().click();assert.equal(await page.locator('#hmBookmark').getAttribute('aria-pressed'),'true','bookmark survives route');
-for(const width of [320,768,1440]){await page.setViewportSize({width,height:900});for(const r of ['bilim-lab','bilim-lab/gokyuzu','bilim-lab/vatandas','tarih-haritasi','formuller']){await navigate(page,r);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,r+' '+width);}}
+for(const width of [320,768,1440]){await page.setViewportSize({width,height:900});for(const r of ['bilim-lab','bilim-lab/gokyuzu','bilim-lab/vatandas','dunya-tarih','formuller']){await navigate(page,r);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,r+' '+width);}}
 const key=await page.evaluate(()=>{const s=App.data.curriculum.findSubject('12','ingilizce');const u=s.units.find(x=>x.id==='t10');return 'konular/12/ingilizce/t10/'+u.outcomes[0].id;});await navigate(page,key);assert.match(await page.locator('#view').innerText(),/Manners/);
-await navigate(page,'tarih-haritasi');await page.screenshot({path:path.join(h.qa,'v164-history.png'),fullPage:true});assert.deepEqual(h.errors,[]);
-console.log(h.engineName+': workspace themes, real board rendering, unified lab/legacy aliases, history search/compare/pan/export/persistence, added lesson and responsive views passed.');
+await navigate(page,'dunya-tarih');await page.screenshot({path:path.join(h.qa,'v164-history.png'),fullPage:true});assert.deepEqual(h.errors,[]);
+console.log(h.engineName+': workspace themes, real board rendering, unified lab/legacy aliases, added lesson and responsive views passed.');
 }finally{await h.close();}

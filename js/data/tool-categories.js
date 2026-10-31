@@ -80,7 +80,7 @@
         "atlas",
         "modeller",
         "zaman",
-        "tarih-haritasi",
+        "dunya-tarih",
         "evren",
         "kesif",
       ],
@@ -94,6 +94,8 @@
         "Plan your day and follow your goals",
       ],
       routes: [
+        "hedefim",
+        "gelisimim",
         "odevler",
         "bugun",
         "program",
@@ -127,7 +129,7 @@
         "Rehber, hesap makinesi ve kaynakça",
         "Guide, calculator and references",
       ],
-      routes: ["rehber", "hesap", "hakkinda"],
+      routes: ["favorilerim", "rehber", "hesap", "hakkinda"],
     },
   ];
   function groupFor(route) {

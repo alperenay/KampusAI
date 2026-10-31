@@ -63,11 +63,8 @@ Enlem/boylam ve **UTC** zaman gir → hesapla. Konum izni isteğe bağlıdır. A
 AI sembol/değer/bağlantı önerir; okunmayan alanlar null kalır ve öğrenci tarafından tamamlanır. Yerel kontur analizi tek başına sembolleri veya devre topolojisini tanıdığını iddia etmez.
 
 
-## 8. Yaşayan Tarih Haritası
-
-1071–1923 sürgüsünü değiştir → en son kaynaklı dönem kesitini gör → bölgeye dokun veya Enter ile dosyayı aç. 16 kaynaklı dönem kesiti, 18 şehir referansı, ticaret ağı temsilleri ve döneme bağlı sefer yönelimleri vardır. Olay araması, tür/yıl filtresi, karşılaştırma, yerel çalışma listesi ve JSON dışa aktarma için [1.64 kılavuzunu](SURUM-1.64.md) kullan. Kesitler arasında tarih dışı sınır interpolasyonu yapılmaz; her yıl için resmî tarih atlası doğruluğu iddia edilmez. Haritadaki şekiller egemenlik sınırı veya modern hak iddiası değildir.
-
-Bilgi kaynakları her dönem/rota kartının yanında yer alır: TDV İslâm Ansiklopedisi (Malazgirt, Osmanlılar, İstanbul’un fethi, Viyana, Lozan) ve [UNESCO İpek Yolları](https://www.unesco.org/en/silkroads). Metinler kısa özgün özetlerdir; harita görselleri veya telifli atlas geometrileri alınmadı. Mevcut ayrıntılı tarih çizelgesine bağlantı korunur.
+## Dünya ve Tarih
+Yaşayan Tarih Haritası kaldırıldı. Dünya Küresi, Coğrafya Atlası ve Zaman Çizelgesi, Dünya ve Tarih ortak girişinden kullanılabilir.
 
 ## Geliştirici doğrulaması
 

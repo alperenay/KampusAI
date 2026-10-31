@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.64.0
+  APP_VERSION: 1.65.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -125,6 +125,7 @@ jobs:
           npm run test:science-lab-ui
           npm run test:maps-models-ui
           npm run test:timeline-ui
+          node tools/navigation-consolidation-ui-check.mjs
           npm run test:desktop-workspace-ui
           node tools/storage-ui-check.mjs
           node tools/lifecycle-ui-check.mjs
@@ -580,13 +581,13 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          Sesli öğretmenin konuşmayla eşzamanlı çözüm tahtası; daha sade kişisel AI çalışma alanı.
-          Ekran modülleri ilk kullanımda yüklenir. AI metin akışı birleştirilerek yeniden çizim yükü azaltıldı; iptal ve son metin korundu.
-          Vatandaş Bilimi ve Gökyüzü tek Bilim ve Sensör Laboratuvarı altında. Canlanan Ders Kitabı kaldırıldı.
-          Yaşayan Tarih Haritası: 16 kaynaklı dönem kesiti, 18 şehir, olay filtreleri, karşılaştırma, kaydetme ve dışa aktarma.
-          47 özgün ek öğrenme hedefi (35’i 12. sınıf); 855 konu, 221 formül. Bunlar yeni resmî MEB kazanım kodları değildir; kapsam ve kaynaklar içerikte belirtilir.
-          Kayıtlı ders HTML’i için izin listeli süzgeç ve içerik güvenlik politikası eklendi.
-          [Sürüm kılavuzu](https://github.com/$OWNER/$REPO/blob/main/docs/SURUM-1.64.md).
+          Hedefim ve Geleceğim: ilgi, meslek, puan ve bölüm araçları ortak akışta.
+          Gelişimim: gerçek haftalık özet, öğrenme haritası, eksik analizi ve üstbiliş karnesi.
+          Dünya ve Tarih: küre, atlas ve zaman çizelgesi arasında ortak gezinme.
+          Sayfa ve AI şablonları tek Favorilerim listesinde; eski favoriler ve kişisel şablonlar korunur.
+          Öğretmen/Araştırmacı görünümü seçilince sınıf, değerlendirme ve araştırma araçları görünür. Bu tercih kimlik doğrulama değildir.
+          Yaşayan Tarih Haritası kaldırıldı; eski adres Dünya ve Tarih girişine yönlenir. Diğer tarih ve coğrafya içerikleri korunur.
+          [Kullanım kılavuzu](https://github.com/$OWNER/$REPO/blob/main/docs/KULLANIM.md).
 
           | Platform | Dosya |
           |---|---|

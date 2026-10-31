@@ -91,6 +91,7 @@
   <link rel="stylesheet" href="css/science-lab.css">
   <link rel="stylesheet" href="css/desktop-workspace.css">
   <link rel="stylesheet" href="css/v164.css">
+  <link rel="stylesheet" href="css/workspace-sections.css">
 </head>
 <body>
   <!-- Visible before any blocking scripts: prevents a blank Android launch. -->
@@ -145,7 +146,7 @@
             <span data-icon="widget"></span><span class="sidebar__label" data-i18n="nav.hub">Tüm araçlar</span>
           </a>
           <div class="nav-group nav-pins" data-group="pins" id="navPins" hidden>
-            <button class="nav-group__head" type="button" aria-expanded="true" aria-controls="ng-pins"><span class="sidebar__label" data-i18n="nav.group.pins">Sabitlenenler</span><span data-icon="chevronD"></span></button>
+            <button class="nav-group__head" type="button" aria-expanded="true" aria-controls="ng-pins"><span class="sidebar__label" data-i18n="nav.group.pins">Favorilerim</span><span data-icon="chevronD"></span></button>
             <div class="nav-group__body" id="ng-pins"></div>
           </div>
           <div class="nav-group" data-group="explore">
@@ -207,13 +208,12 @@
               <a class="nav__item" href="#/dokunsal-grafik" data-route="dokunsal-grafik"><span data-icon="chart"></span><span class="sidebar__label">Titreşimli Grafik</span></a>
               <a class="nav__item" href="#/deney-raporu" data-route="deney-raporu"><span data-icon="note"></span><span class="sidebar__label">Bilimsel Deney Raporu</span></a>
               <a class="nav__item" href="#/ciz-calissin" data-route="ciz-calissin"><span data-icon="pen"></span><span class="sidebar__label">Çiz, Çalışsın</span></a>
-              <a class="nav__item" href="#/tarih-haritasi" data-route="tarih-haritasi"><span data-icon="map"></span><span class="sidebar__label">Yaşayan Tarih Haritası</span></a>
             </div>
           </div>
           <div class="nav-group" data-group="practice">
             <button class="nav-group__head" type="button" aria-expanded="true" aria-controls="ng-practice"><span class="sidebar__label" data-i18n="nav.group.practice">Pratik</span><span data-icon="chevronD"></span></button>
             <div class="nav-group__body" id="ng-practice">
-          <a class="nav__item" href="#/kesif" data-route="kesif" data-route-also="bana-ogret,dokunsal-grafik,ciz-calissin,tarih-haritasi"><span data-icon="compass"></span><span class="sidebar__label">Keşif Atölyeleri</span></a>
+          <a class="nav__item" href="#/kesif" data-route="kesif" data-route-also="bana-ogret,dokunsal-grafik,ciz-calissin"><span data-icon="compass"></span><span class="sidebar__label">Keşif Atölyeleri</span></a>
           <a class="nav__item" href="#/aktarim" data-route="aktarim"><span data-icon="layers"></span><span class="sidebar__label" data-i18n="nav.transfer">Bilgiyi Başka Yerde Kullan</span></a>
           <a class="nav__item" href="#/hata-avcisi" data-route="hata-avcisi"><span data-icon="scan"></span><span class="sidebar__label" data-i18n="nav.errorHunt">Çözümdeki Hatayı Bul</span></a>
           <a class="nav__item" href="#/bilim-lab" data-route="bilim-lab">
@@ -363,7 +363,7 @@
         <a class="tabbar__item" href="#/bugun" data-route="bugun"><span data-icon="sun"></span><span data-i18n="nav.today">Bugün</span></a>
         <a class="tabbar__item" href="#/konular" data-route="konular" data-route-also="yazili,formuller,kartlar,yanlislar,podcast,tekrar"><span data-icon="book"></span><span data-i18n="nav.tab.topics">Konular</span></a>
         <a class="tabbar__item tabbar__fab" href="#/" data-route="" data-route-also="sohbet" data-i18n-aria="nav.tab.assistant" aria-label="Asistan"><span class="tabbar__fab-btn" data-icon="sparkle"></span></a>
-        <a class="tabbar__item" href="#/denemeler" data-route="denemeler" data-route-also="rapor,harita,puan,kok,simulasyon,tercih,yolculuk"><span data-icon="chart"></span><span data-i18n="nav.tab.progress">Gelişim</span></a>
+        <a class="tabbar__item" href="#/gelisimim" data-route="gelisimim" data-route-also="rapor,harita,kok,karne,denemeler"><span data-icon="chart"></span><span data-i18n="nav.tab.progress">Gelişim</span></a>
         <a class="tabbar__item" href="#/araclar" data-route="araclar"><span data-icon="widget"></span><span data-i18n="nav.tab.tools">Araçlar</span></a>
       </nav>
     </main>
@@ -458,6 +458,7 @@
   <script src="js/data/languages.js"></script>
   <script src="js/data/languages-ext.js"></script>
   <script src="js/modules/language-practice.js"></script>
+  <script src="js/core/workspace-navigation.js"></script>
   <script src="js/modules/ai-favorites.js"></script>
   <script src="js/modules/sensor-workbench.js"></script>
   <script src="js/modules/module-safety.js"></script>
@@ -485,6 +486,7 @@
   <script src="js/modules/science-lab-model.js"></script>
   <script src="js/modules/science-lab.js"></script>
   <script src="js/modules/hub.js"></script>
+  <script src="js/modules/workspace-sections.js"></script>
   <script src="js/modules/v159-core.js"></script>
   <script src="js/modules/navigation-layout.js"></script>
   <script src="js/modules/page-guide.js"></script>

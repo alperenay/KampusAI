@@ -26,7 +26,6 @@
     "js/modules/discovery-vision.js",
     "js/modules/draw-simulation.js",
     "js/modules/haptic-graph.js",
-    "js/modules/history-map.js",
     "js/modules/phone-physics.js",
     "js/modules/planetarium.js",
     "js/modules/reverse-tutor.js",
@@ -61,11 +60,11 @@
     "js/modules/science-lab-model.js",
     "js/modules/science-lab.js",
     "js/modules/desktop-workspace.js",
-    "js/modules/history-explorer.js",
-    "js/data/history-map-data.js",
     "js/modules/voice-board.js",
     "js/core/lazy.js",
     "js/core/sanitize.js",
-    "js/core/csp.js"
+    "js/core/csp.js",
+    "js/core/workspace-navigation.js",
+    "js/modules/workspace-sections.js"
   ]
 }

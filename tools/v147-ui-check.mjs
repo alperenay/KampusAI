@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import path from "node:path";
-import { uiHarness } from "./ui-harness.mjs";
+import { uiHarness, navigate } from "./ui-harness.mjs";
 import { researchBank } from './fixtures/research-bank.mjs';
 const h = await uiHarness();
 try {
@@ -11,17 +11,18 @@ try {
   };
   await page.waitForSelector("[data-ai-favs]");
   await page.fill('#composer textarea','Kendi notum: oran konusu');
-  await page.click('[data-aif-open="coach"]');
+  await page.locator('[data-ai-favs] [data-favorite-open="ai:coach"]').click();
   await page.waitForFunction(() =>
     document.querySelector("#composer textarea").value.includes("doğrudan"),
   );
   assert.equal(await page.evaluate(() => App.prefs.get("aiSocratic")), true);
   assert.ok((await page.inputValue('#composer textarea')).includes('Kendi notum: oran konusu'));
-  await page.click('[data-aif-pin="coach"]');
+  await navigate(page,"favorilerim");
+  await page.click('[data-favorite-remove="ai:coach"]');
   await page.reload();
-  await page.waitForSelector("[data-ai-favs]");
-  assert.equal(await page.locator('[data-aif-open="coach"]').count(), 0);
-  await page.locator(".ai-favs summary").click();
+  await page.waitForSelector("[data-favorites-list]");
+  assert.equal(await page.locator('[data-favorites-list] [data-favorite-open="ai:coach"]').count(), 0);
+  await page.locator("[data-favorites-ai] summary").click();
   await page.click('.ai-fav-options [data-aif-pin="coach"]');
   assert.equal(await page.locator('[data-aif-open="coach"]').count(), 1);
   await go("konusma/de");

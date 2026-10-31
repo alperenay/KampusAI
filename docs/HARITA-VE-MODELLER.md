@@ -16,10 +16,8 @@ Kütüphane 10 modelden 14 modele çıktı. Yeni özgün, prosedürel çizimler:
 
 Bütün modeller mevcut parça seçimi, açıklama, parçalarına ayırma, orbit ve desteklenen hologram kontrollerini kullanır. Bunlar ölçekli tıbbi/anatomik rekonstrüksiyon veya nicel alan simülasyonu değildir. Kimya renkleri temsilidir; kenar iyonlarının komşuluk sayısı sonsuz kristalle aynı değildir.
 
-## Yaşayan Tarih Haritası
-Mevcut yerel ülke geometrisinden coğrafi altlık, yedi günümüz koordinatlı referans şehri, klavye ile şehir seçimi, şehir katmanı, dönem seçici, 1–4× merkezden yakınlaştırma ve sıfırlama eklendi. Sürgü ile seçilen yıl ve gösterilen kaynaklı kesit ayrımı korunur. Günümüz ülke çizgileri tarihsel egemenlik sınırları olarak okunmamalıdır.
-
-Yeni 1839 Tanzimat kesiti özgün kısa özetle eklendi: https://islamansiklopedisi.org.tr/tanzimat . İstanbul odak poligonu imparatorluk sınırı değildir. Önceki beş kesit ve tüm kaynak bağlantıları korunur. Coğrafi altlık yüklenemezse şematik harita çalışır; sayfadan ayrıldıktan sonra geç yükleme DOM'a yazmaz.
+## Dünya ve Tarih
+Dünya Küresi, Coğrafya Atlası ve Zaman Çizelgesi ortak giriş altında sunulur; her alt ekranın üstündeki geçişler diğer ikisini açar. Yaşayan Tarih Haritası kaldırılmıştır. Eski adres ortak girişe yönlenir.
 
 ## Kontroller
-`npm run test:maps-models-ui`: dört gerçek WebGL sahnesinin parçaları/seçimi, tarih seçimi, şehir/klavye, yakınlaştırma, mobil/tablet/masaüstü düzenleri. `test:discovery-ui` mevcut dönem, kaynaklı rapor ve diğer keşif araçlarının regresyonunu kontrol eder. Bu testler fiziksel AR kamera/hologram cihaz testinin yerine geçmez.
+`npm run test:maps-models-ui`: dört gerçek WebGL sahnesinin parçaları/seçimi, ortak giriş ve korunmuş atlas/küre/zaman çizelgesi, mobil/tablet/masaüstü düzenleri. `test:discovery-ui` kaynaklı deney raporu ve diğer keşif araçlarının regresyonunu kontrol eder. Bu testler fiziksel AR kamera/hologram cihaz testinin yerine geçmez.

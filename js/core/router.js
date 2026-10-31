@@ -24,6 +24,7 @@
   }
 
   async function render() {
+    App.workspaceSections?.beforeRender();
     const r = parse();
     if (r.aliased) history.replaceState(null, "", location.pathname + location.search + "#/" + r.path.split("/").map(encodeURIComponent).join("/"));
     const view = document.getElementById("view");
@@ -58,6 +59,7 @@
       console.error(e);
       view.innerHTML = '<div class="page">' + App.ui.empty("close", App.t("errorTitle"), String(e && e.message || e)) + "</div>";
     }
+    App.workspaceSections?.decorate(view, r);
     App.hydrateIcons(view);
     try { window.dispatchEvent(new CustomEvent("da:route", { detail: r })); } catch (e) { /* eski tarayıcı */ }
     document.getElementById("app").classList.remove("is-menu-open");
@@ -82,6 +84,7 @@
 
   App.router = {
     register(name, handler) { routes[name] = handler; },
+    handler(name) { return routes[name]; },
     alias(name, target) { aliases[name] = target; },
     resolve,
     /** fn(route) bir Promise döndürürse sayfa ondan sonra çizilir (ör. ders içeriğini isteğe bağlı yükleme) */
