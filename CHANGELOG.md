@@ -1,5 +1,13 @@
 # Sürüm notları
 
+## 1.67.0 — 2026-10-31
+
+- Sanal deneylere ayrı başlık, özgün SVG çizimleri, simülasyon etiketi ve belirgin başlatma eylemi eklendi.
+- Sanal pH listesi 17 çözeltiye çıktı: asitler, bazlar ve nötr tuzlar gruplandı. Aynı derişimdeki kuvvetli asit/bazlar aynı ideal denklemleri kullanır; gerçek sıvı ölçümü iddiası yoktur.
+- AI otomatik seçimi sorular arasında korunur. Soru karmaşıklığı tekrar model listesi indirmez; yanıt derinliği aynı modelde ayarlanır.
+- Eşzamanlı ilk model keşfi tek istekte birleştirildi; çağrı iptali ve ayar değişikliği korunur. Çalışan yedek model sonraki sorular için hatırlanır. Model listesi manuel kontrol, ayar değişikliği veya model hatasında yenilenebilir.
+
+
 ## 1.66.0 — AI yanıt akışı ve sanal deneyler
 
 - Selamlamada hafıza araması yok; kısa sorular için ağır modele gereksiz yönlendirme giderildi.

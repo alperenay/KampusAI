@@ -6,7 +6,20 @@
     {id:'acid2',tr:'HCl · 0,01 M',en:'HCl · 0.01 M',charge:0.01},
     {id:'acid3',tr:'HCl · 0,001 M',en:'HCl · 0.001 M',charge:0.001},
     {id:'base12',tr:'NaOH · 0,01 M',en:'NaOH · 0.01 M',charge:-0.01},
-    {id:'base11',tr:'NaOH · 0,001 M',en:'NaOH · 0.001 M',charge:-0.001}
+    {id:'base11',tr:'NaOH · 0,001 M',en:'NaOH · 0.001 M',charge:-0.001},
+    {id:'hcl4',tr:'Hidroklorik asit (HCl) · 0,0001 M',en:'Hydrochloric acid (HCl) · 0.0001 M',charge:0.0001},
+    {id:'hcl5',tr:'Hidroklorik asit (HCl) · 0,00001 M',en:'Hydrochloric acid (HCl) · 0.00001 M',charge:0.00001},
+    {id:'hno3-2',tr:'Nitrik asit (HNO₃) · 0,01 M',en:'Nitric acid (HNO₃) · 0.01 M',charge:0.01},
+    {id:'hno3-3',tr:'Nitrik asit (HNO₃) · 0,001 M',en:'Nitric acid (HNO₃) · 0.001 M',charge:0.001},
+    {id:'hbr-3',tr:'Hidrobromik asit (HBr) · 0,001 M',en:'Hydrobromic acid (HBr) · 0.001 M',charge:0.001},
+    {id:'naoh4',tr:'Sodyum hidroksit (NaOH) · 0,0001 M',en:'Sodium hydroxide (NaOH) · 0.0001 M',charge:-0.0001},
+    {id:'naoh5',tr:'Sodyum hidroksit (NaOH) · 0,00001 M',en:'Sodium hydroxide (NaOH) · 0.00001 M',charge:-0.00001},
+    {id:'koh-2',tr:'Potasyum hidroksit (KOH) · 0,01 M',en:'Potassium hydroxide (KOH) · 0.01 M',charge:-0.01},
+    {id:'koh-3',tr:'Potasyum hidroksit (KOH) · 0,001 M',en:'Potassium hydroxide (KOH) · 0.001 M',charge:-0.001},
+    {id:'lioh-3',tr:'Lityum hidroksit (LiOH) · 0,001 M',en:'Lithium hydroxide (LiOH) · 0.001 M',charge:-0.001},
+    {id:'nacl',tr:'Sodyum klorür (NaCl) · 0,01 M',en:'Sodium chloride (NaCl) · 0.01 M',charge:0},
+    {id:'kcl',tr:'Potasyum klorür (KCl) · 0,01 M',en:'Potassium chloride (KCl) · 0.01 M',charge:0}
+
   ];
   const empty=()=>({volume:0,moles:0});
   function valid(s) {

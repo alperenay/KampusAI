@@ -92,8 +92,8 @@
               row("setAi", "sparkle", t("set.aiSettings"), T("Model, bağlantı ve asistan seçenekleri", "Models, connections and assistant options")) +
               '<label class="settings-smart-routing"><input id="setSmartRoute" type="checkbox" ' +
               (App.prefs.get("aiSmartRouting", true) !== false ? "checked" : "") + '><span><strong>' +
-              esc(T("Akıllı model yönlendirme", "Smart model routing")) + '</strong><small>' +
-              esc(T("Zor sorularda güçlü modele öncelik verir; manuel model seçimini değiştirmez.", "Prefer stronger AI for complex questions; manual selection is unaffected.")) +
+              esc(T("Akıllı yanıt derinliği", "Smart response depth")) + '</strong><small>' +
+              esc(T("Aynı modelde sorunun kapsamına göre yanıt derinliğini ayarlar; her soruda model değiştirmez.", "Adjust response depth to the task on the same model; does not switch models per question.")) +
               '</small></span></label>' +
               (App.sync.available() ? row("setSync", "refresh", t("sync.title"), T("Ders verilerini cihazlar arasında eşitle", "Keep study data in sync across devices"), App.sync.enabled() ? t("sync.on") : "") : "") +
               row("setRemind", "bell", t("rem.title"), T("Ders ve çalışma hatırlatmaları", "Study and lesson reminders"), App.reminders.config().on ? t("sync.on") : "") +

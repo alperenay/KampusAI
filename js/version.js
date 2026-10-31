@@ -1,1 +1,1 @@
-App.version = "1.66.0";
+App.version = "1.67.0";

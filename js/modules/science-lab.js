@@ -17,7 +17,14 @@
   ];
   const title = () => T('Deney Laboratuvarı', 'Experiment Laboratory');
   const experimentLabel = id => { const a = App.scienceLabModel.experiments[id].title; return T(a[0], a[1]); };
-  function featured() {return '<div class="science-lab-featured"><a class="card" href="#/bilim-lab/deneyler/ph">'+App.icon('sChem')+'<h2>'+T('Sanal pH Deneyi','Virtual pH Experiment')+'</h2><p>'+T('Çözelti ekle, suyla seyrelt, pH değişimini incele. Kamera gerekmez.','Pour, dilute and explore pH changes. No camera required.')+'</p></a><a class="card" href="#/bilim-lab/deneyler/ekosistem">'+App.icon('sBio')+'<h2>'+T('Ekosistem Kavanozu','Ecosystem Jar')+'</h2><p>'+T('Popülasyonları, mevsimleri ve besin ağını sanal ortamda keşfet.','Explore populations, seasons and food webs virtually.')+'</p></a></div>'; }
+  function featured() {
+    const visual = kind => '<svg viewBox="0 0 180 120" aria-hidden="true" focusable="false">'+(kind==='ph'
+      ? '<path d="M52 14v34L25 94q-5 12 9 12h70q14 0 9-12L86 48V14M46 14h46" fill="none" stroke="currentColor" stroke-width="5"/><path d="M41 72h56l13 24q3 6-6 6H34q-9 0-6-6Z" fill="currentColor" opacity=".4"/><circle cx="64" cy="81" r="5" fill="currentColor"/><circle cx="79" cy="63" r="3" fill="currentColor"/><path d="M130 29v67m0-55h17m-17 18h12m-12 18h17" stroke="currentColor" stroke-width="4"/>'
+      : '<rect x="44" y="26" width="92" height="80" rx="16" fill="none" stroke="currentColor" stroke-width="5"/><path d="M44 83q45-26 92 0v7q0 16-16 16H60q-16 0-16-16Z" fill="currentColor" opacity=".3"/><path d="M90 91V53m0 17Q58 70 66 48q25-2 24 22m0 7q30-2 26-25-24 0-26 25M40 20h100" fill="none" stroke="currentColor" stroke-width="5"/>')+'</svg>';
+    const cards=[['ph','Sanal pH Deneyi','Virtual pH Experiment','Çözelti ekle, seyrelt ve nötrleşmeyi gözlemle.','Pour, dilute and observe neutralisation.'],['ekosistem','Ekosistem Kavanozu','Ecosystem Jar','Canlıları ve mevsimleri değiştir, dengeyi keşfet.','Change populations and seasons; explore balance.']];
+    return '<section class="science-virtual" aria-labelledby="scienceVirtualTitle"><header><span class="science-virtual-kicker">'+T('KAMERA VE SENSÖR GEREKMEZ','NO CAMERA OR SENSORS NEEDED')+'</span><h2 id="scienceVirtualTitle">'+T('Sanal deneyler','Virtual experiments')+'</h2><p>'+T('Bir deney seç ve hemen başla. Bunlar gerçek ölçüm değil, etkileşimli modellerdir.','Choose an experiment and start. These are interactive models, not real measurements.')+'</p></header><div class="science-lab-featured">'+cards.map(c=>'<a class="card science-virtual-card science-virtual-card--'+c[0]+'" href="#/bilim-lab/deneyler/'+c[0]+'"><div class="science-virtual-art">'+visual(c[0])+'</div><div><span class="science-virtual-tag">'+T('SANAL DENEY','SIMULATION')+'</span><h3>'+T(c[1],c[2])+'</h3><p>'+T(c[3],c[4])+'</p><span class="science-virtual-cta">'+T('Deneyi başlat','Start experiment')+' <span aria-hidden="true">→</span></span></div></a>').join('')+'</div></section>';
+  }
+
   function experiments(host, params) {
     if(params[0]==='ph')return App.phMetre.render(host);
     if(params[0]==='ekosistem')return App.ekosistem.render(host);

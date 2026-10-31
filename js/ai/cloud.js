@@ -102,7 +102,6 @@
   const G_EMBED = "gemini-embedding-001";
   const G_EMBED_DIM = 768;                     // vektör boyu (daha küçük = daha az yer, kalite farkı çok az)
   const G_FALLBACK = "gemini-3.8-flash";       // model listesi alınamazsa
-  const G_AUTO_TTL = 3 * 24 * 3600 * 1000;     // otomatik seçilen modeli 3 günde bir yeniden belirle
   const NOT_CHAT = /(embedding|tts|live|image|imagen|veo|lyria|audio|transcribe|robotics|translate|aqa|research|antigravity|computer|nano-banana|learnlm)/i;
 
   /* Hız ölçümü (Ekim 2026, ücretsiz anahtar, sunucu üzerinden):
@@ -197,25 +196,39 @@
     /** "fast" (Flash-Lite, varsayılan) ya da "smart" (Flash) */
     speed: () => (str(P + "Speed") === "smart" ? "smart" : "fast"),
 
-    /** Otomatik model seçimi (gerekirse listeyi alır) */
+    /** Keep the selected model across questions; discovery is only for setup/settings/failure. */
     async prepare(signal, force) {
+      if (signal && signal.aborted) throw new AIError("aborted");
       if (str(P + "Model")) return;
-      const at = Number(pref(P + "AutoAt", 0));
+      const context = this.base() + "|" + this.key() + "|" + this.speed();
       const sameSpeed = str(P + "AutoSpeed") === this.speed();
-      if (!force && sameSpeed && str(P + "AutoModel") && Date.now() - at < G_AUTO_TTL) return;
-      const list = await this.listModels(signal);
-      const picked = pickGeminiModel(list.filter((m) => m.methods.includes("generateContent")).map((m) => m.name), this.speed());
-      if (picked) { App.prefs.set(P + "AutoModel", picked); App.prefs.set(P + "AutoAt", Date.now()); App.prefs.set(P + "AutoSpeed", this.speed()); }
-      this._ranked = null;
+      const sameBase = !str(P + "AutoBase") || str(P + "AutoBase") === this.base();
+      if (!force && sameSpeed && sameBase && str(P + "AutoModel")) return;
+      if (!this._preparing || this._prepareContext !== context) {
+        this._prepareContext = context;
+        const pending = this.listModels().then(list => {
+          if (context !== this.base() + "|" + this.key() + "|" + this.speed()) return;
+          const picked = pickGeminiModel(list.filter(m => m.methods.includes("generateContent")).map(m => m.name), this.speed());
+          if (picked) {
+            App.prefs.set(P + "AutoModel", picked); App.prefs.set(P + "AutoAt", Date.now());
+            App.prefs.set(P + "AutoSpeed", this.speed()); App.prefs.set(P + "AutoBase", this.base());
+          }
+          this._ranked = null;
+        });
+        this._preparing = pending;
+        pending.finally(() => { if (this._preparing === pending) this._preparing = null; }).catch(() => {});
+      }
+      const request = App.aiRequest.scope(signal, {connectMs:10000,totalMs:11000});
+      try { await request.wait(this._preparing); } catch(e) { throw request.failure(e); } finally { request.close(); }
     },
 
     async check(signal) {
       const list = await this.listModels(signal);
       const names = list.map((m) => m.name);
       const chatModels = list.filter((m) => m.methods.includes("generateContent") && !NOT_CHAT.test(m.name)).map((m) => m.name);
-      if (!str(P + "Model")) {
+      if (!str(P + "Model") && (!names.includes(str(P + "AutoModel")) || str(P + "AutoSpeed") !== this.speed() || (str(P + "AutoBase") && str(P + "AutoBase") !== this.base()))) {
         const picked = pickGeminiModel(chatModels, this.speed());
-        if (picked) { App.prefs.set(P + "AutoModel", picked); App.prefs.set(P + "AutoAt", Date.now()); App.prefs.set(P + "AutoSpeed", this.speed()); }
+        if (picked) { App.prefs.set(P + "AutoModel", picked); App.prefs.set(P + "AutoAt", Date.now()); App.prefs.set(P + "AutoSpeed", this.speed()); App.prefs.set(P + "AutoBase", this.base()); }
         this._ranked = null;
       }
       const cfg = this.config();
@@ -255,9 +268,9 @@
       const busy = (() => { try { return JSON.parse(App.prefs.get(P + "Busy", "{}") || "{}"); } catch (e) { return {}; } })();
       const saveBusy = () => App.prefs.set(P + "Busy", JSON.stringify(busy));
       const isBusy = (n) => busy[n] && busy[n] > Date.now();
-      const intelligent = auto && opts.profile === "complex";
+      // Complexity still changes reasoning settings, but never triggers model discovery.
       const ranked = async () => {
-        const speed = intelligent ? "smart" : this.speed();
+        const speed = this.speed();
         if (!this._ranked || this._rankedSpeed !== speed) {
           this._ranked = rankGeminiModels((await this.listModels(opts.signal)).filter((m) => m.methods.includes("generateContent")).map((m) => m.name), speed);
           this._rankedSpeed = speed;
@@ -267,10 +280,6 @@
       const deadline = Date.now() + (opts.options?.smallTalk ? 22000 : opts.options?.json ? 180000 : 120000);
       const tried = [];
       let model = opts.model, lastErr = null;
-      if (intelligent) {
-        try { model = (await ranked()).find(n=>!isBusy(n)) || model; }
-        catch (e) { /* model listing unavailable: preserve original model */ }
-      }
       // Az önce yoğun olduğu görülen modeli hiç denemeden sıradakine geç (her soruda saniyeler kaybetmemek için)
       if (auto && isBusy(model)) {
         try { model = (await ranked()).find((n) => !isBusy(n)) || model; } catch (e) { /* liste yoksa aynı modelle dene */ }
@@ -282,6 +291,10 @@
           const res = await this.chatOnce(Object.assign({}, opts, { model, deadline }));
           res.model = res.model || model;
           if (busy[model]) { delete busy[model]; saveBusy(); }
+          if (auto && model !== opts.model) {
+            App.prefs.set(P + "AutoModel", model); App.prefs.set(P + "AutoSpeed", this.speed());
+            App.prefs.set(P + "AutoBase", this.base()); App.prefs.set(P + "AutoAt", Date.now());
+          }
           return res;
         } catch (e) {
           lastErr = e;
