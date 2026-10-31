@@ -74,7 +74,6 @@
     ["hakkinda", "info", "nav.about", ["Proje, gizlilik, kaynakça ve lisanslar", "Project, privacy, references, licences"], "tools", "hakkında kaynakça lisans"]
   ];
   App.data.discovery.modules.filter(m => !["deney-raporu", "telefon-fizik", "sismograf"].includes(m[0])).forEach(m => TOOLS.push([m[0],m[3],[m[1],m[1]],[m[2],m[2]],"practice",m[1]+" keşif deney fizik görsel tarih gökyüzü"]));
-  TOOLS.push(["kesif","compass",["Keşif Atölyeleri","Discovery Workshops"],["Öğretme, çizim, grafik ve tarih araçları","Teaching, drawing, graph and history tools"],"practice","keşif deney atölye"]);
   const GROUPS = Object.fromEntries(App.toolCategories.groups.map(g=>[g.id,g.title]));
   TOOLS.forEach(t=>{t[4]=App.toolCategories.groupFor(t[0]).id;});
   const title = (x) => (Array.isArray(x[2]) ? T(x[2][0], x[2][1]) : App.t(x[2]));

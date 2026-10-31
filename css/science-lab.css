@@ -37,3 +37,11 @@
 .science-virtual-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 @media(max-width:600px) { .science-lab-featured .science-virtual-card { grid-template-columns: 70px minmax(0,1fr); gap: .6rem; padding: .85rem; } .science-virtual-card h3 { font-size: 1.12rem; } }
 @media(prefers-reduced-motion:reduce) { .science-virtual-card { transition: none!important; } .science-virtual-card:hover { transform: none; } }
+
+/* Clear section entries across desktop and touch layouts. */
+.science-lab-grid .science-lab-card { position:relative; display:flex; flex-direction:column; gap:.45rem; border:1px solid var(--border-strong,var(--border)); border-top:3px solid var(--accent); background:var(--surface); box-shadow:var(--shadow-soft); }
+.science-lab-grid .science-lab-card > .ico { width:40px; height:40px; padding:9px; border-radius:12px; color:var(--accent-text); background:var(--accent-soft); }
+.science-lab-grid .science-lab-card h2 { font-size:1.15rem; margin:.4rem 0; }
+.science-lab-grid .science-lab-card p { flex:1; margin:0 0 .7rem; }
+.science-lab-open { color:var(--accent-text); font-weight:700; padding-top:.7rem; border-top:1px solid var(--border); }
+.science-lab-grid .science-lab-card:hover { box-shadow:0 0 0 2px var(--accent-soft); }

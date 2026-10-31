@@ -3,10 +3,10 @@
   const esc = App.utils.esc;
   function page(view, id, body) {
     const m = App.data.discovery.modules.find((m) => m[0] === id);
-    App.setTitle(m ? m[1] : "Keşif Atölyeleri");
+    App.setTitle(m ? m[1] : "Deney Laboratuvarı");
     view.innerHTML =
-      '<div class="page discovery"><a href="#/kesif">← Keşif Atölyeleri</a><h1>' +
-      esc(m ? m[1] : "Keşif Atölyeleri") +
+      '<div class="page discovery"><a href="#/bilim-lab">← Deney Laboratuvarı</a><h1>' +
+      esc(m ? m[1] : "Deney Laboratuvarı") +
       '</h1><p class="hint">' +
       esc(m ? m[2] : "Ölç, modelle, açıkla ve kanıtını kaydet.") +
       "</p>" +
@@ -256,27 +256,5 @@
     motion,
     microphone,
   };
-  App.router.register("kesif", (view) => {
-    page(
-      view,
-      "",
-      '<a class="card discovery-tile science-lab-shortcut" href="#/bilim-lab">' + App.icon('lightbulb') + '<div><h2>Deney Laboratuvarı</h2><p>Sanal pH, ekosistem, fizik deneyleri ve sensörler tek yerde. Deney seçmek için aç.</p></div></a><div class="discovery-grid">' +
-        App.data.discovery.modules
-          .filter(m => !["telefon-fizik", "sismograf", "gokyuzu"].includes(m[0]))
-          .map(
-            (m) =>
-              '<a class="card discovery-tile" href="#/' +
-              (App.documents ? App.documents.pathFor(m[0]) : m[0]) +
-              '"><span data-icon="' +
-              m[3] +
-              '"></span><h2>' +
-              esc(m[1]) +
-              "</h2><p>" +
-              esc(m[2]) +
-              "</p></a>",
-          )
-          .join("") +
-        "</div>",
-    );
-  });
+  App.router.alias("kesif", "bilim-lab");
 })();

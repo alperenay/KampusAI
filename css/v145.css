@@ -126,3 +126,8 @@
 .ev-li[aria-pressed="true"] { background: var(--accent-soft); box-shadow: inset 3px 0 var(--accent); }
 .ev-li > span:last-child { min-width: 0; overflow-wrap: anywhere; }
 @media (max-width: 520px) { .ev-bar .select { flex: 1 1 130px; min-width: 0; } .ev-intro { display: grid; gap: 5px; } .ev-stage { min-height: 220px; } }
+
+.ev-summary { display:inline-block; padding:10px 14px; border-radius:12px; border:1px solid var(--border); background:var(--accent-soft); color:var(--text); font-weight:600; }
+.ev-visual { border-radius:18px; overflow:hidden; }
+.ev-stage { background:radial-gradient(ellipse at center,#151b40,#05060f 75%); }
+.ev-info .ev-eyebrow { color:var(--accent-text); }

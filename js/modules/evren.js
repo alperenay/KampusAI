@@ -58,7 +58,7 @@
         S.hideFloor();
         S.scene.background = new S.THREE.Color(0x05060f); S.scene.fog = null;
         // Arka plan yıldız tozu
-        const n = 900, pos = new Float32Array(n * 3);
+        const n = 1400, pos = new Float32Array(n * 3);
         for (let i = 0; i < n; i++) { const r = 60 + Math.random() * 60, a = Math.random() * 2 * Math.PI, b = Math.acos(2 * Math.random() - 1); pos[i * 3] = r * Math.sin(b) * Math.cos(a); pos[i * 3 + 1] = r * Math.cos(b); pos[i * 3 + 2] = r * Math.sin(b) * Math.sin(a); }
         const g = new S.THREE.BufferGeometry(); g.setAttribute("position", new S.THREE.BufferAttribute(pos, 3));
         S.root.add(new S.THREE.Points(g, new S.THREE.PointsMaterial({ color: 0x8899bb, size: 0.35, sizeAttenuation: true })));
@@ -69,6 +69,20 @@
         S.keyed("graph", s.sig, (g) => {
           S.o.nodes = [];
           const byKey = {};
+          // A static spiral dust layer adds depth without extra animation loops.
+          const dust = new Float32Array(s.nodes.length * 24);
+          s.nodes.forEach((nd, ni) => {
+            for (let j = 0; j < 8; j++) {
+              const i = (ni * 8 + j) * 3, angle = (ni * 17 + j * 2.4);
+              const spread = 0.5 + (j % 3) * 0.35;
+              dust[i] = nd.x + Math.cos(angle) * spread;
+              dust[i + 1] = nd.y + Math.sin(angle * 1.7) * 0.45;
+              dust[i + 2] = nd.z + Math.sin(angle) * spread;
+            }
+          });
+          const dustGeometry = new S.THREE.BufferGeometry();
+          dustGeometry.setAttribute("position", new S.THREE.BufferAttribute(dust, 3));
+          g.add(new S.THREE.Points(dustGeometry, new S.THREE.PointsMaterial({color:0x777cce, size:0.08, transparent:true, opacity:0.45, depthWrite:false})));
           s.nodes.forEach((nd) => {
             const st = STYLE[nd.status], mat = S.M(st.color, { emissive: st.emissive, emissiveIntensity: st.ei, roughness: 0.4 });
             const m = S.sphere(st.r, mat, g, 18); m.position.set(nd.x, nd.y, nd.z); m.userData.key = nd.key; m.userData.base = st.r;
@@ -83,6 +97,14 @@
             // yön: hedefe yakın küçük uç
             const k = 0.82, tip = S.sphere(0.09, e.kind === "pre" ? 0x9fb4ff : 0x5a6680, g, 8);
             tip.position.set(a.position.x + (b.position.x - a.position.x) * k, a.position.y + (b.position.y - a.position.y) * k, a.position.z + (b.position.z - a.position.z) * k);
+          });
+          // Unit titles identify the spiral arms; these are curriculum clusters, not real constellations.
+          const clusters = new Map();
+          s.nodes.forEach(nd => { if (!clusters.has(nd.unit)) clusters.set(nd.unit, []); clusters.get(nd.unit).push(nd); });
+          clusters.forEach((items, unit) => {
+            const anchor = items[Math.floor(items.length / 2)];
+            const label = S.label(s.unitNames[unit], null, 0.65, g);
+            label.position.set(anchor.x, anchor.y + 2.4, anchor.z);
           });
           S.o.label = S.label("", null, 0.9, g); S.o.label.visible = false;
         });
@@ -108,6 +130,7 @@
     const C = App.data.curriculum;
     const g = params[0] || String(App.prefs.get("curGrade", "9") || "9"), grade = C.findGrade(g) || C.grades[0];
     const subjects = grade.subjects.filter((s) => s.units.length);
+    if (!subjects.length) { view.innerHTML = '<p class="notice">' + esc(T("Bu sınıfta henüz konu bulunmuyor.", "No topics available for this grade.")) + "</p>"; return; }
     const sid = params[1] && subjects.some((s) => s.id === params[1]) ? params[1] : (subjects.find((s) => s.id === App.prefs.get("evrenSubj", "")) || subjects[0]).id;
     App.prefs.set("evrenSubj", sid);
     const subject = C.findSubject(grade.id, sid);
@@ -119,19 +142,19 @@
     const edges = edgesFor(units, App.roots && App.roots.prereqOf);
     const titles = {}; units.forEach((u) => u.outcomes.forEach((x) => { titles[x.key] = (x.o.code ? x.o.code + " · " : "") + L(x.o.title); }));
     const counts = {}; nodes.forEach((n) => { counts[n.status] = (counts[n.status] || 0) + 1; });
-    const data = { nodes, edges, titles, paused: true, sig: grade.id + "/" + sid + ":" + nodes.map((n) => n.status[0]).join("") };
+    const data = { nodes, edges, titles, unitNames: units.map(u => L(u.name)), paused: true, sig: grade.id + "/" + sid + ":" + nodes.map((n) => n.status[0]).join("") };
 
     view.innerHTML = '<div class="page ev">' +
       '<div class="page-head"><div><h1>' + esc(T("Bilgi Evreni", "Knowledge Cosmos")) + "</h1><p>" +
         esc(T("Hangi konudasın, sırada ne var? Dersini seç, bir konuyu aç ve öğrenmeye devam et.", "See where you are and what comes next. Choose a subject, select a topic and continue learning.")) + "</p></div></div>" +
-      '<div class="ev-intro"><span>' + esc(T("1 · Sınıf ve ders seç", "1 · Choose grade and subject")) + '</span><span>' + esc(T("2 · Yıldıza veya konuya dokun", "2 · Tap a star or topic")) + '</span><span>' + esc(T("3 · Konuyu öğren ya da test çöz", "3 · Read the lesson or take a quiz")) + '</span></div>' +
+      '<p class="ev-summary">' + esc(T(units.length + ' ünite · ' + nodes.length + ' kazanım · ' + edges.length + ' bağlantı', units.length + ' units · ' + nodes.length + ' outcomes · ' + edges.length + ' links')) + '</p><div class="ev-intro"><span>' + esc(T("1 · Sınıf ve ders seç", "1 · Choose grade and subject")) + '</span><span>' + esc(T("2 · Yıldıza veya konuya dokun", "2 · Tap a star or topic")) + '</span><span>' + esc(T("3 · Konuyu öğren ya da test çöz", "3 · Read the lesson or take a quiz")) + '</span></div>' +
       '<div class="ev-bar"><select class="select" id="evG" aria-label="' + esc(T("Sınıf", "Grade")) + '">' + C.grades.map((x) => '<option value="' + x.id + '"' + (x.id === grade.id ? " selected" : "") + ">" + esc(C.gradeName(x.id)) + "</option>").join("") + "</select>" +
         '<select class="select" id="evS" aria-label="' + esc(T("Ders", "Subject")) + '">' + subjects.map((s) => '<option value="' + s.id + '"' + (s.id === sid ? " selected" : "") + ">" + esc(L(s.name)) + "</option>").join("") + "</select>" +
         '<button class="btn btn--sm" type="button" id="evRotate" aria-pressed="false">' + esc(T("Dönüşü başlat", "Start rotation")) + '</button>' +
         '<button class="btn btn--sm" type="button" id="evAR" hidden>' + App.icon("camera") + "AR</button>" +
         '<button class="btn btn--sm" type="button" id="evHolo" hidden>' + App.icon("cube") + esc(T("Hologram", "Hologram")) + "</button></div>" +
       '<div class="ev-legend" aria-label="' + esc(T("Konu durumları", "Topic status")) + '">' + Object.keys(STYLE).map((k) => '<span><i class="ev-dot ev-dot--' + k + '"></i>' + esc(STATUS_NAME()[k]) + ' <b>' + (counts[k] || 0) + '</b></span>').join("") + '</div>' +
-      '<p class="hint ev-context">' + esc(T("Her yıldız bir kazanım, her kol bir ünite. Renkler kayıtlı test ve çalışma verilerine dayanır; kesin bir başarı ölçümü değildir. ", "Each star is an outcome; each arm is a unit. Colours reflect saved quiz and study activity, not a definitive assessment. ")) +
+      '<p class="hint ev-context">' + esc(T("Bu görsel bir öğrenme haritasıdır; gerçek gökyüzünü temsil etmez. Her yıldız bir kazanım, her kol bir ünite. Renkler kayıtlı test ve çalışma verilerine dayanır; kesin bir başarı ölçümü değildir. ", "This is a learning map, not the real sky. Each star is an outcome; each arm is a unit. Colours reflect saved quiz and study activity, not a definitive assessment. ")) +
         esc(edges.some((e) => e.kind === "pre") ? T("Çizgiler ön koşul haritasındaki bağlantıları gösterir.", "Lines show links from the prerequisite map.") : T("Bu derste çizgiler yalnızca ünite içindeki konu sırasını gösterir; ön koşul olduğu anlamına gelmez.", "Here, lines show topic order within a unit; they do not establish prerequisites.")) + '</p>' +
       '<div class="ev-wrap"><section class="ev-visual" aria-label="' + esc(T("Üç boyutlu konu haritası", "Three dimensional topic map")) + '"><div class="ev-stage" id="evStage"><p class="hint ev-load">' + esc(T("3B sahne yükleniyor…", "Loading 3D…")) + '</p></div><p class="hint">' + esc(T("Çevirmek için sürükle, yakınlaştırmak için iki parmağını aç. Listeyle de tüm konulara ulaşabilirsin.", "Drag to orbit and pinch to zoom. Every topic is also available in the list.")) + '</p></section>' +
         '<aside class="card ev-side">' +
@@ -165,6 +188,7 @@
 
     function info(key) {
       const f = App.lessons.find(key), m = M.get(key), st = statusOf(m);
+      if (!f) return;
       const pre = App.roots ? App.roots.prereqOf(key) : [];
       $("#evInfo").innerHTML = '<p class="ev-eyebrow">' + esc(T("Seçili konu", "Selected topic")) + '</p><h2 class="ev-h"><span class="ev-dot ev-dot--' + st + '"></span>' + esc(titles[key]) + "</h2>" +
         '<p class="hint">' + esc(L(f.unit.name)) + "</p><p><b>" + esc(STATUS_NAME()[st]) + "</b>" + (m && Number.isFinite(m.score) ? " · " + esc(T("hâkimiyet ", "mastery ")) + Math.round(m.score) : "") + "</p>" +
@@ -193,7 +217,7 @@
     defineScene();
     $("#evStage").innerHTML = "";
     S3 = App.lab3d.mount($("#evStage"), "evren", 0.66);
-    const loop = () => { if (!alive) return; S3.frame({}, (performance.now() - t0) / 1000, data); raf = requestAnimationFrame(loop); };
+    const loop = () => { if (!alive) return; if (!document.hidden) S3.frame({}, (performance.now() - t0) / 1000, data); raf = requestAnimationFrame(loop); };
     loop();
     select(view.querySelector('.ev-li[aria-pressed="true"]').dataset.k);
     // Yıldız seçme: sürükleme değil, kısa dokunuş

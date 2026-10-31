@@ -13,10 +13,10 @@ const p = new Map(),
 const c = vm.createContext({ App, Date, Math, Set, window:{dispatchEvent(){}}, CustomEvent:class{} });
 for (const f of ["js/data/tool-categories.js", "js/core/workspace-navigation.js", "js/modules/ai-favorites.js"])
   vm.runInContext(fs.readFileSync(f, "utf8"), c);
-assert.equal(App.toolCategories.groups.length, 8);
+assert.equal(App.toolCategories.groups.length, 7);
 const routes = App.toolCategories.groups.flatMap((g) => g.routes);
 assert.equal(new Set(routes).size, routes.length);
-assert.equal(App.toolCategories.groupFor("ph/session").id, "science");
+assert.equal(App.toolCategories.groupFor("ph/session").id, "study");
 assert.equal(App.toolCategories.groupFor("duello").id, "practice");
 const F = App.aiFavorites;
 assert.equal(F.tools.length, 12);

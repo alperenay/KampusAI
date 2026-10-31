@@ -13,7 +13,7 @@
   function menuRoute(route) {
     if(String(route).split('/')[0]==='yolculuk')return 'gelisimim';
     if (['tarih-haritasi','ciz-calissin'].includes(String(route).split('/')[0])) return null;
-    if (['ph','ekosistem'].includes(String(route).split('/')[0])) return 'bilim-lab';
+    if (['ph','ekosistem','vatandas','gokyuzu','dokunsal-grafik','kesif'].includes(String(route).split('/')[0])) return 'bilim-lab';
     const section = sectionFor(route);
     return section ? section.id : route;
   }

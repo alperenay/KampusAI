@@ -1347,3 +1347,11 @@ a.about-feat:hover { background: var(--surface-hover); }
   .sim-nav { position: sticky; bottom: 8px; z-index: 4; margin: 12px -6px 0; padding: 8px; border: 1px solid var(--border-strong); border-radius: 16px; background: var(--surface-solid); box-shadow: var(--shadow); flex-wrap: nowrap; }
   .sim-nav .btn { flex: 1 1 0; min-height: 46px; justify-content: center; padding: 0 8px; white-space: nowrap; }
 }
+
+/* Keep writing separate from optional assistant controls. */
+.composer .composer__row { display:flex; flex-wrap:wrap; align-items:center; gap:6px; }
+.composer .composer__input { flex:1 0 100%; order:-1; width:100%; min-height:64px; padding:12px 10px; border-bottom:1px solid var(--border); border-radius:0; }
+.composer .composer__model { margin-left:auto; max-width:60%; overflow:hidden; }
+.composer .composer__model-name { overflow:hidden; text-overflow:ellipsis; }
+.composer .composer__row > button { min-height:44px; }
+@media(max-width:480px) { .composer .composer__model { max-width:36%; } }

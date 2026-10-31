@@ -25,7 +25,7 @@
         "Konu, formül, yazılı ve dil çalış",
         "Topics, formulas, exams and languages",
       ],
-      routes: ["dinle-konus", "dokumanlar", "konular", "formuller", "yazili", "konusma", "video", "podcast"],
+      routes: ["bilim-lab", "dinle-konus", "dokumanlar", "konular", "formuller", "yazili", "konusma", "video", "podcast"],
     },
     {
       id: "practice",
@@ -50,21 +50,6 @@
       ],
     },
     {
-      id: "science",
-      icon: "lightbulb",
-      title: ["Deney ve ölçüm", "Experiments & measurements"],
-      description: [
-        "Laboratuvar, sensör ve bilimsel rapor",
-        "Labs, sensors and scientific reports",
-      ],
-      routes: [
-        "bilim-lab",
-        "vatandas",
-        "gokyuzu",
-        "dokunsal-grafik",
-      ],
-    },
-    {
       id: "explore",
       icon: "globe",
       title: ["Haritalar ve 3B", "Maps & 3D"],
@@ -79,7 +64,6 @@
         "zaman",
         "dunya-tarih",
         "evren",
-        "kesif",
       ],
     },
     {
@@ -130,7 +114,7 @@
     },
   ];
   function groupFor(route) {
-    if (["ph","ekosistem"].includes(String(route).split("/")[0])) return groups.find(g=>g.id==="science");
+    if (["ph","ekosistem","vatandas","gokyuzu","dokunsal-grafik"].includes(String(route).split("/")[0])) return groups.find(g=>g.id==="study");
     return (
       groups.find((g) => g.routes.includes(String(route).split("/")[0])) ||
       groups[groups.length - 1]
