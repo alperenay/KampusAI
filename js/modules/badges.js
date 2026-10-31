@@ -102,10 +102,12 @@
   /** Yeni kazanılan rozetleri bir kez kutla */
   let checking = null;
   function check() {
+    if (App.prefs.get("demoMode", false)) return Promise.resolve(null);
     if (checking) return checking;
     checking = (async () => {
       try {
         const st = await state();
+        if (App.prefs.get("demoMode", false)) return null;
         const seen = App.prefs.get("badgesSeen", null);
         const ids = st.earned.map((b) => b.id);
         if (seen === null) { App.prefs.set("badgesSeen", ids); return st; }   // ilk açılış: eskileri kutlama

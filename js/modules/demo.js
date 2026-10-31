@@ -6,18 +6,18 @@
      • 6 TYT + 4 AYT (SAY) denemesi (netler giderek artar)
      • ~70 kazanımda konu sonu testi (güçlü / orta / zayıf karışık) → Öğrenme haritası dolu
      • yanlış defteri (hata türleriyle, bir kısmı tekrar zamanı gelmiş, bir kısmı öğrenilmiş)
-     • 10 günlük odak oturumu (seri + rozetler), Feynman anlatımları, "çalıştım" işaretleri
+     • 10 günlük odak oturumu (örnek çalışma serisi), Feynman anlatımları, "çalıştım" işaretleri
      • hedef bölüm (Puan ve Hedef) ve kaynak gösterilmiş örnek bir asistan sohbeti
      • (1.34) hap kartı tekrarları, "Çözümümü Kontrol Et" geçmişi, yapay zekâ cevap geri bildirimleri,
        bir "Videodan Çalış" kaydı; 11. sınıf İngilizce ve 12. sınıf Mantık kazanımlarında testler
    Bütün kayıtların kimliği "demo_" ile başlar ya da demo: true taşır; "Demo verisini sil"
-   yalnızca bunları siler, öğrencinin kendi verisine dokunmaz.
+   yalnızca demo: true işaretli kayıtları siler; kişisel kayıtlara dokunmaz.
    Kısayol: #/demo adresi veriyi yükleyip Bugün ekranını açar (QR ile jüriye gösterim).
    ========================================================= */
 (function () {
   const T = (tr, en) => (App.i18n.lang === "en" ? en : tr);
   const P = "demo_";
-  const STORES = ["schedules", "exams", "quizzes", "mistakes", "sessions", "explains", "progress", "chats", "meta", "cards", "checks"];
+  const STORES = ["schedules", "exams", "quizzes", "mistakes", "sessions", "explains", "progress", "chats", "meta", "cards", "checks", "notes"];
   const DAY = 86400000;
 
   let seed = 7;
@@ -161,7 +161,7 @@
     return { id: P + "chat1", title: T("Fotosentezde oksijen nereden gelir?", "Where does oxygen in photosynthesis come from?"), createdAt: at, updatedAt: at, demo: true,
       messages: [
         { id: P + "m1", role: "user", text: T("Fotosentezde açığa çıkan oksijen nereden gelir?", "Where does the oxygen in photosynthesis come from?"), at },
-        { id: P + "m2", role: "assistant", text: answer, at, sources, models: [{ role: "memory", model: "bge-m3" }, { role: "answer", model: "gemma4:e4b" }], engine: "device" }
+        { id: P + "m2", role: "assistant", text: answer, at, sources, models: [{ role: "memory", model: "demo" }, { role: "answer", model: "demo" }], engine: "demo" }
       ] };
   }
 
@@ -212,7 +212,7 @@
     const at = (d) => iso(d, 21);
     const out = [];
     if (chat) out.push({ id: "ai-fb:chat:" + chat.id + ":" + P + "m2", ref: "chat:" + chat.id + ":" + P + "m2", kind: "ai-fb", source: "chat", rating: "up", at: at(1), app: App.version || "",
-      q: chat.messages[0].text, a: chat.messages[1].text.slice(0, 600), model: "gemma4:e4b", demo: true });
+      q: chat.messages[0].text, a: chat.messages[1].text.slice(0, 600), model: "demo", demo: true });
     out.push({ id: "ai-fb:quiz:" + P + "q1", ref: "quiz:" + P + "q1", kind: "ai-fb", source: "quiz", rating: "wrong", at: at(6), app: App.version || "", key: "11/fizik/u2/k1",
       label: T("11. Sınıf · Fizik · İş, enerji, güç ve enerjinin korunumu", "Grade 11 · Physics · Work, energy, power"), model: "demo", reason: "cevap",
       q: T("Sürtünmesiz eğik düzlemden kayan cismin mekanik enerjisi için hangisi doğrudur?", "Which is true for the mechanical energy of a block sliding down a frictionless incline?"),
@@ -242,12 +242,38 @@
           o: [T("Eylemsizlik", "Inertia"), T("Temel yasa", "Fundamental law"), T("Etki–tepki", "Action–reaction"), T("Kütle çekimi", "Gravitation")], a: 0, why: T("Yolcular durgun kalma eğilimindedir.", "Passengers tend to stay at rest.") }] };
   }
 
+  /* Current demo fixtures: never call AI or request device permissions. */
+  function currentData(sd) {
+    const date=iso(1,19), f=App.learnmap.allOutcomes().find(x=>x.subject.id==='matematik');
+    const key=f ? f.key : sd.quizzes[0]?.key;
+    const specifications=[
+      ['2x + 3 = 11 denkleminde x kaçtır?','What is x in 2x + 3 = 11?',['4','5','6','8'],'2x = 8, x = 4.'],
+      ['80 sayısının %25’i kaçtır?','What is 25% of 80?',['20','25','40','60'],'80 × 0,25 = 20.'],
+      ['3/4 + 1/4 kaçtır?','What is 3/4 + 1/4?',['1','1/2','3/8','2'],'3/4 + 1/4 = 4/4 = 1.'],
+      ['Kenarları 3 cm ve 4 cm olan dikdörtgenin alanı?','Area of a 3 cm by 4 cm rectangle?',['12 cm²','7 cm²','14 cm²','24 cm²'],'A = 3 × 4 = 12 cm².']
+    ];
+    const chosen=[0,1,0,1], confidence=[100,100,25,25];
+    const questions=specifications.map((x,i)=>({q:T(x[0],x[1]),options:x[2],answer:0,explain:x[3],difficulty:2,
+      reasonOptions:[x[3],T('İşlem kuralını değiştirmek yeterlidir.','Changing the operation rule is sufficient.')],reasonAnswer:0,chosen:chosen[i],
+      observation:{confidence:confidence[i],reasonChoice:chosen[i],reasonText:'',hintLevel:i===2?1:0,hintEvents:i===2?[{level:1,atMs:1200}]:[],beforeHint:i===2?{confidence:25,reasonChoice:0,reasonText:''}:null,elapsedMs:20000+i*5000}}));
+    const quiz={id:P+'metacognition',key,label:T('Örnek gerekçe ve eminlik çalışması','Sample reasoning and confidence practice'),date,total:4,correct:2,wrong:2,empty:0,model:'demo',questions,demo:true};
+    if(App.metacognition)quiz.metacognition=App.metacognition.summarize(questions,chosen,questions.map(q=>q.observation));
+    if(App.adaptive)quiz.adaptive=App.adaptive.result(questions,chosen,2,questions.map(q=>q.observation));
+    const text=T('Örnek defter notu: pH = −log₁₀[H₃O⁺]. İdeal 25 °C modelinde 0,01 M HCl için pH yaklaşık 2’dir. On kat seyreltildiğinde yaklaşık 3 olur. Eş mol kuvvetli asit ve baz karışımı nötrleşir. Bunlar kurgusal sanal deney notlarıdır.','Sample notebook note: pH = −log₁₀[H₃O⁺]. In the ideal 25 °C model 0.01 M HCl has pH about 2; tenfold dilution gives about 3. Equal-mole strong acid/base mixtures neutralise. These are fictional virtual-trial notes.');
+    return {quiz,notes:[{id:'not:'+P+'ph',title:T('Örnek defter notu: sanal pH','Sample notebook note: virtual pH'),text,updatedAt:date,demo:true}],meta:[
+      {id:'homework:'+P+'lab',title:T('Sanal pH seyreltme raporu (örnek)','Virtual pH dilution report (sample)'),subject:T('Kimya','Chemistry'),due:dayStr(-3),done:false,steps:[{text:T('100 mL HCl ekle ve pH değerini not et.','Add 100 mL HCl and note pH.'),done:true},{text:T('Suyla seyrelt, değişimi açıkla.','Dilute and explain the change.'),done:false}],updatedAt:date,demo:true},
+      {id:P+'manifest',schema:2,app:App.version,createdAt:date,demo:true,fictional:true}
+    ]};
+  }
+
   /* ---------- Yükle / sil ---------- */
   async function isLoaded() {
     try { return !!(await App.db.get("exams", P + "tyt0")); } catch (e) { return false; }
   }
 
   let load = async function () {
+    App.prefs.set("demoMode", true);
+    if (App.content) await App.content.ensureAll();
     seed = 7;
     const sd = studyData();
     const batches = { exams: exams(), quizzes: sd.quizzes, mistakes: sd.mistakes, progress: sd.progress, sessions: sessions(), explains: explains(), meta: metas() };
@@ -256,6 +282,7 @@
     batches.cards = cardRows(sd.quizzes);
     batches.checks = checks();
     batches.meta.push(...feedbacks(chat), video());
+    const current=currentData(sd);batches.quizzes.push(current.quiz);batches.notes=current.notes;batches.meta.push(...current.meta);
     const own = await App.db.get("schedules", "user").catch(() => null);
     if (!own || !(own.blocks || []).length || own.demo) batches.schedules = [schedule()];
     // Hedef bölüm: öğrencinin kendi hedefi varsa ona dokunma
@@ -264,18 +291,30 @@
     // Kendi ilerlemesi işaretli kazanımların üzerine yazma
     const ownProgress = new Set((await App.db.getAll("progress").catch(() => [])).filter((p) => !p.demo).map((p) => p.id));
     batches.progress = batches.progress.filter((p) => !ownProgress.has(p.id));
-    for (const [store, rows] of Object.entries(batches)) for (const r of rows) await App.db.put(store, r);
+    for (const [store, rows] of Object.entries(batches)) for (const r of rows) {
+      const existing=await App.db.get(store,r.id);
+      // IDs such as card hashes and daily:YYYY-MM-DD are shared with real data.
+      if (existing && existing.demo !== true) continue;
+      await App.db.put(store, r);
+    }
+    const phLog=App.prefs.get('ph:simulation-log',[]);
+    const ownPH=(Array.isArray(phLog)?phLog:[]).filter(r=>r?.demo!==true);
+    const phDemo=[{id:P+'ph_dilution',volume:1,ph:3,source:'simulation',temperature:25,at:iso(1),modelVersion:1,demo:true},{id:P+'ph_neutral',volume:.2,ph:7,source:'simulation',temperature:25,at:iso(2),modelVersion:1,demo:true}];
+    // Do not displace any real history when its 50-record limit is reached.
+    App.prefs.set('ph:simulation-log',[...ownPH,...phDemo].slice(0,Math.max(50,ownPH.length)));
     App.prefs.set("demoMode", true);
-    App.ui.toast(T("Demo verisi yüklendi: örnek bir öğrencinin 10 haftalık çalışması.", "Demo data loaded: 10 weeks of a sample student."));
-    if (App.badges) setTimeout(() => App.badges.check(), 1500);
+    App.ui.toast(T("Demo güncellendi: kurgusal öğrenci, gerekçe/eminlik, doküman, ödev ve sanal pH örnekleri.", "Demo updated: fictional student, reasoning/confidence, notes, assignments and virtual pH examples."));
+    // Demo statistics must not award permanent real-user badges.
   }
 
   let clear = async function () {
     for (const store of STORES) {
       const rows = await App.db.getAll(store).catch(() => []);
-      const ids = rows.filter((r) => String(r.id).indexOf(P) === 0 || r.demo === true).map((r) => r.id);
+      const ids = rows.filter((r) => r.demo === true).map((r) => r.id);
       if (ids.length) await App.db.removeMany(store, ids);
     }
+    const phLog=App.prefs.get('ph:simulation-log',[]);
+    if(Array.isArray(phLog))App.prefs.set('ph:simulation-log',phLog.filter(r=>r?.demo!==true));
     App.prefs.remove("demoMode");
     App.ui.toast(T("Demo verisi silindi. Kendi kayıtların duruyor.", "Demo data removed. Your own records are kept."));
   }
@@ -293,7 +332,7 @@
   App.router.register("demo", async (view) => {
     if (App.prefs.get("tourDone", null) == null || App.prefs.get("tourDone", null) === false) App.prefs.set("tourDone", "demo");
     view.innerHTML = '<div class="page"><p class="hint">' + T("Demo verisi hazırlanıyor…", "Preparing demo data…") + "</p></div>";
-    if (!(await isLoaded())) await load();
+    await load(); // Refresh old demo schemas; personal rows are never overwritten.
     App.router.go("bugun");
   });
 

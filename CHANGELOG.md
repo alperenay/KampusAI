@@ -1,5 +1,12 @@
 # Sürüm notları
 
+## Yayına hazırlanan güncelleme
+
+- Hakkında ve kaynakça güncel ortak bölümler, 17 çözeltili sanal pH, AI model sürekliliği, çevrimdışı kullanım sınırları ve kurgusal demo açıklamalarıyla yenilendi. Tarihsel sürüm notları güncel kapsamdan ayrıldı.
+- Demo: gerekçe/eminlik ve ipucu içeren örnek test, Dokümanlar notu, ödev ve sanal pH geçmişi. Yeniden yükleme örnekleri günceller; gerçek kart, günlük görev, program, not ve ilerleme kayıtlarını korur. Yalnız işaretli demo kayıtları silinir; örnek başarılar gerçek rozet bildirimleri üretmez.
+- Tanıtım turuna aynı AI modeliyle devam, sanal pH ve Ekosistem adımları eklendi; toplam 51 adım. Demo/veri koruma ve tanıtım regresyonu test hattına eklendi.
+
+
 ## 1.67.0 — 2026-10-31
 
 - Sanal deneylere ayrı başlık, özgün SVG çizimleri, simülasyon etiketi ve belirgin başlatma eylemi eklendi.

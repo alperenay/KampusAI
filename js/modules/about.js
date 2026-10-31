@@ -35,21 +35,22 @@
   const KAYNAKCA = () => [
     [T("Sanal pH ve AI yanıt ayarları", "Virtual pH and AI response settings"), [
       ["OpenStax Chemistry 2e. pH, pOH, suyun otoiyonizasyonu (25 °C); sanal ideal kuvvetli asit/baz modelinin temeli.", "https://openstax.org/books/chemistry-2e/pages/14-2-ph-and-poh"],
+      ["OpenStax Chemistry 2e. Kuvvetli asit/bazlar: HCl, HBr, HNO₃, LiOH, NaOH ve KOH. Sanal pH listesindeki 17 ideal çözelti seçeneğinin kimyasal kapsamı.", "https://openstax.org/books/chemistry-2e/pages/14-3-relative-strengths-of-acids-and-bases"],
       ["OpenStax Chemistry 2e. Derişim ve seyreltme; ideal hacim/mol korunumu.", "https://openstax.org/books/chemistry-2e/pages/3-3-molarity"],
       ["Google Gemini API. Model bazında düşünme düzeyi ve gecikme ayarları; desteklemeyen modele ayarsız geri dönüş.", "https://ai.google.dev/gemini-api/docs/thinking"]
     ]],
 
-    [T("1.64 ek öğrenme hedefleri ve formüller", "1.64 supplemental objectives and formulas"), [
+    [T("Ek öğrenme hedefleri ve formüller", "Supplemental objectives and formulas"), [
       ["MEB. 2026–2027 ortaöğretim planları: TYMM 9–11. sınıflarda kademeli, 12. sınıfta mevcut program. EK kodları özgün uygulama hedefleridir; yeni resmî kazanım kodu değildir.", "https://tymm.meb.gov.tr/taslak-cerceve-planlari/ortaogretim"],
       ["OpenStax. Calculus, Precalculus, University Physics ve Chemistry açık ders kitapları. Formüller ve kullanım koşulları için başvuru; her yeni formülün yanında ilgili kitap bağlantısı vardır.", "https://openstax.org/subjects"]
     ]],
-    [T("Yeni harita, tarih ve bilim modülleri", "New map, history and science modules"), [
+    [T("Dünya, tarih ve bilim modelleri", "World, history and science models"), [
       ["NASA. Blue Marble (2002), Reto Stöckli / Robert Simmon. 4K WebP doku özgün 8K görüntüden küçültüldü; mobil 2K yedek. Canlı uydu verisi değildir.", "https://science.nasa.gov/earth/earth-observatory/the-blue-marble-true-color-global-imagery-at-1km-resolution/"],
       ["NASA. 60 Moments in NASA History. Yeni uzay tarihi olaylarının kurumsal kronolojisi; açıklamalar özgün özetlerdir.", "https://www.nasa.gov/specials/timeline/index.html"],
       ["CERN. The birth of the Web. 1989 önerisi, ilk tarayıcı ve 1993 kamuya açılma süreci.", "https://home.cern/science/computing/the-birth-of-the-web"],
       ["United Nations. History of the Declaration. İnsan Hakları Evrensel Bildirgesi'nin hazırlanışı ve 1948 kabulü.", "https://www.un.org/en/about-us/udhr/history-of-the-declaration"],
       ["Nobel Prize. Marie Curie. 1903 ve 1911 ödülleri.", "https://www.nobelprize.org/womenwhochangedscience/stories/marie-curie."],
-      ["Akyıldız, A. (2011). Tanzimat. TDV İslâm Ansiklopedisi. Yaşayan Tarih Haritası 1839 kesiti.", "https://islamansiklopedisi.org.tr/tanzimat"],
+      ["Akyıldız, A. (2011). Tanzimat. TDV İslâm Ansiklopedisi. Tarih zaman çizelgesindeki Tanzimat açıklamasının başvuru kaynağı.", "https://islamansiklopedisi.org.tr/tanzimat"],
       ["Proje ekibi. Alveol, nefron, NaCl ve kondansatör modelleri özgün prosedürel öğretim çizimleridir. Ölçekli anatomik rekonstrüksiyon değildir. RC, soğuma, yarı ömür ve polarizasyon modelleri açık formül/varsayımlarla sunulur.", ""],
       ["Müfredat JSON/şablon paketi: açık erişim telifsiz lisans anlamına gelmez. Kapsam raporu, tam doğrulanmış içerikle düzenleme taslağını ayırır; tüm MEB içeriklerinin tamamlandığı iddia edilmez.", "https://tymm.meb.gov.tr"]
     ]],
@@ -227,11 +228,14 @@
   ];
 
   const OZELLIKLER = () => [
+    ["compass", "hedefim", T("Hedefim ve Geleceğim", "My Goals & Future"), T("İlgi, meslek, tahmini puan ve bölüm seçimini tek akışta incele", "Explore interests, careers, estimated scores and programmes in one flow")],
+    ["chart", "gelisimim", T("Gelişimim", "My Progress"), T("Haftalık özet, öğrenme haritası, eksik analizi ve üstbiliş karnesi", "Weekly summary, learning map, gap analysis and metacognition report")],
+    ["globe", "dunya-tarih", T("Dünya ve Tarih", "World & History"), T("Küre, atlas ve zaman çizelgesine ortak giriş", "One entry for the globe, atlas and timeline")],
+    ["star", "favorilerim", T("Favorilerim", "My Favourites"), T("Sayfalar ve AI başlangıç şablonlarını tek listede sırala", "Arrange pages and AI starting prompts in one list")],
     ["note", "dokumanlar", T("Dokümanlar", "Documents"), T("Tek belge düzenleyici: notlar, dosyadan çalışma, deney raporu ve ortak belge", "Unified editor, notes, study packs, experiment reports and shared documents")],
     ["book", "konular", T("Konu anlatımları", "Lessons"), T("9–12. sınıf konu anlatımları ve yerel ders içeriği", "Grades 9–12 lessons and locally available content")],
     ["map", "harita", T("Öğrenme haritası", "Learning map"), T("Kazanımların renkli durumu ve günlük görev", "Mastery of every outcome and a daily plan")],
     ["chart", "denemeler", T("Deneme takibi", "Exam tracking"), T("TYT–AYT netleri; sonuç belgesini fotoğraftan oku", "TYT–AYT nets; read result sheets from a photo")],
-    ["target", "puan", T("Puan ve hedef", "Score & target"), T("Tahmini puan ve bölüm önerileri", "Estimated score and suggestions")],
     ["bookmark", "yanlislar", T("Yanlış defteri", "Mistake notebook"), T("Aralıklı tekrar ve hata analizi", "Spaced review and error analysis")],
     ["mic", "sesli", T("Sesli öğretmen", "Voice teacher"), T("Konuşarak sor, sesli cevap al; istersen hologram öğretmenle", "Ask by voice, hear the answer; optional hologram teacher")],
     ["volume", "podcast", T("Konu podcast'i", "Topic podcast"), T("Konu anlatımlarından iki sesli sohbet; arada sorular", "Two-voice lesson chats with quizzes")],
@@ -239,24 +243,22 @@
     ["timer", "odak", T("Odak sayacı", "Focus timer"), T("Pomodoro ve süre istatistiği", "Pomodoro and time stats")],
     ["quiz", "simulasyon", T("Deneme simülasyonu", "Exam simulation"), T("Zayıf konulardan süreli mini deneme", "Timed mini exam from weak topics")],
     ["note", "rapor", T("Haftalık rapor", "Weekly report"), T("Gelişim özeti, yazdır ya da paylaş", "Progress summary to print or share")],
-    ["lightbulb", "bilim-lab", T("Bilim ve Sensör Laboratuvarı", "Science & Sensor Lab"), T((App.labs ? Object.keys(App.labs.LABS).length : 82) + " deney; 2B, 3B, AR, hologram ve el ile kontrol", (App.labs ? Object.keys(App.labs.LABS).length : 82) + " labs; 2D, 3D, AR, hologram and hand control")],
+    ["lightbulb", "bilim-lab", T("Deney Laboratuvarı", "Experiment Laboratory"), T((App.labs ? Object.keys(App.labs.LABS).length : 82) + " deney kataloğu; sanal pH (17 çözelti), ekosistem, sensör ve ölçüm bölümleri", (App.labs ? Object.keys(App.labs.LABS).length : 82) + " catalogue experiments; virtual pH (17 solutions), ecosystem, sensors and measurements")],
     ["pen", "yazili", T("Yazılı Sınavlar", "Written Exams"), T("Maarif Modeli açık uçlu yazılılar: 9–12, 7 ders, 56 sınav, cevap anahtarı ve puanlama ölçütü", "Open-ended written exams with keys and rubrics")],
     ["globe", "kure", T("3B Dünya Küresi", "3D Globe"), T("Ülkeler, levhalar, depremler, iklim, saat dilimleri, gündüz-gece", "Countries, plates, quakes, climate, time zones, day-night")],
-    ["cube", "modeller", T("3B modeller", "3D models"), T("14 model ve elle molekül kurma; parçalarına ayır", "14 models and molecule building")],
+    ["cube", "modeller", T("3B modeller", "3D models"), T("Eğitim modellerini döndür, parçaları ve etiketleri incele", "Rotate educational models and inspect their parts and labels")],
     ["play", "video", T("Videodan çalış", "Study from video"), T("YouTube dersinden özet, bölümler, kart ve test", "Summary, chapters, cards and quiz from a YouTube lesson")],
-    ["compass", "kariyer", T("Kariyer keşfi", "Career explorer"), T("RIASEC ilgi envanteri, 52 meslek ve bölümleri", "RIASEC inventory, 52 careers and programmes")],
     ["star", "yolculuk", T("YKS yolculuğu", "YKS journey"), T("Macera haritası, XP, seviye ve günlük görevler", "Adventure map, XP, levels and daily quests")],
     ["timer", "paragraf", T("Paragraf antrenmanı", "Paragraph training"), T("Okuma hızı ve soru başına süre takibi", "Reading speed and time per question")],
     ["game", "oyunlar", T("Oyunlar", "Games"), T("Derslere göre etkileşimli kısa oyunlar", "Interactive subject games")],
     ["globe", "atlas", T("Etkileşimli harita", "Interactive map"), T("81 il kartı, dünya ülkeleri ve başkentler; keşfet ve sına", "81 province cards, countries and capitals; explore and quiz")],
-    ["grad", "tercih", T("Tercih robotu", "Programme finder"), T("Yerleşebileceğin bölümler, 2025 taban puan ve sıralamalar", "Programmes you could get into, 2025 cut-offs")],
-    ["clock", "zaman", T("Tarih zaman çizelgesi", "History timeline"), T("184 olay, kaynaklı dosyalar ve kronoloji sınavı", "184 events, sourced dossiers and chronology quiz")],
+    ["clock", "zaman", T("Tarih zaman çizelgesi", "History timeline"), T("Dönem ve olay filtreleri, kaynaklı açıklamalar ve kronoloji sınavı", "Period and event filters, sourced explanations and chronology quizzes")],
     ["widget", "araclar", T("Tüm araçlar", "All tools"), T("Ara, sabitle, son kullanılanlar", "Search, pin, recently used")],
     ["sLang", "konusma", T("İngilizce konuşma", "English speaking"), T("Hologram öğretmenle sesli pratik; dilbilgisi ve telaffuz geri bildirimi", "Speak with the hologram teacher; grammar and pronunciation feedback")],
-    ["sMath", "formuller", T("Formül defteri", "Formula book"), T("162 formül; ne zaman kullanılır, hızlı tekrar", "162 formulas with when-to-use and quick review")],
-    ["thumbUp", "geribildirim", T("Cevap geri bildirimi", "Answer feedback"), T("👍 / 👎 ve hatalı soru bildirimi; modeli geliştirmek için", "👍 / 👎 and question reports to improve the model")],
+    ["sMath", "formuller", T("Formül defteri", "Formula book"), T("Matematik, fizik ve kimya; kullanım koşulları ve hızlı tekrar", "Mathematics, physics and chemistry; conditions and quick review")],
+    ["thumbUp", "geribildirim", T("Cevap geri bildirimi", "Answer feedback"), T("Yanıt ve soru hatalarını yerel olarak bildir, düzeltmeleri incele; otomatik eğitim yapılmaz", "Report answer and question errors locally; no automatic model training")],
     ["layers", "kartlar", T("Hap kartları", "Flashcards"), T("Kutu sistemiyle tekrar", "Spaced review with boxes")],
-    ["grad", "sinif", T("Sınıf (öğretmen)", "Class (teacher)"), T("Sınıfın zorlandığı konular, anonim", "Where the class struggles, anonymous")]
+    ["grad", "sinif", T("Sınıf (öğretmen)", "Class (teacher)"), T("Paylaşılan öğrenci kayıtlarını konu bazında incele; kimlikler kendiliğinden anonimleşmez", "Review shared student records by topic; identities are not automatically anonymised")]
   ];
 
   const link = (url, text) => '<a href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(text) + "</a>";
@@ -283,14 +285,16 @@
 
       card("abt-proje", "info", T("Proje", "Project"),
         '<div class="about-hero"><img src="assets/brand/logo.png" alt="KampüsAI" width="72" height="72"><div>' +
-        "<p>" + esc(T("KampüsAI, TÜBİTAK proje çalışması olarak lise öğrencileri tarafından geliştirilen ücretsiz ve açık kaynaklı bir YKS çalışma uygulamasıdır. Amacı; müfredatı bilen, öğrenciyi tanıyan ve internetsiz de çalışabilen bir yapay zekâ öğretmenini her öğrenciye ulaştırmaktır.",
-          "KampüsAI is a free, open-source YKS study app built by high-school students as a TÜBİTAK project. Its goal is to give every student an AI teacher that knows the curriculum, knows the student and can work offline.")) + "</p>" +
+        "<p>" + esc(T("KampüsAI, TÜBİTAK proje çalışması olarak lise öğrencileri tarafından geliştirilen ücretsiz, kaynak kodu incelenebilir bir YKS çalışma uygulamasıdır. Amacı; konu anlatımı, planlama, deney ve AI destekli çalışma araçlarını tek yerde sunmaktır. Yerel içerikler çevrimdışı açılabilir; AI için internet servisi veya desteklenen cihaza indirilmiş model gerekir.",
+          "KampüsAI is a free YKS study app with publicly viewable source code built by high-school students as a TÜBİTAK project. Its goal is to bring lessons, planning, experiments and AI-assisted study into one place. Local content can open offline; AI requires an online service or a downloaded model on a supported device.")) + "</p>" +
         '<ul class="about-meta">' +
           "<li><b>" + esc(t("set.version")) + "</b> " + esc(App.version || "dev") + "</li>" +
-          "<li><b>" + esc(T("Platformlar", "Platforms")) + "</b> Windows · Pardus/Linux · Android · iPhone · " + esc(T("web", "web")) + "</li>" +
+          "<li><b>" + esc(T("Platformlar", "Platforms")) + "</b> Windows · Pardus/Linux · Android · iPhone (PWA) · " + esc(T("web", "web")) + "</li>" +
           "<li><b>" + esc(T("Kaynak kod", "Source code")) + "</b> " + link("https://github.com/alperenay/KampusAI", "github.com/alperenay/KampusAI") + "</li>" +
           "<li><b>" + esc(T("Geri bildirim", "Feedback")) + "</b> " + link("https://github.com/alperenay/KampusAI/issues", T("GitHub üzerinden bildir", "Report on GitHub")) + "</li>" +
         "</ul></div></div>") +
+
+      card("abt-demo", "compass", T("Uygulamayı tanı ve örnek veriyi incele", "Explore the app with sample data"), '<p>'+esc(T("Demo öğrenci tamamen kurgusaldır; başarı ve süreler araştırma sonucu değildir. Mevcut kişisel kayıtlar korunarak örnekler güncellenir. Demo etiketine dokunarak örnekleri silebilirsin.", "The demo student is fictional; scores and timings are not research evidence. Sample records update while personal records are preserved. Tap the DEMO label to remove samples."))+'</p><a class="btn" href="#/demo">'+esc(T("Demo öğrenciyi yükle / güncelle", "Load / update demo student"))+'</a> <a class="btn" href="#/rehber">'+esc(T("Kullanım rehberi ve tanıtım turu", "User guide and guided tour"))+'</a>') +
 
       card("abt-ozellik", "sparkle", T("Neler yapabilirsin?", "What can you do?"), '<div class="about-feats">' + feats + "</div>") +
 
@@ -298,20 +302,20 @@
         '<ul class="about-list">' +
         "<li><b>" + esc(T("İki çalışma yolu:", "Two ways to run:")) + "</b> " + esc(T("Cihaza indirilen Gemma 4 modeli internetsiz çalışır; internet modunda Google Gemini kullanılır. İlk açılışta \"Gizlilik önce\" ya da \"Doğruluk önce\" seçilir, Ayarlar'dan değiştirilebilir.",
           "The downloaded Gemma 4 model works offline; online mode uses Google Gemini. You choose \"Privacy first\" or \"Accuracy first\" on first run and can change it in Settings.")) + "</li>" +
-        "<li><b>" + esc(T("Notlardan cevap (RAG):", "Answers from notes (RAG):")) + "</b> " + esc(T("Asistan önce ilgili konu notunu, denemelerini ve yanlışlarını bulur, sonra bunları okuyarak cevap verir; kullandığı notlar cevabın altında görünür.",
-          "The assistant first finds the related lesson notes, exams and mistakes, then answers from them; the notes it used are shown under the answer.")) + "</li>" +
+        "<li><b>" + esc(T("Notlardan cevap (RAG):", "Answers from notes (RAG):")) + "</b> " + esc(T("Notları kullan seçeneği açıksa ilgili ders içeriği ve kişisel kayıtlar bağlama eklenebilir. Selamlamalarda bu arama yapılmaz. Kaynak bulunamaması, bilginin doğrulandığı anlamına gelmez.",
+          "With Use notes enabled, relevant lessons and personal records may be added to context. Greetings skip this lookup. Missing sources do not mean the answer is verified.")) + "</li>" +
         "<li><b>" + esc(T("Kaynak gösterme:", "Citations:")) + "</b> " + esc(T("Cevapta notlardan gelen her bilginin yanında [K1] gibi bir etiket bulunur; etikete dokununca o konu açılır. Cevabın altındaki rozet, cevabın ne kadarının bulunan notlarla örtüştüğünü gösterir; notlarla az örtüşen cevaplarda \"kontrol et\" uyarısı çıkar.",
           "Facts taken from the notes carry a tag like [R1] that opens that lesson. A badge under the answer shows how much of it matches the retrieved notes and warns when it barely does.")) + "</li>" +
-        "<li><b>" + esc(T("Ölçerek seçtik:", "Chosen by measuring:")) + "</b> " + esc(T("Kendi eğittiğimiz KampüsAI modellerini, eğitimde hiç görmediği 215 soruyla ve gerçek YKS sorularıyla ölçtük; temel Gemma 4 daha iyi sonuç verdiği için uygulamada o kullanılıyor.",
-          "We tested our own fine-tuned models on 215 unseen questions and real YKS questions; base Gemma 4 scored better, so the app uses it.")) + "</li>" +
+        "<li><b>" + esc(T("Model seçimi ve hız:", "Model selection and speed:")) + "</b> " + esc(T("Çalışan model sorular arasında korunur. Yeni model seçimi ayar değişikliği veya model/servis hatasında gerekebilir. Akış, iptal ve süre sınırları vardır; hız bağlantıya ve sağlayıcıya bağlıdır. Bu uygulama kendi eğitilmiş bir modeli zorunlu kılmaz ve kesin doğruluk garantisi vermez.",
+          "The working model is kept between questions. Settings changes or model/service failures may require another selection. Streaming, cancellation and deadlines are supported; latency depends on the connection and provider. A custom-trained model is not required and accuracy is not guaranteed.")) + "</li>" +
         "</ul>" + '<p class="hint">' + esc(t("abt.ai")) + "</p>") +
 
       card("abt-gizlilik", "lock", t("abt.privTitle"), '<ul class="about-list">' + priv + "</ul>") +
 
       card("abt-surum", "clock", T("Sürüm geçmişi", "Release history"),
-        '<ul class="about-list">' + SURUMLER().map(([v, ne]) => "<li><b>" + esc(v) + "</b> — " + esc(ne) + "</li>").join("") + "</ul>") +
+        '<p>'+esc(T('Bu liste tarihsel sürüm notlarıdır. Kaldırılmış özellikler eski kayıtlarda bulunabilir; güncel kapsam yukarıdaki özellik kartlarında açıklanır.', 'These are historical release notes. Retired features may appear in older entries; the current scope is described in the feature cards above.'))+'</p><ul class="about-list">' + SURUMLER().map(([v, ne]) => "<li><b>" + esc(v) + "</b> — " + esc(ne) + "</li>").join("") + "</ul>") +
 
-      card("kaynakca", "book", t("abt.refTitle"), '<p class="card__sub">' + esc(t("abt.refIntro")) + "</p>" + ref) +
+      card("kaynakca", "book", t("abt.refTitle"), '<p class="card__sub">' + esc(t("abt.refIntro")) + "</p><p>" + esc(T("Kaynak bağlantıları, yöntem veya veri dayanağını gösterir; kaynak sahibinin projeyi onayladığı anlamına gelmez. Açık erişim, sınırsız kullanım izni değildir. Her varlığın lisansı ayrıca değerlendirilir. Son içerik gözden geçirme: 31 Ekim 2026.", "Source links identify methods or data, not endorsement. Public access is not an unrestricted licence; each asset has its own terms. Content reviewed: 31 October 2026.")) + "</p>" + ref) +
 
       card("abt-lisans", "layers", t("abt.licTitle"), '<p class="card__sub">' + esc(t("abt.licIntro")) + '</p><ul class="about-list">' + lic + "</ul>") +
       "</div>";
