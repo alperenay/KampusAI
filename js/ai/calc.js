@@ -29,7 +29,8 @@
   };
   const CONST = { pi: Math.PI, "π": Math.PI, e: Math.E };
 
-  function evaluate(src) {
+  function evaluate(src, options = {}) {
+    const functions = options.radians ? { ...FN, sin: Math.sin, cos: Math.cos, tan: Math.tan, asin: Math.asin, acos: Math.acos, atan: Math.atan } : FN;
     const s = String(src).replace(/×/g, "*").replace(/÷/g, "/").replace(/√/g, "sqrt").replace(/\*\*/g, "^");
     if (s.length > 300) throw new Error("ifade çok uzun");
     let i = 0;
@@ -51,10 +52,10 @@
       i += m[0].length;
       const name = m[0];
       if (eat("(")) {
-        if (!FN[name]) throw new Error("bilinmeyen işlev: " + name);
+        if (!Object.hasOwn(functions, name)) throw new Error("bilinmeyen işlev: " + name);
         const args = [];
         if (!eat(")")) { do { args.push(expr()); } while (eat(",")); if (!eat(")")) throw new Error("')' eksik"); }
-        return FN[name](...args);
+        return functions[name](...args);
       }
       if (name in CONST) return CONST[name];
       throw new Error("bilinmeyen ad: " + name);

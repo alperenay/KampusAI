@@ -24,7 +24,7 @@ concurrency:
 env:
   # Yayınlanan sürüm numarası: yeni sürüm çıkarırken burayı değiştir.
   # (Android'in iç sürüm kodu her derlemede otomatik artar; yeni APK eskisinin üzerine kurulur.)
-  APP_VERSION: 1.67.0
+  APP_VERSION: 1.68.0
   # Telefona gömülen yapay zeka motoru (llama.cpp) sürümü — tools/llama-android.sh
   LLAMA_CPP_TAG: b11707
 
@@ -87,6 +87,7 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Arayüz ve çevrimdışı veri akışları
         run: |
+          node tools/learning-tools-ui-check.mjs
           node tools/learning-hubs-ui-check.mjs
           node tools/demo-about-ui-check.mjs
           node tools/security-ui-check.mjs
@@ -584,12 +585,11 @@ jobs:
           cat > notes.md <<NOTES
           ## KampüsAI $APP_VERSION
 
-          AI: çalışan model sorular arasında korunur; karmaşık sorularda yeniden model listesi çekilmez. İlk seçim eşzamanlı istekler arasında paylaşılır.
-          Takılan isteklerde bağlantı/ilk metin/akış süre sınırları; kısmi yanıt ve iptal koruması. Hazır program kişisel kayıt olarak sunulmaz.
-          Deney Laboratuvarı'nın boş menü bağlantısı düzeltildi; Sanal pH ve Ekosistem Deneyler altında.
-          Sanal pH: 17 çözelti, asit/baz/nötr grupları. Sanal deneyler çizimli kartlar ve belirgin başlatma düğmeleriyle öne çıkarıldı.
-          Çiz, Çalışsın kaldırıldı. Keşif Atölyeleri laboratuvar kartının görünümü düzeltildi.
-          [Ölçüm ve kapsam notları](https://github.com/$OWNER/$REPO/blob/main/docs/SURUM-1.67.md).
+          Hesaplar ve Araçlar: birim dönüştürücü, fonksiyon çizici, mol/çözelti ve ölçüm analizi. İlgili konu anlatımlarında doğrudan hesaplama panelleri.
+          Oyunlar dört öğrenme grubunda; dört yeni oyunla toplam16 oyun. Dinle ve Konuş ortak girişi.
+          Gelişimim'de doğruluk ve gecikmeli tekrar; XP/rozet/seri açılır motivasyon bölümünde.
+          Güncel Hakkında/kaynakça, kişisel veriyi koruyan demo yenileme ve52 adımlı tanıtım turu.
+          [Ölçüm ve kapsam notları](https://github.com/$OWNER/$REPO/blob/main/docs/SURUM-1.68.md).
 
           | Platform | Dosya |
           |---|---|

@@ -1,11 +1,11 @@
 {
   "name": "kampusai-web",
   "private": true,
-  "version": "1.67.0",
+  "version": "1.68.0",
   "scripts": {
     "build": "node tools/build-web.mjs dist/web",
     "lint": "node tools/syntax-check.mjs && node tools/compat-check.mjs",
-    "test": "node tools/study-check.mjs && node tools/research-check.mjs && node tools/teacher-review-check.mjs && node tools/retired-model-check.mjs && node tools/ar-check.mjs && node tools/kavram-check.mjs && node tools/content-check.mjs && node tools/build-content-index.mjs --check && node tools/v142-check.mjs && node tools/practice-check.mjs && node tools/v145-check.mjs && node tools/runtime-check.mjs && node tools/v147-check.mjs && node tools/discovery-check.mjs && node tools/discovery-signal-check.mjs && node tools/v149-check.mjs && node tools/v151-check.mjs && node tools/audio-check.mjs && node tools/v150-check.mjs && node tools/inference-check.mjs && node tools/tts-check.mjs && node tools/study-workspace-check.mjs && node tools/appearance-settings-check.mjs && node tools/documents-check.mjs && node tools/science-lab-check.mjs && node tools/timeline-check.mjs && node tools/lazy-check.mjs && node tools/csp-check.mjs && node tools/voice-board-check.mjs && node tools/v164-check.mjs && node tools/ph-simulation-check.mjs && node tools/ai-reliability-check.mjs",
+    "test": "node tools/study-check.mjs && node tools/research-check.mjs && node tools/teacher-review-check.mjs && node tools/retired-model-check.mjs && node tools/ar-check.mjs && node tools/kavram-check.mjs && node tools/content-check.mjs && node tools/build-content-index.mjs --check && node tools/v142-check.mjs && node tools/practice-check.mjs && node tools/v145-check.mjs && node tools/runtime-check.mjs && node tools/v147-check.mjs && node tools/discovery-check.mjs && node tools/discovery-signal-check.mjs && node tools/v149-check.mjs && node tools/v151-check.mjs && node tools/audio-check.mjs && node tools/v150-check.mjs && node tools/inference-check.mjs && node tools/tts-check.mjs && node tools/study-workspace-check.mjs && node tools/appearance-settings-check.mjs && node tools/documents-check.mjs && node tools/science-lab-check.mjs && node tools/timeline-check.mjs && node tools/lazy-check.mjs && node tools/csp-check.mjs && node tools/voice-board-check.mjs && node tools/v164-check.mjs && node tools/ph-simulation-check.mjs && node tools/ai-reliability-check.mjs && node tools/learning-tools-check.mjs",
     "test:study": "node tools/study-check.mjs",
     "test:study-ui": "node tools/study-ui-check.mjs",
     "test:research": "node tools/research-check.mjs",
@@ -69,6 +69,7 @@
     "test:navigation-consolidation-ui": "node tools/navigation-consolidation-ui-check.mjs",
     "test:labs-refinement-ui": "node tools/labs-refinement-ui-check.mjs",
     "test:demo-about-ui": "node tools/demo-about-ui-check.mjs",
-    "test:learning-hubs-ui": "node tools/learning-hubs-ui-check.mjs"
+    "test:learning-hubs-ui": "node tools/learning-hubs-ui-check.mjs",
+    "test:learning-tools-ui": "node tools/learning-tools-ui-check.mjs"
   }
 }

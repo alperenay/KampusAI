@@ -254,7 +254,7 @@
     const ksCard = subject.id === "ingilizce" && App.konusma ? App.konusma.cardHtml(unit) : "";
     // 3B modeller yalnızca model bulunan derslerde (biyoloji/kimya/coğrafya) ve gerektiğinde yüklenir (v1.42)
     if (!App.modeller && ["biyoloji", "kimya", "cografya"].includes(subject.id)) await App.utils.loadScript("js/modules/holo-modeller.js").catch(() => {});
-    const labCards = ksCard + fmCard + (App.labs ? App.labs.sectionHtml(key) : "") + (App.modeller ? App.modeller.cardHtml(key) : "");
+    const labCards = ksCard + fmCard + (App.learningTools ? App.learningTools.sectionHtml(key) : "") + (App.labs ? App.labs.sectionHtml(key) : "") + (App.modeller ? App.modeller.cardHtml(key) : "");
     // Okunabilir bölümlerde "Dinle" düğmesi (erişilebilirlik: sesli okuma)
     const section = (icon, title, inner, listen) =>
       '<section class="card lesson__section"' + (listen ? " data-read-scope" : "") + "><h2>" + App.icon(icon) + esc(title) + (listen && App.a11y ? App.a11y.listenBtnHtml() : "") + '</h2><div class="lesson__body md">' + inner + "</div></section>";
@@ -334,6 +334,7 @@
 
     if (App.cards) App.cards.bindCard(view);
     if (App.labs) App.labs.mountIn(view, key);
+    const toolsCleanup=App.learningTools ? App.learningTools.bind(view) : ()=>{};
     if (App.gorsel) App.gorsel.bind(view);
 
     const btn = view.querySelector("#toggleDone");
@@ -358,8 +359,7 @@
       paint();
       App.ui.toast(isDone ? t("cur.toastDone") : t("cur.toastUndone"));
     });
-
-
+    return toolsCleanup;
   }
 
   App.router.register("konular", async (view, p) => {

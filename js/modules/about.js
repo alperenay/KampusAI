@@ -33,6 +33,12 @@
 
   /* Kaynakça (APA biçimine yakın), konu başlıklarına göre gruplu: [grup, [[metin, adres], …]] */
   const KAYNAKCA = () => [
+    [T("Hesaplar ve Araçlar", "Calculations & Tools"), [
+      ["BIPM. SI temel birimleri; birim dönüştürücünün büyüklük/birim ayrımı.", "https://www.bipm.org/en/measurement-units/si-base-units"],
+      ["OpenStax Chemistry 2e, 3.3. Mol miktarı, molarite ve seyreltme bağıntıları. Formül ayrıştırıcısı proje kodudur; mevcut yuvarlatılmış atom kütleleri kullanılır.", "https://openstax.org/books/chemistry-2e/pages/3-3-molarity"],
+      ["NIST/SEMATECH e-Handbook, 1.3.5.2. Örneklem standart sapması ve s/√N ilişkisi. Araç güven aralığı veya toplam cihaz belirsizliği hesapladığını iddia etmez.", "https://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm"],
+      ["Proje ekibi. Güvenli ifade ayrıştırıcısı ile 401 noktalı fonksiyon örnekleme; sayısal kök adayları kesin sembolik çözüm değildir.", ""]
+    ]],
     [T("Sanal pH ve AI yanıt ayarları", "Virtual pH and AI response settings"), [
       ["OpenStax Chemistry 2e. pH, pOH, suyun otoiyonizasyonu (25 °C); sanal ideal kuvvetli asit/baz modelinin temeli.", "https://openstax.org/books/chemistry-2e/pages/14-2-ph-and-poh"],
       ["OpenStax Chemistry 2e. Kuvvetli asit/bazlar: HCl, HBr, HNO₃, LiOH, NaOH ve KOH. Sanal pH listesindeki 17 ideal çözelti seçeneğinin kimyasal kapsamı.", "https://openstax.org/books/chemistry-2e/pages/14-3-relative-strengths-of-acids-and-bases"],
@@ -232,6 +238,7 @@
     ["chart", "gelisimim", T("Gelişimim", "My Progress"), T("Haftalık özet, öğrenme haritası, eksik analizi ve üstbiliş karnesi", "Weekly summary, learning map, gap analysis and metacognition report")],
     ["globe", "dunya-tarih", T("Dünya ve Tarih", "World & History"), T("Küre, atlas ve zaman çizelgesine ortak giriş", "One entry for the globe, atlas and timeline")],
     ["star", "favorilerim", T("Favorilerim", "My Favourites"), T("Sayfalar ve AI başlangıç şablonlarını tek listede sırala", "Arrange pages and AI starting prompts in one list")],
+    ["calc", "hesaplar", T("Hesaplar ve Araçlar", "Calculations & Tools"), T("Hesap makinesi, birim, fonksiyon, mol ve ölçüm analizi; ilgili konu içinde de açılır", "Calculator, units, functions, moles and measurement analysis; also available within relevant lessons")],
     ["volume", "dinle-konus", T("Dinle ve Konuş", "Listen & Speak"), T("Sesli öğretmen, podcast, dil pratiği ve sözlü prova", "Voice teacher, podcasts, language practice and oral rehearsal")],
     ["note", "dokumanlar", T("Dokümanlar", "Documents"), T("Tek belge düzenleyici: notlar, dosyadan çalışma, deney raporu ve ortak belge", "Unified editor, notes, study packs, experiment reports and shared documents")],
     ["book", "konular", T("Konu anlatımları", "Lessons"), T("9–12. sınıf konu anlatımları ve yerel ders içeriği", "Grades 9–12 lessons and locally available content")],

@@ -14,6 +14,7 @@
 
   /* [rota, simge, ad (i18n anahtarı ya da [tr,en]), açıklama [tr,en], grup, arama kelimeleri] */
   const TOOLS = [
+    ["hesaplar", "calc", ["Hesaplar ve Araçlar", "Calculations & Tools"], ["Hesap makinesi, birim, fonksiyon, mol ve ölçüm analizi", "Calculator, units, functions, moles and measurement analysis"], "tools", "hesap makinesi birim dönüştürücü fonksiyon grafik mol çözelti belirsizlik ölçüm"],
     ["dinle-konus", "volume", ["Dinle ve Konuş", "Listen & Speak"], ["Sesli öğretmen, konu podcast’i, dil pratiği ve sözlü prova tek yerde", "Voice teacher, podcasts, language practice and oral rehearsal together"], "study", "sesli öğretmen podcast konuşma dil prova dinle"],
     ["hedefim", "compass", ["Hedefim ve Geleceğim", "My Goals & Future"], ["İlgiler, meslekler, puan ve bölüm hedefleri tek akışta", "Interests, careers, scores and programme goals together"], "track", "kariyer meslek tercih puan ilgi bölüm"],
     ["gelisimim", "chart", ["Gelişimim", "My Progress"], ["Haftalık özet, öğrenme haritası, eksik analizi ve karne", "Weekly summary, learning map, gap analysis and report"], "track", "rapor karne kök eksik öğrenme harita"],

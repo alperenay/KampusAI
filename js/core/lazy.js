@@ -34,6 +34,7 @@
     kure: [D("tarih-olaylar"), D("tarih-ek"), M("kure")],
     video: [M("video")],
     calculator: [M("calculator")],
+    learningTools: [M("learning-tools-model"), M("learning-tools")],
     tercih: [M("tercih")],
     kariyer: [D("kariyer"), M("kariyer")],
     meslek: [D("kariyer"), D("meslek-harita"), M("meslek")],
@@ -48,7 +49,7 @@
     oyunlar: ["labs", "games"],                  // grafik oyunu deney çizim araçlarını kullanır
     "bilim-lab": (r) => ["labs","discovery"].concat(r.params[0]==="vatandas"?["sinif","vatandas"]:r.params[0]==="deneyler"&&r.params[1]==="ph"?["ph"]:r.params[0]==="deneyler"&&r.params[1]==="ekosistem"?["ekosistem"]:[]),          // deneyler, telefon fiziği, sismograf
     // Kazanım sayfası: deney kartları, podcast ve "Hangi meslekte?" bağlantısı
-    konular: (r) => (r.params.length >= 4 ? ["labs", "podcast", "meslek"] : null),
+    konular: (r) => (r.params.length >= 4 ? ["labs", "podcast", "meslek", "learningTools"] : null),
     "sinif-modu": ["sinif"],
     duello: ["sinif", "duello"],
     vatandas: ["sinif", "vatandas"],
@@ -64,6 +65,11 @@
     kure: ["kure"],
     video: ["video"],
     hesap: ["calculator"],
+    hesaplar: ["calculator","learningTools"],
+    "birim-cevirici": ["learningTools"],
+    "fonksiyon-cizici": ["learningTools"],
+    "mol-cozelti": ["learningTools"],
+    "olcum-analizi": ["learningTools"],
     tercih: ["tercih"],
     kariyer: ["tercih", "kariyer"],
     meslek: ["tercih", "kariyer", "meslek"],

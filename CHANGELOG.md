@@ -1,6 +1,8 @@
 # Sürüm notları
 
-## Yayına hazırlanan güncelleme
+## 1.68.0 — 2026-10-31
+
+- Hesaplar ve Araçlar: birim dönüştürücü, güvenli fonksiyon çizici, mol/çözelti ve ölçüm analizi. Uygun konu anlatımlarında cihazda çalışan açılır hesap panelleri ve tam sayfa bağlantıları. Eski hesap makinesi kayıtları ve adresi korunur.
 
 - Oyunlar öğrenme becerisine göre dört ortak gruba ayrıldı; mevcut modların adresleri ve rekorları korundu. Oran Mutfağı, Bilimsel Gösterim, pH Tahmini ve Kanıt Dedektifi eklendi; toplam 16 oyun.
 - Sesli öğretmen, podcast, dil pratiği ve sözlü prova Dinle ve Konuş altında toplandı. Mevcut sayfalar ve kayıtlar korunur; eski favoriler ortak girişe eşlenir.
@@ -8,7 +10,7 @@
 
 - Hakkında ve kaynakça güncel ortak bölümler, 17 çözeltili sanal pH, AI model sürekliliği, çevrimdışı kullanım sınırları ve kurgusal demo açıklamalarıyla yenilendi. Tarihsel sürüm notları güncel kapsamdan ayrıldı.
 - Demo: gerekçe/eminlik ve ipucu içeren örnek test, Dokümanlar notu, ödev ve sanal pH geçmişi. Yeniden yükleme örnekleri günceller; gerçek kart, günlük görev, program, not ve ilerleme kayıtlarını korur. Yalnız işaretli demo kayıtları silinir; örnek başarılar gerçek rozet bildirimleri üretmez.
-- Tanıtım turuna aynı AI modeliyle devam, sanal pH ve Ekosistem adımları eklendi; toplam 51 adım. Demo/veri koruma ve tanıtım regresyonu test hattına eklendi.
+- Tanıtım turuna aynı AI modeliyle devam, sanal pH ve Ekosistem adımları eklendi; toplam 52 adım. Demo/veri koruma ve tanıtım regresyonu test hattına eklendi.
 
 
 ## 1.67.0 — 2026-10-31

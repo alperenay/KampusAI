@@ -67,7 +67,7 @@ await visit("oyunlar");
 assert.equal(requested.length, 0, "a loaded group is not requested again");
 assert.equal(needs[0]({ name: "konular", params: ["9", "fizik"], path: "" }), null, "subject list needs no lazy group");
 await visit("konular", ["9", "fizik", "u1", "k1"]);
-assert.deepEqual(requested, [...GROUPS.podcast, ...GROUPS.meslek], "outcome page loads podcast and careers (labs already loaded)");
+assert.deepEqual(requested, [...GROUPS.podcast, ...GROUPS.meslek, ...GROUPS.learningTools], "outcome page loads podcast, careers and contextual calculation tools (labs already loaded)");
 assert.equal(needs[0]({ name: "", params: [], path: "" }), null, "home needs nothing");
 
 const kb = (files) => Math.round(files.reduce((n, f) => n + fs.statSync(path.join(root, f)).size, 0) / 1024);

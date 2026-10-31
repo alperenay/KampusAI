@@ -123,10 +123,10 @@
       icon: "compass",
       title: ["Yardım ve araçlar", "Help & utilities"],
       description: [
-        "Rehber, hesap makinesi ve kaynakça",
-        "Guide, calculator and references",
+        "Hesap araçları, favoriler ve yardım",
+        "Calculation tools, favourites and help",
       ],
-      routes: ["favorilerim", "rehber", "hesap", "hakkinda"],
+      routes: ["hesaplar", "favorilerim", "rehber", "hesap", "hakkinda"],
     },
   ];
   function groupFor(route) {

@@ -1,0 +1,15 @@
+.learning-tool { padding:clamp(.8rem,2vw,1.4rem);min-width:0; }
+.learning-tool .field { display:grid;gap:.4rem;margin-bottom:.8rem;min-width:0; }
+.learning-tool .input,.learning-tool .select { width:100%;min-width:0;box-sizing:border-box;min-height:44px; }
+.learning-tool-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:.8rem; }
+.learning-tool [data-tool-output] { margin-top:1rem;overflow-wrap:anywhere;font-size:1.08rem; }
+.learning-tool [data-tool-status] { overflow-wrap:anywhere; }
+.learning-tool dl { display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.5rem 1rem; }
+.learning-tool dd { margin:0;font-weight:700; }
+.learning-tool-plot { width:100%;height:320px;display:block; }
+.learning-tool-table { overflow:auto; }
+.learning-tool-table table { width:100%;border-collapse:collapse; }
+.learning-tool-table th,.learning-tool-table td { padding:.5rem;text-align:left;border-bottom:1px solid var(--border); }
+.learning-lesson-tools details { margin:.7rem 0;border:1px solid var(--border);border-radius:12px;padding:.7rem; }
+.learning-lesson-tools summary { cursor:pointer;font-weight:700;min-height:32px; }
+@media(max-width:480px) { .learning-tool dl { grid-template-columns:minmax(0,1fr); } .learning-tool dd { margin-bottom:.6rem; } }
