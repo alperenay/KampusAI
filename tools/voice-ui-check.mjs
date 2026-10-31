@@ -84,13 +84,18 @@ try {
   // Stop while the answer is still streaming: speech and the AI request both end.
   await page.click("#vMain");
   await page.waitForFunction(() => App.voice._state().phase === "speaking", null, { timeout: 8000 });
-  const before = await page.evaluate(() => window.__t.spoken.length);
-  await page.click("#vMain");                       // Sustur
+  // Snapshot and dispatch in the same browser task: Playwright actionability waits
+  // can otherwise include speech emitted before the stop click under CPU load.
+  const before = await page.evaluate(() => {
+    const snapshot={n:window.__t.spoken.length,phase:App.voice._state().phase};
+    document.querySelector('#vMain').click();return snapshot;
+  });
+  assert.equal(before.phase,"speaking");
   await page.waitForTimeout(900);
   const after = await page.evaluate(() => ({ n: window.__t.spoken.length, phase: App.voice._state().phase, speaking: App.speech.speaking() }));
   assert.equal(after.phase, "listening");
   assert.equal(after.speaking, false);
-  assert.ok(after.n - before <= 1, "Nothing more is spoken after stop");
+  assert.equal(after.n, before.n, "Nothing more is spoken after the actual stop event");
   await page.evaluate(() => App.voice.close());
   await page.waitForFunction(() => !document.querySelector(".voice-overlay"));
 
