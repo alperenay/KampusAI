@@ -1,0 +1,566 @@
++ APP=com.dersasistani.app
+++ head -1
+++ ls apk/KampusAI-1.69.0.apk
++ APK=apk/KampusAI-1.69.0.apk
+++ curl -s https://api.github.com/repos/alperenay/KampusAI/releases/latest
+++ grep -o '"browser_download_url": *"[^"]*\.apk"'
+++ head -1
+++ cut '-d"' -f4
++ OLD_URL=https://github.com/alperenay/KampusAI/releases/download/v1.68.0/KampusAI-1.68.0.apk
++ '[' -n https://github.com/alperenay/KampusAI/releases/download/v1.68.0/KampusAI-1.68.0.apk ']'
++ curl -sL -o old.apk https://github.com/alperenay/KampusAI/releases/download/v1.68.0/KampusAI-1.68.0.apk
++ adb install old.apk
+Performing Streamed Install
+Success
++ echo 'ESKİ SÜRÜM KURULDU: https://github.com/alperenay/KampusAI/releases/download/v1.68.0/KampusAI-1.68.0.apk'
+ESKİ SÜRÜM KURULDU: https://github.com/alperenay/KampusAI/releases/download/v1.68.0/KampusAI-1.68.0.apk
++ adb install -r apk/KampusAI-1.69.0.apk
+Performing Streamed Install
+Success
++ echo 'GÜNCELLEME: BAŞARILI (eski sürümün üzerine kuruldu)'
+GÜNCELLEME: BAŞARILI (eski sürümün üzerine kuruldu)
++ head -10
++ adb shell dumpsys package com.dersasistani.app
++ grep -iE 'signatures|pastSigningCertificates|signing'
+      Signing KeySets: 59
+    apkSigningVersion=3
+    signatures=PackageSignatures{cad2355 version:3, signatures:[9798a686], past signatures:[]}
++ adb shell settings put secure show_ime_with_hard_keyboard 1
++ adb shell pm grant com.dersasistani.app android.permission.POST_NOTIFICATIONS
++ adb shell dumpsys package com.dersasistani.app
++ grep -q android.permission.RECORD_AUDIO shots/android-permissions.txt
++ grep -q 'android.permission.MODIFY_AUDIO_SETTINGS.*granted=true' shots/android-permissions.txt
+++ head -1
+++ adb shell pm path com.dersasistani.app
+++ sed 's/^package://; s#/base.apk.*##'
+++ tr -d '\r'
++ APKDIR=/data/app/~~VoXGrZ_3kAIu7-n59f5nUA==/com.dersasistani.app-2hpEP_O5eOUafYvsBE8U1A==
++ adb shell ls -la /data/app/~~VoXGrZ_3kAIu7-n59f5nUA==/com.dersasistani.app-2hpEP_O5eOUafYvsBE8U1A==/lib/x86_64/
+total 12040
+drwxr-xr-x 2 system system     4096 2026-10-31 20:36 .
+drwxr-xr-x 3 system system     4096 2026-10-31 20:36 ..
+-rwxr-xr-x 1 system system 12308392 1981-01-01 01:01 libllama-server.so
++ adb shell run-as com.dersasistani.app /data/app/~~VoXGrZ_3kAIu7-n59f5nUA==/com.dersasistani.app-2hpEP_O5eOUafYvsBE8U1A==/lib/x86_64/libllama-server.so --version
+run-as: package not debuggable: com.dersasistani.app
++ echo 'run-as yok (sürüm derlemesi): motor dosyası yukarıda listelendi'
+run-as yok (sürüm derlemesi): motor dosyası yukarıda listelendi
++ adb shell am start -W -n com.dersasistani.app/.MainActivity
+Starting: Intent { cmp=com.dersasistani.app/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: com.dersasistani.app/.MainActivity
+TotalTime: 1841
+WaitTime: 1877
+Complete
++ sleep 20
+++ adb shell wm size
+++ grep -oE '[0-9]+x[0-9]+'
+++ tail -1
++ SIZE=320x640
++ W=320
++ H=640
++ echo 'ekran: 320 x 640'
+ekran: 320 x 640
++ n=0
++ fail=0
++ shot tur-hosgeldin
++ n=1
++ adb exec-out screencap -p
+++ printf %02d 1
++ required_tap 'Turu başlat'
++ tap_text 'Turu başlat' '' ''
++ local 'text=Turu başlat' fx= fy= xy=
+++ seq 1 3
++ for try in $(seq 1 "${TAP_TRIES:-3}")
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
+++ python3 - 'Turu başlat'
++ xy=
++ '[' -n '' ']'
++ sleep 2
++ for try in $(seq 1 "${TAP_TRIES:-3}")
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
+++ python3 - 'Turu başlat'
++ xy='237 565'
++ '[' -n '237 565' ']'
++ break
++ '[' -z '237 565' ']'
++ '[' -z '237 565' ']'
++ echo 'dokun: Turu başlat → 237 565'
+dokun: Turu başlat → 237 565
++ adb shell input tap 237 565
++ sleep 3
++ shot tur-asistan
++ n=2
++ adb exec-out screencap -p
+++ printf %02d 2
++ require_text 'İstediğin bölüme geç'
++ has_text 'İstediğin bölüme geç'
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
++ python3 - 'İstediğin bölüme geç'
++ required_tap 'Turu geç'
++ tap_text 'Turu geç' '' ''
++ local 'text=Turu geç' fx= fy= xy=
+++ seq 1 3
++ for try in $(seq 1 "${TAP_TRIES:-3}")
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
+++ python3 - 'Turu geç'
++ xy='259 294'
++ '[' -n '259 294' ']'
++ break
++ '[' -z '259 294' ']'
++ '[' -z '259 294' ']'
++ echo 'dokun: Turu geç → 259 294'
+dokun: Turu geç → 259 294
++ adb shell input tap 259 294
++ sleep 3
++ shot ana-ekran
++ n=3
++ adb exec-out screencap -p
+++ printf %02d 3
++ required_tap @edit
++ tap_text @edit '' ''
++ local text=@edit fx= fy= xy=
+++ seq 1 3
++ for try in $(seq 1 "${TAP_TRIES:-3}")
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
+++ python3 - @edit
++ xy='156 417'
++ '[' -n '156 417' ']'
++ break
++ '[' -z '156 417' ']'
++ '[' -z '156 417' ']'
++ echo 'dokun: @edit → 156 417'
+dokun: @edit → 156 417
++ adb shell input tap 156 417
++ sleep 2
++ adb shell input text Audit
++ sleep 1
++ shot klavye-ana
++ n=4
++ adb exec-out screencap -p
+++ printf %02d 4
++ adb shell dumpsys input_method
++ grep -E 'mInputShown|mIsInputViewShown'
++ head -3
+  mInputShown=false
+  mIsInputViewShown=false mStatusIcon=0
++ adb shell input keyevent 4
++ sleep 1
++ required_tap Araçlar
++ tap_text Araçlar '' ''
++ local text=Araçlar fx= fy= xy=
+++ seq 1 3
++ for try in $(seq 1 "${TAP_TRIES:-3}")
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
+++ python3 - Araçlar
++ xy='285 596'
++ '[' -n '285 596' ']'
++ break
++ '[' -z '285 596' ']'
++ '[' -z '285 596' ']'
++ echo 'dokun: Araçlar → 285 596'
+dokun: Araçlar → 285 596
++ adb shell input tap 285 596
++ sleep 2
++ required_tap @edit
++ tap_text @edit '' ''
++ local text=@edit fx= fy= xy=
+++ seq 1 3
++ for try in $(seq 1 "${TAP_TRIES:-3}")
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
+++ python3 - @edit
++ xy='155 246'
++ '[' -n '155 246' ']'
++ break
++ '[' -z '155 246' ']'
++ '[' -z '155 246' ']'
++ echo 'dokun: @edit → 155 246'
+dokun: @edit → 155 246
++ adb shell input tap 155 246
++ adb shell input text aktarim
++ sleep 2
++ adb shell input keyevent 4
++ sleep 1
++ required_tap 'Bilgiyi Başka Yerde Kullan'
++ tap_text 'Bilgiyi Başka Yerde Kullan' '' ''
++ local 'text=Bilgiyi Başka Yerde Kullan' fx= fy= xy=
+++ seq 1 3
++ for try in $(seq 1 "${TAP_TRIES:-3}")
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
+++ python3 - 'Bilgiyi Başka Yerde Kullan'
++ xy='164 451'
++ '[' -n '164 451' ']'
++ break
++ '[' -z '164 451' ']'
++ '[' -z '164 451' ']'
++ echo 'dokun: Bilgiyi Başka Yerde Kullan → 164 451'
+dokun: Bilgiyi Başka Yerde Kullan → 164 451
++ adb shell input tap 164 451
++ sleep 2
++ shot aktarim-giris
++ n=5
++ adb exec-out screencap -p
+++ printf %02d 5
++ require_text 'Aynı kavram'
++ has_text 'Aynı kavram'
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
++ python3 - 'Aynı kavram'
++ scroll_tap 'Başla / devam et'
++ for attempt in 1 2 3 4 5
++ TAP_TRIES=1
++ tap_text 'Başla / devam et' '' ''
++ local 'text=Başla / devam et' fx= fy= xy=
+++ seq 1 1
++ for try in $(seq 1 "${TAP_TRIES:-3}")
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
+++ python3 - 'Başla / devam et'
++ xy=
++ '[' -n '' ']'
++ sleep 2
++ '[' -z '' ']'
++ '[' -n '' ']'
++ '[' -z '' ']'
++ echo 'bulunamadı: Başla / devam et'
+bulunamadı: Başla / devam et
++ return 1
++ adb shell input swipe 160 499 160 224 350
++ sleep 1
++ for attempt in 1 2 3 4 5
++ TAP_TRIES=1
++ tap_text 'Başla / devam et' '' ''
++ local 'text=Başla / devam et' fx= fy= xy=
+++ seq 1 1
++ for try in $(seq 1 "${TAP_TRIES:-3}")
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
+++ python3 - 'Başla / devam et'
++ xy='102 386'
++ '[' -n '102 386' ']'
++ break
++ '[' -z '102 386' ']'
++ '[' -z '102 386' ']'
++ echo 'dokun: Başla / devam et → 102 386'
+dokun: Başla / devam et → 102 386
++ adb shell input tap 102 386
++ return 0
++ sleep 2
++ for task in 1 2 3
++ required_tap @radio
++ tap_text @radio '' ''
++ local text=@radio fx= fy= xy=
+++ seq 1 3
++ for try in $(seq 1 "${TAP_TRIES:-3}")
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
+++ python3 - @radio
++ xy='62 226'
++ '[' -n '62 226' ']'
++ break
++ '[' -z '62 226' ']'
++ '[' -z '62 226' ']'
++ echo 'dokun: @radio → 62 226'
+dokun: @radio → 62 226
++ adb shell input tap 62 226
++ scroll_tap 'Yanıtımı kontrol et'
++ for attempt in 1 2 3 4 5
++ TAP_TRIES=1
++ tap_text 'Yanıtımı kontrol et' '' ''
++ local 'text=Yanıtımı kontrol et' fx= fy= xy=
+++ seq 1 1
++ for try in $(seq 1 "${TAP_TRIES:-3}")
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
+++ python3 - 'Yanıtımı kontrol et'
++ xy='108 489'
++ '[' -n '108 489' ']'
++ break
++ '[' -z '108 489' ']'
++ '[' -z '108 489' ']'
++ echo 'dokun: Yanıtımı kontrol et → 108 489'
+dokun: Yanıtımı kontrol et → 108 489
++ adb shell input tap 108 489
++ return 0
++ sleep 1
++ shot aktarim-yanit-1
++ n=6
++ adb exec-out screencap -p
+++ printf %02d 6
++ '[' 1 -lt 3 ']'
++ scroll_tap 'Sonraki görev'
++ for attempt in 1 2 3 4 5
++ TAP_TRIES=1
++ tap_text 'Sonraki görev' '' ''
++ local 'text=Sonraki görev' fx= fy= xy=
+++ seq 1 1
++ for try in $(seq 1 "${TAP_TRIES:-3}")
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
+++ python3 - 'Sonraki görev'
++ xy='93 489'
++ '[' -n '93 489' ']'
++ break
++ '[' -z '93 489' ']'
++ '[' -z '93 489' ']'
++ echo 'dokun: Sonraki görev → 93 489'
+dokun: Sonraki görev → 93 489
++ adb shell input tap 93 489
++ return 0
++ sleep 1
++ for task in 1 2 3
++ required_tap @radio
++ tap_text @radio '' ''
++ local text=@radio fx= fy= xy=
+++ seq 1 3
++ for try in $(seq 1 "${TAP_TRIES:-3}")
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
+++ python3 - @radio
++ xy='62 468'
++ '[' -n '62 468' ']'
++ break
++ '[' -z '62 468' ']'
++ '[' -z '62 468' ']'
++ echo 'dokun: @radio → 62 468'
+dokun: @radio → 62 468
++ adb shell input tap 62 468
++ scroll_tap 'Yanıtımı kontrol et'
++ for attempt in 1 2 3 4 5
++ TAP_TRIES=1
++ tap_text 'Yanıtımı kontrol et' '' ''
++ local 'text=Yanıtımı kontrol et' fx= fy= xy=
+++ seq 1 1
++ for try in $(seq 1 "${TAP_TRIES:-3}")
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
+++ python3 - 'Yanıtımı kontrol et'
++ xy=
++ '[' -n '' ']'
++ sleep 2
++ '[' -z '' ']'
++ '[' -n '' ']'
++ '[' -z '' ']'
++ echo 'bulunamadı: Yanıtımı kontrol et'
+bulunamadı: Yanıtımı kontrol et
++ return 1
++ adb shell input swipe 160 499 160 224 350
++ sleep 1
++ for attempt in 1 2 3 4 5
++ TAP_TRIES=1
++ tap_text 'Yanıtımı kontrol et' '' ''
++ local 'text=Yanıtımı kontrol et' fx= fy= xy=
+++ seq 1 1
++ for try in $(seq 1 "${TAP_TRIES:-3}")
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
+++ python3 - 'Yanıtımı kontrol et'
++ xy='108 489'
++ '[' -n '108 489' ']'
++ break
++ '[' -z '108 489' ']'
++ '[' -z '108 489' ']'
++ echo 'dokun: Yanıtımı kontrol et → 108 489'
+dokun: Yanıtımı kontrol et → 108 489
++ adb shell input tap 108 489
++ return 0
++ sleep 1
++ shot aktarim-yanit-2
++ n=7
++ adb exec-out screencap -p
+++ printf %02d 7
++ '[' 2 -lt 3 ']'
++ scroll_tap 'Sonraki görev'
++ for attempt in 1 2 3 4 5
++ TAP_TRIES=1
++ tap_text 'Sonraki görev' '' ''
++ local 'text=Sonraki görev' fx= fy= xy=
+++ seq 1 1
++ for try in $(seq 1 "${TAP_TRIES:-3}")
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
+++ python3 - 'Sonraki görev'
++ xy='93 488'
++ '[' -n '93 488' ']'
++ break
++ '[' -z '93 488' ']'
++ '[' -z '93 488' ']'
++ echo 'dokun: Sonraki görev → 93 488'
+dokun: Sonraki görev → 93 488
++ adb shell input tap 93 488
++ return 0
++ sleep 1
++ for task in 1 2 3
++ required_tap @radio
++ tap_text @radio '' ''
++ local text=@radio fx= fy= xy=
+++ seq 1 3
++ for try in $(seq 1 "${TAP_TRIES:-3}")
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
+++ python3 - @radio
++ xy='62 226'
++ '[' -n '62 226' ']'
++ break
++ '[' -z '62 226' ']'
++ '[' -z '62 226' ']'
++ echo 'dokun: @radio → 62 226'
+dokun: @radio → 62 226
++ adb shell input tap 62 226
++ scroll_tap 'Yanıtımı kontrol et'
++ for attempt in 1 2 3 4 5
++ TAP_TRIES=1
++ tap_text 'Yanıtımı kontrol et' '' ''
++ local 'text=Yanıtımı kontrol et' fx= fy= xy=
+++ seq 1 1
++ for try in $(seq 1 "${TAP_TRIES:-3}")
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
+++ python3 - 'Yanıtımı kontrol et'
++ xy='108 489'
++ '[' -n '108 489' ']'
++ break
++ '[' -z '108 489' ']'
++ '[' -z '108 489' ']'
++ echo 'dokun: Yanıtımı kontrol et → 108 489'
+dokun: Yanıtımı kontrol et → 108 489
++ adb shell input tap 108 489
++ return 0
++ sleep 1
++ shot aktarim-yanit-3
++ n=8
++ adb exec-out screencap -p
+++ printf %02d 8
++ '[' 3 -lt 3 ']'
++ scroll_tap 'Sonuçları gör'
++ for attempt in 1 2 3 4 5
++ TAP_TRIES=1
++ tap_text 'Sonuçları gör' '' ''
++ local 'text=Sonuçları gör' fx= fy= xy=
+++ seq 1 1
++ for try in $(seq 1 "${TAP_TRIES:-3}")
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
+++ python3 - 'Sonuçları gör'
++ xy='92 489'
++ '[' -n '92 489' ']'
++ break
++ '[' -z '92 489' ']'
++ '[' -z '92 489' ']'
++ echo 'dokun: Sonuçları gör → 92 489'
+dokun: Sonuçları gör → 92 489
++ adb shell input tap 92 489
++ return 0
++ sleep 1
++ require_text 'Çalışma tamamlandı'
++ has_text 'Çalışma tamamlandı'
++ dump_ui
++ adb shell uiautomator dump /sdcard/ui.xml
++ adb pull /sdcard/ui.xml shots/ui.xml
++ grep -qiE 'isn.t responding|yanıt vermiyor' shots/ui.xml
++ return 0
++ python3 - 'Çalışma tamamlandı'
++ shot aktarim-sonuc
++ n=9
++ adb exec-out screencap -p
+++ printf %02d 9
++ device_ready=0
++ for attempt in 1 2 3 4 5 6 7 8 9 10
+++ adb get-state
++ '[' device = device ']'
+++ adb shell getprop sys.boot_completed
+++ tr -d '\r'
++ '[' 1 = 1 ']'
++ device_ready=1
++ break
++ '[' 1 -ne 1 ']'
++ adb logcat -d
+++ adb shell pidof com.dersasistani.app
++ pidof_app=3030
++ python3 tools/check-android-log.py shots/android-logcat.txt com.dersasistani.app 3030
++ cat shots/crash-summary.json
+{
+  "package": "com.dersasistani.app",
+  "ownedPids": [
+    3030,
+    3073
+  ],
+  "appFatals": [],
+  "externalFatals": [],
+  "unknownFatals": []
+}
++ echo 'app pid: 3030; required UI failures: 0'
+app pid: 3030; required UI failures: 0
++ test -n 3030
++ test 0 -eq 0
