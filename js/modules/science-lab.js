@@ -1,7 +1,7 @@
 /* Unified shell delegates to existing engines and owns their route cleanup. */
 (function () {
   const T = (tr, en) => App.i18n.lang === 'en' ? en : tr, esc = App.utils.esc;
-  const aliases = { ph:'bilim-lab/deneyler/ph', ekosistem:'bilim-lab/deneyler/ekosistem', 'ciz-calissin':'bilim-lab/deneyler', lab: 'bilim-lab/deneyler', sensor: 'bilim-lab/sensor', 'telefon-fizik': 'bilim-lab/fizik', sismograf: 'bilim-lab/titresim', vatandas: 'bilim-lab/vatandas', gokyuzu: 'bilim-lab/gokyuzu', 'dokunsal-grafik': 'bilim-lab/grafik' };
+  const aliases = { kesif:'bilim-lab', ph:'bilim-lab/deneyler/ph', ekosistem:'bilim-lab/deneyler/ekosistem', 'ciz-calissin':'bilim-lab/deneyler', lab: 'bilim-lab/deneyler', sensor: 'bilim-lab/sensor', 'telefon-fizik': 'bilim-lab/fizik', sismograf: 'bilim-lab/titresim', vatandas: 'bilim-lab/vatandas', gokyuzu: 'bilim-lab/gokyuzu', 'dokunsal-grafik': 'bilim-lab/grafik' };
   Object.entries(aliases).forEach(([from, to]) => App.router.alias(from, to));
   function migrateTools(raw) {
     return Array.isArray(raw) ? [...new Set(raw.filter(r => typeof r === 'string').map(r => Object.hasOwn(aliases, r.split('/')[0]) || r.startsWith('bilim-lab/') ? 'bilim-lab' : r))] : null;
