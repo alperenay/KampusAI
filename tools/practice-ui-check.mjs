@@ -57,7 +57,12 @@ try {
     try { await page.waitForFunction((i)=>App.tour.current()===i&&document.querySelector('.tour__card:not(.is-moving)'),i,{timeout:12000}); }
     catch(e) { throw new Error('Tour step '+i+' did not settle: '+JSON.stringify(await page.evaluate(()=>({step:App.tour.current(),route:location.hash,active:App.tour.isActive(),card:document.querySelector('.tour__card')?.className}))),{cause:e}); }
     const text=await page.locator('.tour__body').innerText();assert.ok(text.trim().length>25&&!/tour\.\w+\.(title|text)/.test(text));report.tour.push({i,text:text.slice(0,90)});
-    if(i<total-1)await page.locator('[data-tour="next"]').click();
+    if(i<total-1) {
+      await page.waitForFunction(()=>{const b=document.querySelector('[data-tour="next"]');if(!b)return false;const r=b.getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight&&r.left>=0&&r.right<=innerWidth;});
+      const next=page.locator('[data-tour="next"]'), box=await next.boundingBox();
+      assert.ok(box&&box.y>=0&&box.y+box.height<=1000,'tour next action stays in the viewport at step '+i+': '+JSON.stringify(box));
+      await next.click();
+    }
   }
   await page.keyboard.press('Escape');await page.waitForFunction(()=>!App.tour.isActive());
   console.log('Tour: all '+total+' steps opened with complete copy.');

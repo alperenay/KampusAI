@@ -47,10 +47,10 @@
 .pr-plot { margin: 8px 0 18px; border: 1px solid var(--border); border-radius: 12px; padding: 10px; }
 .pr-plot svg { width: 100%; max-height: 260px; display: block; }
 .pr-plot text { fill: currentColor; font-size: 13px; }
-.tour__jump { margin: 8px 0 12px; text-align: left; }
+.tour__jump { margin: 8px 0 12px; text-align: left; flex: none; }
 .tour__jump label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }
 .tour__jump select { width: 100%; min-height: 40px; }
-.tour__card { max-height: calc(100dvh - 28px); overflow-y: auto; overscroll-behavior: contain; transition: opacity .2s; animation: none; }
+.tour__card { max-height: var(--tour-max-height, calc(100dvh - 28px)); overflow-y: auto; overscroll-behavior: contain; transition: opacity .2s; animation: none; }
 .tour__nav button { min-height: 44px; }
 .tour__body p { line-height: 1.65; }
 .tour__tip { display: block; padding: 10px; margin-top: 12px; background: var(--accent-soft); border-radius: 10px; font-size: 13px; line-height: 1.5; }

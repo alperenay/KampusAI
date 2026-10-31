@@ -24,7 +24,7 @@ try {
  await go('evren');await page.waitForSelector('.ev-summary');
  await page.waitForSelector('#evStage canvas, .ev-load');
  assert.match(await page.locator('.ev-summary').innerText(),/kazanım/);
- await page.locator('.ev-list summary').click();
+ if(!(await page.locator('.ev-list').evaluate(el=>el.open))) await page.locator('.ev-list summary').click();
  await page.fill('#evSearch','zzzzzzzz');assert.match(await page.locator('#evCount').innerText(),/uygun konu yok/);
  await page.fill('#evSearch','');
  await page.screenshot({path:path.join(h.qa,'cosmos-refined.png'),fullPage:true});

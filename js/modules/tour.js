@@ -295,6 +295,12 @@
     const card = el.querySelector(".tour__card");
     const vw = window.innerWidth, vh = window.innerHeight;
     const s = STEPS[idx];
+    // Keep the card inside the usable viewport, including native safe-area insets.
+    const appCs = getComputedStyle(document.getElementById("app") || document.body);
+    const minT = 12 + (parseFloat(appCs.paddingTop) || 0);
+    const maxB = vh - 12 - (parseFloat(appCs.paddingBottom) || 0);
+    const available = Math.max(160, maxB - minT);
+    el.style.setProperty("--tour-max-height", available + "px");
     const target = curTarget && document.contains(curTarget) && visible(curTarget) ? curTarget : null;
     if (!target || s.center) {
       if (!spot.hidden || force) { spot.hidden = true; el.classList.add("is-center"); card.style.cssText = ""; }
@@ -313,11 +319,8 @@
     spot.style.cssText = "top:" + top + "px;left:" + left + "px;width:" + Math.max(0, right - left) + "px;height:" + Math.max(0, bottom - top) + "px";
 
     const cw = Math.min(380, vw - 24);
-    const ch = card.offsetHeight || 220;
+    const ch = Math.min(card.offsetHeight || 220, available);
     const gap = 14;
-    // Durum çubuğu / ana ekran çubuğu payı (iPhone çentiği, Android kenardan kenara)
-    const appCs = getComputedStyle(document.getElementById("app") || document.body);
-    const minT = 12 + (parseFloat(appCs.paddingTop) || 0), maxB = vh - 12 - (parseFloat(appCs.paddingBottom) || 0);
     let ct, cl;
     if (vw < 640) {
       // Telefonda kart alt ya da üst kenara yaslanır; vurgunun karşı tarafında durur
@@ -326,12 +329,14 @@
       ct = mid < vh / 2 ? maxB - ch : minT;
       if (mid < vh / 2 && bottom + gap > ct) ct = Math.min(maxB - ch, bottom + gap);
       if (mid >= vh / 2 && top - gap < ct + ch) ct = Math.max(minT, top - gap - ch);
+      ct = Math.max(minT, Math.min(maxB - ch, ct));
       card.style.cssText = "top:" + Math.round(ct) + "px;left:" + cl + "px;right:12px;width:auto";
       return;
     }
     if (bottom + gap + ch <= maxB) ct = bottom + gap;
     else if (top - gap - ch >= minT) ct = top - gap - ch;
     else ct = Math.max(minT, Math.min(maxB - ch, (top + bottom) / 2 - ch / 2));
+    ct = Math.max(minT, Math.min(maxB - ch, ct));
     cl = (left + right) / 2 - cw / 2;
     if (ct > top - gap - ch && ct < bottom + gap) {      // yukarı/aşağı sığmadı: yana koy
       cl = right + gap + cw <= vw - 12 ? right + gap : left - gap - cw >= 12 ? left - gap - cw : cl;
