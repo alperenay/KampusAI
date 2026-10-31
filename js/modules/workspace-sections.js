@@ -49,7 +49,7 @@
     return()=>{view.removeEventListener('click',click);window.removeEventListener('da:favorites',paint);};
   });
   function installModePicker(nav) {
-    const label=document.createElement('label');label.className='workspace-mode';
+    const label=document.createElement('label');label.className='workspace-mode sidebar__label-block';
     label.innerHTML='<span data-workspace-mode-label>'+esc(T('Menü görünümü','Menu view'))+'</span><select data-workspace-mode><option value="student">'+T('Öğrenci','Student')+'</option><option value="educator">'+T('Öğretmen / Araştırmacı','Teacher / Researcher')+'</option></select>';
     nav.prepend(label);const select=label.querySelector('select');select.value=W.mode();select.addEventListener('change',()=>{W.setMode(select.value);App.router.refresh();});
     const sync=()=>{select.value=W.mode();const group=nav.querySelector('[data-group="classroom"]');if(group)group.hidden=W.mode()!=='educator';App.hub.paintSidebar();nav.querySelector('#navFilter')?.dispatchEvent(new Event('input'));};

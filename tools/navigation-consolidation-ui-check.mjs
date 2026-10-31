@@ -7,6 +7,7 @@ const h=await uiHarness();try{
  await page.waitForSelector('[data-workspace-mode]');
  assert.equal(await page.locator('.v159-smart-menu').count(),0);
  assert.equal(await page.inputValue('[data-workspace-mode]'),'student');
+ await page.setViewportSize({width:1440,height:900});await page.click('#sidebarToggle');await page.waitForFunction(()=>!document.querySelector('.workspace-mode').getClientRects().length);await page.click('#sidebarToggle');await page.waitForSelector('[data-workspace-mode]',{state:'visible'});
  assert.equal(await page.locator('#sidebar [data-group=classroom]').isVisible(),false);
  for(const id of ['hedefim','gelisimim','dunya-tarih'])assert.equal(await page.locator('#sidebar a[data-route="'+id+'"]').count(),1);
  for(const id of ['kariyer','meslek','puan','tercih','rapor','harita','kok','karne','kure','atlas','zaman','tarih-haritasi'])assert.equal(await page.locator('#sidebar a[data-route="'+id+'"]').count(),0);
