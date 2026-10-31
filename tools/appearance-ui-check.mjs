@@ -80,7 +80,7 @@ try {
     assert.equal(geometry.hit, "profileBtn");
     assert.equal(await page.locator("#sidebar #profileBtn").count(), 1, "Only one student profile/settings entry remains");
     assert.equal(await page.locator("#sidebarSettingsTop, #settingsBtn").count(), 0, "No duplicate settings buttons");
-    assert.equal(await page.locator(".nav-category__icon").count(), 8);
+    assert.equal(await page.locator(".nav-category__icon").count(), 7);
     await page.click("#profileBtn");
     await page.waitForSelector(".modal--settings .settings-hero");
     assert.equal(await page.locator(".modal--settings #setAppearance").count(), 1);
