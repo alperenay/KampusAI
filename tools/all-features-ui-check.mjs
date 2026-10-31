@@ -27,7 +27,7 @@ try {
       const start = Date.now();
       let outcome;
       try {
-        await navigate(page,route);
+        await navigate(page,route,route==='demo'?'bugun':route);
         outcome=await page.evaluate(()=>({text:document.querySelector('#view').innerText.slice(0,600),resolved:App.router.current().path}));
       } catch(e) { outcome={text:'NavigationError: '+e.message,resolved:route}; }
       const failed = !outcome.text.trim() || /NavigationError:|TypeError:|ReferenceError:|SyntaxError:|is not a function|Cannot read properties/.test(outcome.text);
