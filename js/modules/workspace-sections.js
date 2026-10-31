@@ -22,7 +22,10 @@
   for(const section of W.sections) App.router.register(section.id,async view=>{
     App.setTitle(W.text(section.title));
     view.innerHTML='<div class="page workspace-overview"><h1 class="no-print">'+esc(W.text(section.title))+'</h1><p class="hint">'+esc(W.text(section.description))+'</p>'+tabs(section,section.id)+'<div class="workspace-steps no-print">'+section.children.map(([r,tr,en],i)=>'<a class="card workspace-step" href="#/'+r+'"><span class="workspace-step__number">'+(i+1)+'</span><b>'+esc(T(tr,en))+'</b><span aria-hidden="true">→</span></a>').join('')+'</div><div data-workspace-summary></div></div>';
-    if(section.id==='gelisimim') { const cleanup=await App.router.handler('rapor')(view.querySelector('[data-workspace-summary]'),[]);App.setTitle(W.text(section.title));return cleanup; }
+    // Overview cards are the entry on goal/world pages; progress opens its real summary directly.
+    if(section.id==='gelisimim') view.querySelector('.workspace-steps').remove();
+    else view.querySelector('.workspace-tabs').remove();
+    if(section.id==='gelisimim') { const cleanup=await App.router.handler('rapor')(view.querySelector('[data-workspace-summary]'),[]);if(App.router.current().name===section.id)App.setTitle(W.text(section.title));return cleanup; }
   });
   function shortcuts(root) {
     const paint=()=>{
