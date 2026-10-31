@@ -3,7 +3,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import assert from "node:assert/strict";
-import { uiHarness } from "./ui-harness.mjs";
+import { uiHarness, navigate } from "./ui-harness.mjs";
 const h = await uiHarness();
 let checks = 0;
 const ok = (name) => { checks++; console.log("✓ " + name); };
@@ -130,10 +130,13 @@ try {
   const newLabs = ["turev", "integral", "dizi", "ustel", "parabol", "olasilik", "istatistik", "ucgencoz", "donusum", "katicisim", "mevsim", "iklim", "nufus", "mitoz", "kalitim"];
   assert.ok((await page.evaluate(async () => { await App.lazy.load("labs"); return Object.keys(App.labs.LABS).length; })) >= 82);
   for (const id of newLabs) {
-    await page.evaluate((x) => App.router.go("lab/" + x), id);
+    await navigate(page, "lab/" + id);
+    await page.locator(".lab__cv").scrollIntoViewIfNeeded();
     await page.waitForFunction(() => /\d/.test((document.querySelector(".lab__read") || {}).textContent || ""), null, { timeout: 8000 });
   }
-  await page.evaluate(() => App.router.go("lab/olasilik"));
+  await navigate(page, "lab/olasilik");
+  // Labs intentionally pause outside the viewport. Test the visible experiment.
+  await page.locator(".lab__cv").scrollIntoViewIfNeeded();
   await page.waitForFunction(() => /Deney sayısı\s*[1-9]/.test(document.querySelector("#view").innerText), null, { timeout: 10000 });
   ok("15 yeni deney açılıyor (toplam ≥ 82); olasılık deneyi atış yapıyor");
 
