@@ -51,7 +51,7 @@ try {
     "true",
   );
   await page.click("[data-hub-category=science]");
-  assert.equal(await page.locator(".hub-tile[data-r=ph]").isVisible(), true);
+  assert.equal(await page.locator(".hub-tile[data-r=bilim-lab]").isVisible(), true);
   assert.ok((await page.locator(".motion-touch").count()) <= 1);
   await page.waitForTimeout(450);
   assert.equal(await page.locator(".motion-touch").count(), 0);
